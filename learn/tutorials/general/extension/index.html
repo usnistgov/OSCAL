@@ -1,0 +1,824 @@
+<!doctype html><html><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="IE=edge"><title>Extending OSCAL Models</title><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-42404149-54","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script>
+<script src=https://code.jquery.com/jquery-3.4.1.min.js integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin=anonymous referrerpolicy=no-referrer></script>
+<link rel=stylesheet href=../../../../css/hugo-uswds.css integrity="sha512-RLB7sHbyrE8ew8mHyyrzweyZ6lweXOZCNYDFuphdqL6oE+wzpa4CRBXCBerEWsGausrZJBkrtDb5QueW6kpqPQ=="><link rel="shortcut icon" type=image/png href=../../../../img/oscal-page-icon-180.png><link rel=icon type=image/png href=../../../../img/oscal-gears-icon-140.png><link rel=icon type=image/png sizes=192x192 href=../../../../img/oscal-page-icon-180.png><link rel=apple-touch-icon-precomposed type=image/png href=../../../../img/oscal-page-icon-180.png><link rel=apple-touch-icon-precomposed type=image/png sizes=72x72 href=../../../../img/oscal-page-icon-180.png><link rel=apple-touch-icon-precomposed type=image/png sizes=114x114 href=../../../../img/oscal-page-icon-180.png><link rel=apple-touch-icon-precomposed type=image/png sizes=144x144 href=../../../../img/oscal-page-icon-180.png><link rel=stylesheet href=https://pages.nist.gov/nist-header-footer/css/nist-combined.css><script src=https://pages.nist.gov/nist-header-footer/js/nist-header-footer.js defer></script>
+<link rel=stylesheet type=text/css href=https://pages.nist.gov/leaveNotice/css/jquery.leaveNotice.css></head><body><a class=usa-skipnav href=#main-content>Skip to main content</a><div class=usa-overlay></div><header class="usa-header usa-header--basic"><div class=usa-nav-container><div class=usa-navbar><div class=usa-logo id=basic-logo><em class=usa-logo__text><a href=../../../../ title="OSCAL: the Open Security Controls Assessment Language" aria-label=Home>OSCAL</a></em></div><button class=usa-menu-btn>Menu</button></div><nav aria-label="Primary navigation" class=usa-nav><button class=usa-nav__close><img src=../../../../img/close.svg alt=close></button><ul class="usa-nav__primary usa-accordion"><li class=usa-nav__primary-item><a class=usa-nav__link href=../../../../about/><span>About</span></a></li><li class=usa-nav__primary-item><a class=usa-nav__link href=../../../../learn/><span>Learn</span></a></li><li class=usa-nav__primary-item><a class=usa-nav__link href=../../../../concepts/><span>Concepts</span></a></li><li class=usa-nav__primary-item><a class=usa-nav__link href=../../../../reference/><span>Reference</span></a></li><li class=usa-nav__primary-item><a class=usa-nav__link href=../../../../downloads/><span>Downloads</span></a></li><li class=usa-nav__primary-item><a class=usa-nav__link href=../../../../tools/><span>Tools</span></a></li><li class=usa-nav__primary-item><a class=usa-nav__link href=../../../../contribute/><span>Contribute</span></a></li><li class=usa-nav__primary-item><a class=usa-nav__link href=../../../../contact/><span>Contact Us</span></a></li></ul><form class="usa-search usa-search--small" action=https://search.usa.gov/search><input id=affiliate name=affiliate type=hidden value=oscal>
+<input name=utf8 type=hidden value=&#x2713;><div role=search><label class=usa-sr-only for=basic-search-field-small>Search</label>
+<input class=usa-input id=query type=search name=query>
+<button class=usa-button type=submit><span class=usa-sr-only>Search</span></button></div></form></nav></div></header><main class="usa-layout-docs padding-top-2"><div class="grid-container grid-container-widescreen"><div class="grid-row grid-gap"><nav aria-label="Secondary Navigation" class="usa-layout-docs__sidenav widescreen:grid-col-3 desktop:grid-col-2"><ul class=usa-sidenav><li><a class="usa-sidenav__item subnav-top-level section" href=../../../../learn/>Learning Resources</a><ul class=usa-sidenav__sublist><li><a class="usa-sidenav__item section" href=../../../../learn/presentations/>Instructional Videos, Presentations, and Blogs</a><ul class=usa-sidenav__sublist><li><a class="usa-sidenav__item page" href=../../../../learn/presentations/oscal-workshop-2021-02/>2nd OSCAL Workshop</a></li><li><a class="usa-sidenav__item page" href=../../../../learn/presentations/oscal-workshop-2022-03/>3rd OSCAL Workshop</a></li><li><a class="usa-sidenav__item section" href=../../../../learn/presentations/mini-workshop/>OSCAL Mini Workshop Series</a></li></ul></li><li><a class="usa-sidenav__item section" href=../../../../learn/tutorials/>Walkthrough Tutorials</a><ul class=usa-sidenav__sublist><li><a class="usa-sidenav__item section" href=../../../../learn/tutorials/general/>General Topics</a><ul class=usa-sidenav__sublist><li><a class="usa-sidenav__item page" href=../../../../learn/tutorials/general/metadata/>Creating and Using Metadata</a></li><li><a class="usa-sidenav__item page active-page usa-current" href=../../../../learn/tutorials/general/extension/>Extending OSCAL Models</a></li></ul></li><li><a class="usa-sidenav__item section" href=../../../../learn/tutorials/control/>Control Layer Topics</a><ul class=usa-sidenav__sublist><li><a class="usa-sidenav__item page" href=../../../../learn/tutorials/control/basic-catalog/>Creating a Control Catalog</a></li></ul></li><li><a class="usa-sidenav__item section" href=../../../../learn/tutorials/implementation/>Implementation Layer Topics</a><ul class=usa-sidenav__sublist><li><a class="usa-sidenav__item page" href=../../../../learn/tutorials/implementation/simple-component-definition/>Creating a Component Definition</a></li><li><a class="usa-sidenav__item page" href=../../../../learn/tutorials/implementation/validation-modeling/>Representing Test Validation Information</a></li></ul></li></ul></li></ul></li></ul></nav><div id=main-content class="usa-layout-docs__main widescreen:grid-col-7 desktop:grid-col-8 display-block"><article><header><h1>Extending OSCAL Models with Props and Links</h1></header><p>This tutorial describes the mechanisms for extending basic OSCAL models. Before reading this tutorial, you should:</p><ul><li>Have some familiarity with the <a href=https://www.w3.org/standards/xml/core>XML</a>, <a href=https://www.json.org/>JSON</a>, or <a href=https://yaml.org/spec/>YAML</a> formats.</li><li>Review the <a href=../../../../concepts/layer/>OSCAL Layers and Models</a> documentation.</li><li>Review the latest <a href=../../../../reference/latest/complete/>OSCAL Reference</a>.</li></ul><h2 id=what-are-the-oscal-extension-mechanisms>What are the OSCAL Extension Mechanisms?</h2><p>OSCAL is designed with the goal of simultaneously supporting multiple cybersecurity frameworks. The core OSCAL syntax achieves this goal by focusing on properties that are universal or have applicability across various frameworks.</p><p>In creating OSCAL, NIST anticipated the importance of extensibility for unique requirements when organizations implement their security and privacy risk management programs. It was important to establish extension mechanisms from the onset, to allow OSCAL content creators to adapt OSCAL for their specific (organizational) needs.</p><p>Thus, OSCAL is designed with extensibility as one of its key principles, allowing the OSCAL models to be extended wherever there are prop or link properties in the core OSCAL models. This tutorial describes both extension mechanisms, explaining when to utilize them and illustrating their proper use.</p><div class=callout>Ellipsis (...) is used throughout this tutorial's examples where sample code is omitted for sake of simplicity.</div><h2 id=props>Props</h2><p>The OSCAL property is a primary method for providing extended data in OSCAL. A property is a namespaced name and value pair, which appears on many of the key fields within an OSCAL model. The following section provides details around the use of OSCAL properties.</p><h3 id=syntax>Syntax</h3><p>The following examples illustrate the syntax of an OSCAL property in XML, JSON, and YAML.</p><div id=tabs-1 class="hugo-codetabs usa-accordion"><ul><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-1-xml-tab><span>XML</span></button></li><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-1-json-tab><span>JSON</span></button></li><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-1-yaml-tab><span>YAML</span></button></li></ul><div id=tabs-1-content class=hugo-tab-content><div id=tabs-1-xml-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;prop</span> <span class=na>name=</span><span class=s>&#34;...&#34;</span> <span class=na>ns=</span><span class=s>&#34;...&#34;</span> <span class=na>value=</span><span class=s>&#34;...&#34;</span> <span class=na>class=</span><span class=s>&#34;...&#34;</span><span class=nt>&gt;</span>...<span class=nt>&lt;/prop&gt;</span></code></pre></td></tr></table></div></div><p>A property in OSCAL XML is represented using the <code>&lt;prop></code> element, which can be repeated in a sequence multiple times to define multiple OSCAL properties.</p><p>Below is a description of each attribute of the <code>&lt;prop></code> element.</p><ul><li><code>@name</code> (Required) - The <em>name</em> of the OSCAL property that must be a <a href=../../../../reference/datatypes/#token>token</a> data type.</li><li><code>@ns</code> (Optional) - The <em>namespace</em> of the OSCAL property that must be a <a href=../../../../reference/datatypes/#uri>universal resource identifier (URI)</a> formatted according to <a href=https://datatracker.ietf.org/doc/html/rfc3986>RFC 3986</a>.</li><li><code>@value</code> (Required) - The <em>value</em> of the OSCAL property that must be a <a href=../../../../reference/datatypes/#string>string</a> value.</li><li><code>@class</code> (Optional) - The <em>class</em> of the OSCAL property that must be a <a href=../../../../reference/datatypes/#string>string</a> value, which can be used to further qualify the property's value.</li></ul></div><div id=tabs-1-json-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-json data-lang=json><span class=p>{</span>
+  <span class=nt>&#34;props&#34;</span><span class=p>:</span> <span class=p>[</span>
+    <span class=p>{</span>
+      <span class=nt>&#34;name&#34;</span><span class=p>:</span><span class=s2>&#34;...&#34;</span><span class=p>,</span>
+      <span class=nt>&#34;ns&#34;</span><span class=p>:</span><span class=s2>&#34;...&#34;</span><span class=p>,</span>
+      <span class=nt>&#34;value&#34;</span><span class=p>:</span><span class=s2>&#34;...&#34;</span><span class=p>,</span>
+      <span class=nt>&#34;class&#34;</span><span class=p>:</span><span class=s2>&#34;...&#34;</span>
+    <span class=p>}</span>
+  <span class=p>]</span>
+<span class=p>}</span></code></pre></td></tr></table></div></div><p>A listing of properties in OSCAL JSON are represented using the <code>props</code> object array, with each property defined as an individual JSON object array member.</p><p>Each <em>property</em> object can have the following JSON property names.</p><ul><li><code>name</code> (Required) - The <em>name</em> of the OSCAL property that must be a <a href=../../../../reference/datatypes/#token>token</a> data type.</li><li><code>ns</code> (Optional) - The <em>namespace</em> of the OSCAL property that must be a <a href=../../../../reference/datatypes/#uri>universal resource identifier (URI)</a> formatted according to <a href=https://datatracker.ietf.org/doc/html/rfc3986>RFC 3986</a>.</li><li><code>value</code> (Required) - The <em>value</em> of the OSCAL property that must be a <a href=../../../../reference/datatypes/#string>string</a> value.</li><li><code>class</code> (Optional) - The <em>class</em> of the OSCAL property that must be a <a href=../../../../reference/datatypes/#string>string</a> value, which can be used to further qualify the value that must be a <a href=../../../../reference/datatypes/#string>string</a> value, which can be used to further qualify the property's value.</li></ul></div><div id=tabs-1-yaml-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-yaml data-lang=yaml><span class=nt>props</span><span class=p>:</span><span class=w>
+</span><span class=w></span>- <span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>...</span><span class=w>
+</span><span class=w>  </span><span class=nt>ns</span><span class=p>:</span><span class=w> </span><span class=l>...</span><span class=w>
+</span><span class=w>  </span><span class=nt>value</span><span class=p>:</span><span class=w> </span><span class=l>...</span><span class=w>
+</span><span class=w>  </span><span class=nt>class</span><span class=p>:</span><span class=w> </span><span class=l>...</span></code></pre></td></tr></table></div></div><p>A <code>props</code> list in YAML contains individual OSCAL property items.</p><p>Each property item can have the following keys:</p><ul><li><code>name</code> (Required) - The <em>name</em> of the OSCAL property that must be a <a href=../../../../reference/datatypes/#token>token</a> data type.</li><li><code>ns</code> (Optional) - The <em>namespace</em> of the OSCAL property that must be a <a href=../../../../reference/datatypes/#uri>universal resource identifier (URI)</a> formatted according to <a href=https://datatracker.ietf.org/doc/html/rfc3986>RFC 3986</a>.</li><li><code>value</code> (Required) - The <em>value</em> of the OSCAL property that must be a <a href=../../../../reference/datatypes/#string>string</a> value.</li><li><code>class</code> (Optional) - The <em>class</em> of the OSCAL property that must be a <a href=../../../../reference/datatypes/#string>string</a> value, which can be used to further qualify the value that must be a <a href=../../../../reference/datatypes/#string>string</a> value, which can be used to further qualify the property's value.</li></ul></div></div></div><h3 id=concepts>Concepts</h3><p>Now that the syntax of a property is more clear, let's discuss how the property's <em>namespace</em>, <em>name</em>, <em>value</em>, and <em>class</em> are used to extend OSCAL.</p><h4 id=context>Context</h4><p>As we mentioned earlier, a property is a <em>namespaced name</em> and <em>value</em> pair, which appears on many of the key fields within an OSCAL model. The OSCAL field on which the property is declared is considered the property's <em>context</em>. A property's context establishes the subject of the property: the thing the property is about.</p><h4 id=namespace>Namespace</h4><p>A property's <em>namespace</em> defines the value space of possible names for a property. Each namespace is represented by a Uniform Resource Identifier (URI), which is defined by <a href=https://datatracker.ietf.org/doc/html/rfc3986>RFC 3986</a>. Namespaces allow the same property name to be used for different purposes or to have different meanings for each namespace it is defined in.</p><p>The default namespace for an OSCAL property is <code>http://csrc.nist.gov/ns/oscal</code>, which is used as the namespace when no namespace is provided.</p><p>A namespace is managed by a given organization or individual. Using a namespace, different organizations can assign a unique semantic meaning to the use of a property name within their namespace; thus, the different meaning of two properties with the same name can be easily determined by identifying the associated namespaces. This allows different organizations to assign names within their own namespace, without coordinating with other organizations, avoiding naming conflicts. This provides a low-effort means to ensure that naming clashes are avoided.</p><h4 id=name>Name</h4><p>The <em>name</em> of a property defines the semantic meaning or topical nature of the value. The topic a name relates to is often associated with the property's <em>context</em>.</p><p>For example, the property name "marking" might identify some information sensitivity classification scheme for the context data field, while the property name "label" might refer to a textual label for the context data field.</p><p>In OSCAL, many data fields have pre-defined names defined in the OSCAL namespace <code>http://csrc.nist.gov/ns/oscal</code>, which is the default value for the namespace when no namespace is provided. These pre-defined property names provided for standardized naming of properties, which can be recognized by multiple consumers to have a consistent meaning. The namespace can be omitted when using a property name pre-defined by OSCAL.</p><p>For example, the OSCAL SSP model's system characteristics data field has a pre-defined property name <code>data-center</code> [<a href=../../../../reference/latest/system-security-plan/xml-reference/#/system-security-plan/system-characteristics/prop>XML</a>] [<a href=../../../../reference/latest/system-security-plan/json-reference/#/system-security-plan/system-characteristics/props>JSON/YAML</a>].</p><p>OSCAL content authors need to determine whether to use a pre-defined property name in a given situation or to define their own name in their own namespace. To view existing property names, review the model index [<a href=../../../../reference/latest/complete/xml-index/#/prop>XML</a>] [<a href=../../../../reference/latest/complete/json-index/#/props>JSON/YAML</a>].</p><p>New pre-defined names will be added to OSCAL over time as needed. To suggest or request the addition of a new pre-defined name in the OSCAL namespace, please <a href="https://github.com/usnistgov/OSCAL/issues/new?assignees=&labels=User+Story%2Cenhancement&template=feature_request.yaml">open an issue</a> in the OSCAL GitHub repository.</p><h4 id=value>Value</h4><p>A property's <em>name</em> defines a value space, while the property's <em>value</em> provides a specific member of that value space. The value space for a given name may contain a set of identifier reference values, an enumerated set of values, or allow for open-ended values. Defining the rules for allowed values in a value space is a critical part of defining a new property name within a given namespace.</p><p>Many of the OSCAL pre-defined property names have a constrained set of values. The allowed values may be further constrained by the context data field. Which values are allowed depends on the context of use, name and namespace of the property. The constraints for these properties are defined within the <a href=https://github.com/usnistgov/OSCAL/tree/main/src/metaschema>OSCAL Metaschemas</a>. Where applicable, a given Metaschema defines the <code>allowed-values</code> that can be used for a property name in a given context of use. The properties that are extensible are defined with an <code>@allow-other=yes</code> attribute in Metaschema.</p><h4 id=class>Class</h4><p>The <em>class</em> of a property is a textual label that provides a sub-type or characterization of the property's name and/or value. This can be used to further distinguish or discriminate between the semantics of multiple properties in a given context with the same name and namespace.</p><h3 id=using-an-existing-prop>Using an Existing Prop</h3><p>This sections covers the basic use of a property leveraging all of its attributes.</p><p>The OSCAL SSP <a href=../../../../concepts/layer/overview/#metadata-overview>metadata</a> allows for zero or more location data items, each allowing for properties to be defined. In this example, an organization needs to document their primary and alternate data center locations. This is achieved by specifying properties for each location.</p><div class=callout>The <a href=../metadata/>Metadata Tutorial</a> provides in-depth description and walk-through examples of creating OSCAL metadata.</div><div id=tabs-3 class="hugo-codetabs usa-accordion"><ul><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-3-xml-tab><span>XML</span></button></li><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-3-json-tab><span>JSON</span></button></li><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-3-yaml-tab><span>YAML</span></button></li></ul><div id=tabs-3-content class=hugo-tab-content><div id=tabs-3-xml-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-xml data-lang=xml><span class=cp>&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+<span class=nt>&lt;system-security-plan</span> <span class=na>uuid=</span><span class=s>&#34;ce16b9af-6853-4abe-9e27-b79d034c0adc&#34;</span><span class=nt>&gt;</span>
+  <span class=nt>&lt;metadata&gt;</span>
+    <span class=nt>&lt;title&gt;</span>OSCAL Basic Prop Example<span class=nt>&lt;/title&gt;</span>
+    <span class=nt>&lt;last-modified&gt;</span>2022-01-01T09:30:00-005<span class=nt>&lt;/last-modified&gt;</span>
+    <span class=nt>&lt;version&gt;</span>20220531<span class=nt>&lt;/version&gt;</span>
+    <span class=nt>&lt;oscal-version&gt;</span>1.0.4<span class=nt>&lt;/oscal-version&gt;</span>
+    <span class=nt>&lt;location</span> <span class=na>uuid=</span><span class=s>&#34;location uuid&#34;</span><span class=nt>&gt;</span>
+      <span class=nt>&lt;title&gt;</span>...<span class=nt>&lt;/title&gt;</span>
+      <span class=nt>&lt;prop</span> <span class=na>name=</span><span class=s>&#34;type&#34;</span> <span class=na>value=</span><span class=s>&#34;data-center&#34;</span> <span class=na>class=</span><span class=s>&#34;primary&#34;</span><span class=nt>/&gt;</span>
+    <span class=nt>&lt;/location&gt;</span>
+    <span class=nt>&lt;location</span> <span class=na>uuid=</span><span class=s>&#34;location uuid&#34;</span><span class=nt>&gt;</span>
+      <span class=nt>&lt;title&gt;</span>...<span class=nt>&lt;/title&gt;</span>
+      <span class=nt>&lt;prop</span> <span class=na>name=</span><span class=s>&#34;type&#34;</span> <span class=na>value=</span><span class=s>&#34;data-center&#34;</span> <span class=na>class=</span><span class=s>&#34;alternate&#34;</span><span class=nt>/&gt;</span>
+    <span class=nt>&lt;/location&gt;</span>
+  <span class=nt>&lt;/metadata&gt;</span>
+  <span class=nt>&lt;import-profile&gt;</span>...<span class=nt>&lt;/import-profile&gt;</span>
+  <span class=nt>&lt;system-characteristics&gt;</span>...<span class=nt>&lt;/system-characteristics&gt;</span>
+  <span class=nt>&lt;system-implementation&gt;</span>...<span class=nt>&lt;/system-implementation&gt;</span>
+<span class=nt>&lt;/system-security-plan&gt;</span></code></pre></td></tr></table></div></div><p>The <code>@name</code> attribute is set to "type" which is an OSCAL pre-defined property for locations. The <code>@value</code> attribute is set to "data-center" which is an <a href=../../../../reference/latest/system-security-plan/xml-reference/#/system-security-plan/metadata/location>OSCAL pre-defined</a> value for location "type" properties. The <code>@class</code> attribute in this case is used to indicate a subclass of data-center, and is set to one of the appropriate <a href=../../../../reference/latest/system-security-plan/xml-reference/#/system-security-plan/metadata/location>OSCAL pre-defined</a> values for data center location class.</p><p>Note that in this example, the <code>@ns</code> attribute is omitted because we are using a pre-defined property name in the OSCAL namespace.</p></div><div id=tabs-3-json-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-json data-lang=json><span class=p>{</span>
+  <span class=nt>&#34;system-security-plan&#34;</span><span class=p>:</span> <span class=p>{</span>
+    <span class=nt>&#34;uuid&#34;</span><span class=p>:</span> <span class=s2>&#34;ce16b9af-6853-4abe-9e27-b79d034c0adc&#34;</span><span class=p>,</span>
+    <span class=nt>&#34;metadata&#34;</span><span class=p>:</span> <span class=p>{</span>
+      <span class=nt>&#34;title&#34;</span><span class=p>:</span> <span class=s2>&#34;OSCAL Basic Prop Example&#34;</span><span class=p>,</span>
+      <span class=nt>&#34;last-modified&#34;</span><span class=p>:</span> <span class=s2>&#34;2022-01-01T09:30:00-005&#34;</span><span class=p>,</span>
+      <span class=nt>&#34;version&#34;</span><span class=p>:</span> <span class=mi>20220531</span><span class=p>,</span>
+      <span class=nt>&#34;oscal-version&#34;</span><span class=p>:</span> <span class=s2>&#34;1.0.4&#34;</span><span class=p>,</span>
+      <span class=nt>&#34;locations&#34;</span><span class=p>:</span> <span class=p>[</span>
+      <span class=p>{</span>
+        <span class=nt>&#34;title&#34;</span><span class=p>:</span> <span class=s2>&#34;...&#34;</span><span class=p>,</span>
+        <span class=nt>&#34;props&#34;</span><span class=p>:</span> <span class=p>[</span>
+          <span class=p>{</span>
+            <span class=nt>&#34;name&#34;</span><span class=p>:</span><span class=s2>&#34;type&#34;</span><span class=p>,</span>
+            <span class=nt>&#34;value&#34;</span><span class=p>:</span><span class=s2>&#34;data-center&#34;</span><span class=p>,</span>
+            <span class=nt>&#34;class&#34;</span><span class=p>:</span><span class=s2>&#34;primary&#34;</span>
+          <span class=p>}</span>
+        <span class=p>]</span>
+      <span class=p>},</span>
+      <span class=p>{</span>
+          <span class=nt>&#34;title&#34;</span><span class=p>:</span> <span class=s2>&#34;...&#34;</span><span class=p>,</span>
+          <span class=nt>&#34;props&#34;</span><span class=p>:</span> <span class=p>[</span>
+          <span class=p>{</span>
+            <span class=nt>&#34;name&#34;</span><span class=p>:</span><span class=s2>&#34;type&#34;</span><span class=p>,</span>
+            <span class=nt>&#34;value&#34;</span><span class=p>:</span><span class=s2>&#34;data-center&#34;</span><span class=p>,</span>
+            <span class=nt>&#34;class&#34;</span><span class=p>:</span><span class=s2>&#34;alternate&#34;</span>
+          <span class=p>}</span>
+        <span class=p>]</span>
+      <span class=p>}]</span>
+    <span class=p>},</span>
+    <span class=nt>&#34;import-profile&#34;</span><span class=p>:</span> <span class=s2>&#34;...&#34;</span><span class=p>,</span>
+    <span class=nt>&#34;system-characteristics&#34;</span><span class=p>:</span> <span class=s2>&#34;...&#34;</span><span class=p>,</span>
+    <span class=nt>&#34;system-implementation&#34;</span><span class=p>:</span> <span class=s2>&#34;...&#34;</span>
+  <span class=p>}</span>
+<span class=p>}</span></code></pre></td></tr></table></div></div><p>In the <code>props</code> object array, the prop object's <code>name</code> property is set to "type" which is an OSCAL pre-defined property for locations. The <code>value</code> property is set to "data-center" which is an <a href=../../../../reference/latest/system-security-plan/json-reference/#/system-security-plan/metadata/locations>OSCAL pre-defined</a> value for location "type" properties. The <code>class</code> JSON property in this case is used to indicate a subclass of data-center, and is set to one of the appropriate <a href=../../../../reference/latest/system-security-plan/json-reference/#/system-security-plan/metadata/locations>OSCAL pre-defined</a> values for data center location class.</p><p>Note that in this example, the <code>ns</code> JSON property is omitted because we are using a pre-defined property name in the OSCAL namespace.</p></div><div id=tabs-3-yaml-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-yaml data-lang=yaml><span class=nt>system-security-plan</span><span class=p>:</span><span class=w>
+</span><span class=w>  </span><span class=nt>uuid</span><span class=p>:</span><span class=w> </span><span class=l>ce16b9af-6853-4abe-9e27-b79d034c0adc</span><span class=w>
+</span><span class=w>  </span><span class=nt>metadata</span><span class=p>:</span><span class=w>
+</span><span class=w>    </span><span class=nt>title</span><span class=p>:</span><span class=w> </span><span class=l>OSCAL Basic Prop Example</span><span class=w>
+</span><span class=w>    </span><span class=nt>last-modified</span><span class=p>:</span><span class=w> </span><span class=s1>&#39;2022-01-01T09:30:00-005&#39;</span><span class=w>
+</span><span class=w>    </span><span class=nt>version</span><span class=p>:</span><span class=w> </span><span class=m>20220531</span><span class=w>
+</span><span class=w>    </span><span class=nt>oscal-version</span><span class=p>:</span><span class=w> </span><span class=m>1.0.04</span><span class=w>
+</span><span class=w>    </span><span class=nt>locations</span><span class=p>:</span><span class=w>
+</span><span class=w>    </span>- <span class=nt>title</span><span class=p>:</span><span class=w> </span><span class=l>...</span><span class=w>
+</span><span class=w>      </span><span class=nt>props</span><span class=p>:</span><span class=w>
+</span><span class=w>      </span>- <span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>type</span><span class=w>
+</span><span class=w>        </span><span class=nt>value</span><span class=p>:</span><span class=w> </span><span class=l>data-center</span><span class=w>
+</span><span class=w>        </span><span class=nt>class</span><span class=p>:</span><span class=w> </span><span class=l>primary</span><span class=w>
+</span><span class=w>    </span>- <span class=nt>title</span><span class=p>:</span><span class=w> </span><span class=l>...</span><span class=w>
+</span><span class=w>      </span><span class=nt>props</span><span class=p>:</span><span class=w>
+</span><span class=w>      </span>- <span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>type</span><span class=w>
+</span><span class=w>        </span><span class=nt>value</span><span class=p>:</span><span class=w> </span><span class=l>data-center</span><span class=w>
+</span><span class=w>        </span><span class=nt>class</span><span class=p>:</span><span class=w> </span><span class=l>alternate</span><span class=w>
+</span><span class=w>  </span><span class=nt>import-profile</span><span class=p>:</span><span class=w> </span><span class=l>...</span><span class=w>
+</span><span class=w>  </span><span class=nt>system-characteristics</span><span class=p>:</span><span class=w> </span><span class=l>...</span><span class=w>
+</span><span class=w>  </span><span class=nt>system-implementation</span><span class=p>:</span><span class=w> </span><span class=l>...</span></code></pre></td></tr></table></div></div><p>In the <code>props</code> list, the item's <code>name</code> key is set to "type" which is an OSCAL pre-defined property for locations. The <code>value</code> key is set to "data-center" which is an <a href=../../../../reference/latest/system-security-plan/json-reference/#/system-security-plan/metadata/locations>OSCAL pre-defined</a> value for location "type" properties. The <code>class</code> key in this case is used to indicate a subclass of data-center, and is set to one of the appropriate <a href=../../../../reference/latest/system-security-plan/json-reference/#/system-security-plan/metadata/locations>OSCAL pre-defined</a> values for data center location class.</p><p>Note that in this example, the <code>ns</code> key is omitted because we are using a standard OSCAL defined <code>prop</code> object.</p></div></div></div><h3 id=extending-existing-prop-values>Extending Existing Prop Values</h3><p>One of the most common scenarios for extending an OSCAL property is using a new value for an existing OSCAL property. Again, if using an OSCAL defined <code>&lt;prop></code>, the <code>@ns</code> namespace attribute does not need to be specified since the default OSCAL namespace applies.</p><p>The following example demonstrates how to extend a SSP metadata location "type" <code>&lt;prop></code> with an additional value.</p><p>Currently, the only OSCAL pre-defined value for the SSP metadata location property is "data-center". However, because this particular property allows other values to be defined (with an <code>@allow-other=yes</code> attribute in Metaschema), additional "type" values can be specified as shown below.</p><div class=callout>Again, for a detailed overview of how to implement metadata, please refer to the <a href=../metadata/>Metadata Tutorial</a>.</div><div id=tabs-5 class="hugo-codetabs usa-accordion"><ul><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-5-xml-tab><span>XML</span></button></li><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-5-json-tab><span>JSON</span></button></li><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-5-yaml-tab><span>YAML</span></button></li></ul><div id=tabs-5-content class=hugo-tab-content><div id=tabs-5-xml-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-xml data-lang=xml><span class=cp>&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+<span class=nt>&lt;system-security-plan</span> <span class=na>uuid=</span><span class=s>&#34;ce16b9af-6853-4abe-9e27-b79d034c0adc&#34;</span><span class=nt>&gt;</span>
+  <span class=nt>&lt;metadata&gt;</span>
+    <span class=nt>&lt;title&gt;</span>OSCAL Basic Prop Example<span class=nt>&lt;/title&gt;</span>
+    <span class=nt>&lt;last-modified&gt;</span>2022-01-01T09:30:00-005<span class=nt>&lt;/last-modified&gt;</span>
+    <span class=nt>&lt;version&gt;</span>20220531<span class=nt>&lt;/version&gt;</span>
+    <span class=nt>&lt;oscal-version&gt;</span>1.0.0<span class=nt>&lt;/oscal-version&gt;</span>
+    <span class=nt>&lt;location</span> <span class=na>uuid=</span><span class=s>&#34;1f190601-2e87-4787-a50a-d08b78e4a980&#34;</span><span class=nt>&gt;</span>
+      <span class=nt>&lt;title&gt;</span>...<span class=nt>&lt;/title&gt;</span>
+      <span class=nt>&lt;prop</span> <span class=na>name=</span><span class=s>&#34;type&#34;</span> <span class=na>value=</span><span class=s>&#34;security-operations-center&#34;</span><span class=nt>/&gt;</span>
+    <span class=nt>&lt;/location&gt;</span>
+  <span class=nt>&lt;/metadata&gt;</span>
+  <span class=nt>&lt;import-profile&gt;</span>...<span class=nt>&lt;/import-profile&gt;</span>
+  <span class=nt>&lt;system-characteristics&gt;</span>...<span class=nt>&lt;/system-characteristics&gt;</span>
+  <span class=nt>&lt;system-implementation&gt;</span>...<span class=nt>&lt;/system-implementation&gt;</span>
+<span class=nt>&lt;/system-security-plan&gt;</span></code></pre></td></tr></table></div></div><p>The example above defines a new "type" property <code>@value</code> "security-operations-center" on line 10.</p><p>The <code>@class</code> attribute was not specified but could be added if there was a need for semantic classification of "security operations center" (e.g., regional or global).</p></div><div id=tabs-5-json-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-json data-lang=json><span class=p>{</span>
+  <span class=nt>&#34;system-security-plan&#34;</span><span class=p>:</span> <span class=p>{</span>
+    <span class=nt>&#34;uuid&#34;</span><span class=p>:</span> <span class=s2>&#34;ce16b9af-6853-4abe-9e27-b79d034c0adc&#34;</span><span class=p>,</span>
+    <span class=nt>&#34;metadata&#34;</span><span class=p>:</span> <span class=p>{</span>
+      <span class=nt>&#34;title&#34;</span><span class=p>:</span> <span class=s2>&#34;OSCAL Basic Prop Example&#34;</span><span class=p>,</span>
+      <span class=nt>&#34;last-modified&#34;</span><span class=p>:</span> <span class=s2>&#34;2022-01-01T09:30:00-005&#34;</span><span class=p>,</span>
+      <span class=nt>&#34;version&#34;</span><span class=p>:</span> <span class=mi>20220531</span><span class=p>,</span>
+      <span class=nt>&#34;oscal-version&#34;</span><span class=p>:</span> <span class=s2>&#34;1.0.0&#34;</span><span class=p>,</span>
+      <span class=nt>&#34;locations&#34;</span><span class=p>:</span> <span class=p>[</span>
+      <span class=p>{</span>
+        <span class=nt>&#34;title&#34;</span><span class=p>:</span> <span class=s2>&#34;...&#34;</span><span class=p>,</span>
+        <span class=nt>&#34;props&#34;</span><span class=p>:</span> <span class=p>[</span>
+          <span class=p>{</span>
+            <span class=nt>&#34;name&#34;</span><span class=p>:</span><span class=s2>&#34;type&#34;</span><span class=p>,</span>
+            <span class=nt>&#34;value&#34;</span><span class=p>:</span><span class=s2>&#34;security-operations-center&#34;</span>
+          <span class=p>}</span>
+        <span class=p>]</span>
+      <span class=p>}]</span>
+    <span class=p>},</span>
+    <span class=nt>&#34;import-profile&#34;</span><span class=p>:</span> <span class=s2>&#34;...&#34;</span><span class=p>,</span>
+    <span class=nt>&#34;system-characteristics&#34;</span><span class=p>:</span> <span class=s2>&#34;...&#34;</span><span class=p>,</span>
+    <span class=nt>&#34;system-implementation&#34;</span><span class=p>:</span> <span class=s2>&#34;...&#34;</span>
+  <span class=p>}</span>
+<span class=p>}</span></code></pre></td></tr></table></div></div><p>The example above defines a new "type" property <code>value</code> "security-operations-center" on line 15.</p><p>The <code>class</code> property was not specified but could be added if there was a need for semantic classification of "security operations center" (e.g., regional or global).</p></div><div id=tabs-5-yaml-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-yaml data-lang=yaml><span class=nt>system-security-plan</span><span class=p>:</span><span class=w>
+</span><span class=w>  </span><span class=nt>uuid</span><span class=p>:</span><span class=w> </span><span class=l>ce16b9af-6853-4abe-9e27-b79d034c0adc</span><span class=w>
+</span><span class=w>  </span><span class=nt>metadata</span><span class=p>:</span><span class=w>
+</span><span class=w>    </span><span class=nt>title</span><span class=p>:</span><span class=w> </span><span class=l>OSCAL Basic Prop Example</span><span class=w>
+</span><span class=w>    </span><span class=nt>last-modified</span><span class=p>:</span><span class=w> </span><span class=s1>&#39;2022-01-01T09:30:00-005&#39;</span><span class=w>
+</span><span class=w>    </span><span class=nt>version</span><span class=p>:</span><span class=w> </span><span class=m>20220531</span><span class=w>
+</span><span class=w>    </span><span class=nt>oscal-version</span><span class=p>:</span><span class=w> </span><span class=m>1.0.0</span><span class=w>
+</span><span class=w>    </span><span class=nt>locations</span><span class=p>:</span><span class=w>
+</span><span class=w>    </span>- <span class=nt>title</span><span class=p>:</span><span class=w> </span><span class=l>...</span><span class=w>
+</span><span class=w>      </span><span class=nt>props</span><span class=p>:</span><span class=w>
+</span><span class=w>      </span>- <span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>type</span><span class=w>
+</span><span class=w>        </span><span class=nt>value</span><span class=p>:</span><span class=w> </span><span class=l>security-operations-center</span><span class=w>
+</span><span class=w>  </span><span class=nt>import-profile</span><span class=p>:</span><span class=w> </span><span class=l>...</span><span class=w>
+</span><span class=w>  </span><span class=nt>system-characteristics</span><span class=p>:</span><span class=w> </span><span class=l>...</span><span class=w>
+</span><span class=w>  </span><span class=nt>system-implementation</span><span class=p>:</span><span class=w> </span><span class=l>...</span></code></pre></td></tr></table></div></div><p>The example above defines a new "type" property <code>value</code> "security-operations-center" on line 12.</p><p>The <code>class</code> property was not specified but could be added if there was a need for semantic classification of "security operations center" (e.g., regional or global).</p></div></div></div><h3 id=creating-a-new-prop>Creating a New Prop</h3><p>The previous examples leveraged an existing OSCAL property to document location details (e.g., location "type") within an SSP. But what if there were other pertinent location details that needed to be captured as well?</p><p>For example, some government organizations with distributed global physical locations may want to use <a href=https://www.gsa.gov/reference/geographic-locator-codes-glcs-overview>Geographic Locator Codes (GLC)</a> to facilitate interchange of location data with other government agencies. The example below demonstrates how this could be documented by specifying a new GLC property.</p><p>We will create this new property in the <code>http://example.com/ns/oscal</code> namespace. Using a URI based on a domain name has the advantage of allowing the organization creating a new prop to use something they control as the namespace, which is in this case the domain name.</p><div id=tabs-6 class="hugo-codetabs usa-accordion"><ul><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-6-xml-tab><span>XML</span></button></li><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-6-json-tab><span>JSON</span></button></li><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-6-yaml-tab><span>YAML</span></button></li></ul><div id=tabs-6-content class=hugo-tab-content><div id=tabs-6-xml-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-xml data-lang=xml><span class=cp>&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+<span class=nt>&lt;system-security-plan</span> <span class=na>uuid=</span><span class=s>&#34;ce16b9af-6853-4abe-9e27-b79d034c0adc&#34;</span><span class=nt>&gt;</span>
+  <span class=nt>&lt;metadata&gt;</span>
+    <span class=nt>&lt;title&gt;</span>OSCAL New Prop Example<span class=nt>&lt;/title&gt;</span>
+    <span class=nt>&lt;last-modified&gt;</span>2022-01-01T09:30:00-005<span class=nt>&lt;/last-modified&gt;</span>
+    <span class=nt>&lt;version&gt;</span>20220531<span class=nt>&lt;/version&gt;</span>
+    <span class=nt>&lt;oscal-version&gt;</span>1.0.0<span class=nt>&lt;/oscal-version&gt;</span>
+    <span class=nt>&lt;location</span> <span class=na>uuid=</span><span class=s>&#34;1f190601-2e87-4787-a50a-d08b78e4a980&#34;</span><span class=nt>&gt;</span>
+      <span class=nt>&lt;title&gt;</span>...<span class=nt>&lt;/title&gt;</span>
+      <span class=nt>&lt;prop</span> <span class=na>name=</span><span class=s>&#34;type&#34;</span>
+            <span class=na>value=</span><span class=s>&#34;security-operations-center&#34;</span>
+            <span class=na>class=</span><span class=s>&#34;regional&#34;</span><span class=nt>/&gt;</span>
+      <span class=nt>&lt;prop</span> <span class=na>name=</span><span class=s>&#34;glc&#34;</span>
+            <span class=na>ns=</span><span class=s>&#34;http://example.com/ns/oscal&#34;</span>
+            <span class=na>value=</span><span class=s>&#34;11&#34;</span>
+            <span class=na>class=</span><span class=s>&#34;state-code&#34;</span><span class=nt>/&gt;</span>
+      <span class=nt>&lt;prop</span> <span class=na>name=</span><span class=s>&#34;glc&#34;</span>
+            <span class=na>ns=</span><span class=s>&#34;http://example.com/ns/oscal&#34;</span>
+            <span class=na>value=</span><span class=s>&#34;0010&#34;</span>
+            <span class=na>class=</span><span class=s>&#34;city-code&#34;</span><span class=nt>/&gt;</span>
+      <span class=nt>&lt;prop</span> <span class=na>name=</span><span class=s>&#34;glc&#34;</span>
+            <span class=na>ns=</span><span class=s>&#34;http://example.com/ns/oscal&#34;</span>
+            <span class=na>value=</span><span class=s>&#34;840&#34;</span>
+            <span class=na>class=</span><span class=s>&#34;country-code&#34;</span><span class=nt>/&gt;</span>
+    <span class=nt>&lt;/location&gt;</span>
+  <span class=nt>&lt;/metadata&gt;</span>
+  <span class=nt>&lt;import-profile&gt;</span>...<span class=nt>&lt;/import-profile&gt;</span>
+  <span class=nt>&lt;system-characteristics&gt;</span>...<span class=nt>&lt;/system-characteristics&gt;</span>
+  <span class=nt>&lt;system-implementation&gt;</span>...<span class=nt>&lt;/system-implementation&gt;</span>
+<span class=nt>&lt;/system-security-plan&gt;</span></code></pre></td></tr></table></div></div><p>A new GLC property was created by setting the <code>&lt;prop></code> element's <code>@name</code> attribute to "glc". The acronym "glc" could be used by other organizations (and have a completely different meaning) so a namespace <code>@ns</code> was set. Lastly, GLCs have many data attributes including territory, country codes, state codes, county codes, city codes, and duty station codes, so this example defined a single "glc" <code>&lt;prop></code> but used <code>@class</code> to provide context for the property's set <code>@value</code>.</p><p>Props are prevalent throughout OSCAL models appearing not only in <code>&lt;metadata></code> and <code>&lt;back-matter></code>, but in the majority of OSCAL data items. Regardless of which OSCAL element is being extended, the approach is consistent, as described in this section of the tutorial.</p></div><div id=tabs-6-json-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-json data-lang=json><span class=p>{</span>
+  <span class=nt>&#34;system-security-plan&#34;</span><span class=p>:</span> <span class=p>{</span>
+    <span class=nt>&#34;uuid&#34;</span><span class=p>:</span> <span class=s2>&#34;ce16b9af-6853-4abe-9e27-b79d034c0adc&#34;</span><span class=p>,</span>
+    <span class=nt>&#34;metadata&#34;</span><span class=p>:</span> <span class=p>{</span>
+      <span class=nt>&#34;title&#34;</span><span class=p>:</span> <span class=s2>&#34;OSCAL Basic Prop Example&#34;</span><span class=p>,</span>
+      <span class=nt>&#34;last-modified&#34;</span><span class=p>:</span> <span class=s2>&#34;2022-01-01T09:30:00-005&#34;</span><span class=p>,</span>
+      <span class=nt>&#34;version&#34;</span><span class=p>:</span> <span class=mi>20220531</span><span class=p>,</span>
+      <span class=nt>&#34;oscal-version&#34;</span><span class=p>:</span> <span class=s2>&#34;1.0.0&#34;</span><span class=p>,</span>
+      <span class=nt>&#34;locations&#34;</span><span class=p>:</span> <span class=p>[</span>
+      <span class=p>{</span>
+        <span class=nt>&#34;title&#34;</span><span class=p>:</span> <span class=s2>&#34;...&#34;</span><span class=p>,</span>
+        <span class=nt>&#34;props&#34;</span><span class=p>:</span> <span class=p>[</span>
+          <span class=p>{</span>
+            <span class=nt>&#34;name&#34;</span><span class=p>:</span><span class=s2>&#34;type&#34;</span><span class=p>,</span>
+            <span class=nt>&#34;value&#34;</span><span class=p>:</span><span class=s2>&#34;security-operations-center&#34;</span><span class=p>,</span>
+            <span class=nt>&#34;class&#34;</span><span class=p>:</span><span class=s2>&#34;regional&#34;</span>
+          <span class=p>},</span>
+          <span class=p>{</span>
+            <span class=nt>&#34;name&#34;</span><span class=p>:</span><span class=s2>&#34;glc&#34;</span><span class=p>,</span>
+            <span class=nt>&#34;ns&#34;</span><span class=p>:</span><span class=s2>&#34;http://example.com/ns/oscal&#34;</span><span class=p>,</span>
+            <span class=nt>&#34;value&#34;</span><span class=p>:</span><span class=s2>&#34;11&#34;</span><span class=p>,</span>
+            <span class=nt>&#34;class&#34;</span><span class=p>:</span><span class=s2>&#34;state-code&#34;</span>
+          <span class=p>},</span>
+          <span class=p>{</span>
+            <span class=nt>&#34;name&#34;</span><span class=p>:</span><span class=s2>&#34;glc&#34;</span><span class=p>,</span>
+            <span class=nt>&#34;ns&#34;</span><span class=p>:</span><span class=s2>&#34;http://example.com/ns/oscal&#34;</span><span class=p>,</span>
+            <span class=nt>&#34;value&#34;</span><span class=p>:</span><span class=s2>&#34;0010&#34;</span><span class=p>,</span>
+            <span class=nt>&#34;class&#34;</span><span class=p>:</span><span class=s2>&#34;city-code&#34;</span>
+          <span class=p>},</span>
+          <span class=p>{</span>
+            <span class=nt>&#34;name&#34;</span><span class=p>:</span><span class=s2>&#34;glc&#34;</span><span class=p>,</span>
+            <span class=nt>&#34;ns&#34;</span><span class=p>:</span><span class=s2>&#34;http://example.com/ns/oscal&#34;</span><span class=p>,</span>
+            <span class=nt>&#34;value&#34;</span><span class=p>:</span><span class=s2>&#34;840&#34;</span><span class=p>,</span>
+            <span class=nt>&#34;class&#34;</span><span class=p>:</span><span class=s2>&#34;country-code&#34;</span>
+          <span class=p>}</span>
+        <span class=p>]</span>
+      <span class=p>}]</span>
+    <span class=p>},</span>
+    <span class=nt>&#34;import-profile&#34;</span><span class=p>:</span> <span class=s2>&#34;...&#34;</span><span class=p>,</span>
+    <span class=nt>&#34;system-characteristics&#34;</span><span class=p>:</span> <span class=s2>&#34;...&#34;</span><span class=p>,</span>
+    <span class=nt>&#34;system-implementation&#34;</span><span class=p>:</span> <span class=s2>&#34;...&#34;</span>
+  <span class=p>}</span>
+<span class=p>}</span></code></pre></td></tr></table></div></div><p>A new GLC property was created by setting the <code>prop</code> object's <code>name</code> property to "glc". The acronym "glc" could be used by other organizations (and have a completely different meaning) so a namespace <code>ns</code> was set. Lastly, GLCs have many data attributes including territory, country codes, state codes, county codes, city codes, and duty station codes, so this example defined a single "glc" <code>prop</code> but used <code>class</code> to provide context for the property's set <code>value</code>.</p><p>Props are prevalent throughout OSCAL models appearing not only in <code>metadata</code> and <code>back-matter</code> objects, but in the majority of OSCAL data items. Regardless of which OSCAL property is being extended, the approach is consistent, as described in this section of the tutorial.</p></div><div id=tabs-6-yaml-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-yaml data-lang=yaml><span class=nt>system-security-plan</span><span class=p>:</span><span class=w>
+</span><span class=w>  </span><span class=nt>uuid</span><span class=p>:</span><span class=w> </span><span class=l>ce16b9af-6853-4abe-9e27-b79d034c0adc</span><span class=w>
+</span><span class=w>  </span><span class=nt>metadata</span><span class=p>:</span><span class=w>
+</span><span class=w>    </span><span class=nt>title</span><span class=p>:</span><span class=w> </span><span class=l>OSCAL Basic Prop Example</span><span class=w>
+</span><span class=w>    </span><span class=nt>last-modified</span><span class=p>:</span><span class=w> </span><span class=s1>&#39;2022-01-01T09:30:00-005&#39;</span><span class=w>
+</span><span class=w>    </span><span class=nt>version</span><span class=p>:</span><span class=w> </span><span class=m>20220531</span><span class=w>
+</span><span class=w>    </span><span class=nt>oscal-version</span><span class=p>:</span><span class=w> </span><span class=m>1.0.0</span><span class=w>
+</span><span class=w>    </span><span class=nt>locations</span><span class=p>:</span><span class=w>
+</span><span class=w>    </span>- <span class=nt>title</span><span class=p>:</span><span class=w> </span><span class=l>...</span><span class=w>
+</span><span class=w>      </span><span class=nt>props</span><span class=p>:</span><span class=w>
+</span><span class=w>      </span>- <span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>type</span><span class=w>
+</span><span class=w>        </span><span class=nt>value</span><span class=p>:</span><span class=w> </span><span class=l>security-operations-center</span><span class=w>
+</span><span class=w>        </span><span class=nt>class</span><span class=p>:</span><span class=w> </span><span class=l>regional</span><span class=w>
+</span><span class=w>      </span>- <span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>glc</span><span class=w>
+</span><span class=w>        </span><span class=nt>ns</span><span class=p>:</span><span class=w> </span><span class=l>http://example.com/ns/oscal</span><span class=w>
+</span><span class=w>        </span><span class=nt>value</span><span class=p>:</span><span class=w> </span><span class=s1>&#39;11&#39;</span><span class=w>
+</span><span class=w>        </span><span class=nt>class</span><span class=p>:</span><span class=w> </span><span class=l>state-code</span><span class=w>
+</span><span class=w>      </span>- <span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>glc</span><span class=w>
+</span><span class=w>        </span><span class=nt>ns</span><span class=p>:</span><span class=w> </span><span class=l>http://example.com/ns/oscal</span><span class=w>
+</span><span class=w>        </span><span class=nt>value</span><span class=p>:</span><span class=w> </span><span class=s1>&#39;0010&#39;</span><span class=w>
+</span><span class=w>        </span><span class=nt>class</span><span class=p>:</span><span class=w> </span><span class=l>city-code</span><span class=w>
+</span><span class=w>      </span>- <span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>glc</span><span class=w>
+</span><span class=w>        </span><span class=nt>ns</span><span class=p>:</span><span class=w> </span><span class=l>http://example.com/ns/oscal</span><span class=w>
+</span><span class=w>        </span><span class=nt>value</span><span class=p>:</span><span class=w> </span><span class=s1>&#39;840&#39;</span><span class=w>
+</span><span class=w>        </span><span class=nt>class</span><span class=p>:</span><span class=w> </span><span class=l>country-code</span><span class=w>
+</span><span class=w>  </span><span class=nt>import-profile</span><span class=p>:</span><span class=w> </span><span class=l>...</span><span class=w>
+</span><span class=w>  </span><span class=nt>system-characteristics</span><span class=p>:</span><span class=w> </span><span class=l>...</span><span class=w>
+</span><span class=w>  </span><span class=nt>system-implementation</span><span class=p>:</span><span class=w> </span><span class=l>...</span></code></pre></td></tr></table></div></div><p>A new GLC property was created by setting the <code>prop</code> object's <code>name</code> property to "glc". The acronym "glc" could be used by other organizations (and have a completely different meaning) so a namespace <code>ns</code> was set. Lastly, GLCs have many data attributes including territory, country codes, state codes, county codes, city codes, and duty station codes, so this example defined a single "glc" <code>prop</code> but used <code>class</code> to provide context for the property's set <code>value</code>.</p><p>Props are prevalent throughout OSCAL models appearing not only in <code>metadata</code> and <code>back-matter</code> objects, but in the majority of OSCAL data items. Regardless of which OSCAL property is being extended, the approach is consistent, as described in this section of the tutorial.</p></div></div></div><h2 id=links>Links</h2><p>Links in OSCAL provide a means to reference an arbitrary resource, which allows local or remote content to be referenced. Links are available to use on many of the key fields in the OSCAL models.</p><p>A link can:</p><ol><li>Reference (external) information that is not represented in OSCAL format. This could include references to (cybersecurity) laws and regulations, references to organizational standards and guides, references to a software bill of materials (SBOM), and more.</li><li>Reference objects within the current OSCAL document.</li></ol><p>Organizations can limit duplication of content, reduce the size of their OSCAL files, and maintain important content relationships by using links.</p><p>Here is a nominal example of a link in OSCAL.</p><div id=tabs-7 class="hugo-codetabs usa-accordion"><ul><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-7-xml-tab><span>XML</span></button></li><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-7-json-tab><span>JSON</span></button></li><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-7-yaml-tab><span>YAML</span></button></li></ul><div id=tabs-7-content class=hugo-tab-content><div id=tabs-7-xml-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;link</span> <span class=na>href=</span><span class=s>&#34;...&#34;</span>
+      <span class=na>rel=</span><span class=s>&#34;...&#34;</span>
+      <span class=na>media-type=</span><span class=s>&#34;...&#34;</span><span class=nt>&gt;</span>
+  <span class=nt>&lt;text&gt;</span>...<span class=nt>&lt;/text&gt;</span>
+<span class=nt>&lt;/link&gt;</span></code></pre></td></tr></table></div></div><p>Below is description of <code>&lt;link></code> attributes and sub-element:</p><ul><li><code>@href</code> (Required) - The <code>@href</code> attribute, or "hypertext reference", is a required, <a href=../../../../reference/datatypes/#uri-reference>resolvable URL reference</a> to a resource. This can either be an internet resource or a fragment that points to a back matter resource in the same document.</li><li><code>@rel</code> (Optional) - The <code>@rel</code> attribute is a <a href=../../../../reference/datatypes/#token>token</a> datatype that can be used to describe the link's purpose. Some OSCAL links may have pre-defined <code>@rel</code> values (e.g., reference), but generally, OSCAL content authors can specify any token value for a <code>@rel</code> attribute.</li><li><code>@media-type</code> (Optional) - The <code>@media-type</code> attribute can be used to provide the consumer of the OSCAL content a hint about the type of data referenced in the link. Supported media types are defined by the <a href=https://www.iana.org/assignments/media-types/media-types.xhtml>Internet Assigned Numbers Authority (IANA)</a>. The <code>@media-type</code> attribute accepts <a href=../../../../reference/datatypes/#string>string</a> values.</li><li><code>&lt;text></code> (Optional) - Finally, the <code>&lt;text></code> sub-element can be used for as a textual label for the <code>&lt;link></code> and accepts <a href=../../../../reference/datatypes/#markup-line>markup-line</a> datatype. The subsequent sections demonstrate the proper use of links.</li></ul></div><div id=tabs-7-json-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span><span class=lnt>9
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-json data-lang=json><span class=p>{</span>
+<span class=nt>&#34;links&#34;</span><span class=p>:</span> <span class=p>[</span>
+  <span class=p>{</span>
+    <span class=nt>&#34;href&#34;</span><span class=p>:</span> <span class=s2>&#34;...&#34;</span><span class=p>,</span>
+    <span class=nt>&#34;rel&#34;</span><span class=p>:</span> <span class=s2>&#34;...&#34;</span><span class=p>,</span>
+    <span class=nt>&#34;media-type&#34;</span><span class=p>:</span> <span class=s2>&#34;...&#34;</span><span class=p>,</span>
+    <span class=nt>&#34;text&#34;</span><span class=p>:</span> <span class=s2>&#34;...&#34;</span>
+  <span class=p>}</span> <span class=p>]</span>
+<span class=p>}</span></code></pre></td></tr></table></div></div><p>The <code>links</code> object array represents a collection of links.</p><p>Below is description of properties of a link object:</p><ul><li><code>href</code> (Required) - The <code>href</code> property, or "hypertext reference", is a required, <a href=../../../../reference/datatypes/#uri-reference>resolvable URL reference</a> to a resource. This can either be an internet resource or a fragment that points to a back matter resource in the same document.</li><li><code>rel</code> (Optional) - The <code>rel</code> property is a <a href=../../../../reference/datatypes/#token>token</a> datatype that can be used to describe the link's purpose. Some OSCAL link properties may have pre-defined <code>rel</code> values (e.g., reference), but generally, OSCAL content authors can specify any token value for a <code>rel</code> property.</li><li><code>media-type</code> (Optional) - The <code>media-type</code> property can be used to provide the consumer of the OSCAL content a hint about the type of data referenced in the link. Supported media types are as defined by the <a href=https://www.iana.org/assignments/media-types/media-types.xhtml>Internet Assigned Numbers Authority (IANA)</a>. The <code>media-type</code> property accepts <a href=../../../../reference/datatypes/#string>string</a> values.</li><li><code>text</code> (Optional) - Finally, the <code>text</code> property can be used for as a textual label for the <code>link</code> and accepts <a href=../../../../reference/datatypes/#markup-line>markup-line</a> datatype. The subsequent sections demonstrate the proper use of links.</li></ul></div><div id=tabs-7-yaml-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-yaml data-lang=yaml><span class=nt>links</span><span class=p>:</span><span class=w>
+</span><span class=w></span>- <span class=nt>href</span><span class=p>:</span><span class=w> </span><span class=l>...</span><span class=w>
+</span><span class=w>  </span><span class=nt>rel</span><span class=p>:</span><span class=w> </span><span class=l>...</span><span class=w>
+</span><span class=w>  </span><span class=nt>media-type</span><span class=p>:</span><span class=w> </span><span class=l>...</span><span class=w>
+</span><span class=w>  </span><span class=nt>text</span><span class=p>:</span><span class=w> </span><span class=l>...        </span></code></pre></td></tr></table></div></div><p>The <code>links</code> list contains individual link items.</p><p>Below is description of <code>links</code> key-values:</p><ul><li><code>href</code> (Required) - The <code>href</code> key, or "hypertext reference", is a required, <a href=../../../../reference/datatypes/#uri-reference>resolvable URL reference</a> to a resource. This can either be an internet resource or a fragment that points to a back matter resource in the same document.</li><li><code>rel</code> (Optional) - The <code>rel</code> key is a <a href=../../../../reference/datatypes/#token>token</a> datatype that can be used to describe the link's purpose. Some OSCAL link properties may have pre-defined <code>rel</code> values (e.g., reference), but generally, OSCAL content authors can specify any token value for a <code>rel</code> key.</li><li><code>media-type</code> (Optional) - The <code>media-type</code> key can be used to provide the consumer of the OSCAL content a hint about the type of data referenced in the link. Supported media types are as defined by the <a href=https://www.iana.org/assignments/media-types/media-types.xhtml>Internet Assigned Numbers Authority (IANA)</a>. The <code>media-type</code> key accepts <a href=../../../../reference/datatypes/#string>string</a> values.</li><li><code>text</code> (Optional) - Finally, the <code>text</code> key can be used for as a textual label for the <code>link</code> and accepts <a href=../../../../reference/datatypes/#markup-line>markup-line</a> datatype. The subsequent sections demonstrate the proper use of links.</li></ul></div></div></div><h3 id=link-to-internet-url>Link to Internet URL</h3><p>Organizations may need their documentation (e.g., SSP) to reference external resources, such applicable laws and regulations (e.g., HSPD-12) and other organizational items (e.g., official agency logos). This first example illustrates how an OSCAL SSP might make use of a link to an internet URL to reference a government policy and an agency logo.</p><div id=tabs-8 class="hugo-codetabs usa-accordion"><ul><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-8-xml-tab><span>XML</span></button></li><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-8-json-tab><span>JSON</span></button></li><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-8-yaml-tab><span>YAML</span></button></li></ul><div id=tabs-8-content class=hugo-tab-content><div id=tabs-8-xml-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-xml data-lang=xml><span class=cp>&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+<span class=nt>&lt;system-security-plan</span> <span class=na>uuid=</span><span class=s>&#34;ce16b9af-6853-4abe-9e27-b79d034c0adc&#34;</span><span class=nt>&gt;</span>
+  <span class=nt>&lt;metadata&gt;</span>
+    <span class=nt>&lt;title&gt;</span>OSCAL SSP Component Link Example<span class=nt>&lt;/title&gt;</span>
+    <span class=nt>&lt;last-modified&gt;</span>2022-01-01T09:30:00-005<span class=nt>&lt;/last-modified&gt;</span>
+    <span class=nt>&lt;version&gt;</span>20220531<span class=nt>&lt;/version&gt;</span>
+    <span class=nt>&lt;oscal-version&gt;</span>1.0.0<span class=nt>&lt;/oscal-version&gt;</span>
+    <span class=nt>&lt;link</span> <span class=na>href=</span><span class=s>&#34;https://www.dhs.gov/homeland-security-presidential-directive-12&#34;</span>
+          <span class=na>rel=</span><span class=s>&#34;reference&#34;</span><span class=nt>&gt;</span>
+      <span class=nt>&lt;text&gt;</span>HSPD-12<span class=nt>&lt;/text&gt;</span>
+    <span class=nt>&lt;/link&gt;</span>
+    <span class=nt>&lt;link</span> <span class=na>href=</span><span class=s>&#34;https://federal-agency.gov/img/official-agency-logo.png&#34;</span>
+          <span class=na>rel=</span><span class=s>&#34;logo&#34;</span>
+          <span class=na>media-type=</span><span class=s>&#34;image/png&#34;</span> <span class=nt>/&gt;</span>
+  <span class=nt>&lt;/metadata&gt;</span>
+  <span class=nt>&lt;import-profile&gt;</span>...<span class=nt>&lt;/import-profile&gt;</span>
+  <span class=nt>&lt;system-characteristics&gt;</span>...<span class=nt>&lt;/system-characteristics&gt;</span>
+  <span class=nt>&lt;system-implementation&gt;</span>...<span class=nt>&lt;/system-implementation&gt;</span>
+<span class=nt>&lt;/system-security-plan&gt;</span></code></pre></td></tr></table></div></div><p>In this case, the <code>&lt;link></code> element on line 8 provides a reference to Homeland Security Policy Directive (HSPD) 12 by specifying the URL in the <code>@href</code> attribute. The OSCAL pre-defined "reference" value is used for the <code>@rel</code> attribute, providing some context for the purpose of this specific <code>&lt;link></code>. The <code>&lt;text></code> sub-element provides an associated label for the <code>&lt;link></code> which may be useful when rendering the SSP in other formats (e.g., HTML, PDF).</p><p>Line 11 demonstrates the use of <code>&lt;link></code> to point to the organization's official logo. An absolute URL was used to point to the location of the referenced content, however, it should be noted that the <code>@href</code> attribute also permits the use of relative URL paths. If the referenced resource is located on the same host, then a relative URL path could be used. The <code>@rel</code> attribute was set to "logo" to indicate that the <code>&lt;link></code> is to a logo image. The <code>@media-type</code> attribute was included to let any rendering tools know that the logo content is a Portable Network Graphics (PNG) image type. The optional <code>&lt;text></code> sub-element was excluded for brevity of this example.</p></div><div id=tabs-8-json-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-json data-lang=json><span class=p>{</span>
+  <span class=nt>&#34;system-security-plan&#34;</span><span class=p>:</span> <span class=p>{</span>
+    <span class=nt>&#34;uuid&#34;</span><span class=p>:</span> <span class=s2>&#34;ce16b9af-6853-4abe-9e27-b79d034c0adc&#34;</span><span class=p>,</span>
+    <span class=nt>&#34;metadata&#34;</span><span class=p>:</span> <span class=p>{</span>
+      <span class=nt>&#34;title&#34;</span><span class=p>:</span> <span class=s2>&#34;OSCAL SSP Component Link Example&#34;</span><span class=p>,</span>
+      <span class=nt>&#34;last-modified&#34;</span><span class=p>:</span> <span class=s2>&#34;2022-01-01T09:30:00-005&#34;</span><span class=p>,</span>
+      <span class=nt>&#34;version&#34;</span><span class=p>:</span> <span class=mi>20210707</span><span class=p>,</span>
+      <span class=nt>&#34;oscal-version&#34;</span><span class=p>:</span> <span class=s2>&#34;1.0.0&#34;</span><span class=p>,</span>
+      <span class=nt>&#34;links&#34;</span><span class=p>:</span> <span class=p>[</span>
+        <span class=p>{</span>
+          <span class=nt>&#34;href&#34;</span><span class=p>:</span> <span class=s2>&#34;https://www.dhs.gov/homeland-security-presidential-directive-12&#34;</span><span class=p>,</span>
+          <span class=nt>&#34;rel&#34;</span><span class=p>:</span> <span class=s2>&#34;reference&#34;</span><span class=p>,</span>
+          <span class=nt>&#34;text&#34;</span><span class=p>:</span> <span class=s2>&#34;HSPD-12&#34;</span>
+        <span class=p>},</span>
+        <span class=p>{</span>
+          <span class=nt>&#34;href&#34;</span><span class=p>:</span> <span class=s2>&#34;http://federal-agency.gov/img/official-agency-logo.png&#34;</span><span class=p>,</span>
+          <span class=nt>&#34;rel&#34;</span><span class=p>:</span> <span class=s2>&#34;logo&#34;</span><span class=p>,</span>
+          <span class=nt>&#34;media-type&#34;</span><span class=p>:</span> <span class=s2>&#34;image/png&#34;</span>
+        <span class=p>}</span>
+      <span class=p>]</span>
+    <span class=p>},</span>
+    <span class=nt>&#34;import-profile&#34;</span><span class=p>:</span> <span class=s2>&#34;...&#34;</span><span class=p>,</span>
+    <span class=nt>&#34;system-characteristics&#34;</span><span class=p>:</span> <span class=s2>&#34;...&#34;</span><span class=p>,</span>
+    <span class=nt>&#34;system-implementation&#34;</span><span class=p>:</span> <span class=s2>&#34;...&#34;</span>
+  <span class=p>}</span>
+<span class=p>}</span></code></pre></td></tr></table></div></div><p>In this case, the <code>links</code> object array on line 9 provides a reference to Homeland Security Policy Directive (HSPD) 12 by specifying the URL in the <code>href</code> property. The OSCAL pre-defined "reference" value is used for the <code>rel</code>, providing context for the purpose of this specific <code>link</code>. The <code>text</code> property provides an associated label for the <code>link</code> which may be useful when rendering the SSP in other formats (e.g., HTML, PDF).</p><p>Lines 16-18 demonstrate the use of link to point to the organization's official logo. An absolute URL was used to point to the location of the referenced content, however, it should be noted that the <code>href</code> property also permits the use of relative URL paths. If the referenced resource is located is on the same host, then a relative URL path could be used. The <code>rel</code> property was set to "logo" to indicate the link is to a logo image. The <code>media-type</code> property was included to let any rendering tools know that the logo content is a Portable Network Graphics (PNG) image type. The optional <code>text</code> property was excluded for brevity of this example.</p></div><div id=tabs-8-yaml-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-yaml data-lang=yaml><span class=nt>system-security-plan</span><span class=p>:</span><span class=w>
+</span><span class=w>  </span><span class=nt>uuid</span><span class=p>:</span><span class=w> </span><span class=l>ce16b9af-6853-4abe-9e27-b79d034c0adc</span><span class=w>
+</span><span class=w>  </span><span class=nt>metadata</span><span class=p>:</span><span class=w>
+</span><span class=w>    </span><span class=nt>title</span><span class=p>:</span><span class=w> </span><span class=l>OSCAL SSP Component Link Example</span><span class=w>
+</span><span class=w>    </span><span class=nt>last-modified</span><span class=p>:</span><span class=w> </span><span class=s1>&#39;2022-01-01T09:30:00-005&#39;</span><span class=w>
+</span><span class=w>    </span><span class=nt>version</span><span class=p>:</span><span class=w> </span><span class=m>20210707</span><span class=w>
+</span><span class=w>    </span><span class=nt>oscal-version</span><span class=p>:</span><span class=w> </span><span class=m>1.0.0</span><span class=w>
+</span><span class=w>    </span><span class=nt>links</span><span class=p>:</span><span class=w>
+</span><span class=w>    </span>- <span class=nt>href</span><span class=p>:</span><span class=w> </span><span class=l>https://www.dhs.gov/homeland-security-presidential-directive-12</span><span class=w>
+</span><span class=w>      </span><span class=nt>rel</span><span class=p>:</span><span class=w> </span><span class=l>reference</span><span class=w>
+</span><span class=w>        </span><span class=nt>text</span><span class=p>:</span><span class=w> </span><span class=l>HSPD-12</span><span class=w>
+</span><span class=w>    </span>- <span class=nt>href</span><span class=p>:</span><span class=w> </span><span class=l>http://federal-agency.gov/img/official-agency-logo.png</span><span class=w>
+</span><span class=w>      </span><span class=nt>rel</span><span class=p>:</span><span class=w> </span><span class=l>logo</span><span class=w>
+</span><span class=w>      </span><span class=nt>media-type</span><span class=p>:</span><span class=w> </span><span class=l>image/png</span><span class=w>
+</span><span class=w>  </span><span class=nt>import-profile</span><span class=p>:</span><span class=w> </span><span class=l>...</span><span class=w>
+</span><span class=w>  </span><span class=nt>system-characteristics</span><span class=p>:</span><span class=w> </span><span class=l>...</span><span class=w>
+</span><span class=w>  </span><span class=nt>system-implementation</span><span class=p>:</span><span class=w> </span><span class=l>...</span></code></pre></td></tr></table></div></div><p>In this case, the <code>links</code> object array on line 9 provides a reference to Homeland Security Policy Directive (HSPD) 12 by specifying the URL in the <code>href</code> property. The OSCAL pre-defined "reference" value is used for the <code>rel</code>, providing context for the purpose of this specific link. The <code>text</code> property provides an associated label for the link which may be useful when rendering the SSP in other formats (e.g., HTML, PDF).</p><p>Lines 11-13 demonstrate the use of link to point to the organization's official logo. An absolute URL was used to point to the location of the referenced content, however, it should be noted that the <code>href</code> property also permits the use of relative URL paths. If the referenced resource is located is on the same host, then a relative URL path could be used. The <code>rel</code> property was set to "logo" to indicate the link is to a logo image. The <code>media-type</code> property was included to let any rendering tools know that the logo content is a Portable Network Graphics (PNG) image type. The optional <code>text</code> property was excluded for brevity of this example.</p></div></div></div><p>As a final note, providing link text is not required. Link text should only be provided as a way to include additional context and can be omitted when a link is self-explanatory.</p><h3 id=referencing-back-matter>Referencing Back-Matter</h3><p>This section demonstrates how to reference back matter resources with links.</p><p>In OSCAL specifying a URI fragment in a link's hypertext reference, represented as <code>#fragment-id</code>, indicates that the link is referencing an identified object in the OSCAL document's data model. This allows a resource to be referenced in the OSCAL document's back matter using the UUID of the back matter resource.</p><div id=tabs-9 class="hugo-codetabs usa-accordion"><ul><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-9-xml-tab><span>XML</span></button></li><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-9-json-tab><span>JSON</span></button></li><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-9-yaml-tab><span>YAML</span></button></li></ul><div id=tabs-9-content class=hugo-tab-content><div id=tabs-9-xml-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-xml data-lang=xml><span class=cp>&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+<span class=nt>&lt;system-security-plan</span> <span class=na>uuid=</span><span class=s>&#34;ce16b9af-6853-4abe-9e27-b79d034c0adc&#34;</span><span class=nt>&gt;</span>
+  <span class=nt>&lt;metadata&gt;</span>
+    <span class=nt>&lt;title&gt;</span>OSCAL SSP Link to Back Matter Resource Example<span class=nt>&lt;/title&gt;</span>
+    <span class=nt>&lt;last-modified&gt;</span>2022-01-01T09:30:00-005<span class=nt>&lt;/last-modified&gt;</span>
+    <span class=nt>&lt;version&gt;</span>20220531<span class=nt>&lt;/version&gt;</span>
+    <span class=nt>&lt;oscal-version&gt;</span>1.0.0<span class=nt>&lt;/oscal-version&gt;</span>
+    <span class=nt>&lt;link</span> <span class=na>href=</span><span class=s>&#34;#a7584118-3d2d-46c8-b388-df747309c0fa&#34;</span>
+          <span class=na>rel=</span><span class=s>&#34;reference&#34;</span><span class=nt>&gt;</span>
+      <span class=nt>&lt;text&gt;</span>Applicable Laws and Regulations, Standards, and Guides<span class=nt>&lt;/text&gt;</span>
+    <span class=nt>&lt;/link&gt;</span>
+  <span class=nt>&lt;/metadata&gt;</span>
+  <span class=nt>&lt;import-profile&gt;</span>...<span class=nt>&lt;/import-profile&gt;</span>
+  <span class=nt>&lt;system-characteristics&gt;</span>...<span class=nt>&lt;/system-characteristics&gt;</span>
+  <span class=nt>&lt;control-implementation&gt;</span>...<span class=nt>&lt;/control-implementation&gt;</span>
+  <span class=nt>&lt;back-matter&gt;</span>
+    <span class=nt>&lt;resource</span> <span class=na>uuid=</span><span class=s>&#34;a7584118-3d2d-46c8-b388-df747309c0fa&#34;</span><span class=nt>&gt;</span>
+      <span class=nt>&lt;rlink</span>
+          <span class=na>href=</span><span class=s>&#34;https://www.dhs.gov/homeland-security-presidential-directive-12&#34;</span> <span class=nt>/&gt;</span>
+      <span class=nt>&lt;rlink</span>
+          <span class=na>href=</span><span class=s>&#34;https://csrc.nist.gov/csrc/media/publications/fips/199/final/documents/fips-pub-199-final.pdf&#34;</span>
+          <span class=na>media-type=</span><span class=s>&#34;application/pdf&#34;</span> <span class=nt>/&gt;</span>
+      <span class=nt>&lt;rlink</span>
+          <span class=na>href=</span><span class=s>&#34;/security/standards/IT-Rules-of-Behavior.docx&#34;</span>
+          <span class=na>media-type=</span><span class=s>&#34;application/msword&#34;</span> <span class=nt>/&gt;</span>
+    <span class=nt>&lt;/resource&gt;</span>
+  <span class=nt>&lt;/back-matter&gt;</span>
+<span class=nt>&lt;/system-security-plan&gt;</span></code></pre></td></tr></table></div></div><p>When using <code>&lt;link></code> to reference a back-matter <code>&lt;resources></code>, the <code>&lt;link></code> must use the resource's <code>@uuid</code> attribute as the pointer. The <code>&lt;resource></code> property may have an <code>&lt;rlink></code> sub-element that points to the (external) content via the <code>@href</code> attribute. Optionally, the <code>&lt;rlink></code> element can also include a hash (e.g., to ensure the integrity of the referenced content), however, that is an advanced concept that is not covered in this tutorial.</p><p>Notice that in this example, the <code>&lt;link></code> element on line 8 provides a fragment rather than a URL. OSCAL interprets this as a pointer to a back matter resource <code>@uuid</code> (see line 17). Within this <code>&lt;resource></code> element, several items are referenced (via <code>&lt;rlinks></code>). The <code>&lt;rlinks></code> must have a URL reference (<code>@href</code>). The third <code>&lt;rlink></code> in this example provides a relative path. All of the other <code>&lt;rlink></code> attributes (e.g., <code>@media-type</code> and <code>@hash</code>) are optional. Unlike <code>&lt;links></code>, <code>&lt;rlinks></code> do not have any <code>@rel</code> attributes to provide additional context, nor do they have <code>&lt;text></code> sub-elements. OSCAL content authors should consider these subtle differences when deciding whether to use <code>&lt;links></code> or <code>&lt;rlinks></code>.</p></div><div id=tabs-9-json-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-json data-lang=json><span class=p>{</span>
+  <span class=nt>&#34;system-security-plan&#34;</span><span class=p>:</span> <span class=p>{</span>
+    <span class=nt>&#34;uuid&#34;</span><span class=p>:</span> <span class=s2>&#34;ce16b9af-6853-4abe-9e27-b79d034c0adc&#34;</span><span class=p>,</span>
+    <span class=nt>&#34;metadata&#34;</span><span class=p>:</span> <span class=p>{</span>
+      <span class=nt>&#34;title&#34;</span><span class=p>:</span> <span class=s2>&#34;OSCAL SSP Link to Back Matter Resource Example&#34;</span><span class=p>,</span>
+      <span class=nt>&#34;last-modified&#34;</span><span class=p>:</span> <span class=s2>&#34;2022-01-01T09:30:00-005&#34;</span><span class=p>,</span>
+      <span class=nt>&#34;version&#34;</span><span class=p>:</span> <span class=mi>20220531</span><span class=p>,</span>
+      <span class=nt>&#34;oscal-version&#34;</span><span class=p>:</span> <span class=s2>&#34;1.0.0&#34;</span><span class=p>,</span>
+      <span class=nt>&#34;links&#34;</span><span class=p>:</span> <span class=p>{</span>
+        <span class=nt>&#34;href&#34;</span><span class=p>:</span> <span class=s2>&#34;#a7584118-3d2d-46c8-b388-df747309c0fa&#34;</span><span class=p>,</span>
+        <span class=nt>&#34;rel&#34;</span><span class=p>:</span> <span class=s2>&#34;reference&#34;</span><span class=p>,</span>
+        <span class=nt>&#34;text&#34;</span><span class=p>:</span> <span class=s2>&#34;Applicable Laws and Regulations, Standards, and Guides&#34;</span>
+      <span class=p>}</span>
+    <span class=p>},</span>
+    <span class=nt>&#34;import-profile&#34;</span><span class=p>:</span> <span class=s2>&#34;...&#34;</span><span class=p>,</span>
+    <span class=nt>&#34;system-characteristics&#34;</span><span class=p>:</span> <span class=s2>&#34;...&#34;</span><span class=p>,</span>
+    <span class=nt>&#34;control-implementation&#34;</span><span class=p>:</span> <span class=s2>&#34;...&#34;</span><span class=p>,</span>
+    <span class=nt>&#34;back-matter&#34;</span><span class=p>:</span> <span class=p>{</span>
+      <span class=nt>&#34;resources&#34;</span><span class=p>:</span>
+      <span class=p>{</span>
+        <span class=nt>&#34;uuid&#34;</span><span class=p>:</span> <span class=s2>&#34;a7584118-3d2d-46c8-b388-df747309c0fa&#34;</span><span class=p>,</span>
+        <span class=nt>&#34;rlinks&#34;</span><span class=p>:</span> <span class=p>[</span>
+        <span class=p>{</span>
+          <span class=nt>&#34;href&#34;</span><span class=p>:</span> <span class=s2>&#34;https://www.dhs.gov/homeland-security-presidential-directive-12&#34;</span>
+        <span class=p>},</span>
+        <span class=p>{</span>
+          <span class=nt>&#34;href&#34;</span><span class=p>:</span> <span class=s2>&#34;https://csrc.nist.gov/csrc/media/publications/fips/199/final/documents/fips-pub-199-final.pdf&#34;</span><span class=p>,</span>
+          <span class=nt>&#34;media-type&#34;</span><span class=p>:</span> <span class=s2>&#34;application/pdf&#34;</span>
+        <span class=p>},</span>
+        <span class=p>{</span>
+          <span class=nt>&#34;href&#34;</span><span class=p>:</span> <span class=s2>&#34;/security/standards/IT-Rules-of-Behavior.docx&#34;</span><span class=p>,</span>
+          <span class=nt>&#34;media-type&#34;</span><span class=p>:</span> <span class=s2>&#34;application/msword&#34;</span>
+        <span class=p>}]</span>
+      <span class=p>}</span>
+    <span class=p>}</span>
+  <span class=p>}</span>
+<span class=p>}</span></code></pre></td></tr></table></div></div>When using `links` to reference a back-matter `resources`, the `link` must use the resource's `uuid` property as the pointer. The `resource` property may have an `rlinks` object array that points to the (external) content via the `href` property. Optionally, the `rlinks` property can also include a hash (e.g., to ensure the integrity of the referenced content), however, that is an advanced concept that is not covered in this tutorial.<p>Notice that in this example, the <code>links</code> object array on line 9 provides a fragment rather than a URL. OSCAL interprets this as a pointer to a back matter resource <code>uuid</code> (see line 21). Within <code>resources</code>, several items are referenced (via <code>rlinks</code>). Each <code>rlink</code> must have a URL reference (<code>href</code>). The third <code>rlink</code> in this example provides a relative path. All of the other <code>rlink</code> properties (e.g., <code>media-type</code> and <code>hash</code>) are optional. Unlike <code>links</code>, <code>rlinks</code> do not have any <code>rel</code> properties to provide additional context, nor do they have <code>text</code> properties. OSCAL content authors should consider these subtle differences when deciding whether to use <code>links</code> or <code>rlinks</code>.</p></div><div id=tabs-9-yaml-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-yaml data-lang=yaml><span class=nt>system-security-plan</span><span class=p>:</span><span class=w>
+</span><span class=w>  </span><span class=nt>uuid</span><span class=p>:</span><span class=w> </span><span class=l>ce16b9af-6853-4abe-9e27-b79d034c0adc</span><span class=w>
+</span><span class=w>  </span><span class=nt>metadata</span><span class=p>:</span><span class=w>
+</span><span class=w>    </span><span class=nt>title</span><span class=p>:</span><span class=w> </span><span class=l>OSCAL SSP Link to Back Matter Resource Example</span><span class=w>
+</span><span class=w>    </span><span class=nt>last-modified</span><span class=p>:</span><span class=w> </span><span class=s1>&#39;2022-01-01T09:30:00-005&#39;</span><span class=w>
+</span><span class=w>    </span><span class=nt>version</span><span class=p>:</span><span class=w> </span><span class=m>20220531</span><span class=w>
+</span><span class=w>    </span><span class=nt>oscal-version</span><span class=p>:</span><span class=w> </span><span class=m>1.0.0</span><span class=w>
+</span><span class=w>    </span><span class=nt>links</span><span class=p>:</span><span class=w>
+</span><span class=w>      </span>- <span class=nt>href</span><span class=p>:</span><span class=w> </span><span class=s1>&#39;#a7584118-3d2d-46c8-b388-df747309c0fa&#39;</span><span class=w>
+</span><span class=w>        </span><span class=nt>rel</span><span class=p>:</span><span class=w> </span><span class=l>reference</span><span class=w>
+</span><span class=w>        </span><span class=nt>text</span><span class=p>:</span><span class=w> </span><span class=l>Applicable Laws and Regulations, Standards, and Guides</span><span class=w>
+</span><span class=w>  </span><span class=nt>import-profile</span><span class=p>:</span><span class=w> </span><span class=l>...</span><span class=w>
+</span><span class=w>  </span><span class=nt>system-characteristics</span><span class=p>:</span><span class=w> </span><span class=l>...</span><span class=w>
+</span><span class=w>  </span><span class=nt>control-implementation</span><span class=p>:</span><span class=w> </span><span class=l>...</span><span class=w>
+</span><span class=w>  </span><span class=nt>back-matter</span><span class=p>:</span><span class=w>
+</span><span class=w>    </span><span class=nt>resources</span><span class=p>:</span><span class=w>
+</span><span class=w>      </span><span class=nt>uuid</span><span class=p>:</span><span class=w> </span><span class=l>a7584118-3d2d-46c8-b388-df747309c0fa</span><span class=w>
+</span><span class=w>      </span><span class=nt>rlinks</span><span class=p>:</span><span class=w>
+</span><span class=w>        </span>- <span class=nt>href</span><span class=p>:</span><span class=w> </span><span class=l>https://www.dhs.gov/homeland-security-presidential-directive-12</span><span class=w>
+</span><span class=w>        </span>- <span class=nt>href</span><span class=p>:</span><span class=w> </span><span class=l>https://csrc.nist.gov/csrc/media/publications/fips/199/final/documents/fips-pub-199-final.pdf</span><span class=w>
+</span><span class=w>          </span><span class=nt>media-type</span><span class=p>:</span><span class=w> </span><span class=l>application/pdf</span><span class=w>
+</span><span class=w>        </span>- <span class=nt>href</span><span class=p>:</span><span class=w> </span><span class=l>/security/standards/IT-Rules-of-Behavior.docx</span><span class=w>
+</span><span class=w>          </span><span class=nt>media-type</span><span class=p>:</span><span class=w> </span><span class=l>application/msword</span></code></pre></td></tr></table></div></div>When using `links` to reference back-matter `resources`, the `link` must use the resource's `uuid` key-value as the pointer. The `resource` key-value must have an `rlinks` array item that points to the (external) content via the `href` key-value. Optionally, the `rlinks` can also include a hash (e.g., to ensure the integrity of the referenced content), however, that is an advanced concept that is not covered in this tutorial.<p>Notice that in this example, the <code>links</code> object array on line 8 only provides a fragment rather than a URL. OSCAL interprets this as a pointer to a back matter resource <code>uuid</code> (see line 17). Within <code>resources</code>, several items are referenced (via <code>rlinks</code>). Each <code>rlink</code> must have a URL reference (<code>href</code>). The third <code>rlink</code> in this example provides a relative path. All of the other <code>rlink</code> properties (e.g., <code>media-type</code> and <code>hash</code>) are optional. Unlike <code>links</code>, <code>rlinks</code> do not have any <code>rel</code> properties to provide additional context, nor do they have <code>text</code> properties. OSCAL content authors should consider these subtle differences when deciding whether to use <code>links</code> or <code>rlinks</code>.</p></div></div></div><h2 id=summary>Summary</h2><p>This concludes the tutorial. You should now be familiar with:</p><ul><li>The basic use of OSCAL props</li><li>How to use props to extend OSCAL models</li><li>The basic use of OSCAL links</li><li>How to specify local and remote links for indirection</li></ul></article></div><nav aria-label="Table of Contents" class="toc-container usa-layout-docs__sidenav widescreen:grid-col-2 desktop:grid-col-2"><div id=js-toc></div></nav></div></div></main><p class="font-sans-sm text-center" style="margin:1.5rem auto">This page was last updated on July 25, 2022. <button id=main-improve-page onclick='window.location.href="https://github.com/usnistgov/OSCAL/tree/main/docs/content/learn/tutorials/general/extension.md"' class="usa-button usa-button--accent-cool">Improve this Page</button></p><script src=https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.12.0/tocbot.min.js integrity=sha384-roIHE2HuL+PZHzo8X7MgpHu256WMUJvsKqI2GaUJY3moVp06oLtx0QvZnvZJdcCb crossorigin=anonymous referrerpolicy=no-referrer></script>
+<script type=text/javascript src=../../../../js/site.min.js integrity="sha512-TOjPncw6vJGMqCN0T2rsjrQya/QLKFveYQcF5PwoN6zXlxEROomkD0l86oPwX7qmDrA4M5K5+OZOA6vCIY4lQA=="></script>
+<script type=text/javascript src=https://pages.nist.gov/leaveNotice/js/jquery.leaveNotice-nist.min.js></script>
+<script>$(document).ready(function(){$('a[href*="//"]:not([href*="pages.nist.gov"]):not([href*="www.nist.gov"]):not([href^="#"]):not([href^="/"])').addClass("usa-link usa-link--external"),$("a.usa-link--external").leaveNotice()})</script><script src=https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.3.0/anchor.min.js integrity="sha512-G2OGlm41XXw+fcgDcRPjVYEn7qCY6qiKWNqDGT37SnKh0qtRXTuKZ5/UQR0kDN0PZRNWcGExd3lAeqEH0I36bQ==" crossorigin=anonymous></script>
+<script>anchors.options={placement:"left"},anchors.add()</script><script>tocbot.init({tocSelector:"#js-toc",contentSelector:"#main-content",headingSelector:"h2,h3,h4",includeHtml:!1,collapseDepth:0,hasInnerContainers:!0,orderedList:!1,listClass:"usa-sidenav",extraLinkClasses:"usa-sidenav__item",activeLinkClass:"usa-current",headingsOffset:1,scrollSmoothOffset:0})</script></body></html>
