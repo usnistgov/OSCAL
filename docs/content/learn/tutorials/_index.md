@@ -16,5 +16,5 @@ The following tutorials provide step-by-step walk-throughs explaining how to cre
 
 ## [Implementation Layer Topics](implementation/)
 
-- [Creating a Basic Component Definition](implementation/basic-component-definition/): Teaches how to create a component-definition using the OSCAL [component definition](/concepts/layer/implementation/component-definition/) model.
+- [Creating a Basic Component Definition](implementation/simple-component-definition/): Teaches how to create a component-definition using the OSCAL [component definition](/concepts/layer/implementation/component-definition/) model.
 - [Representing test validation information](implementation/validation-modeling/): Describes how to represent test validation information (e.g., FIPS-140-2) using a component in an OSCAL [component definition](/concepts/layer/implementation/component-definition/) or [system security plan](/concepts/layer/implementation/ssp/). 
