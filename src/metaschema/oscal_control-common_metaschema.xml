@@ -9,7 +9,7 @@
         xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/toolchains/xslt-M4/validate/metaschema.xsd" abstract="yes">
         <schema-name>OSCAL Control Catalog Format -- Common Models</schema-name>
         <schema-version>1.0.4</schema-version>
-        <short-name>oscal-catalog-common</short-name>
+        <short-name>oscal-control-common</short-name>
         <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
         <json-base-uri>http://csrc.nist.gov/ns/oscal</json-base-uri>
         <import href="oscal_metadata_metaschema.xml"/>
@@ -74,16 +74,19 @@
                         <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
             &allowed-values-control-group-property-name;
                         </allowed-values>
-<!--                        <allowed-values target=".[@name='assessment']/prop/@name" allow-other="yes">
-                                <enum value="method">The assessment method to use. This typically appears on parts with the name "assessment".</enum>
+                        <allowed-values target=".[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('assessment','assessment-method')]/prop/@name">
+                                <enum value="method" deprecated="1.0.1">The assessment method to use. This will appear on parts with the name "assessment-method".</enum>
                         </allowed-values>
-                        <has-cardinality target=".[@name='assessment']/prop[@name='method']" min-occurs="1"/>
-                        <allowed-values target=".[@name='assessment']/prop[@name='method']/@value">
+                        <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/rmf')]/@name">
+                                <enum xmlns="https://csrc.nist.gov/ns/rmf" value="method">Type of The Risk Management Framework 800-53A method to be use for assessment. This will appear on parts with the name "assessment-method".</enum>
+                        </allowed-values>
+                        <has-cardinality target=".[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('assessment','assessment-method')]/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal','http://csrc.nist.gov/ns/rmf') and @name='method']" min-occurs="1"/>
+                        <allowed-values target=".[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('assessment','assessment-method')]/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal','http://csrc.nist.gov/ns/rmf') and @name='method']/@value">
                                 <enum value="INTERVIEW">The process of holding discussions with individuals or groups of individuals within an organization to once again, facilitate assessor understanding, achieve clarification, or obtain evidence.</enum>
                                 <enum value="EXAMINE">The process of reviewing, inspecting, observing, studying, or analyzing one or more assessment objects (i.e., specifications, mechanisms, or activities).</enum>
                                 <enum value="TEST">The process of exercising one or more assessment objects (i.e., activities or mechanisms) under specified conditions to compare actual with expected behavior.</enum>
                         </allowed-values>
--->                </constraint>
+                </constraint>
                 <remarks>
                         <p>A <code>part</code> provides for logical partitioning of prose, and can be thought of as a grouping structure (e.g., section). A <code>part</code> can have child parts allowing for arbitrary nesting of prose content (e.g., statement hierarchy). A <code>part</code> can contain <code>prop</code> objects that allow for enriching prose text with structured name/value information.</p>
                         <p>A <code>part</code> can be assigned an optional <code>id</code>, which allows for internal and external references to the textual concept contained within a <code>part</code>. A <code>id</code> provides a means for an OSCAL profile, or a higher layer OSCAL model to reference a specific part within a <code>catalog</code>. For example, an <code>id</code> can be used to reference or to make modifications to a control statement in a profile.</p>
@@ -93,10 +96,10 @@
                 </remarks>
                 <example>
                         <description>Multiple Parts with Different Organization-Specific Names</description>
-                        <o:part xmlns:o="http://csrc.nist.gov/ns/oscal/example" name="statement" id="statement-A">
-                                <o:part ns="http://fedramp.gov/ns/oscal" name="status" id="statement-A-FedRAMP">Something FedRAMP Cares About</o:part>
-                                <o:part ns="https://defense.gov" name="status" id="statement-A-DoD">Something DoD Cares About</o:part>
-                        </o:part>
+                        <part xmlns="http://csrc.nist.gov/ns/oscal/1.0" name="statement" id="statement-A">
+                                <part ns="http://fedramp.gov/ns/oscal" name="status" id="statement-A-FedRAMP">A requirement specific to FedRAMP stakeholders.</part>
+                                <part ns="https://defense.gov" name="status" id="statement-A-DoD">A requirement specific to the Department of Defense stakeholders.</part>
+                        </part>
                 </example>
         </define-assembly>
 
@@ -107,12 +110,10 @@
         <define-assembly name="parameter">
                 <formal-name>Parameter</formal-name>
                 <description>Parameters provide a mechanism for the dynamic assignment of value(s) in a control.</description>
-                <!-- It is worth it abbreviate "param" in XML, while keeping "parameters" in JSON. -->
                 <use-name>param</use-name>
                 <define-flag name="id" as-type="token" required="yes">
                         <!-- This is an id because the idenfier is intended to be human-readable. -->
                         <formal-name>Parameter Identifier</formal-name>
-                        <!-- Identifier Declaration -->
                         <description>A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a>, <a href="/concepts/identifier-use/#locally-unique">locally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined parameter elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. When referenced from another OSCAL instance, this identifier must be referenced in the context of the containing resource (e.g., import-profile). This id should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
                 </define-flag>
                 <!-- TODO: What is the semantics of class here? -->
@@ -152,16 +153,14 @@
                         </assembly>
                         <assembly ref="parameter-guideline" max-occurs="unbounded">
                                 <use-name>guideline</use-name>
-                                <!-- CHANGED from "guidance" to "guidelines" -->
                                 <group-as name="guidelines" in-json="ARRAY"/>
                         </assembly>
                         <choice>
                                 <field ref="parameter-value" max-occurs="unbounded">
-                                        <!-- CHANGED cardinality to allow for multiple values -->
                                         <use-name>value</use-name>
                                         <group-as name="values" in-json="ARRAY"/>
                                         <remarks>
-                                                <p>A set of values provided in a catalog can be redefined at any higher layer of OSCAL (e.g., Profile).</p>
+                                                <p>A set of values provided in a catalog can be redefined in OSCAL's <code>profile</code> or <code>system-security-plan</code> models.</p>
                                         </remarks>
                                 </field>
                                 <assembly ref="parameter-selection">
@@ -172,7 +171,6 @@
                                 </assembly>
                         </choice>
                         <field ref="remarks" in-xml="WITH_WRAPPER"/>
-                        <!-- <any/> -->
                 </model>
                 <constraint>
                         <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
@@ -193,16 +191,13 @@
         </define-assembly>
 
         <define-assembly name="parameter-constraint">
-                <!-- CHANGED from field to assembly to allow for future extension -->
                 <formal-name>Constraint</formal-name>
                 <description>A formal or informal expression of a constraint or test</description>
                 <model>
-                        <!-- CHANGED: renamed "detail" to "description" -->
                         <define-field name="description" as-type="markup-multiline" in-xml="WITH_WRAPPER">
                                 <formal-name>Constraint Description</formal-name>
                                 <description>A textual summary of the constraint to be applied.</description>
                         </define-field>
-                        <!-- CHANGED from flag to assembly to allow for future extension -->
                         <define-assembly name="test" max-occurs="unbounded">
                                 <formal-name>Constraint Test</formal-name>
                                 <description>A test expression which is expected to be evaluated by a tool.</description>
@@ -225,12 +220,10 @@
                                 <formal-name>Guideline Text</formal-name>
                                 <description>Prose permits multiple paragraphs, lists, tables etc.</description>
                         </define-field>
-                        <!-- <any/> -->
                 </model>
         </define-assembly>
 
         <define-field name="parameter-value">
-                <!-- CHANGED type from "markup-line" to "string" since this is intended to be a scalar value -->
                 <formal-name>Parameter Value</formal-name>
                 <description>A parameter value or set of values.</description>
         </define-field>
@@ -254,10 +247,8 @@
                                 <description>A value selection among several such options</description>
                                 <use-name>choice</use-name>
                                 <json-value-key>value</json-value-key>
-                                <!-- CHANGED "alternatives" to "choices" -->
                                 <group-as name="choice" in-json="ARRAY"/>
                         </define-field>
-                        <!-- <any/> -->
                 </model>
                 <remarks>
                         <p>A set of parameter value choices, that may be picked from to set the parameter value.</p>

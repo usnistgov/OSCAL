@@ -109,7 +109,7 @@
                               </constraint>
                         </define-flag>
                         <constraint>
-                              <expect id="expect-profile-combine-method-merge-unused" target="." test="not(exists(combine[@method='merge']))"/>
+                              <expect id="req-merge-combine" target="." test="not(@method='merge')"/>
                         </constraint>
                         <remarks>
                               <p>Whenever combining controls from multiple (import) pathways, an issue arises of what to do with clashing invocations (multiple competing versions of a control). </p>
@@ -124,7 +124,7 @@
                         </define-assembly>
                         <define-field name="as-is" as-type="boolean" min-occurs="1">
                               <formal-name>As-Is Structuring Directive</formal-name>
-                              <description>An As-is element indicates that the controls should be structured in resolution as they are structured in their source catalogs. It does not contain any elements or attributes.</description>
+                              <description>An As-Is element indicates that the controls should be structured in resolution as they are structured in their source catalogs. It does not contain any elements or attributes.</description>
                         </define-field>
                         <define-assembly name="custom" min-occurs="1">
                               <formal-name>Custom grouping</formal-name>
@@ -150,7 +150,7 @@
             </remarks>
       </define-assembly>
       <define-assembly name="group">
-            <formal-name>Control group</formal-name>
+            <formal-name>Control Group</formal-name>
             <description>A group of (selected) controls or of groups of controls</description>
             <define-flag name="id" as-type="token">
                   <!-- This is an id because the idenfier is assigned and managed externally by humans. -->

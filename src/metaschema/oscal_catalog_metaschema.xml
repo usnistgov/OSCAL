@@ -55,7 +55,7 @@
                         <enum value="resolution-tool">The tool used to produce a resolved profile.</enum>
                   </allowed-values>
                   <allowed-values target="metadata/link/@rel">
-                        <enum value="source-profile">The profile from which a tailored catalog was produced using <a href="https://pages.nist.gov/OSCAL/concepts/processing/profile-resolution/">profile resolution</a>.</enum>
+                        <enum value="source-profile">The profile from which the catalog was produced by <a href="https://pages.nist.gov/OSCAL/concepts/processing/profile-resolution/">profile resolution</a>.</enum>
                   </allowed-values>
                   <index name="catalog-parts" target="//part" >
                         <key-field target="@id"/>
@@ -78,7 +78,7 @@
             </remarks>
             <example>
                   <description>A small catalog with a single control.</description>
-                  <catalog xmlns="http://csrc.nist.gov/ns/oscal/example" uuid="35566cd4-7331-43ba-b023-988c38d62673">
+                  <catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0" uuid="35566cd4-7331-43ba-b023-988c38d62673">
                         <title>A Miniature Catalog</title>
                         <control id="single">
                               <title>A Single Control</title>
@@ -115,7 +115,6 @@
                         <description>A name given to the group, which may be used by a tool for display and navigation.</description>
                   </define-field>
                   <assembly ref="parameter" max-occurs="unbounded">
-                        <!-- CHANGED: "parameters" to "params" -->
                         <group-as name="params" in-json="ARRAY"/>
                   </assembly>
 
@@ -139,7 +138,6 @@
                   <!--<any/>-->
             </model>
             <constraint>
-                  <!-- CHANGE: added allowed values for a property/@name -->
                   <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
             &allowed-values-control-group-property-name;
                   </allowed-values>
@@ -152,7 +150,7 @@
                   <p>A <code>group</code> may have its own properties, statements, parameters, and references, which are inherited by all members of that group.</p>
             </remarks>
             <example>
-                  <group xmlns="http://csrc.nist.gov/ns/oscal/example" id="xyz">
+                  <group xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="xyz">
                         <title>My Group</title>
                         <prop name="required" value="some value"/>
                         <control id="xyz1">
@@ -184,7 +182,6 @@
                         <description>A name given to the control, which may be used by a tool for display and navigation.</description>
                   </define-field>
                   <assembly ref="parameter" max-occurs="unbounded">
-                        <!-- CHANGED: "parameters" to "params" -->
                         <group-as name="params" in-json="ARRAY"/>
                   </assembly>
                   <!-- TODO: Need to be able to add valid values in context -->
@@ -286,7 +283,7 @@
                   <p>A control must have a part with the name "statement", which represents the textual narrative of the control. This "statement" part must occur only once, but may have nested parts to allow for multiple paragraphs or sections of text.</p>
             </remarks>
             <example>
-                  <control xmlns="http://csrc.nist.gov/ns/oscal/example" id="x">
+                  <control xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="x">
                         <title>Control 1</title>
                   </control>
             </example>
