@@ -55,5 +55,5 @@ Participant Passcode: 9254
 |  2022/09/07 |  11:00AM-12:00PM EDT  | NIST OSCAL Open Source Tooling | David Waltermire, OSCAL Technical Director, Dmitry Cousin, OSCAL team member, Nikita Wootten, OSCAL team member, NIST | presentations & demos | L1-L3 |  
 |  2022/10/05 |  11:00AM-12:00PM EDT  | Compliance as Code - from Upstream to Ops | Brandt Keller, Software Engineer, Defense Unicorns | presentation & demo | L2 |  
 |  2022/11/02 |  11:00AM-12:00PM EDT  | Implementing an Agency Security Assessment Framework (SAF) with OSCAL "ComplianceOps" | Robert Ficcaglia, CNCF Kubernetes Policy Co-Chair, CNCF Security Technical Advisory Group Lead Assessor, Kubernetes SIG-Security Audit Team | presentation | L1-L3  |   
-|  2022/11/30 |  11:00AM-12:00PM EDT  |  |  |  |  |  
+|  2022/11/30 |  11:00AM-12:00PM EDT  | The OSCAL Futurist: Musing on What Is Possible and What is Needed | Greg Elin, Founder & CEO, GovReady PBC | presentation | L2-L3 |  
   
