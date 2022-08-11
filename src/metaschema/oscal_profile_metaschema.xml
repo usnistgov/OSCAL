@@ -369,6 +369,9 @@
                   <formal-name>Item Namespace Reference</formal-name>
                   <description>Identify items to remove by the item's <code>ns</code>, which is the namespace associated with a <code>part</code>, or <code>prop</code>.</description>
             </define-flag>
+            <model>
+                  <field ref="remarks" in-xml="WITH_WRAPPER"/>
+            </model>
             <remarks>
                   <p>Use <code>name-ref</code>, <code>class-ref</code>, <code>id-ref</code> or <code>generic-identifier</code> to indicate class tokens or ID reference, or the formal name, of the component to be removed or erased from a control, when a catalog is resolved. The control affected is indicated by the pointer on the removal's parent (containing) <code>alter</code> element.</p>
                   <p>To change an element, use <code>remove</code> to remove the element, then <code>add</code> to add it back again with changes.</p>
@@ -411,6 +414,7 @@
                   <assembly ref="part" max-occurs="unbounded">
                         <group-as name="parts" in-json="ARRAY"/>
                   </assembly>
+                  <field ref="remarks" in-xml="WITH_WRAPPER"/>
             </model>
             <constraint>
                   <!-- CHANGE: added allowed values for a property/@name -->
