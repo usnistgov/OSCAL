@@ -540,12 +540,13 @@
    <xsl:template match="j:array[@key='removes']/j:map">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="remove" -->
-      <assembly as-type="empty" name="remove" gi="remove">
+      <assembly name="remove" gi="remove">
          <xsl:apply-templates select="*[@key='by-name']"/>
          <xsl:apply-templates select="*[@key='by-class']"/>
          <xsl:apply-templates select="*[@key='by-id']"/>
          <xsl:apply-templates select="*[@key='by-item-name']"/>
          <xsl:apply-templates select="*[@key='by-ns']"/>
+         <xsl:apply-templates select="*[@key='remarks']"/>
       </assembly>
    </xsl:template>
    <xsl:template match="j:array[@key='adds']/j:map">
@@ -559,6 +560,7 @@
          <xsl:apply-templates select="*[@key='props']"/>
          <xsl:apply-templates select="*[@key='links']"/>
          <xsl:apply-templates select="*[@key='parts']"/>
+         <xsl:apply-templates select="*[@key='remarks']"/>
       </assembly>
    </xsl:template>
    <xsl:template match="j:map[@key='component-definition']">

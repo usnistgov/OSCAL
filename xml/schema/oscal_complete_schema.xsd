@@ -2453,6 +2453,21 @@
          <xs:documentation>
             <b>Removal</b>: Specifies objects to be removed from a control based on specific aspects of the object that must all match.</xs:documentation>
       </xs:annotation>
+      <xs:sequence>
+         <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Remarks</m:formal-name>
+                  <m:description>Additional commentary on the containing object.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Remarks</b>: Additional commentary on the containing object.</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+               <xs:group ref="blockElementGroup" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
       <xs:attribute name="by-name" type="TokenDatatype">
          <xs:annotation>
             <xs:appinfo>
@@ -2546,6 +2561,19 @@
                      type="oscal-catalog-common-part-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
+         <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Remarks</m:formal-name>
+                  <m:description>Additional commentary on the containing object.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Remarks</b>: Additional commentary on the containing object.</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+               <xs:group ref="blockElementGroup" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:complexType>
+         </xs:element>
       </xs:sequence>
       <xs:attribute name="position" type="TokenDatatype">
          <xs:annotation>
