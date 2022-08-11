@@ -1485,7 +1485,9 @@
           "by-ns" : 
           { "title" : "Item Namespace Reference",
             "description" : "Identify items to remove by the item's ns, which is the namespace associated with a part, or prop.",
-            "$ref" : "#/definitions/TokenDatatype" } },
+            "$ref" : "#/definitions/TokenDatatype" },
+          "remarks" : 
+          { "$ref" : "#field_oscal-metadata_remarks" } },
         "additionalProperties" : false },
       "oscal-complete-oscal-profile:add" : 
       { "title" : "Addition",
@@ -1532,7 +1534,9 @@
           { "type" : "array",
             "minItems" : 1,
             "items" : 
-            { "$ref" : "#assembly_oscal-catalog-common_part" } } },
+            { "$ref" : "#assembly_oscal-catalog-common_part" } },
+          "remarks" : 
+          { "$ref" : "#field_oscal-metadata_remarks" } },
         "additionalProperties" : false },
       "oscal-complete-oscal-component-definition:component-definition" : 
       { "title" : "Component Definition",
