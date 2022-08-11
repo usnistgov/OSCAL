@@ -673,12 +673,13 @@
    <xsl:template match="remove"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
-      <assembly as-type="empty" name="remove" gi="remove">
+      <assembly name="remove" gi="remove">
          <xsl:apply-templates select="@by-name"/>
          <xsl:apply-templates select="@by-class"/>
          <xsl:apply-templates select="@by-id"/>
          <xsl:apply-templates select="@by-item-name"/>
          <xsl:apply-templates select="@by-ns"/>
+         <xsl:apply-templates select="remarks"/>
       </assembly>
    </xsl:template>
    <xsl:template match="add" xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -715,6 +716,7 @@
                </xsl:apply-templates>
             </group>
          </xsl:for-each-group>
+         <xsl:apply-templates select="remarks"/>
       </assembly>
    </xsl:template>
    <xsl:template match="back-matter"
