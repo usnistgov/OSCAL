@@ -6381,7 +6381,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                  </div>
                                  <div class="array-header">
                                     <p class="array-member">(array member)</p>
-                                    <p class="type"><a href="/reference/datatypes/#empty">empty</a></p>
+                                    <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-profile/alter/removes">(global definition)</a></p>
                                     <p class="occurrence">[1 to ∞]</p>
                                     <p class="formal-name">Removal</p>
                                  </div>
@@ -6400,7 +6400,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                        </details>
                                     </div>
                                     <details class="properties" open="open">
-                                       <summary>Properties (5)</summary>
+                                       <summary>Properties (6)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/profile/modify/alters/removes/by-name" class="toc5 name">by-name</h5>
@@ -6462,6 +6462,18 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                              <p class="description"><span class="usa-tag">Description</span> Identify items to remove by the item's <code>ns</code>, which is the namespace associated with a <code>part</code>, or <code>prop</code>.</p>
                                           </div>
                                        </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/profile/modify/alters/removes/remarks" class="toc5 name">remarks</h5>
+                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/modify/alter/remove/remarks">Switch to XML</a></div>
+                                             <p class="formal-name">Remarks</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                          </div>
+                                       </div>
                                     </details>
                                  </div>
                               </div>
@@ -6510,7 +6522,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                        </div>
                                     </details>
                                     <details class="properties" open="open">
-                                       <summary>Properties (7)</summary>
+                                       <summary>Properties (8)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/profile/modify/alters/adds/position" class="toc5 name">position</h5>
@@ -7998,6 +8010,18 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                    </div>
                                                 </div>
                                              </details>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/profile/modify/alters/adds/remarks" class="toc5 name">remarks</h5>
+                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/modify/alter/add/remarks">Switch to XML</a></div>
+                                             <p class="formal-name">Remarks</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
                                           </div>
                                        </div>
                                     </details>

@@ -6411,7 +6411,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/profile/modify/alter/remove" class="toc4 name">remove</h4>
-                                    <p class="type"><a href="/reference/datatypes/#empty">empty</a></p>
+                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-profile/alter/remove">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/removes">Switch to JSON</a></div>
                                     <p class="formal-name">Removal</p>
@@ -6491,6 +6491,34 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                           </div>
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> Identify items to remove by the item's <code>ns</code>, which is the namespace associated with a <code>part</code>, or <code>prop</code>.</p>
+                                          </div>
+                                       </div>
+                                    </details>
+                                    <details class="properties elements" open="open">
+                                       <summary>Element (1)</summary>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/profile/modify/alter/remove/remarks" class="toc5 name">remarks</h5>
+                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/removes/remarks">Switch to JSON</a></div>
+                                             <p class="formal-name">Remarks</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                             <details class="properties elements" open="open">
+                                                <summary>Element (0+)</summary>
+                                                <div class="model-entry definition field">
+                                                   <div class="instance-header">
+                                                      <h5 id="/profile/modify/alter/remove/remarks/_VALUE" class="toc5 name">(unwrapped)</h5>
+                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                      <p class="occurrence">[0 to ∞]</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                   </div>
+                                                </div>
+                                             </details>
                                           </div>
                                        </div>
                                     </details>
@@ -6581,7 +6609,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                     </details>
                                     <details class="properties elements" open="open">
-                                       <summary>Elements (5)</summary>
+                                       <summary>Elements (6)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/profile/modify/alter/add/title" class="toc5 name">title</h5>
@@ -8068,6 +8096,31 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                             </div>
                                                          </div>
                                                       </details>
+                                                   </div>
+                                                </div>
+                                             </details>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/profile/modify/alter/add/remarks" class="toc5 name">remarks</h5>
+                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/remarks">Switch to JSON</a></div>
+                                             <p class="formal-name">Remarks</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                             <details class="properties elements" open="open">
+                                                <summary>Element (0+)</summary>
+                                                <div class="model-entry definition field">
+                                                   <div class="instance-header">
+                                                      <h5 id="/profile/modify/alter/add/remarks/_VALUE" class="toc5 name">(unwrapped)</h5>
+                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                      <p class="occurrence">[0 to ∞]</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
                                                    </div>
                                                 </div>
                                              </details>

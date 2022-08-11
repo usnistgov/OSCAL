@@ -64,7 +64,7 @@ The following is a reference for the JSON object definitions derived from the [m
             </div>
             </details>
          <details open="open">
-            <summary>Properties (7)</summary>
+            <summary>Properties (8)</summary>
             <div class="model assembly-model">
                <div class="model-entry definition define-flag">
                   <div class="instance-header">
@@ -240,6 +240,18 @@ The following is a reference for the JSON object definitions derived from the [m
                         </details>
                      </div>
                      <p class="definition-link"><a href="#/assembly/oscal-catalog-common/part">See definition</a></p>
+                  </div>
+               </div>
+               <div class="model-entry definition field">
+                  <div class="instance-header">
+                     <h2 id="/assembly/oscal-profile/add/remarks" class="toc2 name">remarks</h2>
+                     <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                     <p class="occurrence">[0 or 1]</p>
+                     <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-profile/add/remarks">Switch to XML</a></div>
+                     <p class="formal-name">Remarks</p>
+                  </div>
+                  <div class="body">
+                     <p class="definition-link"><a href="#/field/oscal-metadata/remarks">See definition</a></p>
                   </div>
                </div>
             </div>
@@ -4453,7 +4465,7 @@ The following is a reference for the JSON object definitions derived from the [m
             </details>
          </div>
          <details open="open">
-            <summary>Properties (5)</summary>
+            <summary>Properties (6)</summary>
             <div class="model assembly-model">
                <div class="model-entry definition define-flag">
                   <div class="instance-header">
@@ -4514,6 +4526,18 @@ The following is a reference for the JSON object definitions derived from the [m
                   </div>
                   <div class="body">
                      <p class="description"><span class="usa-tag">description</span> Identify items to remove by the item's <code>ns</code>, which is the namespace associated with a <code>part</code>, or <code>prop</code>.</p>
+                  </div>
+               </div>
+               <div class="model-entry definition field">
+                  <div class="instance-header">
+                     <h2 id="/assembly/oscal-profile/remove/remarks" class="toc2 name">remarks</h2>
+                     <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                     <p class="occurrence">[0 or 1]</p>
+                     <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-profile/remove/remarks">Switch to XML</a></div>
+                     <p class="formal-name">Remarks</p>
+                  </div>
+                  <div class="body">
+                     <p class="definition-link"><a href="#/field/oscal-metadata/remarks">See definition</a></p>
                   </div>
                </div>
             </div>
