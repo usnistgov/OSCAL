@@ -1,0 +1,114 @@
+METASCHEMA { font-family: Georgia, serif }
+
+* { display: block }
+
+pre { color: darkgrey }
+
+tag { color: black; font-family: monospace; font-size: 80%; font-weight: bold }
+
+METASCHEMA { }
+
+title { }
+
+define-assembly,
+define-field,
+define-flag      { margin-top: 1ex; margin-bottom: 1ex; border: thin inset black; padding: 0.5em }
+
+
+define-assembly:before,
+define-field:before,
+define-flag:before      
+ { content:
+ oxy_name() 
+ oxy_textfield(edit, '@name', columns, 12) 
+    }
+
+
+define-assembly[group-as]:before,
+define-field[group-as]:before,
+define-flag[group-as]:before      
+ { content:
+ oxy_name() 
+ oxy_textfield(edit, '@name', columns, 12) }
+define-assembly *,
+define-field    *,
+define-flag     *  { margin: 0em }
+
+define-assembly > * { margin-top: 1em }
+
+allowed-values:before { content: "Allowed values" }
+allowed-values { border: thin solid black; padding: 1em }
+
+enum:before  { display: list-item }
+enum:before  { content: "enum" }
+
+pre { padding: 0.5em; background-color: gainsboro }
+
+define-assembly { }
+
+define-field { }
+
+define-flag { }
+
+flag { }
+
+formal-name { font-size: 120%; font-weight: bold; margin: 0.5em 0em }
+
+description, remarks {  max-width: 60em }
+
+remarks { border-left: thin solid black; padding-left: 1em; margin-left: 1em }
+remarks p { margin-top: 1em }
+
+
+example { }
+
+prose { }
+
+
+p { }
+
+code {  display: inline; font-family: monospace }
+q {  display: inline; background-color: lemonchiffon }
+em, i {  display: inline; font-style: italic }
+strong, b  {  display: inline; font-weight: bold }
+
+example { background-color: lavender; white-space: pre; }
+
+example *:before { content: '<' oxy_name() '>'; font-family: monospace; font-size: 80%  }
+example *:after { content: '</' oxy_name() '>'; font-family: monospace; font-size: 80%  }
+
+model { padding-left: 0.5em; border-left: medium solid blue; font-size: 80%; padding-right: 2em }
+
+flag:before { content:
+ oxy_name()
+  ' ref: ' oxy_textfield(edit, '@ref', columns, 12) 
+   }
+
+assembly:before, field:before {
+  content:
+    oxy_name() ' named '
+    oxy_textfield(edit, '@ref', columns, 12) }
+
+group-as { margin-left: 2em }
+
+group-as:before { content: 'group as '
+ oxy_textfield(edit, '@name', columns, 12) }
+
+
+choice:before { content:
+ 'a choice between'
+ }
+
+prose:before { font-weight: bold; content:
+ 'prose'
+ }
+
+choice > * { margin-left: 2em }
+
+enum { display: block; font-size: 90%; padding-left: 1em }
+enum:before { content:  oxy_textfield(edit, '@value', columns, 24); }
+
+a { display: inline; color: blue }
+a:before { content: oxy_urlChooser(        
+        edit, "@href",
+        columns 42); }

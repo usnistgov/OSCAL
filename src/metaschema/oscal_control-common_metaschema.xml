@@ -5,6 +5,7 @@
 <!DOCTYPE METASCHEMA [
    <!ENTITY allowed-values-control-group-property-name SYSTEM "./shared-constraints/allowed-values-control-group-property-name.ent">
 ]>
+<?xml-stylesheet type="text/css" href="metaschema-author.css"?>
 <METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/toolchains/xslt-M4/validate/metaschema.xsd" abstract="yes">
         <schema-name>OSCAL Control Catalog Format -- Common Models</schema-name>
@@ -35,7 +36,7 @@
                 <define-flag name="ns" as-type="uri">
                         <formal-name>Part Namespace</formal-name>
                         <description>An optional namespace qualifying the part's <code>name</code>. This allows different organizations to associate distinct semantics with the same name.</description>
-                        <remarks>
+                        <remarks><!-- TODO: link to external documentation? -->
                                 <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed names and associated text used in a part. This allows the semantics associated with a given name to be defined on an organization-by-organization basis.</p>
                                 <p>An organization MUST use a URI that they have control over. e.g., a domain registered to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                 <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
@@ -89,7 +90,11 @@
                 </constraint>
                 <remarks>
                         <p>A <code>part</code> provides for logical partitioning of prose, and can be thought of as a grouping structure (e.g., section). A <code>part</code> can have child parts allowing for arbitrary nesting of prose content (e.g., statement hierarchy). A <code>part</code> can contain <code>prop</code> objects that allow for enriching prose text with structured name/value information.</p>
-                        <p>A <code>part</code> can be assigned an optional <code>id</code>, which allows for internal and external references to the textual concept contained within a <code>part</code>. A <code>id</code> provides a means for an OSCAL profile, or a higher layer OSCAL model to reference a specific part within a <code>catalog</code>. For example, an <code>id</code> can be used to reference or to make modifications to a control statement in a profile.</p>
+                        <p>A <code>part</code> can be assigned an optional <code>id</code>, which allows references to this part from within a catalog, or within an instance of another OSCAL model that has a need to reference the part. Examples of where part referencing is used in OSCAL include:</p>
+                        <ul>
+                                    <li>Referencing a part by id to tailor (make modifications to) a control statement in a profile.</li>
+                                    <li>Referencing a control statement represented by a part in a system security plan implemented-requirement where a statement-level response is desired.</li>
+                        </ul>
                         <p>Use of <code>part</code> and <code>prop</code> provides for a wide degree of extensibility within the OSCAL catalog model. The optional <code>ns</code> provides a means to qualify a part's <code>name</code>, allowing for organization-specific vocabularies to be defined with clear semantics. Any organization that extends OSCAL in this way should consistently assign a <code>ns</code> value that represents the organization, making a given namespace qualified <code>name</code> unique to that organization. This allows the combination of <code>ns</code> and <code>name</code> to always be unique and unambiguous, even when mixed with extensions from other organizations. Each organization is responsible for governance of their own extensions, and is strongly encouraged to publish their extensions as standards to their user community. If no <code>ns</code> is provided, the name is expected to be in the "OSCAL" namespace.</p>
                         <p>To ensure a <code>ns</code> is unique to an organization and naming conflicts are avoided, a URI containing a DNS or other globally defined organization name should be used. For example, if FedRAMP and DoD both extend OSCAL, FedRAMP will use the <code>ns</code> <code>http://fedramp.gov/ns/oscal</code>, while DoD might use the <code>ns</code> <code>https://defense.gov</code> for any organization specific <code>name</code>.</p>
                         <p>Tools that process OSCAL content are not required to interpret unrecognized OSCAL extensions; however, OSCAL compliant tools should not modify or remove unrecognized extensions, unless there is a compelling reason to do so, such as data sensitivity.</p>
@@ -119,14 +124,15 @@
                 <!-- TODO: What is the semantics of class here? -->
                 <define-flag name="class" as-type="token">
                         <formal-name>Parameter Class</formal-name>
-                        <description>A textual label that provides a characterization of the parameter.</description>
+                        <description>A textual label that provides a characterization of the type,
+                                purpose, use or scope of the parameter.</description>
                         <remarks>
                                 <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of a specific <code>class</code> value.</p>
                         </remarks>
                 </define-flag>
                 <define-flag name="depends-on" as-type="token" deprecated="1.0.1">
                         <formal-name>Depends on</formal-name>
-                        <description>**(deprecated)** Another parameter invoking this one. This construct has been deprecated and should not be used.</description>
+                        <description><strong>(deprecated)</strong> Another parameter invoking this one. This construct has been deprecated and should not be used.</description>
                 </define-flag>
                 <model>
                         <assembly ref="property" max-occurs="unbounded">
@@ -140,7 +146,7 @@
                                 <formal-name>Parameter Label</formal-name>
                                 <description>A short, placeholder name for the parameter, which can be used as a substitute for a <code>value</code> if no value is assigned.</description>
                                 <remarks>
-                                        <p>The label value should be suitable for inline display in a rendered catalog.</p>
+                                       <p>The label value is intended use when rendering a parameter in generated documentation or a user interface when a parameter is referenced. Note that labels are not required to be distinctive, which means that parameters within the same control may have the same label.</p>
                                 </remarks>
                         </define-field>
                         <define-field name="usage" as-type="markup-multiline" in-xml="WITH_WRAPPER">
@@ -166,7 +172,9 @@
                                 <assembly ref="parameter-selection">
                                         <use-name>select</use-name>
                                         <remarks>
-                                                <p>A set of parameter value choices, that may be picked from to set the parameter value.</p>
+                                                <p>The OSCAL parameter <code>value</code> construct can be used to prescribe a specific parameter value in a catalog or profile. In cases where a prescriptive value is not possible in a catalog or profile, it may be possible to constrain the set of possible values to a few options. Use of <code>select</code> in a parameter instead of <code>value</code> is a way of defining value options that <strong>may</strong> be set.</p>
+                                                <p>A set of allowed parameter values expressed as a set of options which may be selected. These options constrain the permissible values that may be selected for the containing parameter. When the value assignment is made, such as in an OSCAL profile or system security plan, the actual selected value can be examined to determine if it matches one of the permissible choices for the parameter value.</p>
+                                                <p>When the value of <code>how-many</code> is set to "one-or-more", multiple values may be assigned reflecting more than one choice.</p>
                                         </remarks>
                                 </assembly>
                         </choice>
@@ -178,7 +186,9 @@
                                 <enum value="alt-label">An alternate to the value provided by the parameter's label. This will typically be qualified by a class.</enum>
                         </allowed-values>
                         <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/rmf')]/@name">
-                                <enum value="aggregates">The parent parameter provides an aggregation of 2 or more other parameters, each described by this property.</enum>
+                                <enum value="aggregates">The parent parameter provides an
+                                        aggregation of two or more other parameters, each described
+                                        by this property.</enum>
                         </allowed-values>
                         <expect target="." test="not(exists(@depends-on))">
                                 <message>depends-on is deprecated</message>
