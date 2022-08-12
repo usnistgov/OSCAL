@@ -54,7 +54,9 @@
                         <enum value="alternate">The link identifies an alternative location or format for this resource. Defined by <a href="https://html.spec.whatwg.org/multipage/links.html#linkTypes">the HTML Living Standard</a></enum>
                         <enum value="predecessor-version">This link identifies a resource containing the predecessor version in the version history. Defined by  <a href="https://tools.ietf.org/html/rfc5829">RFC 5829</a>.</enum>
                         <enum value="successor-version">This link identifies a resource containing the predecessor version in the version history. Defined by <a href="https://tools.ietf.org/html/rfc5829">RFC 5829</a>.</enum>
+                        <enum value="version-history">This link identifies a resource containing the version history of this document. Defined by <a href="https://tools.ietf.org/html/rfc5829">RFC 5829</a>.</enum>
                     </allowed-values>
+                    <!-- TODO: check for if the last-modified is >= the latest revision. -->
                 </constraint>
                 <remarks>
                     <p>While <code>published</code>, <code>last-modified</code>, and <code>oscal-version</code> are not required, values for these entries should be provided if the information is known. A <code>link</code> with a <code>rel</code> of <q>source</q> should be provided if the information is known.</p>
@@ -988,7 +990,7 @@
         <formal-name>OSCAL Version</formal-name>
         <description>The OSCAL model version the document was authored against and will conform to as valid.</description>
         <remarks>
-            <p>Indicates the version of the OSCAL model to which the document conforms, for example <q>1.1.0</q> or <q>1.0.0-M1</q>. That can be used as a hint for a tool indicating which version of the OSCAL XML or JSON schema to use for validation.</p>
+            <p>Indicates the version of the OSCAL model to which the document conforms, for example <q>1.1.0</q> or <q>1.0.0-milestone1</q>. That can be used as a hint for a tool indicating which version of the OSCAL XML or JSON schema to use for validation.</p>
             <p>The OSCAL version serves a different purpose from the document version and is used to represent a different concept. If both have the same value, this is coincidental.</p>
         </remarks>
     </define-field>
