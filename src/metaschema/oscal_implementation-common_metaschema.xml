@@ -666,6 +666,13 @@
             <!-- This is an id because the idenfier is assigned and managed by humans. -->
             <formal-name>System Identification</formal-name>
             <!-- Identifier Declaration -->
+            <!-- 
+                  TODO: Given feedback, we need to update Metaschema with usnistgov/metaschema#222
+                  with props like in https://github.com/david-waltermire-nist/OSCAL/commit/3aafc080b3dc5f488c15b763f707326e77a61f5d#diff-4176d3cf694dd36b02a94207426934306ec0fdaecc54d1bb96f50f52cd7ceae6R27-R32.
+
+                  We need to determine if both identifier-type='machine-oriented' and identifier-type='human-oriented'.
+                  Option 2 is identifier-type='unspecified'.
+            -->
             <description>A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this system identification property elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. When referencing an externally defined <code>system identification</code>, the <code>system identification</code> must be used in the context of the external / imported OSCAL instance (e.g., uri-reference). This string should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same system across revisions of the document.</description>
             <json-value-key>id</json-value-key>
             <define-flag name="identifier-type" as-type="uri">

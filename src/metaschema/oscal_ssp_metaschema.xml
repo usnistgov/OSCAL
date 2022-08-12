@@ -62,7 +62,7 @@
         <!-- TODO: Add a link to "within the scope of the containing OSCAL document" to point to documentation of identification scopes" -->
         <p>If a local reference using a fragment is used, this will be indicated by a fragment "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document. The identified resource will be used instead as the target resource.</p>
         <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the target resource. A relative URI will be resolved relative to the location of the document containing the link.</p>
-        <p>If the resource is an OSCAL profile, it is expected that a tool will resolve the profile according to the OSCAL [profile resolution specification](https://pages.nist.gov/OSCAL/concepts/processing/profile-resolution/) to produce a resolved profile for use when processing the containing system security plan. This allows a system security plan processor to use the baseline as a catalog of controls.</p>
+        <p>If the resource is an OSCAL profile, it is expected that a tool will resolve the profile according to the OSCAL <a href="https://pages.nist.gov/OSCAL/concepts/processing/profile-resolution/">profile resolution specification</a> to produce a resolved profile for use when processing the containing system security plan. This allows a system security plan processor to use the baseline as a catalog of controls.</p>
         <p>While it is possible to reference a previously resolved OSCAL profile as a catalog, this practice is discouraged since the unresolved form of the profile communicates more information about selections and changes to the underlying catalog. Furthermore, the underlying catalog can be maintained separately from the profile, which also has maintenance advantages for distinct maintainers, ensuring that the best available information is produced through profile resolution.</p>
       </remarks>
     </define-flag>
@@ -88,6 +88,9 @@
       <define-field name="system-name-short" as-type="string">
         <formal-name>System Name - Short</formal-name>
         <description>A short name for the system, such as an acronym, that is suitable for display in a data table or summary list.</description>
+        <remarks>
+          <p>Since <code>system-name-short</code> is optional, if the <code>system-name-short</code> is not provided, the <code>system-name</code> can be used as a substitute.</p>
+        </remarks>
       </define-field>
       <define-field name="description" as-type="markup-multiline" min-occurs="1" in-xml="WITH_WRAPPER">
         <formal-name>System Description</formal-name>
@@ -274,6 +277,10 @@
       <index-has-key name="index-back-matter-resource" target="link[@rel='privacy-impact-assessment' and starts-with(@href,'#')]">
         <key-field target="@href" pattern="#(.*)"/>
       </index-has-key>
+      <!-- 
+        TODO: Per discussion in usnisgov/OSCAL#1331 review on 29 July 2022,
+        add the path target to security-sensitivity-level as well.
+      -->
       <matches target="link[@rel='privacy-impact-assessment']/@href[not(starts-with(.,'#'))]" datatype="uri"/>
       <allowed-values target="information-type/(confidentiality-impact|integrity-impact|availability-impact)/(base|selected)">
         <enum value="fips-199-low">A 'low' sensitivity level as defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.
@@ -319,18 +326,19 @@
     <formal-name>Security Impact Level</formal-name>
     <description>The overall level of expected impact resulting from unauthorized disclosure, modification, or loss of access to information.</description>
     <model>
+      <!-- 
+        TODO: Per discussion in usnisgov/OSCAL#1331 review on 29 July 2022,
+        add the path target to security-impact-level as well for fips-199-low/mod/high.
+      -->
       <define-field name="security-objective-confidentiality" as-type="string" min-occurs="1">
-        <!-- CHANGED: cardinality to min 1 -->
         <formal-name>Security Objective: Confidentiality</formal-name>
         <description>A target-level of confidentiality for the system, based on the sensitivity of information within the system.</description>
       </define-field>
       <define-field name="security-objective-integrity" as-type="string" min-occurs="1">
-        <!-- CHANGED: cardinality to min 1 -->
         <formal-name>Security Objective: Integrity</formal-name>
         <description>A target-level of integrity for the system, based on the sensitivity of information within the system.</description>
       </define-field>
       <define-field name="security-objective-availability" as-type="string" min-occurs="1">
-        <!-- CHANGED: cardinality to min 1 -->
         <formal-name>Security Objective: Availability</formal-name>
         <description>A target-level of availability for the system, based on the sensitivity of information within the system.</description>
       </define-field>
