@@ -1056,76 +1056,6 @@
          </xsl:for-each-group>
       </assembly>
    </xsl:template>
-   <xsl:template match="alter"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly name="alter" gi="alter">
-         <xsl:apply-templates select="@control-id"/>
-         <xsl:for-each-group select="remove" group-by="true()">
-            <group in-json="ARRAY" key="removes">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:for-each-group select="add" group-by="true()">
-            <group in-json="ARRAY" key="adds">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-      </assembly>
-   </xsl:template>
-   <xsl:template match="remove"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly name="remove" gi="remove">
-         <xsl:apply-templates select="@by-name"/>
-         <xsl:apply-templates select="@by-class"/>
-         <xsl:apply-templates select="@by-id"/>
-         <xsl:apply-templates select="@by-item-name"/>
-         <xsl:apply-templates select="@by-ns"/>
-         <xsl:apply-templates select="remarks"/>
-      </assembly>
-   </xsl:template>
-   <xsl:template match="add" xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly name="add" gi="add">
-         <xsl:apply-templates select="@position"/>
-         <xsl:apply-templates select="@by-id"/>
-         <xsl:apply-templates select="title"/>
-         <xsl:for-each-group select="param" group-by="true()">
-            <group in-json="ARRAY" key="params">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:for-each-group select="prop" group-by="true()">
-            <group in-json="ARRAY" key="props">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:for-each-group select="link" group-by="true()">
-            <group in-json="ARRAY" key="links">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:for-each-group select="part" group-by="true()">
-            <group in-json="ARRAY" key="parts">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:apply-templates select="remarks"/>
-      </assembly>
-   </xsl:template>
    <xsl:template match="component-definition"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
@@ -3559,7 +3489,7 @@
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="alter/@control-id"
+   <xsl:template match="profile/modify/alter/@control-id"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="token"
@@ -3569,8 +3499,8 @@
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="remove/@by-name"
-                 priority="1"
+   <xsl:template match="profile/modify/alter/remove/@by-name"
+                 priority="8"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="token"
@@ -3580,8 +3510,8 @@
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="remove/@by-class"
-                 priority="1"
+   <xsl:template match="profile/modify/alter/remove/@by-class"
+                 priority="8"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="token"
@@ -3591,8 +3521,8 @@
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="remove/@by-id"
-                 priority="1"
+   <xsl:template match="profile/modify/alter/remove/@by-id"
+                 priority="8"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="token"
@@ -3602,8 +3532,8 @@
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="remove/@by-item-name"
-                 priority="1"
+   <xsl:template match="profile/modify/alter/remove/@by-item-name"
+                 priority="8"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="token"
@@ -3613,8 +3543,8 @@
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="remove/@by-ns"
-                 priority="1"
+   <xsl:template match="profile/modify/alter/remove/@by-ns"
+                 priority="8"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="token"
@@ -3624,19 +3554,20 @@
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="add/@position"
-                 priority="1"
+   <xsl:template match="profile/modify/alter/add/@position"
+                 priority="8"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="token"
             name="position"
             key="position"
+            default="ending"
             gi="position">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="add/@by-id"
-                 priority="1"
+   <xsl:template match="profile/modify/alter/add/@by-id"
+                 priority="8"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="token"
@@ -9250,6 +9181,78 @@
             <xsl:apply-templates mode="cast-prose"/>
          </value>
       </field>
+   </xsl:template>
+   <xsl:template match="profile/modify/alter"
+                 priority="5"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <assembly name="alter" gi="alter">
+         <xsl:apply-templates select="@control-id"/>
+         <xsl:for-each-group select="remove" group-by="true()">
+            <group in-json="ARRAY" key="removes">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="add" group-by="true()">
+            <group in-json="ARRAY" key="adds">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="profile/modify/alter/remove"
+                 priority="7"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <assembly as-type="empty" name="remove" gi="remove">
+         <xsl:apply-templates select="@by-name"/>
+         <xsl:apply-templates select="@by-class"/>
+         <xsl:apply-templates select="@by-id"/>
+         <xsl:apply-templates select="@by-item-name"/>
+         <xsl:apply-templates select="@by-ns"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="profile/modify/alter/add"
+                 priority="7"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <assembly name="add" gi="add">
+         <xsl:apply-templates select="@position"/>
+         <xsl:apply-templates select="@by-id"/>
+         <xsl:apply-templates select="title"/>
+         <xsl:for-each-group select="param" group-by="true()">
+            <group in-json="ARRAY" key="params">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="prop" group-by="true()">
+            <group in-json="ARRAY" key="props">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="link" group-by="true()">
+            <group in-json="ARRAY" key="links">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="part" group-by="true()">
+            <group in-json="ARRAY" key="parts">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+      </assembly>
    </xsl:template>
    <xsl:template match="profile/modify/alter/add/title"
                  priority="8"

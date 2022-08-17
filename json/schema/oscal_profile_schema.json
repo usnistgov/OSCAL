@@ -225,7 +225,105 @@
           { "type" : "array",
             "minItems" : 1,
             "items" : 
-            { "$ref" : "#assembly_oscal-profile_alter" } } },
+            { "title" : "Alteration",
+              "description" : "An Alter element specifies changes to be made to an included control when a profile is resolved.",
+              "type" : "object",
+              "properties" : 
+              { "control-id" : 
+                { "title" : "Control Identifier Reference",
+                  "description" : "A human-oriented identifier reference to a control with a corresponding id value. When referencing an externally defined control, the Control Identifier Reference must be used in the context of the external / imported OSCAL instance (e.g., uri-reference).",
+                  "$ref" : "#/definitions/TokenDatatype" },
+                "removes" : 
+                { "type" : "array",
+                  "minItems" : 1,
+                  "items" : 
+                  { "title" : "Removal",
+                    "description" : "Specifies objects to be removed from a control based on specific aspects of the object that must all match.",
+                    "type" : "object",
+                    "properties" : 
+                    { "by-name" : 
+                      { "title" : "Reference by (assigned) name",
+                        "description" : "Identify items to remove by matching their assigned name",
+                        "$ref" : "#/definitions/TokenDatatype" },
+                      "by-class" : 
+                      { "title" : "Reference by class",
+                        "description" : "Identify items to remove by matching their class.",
+                        "$ref" : "#/definitions/TokenDatatype" },
+                      "by-id" : 
+                      { "title" : "Reference by ID",
+                        "description" : "Identify items to remove indicated by their id.",
+                        "$ref" : "#/definitions/TokenDatatype" },
+                      "by-item-name" : 
+                      { "title" : "Item Name Reference",
+                        "description" : "Identify items to remove by the name of the item's information element name, e.g. title or prop",
+                        "allOf" : 
+                        [ 
+                          { "$ref" : "#/definitions/TokenDatatype" },
+                          
+                          { "enum" : 
+                            [ "param",
+                              "prop",
+                              "link",
+                              "part",
+                              "mapping",
+                              "map" ] } ] },
+                      "by-ns" : 
+                      { "title" : "Item Namespace Reference",
+                        "description" : "Identify items to remove by the item's ns, which is the namespace associated with a part, or prop.",
+                        "$ref" : "#/definitions/TokenDatatype" } },
+                    "additionalProperties" : false } },
+                "adds" : 
+                { "type" : "array",
+                  "minItems" : 1,
+                  "items" : 
+                  { "title" : "Addition",
+                    "description" : "Specifies contents to be added into controls, in resolution",
+                    "type" : "object",
+                    "properties" : 
+                    { "position" : 
+                      { "title" : "Position",
+                        "description" : "Where to add the new content with respect to the targeted element (beside it or inside it)",
+                        "allOf" : 
+                        [ 
+                          { "$ref" : "#/definitions/TokenDatatype" },
+                          
+                          { "enum" : 
+                            [ "before",
+                              "after",
+                              "starting",
+                              "ending" ] } ] },
+                      "by-id" : 
+                      { "title" : "Reference by ID",
+                        "description" : "Target location of the addition.",
+                        "$ref" : "#/definitions/TokenDatatype" },
+                      "title" : 
+                      { "title" : "Title Change",
+                        "description" : "A name given to the control, which may be used by a tool for display and navigation.",
+                        "type" : "string" },
+                      "params" : 
+                      { "type" : "array",
+                        "minItems" : 1,
+                        "items" : 
+                        { "$ref" : "#assembly_oscal-catalog-common_parameter" } },
+                      "props" : 
+                      { "type" : "array",
+                        "minItems" : 1,
+                        "items" : 
+                        { "$ref" : "#assembly_oscal-metadata_property" } },
+                      "links" : 
+                      { "type" : "array",
+                        "minItems" : 1,
+                        "items" : 
+                        { "$ref" : "#assembly_oscal-metadata_link" } },
+                      "parts" : 
+                      { "type" : "array",
+                        "minItems" : 1,
+                        "items" : 
+                        { "$ref" : "#assembly_oscal-catalog-common_part" } } },
+                    "additionalProperties" : false } } },
+              "required" : 
+              [ "control-id" ],
+              "additionalProperties" : false } } },
         "additionalProperties" : false },
       "oscal-profile-oscal-profile:insert-controls" : 
       { "title" : "Select controls",
@@ -293,107 +391,6 @@
                   "description" : "A glob expression matching the IDs of one or more controls to be selected.",
                   "$ref" : "#/definitions/StringDatatype" } },
               "additionalProperties" : false } } },
-        "additionalProperties" : false },
-      "oscal-profile-oscal-profile:alter" : 
-      { "title" : "Alteration",
-        "description" : "An Alter element specifies changes to be made to an included control when a profile is resolved.",
-        "$id" : "#assembly_oscal-profile_alter",
-        "type" : "object",
-        "properties" : 
-        { "control-id" : 
-          { "title" : "Control Identifier Reference",
-            "description" : "A human-oriented identifier reference to a control with a corresponding id value. When referencing an externally defined control, the Control Identifier Reference must be used in the context of the external / imported OSCAL instance (e.g., uri-reference).",
-            "$ref" : "#/definitions/TokenDatatype" },
-          "removes" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#assembly_oscal-profile_remove" } },
-          "adds" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#assembly_oscal-profile_add" } } },
-        "required" : 
-        [ "control-id" ],
-        "additionalProperties" : false },
-      "oscal-profile-oscal-profile:remove" : 
-      { "title" : "Removal",
-        "description" : "Specifies objects to be removed from a control based on specific aspects of the object that must all match.",
-        "$id" : "#assembly_oscal-profile_remove",
-        "type" : "object",
-        "properties" : 
-        { "by-name" : 
-          { "title" : "Reference by (assigned) name",
-            "description" : "Identify items to remove by matching their assigned name",
-            "$ref" : "#/definitions/TokenDatatype" },
-          "by-class" : 
-          { "title" : "Reference by class",
-            "description" : "Identify items to remove by matching their class.",
-            "$ref" : "#/definitions/TokenDatatype" },
-          "by-id" : 
-          { "title" : "Reference by ID",
-            "description" : "Identify items to remove indicated by their id.",
-            "$ref" : "#/definitions/TokenDatatype" },
-          "by-item-name" : 
-          { "title" : "Item Name Reference",
-            "description" : "Identify items to remove by the name of the item's information element name, e.g. title or prop",
-            "$ref" : "#/definitions/TokenDatatype" },
-          "by-ns" : 
-          { "title" : "Item Namespace Reference",
-            "description" : "Identify items to remove by the item's ns, which is the namespace associated with a part, or prop.",
-            "$ref" : "#/definitions/TokenDatatype" },
-          "remarks" : 
-          { "$ref" : "#field_oscal-metadata_remarks" } },
-        "additionalProperties" : false },
-      "oscal-profile-oscal-profile:add" : 
-      { "title" : "Addition",
-        "description" : "Specifies contents to be added into controls, in resolution",
-        "$id" : "#assembly_oscal-profile_add",
-        "type" : "object",
-        "properties" : 
-        { "position" : 
-          { "title" : "Position",
-            "description" : "Where to add the new content with respect to the targeted element (beside it or inside it)",
-            "allOf" : 
-            [ 
-              { "$ref" : "#/definitions/TokenDatatype" },
-              
-              { "enum" : 
-                [ "before",
-                  "after",
-                  "starting",
-                  "ending" ] } ] },
-          "by-id" : 
-          { "title" : "Reference by ID",
-            "description" : "Target location of the addition.",
-            "$ref" : "#/definitions/TokenDatatype" },
-          "title" : 
-          { "title" : "Title Change",
-            "description" : "A name given to the control, which may be used by a tool for display and navigation.",
-            "type" : "string" },
-          "params" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#assembly_oscal-catalog-common_parameter" } },
-          "props" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#assembly_oscal-metadata_property" } },
-          "links" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#assembly_oscal-metadata_link" } },
-          "parts" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#assembly_oscal-catalog-common_part" } },
-          "remarks" : 
-          { "$ref" : "#field_oscal-metadata_remarks" } },
         "additionalProperties" : false },
       "oscal-profile-oscal-metadata:metadata" : 
       { "title" : "Publication metadata",
