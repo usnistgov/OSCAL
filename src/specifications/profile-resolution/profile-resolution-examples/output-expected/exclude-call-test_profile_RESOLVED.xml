@@ -18,9 +18,12 @@
    </control>
    <control id="a3">
       <title>Control A3</title>
+      <param id="a3_prm1">
+         <label>A3 Parameter 1</label>
+      </param>
       <prop name="label" value="third"/>
       <part name="statement" id="a3-stmt">
-         <p>A3 aaaaa aaaaaaaaaa</p>
+         <p>A3 aaaaa <insert type="param" id-ref="a3_prm1"/> aaaaaaaaaa</p>
       </part>
    </control>
    <control id="b1">
