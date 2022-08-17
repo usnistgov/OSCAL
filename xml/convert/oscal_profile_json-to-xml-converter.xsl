@@ -339,41 +339,6 @@
          <xsl:apply-templates select="*[@key='alters']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:array[@key='alters']/j:map">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="alter" -->
-      <assembly name="alter" gi="alter">
-         <xsl:apply-templates select="*[@key='control-id']"/>
-         <xsl:apply-templates select="*[@key='removes']"/>
-         <xsl:apply-templates select="*[@key='adds']"/>
-      </assembly>
-   </xsl:template>
-   <xsl:template match="j:array[@key='removes']/j:map">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="remove" -->
-      <assembly name="remove" gi="remove">
-         <xsl:apply-templates select="*[@key='by-name']"/>
-         <xsl:apply-templates select="*[@key='by-class']"/>
-         <xsl:apply-templates select="*[@key='by-id']"/>
-         <xsl:apply-templates select="*[@key='by-item-name']"/>
-         <xsl:apply-templates select="*[@key='by-ns']"/>
-         <xsl:apply-templates select="*[@key='remarks']"/>
-      </assembly>
-   </xsl:template>
-   <xsl:template match="j:array[@key='adds']/j:map">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="add" -->
-      <assembly name="add" gi="add">
-         <xsl:apply-templates select="*[@key='position']"/>
-         <xsl:apply-templates select="*[@key='by-id']"/>
-         <xsl:apply-templates select="*[@key='title']"/>
-         <xsl:apply-templates select="*[@key='params']"/>
-         <xsl:apply-templates select="*[@key='props']"/>
-         <xsl:apply-templates select="*[@key='links']"/>
-         <xsl:apply-templates select="*[@key='parts']"/>
-         <xsl:apply-templates select="*[@key='remarks']"/>
-      </assembly>
-   </xsl:template>
    <xsl:template match="j:map[@key='back-matter']">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="back-matter" -->
@@ -901,7 +866,7 @@
    <xsl:template match="j:map[@key='profile']/j:map[@key='modify']/j:array[@key='set-parameters']/j:map/j:string[@key='depends-on']"
                  mode="keep-value-property"
                  priority="6"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:array[@key='alters']/j:map/j:string[@key='control-id']"><!-- XML match="alter/@control-id" -->
+   <xsl:template match="j:map[@key='profile']/j:map[@key='modify']/j:array[@key='alters']/j:map/j:string[@key='control-id']"><!-- XML match="profile/modify/alter/@control-id" -->
       <flag in-json="string"
             as-type="token"
             name="control-id"
@@ -910,11 +875,11 @@
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="j:array[@key='alters']/j:map/j:string[@key='control-id']"
+   <xsl:template match="j:map[@key='profile']/j:map[@key='modify']/j:array[@key='alters']/j:map/j:string[@key='control-id']"
                  mode="keep-value-property"
                  priority="6"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:array[@key='removes']/j:map/j:string[@key='by-name']"
-                 priority="1"><!-- XML match="remove/@by-name" -->
+   <xsl:template match="j:map[@key='profile']/j:map[@key='modify']/j:array[@key='alters']/j:map/j:array[@key='removes']/j:map/j:string[@key='by-name']"
+                 priority="8"><!-- XML match="profile/modify/alter/remove/@by-name" -->
       <flag in-json="string"
             as-type="token"
             name="by-name"
@@ -923,11 +888,11 @@
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="j:array[@key='removes']/j:map/j:string[@key='by-name']"
+   <xsl:template match="j:map[@key='profile']/j:map[@key='modify']/j:array[@key='alters']/j:map/j:array[@key='removes']/j:map/j:string[@key='by-name']"
                  mode="keep-value-property"
                  priority="8"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:array[@key='removes']/j:map/j:string[@key='by-class']"
-                 priority="1"><!-- XML match="remove/@by-class" -->
+   <xsl:template match="j:map[@key='profile']/j:map[@key='modify']/j:array[@key='alters']/j:map/j:array[@key='removes']/j:map/j:string[@key='by-class']"
+                 priority="8"><!-- XML match="profile/modify/alter/remove/@by-class" -->
       <flag in-json="string"
             as-type="token"
             name="by-class"
@@ -936,11 +901,11 @@
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="j:array[@key='removes']/j:map/j:string[@key='by-class']"
+   <xsl:template match="j:map[@key='profile']/j:map[@key='modify']/j:array[@key='alters']/j:map/j:array[@key='removes']/j:map/j:string[@key='by-class']"
                  mode="keep-value-property"
                  priority="8"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:array[@key='removes']/j:map/j:string[@key='by-id']"
-                 priority="1"><!-- XML match="remove/@by-id" -->
+   <xsl:template match="j:map[@key='profile']/j:map[@key='modify']/j:array[@key='alters']/j:map/j:array[@key='removes']/j:map/j:string[@key='by-id']"
+                 priority="8"><!-- XML match="profile/modify/alter/remove/@by-id" -->
       <flag in-json="string"
             as-type="token"
             name="by-id"
@@ -949,11 +914,11 @@
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="j:array[@key='removes']/j:map/j:string[@key='by-id']"
+   <xsl:template match="j:map[@key='profile']/j:map[@key='modify']/j:array[@key='alters']/j:map/j:array[@key='removes']/j:map/j:string[@key='by-id']"
                  mode="keep-value-property"
                  priority="8"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:array[@key='removes']/j:map/j:string[@key='by-item-name']"
-                 priority="1"><!-- XML match="remove/@by-item-name" -->
+   <xsl:template match="j:map[@key='profile']/j:map[@key='modify']/j:array[@key='alters']/j:map/j:array[@key='removes']/j:map/j:string[@key='by-item-name']"
+                 priority="8"><!-- XML match="profile/modify/alter/remove/@by-item-name" -->
       <flag in-json="string"
             as-type="token"
             name="by-item-name"
@@ -962,11 +927,11 @@
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="j:array[@key='removes']/j:map/j:string[@key='by-item-name']"
+   <xsl:template match="j:map[@key='profile']/j:map[@key='modify']/j:array[@key='alters']/j:map/j:array[@key='removes']/j:map/j:string[@key='by-item-name']"
                  mode="keep-value-property"
                  priority="8"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:array[@key='removes']/j:map/j:string[@key='by-ns']"
-                 priority="1"><!-- XML match="remove/@by-ns" -->
+   <xsl:template match="j:map[@key='profile']/j:map[@key='modify']/j:array[@key='alters']/j:map/j:array[@key='removes']/j:map/j:string[@key='by-ns']"
+                 priority="8"><!-- XML match="profile/modify/alter/remove/@by-ns" -->
       <flag in-json="string"
             as-type="token"
             name="by-ns"
@@ -975,23 +940,25 @@
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="j:array[@key='removes']/j:map/j:string[@key='by-ns']"
+   <xsl:template match="j:map[@key='profile']/j:map[@key='modify']/j:array[@key='alters']/j:map/j:array[@key='removes']/j:map/j:string[@key='by-ns']"
                  mode="keep-value-property"
                  priority="8"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:array[@key='adds']/j:map/j:string[@key='position']"
-                 priority="1"><!-- XML match="add/@position" -->
+   <xsl:template match="j:map[@key='profile']/j:map[@key='modify']/j:array[@key='alters']/j:map/j:array[@key='adds']/j:map/j:string[@key='position']"
+                 priority="8"><!-- XML match="profile/modify/alter/add/@position" -->
       <flag in-json="string"
             as-type="token"
             name="position"
             key="position"
+            default="ending"
             gi="position">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="j:array[@key='adds']/j:map/j:string[@key='position']"
+   <xsl:template match="j:map[@key='profile']/j:map[@key='modify']/j:array[@key='alters']/j:map/j:array[@key='adds']/j:map/j:string[@key='position']"
                  mode="keep-value-property"
                  priority="8"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:array[@key='adds']/j:map/j:string[@key='by-id']" priority="1"><!-- XML match="add/@by-id" -->
+   <xsl:template match="j:map[@key='profile']/j:map[@key='modify']/j:array[@key='alters']/j:map/j:array[@key='adds']/j:map/j:string[@key='by-id']"
+                 priority="8"><!-- XML match="profile/modify/alter/add/@by-id" -->
       <flag in-json="string"
             as-type="token"
             name="by-id"
@@ -1000,7 +967,7 @@
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="j:array[@key='adds']/j:map/j:string[@key='by-id']"
+   <xsl:template match="j:map[@key='profile']/j:map[@key='modify']/j:array[@key='alters']/j:map/j:array[@key='adds']/j:map/j:string[@key='by-id']"
                  mode="keep-value-property"
                  priority="8"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:map[@key='profile']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:string[@key='uuid']"
@@ -2768,6 +2735,42 @@
       <value as-type="markup-line" in-json="string">
          <xsl:value-of select="."/>
       </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='profile']/j:map[@key='modify']/j:array[@key='alters']/j:map"
+                 priority="5">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="profile/modify/alter" -->
+      <assembly name="alter" gi="alter">
+         <xsl:apply-templates select="*[@key='control-id']"/>
+         <xsl:apply-templates select="*[@key='removes']"/>
+         <xsl:apply-templates select="*[@key='adds']"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="j:map[@key='profile']/j:map[@key='modify']/j:array[@key='alters']/j:map/j:array[@key='removes']/j:map"
+                 priority="7">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="profile/modify/alter/remove" -->
+      <assembly as-type="empty" name="remove" gi="remove">
+         <xsl:apply-templates select="*[@key='by-name']"/>
+         <xsl:apply-templates select="*[@key='by-class']"/>
+         <xsl:apply-templates select="*[@key='by-id']"/>
+         <xsl:apply-templates select="*[@key='by-item-name']"/>
+         <xsl:apply-templates select="*[@key='by-ns']"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="j:map[@key='profile']/j:map[@key='modify']/j:array[@key='alters']/j:map/j:array[@key='adds']/j:map"
+                 priority="7">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="profile/modify/alter/add" -->
+      <assembly name="add" gi="add">
+         <xsl:apply-templates select="*[@key='position']"/>
+         <xsl:apply-templates select="*[@key='by-id']"/>
+         <xsl:apply-templates select="*[@key='title']"/>
+         <xsl:apply-templates select="*[@key='params']"/>
+         <xsl:apply-templates select="*[@key='props']"/>
+         <xsl:apply-templates select="*[@key='links']"/>
+         <xsl:apply-templates select="*[@key='parts']"/>
+      </assembly>
    </xsl:template>
    <xsl:template match="j:map[@key='profile']/j:map[@key='modify']/j:array[@key='alters']/j:map/j:array[@key='adds']/j:map/j:string[@key='title']"
                  priority="8">
