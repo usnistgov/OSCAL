@@ -23,241 +23,6 @@ The following is a reference for the JSON object definitions derived from the [m
          along with a series of operations over them. The topmost element in the OSCAL profile
          XML schema is <code>profile</code>.</p>
    </details>
-   <div class="model-entry definition define-assembly">
-      <div class="definition-header">
-         <h1 id="/assembly/oscal-profile/add" class="toc1 name">add</h1>
-         <p class="type">assembly<br class="br" /> </p>
-         <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-profile/add">Switch to XML</a></div>
-         <p class="formal-name">Addition</p>
-      </div>
-      <div class="body">
-         <p class="description"><span class="usa-tag">description</span> Specifies contents to be added into controls, in resolution</p>
-         <div class="remarks-group usa-prose">
-            <details open="open">
-               <summary class="subhead">Remarks</summary>
-               <div class="remarks">
-                  <p>When no <code>id-ref</code> is given, the addition is inserted into the control targeted by the alteration at
-                     the start or end as indicated by <code>position</code>. Only <code>position</code> values of "starting" or "ending" are permitted when there is no <code>id-ref</code>.</p>
-                  <p><code>id-ref</code>, when given, should indicate, by its ID, an element inside the control to serve as
-                     the anchor point for the addition. In this case, <code>position</code> value may be any of the permitted values.</p>
-               </div>
-            </details>
-         </div>
-         <details>
-            <summary>Constraint (1)</summary>
-            
-            
-            <div class="constraint">
-               <p><span class="usa-tag">allowed values</span> for <code class="path">prop/@name</code></p>
-               <p>The value <b>may be locally defined</b>, or one of the following:</p>
-               <ul>
-                  
-                  <li><strong>label</strong>: A human-readable label for the parent context, which may be rendered in place of
-                     the actual identifier for some use cases.</li>
-                  
-                  <li><strong>sort-id</strong>: An alternative identifier, whose value is easily sortable among other such values
-                     in the document.</li>
-                  
-                  <li><strong>alt-identifier</strong>: An alternate or aliased identifier for the parent context.</li>
-                  
-                  </ul>
-            </div>
-            </details>
-         <details open="open">
-            <summary>Properties (8)</summary>
-            <div class="model assembly-model">
-               <div class="model-entry definition define-flag">
-                  <div class="instance-header">
-                     <h2 id="/assembly/oscal-profile/add/position" class="toc2 name">position</h2>
-                     <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                     <p class="occurrence">[0 or 1]</p>
-                     <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-profile/add/position">Switch to XML</a></div>
-                     <p class="formal-name">Position</p>
-                  </div>
-                  <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> Where to add the new content with respect to the targeted element (beside it or inside
-                        it)</p>
-                     <details>
-                        <summary>Constraint (1)</summary>
-                        
-                        <div class="constraint">
-                           <p><span class="usa-tag">allowed values</span></p>
-                           <p>The value <b>must</b> be one of the following:</p>
-                           <ul>
-                              
-                              <li><strong>before</strong>: Preceding the id-ref target</li>
-                              
-                              <li><strong>after</strong>: Following the id-ref target</li>
-                              
-                              <li><strong>starting</strong>: Inside the control or id-ref target, at the start</li>
-                              
-                              <li><strong>ending</strong>: Inside the control or id-ref target, at the end</li>
-                              </ul>
-                        </div>
-                        </details>
-                  </div>
-               </div>
-               <div class="model-entry definition define-flag">
-                  <div class="instance-header">
-                     <h2 id="/assembly/oscal-profile/add/by-id" class="toc2 name">by-id</h2>
-                     <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                     <p class="occurrence">[0 or 1]</p>
-                     <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-profile/add/by-id">Switch to XML</a></div>
-                     <p class="formal-name">Reference by ID</p>
-                  </div>
-                  <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> Target location of the addition.</p>
-                  </div>
-               </div>
-               <div class="model-entry definition define-field">
-                  <div class="instance-header">
-                     <h2 id="/assembly/oscal-profile/add/title" class="toc2 name">title</h2>
-                     <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
-                     <p class="occurrence">[0 or 1]</p>
-                     <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-profile/add/title">Switch to XML</a></div>
-                     <p class="formal-name">Title Change</p>
-                  </div>
-                  <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> A name given to the control, which may be used by a tool for display and navigation.</p>
-                  </div>
-               </div>
-               <div class="model-entry definition assembly">
-                  <div class="instance-header">
-                     <h2 id="/assembly/oscal-profile/add/params" class="toc2 name">parameter</h2>
-                     <p class="type">assembly<br class="br" /> </p>
-                     <p class="occurrence">[0 to ∞]</p>
-                     <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-profile/add/param">Switch to XML</a></div>
-                     <p class="formal-name">Parameter</p>
-                  </div>
-                  <div class="body">
-                     <p><span class="usa-tag">group as</span> <code class="name">params</code></p>
-                     <p><span class="usa-tag">use name</span> <code class="name">param</code></p>
-                     <div class="remarks-group usa-prose">
-                        <details open="open">
-                           <summary class="subhead">Remarks</summary>
-                           <div class="remarks">
-                              <p>In a catalog, a parameter is typically used as a placeholder for the future assignment
-                                 of a parameter value, although the OSCAL model allows for the direct assignment of
-                                 a value if desired by the control author. The <code>value</code> may be optionally used to specify one or more values. If no value is provided, then
-                                 it is expected that the value will be provided at the Profile or Implementation layer.</p>
-                              <p>A parameter can include a variety of metadata options that support the future solicitation
-                                 of one or more values. A <code>label</code> provides a textual placeholder that can be used in a tool to solicit parameter value
-                                 input, or to display in catalog documentation. The <code>desc</code> provides a short description of what the parameter is used for, which can be used
-                                 in tooling to help a user understand how to use the parameter. A <code>constraint</code> can be used to provide criteria for the allowed values. A <code>guideline</code> provides a recommendation for the use of a parameter.</p>
-                           </div>
-                        </details>
-                     </div>
-                     <p class="definition-link"><a href="#/assembly/oscal-catalog-common/parameter">See definition</a></p>
-                  </div>
-               </div>
-               <div class="model-entry definition assembly">
-                  <div class="instance-header">
-                     <h2 id="/assembly/oscal-profile/add/props" class="toc2 name">property</h2>
-                     <p class="type">assembly<br class="br" /> </p>
-                     <p class="occurrence">[0 to ∞]</p>
-                     <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-profile/add/prop">Switch to XML</a></div>
-                     <p class="formal-name">Property</p>
-                  </div>
-                  <div class="body">
-                     <p><span class="usa-tag">group as</span> <code class="name">props</code></p>
-                     <p><span class="usa-tag">use name</span> <code class="name">prop</code></p>
-                     <div class="remarks-group usa-prose">
-                        <details open="open">
-                           <summary class="subhead">Remarks</summary>
-                           <div class="remarks">
-                              <p>Properties permit the deployment and management of arbitrary controlled values, within
-                                 OSCAL objects. A property can be included for any purpose useful to an application
-                                 or implementation. Typically, properties will be used to sort, filter, select, order,
-                                 and arrange OSCAL content objects, to relate OSCAL objects to one another, or to associate
-                                 an OSCAL object to class hierarchies, taxonomies, or external authorities. Thus, the
-                                 lexical composition of properties may be constrained by external processes to ensure
-                                 consistency.</p>
-                              <p>Property allows for associated remarks that describe why the specific property value
-                                 was applied to the containing object, or the significance of the value in the context
-                                 of the containing object.</p>
-                           </div>
-                        </details>
-                     </div>
-                     <p class="definition-link"><a href="#/assembly/oscal-metadata/property">See definition</a></p>
-                  </div>
-               </div>
-               <div class="model-entry definition assembly">
-                  <div class="instance-header">
-                     <h2 id="/assembly/oscal-profile/add/links" class="toc2 name">link</h2>
-                     <p class="type">assembly<br class="br" /> </p>
-                     <p class="occurrence">[0 to ∞]</p>
-                     <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-profile/add/link">Switch to XML</a></div>
-                     <p class="formal-name">Link</p>
-                  </div>
-                  <div class="body">
-                     <p><span class="usa-tag">group as</span> <code class="name">links</code></p>
-                     <div class="remarks-group usa-prose">
-                        <details open="open">
-                           <summary class="subhead">Remarks</summary>
-                           <div class="remarks">
-                              <p>To provide a cryptographic hash for a remote target resource, a local reference to
-                                 a back matter <code>resource</code> is needed. The resource allows one or more hash values to be provided using the <code>rlink/hash</code> object.</p>
-                              <p>The OSCAL <code>link</code> is a roughly based on the HTML <a href="https://www.w3.org/TR/html401/struct/links.html#edef-LINK">link element</a>. </p>
-                           </div>
-                        </details>
-                     </div>
-                     <p class="definition-link"><a href="#/assembly/oscal-metadata/link">See definition</a></p>
-                  </div>
-               </div>
-               <div class="model-entry definition assembly">
-                  <div class="instance-header">
-                     <h2 id="/assembly/oscal-profile/add/parts" class="toc2 name">part</h2>
-                     <p class="type">assembly<br class="br" /> </p>
-                     <p class="occurrence">[0 to ∞]</p>
-                     <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-profile/add/part">Switch to XML</a></div>
-                     <p class="formal-name">Part</p>
-                  </div>
-                  <div class="body">
-                     <p><span class="usa-tag">group as</span> <code class="name">parts</code></p>
-                     <div class="remarks-group usa-prose">
-                        <details open="open">
-                           <summary class="subhead">Remarks</summary>
-                           <div class="remarks">
-                              <p>A <code>part</code> provides for logical partitioning of prose, and can be thought of as a grouping structure
-                                 (e.g., section). A <code>part</code> can have child parts allowing for arbitrary nesting of prose content (e.g., statement
-                                 hierarchy). A <code>part</code> can contain <code>prop</code> objects that allow for enriching prose text with structured name/value information.</p>
-                              <p>A <code>part</code> can be assigned an optional <code>id</code>, which allows for internal and external references to the textual concept contained
-                                 within a <code>part</code>. A <code>id</code> provides a means for an OSCAL profile, or a higher layer OSCAL model to reference
-                                 a specific part within a <code>catalog</code>. For example, an <code>id</code> can be used to reference or to make modifications to a control statement in a profile.</p>
-                              <p>Use of <code>part</code> and <code>prop</code> provides for a wide degree of extensibility within the OSCAL catalog model. The optional
-                                 <code>ns</code> provides a means to qualify a part's <code>name</code>, allowing for organization-specific vocabularies to be defined with clear semantics.
-                                 Any organization that extends OSCAL in this way should consistently assign a <code>ns</code> value that represents the organization, making a given namespace qualified <code>name</code> unique to that organization. This allows the combination of <code>ns</code> and <code>name</code> to always be unique and unambiguous, even when mixed with extensions from other organizations.
-                                 Each organization is responsible for governance of their own extensions, and is strongly
-                                 encouraged to publish their extensions as standards to their user community. If no
-                                 <code>ns</code> is provided, the name is expected to be in the "OSCAL" namespace.</p>
-                              <p>To ensure a <code>ns</code> is unique to an organization and naming conflicts are avoided, a URI containing a
-                                 DNS or other globally defined organization name should be used. For example, if FedRAMP
-                                 and DoD both extend OSCAL, FedRAMP will use the <code>ns</code> <code>http://fedramp.gov/ns/oscal</code>, while DoD might use the <code>ns</code> <code>https://defense.gov</code> for any organization specific <code>name</code>.</p>
-                              <p>Tools that process OSCAL content are not required to interpret unrecognized OSCAL
-                                 extensions; however, OSCAL compliant tools should not modify or remove unrecognized
-                                 extensions, unless there is a compelling reason to do so, such as data sensitivity.</p>
-                           </div>
-                        </details>
-                     </div>
-                     <p class="definition-link"><a href="#/assembly/oscal-catalog-common/part">See definition</a></p>
-                  </div>
-               </div>
-               <div class="model-entry definition field">
-                  <div class="instance-header">
-                     <h2 id="/assembly/oscal-profile/add/remarks" class="toc2 name">remarks</h2>
-                     <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                     <p class="occurrence">[0 or 1]</p>
-                     <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-profile/add/remarks">Switch to XML</a></div>
-                     <p class="formal-name">Remarks</p>
-                  </div>
-                  <div class="body">
-                     <p class="definition-link"><a href="#/field/oscal-metadata/remarks">See definition</a></p>
-                  </div>
-               </div>
-            </div>
-         </details>
-      </div>
-   </div>
    <div class="model-entry definition define-field">
       <div class="definition-header">
          <h1 id="/field/oscal-metadata/addr-line" class="toc1 name">addr-line</h1>
@@ -360,96 +125,6 @@ The following is a reference for the JSON object definitions derived from the [m
                            <p><span class="usa-tag">matches</span>: a target (value) must match the regular expression '[A-Z]{2}'.</p>
                         </div>
                         </details>
-                  </div>
-               </div>
-            </div>
-         </details>
-      </div>
-   </div>
-   <div class="model-entry definition define-assembly">
-      <div class="definition-header">
-         <h1 id="/assembly/oscal-profile/alter" class="toc1 name">alter</h1>
-         <p class="type">assembly<br class="br" /> </p>
-         <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-profile/alter">Switch to XML</a></div>
-         <p class="formal-name">Alteration</p>
-      </div>
-      <div class="body">
-         <p class="description"><span class="usa-tag">description</span> An Alter element specifies changes to be made to an included control when a profile
-            is resolved.</p>
-         <div class="remarks-group usa-prose">
-            <details open="open">
-               <summary class="subhead">Remarks</summary>
-               <div class="remarks">
-                  <p>Use <code>@control-id</code> to indicate the scope of alteration.</p>
-                  <p>It is an error for two <code>alter</code> elements to apply to the same control. In practice, multiple alterations can be applied
-                     (together), but it creates confusion.</p>
-                  <p>At present, no provision is made for altering many controls at once (for example,
-                     to systematically remove properties or add global properties); extending this element
-                     to match multiple control IDs could provide for this.</p>
-               </div>
-            </details>
-         </div>
-         <details open="open">
-            <summary>Properties (3)</summary>
-            <div class="model assembly-model">
-               <div class="model-entry definition flag">
-                  <div class="instance-header">
-                     <h2 id="/assembly/oscal-profile/alter/control-id" class="toc2 name">control-id</h2>
-                     <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                     <p class="occurrence">[0 or 1]</p>
-                     <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-profile/alter/control-id">Switch to XML</a></div>
-                     <p class="formal-name">Control Identifier Reference</p>
-                  </div>
-                  <div class="body">
-                     <p class="definition-link"><a href="#/flag/oscal-catalog-common/control-id">See definition</a></p>
-                  </div>
-               </div>
-               <div class="model-entry definition assembly">
-                  <div class="instance-header">
-                     <h2 id="/assembly/oscal-profile/alter/removes" class="toc2 name">remove</h2>
-                     <p class="type">assembly<br class="br" /> </p>
-                     <p class="occurrence">[0 to ∞]</p>
-                     <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-profile/alter/remove">Switch to XML</a></div>
-                     <p class="formal-name">Removal</p>
-                  </div>
-                  <div class="body">
-                     <p><span class="usa-tag">group as</span> <code class="name">removes</code></p>
-                     <div class="remarks-group usa-prose">
-                        <details open="open">
-                           <summary class="subhead">Remarks</summary>
-                           <div class="remarks">
-                              <p>Use <code>name-ref</code>, <code>class-ref</code>, <code>id-ref</code> or <code>generic-identifier</code> to indicate class tokens or ID reference, or the formal name, of the component to
-                                 be removed or erased from a control, when a catalog is resolved. The control affected
-                                 is indicated by the pointer on the removal's parent (containing) <code>alter</code> element.</p>
-                              <p>To change an element, use <code>remove</code> to remove the element, then <code>add</code> to add it back again with changes.</p>
-                           </div>
-                        </details>
-                     </div>
-                     <p class="definition-link"><a href="#/assembly/oscal-profile/remove">See definition</a></p>
-                  </div>
-               </div>
-               <div class="model-entry definition assembly">
-                  <div class="instance-header">
-                     <h2 id="/assembly/oscal-profile/alter/adds" class="toc2 name">add</h2>
-                     <p class="type">assembly<br class="br" /> </p>
-                     <p class="occurrence">[0 to ∞]</p>
-                     <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-profile/alter/add">Switch to XML</a></div>
-                     <p class="formal-name">Addition</p>
-                  </div>
-                  <div class="body">
-                     <p><span class="usa-tag">group as</span> <code class="name">adds</code></p>
-                     <div class="remarks-group usa-prose">
-                        <details open="open">
-                           <summary class="subhead">Remarks</summary>
-                           <div class="remarks">
-                              <p>When no <code>id-ref</code> is given, the addition is inserted into the control targeted by the alteration at
-                                 the start or end as indicated by <code>position</code>. Only <code>position</code> values of "starting" or "ending" are permitted when there is no <code>id-ref</code>.</p>
-                              <p><code>id-ref</code>, when given, should indicate, by its ID, an element inside the control to serve as
-                                 the anchor point for the addition. In this case, <code>position</code> value may be any of the permitted values.</p>
-                           </div>
-                        </details>
-                     </div>
-                     <p class="definition-link"><a href="#/assembly/oscal-profile/add">See definition</a></p>
                   </div>
                </div>
             </div>
@@ -2986,7 +2661,7 @@ The following is a reference for the JSON object definitions derived from the [m
                      </details>
                   </div>
                </div>
-               <div class="model-entry definition assembly">
+               <div class="model-entry definition define-assembly">
                   <div class="instance-header">
                      <h2 id="/assembly/oscal-profile/modify/alters" class="toc2 name">alter</h2>
                      <p class="type">assembly<br class="br" /> </p>
@@ -2995,6 +2670,8 @@ The following is a reference for the JSON object definitions derived from the [m
                      <p class="formal-name">Alteration</p>
                   </div>
                   <div class="body">
+                     <p class="description"><span class="usa-tag">description</span> An Alter element specifies changes to be made to an included control when a profile
+                        is resolved.</p>
                      <p><span class="usa-tag">group as</span> <code class="name">alters</code></p>
                      <div class="remarks-group usa-prose">
                         <details open="open">
@@ -3009,7 +2686,361 @@ The following is a reference for the JSON object definitions derived from the [m
                            </div>
                         </details>
                      </div>
-                     <p class="definition-link"><a href="#/assembly/oscal-profile/alter">See definition</a></p>
+                     <details open="open">
+                        <summary>Properties (3)</summary>
+                        <div class="model assembly-model">
+                           <div class="model-entry definition flag">
+                              <div class="instance-header">
+                                 <h3 id="/assembly/oscal-profile/modify/alters/control-id" class="toc3 name">control-id</h3>
+                                 <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                 <p class="occurrence">[0 or 1]</p>
+                                 <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-profile/modify/alter/control-id">Switch to XML</a></div>
+                                 <p class="formal-name">Control Identifier Reference</p>
+                              </div>
+                              <div class="body">
+                                 <p class="definition-link"><a href="#/flag/oscal-catalog-common/control-id">See definition</a></p>
+                              </div>
+                           </div>
+                           <div class="model-entry definition define-assembly">
+                              <div class="instance-header">
+                                 <h3 id="/assembly/oscal-profile/modify/alters/removes" class="toc3 name">remove</h3>
+                                 <p class="type">assembly<br class="br" /> </p>
+                                 <p class="occurrence">[0 to ∞]</p>
+                                 <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-profile/modify/alter/remove">Switch to XML</a></div>
+                                 <p class="formal-name">Removal</p>
+                              </div>
+                              <div class="body">
+                                 <p class="description"><span class="usa-tag">description</span> Specifies objects to be removed from a control based on specific aspects of the object
+                                    that must all match.</p>
+                                 <p><span class="usa-tag">group as</span> <code class="name">removes</code></p>
+                                 <div class="remarks-group usa-prose">
+                                    <details open="open">
+                                       <summary class="subhead">Remarks</summary>
+                                       <div class="remarks">
+                                          <p>Use <code>by-name</code>, <code>by-class</code>, <code>by-id</code> or <code>by-item-name</code> to indicate class tokens or ID reference, or the formal name, of the component to
+                                             be removed or erased from a control, when a catalog is resolved. The control affected
+                                             is indicated by the pointer on the removal's parent (containing) <code>alter</code> element.</p>
+                                          <p>To change an element, use <code>remove</code> to remove the element, then <code>add</code> to add it back again with changes.</p>
+                                       </div>
+                                    </details>
+                                 </div>
+                                 <details open="open">
+                                    <summary>Properties (5)</summary>
+                                    <div class="model assembly-model">
+                                       <div class="model-entry definition define-flag">
+                                          <div class="instance-header">
+                                             <h4 id="/assembly/oscal-profile/modify/alters/removes/by-name" class="toc4 name">by-name</h4>
+                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-profile/modify/alter/remove/by-name">Switch to XML</a></div>
+                                             <p class="formal-name">Reference by (assigned) name</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">description</span> Identify items to remove by matching their assigned name</p>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition define-flag">
+                                          <div class="instance-header">
+                                             <h4 id="/assembly/oscal-profile/modify/alters/removes/by-class" class="toc4 name">by-class</h4>
+                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-profile/modify/alter/remove/by-class">Switch to XML</a></div>
+                                             <p class="formal-name">Reference by class</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">description</span> Identify items to remove by matching their <code>class</code>.</p>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition define-flag">
+                                          <div class="instance-header">
+                                             <h4 id="/assembly/oscal-profile/modify/alters/removes/by-id" class="toc4 name">by-id</h4>
+                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-profile/modify/alter/remove/by-id">Switch to XML</a></div>
+                                             <p class="formal-name">Reference by ID</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">description</span> Identify items to remove indicated by their <code>id</code>.</p>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition define-flag">
+                                          <div class="instance-header">
+                                             <h4 id="/assembly/oscal-profile/modify/alters/removes/by-item-name" class="toc4 name">by-item-name</h4>
+                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-profile/modify/alter/remove/by-item-name">Switch to XML</a></div>
+                                             <p class="formal-name">Item Name Reference</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">description</span> Identify items to remove by the name of the item's information element name, e.g.
+                                                <code>title</code> or <code>prop</code></p>
+                                             <details>
+                                                <summary>Constraint (1)</summary>
+                                                
+                                                <div class="constraint">
+                                                   <p><span class="usa-tag">allowed values</span></p>
+                                                   <p>The value <b>must</b> be one of the following:</p>
+                                                   <ul>
+                                                      
+                                                      <li><strong>param</strong>: A descendant parameter and all of its descendants.</li>
+                                                      
+                                                      <li><strong>prop</strong>: A descendant property and all of its descendants.</li>
+                                                      
+                                                      <li><strong>link</strong>: A descendant link and all of its descendants.</li>
+                                                      
+                                                      <li><strong>part</strong>: A descendant parameter and all of its descendants.</li>
+                                                      
+                                                      <li><strong>mapping</strong>: A descendant mapping and all of its descendants.</li>
+                                                      
+                                                      <li><strong>map</strong>: A descendant mapping entry (map) and all of its descendants.</li>
+                                                      </ul>
+                                                </div>
+                                                </details>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition define-flag">
+                                          <div class="instance-header">
+                                             <h4 id="/assembly/oscal-profile/modify/alters/removes/by-ns" class="toc4 name">by-ns</h4>
+                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-profile/modify/alter/remove/by-ns">Switch to XML</a></div>
+                                             <p class="formal-name">Item Namespace Reference</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">description</span> Identify items to remove by the item's <code>ns</code>, which is the namespace associated with a <code>part</code>, or <code>prop</code>.</p>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </details>
+                              </div>
+                           </div>
+                           <div class="model-entry definition define-assembly">
+                              <div class="instance-header">
+                                 <h3 id="/assembly/oscal-profile/modify/alters/adds" class="toc3 name">add</h3>
+                                 <p class="type">assembly<br class="br" /> </p>
+                                 <p class="occurrence">[0 to ∞]</p>
+                                 <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-profile/modify/alter/add">Switch to XML</a></div>
+                                 <p class="formal-name">Addition</p>
+                              </div>
+                              <div class="body">
+                                 <p class="description"><span class="usa-tag">description</span> Specifies contents to be added into controls, in resolution</p>
+                                 <p><span class="usa-tag">group as</span> <code class="name">adds</code></p>
+                                 <div class="remarks-group usa-prose">
+                                    <details open="open">
+                                       <summary class="subhead">Remarks</summary>
+                                       <div class="remarks">
+                                          <p>When no <code>by-id</code> is given, the addition is inserted into the control targeted by the alteration at
+                                             the start or end as indicated by <code>position</code>. Only <code>position</code> values of "starting" or "ending" are permitted when there is no <code>by-id</code>.</p>
+                                          <p><code>by-id</code>, when given, should indicate, by its ID, an element inside the control to serve as
+                                             the anchor point for the addition. In this case, <code>position</code> value may be any of the permitted values.</p>
+                                       </div>
+                                    </details>
+                                 </div>
+                                 <details>
+                                    <summary>Constraint (1)</summary>
+                                    
+                                    
+                                    <div class="constraint">
+                                       <p><span class="usa-tag">allowed values</span> for <code class="path">prop/@name</code></p>
+                                       <p>The value <b>may be locally defined</b>, or one of the following:</p>
+                                       <ul>
+                                          
+                                          <li><strong>label</strong>: A human-readable label for the parent context, which may be rendered in place of
+                                             the actual identifier for some use cases.</li>
+                                          
+                                          <li><strong>sort-id</strong>: An alternative identifier, whose value is easily sortable among other such values
+                                             in the document.</li>
+                                          
+                                          <li><strong>alt-identifier</strong>: An alternate or aliased identifier for the parent context.</li>
+                                          
+                                          </ul>
+                                    </div>
+                                    </details>
+                                 <details open="open">
+                                    <summary>Properties (7)</summary>
+                                    <div class="model assembly-model">
+                                       <div class="model-entry definition define-flag">
+                                          <div class="instance-header">
+                                             <h4 id="/assembly/oscal-profile/modify/alters/adds/position" class="toc4 name">position</h4>
+                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-profile/modify/alter/add/position">Switch to XML</a></div>
+                                             <p class="formal-name">Position</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">description</span> Where to add the new content with respect to the targeted element (beside it or inside
+                                                it)</p>
+                                             <details>
+                                                <summary>Constraint (1)</summary>
+                                                
+                                                <div class="constraint">
+                                                   <p><span class="usa-tag">allowed values</span></p>
+                                                   <p>The value <b>must</b> be one of the following:</p>
+                                                   <ul>
+                                                      
+                                                      <li><strong>before</strong>: Preceding the by-id target</li>
+                                                      
+                                                      <li><strong>after</strong>: Following the by-id target</li>
+                                                      
+                                                      <li><strong>starting</strong>: Inside the control or by-id target, at the start</li>
+                                                      
+                                                      <li><strong>ending</strong>: Inside the control or by-id target, at the end</li>
+                                                      </ul>
+                                                </div>
+                                                </details>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition define-flag">
+                                          <div class="instance-header">
+                                             <h4 id="/assembly/oscal-profile/modify/alters/adds/by-id" class="toc4 name">by-id</h4>
+                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-profile/modify/alter/add/by-id">Switch to XML</a></div>
+                                             <p class="formal-name">Reference by ID</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">description</span> Target location of the addition.</p>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition define-field">
+                                          <div class="instance-header">
+                                             <h4 id="/assembly/oscal-profile/modify/alters/adds/title" class="toc4 name">title</h4>
+                                             <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-profile/modify/alter/add/title">Switch to XML</a></div>
+                                             <p class="formal-name">Title Change</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">description</span> A name given to the control, which may be used by a tool for display and navigation.</p>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h4 id="/assembly/oscal-profile/modify/alters/adds/params" class="toc4 name">parameter</h4>
+                                             <p class="type">assembly<br class="br" /> </p>
+                                             <p class="occurrence">[0 to ∞]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-profile/modify/alter/add/param">Switch to XML</a></div>
+                                             <p class="formal-name">Parameter</p>
+                                          </div>
+                                          <div class="body">
+                                             <p><span class="usa-tag">group as</span> <code class="name">params</code></p>
+                                             <p><span class="usa-tag">use name</span> <code class="name">param</code></p>
+                                             <div class="remarks-group usa-prose">
+                                                <details open="open">
+                                                   <summary class="subhead">Remarks</summary>
+                                                   <div class="remarks">
+                                                      <p>In a catalog, a parameter is typically used as a placeholder for the future assignment
+                                                         of a parameter value, although the OSCAL model allows for the direct assignment of
+                                                         a value if desired by the control author. The <code>value</code> may be optionally used to specify one or more values. If no value is provided, then
+                                                         it is expected that the value will be provided at the Profile or Implementation layer.</p>
+                                                      <p>A parameter can include a variety of metadata options that support the future solicitation
+                                                         of one or more values. A <code>label</code> provides a textual placeholder that can be used in a tool to solicit parameter value
+                                                         input, or to display in catalog documentation. The <code>desc</code> provides a short description of what the parameter is used for, which can be used
+                                                         in tooling to help a user understand how to use the parameter. A <code>constraint</code> can be used to provide criteria for the allowed values. A <code>guideline</code> provides a recommendation for the use of a parameter.</p>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                             <p class="definition-link"><a href="#/assembly/oscal-catalog-common/parameter">See definition</a></p>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h4 id="/assembly/oscal-profile/modify/alters/adds/props" class="toc4 name">property</h4>
+                                             <p class="type">assembly<br class="br" /> </p>
+                                             <p class="occurrence">[0 to ∞]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-profile/modify/alter/add/prop">Switch to XML</a></div>
+                                             <p class="formal-name">Property</p>
+                                          </div>
+                                          <div class="body">
+                                             <p><span class="usa-tag">group as</span> <code class="name">props</code></p>
+                                             <p><span class="usa-tag">use name</span> <code class="name">prop</code></p>
+                                             <div class="remarks-group usa-prose">
+                                                <details open="open">
+                                                   <summary class="subhead">Remarks</summary>
+                                                   <div class="remarks">
+                                                      <p>Properties permit the deployment and management of arbitrary controlled values, within
+                                                         OSCAL objects. A property can be included for any purpose useful to an application
+                                                         or implementation. Typically, properties will be used to sort, filter, select, order,
+                                                         and arrange OSCAL content objects, to relate OSCAL objects to one another, or to associate
+                                                         an OSCAL object to class hierarchies, taxonomies, or external authorities. Thus, the
+                                                         lexical composition of properties may be constrained by external processes to ensure
+                                                         consistency.</p>
+                                                      <p>Property allows for associated remarks that describe why the specific property value
+                                                         was applied to the containing object, or the significance of the value in the context
+                                                         of the containing object.</p>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                             <p class="definition-link"><a href="#/assembly/oscal-metadata/property">See definition</a></p>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h4 id="/assembly/oscal-profile/modify/alters/adds/links" class="toc4 name">link</h4>
+                                             <p class="type">assembly<br class="br" /> </p>
+                                             <p class="occurrence">[0 to ∞]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-profile/modify/alter/add/link">Switch to XML</a></div>
+                                             <p class="formal-name">Link</p>
+                                          </div>
+                                          <div class="body">
+                                             <p><span class="usa-tag">group as</span> <code class="name">links</code></p>
+                                             <div class="remarks-group usa-prose">
+                                                <details open="open">
+                                                   <summary class="subhead">Remarks</summary>
+                                                   <div class="remarks">
+                                                      <p>To provide a cryptographic hash for a remote target resource, a local reference to
+                                                         a back matter <code>resource</code> is needed. The resource allows one or more hash values to be provided using the <code>rlink/hash</code> object.</p>
+                                                      <p>The OSCAL <code>link</code> is a roughly based on the HTML <a href="https://www.w3.org/TR/html401/struct/links.html#edef-LINK">link element</a>. </p>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                             <p class="definition-link"><a href="#/assembly/oscal-metadata/link">See definition</a></p>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h4 id="/assembly/oscal-profile/modify/alters/adds/parts" class="toc4 name">part</h4>
+                                             <p class="type">assembly<br class="br" /> </p>
+                                             <p class="occurrence">[0 to ∞]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-profile/modify/alter/add/part">Switch to XML</a></div>
+                                             <p class="formal-name">Part</p>
+                                          </div>
+                                          <div class="body">
+                                             <p><span class="usa-tag">group as</span> <code class="name">parts</code></p>
+                                             <div class="remarks-group usa-prose">
+                                                <details open="open">
+                                                   <summary class="subhead">Remarks</summary>
+                                                   <div class="remarks">
+                                                      <p>A <code>part</code> provides for logical partitioning of prose, and can be thought of as a grouping structure
+                                                         (e.g., section). A <code>part</code> can have child parts allowing for arbitrary nesting of prose content (e.g., statement
+                                                         hierarchy). A <code>part</code> can contain <code>prop</code> objects that allow for enriching prose text with structured name/value information.</p>
+                                                      <p>A <code>part</code> can be assigned an optional <code>id</code>, which allows for internal and external references to the textual concept contained
+                                                         within a <code>part</code>. A <code>id</code> provides a means for an OSCAL profile, or a higher layer OSCAL model to reference
+                                                         a specific part within a <code>catalog</code>. For example, an <code>id</code> can be used to reference or to make modifications to a control statement in a profile.</p>
+                                                      <p>Use of <code>part</code> and <code>prop</code> provides for a wide degree of extensibility within the OSCAL catalog model. The optional
+                                                         <code>ns</code> provides a means to qualify a part's <code>name</code>, allowing for organization-specific vocabularies to be defined with clear semantics.
+                                                         Any organization that extends OSCAL in this way should consistently assign a <code>ns</code> value that represents the organization, making a given namespace qualified <code>name</code> unique to that organization. This allows the combination of <code>ns</code> and <code>name</code> to always be unique and unambiguous, even when mixed with extensions from other organizations.
+                                                         Each organization is responsible for governance of their own extensions, and is strongly
+                                                         encouraged to publish their extensions as standards to their user community. If no
+                                                         <code>ns</code> is provided, the name is expected to be in the "OSCAL" namespace.</p>
+                                                      <p>To ensure a <code>ns</code> is unique to an organization and naming conflicts are avoided, a URI containing a
+                                                         DNS or other globally defined organization name should be used. For example, if FedRAMP
+                                                         and DoD both extend OSCAL, FedRAMP will use the <code>ns</code> <code>http://fedramp.gov/ns/oscal</code>, while DoD might use the <code>ns</code> <code>https://defense.gov</code> for any organization specific <code>name</code>.</p>
+                                                      <p>Tools that process OSCAL content are not required to interpret unrecognized OSCAL
+                                                         extensions; however, OSCAL compliant tools should not modify or remove unrecognized
+                                                         extensions, unless there is a compelling reason to do so, such as data sensitivity.</p>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                             <p class="definition-link"><a href="#/assembly/oscal-catalog-common/part">See definition</a></p>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </details>
+                              </div>
+                           </div>
+                        </div>
+                     </details>
                   </div>
                </div>
             </div>
@@ -4441,107 +4472,6 @@ The following is a reference for the JSON object definitions derived from the [m
       </div>
       <div class="body">
          <p class="description"><span class="usa-tag">description</span> Additional commentary on the containing object.</p>
-      </div>
-   </div>
-   <div class="model-entry definition define-assembly">
-      <div class="definition-header">
-         <h1 id="/assembly/oscal-profile/remove" class="toc1 name">remove</h1>
-         <p class="type">assembly<br class="br" /> </p>
-         <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-profile/remove">Switch to XML</a></div>
-         <p class="formal-name">Removal</p>
-      </div>
-      <div class="body">
-         <p class="description"><span class="usa-tag">description</span> Specifies objects to be removed from a control based on specific aspects of the object
-            that must all match.</p>
-         <div class="remarks-group usa-prose">
-            <details open="open">
-               <summary class="subhead">Remarks</summary>
-               <div class="remarks">
-                  <p>Use <code>name-ref</code>, <code>class-ref</code>, <code>id-ref</code> or <code>generic-identifier</code> to indicate class tokens or ID reference, or the formal name, of the component to
-                     be removed or erased from a control, when a catalog is resolved. The control affected
-                     is indicated by the pointer on the removal's parent (containing) <code>alter</code> element.</p>
-                  <p>To change an element, use <code>remove</code> to remove the element, then <code>add</code> to add it back again with changes.</p>
-               </div>
-            </details>
-         </div>
-         <details open="open">
-            <summary>Properties (6)</summary>
-            <div class="model assembly-model">
-               <div class="model-entry definition define-flag">
-                  <div class="instance-header">
-                     <h2 id="/assembly/oscal-profile/remove/by-name" class="toc2 name">by-name</h2>
-                     <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                     <p class="occurrence">[0 or 1]</p>
-                     <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-profile/remove/by-name">Switch to XML</a></div>
-                     <p class="formal-name">Reference by (assigned) name</p>
-                  </div>
-                  <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> Identify items to remove by matching their assigned name</p>
-                  </div>
-               </div>
-               <div class="model-entry definition define-flag">
-                  <div class="instance-header">
-                     <h2 id="/assembly/oscal-profile/remove/by-class" class="toc2 name">by-class</h2>
-                     <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                     <p class="occurrence">[0 or 1]</p>
-                     <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-profile/remove/by-class">Switch to XML</a></div>
-                     <p class="formal-name">Reference by class</p>
-                  </div>
-                  <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> Identify items to remove by matching their <code>class</code>.</p>
-                  </div>
-               </div>
-               <div class="model-entry definition define-flag">
-                  <div class="instance-header">
-                     <h2 id="/assembly/oscal-profile/remove/by-id" class="toc2 name">by-id</h2>
-                     <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                     <p class="occurrence">[0 or 1]</p>
-                     <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-profile/remove/by-id">Switch to XML</a></div>
-                     <p class="formal-name">Reference by ID</p>
-                  </div>
-                  <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> Identify items to remove indicated by their <code>id</code>.</p>
-                  </div>
-               </div>
-               <div class="model-entry definition define-flag">
-                  <div class="instance-header">
-                     <h2 id="/assembly/oscal-profile/remove/by-item-name" class="toc2 name">by-item-name</h2>
-                     <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                     <p class="occurrence">[0 or 1]</p>
-                     <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-profile/remove/by-item-name">Switch to XML</a></div>
-                     <p class="formal-name">Item Name Reference</p>
-                  </div>
-                  <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> Identify items to remove by the name of the item's information element name, e.g.
-                        <code>title</code> or <code>prop</code></p>
-                  </div>
-               </div>
-               <div class="model-entry definition define-flag">
-                  <div class="instance-header">
-                     <h2 id="/assembly/oscal-profile/remove/by-ns" class="toc2 name">by-ns</h2>
-                     <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                     <p class="occurrence">[0 or 1]</p>
-                     <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-profile/remove/by-ns">Switch to XML</a></div>
-                     <p class="formal-name">Item Namespace Reference</p>
-                  </div>
-                  <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> Identify items to remove by the item's <code>ns</code>, which is the namespace associated with a <code>part</code>, or <code>prop</code>.</p>
-                  </div>
-               </div>
-               <div class="model-entry definition field">
-                  <div class="instance-header">
-                     <h2 id="/assembly/oscal-profile/remove/remarks" class="toc2 name">remarks</h2>
-                     <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                     <p class="occurrence">[0 or 1]</p>
-                     <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-profile/remove/remarks">Switch to XML</a></div>
-                     <p class="formal-name">Remarks</p>
-                  </div>
-                  <div class="body">
-                     <p class="definition-link"><a href="#/field/oscal-metadata/remarks">See definition</a></p>
-                  </div>
-               </div>
-            </div>
-         </details>
       </div>
    </div>
    <div class="model-entry definition define-assembly">

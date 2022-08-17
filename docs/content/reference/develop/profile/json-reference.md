@@ -6338,7 +6338,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                         </div>
                         <div class="array-header">
                            <p class="array-member">(array member)</p>
-                           <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-profile/modify/alters">(global definition)</a></p>
+                           <p class="type">object<br /></p>
                            <p class="occurrence">[1 to ∞]</p>
                            <p class="formal-name">Alteration</p>
                         </div>
@@ -6381,7 +6381,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                  </div>
                                  <div class="array-header">
                                     <p class="array-member">(array member)</p>
-                                    <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-profile/alter/removes">(global definition)</a></p>
+                                    <p class="type"><a href="/reference/datatypes/#empty">empty</a></p>
                                     <p class="occurrence">[1 to ∞]</p>
                                     <p class="formal-name">Removal</p>
                                  </div>
@@ -6392,7 +6392,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                        <details open="open">
                                           <summary class="subhead">Remarks</summary>
                                           <div class="remarks">
-                                             <p>Use <code>name-ref</code>, <code>class-ref</code>, <code>id-ref</code> or <code>generic-identifier</code> to indicate class tokens or ID reference, or the formal name, of the component to
+                                             <p>Use <code>by-name</code>, <code>by-class</code>, <code>by-id</code> or <code>by-item-name</code> to indicate class tokens or ID reference, or the formal name, of the component to
                                                 be removed or erased from a control, when a catalog is resolved. The control affected
                                                 is indicated by the pointer on the removal's parent (containing) <code>alter</code> element.</p>
                                              <p>To change an element, use <code>remove</code> to remove the element, then <code>add</code> to add it back again with changes.</p>
@@ -6400,7 +6400,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                        </details>
                                     </div>
                                     <details class="properties" open="open">
-                                       <summary>Properties (6)</summary>
+                                       <summary>Properties (5)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/profile/modify/alters/removes/by-name" class="toc5 name">by-name</h5>
@@ -6448,6 +6448,27 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> Identify items to remove by the name of the item's information element name, e.g.
                                                 <code>title</code> or <code>prop</code></p>
+                                             <details class="constraints" open="open">
+                                                <summary>Constraint (1)</summary>
+                                                <div class="constraint">
+                                                   <p><span class="usa-tag">allowed values</span></p>
+                                                   <p>The value <b>must</b> be one of the following:</p>
+                                                   <ul>
+                                                      
+                                                      <li><strong>param</strong>: A descendant parameter and all of its descendants.</li>
+                                                      
+                                                      <li><strong>prop</strong>: A descendant property and all of its descendants.</li>
+                                                      
+                                                      <li><strong>link</strong>: A descendant link and all of its descendants.</li>
+                                                      
+                                                      <li><strong>part</strong>: A descendant parameter and all of its descendants.</li>
+                                                      
+                                                      <li><strong>mapping</strong>: A descendant mapping and all of its descendants.</li>
+                                                      
+                                                      <li><strong>map</strong>: A descendant mapping entry (map) and all of its descendants.</li>
+                                                      </ul>
+                                                </div>
+                                             </details>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -6462,18 +6483,6 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                              <p class="description"><span class="usa-tag">Description</span> Identify items to remove by the item's <code>ns</code>, which is the namespace associated with a <code>part</code>, or <code>prop</code>.</p>
                                           </div>
                                        </div>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h5 id="/profile/modify/alters/removes/remarks" class="toc5 name">remarks</h5>
-                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                             <p class="occurrence">[0 or 1]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/modify/alter/remove/remarks">Switch to XML</a></div>
-                                             <p class="formal-name">Remarks</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
-                                          </div>
-                                       </div>
                                     </details>
                                  </div>
                               </div>
@@ -6486,7 +6495,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                  </div>
                                  <div class="array-header">
                                     <p class="array-member">(array member)</p>
-                                    <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-profile/alter/adds">(global definition)</a></p>
+                                    <p class="type">object<br /></p>
                                     <p class="occurrence">[1 to ∞]</p>
                                     <p class="formal-name">Addition</p>
                                  </div>
@@ -6496,9 +6505,9 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                        <details open="open">
                                           <summary class="subhead">Remarks</summary>
                                           <div class="remarks">
-                                             <p>When no <code>id-ref</code> is given, the addition is inserted into the control targeted by the alteration at
-                                                the start or end as indicated by <code>position</code>. Only <code>position</code> values of "starting" or "ending" are permitted when there is no <code>id-ref</code>.</p>
-                                             <p><code>id-ref</code>, when given, should indicate, by its ID, an element inside the control to serve as
+                                             <p>When no <code>by-id</code> is given, the addition is inserted into the control targeted by the alteration at
+                                                the start or end as indicated by <code>position</code>. Only <code>position</code> values of "starting" or "ending" are permitted when there is no <code>by-id</code>.</p>
+                                             <p><code>by-id</code>, when given, should indicate, by its ID, an element inside the control to serve as
                                                 the anchor point for the addition. In this case, <code>position</code> value may be any of the permitted values.</p>
                                           </div>
                                        </details>
@@ -6522,7 +6531,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                        </div>
                                     </details>
                                     <details class="properties" open="open">
-                                       <summary>Properties (8)</summary>
+                                       <summary>Properties (7)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/profile/modify/alters/adds/position" class="toc5 name">position</h5>
@@ -6541,13 +6550,13 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                    <p>The value <b>must</b> be one of the following:</p>
                                                    <ul>
                                                       
-                                                      <li><strong>before</strong>: Preceding the id-ref target</li>
+                                                      <li><strong>before</strong>: Preceding the by-id target</li>
                                                       
-                                                      <li><strong>after</strong>: Following the id-ref target</li>
+                                                      <li><strong>after</strong>: Following the by-id target</li>
                                                       
-                                                      <li><strong>starting</strong>: Inside the control or id-ref target, at the start</li>
+                                                      <li><strong>starting</strong>: Inside the control or by-id target, at the start</li>
                                                       
-                                                      <li><strong>ending</strong>: Inside the control or id-ref target, at the end</li>
+                                                      <li><strong>ending</strong>: Inside the control or by-id target, at the end</li>
                                                       </ul>
                                                 </div>
                                              </details>
@@ -6586,7 +6595,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                           </div>
                                           <div class="array-header">
                                              <p class="array-member">(array member)</p>
-                                             <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-profile/add/params">(global definition)</a></p>
+                                             <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-profile/modify/alters/adds/params">(global definition)</a></p>
                                              <p class="occurrence">[1 to ∞]</p>
                                              <p class="formal-name">Parameter</p>
                                           </div>
@@ -7233,7 +7242,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                           </div>
                                           <div class="array-header">
                                              <p class="array-member">(array member)</p>
-                                             <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-profile/add/props">(global definition)</a></p>
+                                             <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-profile/modify/alters/adds/props">(global definition)</a></p>
                                              <p class="occurrence">[1 to ∞]</p>
                                              <p class="formal-name">Property</p>
                                           </div>
@@ -7383,7 +7392,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                           </div>
                                           <div class="array-header">
                                              <p class="array-member">(array member)</p>
-                                             <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-profile/add/links">(global definition)</a></p>
+                                             <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-profile/modify/alters/adds/links">(global definition)</a></p>
                                              <p class="occurrence">[1 to ∞]</p>
                                              <p class="formal-name">Link</p>
                                           </div>
@@ -7515,7 +7524,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                           </div>
                                           <div class="array-header">
                                              <p class="array-member">(array member)</p>
-                                             <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-profile/add/parts">(global definition)</a></p>
+                                             <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-profile/modify/alters/adds/parts">(global definition)</a></p>
                                              <p class="occurrence">[1 to ∞]</p>
                                              <p class="formal-name">Part</p>
                                           </div>
@@ -8010,18 +8019,6 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                    </div>
                                                 </div>
                                              </details>
-                                          </div>
-                                       </div>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h5 id="/profile/modify/alters/adds/remarks" class="toc5 name">remarks</h5>
-                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                             <p class="occurrence">[0 or 1]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/modify/alter/add/remarks">Switch to XML</a></div>
-                                             <p class="formal-name">Remarks</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
                                           </div>
                                        </div>
                                     </details>
