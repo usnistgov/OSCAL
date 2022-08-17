@@ -307,7 +307,7 @@
                                     <formal-name>Addition</formal-name>
                                     <description>Specifies contents to be added into controls, in resolution</description>
                                     <group-as name="adds" in-json="ARRAY"/>
-                                    <define-flag name="position" as-type="token" default="">
+                                    <define-flag name="position" as-type="token" default="ending">
                                           <formal-name>Position</formal-name>
                                           <description>Where to add the new content with respect to the targeted element (beside it or inside it)</description>
                                           <constraint>
