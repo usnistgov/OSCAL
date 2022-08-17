@@ -1055,9 +1055,9 @@ intermediate:
           <p><req level="must" id="req-modify-set-param-objects1">For the following objects inside the source: class, depends-on, label, usage, values, select; the object MUST be copied into the target from the source, first removing any existing objects with the same name.</req></p>
         </li>
         <li>
-          <p><req level="must" id="req-modify-set-param-objects2">For the following objects inside the source: props, <src>links</src>, <src>constraints</src>, <src>guidelines</src>; the contents of the object MUST be added to the contents of the target object of the same name. If no such object exists in the target, it is created.</req></p>
+          <p><req level="must" id="req-modify-set-param-objects2">For the following objects inside the source: <src>prop</src>, <src>link</src>, <src>constraint</src>, <src>guideline</src>; the contents of the object MUST be added to the contents of the target object of the same name. If no such object exists in the target, it is created.</req></p>
         </li>
-        <li> <p><req level="must" id="req-modify-set-param-objects3">For the following objects inside the source: <src>prop</src>, <src>link</src>; the object MUST be copied into the target from the source, first removing any existing objects with the same distinctive ID. (<xref rid="id"></xref>).</req></p></li>
+        <li> <p><req level="must" id="req-modify-set-param-objects3">For the following objects inside the source: <src>prop</src>, <src>link</src>; the object MUST be copied into the target from the source, first removing any existing objects with the same distinctive ID. (<xref rid="id"/>).</req></p></li>
         <li>
           <p><req level="must" id="req-modify-param-multi">If more than one
             <src>set-parameter</src> directive is given for the same parameter, all MUST BE applied, in the sequence given in the profile.</req>

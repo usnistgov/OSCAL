@@ -13,7 +13,12 @@
       <title>Group A of C</title>
       <control id="a1">
          <title>Control A1</title>
+         <param id="new_prm">
+            <prop name="annotated" ns="https://fedramp.gov/ns/oscal" value="new-param"/>
+            <label>A1 Parameter New</label>
+       	 </param>
          <param id="a1_prm1">
+            <prop name="annotated" ns="https://fedramp.gov/ns/oscal" value="param-prop"/>
             <label>A1 Parameter 1</label>
             <constraint>
                <description>
@@ -22,13 +27,19 @@
             </constraint>
          </param>
          <prop name="CORE" ns="https://fedramp.gov/ns/oscal" value="core"/>
-         <prop name="place" value="first"/>
+         <prop name="label" value="first"/>
          <part name="statement" id="a1-stmt">
             <prop name="conformity"
                   ns="https://fedramp.gov/ns/oscal"
                   value="assessment-objective"/>
             <prop name="method" class="fedramp" value="EXAMINE"/>
-            <p>A1 aaaaa aaaaaaaaaa</p>
+            <p>A1 aaaaa <insert type="param" id-ref="a1_prm1"/> aaaaaaaaaa</p>
+            <part name="statement" id="new-part2">
+	           <p>A1 ccc <insert type="param" id-ref="new_prm"/> ccc</p>
+	        </part>
+         </part>
+         <part name="statement" id="new-part">
+            <p>A1 bbbbb <insert type="param" id-ref="new_prm"/> bbbbb</p>
          </part>
       </control>
       <control id="a3">
@@ -41,9 +52,9 @@
                </description>
             </constraint>
          </param>
-         <prop name="place" value="third"/>
+         <prop name="label" value="third"/>
          <part name="statement" id="a3-stmt">
-            <p>A3 aaaaa aaaaaaaaaa</p>
+            <p>A3 aaaaa <insert type="param" id-ref="a3_prm1"/> aaaaaaaaaa</p>
          </part>
       </control>
    </group>
