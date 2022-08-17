@@ -34,16 +34,35 @@
             </description>
          </constraint>
       </set-parameter>
-      <alter control-id="a1">
+      <alter control-id="a1"><!-- OK control -->
          <add position="starting" by-id="a1">
             <prop name="CORE" ns="https://fedramp.gov/ns/oscal" value="core"/>
          </add>
-         <add position="starting" by-id="a1-stmt">
+         <add position="starting" by-id="a1_prm1"><!-- OK parameter -->
+            <prop name="annotated" ns="https://fedramp.gov/ns/oscal" value="param-prop"/>
+         </add>
+         <add position="before" by-id="a1_prm1"><!-- parameter child -->
+         	<param id="new_prm">
+         	   <prop name="annotated" ns="https://fedramp.gov/ns/oscal" value="new-param"/>
+         	   <label>A1 Parameter New</label>
+         	</param>
+         </add>
+         <add position="starting" by-id="a1-stmt"><!-- part -->
             <prop name="conformity"
                   ns="https://fedramp.gov/ns/oscal"
                   value="assessment-objective"/>
             <prop name="method" class="fedramp" value="EXAMINE"/>
          </add>
+         <add position="after" by-id="a1-stmt"><!-- part child -->
+         	<part name="statement" id="new-part">
+         	   <p>A1 bbbbb <insert type="param" id-ref="new_prm"/> bbbbb</p>
+         	</part>
+         </add>
+         <add position="ending" by-id="a1-stmt"><!-- part child -->
+            <part name="statement" id="new-part2">
+	           <p>A1 ccc <insert type="param" id-ref="new_prm"/> ccc</p>
+	        </part>
+	     </add>
       </alter>
    </modify>
    <back-matter>
