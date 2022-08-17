@@ -362,10 +362,158 @@
                </xs:attribute>
             </xs:complexType>
          </xs:element>
-         <xs:element name="alter"
-                     type="oscal-profile-alter-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
+         <xs:element name="alter" minOccurs="0" maxOccurs="unbounded">
+            <xs:complexType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Alteration</m:formal-name>
+                     <m:description>An Alter element specifies changes to be made to an included control when a profile is resolved.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Alteration</b>: An Alter element specifies changes to be made to an included control when a profile is resolved.</xs:documentation>
+               </xs:annotation>
+               <xs:sequence>
+                  <xs:element name="remove" minOccurs="0" maxOccurs="unbounded">
+                     <xs:complexType>
+                        <xs:annotation>
+                           <xs:appinfo>
+                              <m:formal-name>Removal</m:formal-name>
+                              <m:description>Specifies objects to be removed from a control based on specific aspects of the object that must all match.</m:description>
+                           </xs:appinfo>
+                           <xs:documentation>
+                              <b>Removal</b>: Specifies objects to be removed from a control based on specific aspects of the object that must all match.</xs:documentation>
+                        </xs:annotation>
+                        <xs:attribute name="by-name" type="TokenDatatype">
+                           <xs:annotation>
+                              <xs:appinfo>
+                                 <m:formal-name>Reference by (assigned) name</m:formal-name>
+                                 <m:description>Identify items to remove by matching their assigned name</m:description>
+                              </xs:appinfo>
+                              <xs:documentation>
+                                 <b>Reference by (assigned) name</b>: Identify items to remove by matching their assigned name</xs:documentation>
+                           </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute name="by-class" type="TokenDatatype">
+                           <xs:annotation>
+                              <xs:appinfo>
+                                 <m:formal-name>Reference by class</m:formal-name>
+                                 <m:description>Identify items to remove by matching their <code>class</code>.</m:description>
+                              </xs:appinfo>
+                              <xs:documentation>
+                                 <b>Reference by class</b>: Identify items to remove by matching their class.</xs:documentation>
+                           </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute name="by-id" type="TokenDatatype">
+                           <xs:annotation>
+                              <xs:appinfo>
+                                 <m:formal-name>Reference by ID</m:formal-name>
+                                 <m:description>Identify items to remove indicated by their <code>id</code>.</m:description>
+                              </xs:appinfo>
+                              <xs:documentation>
+                                 <b>Reference by ID</b>: Identify items to remove indicated by their id.</xs:documentation>
+                           </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute name="by-item-name" type="TokenDatatype">
+                           <xs:annotation>
+                              <xs:appinfo>
+                                 <m:formal-name>Item Name Reference</m:formal-name>
+                                 <m:description>Identify items to remove by the name of the item's information element name, e.g. <code>title</code> or <code>prop</code>
+                                 </m:description>
+                              </xs:appinfo>
+                              <xs:documentation>
+                                 <b>Item Name Reference</b>: Identify items to remove by the name of the item's information element name, e.g. title or prop</xs:documentation>
+                           </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute name="by-ns" type="TokenDatatype">
+                           <xs:annotation>
+                              <xs:appinfo>
+                                 <m:formal-name>Item Namespace Reference</m:formal-name>
+                                 <m:description>Identify items to remove by the item's <code>ns</code>, which is the namespace associated with a <code>part</code>, or <code>prop</code>.</m:description>
+                              </xs:appinfo>
+                              <xs:documentation>
+                                 <b>Item Namespace Reference</b>: Identify items to remove by the item's ns, which is the namespace associated with a part, or prop.</xs:documentation>
+                           </xs:annotation>
+                        </xs:attribute>
+                     </xs:complexType>
+                  </xs:element>
+                  <xs:element name="add" minOccurs="0" maxOccurs="unbounded">
+                     <xs:complexType>
+                        <xs:annotation>
+                           <xs:appinfo>
+                              <m:formal-name>Addition</m:formal-name>
+                              <m:description>Specifies contents to be added into controls, in resolution</m:description>
+                           </xs:appinfo>
+                           <xs:documentation>
+                              <b>Addition</b>: Specifies contents to be added into controls, in resolution</xs:documentation>
+                        </xs:annotation>
+                        <xs:sequence>
+                           <xs:element name="title" minOccurs="0" maxOccurs="1">
+                              <xs:complexType mixed="true">
+                                 <xs:annotation>
+                                    <xs:appinfo>
+                                       <m:formal-name>Title Change</m:formal-name>
+                                       <m:description>A name given to the control, which may be used by a tool for display and navigation.</m:description>
+                                    </xs:appinfo>
+                                    <xs:documentation>
+                                       <b>Title Change</b>: A name given to the control, which may be used by a tool for display and navigation.</xs:documentation>
+                                 </xs:annotation>
+                                 <xs:complexContent>
+                                    <xs:extension base="MarkupLineDatatype"/>
+                                 </xs:complexContent>
+                              </xs:complexType>
+                           </xs:element>
+                           <xs:element name="param"
+                                       type="oscal-catalog-common-parameter-ASSEMBLY"
+                                       minOccurs="0"
+                                       maxOccurs="unbounded"/>
+                           <xs:element name="prop"
+                                       type="oscal-metadata-property-ASSEMBLY"
+                                       minOccurs="0"
+                                       maxOccurs="unbounded"/>
+                           <xs:element name="link"
+                                       type="oscal-metadata-link-ASSEMBLY"
+                                       minOccurs="0"
+                                       maxOccurs="unbounded"/>
+                           <xs:element name="part"
+                                       type="oscal-catalog-common-part-ASSEMBLY"
+                                       minOccurs="0"
+                                       maxOccurs="unbounded"/>
+                        </xs:sequence>
+                        <xs:attribute name="position" type="TokenDatatype">
+                           <xs:annotation>
+                              <xs:appinfo>
+                                 <m:formal-name>Position</m:formal-name>
+                                 <m:description>Where to add the new content with respect to the targeted element (beside it or inside it)</m:description>
+                              </xs:appinfo>
+                              <xs:documentation>
+                                 <b>Position</b>: Where to add the new content with respect to the targeted element (beside it or inside it)</xs:documentation>
+                           </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute name="by-id" type="TokenDatatype">
+                           <xs:annotation>
+                              <xs:appinfo>
+                                 <m:formal-name>Reference by ID</m:formal-name>
+                                 <m:description>Target location of the addition.</m:description>
+                              </xs:appinfo>
+                              <xs:documentation>
+                                 <b>Reference by ID</b>: Target location of the addition.</xs:documentation>
+                           </xs:annotation>
+                        </xs:attribute>
+                     </xs:complexType>
+                  </xs:element>
+               </xs:sequence>
+               <xs:attribute name="control-id" use="required" type="TokenDatatype">
+                  <xs:annotation>
+                     <xs:appinfo>
+                        <m:formal-name>Control Identifier Reference</m:formal-name>
+                        <m:description>A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a> identifier reference to a control with a corresponding <code>id</code> value. When referencing an externally defined <code>control</code>, the <code>Control Identifier Reference</code> must be used in the context of the external / imported OSCAL instance (e.g., uri-reference).</m:description>
+                     </xs:appinfo>
+                     <xs:documentation>
+                        <b>Control Identifier Reference</b>: A human-oriented identifier reference to a control with a corresponding id value. When referencing an externally defined control, the Control Identifier Reference must be used in the context of the external / imported OSCAL instance (e.g., uri-reference).</xs:documentation>
+                  </xs:annotation>
+               </xs:attribute>
+            </xs:complexType>
+         </xs:element>
       </xs:sequence>
    </xs:complexType>
    <xs:complexType name="oscal-profile-insert-controls-ASSEMBLY">
@@ -458,188 +606,6 @@
             </xs:appinfo>
             <xs:documentation>
                <b>Include contained controls with control</b>: When a control is included, whether its child (dependent) controls are also included.</xs:documentation>
-         </xs:annotation>
-      </xs:attribute>
-   </xs:complexType>
-   <xs:complexType name="oscal-profile-alter-ASSEMBLY">
-      <xs:annotation>
-         <xs:appinfo>
-            <m:formal-name>Alteration</m:formal-name>
-            <m:description>An Alter element specifies changes to be made to an included control when a profile is resolved.</m:description>
-         </xs:appinfo>
-         <xs:documentation>
-            <b>Alteration</b>: An Alter element specifies changes to be made to an included control when a profile is resolved.</xs:documentation>
-      </xs:annotation>
-      <xs:sequence>
-         <xs:element name="remove"
-                     type="oscal-profile-remove-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
-         <xs:element name="add"
-                     type="oscal-profile-add-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
-      </xs:sequence>
-      <xs:attribute name="control-id" use="required" type="TokenDatatype">
-         <xs:annotation>
-            <xs:appinfo>
-               <m:formal-name>Control Identifier Reference</m:formal-name>
-               <m:description>A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a> identifier reference to a control with a corresponding <code>id</code> value. When referencing an externally defined <code>control</code>, the <code>Control Identifier Reference</code> must be used in the context of the external / imported OSCAL instance (e.g., uri-reference).</m:description>
-            </xs:appinfo>
-            <xs:documentation>
-               <b>Control Identifier Reference</b>: A human-oriented identifier reference to a control with a corresponding id value. When referencing an externally defined control, the Control Identifier Reference must be used in the context of the external / imported OSCAL instance (e.g., uri-reference).</xs:documentation>
-         </xs:annotation>
-      </xs:attribute>
-   </xs:complexType>
-   <xs:complexType name="oscal-profile-remove-ASSEMBLY">
-      <xs:annotation>
-         <xs:appinfo>
-            <m:formal-name>Removal</m:formal-name>
-            <m:description>Specifies objects to be removed from a control based on specific aspects of the object that must all match.</m:description>
-         </xs:appinfo>
-         <xs:documentation>
-            <b>Removal</b>: Specifies objects to be removed from a control based on specific aspects of the object that must all match.</xs:documentation>
-      </xs:annotation>
-      <xs:sequence>
-         <xs:element name="remarks" minOccurs="0" maxOccurs="1">
-            <xs:annotation>
-               <xs:appinfo>
-                  <m:formal-name>Remarks</m:formal-name>
-                  <m:description>Additional commentary on the containing object.</m:description>
-               </xs:appinfo>
-               <xs:documentation>
-                  <b>Remarks</b>: Additional commentary on the containing object.</xs:documentation>
-            </xs:annotation>
-            <xs:complexType>
-               <xs:group ref="blockElementGroup" maxOccurs="unbounded" minOccurs="0"/>
-            </xs:complexType>
-         </xs:element>
-      </xs:sequence>
-      <xs:attribute name="by-name" type="TokenDatatype">
-         <xs:annotation>
-            <xs:appinfo>
-               <m:formal-name>Reference by (assigned) name</m:formal-name>
-               <m:description>Identify items to remove by matching their assigned name</m:description>
-            </xs:appinfo>
-            <xs:documentation>
-               <b>Reference by (assigned) name</b>: Identify items to remove by matching their assigned name</xs:documentation>
-         </xs:annotation>
-      </xs:attribute>
-      <xs:attribute name="by-class" type="TokenDatatype">
-         <xs:annotation>
-            <xs:appinfo>
-               <m:formal-name>Reference by class</m:formal-name>
-               <m:description>Identify items to remove by matching their <code>class</code>.</m:description>
-            </xs:appinfo>
-            <xs:documentation>
-               <b>Reference by class</b>: Identify items to remove by matching their class.</xs:documentation>
-         </xs:annotation>
-      </xs:attribute>
-      <xs:attribute name="by-id" type="TokenDatatype">
-         <xs:annotation>
-            <xs:appinfo>
-               <m:formal-name>Reference by ID</m:formal-name>
-               <m:description>Identify items to remove indicated by their <code>id</code>.</m:description>
-            </xs:appinfo>
-            <xs:documentation>
-               <b>Reference by ID</b>: Identify items to remove indicated by their id.</xs:documentation>
-         </xs:annotation>
-      </xs:attribute>
-      <xs:attribute name="by-item-name" type="TokenDatatype">
-         <xs:annotation>
-            <xs:appinfo>
-               <m:formal-name>Item Name Reference</m:formal-name>
-               <m:description>Identify items to remove by the name of the item's information element name, e.g. <code>title</code> or <code>prop</code>
-               </m:description>
-            </xs:appinfo>
-            <xs:documentation>
-               <b>Item Name Reference</b>: Identify items to remove by the name of the item's information element name, e.g. title or prop</xs:documentation>
-         </xs:annotation>
-      </xs:attribute>
-      <xs:attribute name="by-ns" type="TokenDatatype">
-         <xs:annotation>
-            <xs:appinfo>
-               <m:formal-name>Item Namespace Reference</m:formal-name>
-               <m:description>Identify items to remove by the item's <code>ns</code>, which is the namespace associated with a <code>part</code>, or <code>prop</code>.</m:description>
-            </xs:appinfo>
-            <xs:documentation>
-               <b>Item Namespace Reference</b>: Identify items to remove by the item's ns, which is the namespace associated with a part, or prop.</xs:documentation>
-         </xs:annotation>
-      </xs:attribute>
-   </xs:complexType>
-   <xs:complexType name="oscal-profile-add-ASSEMBLY">
-      <xs:annotation>
-         <xs:appinfo>
-            <m:formal-name>Addition</m:formal-name>
-            <m:description>Specifies contents to be added into controls, in resolution</m:description>
-         </xs:appinfo>
-         <xs:documentation>
-            <b>Addition</b>: Specifies contents to be added into controls, in resolution</xs:documentation>
-      </xs:annotation>
-      <xs:sequence>
-         <xs:element name="title" minOccurs="0" maxOccurs="1">
-            <xs:complexType mixed="true">
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Title Change</m:formal-name>
-                     <m:description>A name given to the control, which may be used by a tool for display and navigation.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Title Change</b>: A name given to the control, which may be used by a tool for display and navigation.</xs:documentation>
-               </xs:annotation>
-               <xs:complexContent>
-                  <xs:extension base="MarkupLineDatatype"/>
-               </xs:complexContent>
-            </xs:complexType>
-         </xs:element>
-         <xs:element name="param"
-                     type="oscal-catalog-common-parameter-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
-         <xs:element name="prop"
-                     type="oscal-metadata-property-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
-         <xs:element name="link"
-                     type="oscal-metadata-link-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
-         <xs:element name="part"
-                     type="oscal-catalog-common-part-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
-         <xs:element name="remarks" minOccurs="0" maxOccurs="1">
-            <xs:annotation>
-               <xs:appinfo>
-                  <m:formal-name>Remarks</m:formal-name>
-                  <m:description>Additional commentary on the containing object.</m:description>
-               </xs:appinfo>
-               <xs:documentation>
-                  <b>Remarks</b>: Additional commentary on the containing object.</xs:documentation>
-            </xs:annotation>
-            <xs:complexType>
-               <xs:group ref="blockElementGroup" maxOccurs="unbounded" minOccurs="0"/>
-            </xs:complexType>
-         </xs:element>
-      </xs:sequence>
-      <xs:attribute name="position" type="TokenDatatype">
-         <xs:annotation>
-            <xs:appinfo>
-               <m:formal-name>Position</m:formal-name>
-               <m:description>Where to add the new content with respect to the targeted element (beside it or inside it)</m:description>
-            </xs:appinfo>
-            <xs:documentation>
-               <b>Position</b>: Where to add the new content with respect to the targeted element (beside it or inside it)</xs:documentation>
-         </xs:annotation>
-      </xs:attribute>
-      <xs:attribute name="by-id" type="TokenDatatype">
-         <xs:annotation>
-            <xs:appinfo>
-               <m:formal-name>Reference by ID</m:formal-name>
-               <m:description>Target location of the addition.</m:description>
-            </xs:appinfo>
-            <xs:documentation>
-               <b>Reference by ID</b>: Target location of the addition.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
