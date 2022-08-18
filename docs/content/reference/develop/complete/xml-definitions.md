@@ -4722,11 +4722,13 @@ The following is a reference for the XML element and attribute types derived fro
             </div>
             
             <div class="constraint">
-               <p><span class="usa-tag">allowed value</span> for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='status']/@value</code></p>
+               <p><span class="usa-tag">allowed values</span> for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='status']/@value</code></p>
                <p>The value <b>must</b> be one of the following:</p>
                <ul>
                   
                   <li><strong>withdrawn</strong>: The control is no longer used.</li>
+                  
+                  <li><strong>Withdrawn</strong>: **(deprecated)*** Use 'withdrawn' instead.</li>
                   </ul>
             </div>
             
