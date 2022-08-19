@@ -12,9 +12,9 @@
       <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
       <json-base-uri>http://csrc.nist.gov/ns/oscal</json-base-uri>
       <remarks>
-            <p>In OSCAL a <a href="https://pages.nist.gov/OSCAL/concepts/layer/control/profile/">profile</a> represents a <a href="https://pages.nist.gov/OSCAL/concepts/terminology/#baseline">baseline</a> of selected <a href="https://pages.nist.gov/OSCAL/concepts/terminology/#control">controls</a> from one or more control catalogs. An OSCAL profile is used in an OSCAL <a href="https://pages.nist.gov/OSCAL/concepts/layer/implementation/ssp/">system security plan</a> (SSP) to determine the baseline of controls that must be implemented by the information system. The effective set of controls is generated through <a href="https://pages.nist.gov/OSCAL/concepts/processing/profile-resolution/">profile resolution</a>.</p>
+            <p>In OSCAL a <a href="https://pages.nist.gov/OSCAL/concepts/layer/control/profile/">profile</a> represents a <a href="https://pages.nist.gov/OSCAL/concepts/terminology/#baseline">baseline</a> of selected <a href="https://pages.nist.gov/OSCAL/concepts/terminology/#control">controls</a> from one or more control catalogs. An OSCAL profile is used in an OSCAL <a href="https://pages.nist.gov/OSCAL/concepts/layer/implementation/ssp/">system security plan</a> (SSP) to determine the baseline of controls that must be implemented by the information system. The effective set of controls is generated through <a href="https://pages.nist.gov/OSCAL/concepts/processing/profile-resolution/">profile resolution</a> process.</p>
             <p>In OSCAL a profile represents a set of selected controls from one or more control catalogs. Such a set of controls can be referenced by an OSCAL system security plan (SSP) to establish a control baseline. This effective set of controls is produced from an OSCAL profile using a deterministic, predictable process called profile resolution.</p>
-            <p>A profile references one or more OSCAL catalogs or profiles to import controls from for control selection and tailoring. A profile can also describe how a resulting catalog is structured. When the profile is resolved, these selections and modifications are processed to produce a resulting OSCAL catalog.</p>
+            <p>A profile references one or more OSCAL catalogs or profiles to import controls for control selection and tailoring. A profile can also describe how a resulting catalog is structured. When the profile is resolved, these selections and modifications are processed to produce a resulting OSCAL catalog.</p>
             <p>OSCAL profiles have uses beyond establishing a baseline, such as documentation generation or as reference tables for validations.</p>
       </remarks>
 
@@ -28,7 +28,12 @@
             <define-flag name="uuid" as-type="uuid" required="yes">
                   <formal-name>Profile Universally Unique Identifier</formal-name>
                   <!-- Identifier Declaration -->
-                  <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this profile elsewhere in <a href="/concepts/identifier-use/#profile-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>profile</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance).This identifier should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same profile across revisions of the document.</description>
+                  <description>Provides a globally unique means to identify a given profile instance.</description>
+                  <prop name="value-type" value="identifier"/>
+                 <prop name="identifier-type" value="machine-oriented"/>
+                 <prop name="identifier-uniqueness" value="global"/>
+                 <prop name="identifier-scope" value="cross-instance"/>
+                 <prop name="identifier-persistence" value="change-on-write"/>
             </define-flag>
             <model>
                   <assembly ref="metadata" min-occurs="1"/>
@@ -41,13 +46,11 @@
             </model>
             <remarks>
                   <p>An OSCAL document that describes a tailoring of controls from one or more catalogs, with possible modification of multiple controls. It provides mechanisms by which controls may be selected (<code>import</code>), merged or (re)structured (<code>merge</code>), and amended (<code>modify</code>). OSCAL profiles may select subsets of controls, set parameter values for them in application, and even adjust the representation of controls as given in and by a catalog. They may also serve as sources for further modification in and by other profiles, that import them.</p>
-                  <p>See the <a href="/concepts/identifier-use/">Concepts - Identifier Use</a> page for additional information regarding this identifier's uniqueness and scope.</p>
             </remarks>
       </define-assembly>
       <define-assembly name="import">
-            <formal-name>Import resource</formal-name>
-            <description>Designates a catalog or profile that defines controls for selection and tailoring by the profile.</description>
-            <define-flag name="href" as-type="uri-reference" required="yes">
+            <formal-name>Import Resource</formal-name>
+            <description>The <code>import</code> designates a referenced source catalog or profile that provides a source of control information for use in creating a new overlay or baseline. This content may             <define-flag name="href" as-type="uri-reference" required="yes">
                   <formal-name>Catalog or Profile Reference</formal-name>
                   <description>A resolvable URL reference to the base catalog or profile that this profile is tailoring.</description>
                   <remarks>
@@ -82,7 +85,6 @@
                   </assembly>
             </model>
             <remarks>
-                  <p>A profile must be based on an existing OSCAL catalog or another OSCAL profile. An <code>import</code> indicates such a source whose controls are to be included (referenced and modified) in a profile. This source will either be a catalog whose controls are given (<q>by value</q>), or a profile with its own control imports.</p>
                   <p>The contents of the <code>import</code> element indicate which controls from the source will be included. Controls from the source catalog or profile may be either selected, using the <code>include-all</code> or <code>include-controls</code> directives, or de-selected (using an <code>exclude-controls</code> directive).</p>
             </remarks>
             <example>
@@ -92,14 +94,14 @@
             </example>
       </define-assembly>
       <define-assembly name="merge">
-            <formal-name>Merge controls</formal-name>
-            <description>Provides directives for how controls are to be organized in the resulting catalog.</description>
+            <formal-name>Merge Controls</formal-name>
+            <description>Provides structuring directives that instruct how controls are organized after profile resolution.</description>
             <model>
                   <define-assembly name="combine">
-                        <formal-name>Combination rule</formal-name>
-                        <description>A Combine element defines how to combine multiple (competing) versions of the same control.</description>
+                        <formal-name>Combination Rule</formal-name>
+                        <description>A Combine element defines how to combine multiple (competing) versions of the same control (e.g., controls with the same ID).</description>
                         <define-flag name="method" as-type="string">
-                              <formal-name>Combination method</formal-name>
+                              <formal-name>Combination Method</formal-name>
                               <description>How clashing controls should be handled</description>
                               <constraint>
                                     <allowed-values>
@@ -193,7 +195,7 @@
             </remarks>
       </define-assembly>
       <define-assembly name="modify">
-            <formal-name>Modify controls</formal-name>
+            <formal-name>Modify Controls</formal-name>
             <description>Set parameters or amend controls in resolution</description>
             <model>
                   <define-assembly name="set-parameter" max-occurs="unbounded">
@@ -214,7 +216,7 @@
                               </remarks>
                         </define-flag>
                         <define-flag name="depends-on" as-type="token" deprecated="1.0.1">
-                              <formal-name>Depends on</formal-name>
+                              <formal-name>Depends On</formal-name>
                               <description>**(deprecated)** Another parameter invoking this one. This construct has been deprecated and should not be used.</description>
                         </define-flag>
                         <model>
@@ -451,11 +453,11 @@
             <formal-name>Removal</formal-name>
             <description>Specifies objects to be removed from a control based on specific aspects of the object that must all match.</description>
             <define-flag name="by-name" as-type="token">
-                  <formal-name>Reference by (assigned) name</formal-name>
+                  <formal-name>Reference by (assigned) Name</formal-name>
                   <description>Identify items to remove by matching their assigned name</description>
             </define-flag>
             <define-flag name="by-class" as-type="token">
-                  <formal-name>Reference by class</formal-name>
+                  <formal-name>Reference by Class</formal-name>
                   <description>Identify items to remove by matching their <code>class</code>.</description>
             </define-flag>
             <define-flag name="by-id" as-type="token">
@@ -526,7 +528,7 @@
       </define-assembly>
 >>>>>>> a8c12d91f (Proposed metaschema docs updates (#50))
       <define-flag as-type="token" name="with-child-controls">
-            <formal-name>Include contained controls with control</formal-name>
+            <formal-name>Include Contained Controls with Control</formal-name>
             <description>When a control is included, whether its child (dependent) controls are also included.</description>
             <constraint>
                   <allowed-values>
