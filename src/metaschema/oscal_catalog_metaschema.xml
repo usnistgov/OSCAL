@@ -239,12 +239,10 @@
                         <enum value="required">The link identifies another control that must be present if this control is present.</enum>
                         <enum value="incorporated-into">The link identifies other control content where this control content is now addressed.</enum>
                         <enum value="moved-to">The containing control definition was moved to the referenced control.</enum>
-                        <remark>
                               <!-- 
                                     TODO: Clarify that link@rel (e.g., where value is related, required, incorporated-into, moved-to) is only intended for control-to-control associations.
                                     Add a corresponding constraint.
                               -->
-                        </remark>
                   </allowed-values>
                   <!-- TODO: add constraint for link/@rel controls (where value is either related, required, incorporated-into, moved-to) to ensure the control exists in current or linked catalog -->
                   <!-- TODO: add expect constraint to check for controls that reference themselves -->
