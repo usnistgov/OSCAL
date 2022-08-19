@@ -239,12 +239,7 @@
                         <enum value="required">The link identifies another control that must be present if this control is present.</enum>
                         <enum value="incorporated-into">The link identifies other control content where this control content is now addressed.</enum>
                         <enum value="moved-to">The containing control definition was moved to the referenced control.</enum>
-                              <!-- 
-                                    TODO: Clarify that link@rel (e.g., where value is related, required, incorporated-into, moved-to) is only intended for control-to-control associations.
-                                    Add a corresponding constraint.
-                              -->
                   </allowed-values>
-                  <!-- TODO: add constraint for link/@rel controls (where value is either related, required, incorporated-into, moved-to) to ensure the control exists in current or linked catalog -->
                   <!-- TODO: add expect constraint to check for controls that reference themselves -->
                   <index-has-key name="catalog-controls" target="link[@rel=('related','required','incorporated-into','moved-to') and starts-with(@href,'#')]">
                         <key-field target="@href" pattern="#(.*)"/>
@@ -278,10 +273,10 @@
                   </allowed-values>
                   
                   <allowed-values target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('assessment','assessment-method')]/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
-                        <enum value="method" deprecated="1.0.1">**(deprecated)** Use 'method' in the 'http://csrc.nist.gov/ns/rmf' namespace. The assessment method to use. This typically appears on parts with the name "assessment".</enum>
+                        <enum value="method" deprecated="1.0.1">**(deprecated)** Use 'method' in the 'http://csrc.nist.gov/ns/rmf' namespace. The assessment method to use. This typically appears on parts with the name "assessment-method".</enum>
                   </allowed-values>
                   <allowed-values target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('assessment','assessment-method')]/prop[has-oscal-namespace('http://csrc.nist.gov/ns/rmf')]/@name">
-                        <enum value="method">The assessment method to use. This typically appears on parts with the name "assessment".</enum>
+                        <enum value="method">The assessment method to use. This typically appears on parts with the name "assessment-method".</enum>
                   </allowed-values>
                   <expect level="WARNING" target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('assessment','assessment-method')]" test="prop[has-oscal-namespace(('http://csrc.nist.gov/ns/oscal','http://csrc.nist.gov/ns/rmf')) and @name='method']"/>
                   <allowed-values target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('assessment','assessment-method')]/prop[has-oscal-namespace(('http://csrc.nist.gov/ns/oscal','http://csrc.nist.gov/ns/rmf')) and @name='method']/@value">

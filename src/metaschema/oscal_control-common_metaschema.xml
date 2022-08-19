@@ -75,18 +75,6 @@
                         <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
             &allowed-values-control-group-property-name;
                         </allowed-values>
-                        <allowed-values target=".[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('assessment','assessment-method')]/prop/@name">
-                                <enum value="method" deprecated="1.0.1">The assessment method to use. This will appear on parts with the name "assessment-method".</enum>
-                        </allowed-values>
-                        <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/rmf')]/@name">
-                                <enum xmlns="https://csrc.nist.gov/ns/rmf" value="method">Type of The Risk Management Framework 800-53A method to be use for assessment. This will appear on parts with the name "assessment-method".</enum>
-                        </allowed-values>
-                        <has-cardinality target=".[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('assessment','assessment-method')]/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal','http://csrc.nist.gov/ns/rmf') and @name='method']" min-occurs="1"/>
-                        <allowed-values target=".[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('assessment','assessment-method')]/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal','http://csrc.nist.gov/ns/rmf') and @name='method']/@value">
-                                <enum value="INTERVIEW">The process of holding discussions with individuals or groups of individuals within an organization to once again, facilitate assessor understanding, achieve clarification, or obtain evidence.</enum>
-                                <enum value="EXAMINE">The process of reviewing, inspecting, observing, studying, or analyzing one or more assessment objects (i.e., specifications, mechanisms, or activities).</enum>
-                                <enum value="TEST">The process of exercising one or more assessment objects (i.e., activities or mechanisms) under specified conditions to compare actual with expected behavior.</enum>
-                        </allowed-values>
                 </constraint>
                 <remarks>
                         <p>A <code>part</code> provides for logical partitioning of prose, and can be thought of as a grouping structure (e.g., section). A <code>part</code> can have child parts allowing for arbitrary nesting of prose content (e.g., statement hierarchy). A <code>part</code> can contain <code>prop</code> objects that allow for enriching prose text with structured name/value information.</p>
