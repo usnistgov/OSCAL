@@ -50,7 +50,8 @@
       </define-assembly>
       <define-assembly name="import">
             <formal-name>Import Resource</formal-name>
-            <description>The <code>import</code> designates a referenced source catalog or profile that provides a source of control information for use in creating a new overlay or baseline. This content may             <define-flag name="href" as-type="uri-reference" required="yes">
+            <description>Designates a referenced source catalog or profile that provides a source of control information for use in creating a new overlay or baseline.</description>
+            <define-flag name="href" as-type="uri-reference" required="yes">
                   <formal-name>Catalog or Profile Reference</formal-name>
                   <description>A resolvable URL reference to the base catalog or profile that this profile is tailoring.</description>
                   <remarks>
@@ -99,10 +100,10 @@
             <model>
                   <define-assembly name="combine">
                         <formal-name>Combination Rule</formal-name>
-                        <description>A Combine element defines how to combine multiple (competing) versions of the same control (e.g., controls with the same ID).</description>
+                        <description>A Combine element defines how to resolve duplicate instances of the same control (e.g., controls with the same ID).</description>
                         <define-flag name="method" as-type="string">
                               <formal-name>Combination Method</formal-name>
-                              <description>How clashing controls should be handled</description>
+                              <description>Declare how clashing controls should be handled</description>
                               <constraint>
                                     <allowed-values>
                                           <enum value="use-first">Use the first definition - the first control with a given ID is used; subsequent ones are discarded</enum>
@@ -114,13 +115,11 @@
                         <constraint>
                               <expect id="req-merge-combine" target="." test="not(@method='merge')"/>
                         </constraint>
-                        <remarks>
-                        </remarks>
                   </define-assembly>
                   <choice>
                         <define-assembly name="flat" min-occurs="1">
                               <formal-name>Flat Without Grouping</formal-name>
-                              <description>Use the flat structuring method in profile resolution that directs that controls appear without any grouping structure.</description>
+                              <description>Directs that controls appear without any grouping structure.</description>
                         </define-assembly>
                         <define-field name="as-is" as-type="boolean" min-occurs="1">
                               <formal-name>Group As-Is</formal-name>
@@ -138,14 +137,11 @@
                                     </assembly>
                               </model>
                               <remarks>
-                                    <p>The <code>custom</code> element represents a custom arrangement or organization of controls in the resolution of a catalog.</p>
-                                    <p>While the <code>as-is</code> element provides for a restitution of a control set's organization (in one or more source catalogs), this element permits the definition of an entirely different structure.</p>
+                                    <p>The <code>custom</code> element represents a custom arrangement or organization of controls in the resolution of a catalog. This structuring directive gives the profile author the ability to define an entirely different organization of controls as compared to their source catalog(s).</p>
                               </remarks>
                         </define-assembly>
                   </choice>
             </model>
-            <remarks>
-            </remarks>
       </define-assembly>
       <define-assembly name="group">
             <formal-name>Control Group</formal-name>
