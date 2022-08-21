@@ -808,9 +808,6 @@
             <index-has-key name="index-metadata-role-id" target=".">
                 <key-field target="@role-id"/>
             </index-has-key>
-            <index-has-key name="index-metadata-party-uuid" target="party-uuid">
-                <key-field target="."/>
-            </index-has-key>
         </constraint>
         <remarks>
             <p>A <code>responsible-party</code> requires one or more <code>party-uuid</code> references creating a strong relationship arc between the referenced <code>role-id</code> and the reference parties. This differs in semantics from <code>responsible-role</code> which doesn't require that a <code>party-uuid</code> is referenced.</p>
