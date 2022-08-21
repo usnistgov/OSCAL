@@ -73,8 +73,8 @@
             </constraint>
         </define-flag>
         <define-flag name="id-ref" as-type="string" required="yes">
-            <formal-name>Subject Type</formal-name>
-            <description>The semantic type of the subject.</description>
+            <formal-name>Subject Identifier Reference</formal-name>
+            <description>A reference to an identified subject that is of the specified <code>type</code>.</description>
         </define-flag>
         <model>
             <assembly ref="property" max-occurs="unbounded">
