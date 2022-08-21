@@ -83,6 +83,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                              <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/metadata/revisions/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
                                           </div>
                                           <div class="OM-entry">
+                                             <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/metadata/revisions/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                          </div>
+                                          <div class="OM-entry">
                                              <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/metadata/revisions/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
                                           </div>
                                        </div>
@@ -164,6 +167,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                  <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/metadata/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
                               </div>
                               <div class="OM-entry">
+                                 <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/metadata/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                              </div>
+                              <div class="OM-entry">
                                  <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/metadata/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
                               </div>
                            </div>
@@ -234,6 +240,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                           </div>
                                           <div class="OM-entry">
                                              <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/metadata/roles/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                          </div>
+                                          <div class="OM-entry">
+                                             <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/metadata/roles/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
                                           </div>
                                           <div class="OM-entry">
                                              <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/metadata/roles/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
@@ -377,6 +386,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                              <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/metadata/locations/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
                                           </div>
                                           <div class="OM-entry">
+                                             <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/metadata/locations/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                          </div>
+                                          <div class="OM-entry">
                                              <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/metadata/locations/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
                                           </div>
                                        </div>
@@ -474,6 +486,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                           </div>
                                           <div class="OM-entry">
                                              <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/metadata/parties/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                          </div>
+                                          <div class="OM-entry">
+                                             <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/metadata/parties/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
                                           </div>
                                           <div class="OM-entry">
                                              <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/metadata/parties/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
@@ -645,6 +660,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                              <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/metadata/responsible-parties/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
                                           </div>
                                           <div class="OM-entry">
+                                             <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/metadata/responsible-parties/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                          </div>
+                                          <div class="OM-entry">
                                              <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/metadata/responsible-parties/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
                                           </div>
                                        </div>
@@ -756,6 +774,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                  <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-characteristics/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
                               </div>
                               <div class="OM-entry">
+                                 <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-characteristics/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                              </div>
+                              <div class="OM-entry">
                                  <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-characteristics/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
                               </div>
                            </div>
@@ -817,6 +838,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                     </div>
                                     <div class="OM-entry">
                                        <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-characteristics/system-information/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                    </div>
+                                    <div class="OM-entry">
+                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-characteristics/system-information/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
                                     </div>
                                     <div class="OM-entry">
                                        <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-characteristics/system-information/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
@@ -912,6 +936,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                                    <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-characteristics/system-information/information-types/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
                                                 </div>
                                                 <div class="OM-entry">
+                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-characteristics/system-information/information-types/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                </div>
+                                                <div class="OM-entry">
                                                    <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-characteristics/system-information/information-types/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
                                                 </div>
                                              </div>
@@ -967,6 +994,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                                       </div>
                                                       <div class="OM-entry">
                                                          <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-characteristics/system-information/information-types/confidentiality-impact/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                      </div>
+                                                      <div class="OM-entry">
+                                                         <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-characteristics/system-information/information-types/confidentiality-impact/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
                                                       </div>
                                                       <div class="OM-entry">
                                                          <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-characteristics/system-information/information-types/confidentiality-impact/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
@@ -1038,6 +1068,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                                          <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-characteristics/system-information/information-types/integrity-impact/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
                                                       </div>
                                                       <div class="OM-entry">
+                                                         <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-characteristics/system-information/information-types/integrity-impact/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                      </div>
+                                                      <div class="OM-entry">
                                                          <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-characteristics/system-information/information-types/integrity-impact/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
                                                       </div>
                                                    </div>
@@ -1105,6 +1138,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                                       </div>
                                                       <div class="OM-entry">
                                                          <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-characteristics/system-information/information-types/availability-impact/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                      </div>
+                                                      <div class="OM-entry">
+                                                         <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-characteristics/system-information/information-types/availability-impact/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
                                                       </div>
                                                       <div class="OM-entry">
                                                          <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-characteristics/system-information/information-types/availability-impact/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
@@ -1215,6 +1251,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                        <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-characteristics/authorization-boundary/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
                                     </div>
                                     <div class="OM-entry">
+                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-characteristics/authorization-boundary/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                    </div>
+                                    <div class="OM-entry">
                                        <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-characteristics/authorization-boundary/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
                                     </div>
                                  </div>
@@ -1279,6 +1318,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                                 </div>
                                                 <div class="OM-entry">
                                                    <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-characteristics/authorization-boundary/diagrams/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                </div>
+                                                <div class="OM-entry">
+                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-characteristics/authorization-boundary/diagrams/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
                                                 </div>
                                                 <div class="OM-entry">
                                                    <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-characteristics/authorization-boundary/diagrams/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
@@ -1359,6 +1401,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                        <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-characteristics/network-architecture/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
                                     </div>
                                     <div class="OM-entry">
+                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-characteristics/network-architecture/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                    </div>
+                                    <div class="OM-entry">
                                        <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-characteristics/network-architecture/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
                                     </div>
                                  </div>
@@ -1423,6 +1468,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                                 </div>
                                                 <div class="OM-entry">
                                                    <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-characteristics/network-architecture/diagrams/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                </div>
+                                                <div class="OM-entry">
+                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-characteristics/network-architecture/diagrams/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
                                                 </div>
                                                 <div class="OM-entry">
                                                    <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-characteristics/network-architecture/diagrams/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
@@ -1503,6 +1551,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                        <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-characteristics/data-flow/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
                                     </div>
                                     <div class="OM-entry">
+                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-characteristics/data-flow/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                    </div>
+                                    <div class="OM-entry">
                                        <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-characteristics/data-flow/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
                                     </div>
                                  </div>
@@ -1567,6 +1618,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                                 </div>
                                                 <div class="OM-entry">
                                                    <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-characteristics/data-flow/diagrams/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                </div>
+                                                <div class="OM-entry">
+                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-characteristics/data-flow/diagrams/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
                                                 </div>
                                                 <div class="OM-entry">
                                                    <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-characteristics/data-flow/diagrams/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
@@ -1659,6 +1713,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                              <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-characteristics/responsible-parties/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
                                           </div>
                                           <div class="OM-entry">
+                                             <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-characteristics/responsible-parties/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                          </div>
+                                          <div class="OM-entry">
                                              <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-characteristics/responsible-parties/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
                                           </div>
                                        </div>
@@ -1731,6 +1788,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                  <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-implementation/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
                               </div>
                               <div class="OM-entry">
+                                 <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-implementation/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                              </div>
+                              <div class="OM-entry">
                                  <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-implementation/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
                               </div>
                            </div>
@@ -1795,6 +1855,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                           </div>
                                           <div class="OM-entry">
                                              <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-implementation/leveraged-authorizations/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                          </div>
+                                          <div class="OM-entry">
+                                             <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-implementation/leveraged-authorizations/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
                                           </div>
                                           <div class="OM-entry">
                                              <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-implementation/leveraged-authorizations/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
@@ -1882,6 +1945,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                           </div>
                                           <div class="OM-entry">
                                              <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-implementation/users/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                          </div>
+                                          <div class="OM-entry">
+                                             <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-implementation/users/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
                                           </div>
                                           <div class="OM-entry">
                                              <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-implementation/users/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
@@ -2004,6 +2070,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                              <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-implementation/components/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
                                           </div>
                                           <div class="OM-entry">
+                                             <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-implementation/components/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                          </div>
+                                          <div class="OM-entry">
                                              <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-implementation/components/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
                                           </div>
                                        </div>
@@ -2077,6 +2146,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                                       </div>
                                                       <div class="OM-entry">
                                                          <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-implementation/components/responsible-roles/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                      </div>
+                                                      <div class="OM-entry">
+                                                         <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-implementation/components/responsible-roles/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
                                                       </div>
                                                       <div class="OM-entry">
                                                          <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-implementation/components/responsible-roles/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
@@ -2214,6 +2286,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                              <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-implementation/inventory-items/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
                                           </div>
                                           <div class="OM-entry">
+                                             <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-implementation/inventory-items/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                          </div>
+                                          <div class="OM-entry">
                                              <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-implementation/inventory-items/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
                                           </div>
                                        </div>
@@ -2284,6 +2359,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                                       </div>
                                                       <div class="OM-entry">
                                                          <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-implementation/inventory-items/responsible-parties/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                      </div>
+                                                      <div class="OM-entry">
+                                                         <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-implementation/inventory-items/responsible-parties/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
                                                       </div>
                                                       <div class="OM-entry">
                                                          <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-implementation/inventory-items/responsible-parties/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
@@ -2358,6 +2436,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                                          <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-implementation/inventory-items/implemented-components/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
                                                       </div>
                                                       <div class="OM-entry">
+                                                         <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-implementation/inventory-items/implemented-components/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                      </div>
+                                                      <div class="OM-entry">
                                                          <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-implementation/inventory-items/implemented-components/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
                                                       </div>
                                                    </div>
@@ -2428,6 +2509,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                                                   </div>
                                                                   <div class="OM-entry">
                                                                      <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-implementation/inventory-items/implemented-components/responsible-parties/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                  </div>
+                                                                  <div class="OM-entry">
+                                                                     <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-implementation/inventory-items/implemented-components/responsible-parties/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
                                                                   </div>
                                                                   <div class="OM-entry">
                                                                      <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/system-implementation/inventory-items/implemented-components/responsible-parties/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
@@ -2562,6 +2646,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                              <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
                                           </div>
                                           <div class="OM-entry">
+                                             <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                          </div>
+                                          <div class="OM-entry">
                                              <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
                                           </div>
                                        </div>
@@ -2652,6 +2739,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                                          <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/responsible-roles/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
                                                       </div>
                                                       <div class="OM-entry">
+                                                         <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/responsible-roles/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                      </div>
+                                                      <div class="OM-entry">
                                                          <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/responsible-roles/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
                                                       </div>
                                                    </div>
@@ -2736,6 +2826,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                                          <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
                                                       </div>
                                                       <div class="OM-entry">
+                                                         <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                      </div>
+                                                      <div class="OM-entry">
                                                          <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
                                                       </div>
                                                    </div>
@@ -2797,6 +2890,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                                                   </div>
                                                                   <div class="OM-entry">
                                                                      <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/responsible-roles/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                  </div>
+                                                                  <div class="OM-entry">
+                                                                     <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/responsible-roles/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
                                                                   </div>
                                                                   <div class="OM-entry">
                                                                      <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/responsible-roles/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
@@ -2884,6 +2980,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                                                   </div>
                                                                   <div class="OM-entry">
                                                                      <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/by-components/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                  </div>
+                                                                  <div class="OM-entry">
+                                                                     <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/by-components/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
                                                                   </div>
                                                                   <div class="OM-entry">
                                                                      <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/by-components/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
@@ -2985,6 +3084,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                                                            <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/by-components/export/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
                                                                         </div>
                                                                         <div class="OM-entry">
+                                                                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/by-components/export/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                        </div>
+                                                                        <div class="OM-entry">
                                                                            <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/by-components/export/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
                                                                         </div>
                                                                      </div>
@@ -3051,6 +3153,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                                                                        <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/by-components/export/provided/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
                                                                                     </div>
                                                                                     <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/by-components/export/provided/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                    <div class="OM-entry">
                                                                                        <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/by-components/export/provided/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
                                                                                     </div>
                                                                                  </div>
@@ -3112,6 +3217,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                                                                                 </div>
                                                                                                 <div class="OM-entry">
                                                                                                    <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/by-components/export/provided/responsible-roles/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                                                </div>
+                                                                                                <div class="OM-entry">
+                                                                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/by-components/export/provided/responsible-roles/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
                                                                                                 </div>
                                                                                                 <div class="OM-entry">
                                                                                                    <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/by-components/export/provided/responsible-roles/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
@@ -3210,6 +3318,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                                                                        <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/by-components/export/responsibilities/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
                                                                                     </div>
                                                                                     <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/by-components/export/responsibilities/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                    <div class="OM-entry">
                                                                                        <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/by-components/export/responsibilities/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
                                                                                     </div>
                                                                                  </div>
@@ -3271,6 +3382,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                                                                                 </div>
                                                                                                 <div class="OM-entry">
                                                                                                    <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/by-components/export/responsibilities/responsible-roles/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                                                </div>
+                                                                                                <div class="OM-entry">
+                                                                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/by-components/export/responsibilities/responsible-roles/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
                                                                                                 </div>
                                                                                                 <div class="OM-entry">
                                                                                                    <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/by-components/export/responsibilities/responsible-roles/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
@@ -3375,6 +3489,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                                                                  <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/by-components/inherited/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
                                                                               </div>
                                                                               <div class="OM-entry">
+                                                                                 <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/by-components/inherited/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                              </div>
+                                                                              <div class="OM-entry">
                                                                                  <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/by-components/inherited/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
                                                                               </div>
                                                                            </div>
@@ -3436,6 +3553,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                                                                           </div>
                                                                                           <div class="OM-entry">
                                                                                              <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/by-components/inherited/responsible-roles/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                                          </div>
+                                                                                          <div class="OM-entry">
+                                                                                             <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/by-components/inherited/responsible-roles/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
                                                                                           </div>
                                                                                           <div class="OM-entry">
                                                                                              <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/by-components/inherited/responsible-roles/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
@@ -3531,6 +3651,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                                                                  <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/by-components/satisfied/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
                                                                               </div>
                                                                               <div class="OM-entry">
+                                                                                 <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/by-components/satisfied/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                              </div>
+                                                                              <div class="OM-entry">
                                                                                  <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/by-components/satisfied/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
                                                                               </div>
                                                                            </div>
@@ -3592,6 +3715,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                                                                           </div>
                                                                                           <div class="OM-entry">
                                                                                              <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/by-components/satisfied/responsible-roles/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                                          </div>
+                                                                                          <div class="OM-entry">
+                                                                                             <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/by-components/satisfied/responsible-roles/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
                                                                                           </div>
                                                                                           <div class="OM-entry">
                                                                                              <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/by-components/satisfied/responsible-roles/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
@@ -3682,6 +3808,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                                                               </div>
                                                                               <div class="OM-entry">
                                                                                  <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/by-components/responsible-roles/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                              </div>
+                                                                              <div class="OM-entry">
+                                                                                 <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/by-components/responsible-roles/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
                                                                               </div>
                                                                               <div class="OM-entry">
                                                                                  <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/by-components/responsible-roles/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
@@ -3789,6 +3918,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                                          <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
                                                       </div>
                                                       <div class="OM-entry">
+                                                         <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                      </div>
+                                                      <div class="OM-entry">
                                                          <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
                                                       </div>
                                                    </div>
@@ -3888,6 +4020,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                                                <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/export/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
                                                             </div>
                                                             <div class="OM-entry">
+                                                               <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/export/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                            </div>
+                                                            <div class="OM-entry">
                                                                <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/export/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
                                                             </div>
                                                          </div>
@@ -3954,6 +4089,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                                                            <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/export/provided/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
                                                                         </div>
                                                                         <div class="OM-entry">
+                                                                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/export/provided/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                        </div>
+                                                                        <div class="OM-entry">
                                                                            <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/export/provided/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
                                                                         </div>
                                                                      </div>
@@ -4015,6 +4153,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                                                                     </div>
                                                                                     <div class="OM-entry">
                                                                                        <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/export/provided/responsible-roles/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/export/provided/responsible-roles/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
                                                                                     </div>
                                                                                     <div class="OM-entry">
                                                                                        <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/export/provided/responsible-roles/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
@@ -4113,6 +4254,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                                                            <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/export/responsibilities/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
                                                                         </div>
                                                                         <div class="OM-entry">
+                                                                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/export/responsibilities/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                        </div>
+                                                                        <div class="OM-entry">
                                                                            <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/export/responsibilities/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
                                                                         </div>
                                                                      </div>
@@ -4174,6 +4318,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                                                                     </div>
                                                                                     <div class="OM-entry">
                                                                                        <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/export/responsibilities/responsible-roles/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/export/responsibilities/responsible-roles/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
                                                                                     </div>
                                                                                     <div class="OM-entry">
                                                                                        <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/export/responsibilities/responsible-roles/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
@@ -4278,6 +4425,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                                                      <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/inherited/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
                                                                   </div>
                                                                   <div class="OM-entry">
+                                                                     <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/inherited/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                  </div>
+                                                                  <div class="OM-entry">
                                                                      <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/inherited/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
                                                                   </div>
                                                                </div>
@@ -4339,6 +4489,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                                                               </div>
                                                                               <div class="OM-entry">
                                                                                  <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/inherited/responsible-roles/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                              </div>
+                                                                              <div class="OM-entry">
+                                                                                 <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/inherited/responsible-roles/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
                                                                               </div>
                                                                               <div class="OM-entry">
                                                                                  <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/inherited/responsible-roles/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
@@ -4434,6 +4587,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                                                      <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/satisfied/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
                                                                   </div>
                                                                   <div class="OM-entry">
+                                                                     <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/satisfied/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                  </div>
+                                                                  <div class="OM-entry">
                                                                      <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/satisfied/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
                                                                   </div>
                                                                </div>
@@ -4495,6 +4651,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                                                               </div>
                                                                               <div class="OM-entry">
                                                                                  <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/satisfied/responsible-roles/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                              </div>
+                                                                              <div class="OM-entry">
+                                                                                 <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/satisfied/responsible-roles/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
                                                                               </div>
                                                                               <div class="OM-entry">
                                                                                  <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/satisfied/responsible-roles/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
@@ -4585,6 +4744,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                                                   </div>
                                                                   <div class="OM-entry">
                                                                      <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/responsible-roles/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                  </div>
+                                                                  <div class="OM-entry">
+                                                                     <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/responsible-roles/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
                                                                   </div>
                                                                   <div class="OM-entry">
                                                                      <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/responsible-roles/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
@@ -4698,6 +4860,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                              <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/back-matter/resources/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
                                           </div>
                                           <div class="OM-entry">
+                                             <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/back-matter/resources/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                          </div>
+                                          <div class="OM-entry">
                                              <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/back-matter/resources/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
                                           </div>
                                        </div>
@@ -4750,6 +4915,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                                 </div>
                                                 <div class="OM-entry">
                                                    <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/back-matter/resources/citation/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                </div>
+                                                <div class="OM-entry">
+                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/back-matter/resources/citation/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
                                                 </div>
                                                 <div class="OM-entry">
                                                    <p class="OM-line"><a class="OM-name" href="../json-reference/#/system-security-plan/back-matter/resources/citation/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>

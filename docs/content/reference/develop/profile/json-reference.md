@@ -467,7 +467,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                        </details>
                                     </div>
                                     <details class="properties" open="open">
-                                       <summary>Properties (6)</summary>
+                                       <summary>Properties (7)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/profile/metadata/revisions/props/name" class="toc5 name">name</h5>
@@ -562,6 +562,27 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                    <div class="remarks">
                                                       <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                          a specific <code>class</code> value.</p>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/profile/metadata/revisions/props/group" class="toc5 name">group</h5>
+                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/metadata/revisions/revision/prop/@group">Switch to XML</a></div>
+                                             <p class="formal-name">Property Group</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                             <div class="remarks-group usa-prose">
+                                                <details open="open">
+                                                   <summary class="subhead">Remarks</summary>
+                                                   <div class="remarks">
+                                                      <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                         property to associate it with one or more other properties in a given context.</p>
                                                    </div>
                                                 </details>
                                              </div>
@@ -832,7 +853,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                               </details>
                            </div>
                            <details class="properties" open="open">
-                              <summary>Properties (6)</summary>
+                              <summary>Properties (7)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/profile/metadata/props/name" class="toc4 name">name</h4>
@@ -927,6 +948,27 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                           <div class="remarks">
                                              <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                 a specific <code>class</code> value.</p>
+                                          </div>
+                                       </details>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="model-entry definition assembly">
+                                 <div class="instance-header">
+                                    <h4 id="/profile/metadata/props/group" class="toc4 name">group</h4>
+                                    <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                    <p class="occurrence">[0 or 1]</p>
+                                    <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/metadata/prop/@group">Switch to XML</a></div>
+                                    <p class="formal-name">Property Group</p>
+                                 </div>
+                                 <div class="body">
+                                    <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                    <div class="remarks-group usa-prose">
+                                       <details open="open">
+                                          <summary class="subhead">Remarks</summary>
+                                          <div class="remarks">
+                                             <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                property to associate it with one or more other properties in a given context.</p>
                                           </div>
                                        </details>
                                     </div>
@@ -1196,7 +1238,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                        </details>
                                     </div>
                                     <details class="properties" open="open">
-                                       <summary>Properties (6)</summary>
+                                       <summary>Properties (7)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/profile/metadata/roles/props/name" class="toc5 name">name</h5>
@@ -1291,6 +1333,27 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                    <div class="remarks">
                                                       <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                          a specific <code>class</code> value.</p>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/profile/metadata/roles/props/group" class="toc5 name">group</h5>
+                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/metadata/role/prop/@group">Switch to XML</a></div>
+                                             <p class="formal-name">Property Group</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                             <div class="remarks-group usa-prose">
+                                                <details open="open">
+                                                   <summary class="subhead">Remarks</summary>
+                                                   <div class="remarks">
+                                                      <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                         property to associate it with one or more other properties in a given context.</p>
                                                    </div>
                                                 </details>
                                              </div>
@@ -1792,7 +1855,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                        </details>
                                     </div>
                                     <details class="properties" open="open">
-                                       <summary>Properties (6)</summary>
+                                       <summary>Properties (7)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/profile/metadata/locations/props/name" class="toc5 name">name</h5>
@@ -1887,6 +1950,27 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                    <div class="remarks">
                                                       <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                          a specific <code>class</code> value.</p>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/profile/metadata/locations/props/group" class="toc5 name">group</h5>
+                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/metadata/location/prop/@group">Switch to XML</a></div>
+                                             <p class="formal-name">Property Group</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                             <div class="remarks-group usa-prose">
+                                                <details open="open">
+                                                   <summary class="subhead">Remarks</summary>
+                                                   <div class="remarks">
+                                                      <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                         property to associate it with one or more other properties in a given context.</p>
                                                    </div>
                                                 </details>
                                              </div>
@@ -2237,7 +2321,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                        </details>
                                     </div>
                                     <details class="properties" open="open">
-                                       <summary>Properties (6)</summary>
+                                       <summary>Properties (7)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/profile/metadata/parties/props/name" class="toc5 name">name</h5>
@@ -2332,6 +2416,27 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                    <div class="remarks">
                                                       <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                          a specific <code>class</code> value.</p>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/profile/metadata/parties/props/group" class="toc5 name">group</h5>
+                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/metadata/party/prop/@group">Switch to XML</a></div>
+                                             <p class="formal-name">Property Group</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                             <div class="remarks-group usa-prose">
+                                                <details open="open">
+                                                   <summary class="subhead">Remarks</summary>
+                                                   <div class="remarks">
+                                                      <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                         property to associate it with one or more other properties in a given context.</p>
                                                    </div>
                                                 </details>
                                              </div>
@@ -2879,7 +2984,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                        </details>
                                     </div>
                                     <details class="properties" open="open">
-                                       <summary>Properties (6)</summary>
+                                       <summary>Properties (7)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/profile/metadata/responsible-parties/props/name" class="toc5 name">name</h5>
@@ -2974,6 +3079,27 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                    <div class="remarks">
                                                       <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                          a specific <code>class</code> value.</p>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/profile/metadata/responsible-parties/props/group" class="toc5 name">group</h5>
+                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/metadata/responsible-party/prop/@group">Switch to XML</a></div>
+                                             <p class="formal-name">Property Group</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                             <div class="remarks-group usa-prose">
+                                                <details open="open">
+                                                   <summary class="subhead">Remarks</summary>
+                                                   <div class="remarks">
+                                                      <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                         property to associate it with one or more other properties in a given context.</p>
                                                    </div>
                                                 </details>
                                              </div>
@@ -3812,7 +3938,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                             </details>
                                                          </div>
                                                          <details class="properties" open="open">
-                                                            <summary>Properties (6)</summary>
+                                                            <summary>Properties (7)</summary>
                                                             <div class="model-entry definition assembly">
                                                                <div class="instance-header">
                                                                   <p id="/profile/merge/custom/groups/params/props/name" class="toc7 name">name</p>
@@ -3907,6 +4033,27 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                                         <div class="remarks">
                                                                            <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                               a specific <code>class</code> value.</p>
+                                                                        </div>
+                                                                     </details>
+                                                                  </div>
+                                                               </div>
+                                                            </div>
+                                                            <div class="model-entry definition assembly">
+                                                               <div class="instance-header">
+                                                                  <p id="/profile/merge/custom/groups/params/props/group" class="toc7 name">group</p>
+                                                                  <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                                  <p class="occurrence">[0 or 1]</p>
+                                                                  <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/param/prop/@group">Switch to XML</a></div>
+                                                                  <p class="formal-name">Property Group</p>
+                                                               </div>
+                                                               <div class="body">
+                                                                  <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                                                  <div class="remarks-group usa-prose">
+                                                                     <details open="open">
+                                                                        <summary class="subhead">Remarks</summary>
+                                                                        <div class="remarks">
+                                                                           <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                                              property to associate it with one or more other properties in a given context.</p>
                                                                         </div>
                                                                      </details>
                                                                   </div>
@@ -4348,7 +4495,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                    </details>
                                                 </div>
                                                 <details class="properties" open="open">
-                                                   <summary>Properties (6)</summary>
+                                                   <summary>Properties (7)</summary>
                                                    <div class="model-entry definition assembly">
                                                       <div class="instance-header">
                                                          <h6 id="/profile/merge/custom/groups/props/name" class="toc6 name">name</h6>
@@ -4443,6 +4590,27 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                                <div class="remarks">
                                                                   <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                      a specific <code>class</code> value.</p>
+                                                               </div>
+                                                            </details>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/profile/merge/custom/groups/props/group" class="toc6 name">group</h6>
+                                                         <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                         <p class="occurrence">[0 or 1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/prop/@group">Switch to XML</a></div>
+                                                         <p class="formal-name">Property Group</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                                         <div class="remarks-group usa-prose">
+                                                            <details open="open">
+                                                               <summary class="subhead">Remarks</summary>
+                                                               <div class="remarks">
+                                                                  <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                                     property to associate it with one or more other properties in a given context.</p>
                                                                </div>
                                                             </details>
                                                          </div>
@@ -4779,7 +4947,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                             </details>
                                                          </div>
                                                          <details class="properties" open="open">
-                                                            <summary>Properties (6)</summary>
+                                                            <summary>Properties (7)</summary>
                                                             <div class="model-entry definition assembly">
                                                                <div class="instance-header">
                                                                   <p id="/profile/merge/custom/groups/parts/props/name" class="toc7 name">name</p>
@@ -4874,6 +5042,27 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                                         <div class="remarks">
                                                                            <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                               a specific <code>class</code> value.</p>
+                                                                        </div>
+                                                                     </details>
+                                                                  </div>
+                                                               </div>
+                                                            </div>
+                                                            <div class="model-entry definition assembly">
+                                                               <div class="instance-header">
+                                                                  <p id="/profile/merge/custom/groups/parts/props/group" class="toc7 name">group</p>
+                                                                  <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                                  <p class="occurrence">[0 or 1]</p>
+                                                                  <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/part/prop/@group">Switch to XML</a></div>
+                                                                  <p class="formal-name">Property Group</p>
+                                                               </div>
+                                                               <div class="body">
+                                                                  <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                                                  <div class="remarks-group usa-prose">
+                                                                     <details open="open">
+                                                                        <summary class="subhead">Remarks</summary>
+                                                                        <div class="remarks">
+                                                                           <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                                              property to associate it with one or more other properties in a given context.</p>
                                                                         </div>
                                                                      </details>
                                                                   </div>
@@ -5844,7 +6033,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                        </details>
                                     </div>
                                     <details class="properties" open="open">
-                                       <summary>Properties (6)</summary>
+                                       <summary>Properties (7)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/profile/modify/set-parameters/props/name" class="toc5 name">name</h5>
@@ -5939,6 +6128,27 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                    <div class="remarks">
                                                       <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                          a specific <code>class</code> value.</p>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/profile/modify/set-parameters/props/group" class="toc5 name">group</h5>
+                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/modify/set-parameter/prop/@group">Switch to XML</a></div>
+                                             <p class="formal-name">Property Group</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                             <div class="remarks-group usa-prose">
+                                                <details open="open">
+                                                   <summary class="subhead">Remarks</summary>
+                                                   <div class="remarks">
+                                                      <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                         property to associate it with one or more other properties in a given context.</p>
                                                    </div>
                                                 </details>
                                              </div>
@@ -6732,7 +6942,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                          </details>
                                                       </div>
                                                       <details class="properties" open="open">
-                                                         <summary>Properties (6)</summary>
+                                                         <summary>Properties (7)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
                                                                <p id="/profile/modify/alters/adds/params/props/name" class="toc7 name">name</p>
@@ -6827,6 +7037,27 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                                      <div class="remarks">
                                                                         <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                            a specific <code>class</code> value.</p>
+                                                                     </div>
+                                                                  </details>
+                                                               </div>
+                                                            </div>
+                                                         </div>
+                                                         <div class="model-entry definition assembly">
+                                                            <div class="instance-header">
+                                                               <p id="/profile/modify/alters/adds/params/props/group" class="toc7 name">group</p>
+                                                               <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                               <p class="occurrence">[0 or 1]</p>
+                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/modify/alter/add/param/prop/@group">Switch to XML</a></div>
+                                                               <p class="formal-name">Property Group</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                                               <div class="remarks-group usa-prose">
+                                                                  <details open="open">
+                                                                     <summary class="subhead">Remarks</summary>
+                                                                     <div class="remarks">
+                                                                        <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                                           property to associate it with one or more other properties in a given context.</p>
                                                                      </div>
                                                                   </details>
                                                                </div>
@@ -7268,7 +7499,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                 </details>
                                              </div>
                                              <details class="properties" open="open">
-                                                <summary>Properties (6)</summary>
+                                                <summary>Properties (7)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/profile/modify/alters/adds/props/name" class="toc6 name">name</h6>
@@ -7363,6 +7594,27 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                             <div class="remarks">
                                                                <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                   a specific <code>class</code> value.</p>
+                                                            </div>
+                                                         </details>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                                <div class="model-entry definition assembly">
+                                                   <div class="instance-header">
+                                                      <h6 id="/profile/modify/alters/adds/props/group" class="toc6 name">group</h6>
+                                                      <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                      <p class="occurrence">[0 or 1]</p>
+                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/modify/alter/add/prop/@group">Switch to XML</a></div>
+                                                      <p class="formal-name">Property Group</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                                      <div class="remarks-group usa-prose">
+                                                         <details open="open">
+                                                            <summary class="subhead">Remarks</summary>
+                                                            <div class="remarks">
+                                                               <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                                  property to associate it with one or more other properties in a given context.</p>
                                                             </div>
                                                          </details>
                                                       </div>
@@ -7699,7 +7951,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                          </details>
                                                       </div>
                                                       <details class="properties" open="open">
-                                                         <summary>Properties (6)</summary>
+                                                         <summary>Properties (7)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
                                                                <p id="/profile/modify/alters/adds/parts/props/name" class="toc7 name">name</p>
@@ -7794,6 +8046,27 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                                      <div class="remarks">
                                                                         <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                            a specific <code>class</code> value.</p>
+                                                                     </div>
+                                                                  </details>
+                                                               </div>
+                                                            </div>
+                                                         </div>
+                                                         <div class="model-entry definition assembly">
+                                                            <div class="instance-header">
+                                                               <p id="/profile/modify/alters/adds/parts/props/group" class="toc7 name">group</p>
+                                                               <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                               <p class="occurrence">[0 or 1]</p>
+                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/modify/alter/add/part/prop/@group">Switch to XML</a></div>
+                                                               <p class="formal-name">Property Group</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                                               <div class="remarks-group usa-prose">
+                                                                  <details open="open">
+                                                                     <summary class="subhead">Remarks</summary>
+                                                                     <div class="remarks">
+                                                                        <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                                           property to associate it with one or more other properties in a given context.</p>
                                                                      </div>
                                                                   </details>
                                                                </div>
@@ -8254,7 +8527,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                        </details>
                                     </div>
                                     <details class="properties" open="open">
-                                       <summary>Properties (6)</summary>
+                                       <summary>Properties (7)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/profile/back-matter/resources/props/name" class="toc5 name">name</h5>
@@ -8349,6 +8622,27 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                    <div class="remarks">
                                                       <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                          a specific <code>class</code> value.</p>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/profile/back-matter/resources/props/group" class="toc5 name">group</h5>
+                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/back-matter/resource/prop/@group">Switch to XML</a></div>
+                                             <p class="formal-name">Property Group</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                             <div class="remarks-group usa-prose">
+                                                <details open="open">
+                                                   <summary class="subhead">Remarks</summary>
+                                                   <div class="remarks">
+                                                      <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                         property to associate it with one or more other properties in a given context.</p>
                                                    </div>
                                                 </details>
                                              </div>
@@ -8506,7 +8800,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                 </details>
                                              </div>
                                              <details class="properties" open="open">
-                                                <summary>Properties (6)</summary>
+                                                <summary>Properties (7)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/profile/back-matter/resources/citation/props/name" class="toc6 name">name</h6>
@@ -8601,6 +8895,27 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                             <div class="remarks">
                                                                <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                   a specific <code>class</code> value.</p>
+                                                            </div>
+                                                         </details>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                                <div class="model-entry definition assembly">
+                                                   <div class="instance-header">
+                                                      <h6 id="/profile/back-matter/resources/citation/props/group" class="toc6 name">group</h6>
+                                                      <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                      <p class="occurrence">[0 or 1]</p>
+                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/back-matter/resource/citation/prop/@group">Switch to XML</a></div>
+                                                      <p class="formal-name">Property Group</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                                      <div class="remarks-group usa-prose">
+                                                         <details open="open">
+                                                            <summary class="subhead">Remarks</summary>
+                                                            <div class="remarks">
+                                                               <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                                  property to associate it with one or more other properties in a given context.</p>
                                                             </div>
                                                          </details>
                                                       </div>

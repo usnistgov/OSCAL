@@ -7380,7 +7380,7 @@ The following is a reference for the XML element and attribute types derived fro
             </details>
          </div>
          <details open="open">
-            <summary>Attributes (5):</summary>
+            <summary>Attributes (6):</summary>
             <div class="model assembly-model">
                <div class="model-entry definition define-flag">
                   <div class="instance-header">
@@ -7477,6 +7477,27 @@ The following is a reference for the XML element and attribute types derived fro
                            <div class="remarks">
                               <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                  a specific <code>class</code> value.</p>
+                           </div>
+                        </details>
+                     </div>
+                  </div>
+               </div>
+               <div class="model-entry definition define-flag">
+                  <div class="instance-header">
+                     <h2 id="/assembly/oscal-metadata/property/group" class="toc2 name">group</h2>
+                     <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                     <p class="occurrence">[0 or 1]</p>
+                     <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-metadata/property/group">Switch to JSON</a></div>
+                     <p class="formal-name">Property Group</p>
+                  </div>
+                  <div class="body">
+                     <p class="description"><span class="usa-tag">description</span> An identifier for relating distinct sets of properties.</p>
+                     <div class="remarks-group usa-prose">
+                        <details open="open">
+                           <summary class="subhead">Remarks</summary>
+                           <div class="remarks">
+                              <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                 property to associate it with one or more other properties in a given context.</p>
                            </div>
                         </details>
                      </div>

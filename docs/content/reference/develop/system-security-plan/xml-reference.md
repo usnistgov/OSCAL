@@ -457,7 +457,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                 </details>
                                              </div>
                                              <details class="properties attributes" open="open">
-                                                <summary>Attributes (5)</summary>
+                                                <summary>Attributes (6)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/system-security-plan/metadata/revisions/revision/prop/@name" class="toc6 name">name</h6>
@@ -552,6 +552,27 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                             <div class="remarks">
                                                                <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                   a specific <code>class</code> value.</p>
+                                                            </div>
+                                                         </details>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                                <div class="model-entry definition assembly">
+                                                   <div class="instance-header">
+                                                      <h6 id="/system-security-plan/metadata/revisions/revision/prop/@group" class="toc6 name">group</h6>
+                                                      <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                      <p class="occurrence">[0 or 1]</p>
+                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/revisions/props/group">Switch to JSON</a></div>
+                                                      <p class="formal-name">Property Group</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                                      <div class="remarks-group usa-prose">
+                                                         <details open="open">
+                                                            <summary class="subhead">Remarks</summary>
+                                                            <div class="remarks">
+                                                               <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                                  property to associate it with one or more other properties in a given context.</p>
                                                             </div>
                                                          </details>
                                                       </div>
@@ -834,7 +855,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                               </details>
                            </div>
                            <details class="properties attributes" open="open">
-                              <summary>Attributes (5)</summary>
+                              <summary>Attributes (6)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/system-security-plan/metadata/prop/@name" class="toc4 name">name</h4>
@@ -929,6 +950,27 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                           <div class="remarks">
                                              <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                 a specific <code>class</code> value.</p>
+                                          </div>
+                                       </details>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="model-entry definition assembly">
+                                 <div class="instance-header">
+                                    <h4 id="/system-security-plan/metadata/prop/@group" class="toc4 name">group</h4>
+                                    <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                    <p class="occurrence">[0 or 1]</p>
+                                    <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/props/group">Switch to JSON</a></div>
+                                    <p class="formal-name">Property Group</p>
+                                 </div>
+                                 <div class="body">
+                                    <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                    <div class="remarks-group usa-prose">
+                                       <details open="open">
+                                          <summary class="subhead">Remarks</summary>
+                                          <div class="remarks">
+                                             <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                property to associate it with one or more other properties in a given context.</p>
                                           </div>
                                        </details>
                                     </div>
@@ -1218,7 +1260,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                        </details>
                                     </div>
                                     <details class="properties attributes" open="open">
-                                       <summary>Attributes (5)</summary>
+                                       <summary>Attributes (6)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/metadata/role/prop/@name" class="toc5 name">name</h5>
@@ -1313,6 +1355,27 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                    <div class="remarks">
                                                       <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                          a specific <code>class</code> value.</p>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/metadata/role/prop/@group" class="toc5 name">group</h5>
+                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/roles/props/group">Switch to JSON</a></div>
+                                             <p class="formal-name">Property Group</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                             <div class="remarks-group usa-prose">
+                                                <details open="open">
+                                                   <summary class="subhead">Remarks</summary>
+                                                   <div class="remarks">
+                                                      <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                         property to associate it with one or more other properties in a given context.</p>
                                                    </div>
                                                 </details>
                                              </div>
@@ -1809,7 +1872,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                        </details>
                                     </div>
                                     <details class="properties attributes" open="open">
-                                       <summary>Attributes (5)</summary>
+                                       <summary>Attributes (6)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/metadata/location/prop/@name" class="toc5 name">name</h5>
@@ -1904,6 +1967,27 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                    <div class="remarks">
                                                       <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                          a specific <code>class</code> value.</p>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/metadata/location/prop/@group" class="toc5 name">group</h5>
+                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/locations/props/group">Switch to JSON</a></div>
+                                             <p class="formal-name">Property Group</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                             <div class="remarks-group usa-prose">
+                                                <details open="open">
+                                                   <summary class="subhead">Remarks</summary>
+                                                   <div class="remarks">
+                                                      <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                         property to associate it with one or more other properties in a given context.</p>
                                                    </div>
                                                 </details>
                                              </div>
@@ -2261,7 +2345,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                        </details>
                                     </div>
                                     <details class="properties attributes" open="open">
-                                       <summary>Attributes (5)</summary>
+                                       <summary>Attributes (6)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/metadata/party/prop/@name" class="toc5 name">name</h5>
@@ -2356,6 +2440,27 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                    <div class="remarks">
                                                       <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                          a specific <code>class</code> value.</p>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/metadata/party/prop/@group" class="toc5 name">group</h5>
+                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/parties/props/group">Switch to JSON</a></div>
+                                             <p class="formal-name">Property Group</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                             <div class="remarks-group usa-prose">
+                                                <details open="open">
+                                                   <summary class="subhead">Remarks</summary>
+                                                   <div class="remarks">
+                                                      <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                         property to associate it with one or more other properties in a given context.</p>
                                                    </div>
                                                 </details>
                                              </div>
@@ -2883,7 +2988,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                        </details>
                                     </div>
                                     <details class="properties attributes" open="open">
-                                       <summary>Attributes (5)</summary>
+                                       <summary>Attributes (6)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/metadata/responsible-party/prop/@name" class="toc5 name">name</h5>
@@ -2978,6 +3083,27 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                    <div class="remarks">
                                                       <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                          a specific <code>class</code> value.</p>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/metadata/responsible-party/prop/@group" class="toc5 name">group</h5>
+                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/responsible-parties/props/group">Switch to JSON</a></div>
+                                             <p class="formal-name">Property Group</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                             <div class="remarks-group usa-prose">
+                                                <details open="open">
+                                                   <summary class="subhead">Remarks</summary>
+                                                   <div class="remarks">
+                                                      <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                         property to associate it with one or more other properties in a given context.</p>
                                                    </div>
                                                 </details>
                                              </div>
@@ -3540,7 +3666,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                               </details>
                            </div>
                            <details class="properties attributes" open="open">
-                              <summary>Attributes (5)</summary>
+                              <summary>Attributes (6)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/system-security-plan/system-characteristics/prop/@name" class="toc4 name">name</h4>
@@ -3635,6 +3761,27 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                           <div class="remarks">
                                              <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                 a specific <code>class</code> value.</p>
+                                          </div>
+                                       </details>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="model-entry definition assembly">
+                                 <div class="instance-header">
+                                    <h4 id="/system-security-plan/system-characteristics/prop/@group" class="toc4 name">group</h4>
+                                    <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                    <p class="occurrence">[0 or 1]</p>
+                                    <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/props/group">Switch to JSON</a></div>
+                                    <p class="formal-name">Property Group</p>
+                                 </div>
+                                 <div class="body">
+                                    <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                    <div class="remarks-group usa-prose">
+                                       <details open="open">
+                                          <summary class="subhead">Remarks</summary>
+                                          <div class="remarks">
+                                             <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                property to associate it with one or more other properties in a given context.</p>
                                           </div>
                                        </details>
                                     </div>
@@ -3932,7 +4079,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                        </details>
                                     </div>
                                     <details class="properties attributes" open="open">
-                                       <summary>Attributes (5)</summary>
+                                       <summary>Attributes (6)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/system-characteristics/system-information/prop/@name" class="toc5 name">name</h5>
@@ -4027,6 +4174,27 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                    <div class="remarks">
                                                       <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                          a specific <code>class</code> value.</p>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/system-characteristics/system-information/prop/@group" class="toc5 name">group</h5>
+                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/system-information/props/group">Switch to JSON</a></div>
+                                             <p class="formal-name">Property Group</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                             <div class="remarks-group usa-prose">
+                                                <details open="open">
+                                                   <summary class="subhead">Remarks</summary>
+                                                   <div class="remarks">
+                                                      <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                         property to associate it with one or more other properties in a given context.</p>
                                                    </div>
                                                 </details>
                                              </div>
@@ -4346,7 +4514,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                 </details>
                                              </div>
                                              <details class="properties attributes" open="open">
-                                                <summary>Attributes (5)</summary>
+                                                <summary>Attributes (6)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/system-security-plan/system-characteristics/system-information/information-type/prop/@name" class="toc6 name">name</h6>
@@ -4441,6 +4609,27 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                             <div class="remarks">
                                                                <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                   a specific <code>class</code> value.</p>
+                                                            </div>
+                                                         </details>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                                <div class="model-entry definition assembly">
+                                                   <div class="instance-header">
+                                                      <h6 id="/system-security-plan/system-characteristics/system-information/information-type/prop/@group" class="toc6 name">group</h6>
+                                                      <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                      <p class="occurrence">[0 or 1]</p>
+                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/system-information/information-types/props/group">Switch to JSON</a></div>
+                                                      <p class="formal-name">Property Group</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                                      <div class="remarks-group usa-prose">
+                                                         <details open="open">
+                                                            <summary class="subhead">Remarks</summary>
+                                                            <div class="remarks">
+                                                               <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                                  property to associate it with one or more other properties in a given context.</p>
                                                             </div>
                                                          </details>
                                                       </div>
@@ -4650,7 +4839,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                          </details>
                                                       </div>
                                                       <details class="properties attributes" open="open">
-                                                         <summary>Attributes (5)</summary>
+                                                         <summary>Attributes (6)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
                                                                <p id="/system-security-plan/system-characteristics/system-information/information-type/confidentiality-impact/prop/@name" class="toc7 name">name</p>
@@ -4745,6 +4934,27 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                      <div class="remarks">
                                                                         <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                            a specific <code>class</code> value.</p>
+                                                                     </div>
+                                                                  </details>
+                                                               </div>
+                                                            </div>
+                                                         </div>
+                                                         <div class="model-entry definition assembly">
+                                                            <div class="instance-header">
+                                                               <p id="/system-security-plan/system-characteristics/system-information/information-type/confidentiality-impact/prop/@group" class="toc7 name">group</p>
+                                                               <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                               <p class="occurrence">[0 or 1]</p>
+                                                               <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/system-information/information-types/confidentiality-impact/props/group">Switch to JSON</a></div>
+                                                               <p class="formal-name">Property Group</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                                               <div class="remarks-group usa-prose">
+                                                                  <details open="open">
+                                                                     <summary class="subhead">Remarks</summary>
+                                                                     <div class="remarks">
+                                                                        <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                                           property to associate it with one or more other properties in a given context.</p>
                                                                      </div>
                                                                   </details>
                                                                </div>
@@ -5008,7 +5218,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                          </details>
                                                       </div>
                                                       <details class="properties attributes" open="open">
-                                                         <summary>Attributes (5)</summary>
+                                                         <summary>Attributes (6)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
                                                                <p id="/system-security-plan/system-characteristics/system-information/information-type/integrity-impact/prop/@name" class="toc7 name">name</p>
@@ -5103,6 +5313,27 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                      <div class="remarks">
                                                                         <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                            a specific <code>class</code> value.</p>
+                                                                     </div>
+                                                                  </details>
+                                                               </div>
+                                                            </div>
+                                                         </div>
+                                                         <div class="model-entry definition assembly">
+                                                            <div class="instance-header">
+                                                               <p id="/system-security-plan/system-characteristics/system-information/information-type/integrity-impact/prop/@group" class="toc7 name">group</p>
+                                                               <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                               <p class="occurrence">[0 or 1]</p>
+                                                               <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/system-information/information-types/integrity-impact/props/group">Switch to JSON</a></div>
+                                                               <p class="formal-name">Property Group</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                                               <div class="remarks-group usa-prose">
+                                                                  <details open="open">
+                                                                     <summary class="subhead">Remarks</summary>
+                                                                     <div class="remarks">
+                                                                        <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                                           property to associate it with one or more other properties in a given context.</p>
                                                                      </div>
                                                                   </details>
                                                                </div>
@@ -5366,7 +5597,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                          </details>
                                                       </div>
                                                       <details class="properties attributes" open="open">
-                                                         <summary>Attributes (5)</summary>
+                                                         <summary>Attributes (6)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
                                                                <p id="/system-security-plan/system-characteristics/system-information/information-type/availability-impact/prop/@name" class="toc7 name">name</p>
@@ -5461,6 +5692,27 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                      <div class="remarks">
                                                                         <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                            a specific <code>class</code> value.</p>
+                                                                     </div>
+                                                                  </details>
+                                                               </div>
+                                                            </div>
+                                                         </div>
+                                                         <div class="model-entry definition assembly">
+                                                            <div class="instance-header">
+                                                               <p id="/system-security-plan/system-characteristics/system-information/information-type/availability-impact/prop/@group" class="toc7 name">group</p>
+                                                               <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                               <p class="occurrence">[0 or 1]</p>
+                                                               <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/system-information/information-types/availability-impact/props/group">Switch to JSON</a></div>
+                                                               <p class="formal-name">Property Group</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                                               <div class="remarks-group usa-prose">
+                                                                  <details open="open">
+                                                                     <summary class="subhead">Remarks</summary>
+                                                                     <div class="remarks">
+                                                                        <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                                           property to associate it with one or more other properties in a given context.</p>
                                                                      </div>
                                                                   </details>
                                                                </div>
@@ -5898,7 +6150,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                        </details>
                                     </div>
                                     <details class="properties attributes" open="open">
-                                       <summary>Attributes (5)</summary>
+                                       <summary>Attributes (6)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/system-characteristics/authorization-boundary/prop/@name" class="toc5 name">name</h5>
@@ -5993,6 +6245,27 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                    <div class="remarks">
                                                       <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                          a specific <code>class</code> value.</p>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/system-characteristics/authorization-boundary/prop/@group" class="toc5 name">group</h5>
+                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/authorization-boundary/props/group">Switch to JSON</a></div>
+                                             <p class="formal-name">Property Group</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                             <div class="remarks-group usa-prose">
+                                                <details open="open">
+                                                   <summary class="subhead">Remarks</summary>
+                                                   <div class="remarks">
+                                                      <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                         property to associate it with one or more other properties in a given context.</p>
                                                    </div>
                                                 </details>
                                              </div>
@@ -6284,7 +6557,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                 </details>
                                              </div>
                                              <details class="properties attributes" open="open">
-                                                <summary>Attributes (5)</summary>
+                                                <summary>Attributes (6)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/system-security-plan/system-characteristics/authorization-boundary/diagram/prop/@name" class="toc6 name">name</h6>
@@ -6379,6 +6652,27 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                             <div class="remarks">
                                                                <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                   a specific <code>class</code> value.</p>
+                                                            </div>
+                                                         </details>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                                <div class="model-entry definition assembly">
+                                                   <div class="instance-header">
+                                                      <h6 id="/system-security-plan/system-characteristics/authorization-boundary/diagram/prop/@group" class="toc6 name">group</h6>
+                                                      <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                      <p class="occurrence">[0 or 1]</p>
+                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/authorization-boundary/diagrams/props/group">Switch to JSON</a></div>
+                                                      <p class="formal-name">Property Group</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                                      <div class="remarks-group usa-prose">
+                                                         <details open="open">
+                                                            <summary class="subhead">Remarks</summary>
+                                                            <div class="remarks">
+                                                               <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                                  property to associate it with one or more other properties in a given context.</p>
                                                             </div>
                                                          </details>
                                                       </div>
@@ -6687,7 +6981,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                        </details>
                                     </div>
                                     <details class="properties attributes" open="open">
-                                       <summary>Attributes (5)</summary>
+                                       <summary>Attributes (6)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/system-characteristics/network-architecture/prop/@name" class="toc5 name">name</h5>
@@ -6782,6 +7076,27 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                    <div class="remarks">
                                                       <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                          a specific <code>class</code> value.</p>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/system-characteristics/network-architecture/prop/@group" class="toc5 name">group</h5>
+                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/network-architecture/props/group">Switch to JSON</a></div>
+                                             <p class="formal-name">Property Group</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                             <div class="remarks-group usa-prose">
+                                                <details open="open">
+                                                   <summary class="subhead">Remarks</summary>
+                                                   <div class="remarks">
+                                                      <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                         property to associate it with one or more other properties in a given context.</p>
                                                    </div>
                                                 </details>
                                              </div>
@@ -7070,7 +7385,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                 </details>
                                              </div>
                                              <details class="properties attributes" open="open">
-                                                <summary>Attributes (5)</summary>
+                                                <summary>Attributes (6)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/system-security-plan/system-characteristics/network-architecture/diagram/prop/@name" class="toc6 name">name</h6>
@@ -7165,6 +7480,27 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                             <div class="remarks">
                                                                <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                   a specific <code>class</code> value.</p>
+                                                            </div>
+                                                         </details>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                                <div class="model-entry definition assembly">
+                                                   <div class="instance-header">
+                                                      <h6 id="/system-security-plan/system-characteristics/network-architecture/diagram/prop/@group" class="toc6 name">group</h6>
+                                                      <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                      <p class="occurrence">[0 or 1]</p>
+                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/network-architecture/diagrams/props/group">Switch to JSON</a></div>
+                                                      <p class="formal-name">Property Group</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                                      <div class="remarks-group usa-prose">
+                                                         <details open="open">
+                                                            <summary class="subhead">Remarks</summary>
+                                                            <div class="remarks">
+                                                               <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                                  property to associate it with one or more other properties in a given context.</p>
                                                             </div>
                                                          </details>
                                                       </div>
@@ -7473,7 +7809,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                        </details>
                                     </div>
                                     <details class="properties attributes" open="open">
-                                       <summary>Attributes (5)</summary>
+                                       <summary>Attributes (6)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/system-characteristics/data-flow/prop/@name" class="toc5 name">name</h5>
@@ -7568,6 +7904,27 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                    <div class="remarks">
                                                       <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                          a specific <code>class</code> value.</p>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/system-characteristics/data-flow/prop/@group" class="toc5 name">group</h5>
+                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/data-flow/props/group">Switch to JSON</a></div>
+                                             <p class="formal-name">Property Group</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                             <div class="remarks-group usa-prose">
+                                                <details open="open">
+                                                   <summary class="subhead">Remarks</summary>
+                                                   <div class="remarks">
+                                                      <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                         property to associate it with one or more other properties in a given context.</p>
                                                    </div>
                                                 </details>
                                              </div>
@@ -7856,7 +8213,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                 </details>
                                              </div>
                                              <details class="properties attributes" open="open">
-                                                <summary>Attributes (5)</summary>
+                                                <summary>Attributes (6)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/system-security-plan/system-characteristics/data-flow/diagram/prop/@name" class="toc6 name">name</h6>
@@ -7951,6 +8308,27 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                             <div class="remarks">
                                                                <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                   a specific <code>class</code> value.</p>
+                                                            </div>
+                                                         </details>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                                <div class="model-entry definition assembly">
+                                                   <div class="instance-header">
+                                                      <h6 id="/system-security-plan/system-characteristics/data-flow/diagram/prop/@group" class="toc6 name">group</h6>
+                                                      <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                      <p class="occurrence">[0 or 1]</p>
+                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/data-flow/diagrams/props/group">Switch to JSON</a></div>
+                                                      <p class="formal-name">Property Group</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                                      <div class="remarks-group usa-prose">
+                                                         <details open="open">
+                                                            <summary class="subhead">Remarks</summary>
+                                                            <div class="remarks">
+                                                               <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                                  property to associate it with one or more other properties in a given context.</p>
                                                             </div>
                                                          </details>
                                                       </div>
@@ -8282,7 +8660,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                        </details>
                                     </div>
                                     <details class="properties attributes" open="open">
-                                       <summary>Attributes (5)</summary>
+                                       <summary>Attributes (6)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/system-characteristics/responsible-party/prop/@name" class="toc5 name">name</h5>
@@ -8377,6 +8755,27 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                    <div class="remarks">
                                                       <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                          a specific <code>class</code> value.</p>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/system-characteristics/responsible-party/prop/@group" class="toc5 name">group</h5>
+                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/responsible-parties/props/group">Switch to JSON</a></div>
+                                             <p class="formal-name">Property Group</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                             <div class="remarks-group usa-prose">
+                                                <details open="open">
+                                                   <summary class="subhead">Remarks</summary>
+                                                   <div class="remarks">
+                                                      <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                         property to associate it with one or more other properties in a given context.</p>
                                                    </div>
                                                 </details>
                                              </div>
@@ -8690,7 +9089,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                               </details>
                            </div>
                            <details class="properties attributes" open="open">
-                              <summary>Attributes (5)</summary>
+                              <summary>Attributes (6)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/system-security-plan/system-implementation/prop/@name" class="toc4 name">name</h4>
@@ -8785,6 +9184,27 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                           <div class="remarks">
                                              <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                 a specific <code>class</code> value.</p>
+                                          </div>
+                                       </details>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="model-entry definition assembly">
+                                 <div class="instance-header">
+                                    <h4 id="/system-security-plan/system-implementation/prop/@group" class="toc4 name">group</h4>
+                                    <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                    <p class="occurrence">[0 or 1]</p>
+                                    <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-implementation/props/group">Switch to JSON</a></div>
+                                    <p class="formal-name">Property Group</p>
+                                 </div>
+                                 <div class="body">
+                                    <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                    <div class="remarks-group usa-prose">
+                                       <details open="open">
+                                          <summary class="subhead">Remarks</summary>
+                                          <div class="remarks">
+                                             <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                property to associate it with one or more other properties in a given context.</p>
                                           </div>
                                        </details>
                                     </div>
@@ -9043,7 +9463,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                        </details>
                                     </div>
                                     <details class="properties attributes" open="open">
-                                       <summary>Attributes (5)</summary>
+                                       <summary>Attributes (6)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/system-implementation/leveraged-authorization/prop/@name" class="toc5 name">name</h5>
@@ -9138,6 +9558,27 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                    <div class="remarks">
                                                       <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                          a specific <code>class</code> value.</p>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/system-implementation/leveraged-authorization/prop/@group" class="toc5 name">group</h5>
+                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-implementation/leveraged-authorizations/props/group">Switch to JSON</a></div>
+                                             <p class="formal-name">Property Group</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                             <div class="remarks-group usa-prose">
+                                                <details open="open">
+                                                   <summary class="subhead">Remarks</summary>
+                                                   <div class="remarks">
+                                                      <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                         property to associate it with one or more other properties in a given context.</p>
                                                    </div>
                                                 </details>
                                              </div>
@@ -9541,7 +9982,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                        </details>
                                     </div>
                                     <details class="properties attributes" open="open">
-                                       <summary>Attributes (5)</summary>
+                                       <summary>Attributes (6)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/system-implementation/user/prop/@name" class="toc5 name">name</h5>
@@ -9636,6 +10077,27 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                    <div class="remarks">
                                                       <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                          a specific <code>class</code> value.</p>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/system-implementation/user/prop/@group" class="toc5 name">group</h5>
+                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-implementation/users/props/group">Switch to JSON</a></div>
+                                             <p class="formal-name">Property Group</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                             <div class="remarks-group usa-prose">
+                                                <details open="open">
+                                                   <summary class="subhead">Remarks</summary>
+                                                   <div class="remarks">
+                                                      <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                         property to associate it with one or more other properties in a given context.</p>
                                                    </div>
                                                 </details>
                                              </div>
@@ -10422,7 +10884,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                        </details>
                                     </div>
                                     <details class="properties attributes" open="open">
-                                       <summary>Attributes (5)</summary>
+                                       <summary>Attributes (6)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/system-implementation/component/prop/@name" class="toc5 name">name</h5>
@@ -10517,6 +10979,27 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                    <div class="remarks">
                                                       <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                          a specific <code>class</code> value.</p>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/system-implementation/component/prop/@group" class="toc5 name">group</h5>
+                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-implementation/components/props/group">Switch to JSON</a></div>
+                                             <p class="formal-name">Property Group</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                             <div class="remarks-group usa-prose">
+                                                <details open="open">
+                                                   <summary class="subhead">Remarks</summary>
+                                                   <div class="remarks">
+                                                      <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                         property to associate it with one or more other properties in a given context.</p>
                                                    </div>
                                                 </details>
                                              </div>
@@ -10813,7 +11296,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                 </details>
                                              </div>
                                              <details class="properties attributes" open="open">
-                                                <summary>Attributes (5)</summary>
+                                                <summary>Attributes (6)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/system-security-plan/system-implementation/component/responsible-role/prop/@name" class="toc6 name">name</h6>
@@ -10908,6 +11391,27 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                             <div class="remarks">
                                                                <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                   a specific <code>class</code> value.</p>
+                                                            </div>
+                                                         </details>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                                <div class="model-entry definition assembly">
+                                                   <div class="instance-header">
+                                                      <h6 id="/system-security-plan/system-implementation/component/responsible-role/prop/@group" class="toc6 name">group</h6>
+                                                      <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                      <p class="occurrence">[0 or 1]</p>
+                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-implementation/components/responsible-roles/props/group">Switch to JSON</a></div>
+                                                      <p class="formal-name">Property Group</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                                      <div class="remarks-group usa-prose">
+                                                         <details open="open">
+                                                            <summary class="subhead">Remarks</summary>
+                                                            <div class="remarks">
+                                                               <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                                  property to associate it with one or more other properties in a given context.</p>
                                                             </div>
                                                          </details>
                                                       </div>
@@ -11604,7 +12108,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                        </details>
                                     </div>
                                     <details class="properties attributes" open="open">
-                                       <summary>Attributes (5)</summary>
+                                       <summary>Attributes (6)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/system-implementation/inventory-item/prop/@name" class="toc5 name">name</h5>
@@ -11699,6 +12203,27 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                    <div class="remarks">
                                                       <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                          a specific <code>class</code> value.</p>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/system-implementation/inventory-item/prop/@group" class="toc5 name">group</h5>
+                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-implementation/inventory-items/props/group">Switch to JSON</a></div>
+                                             <p class="formal-name">Property Group</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                             <div class="remarks-group usa-prose">
+                                                <details open="open">
+                                                   <summary class="subhead">Remarks</summary>
+                                                   <div class="remarks">
+                                                      <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                         property to associate it with one or more other properties in a given context.</p>
                                                    </div>
                                                 </details>
                                              </div>
@@ -11962,7 +12487,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                 </details>
                                              </div>
                                              <details class="properties attributes" open="open">
-                                                <summary>Attributes (5)</summary>
+                                                <summary>Attributes (6)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/system-security-plan/system-implementation/inventory-item/responsible-party/prop/@name" class="toc6 name">name</h6>
@@ -12057,6 +12582,27 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                             <div class="remarks">
                                                                <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                   a specific <code>class</code> value.</p>
+                                                            </div>
+                                                         </details>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                                <div class="model-entry definition assembly">
+                                                   <div class="instance-header">
+                                                      <h6 id="/system-security-plan/system-implementation/inventory-item/responsible-party/prop/@group" class="toc6 name">group</h6>
+                                                      <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                      <p class="occurrence">[0 or 1]</p>
+                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-implementation/inventory-items/responsible-parties/props/group">Switch to JSON</a></div>
+                                                      <p class="formal-name">Property Group</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                                      <div class="remarks-group usa-prose">
+                                                         <details open="open">
+                                                            <summary class="subhead">Remarks</summary>
+                                                            <div class="remarks">
+                                                               <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                                  property to associate it with one or more other properties in a given context.</p>
                                                             </div>
                                                          </details>
                                                       </div>
@@ -12398,7 +12944,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                 </details>
                                              </div>
                                              <details class="properties attributes" open="open">
-                                                <summary>Attributes (5)</summary>
+                                                <summary>Attributes (6)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/system-security-plan/system-implementation/inventory-item/implemented-component/prop/@name" class="toc6 name">name</h6>
@@ -12493,6 +13039,27 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                             <div class="remarks">
                                                                <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                   a specific <code>class</code> value.</p>
+                                                            </div>
+                                                         </details>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                                <div class="model-entry definition assembly">
+                                                   <div class="instance-header">
+                                                      <h6 id="/system-security-plan/system-implementation/inventory-item/implemented-component/prop/@group" class="toc6 name">group</h6>
+                                                      <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                      <p class="occurrence">[0 or 1]</p>
+                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-implementation/inventory-items/implemented-components/props/group">Switch to JSON</a></div>
+                                                      <p class="formal-name">Property Group</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                                      <div class="remarks-group usa-prose">
+                                                         <details open="open">
+                                                            <summary class="subhead">Remarks</summary>
+                                                            <div class="remarks">
+                                                               <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                                  property to associate it with one or more other properties in a given context.</p>
                                                             </div>
                                                          </details>
                                                       </div>
@@ -12766,7 +13333,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                          </details>
                                                       </div>
                                                       <details class="properties attributes" open="open">
-                                                         <summary>Attributes (5)</summary>
+                                                         <summary>Attributes (6)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
                                                                <p id="/system-security-plan/system-implementation/inventory-item/implemented-component/responsible-party/prop/@name" class="toc7 name">name</p>
@@ -12861,6 +13428,27 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                      <div class="remarks">
                                                                         <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                            a specific <code>class</code> value.</p>
+                                                                     </div>
+                                                                  </details>
+                                                               </div>
+                                                            </div>
+                                                         </div>
+                                                         <div class="model-entry definition assembly">
+                                                            <div class="instance-header">
+                                                               <p id="/system-security-plan/system-implementation/inventory-item/implemented-component/responsible-party/prop/@group" class="toc7 name">group</p>
+                                                               <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                               <p class="occurrence">[0 or 1]</p>
+                                                               <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-implementation/inventory-items/implemented-components/responsible-parties/props/group">Switch to JSON</a></div>
+                                                               <p class="formal-name">Property Group</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                                               <div class="remarks-group usa-prose">
+                                                                  <details open="open">
+                                                                     <summary class="subhead">Remarks</summary>
+                                                                     <div class="remarks">
+                                                                        <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                                           property to associate it with one or more other properties in a given context.</p>
                                                                      </div>
                                                                   </details>
                                                                </div>
@@ -13428,7 +14016,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                        </details>
                                     </div>
                                     <details class="properties attributes" open="open">
-                                       <summary>Attributes (5)</summary>
+                                       <summary>Attributes (6)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/control-implementation/implemented-requirement/prop/@name" class="toc5 name">name</h5>
@@ -13523,6 +14111,27 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                    <div class="remarks">
                                                       <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                          a specific <code>class</code> value.</p>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/control-implementation/implemented-requirement/prop/@group" class="toc5 name">group</h5>
+                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/props/group">Switch to JSON</a></div>
+                                             <p class="formal-name">Property Group</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                             <div class="remarks-group usa-prose">
+                                                <details open="open">
+                                                   <summary class="subhead">Remarks</summary>
+                                                   <div class="remarks">
+                                                      <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                         property to associate it with one or more other properties in a given context.</p>
                                                    </div>
                                                 </details>
                                              </div>
@@ -13815,7 +14424,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                 </details>
                                              </div>
                                              <details class="properties attributes" open="open">
-                                                <summary>Attributes (5)</summary>
+                                                <summary>Attributes (6)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/system-security-plan/control-implementation/implemented-requirement/responsible-role/prop/@name" class="toc6 name">name</h6>
@@ -13910,6 +14519,27 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                             <div class="remarks">
                                                                <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                   a specific <code>class</code> value.</p>
+                                                            </div>
+                                                         </details>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                                <div class="model-entry definition assembly">
+                                                   <div class="instance-header">
+                                                      <h6 id="/system-security-plan/control-implementation/implemented-requirement/responsible-role/prop/@group" class="toc6 name">group</h6>
+                                                      <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                      <p class="occurrence">[0 or 1]</p>
+                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/responsible-roles/props/group">Switch to JSON</a></div>
+                                                      <p class="formal-name">Property Group</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                                      <div class="remarks-group usa-prose">
+                                                         <details open="open">
+                                                            <summary class="subhead">Remarks</summary>
+                                                            <div class="remarks">
+                                                               <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                                  property to associate it with one or more other properties in a given context.</p>
                                                             </div>
                                                          </details>
                                                       </div>
@@ -14245,7 +14875,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                 </details>
                                              </div>
                                              <details class="properties attributes" open="open">
-                                                <summary>Attributes (5)</summary>
+                                                <summary>Attributes (6)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/system-security-plan/control-implementation/implemented-requirement/statement/prop/@name" class="toc6 name">name</h6>
@@ -14340,6 +14970,27 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                             <div class="remarks">
                                                                <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                   a specific <code>class</code> value.</p>
+                                                            </div>
+                                                         </details>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                                <div class="model-entry definition assembly">
+                                                   <div class="instance-header">
+                                                      <h6 id="/system-security-plan/control-implementation/implemented-requirement/statement/prop/@group" class="toc6 name">group</h6>
+                                                      <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                      <p class="occurrence">[0 or 1]</p>
+                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/props/group">Switch to JSON</a></div>
+                                                      <p class="formal-name">Property Group</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                                      <div class="remarks-group usa-prose">
+                                                         <details open="open">
+                                                            <summary class="subhead">Remarks</summary>
+                                                            <div class="remarks">
+                                                               <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                                  property to associate it with one or more other properties in a given context.</p>
                                                             </div>
                                                          </details>
                                                       </div>
@@ -14564,7 +15215,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                          </details>
                                                       </div>
                                                       <details class="properties attributes" open="open">
-                                                         <summary>Attributes (5)</summary>
+                                                         <summary>Attributes (6)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
                                                                <p id="/system-security-plan/control-implementation/implemented-requirement/statement/responsible-role/prop/@name" class="toc7 name">name</p>
@@ -14659,6 +15310,27 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                      <div class="remarks">
                                                                         <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                            a specific <code>class</code> value.</p>
+                                                                     </div>
+                                                                  </details>
+                                                               </div>
+                                                            </div>
+                                                         </div>
+                                                         <div class="model-entry definition assembly">
+                                                            <div class="instance-header">
+                                                               <p id="/system-security-plan/control-implementation/implemented-requirement/statement/responsible-role/prop/@group" class="toc7 name">group</p>
+                                                               <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                               <p class="occurrence">[0 or 1]</p>
+                                                               <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/responsible-roles/props/group">Switch to JSON</a></div>
+                                                               <p class="formal-name">Property Group</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                                               <div class="remarks-group usa-prose">
+                                                                  <details open="open">
+                                                                     <summary class="subhead">Remarks</summary>
+                                                                     <div class="remarks">
+                                                                        <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                                           property to associate it with one or more other properties in a given context.</p>
                                                                      </div>
                                                                   </details>
                                                                </div>
@@ -15027,7 +15699,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                          </details>
                                                       </div>
                                                       <details class="properties attributes" open="open">
-                                                         <summary>Attributes (5)</summary>
+                                                         <summary>Attributes (6)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
                                                                <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/prop/@name" class="toc7 name">name</p>
@@ -15122,6 +15794,27 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                      <div class="remarks">
                                                                         <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                            a specific <code>class</code> value.</p>
+                                                                     </div>
+                                                                  </details>
+                                                               </div>
+                                                            </div>
+                                                         </div>
+                                                         <div class="model-entry definition assembly">
+                                                            <div class="instance-header">
+                                                               <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/prop/@group" class="toc7 name">group</p>
+                                                               <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                               <p class="occurrence">[0 or 1]</p>
+                                                               <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/by-components/props/group">Switch to JSON</a></div>
+                                                               <p class="formal-name">Property Group</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                                               <div class="remarks-group usa-prose">
+                                                                  <details open="open">
+                                                                     <summary class="subhead">Remarks</summary>
+                                                                     <div class="remarks">
+                                                                        <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                                           property to associate it with one or more other properties in a given context.</p>
                                                                      </div>
                                                                   </details>
                                                                </div>
@@ -15515,7 +16208,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                   </details>
                                                                </div>
                                                                <details class="properties attributes" open="open">
-                                                                  <summary>Attributes (5)</summary>
+                                                                  <summary>Attributes (6)</summary>
                                                                   <div class="model-entry definition assembly">
                                                                      <div class="instance-header">
                                                                         <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/prop/@name" class="toc8 name">name</p>
@@ -15610,6 +16303,27 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                               <div class="remarks">
                                                                                  <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                                     a specific <code>class</code> value.</p>
+                                                                              </div>
+                                                                           </details>
+                                                                        </div>
+                                                                     </div>
+                                                                  </div>
+                                                                  <div class="model-entry definition assembly">
+                                                                     <div class="instance-header">
+                                                                        <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/prop/@group" class="toc8 name">group</p>
+                                                                        <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                                        <p class="occurrence">[0 or 1]</p>
+                                                                        <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/by-components/export/props/group">Switch to JSON</a></div>
+                                                                        <p class="formal-name">Property Group</p>
+                                                                     </div>
+                                                                     <div class="body">
+                                                                        <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                                                        <div class="remarks-group usa-prose">
+                                                                           <details open="open">
+                                                                              <summary class="subhead">Remarks</summary>
+                                                                              <div class="remarks">
+                                                                                 <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                                                    property to associate it with one or more other properties in a given context.</p>
                                                                               </div>
                                                                            </details>
                                                                         </div>
@@ -15867,7 +16581,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                            </details>
                                                                         </div>
                                                                         <details class="properties attributes" open="open">
-                                                                           <summary>Attributes (5)</summary>
+                                                                           <summary>Attributes (6)</summary>
                                                                            <div class="model-entry definition assembly">
                                                                               <div class="instance-header">
                                                                                  <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/provided/prop/@name" class="toc9 name">name</p>
@@ -15962,6 +16676,27 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                                        <div class="remarks">
                                                                                           <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                                              a specific <code>class</code> value.</p>
+                                                                                       </div>
+                                                                                    </details>
+                                                                                 </div>
+                                                                              </div>
+                                                                           </div>
+                                                                           <div class="model-entry definition assembly">
+                                                                              <div class="instance-header">
+                                                                                 <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/provided/prop/@group" class="toc9 name">group</p>
+                                                                                 <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                                                 <p class="occurrence">[0 or 1]</p>
+                                                                                 <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/by-components/export/provided/props/group">Switch to JSON</a></div>
+                                                                                 <p class="formal-name">Property Group</p>
+                                                                              </div>
+                                                                              <div class="body">
+                                                                                 <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                                                                 <div class="remarks-group usa-prose">
+                                                                                    <details open="open">
+                                                                                       <summary class="subhead">Remarks</summary>
+                                                                                       <div class="remarks">
+                                                                                          <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                                                             property to associate it with one or more other properties in a given context.</p>
                                                                                        </div>
                                                                                     </details>
                                                                                  </div>
@@ -16186,7 +16921,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                                     </details>
                                                                                  </div>
                                                                                  <details class="properties attributes" open="open">
-                                                                                    <summary>Attributes (5)</summary>
+                                                                                    <summary>Attributes (6)</summary>
                                                                                     <div class="model-entry definition assembly">
                                                                                        <div class="instance-header">
                                                                                           <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/provided/responsible-role/prop/@name" class="toc10 name">name</p>
@@ -16281,6 +17016,27 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                                                 <div class="remarks">
                                                                                                    <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                                                       a specific <code>class</code> value.</p>
+                                                                                                </div>
+                                                                                             </details>
+                                                                                          </div>
+                                                                                       </div>
+                                                                                    </div>
+                                                                                    <div class="model-entry definition assembly">
+                                                                                       <div class="instance-header">
+                                                                                          <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/provided/responsible-role/prop/@group" class="toc10 name">group</p>
+                                                                                          <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                                                          <p class="occurrence">[0 or 1]</p>
+                                                                                          <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/by-components/export/provided/responsible-roles/props/group">Switch to JSON</a></div>
+                                                                                          <p class="formal-name">Property Group</p>
+                                                                                       </div>
+                                                                                       <div class="body">
+                                                                                          <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                                                                          <div class="remarks-group usa-prose">
+                                                                                             <details open="open">
+                                                                                                <summary class="subhead">Remarks</summary>
+                                                                                                <div class="remarks">
+                                                                                                   <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                                                                      property to associate it with one or more other properties in a given context.</p>
                                                                                                 </div>
                                                                                              </details>
                                                                                           </div>
@@ -16635,7 +17391,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                            </details>
                                                                         </div>
                                                                         <details class="properties attributes" open="open">
-                                                                           <summary>Attributes (5)</summary>
+                                                                           <summary>Attributes (6)</summary>
                                                                            <div class="model-entry definition assembly">
                                                                               <div class="instance-header">
                                                                                  <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/responsibility/prop/@name" class="toc9 name">name</p>
@@ -16730,6 +17486,27 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                                        <div class="remarks">
                                                                                           <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                                              a specific <code>class</code> value.</p>
+                                                                                       </div>
+                                                                                    </details>
+                                                                                 </div>
+                                                                              </div>
+                                                                           </div>
+                                                                           <div class="model-entry definition assembly">
+                                                                              <div class="instance-header">
+                                                                                 <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/responsibility/prop/@group" class="toc9 name">group</p>
+                                                                                 <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                                                 <p class="occurrence">[0 or 1]</p>
+                                                                                 <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/by-components/export/responsibilities/props/group">Switch to JSON</a></div>
+                                                                                 <p class="formal-name">Property Group</p>
+                                                                              </div>
+                                                                              <div class="body">
+                                                                                 <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                                                                 <div class="remarks-group usa-prose">
+                                                                                    <details open="open">
+                                                                                       <summary class="subhead">Remarks</summary>
+                                                                                       <div class="remarks">
+                                                                                          <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                                                             property to associate it with one or more other properties in a given context.</p>
                                                                                        </div>
                                                                                     </details>
                                                                                  </div>
@@ -16963,7 +17740,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                                     </details>
                                                                                  </div>
                                                                                  <details class="properties attributes" open="open">
-                                                                                    <summary>Attributes (5)</summary>
+                                                                                    <summary>Attributes (6)</summary>
                                                                                     <div class="model-entry definition assembly">
                                                                                        <div class="instance-header">
                                                                                           <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/responsibility/responsible-role/prop/@name" class="toc10 name">name</p>
@@ -17058,6 +17835,27 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                                                 <div class="remarks">
                                                                                                    <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                                                       a specific <code>class</code> value.</p>
+                                                                                                </div>
+                                                                                             </details>
+                                                                                          </div>
+                                                                                       </div>
+                                                                                    </div>
+                                                                                    <div class="model-entry definition assembly">
+                                                                                       <div class="instance-header">
+                                                                                          <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/responsibility/responsible-role/prop/@group" class="toc10 name">group</p>
+                                                                                          <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                                                          <p class="occurrence">[0 or 1]</p>
+                                                                                          <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/by-components/export/responsibilities/responsible-roles/props/group">Switch to JSON</a></div>
+                                                                                          <p class="formal-name">Property Group</p>
+                                                                                       </div>
+                                                                                       <div class="body">
+                                                                                          <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                                                                          <div class="remarks-group usa-prose">
+                                                                                             <details open="open">
+                                                                                                <summary class="subhead">Remarks</summary>
+                                                                                                <div class="remarks">
+                                                                                                   <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                                                                      property to associate it with one or more other properties in a given context.</p>
                                                                                                 </div>
                                                                                              </details>
                                                                                           </div>
@@ -17439,7 +18237,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                   </details>
                                                                </div>
                                                                <details class="properties attributes" open="open">
-                                                                  <summary>Attributes (5)</summary>
+                                                                  <summary>Attributes (6)</summary>
                                                                   <div class="model-entry definition assembly">
                                                                      <div class="instance-header">
                                                                         <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/inherited/prop/@name" class="toc8 name">name</p>
@@ -17534,6 +18332,27 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                               <div class="remarks">
                                                                                  <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                                     a specific <code>class</code> value.</p>
+                                                                              </div>
+                                                                           </details>
+                                                                        </div>
+                                                                     </div>
+                                                                  </div>
+                                                                  <div class="model-entry definition assembly">
+                                                                     <div class="instance-header">
+                                                                        <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/inherited/prop/@group" class="toc8 name">group</p>
+                                                                        <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                                        <p class="occurrence">[0 or 1]</p>
+                                                                        <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/by-components/inherited/props/group">Switch to JSON</a></div>
+                                                                        <p class="formal-name">Property Group</p>
+                                                                     </div>
+                                                                     <div class="body">
+                                                                        <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                                                        <div class="remarks-group usa-prose">
+                                                                           <details open="open">
+                                                                              <summary class="subhead">Remarks</summary>
+                                                                              <div class="remarks">
+                                                                                 <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                                                    property to associate it with one or more other properties in a given context.</p>
                                                                               </div>
                                                                            </details>
                                                                         </div>
@@ -17758,7 +18577,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                            </details>
                                                                         </div>
                                                                         <details class="properties attributes" open="open">
-                                                                           <summary>Attributes (5)</summary>
+                                                                           <summary>Attributes (6)</summary>
                                                                            <div class="model-entry definition assembly">
                                                                               <div class="instance-header">
                                                                                  <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/inherited/responsible-role/prop/@name" class="toc9 name">name</p>
@@ -17853,6 +18672,27 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                                        <div class="remarks">
                                                                                           <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                                              a specific <code>class</code> value.</p>
+                                                                                       </div>
+                                                                                    </details>
+                                                                                 </div>
+                                                                              </div>
+                                                                           </div>
+                                                                           <div class="model-entry definition assembly">
+                                                                              <div class="instance-header">
+                                                                                 <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/inherited/responsible-role/prop/@group" class="toc9 name">group</p>
+                                                                                 <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                                                 <p class="occurrence">[0 or 1]</p>
+                                                                                 <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/by-components/inherited/responsible-roles/props/group">Switch to JSON</a></div>
+                                                                                 <p class="formal-name">Property Group</p>
+                                                                              </div>
+                                                                              <div class="body">
+                                                                                 <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                                                                 <div class="remarks-group usa-prose">
+                                                                                    <details open="open">
+                                                                                       <summary class="subhead">Remarks</summary>
+                                                                                       <div class="remarks">
+                                                                                          <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                                                             property to associate it with one or more other properties in a given context.</p>
                                                                                        </div>
                                                                                     </details>
                                                                                  </div>
@@ -18183,7 +19023,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                   </details>
                                                                </div>
                                                                <details class="properties attributes" open="open">
-                                                                  <summary>Attributes (5)</summary>
+                                                                  <summary>Attributes (6)</summary>
                                                                   <div class="model-entry definition assembly">
                                                                      <div class="instance-header">
                                                                         <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/satisfied/prop/@name" class="toc8 name">name</p>
@@ -18278,6 +19118,27 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                               <div class="remarks">
                                                                                  <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                                     a specific <code>class</code> value.</p>
+                                                                              </div>
+                                                                           </details>
+                                                                        </div>
+                                                                     </div>
+                                                                  </div>
+                                                                  <div class="model-entry definition assembly">
+                                                                     <div class="instance-header">
+                                                                        <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/satisfied/prop/@group" class="toc8 name">group</p>
+                                                                        <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                                        <p class="occurrence">[0 or 1]</p>
+                                                                        <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/by-components/satisfied/props/group">Switch to JSON</a></div>
+                                                                        <p class="formal-name">Property Group</p>
+                                                                     </div>
+                                                                     <div class="body">
+                                                                        <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                                                        <div class="remarks-group usa-prose">
+                                                                           <details open="open">
+                                                                              <summary class="subhead">Remarks</summary>
+                                                                              <div class="remarks">
+                                                                                 <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                                                    property to associate it with one or more other properties in a given context.</p>
                                                                               </div>
                                                                            </details>
                                                                         </div>
@@ -18502,7 +19363,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                            </details>
                                                                         </div>
                                                                         <details class="properties attributes" open="open">
-                                                                           <summary>Attributes (5)</summary>
+                                                                           <summary>Attributes (6)</summary>
                                                                            <div class="model-entry definition assembly">
                                                                               <div class="instance-header">
                                                                                  <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/satisfied/responsible-role/prop/@name" class="toc9 name">name</p>
@@ -18597,6 +19458,27 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                                        <div class="remarks">
                                                                                           <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                                              a specific <code>class</code> value.</p>
+                                                                                       </div>
+                                                                                    </details>
+                                                                                 </div>
+                                                                              </div>
+                                                                           </div>
+                                                                           <div class="model-entry definition assembly">
+                                                                              <div class="instance-header">
+                                                                                 <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/satisfied/responsible-role/prop/@group" class="toc9 name">group</p>
+                                                                                 <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                                                 <p class="occurrence">[0 or 1]</p>
+                                                                                 <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/by-components/satisfied/responsible-roles/props/group">Switch to JSON</a></div>
+                                                                                 <p class="formal-name">Property Group</p>
+                                                                              </div>
+                                                                              <div class="body">
+                                                                                 <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                                                                 <div class="remarks-group usa-prose">
+                                                                                    <details open="open">
+                                                                                       <summary class="subhead">Remarks</summary>
+                                                                                       <div class="remarks">
+                                                                                          <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                                                             property to associate it with one or more other properties in a given context.</p>
                                                                                        </div>
                                                                                     </details>
                                                                                  </div>
@@ -18904,7 +19786,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                   </details>
                                                                </div>
                                                                <details class="properties attributes" open="open">
-                                                                  <summary>Attributes (5)</summary>
+                                                                  <summary>Attributes (6)</summary>
                                                                   <div class="model-entry definition assembly">
                                                                      <div class="instance-header">
                                                                         <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/responsible-role/prop/@name" class="toc8 name">name</p>
@@ -18999,6 +19881,27 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                               <div class="remarks">
                                                                                  <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                                     a specific <code>class</code> value.</p>
+                                                                              </div>
+                                                                           </details>
+                                                                        </div>
+                                                                     </div>
+                                                                  </div>
+                                                                  <div class="model-entry definition assembly">
+                                                                     <div class="instance-header">
+                                                                        <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/responsible-role/prop/@group" class="toc8 name">group</p>
+                                                                        <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                                        <p class="occurrence">[0 or 1]</p>
+                                                                        <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/by-components/responsible-roles/props/group">Switch to JSON</a></div>
+                                                                        <p class="formal-name">Property Group</p>
+                                                                     </div>
+                                                                     <div class="body">
+                                                                        <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                                                        <div class="remarks-group usa-prose">
+                                                                           <details open="open">
+                                                                              <summary class="subhead">Remarks</summary>
+                                                                              <div class="remarks">
+                                                                                 <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                                                    property to associate it with one or more other properties in a given context.</p>
                                                                               </div>
                                                                            </details>
                                                                         </div>
@@ -19423,7 +20326,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                 </details>
                                              </div>
                                              <details class="properties attributes" open="open">
-                                                <summary>Attributes (5)</summary>
+                                                <summary>Attributes (6)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/system-security-plan/control-implementation/implemented-requirement/by-component/prop/@name" class="toc6 name">name</h6>
@@ -19518,6 +20421,27 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                             <div class="remarks">
                                                                <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                   a specific <code>class</code> value.</p>
+                                                            </div>
+                                                         </details>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                                <div class="model-entry definition assembly">
+                                                   <div class="instance-header">
+                                                      <h6 id="/system-security-plan/control-implementation/implemented-requirement/by-component/prop/@group" class="toc6 name">group</h6>
+                                                      <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                      <p class="occurrence">[0 or 1]</p>
+                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/props/group">Switch to JSON</a></div>
+                                                      <p class="formal-name">Property Group</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                                      <div class="remarks-group usa-prose">
+                                                         <details open="open">
+                                                            <summary class="subhead">Remarks</summary>
+                                                            <div class="remarks">
+                                                               <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                                  property to associate it with one or more other properties in a given context.</p>
                                                             </div>
                                                          </details>
                                                       </div>
@@ -19911,7 +20835,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                          </details>
                                                       </div>
                                                       <details class="properties attributes" open="open">
-                                                         <summary>Attributes (5)</summary>
+                                                         <summary>Attributes (6)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
                                                                <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/export/prop/@name" class="toc7 name">name</p>
@@ -20006,6 +20930,27 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                      <div class="remarks">
                                                                         <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                            a specific <code>class</code> value.</p>
+                                                                     </div>
+                                                                  </details>
+                                                               </div>
+                                                            </div>
+                                                         </div>
+                                                         <div class="model-entry definition assembly">
+                                                            <div class="instance-header">
+                                                               <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/export/prop/@group" class="toc7 name">group</p>
+                                                               <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                               <p class="occurrence">[0 or 1]</p>
+                                                               <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/export/props/group">Switch to JSON</a></div>
+                                                               <p class="formal-name">Property Group</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                                               <div class="remarks-group usa-prose">
+                                                                  <details open="open">
+                                                                     <summary class="subhead">Remarks</summary>
+                                                                     <div class="remarks">
+                                                                        <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                                           property to associate it with one or more other properties in a given context.</p>
                                                                      </div>
                                                                   </details>
                                                                </div>
@@ -20263,7 +21208,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                   </details>
                                                                </div>
                                                                <details class="properties attributes" open="open">
-                                                                  <summary>Attributes (5)</summary>
+                                                                  <summary>Attributes (6)</summary>
                                                                   <div class="model-entry definition assembly">
                                                                      <div class="instance-header">
                                                                         <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/export/provided/prop/@name" class="toc8 name">name</p>
@@ -20358,6 +21303,27 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                               <div class="remarks">
                                                                                  <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                                     a specific <code>class</code> value.</p>
+                                                                              </div>
+                                                                           </details>
+                                                                        </div>
+                                                                     </div>
+                                                                  </div>
+                                                                  <div class="model-entry definition assembly">
+                                                                     <div class="instance-header">
+                                                                        <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/export/provided/prop/@group" class="toc8 name">group</p>
+                                                                        <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                                        <p class="occurrence">[0 or 1]</p>
+                                                                        <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/export/provided/props/group">Switch to JSON</a></div>
+                                                                        <p class="formal-name">Property Group</p>
+                                                                     </div>
+                                                                     <div class="body">
+                                                                        <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                                                        <div class="remarks-group usa-prose">
+                                                                           <details open="open">
+                                                                              <summary class="subhead">Remarks</summary>
+                                                                              <div class="remarks">
+                                                                                 <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                                                    property to associate it with one or more other properties in a given context.</p>
                                                                               </div>
                                                                            </details>
                                                                         </div>
@@ -20582,7 +21548,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                            </details>
                                                                         </div>
                                                                         <details class="properties attributes" open="open">
-                                                                           <summary>Attributes (5)</summary>
+                                                                           <summary>Attributes (6)</summary>
                                                                            <div class="model-entry definition assembly">
                                                                               <div class="instance-header">
                                                                                  <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/export/provided/responsible-role/prop/@name" class="toc9 name">name</p>
@@ -20677,6 +21643,27 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                                        <div class="remarks">
                                                                                           <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                                              a specific <code>class</code> value.</p>
+                                                                                       </div>
+                                                                                    </details>
+                                                                                 </div>
+                                                                              </div>
+                                                                           </div>
+                                                                           <div class="model-entry definition assembly">
+                                                                              <div class="instance-header">
+                                                                                 <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/export/provided/responsible-role/prop/@group" class="toc9 name">group</p>
+                                                                                 <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                                                 <p class="occurrence">[0 or 1]</p>
+                                                                                 <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/export/provided/responsible-roles/props/group">Switch to JSON</a></div>
+                                                                                 <p class="formal-name">Property Group</p>
+                                                                              </div>
+                                                                              <div class="body">
+                                                                                 <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                                                                 <div class="remarks-group usa-prose">
+                                                                                    <details open="open">
+                                                                                       <summary class="subhead">Remarks</summary>
+                                                                                       <div class="remarks">
+                                                                                          <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                                                             property to associate it with one or more other properties in a given context.</p>
                                                                                        </div>
                                                                                     </details>
                                                                                  </div>
@@ -21031,7 +22018,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                   </details>
                                                                </div>
                                                                <details class="properties attributes" open="open">
-                                                                  <summary>Attributes (5)</summary>
+                                                                  <summary>Attributes (6)</summary>
                                                                   <div class="model-entry definition assembly">
                                                                      <div class="instance-header">
                                                                         <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/export/responsibility/prop/@name" class="toc8 name">name</p>
@@ -21126,6 +22113,27 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                               <div class="remarks">
                                                                                  <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                                     a specific <code>class</code> value.</p>
+                                                                              </div>
+                                                                           </details>
+                                                                        </div>
+                                                                     </div>
+                                                                  </div>
+                                                                  <div class="model-entry definition assembly">
+                                                                     <div class="instance-header">
+                                                                        <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/export/responsibility/prop/@group" class="toc8 name">group</p>
+                                                                        <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                                        <p class="occurrence">[0 or 1]</p>
+                                                                        <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/export/responsibilities/props/group">Switch to JSON</a></div>
+                                                                        <p class="formal-name">Property Group</p>
+                                                                     </div>
+                                                                     <div class="body">
+                                                                        <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                                                        <div class="remarks-group usa-prose">
+                                                                           <details open="open">
+                                                                              <summary class="subhead">Remarks</summary>
+                                                                              <div class="remarks">
+                                                                                 <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                                                    property to associate it with one or more other properties in a given context.</p>
                                                                               </div>
                                                                            </details>
                                                                         </div>
@@ -21359,7 +22367,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                            </details>
                                                                         </div>
                                                                         <details class="properties attributes" open="open">
-                                                                           <summary>Attributes (5)</summary>
+                                                                           <summary>Attributes (6)</summary>
                                                                            <div class="model-entry definition assembly">
                                                                               <div class="instance-header">
                                                                                  <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/export/responsibility/responsible-role/prop/@name" class="toc9 name">name</p>
@@ -21454,6 +22462,27 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                                        <div class="remarks">
                                                                                           <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                                              a specific <code>class</code> value.</p>
+                                                                                       </div>
+                                                                                    </details>
+                                                                                 </div>
+                                                                              </div>
+                                                                           </div>
+                                                                           <div class="model-entry definition assembly">
+                                                                              <div class="instance-header">
+                                                                                 <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/export/responsibility/responsible-role/prop/@group" class="toc9 name">group</p>
+                                                                                 <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                                                 <p class="occurrence">[0 or 1]</p>
+                                                                                 <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/export/responsibilities/responsible-roles/props/group">Switch to JSON</a></div>
+                                                                                 <p class="formal-name">Property Group</p>
+                                                                              </div>
+                                                                              <div class="body">
+                                                                                 <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                                                                 <div class="remarks-group usa-prose">
+                                                                                    <details open="open">
+                                                                                       <summary class="subhead">Remarks</summary>
+                                                                                       <div class="remarks">
+                                                                                          <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                                                             property to associate it with one or more other properties in a given context.</p>
                                                                                        </div>
                                                                                     </details>
                                                                                  </div>
@@ -21835,7 +22864,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                          </details>
                                                       </div>
                                                       <details class="properties attributes" open="open">
-                                                         <summary>Attributes (5)</summary>
+                                                         <summary>Attributes (6)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
                                                                <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/inherited/prop/@name" class="toc7 name">name</p>
@@ -21930,6 +22959,27 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                      <div class="remarks">
                                                                         <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                            a specific <code>class</code> value.</p>
+                                                                     </div>
+                                                                  </details>
+                                                               </div>
+                                                            </div>
+                                                         </div>
+                                                         <div class="model-entry definition assembly">
+                                                            <div class="instance-header">
+                                                               <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/inherited/prop/@group" class="toc7 name">group</p>
+                                                               <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                               <p class="occurrence">[0 or 1]</p>
+                                                               <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/inherited/props/group">Switch to JSON</a></div>
+                                                               <p class="formal-name">Property Group</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                                               <div class="remarks-group usa-prose">
+                                                                  <details open="open">
+                                                                     <summary class="subhead">Remarks</summary>
+                                                                     <div class="remarks">
+                                                                        <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                                           property to associate it with one or more other properties in a given context.</p>
                                                                      </div>
                                                                   </details>
                                                                </div>
@@ -22154,7 +23204,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                   </details>
                                                                </div>
                                                                <details class="properties attributes" open="open">
-                                                                  <summary>Attributes (5)</summary>
+                                                                  <summary>Attributes (6)</summary>
                                                                   <div class="model-entry definition assembly">
                                                                      <div class="instance-header">
                                                                         <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/inherited/responsible-role/prop/@name" class="toc8 name">name</p>
@@ -22249,6 +23299,27 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                               <div class="remarks">
                                                                                  <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                                     a specific <code>class</code> value.</p>
+                                                                              </div>
+                                                                           </details>
+                                                                        </div>
+                                                                     </div>
+                                                                  </div>
+                                                                  <div class="model-entry definition assembly">
+                                                                     <div class="instance-header">
+                                                                        <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/inherited/responsible-role/prop/@group" class="toc8 name">group</p>
+                                                                        <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                                        <p class="occurrence">[0 or 1]</p>
+                                                                        <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/inherited/responsible-roles/props/group">Switch to JSON</a></div>
+                                                                        <p class="formal-name">Property Group</p>
+                                                                     </div>
+                                                                     <div class="body">
+                                                                        <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                                                        <div class="remarks-group usa-prose">
+                                                                           <details open="open">
+                                                                              <summary class="subhead">Remarks</summary>
+                                                                              <div class="remarks">
+                                                                                 <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                                                    property to associate it with one or more other properties in a given context.</p>
                                                                               </div>
                                                                            </details>
                                                                         </div>
@@ -22579,7 +23650,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                          </details>
                                                       </div>
                                                       <details class="properties attributes" open="open">
-                                                         <summary>Attributes (5)</summary>
+                                                         <summary>Attributes (6)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
                                                                <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/satisfied/prop/@name" class="toc7 name">name</p>
@@ -22674,6 +23745,27 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                      <div class="remarks">
                                                                         <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                            a specific <code>class</code> value.</p>
+                                                                     </div>
+                                                                  </details>
+                                                               </div>
+                                                            </div>
+                                                         </div>
+                                                         <div class="model-entry definition assembly">
+                                                            <div class="instance-header">
+                                                               <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/satisfied/prop/@group" class="toc7 name">group</p>
+                                                               <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                               <p class="occurrence">[0 or 1]</p>
+                                                               <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/satisfied/props/group">Switch to JSON</a></div>
+                                                               <p class="formal-name">Property Group</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                                               <div class="remarks-group usa-prose">
+                                                                  <details open="open">
+                                                                     <summary class="subhead">Remarks</summary>
+                                                                     <div class="remarks">
+                                                                        <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                                           property to associate it with one or more other properties in a given context.</p>
                                                                      </div>
                                                                   </details>
                                                                </div>
@@ -22898,7 +23990,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                   </details>
                                                                </div>
                                                                <details class="properties attributes" open="open">
-                                                                  <summary>Attributes (5)</summary>
+                                                                  <summary>Attributes (6)</summary>
                                                                   <div class="model-entry definition assembly">
                                                                      <div class="instance-header">
                                                                         <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/satisfied/responsible-role/prop/@name" class="toc8 name">name</p>
@@ -22993,6 +24085,27 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                               <div class="remarks">
                                                                                  <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                                     a specific <code>class</code> value.</p>
+                                                                              </div>
+                                                                           </details>
+                                                                        </div>
+                                                                     </div>
+                                                                  </div>
+                                                                  <div class="model-entry definition assembly">
+                                                                     <div class="instance-header">
+                                                                        <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/satisfied/responsible-role/prop/@group" class="toc8 name">group</p>
+                                                                        <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                                        <p class="occurrence">[0 or 1]</p>
+                                                                        <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/satisfied/responsible-roles/props/group">Switch to JSON</a></div>
+                                                                        <p class="formal-name">Property Group</p>
+                                                                     </div>
+                                                                     <div class="body">
+                                                                        <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                                                        <div class="remarks-group usa-prose">
+                                                                           <details open="open">
+                                                                              <summary class="subhead">Remarks</summary>
+                                                                              <div class="remarks">
+                                                                                 <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                                                    property to associate it with one or more other properties in a given context.</p>
                                                                               </div>
                                                                            </details>
                                                                         </div>
@@ -23300,7 +24413,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                          </details>
                                                       </div>
                                                       <details class="properties attributes" open="open">
-                                                         <summary>Attributes (5)</summary>
+                                                         <summary>Attributes (6)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
                                                                <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/responsible-role/prop/@name" class="toc7 name">name</p>
@@ -23395,6 +24508,27 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                      <div class="remarks">
                                                                         <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                            a specific <code>class</code> value.</p>
+                                                                     </div>
+                                                                  </details>
+                                                               </div>
+                                                            </div>
+                                                         </div>
+                                                         <div class="model-entry definition assembly">
+                                                            <div class="instance-header">
+                                                               <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/responsible-role/prop/@group" class="toc7 name">group</p>
+                                                               <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                               <p class="occurrence">[0 or 1]</p>
+                                                               <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/responsible-roles/props/group">Switch to JSON</a></div>
+                                                               <p class="formal-name">Property Group</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                                               <div class="remarks-group usa-prose">
+                                                                  <details open="open">
+                                                                     <summary class="subhead">Remarks</summary>
+                                                                     <div class="remarks">
+                                                                        <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                                           property to associate it with one or more other properties in a given context.</p>
                                                                      </div>
                                                                   </details>
                                                                </div>
@@ -23905,7 +25039,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                        </details>
                                     </div>
                                     <details class="properties attributes" open="open">
-                                       <summary>Attributes (5)</summary>
+                                       <summary>Attributes (6)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/back-matter/resource/prop/@name" class="toc5 name">name</h5>
@@ -24000,6 +25134,27 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                    <div class="remarks">
                                                       <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                          a specific <code>class</code> value.</p>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/back-matter/resource/prop/@group" class="toc5 name">group</h5>
+                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/back-matter/resources/props/group">Switch to JSON</a></div>
+                                             <p class="formal-name">Property Group</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                             <div class="remarks-group usa-prose">
+                                                <details open="open">
+                                                   <summary class="subhead">Remarks</summary>
+                                                   <div class="remarks">
+                                                      <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                         property to associate it with one or more other properties in a given context.</p>
                                                    </div>
                                                 </details>
                                              </div>
@@ -24155,7 +25310,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                 </details>
                                              </div>
                                              <details class="properties attributes" open="open">
-                                                <summary>Attributes (5)</summary>
+                                                <summary>Attributes (6)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/system-security-plan/back-matter/resource/citation/prop/@name" class="toc6 name">name</h6>
@@ -24250,6 +25405,27 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                             <div class="remarks">
                                                                <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                   a specific <code>class</code> value.</p>
+                                                            </div>
+                                                         </details>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                                <div class="model-entry definition assembly">
+                                                   <div class="instance-header">
+                                                      <h6 id="/system-security-plan/back-matter/resource/citation/prop/@group" class="toc6 name">group</h6>
+                                                      <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                      <p class="occurrence">[0 or 1]</p>
+                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/back-matter/resources/citation/props/group">Switch to JSON</a></div>
+                                                      <p class="formal-name">Property Group</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                                      <div class="remarks-group usa-prose">
+                                                         <details open="open">
+                                                            <summary class="subhead">Remarks</summary>
+                                                            <div class="remarks">
+                                                               <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                                  property to associate it with one or more other properties in a given context.</p>
                                                             </div>
                                                          </details>
                                                       </div>
