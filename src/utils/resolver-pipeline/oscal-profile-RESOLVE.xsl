@@ -32,10 +32,12 @@
 
     <!-- Turning $trace to 'on' will
          - emit runtime messages with each transformation, and
-         - retain opr:ERROR and opr:WARNING messages in results. -->
-
+         - retain processing instructions from message-handler.xsl in results. -->
     <xsl:param name="trace" as="xs:string">off</xsl:param>
-    
+
+    <!-- Turning $save-intermediate to 'on' will save the intermediate file from each transformation -->
+    <xsl:param name="save-intermediate" as="xs:string">off</xsl:param>
+
     <xsl:param name="uri-stack" as="xs:anyURI*" select="()"/>
     
     <!-- $path-to-source should point back to the location of the source catalog (or profile) from its result,
@@ -52,13 +54,16 @@
 
     <!-- The $transformation-sequence declares transformations to be applied in order. -->
     <xsl:variable name="transformation-sequence">
-        <opr:transform version="2.0">oscal-profile-resolve-select.xsl</opr:transform>
-        <opr:transform version="2.0">oscal-profile-resolve-metadata.xsl</opr:transform>
-        <opr:transform version="2.0">oscal-profile-resolve-merge.xsl</opr:transform>
-        <opr:transform version="2.0">oscal-profile-resolve-modify.xsl</opr:transform>
-        <opr:transform version="2.0">oscal-profile-resolve-finish.xsl</opr:transform>
+        <opr:transform version="3.0">oscal-profile-resolve-select.xsl</opr:transform>
+        <opr:transform version="3.0">oscal-profile-resolve-metadata.xsl</opr:transform>
+        <opr:transform version="3.0">oscal-profile-resolve-merge.xsl</opr:transform>
+        <opr:transform version="3.0">oscal-profile-resolve-modify.xsl</opr:transform>
+        <opr:transform version="3.0">oscal-profile-resolve-finish.xsl</opr:transform>
+        <opr:terminate-if-severe-errors/>
         <opr:finalize/>
     </xsl:variable>
+
+    <xsl:variable name="terminating-message" as="xs:string" select="'Terminating '"/>
 
     <!-- Entry point traps the root node of the source and passes it down the chain of transformation references -->
     <xsl:template match="/" name="profile-resolve">
@@ -72,12 +77,18 @@
         <xsl:iterate select="$transformation-sequence/*">
             <xsl:param name="doc" select="$source" as="document-node()"/>
             <xsl:on-completion select="$doc"/>
+            <xsl:variable name="transform-result">
+                <xsl:apply-templates mode="opr:execute" select=".">
+                    <xsl:with-param name="sourcedoc" select="$doc"/>
+                </xsl:apply-templates>                
+            </xsl:variable>
+            <xsl:if test="$save-intermediate eq 'on'">
+                <xsl:result-document href="{'intermediate-' || string(count(.|preceding-sibling::*)) || '.xml'}">
+                    <xsl:sequence select="$transform-result"/>
+                </xsl:result-document>
+            </xsl:if>
             <xsl:next-iteration>
-                <xsl:with-param name="doc">
-                    <xsl:apply-templates mode="opr:execute" select=".">
-                        <xsl:with-param name="sourcedoc" select="$doc"/>
-                    </xsl:apply-templates>
-                </xsl:with-param>
+                <xsl:with-param name="doc" select="$transform-result"/>
             </xsl:next-iteration>
         </xsl:iterate>
     </xsl:template>
@@ -124,18 +135,31 @@
              https://www.w3.org/TR/xpath-functions-31/#func-transform -->
         <xsl:sequence select="transform($runtime)?output"/>
         <xsl:call-template name="alert">
-            <xsl:with-param name="msg" expand-text="true"> ... applied step { count(.|preceding-sibling::*) }: XSLT { $xslt-spec } ... </xsl:with-param>
+           <xsl:with-param name="msg" expand-text="true"> ... applied step { count(.|preceding-sibling::*) }: XSLT { $xslt-spec } ... </xsl:with-param>
         </xsl:call-template>
+    </xsl:template>
+
+    <!-- If there were any terminating error messages, issue the first one and
+            stop. In this case, the output document has no elements. -->
+    <xsl:template mode="opr:execute" match="opr:terminate-if-severe-errors">
+        <xsl:param name="sourcedoc" as="document-node()"/>
+        <xsl:call-template name="alert">
+            <xsl:with-param name="msg" expand-text="true"> ... applying step { count(.|preceding-sibling::*) }: checking for severe errors ... </xsl:with-param>
+        </xsl:call-template>
+        <xsl:for-each select="$sourcedoc/descendant::processing-instruction('message-handler')[starts-with(.,$terminating-message)]">
+            <xsl:message terminate="yes" expand-text="yes">{.}</xsl:message>
+        </xsl:for-each>
+        <!-- If we reach this point, pass $sourcedoc back for the next pipeline step. -->
+        <xsl:sequence select="$sourcedoc"/>
     </xsl:template>
 
     <!-- The finalize step performs any last cleanup. -->
     <xsl:template mode="opr:execute" match="opr:finalize">
         <xsl:param name="sourcedoc" as="document-node()"/>
         <xsl:call-template name="alert">
-            <xsl:with-param name="msg" expand-text="true"> ... applied step {
+            <xsl:with-param name="msg" expand-text="true"> ... applying step {
                 count(.|preceding-sibling::*) }: finalize ... </xsl:with-param>
         </xsl:call-template>
-
         <xsl:apply-templates select="$sourcedoc" mode="opr:finalize"/>
     </xsl:template>
 
@@ -143,9 +167,9 @@
     <xsl:template mode="opr:execute" match="*">
         <xsl:param name="sourcedoc" as="document-node()"/>
         <xsl:call-template name="alert">
-            <xsl:with-param name="msg" expand-text="true"> ... applied step { count(.|preceding-sibling::*) }: { name() } ...</xsl:with-param>
+            <xsl:with-param name="msg" expand-text="true"> ... applying step { count(.|preceding-sibling::*) }: { name() } ...</xsl:with-param>
         </xsl:call-template>
-                <xsl:sequence select="$sourcedoc"/>
+        <xsl:sequence select="$sourcedoc"/>
     </xsl:template>
 
     <!-- Mode 'opr:finalize' makes final adjustments. -->
@@ -156,12 +180,12 @@
     <!-- Likewise, intermediate processing directives. -->
     <xsl:template mode="opr:finalize" match="opr:* | @opr:*"/>
 
-    <!-- But keep warnings and errors when tracing. -->
-    <xsl:template mode="opr:finalize" match="opr:ERROR[$louder] | opr:WARNING[$louder]">
-        <xsl:copy-of copy-namespaces="no" select="."/>
-        <xsl:call-template name="alert">
-            <xsl:with-param name="msg" select="string(.)"/>
-        </xsl:call-template>
+    <!-- But process warnings and errors from steps in the pipeline. -->
+    <xsl:template mode="opr:finalize" match="processing-instruction('message-handler')">
+        <xsl:if test="$louder">
+            <xsl:copy-of copy-namespaces="no" select="."/>
+        </xsl:if>
+        <xsl:message expand-text="yes">{.}</xsl:message>
     </xsl:template>
 
     <!-- In 'finalize' mode, copying everything else without namespaces. -->
