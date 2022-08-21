@@ -1297,6 +1297,10 @@
           { "title" : "Property Class",
             "description" : "A textual label that provides a sub-type or characterization of the property's name. This can be used to further distinguish or discriminate between the semantics of multiple properties of the same object with the same name and ns.",
             "$ref" : "#/definitions/TokenDatatype" },
+          "group" : 
+          { "title" : "Property Group",
+            "description" : "An identifier for relating distinct sets of properties.",
+            "$ref" : "#/definitions/TokenDatatype" },
           "remarks" : 
           { "$ref" : "#field_oscal-metadata_remarks" } },
         "required" : 
