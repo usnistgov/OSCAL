@@ -1329,6 +1329,16 @@
                <b>Property Class</b>: A textual label that provides a sub-type or characterization of the property's name. This can be used to further distinguish or discriminate between the semantics of multiple properties of the same object with the same name and ns. </xs:documentation>
          </xs:annotation>
       </xs:attribute>
+      <xs:attribute name="group" type="TokenDatatype">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Property Group</m:formal-name>
+               <m:description>An identifier for relating distinct sets of properties.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Property Group</b>: An identifier for relating distinct sets of properties.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
    </xs:complexType>
    <xs:complexType name="oscal-metadata-link-ASSEMBLY">
       <xs:annotation>
@@ -1832,11 +1842,11 @@
       <xs:attribute name="id-ref" use="required" type="StringDatatype">
          <xs:annotation>
             <xs:appinfo>
-               <m:formal-name>Subject Type</m:formal-name>
-               <m:description>The semantic type of the subject.</m:description>
+               <m:formal-name>Subject Identifier Reference</m:formal-name>
+               <m:description>A reference to an identified subject that is of the specified <code>type</code>.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Subject Type</b>: The semantic type of the subject.</xs:documentation>
+               <b>Subject Identifier Reference</b>: A reference to an identified subject that is of the specified type.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
