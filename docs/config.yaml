@@ -11,7 +11,7 @@ languages:
     weight: 1
 MetaDataFormat: "yaml"
 theme: "uswds"
-googleAnalytics: UA-42404149-54
+googleAnalytics: UA-66610693-1
 enableGitInfo: true
 pygmentsCodeFences: true
 pygmentsCodefencesGuessSyntax: true
