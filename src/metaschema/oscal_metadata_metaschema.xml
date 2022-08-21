@@ -67,6 +67,7 @@
                 <key-field target="@name"/>
                 <key-field target="@ns"/>
                 <key-field target="@class"/>
+                <key-field target="@group"/>
                 <key-field target="@value"/>
             </is-unique>
             <index id="index-metadata-property-uuid" name="index-metadata-property-uuid" target=".//prop">
@@ -642,6 +643,13 @@
             </description>
             <remarks>
                 <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of a specific <code>class</code> value.</p>
+            </remarks>
+        </define-flag>
+        <define-flag name="group" as-type="token">
+            <formal-name>Property Group</formal-name>
+            <description>An identifier for relating distinct sets of properties.</description>
+            <remarks>
+                <p>Different sets of properties may relate to separate contexts. Declare a group on a property to associate it with one or more other properties in a given context.</p>
             </remarks>
         </define-flag>
         <model>
