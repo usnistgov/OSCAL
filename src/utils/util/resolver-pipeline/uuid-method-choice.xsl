@@ -28,7 +28,9 @@
     <!-- Alternatively, call a web service if the processor supports it -->
     <xsl:param name="uuid-service" select="'https://www.uuidgenerator.net/api/version4'"/>
 
-    <xsl:template name="u:determine-uuid" as="xs:string">
+    <xsl:template name="u:determine-uuid" as="item()+">
+        <!-- Return value is xs:string, in addition to a processing instruction
+            if there is a warning situation. -->
         <xsl:param name="uuid-method" select="$uuid-method" as="xs:string"/>
         <xsl:param name="uuid-service" select="$uuid-service" as="xs:string"/>
         <xsl:param name="top-uuid" select="$top-uuid" as="xs:string?"/>

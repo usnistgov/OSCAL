@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="3.0"
     xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+    xmlns:mh="http://csrc.nist.gov/ns/message"
     xmlns:o="http://csrc.nist.gov/ns/oscal/1.0"
     xmlns:opr="http://csrc.nist.gov/ns/oscal/profile-resolution"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -16,6 +17,8 @@
         metadata back-matter annotation party person org rlink address resource role responsible-party citation
         profile import merge custom modify include-controls exclude-controls set alter add"/>
 
+    <xsl:import href="message-handler.xsl"/>
+
     <!--<xsl:param name="profile-origin-uri"   required="yes" as="xs:anyURI"/>-->
     <xsl:param name="uri-stack-in" select="()" as="xs:anyURI*"/>
 
@@ -27,14 +30,14 @@
            These elements are also copied into the result.
            A post-process (filter) will be applied to remove them in a later stage. -->
 
-    <xsl:template match="* | @*" mode="#all">
+    <xsl:template match="* | @* | processing-instruction('message-handler')" mode="#all">
         <xsl:copy copy-namespaces="no">
             <xsl:apply-templates mode="#current" select="node() | @*"/>
         </xsl:copy>
     </xsl:template>
 
     <!-- Making the default handling explicit. -->
-    <xsl:template match="comment() | processing-instruction()" mode="#all"/>
+    <xsl:template match="comment()" mode="#all"/>
 
     <!-- We catch the unmoded template only once, at the top; other matches will be in mode o:select   -->
     <xsl:template match="profile">
@@ -56,16 +59,16 @@
         <xsl:if test="not($uri-here = $uri-stack)">
           <!--<xsl:sequence select="o:resolve-profile(.,$uri-stack)"/>-->
             <xsl:copy copy-namespaces="no">
-                <opr:warning>
-                    <xsl:text>profile '</xsl:text>
-                    <xsl:value-of select="$uri-here"/>
-                    <xsl:text>' picked up - and dropped - on import - we do only catalogs so far</xsl:text>
-                </opr:warning>
+                <xsl:call-template name="mh:message-handler">
+                    <xsl:with-param name="message-type" select="'Warning'"/>
+                    <xsl:with-param name="text" expand-text="yes">Profile '{$uri-here
+                        }' not imported. Implementation supports only catalogs so far.</xsl:with-param>
+                </xsl:call-template>
                 <!--<xsl:apply-templates mode="o:select" select="node() | @*">
                     <xsl:with-param name="uri-stack" tunnel="yes" select="$uri-stack,$uri-here"/>
                 </xsl:apply-templates>-->
-            </xsl:copy>
-        </xsl:if>
+            </xsl:copy>                
+            </xsl:if>
 
     </xsl:template>
 
@@ -98,9 +101,12 @@
                 <xsl:apply-templates mode="o:select" select="o:resource-or-error($linked-xml/@href)"/>
             </xsl:when>
             <xsl:otherwise>
-                <xsl:message terminate="yes"
-                    expand-text="yes">Document not acquired for resource with uuid {@uuid
-                    }: No rlink with media-type='xml' or href ending with '.xml'</xsl:message>
+                <xsl:call-template name="mh:message-handler">
+                    <xsl:with-param name="message-type" select="'Error'"/>
+                    <xsl:with-param name="text" expand-text="yes">Document not acquired for resource with uuid {@uuid
+                        }: No rlink with media-type='xml' or href ending with '.xml'</xsl:with-param>
+                    <xsl:with-param name="terminate" select="true()"/>
+                </xsl:call-template>                
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
@@ -146,14 +152,24 @@
         </xsl:if>
     </xsl:template>-->
 
-    <!-- Returns a document when found, a fatal error when not. -->
-    <xsl:function name="o:resource-or-error" as="document-node()">
-        <xsl:param name="href" as="attribute(href)"/>
-        <xsl:variable name="resolved-href" select="resolve-uri($href,$href/base-uri())"/>
-        <xsl:assert test="doc-available($resolved-href)"
-            expand-text="yes">Document not acquired: {$href} resolved as {
-            $resolved-href} (as OSCAL XML)</xsl:assert>
-        <xsl:sequence select="document($resolved-href)"/>
+    <!-- Returns a document when found, a PI when not. -->
+    <xsl:function name="o:resource-or-error" as="item()">
+        <xsl:param name="href" as="attribute(href)?"/>
+        <xsl:variable name="resolved-href" as="xs:anyURI?"
+            select="if (exists($href)) then resolve-uri($href,$href/base-uri()) else ()"/>
+        <xsl:choose>
+            <xsl:when test="doc-available($resolved-href)">
+                <xsl:sequence select="document($resolved-href)"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:call-template name="mh:message-handler">
+                    <xsl:with-param name="message-type" select="'Error'"/>
+                    <xsl:with-param name="text" expand-text="yes">Document not acquired: {$href} resolved as {
+                        $resolved-href} (as OSCAL XML)</xsl:with-param>
+                    <xsl:with-param name="terminate" select="true()"/>
+                </xsl:call-template>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:function>
 
     <xsl:include href="select-or-custom-merge.xsl"/>

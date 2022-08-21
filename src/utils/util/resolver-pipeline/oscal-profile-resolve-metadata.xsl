@@ -31,8 +31,10 @@
     <!-- version-util.xsl has semantic version comparison. -->
     <xsl:import href="version-util.xsl"/>
     
-    <!-- Top-level UUID for result catalog. -->
-    <xsl:param name="top-uuid-computed"  as="xs:string">
+    <!-- Top-level UUID for result catalog. The typical case uses xs:string.
+        The reason for using item()+ is that the template called to compute
+        a default value might also return a warning message. -->
+    <xsl:param name="top-uuid-computed"  as="item()+">
         <xsl:call-template name="u:determine-uuid"/>
     </xsl:param>
 
@@ -46,18 +48,20 @@
     <xsl:variable name="source-profile" as="xs:string"
         select="if ($hide-source-profile-uri) then 'profile' else $profile-origin-uri"/>
 
-    <xsl:template match="/ | * | @*" mode="#all">
+    <xsl:template match="/ | * | @* | processing-instruction('message-handler')" mode="#all">
         <xsl:copy>
             <xsl:apply-templates mode="#current" select="node() | @*"/>
         </xsl:copy>
     </xsl:template>
 
     <xsl:template match="profile" priority="1">
-        <catalog uuid="{ $top-uuid-computed }">
+        <catalog uuid="{ $top-uuid-computed[. instance of xs:string] }">
             <!-- Rewriting top-level @id -->
             <!--<xsl:if test="function-available('uuid:randomUUID')" xmlns:uuid="java:java.util.UUID">
                 <xsl:attribute name="uuid" select="uuid:randomUUID()"/>
             </xsl:if>-->
+            <!-- If computation of top UUID included PIs with warning messages, pass them through. -->
+            <xsl:sequence select="$top-uuid-computed[. instance of processing-instruction('message-handler')]"/>
             <xsl:apply-templates/>
         </catalog>
     </xsl:template>
@@ -94,10 +98,11 @@
         Perform error checking as in requirement
         "req-meta-oscalversion-error".
     -->
-    <xsl:function name="opr:oscal-version" as="xs:string" visibility="public">
+    <xsl:function name="opr:oscal-version" as="item()+" visibility="public">
         <!-- Without visiblity="public" the XSpec test returns
             XTDE0041: Cannot invoke function opr:oscal-version#2 externally, because it is not public
         -->
+        <!-- Typical return value is xs:string, but use item()+ to accommodate possible error PIs. -->
         <xsl:param name="source" as="xs:string"/>
         <xsl:param name="imported" as="xs:string*"/>
 

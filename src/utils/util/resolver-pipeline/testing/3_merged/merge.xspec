@@ -79,7 +79,7 @@
                     <!-- no merge -->
                 </catalog>
             </x:context>
-            <x:expect label="All XYZ controls, ungrouped">
+            <x:expect label="All XYZ controls, ungrouped and without nesting">
                 <catalog>
                     <control id="x1"><title>Control X1</title></control>
                     <control id="x2"><title>Control X2</title></control>
@@ -89,11 +89,9 @@
                     <control id="y3"><title>Control Y3</title></control>
                     <control id="z1"><title>Control Z1</title></control>
                     <control id="z2"><title>Control Z2</title></control>
-                    <control id="z3"><title>Control Z3</title>
-                        <control id="z3.a"><title>Control Z3-A</title>
-                            <control id="z3.a-1"><title>Control Z3-A-1</title></control>
-                        </control>
-                    </control>
+                    <control id="z3"><title>Control Z3</title></control>
+                    <control id="z3.a"><title>Control Z3-A</title></control>
+                    <control id="z3.a-1"><title>Control Z3-A-1</title></control>
                 </catalog>
             </x:expect>
         </x:scenario>
@@ -146,11 +144,9 @@
                 <catalog>
                     <control id="x1"><title>Control X1</title></control>
                     <control id="z1"><title>Control Z1</title></control>
-                    <control id="z3"><title>Control Z3</title>
-                        <control id="z3.a"><title>Control Z3-A</title>
-                            <control id="z3.a-1"><title>Control Z3-A-1</title></control>
-                        </control>
-                    </control>
+                    <control id="z3"><title>Control Z3</title></control>
+                    <control id="z3.a"><title>Control Z3-A</title></control>
+                    <control id="z3.a-1"><title>Control Z3-A-1</title></control>
                     <control id="x1">
                         <title>Control X1</title>
                         <prop value="modified property" name="mod"/>
@@ -159,11 +155,9 @@
                     <control id="y1"><title>Control Y1</title></control>
                     <control id="y2"><title>Control Y2</title></control>
                     <control id="y3"><title>Control Y3</title></control>
-                    <control id="z3"><title>Control Z3</title>
-                        <control id="z3.a"><title>Control Z3-A</title>
-                            <control id="z3.a-1"><title>Control Z3-A-1</title></control>
-                        </control>
-                    </control>
+                    <control id="z3"><title>Control Z3</title></control>
+                    <control id="z3.a"><title>Control Z3-A</title></control>
+                    <control id="z3.a-1"><title>Control Z3-A-1</title></control>
                 </catalog>
             </x:expect>
         </x:scenario>
@@ -305,7 +299,7 @@
     <!-- Tests for match=catalog[exists(merge/custom)] priority=13 template are in merge-custom.xspec -->
 
     <x:scenario label="Tests for detect-multiple-structuring-directives template">
-        <x:scenario label="Error case: custom appears and as-is is true" catch="yes">
+        <x:scenario label="Error case: custom appears and as-is is true">
             <x:context>
                 <catalog uuid="xyz-tiny_catalog">
                     <merge>
@@ -315,10 +309,10 @@
                 </catalog>
             </x:context>
             <x:call template="detect-multiple-structuring-directives"/>
-            <x:expect label="Fatal XSLT error"
-                test="$x:result instance of map(*) and $x:result('err') instance of map(*)"/>            
+            <x:expect label="PI indicating a terminating error"
+                test="exists($x:result/self::processing-instruction('message-handler')[starts-with(.,'Terminating ')])"/>            
         </x:scenario>
-        <x:scenario label="Error case: custom appears and flat is true" catch="yes">
+        <x:scenario label="Error case: custom appears and flat is true">
             <x:context>
                 <catalog uuid="xyz-tiny_catalog">
                     <merge>
@@ -328,10 +322,10 @@
                 </catalog>
             </x:context>
             <x:call template="detect-multiple-structuring-directives"/>
-            <x:expect label="Fatal XSLT error"
-                test="$x:result instance of map(*) and $x:result('err') instance of map(*)"/>            
+            <x:expect label="PI indicating a terminating error"
+                test="exists($x:result/self::processing-instruction('message-handler')[starts-with(.,'Terminating ')])"/>            
         </x:scenario>
-        <x:scenario label="Error case: as-is and flat are both true" catch="yes">  
+        <x:scenario label="Error case: as-is and flat are both true">  
             <x:context>
                 <catalog>
                     <merge>
@@ -341,10 +335,10 @@
                 </catalog>
             </x:context>
             <x:call template="detect-multiple-structuring-directives"/>
-            <x:expect label="Fatal XSLT error"
-                test="$x:result instance of map(*) and $x:result('err') instance of map(*)"/>            
+            <x:expect label="PI indicating a terminating error"
+                test="exists($x:result/self::processing-instruction('message-handler')[starts-with(.,'Terminating ')])"/>            
         </x:scenario>
-        <x:scenario label="Non-error case: as-is and flat both appear but flat is not true" catch="no">  
+        <x:scenario label="Non-error case: as-is and flat both appear but flat is not true">  
             <x:context>
                 <catalog>
                     <merge>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description
+    xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    xmlns:mh="http://csrc.nist.gov/ns/message"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    stylesheet="../../message-handler.xsl"
+    xslt-version="3.0">
+
+    <x:scenario label="Tests for mh:message-handler template">
+        <x:scenario label="Call with text, type, and code">
+            <x:call template="mh:message-handler">
+                <x:param name="text" select="'message text'"/>
+                <x:param name="message-type" select="'Warning'"/>
+                <x:param name="error-code" select="'ERR1'"/>
+            </x:call>
+            <x:expect label="PI indicating type, code, and text">
+                <?message-handler Warning: ERR1: message text?>
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="Call with text and type only">
+            <x:call template="mh:message-handler">
+                <x:param name="text" select="'message text'"/>
+                <x:param name="message-type" select="'Warning'"/>
+            </x:call>
+            <x:expect label="PI indicating type and text">
+                <?message-handler Warning: message text?>
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="Call with text and code only">
+            <x:call template="mh:message-handler">
+                <x:param name="text" select="'message text'"/>
+                <x:param name="error-code" select="'ERR1'"/>
+            </x:call>
+            <x:expect label="PI indicating code and text">
+                <?message-handler ERR1: message text?>
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="Call with text only">
+            <x:call template="mh:message-handler">
+                <x:param name="text" select="'message text'"/>
+            </x:call>
+            <x:expect label="PI indicating text">
+                <?message-handler message text?>
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="Call with text and type only, with terminate=true">
+            <x:call template="mh:message-handler">
+                <x:param name="text" select="'message text'"/>
+                <x:param name="message-type" select="'Error'"/>
+                <x:param name="terminate" select="true()"/>
+            </x:call>
+            <x:expect label="PI indicating type and text, where type is 'Terminating Error'">
+                <?message-handler Terminating Error: message text?>
+            </x:expect>
+        </x:scenario>
+    </x:scenario>
+</x:description>

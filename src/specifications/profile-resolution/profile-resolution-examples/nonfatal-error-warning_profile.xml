@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../example-checkup.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+         uuid="036213db-02d3-4234-8963-b83f79634e36">
+   <metadata>
+      <title>Example</title>
+      <last-modified>2020-05-30T14:39:50.536-04:00</last-modified>
+      <version>1.2</version>
+      <oscal-version>1.0.0</oscal-version>
+   </metadata>
+   <import href="#4d263315-ebac-45cc-801e-f5a986cd59a9">
+      <include-controls with-child-controls="yes">
+         <with-id>a1</with-id>
+         <with-id>a3</with-id>
+      </include-controls>
+   </import>
+   <modify>
+      <set-parameter param-id="a1_prm1-nonexistent"><!-- Warning -->
+         <constraint>
+            <description>
+               <p>at least every 3 years</p>
+            </description>
+         </constraint>
+      </set-parameter>
+      <set-parameter param-id="a3_prm1">
+         <constraint>
+            <description>
+               <p>at least annually</p>
+            </description>
+         </constraint>
+      </set-parameter>
+      <alter control-id="a1">
+         <add position="starting" by-id="a1">
+            <title>New Title of Control</title><!-- Warning -->
+            <title>Another New Title of Control</title><!-- Counted in same warning as the preceding sibling title -->
+            <back-matter/><!-- Error -->
+         </add>
+      </alter>
+   </modify>
+   <back-matter>
+      <resource uuid="4d263315-ebac-45cc-801e-f5a986cd59a9">
+         <rlink href="catalogs/abc-simple_catalog.xml"/>
+      </resource>
+   </back-matter>
+</profile>
