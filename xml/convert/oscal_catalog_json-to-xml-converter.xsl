@@ -138,6 +138,7 @@
          <xsl:apply-templates select="*[@key='ns']"/>
          <xsl:apply-templates select="*[@key='value']"/>
          <xsl:apply-templates select="*[@key='class']"/>
+         <xsl:apply-templates select="*[@key='group']"/>
          <xsl:apply-templates select="*[@key='remarks']"/>
       </assembly>
    </xsl:template>
@@ -516,6 +517,18 @@
       </flag>
    </xsl:template>
    <xsl:template match="j:array[@key='props']/j:map/j:string[@key='class']"
+                 mode="keep-value-property"
+                 priority="8"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='props']/j:map/j:string[@key='group']" priority="1"><!-- XML match="prop/@group" -->
+      <flag in-json="string"
+            as-type="token"
+            name="group"
+            key="group"
+            gi="group">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='props']/j:map/j:string[@key='group']"
                  mode="keep-value-property"
                  priority="8"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:array[@key='links']/j:map/j:string[@key='href']" priority="1"><!-- XML match="link/@href" -->
