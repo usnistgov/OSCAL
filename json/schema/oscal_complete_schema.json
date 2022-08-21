@@ -4908,6 +4908,8 @@
             "minItems" : 1,
             "items" : 
             { "$ref" : "#assembly_oscal-implementation-common_inventory-item" } },
+          "assessment-assets" : 
+          { "$ref" : "#assembly_oscal-assessment-common_assessment-assets" },
           "remarks" : 
           { "$ref" : "#field_oscal-metadata_remarks" } },
         "additionalProperties" : false },

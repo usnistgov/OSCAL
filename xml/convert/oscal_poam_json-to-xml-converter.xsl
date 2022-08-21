@@ -237,6 +237,7 @@
          </xsl:if>
          <xsl:apply-templates select="*[@key='components']"/>
          <xsl:apply-templates select="*[@key='inventory-items']"/>
+         <xsl:apply-templates select="*[@key='assessment-assets']"/>
          <xsl:apply-templates select="*[@key='remarks']"/>
       </assembly>
    </xsl:template>
@@ -298,6 +299,19 @@
          <xsl:apply-templates select="*[@key='responsible-parties']"/>
          <xsl:apply-templates select="*[@key='implemented-components']"/>
          <xsl:apply-templates select="*[@key='remarks']"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="j:map[@key='assessment-assets']">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="assessment-assets" -->
+      <assembly name="assessment-assets"
+                key="assessment-assets"
+                gi="assessment-assets">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">assessment-assets</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="*[@key='components']"/>
+         <xsl:apply-templates select="*[@key='assessment-platforms']"/>
       </assembly>
    </xsl:template>
    <xsl:template match="j:array[@key='observations']/j:map">
@@ -916,8 +930,8 @@
    <xsl:template match="j:array[@key='components']/j:map/j:string[@key='type']"
                  mode="keep-value-property"
                  priority="6"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:map[@key='local-definitions']/j:array[@key='components']/j:map/j:map[@key='status']/j:string[@key='state']"
-                 priority="7"><!-- XML match="plan-of-action-and-milestones/local-definitions/component/status/@state" -->
+   <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:map[@key='local-definitions']/j:array[@key='components']/j:map/j:map[@key='status']/j:string[@key='state'] | j:map[@key='plan-of-action-and-milestones']/j:map[@key='local-definitions']/j:map[@key='assessment-assets']/j:array[@key='components']/j:map/j:map[@key='status']/j:string[@key='state']"
+                 priority="7"><!-- XML match="plan-of-action-and-milestones/local-definitions/component/status/@state | plan-of-action-and-milestones/local-definitions/assessment-assets/component/status/@state" -->
       <flag in-json="string"
             as-type="token"
             name="state"
@@ -926,7 +940,7 @@
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:map[@key='local-definitions']/j:array[@key='components']/j:map/j:map[@key='status']/j:string[@key='state']"
+   <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:map[@key='local-definitions']/j:array[@key='components']/j:map/j:map[@key='status']/j:string[@key='state'] | j:map[@key='plan-of-action-and-milestones']/j:map[@key='local-definitions']/j:map[@key='assessment-assets']/j:array[@key='components']/j:map/j:map[@key='status']/j:string[@key='state']"
                  mode="keep-value-property"
                  priority="7"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:array[@key='responsible-roles']/j:map/j:string[@key='role-id']"
@@ -1033,6 +1047,32 @@
    <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:map[@key='local-definitions']/j:array[@key='inventory-items']/j:map/j:array[@key='implemented-components']/j:map/j:string[@key='component-uuid']"
                  mode="keep-value-property"
                  priority="8"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:map[@key='local-definitions']/j:map[@key='assessment-assets']/j:array[@key='assessment-platforms']/j:map/j:string[@key='uuid']"
+                 priority="7"><!-- XML match="plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platform/@uuid" -->
+      <flag in-json="string"
+            as-type="uuid"
+            name="uuid"
+            key="uuid"
+            gi="uuid">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:map[@key='local-definitions']/j:map[@key='assessment-assets']/j:array[@key='assessment-platforms']/j:map/j:string[@key='uuid']"
+                 mode="keep-value-property"
+                 priority="7"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:map[@key='local-definitions']/j:map[@key='assessment-assets']/j:array[@key='assessment-platforms']/j:map/j:array[@key='uses-components']/j:map/j:string[@key='component-uuid']"
+                 priority="9"><!-- XML match="plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platform/uses-component/@component-uuid" -->
+      <flag in-json="string"
+            as-type="uuid"
+            name="component-uuid"
+            key="component-uuid"
+            gi="component-uuid">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:map[@key='local-definitions']/j:map[@key='assessment-assets']/j:array[@key='assessment-platforms']/j:map/j:array[@key='uses-components']/j:map/j:string[@key='component-uuid']"
+                 mode="keep-value-property"
+                 priority="9"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:array[@key='observations']/j:map/j:string[@key='uuid']"
                  priority="1"><!-- XML match="observation/@uuid" -->
       <flag in-json="string"
@@ -2836,6 +2876,274 @@
    <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:map[@key='local-definitions']/j:array[@key='inventory-items']/j:map/j:array[@key='implemented-components']/j:map/j:array[@key='responsible-parties']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
                  mode="get-value-property"
                  priority="12">
+      <value as-type="markup-line" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:map[@key='local-definitions']/j:map[@key='assessment-assets']/j:array[@key='components']/j:map/j:string[@key='title']"
+                 priority="7">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="plan-of-action-and-milestones/local-definitions/assessment-assets/component/title" -->
+      <field collapsible="no"
+             as-type="markup-line"
+             name="title"
+             key="title"
+             gi="title"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">title</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:map[@key='local-definitions']/j:map[@key='assessment-assets']/j:array[@key='components']/j:map/j:string[@key='title']"
+                 mode="get-value-property"
+                 priority="7">
+      <value as-type="markup-line" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:map[@key='local-definitions']/j:map[@key='assessment-assets']/j:array[@key='components']/j:map/j:string[@key='description']"
+                 priority="7">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="plan-of-action-and-milestones/local-definitions/assessment-assets/component/description" -->
+      <field in-xml="WITH_WRAPPER"
+             collapsible="no"
+             as-type="markup-multiline"
+             name="description"
+             key="description"
+             gi="description"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">description</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:map[@key='local-definitions']/j:map[@key='assessment-assets']/j:array[@key='components']/j:map/j:string[@key='description']"
+                 mode="get-value-property"
+                 priority="7">
+      <value as-type="markup-multiline" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:map[@key='local-definitions']/j:map[@key='assessment-assets']/j:array[@key='components']/j:map/j:string[@key='purpose']"
+                 priority="7">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="plan-of-action-and-milestones/local-definitions/assessment-assets/component/purpose" -->
+      <field collapsible="no"
+             as-type="markup-line"
+             name="purpose"
+             key="purpose"
+             gi="purpose"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">purpose</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:map[@key='local-definitions']/j:map[@key='assessment-assets']/j:array[@key='components']/j:map/j:string[@key='purpose']"
+                 mode="get-value-property"
+                 priority="7">
+      <value as-type="markup-line" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:map[@key='local-definitions']/j:map[@key='assessment-assets']/j:array[@key='components']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+                 priority="9">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="plan-of-action-and-milestones/local-definitions/assessment-assets/component/link/text" -->
+      <field collapsible="no"
+             as-type="markup-line"
+             name="text"
+             key="text"
+             gi="text"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">text</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:map[@key='local-definitions']/j:map[@key='assessment-assets']/j:array[@key='components']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+                 mode="get-value-property"
+                 priority="9">
+      <value as-type="markup-line" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:map[@key='local-definitions']/j:map[@key='assessment-assets']/j:array[@key='components']/j:map/j:map[@key='status']"
+                 priority="7">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="plan-of-action-and-milestones/local-definitions/assessment-assets/component/status" -->
+      <assembly name="status" key="status" gi="status">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">status</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="*[@key='state']"/>
+         <xsl:apply-templates select="*[@key='remarks']"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:map[@key='local-definitions']/j:map[@key='assessment-assets']/j:array[@key='components']/j:map/j:array[@key='responsible-roles']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+                 priority="11">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="plan-of-action-and-milestones/local-definitions/assessment-assets/component/responsible-role/link/text" -->
+      <field collapsible="no"
+             as-type="markup-line"
+             name="text"
+             key="text"
+             gi="text"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">text</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:map[@key='local-definitions']/j:map[@key='assessment-assets']/j:array[@key='components']/j:map/j:array[@key='responsible-roles']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+                 mode="get-value-property"
+                 priority="11">
+      <value as-type="markup-line" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:map[@key='local-definitions']/j:map[@key='assessment-assets']/j:array[@key='components']/j:map/j:array[@key='protocols']/j:map/j:string[@key='title']"
+                 priority="9">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="plan-of-action-and-milestones/local-definitions/assessment-assets/component/protocol/title" -->
+      <field collapsible="no"
+             as-type="markup-line"
+             name="title"
+             key="title"
+             gi="title"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">title</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:map[@key='local-definitions']/j:map[@key='assessment-assets']/j:array[@key='components']/j:map/j:array[@key='protocols']/j:map/j:string[@key='title']"
+                 mode="get-value-property"
+                 priority="9">
+      <value as-type="markup-line" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:map[@key='local-definitions']/j:map[@key='assessment-assets']/j:array[@key='assessment-platforms']/j:map"
+                 priority="6">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platform" -->
+      <assembly name="assessment-platform" gi="assessment-platform">
+         <xsl:apply-templates select="*[@key='uuid']"/>
+         <xsl:apply-templates select="*[@key='title']"/>
+         <xsl:apply-templates select="*[@key='props']"/>
+         <xsl:apply-templates select="*[@key='links']"/>
+         <xsl:apply-templates select="*[@key='uses-components']"/>
+         <xsl:apply-templates select="*[@key='remarks']"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:map[@key='local-definitions']/j:map[@key='assessment-assets']/j:array[@key='assessment-platforms']/j:map/j:string[@key='title']"
+                 priority="7">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platform/title" -->
+      <field collapsible="no"
+             as-type="markup-line"
+             name="title"
+             key="title"
+             gi="title"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">title</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:map[@key='local-definitions']/j:map[@key='assessment-assets']/j:array[@key='assessment-platforms']/j:map/j:string[@key='title']"
+                 mode="get-value-property"
+                 priority="7">
+      <value as-type="markup-line" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:map[@key='local-definitions']/j:map[@key='assessment-assets']/j:array[@key='assessment-platforms']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+                 priority="9">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platform/link/text" -->
+      <field collapsible="no"
+             as-type="markup-line"
+             name="text"
+             key="text"
+             gi="text"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">text</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:map[@key='local-definitions']/j:map[@key='assessment-assets']/j:array[@key='assessment-platforms']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+                 mode="get-value-property"
+                 priority="9">
+      <value as-type="markup-line" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:map[@key='local-definitions']/j:map[@key='assessment-assets']/j:array[@key='assessment-platforms']/j:map/j:array[@key='uses-components']/j:map"
+                 priority="8">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platform/uses-component" -->
+      <assembly name="uses-component" gi="uses-component">
+         <xsl:apply-templates select="*[@key='component-uuid']"/>
+         <xsl:apply-templates select="*[@key='props']"/>
+         <xsl:apply-templates select="*[@key='links']"/>
+         <xsl:apply-templates select="*[@key='responsible-parties']"/>
+         <xsl:apply-templates select="*[@key='remarks']"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:map[@key='local-definitions']/j:map[@key='assessment-assets']/j:array[@key='assessment-platforms']/j:map/j:array[@key='uses-components']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+                 priority="11">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platform/uses-component/link/text" -->
+      <field collapsible="no"
+             as-type="markup-line"
+             name="text"
+             key="text"
+             gi="text"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">text</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:map[@key='local-definitions']/j:map[@key='assessment-assets']/j:array[@key='assessment-platforms']/j:map/j:array[@key='uses-components']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+                 mode="get-value-property"
+                 priority="11">
+      <value as-type="markup-line" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:map[@key='local-definitions']/j:map[@key='assessment-assets']/j:array[@key='assessment-platforms']/j:map/j:array[@key='uses-components']/j:map/j:array[@key='responsible-parties']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+                 priority="13">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platform/uses-component/responsible-party/link/text" -->
+      <field collapsible="no"
+             as-type="markup-line"
+             name="text"
+             key="text"
+             gi="text"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">text</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:map[@key='local-definitions']/j:map[@key='assessment-assets']/j:array[@key='assessment-platforms']/j:map/j:array[@key='uses-components']/j:map/j:array[@key='responsible-parties']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+                 mode="get-value-property"
+                 priority="13">
       <value as-type="markup-line" in-json="string">
          <xsl:value-of select="."/>
       </value>

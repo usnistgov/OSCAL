@@ -8409,6 +8409,10 @@
                      type="oscal-implementation-common-inventory-item-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
+         <xs:element name="assessment-assets"
+                     type="oscal-assessment-common-assessment-assets-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="1"/>
          <xs:element name="remarks" minOccurs="0" maxOccurs="1">
             <xs:annotation>
                <xs:appinfo>
