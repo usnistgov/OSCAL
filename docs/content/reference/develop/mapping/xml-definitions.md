@@ -1668,10 +1668,10 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                      <p class="occurrence">[0 or 1]</p>
                      <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-mapping-common/mapping-item/id-ref">Switch to JSON</a></div>
-                     <p class="formal-name">Subject Type</p>
+                     <p class="formal-name">Subject Identifier Reference</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> The semantic type of the subject.</p>
+                     <p class="description"><span class="usa-tag">description</span> A reference to an identified subject that is of the specified <code>type</code>.</p>
                   </div>
                </div>
             </div>

@@ -9213,7 +9213,7 @@ The following is a reference for the XML element and attribute types derived fro
             </div>
             </details>
          <details open="open">
-            <summary>Elements (3):</summary>
+            <summary>Elements (4):</summary>
             <div class="model assembly-model">
                <div class="model-entry definition assembly">
                   <div class="instance-header">
@@ -9262,6 +9262,26 @@ The following is a reference for the XML element and attribute types derived fro
                         </details>
                      </div>
                      <p class="definition-link"><a href="#/assembly/oscal-implementation-common/inventory-item">See definition</a></p>
+                  </div>
+               </div>
+               <div class="model-entry definition assembly">
+                  <div class="instance-header">
+                     <h2 id="/assembly/oscal-poam/local-definitions/assessment-assets" class="toc2 name">assessment-assets</h2>
+                     <p class="type">assembly<br class="br" /> </p>
+                     <p class="occurrence">[0 or 1]</p>
+                     <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-poam/local-definitions/assessment-assets">Switch to JSON</a></div>
+                     <p class="formal-name">Assessment Assets</p>
+                  </div>
+                  <div class="body">
+                     <div class="remarks-group usa-prose">
+                        <details open="open">
+                           <summary class="subhead">Remarks</summary>
+                           <div class="remarks">
+                              <p>Specifies components or assessment-platforms used in the assessment.</p>
+                           </div>
+                        </details>
+                     </div>
+                     <p class="definition-link"><a href="#/assembly/oscal-assessment-common/assessment-assets">See definition</a></p>
                   </div>
                </div>
                <div class="model-entry definition field">
@@ -10230,10 +10250,10 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                      <p class="occurrence">[0 or 1]</p>
                      <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-mapping-common/mapping-item/id-ref">Switch to JSON</a></div>
-                     <p class="formal-name">Subject Type</p>
+                     <p class="formal-name">Subject Identifier Reference</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> The semantic type of the subject.</p>
+                     <p class="description"><span class="usa-tag">description</span> A reference to an identified subject that is of the specified <code>type</code>.</p>
                   </div>
                </div>
             </div>

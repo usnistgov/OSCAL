@@ -1702,10 +1702,10 @@ The following is a reference for the JSON object definitions derived from the [m
                      <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                      <p class="occurrence">[0 or 1]</p>
                      <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-mapping-common/mapping-item/id-ref">Switch to XML</a></div>
-                     <p class="formal-name">Subject Type</p>
+                     <p class="formal-name">Subject Identifier Reference</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> The semantic type of the subject.</p>
+                     <p class="description"><span class="usa-tag">description</span> A reference to an identified subject that is of the specified <code>type</code>.</p>
                   </div>
                </div>
                <div class="model-entry definition assembly">

@@ -1283,6 +1283,474 @@ The following outline is a representation of the [JSON format](https://github.co
                      </div>
                      <p><span class="OM-lit">], </span></p>
                   </details>
+                  <details class="OM-entry">
+                     <summary><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets">assessment-assets</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit">{<span class="show-closed"> … }, </span></span></summary>
+                     <div class="model-container object">
+                        <details class="OM-entry">
+                           <summary><span class="sq"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/components">components</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                           <div class="model-container array">
+                              <div class="OM-entry">
+                                 <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/components">component</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                 <div class="model-container object">
+                                    <div class="OM-entry">
+                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/components/uuid">uuid</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="OM-lit">,</span></p>
+                                    </div>
+                                    <div class="OM-entry">
+                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/components/type">type</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                    </div>
+                                    <div class="OM-entry">
+                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/components/title">title</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span><span class="OM-lit">,</span></p>
+                                    </div>
+                                    <div class="OM-entry">
+                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/components/description">description</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
+                                    </div>
+                                    <div class="OM-entry">
+                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/components/purpose">purpose</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span><span class="OM-lit">,</span></p>
+                                    </div>
+                                    <details class="OM-entry">
+                                       <summary><span class="sq"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/components/props">props</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                       <div class="model-container array">
+                                          <div class="OM-entry">
+                                             <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/components/props">prop</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                             <div class="model-container object">
+                                                <div class="OM-entry">
+                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/components/props/name">name</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                </div>
+                                                <div class="OM-entry">
+                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/components/props/uuid">uuid</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="OM-lit">,</span></p>
+                                                </div>
+                                                <div class="OM-entry">
+                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/components/props/ns">ns</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uri">uri</a></span><span class="OM-lit">,</span></p>
+                                                </div>
+                                                <div class="OM-entry">
+                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/components/props/value">value</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                                </div>
+                                                <div class="OM-entry">
+                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/components/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                </div>
+                                                <div class="OM-entry">
+                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/components/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                </div>
+                                                <div class="OM-entry">
+                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/components/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
+                                                </div>
+                                             </div>
+                                             <p><span class="OM-lit"> }</span></p>
+                                          </div>
+                                       </div>
+                                       <p><span class="OM-lit">], </span></p>
+                                    </details>
+                                    <details class="OM-entry">
+                                       <summary><span class="sq"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/components/links">links</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                       <div class="model-container array">
+                                          <div class="OM-entry">
+                                             <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/components/links">link</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                             <div class="model-container object">
+                                                <div class="OM-entry">
+                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/components/links/href">href</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uri-reference">uri-reference</a></span><span class="OM-lit">,</span></p>
+                                                </div>
+                                                <div class="OM-entry">
+                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/components/links/rel">rel</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                </div>
+                                                <div class="OM-entry">
+                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/components/links/media-type">media-type</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                                </div>
+                                                <div class="OM-entry">
+                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/components/links/text">text</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span><span class="OM-lit">,</span></p>
+                                                </div>
+                                             </div>
+                                             <p><span class="OM-lit"> }</span></p>
+                                          </div>
+                                       </div>
+                                       <p><span class="OM-lit">], </span></p>
+                                    </details>
+                                    <details class="OM-entry">
+                                       <summary><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/components/status">status</a> <span class="OM-cardinality">[1]</span>: <span class="OM-lit">{<span class="show-closed"> … }, </span></span></summary>
+                                       <div class="model-container object">
+                                          <div class="OM-entry">
+                                             <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/components/status/state">state</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                          </div>
+                                          <div class="OM-entry">
+                                             <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/components/status/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span></p>
+                                          </div>
+                                       </div>
+                                       <p><span class="OM-lit"> }, </span></p>
+                                    </details>
+                                    <details class="OM-entry">
+                                       <summary><span class="sq"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/components/responsible-roles">responsible-roles</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                       <div class="model-container array">
+                                          <div class="OM-entry">
+                                             <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/components/responsible-roles">responsible-role</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                             <div class="model-container object">
+                                                <div class="OM-entry">
+                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/components/responsible-roles/role-id">role-id</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                </div>
+                                                <details class="OM-entry">
+                                                   <summary><span class="sq"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/components/responsible-roles/props">props</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                                   <div class="model-container array">
+                                                      <div class="OM-entry">
+                                                         <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/components/responsible-roles/props">prop</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                                         <div class="model-container object">
+                                                            <div class="OM-entry">
+                                                               <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/components/responsible-roles/props/name">name</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                            </div>
+                                                            <div class="OM-entry">
+                                                               <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/components/responsible-roles/props/uuid">uuid</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="OM-lit">,</span></p>
+                                                            </div>
+                                                            <div class="OM-entry">
+                                                               <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/components/responsible-roles/props/ns">ns</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uri">uri</a></span><span class="OM-lit">,</span></p>
+                                                            </div>
+                                                            <div class="OM-entry">
+                                                               <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/components/responsible-roles/props/value">value</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                                            </div>
+                                                            <div class="OM-entry">
+                                                               <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/components/responsible-roles/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                            </div>
+                                                            <div class="OM-entry">
+                                                               <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/components/responsible-roles/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                            </div>
+                                                            <div class="OM-entry">
+                                                               <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/components/responsible-roles/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
+                                                            </div>
+                                                         </div>
+                                                         <p><span class="OM-lit"> }</span></p>
+                                                      </div>
+                                                   </div>
+                                                   <p><span class="OM-lit">], </span></p>
+                                                </details>
+                                                <details class="OM-entry">
+                                                   <summary><span class="sq"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/components/responsible-roles/links">links</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                                   <div class="model-container array">
+                                                      <div class="OM-entry">
+                                                         <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/components/responsible-roles/links">link</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                                         <div class="model-container object">
+                                                            <div class="OM-entry">
+                                                               <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/components/responsible-roles/links/href">href</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uri-reference">uri-reference</a></span><span class="OM-lit">,</span></p>
+                                                            </div>
+                                                            <div class="OM-entry">
+                                                               <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/components/responsible-roles/links/rel">rel</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                            </div>
+                                                            <div class="OM-entry">
+                                                               <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/components/responsible-roles/links/media-type">media-type</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                                            </div>
+                                                            <div class="OM-entry">
+                                                               <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/components/responsible-roles/links/text">text</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span><span class="OM-lit">,</span></p>
+                                                            </div>
+                                                         </div>
+                                                         <p><span class="OM-lit"> }</span></p>
+                                                      </div>
+                                                   </div>
+                                                   <p><span class="OM-lit">], </span></p>
+                                                </details>
+                                                <details class="OM-entry">
+                                                   <summary><span class="sq"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/components/responsible-roles/party-uuids">party-uuids</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                                   <div class="model-container array">
+                                                      <div class="OM-entry">
+                                                         <p class="OM-line"><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/components/responsible-roles/party-uuids">party-uuid</a> strings</span> <span class="OM-cardinality">[0 to ∞]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span></p>
+                                                      </div>
+                                                   </div>
+                                                   <p><span class="OM-lit">], </span></p>
+                                                </details>
+                                                <div class="OM-entry">
+                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/components/responsible-roles/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span></p>
+                                                </div>
+                                             </div>
+                                             <p><span class="OM-lit"> }</span></p>
+                                          </div>
+                                       </div>
+                                       <p><span class="OM-lit">], </span></p>
+                                    </details>
+                                    <details class="OM-entry">
+                                       <summary><span class="sq"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/components/protocols">protocols</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                       <div class="model-container array">
+                                          <div class="OM-entry">
+                                             <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/components/protocols">protocol</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                             <div class="model-container object">
+                                                <div class="OM-entry">
+                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/components/protocols/uuid">uuid</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="OM-lit">,</span></p>
+                                                </div>
+                                                <div class="OM-entry">
+                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/components/protocols/name">name</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                                </div>
+                                                <div class="OM-entry">
+                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/components/protocols/title">title</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span><span class="OM-lit">,</span></p>
+                                                </div>
+                                                <details class="OM-entry">
+                                                   <summary><span class="sq"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/components/protocols/port-ranges">port-ranges</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                                   <div class="model-container array">
+                                                      <div class="OM-entry">
+                                                         <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/components/protocols/port-ranges">port-range</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                                         <div class="model-container object">
+                                                            <div class="OM-entry">
+                                                               <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/components/protocols/port-ranges/start">start</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#nonnegativeinteger">nonNegativeInteger</a></span><span class="OM-lit">,</span></p>
+                                                            </div>
+                                                            <div class="OM-entry">
+                                                               <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/components/protocols/port-ranges/end">end</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#nonnegativeinteger">nonNegativeInteger</a></span><span class="OM-lit">,</span></p>
+                                                            </div>
+                                                            <div class="OM-entry">
+                                                               <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/components/protocols/port-ranges/transport">transport</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                            </div>
+                                                         </div>
+                                                         <p><span class="OM-lit"> }</span></p>
+                                                      </div>
+                                                   </div>
+                                                   <p><span class="OM-lit">], </span></p>
+                                                </details>
+                                             </div>
+                                             <p><span class="OM-lit"> }</span></p>
+                                          </div>
+                                       </div>
+                                       <p><span class="OM-lit">], </span></p>
+                                    </details>
+                                    <div class="OM-entry">
+                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/components/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
+                                    </div>
+                                 </div>
+                                 <p><span class="OM-lit"> }</span></p>
+                              </div>
+                           </div>
+                           <p><span class="OM-lit">], </span></p>
+                        </details>
+                        <details class="OM-entry">
+                           <summary><span class="sq"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platforms">assessment-platforms</a> <span class="OM-cardinality">[1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                           <div class="model-container array">
+                              <div class="OM-entry">
+                                 <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platforms">assessment-platform</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                 <div class="model-container object">
+                                    <div class="OM-entry">
+                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platforms/uuid">uuid</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="OM-lit">,</span></p>
+                                    </div>
+                                    <div class="OM-entry">
+                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platforms/title">title</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span><span class="OM-lit">,</span></p>
+                                    </div>
+                                    <details class="OM-entry">
+                                       <summary><span class="sq"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platforms/props">props</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                       <div class="model-container array">
+                                          <div class="OM-entry">
+                                             <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platforms/props">prop</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                             <div class="model-container object">
+                                                <div class="OM-entry">
+                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platforms/props/name">name</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                </div>
+                                                <div class="OM-entry">
+                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platforms/props/uuid">uuid</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="OM-lit">,</span></p>
+                                                </div>
+                                                <div class="OM-entry">
+                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platforms/props/ns">ns</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uri">uri</a></span><span class="OM-lit">,</span></p>
+                                                </div>
+                                                <div class="OM-entry">
+                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platforms/props/value">value</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                                </div>
+                                                <div class="OM-entry">
+                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platforms/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                </div>
+                                                <div class="OM-entry">
+                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platforms/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                </div>
+                                                <div class="OM-entry">
+                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platforms/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
+                                                </div>
+                                             </div>
+                                             <p><span class="OM-lit"> }</span></p>
+                                          </div>
+                                       </div>
+                                       <p><span class="OM-lit">], </span></p>
+                                    </details>
+                                    <details class="OM-entry">
+                                       <summary><span class="sq"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platforms/links">links</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                       <div class="model-container array">
+                                          <div class="OM-entry">
+                                             <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platforms/links">link</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                             <div class="model-container object">
+                                                <div class="OM-entry">
+                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platforms/links/href">href</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uri-reference">uri-reference</a></span><span class="OM-lit">,</span></p>
+                                                </div>
+                                                <div class="OM-entry">
+                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platforms/links/rel">rel</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                </div>
+                                                <div class="OM-entry">
+                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platforms/links/media-type">media-type</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                                </div>
+                                                <div class="OM-entry">
+                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platforms/links/text">text</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span><span class="OM-lit">,</span></p>
+                                                </div>
+                                             </div>
+                                             <p><span class="OM-lit"> }</span></p>
+                                          </div>
+                                       </div>
+                                       <p><span class="OM-lit">], </span></p>
+                                    </details>
+                                    <details class="OM-entry">
+                                       <summary><span class="sq"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platforms/uses-components">uses-components</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                       <div class="model-container array">
+                                          <div class="OM-entry">
+                                             <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platforms/uses-components">uses-component</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                             <div class="model-container object">
+                                                <div class="OM-entry">
+                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platforms/uses-components/component-uuid">component-uuid</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="OM-lit">,</span></p>
+                                                </div>
+                                                <details class="OM-entry">
+                                                   <summary><span class="sq"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platforms/uses-components/props">props</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                                   <div class="model-container array">
+                                                      <div class="OM-entry">
+                                                         <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platforms/uses-components/props">prop</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                                         <div class="model-container object">
+                                                            <div class="OM-entry">
+                                                               <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platforms/uses-components/props/name">name</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                            </div>
+                                                            <div class="OM-entry">
+                                                               <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platforms/uses-components/props/uuid">uuid</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="OM-lit">,</span></p>
+                                                            </div>
+                                                            <div class="OM-entry">
+                                                               <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platforms/uses-components/props/ns">ns</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uri">uri</a></span><span class="OM-lit">,</span></p>
+                                                            </div>
+                                                            <div class="OM-entry">
+                                                               <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platforms/uses-components/props/value">value</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                                            </div>
+                                                            <div class="OM-entry">
+                                                               <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platforms/uses-components/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                            </div>
+                                                            <div class="OM-entry">
+                                                               <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platforms/uses-components/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                            </div>
+                                                            <div class="OM-entry">
+                                                               <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platforms/uses-components/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
+                                                            </div>
+                                                         </div>
+                                                         <p><span class="OM-lit"> }</span></p>
+                                                      </div>
+                                                   </div>
+                                                   <p><span class="OM-lit">], </span></p>
+                                                </details>
+                                                <details class="OM-entry">
+                                                   <summary><span class="sq"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platforms/uses-components/links">links</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                                   <div class="model-container array">
+                                                      <div class="OM-entry">
+                                                         <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platforms/uses-components/links">link</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                                         <div class="model-container object">
+                                                            <div class="OM-entry">
+                                                               <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platforms/uses-components/links/href">href</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uri-reference">uri-reference</a></span><span class="OM-lit">,</span></p>
+                                                            </div>
+                                                            <div class="OM-entry">
+                                                               <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platforms/uses-components/links/rel">rel</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                            </div>
+                                                            <div class="OM-entry">
+                                                               <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platforms/uses-components/links/media-type">media-type</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                                            </div>
+                                                            <div class="OM-entry">
+                                                               <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platforms/uses-components/links/text">text</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span><span class="OM-lit">,</span></p>
+                                                            </div>
+                                                         </div>
+                                                         <p><span class="OM-lit"> }</span></p>
+                                                      </div>
+                                                   </div>
+                                                   <p><span class="OM-lit">], </span></p>
+                                                </details>
+                                                <details class="OM-entry">
+                                                   <summary><span class="sq"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platforms/uses-components/responsible-parties">responsible-parties</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                                   <div class="model-container array">
+                                                      <div class="OM-entry">
+                                                         <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platforms/uses-components/responsible-parties">responsible-party</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                                         <div class="model-container object">
+                                                            <div class="OM-entry">
+                                                               <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platforms/uses-components/responsible-parties/role-id">role-id</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                            </div>
+                                                            <details class="OM-entry">
+                                                               <summary><span class="sq"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platforms/uses-components/responsible-parties/party-uuids">party-uuids</a> <span class="OM-cardinality">[1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                                               <div class="model-container array">
+                                                                  <div class="OM-entry">
+                                                                     <p class="OM-line"><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platforms/uses-components/responsible-parties/party-uuids">party-uuid</a> strings</span> <span class="OM-cardinality">[1 to ∞]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span></p>
+                                                                  </div>
+                                                               </div>
+                                                               <p><span class="OM-lit">], </span></p>
+                                                            </details>
+                                                            <details class="OM-entry">
+                                                               <summary><span class="sq"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platforms/uses-components/responsible-parties/props">props</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                                               <div class="model-container array">
+                                                                  <div class="OM-entry">
+                                                                     <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platforms/uses-components/responsible-parties/props">prop</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                                                     <div class="model-container object">
+                                                                        <div class="OM-entry">
+                                                                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platforms/uses-components/responsible-parties/props/name">name</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                        </div>
+                                                                        <div class="OM-entry">
+                                                                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platforms/uses-components/responsible-parties/props/uuid">uuid</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="OM-lit">,</span></p>
+                                                                        </div>
+                                                                        <div class="OM-entry">
+                                                                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platforms/uses-components/responsible-parties/props/ns">ns</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uri">uri</a></span><span class="OM-lit">,</span></p>
+                                                                        </div>
+                                                                        <div class="OM-entry">
+                                                                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platforms/uses-components/responsible-parties/props/value">value</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                                                        </div>
+                                                                        <div class="OM-entry">
+                                                                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platforms/uses-components/responsible-parties/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                        </div>
+                                                                        <div class="OM-entry">
+                                                                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platforms/uses-components/responsible-parties/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                        </div>
+                                                                        <div class="OM-entry">
+                                                                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platforms/uses-components/responsible-parties/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
+                                                                        </div>
+                                                                     </div>
+                                                                     <p><span class="OM-lit"> }</span></p>
+                                                                  </div>
+                                                               </div>
+                                                               <p><span class="OM-lit">], </span></p>
+                                                            </details>
+                                                            <details class="OM-entry">
+                                                               <summary><span class="sq"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platforms/uses-components/responsible-parties/links">links</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                                               <div class="model-container array">
+                                                                  <div class="OM-entry">
+                                                                     <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platforms/uses-components/responsible-parties/links">link</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                                                     <div class="model-container object">
+                                                                        <div class="OM-entry">
+                                                                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platforms/uses-components/responsible-parties/links/href">href</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uri-reference">uri-reference</a></span><span class="OM-lit">,</span></p>
+                                                                        </div>
+                                                                        <div class="OM-entry">
+                                                                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platforms/uses-components/responsible-parties/links/rel">rel</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                        </div>
+                                                                        <div class="OM-entry">
+                                                                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platforms/uses-components/responsible-parties/links/media-type">media-type</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                                                        </div>
+                                                                        <div class="OM-entry">
+                                                                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platforms/uses-components/responsible-parties/links/text">text</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span><span class="OM-lit">,</span></p>
+                                                                        </div>
+                                                                     </div>
+                                                                     <p><span class="OM-lit"> }</span></p>
+                                                                  </div>
+                                                               </div>
+                                                               <p><span class="OM-lit">], </span></p>
+                                                            </details>
+                                                            <div class="OM-entry">
+                                                               <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platforms/uses-components/responsible-parties/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
+                                                            </div>
+                                                         </div>
+                                                         <p><span class="OM-lit"> }</span></p>
+                                                      </div>
+                                                   </div>
+                                                   <p><span class="OM-lit">], </span></p>
+                                                </details>
+                                                <div class="OM-entry">
+                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platforms/uses-components/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
+                                                </div>
+                                             </div>
+                                             <p><span class="OM-lit"> }</span></p>
+                                          </div>
+                                       </div>
+                                       <p><span class="OM-lit">], </span></p>
+                                    </details>
+                                    <div class="OM-entry">
+                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/assessment-assets/assessment-platforms/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span></p>
+                                    </div>
+                                 </div>
+                                 <p><span class="OM-lit"> }</span></p>
+                              </div>
+                           </div>
+                           <p><span class="OM-lit">], </span></p>
+                        </details>
+                     </div>
+                     <p><span class="OM-lit"> }, </span></p>
+                  </details>
                   <div class="OM-entry">
                      <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/local-definitions/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
                   </div>

@@ -4640,10 +4640,10 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/mapping-collection/mappings/mapping/maps/sources/id-ref">Switch to JSON</a></div>
-                                             <p class="formal-name">Subject Type</p>
+                                             <p class="formal-name">Subject Identifier Reference</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> The semantic type of the subject.</p>
+                                             <p class="description"><span class="usa-tag">Description</span> A reference to an identified subject that is of the specified <code>type</code>.</p>
                                           </div>
                                        </div>
                                     </details>
@@ -5032,10 +5032,10 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/mapping-collection/mappings/mapping/maps/targets/id-ref">Switch to JSON</a></div>
-                                             <p class="formal-name">Subject Type</p>
+                                             <p class="formal-name">Subject Identifier Reference</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> The semantic type of the subject.</p>
+                                             <p class="description"><span class="usa-tag">Description</span> A reference to an identified subject that is of the specified <code>type</code>.</p>
                                           </div>
                                        </div>
                                     </details>

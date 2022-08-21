@@ -6542,10 +6542,10 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                       <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                                       <p class="occurrence">[1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../xml-reference/#/catalog/control/mapping/map/source/@id-ref">Switch to XML</a></div>
-                                                      <p class="formal-name">Subject Type</p>
+                                                      <p class="formal-name">Subject Identifier Reference</p>
                                                    </div>
                                                    <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> The semantic type of the subject.</p>
+                                                      <p class="description"><span class="usa-tag">Description</span> A reference to an identified subject that is of the specified <code>type</code>.</p>
                                                    </div>
                                                 </div>
                                                 <div class="model-entry definition assembly">
@@ -6914,10 +6914,10 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                       <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                                       <p class="occurrence">[1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../xml-reference/#/catalog/control/mapping/map/target/@id-ref">Switch to XML</a></div>
-                                                      <p class="formal-name">Subject Type</p>
+                                                      <p class="formal-name">Subject Identifier Reference</p>
                                                    </div>
                                                    <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> The semantic type of the subject.</p>
+                                                      <p class="description"><span class="usa-tag">Description</span> A reference to an identified subject that is of the specified <code>type</code>.</p>
                                                    </div>
                                                 </div>
                                                 <div class="model-entry definition assembly">
@@ -11652,10 +11652,10 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                                   <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                                                   <p class="occurrence">[1]</p>
                                                                   <div class="crosslink"><a class="usa-button" href="../xml-reference/#/catalog/group/control/mapping/map/source/@id-ref">Switch to XML</a></div>
-                                                                  <p class="formal-name">Subject Type</p>
+                                                                  <p class="formal-name">Subject Identifier Reference</p>
                                                                </div>
                                                                <div class="body">
-                                                                  <p class="description"><span class="usa-tag">Description</span> The semantic type of the subject.</p>
+                                                                  <p class="description"><span class="usa-tag">Description</span> A reference to an identified subject that is of the specified <code>type</code>.</p>
                                                                </div>
                                                             </div>
                                                             <div class="model-entry definition assembly">
@@ -12024,10 +12024,10 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                                   <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                                                   <p class="occurrence">[1]</p>
                                                                   <div class="crosslink"><a class="usa-button" href="../xml-reference/#/catalog/group/control/mapping/map/target/@id-ref">Switch to XML</a></div>
-                                                                  <p class="formal-name">Subject Type</p>
+                                                                  <p class="formal-name">Subject Identifier Reference</p>
                                                                </div>
                                                                <div class="body">
-                                                                  <p class="description"><span class="usa-tag">Description</span> The semantic type of the subject.</p>
+                                                                  <p class="description"><span class="usa-tag">Description</span> A reference to an identified subject that is of the specified <code>type</code>.</p>
                                                                </div>
                                                             </div>
                                                             <div class="model-entry definition assembly">
