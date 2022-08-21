@@ -1327,6 +1327,16 @@
                <b>Property Class</b>: A textual label that provides a sub-type or characterization of the property's name. This can be used to further distinguish or discriminate between the semantics of multiple properties of the same object with the same name and ns. </xs:documentation>
          </xs:annotation>
       </xs:attribute>
+      <xs:attribute name="group" type="TokenDatatype">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Property Group</m:formal-name>
+               <m:description>An identifier for relating distinct sets of properties.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Property Group</b>: An identifier for relating distinct sets of properties.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
    </xs:complexType>
    <xs:complexType name="oscal-metadata-link-ASSEMBLY">
       <xs:annotation>

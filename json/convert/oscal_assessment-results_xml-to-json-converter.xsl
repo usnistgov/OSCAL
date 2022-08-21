@@ -180,6 +180,7 @@
          <xsl:apply-templates select="@ns"/>
          <xsl:apply-templates select="@value"/>
          <xsl:apply-templates select="@class"/>
+         <xsl:apply-templates select="@group"/>
          <xsl:apply-templates select="remarks"/>
       </assembly>
    </xsl:template>
@@ -1665,6 +1666,17 @@
             name="class"
             key="class"
             gi="class">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="prop/@group"
+                 priority="1"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="string"
+            as-type="token"
+            name="group"
+            key="group"
+            gi="group">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
