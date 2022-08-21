@@ -21,7 +21,11 @@
                 <x:param name="top-uuid" select="'123'"/>
                 <x:param name="uuid-method" select="'user-provided'"/>
             </x:call>
-            <x:expect label="Fixed UUID" select="$ov:fixed"/>
+            <x:expect label="Fixed UUID" test="$x:result[. instance of xs:string]" select="$ov:fixed"/>
+            <x:expect label="PI warning about invalid value"
+                test="$x:result[. instance of processing-instruction('message-handler')]">
+                <?message-handler Warning: top-uuid value, '123', does not meet UUID requirements. Using default UUID instead.?>
+            </x:expect>
         </x:scenario>
         <x:scenario label="Random UUID using XSLT">
             <!-- Random XSLT method requires a global context item.
@@ -42,10 +46,10 @@
                 <x:param name="top-uuid" select="$ov:specified"/>
                 <x:param name="uuid-method" select="'random-java'"/>
             </x:call>
-            <x:expect label="Nonempty string"
-                test="$x:result instance of xs:string and $x:result != ''"/>
+            <x:expect label="Nonempty"
+                test="string($x:result) != ''"/>
             <x:expect label="UUID is neither fixed one nor specified one"
-                test="$x:result ne $ov:specified and $x:result ne $ov:fixed"/>
+                test="string($x:result) ne $ov:specified and string($x:result) ne $ov:fixed"/>
         </x:scenario>
         <!-- FYI: Because the transform relies on use-when, which is evaluated at
             compile time, the same test invocation cannot check both
@@ -68,7 +72,11 @@
                 <x:param name="uuid-service" select="'nonexistent.txt'"/>
                 <x:param name="uuid-method" select="'web-service'"/>
             </x:call>
-            <x:expect label="Fixed UUID" select="$ov:fixed"/>
+            <x:expect label="Fixed UUID" test="$x:result[. instance of xs:string]" select="$ov:fixed"/>
+            <x:expect label="PI warning about unavailable service"
+                test="$x:result[. instance of processing-instruction('message-handler')]">
+                <?message-handler Warning: uuid-service, 'nonexistent.txt', is not available. Using default UUID instead.?>
+            </x:expect>
         </x:scenario>
         <x:scenario label="Fixed UUID">
             <x:call template="u:determine-uuid">
@@ -80,7 +88,11 @@
             <x:call template="u:determine-uuid">
                 <x:param name="uuid-method" select="'junk'"/>
             </x:call>
-            <x:expect label="Fixed UUID" select="$ov:fixed"/>
+            <x:expect label="Fixed UUID" test="$x:result[. instance of xs:string]" select="$ov:fixed"/>
+            <x:expect label="PI warning about unrecognized method"
+                test="$x:result[. instance of processing-instruction('message-handler')]">
+                <?message-handler Warning: uuid-method, 'junk', is not recognized. Using default UUID instead.?>
+            </x:expect>
         </x:scenario>
     </x:scenario>
 </x:description>

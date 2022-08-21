@@ -100,14 +100,14 @@
             <x:expect label="which matches the original catalog's top-level uuid."
                 test="$x:result/o:selection/@uuid = $ov:catalog_uuid"/>
         </x:scenario>
-        <x:scenario label="Error case: Profile cannot find catalog" catch="yes">
+        <x:scenario label="Error case: Profile cannot find catalog">
             <x:context>
                 <profile>
                     <import href="nonexistent_catalog.xml"/>
                 </profile>
             </x:context>
-            <x:expect label="Fatal XSLT error"
-                test="$x:result instance of map(*) and $x:result('err') instance of map(*)"/>
+            <x:expect label="PI indicating a terminating error"
+                test="exists($x:result/processing-instruction('message-handler')[starts-with(.,'Terminating ')])"/>
         </x:scenario>
         <x:scenario label="Profile select include all">
             <x:context>
@@ -576,19 +576,17 @@
                 <selection opr:src="..." uuid="xmlcat">...</selection>
             </x:expect>
         </x:scenario>
-        <x:scenario label="Error case: No rlink child with suitable href or media-type" catch="yes">
+        <x:scenario label="Error case: No rlink child with suitable href or media-type">
             <x:context mode="o:import">
                 <resource uuid="foo">
                     <rlink href="foo.json"/>
                 </resource>
             </x:context>
             <x:variable name="ov:expected_error" as="xs:string">Document not acquired for resource with uuid foo: No rlink with media-type='xml' or href ending with '.xml'</x:variable>
-            <x:expect label="Fatal XSLT error"
-                test="$x:result instance of map(*) and $x:result('err') instance of map(*)"/>
-            <!-- The next assertion requires a newer XSpec version; passes in Oxygen v24, fails in Oxygen v22.1 -->
+            <x:expect label="PI indicating a terminating error"
+                test="exists($x:result/self::processing-instruction('message-handler')[starts-with(.,'Terminating ')])"/>
             <x:expect label="with message specific to situation"
-                test="$x:result('err')('value')/string()"
-                select="$ov:expected_error"/>
+                test="exists($x:result/self::processing-instruction('message-handler')[contains(.,$ov:expected_error)])"/>
         </x:scenario>
     </x:scenario>
 
@@ -599,22 +597,22 @@
             <x:expect label="Selection from imported catalog"
                 select="$ov:catalog-selection-structure"/>
         </x:scenario>
-        <x:scenario label="Error case: Resource is not available" catch="yes">
+        <x:scenario label="Error case: Resource is not available">
             <x:context mode="o:select"
                 select="(doc($ov:filedir || '/broken_profile.xml')//o:import)[1]"/>
-            <x:expect label="Fatal XSLT error"
-                test="$x:result instance of map(*) and $x:result('err') instance of map(*)"/>
+            <x:expect label="PI indicating a terminating error"
+                test="exists($x:result/self::processing-instruction('message-handler')[starts-with(.,'Terminating ')])"/>
         </x:scenario>
         <x:scenario label="Error case: Resource reference is circular" catch="yes" pending="XSLT needs to catch up to spec">
             <x:context mode="o:select"
                 select="(doc($ov:filedir || '/circular_profile.xml')//o:import)[1]"/>
-            <x:expect label="Fatal XSLT error"
-                test="$x:result instance of map(*) and $x:result('err') instance of map(*)"/>
+            <x:expect label="PI indicating a terminating error"
+                test="exists($x:result/self::processing-instruction('message-handler')[starts-with(.,'Terminating ')])"/>
         </x:scenario>
-        <x:scenario label="Error case: href is not castable as xs:anyURI" catch="yes">
+        <x:scenario label="Error case: href is not castable as xs:anyURI">
             <x:context mode="o:select"><import/></x:context>
-            <x:expect label="Fatal XSLT error"
-                test="$x:result instance of map(*) and $x:result('err') instance of map(*)"/>
+            <x:expect label="PI indicating a terminating error"
+                test="exists($x:result/self::processing-instruction('message-handler')[starts-with(.,'Terminating ')])"/>
         </x:scenario>
     </x:scenario>
 
@@ -1488,12 +1486,12 @@
             </x:call>
             <x:expect label="Resolved document" test="exists($x:result/self::document-node()/o:catalog)"/>
         </x:scenario>
-        <x:scenario label="Error case: Document is not available" catch="yes">
+        <x:scenario label="Error case: Document is not available">
             <x:call function="o:resource-or-error">
                 <x:param select="(doc($ov:filedir || '/broken_profile.xml')//o:import)[1]/@href"/>
             </x:call>
-            <x:expect label="Fatal XSLT error"
-                test="$x:result instance of map(*) and $x:result('err') instance of map(*)"/>
+            <x:expect label="PI indicating a terminating error"
+                test="exists($x:result/self::processing-instruction('message-handler')[starts-with(.,'Terminating ')])"/>
         </x:scenario>
     </x:scenario>
     
