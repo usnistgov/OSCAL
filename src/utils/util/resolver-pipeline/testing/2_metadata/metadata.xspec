@@ -226,8 +226,8 @@
                 <oscal-version>...</oscal-version>
             </x:expect>
         </x:scenario>
-        <x:scenario label="Sanity checks for calling opr:oscal-version with correct inputs: " pending="opr:oscal-version not implemented yet">
-            <x:scenario label="Most recent version is in selection metadata">
+        <x:scenario label="Sanity checks for calling opr:oscal-version with correct inputs: ">
+            <x:scenario label="Most recent version is in selection metadata" catch="yes">
                 <x:context select="/o:profile/o:metadata/o:oscal-version">
                     <profile>
                         <metadata>
@@ -252,9 +252,8 @@
                         </selection>
                     </profile>
                 </x:context>
-                <x:expect label="Most recent minor version mentioned in document">
-                    <oscal-version>1.0.4</oscal-version>
-                </x:expect>
+                <x:expect label="Error"
+                    test="$x:result instance of map(*) and $x:result('err') instance of map(*)"/>
             </x:scenario>
             <x:scenario label="Most recent version is in profile metadata">
                 <x:context select="/o:profile/o:metadata/o:oscal-version">
@@ -269,81 +268,51 @@
                         </selection>
                     </profile>
                 </x:context>
-                <x:expect label="Most recent minor version mentioned in document">
+                <x:expect label="Version from profile">
                     <oscal-version>1.0.4</oscal-version>
-                </x:expect>
-            </x:scenario>
-            <x:scenario label="Tool version is older than document versions">
-                <x:context select="/o:profile/o:metadata/o:oscal-version">
-                    <profile>
-                        <metadata>
-                            <oscal-version>1.4.0</oscal-version>
-                        </metadata>
-                        <selection>
-                            <metadata>
-                                <oscal-version>1.2.0</oscal-version>
-                            </metadata>
-                        </selection>
-                    </profile>
-                </x:context>
-                <x:expect label="Tool version">
-                    <oscal-version>1.1.0</oscal-version>
                 </x:expect>
             </x:scenario>
         </x:scenario>
     </x:scenario>
 
-    <x:scenario label="Tests for opr:oscal-version function" pending="opr:oscal-version not implemented yet">
+    <x:scenario label="Tests for opr:oscal-version function">
         <x:scenario label="Same major version">
-            <x:scenario label="Source profile version newer than imported document">
+            <x:scenario label="Source profile version at least as new as all imported documents">
                 <x:call function="opr:oscal-version">
                     <x:param name="source" select="'1.0.1'"/>
-                    <x:param name="imported" select="('1.0.0','1.0.0')"/>
-                    <x:param name="tool" select="'1.0.1'"/>
+                    <x:param name="imported" select="('1.0.0','1.0.1')"/>
                 </x:call>
-                <x:expect label="Newest minor version" select="'1.0.1'"/>
+                <x:expect label="Source version and no error" select="'1.0.1'"/>
             </x:scenario>
-            <x:scenario label="Source profile version older than imported document">
+            <x:scenario label="Source profile version older than at least one imported document" catch="yes">
                 <x:call function="opr:oscal-version">
                     <x:param name="source" select="'1.0.0'"/>
-                    <x:param name="imported" select="('1.0.1','1.0.1')"/>
-                    <x:param name="tool" select="'1.0.1'"/>
+                    <x:param name="imported" select="('1.0.0','1.0.1')"/>
                 </x:call>
-                <x:expect label="Newest minor version" select="'1.0.1'"/>
+                <x:expect label="Error"
+                    test="$x:result instance of map(*) and $x:result('err') instance of map(*)"/>
             </x:scenario>
-            <x:scenario label="Tool version is older">
+            <x:scenario label="Imported document has a newer pre-release identifier" catch="yes">
                 <x:call function="opr:oscal-version">
-                    <x:param name="source" select="'1.0.1'"/>
-                    <x:param name="imported" select="('1.0.1','1.0.1')"/>
-                    <x:param name="tool" select="'1.0.0'"/>
+                    <x:param name="source" select="'1.0.1-rc1'"/>
+                    <x:param name="imported" select="('1.0.0','1.0.1-rc2')"/>
                 </x:call>
-                <x:expect label="Tool version" select="'1.0.0'"/>
+                <x:expect label="Error"
+                    test="$x:result instance of map(*) and $x:result('err') instance of map(*)"/>
             </x:scenario>
         </x:scenario>
         <x:scenario label="Different major version">
-            <x:scenario label="Source profile version newer than imported document">
+            <x:scenario label="Source profile version at least as new as all imported documents">
                 <x:call function="opr:oscal-version">
                     <x:param name="source" select="'2.0.1'"/>
-                    <x:param name="imported" select="('1.0.0','1.0.0')"/>
-                    <x:param name="tool" select="'2.0.1'"/>
+                    <x:param name="imported" select="('1.37.40','1.37')"/>
                 </x:call>
-                <x:expect label="Error"
-                    test="$x:result instance of map(*) and $x:result('err') instance of map(*)"/>
+                <x:expect label="Source version and no error" select="'2.0.1'"/>
             </x:scenario>
-            <x:scenario label="Source profile version older than imported document">
+            <x:scenario label="Source profile version older than at least one imported document" catch="yes">
                 <x:call function="opr:oscal-version">
-                    <x:param name="source" select="'1.0.0'"/>
-                    <x:param name="imported" select="('2.0.1','2.0.1')"/>
-                    <x:param name="tool" select="'2.0.1'"/>
-                </x:call>
-                <x:expect label="Error"
-                    test="$x:result instance of map(*) and $x:result('err') instance of map(*)"/>
-            </x:scenario>
-            <x:scenario label="Tool version is older">
-                <x:call function="opr:oscal-version">
-                    <x:param name="source" select="'2.0.1'"/>
-                    <x:param name="imported" select="('2.0.1','2.0.1')"/>
-                    <x:param name="tool" select="'1.0.0'"/>
+                    <x:param name="source" select="'1.37.40'"/>
+                    <x:param name="imported" select="('2.0','1.0.1')"/>
                 </x:call>
                 <x:expect label="Error"
                     test="$x:result instance of map(*) and $x:result('err') instance of map(*)"/>
