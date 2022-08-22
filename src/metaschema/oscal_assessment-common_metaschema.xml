@@ -853,7 +853,7 @@
             <formal-name>Relevant Evidence</formal-name>
             <description>Links this observation to relevant evidence.</description>
             <group-as name="relevant-evidence" in-json="ARRAY"/>
-            <define-flag name="href" required="no" as-type="uri-reference">
+            <define-flag name="href" as-type="uri-reference">
                <formal-name>Relevant Evidence Reference</formal-name>
                <description>A resolvable URL reference to relevant evidence.</description>
                <remarks>
