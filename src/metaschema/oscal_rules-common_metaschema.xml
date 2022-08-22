@@ -16,6 +16,31 @@
             <formal-name>Rule Definition Universally Unique Identifier</formal-name>
             <description>TODO</description>
         </define-flag>
+        <model>
+            <define-field name="title" as-type="markup-line" min-occurs="1">
+                <formal-name>Rule Title</formal-name>
+                <description>A name given to the rule, which may be used by a tool for display and navigation.</description>
+            </define-field>
+            <define-field name="description" as-type="markup-multiline" min-occurs="1" in-xml="WITH_WRAPPER">
+                <formal-name>Rule Description</formal-name>
+                <description>A summary of the rule, including the requirement(s) to be met when evaluating the rule against a target that the rule applies to.</description>
+            </define-field>
+            <assembly ref="property" max-occurs="unbounded">
+                <group-as name="props" in-json="ARRAY"/>
+            </assembly>
+            <assembly ref="link" max-occurs="unbounded">
+                <group-as name="links" in-json="ARRAY"/>
+            </assembly>
+            <define-field ref="remarks"/>
+        </model>
+        <constraint>
+            <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+              <enum value="version">A string that identifies the revision of the rule.</enum>
+            </allowed-values>
+            <allowed-values target="link/@rel">
+                <enum value="source">A pointer to the resource that this rule is derived from.</enum>
+            </allowed-values>
+        </constraint>
     </define-assembly>
     <define-assembly name="test-definition">
         <formal-name>Test Definition</formal-name>
@@ -24,58 +49,144 @@
             <formal-name>Test Definition Universally Unique Identifier</formal-name>
             <description>TODO</description>
         </define-flag>
+        <model>
+            <define-field name="title" as-type="markup-line" min-occurs="0" max-occurs="1">
+                <formal-name>Test Title</formal-name>
+                <description>A name given to the test, which may be used by a tool for display and navigation.</description>
+            </define-field>
+            <define-field name="description" as-type="markup-multiline" in-xml="WITH_WRAPPER">
+                <formal-name>Test Description</formal-name>
+                <description>A summary of the test, including implementation details of how its use examines an aspect or trait of a system.</description>
+            </define-field>
+            <assembly ref="property" max-occurs="unbounded">
+                <group-as name="props" in-json="ARRAY"/>
+            </assembly>
+            <assembly ref="link" max-occurs="unbounded">
+                <group-as name="links" in-json="ARRAY"/>
+            </assembly>
+            <!-- TODO: address activities and actions -->
+            <define-field ref="remarks"/>
+        </model>
+        <constraint>
+            <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+              <enum value="version">A string that identifies the revision of the test.</enum>
+            </allowed-values>
+            <allowed-values target="link/@rel">
+                <enum value="source">A pointer to the resource that this test is derived from.</enum>
+            </allowed-values>
+        </constraint>
     </define-assembly>
     <define-assembly name="testing-scenario">
         <formal-name>Rule Testing Scenario</formal-name>
         <description>A rule testing scenario</description>
-        <use-name>scenario</use-name>
         <define-flag name="uuid" required="yes" as-type="uuid">
             <formal-name>Testing Scenario Universally Unique Identifier</formal-name>
             <description>TODO</description>
         </define-flag>
+        <define-flag name="rule-uuid" required="yes" as-type="uuid">
+            <formal-name>Testing Scenario Rule Universally Unique Identifier Reference</formal-name>
+            <description>TODO</description>
+        </define-flag>
         <model>
-            <assembly ref="rule-condition" min-occurs="1">
-                <use-name>condition</use-name>
+            <assembly ref="property" max-occurs="unbounded">
+                <group-as name="props" in-json="ARRAY"/>
             </assembly>
+            <assembly ref="link" max-occurs="unbounded">
+                <group-as name="links" in-json="ARRAY"/>
+            </assembly>
+            <choice>
+                <assembly ref="rule-condition" min-occurs="1">
+                    <use-name>condition</use-name>
+                </assembly>
+                <assembly ref="test-reference" min-occurs="1"/>
+            </choice>
+            <define-field ref="remarks"/>
         </model>
+    </define-assembly>
+    <define-assembly name="test-reference" min-occurs="1" max-occurs="unbounded">
+        <formal-name>Test Reference</formal-name>
+        <description>TODO</description>
+        <!-- TODO: Consider if we need a specific uuid per test-reference for each ref in final impl. 
+            <define-flag name="uuid" required="yes" as-type="uuid">
+                <formal-name>Test Reference Universally Unique Identifier</formal-name>
+                <description>TODO</description>
+            </define-flag>
+        -->
+        <define-flag name="test-uuid" required="yes" as-type="uuid">
+            <formal-name>Test Universally Unique Identifier Reference</formal-name>
+            <description>A test UUID reference</description>
+        </define-flag>
     </define-assembly>
     <define-assembly name="rule-condition">
         <formal-name>Rule Condition</formal-name>
         <description>A rule implementation condition</description>
-        <define-flag name="operator" required="yes" as-type="token">
+        <define-flag name="negate" required="no" as-type="boolean" default="false">
+            <formal-name>Rule Condition Negation Flag</formal-name>
+            <description>TODO</description>
+            <remarks>
+                <p>
+                    <h1>Negate Truth Table</h1>
+                    <p>true -> false, false -> true, error -> error, not-applicable -> not-applicable</p>
+                </p>
+            </remarks>
+        </define-flag>
+        <define-flag name="operator" required="yes" as-type="token" default="and">
             <formal-name>Rule Condition Operator</formal-name>
             <description>TODO</description>
             <constraint>
                 <allowed-values allow-other="no">
                     <enum value="and">and</enum>
                     <enum value="or">or</enum>
-                    <enum value="not">not</enum>
                 </allowed-values>
             </constraint>
+            <remarks>
+                <p>
+                    <h1>Operator Truth Table</h1>
+                    <p></p>
+                </p>
+                <p>What is eager evaluation and why does it matter?</p>
+                <p>How do prerequisites work in the processing of condition operators and precedence.</p>
+            </remarks>
         </define-flag>
         <model>
+            <assembly ref="property" max-occurs="unbounded">
+                <group-as name="props" in-json="ARRAY"/>
+            </assembly>
+            <assembly ref="link" max-occurs="unbounded">
+                <group-as name="links" in-json="ARRAY"/>
+            </assembly>
             <assembly ref="rule-condition">
-                <use-name>pre-condition</use-name>
+                <use-name>prerequisite</use-name>
             </assembly>
             <choice>
+                <!-- TODO: consider making this a multi-choice if that feature is implemented. -->
                 <assembly ref="rule-condition">
                     <use-name>condition</use-name>
                 </assembly>
-                <define-assembly name="test-reference" min-occurs="1" max-occurs="unbounded">
-                    <formal-name>Test Reference</formal-name>
-                    <description>TODO</description>
-                    <define-flag name="uuid" required="yes" as-type="uuid">
-                        <formal-name>Test Reference Universally Unique Identifier</formal-name>
-                        <description>TODO</description>
-                    </define-flag>
-                    <define-flag name="test-uuid" required="yes" as-type="uuid">
-                        <formal-name>Test Universally Unique Identifier Reference</formal-name>
-                        <description>A test UUID reference</description>
-                    </define-flag>
-                </define-assembly>
+                <assembly ref="test-reference" min-occurs="1" max-occurs="unbounded"/>
+                <assembly ref="testing-scenario-reference" min-occurs="1" max-occurs="unbounded"/>
             </choice>
+            <define-field ref="remarks"/>
         </model>
     </define-assembly>
+    <define-flag name="testing-scenario-uuid" as-type="uuid" scope="local">
+        <formal-name>Testing Scenario Universally Unique Identifier Reference</formal-name>
+        <description>A testing scenario UUID reference</description>
+    </define-flag>
+    <define-field name="testing-scenario-uuid" required="yes" as-type="uuid" scope="local">
+        <formal-name>Testing Scenario Universally Unique Identifier</formal-name>
+        <description>A testing scenari UUID reference</description>
+    </define-field>
+    <define-assembly name="testing-scenario-reference">
+        <formal-name>Testing Scenario Reference</formal-name>
+        <description>A reference to a testing scenario.</description>
+        <define-flag name="uuid" required="yes" as-type="uuid">
+            <formal-name>Testing Scenario Universally Unique Identifier Reference</formal-name>
+            <description>TODO</description>
+        </define-flag>
+        <flag ref="testing-scenario-uuid" required="yes"/>
+    </define-assembly>
+
     <define-assembly name="rule-implementation">
         <formal-name>Rule Implementation</formal-name>
         <description>TODO</description>
@@ -83,23 +194,19 @@
             <formal-name>Rule Implementation Universally Unique Identifier</formal-name>
             <description>TODO</description>
         </define-flag>
+        <define-field name="description" as-type="markup-multiline" min-occurs="1" in-xml="WITH_WRAPPER">
+            <formal-name>Rule Implementation Description</formal-name>
+            <description>A summary of the rule implementation.</description>
+        </define-field>
         <model>
-            <define-assembly name="testing-scenario-reference">
-                <formal-name>Testing Scenario Reference</formal-name>
-                <description>A reference to a testing scenario.</description>
-                <define-flag name="uuid" required="yes" as-type="uuid">
-                    <formal-name>Rule Reference Universally Unique Identifier</formal-name>
-                    <description>TODO</description>
-                </define-flag>
-                <define-flag name="rule-uuid" required="yes" as-type="uuid">
-                    <formal-name>Rule Universally Unique Identifier Reference</formal-name>
-                    <description>A rule UUID reference</description>
-                </define-flag>
-                <define-flag name="test-scenario-uuid" required="yes" as-type="uuid">
-                    <formal-name>Rule Universally Unique Identifier Reference</formal-name>
-                    <description>A rule UUID reference</description>
-                </define-flag>
-            </define-assembly>
+            <assembly ref="property" max-occurs="unbounded">
+                <group-as name="props" in-json="ARRAY"/>
+            </assembly>
+            <assembly ref="link" max-occurs="unbounded">
+                <group-as name="links" in-json="ARRAY"/>
+            </assembly>
+            <assembly ref="testing-scenario-reference" min-occurs="1"/>
+            <define-field ref="remarks"/>
         </model>
     </define-assembly>
 </METASCHEMA>

@@ -4,53 +4,65 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../../xml/schema/oscal_complete_schema.xsd" uuid="3559d200-4849-41ac-a420-28b2ffa22c52">
     <metadata>
-        <title></title>
-        <last-modified></last-modified>
-        <version></version>
-        <oscal-version></oscal-version>
+        <title>Example Component Definition with Rules and Tests Linked to Component</title>
+        <last-modified>2022-08-22T00:00:00.000000000-04:00</last-modified>
+        <version>0.0.1-alpha</version>
+        <oscal-version>1.2.0</oscal-version>
     </metadata>
     <rule uuid="97a52f09-0248-45f4-8ac7-b7566170d733">
         <title>Important Rule 1</title>
-        <description>This is a description of Important Rule 1.</description>
+        <description>
+            <p> is a description of Important Rule 1.</p>
+        </description>
     </rule>
     <test uuid="7d50cd70-f0b3-4922-a566-3526d5eba97b">
         <title>Test A for Rule 1</title>
-        <description>This is Test A, it can be executed to demonstrate a system meets requirements for Rule 1.</description>
+        <description>
+            <p>This is Test A, it can be executed to demonstrate a system meets requirements for Rule 1.</p>
+        </description>
     </test>
     <test uuid="2388cb25-ccbc-4de0-9630-675de624593f">
         <title>Test B for Rule 1</title>
-        <description>This is Test B, it can be executed to demonstrate a system meets requirements for Rule 1.</description>
+        <description>
+            <p>This is Test B, it can be executed to demonstrate a system meets requirements for Rule 1.</p>
+        </description>
     </test>
     <test uuid="b426642a-7ff0-42a0-9ef5-ceed4e14f326">
         <title>Test C for Rule 1</title>
-        <description>This is Test C, it can be optionally executed to demonstrate a system meets requirements for Rule 1.</description>
+        <description>
+            <p>This is Test C, it can be optionally executed to demonstrate a system meets requirements for Rule 1.</p>
+        </description>
     </test>
     <test uuid="2f6c5c71-13fb-43c8-beca-1e79498b34c4">
         <title>Test D for Rule 1</title>
-        <description>This is Test C, it can be optionally executed to demonstrate a system meets requirements for Rule 1.</description>
+        <description>
+            <p>This is Test D, it can be optionally executed to demonstrate a system meets requirements for Rule 1.</p>    
+        </description>
     </test>
     <!--
-        The testing-scenarios below exhibit three common usage patterns:
+        The scenarios below exhibit three common usage patterns:
     
         1. A simple scenario where one test (Test A) is sufficient for one rule (Rule 1).
         2. A complex scenario where one test (Test B) is sufficient for one rule (Rule 1), and that test depends on a prerequisite test (Test A).
         3. A complex scenario with a condition, where one of either Test C or Test D, is sufficient for one rule (Rule 1).
     -->
     <!-- Testing Scenario Usage Pattern 1 -->
-    <testing-scenario uuid="0666cbf2-2b76-4e9d-ba99-a783419ff1fe" rule-uuid="97a52f09-0248-45f4-8ac7-b7566170d733">
-        <test-reference test-uuid="7d50cd70-f0b3-4922-a566-3526d5eba97b" />
+    <testing-scenario rule-uuid="15ea20bc-75d5-43b0-a98d-cab984afeeb9" uuid="0666cbf2-2b76-4e9d-ba99-a783419ff1fe">  <!-- TODOD: Discuss that We don't need rule-uuid anymore? -->
+        <condition operator="and"> <!-- TODO: Discuss that We can't have a default operator to Metaschema defaults merged?  -->
+            <test-reference uuid="9d0a52e3-2bb6-4b39-9614-2dfa72271b57" test-uuid="7d50cd70-f0b3-4922-a566-3526d5eba97b" /> <!-- TODO: Discuss we need a uuid here now too? -->
+        </condition>
     </testing-scenario>
     <!-- Testing Scenario Usage Pattern 2 -->
-    <testing-scenario uuid="ccb267c8-f672-4aac-b522-5bbaef26f8e4" rule-uuid="97a52f09-0248-45f4-8ac7-b7566170d733">
+    <testing-scenario rule-uuid="" uuid="ccb267c8-f672-4aac-b522-5bbaef26f8e4">
         <condition operator="and">
-            <pre-requisite>
+            <pre-condition operator="and"> <!-- TODO: Discuss we changed pre-requisite to pre-condition intentionally, right? -->
                 <test-reference test-uuid="7d50cd70-f0b3-4922-a566-3526d5eba97b" />
-            </pre-requisite>
-            <test-reference test-uuid="2388cb25-ccbc-4de0-9630-675de624593f" />
+            </pre-condition>
+            <test-reference uuid="9376b219-659f-4846-88ad-130b8c9074b9" test-uuid="2388cb25-ccbc-4de0-9630-675de624593f" />
         </condition>
     </testing-scenario>
     <!-- Testing Scenario Usage Pattern 3 -->
-    <testing-scenario uuid="f3edfdbf-b3b4-48c9-8733-fd3ebdeed43c" rule-uuid="97a52f09-0248-45f4-8ac7-b7566170d733">
+    <testing-scenario rule-uuid="" uuid="f3edfdbf-b3b4-48c9-8733-fd3ebdeed43c">
         <condition operator="or">
             <test-reference test-uuid="b426642a-7ff0-42a0-9ef5-ceed4e14f326" />
             <test-reference test-uuid="2f6c5c71-13fb-43c8-beca-1e79498b34c4" />
