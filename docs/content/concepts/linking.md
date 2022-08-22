@@ -37,7 +37,7 @@ According to RFC 3986, a URI can be used as:
 - **A URI with a scheme:** As indicated above with the required scheme and path components.
 - **A relative reference:** Which references a resource relative to another *[base URI](https://www.rfc-editor.org/rfc/rfc3986#section-5.1)*. Such a URI is resolved using [reference resolution](https://www.rfc-editor.org/rfc/rfc3986#section-5).
 
-  According to RFC 3986, the [syntax of a relative reference](https://www.rfc-editor.org/rfc/rfc3986#section-4.2) is:
+  The [syntax of a relative reference](https://www.rfc-editor.org/rfc/rfc3986#section-4.2) is:
 
   > ```
   > relative-ref  = relative-part [ "?" query ] [ "#" fragment ]
@@ -50,7 +50,7 @@ According to RFC 3986, a URI can be used as:
 
 - **A URI reference:** Which is a typical use of a URI, allowing a URI with a scheme or a relative reference to be used.
 
-  According to RFC 3986, the [syntax of a relative reference](https://www.rfc-editor.org/rfc/rfc3986#section-4.1) is:
+  The [syntax of a URI reference](https://www.rfc-editor.org/rfc/rfc3986#section-4.1) is:
 
   > URI-reference = URI / relative-ref
 
@@ -72,24 +72,11 @@ The following sections discuss how URIs are used in OSCAL.
 
 OSCAL uses two data types for representing URIs.
 
-1. [`uri`](/reference/datatypes/#uri) - A URI which must provided the required scheme and path components. A *relative-ref* is not allowed for this data type.
-1. [`uri-reference`](/reference/datatypes/#uri-reference) - A URI reference, which may be a URI or a *relative-ref*. This allows all forms of URIs.
+1. [`uri`](/reference/datatypes/#uri) - A URI which must provide the required scheme and path components. This means the URI will point directly to a resolvable resource.
 
-Data elements within OSCAL expecting a URI will use one of these two data types.
+   The `uri` data type is used in cases where a *URI with a scheme* or an *absolute URI* is required.  As a result, a *relative reference* or a *URI reference* is not allowed for use with this data type.
 
-Examples of `uri` use include:
-
-- `ns` - ([JSON/YAML](https://pages.nist.gov/OSCAL/reference/latest/complete/json-index/#/ns)) ([XML](https://pages.nist.gov/OSCAL/reference/latest/complete/xml-index/#/@ns))
-- `system` - ([JSON/YAML](https://pages.nist.gov/OSCAL/reference/latest/complete/json-index/#/system)) ([XML](https://pages.nist.gov/OSCAL/reference/latest/complete/xml-index/#/@system))
-- `scheme` - ([JSON/YAML](https://pages.nist.gov/OSCAL/reference/latest/complete/json-index/#/scheme)) ([XML](https://pages.nist.gov/OSCAL/reference/latest/complete/xml-index/#/@scheme))
-- `threat-id` - ([JSON/YAML](https://pages.nist.gov/OSCAL/reference/latest/complete/json-index/#/threat-id)) ([XML](https://pages.nist.gov/OSCAL/reference/latest/complete/xml-index/#/@threat-id))
-- `url` - ([JSON/YAML](https://pages.nist.gov/OSCAL/reference/latest/complete/json-index/#/url)) ([XML](https://pages.nist.gov/OSCAL/reference/latest/complete/xml-index/#/urls))
-
-Examples of `uri-reference` use include:
-
-- `href` - ([JSON/YAML](https://pages.nist.gov/OSCAL/reference/latest/complete/json-index/#/href)) ([XML](https://pages.nist.gov/OSCAL/reference/latest/complete/xml-index/#/@href))
-- `source` - ([JSON/YAML](https://pages.nist.gov/OSCAL/reference/latest/complete/json-index/#/source)) ([XML](https://pages.nist.gov/OSCAL/reference/latest/complete/xml-index/#/@source))
-- `filename` - ([JSON/YAML](https://pages.nist.gov/OSCAL/reference/latest/complete/json-index/#/filename)) ([XML](https://pages.nist.gov/OSCAL/reference/latest/complete/xml-index/#/@filename))
+2. [`uri-reference`](/reference/datatypes/#uri-reference) - A URI reference, which may be a URI or a *relative reference*. This allows all forms of URIs.
 
 ### Common OSCAL URI Use Cases
 
@@ -99,14 +86,27 @@ URIs are used in OSCAL to provide pointers to resources in the following ways.
    
    URIs are used to point directly to a network resolvable resource. In such cases, the URI may be:
 
-   - A URI with a scheme, where the scheme will likely be `https` indicating the resource can be accessed using the [Hypertext Transfer Protocol](https://www.rfc-editor.org/rfc/rfc2616.html) (HTTP) using [Transport Layer Security](https://www.rfc-editor.org/rfc/rfc8446) (TLS).
-   - A relative reference, pointing to a resource that can resolved using the current document resource as the *base URI*.
+   - A *URI with a scheme*, where the scheme will likely be `https` indicating the resource can be accessed using the [Hypertext Transfer Protocol](https://www.rfc-editor.org/rfc/rfc2616.html) (HTTP) using [Transport Layer Security](https://www.rfc-editor.org/rfc/rfc8446) (TLS). Data fields supporting only this use case will have the `uri` data type.
 
-1. Link to an OSCAL back-matter resource.
+    OSCAL examples include:
+
+    - `threat-id` - ([JSON/YAML](/reference/latest/complete/json-index/#/threat-id)) ([XML](/reference/latest/complete/xml-index/#/@threat-id))
+    - `url` - ([JSON/YAML](/reference/latest/complete/json-index/#/url)) ([XML](/reference/latest/complete/xml-index/#/urls))
+
+   - A *relative reference*, pointing to a resource that can resolved using the current document resource as the *base URI*. Data fields supporting this use case will have the `uri-reference` data type.
+
+   OSCAL examples include:
+
+   - `href` - ([JSON/YAML](/reference/latest/complete/json-index/#/href)) ([XML](/reference/latest/complete/xml-index/#/@href))
+   - `source` - ([JSON/YAML](/reference/latest/complete/json-index/#/source)) ([XML](/reference/latest/complete/xml-index/#/@source))
+   - `filename` - ([JSON/YAML](/reference/latest/complete/json-index/#/filename)) ([XML](/reference/latest/complete/xml-index/#/@filename))
+
+
+2. Link to an OSCAL back-matter resource.
 
    A pointer to an OSCAL resource defined in the either the document's `back-matter` or an imported document's `back-matter`.
 
-   This approach uses a relative URI consisting of only a URI fragment containing the UUID of the referenced resource.
+   This approach uses a *relative URI* consisting of only a URI fragment containing the UUID of the referenced resource. Thus, data fields supporting this use case will have the `uri-reference` data type.
 
    For example, the resource identified by the UUID `f5a2bdb3-55ad-431e-a7ea-c0fd28fc08a0` can be referenced as follows.
 
@@ -114,15 +114,21 @@ URIs are used in OSCAL to provide pointers to resources in the following ways.
    <link rel="related" href="#f5a2bdb3-55ad-431e-a7ea-c0fd28fc08a0"/>
    ```
 
-   More information about the use of links to reference back-matter resources can be found in the [*Referencing Back-Matter Resources*](https://pages.nist.gov/OSCAL/learn/tutorials/general/extension/#referencing-back-matter-resources) section of the [*Extending OSCAL Models with Props and Links*](/learn/tutorials/general/extension/) tutorial.
+   More information about the use of links to reference back-matter resources can be found in the [*Referencing Back-Matter Resources*](/learn/tutorials/general/extension/#referencing-back-matter-resources) section of the [*Extending OSCAL Models with Props and Links*](/learn/tutorials/general/extension/) tutorial.
 
-1. As a naming system identifier
+3. As a naming system identifier.
 
-   An absolute URI that identifies the naming system.
+   An absolute URI that identifies the naming system. Data fields supporting this use case will have the `uri` data type.
 
    OSCAL supports a number of name/value and other controlled value collections. To allow independent organization to organize these value collections, namespaces are used to partition the value spaces on an organization-by-organization basis. An absolute URI is used as the namespace identifier for these situations.
 
-   A key example of this approach is how property names are managed.
+   OSCAL examples include:
+
+   - `ns` - ([JSON/YAML](/reference/latest/complete/json-index/#/ns)) ([XML](/reference/latest/complete/xml-index/#/@ns))
+   - `system` - ([JSON/YAML](/reference/latest/complete/json-index/#/system)) ([XML](/reference/latest/complete/xml-index/#/@system))
+   - `scheme` - ([JSON/YAML](/reference/latest/complete/json-index/#/scheme)) ([XML](/reference/latest/complete/xml-index/#/@scheme))
+
+   A key example of this approach is how property names are partitioned using a `ns` data element.
 
    For example, the namespace `http://example.com/ns/oscal` is used in an OSCAL property as follows.
 
@@ -130,5 +136,4 @@ URIs are used in OSCAL to provide pointers to resources in the following ways.
    <prop ns="http://example.com/ns/oscal" name="example-name" value="example-value"/>
    ```
    
-   To learn more about the namespacing of properties, refer to the [*Extending Existing Prop Values*](/learn/tutorials/general/extension/#extending-existing-prop-values) section of the [*Extending OSCAL Models with Props and Links*](/learn/tutorials/general/extension/) tutorial.
-
+   To learn more about the use of namespaces in properties, refer to the [*Extending Existing Prop Values*](/learn/tutorials/general/extension/#extending-existing-prop-values) section of the [*Extending OSCAL Models with Props and Links*](/learn/tutorials/general/extension/) tutorial.
