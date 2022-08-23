@@ -595,7 +595,7 @@ Line 11 demonstrates the use of `<link>` to point to the organization's official
           "text": "HSPD-12"
         },
         {
-          "href": "http://federal-agency.gov/img/official-agency-logo.png",
+          "href": "https://federal-agency.gov/img/official-agency-logo.png",
           "rel": "logo",
           "media-type": "image/png"
         }
