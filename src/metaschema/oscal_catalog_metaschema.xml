@@ -54,6 +54,10 @@
                   <allowed-values target="metadata/link/@rel">
                         <enum value="source-profile">The tool used to produce a resolved profile.</enum>
                   </allowed-values>
+                  <allowed-values target=".//(control|group|param|part|metadata/role)/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+                        <enum value="source-identifier">The original identifier prior to reassignment during the import phase of profile resolution.</enum>
+                  </allowed-values>
+                  <matches target=".//(control|group|param|part|metadata/role)/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='source-identifier']/@value" datatype="token" />
             </constraint>
             <remarks>
                   <p>Catalogs may use one or more <code>group</code> objects to subdivide the control contents of a catalog.</p>
