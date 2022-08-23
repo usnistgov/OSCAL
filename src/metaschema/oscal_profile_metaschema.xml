@@ -76,13 +76,40 @@
                               <p>Identifies which controls to exclude, or eliminate, from the set of included controls by control identifier or match pattern.</p>
                         </remarks>
                   </assembly>
-                  <assembly ref="identifier-reassignment">
-                        <use-name>mapping</use-name>
-
+                  <define-assembly name="identifier-reassignment">
+                        <formal-name>Mapping</formal-name>
+                        <description>Maps objects to new ID values</description>
+                        <model>
+                              <assembly ref="id-reassignment-context">
+                                    <formal-name>Role Identifier Reassignment Entry</formal-name>
+                                    <description>A set of rules for reassigning role identifiers.</description>
+                                    <use-name>role</use-name>
+                              </assembly>
+                              <assembly ref="id-reassignment-context">
+                                    <formal-name>Control Identifier Reassignment Entry</formal-name>
+                                    <description>A set of rules for reassigning control identifiers.</description>
+                                    <use-name>control</use-name>
+                              </assembly>
+                              <assembly ref="id-reassignment-context">
+                                    <formal-name>Group Identifier Reassignment Entry</formal-name>
+                                    <description>A set of rules for reassigning group identifiers.</description>
+                                    <use-name>group</use-name>
+                              </assembly>
+                              <assembly ref="id-reassignment-context">
+                                    <formal-name>Parameter Identifier Reassignment Entry</formal-name>
+                                    <description>A set of rules for reassigning parameter identifiers.</description>
+                                    <use-name>parameter</use-name>
+                              </assembly>
+                              <assembly ref="id-reassignment-context">
+                                    <formal-name>Part Identifier Reassignment Entry</formal-name>
+                                    <description>A set of rules for reassigning part identifiers.</description>
+                                    <use-name>part</use-name>
+                              </assembly>
+                        </model>
                         <remarks>
-                              <p>Contains an object-type grouped list of ID mappings to be applied as imports take place.</p>
+                              <p>Contains an object-type set of identifier reassignment rules to be applied to related objects as an import is processed.</p>
                         </remarks>
-                  </assembly>
+                  </define-assembly>
             </model>
             <remarks>
                   <p>A profile must be based on an existing OSCAL catalog or another OSCAL profile. An <code>import</code> indicates such a source whose controls are to be included (referenced and modified) in a profile. This source will either be a catalog whose controls are given (<q>by value</q>), or a profile with its own control imports.</p>
@@ -94,6 +121,27 @@
                   </import>
             </example>
       </define-assembly>
+      
+      <define-assembly name="id-reassignment-context" scope="local">
+            <formal-name>Identifier Reassignment Context</formal-name>
+            <description>A set of rules for reassigning identifier for a specific type of object.</description>
+            <model>
+                  <define-assembly name="reassignment" max-occurs="unbounded">
+                        <formal-name>Identifier Reassignment</formal-name>
+                        <description>A specific rule to reassign the identifier for an object matching the `from` to the new identifier indicated by to the `to`.</description>
+                        <group-as name="reassignments" in-json="ARRAY"/>
+                        <define-flag name="from" as-type="token" required="yes">
+                              <formal-name>From Identifier</formal-name>
+                              <description>The identifier value of an object that is to remapped to a new value.</description>
+                        </define-flag>
+                        <define-flag name="to" as-type="token" required="yes">
+                              <formal-name>To Identifier</formal-name>
+                              <description>A new valid identifier value for an object that is to be remapped.</description>
+                        </define-flag>
+                  </define-assembly>
+            </model>
+      </define-assembly>
+
       <define-assembly name="merge">
             <formal-name>Merge controls</formal-name>
             <description>A Merge element provides structuring directives that drive how controls are organized after resolution.</description>
@@ -435,57 +483,6 @@
             </remarks>
       </define-assembly>
 
-      <define-assembly name="id-reassignment-item">
-            <formal-name>Identifier Reassignment</formal-name>
-            <description>A specific rule to reassign the identifier for an object matching the `from` to the new identifier indicated by to the `to`.</description>
-            <define-flag name="from" as-type="token" required="yes">
-                  <formal-name>From Identifier</formal-name>
-                  <description>The identifier value of an object that is to remapped to a new value.</description>
-            </define-flag>
-            <define-flag name="to" as-type="token" required="yes">
-                  <formal-name>To Identifier</formal-name>
-                  <description>A new valid identifier value for an object that is to be remapped.</description>
-            </define-flag>
-      </define-assembly>
-      <define-assembly name="uuid-reassignment-item">
-            <formal-name>Universally Unique Identifier Reassignment</formal-name>
-            <description>A specific rule to reassign the Universally Unique Identifier (UUID) for an object matching the `from` to the new identifier indicated by to the `to`.</description>
-            <define-flag name="from" as-type="uuid" required="yes">
-                  <formal-name>From UUID</formal-name>
-                  <description>The identifier value of an object that is to remapped to a new value.</description>
-            </define-flag>
-            <define-flag name="to" as-type="uuid" required="yes">
-                  <formal-name>To UUID</formal-name>
-                  <description>A new valid identifier value for an object that is to be remapped.</description>
-            </define-flag>
-      </define-assembly>
-      
-      <define-assembly name="identifier-reassignment" scope="local">
-            <formal-name>Mapping</formal-name>
-            <description>Maps objects to new ID values</description>
-            <model>
-                  <assembly ref="id-reassignment-item" max-occurs="unbounded">
-                        <formal-name>Control Identifier Reassignment Entry</formal-name>
-                        <use-name>control</use-name>
-                        <group-as name="controls" in-json="ARRAY"/>
-                  </assembly>
-                  <assembly ref="id-reassignment-item" max-occurs="unbounded">
-                        <formal-name>Group Identifier Reassignment Entry</formal-name>
-                        <use-name>group</use-name>
-                        <group-as name="groups" in-json="ARRAY"/>
-                  </assembly>
-                  <assembly ref="id-reassignment-item" max-occurs="unbounded">
-                        <formal-name>Parameter Identifier Reassignment Entry</formal-name>
-                        <use-name>parameter</use-name>
-                        <group-as name="parameters" in-json="ARRAY"/>
-                  </assembly>
-                  <assembly ref="uuid-reassignment-item" max-occurs="unbounded">
-                        <formal-name>Resource Identifier Reassignment Entry</formal-name>
-                        <use-name>resource</use-name>
-                        <group-as name="resources" in-json="ARRAY"/>
-                  </assembly>
-            </model>
-      </define-assembly>
       <define-flag as-type="token" name="with-child-controls">
             <formal-name>Include contained controls with control</formal-name>
             <description>When a control is included, whether its child (dependent) controls are also included.</description>
