@@ -4,82 +4,126 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../../xml/schema/oscal_complete_schema.xsd" uuid="3559d200-4849-41ac-a420-28b2ffa22c52">
     <metadata>
-        <title>Example Component Definition with Rules and Tests Linked to Component</title>
-        <last-modified>2022-08-22T00:00:00.000000000-04:00</last-modified>
+        <title>Example Component Definition for Openshift Container Platform v4, Rules, and Tests</title>
+        <last-modified>2022-08-23T00:00:00.000000000-04:00</last-modified>
         <version>0.0.1-alpha</version>
         <oscal-version>1.2.0</oscal-version>
     </metadata>
     <rule uuid="97a52f09-0248-45f4-8ac7-b7566170d733">
-        <title>Important Rule 1</title>
+        <title>Disable Anonymous Unauthenticated Access to Components</title>
         <description>
-            <p> is a description of Important Rule 1.</p>
+            <p>Anonymous (i.e. unauthenticated) access to any OCP4 sub-system documented in the components below must prevent anonymous, unauthenticated access.</p>
         </description>
     </rule>
     <test uuid="7d50cd70-f0b3-4922-a566-3526d5eba97b">
-        <title>Test A for Rule 1</title>
+        <title>Disable Anonymous Authentication to the Kubelet - Iac Analysis</title>
         <description>
-            <p>This is Test A, it can be executed to demonstrate a system meets requirements for Rule 1.</p>
+            <p>This test will analyze Infrastructure-as-Code (IaC) written in Ansible to provision OCP4 cluster(s). If the necessary configuration in <code>/etc/kubernetes/kubelet.conf</code> disables anonymous authentication with the appropriate setting (<code>authentication.anonymous.enabled: false</code>), this test will return a passing value. It will be one example of an aspect of OCP4 cluster(s) configured to meet CM-6 requirements.</p>
         </description>
     </test>
     <test uuid="2388cb25-ccbc-4de0-9630-675de624593f">
-        <title>Test B for Rule 1</title>
+        <title>Disable Anonymous Authentication to the Kubelet - Runtime Analysis with OCP4 Compliance Operator</title>
         <description>
-            <p>This is Test B, it can be executed to demonstrate a system meets requirements for Rule 1.</p>
+            <p>
+                This test will analyze running OCP4 cluster(s) with its configured Compliance Operator to perform the necessary configuration management scans. If operator conducts scans of node kubelets and the necessary configuration in <code>/etc/kubernetes/kubelet.conf</code> disables anonymous authentication with the appropriate setting (<code>authentication.anonymous.enabled: false</code>), this test will return a passing value. It will be one example of an aspect of OCP4 cluster(s) configured to meet CM-6 requirements.</p>
         </description>
+        <prop name="version" ns="https://www.open-scap.org/" value="0.1.63"/>
+        <prop name="id" ns="https://www.open-scap.org/" value="xccdf_org.ssgproject.content_rule_kubelet_anonymous_auth"/>
+        <link href="https://static.open-scap.org/ssg-guides/ssg-ocp4-guide-moderate-node.html#xccdf_org.ssgproject.content_rule_kubelet_anonymous_auth" rel="reference"/>
+        <link href="https://docs.openshift.com/container-platform/4.10/security/compliance_operator/compliance-operator-understanding.html" rel="reference"/>
     </test>
     <test uuid="b426642a-7ff0-42a0-9ef5-ceed4e14f326">
-        <title>Test C for Rule 1</title>
+        <title>Disable Anonymous Authentication to the Kubelet - Runtime Analysis with CSP API for Managed OCP4 Control Plane</title>
         <description>
-            <p>This is Test C, it can be optionally executed to demonstrate a system meets requirements for Rule 1.</p>
+            <p>This test will analyze running OCP4 cluster(s) with a managed service from a cloud service provider (CSP). The CSP has a managed service that provisions OCP4 cluster(s) for customers. A REST API for this managed service can be queried. If the API confirms the setting is appropriately set, this test will return a passing value. It will be one example of an aspect of OCP4 cluster(s) configured to meet CM-6 requirements.</p>
         </description>
     </test>
     <test uuid="2f6c5c71-13fb-43c8-beca-1e79498b34c4">
-        <title>Test D for Rule 1</title>
+        <title>OCP4 Cluster Properly Configured and Deployed with Compliance Operator</title>
         <description>
-            <p>This is Test D, it can be optionally executed to demonstrate a system meets requirements for Rule 1.</p>    
+            <p>This is a test that provides automated evaluation to confirm that an OCP4 cluster has the Compliance Operator properly installed and configured.</p>    
         </description>
+        <prop name="version" ns="https://github.com/openshift/compliance-operator" value="0.1.49"/>
+        <link href="https://docs.openshift.com/container-platform/4.10/security/compliance_operator/compliance-operator-installation.html" rel="reference"/>
+        <link href="https://www.redhat.com/en/technologies/cloud-computing/openshift/what-are-openshift-operators" rel="reference"/>
+        <link href="https://kubernetes.io/docs/concepts/extend-kubernetes/operator/" rel="reference"/>
     </test>
-    <!--
-        The scenarios below exhibit three common usage patterns:
-    
-        1. A simple scenario where one test (Test A) is sufficient for one rule (Rule 1).
-        2. A complex scenario where one test (Test B) is sufficient for one rule (Rule 1), and that test depends on a prerequisite test (Test A).
-        3. A complex scenario with a condition, where one of either Test C or Test D, is sufficient for one rule (Rule 1).
-    -->
-    <!-- Testing Scenario Usage Pattern 1 -->
-    <testing-scenario rule-uuid="15ea20bc-75d5-43b0-a98d-cab984afeeb9" uuid="0666cbf2-2b76-4e9d-ba99-a783419ff1fe">  <!-- TODOD: Discuss that We don't need rule-uuid anymore? -->
-        <condition operator="and"> <!-- TODO: Discuss that We can't have a default operator to Metaschema defaults merged?  -->
-            <test-reference uuid="9d0a52e3-2bb6-4b39-9614-2dfa72271b57" test-uuid="7d50cd70-f0b3-4922-a566-3526d5eba97b" /> <!-- TODO: Discuss we need a uuid here now too? -->
-        </condition>
+    <testing-scenario rule-uuid="97a52f09-0248-45f4-8ac7-b7566170d733" uuid="0666cbf2-2b76-4e9d-ba99-a783419ff1fe">
+        <!-- Bind rule to static analysis test only. -->
+        <test-reference test-uuid="7d50cd70-f0b3-4922-a566-3526d5eba97b"/>
     </testing-scenario>
-    <!-- Testing Scenario Usage Pattern 2 -->
-    <testing-scenario rule-uuid="" uuid="ccb267c8-f672-4aac-b522-5bbaef26f8e4">
+    <testing-scenario rule-uuid="97a52f09-0248-45f4-8ac7-b7566170d733" uuid="ccb267c8-f672-4aac-b522-5bbaef26f8e4">
+        <!-- Bind rule to only runtime analysis rule with OpenSCAP in Compliance Operator test only. -->
+        <test-reference test-uuid="2388cb25-ccbc-4de0-9630-675de624593f" />
+    </testing-scenario>
+    <testing-scenario rule-uuid="97a52f09-0248-45f4-8ac7-b7566170d733" uuid="ccb267c8-f672-4aac-b522-5bbaef26f8e4">
+        <!-- Bind rule to only runtime analysis rule with CSP API test only. -->
+        <test-reference test-uuid="b426642a-7ff0-42a0-9ef5-ceed4e14f326" />
+    </testing-scenario>
+    <testing-scenario rule-uuid="97a52f09-0248-45f4-8ac7-b7566170d733" uuid="e88b710f-41cc-4096-8a95-c91d986ae09a">
+        <!-- Bind rule to both static analysis and CSP API tests. -->
         <condition operator="and">
-            <pre-condition operator="and"> <!-- TODO: Discuss we changed pre-requisite to pre-condition intentionally, right? -->
-                <test-reference test-uuid="7d50cd70-f0b3-4922-a566-3526d5eba97b" />
-            </pre-condition>
-            <test-reference uuid="9376b219-659f-4846-88ad-130b8c9074b9" test-uuid="2388cb25-ccbc-4de0-9630-675de624593f" />
+            <test-reference test-uuid="7d50cd70-f0b3-4922-a566-3526d5eba97b" />
+            <test-reference test-uuid="2388cb25-ccbc-4de0-9630-675de624593f" />
         </condition>
     </testing-scenario>
-    <!-- Testing Scenario Usage Pattern 3 -->
-    <testing-scenario rule-uuid="" uuid="f3edfdbf-b3b4-48c9-8733-fd3ebdeed43c">
+    <testing-scenario rule-uuid="97a52f09-0248-45f4-8ac7-b7566170d733" uuid="37853442-2fc2-4e33-aca2-ddf8ff49390c">
+        <!-- Bind rule to either static analysis or CSP API tests. -->
         <condition operator="or">
-            <test-reference test-uuid="b426642a-7ff0-42a0-9ef5-ceed4e14f326" />
-            <test-reference test-uuid="2f6c5c71-13fb-43c8-beca-1e79498b34c4" />
+            <test-reference test-uuid="7d50cd70-f0b3-4922-a566-3526d5eba97b" />
+            <test-reference test-uuid="2388cb25-ccbc-4de0-9630-675de624593f" />
+        </condition>
+    </testing-scenario>
+    <testing-scenario rule-uuid="97a52f09-0248-45f4-8ac7-b7566170d733" uuid="f3edfdbf-b3b4-48c9-8733-fd3ebdeed43c">
+        <condition operator="and">
+            <condition operator="and">
+                <prerequisite operator="and">
+                    <!-- Cannot run the Compliance Operator test without Compliance Operator, make sure it is installed. -->
+                    <test-reference test-uuid="2f6c5c71-13fb-43c8-beca-1e79498b34c4" />
+                </prerequisite>
+                <test-reference test-uuid="2388cb25-ccbc-4de0-9630-675de624593f" />
+            </condition>
+            <condition operator="and">
+                <test-reference test-uuid="7d50cd70-f0b3-4922-a566-3526d5eba97b"/>
+                <test-reference test-uuid="b426642a-7ff0-42a0-9ef5-ceed4e14f326"/>
+            </condition>
         </condition>
     </testing-scenario>
     <component uuid="94512adf-d8df-4535-a5af-57aaa1eed131" type="software">
-        <title>Example Rule &amp; Test Component 1</title>
-        <description>A Sample Component with Rule and Test Integration</description>
-        <rule-implementation uuid="c4fee229-784a-4943-908c-2b9a23ee192b" test-scenario-uuid="0666cbf2-2b76-4e9d-ba99-a783419ff1fe">
-            <description>Rule Implementation for Testing Scenario Usage Pattern 1.</description>
-        </rule-implementation>
-        <rule-implementation uuid="e7607d3f-bf62-4832-98d8-c8e82ef520bd" test-scenario-uuid="ccb267c8-f672-4aac-b522-5bbaef26f8e4">
-            <description>Rule Implementation for Testing Scenario Usage Pattern 2.</description>
-        </rule-implementation>
-        <rule-implementation uuid="8a6a2f49-4996-4aaa-9598-047efe91d0ac" test-scenario-uuid="f3edfdbf-b3b4-48c9-8733-fd3ebdeed43c">
-            <description>Rule Implementation for Testing Scenario Usage Pattern 3.</description>
-        </rule-implementation>
+        <title>RedHit Openshift Container Platform v4</title>
+        <description>
+            <p>This component documents the usage of RedHat's OpenShift Container Platform v4 (OCP4) in a system.</p>
+            <p>For many OpenShift Container Platform customers, regulatory readiness, or compliance, on some level is required before any systems can be put into production. That regulatory readiness can be imposed by national standards, industry standards, or the organization's corporate governance framework.</p>
+            <p>This component documents a system's use of OCP4 and its regulatory readiness in relation to NIST's Special Publication 800-37 information security and risk management framework. Implemented requirements are documented through security and privacy controls from NIST's Special Publication 800-53 Revision 5 Catalog.</p>
+            <p>Many of the implemented requirements provide supporting evidence of already implemented requirements with OCP4 cluster(s) as-is or recommendations for customers to configure cluster(s) accordingly in their own environment when it is their responsibility, on a control-by-control basis. Where applicable, OSCAL and its <code>rule</code>s provide machine-readable instructions for recommended security tools to evaluate security and privacy control requirements are met and provide machine-readable evidence of such requirements.</p>
+        </description>
+        <link href="https://docs.openshift.com/container-platform/4.10/security/index.html" rel="website"/>
+        <responsible-role role-id="ocp4-configuration-manager"/>
+        <control-implementation uuid="1ca1e0bf-4164-4823-9887-efbcee85d567" source="https://raw.githubusercontent.com/usnistgov/oscal-content/036b80f4153a2646b6a9dcb8902ebe519bc76225/nist.gov/SP800-53/rev5/xml/NIST_SP-800-53_rev5_catalog.xml">
+            <description>
+                <p>Control implementations and their documented requirements for OCP4 from the NIST 800-53 Revision 5 Catalog (sourced from NIST ITL CSD's official OSCAL catalog).</p>
+            </description>
+            <implemented-requirement uuid="55c45f52-2d99-4efb-a429-479662428a88" control-id="cm-6">
+                <description>
+                    <p>
+                        OCP4 implements requirements to support NIST 800-53 Revision 5 control CM-6: Configuration Settings.
+                    </p>
+                </description>
+                <set-parameter param-id="cm-6_prm_1">
+                    <value>common secure configurations from official RedHat or community OpenSCAP sources</value>
+                </set-parameter>
+                <responsible-role role-id="ocp4-configuration-manager"/>
+                <statement statement-id="cm-6_smt.a" uuid="3cf1d575-82f7-44c1-bef9-f0d09178c726">
+                    <description>
+                        <p>Configuration managers can use the product's functionality to establish and document configuration settings for OCP4 cluster(s) employed within the system. When not using system defaults, configuration managers can use <insert type="param" id-ref="cm-06_prm_1"/> that reflect the most restrictive mode consistent with operational requirements.</p>
+                    </description>
+                </statement>
+                <condition operator="and">
+                    <!-- Bind testing scenario for static analysis test only. -->
+                    <testing-scenario-reference testing-scenario-uuid="0666cbf2-2b76-4e9d-ba99-a783419ff1fe" />
+                </condition>
+            </implemented-requirement>
+        </control-implementation>
     </component>
     <back-matter/>
 </component-definition>

@@ -388,8 +388,11 @@
       <assembly ref="statement" max-occurs="unbounded">
         <group-as name="statements" in-json="ARRAY"/>
       </assembly>
-      <assembly ref="rule-condition">
-        <use-name>condition</use-name>
+      <assembly ref="rule-implementation" max-occurs="unbounded">
+        <group-as name="rule-implementations" in-json="ARRAY"/>
+        <remarks>
+          <p>Multiple rule implementations can be provided to describe alternative approaches for using rules to evaluate the implementation and effectiveness of the containing control.</p>
+        </remarks>
       </assembly>
       <field ref="remarks" in-xml="WITH_WRAPPER"/>
     </model>
@@ -447,6 +450,9 @@
       </assembly>
       <assembly ref="rule-implementation" max-occurs="unbounded">
         <group-as name="rule-implementations" in-json="ARRAY"/>
+        <remarks>
+          <p>Multiple rule implementations can be provided to describe alternative rule-based implementations used to evaluate the implementation and effectiveness of the containing control statement.</p>
+        </remarks>
       </assembly>
       <field ref="remarks" in-xml="WITH_WRAPPER"/>
     </model>
