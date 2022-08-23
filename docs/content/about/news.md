@@ -15,7 +15,7 @@ toc:
 - [OSCAL 1.0.0 Milestone 2 Released](https://pages.nist.gov/OSCAL/contribute/roadmap/#oscal-100-milestone-2) - October 1, 2019
 - [OSCAL 1.0.0 Milestone 1 Released](https://pages.nist.gov/OSCAL/contribute/roadmap/#oscal-100-milestone-1) - June 15, 2019
 - [What's Next for FedRAMP? Automation, new authorizations later this year](https://federalnewsnetwork.com/federal-cloud-report/2018/06/whats-next-for-fedramp-automation-new-authorizations-and-more-later-this-year/) - June 25, 2018
-- [FedRAMP Looks to NIST for Security Control Refinements](https://gcn.com/cloud-infrastructure/2021/08/fedramp-leans-into-oscal-for-streamlining-authorizations/316255/) - June 14, 2018
+- <a href="https://gcn.com/articles/2018/06/14/fedramp-updates.aspx" data-proofer-ignore="yes">FedRAMP Looks to NIST for Security Control Refinements</a> - June 14, 2018
 - [Automating Compliance for Highly Regulated Industries with Docker Enterprise Edition and OSCAL](https://www.mirantis.com/blog/automating-compliance-for-highly-regulated-industries-with-docker-enterprise-edition-and-oscal) - May 3, 2018
 - [You're Nuts! Automating Your 1000+ Page FedRAMP System Security Plan?](https://www.govloop.com/community/blog/youre-nuts-automating-1000page-fedramp-system-security-plan/) - August 14, 2017
 - [Government CIOs Lean Toward Cloud for Security](https://www.meritalk.com/articles/government-cios-lean-toward-cloud-for-security/) - April 21, 2016
