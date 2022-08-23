@@ -663,7 +663,7 @@ The remainder of this tutorial will briefly cover the other optional fields insi
 
 - [`<responsible-party>`](/reference/latest/catalog/xml-reference/#/catalog/metadata/responsible-party) - Explicitly declares a party that is responsible for a given role relative to the document. The `@role-id` attribute references the role that the party is fulfilling, and is either a custom role locally defined or one of the core-defined roles; see the `<role>` section above for details. Uses a party's uuid to link the given role to the given party.
 
-- [`<remarks>`]((/reference/latest/catalog/xml-reference/#/catalog/metadata/remarks)) - [markup-multiline](/reference/datatypes/#markup-data-types) formatted text providing notes and comments regarding the document.
+- [`<remarks>`](/reference/latest/catalog/xml-reference/#/catalog/metadata/remarks) - [markup-multiline](/reference/datatypes/#markup-data-types) formatted text providing notes and comments regarding the document.
 {{% /tab %}}
 {{% tab %}}
 
