@@ -625,7 +625,7 @@ system-security-plan:
     links:
     - href: https://www.dhs.gov/homeland-security-presidential-directive-12
       rel: reference
-      text: HSPD-12
+        text: HSPD-12
     - href: https://federal-agency.gov/img/official-agency-logo.png
       rel: logo
       media-type: image/png
