@@ -166,7 +166,7 @@
                     </define-field>
                     <assembly ref="address">
                         <remarks>
-                            <p>The physical address of the location.</p>
+                            <p>The physical address of the location, which will provided for physical locations. Virtual locations can omit this data item.</p>
                         </remarks>
                     </assembly>
                     <field ref="email-address" max-occurs="unbounded">
