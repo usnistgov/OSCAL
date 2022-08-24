@@ -58,21 +58,10 @@
                         <enum value="source-profile">The profile from which the catalog was produced by <a href="https://pages.nist.gov/OSCAL/concepts/processing/profile-resolution/">profile resolution</a>.</enum>
                         <enum value="source-profile-uuid">The document-level <code>uuid</code> of the profile from which the catalog was produced by <a href="https://pages.nist.gov/OSCAL/concepts/processing/profile-resolution/">profile resolution</a>.</enum>
                   </allowed-values>
-                  <index name="catalog-parts" target="//part" >
-                        <key-field target="@id"/>
-                  </index>
-                  <index name="catalog-props" target="//prop" >
-                        <key-field target="@uuid"/>
-                  </index>
-                  <index name="catalog-controls" target="//control" >
-                        <key-field target="@id"/>
-                  </index>
-                  <index name="catalog-params" target="//param" >
-                        <key-field target="@id"/>
-                  </index>
-                  <index name="catalog-groups" target="//group" >
-                        <key-field target="@id"/>
-                  </index>
+                  <allowed-values target=".//(control|group|param|part|metadata/role)/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+                        <enum value="source-identifier">The original identifier prior to reassignment during the import phase of profile resolution.</enum>
+                  </allowed-values>
+                  <matches target=".//(control|group|param|part|metadata/role)/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='source-identifier']/@value" datatype="token" />
             </constraint>
             <remarks>
                   <p>Catalogs may use one or more <code>group</code> objects to subdivide the control contents of a catalog.</p>
