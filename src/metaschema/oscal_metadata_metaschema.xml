@@ -311,6 +311,9 @@
                         <enum value="job-title">The formal job title of a person.</enum>
                     </allowed-values>
                 </constraint>
+                <remarks>
+                    <p>A party can be optionally associated with either an address or a location. While providing a meaningful location for a party is desired, there are some cases where it might not be possible to provide an exact location or even any location.</p>
+                </remarks>
             </define-assembly>
             <assembly ref="responsible-party" max-occurs="unbounded">
                 <group-as name="responsible-parties" in-json="ARRAY"/>
