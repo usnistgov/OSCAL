@@ -531,7 +531,7 @@
                         <formal-name>Resource link</formal-name>
                         <description>A URL-based pointer to an external resource with an optional hash for verification and change detection.</description>
                         <group-as name="rlinks" in-json="ARRAY"/>
-                        <define-flag name="href" as-type="uri" required="yes">
+                        <define-flag name="href" as-type="uri-reference" required="yes">
                             <formal-name>Hypertext Reference</formal-name>
                             <description>A resolvable URL pointing to the referenced resource.</description>
                         </define-flag>

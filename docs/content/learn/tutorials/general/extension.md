@@ -681,9 +681,11 @@ In OSCAL specifying a URI fragment in a link's hypertext reference, represented 
 </system-security-plan>
 {{< /highlight >}}
 
-When using `<link>` to reference a back-matter `<resources>`, the `<link>` must use the resource's `@uuid` attribute as the pointer. The `<resource>` property may have an `<rlink>` sub-element that points to the (external) content via the `@href` attribute.  Optionally, the `<rlink>` element can also include a hash (e.g., to ensure the integrity of the referenced content), however, that is an advanced concept that is not covered in this tutorial.
+When using `<link>` to reference a back-matter `<resources>`, the `<link>` must use the resource's `@uuid` attribute as the pointer. The `<resource>` may have an `<rlink>` sub-element that points to the (external) content via the `@href` attribute.
 
-Notice that in this example, the `<link>` element on line 8 provides a fragment rather than a URL. OSCAL interprets this as a pointer to a back matter resource `@uuid` (see line 17).  Within this `<resource>` element, several items are referenced (via `<rlinks>`). The `<rlinks>` must have a URL reference (`@href`).  The third `<rlink>` in this example provides a relative path.  All of the other `<rlink>` attributes (e.g., `@media-type` and `@hash`) are optional.  Unlike `<links>`, `<rlinks>` do not have any `@rel` attributes to provide additional context, nor do they have `<text>` sub-elements.  OSCAL content authors should consider these subtle differences when deciding whether to use `<links>` or `<rlinks>`.
+Optionally, the `<rlink>` element can also include a hash (e.g., to ensure the integrity of the referenced content), however, that is an advanced concept that is not covered in this tutorial.
+
+Notice that in this example, the `<link>` element on line 8 provides a fragment rather than a more complete URI. OSCAL interprets this as a pointer to a back matter resource `@uuid` (see line 17).  Within this `<resource>` element, several items are referenced (via `<rlinks>`). The `<rlinks>` must have a URL reference (`@href`).  The third `<rlink>` in this example provides a relative path.  All of the other `<rlink>` attributes (e.g., `@media-type` and `@hash`) are optional.  Unlike `<links>`, `<rlinks>` do not have any `@rel` attributes to provide additional context, nor do they have `<text>` sub-elements.  OSCAL content authors should consider these subtle differences when deciding whether to use `<links>` or `<rlinks>`.
 {{% /tab %}}
 {{% tab %}}
 {{< highlight json "linenos=table" >}}
@@ -725,9 +727,11 @@ Notice that in this example, the `<link>` element on line 8 provides a fragment 
   }
 }
 {{< /highlight >}}
-When using `links` to reference a back-matter `resources`, the `link` must use the resource's `uuid` property as the pointer. The `resource` property may have an `rlinks` object array that points to the (external) content via the `href` property.  Optionally, the `rlinks` property can also include a hash (e.g., to ensure the integrity of the referenced content), however, that is an advanced concept that is not covered in this tutorial.
+When using `links` to reference a back-matter `resources`, the `link` must use the resource's `uuid` property as the pointer. The `resource` property may have an `rlinks` object array that points to the (external) content via the `href` property.
 
-Notice that in this example, the `links` object array on line 9 provides a fragment rather than a URL. OSCAL interprets this as a pointer to a back matter resource `uuid` (see line 21).  Within `resources`, several items are referenced (via `rlinks`). Each `rlink` must have a URL reference (`href`). The third `rlink` in this example provides a relative path.  All of the other `rlink` properties (e.g., `media-type` and `hash`) are optional.  Unlike `links`, `rlinks` do not have any `rel` properties to provide additional context, nor do they have `text` properties.  OSCAL content authors should consider these subtle differences when deciding whether to use `links` or `rlinks`.
+Optionally, the `rlinks` property can also include a hash (e.g., to ensure the integrity of the referenced content), however, that is an advanced concept that is not covered in this tutorial.
+
+Notice that in this example, the `links` object array on line 9 provides a fragment rather than a more complete URI. OSCAL interprets this as a pointer to a back matter resource `uuid` (see line 21).  Within `resources`, several items are referenced (via `rlinks`). Each `rlink` must have a URL reference (`href`). The third `rlink` in this example provides a relative path.  All of the other `rlink` properties (e.g., `media-type` and `hash`) are optional.  Unlike `links`, `rlinks` do not have any `rel` properties to provide additional context, nor do they have `text` properties.  OSCAL content authors should consider these subtle differences when deciding whether to use `links` or `rlinks`.
 
 {{% /tab %}}
 {{% tab %}}
@@ -758,7 +762,7 @@ system-security-plan:
 {{< /highlight >}}
 When using `links` to reference back-matter `resources`, the `link` must use the resource's `uuid` key-value as the pointer. The `resource` key-value must have an `rlinks` array item that points to the (external) content via the `href` key-value.  Optionally, the `rlinks` can also include a hash (e.g., to ensure the integrity of the referenced content), however, that is an advanced concept that is not covered in this tutorial.
 
-Notice that in this example, the `links` object array on line 8 only provides a fragment rather than a URL. OSCAL interprets this as a pointer to a back matter resource `uuid` (see line 17).  Within `resources`, several items are referenced (via `rlinks`). Each `rlink` must have a URL reference (`href`).  The third `rlink` in this example provides a relative path.  All of the other `rlink` properties (e.g., `media-type` and `hash`) are optional.  Unlike `links`, `rlinks` do not have any `rel` properties to provide additional context, nor do they have `text` properties.  OSCAL content authors should consider these subtle differences when deciding whether to use `links` or `rlinks`.
+Notice that in this example, the `links` object array on line 8 only provides a fragment rather than a more complete URI. OSCAL interprets this as a pointer to a back matter resource `uuid` (see line 17).  Within `resources`, several items are referenced (via `rlinks`). Each `rlink` must have a URL reference (`href`).  The third `rlink` in this example provides a relative path.  All of the other `rlink` properties (e.g., `media-type` and `hash`) are optional.  Unlike `links`, `rlinks` do not have any `rel` properties to provide additional context, nor do they have `text` properties.  OSCAL content authors should consider these subtle differences when deciding whether to use `links` or `rlinks`.
 {{% /tab %}}
 {{% /tabs %}}
 
