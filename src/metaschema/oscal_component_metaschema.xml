@@ -306,7 +306,7 @@
   <define-assembly name="incorporates-component">
     <formal-name>Incorporates Component</formal-name>
     <!-- TODO: needs a description -->
-    <description>The collection of components that this capability is comprised of.</description>
+    <description>The collection of components comprising this capability.</description>
     <define-flag required="yes" name="component-uuid" as-type="uuid">
       <formal-name>Component Reference</formal-name>
       <!-- Identifier Reference -->
@@ -326,7 +326,7 @@
     <define-flag name="uuid" as-type="uuid" required="yes">
       <formal-name>Control Implementation Set Identifier</formal-name>
       <!-- Identifier Declaration -->
-      <description>Provides a means to idenfy a set of control implementations that are supported by a given component or capability.</description>
+      <description>Provides a means to identify a set of control implementations that are supported by a given component or capability.</description>
       <prop name="value-type" value="identifier"/>
       <prop name="identifier-type" value="machine-oriented"/>
       <prop name="identifier-uniqueness" value="global"/>
@@ -385,7 +385,7 @@
     <model>
       <define-field name="description" as-type="markup-multiline" min-occurs="1" in-xml="WITH_WRAPPER">
         <formal-name>Control Implementation Description</formal-name>
-        <description>A supplier (e.g., component vendor or author) suggestion for how the specified control may be implemented if the containing component or capability is instantiated in a system security plan.</description>
+        <description>A suggestion from the supplier (e.g., component vendor or author) for how the specified control may be implemented if the containing component or capability is instantiated in a system security plan.</description>
       </define-field>
       <assembly ref="property" max-occurs="unbounded">
         <group-as name="props" in-json="ARRAY"/>
