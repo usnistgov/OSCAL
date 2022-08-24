@@ -15,6 +15,7 @@ This tutorial describes the mechanisms for extending basic OSCAL models. Before 
 - Have some familiarity with the [XML](https://www.w3.org/standards/xml/core), [JSON](https://www.json.org/), or [YAML](https://yaml.org/spec/) formats.
 - Review the [OSCAL Layers and Models](/concepts/layer/) documentation.
 - Review the latest [OSCAL Reference](/reference/latest/complete/).
+- Review [URI Usage](/concepts/uri-use/) to better understand how URIs are used in OSCAL.
 
 ## What are the OSCAL Extension Mechanisms?
 
@@ -483,8 +484,8 @@ Links in OSCAL provide a means to reference an arbitrary resource, which allows 
 
 A link can:
 
-1. Reference (external) information that is not represented in OSCAL format.  This could include references to (cybersecurity) laws and regulations, references to organizational standards and guides, references to a software bill of materials (SBOM), and more.
-2. Reference objects within the current OSCAL document.
+1. Reference (external) information that is not represented in OSCAL format.  This could include references to (cybersecurity) laws and regulations, references to organizational standards and guides, references to a software bill of materials (SBOM), and more. See [*linking to a network resolvable resource](/concepts/uri-use/#linking-to-a-network-resolvable-resource) for more information.
+2. Reference objects within the current OSCAL document. See [*linking to another OSCAL object*](/concepts/uri-use/#linking-to-another-oscal-object) for more information.
 
 Organizations can limit duplication of content, reduce the size of their OSCAL files, and maintain important content relationships by using links.
 
@@ -548,7 +549,7 @@ Below is description of `links` key-values:
 
 ### Link to Internet URL
 
-Organizations may need their documentation (e.g., SSP) to reference external resources, such applicable laws and regulations (e.g., HSPD-12) and other organizational items (e.g., official agency logos).  This first example illustrates how an OSCAL SSP might make use of a link to an internet URL to reference a government policy and an agency logo.
+Organizations may need their documentation (e.g., SSP) to reference external resources, such applicable laws and regulations (e.g., HSPD-12) and other organizational items (e.g., official agency logos).  This first example illustrates how an OSCAL SSP might make use of a link to a resource through the use of an [absolute](/concepts/uri-use/#absolute-uri) or [relative](/concepts/uri-use/#relative-reference) URL to reference a government policy and an agency logo.
 
 {{< tabs XML JSON YAML >}}
 {{% tab %}}
@@ -574,9 +575,9 @@ Organizations may need their documentation (e.g., SSP) to reference external res
 </system-security-plan>
 {{< /highlight >}}
 
-In this case, the `<link>` element on line 8 provides a reference to Homeland Security Policy Directive (HSPD) 12 by specifying the URL in the `@href` attribute.  The OSCAL pre-defined "reference" value is used for the `@rel` attribute, providing some context for the purpose of this specific `<link>`. The `<text>` sub-element provides an associated label for the `<link>` which may be useful when rendering the SSP in other formats (e.g., HTML, PDF).
+In this case, the `<link>` element on line 8 provides a reference to Homeland Security Policy Directive (HSPD) 12 by specifying the URL in the `@href` attribute. The `@rel` attribute uses the OSCAL pre-defined "reference" value, indicating that this specific `<link>` is a "reference" link. The `<text>` sub-element provides an associated label for the `<link>` which may be useful when rendering the SSP in other formats (e.g., HTML, PDF).
 
-Line 11 demonstrates the use of `<link>` to point to the organization's official logo. An absolute URL was used to point to the location of the referenced content, however, it should be noted that the `@href` attribute also permits the use of relative URL paths.  If the referenced resource is located on the same host, then a relative URL path could be used. The `@rel` attribute was set to "logo" to indicate that the `<link>` is to a logo image.  The `@media-type` attribute was included to let any rendering tools know that the logo content is a Portable Network Graphics (PNG) image type. The optional `<text>` sub-element was excluded for brevity of this example.
+Line 11 demonstrates the use of `<link>` to point to the organization's official logo. An absolute URL was used to point to the location of the referenced content, however, it should be noted that the `@href` attribute also permits the use of relative URL paths. If the referenced resource is located on the same host, then a relative URL path could be used instead. The `@rel` attribute is set to "logo" to indicate that the `<link>` is to a logo image.  The `@media-type` attribute was included to let any rendering tools know that the logo content is a Portable Network Graphics (PNG) image type. The optional `<text>` sub-element is excluded in this example for brevity.
 {{% /tab %}}
 {{% tab %}}
 {{< highlight json "linenos=table" >}}
@@ -608,9 +609,9 @@ Line 11 demonstrates the use of `<link>` to point to the organization's official
 }
 {{< /highlight >}}
 
-In this case, the `links` object array on line 9 provides a reference to Homeland Security Policy Directive (HSPD) 12 by specifying the URL in the `href` property.  The OSCAL pre-defined "reference" value is used  for the `rel`, providing context for the purpose of this specific `link`. The `text` property provides an associated label for the `link` which may be useful when rendering the SSP in other formats (e.g., HTML, PDF).
+In this case, the `links` object array on line 9 provides an object (one lines 10-14) that references Homeland Security Policy Directive (HSPD) 12 by specifying the URL in its `href` property.  The `rel` property uses the OSCAL pre-defined "reference" value, indicating that this specific link object is a "reference" link. The `text` property provides an associated label for the `link` which may be useful when rendering the SSP in other formats (e.g., HTML, PDF).
 
-Lines 16-18 demonstrate the use of link to point to the organization's official logo. An absolute URL was used to point to the location of the referenced content, however, it should be noted that the `href` property also permits the use of relative URL paths. If the referenced resource is located is on the same host, then a relative URL path could be used. The `rel` property was set to "logo" to indicate the link is to a logo image. The `media-type` property was included to let any rendering tools know that the logo content is a Portable Network Graphics (PNG) image type.  The optional `text` property was excluded for brevity of this example.
+Lines 16-189 demonstrate the use of a link to point to the organization's official logo. An absolute URL is used to point to the location of the referenced content, however, it should be noted that the `href` property also permits the use of relative URL paths. If the referenced resource is located is on the same host, then a relative URL path could be used instead. The `rel` property is set to "logo" to indicate the link is to a logo image. The `media-type` property was included to let any rendering tools know that the logo content is a Portable Network Graphics (PNG) image type.  The optional `text` property is excluded in this example for brevity.
 {{% /tab %}}
 {{% tab %}}
 {{< highlight yaml "linenos=table" >}}
@@ -624,7 +625,7 @@ system-security-plan:
     links:
     - href: https://www.dhs.gov/homeland-security-presidential-directive-12
       rel: reference
-        text: HSPD-12
+      text: HSPD-12
     - href: https://federal-agency.gov/img/official-agency-logo.png
       rel: logo
       media-type: image/png
@@ -634,9 +635,9 @@ system-security-plan:
 
 {{< /highlight >}}
 
-In this case, the `links` object array on line 9 provides a reference to Homeland Security Policy Directive (HSPD) 12 by specifying the URL in the `href` property. The OSCAL pre-defined "reference" value is used for the `rel`, providing context for the purpose of this specific link. The `text` property provides an associated label for the link which may be useful when rendering the SSP in other formats (e.g., HTML, PDF).
+In this case, the `links` list on line 8 provides a reference to Homeland Security Policy Directive (HSPD) 12 by specifying the URL in the `href` key. The `rel` key uses the OSCAL pre-defined "reference" value, indicating that this specific link item is a "reference" link. The `text` key provides an associated label for the link which may be useful when rendering the SSP in other formats (e.g., HTML, PDF).
 
-Lines 11-13 demonstrate the use of link to point to the organization's official logo. An absolute URL was used to point to the location of the referenced content, however, it should be noted that the `href` property also permits the use of relative URL paths.  If the referenced resource is located is on the same host, then a relative URL path could be used. The `rel` property was set to "logo" to indicate the link is to a logo image. The `media-type` property was included to let any rendering tools know that the logo content is a Portable Network Graphics (PNG) image type.  The optional `text` property was excluded for brevity of this example.
+Lines 12-14 demonstrate the use of a link to point to the organization's official logo. An absolute URL is used to point to the location of the referenced content, however, it should be noted that the `href` key also permits the use of relative URL paths.  If the referenced resource is located is on the same host, then a relative URL path could be used. The `rel` key is set to "logo" to indicate the link is to a logo image. The `media-type` key is included to let any rendering tools know that the logo content is a Portable Network Graphics (PNG) image type.  The optional `text` key was excluded for brevity of this example.
 {{% /tab %}}
 {{% /tabs %}}
 
@@ -646,7 +647,7 @@ As a final note, providing link text is not required. Link text should only be p
 
 This section demonstrates how to reference back matter resources with links.
 
-In OSCAL specifying a URI fragment in a link's hypertext reference, represented as `#fragment-id`, indicates that the link is referencing an identified object in the OSCAL document's data model. This allows a resource to be referenced in the OSCAL document's back matter using the UUID of the back matter resource.
+In OSCAL specifying a bare URI fragment in a link's hypertext reference, represented as `#fragment-id`, indicates that the link is [referencing an object identified](/concepts/uri-use/#linking-to-another-oscal-object) in the context of the OSCAL document's data model. This allows a resource to be referenced in the back matter or the current OSCAL document or an imported document using the UUID of a `back-matter` resource.
 
 {{< tabs XML JSON YAML >}}
 {{% tab %}}
@@ -674,18 +675,18 @@ In OSCAL specifying a URI fragment in a link's hypertext reference, represented 
           href="https://csrc.nist.gov/csrc/media/publications/fips/199/final/documents/fips-pub-199-final.pdf"
           media-type="application/pdf" />
       <rlink
-          href="/security/standards/IT-Rules-of-Behavior.docx"
+          href="security/standards/IT-Rules-of-Behavior.docx"
           media-type="application/msword" />
     </resource>
   </back-matter>
 </system-security-plan>
 {{< /highlight >}}
 
-When using `<link>` to reference a back-matter `<resources>`, the `<link>` must use the resource's `@uuid` attribute as the pointer. The `<resource>` may have an `<rlink>` sub-element that points to the (external) content via the `@href` attribute.
+When using `<link>` to reference a back-matter `<resource>`, the `<link>` must use the resource's `@uuid` attribute as the pointer. The `<resource>` may have an `<rlink>` sub-element that points to the (external) content via the `@href` attribute.
 
 Optionally, the `<rlink>` element can also include a hash (e.g., to ensure the integrity of the referenced content), however, that is an advanced concept that is not covered in this tutorial.
 
-Notice that in this example, the `<link>` element on line 8 provides a fragment rather than a more complete URI. OSCAL interprets this as a pointer to a back matter resource `@uuid` (see line 17).  Within this `<resource>` element, several items are referenced (via `<rlinks>`). The `<rlinks>` must have a URL reference (`@href`).  The third `<rlink>` in this example provides a relative path.  All of the other `<rlink>` attributes (e.g., `@media-type` and `@hash`) are optional.  Unlike `<links>`, `<rlinks>` do not have any `@rel` attributes to provide additional context, nor do they have `<text>` sub-elements.  OSCAL content authors should consider these subtle differences when deciding whether to use `<links>` or `<rlinks>`.
+Notice that in this example, the `<link>` element on line 8 provides a fragment rather than a more complete URI. OSCAL interprets this as a pointer to a back matter resource `@uuid` (see line 17).  Within this `<resource>` element, several items are referenced (via `<rlinks>`). An `<rlink>`must have an `@href` with an [absolute URI](/concepts/uri-use/#absolute-uri) or a [relative URI](/concepts/uri-use/#relative-reference) pointing directly to the resource.  All of the other `<rlink>` attributes (e.g., `@media-type` and `@hash`) are optional.  Unlike `<links>`, `<rlinks>` do not have any `@rel` attributes to provide additional context, nor do they have `<text>` sub-elements.  OSCAL content authors should consider these subtle differences when deciding to use a `<link>` or an `<rlink>`.
 {{% /tab %}}
 {{% tab %}}
 {{< highlight json "linenos=table" >}}
@@ -697,11 +698,13 @@ Notice that in this example, the `<link>` element on line 8 provides a fragment 
       "last-modified": "2022-01-01T09:30:00-005",
       "version": 20220531,
       "oscal-version": "1.0.0",
-      "links": {
-        "href": "#a7584118-3d2d-46c8-b388-df747309c0fa",
-        "rel": "reference",
-        "text": "Applicable Laws and Regulations, Standards, and Guides"
-      }
+      "links": [
+        {
+          "href": "#a7584118-3d2d-46c8-b388-df747309c0fa",
+          "rel": "reference",
+          "text": "Applicable Laws and Regulations, Standards, and Guides"
+        }
+      ]
     },
     "import-profile": "...",
     "system-characteristics": "...",
@@ -719,7 +722,7 @@ Notice that in this example, the `<link>` element on line 8 provides a fragment 
           "media-type": "application/pdf"
         },
         {
-          "href": "/security/standards/IT-Rules-of-Behavior.docx",
+          "href": "security/standards/IT-Rules-of-Behavior.docx",
           "media-type": "application/msword"
         }]
       }
@@ -727,11 +730,13 @@ Notice that in this example, the `<link>` element on line 8 provides a fragment 
   }
 }
 {{< /highlight >}}
-When using `links` to reference a back-matter `resources`, the `link` must use the resource's `uuid` property as the pointer. The `resource` property may have an `rlinks` object array that points to the (external) content via the `href` property.
+When using a `links` array object (see lines 10-14 above) to reference a back-matter resource object (see lines 22-36), the link object must use the resource object's `uuid` property in a URI fragment as the pointer (i.e. `#a7584118-3d2d-46c8-b388-df747309c0fa`). Notice that in this example, the link object on line 11 provides a fragment rather than a more complete URI. OSCAL interprets this as a pointer to a back matter resource `uuid` (see line 23).
 
-Optionally, the `rlinks` property can also include a hash (e.g., to ensure the integrity of the referenced content), however, that is an advanced concept that is not covered in this tutorial.
+The referenced resource object on lines 22-36 may have an `rlinks` object array with objects that point to the (externally) available content via an `href` property. In this example, several resources are referenced (via `rlinks`). Each rlink object must have an `href` with an [absolute URI](/concepts/uri-use/#absolute-uri) or a [relative URI](/concepts/uri-use/#relative-reference) pointing directly to the resource. The third `rlink` in this example provides a relative path.
 
-Notice that in this example, the `links` object array on line 9 provides a fragment rather than a more complete URI. OSCAL interprets this as a pointer to a back matter resource `uuid` (see line 21).  Within `resources`, several items are referenced (via `rlinks`). Each `rlink` must have a URL reference (`href`). The third `rlink` in this example provides a relative path.  All of the other `rlink` properties (e.g., `media-type` and `hash`) are optional.  Unlike `links`, `rlinks` do not have any `rel` properties to provide additional context, nor do they have `text` properties.  OSCAL content authors should consider these subtle differences when deciding whether to use `links` or `rlinks`.
+All of the other `rlink` properties (e.g., `media-type` and `hash`) are optional. An rlink object can also include a hash (e.g., to ensure the integrity of the referenced content), however, that is an advanced concept that is not covered in this tutorial.
+
+Unlike `links`, `rlinks` do not have a `rel` property to provide additional context, nor do they have `text` properties. OSCAL content authors should consider these subtle differences when deciding to use `links` or `rlinks`.
 
 {{% /tab %}}
 {{% tab %}}
@@ -744,25 +749,34 @@ system-security-plan:
     version: 20220531
     oscal-version: 1.0.0
     links:
-      - href: '#a7584118-3d2d-46c8-b388-df747309c0fa'
-        rel: reference
-        text: Applicable Laws and Regulations, Standards, and Guides
+    - href: '#a7584118-3d2d-46c8-b388-df747309c0fa'
+      rel: reference
+      text: Applicable Laws and Regulations, Standards, and Guides
   import-profile: ...
   system-characteristics: ...
   control-implementation: ...
   back-matter:
     resources:
-      uuid: a7584118-3d2d-46c8-b388-df747309c0fa
+    - uuid: a7584118-3d2d-46c8-b388-df747309c0fa
       rlinks:
-        - href: https://www.dhs.gov/homeland-security-presidential-directive-12
-        - href: https://csrc.nist.gov/csrc/media/publications/fips/199/final/documents/fips-pub-199-final.pdf
-          media-type: application/pdf
-        - href: /security/standards/IT-Rules-of-Behavior.docx
-          media-type: application/msword
+      - href: https://www.dhs.gov/homeland-security-presidential-directive-12
+      - href: https://csrc.nist.gov/csrc/media/publications/fips/199/final/documents/fips-pub-199-final.pdf
+        media-type: application/pdf
+      - href: security/standards/IT-Rules-of-Behavior.docx
+        media-type: application/msword
 {{< /highlight >}}
-When using `links` to reference back-matter `resources`, the `link` must use the resource's `uuid` key-value as the pointer. The `resource` key-value must have an `rlinks` array item that points to the (external) content via the `href` key-value.  Optionally, the `rlinks` can also include a hash (e.g., to ensure the integrity of the referenced content), however, that is an advanced concept that is not covered in this tutorial.
 
-Notice that in this example, the `links` object array on line 8 only provides a fragment rather than a more complete URI. OSCAL interprets this as a pointer to a back matter resource `uuid` (see line 17).  Within `resources`, several items are referenced (via `rlinks`). Each `rlink` must have a URL reference (`href`).  The third `rlink` in this example provides a relative path.  All of the other `rlink` properties (e.g., `media-type` and `hash`) are optional.  Unlike `links`, `rlinks` do not have any `rel` properties to provide additional context, nor do they have `text` properties.  OSCAL content authors should consider these subtle differences when deciding whether to use `links` or `rlinks`.
+All of the other `rlink` properties (e.g., `media-type` and `hash`) are optional. An rlink object can also include a hash (e.g., to ensure the integrity of the referenced content), however, that is an advanced concept that is not covered in this tutorial.
+
+Unlike `links`, `rlinks` do not have any `rel` properties to provide additional context, nor do they have `text` properties. OSCAL content authors should consider these subtle differences when deciding to use `links` or `rlinks`.
+
+When using a `links` item list (see lines 8-12 above) to reference a back-matter resource item (see lines 16-23), the link item must use the resource object's `uuid` key in a URI fragment as the pointer (i.e. `#a7584118-3d2d-46c8-b388-df747309c0fa`). Notice that in this example, the link item on line 9 provides a fragment rather than a more complete URI. OSCAL interprets this as a pointer to a back matter resource `uuid` (see line 23).
+
+The referenced resource item on lines 17-23 may have an `rlinks` list with items that point to the (externally) available content via an `href` key. In this example, several resources are referenced (via `rlinks`). Each rlink item must have an `href` with an [absolute URI](/concepts/uri-use/#absolute-uri) or a [relative URI](/concepts/uri-use/#relative-reference) pointing directly to the resource. The third rlink item in this example provides a relative path.
+
+All of the other rlink item keys (e.g., `media-type` and `hash`) are optional. An rlink item can also include a hash (e.g., to ensure the integrity of the referenced content), however, that is an advanced concept that is not covered in this tutorial.
+
+Unlike `links`, `rlinks` items do not have a `rel` key to provide additional context, nor do they have a `text` key. OSCAL content authors should consider these subtle differences when deciding to use `links` or `rlinks`.
 {{% /tab %}}
 {{% /tabs %}}
 
