@@ -78,6 +78,14 @@
     <define-flag name="href" as-type="uri-reference" required="yes">
       <formal-name>Hyperlink Reference</formal-name>
       <description>A link to a resource that defines a set of components and/or capabilities to import into this collection.</description>
+      <remarks>
+        <p>This value may be one of:</p>
+        <ol>
+          <li>an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
+          <li>a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing document, or</li>
+          <li>a bare URI fragment (i.e., `#uuid`) pointing to a <code>back-matter</code> resource in this or an imported document (see <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>).</li>
+        </ol>
+      </remarks>
     </define-flag>
   </define-assembly>
 
@@ -333,11 +341,18 @@
       <prop name="identifier-scope" value="cross-instance"/>
       <prop name="identifier-persistence" value="per-subject"/>
     </define-flag>
-    <flag ref="source" required="yes">
+    <define-flag name="source" as-type="uri-reference" required="yes">
+      <formal-name>Source Resource Reference</formal-name>
+      <description>A reference to an OSCAL catalog or profile providing the referenced control or subcontrol definition.</description>
       <remarks>
-        <p>A URL reference to the source catalog or profile for which this component is implementing controls for.</p>
+        <p>This value may be one of:</p>
+        <ol>
+          <li>an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
+          <li>a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing document, or</li>
+          <li>a bare URI fragment (i.e., `#uuid`) pointing to a <code>back-matter</code> resource in this or an imported document (see <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>).</li>
+        </ol>
       </remarks>
-    </flag>
+    </define-flag>
     <model>
       <define-field name="description" as-type="markup-multiline" min-occurs="1" in-xml="WITH_WRAPPER">
         <formal-name>Control Implementation Description</formal-name>

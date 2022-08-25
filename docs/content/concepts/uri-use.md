@@ -138,9 +138,7 @@ URIs serving this purpose need to be used as a *locator*.
 
 Any data fields supporting this use case will have the `uri-reference` data type.
 
-A typical use of OSCAL object identifier linking is referencing a `resource` in the document's `back-matter` or an imported document's `back-matter`.
-
-For example, the resource identified by the UUID `f5a2bdb3-55ad-431e-a7ea-c0fd28fc08a0` can be referenced as follows.
+A typical use of OSCAL object identifier linking is referencing a `resource` in the document's `back-matter` or an imported document's `back-matter`. For example, the back-matter resource identified by the UUID `f5a2bdb3-55ad-431e-a7ea-c0fd28fc08a0` can be referenced as follows.
 
 ```
 <link rel="related" href="#f5a2bdb3-55ad-431e-a7ea-c0fd28fc08a0"/>
@@ -150,11 +148,11 @@ More information about the use of links to reference back-matter resources can b
 
 #### Use as a naming system identifier
 
-An absolute URI that identifies the naming system. Data fields supporting this use case will have the `uri` data type.
+An absolute URI that identifies the naming system. URIs serving this purpose are used as a *name*. Data fields supporting this use case will have the `uri` data type.
 
 OSCAL supports a number of name/value and other controlled value collections. To allow independent organization to organize these value collections, namespaces are used to partition the value spaces on an organization-by-organization basis. An [*absolute URI*](#absolute-uri) is used as the namespace identifier for these situations.
 
-URIs serving this purpose need to be used as a *name*.
+When used in this way the authority component of the URI must use a value that the organization has control over. Typically, a DNS domain name controlled by the organization is used for this purpose.
 
 OSCAL examples include:
 

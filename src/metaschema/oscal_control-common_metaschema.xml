@@ -33,12 +33,11 @@
                         <formal-name>Part Name</formal-name>
                         <description>A textual label that uniquely identifies the part's semantic type, which exists in a value space qualified by the <code>ns</code>.</description>
                 </define-flag>
-                <define-flag name="ns" as-type="uri">
+                <define-flag name="ns" as-type="uri" default="http://csrc.nist.gov/ns/oscal">
                         <formal-name>Part Namespace</formal-name>
                         <description>An optional namespace qualifying the part's <code>name</code>. This allows different organizations to associate distinct semantics with the same name.</description>
-                        <remarks><!-- TODO: link to external documentation? -->
-                                <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed names and associated text used in a part. This allows the semantics associated with a given name to be defined on an organization-by-organization basis.</p>
-                                <p>An organization MUST use a URI that they have control over. e.g., a domain registered to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
+                        <remarks>
+                                <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                                 <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                         </remarks>
                 </define-flag>

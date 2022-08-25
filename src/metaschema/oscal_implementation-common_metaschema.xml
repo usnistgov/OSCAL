@@ -604,10 +604,7 @@
       </define-assembly>
 
 
-      <define-flag name="source" as-type="uri-reference">
-            <formal-name>Source Resource Reference</formal-name>
-            <description>A reference to an OSCAL catalog or profile providing the referenced control or subcontrol definition.</description>
-      </define-flag>
+
       <!--   <define-assembly name="only-statement">
       <formal-name>Specific Statement</formal-name>
       <description>Describes which specific statements are addressed by a requirement, by pointing to a specific requirement statement within a control.</description>
@@ -686,6 +683,9 @@
                               <enum value="http://ietf.org/rfc/rfc4122">A Universally Unique Identifier (UUID) as defined by RFC4122.</enum>
                         </allowed-values>
                   </constraint>
+                  <remarks>
+                        <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                  </remarks>
             </define-flag>
       </define-field>
 

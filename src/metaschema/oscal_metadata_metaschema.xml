@@ -181,10 +181,13 @@
                             <p>A phone number used to contact the location.</p>
                         </remarks>
                     </field>
-                    <define-field name="url" as-type="uri" max-occurs="unbounded">
+                    <define-field name="url" as-type="uri" max-occurs="unbounded" deprecated="1.1.0">
                         <formal-name>Location URL</formal-name>
                         <description>The uniform resource locator (URL) for a web site or other resource associated with the location.</description>
                         <group-as name="urls" in-json="ARRAY"/>
+                        <remarks>
+                            <p>This data field is deprecated in favor of using a link with an appropriate relationship.</p>
+                        </remarks>
                     </define-field>
                     <assembly ref="property" max-occurs="unbounded">
                         <group-as name="props" in-json="ARRAY"/>
@@ -258,6 +261,9 @@
                                     <enum value="http://orcid.org/">The identifier is Open Researcher and Contributor ID (ORCID).</enum>
                                 </allowed-values>
                             </constraint>
+                            <remarks>
+                                <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                            </remarks>
                         </define-flag>
                     </define-field>
                     <assembly ref="property" max-occurs="unbounded">
@@ -537,6 +543,13 @@
                         <define-flag name="href" as-type="uri-reference" required="yes">
                             <formal-name>Hypertext Reference</formal-name>
                             <description>A resolvable URL pointing to the referenced resource.</description>
+                            <remarks>
+                                <p>This value may be either:</p>
+                                <ol>
+                                    <li>an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
+                                    <li>a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing document, or</li>
+                                </ol>
+                            </remarks>
                         </define-flag>
                         <flag ref="media-type"/>
                         <model>
@@ -559,7 +572,7 @@
                         <formal-name>Base64</formal-name>
                         <description>A resource encoded using the Base64 alphabet defined by <a href="https://www.rfc-editor.org/rfc/rfc2045.html">RFC 2045</a>.</description>
                         <json-value-key>value</json-value-key>
-                        <define-flag name="filename" as-type="uri-reference">
+                        <define-flag name="filename" as-type="token">
                             <formal-name>File Name</formal-name>
                             <description>Name of the file before it was encoded as Base64 to be embedded in a <code>resource</code>. This is the name that will be assigned to the file when the file is decoded.</description>
                         </define-flag>
@@ -678,12 +691,11 @@
             <!-- identifier declaration -->
             <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined property elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
         </define-flag>
-        <define-flag name="ns" as-type="uri">
+        <define-flag name="ns" as-type="uri" default="http://csrc.nist.gov/ns/oscal">
             <formal-name>Property Namespace</formal-name>
             <description>A namespace qualifying the property's name. This allows different organizations to associate distinct semantics with the same name.</description>
             <remarks>
-                <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed names and associated values used in a property. This allows the semantics associated with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                <p>An organization MUST use a URI that they have control over. e.g., a domain registered to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
+                <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                 <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
             </remarks>
         </define-flag>
@@ -722,23 +734,25 @@
             <formal-name>Hypertext Reference</formal-name>
             <description>A resolvable URL reference to a resource.</description>
             <remarks>
-                <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment that points to a <code>back-matter</code>
-                    <code>resource</code> in the same document.</p>
-                <!-- TODO: Add a link to "within the scope of the containing OSCAL document" to point to documentation of identification scopes" -->
-                <p>If a local reference using a fragment is used, this will be indicated by a fragment "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-                <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced resource. A relative URI will be resolved relative to the location of the document containing the link.</p>
+                <p>This value may be one of:</p>
+                <ol>
+                    <li>an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
+                    <li>a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing document, or</li>
+                    <li>a bare URI fragment (i.e., `#uuid`) pointing to an OSCAL object by the objects identifier (e.g., id, uuid) in this or an imported document (see <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>). The specific object type will differ based on the link relationship type.</li>
+                </ol>
             </remarks>
         </define-flag>
         <define-flag name="rel" as-type="token">
-            <formal-name>Relation</formal-name>
-            <description>Describes the type of relationship provided by the link. This can be an indicator of the link's purpose.</description>
+            <formal-name>Link Relation Type</formal-name>
+            <description>Describes the type of relationship provided by the link's hypertext reference. This can be an indicator of the link's purpose.</description>
             <constraint>
                 <allowed-values allow-other="yes">
-                    <enum value="reference">Reference</enum>
+                    <enum value="reference">A generalized reference to a network resource (relative or absolute) or to a <code>back-matter</code> resource by UUID expressed as a bare URI fragment.</enum>
                 </allowed-values>
             </constraint>
         </define-flag>
         <flag ref="media-type">
+            <formal-name>Link Media Type</formal-name>
             <remarks>
                 <p>The <code>media-type</code> provides a hint about the content model of the referenced resource. A valid entry from the <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">IANA Media Types registry</a> SHOULD be used.</p>
             </remarks>
@@ -1079,7 +1093,7 @@
         <!-- identifier declaration -->
         <description>A document identifier qualified by an identifier <code>scheme</code>. A document identifier provides a <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with a <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that is used for a group of documents that are to be treated as different versions of the same document. If this element does not appear, the value of the "uuid" flag of the top-level root field can serve as a document identifier.</description>
         <json-value-key>identifier</json-value-key>
-        <define-flag name="scheme" as-type="uri" required="no">
+        <define-flag name="scheme" as-type="uri">
             <formal-name>Document Identification Scheme</formal-name>
             <description>Qualifies the kind of document identifier using a URI. If the scheme is not provided the value of the element will be interpreted as a string of characters. </description>
             <constraint>
@@ -1087,6 +1101,9 @@
                     <enum value="http://www.doi.org/">A <a href="https://www.doi.org/hb.html">Digital Object Identifier</a> (DOI); use is preferred, since this allows for retrieval of a full bibliographic record.</enum>
                 </allowed-values>
             </constraint>
+            <remarks>
+                <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+            </remarks>
         </define-flag>
         <remarks>
             <p>A document identifier provides an additional data point for identifying a document that can be assigned by a publisher or organization for purposes in a wider system, such as a digital object identifier (DOI) or a local content management system identifier.</p>
