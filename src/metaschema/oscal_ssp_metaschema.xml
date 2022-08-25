@@ -236,51 +236,21 @@
           <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
           </assembly>
-          <define-assembly name="confidentiality-impact" min-occurs="1">
+          <assembly ref="impact">
             <formal-name>Confidentiality Impact Level</formal-name>
             <description>The expected level of impact resulting from the unauthorized disclosure of the described information.</description>
-            <model>
-              <assembly ref="property" max-occurs="unbounded">
-                <group-as name="props" in-json="ARRAY"/>
-              </assembly>
-              <assembly ref="link" max-occurs="unbounded">
-                <group-as name="links" in-json="ARRAY"/>
-              </assembly>
-              <field ref="base" min-occurs="1"/>
-              <field ref="selected"/>
-              <field ref="adjustment-justification" in-xml="WITH_WRAPPER"/>
-            </model>
-          </define-assembly>
-          <define-assembly name="integrity-impact" min-occurs="1">
+            <use-name>confidentiality-impact</use-name>
+          </assembly>
+          <assembly ref="impact">
             <formal-name>Integrity Impact Level</formal-name>
             <description>The expected level of impact resulting from the unauthorized modification of the described information.</description>
-            <model>
-              <assembly ref="property" max-occurs="unbounded">
-                <group-as name="props" in-json="ARRAY"/>
-              </assembly>
-              <assembly ref="link" max-occurs="unbounded">
-                <group-as name="links" in-json="ARRAY"/>
-              </assembly>
-              <field ref="base" min-occurs="1"/>
-              <field ref="selected"/>
-              <field ref="adjustment-justification" in-xml="WITH_WRAPPER"/>
-            </model>
-          </define-assembly>
-          <define-assembly name="availability-impact" min-occurs="1">
+            <use-name>integrity-impact</use-name>
+          </assembly>
+          <assembly ref="impact">
             <formal-name>Availability Impact Level</formal-name>
             <description>The expected level of impact resulting from the disruption of access to or use of the described information or the information system.</description>
-            <model>
-              <assembly ref="property" max-occurs="unbounded">
-                <group-as name="props" in-json="ARRAY"/>
-              </assembly>
-              <assembly ref="link" max-occurs="unbounded">
-                <group-as name="links" in-json="ARRAY"/>
-              </assembly>
-              <field ref="base" min-occurs="1"/>
-              <field ref="selected"/>
-              <field ref="adjustment-justification" in-xml="WITH_WRAPPER"/>
-            </model>
-          </define-assembly>
+            <use-name>availability-impact</use-name>
+          </assembly>
         </model>
         <constraint>
           <expect level="WARNING" target="." test="@uuid">
@@ -317,6 +287,21 @@
         </remarks>
       </allowed-values>
     </constraint>
+  </define-assembly>
+  <define-assembly name="impact">
+    <formal-name>Impact Level</formal-name>
+    <description>The expected level of impact resulting from the described information.</description>
+    <model>
+      <assembly ref="property" max-occurs="unbounded">
+        <group-as name="props" in-json="ARRAY"/>
+      </assembly>
+      <assembly ref="link" max-occurs="unbounded">
+        <group-as name="links" in-json="ARRAY"/>
+      </assembly>
+      <field ref="base" min-occurs="1"/>
+      <field ref="selected"/>
+      <field ref="adjustment-justification" in-xml="WITH_WRAPPER"/>
+    </model>
   </define-assembly>
   <define-field name="base" as-type="string" scope="local">
     <formal-name>Base Level (Confidentiality, Integrity, or Availability)</formal-name>
