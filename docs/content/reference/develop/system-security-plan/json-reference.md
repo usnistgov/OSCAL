@@ -4695,14 +4695,13 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/system-characteristics/system-information/information-types/confidentiality-impact" class="toc5 name">confidentiality-impact</h5>
-                                             <p class="type">object<br /></p>
-                                             <p class="occurrence">[1]</p>
+                                             <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-ssp/system-information/information-types/confidentiality-impact">(global definition)</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-characteristics/system-information/information-type/confidentiality-impact">Switch to XML</a></div>
-                                             <p class="formal-name">Confidentiality Impact Level</p>
+                                             <p class="formal-name">Impact Level</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> The expected level of impact resulting from the unauthorized disclosure of the described
-                                                information.</p>
+                                             <p class="description"><span class="usa-tag">Description</span> The expected level of impact resulting from the described information.</p>
                                              <details class="properties" open="open">
                                                 <summary>Properties (5)</summary>
                                                 <div class="model-entry definition assembly">
@@ -4714,7 +4713,7 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                                                    </div>
                                                    <div class="array-header">
                                                       <p class="array-member">(array member)</p>
-                                                      <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-ssp/system-information/information-types/confidentiality-impact/props">(global definition)</a></p>
+                                                      <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-ssp/impact/props">(global definition)</a></p>
                                                       <p class="occurrence">[1 to ∞]</p>
                                                       <p class="formal-name">Property</p>
                                                    </div>
@@ -4885,7 +4884,7 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                                                    </div>
                                                    <div class="array-header">
                                                       <p class="array-member">(array member)</p>
-                                                      <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-ssp/system-information/information-types/confidentiality-impact/links">(global definition)</a></p>
+                                                      <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-ssp/impact/links">(global definition)</a></p>
                                                       <p class="occurrence">[1 to ∞]</p>
                                                       <p class="formal-name">Link</p>
                                                    </div>
@@ -5052,14 +5051,13 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/system-characteristics/system-information/information-types/integrity-impact" class="toc5 name">integrity-impact</h5>
-                                             <p class="type">object<br /></p>
-                                             <p class="occurrence">[1]</p>
+                                             <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-ssp/system-information/information-types/integrity-impact">(global definition)</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-characteristics/system-information/information-type/integrity-impact">Switch to XML</a></div>
-                                             <p class="formal-name">Integrity Impact Level</p>
+                                             <p class="formal-name">Impact Level</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> The expected level of impact resulting from the unauthorized modification of the
-                                                described information.</p>
+                                             <p class="description"><span class="usa-tag">Description</span> The expected level of impact resulting from the described information.</p>
                                              <details class="properties" open="open">
                                                 <summary>Properties (5)</summary>
                                                 <div class="model-entry definition assembly">
@@ -5071,7 +5069,7 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                                                    </div>
                                                    <div class="array-header">
                                                       <p class="array-member">(array member)</p>
-                                                      <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-ssp/system-information/information-types/integrity-impact/props">(global definition)</a></p>
+                                                      <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-ssp/impact/props">(global definition)</a></p>
                                                       <p class="occurrence">[1 to ∞]</p>
                                                       <p class="formal-name">Property</p>
                                                    </div>
@@ -5242,7 +5240,7 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                                                    </div>
                                                    <div class="array-header">
                                                       <p class="array-member">(array member)</p>
-                                                      <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-ssp/system-information/information-types/integrity-impact/links">(global definition)</a></p>
+                                                      <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-ssp/impact/links">(global definition)</a></p>
                                                       <p class="occurrence">[1 to ∞]</p>
                                                       <p class="formal-name">Link</p>
                                                    </div>
@@ -5409,14 +5407,13 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/system-characteristics/system-information/information-types/availability-impact" class="toc5 name">availability-impact</h5>
-                                             <p class="type">object<br /></p>
-                                             <p class="occurrence">[1]</p>
+                                             <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-ssp/system-information/information-types/availability-impact">(global definition)</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-characteristics/system-information/information-type/availability-impact">Switch to XML</a></div>
-                                             <p class="formal-name">Availability Impact Level</p>
+                                             <p class="formal-name">Impact Level</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> The expected level of impact resulting from the disruption of access to or use of
-                                                the described information or the information system.</p>
+                                             <p class="description"><span class="usa-tag">Description</span> The expected level of impact resulting from the described information.</p>
                                              <details class="properties" open="open">
                                                 <summary>Properties (5)</summary>
                                                 <div class="model-entry definition assembly">
@@ -5428,7 +5425,7 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                                                    </div>
                                                    <div class="array-header">
                                                       <p class="array-member">(array member)</p>
-                                                      <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-ssp/system-information/information-types/availability-impact/props">(global definition)</a></p>
+                                                      <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-ssp/impact/props">(global definition)</a></p>
                                                       <p class="occurrence">[1 to ∞]</p>
                                                       <p class="formal-name">Property</p>
                                                    </div>
@@ -5599,7 +5596,7 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                                                    </div>
                                                    <div class="array-header">
                                                       <p class="array-member">(array member)</p>
-                                                      <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-ssp/system-information/information-types/availability-impact/links">(global definition)</a></p>
+                                                      <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-ssp/impact/links">(global definition)</a></p>
                                                       <p class="occurrence">[1 to ∞]</p>
                                                       <p class="formal-name">Link</p>
                                                    </div>
