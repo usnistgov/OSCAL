@@ -7395,6 +7395,110 @@ The following is a reference for the XML element and attribute types derived fro
    </div>
    <div class="model-entry definition define-assembly">
       <div class="definition-header">
+         <h1 id="/assembly/oscal-ssp/impact" class="toc1 name">impact</h1>
+         <p class="type">assembly<br class="br" /> </p>
+         <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-ssp/impact">Switch to JSON</a></div>
+         <p class="formal-name">Impact Level</p>
+      </div>
+      <div class="body">
+         <p class="description"><span class="usa-tag">description</span> The expected level of impact resulting from the described information.</p>
+         <details open="open">
+            <summary>Elements (5):</summary>
+            <div class="model assembly-model">
+               <div class="model-entry definition assembly">
+                  <div class="instance-header">
+                     <h2 id="/assembly/oscal-ssp/impact/prop" class="toc2 name">property</h2>
+                     <p class="type">assembly<br class="br" /> </p>
+                     <p class="occurrence">[0 to ∞]</p>
+                     <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-ssp/impact/props">Switch to JSON</a></div>
+                     <p class="formal-name">Property</p>
+                  </div>
+                  <div class="body">
+                     <p><span class="usa-tag">use name</span> <code class="name">prop</code></p>
+                     <div class="remarks-group usa-prose">
+                        <details open="open">
+                           <summary class="subhead">Remarks</summary>
+                           <div class="remarks">
+                              <p>Properties permit the deployment and management of arbitrary controlled values, within
+                                 OSCAL objects. A property can be included for any purpose useful to an application
+                                 or implementation. Typically, properties will be used to sort, filter, select, order,
+                                 and arrange OSCAL content objects, to relate OSCAL objects to one another, or to associate
+                                 an OSCAL object to class hierarchies, taxonomies, or external authorities. Thus, the
+                                 lexical composition of properties may be constrained by external processes to ensure
+                                 consistency.</p>
+                              <p>Property allows for associated remarks that describe why the specific property value
+                                 was applied to the containing object, or the significance of the value in the context
+                                 of the containing object.</p>
+                           </div>
+                        </details>
+                     </div>
+                     <p class="definition-link"><a href="#/assembly/oscal-metadata/property">See definition</a></p>
+                  </div>
+               </div>
+               <div class="model-entry definition assembly">
+                  <div class="instance-header">
+                     <h2 id="/assembly/oscal-ssp/impact/link" class="toc2 name">link</h2>
+                     <p class="type">assembly<br class="br" /> </p>
+                     <p class="occurrence">[0 to ∞]</p>
+                     <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-ssp/impact/links">Switch to JSON</a></div>
+                     <p class="formal-name">Link</p>
+                  </div>
+                  <div class="body">
+                     <div class="remarks-group usa-prose">
+                        <details open="open">
+                           <summary class="subhead">Remarks</summary>
+                           <div class="remarks">
+                              <p>To provide a cryptographic hash for a remote target resource, a local reference to
+                                 a back matter <code>resource</code> is needed. The resource allows one or more hash values to be provided using the <code>rlink/hash</code> object.</p>
+                              <p>The OSCAL <code>link</code> is a roughly based on the HTML <a href="https://www.w3.org/TR/html401/struct/links.html#edef-LINK">link element</a>. </p>
+                           </div>
+                        </details>
+                     </div>
+                     <p class="definition-link"><a href="#/assembly/oscal-metadata/link">See definition</a></p>
+                  </div>
+               </div>
+               <div class="model-entry definition field">
+                  <div class="instance-header">
+                     <h2 id="/assembly/oscal-ssp/impact/base" class="toc2 name">base</h2>
+                     <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                     <p class="occurrence">[1]</p>
+                     <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-ssp/impact/base">Switch to JSON</a></div>
+                     <p class="formal-name">Base Level (Confidentiality, Integrity, or Availability)</p>
+                  </div>
+                  <div class="body">
+                     <p class="definition-link"><a href="#/field/oscal-ssp/base">See definition</a></p>
+                  </div>
+               </div>
+               <div class="model-entry definition field">
+                  <div class="instance-header">
+                     <h2 id="/assembly/oscal-ssp/impact/selected" class="toc2 name">selected</h2>
+                     <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                     <p class="occurrence">[0 or 1]</p>
+                     <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-ssp/impact/selected">Switch to JSON</a></div>
+                     <p class="formal-name">Selected Level (Confidentiality, Integrity, or Availability)</p>
+                  </div>
+                  <div class="body">
+                     <p class="definition-link"><a href="#/field/oscal-ssp/selected">See definition</a></p>
+                  </div>
+               </div>
+               <div class="model-entry definition field">
+                  <div class="instance-header">
+                     <h2 id="/assembly/oscal-ssp/impact/adjustment-justification" class="toc2 name">adjustment-justification</h2>
+                     <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                     <p class="occurrence">[0 or 1]</p>
+                     <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-ssp/impact/adjustment-justification">Switch to JSON</a></div>
+                     <p class="formal-name">Adjustment Justification</p>
+                  </div>
+                  <div class="body">
+                     <p class="definition-link"><a href="#/field/oscal-ssp/adjustment-justification">See definition</a></p>
+                  </div>
+               </div>
+            </div>
+         </details>
+      </div>
+   </div>
+   <div class="model-entry definition define-assembly">
+      <div class="definition-header">
          <h1 id="/assembly/oscal-implementation-common/implementation-status" class="toc1 name">implementation-status</h1>
          <p class="type">assembly<br class="br" /> </p>
          <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-implementation-common/implementation-status">Switch to JSON</a></div>
@@ -20628,322 +20732,49 @@ The following is a reference for the XML element and attribute types derived fro
                                  <p class="definition-link"><a href="#/assembly/oscal-metadata/link">See definition</a></p>
                               </div>
                            </div>
-                           <div class="model-entry definition define-assembly">
+                           <div class="model-entry definition assembly">
                               <div class="instance-header">
                                  <h3 id="/assembly/oscal-ssp/system-information/information-type/confidentiality-impact" class="toc3 name">confidentiality-impact</h3>
                                  <p class="type">assembly<br class="br" /> </p>
-                                 <p class="occurrence">[1]</p>
+                                 <p class="occurrence">[0 or 1]</p>
                                  <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-ssp/system-information/information-types/confidentiality-impact">Switch to JSON</a></div>
-                                 <p class="formal-name">Confidentiality Impact Level</p>
+                                 <p class="formal-name">Impact Level</p>
                               </div>
                               <div class="body">
                                  <p class="description"><span class="usa-tag">description</span> The expected level of impact resulting from the unauthorized disclosure of the described
                                     information.</p>
-                                 <details open="open">
-                                    <summary>Elements (5):</summary>
-                                    <div class="model assembly-model">
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h4 id="/assembly/oscal-ssp/system-information/information-type/confidentiality-impact/prop" class="toc4 name">property</h4>
-                                             <p class="type">assembly<br class="br" /> </p>
-                                             <p class="occurrence">[0 to ∞]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-ssp/system-information/information-types/confidentiality-impact/props">Switch to JSON</a></div>
-                                             <p class="formal-name">Property</p>
-                                          </div>
-                                          <div class="body">
-                                             <p><span class="usa-tag">use name</span> <code class="name">prop</code></p>
-                                             <div class="remarks-group usa-prose">
-                                                <details open="open">
-                                                   <summary class="subhead">Remarks</summary>
-                                                   <div class="remarks">
-                                                      <p>Properties permit the deployment and management of arbitrary controlled values, within
-                                                         OSCAL objects. A property can be included for any purpose useful to an application
-                                                         or implementation. Typically, properties will be used to sort, filter, select, order,
-                                                         and arrange OSCAL content objects, to relate OSCAL objects to one another, or to associate
-                                                         an OSCAL object to class hierarchies, taxonomies, or external authorities. Thus, the
-                                                         lexical composition of properties may be constrained by external processes to ensure
-                                                         consistency.</p>
-                                                      <p>Property allows for associated remarks that describe why the specific property value
-                                                         was applied to the containing object, or the significance of the value in the context
-                                                         of the containing object.</p>
-                                                   </div>
-                                                </details>
-                                             </div>
-                                             <p class="definition-link"><a href="#/assembly/oscal-metadata/property">See definition</a></p>
-                                          </div>
-                                       </div>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h4 id="/assembly/oscal-ssp/system-information/information-type/confidentiality-impact/link" class="toc4 name">link</h4>
-                                             <p class="type">assembly<br class="br" /> </p>
-                                             <p class="occurrence">[0 to ∞]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-ssp/system-information/information-types/confidentiality-impact/links">Switch to JSON</a></div>
-                                             <p class="formal-name">Link</p>
-                                          </div>
-                                          <div class="body">
-                                             <div class="remarks-group usa-prose">
-                                                <details open="open">
-                                                   <summary class="subhead">Remarks</summary>
-                                                   <div class="remarks">
-                                                      <p>To provide a cryptographic hash for a remote target resource, a local reference to
-                                                         a back matter <code>resource</code> is needed. The resource allows one or more hash values to be provided using the <code>rlink/hash</code> object.</p>
-                                                      <p>The OSCAL <code>link</code> is a roughly based on the HTML <a href="https://www.w3.org/TR/html401/struct/links.html#edef-LINK">link element</a>. </p>
-                                                   </div>
-                                                </details>
-                                             </div>
-                                             <p class="definition-link"><a href="#/assembly/oscal-metadata/link">See definition</a></p>
-                                          </div>
-                                       </div>
-                                       <div class="model-entry definition field">
-                                          <div class="instance-header">
-                                             <h4 id="/assembly/oscal-ssp/system-information/information-type/confidentiality-impact/base" class="toc4 name">base</h4>
-                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
-                                             <p class="occurrence">[1]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-ssp/system-information/information-types/confidentiality-impact/base">Switch to JSON</a></div>
-                                             <p class="formal-name">Base Level (Confidentiality, Integrity, or Availability)</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="definition-link"><a href="#/field/oscal-ssp/base">See definition</a></p>
-                                          </div>
-                                       </div>
-                                       <div class="model-entry definition field">
-                                          <div class="instance-header">
-                                             <h4 id="/assembly/oscal-ssp/system-information/information-type/confidentiality-impact/selected" class="toc4 name">selected</h4>
-                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
-                                             <p class="occurrence">[0 or 1]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-ssp/system-information/information-types/confidentiality-impact/selected">Switch to JSON</a></div>
-                                             <p class="formal-name">Selected Level (Confidentiality, Integrity, or Availability)</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="definition-link"><a href="#/field/oscal-ssp/selected">See definition</a></p>
-                                          </div>
-                                       </div>
-                                       <div class="model-entry definition field">
-                                          <div class="instance-header">
-                                             <h4 id="/assembly/oscal-ssp/system-information/information-type/confidentiality-impact/adjustment-justification" class="toc4 name">adjustment-justification</h4>
-                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                             <p class="occurrence">[0 or 1]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-ssp/system-information/information-types/confidentiality-impact/adjustment-justification">Switch to JSON</a></div>
-                                             <p class="formal-name">Adjustment Justification</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="definition-link"><a href="#/field/oscal-ssp/adjustment-justification">See definition</a></p>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </details>
+                                 <p><span class="usa-tag">use name</span> <code class="name">confidentiality-impact</code></p>
+                                 <p class="definition-link"><a href="#/assembly/oscal-ssp/impact">See definition</a></p>
                               </div>
                            </div>
-                           <div class="model-entry definition define-assembly">
+                           <div class="model-entry definition assembly">
                               <div class="instance-header">
                                  <h3 id="/assembly/oscal-ssp/system-information/information-type/integrity-impact" class="toc3 name">integrity-impact</h3>
                                  <p class="type">assembly<br class="br" /> </p>
-                                 <p class="occurrence">[1]</p>
+                                 <p class="occurrence">[0 or 1]</p>
                                  <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-ssp/system-information/information-types/integrity-impact">Switch to JSON</a></div>
-                                 <p class="formal-name">Integrity Impact Level</p>
+                                 <p class="formal-name">Impact Level</p>
                               </div>
                               <div class="body">
                                  <p class="description"><span class="usa-tag">description</span> The expected level of impact resulting from the unauthorized modification of the
                                     described information.</p>
-                                 <details open="open">
-                                    <summary>Elements (5):</summary>
-                                    <div class="model assembly-model">
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h4 id="/assembly/oscal-ssp/system-information/information-type/integrity-impact/prop" class="toc4 name">property</h4>
-                                             <p class="type">assembly<br class="br" /> </p>
-                                             <p class="occurrence">[0 to ∞]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-ssp/system-information/information-types/integrity-impact/props">Switch to JSON</a></div>
-                                             <p class="formal-name">Property</p>
-                                          </div>
-                                          <div class="body">
-                                             <p><span class="usa-tag">use name</span> <code class="name">prop</code></p>
-                                             <div class="remarks-group usa-prose">
-                                                <details open="open">
-                                                   <summary class="subhead">Remarks</summary>
-                                                   <div class="remarks">
-                                                      <p>Properties permit the deployment and management of arbitrary controlled values, within
-                                                         OSCAL objects. A property can be included for any purpose useful to an application
-                                                         or implementation. Typically, properties will be used to sort, filter, select, order,
-                                                         and arrange OSCAL content objects, to relate OSCAL objects to one another, or to associate
-                                                         an OSCAL object to class hierarchies, taxonomies, or external authorities. Thus, the
-                                                         lexical composition of properties may be constrained by external processes to ensure
-                                                         consistency.</p>
-                                                      <p>Property allows for associated remarks that describe why the specific property value
-                                                         was applied to the containing object, or the significance of the value in the context
-                                                         of the containing object.</p>
-                                                   </div>
-                                                </details>
-                                             </div>
-                                             <p class="definition-link"><a href="#/assembly/oscal-metadata/property">See definition</a></p>
-                                          </div>
-                                       </div>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h4 id="/assembly/oscal-ssp/system-information/information-type/integrity-impact/link" class="toc4 name">link</h4>
-                                             <p class="type">assembly<br class="br" /> </p>
-                                             <p class="occurrence">[0 to ∞]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-ssp/system-information/information-types/integrity-impact/links">Switch to JSON</a></div>
-                                             <p class="formal-name">Link</p>
-                                          </div>
-                                          <div class="body">
-                                             <div class="remarks-group usa-prose">
-                                                <details open="open">
-                                                   <summary class="subhead">Remarks</summary>
-                                                   <div class="remarks">
-                                                      <p>To provide a cryptographic hash for a remote target resource, a local reference to
-                                                         a back matter <code>resource</code> is needed. The resource allows one or more hash values to be provided using the <code>rlink/hash</code> object.</p>
-                                                      <p>The OSCAL <code>link</code> is a roughly based on the HTML <a href="https://www.w3.org/TR/html401/struct/links.html#edef-LINK">link element</a>. </p>
-                                                   </div>
-                                                </details>
-                                             </div>
-                                             <p class="definition-link"><a href="#/assembly/oscal-metadata/link">See definition</a></p>
-                                          </div>
-                                       </div>
-                                       <div class="model-entry definition field">
-                                          <div class="instance-header">
-                                             <h4 id="/assembly/oscal-ssp/system-information/information-type/integrity-impact/base" class="toc4 name">base</h4>
-                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
-                                             <p class="occurrence">[1]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-ssp/system-information/information-types/integrity-impact/base">Switch to JSON</a></div>
-                                             <p class="formal-name">Base Level (Confidentiality, Integrity, or Availability)</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="definition-link"><a href="#/field/oscal-ssp/base">See definition</a></p>
-                                          </div>
-                                       </div>
-                                       <div class="model-entry definition field">
-                                          <div class="instance-header">
-                                             <h4 id="/assembly/oscal-ssp/system-information/information-type/integrity-impact/selected" class="toc4 name">selected</h4>
-                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
-                                             <p class="occurrence">[0 or 1]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-ssp/system-information/information-types/integrity-impact/selected">Switch to JSON</a></div>
-                                             <p class="formal-name">Selected Level (Confidentiality, Integrity, or Availability)</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="definition-link"><a href="#/field/oscal-ssp/selected">See definition</a></p>
-                                          </div>
-                                       </div>
-                                       <div class="model-entry definition field">
-                                          <div class="instance-header">
-                                             <h4 id="/assembly/oscal-ssp/system-information/information-type/integrity-impact/adjustment-justification" class="toc4 name">adjustment-justification</h4>
-                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                             <p class="occurrence">[0 or 1]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-ssp/system-information/information-types/integrity-impact/adjustment-justification">Switch to JSON</a></div>
-                                             <p class="formal-name">Adjustment Justification</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="definition-link"><a href="#/field/oscal-ssp/adjustment-justification">See definition</a></p>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </details>
+                                 <p><span class="usa-tag">use name</span> <code class="name">integrity-impact</code></p>
+                                 <p class="definition-link"><a href="#/assembly/oscal-ssp/impact">See definition</a></p>
                               </div>
                            </div>
-                           <div class="model-entry definition define-assembly">
+                           <div class="model-entry definition assembly">
                               <div class="instance-header">
                                  <h3 id="/assembly/oscal-ssp/system-information/information-type/availability-impact" class="toc3 name">availability-impact</h3>
                                  <p class="type">assembly<br class="br" /> </p>
-                                 <p class="occurrence">[1]</p>
+                                 <p class="occurrence">[0 or 1]</p>
                                  <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-ssp/system-information/information-types/availability-impact">Switch to JSON</a></div>
-                                 <p class="formal-name">Availability Impact Level</p>
+                                 <p class="formal-name">Impact Level</p>
                               </div>
                               <div class="body">
                                  <p class="description"><span class="usa-tag">description</span> The expected level of impact resulting from the disruption of access to or use of
                                     the described information or the information system.</p>
-                                 <details open="open">
-                                    <summary>Elements (5):</summary>
-                                    <div class="model assembly-model">
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h4 id="/assembly/oscal-ssp/system-information/information-type/availability-impact/prop" class="toc4 name">property</h4>
-                                             <p class="type">assembly<br class="br" /> </p>
-                                             <p class="occurrence">[0 to ∞]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-ssp/system-information/information-types/availability-impact/props">Switch to JSON</a></div>
-                                             <p class="formal-name">Property</p>
-                                          </div>
-                                          <div class="body">
-                                             <p><span class="usa-tag">use name</span> <code class="name">prop</code></p>
-                                             <div class="remarks-group usa-prose">
-                                                <details open="open">
-                                                   <summary class="subhead">Remarks</summary>
-                                                   <div class="remarks">
-                                                      <p>Properties permit the deployment and management of arbitrary controlled values, within
-                                                         OSCAL objects. A property can be included for any purpose useful to an application
-                                                         or implementation. Typically, properties will be used to sort, filter, select, order,
-                                                         and arrange OSCAL content objects, to relate OSCAL objects to one another, or to associate
-                                                         an OSCAL object to class hierarchies, taxonomies, or external authorities. Thus, the
-                                                         lexical composition of properties may be constrained by external processes to ensure
-                                                         consistency.</p>
-                                                      <p>Property allows for associated remarks that describe why the specific property value
-                                                         was applied to the containing object, or the significance of the value in the context
-                                                         of the containing object.</p>
-                                                   </div>
-                                                </details>
-                                             </div>
-                                             <p class="definition-link"><a href="#/assembly/oscal-metadata/property">See definition</a></p>
-                                          </div>
-                                       </div>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h4 id="/assembly/oscal-ssp/system-information/information-type/availability-impact/link" class="toc4 name">link</h4>
-                                             <p class="type">assembly<br class="br" /> </p>
-                                             <p class="occurrence">[0 to ∞]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-ssp/system-information/information-types/availability-impact/links">Switch to JSON</a></div>
-                                             <p class="formal-name">Link</p>
-                                          </div>
-                                          <div class="body">
-                                             <div class="remarks-group usa-prose">
-                                                <details open="open">
-                                                   <summary class="subhead">Remarks</summary>
-                                                   <div class="remarks">
-                                                      <p>To provide a cryptographic hash for a remote target resource, a local reference to
-                                                         a back matter <code>resource</code> is needed. The resource allows one or more hash values to be provided using the <code>rlink/hash</code> object.</p>
-                                                      <p>The OSCAL <code>link</code> is a roughly based on the HTML <a href="https://www.w3.org/TR/html401/struct/links.html#edef-LINK">link element</a>. </p>
-                                                   </div>
-                                                </details>
-                                             </div>
-                                             <p class="definition-link"><a href="#/assembly/oscal-metadata/link">See definition</a></p>
-                                          </div>
-                                       </div>
-                                       <div class="model-entry definition field">
-                                          <div class="instance-header">
-                                             <h4 id="/assembly/oscal-ssp/system-information/information-type/availability-impact/base" class="toc4 name">base</h4>
-                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
-                                             <p class="occurrence">[1]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-ssp/system-information/information-types/availability-impact/base">Switch to JSON</a></div>
-                                             <p class="formal-name">Base Level (Confidentiality, Integrity, or Availability)</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="definition-link"><a href="#/field/oscal-ssp/base">See definition</a></p>
-                                          </div>
-                                       </div>
-                                       <div class="model-entry definition field">
-                                          <div class="instance-header">
-                                             <h4 id="/assembly/oscal-ssp/system-information/information-type/availability-impact/selected" class="toc4 name">selected</h4>
-                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
-                                             <p class="occurrence">[0 or 1]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-ssp/system-information/information-types/availability-impact/selected">Switch to JSON</a></div>
-                                             <p class="formal-name">Selected Level (Confidentiality, Integrity, or Availability)</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="definition-link"><a href="#/field/oscal-ssp/selected">See definition</a></p>
-                                          </div>
-                                       </div>
-                                       <div class="model-entry definition field">
-                                          <div class="instance-header">
-                                             <h4 id="/assembly/oscal-ssp/system-information/information-type/availability-impact/adjustment-justification" class="toc4 name">adjustment-justification</h4>
-                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                             <p class="occurrence">[0 or 1]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-ssp/system-information/information-types/availability-impact/adjustment-justification">Switch to JSON</a></div>
-                                             <p class="formal-name">Adjustment Justification</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="definition-link"><a href="#/field/oscal-ssp/adjustment-justification">See definition</a></p>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </details>
+                                 <p><span class="usa-tag">use name</span> <code class="name">availability-impact</code></p>
+                                 <p class="definition-link"><a href="#/assembly/oscal-ssp/impact">See definition</a></p>
                               </div>
                            </div>
                         </div>

@@ -972,7 +972,7 @@ The following outline is a representation of the [JSON format](https://github.co
                                        <p><span class="OM-lit">], </span></p>
                                     </details>
                                     <details class="OM-entry">
-                                       <summary><a class="OM-name" href="../json-reference/#/system-security-plan/system-characteristics/system-information/information-types/confidentiality-impact">confidentiality-impact</a> <span class="OM-cardinality">[1]</span>: <span class="OM-lit">{<span class="show-closed"> … }, </span></span></summary>
+                                       <summary><a class="OM-name" href="../json-reference/#/system-security-plan/system-characteristics/system-information/information-types/confidentiality-impact">confidentiality-impact</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit">{<span class="show-closed"> … }, </span></span></summary>
                                        <div class="model-container object">
                                           <details class="OM-entry">
                                              <summary><span class="sq"><a class="OM-name" href="../json-reference/#/system-security-plan/system-characteristics/system-information/information-types/confidentiality-impact/props">props</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
@@ -1044,7 +1044,7 @@ The following outline is a representation of the [JSON format](https://github.co
                                        <p><span class="OM-lit"> }, </span></p>
                                     </details>
                                     <details class="OM-entry">
-                                       <summary><a class="OM-name" href="../json-reference/#/system-security-plan/system-characteristics/system-information/information-types/integrity-impact">integrity-impact</a> <span class="OM-cardinality">[1]</span>: <span class="OM-lit">{<span class="show-closed"> … }, </span></span></summary>
+                                       <summary><a class="OM-name" href="../json-reference/#/system-security-plan/system-characteristics/system-information/information-types/integrity-impact">integrity-impact</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit">{<span class="show-closed"> … }, </span></span></summary>
                                        <div class="model-container object">
                                           <details class="OM-entry">
                                              <summary><span class="sq"><a class="OM-name" href="../json-reference/#/system-security-plan/system-characteristics/system-information/information-types/integrity-impact/props">props</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
@@ -1116,7 +1116,7 @@ The following outline is a representation of the [JSON format](https://github.co
                                        <p><span class="OM-lit"> }, </span></p>
                                     </details>
                                     <details class="OM-entry">
-                                       <summary><a class="OM-name" href="../json-reference/#/system-security-plan/system-characteristics/system-information/information-types/availability-impact">availability-impact</a> <span class="OM-cardinality">[1]</span>: <span class="OM-lit">{<span class="show-closed"> … }, </span></span></summary>
+                                       <summary><a class="OM-name" href="../json-reference/#/system-security-plan/system-characteristics/system-information/information-types/availability-impact">availability-impact</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit">{<span class="show-closed"> … }, </span></span></summary>
                                        <div class="model-container object">
                                           <details class="OM-entry">
                                              <summary><span class="sq"><a class="OM-name" href="../json-reference/#/system-security-plan/system-characteristics/system-information/information-types/availability-impact/props">props</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
