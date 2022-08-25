@@ -1422,6 +1422,86 @@
          </xsl:for-each-group>
       </assembly>
    </xsl:template>
+   <xsl:template match="confidentiality-impact"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <assembly name="impact"
+                key="confidentiality-impact"
+                gi="confidentiality-impact">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">confidentiality-impact</xsl:attribute>
+         </xsl:if>
+         <xsl:for-each-group select="prop" group-by="true()">
+            <group in-json="ARRAY" key="props">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="link" group-by="true()">
+            <group in-json="ARRAY" key="links">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:apply-templates select="base"/>
+         <xsl:apply-templates select="selected"/>
+         <xsl:apply-templates select="adjustment-justification"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="integrity-impact"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <assembly name="impact" key="integrity-impact" gi="integrity-impact">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">integrity-impact</xsl:attribute>
+         </xsl:if>
+         <xsl:for-each-group select="prop" group-by="true()">
+            <group in-json="ARRAY" key="props">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="link" group-by="true()">
+            <group in-json="ARRAY" key="links">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:apply-templates select="base"/>
+         <xsl:apply-templates select="selected"/>
+         <xsl:apply-templates select="adjustment-justification"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="availability-impact"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <assembly name="impact" key="availability-impact" gi="availability-impact">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">availability-impact</xsl:attribute>
+         </xsl:if>
+         <xsl:for-each-group select="prop" group-by="true()">
+            <group in-json="ARRAY" key="props">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="link" group-by="true()">
+            <group in-json="ARRAY" key="links">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:apply-templates select="base"/>
+         <xsl:apply-templates select="selected"/>
+         <xsl:apply-templates select="adjustment-justification"/>
+      </assembly>
+   </xsl:template>
    <xsl:template match="security-impact-level"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
@@ -12387,35 +12467,6 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="system-security-plan/system-characteristics/system-information/information-type/confidentiality-impact"
-                 priority="7"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly name="confidentiality-impact"
-                key="confidentiality-impact"
-                gi="confidentiality-impact">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">confidentiality-impact</xsl:attribute>
-         </xsl:if>
-         <xsl:for-each-group select="prop" group-by="true()">
-            <group in-json="ARRAY" key="props">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:for-each-group select="link" group-by="true()">
-            <group in-json="ARRAY" key="links">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:apply-templates select="base"/>
-         <xsl:apply-templates select="selected"/>
-         <xsl:apply-templates select="adjustment-justification"/>
-      </assembly>
-   </xsl:template>
    <xsl:template match="system-security-plan/system-characteristics/system-information/information-type/confidentiality-impact/link/text"
                  priority="10"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -12492,35 +12543,6 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="system-security-plan/system-characteristics/system-information/information-type/integrity-impact"
-                 priority="7"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly name="integrity-impact"
-                key="integrity-impact"
-                gi="integrity-impact">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">integrity-impact</xsl:attribute>
-         </xsl:if>
-         <xsl:for-each-group select="prop" group-by="true()">
-            <group in-json="ARRAY" key="props">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:for-each-group select="link" group-by="true()">
-            <group in-json="ARRAY" key="links">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:apply-templates select="base"/>
-         <xsl:apply-templates select="selected"/>
-         <xsl:apply-templates select="adjustment-justification"/>
-      </assembly>
-   </xsl:template>
    <xsl:template match="system-security-plan/system-characteristics/system-information/information-type/integrity-impact/link/text"
                  priority="10"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -12596,35 +12618,6 @@
             </xsl:for-each-group>
          </value>
       </field>
-   </xsl:template>
-   <xsl:template match="system-security-plan/system-characteristics/system-information/information-type/availability-impact"
-                 priority="7"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly name="availability-impact"
-                key="availability-impact"
-                gi="availability-impact">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">availability-impact</xsl:attribute>
-         </xsl:if>
-         <xsl:for-each-group select="prop" group-by="true()">
-            <group in-json="ARRAY" key="props">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:for-each-group select="link" group-by="true()">
-            <group in-json="ARRAY" key="links">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:apply-templates select="base"/>
-         <xsl:apply-templates select="selected"/>
-         <xsl:apply-templates select="adjustment-justification"/>
-      </assembly>
    </xsl:template>
    <xsl:template match="system-security-plan/system-characteristics/system-information/information-type/availability-impact/link/text"
                  priority="10"

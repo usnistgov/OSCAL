@@ -726,6 +726,50 @@
          <xsl:apply-templates select="*[@key='information-types']"/>
       </assembly>
    </xsl:template>
+   <xsl:template match="j:map[@key='confidentiality-impact']">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="confidentiality-impact" -->
+      <assembly name="impact"
+                key="confidentiality-impact"
+                gi="confidentiality-impact">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">confidentiality-impact</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="*[@key='props']"/>
+         <xsl:apply-templates select="*[@key='links']"/>
+         <xsl:apply-templates select="*[@key='base']"/>
+         <xsl:apply-templates select="*[@key='selected']"/>
+         <xsl:apply-templates select="*[@key='adjustment-justification']"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="j:map[@key='integrity-impact']">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="integrity-impact" -->
+      <assembly name="impact" key="integrity-impact" gi="integrity-impact">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">integrity-impact</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="*[@key='props']"/>
+         <xsl:apply-templates select="*[@key='links']"/>
+         <xsl:apply-templates select="*[@key='base']"/>
+         <xsl:apply-templates select="*[@key='selected']"/>
+         <xsl:apply-templates select="*[@key='adjustment-justification']"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="j:map[@key='availability-impact']">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="availability-impact" -->
+      <assembly name="impact" key="availability-impact" gi="availability-impact">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">availability-impact</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="*[@key='props']"/>
+         <xsl:apply-templates select="*[@key='links']"/>
+         <xsl:apply-templates select="*[@key='base']"/>
+         <xsl:apply-templates select="*[@key='selected']"/>
+         <xsl:apply-templates select="*[@key='adjustment-justification']"/>
+      </assembly>
+   </xsl:template>
    <xsl:template match="j:map[@key='security-impact-level']">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="security-impact-level" -->
@@ -12653,23 +12697,6 @@
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='system-characteristics']/j:map[@key='system-information']/j:array[@key='information-types']/j:map/j:map[@key='confidentiality-impact']"
-                 priority="7">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="system-security-plan/system-characteristics/system-information/information-type/confidentiality-impact" -->
-      <assembly name="confidentiality-impact"
-                key="confidentiality-impact"
-                gi="confidentiality-impact">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">confidentiality-impact</xsl:attribute>
-         </xsl:if>
-         <xsl:apply-templates select="*[@key='props']"/>
-         <xsl:apply-templates select="*[@key='links']"/>
-         <xsl:apply-templates select="*[@key='base']"/>
-         <xsl:apply-templates select="*[@key='selected']"/>
-         <xsl:apply-templates select="*[@key='adjustment-justification']"/>
-      </assembly>
-   </xsl:template>
    <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='system-characteristics']/j:map[@key='system-information']/j:array[@key='information-types']/j:map/j:map[@key='confidentiality-impact']/j:array[@key='links']/j:map/j:string[@key='text']"
                  priority="10">
       <xsl:param name="with-key" select="true()"/>
@@ -12763,23 +12790,6 @@
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='system-characteristics']/j:map[@key='system-information']/j:array[@key='information-types']/j:map/j:map[@key='integrity-impact']"
-                 priority="7">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="system-security-plan/system-characteristics/system-information/information-type/integrity-impact" -->
-      <assembly name="integrity-impact"
-                key="integrity-impact"
-                gi="integrity-impact">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">integrity-impact</xsl:attribute>
-         </xsl:if>
-         <xsl:apply-templates select="*[@key='props']"/>
-         <xsl:apply-templates select="*[@key='links']"/>
-         <xsl:apply-templates select="*[@key='base']"/>
-         <xsl:apply-templates select="*[@key='selected']"/>
-         <xsl:apply-templates select="*[@key='adjustment-justification']"/>
-      </assembly>
-   </xsl:template>
    <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='system-characteristics']/j:map[@key='system-information']/j:array[@key='information-types']/j:map/j:map[@key='integrity-impact']/j:array[@key='links']/j:map/j:string[@key='text']"
                  priority="10">
       <xsl:param name="with-key" select="true()"/>
@@ -12872,23 +12882,6 @@
       <value as-type="markup-multiline" in-json="string">
          <xsl:value-of select="."/>
       </value>
-   </xsl:template>
-   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='system-characteristics']/j:map[@key='system-information']/j:array[@key='information-types']/j:map/j:map[@key='availability-impact']"
-                 priority="7">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="system-security-plan/system-characteristics/system-information/information-type/availability-impact" -->
-      <assembly name="availability-impact"
-                key="availability-impact"
-                gi="availability-impact">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">availability-impact</xsl:attribute>
-         </xsl:if>
-         <xsl:apply-templates select="*[@key='props']"/>
-         <xsl:apply-templates select="*[@key='links']"/>
-         <xsl:apply-templates select="*[@key='base']"/>
-         <xsl:apply-templates select="*[@key='selected']"/>
-         <xsl:apply-templates select="*[@key='adjustment-justification']"/>
-      </assembly>
    </xsl:template>
    <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='system-characteristics']/j:map[@key='system-information']/j:array[@key='information-types']/j:map/j:map[@key='availability-impact']/j:array[@key='links']/j:map/j:string[@key='text']"
                  priority="10">
