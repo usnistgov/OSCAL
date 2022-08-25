@@ -237,12 +237,18 @@
             <group-as name="links" in-json="ARRAY"/>
           </assembly>
           <assembly ref="impact">
+            <formal-name>Confidentiality Impact Level</formal-name>
+            <description>The expected level of impact resulting from the unauthorized disclosure of the described information.</description>
             <use-name>confidentiality-impact</use-name>
           </assembly>
           <assembly ref="impact">
+            <formal-name>Integrity Impact Level</formal-name>
+            <description>The expected level of impact resulting from the unauthorized modification of the described information.</description>
             <use-name>integrity-impact</use-name>
           </assembly>
           <assembly ref="impact">
+            <formal-name>Availability Impact Level</formal-name>
+            <description>The expected level of impact resulting from the disruption of access to or use of the described information or the information system.</description>
             <use-name>availability-impact</use-name>
           </assembly>
         </model>
