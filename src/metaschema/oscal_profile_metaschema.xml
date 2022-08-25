@@ -80,6 +80,8 @@
                         <formal-name>Mapping</formal-name>
                         <description>Maps objects to new ID values</description>
                         <model>
+                              <field ref="with-prefix"/>
+                              <field ref="with-suffix"/>
                               <assembly ref="id-reassignment-context">
                                     <formal-name>Role Identifier Reassignment Entry</formal-name>
                                     <description>A set of rules for reassigning role identifiers.</description>
@@ -108,6 +110,12 @@
                         </model>
                         <remarks>
                               <p>Contains an object-type set of identifier reassignment rules to be applied to related objects as an import is processed.</p>
+                              <p>During reassignment, all imported role, control, group, parameter, and part identifiers are handled as follows:</p>
+                              <ol>
+                                    <li>Identifiers are first reassigned using the <code>role</code>, <code>control</code>, <code>group</code>, <code>parameter</code>, and <code>part</code> directives matching the identifier's object type. This will determine the effective value of a given identifier. If a directive is not provided for a given object type, then the effective value is the original identifier value.</li>
+                                    <li>If a <code>with-prefix</code> is defined, the value will be added to the beginning of the effective identifier value.</li>
+                                    <li>If a <code>with-suffix</code> is defined, the value will be added to the end of the effective identifier value.</li>
+                              </ol>
                         </remarks>
                   </define-assembly>
             </model>
@@ -122,10 +130,24 @@
             </example>
       </define-assembly>
       
+      <!-- CHANGED: Addded Prefix Suffix Support for ID Reassignment -->
+
+      <define-field name="with-prefix" as-type="token" scope="local">
+            <formal-name>Identifier Reassignment Prefix</formal-name>
+            <description>Adds the defined value to the beginning of the reassigned identifier.</description>
+      </define-field>
+
+      <define-field name="with-suffix" as-type="token" scope="local">
+            <formal-name>Identifier Reassignment Suffix</formal-name>
+            <description>Concatenates the defined value on the end of the reassigned identifier.</description>
+      </define-field>
+
       <define-assembly name="id-reassignment-context" scope="local">
             <formal-name>Identifier Reassignment Context</formal-name>
             <description>A set of rules for reassigning identifier for a specific type of object.</description>
             <model>
+                  <field ref="with-prefix"/>
+                  <field ref="with-suffix"/>
                   <define-assembly name="reassignment" max-occurs="unbounded">
                         <formal-name>Identifier Reassignment</formal-name>
                         <description>A specific rule to reassign the identifier for an object matching the `from` to the new identifier indicated by to the `to`.</description>
@@ -140,6 +162,14 @@
                         </define-flag>
                   </define-assembly>
             </model>
+            <remarks>
+                  <p>During reassignment, for each identifier matching a given object type:</p>
+                  <ol>
+                        <li>Identifiers are first reassigned using the <code>from</code> and <code>to</code> tokens. An identifier that matches the <code>from</code> will be reassigned to the <code>to</code> value to establish the identifier's effective value. If a <code>from</code> does not match, the identifier's effective value is the original identifier value.</li>
+                        <li>If a <code>with-prefix</code> is defined, the value will be added to the beginning of the effective identifier.</li>
+                        <li>If a <code>with-suffix</code> is defined, the value will be added to the end of the effective identifier.</li>
+                  </ol>
+            </remarks>
       </define-assembly>
 
       <define-assembly name="merge">
