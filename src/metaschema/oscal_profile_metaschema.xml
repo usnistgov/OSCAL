@@ -116,6 +116,8 @@
                                     <li>If a <code>with-prefix</code> is defined, the value will be added to the beginning of the effective identifier value.</li>
                                     <li>If a <code>with-suffix</code> is defined, the value will be added to the end of the effective identifier value.</li>
                               </ol>
+
+                              <p>For example, if identifier <code>ID.1</code> will be imported, and prefix <code>PreA-</code> will be added, along with a value of <code>-SufA</code>, the result will be <code>PreA-ID.1-SufA</code>.</p>
                         </remarks>
                   </define-assembly>
             </model>
@@ -130,7 +132,7 @@
             </example>
       </define-assembly>
       
-      <!-- CHANGED: Addded Prefix Suffix Support for ID Reassignment -->
+      <!-- CHANGED: Added Prefix Suffix Support for ID Reassignment -->
 
       <define-field name="with-prefix" as-type="token" scope="local">
             <formal-name>Identifier Reassignment Prefix</formal-name>
@@ -169,6 +171,10 @@
                         <li>If a <code>with-prefix</code> is defined, the value will be added to the beginning of the effective identifier.</li>
                         <li>If a <code>with-suffix</code> is defined, the value will be added to the end of the effective identifier.</li>
                   </ol>
+
+                  <p>For example, if the effective identifier <code>PreA-ID.1-SufA</code> will be prefixed with <code>PreB-</code>, along with a suffix value of <code>-SufB</code>, the result will be <code>PreB-PreA-ID.1-SufA-SufB</code>.</p>
+
+                  <p>As another example, if the <code>from</code> identifier <code>ID.1</code> will be reassigned <code>to</code> identifier <code>TO.ID.1</code>, and prefix <code>PreB-</code> will be added, along with a value of <code>-SufB</code>, the result will be <code>PreB-PreA-TO.ID.1-SufA-SufB</code>.</p>
             </remarks>
       </define-assembly>
 
