@@ -186,86 +186,42 @@
                   "items" : 
                   { "$ref" : "#assembly_oscal-metadata_link" } },
                 "confidentiality-impact" : 
-                { "title" : "Confidentiality Impact Level",
-                  "description" : "The expected level of impact resulting from the unauthorized disclosure of the described information.",
-                  "type" : "object",
-                  "properties" : 
-                  { "props" : 
-                    { "type" : "array",
-                      "minItems" : 1,
-                      "items" : 
-                      { "$ref" : "#assembly_oscal-metadata_property" } },
-                    "links" : 
-                    { "type" : "array",
-                      "minItems" : 1,
-                      "items" : 
-                      { "$ref" : "#assembly_oscal-metadata_link" } },
-                    "base" : 
-                    { "$ref" : "#field_oscal-ssp_base" },
-                    "selected" : 
-                    { "$ref" : "#field_oscal-ssp_selected" },
-                    "adjustment-justification" : 
-                    { "$ref" : "#field_oscal-ssp_adjustment-justification" } },
-                  "required" : 
-                  [ "base" ],
-                  "additionalProperties" : false },
+                { "$ref" : "#assembly_oscal-ssp_impact" },
                 "integrity-impact" : 
-                { "title" : "Integrity Impact Level",
-                  "description" : "The expected level of impact resulting from the unauthorized modification of the described information.",
-                  "type" : "object",
-                  "properties" : 
-                  { "props" : 
-                    { "type" : "array",
-                      "minItems" : 1,
-                      "items" : 
-                      { "$ref" : "#assembly_oscal-metadata_property" } },
-                    "links" : 
-                    { "type" : "array",
-                      "minItems" : 1,
-                      "items" : 
-                      { "$ref" : "#assembly_oscal-metadata_link" } },
-                    "base" : 
-                    { "$ref" : "#field_oscal-ssp_base" },
-                    "selected" : 
-                    { "$ref" : "#field_oscal-ssp_selected" },
-                    "adjustment-justification" : 
-                    { "$ref" : "#field_oscal-ssp_adjustment-justification" } },
-                  "required" : 
-                  [ "base" ],
-                  "additionalProperties" : false },
+                { "$ref" : "#assembly_oscal-ssp_impact" },
                 "availability-impact" : 
-                { "title" : "Availability Impact Level",
-                  "description" : "The expected level of impact resulting from the disruption of access to or use of the described information or the information system.",
-                  "type" : "object",
-                  "properties" : 
-                  { "props" : 
-                    { "type" : "array",
-                      "minItems" : 1,
-                      "items" : 
-                      { "$ref" : "#assembly_oscal-metadata_property" } },
-                    "links" : 
-                    { "type" : "array",
-                      "minItems" : 1,
-                      "items" : 
-                      { "$ref" : "#assembly_oscal-metadata_link" } },
-                    "base" : 
-                    { "$ref" : "#field_oscal-ssp_base" },
-                    "selected" : 
-                    { "$ref" : "#field_oscal-ssp_selected" },
-                    "adjustment-justification" : 
-                    { "$ref" : "#field_oscal-ssp_adjustment-justification" } },
-                  "required" : 
-                  [ "base" ],
-                  "additionalProperties" : false } },
+                { "$ref" : "#assembly_oscal-ssp_impact" } },
               "required" : 
               [ "title",
-                "description",
-                "confidentiality-impact",
-                "integrity-impact",
-                "availability-impact" ],
+                "description" ],
               "additionalProperties" : false } } },
         "required" : 
         [ "information-types" ],
+        "additionalProperties" : false },
+      "oscal-ssp-oscal-ssp:impact" : 
+      { "title" : "Impact Level",
+        "description" : "The expected level of impact resulting from the described information.",
+        "$id" : "#assembly_oscal-ssp_impact",
+        "type" : "object",
+        "properties" : 
+        { "props" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#assembly_oscal-metadata_property" } },
+          "links" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#assembly_oscal-metadata_link" } },
+          "base" : 
+          { "$ref" : "#field_oscal-ssp_base" },
+          "selected" : 
+          { "$ref" : "#field_oscal-ssp_selected" },
+          "adjustment-justification" : 
+          { "$ref" : "#field_oscal-ssp_adjustment-justification" } },
+        "required" : 
+        [ "base" ],
         "additionalProperties" : false },
       "oscal-ssp-oscal-ssp:base" : 
       { "title" : "Base Level (Confidentiality, Integrity, or Availability)",

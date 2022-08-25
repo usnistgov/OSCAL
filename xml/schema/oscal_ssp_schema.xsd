@@ -328,135 +328,18 @@
                               type="oscal-metadata-link-ASSEMBLY"
                               minOccurs="0"
                               maxOccurs="unbounded"/>
-                  <xs:element name="confidentiality-impact" minOccurs="1" maxOccurs="1">
-                     <xs:complexType>
-                        <xs:annotation>
-                           <xs:appinfo>
-                              <m:formal-name>Confidentiality Impact Level</m:formal-name>
-                              <m:description>The expected level of impact resulting from the unauthorized disclosure of the described information.</m:description>
-                           </xs:appinfo>
-                           <xs:documentation>
-                              <b>Confidentiality Impact Level</b>: The expected level of impact resulting from the unauthorized disclosure of the described information.</xs:documentation>
-                        </xs:annotation>
-                        <xs:sequence>
-                           <xs:element name="prop"
-                                       type="oscal-metadata-property-ASSEMBLY"
-                                       minOccurs="0"
-                                       maxOccurs="unbounded"/>
-                           <xs:element name="link"
-                                       type="oscal-metadata-link-ASSEMBLY"
-                                       minOccurs="0"
-                                       maxOccurs="unbounded"/>
-                           <xs:element name="base"
-                                       type="oscal-ssp-base-FIELD"
-                                       minOccurs="1"
-                                       maxOccurs="1"/>
-                           <xs:element name="selected"
-                                       type="oscal-ssp-selected-FIELD"
-                                       minOccurs="0"
-                                       maxOccurs="1"/>
-                           <xs:element name="adjustment-justification" minOccurs="0" maxOccurs="1">
-                              <xs:annotation>
-                                 <xs:appinfo>
-                                    <m:formal-name>Adjustment Justification</m:formal-name>
-                                    <m:description>If the selected security level is different from the base security level, this contains the justification for the change.</m:description>
-                                 </xs:appinfo>
-                                 <xs:documentation>
-                                    <b>Adjustment Justification</b>: If the selected security level is different from the base security level, this contains the justification for the change.</xs:documentation>
-                              </xs:annotation>
-                              <xs:complexType>
-                                 <xs:group ref="blockElementGroup" maxOccurs="unbounded" minOccurs="0"/>
-                              </xs:complexType>
-                           </xs:element>
-                        </xs:sequence>
-                     </xs:complexType>
-                  </xs:element>
-                  <xs:element name="integrity-impact" minOccurs="1" maxOccurs="1">
-                     <xs:complexType>
-                        <xs:annotation>
-                           <xs:appinfo>
-                              <m:formal-name>Integrity Impact Level</m:formal-name>
-                              <m:description>The expected level of impact resulting from the unauthorized modification of the described information.</m:description>
-                           </xs:appinfo>
-                           <xs:documentation>
-                              <b>Integrity Impact Level</b>: The expected level of impact resulting from the unauthorized modification of the described information.</xs:documentation>
-                        </xs:annotation>
-                        <xs:sequence>
-                           <xs:element name="prop"
-                                       type="oscal-metadata-property-ASSEMBLY"
-                                       minOccurs="0"
-                                       maxOccurs="unbounded"/>
-                           <xs:element name="link"
-                                       type="oscal-metadata-link-ASSEMBLY"
-                                       minOccurs="0"
-                                       maxOccurs="unbounded"/>
-                           <xs:element name="base"
-                                       type="oscal-ssp-base-FIELD"
-                                       minOccurs="1"
-                                       maxOccurs="1"/>
-                           <xs:element name="selected"
-                                       type="oscal-ssp-selected-FIELD"
-                                       minOccurs="0"
-                                       maxOccurs="1"/>
-                           <xs:element name="adjustment-justification" minOccurs="0" maxOccurs="1">
-                              <xs:annotation>
-                                 <xs:appinfo>
-                                    <m:formal-name>Adjustment Justification</m:formal-name>
-                                    <m:description>If the selected security level is different from the base security level, this contains the justification for the change.</m:description>
-                                 </xs:appinfo>
-                                 <xs:documentation>
-                                    <b>Adjustment Justification</b>: If the selected security level is different from the base security level, this contains the justification for the change.</xs:documentation>
-                              </xs:annotation>
-                              <xs:complexType>
-                                 <xs:group ref="blockElementGroup" maxOccurs="unbounded" minOccurs="0"/>
-                              </xs:complexType>
-                           </xs:element>
-                        </xs:sequence>
-                     </xs:complexType>
-                  </xs:element>
-                  <xs:element name="availability-impact" minOccurs="1" maxOccurs="1">
-                     <xs:complexType>
-                        <xs:annotation>
-                           <xs:appinfo>
-                              <m:formal-name>Availability Impact Level</m:formal-name>
-                              <m:description>The expected level of impact resulting from the disruption of access to or use of the described information or the information system.</m:description>
-                           </xs:appinfo>
-                           <xs:documentation>
-                              <b>Availability Impact Level</b>: The expected level of impact resulting from the disruption of access to or use of the described information or the information system.</xs:documentation>
-                        </xs:annotation>
-                        <xs:sequence>
-                           <xs:element name="prop"
-                                       type="oscal-metadata-property-ASSEMBLY"
-                                       minOccurs="0"
-                                       maxOccurs="unbounded"/>
-                           <xs:element name="link"
-                                       type="oscal-metadata-link-ASSEMBLY"
-                                       minOccurs="0"
-                                       maxOccurs="unbounded"/>
-                           <xs:element name="base"
-                                       type="oscal-ssp-base-FIELD"
-                                       minOccurs="1"
-                                       maxOccurs="1"/>
-                           <xs:element name="selected"
-                                       type="oscal-ssp-selected-FIELD"
-                                       minOccurs="0"
-                                       maxOccurs="1"/>
-                           <xs:element name="adjustment-justification" minOccurs="0" maxOccurs="1">
-                              <xs:annotation>
-                                 <xs:appinfo>
-                                    <m:formal-name>Adjustment Justification</m:formal-name>
-                                    <m:description>If the selected security level is different from the base security level, this contains the justification for the change.</m:description>
-                                 </xs:appinfo>
-                                 <xs:documentation>
-                                    <b>Adjustment Justification</b>: If the selected security level is different from the base security level, this contains the justification for the change.</xs:documentation>
-                              </xs:annotation>
-                              <xs:complexType>
-                                 <xs:group ref="blockElementGroup" maxOccurs="unbounded" minOccurs="0"/>
-                              </xs:complexType>
-                           </xs:element>
-                        </xs:sequence>
-                     </xs:complexType>
-                  </xs:element>
+                  <xs:element name="confidentiality-impact"
+                              type="oscal-ssp-impact-ASSEMBLY"
+                              minOccurs="0"
+                              maxOccurs="1"/>
+                  <xs:element name="integrity-impact"
+                              type="oscal-ssp-impact-ASSEMBLY"
+                              minOccurs="0"
+                              maxOccurs="1"/>
+                  <xs:element name="availability-impact"
+                              type="oscal-ssp-impact-ASSEMBLY"
+                              minOccurs="0"
+                              maxOccurs="1"/>
                </xs:sequence>
                <xs:attribute name="uuid" type="UUIDDatatype">
                   <xs:annotation>
@@ -468,6 +351,47 @@
                         <b>Information Type Universally Unique Identifier</b>: A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this information type elsewhere in this or other OSCAL instances. The locally defined UUID of the information type can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.</xs:documentation>
                   </xs:annotation>
                </xs:attribute>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="oscal-ssp-impact-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Impact Level</m:formal-name>
+            <m:description>The expected level of impact resulting from the described information.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Impact Level</b>: The expected level of impact resulting from the described information.</xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="prop"
+                     type="oscal-metadata-property-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="link"
+                     type="oscal-metadata-link-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="base"
+                     type="oscal-ssp-base-FIELD"
+                     minOccurs="1"
+                     maxOccurs="1"/>
+         <xs:element name="selected"
+                     type="oscal-ssp-selected-FIELD"
+                     minOccurs="0"
+                     maxOccurs="1"/>
+         <xs:element name="adjustment-justification" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Adjustment Justification</m:formal-name>
+                  <m:description>If the selected security level is different from the base security level, this contains the justification for the change.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Adjustment Justification</b>: If the selected security level is different from the base security level, this contains the justification for the change.</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+               <xs:group ref="blockElementGroup" maxOccurs="unbounded" minOccurs="0"/>
             </xs:complexType>
          </xs:element>
       </xs:sequence>
