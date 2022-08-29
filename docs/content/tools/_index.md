@@ -50,7 +50,7 @@ Details on acquiring and running the converters:
 
 - converting *into* JSON - [XML to JSON](https://github.com/usnistgov/OSCAL/tree/main/json)
 - converting *into* XML - [JSON to XML](https://github.com/usnistgov/OSCAL/tree/main/xml)
- 
+
 ## OSCAL Application Frameworks, Tools and Libraries
 
 Valid OSCAL is open-ended in application. Some of the tools described provide validation and conversion, while others do not, presuming that inputs are already valid.
@@ -68,6 +68,7 @@ Valid OSCAL is open-ended in application. Some of the tools described provide va
 | [OSCAL React Component Library](https://github.com/EasyDynamics/oscal-react-library) | Easy Dynamics | A library of reusable React components and an [example user interface application](https://oscal-viewer.msd.easydynamics.com/catalog) that provides a direct UI into OSCAL. | open source |
 | [OSCAL REST API](https://github.com/EasyDynamics/oscal-rest) |  Easy Dynamics | An initial OpenAPI definition of an OSCAL REST API that describes how systems might manipulate catalogs, profiles, components, and SSPs. | open source |
 | [OSCAL REST Service](https://github.com/EasyDynamics/oscal-rest-service) |  Easy Dynamics | Initial implementation of some the [OSCAL REST API](https://github.com/EasyDynamics/oscal-rest) which persists data as files in local directories. | open source |
+| [Ramper](https://ramper.io/) | Ramper is a FedRAMP Lifecycle Automation tool with centralized, consolidated, and managed processes to manage and maintain Plan of Action and Milestones, Deviation Requests, and related documentation and artifacts. In addition, Ramper's implementation of OSCAL enables Cloud Service Providers to create their continuous monitoring package using OSCAL v1.0.0 easily. Additional information is available at [ramper.io](https://ramper.io/) | Commercial License |
 | [RegScale (formerly Atlasity)](https://regscale.com) | RegScale (spun out of C2 Labs)  | RegScale Community Edition is a free to use, API-centric real-time Governance, Risk and Compliance (GRC) platform that deploys in any environment, shifting left compliance by integrating with security and compliance tools via API to keep compliance documentation continuously up to date. GRC staff can work in the UI, engineers can write scripts to feed the API, and both human- and machine-readable (OSCAL - all layers supported) content is automatically generated on demand, achieving a continuous Authority to Operate (cATO). Additional information can be found here: [RegScale Delivers Free Platform to Create OSCAL Content](https://regscale.com/oscal). | [license](https://qa-ce.regscale.com/assets/eula-ce.pdf) |
 | [Xacta 360](https://www.telos.com/offerings/xacta-360-continuous-compliance-assessment/) | Telos | Xacta 360 is a cyber risk management and compliance analytics platform that enables users to create and submit FedRAMP system security plans (SSPs) in OSCAL format. Future OSCAL capabilities are forthcoming as the standard evolves. | [license](https://cdn.telos.com/wp-content/uploads/2021/06/22150746/Xacta-360-EULA-US.pdf) |
 | [XML Jelly Sandwich](https://github.com/wendellpiez/XMLjellysandwich) | Wendell Piez (NIST) | Interactive XSLT in the browser includes [OSCAL demonstrations](https://wendellpiez.github.io/XMLjellysandwich/oscal/). | open source |
