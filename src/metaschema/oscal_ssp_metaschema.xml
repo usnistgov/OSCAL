@@ -24,6 +24,7 @@
 
   <import href="oscal_metadata_metaschema.xml"/>
   <import href="oscal_implementation-common_metaschema.xml"/>
+  <import href="oscal_rules-common_metaschema.xml"/>
 
   <!-- ############################################## -->
   <!-- # The SSP Assembly and supporting constructs # -->
@@ -566,6 +567,19 @@
         <use-name>user</use-name>
         <group-as name="users" in-json="ARRAY"/>
       </assembly>
+
+      <assembly ref="rule-definition" max-occurs="unbounded">
+        <use-name>rule</use-name>
+        <group-as name="rules" in-json="ARRAY"/>
+      </assembly>
+      <assembly ref="test-definition" max-occurs="unbounded">
+        <use-name>test</use-name>
+        <group-as name="tests" in-json="ARRAY"/>
+      </assembly>
+      <assembly ref="testing-scenario" max-occurs="unbounded">
+        <group-as name="testing-scenarios" in-json="ARRAY"/>
+      </assembly>
+
       <assembly ref="system-component" min-occurs="1" max-occurs="unbounded">
         <use-name>component</use-name>
         <group-as name="components" in-json="ARRAY"/>
