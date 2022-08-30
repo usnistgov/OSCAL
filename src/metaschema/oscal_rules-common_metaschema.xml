@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<METASCHEMA xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" abstract="yes">
+    <schema-name>OSCAL Rules -- Common Modules</schema-name>
+    <schema-version>1.2.0</schema-version>
+    <short-name>oscal-rules-common</short-name>
+    <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
+    <json-base-uri>http://csrc.nist.gov/ns/oscal</json-base-uri>
+    <remarks>
+        <p>TODO</p>
+    </remarks>
+    <import href="oscal_metadata_metaschema.xml"/>
+    <define-assembly name="rule-definition">
+        <formal-name>Rule Definition</formal-name>
+        <description>TODO</description>
+        <define-flag name="uuid" required="yes" as-type="uuid">
+            <formal-name>Rule Definition Universally Unique Identifier</formal-name>
+            <description>TODO</description>
+        </define-flag>
+        <model>
+            <define-field name="title" as-type="markup-line" min-occurs="1">
+                <formal-name>Rule Title</formal-name>
+                <description>A name given to the rule, which may be used by a tool for display and navigation.</description>
+            </define-field>
+            <define-field name="description" as-type="markup-multiline" min-occurs="1" in-xml="WITH_WRAPPER">
+                <formal-name>Rule Description</formal-name>
+                <description>A summary of the rule, including the requirement(s) to be met when evaluating the rule against a target that the rule applies to.</description>
+            </define-field>
+            <assembly ref="property" max-occurs="unbounded">
+                <group-as name="props" in-json="ARRAY"/>
+            </assembly>
+            <assembly ref="link" max-occurs="unbounded">
+                <group-as name="links" in-json="ARRAY"/>
+            </assembly>
+            <field ref="remarks"/>
+        </model>
+        <constraint>
+            <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+              <enum value="version">A string that identifies the revision of the rule.</enum>
+            </allowed-values>
+            <allowed-values target="link/@rel">
+                <enum value="source">A pointer to the resource that this rule is derived from.</enum>
+            </allowed-values>
+        </constraint>
+    </define-assembly>
+    <define-field name="rule-uuid" as-type="uuid" scope="local">
+        <formal-name>Rule Universally Unique Identifier Reference</formal-name>
+        <description>A rule UUID reference</description>
+    </define-field>
+
+    <define-assembly name="test-definition">
+        <formal-name>Test Definition</formal-name>
+        <description>TODO</description>
+        <define-flag name="uuid" required="yes" as-type="uuid">
+            <formal-name>Test Definition Universally Unique Identifier</formal-name>
+            <description>TODO</description>
+        </define-flag>
+        <model>
+            <define-field name="title" as-type="markup-line" min-occurs="0" max-occurs="1">
+                <formal-name>Test Title</formal-name>
+                <description>A name given to the test, which may be used by a tool for display and navigation.</description>
+            </define-field>
+            <define-field name="description" as-type="markup-multiline" in-xml="WITH_WRAPPER">
+                <formal-name>Test Description</formal-name>
+                <description>A summary of the test, including implementation details of how its use examines an aspect or trait of a system.</description>
+            </define-field>
+            <assembly ref="property" max-occurs="unbounded">
+                <group-as name="props" in-json="ARRAY"/>
+            </assembly>
+            <assembly ref="link" max-occurs="unbounded">
+                <group-as name="links" in-json="ARRAY"/>
+            </assembly>
+            <!-- TODO: address activities and actions -->
+            <field ref="remarks"/>
+        </model>
+        <constraint>
+            <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+              <enum value="version">A string that identifies the revision of the test.</enum>
+            </allowed-values>
+            <allowed-values target="link/@rel">
+                <enum value="source">A pointer to the resource that this test is derived from.</enum>
+            </allowed-values>
+        </constraint>
+    </define-assembly>
+    <define-assembly name="testing-scenario">
+        <formal-name>Rule Testing Scenario</formal-name>
+        <description>A rule testing scenario</description>
+        <define-flag name="uuid" required="yes" as-type="uuid">
+            <formal-name>Testing Scenario Universally Unique Identifier</formal-name>
+            <description>TODO</description>
+        </define-flag>
+        <define-flag name="rule-uuid" required="yes" as-type="uuid">
+            <formal-name>Testing Scenario Rule Universally Unique Identifier Reference</formal-name>
+            <description>TODO</description>
+        </define-flag>
+        <model>
+            <assembly ref="property" max-occurs="unbounded">
+                <group-as name="props" in-json="ARRAY"/>
+            </assembly>
+            <assembly ref="link" max-occurs="unbounded">
+                <group-as name="links" in-json="ARRAY"/>
+            </assembly>
+            <choice>
+                <assembly ref="rule-condition" min-occurs="1">
+                    <use-name>condition</use-name>
+                </assembly>
+                <assembly ref="test-reference" min-occurs="1"/>
+            </choice>
+            <field ref="remarks"/>
+        </model>
+    </define-assembly>
+    <define-assembly name="test-reference">
+        <formal-name>Test Reference</formal-name>
+        <description>TODO</description>
+        <!-- TODO: Consider if we need a specific uuid per test-reference for each ref in final impl. 
+            <define-flag name="uuid" required="yes" as-type="uuid">
+                <formal-name>Test Reference Universally Unique Identifier</formal-name>
+                <description>TODO</description>
+            </define-flag>
+        -->
+        <define-flag name="test-uuid" required="yes" as-type="uuid">
+            <formal-name>Test Universally Unique Identifier Reference</formal-name>
+            <description>A test UUID reference</description>
+        </define-flag>
+    </define-assembly>
+    <define-assembly name="rule-condition">
+        <formal-name>Rule Condition</formal-name>
+        <description>A rule implementation condition</description>
+        <define-flag name="negate" required="no" as-type="boolean" default="false">
+            <formal-name>Rule Condition Negation Flag</formal-name>
+            <description>TODO</description>
+            <remarks>
+                <h1>Negate Truth Table</h1>
+                <p>true -> false, false -> true, error -> error, not-applicable -> not-applicable</p>
+            </remarks>
+        </define-flag>
+        <define-flag name="operator" required="yes" as-type="token" default="and">
+            <formal-name>Rule Condition Operator</formal-name>
+            <description>TODO</description>
+            <constraint>
+                <allowed-values allow-other="no">
+                    <enum value="and">and</enum>
+                    <enum value="or">or</enum>
+                </allowed-values>
+            </constraint>
+            <remarks>
+                <h1>Operator Truth Table</h1>
+                <p>What is eager evaluation and why does it matter?</p>
+                <p>How do prerequisites work in the processing of condition operators and precedence.</p>
+            </remarks>
+        </define-flag>
+        <model>
+            <assembly ref="property" max-occurs="unbounded">
+                <group-as name="props" in-json="ARRAY"/>
+            </assembly>
+            <assembly ref="link" max-occurs="unbounded">
+                <group-as name="links" in-json="ARRAY"/>
+            </assembly>
+            <assembly ref="rule-condition">
+                <use-name>prerequisite</use-name>
+            </assembly>
+            <choice>
+                <!-- TODO: consider making this a multi-choice if that feature is implemented. -->
+                <assembly ref="rule-condition" min-occurs="1" max-occurs="unbounded">
+                    <use-name>condition</use-name>
+                    <group-as name="rule-conditions" in-json="ARRAY"/>
+                </assembly>
+                <assembly ref="test-reference" min-occurs="1" max-occurs="unbounded">
+                    <group-as name="test-references" in-json="ARRAY"/>
+                </assembly>
+                <assembly ref="testing-scenario-reference" min-occurs="1" max-occurs="unbounded">
+                    <group-as name="testing-scenario-references" in-json="ARRAY"/>
+                </assembly>
+            </choice>
+            <field ref="remarks"/>
+        </model>
+    </define-assembly>
+    <define-field name="testing-scenario-uuid" as-type="uuid" scope="local">
+        <formal-name>Testing Scenario Universally Unique Identifier</formal-name>
+        <description>A testing scenario UUID reference</description>
+    </define-field>
+    <define-assembly name="testing-scenario-reference">
+        <formal-name>Testing Scenario Reference</formal-name>
+        <description>A reference to a testing scenario.</description>
+        <define-flag name="testing-scenario-uuid" as-type="uuid">
+            <formal-name>Testing Scenario Universally Unique Identifier Reference</formal-name>
+            <description>A testing scenario UUID reference</description>
+        </define-flag>
+    </define-assembly>
+
+    <define-assembly name="rule-implementation">
+        <formal-name>Rule Implementation</formal-name>
+        <description>TODO</description>
+        <define-flag name="uuid" required="yes" as-type="uuid">
+            <formal-name>Rule Implementation Universally Unique Identifier</formal-name>
+            <description>TODO</description>
+        </define-flag>
+        <model>
+            <define-field name="description" as-type="markup-multiline" min-occurs="1" in-xml="WITH_WRAPPER">
+                <formal-name>Rule Implementation Description</formal-name>
+                <description>A summary of the rule implementation.</description>
+            </define-field>
+            <assembly ref="property" max-occurs="unbounded">
+                <group-as name="props" in-json="ARRAY"/>
+            </assembly>
+            <assembly ref="link" max-occurs="unbounded">
+                <group-as name="links" in-json="ARRAY"/>
+            </assembly>
+            <choice>
+                <assembly ref="rule-condition">
+                    <use-name>condition</use-name>
+                </assembly>
+                <field ref="rule-uuid" min-occurs="1" max-occurs="unbounded">
+                    <description>Provides a placeholder for cases where a rule can be identified, but the specific tests to evaluate the rule cannot be identified.</description>
+                    <group-as name="rule-uuids" in-json="ARRAY"/>
+                </field>
+            </choice>
+            <field ref="remarks"/>
+        </model>
+    </define-assembly>
+</METASCHEMA>
