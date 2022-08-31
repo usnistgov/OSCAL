@@ -10716,6 +10716,9 @@ The following is a reference for the XML element and attribute types derived fro
                   
                   
                   <li><strong>uses-network</strong>: This component uses the network provided by the identified network component.</li>
+                  
+                  <li><strong>imported-from</strong>: The hyperlink identifies a URI pointing to the component in a component-definition
+                     that originally defined the component.</li>
                   </ul>
             </div>
             
