@@ -24,7 +24,12 @@
                         <!-- This is an id because the idenfier is intended to be human-readable. -->
                         <formal-name>Part Identifier</formal-name>
                         <!-- Identifier Declaration -->
-                        <description>A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a>, <a href="/concepts/identifier-use/#locally-unique">locally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined part elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. When referenced from another OSCAL instance, this identifier must be referenced in the context of the containing resource (e.g., import-profile). This id should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+                        <description>Provides locally unique means to identify a given control part.</description>
+                        <prop name="value-type" value="identifier"/>
+                        <prop name="identifier-type" value="human-oriented"/>
+                        <prop name="identifier-uniqueness" value="instance"/>
+                        <prop name="identifier-scope" value="cross-instance"/>
+                        <prop name="identifier-persistence" value="per-subject"/>
                         <remarks>
                                 <p>While a part is not required to have an id, it is often desirable for an identifier to be provided, which allows the part to be referenced elsewhere in OSCAL document instances. For this reason, it is RECOMMENDED to provide a part identifier.</p>
                         </remarks>
@@ -257,7 +262,10 @@
         <define-flag name="control-id" as-type="token">
                 <formal-name>Control Identifier Reference</formal-name>
                 <!-- Identifier Reference -->
-                <description>A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a> identifier reference to a control with a corresponding <code>id</code> value. When referencing an externally defined <code>control</code>, the <code>Control Identifier Reference</code> must be used in the context of the external / imported OSCAL instance (e.g., uri-reference).</description>
+                <description>A reference to a control with a corresponding <code>id</code> value. When referencing an externally defined <code>control</code>, the <code>Control Identifier Reference</code> must be used in the context of the external / imported OSCAL instance (e.g., uri-reference).</description>
+                <prop name="value-type" value="identifier-reference"/>
+                <prop name="identifier-type" value="human-oriented"/>
+                <prop name="identifier-scope" value="cross-instance"/>
         </define-flag>
         <define-assembly name="include-all">
                 <formal-name>Include All</formal-name>
