@@ -109,6 +109,7 @@
                         <!-- ========================================================================================================== -->
             &allowed-values-component_component_link-rel;
                         <enum value="uses-network">This component uses the network provided by the identified network component.</enum>
+                        <enum value="imported-from">The hyperlink identifies a URI pointing to the <code>component</code> in a <code>component-definition</code> that originally defined the <code>component</code>.</enum>
                   </allowed-values>
 
                   <allowed-values target="responsible-role/@role-id" allow-other="yes">
