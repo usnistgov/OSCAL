@@ -1020,6 +1020,10 @@
       <field ref="remarks" in-xml="WITH_WRAPPER"/>
     </model>
     <constraint>
+      <allowed-values target="link/@rel" allow-other="yes">
+        <!-- TODO: More work needs to be done around link enforcement constraints and requires Metaschema work on recurse-depth-first() recursive index searching. -->
+        <enum value="imported-from">The hyperlink identifies a URI pointing to the <code>component</code> in a <code>component-definition</code> that originally described the <code>component</code> this component was based on.</enum>
+      </allowed-values>
       <allowed-values target=".//responsible-role/@role-id" allow-other="yes">
             &allowed-values-responsible-roles-operations;
             &allowed-values-responsible-roles-component-production;
