@@ -36,7 +36,7 @@ XML Schema based on the [XML Schema Definition Language (XSD) 1.1](https://www.w
 
 ## Validating OSCAL XML Content
 
-The OSCAL project uses [xmllint](http://xmlsoft.org/xmllint.html) to perform automated validation of all XML-based OSCAL [content](../content) provided in this repository. *xmllint* is an open source tool that can be [downloaded](http://xmlsoft.org/downloads.html), installed, and run on OSX, Linux, and Windows environments.
+The OSCAL project uses [xmllint](https://linux.die.net/man/1/xmllint/) to perform automated validation of all XML-based OSCAL [content](../content) provided in this repository. *xmllint* is an open source tool that can be downloaded, installed, and run on OSX, Linux, and Windows environments with your preferred package manager.
 
 The following example uses **xmllint** to perform validation of an OSCAL catalog XML file.
 
@@ -44,7 +44,7 @@ The following example uses **xmllint** to perform validation of an OSCAL catalog
 xmllint --noout --schema "oscal_catalog_schema.xsd" "catalog.xml"
 ```
 
-The [online documentation](http://xmlsoft.org/xmllint.html) for *xmllint* provides more information on the commandline arguments.
+The [online documentation](https://linux.die.net/man/1/xmllint/) for *xmllint* provides more information on the commandline arguments.
 
 # OSCAL JSON to XML Converters
 
