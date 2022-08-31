@@ -3544,6 +3544,9 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                     
                                     
                                     <li><strong>uses-network</strong>: This component uses the network provided by the identified network component.</li>
+                                    
+                                    <li><strong>imported-from</strong>: The hyperlink identifies a URI pointing to the component in a component-definition
+                                       that originally defined the component.</li>
                                     </ul>
                               </div>
                               <div class="constraint">
@@ -16198,6 +16201,9 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                     
                                     
                                     <li><strong>uses-network</strong>: This component uses the network provided by the identified network component.</li>
+                                    
+                                    <li><strong>imported-from</strong>: The hyperlink identifies a URI pointing to the component in a component-definition
+                                       that originally defined the component.</li>
                                     </ul>
                               </div>
                               <div class="constraint">

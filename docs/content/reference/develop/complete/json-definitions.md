@@ -2598,7 +2598,18 @@ The following is a reference for the JSON object definitions derived from this m
             </details>
          </div>
          <details>
-            <summary>Constraints (2)</summary>
+            <summary>Constraints (3)</summary>
+            
+            <div class="constraint">
+               <p><span class="usa-tag">allowed value</span> for <code class="path">link/@rel</code></p>
+               <p>The value <b>may be locally defined</b>, or the following:</p>
+               <ul>
+                  
+                  
+                  <li><strong>imported-from</strong>: The hyperlink identifies a URI pointing to the component in a component-definition
+                     that originally described the component this component was based on.</li>
+                  </ul>
+            </div>
             
             <div class="constraint">
                <p><span class="usa-tag">allowed values</span> for <code class="path">.//responsible-role/@role-id</code></p>
@@ -19382,6 +19393,9 @@ The following is a reference for the JSON object definitions derived from this m
                   
                   
                   <li><strong>uses-network</strong>: This component uses the network provided by the identified network component.</li>
+                  
+                  <li><strong>imported-from</strong>: The hyperlink identifies a URI pointing to the component in a component-definition
+                     that originally defined the component.</li>
                   </ul>
             </div>
             
