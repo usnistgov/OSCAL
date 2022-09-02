@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<system-security-plan xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../../xml/schema/oscal_complete_schema.xsd" uuid="46126f22-0bca-4a16-b6b1-8cb7e1915292">
+    <metadata>
+        <title>Example System Security Plan with Rules and Tests</title>
+        <last-modified>2022-08-23T00:00:00.000000001-04:00</last-modified>
+        <version>0.0.1-alpha</version>
+        <oscal-version>1.2.0</oscal-version>
+    </metadata>
+    <import-profile href="#9aa67a14-d18e-461f-8eee-d7b661703a9f"/>
+    <system-characteristics>
+        <system-id identifier-type="http://ietf.org/rfc/rfc4122">103e77a8-ab96-4767-9625-19940fefde5f</system-id>
+        <system-name>Example System</system-name>
+        <description>
+            <p>This is an example system to demonstrate a system security plan with rules, tests, and relations to control implementation requirements as evidence.</p>
+        </description>
+        <date-authorized>2022-08-23</date-authorized>
+        <security-sensitivity-level>fips-199-moderate</security-sensitivity-level>
+        <system-information>
+            <information-type>
+                <title>Summary of System Development Information in Example System</title>
+                <description>
+                    <p>This application contains system development data.</p>
+                </description>
+                <confidentiality-impact>
+                    <base>fips-199-low</base>
+                    <selected>fips-199-low</selected>
+                </confidentiality-impact>
+                <integrity-impact>
+                    <base>fips-199-low</base>
+                    <selected>fips-199-low</selected>
+                </integrity-impact>
+                <availability-impact>
+                    <base>fips-199-low</base>
+                    <selected>fips-199-low</selected>
+                </availability-impact>
+            </information-type>
+        </system-information>
+        <security-impact-level>
+            <security-objective-confidentiality>fips-199-moderate</security-objective-confidentiality>
+            <security-objective-integrity>fips-199-moderate</security-objective-integrity>
+            <security-objective-availability>fips-199-moderate</security-objective-availability>
+        </security-impact-level>
+        <status state="under-development"/>
+    </system-characteristics>
+    <system-implementation>
+        <user uuid="a2276e8d-f8f1-43c3-9e5a-4165ba37476e">
+            <authorized-privilege>
+                <title>System Developer Privilege</title>
+                <function-performed>add functionality</function-performed>
+                <function-performed>modify functionality</function-performed>
+                <function-performed>maintain deploy system in environment</function-performed>
+            </authorized-privilege>
+        </user>
+        <rule uuid="0d0b4ba7-02ff-4c2c-8a32-19790fb5c12b"></rule>
+        <test uuid="a3ec79e6-ab61-4dd7-94d5-fd99d7e9b539"></test>
+        <test uuid="836560b4-6998-4790-92e3-b1cbf5d2ebb5"></test>
+        <component uuid="2d885d41-7356-4ebd-bd16-a33eef3cc9d5" type="this-system">
+            
+        </component>
+    </system-implementation>
+    <control-implementation>
+    </control-implementation>
+    <back-matter>
+        <resource uuid="9aa67a14-d18e-461f-8eee-d7b661703a9f">
+            <rlink href="https://raw.githubusercontent.com/usnistgov/oscal-content/main/nist.gov/SP800-53/rev5/xml/NIST_SP-800-53_rev5_MODERATE-baseline-resolved-profile_catalog.xml"/>
+        </resource>
+    </back-matter>
+</system-security-plan>
