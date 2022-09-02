@@ -43,6 +43,14 @@
             <security-objective-availability>fips-199-moderate</security-objective-availability>
         </security-impact-level>
         <status state="under-development"/>
+        <authorization-boundary>
+            <description>
+                <p>There is no authorization boundary for the application.</p>
+            </description>
+            <remarks>
+                <p>This is a notional example that will be permenantely in a development state. No authorization boundary will be defined.</p>
+            </remarks>
+        </authorization-boundary>
     </system-characteristics>
     <system-implementation>
         <user uuid="a2276e8d-f8f1-43c3-9e5a-4165ba37476e">
@@ -53,14 +61,59 @@
                 <function-performed>maintain deploy system in environment</function-performed>
             </authorized-privilege>
         </user>
-        <rule uuid="0d0b4ba7-02ff-4c2c-8a32-19790fb5c12b"></rule>
-        <test uuid="a3ec79e6-ab61-4dd7-94d5-fd99d7e9b539"></test>
-        <test uuid="836560b4-6998-4790-92e3-b1cbf5d2ebb5"></test>
+        <rule uuid="0d0b4ba7-02ff-4c2c-8a32-19790fb5c12b">
+            <title>Monitoring System Logging for Indicators of Compromise Commands in Privileged Contacts</title>
+            <description>
+                <p>When threat actors want to confirm they have successfully performed privilege escalation, they will want to confirm they have elevated system privileges.</p>
+                <p>Responsible staff for a given role must monitor systems logs in a centralized logging system to confirm organizationally-recommended commands have not been run in a privileged context.</p>
+                <ul>
+                    <li>whoami</li>
+                    <li>id</li>
+                    <li>groups</li>
+                    <li>env</li>
+                </ul>
+            </description>
+            <prop name="ioc-command" class="query-parameter" value="whoami"/>
+            <prop name="ioc-command" class="query-parameter" value="id"/>
+            <prop name="ioc-command" class="query-parameter" value="groups"/>
+            <prop name="ioc-command" class="query-parameter" value="env"/>
+        </rule>
+        <test uuid="a3ec79e6-ab61-4dd7-94d5-fd99d7e9b539">
+            <description>
+                <p>This test documents which Splunk commands you will run to look for commands associated with indicators of compromise.</p>
+            </description>
+            <remarks>
+                <p>The internal structure of structuring and passing parameters of the query is yet to be determined.</p>
+            </remarks>
+        </test>
+        <testing-scenario uuid="886adeea-8cb9-4a78-9ab6-b3562cbc9e9f" rule-uuid="0d0b4ba7-02ff-4c2c-8a32-19790fb5c12b">
+            <test-reference test-uuid="a3ec79e6-ab61-4dd7-94d5-fd99d7e9b539" />
+        </testing-scenario>
         <component uuid="2d885d41-7356-4ebd-bd16-a33eef3cc9d5" type="this-system">
-            
+            <title>Example System Core Component</title>
+            <description>
+                <p>This component documents Example System, an information system under development that makes use of automated system evaluation with rules.</p>
+            </description>
+            <status state="under-development"/>
+            <responsible-role role-id="system-engineer"/>
+            <remarks>
+                <p>This is an example system to demonstrate the use of rules for auditing requirements.</p>
+            </remarks>
         </component>
     </system-implementation>
     <control-implementation>
+        <description>
+            <p>Example System follows the Risk Management Framework as defined in SP 800-37 and 800-53 for risk management, privacy, and security guidance.</p>
+        </description>
+        <implemented-requirement uuid="2060f510-e178-40ce-8e61-8cd1ec16c348" control-id="au-6.8">
+            <by-component component-uuid="2d885d41-7356-4ebd-bd16-a33eef3cc9d5" uuid="1bbea228-c161-410f-a70e-3e287b38460c">
+                <description>
+                    <p>This describes how Example System requires system operators to perform a full text analysis of logged privileged commands in a physically distinct component or subsystem of the system, or other system that is dedicated to that analysis.</p>
+                </description>
+                <implementation-status state="implemented"/>
+
+            </by-component>
+        </implemented-requirement>
     </control-implementation>
     <back-matter>
         <resource uuid="9aa67a14-d18e-461f-8eee-d7b661703a9f">
