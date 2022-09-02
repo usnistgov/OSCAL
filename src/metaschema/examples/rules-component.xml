@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- This is a mapping example used for development. This file should be moved to the oscal-content repo when this feature is ready. -->
 <component-definition xmlns="http://csrc.nist.gov/ns/oscal/1.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../../xml/schema/oscal_complete_schema.xsd" uuid="3559d200-4849-41ac-a420-28b2ffa22c52">
     <metadata>
         <title>Example Component Definition for Openshift Container Platform v4, Rules, and Tests</title>
-        <last-modified>2022-08-23T00:00:00.000000000-04:00</last-modified>
+        <last-modified>2022-08-23T00:00:00.000000001-04:00</last-modified>
         <version>0.0.1-alpha</version>
         <oscal-version>1.2.0</oscal-version>
     </metadata>
@@ -117,11 +116,15 @@
                     <description>
                         <p>Configuration managers can use the product's functionality to establish and document configuration settings for OCP4 cluster(s) employed within the system. When not using system defaults, configuration managers can use <insert type="param" id-ref="cm-06_prm_1"/> that reflect the most restrictive mode consistent with operational requirements.</p>
                     </description>
+                    <rule-implementation uuid="9b49bb8b-7eb6-48a6-8dfa-08302f1af80c">
+                        <description>
+                            <p>This rule and test are evidence of how the use of properly configured OpenShift satisfies part of this requirement.</p>
+                        </description>
+                        <condition operator="and">
+                            <testing-scenario-reference testing-scenario-uuid="0666cbf2-2b76-4e9d-ba99-a783419ff1fe"/>
+                        </condition>
+                    </rule-implementation>
                 </statement>
-                <condition operator="and">
-                    <!-- Bind testing scenario for static analysis test only. -->
-                    <testing-scenario-reference testing-scenario-uuid="0666cbf2-2b76-4e9d-ba99-a783419ff1fe" />
-                </condition>
             </implemented-requirement>
         </control-implementation>
     </component>
