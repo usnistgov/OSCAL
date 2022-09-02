@@ -801,6 +801,12 @@
       <assembly ref="by-component" max-occurs="unbounded">
         <group-as name="by-components" in-json="ARRAY"/>
       </assembly>
+      <assembly ref="rule-implementation" max-occurs="unbounded">
+        <group-as name="rule-implementations" in-json="ARRAY"/>
+        <remarks>
+          <p>Multiple rule implementations can be provided to describe alternative rule-based implementations used to evaluate the implementation and effectiveness of the containing control statement.</p>
+        </remarks>
+      </assembly>
       <field ref="remarks" in-xml="WITH_WRAPPER"/>
     </model>
     <constraint>
@@ -1031,6 +1037,12 @@
         <group-as name="responsible-roles" in-json="ARRAY"/>
       </assembly>
       <!-- CHANGED: removed "set-parameter" -->
+      <assembly ref="rule-implementation" max-occurs="unbounded">
+        <group-as name="rule-implementations" in-json="ARRAY"/>
+        <remarks>
+          <p>Multiple rule implementations can be provided to describe alternative approaches for using rules to evaluate the implementation and effectiveness of the containing control.</p>
+        </remarks>
+      </assembly>
       <field ref="remarks" in-xml="WITH_WRAPPER"/>
     </model>
     <constraint>
