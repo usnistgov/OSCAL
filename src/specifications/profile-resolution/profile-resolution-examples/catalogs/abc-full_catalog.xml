@@ -107,13 +107,13 @@
          <control id="c3.a">
             <title>Control C3-A</title>
             <prop name="label" value="10th"/>
-            <part name="statement" id="c3-stmt">
+            <part name="statement" id="c3.a-stmt">
                <p>C3 A ccccc cccccccccccccc.</p>
             </part>
             <control id="c3.a-1">
                <title>Control C3-A-1</title>
                <prop name="label" value="11th"/>
-               <part name="statement" id="c3-stmt">
+               <part name="statement" id="c3.a-1-stmt">
                   <p>C3 A-1 ccccc cccccccccccccc.</p>
                </part>
             </control>
