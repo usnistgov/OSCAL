@@ -5,17 +5,27 @@
 ]>
 <?xml-stylesheet type="text/css" href="metaschema-author.css"?>
 <METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/toolchains/xslt-M4/validate/metaschema.xsd">
+      xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0">
       <schema-name>OSCAL Profile Model</schema-name>
       <schema-version>1.0.4</schema-version>
       <short-name>oscal-profile</short-name>
       <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
       <json-base-uri>http://csrc.nist.gov/ns/oscal</json-base-uri>
       <remarks>
-            <p>In OSCAL a <a href="https://pages.nist.gov/OSCAL/concepts/layer/control/profile/">profile</a> represents a <a href="https://pages.nist.gov/OSCAL/concepts/terminology/#baseline">baseline</a> of selected <a href="https://pages.nist.gov/OSCAL/concepts/terminology/#control">controls</a> from one or more control catalogs. An OSCAL profile is used in an OSCAL <a href="https://pages.nist.gov/OSCAL/concepts/layer/implementation/ssp/">system security plan</a> (SSP) to determine the baseline of controls that must be implemented by the information system. The effective set of controls is generated through <a href="https://pages.nist.gov/OSCAL/concepts/processing/profile-resolution/">profile resolution</a> process.</p>
-            <p>In OSCAL a profile represents a set of selected controls from one or more control catalogs. Such a set of controls can be referenced by an OSCAL system security plan (SSP) to establish a control baseline. This effective set of controls is produced from an OSCAL profile using a deterministic, predictable process called profile resolution.</p>
+            <p>In OSCAL a profile represents a set of selected <a
+                        href="https://pages.nist.gov/OSCAL/concepts/terminology/#control"
+                        >controls</a> from one or more control catalogs. Such a set of controls can
+                  be referenced by an OSCAL <a
+                        href="https://pages.nist.gov/OSCAL/concepts/layer/implementation/ssp/"
+                        >system security plan</a> (SSP) to establish a control <a
+                        href="https://pages.nist.gov/OSCAL/concepts/terminology/#baseline"
+                        >baseline</a>. This effective set of controls is produced from an OSCAL
+                  profile using a deterministic, predictable process called <a
+                        href="https://pages.nist.gov/OSCAL/concepts/processing/profile-resolution/"
+                        >profile resolution</a>.</p>
             <p>A profile references one or more OSCAL catalogs or profiles to import controls for control selection and tailoring. A profile can also describe how a resulting catalog is structured. When the profile is resolved, these selections and modifications are processed to produce a resulting OSCAL catalog.</p>
-            <p>OSCAL profiles have uses beyond establishing a baseline, such as documentation generation or as reference tables for validations.</p>
+            <p>OSCAL profiles have uses beyond establishing control baselines, such as documentation
+                  generation or as reference tables for validations.</p>
       </remarks>
 
       <import href="oscal_metadata_metaschema.xml"/>
@@ -23,7 +33,8 @@
 
       <define-assembly name="profile">
             <formal-name>Profile</formal-name>
-            <description>Each OSCAL profile is defined by a <code>profile</code> element</description>
+            <description>Each OSCAL profile is defined by a <code>profile</code>
+                  element.</description>
             <root-name>profile</root-name>
             <define-flag name="uuid" as-type="uuid" required="yes">
                   <formal-name>Profile Universally Unique Identifier</formal-name>
@@ -104,11 +115,15 @@
                         <description>A Combine element defines how to resolve duplicate instances of the same control (e.g., controls with the same ID).</description>
                         <define-flag name="method" as-type="string">
                               <formal-name>Combination Method</formal-name>
-                              <description>Declare how clashing controls should be handled</description>
+                              <description>Declare how clashing controls should be
+                                    handled.</description>
                               <constraint>
                                     <allowed-values>
                                           <enum value="use-first">Use the first definition - the first control with a given ID is used; subsequent ones are discarded</enum>
-                                          <enum value="merge" deprecated="1.0.1">**(deprecated)** **(unspecified)** Merge - controls with the same ID are combined</enum>
+                                          <enum value="merge" deprecated="1.0.1"
+                                                  >**(<i>deprecated</i>)** **(<i>unspecified</i>)**
+                                                Merge - controls with the same ID are
+                                                combined</enum>
                                           <enum value="keep">Keep - controls with the same ID are kept, retaining the clash</enum>
                                     </allowed-values>
                               </constraint>
@@ -146,17 +161,20 @@
       </define-assembly>
       <define-assembly name="group">
             <formal-name>Control Group</formal-name>
-            <description>A group of (selected) controls or of groups of controls</description>
+            <description>A group of (selected) controls or of groups of controls.</description>
             <define-flag name="id" as-type="token">
-                  <!-- This is an id because the idenfier is assigned and managed externally by humans. -->
+                  <!-- This is an id because the identifier is assigned and managed externally by humans. -->
                   <formal-name>Group Identifier</formal-name>
                   <!-- Identifier Declaration -->
-                  <description>Provides locally unique means to identify a given control group.</description>
+                  <description>Identifies the group.</description>
                   <prop name="value-type" value="identifier"/>
                   <prop name="identifier-type" value="human-oriented"/>
                   <prop name="identifier-uniqueness" value="instance"/>
                   <prop name="identifier-scope" value="cross-instance"/>
                   <prop name="identifier-persistence" value="per-subject"/>
+                  <remarks>
+                       <p>This optional data element is available to support hyperlinking to formal groups or families as defined in control catalogs, among other operations.</p>
+                  </remarks>
             </define-flag>
             <define-flag name="class" as-type="token">
                   <formal-name>Group Class</formal-name>
@@ -198,17 +216,18 @@
       </define-assembly>
       <define-assembly name="modify">
             <formal-name>Modify Controls</formal-name>
-            <description>Set parameters or amend controls in resolution</description>
+            <description>Set parameters or amend controls in resolution.</description>
             <model>
                   <define-assembly name="set-parameter" max-occurs="unbounded">
                         <formal-name>Parameter Setting</formal-name>
-                        <description>A parameter setting, to be propagated to points of insertion</description>
+                        <description>A parameter setting, to be propagated to points of
+                              insertion.</description>
                         <group-as name="set-parameters" in-json="ARRAY"/>
                         <define-flag required="yes" name="param-id" as-type="token">
                               <!-- This is an id because the idenfier is assigned and managed by humans. -->
                               <formal-name>Parameter ID</formal-name>
                               <!-- Identifier Declaration -->
-                              <description>Provides locally unique means to identify a given paramater.</description>
+                              <description>An identifier for the parameter.</description>
                               <prop name="value-type" value="identifier"/>
                               <prop name="identifier-type" value="human-oriented"/>
                               <prop name="identifier-uniqueness" value="instance"/>
@@ -242,7 +261,8 @@
                               </define-field>
                               <define-field name="usage" as-type="markup-multiline" in-xml="WITH_WRAPPER">
                                     <formal-name>Parameter Usage Description</formal-name>
-                                    <description>Describes the purpose and use of a parameter</description>
+                                    <description>Describes the purpose and use of a
+                                          parameter.</description>
                               </define-field>
                               <assembly ref="parameter-constraint" max-occurs="unbounded">
                                     <use-name>constraint</use-name>
@@ -278,7 +298,8 @@
                                     <group-as name="removes" in-json="ARRAY"/>
                                     <define-flag name="by-name" as-type="token">
                                           <formal-name>Reference by (assigned) name</formal-name>
-                                          <description>Identify items to remove by matching their assigned name</description>
+                                          <description>Identify items remove by matching their
+                                                assigned name.</description>
                                     </define-flag>
                                     <define-flag name="by-class" as-type="token">
                                           <formal-name>Reference by class</formal-name>
@@ -290,7 +311,10 @@
                                     </define-flag>
                                     <define-flag name="by-item-name" as-type="token">
                                           <formal-name>Item Name Reference</formal-name>
-                                          <description>Identify items to remove by the name of the item's information element name, e.g. <code>title</code> or <code>prop</code></description>
+                                          <description>Identify items to remove by the name of the
+                                                item's information object name, e.g.
+                                                  <code>title</code> or
+                                                <code>prop</code>.</description>
                                           <constraint>
                                                 <allowed-values>
                                                       <enum value="param">A descendant parameter and all of its descendants.</enum>
@@ -313,11 +337,14 @@
                               </define-assembly>
                               <define-assembly name="add" max-occurs="unbounded">
                                     <formal-name>Addition</formal-name>
-                                    <description>Specifies contents to be added into controls, in resolution</description>
+                                    <description>Specifies contents to be added into controls, in
+                                          resolution.</description>
                                     <group-as name="adds" in-json="ARRAY"/>
                                     <define-flag name="position" as-type="token" default="ending">
                                           <formal-name>Position</formal-name>
-                                          <description>Where to add the new content with respect to the targeted element (beside it or inside it)</description>
+                                          <description>Where to add the new content with respect to
+                                                the targeted element (beside it or inside
+                                                it).</description>
                                           <constraint>
                                                 <allowed-values>
                                                       <enum value="before">Preceding the by-id target</enum>
@@ -414,22 +441,22 @@
       </define-assembly>
       <define-assembly name="select-control-by-id" scope="local">
             <formal-name>Select Control</formal-name>
-            <description>Select a control or controls from an imported control set</description>
+            <description>Select a control or controls from an imported control set.</description>
             <flag ref="with-child-controls"/>
             <model>
                   <define-field name="with-id" as-type="token" max-occurs="unbounded">
                         <formal-name>Match Controls by Identifier</formal-name>
-                        <description></description>
+                        <description>Selecting a control by its ID given as a literal.</description>
                         <group-as name="with-ids" in-json="ARRAY"/>
                   </define-field>
                   <define-assembly name="matching" max-occurs="unbounded">
                         <formal-name>Match Controls by Pattern</formal-name>
-                        <description>Select controls by (regular expression) match on ID</description>
+                        <description>Selecting a set of controls by matching their IDs with a
+                              wildcard pattern.</description>
                         <group-as name="matching" in-json="ARRAY"/>
                         <flag ref="pattern"/>
                   </define-assembly>
             </model>
-            <!--The following doesn't apply when this object definition is used for excluding not including controls-->
             <remarks>
                   <p>If <code>with-child-controls</code> is <q>yes</q> on the call to a control, no sibling <code>call</code>elements need to be used to call any controls appearing within it. Since generally, this is how control enhancements are represented (as controls within controls), this provides a way to include controls with all their dependent controls (enhancements) without having to call them individually.</p>
             </remarks>

@@ -2,8 +2,9 @@
 <?xml-model href="../../build/metaschema/toolchains/xslt-M4/validate/metaschema-composition-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <!-- OSCAL CATALOG METASCHEMA -->
 <!-- validate with XSD and Schematron (linked) -->
+<?xml-stylesheet type="text/css" href="metaschema-author.css"?>
 <METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/toolchains/xslt-M4/validate/metaschema.xsd" abstract="yes">
+    xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" abstract="yes">
     <schema-name>OSCAL Document Metadata Description</schema-name>
     <schema-version>1.0.4</schema-version>
     <short-name>oscal-metadata</short-name>
@@ -76,10 +77,9 @@
                 <description>Defines a function, which might be assigned to a party in a specific situation.</description>
                 <group-as name="roles" in-json="ARRAY"/>
                 <define-flag name="id" as-type="token" required="yes">
-                    <!-- This is an id because the idenfier is assigned and managed by humans. -->
                     <!-- Identifier Declarations -->
                     <formal-name>Role Identifier</formal-name>
-                    <description>Provides locally unique means to identify a given role.</description>
+                    <description>A unique identifier for the role.</description>
                     <prop name="value-type" value="identifier"/>
                     <prop name="identifier-type" value="human-oriented"/>
                     <prop name="identifier-uniqueness" value="instance"/>
@@ -162,7 +162,7 @@
                 <group-as name="locations" in-json="ARRAY"/>
                 <define-flag name="uuid" as-type="uuid" required="yes">
                     <formal-name>Location Universally Unique Identifier</formal-name>
-                    <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined location elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>location</code> can be used to reference the data item locally or globally (e.g., from an importing OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+                    <description>A unique ID for the location, for reference.</description>
                 </define-flag>
                 <model>
                     <define-field name="title" as-type="markup-line">
@@ -231,8 +231,7 @@
                 <define-flag name="uuid" as-type="uuid" required="yes">
                     <formal-name>Party Universally Unique Identifier</formal-name>
                     <!-- Identifier Declaration -->
-                    <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined party elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>party</code> can be used to reference the data item locally or globally (e.g., from an importing OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
-                    <description>Provides locally unique means to identify a given party.</description>
+                    <description>A unique identifier for the party.</description>
                     <prop name="value-type" value="identifier"/>
                     <prop name="identifier-type" value="machine-oriented"/>
                     <prop name="identifier-uniqueness" value="instance"/>
@@ -261,7 +260,9 @@
                     <define-field name="external-id" max-occurs="unbounded">
                         <!-- This is an id because the idenfier is assigned and managed externally by humans. -->
                         <formal-name>Party External Identifier</formal-name>
-                        <description>An identifier for a person or organization using a designated scheme. e.g. an Open Researcher and Contributor ID (ORCID)</description>
+                        <description>An identifier for a person or organization using a designated
+                            scheme. e.g. an Open Researcher and Contributor ID
+                            (ORCID).</description>
                         <json-value-key>id</json-value-key>
                         <group-as name="external-ids" in-json="ARRAY"/>
                         <define-flag name="scheme" as-type="uri" required="yes">
@@ -306,8 +307,7 @@
                     <define-field name="member-of-organization" as-type="uuid" max-occurs="unbounded">
                         <formal-name>Organizational Affiliation</formal-name>
                         <!-- Identifier Reference -->
-                        <description>A reference to another <code>party</code> (<code>person</code> or <code>organization</code>) that this subject is associated with. The <em>UUID</em> of the <code>party</code> in the source OSCAL instance is sufficient to reference the data item locally or globally (e.g., in an imported OSCAL instance).
-                        </description>
+                        <description>A reference to another <code>party</code> by UUID, typically an organization, that this subject is associated with.</description>
                         <prop name="value-type" value="identifier-reference"/>
                         <prop name="identifier-type" value="machine-oriented"/>
                         <prop name="identifier-scope" value="cross-instance"/>
@@ -319,6 +319,7 @@
                             </index-has-key>
                         </constraint>
                         <remarks>
+                            <p>Since the reference target of an organizational affiliation must be another <code>party</code> (whether further qualified as person or organization) as inidcated by its <code>uuid</code>. As a <a href="/concepts/identifier-use/#machine-oriented" >machine-oriented</a> identifier with uniqueness across document and trans-document scope, this <code>uuid</code> value is sufficient to reference the data item locally or globally across related documents, e.g., in an imported OSCAL instance. </p>
                             <p>Parties of both the <code>person</code> or <code>organization</code> type can be associated with an organization using the <code>member-of-organization</code>.</p>
                         </remarks>
                     </define-field>
@@ -432,8 +433,7 @@
     <define-flag name="location-uuid" as-type="uuid">
         <formal-name>Location Universally Unique Identifier Reference</formal-name>
         <!-- Identifier Reference -->
-        <description>A reference to a <code>location</code> defined in the <code>metadata</code> section of this or another OSCAL instance. The <em>UUID</em> of the <code>location</code> in the source OSCAL instance is sufficient to reference the data item locally or globally (e.g., in an imported OSCAL instance).
-        </description>
+        <description>Reference to a location by UUID.</description>
         <prop name="value-type" value="identifier-reference"/>
         <prop name="identifier-type" value="machine-oriented"/>
         <prop name="identifier-scope" value="cross-instance"/>
@@ -449,8 +449,7 @@
     <define-field name="location-uuid" as-type="uuid">
         <formal-name>Location Universally Unique Identifier Reference</formal-name>
         <!-- Identifier Reference -->
-        <description>A reference to a <code>location</code> defined in the <code>metadata</code> section of this or another OSCAL instance. The <em>UUID</em> of the <code>location</code> in the source OSCAL instance is sufficient to reference the data item locally or globally (e.g., in an imported OSCAL instance).
-        </description>
+        <description>Reference to a location by UUID.</description>
         <prop name="value-type" value="identifier-reference"/>
         <prop name="identifier-type" value="machine-oriented"/>
         <prop name="identifier-scope" value="cross-instance"/>
@@ -460,16 +459,12 @@
                 <key-field target="."/>
             </index-has-key>
         </constraint>
-        <remarks>
-            <p>See the <a href="/concepts/identifier-use/#scope">Concepts - Identifier Use</a> page for additional information about the referenced identifier's scope.</p>
-          </remarks>
     </define-field>
 
     <define-field name="party-uuid" as-type="uuid">
         <formal-name>Party Universally Unique Identifier Reference</formal-name>
         <!-- Identifier Reference -->
-        <description>A reference to another <code>party</code> defined in <code>metadata</code>. The <em>UUID</em> of the <code>party</code> in the source OSCAL instance is sufficient to reference the data item locally or globally (e.g., in an imported OSCAL instance).
-        </description>
+        <description>Reference to a party by UUID.</description>
         <prop name="value-type" value="identifier-reference"/>
         <prop name="identifier-type" value="machine-oriented"/>
         <prop name="identifier-scope" value="cross-instance"/>
@@ -479,15 +474,12 @@
                 <key-field target="."/>
             </index-has-key>
         </constraint>
-        <remarks>
-            <p>See the <a href="/concepts/identifier-use/#scope">Concepts - Identifier Use</a> page for additional information about the referenced identifier's scope.</p>
-          </remarks>
     </define-field>
 
     <define-field name="role-id" as-type="token">
         <formal-name>Role Identifier Reference</formal-name>
         <!-- Identifier Reference -->
-        <description>A reference to <code>roles</code> served by the user.</description>
+        <description>Reference to a role by UUID.</description>
         <prop name="value-type" value="identifier-reference"/>
         <prop name="identifier-type" value="human-oriented"/>
         <prop name="identifier-scope" value="cross-instance"/>
@@ -512,8 +504,8 @@
                 <group-as name="resources" in-json="ARRAY"/>
                 <define-flag name="uuid" as-type="uuid" required="yes">
                     <formal-name>Resource Universally Unique Identifier</formal-name>
+                    <description>A unique identifier for a resource.</description>
                     <!-- identifier declaration -->
-                    <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined resource elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
                 </define-flag>
                 <model>
                     <define-field name="title" as-type="markup-line">
@@ -715,7 +707,7 @@
         <define-flag name="uuid" as-type="uuid">
             <formal-name>Property Universally Unique Identifier</formal-name>
             <!-- identifier declaration -->
-            <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined property elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+            <description>A unique identifier for a property.</description>
         </define-flag>
         <define-flag name="ns" as-type="uri" default="http://csrc.nist.gov/ns/oscal">
             <formal-name>Property Namespace</formal-name>
@@ -731,10 +723,11 @@
         </define-flag>
         <define-flag name="class" as-type="token">
             <formal-name>Property Class</formal-name>
-            <description>A textual label that provides a sub-type or characterization of the property's <code>name</code>. This can be used to further distinguish or discriminate between the semantics of multiple properties of the same object with the same <code>name</code> and <code>ns</code>.
-            </description>
+            <description>A textual label that provides a sub-type or characterization of the
+                property's <code>name</code>.</description>
             <remarks>
-                <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of a specific <code>class</code> value.</p>
+                <p>This can be used to further distinguish or discriminate between the semantics of multiple properties of the same object with the same <code>name</code> and <code>ns</code>, or to group properties into categories.</p>
+                <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of a specific <code>class</code> value. It is available for grouping, but unlike <code>group</code> is not expected specifically to designate any group membership as such.</p>
             </remarks>
         </define-flag>
         <define-flag name="group" as-type="token">
@@ -981,9 +974,13 @@
 
     <define-flag name="media-type" as-type="string">
         <formal-name>Media Type</formal-name>
-        <description>A media type provides a label that indicates the nature of a resource. The Internet Assigned Numbers Authority (IANA) <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">Media Types Registry</a> defines a standardized set of media types, which may be used here.
-        </description>
+        <description>A label that indicates the nature of a resource, as a data serialization or
+            format.</description>
         <remarks>
+            <p> The Internet Assigned Numbers Authority (IANA) <a
+                    href="https://www.iana.org/assignments/media-types/media-types.xhtml">Media
+                    Types Registry</a> defines a standardized set of media types, which may be used
+                here.</p>
             <p>The <code>application/oscal+xml</code>, <code>application/oscal+json</code> or <code>application/oscal+yaml</code> media types SHOULD be used when referencing OSCAL XML, JSON, or YAML resources respectively.</p>
             <p>**Note: There is no official media type for YAML at this time.** OSCAL documents should specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name suffix, per <a href="https://www.rfc-editor.org/rfc/rfc6838.html#section-4.2.8">RFC 6838 Section 4.2.8</a>.</p>
             <p>Some earlier OSCAL content incorporated the model into the media type. For example: <code>application/oscal.catalog+xml</code>. This practice SHOULD be avoided, since the OSCAL model can be detected by parsing the initial content of the referenced resource.</p>
@@ -1040,8 +1037,9 @@
 
     <define-field name="email-address" as-type="email" scope="local">
         <formal-name>Email Address</formal-name>
-        <description>An email address as defined by <a href="https://tools.ietf.org/html/rfc5322#section-3.4.1">RFC 5322 Section 3.4.1</a>.
-        </description>
+        <description>An email address as defined by <a
+                href="https://tools.ietf.org/html/rfc5322#section-3.4.1">RFC 5322 Section
+            3.4.1</a>.</description>
     </define-field>
 
     <define-field name="telephone-number" scope="local">
@@ -1085,11 +1083,12 @@
             </define-field>
             <define-field name="state">
                 <formal-name>State</formal-name>
-                <description>State, province or analogous geographical region for mailing address</description>
+                <description>State, province or analogous geographical region for a mailing
+                    address.</description>
             </define-field>
             <define-field name="postal-code">
                 <formal-name>Postal Code</formal-name>
-                <description>Postal or ZIP code for mailing address</description>
+                <description>Postal or ZIP code for mailing address.</description>
             </define-field>
             <define-field name="country">
                 <formal-name>Country Code</formal-name>
@@ -1120,11 +1119,14 @@
     <define-field name="document-id" scope="local">
         <formal-name>Document Identifier</formal-name>
         <!-- identifier declaration -->
-        <description>A document identifier qualified by an identifier <code>scheme</code>. A document identifier provides a <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with a <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that is used for a group of documents that are to be treated as different versions of the same document. If this element does not appear, the value of the "uuid" flag of the top-level root field can serve as a document identifier.</description>
+        <description>A document identifier qualified by an identifier
+            <code>scheme</code>.</description>
         <json-value-key>identifier</json-value-key>
         <define-flag name="scheme" as-type="uri">
             <formal-name>Document Identification Scheme</formal-name>
-            <description>Qualifies the kind of document identifier using a URI. If the scheme is not provided the value of the element will be interpreted as a string of characters. </description>
+            <description>Qualifies the kind of document identifier using a URI. If the scheme is not
+                provided the value of the element will be interpreted as a string of
+                characters.</description>
             <constraint>
                 <allowed-values allow-other="yes">
                     <enum value="http://www.doi.org/">A <a href="https://www.doi.org/hb.html">Digital Object Identifier</a> (DOI); use is preferred, since this allows for retrieval of a full bibliographic record.</enum>
@@ -1135,6 +1137,7 @@
             </remarks>
         </define-flag>
         <remarks>
+            <p>A document identifier provides a <a href="/concepts/identifier-use/#globally-unique" >globally unique</a> identifier with a <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that is used for a group of documents that are to be treated as different versions, representations or digital surrogates of the same document.</p>
             <p>A document identifier provides an additional data point for identifying a document that can be assigned by a publisher or organization for purposes in a wider system, such as a digital object identifier (DOI) or a local content management system identifier.</p>
             <p>Use of a document identifier allows for document creators to associate sets of documents that are related in some way by the same <code>document-id</code>.</p>
             <p>An OSCAL document always has an implicit document identifier provided by the document's UUID, defined by the <code>uuid</code> on the top-level object. Having a default UUID-based identifier ensures all documents can be minimally identified when other document identifiers are not provided.</p>

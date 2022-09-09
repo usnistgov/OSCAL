@@ -7,7 +7,7 @@
 ]>
 <?xml-stylesheet type="text/css" href="metaschema-author.css"?>
 <METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/toolchains/xslt-M4/validate/metaschema.xsd" abstract="yes">
+        xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" abstract="yes">
         <schema-name>OSCAL Control Catalog Format -- Common Models</schema-name>
         <schema-version>1.0.4</schema-version>
         <short-name>oscal-control-common</short-name>
@@ -24,7 +24,7 @@
                         <!-- This is an id because the idenfier is intended to be human-readable. -->
                         <formal-name>Part Identifier</formal-name>
                         <!-- Identifier Declaration -->
-                        <description>Provides locally unique means to identify a given control part.</description>
+                        <description>A unique identifier for the part.</description>
                         <prop name="value-type" value="identifier"/>
                         <prop name="identifier-type" value="human-oriented"/>
                         <prop name="identifier-uniqueness" value="instance"/>
@@ -48,9 +48,9 @@
                 </define-flag>
                 <define-flag name="class" as-type="token">
                         <formal-name>Part Class</formal-name>
-                        <description>An optional textual label that provides a sub-type or characterization of the part's <code>name</code>. This can be used to further distinguish or discriminate between the semantics of multiple parts of the same control with the same <code>name</code> and <code>ns</code>.
-                        </description>
+                        <description>An optional textual providing a sub-type or characterization of the part's <code>name</code>, or a category to which the part belongs.</description>
                         <remarks>
+                                <p>One use of this flag is to distinguish or discriminate between the semantics of multiple parts of the same control with the same <code>name</code> and <code>ns</code> (since even within a given namespace it can be useful to overload a name).</p>
                                 <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of a specific <code>class</code> value.</p>
                                 <p>A <code>class</code> can also be used in an OSCAL profile as a means to target an alteration to control content.</p>
                         </remarks>
@@ -92,7 +92,7 @@
                         <p>Tools that process OSCAL content are not required to interpret unrecognized OSCAL extensions; however, OSCAL compliant tools should not modify or remove unrecognized extensions, unless there is a compelling reason to do so, such as data sensitivity.</p>
                 </remarks>
                 <example>
-                        <description>Multiple Parts with Different Organization-Specific Names</description>
+                        <description>Multiple Parts with Different Organization-Specific Names.</description>
                         <part xmlns="http://csrc.nist.gov/ns/oscal/1.0" name="statement" id="statement-A">
                                 <part ns="http://fedramp.gov/ns/oscal" name="status" id="statement-A-FedRAMP">A requirement specific to FedRAMP stakeholders.</part>
                                 <part ns="https://defense.gov" name="status" id="statement-A-DoD">A requirement specific to the Department of Defense stakeholders.</part>
@@ -143,7 +143,8 @@
                         </define-field>
                         <define-field name="usage" as-type="markup-multiline" in-xml="WITH_WRAPPER">
                                 <formal-name>Parameter Usage Description</formal-name>
-                                <description>Describes the purpose and use of a parameter</description>
+                                <description>Describes the purpose and use of a
+                                        parameter.</description>
                         </define-field>
                         <assembly ref="parameter-constraint" max-occurs="unbounded">
                                 <use-name>constraint</use-name>
@@ -194,7 +195,7 @@
 
         <define-assembly name="parameter-constraint">
                 <formal-name>Constraint</formal-name>
-                <description>A formal or informal expression of a constraint or test</description>
+                <description>A formal or informal expression of a constraint or test.</description>
                 <model>
                         <define-field name="description" as-type="markup-multiline" in-xml="WITH_WRAPPER">
                                 <formal-name>Constraint Description</formal-name>
@@ -207,7 +208,8 @@
                                 <model>
                                         <define-field name="expression" as-type="string" min-occurs="1">
                                                 <formal-name>Constraint test</formal-name>
-                                                <description>A formal (executable) expression of a constraint</description>
+                                                <description>A formal (executable) expression of a
+                                                  constraint.</description>
                                         </define-field>
                                         <field ref="remarks" in-xml="WITH_WRAPPER"/>
                                 </model>
@@ -232,7 +234,7 @@
 
         <define-assembly name="parameter-selection">
                 <formal-name>Selection</formal-name>
-                <description>Presenting a choice among alternatives</description>
+                <description>Presenting a choice among alternatives.</description>
                 <define-flag name="how-many" as-type="token">
                         <formal-name>Parameter Cardinality</formal-name>
                         <description>Describes the number of selections that must occur. Without this setting, only one value should be assumed to be permitted.</description>
@@ -246,7 +248,8 @@
                 <model>
                         <define-field name="parameter-choice" as-type="markup-line" max-occurs="unbounded">
                                 <formal-name>Choice</formal-name>
-                                <description>A value selection among several such options</description>
+                                <description>A value selection among several such
+                                        options.</description>
                                 <use-name>choice</use-name>
                                 <json-value-key>value</json-value-key>
                                 <group-as name="choice" in-json="ARRAY"/>
