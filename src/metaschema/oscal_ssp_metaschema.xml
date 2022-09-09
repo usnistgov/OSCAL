@@ -677,7 +677,7 @@
           <p>Since multiple <code>set-parameter</code> entries can be provided, each parameter must be set only once.</p>
         </remarks>
       </is-unique>
-      <index name="by-component-export-provided-uuid" target="implemented-requirement/by-component/export/provided">
+      <index name="by-component-export-provided-uuid" target="implemented-requirement//by-component/export/provided">
         <key-field target="@uuid"/>
       </index>
     </constraint>
