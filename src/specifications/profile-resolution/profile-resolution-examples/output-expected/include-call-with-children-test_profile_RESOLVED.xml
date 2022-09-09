@@ -47,7 +47,7 @@
       <prop name="label"
          value="tenth" />
       <part name="statement"
-         id="c3-stmt">
+         id="c3.a-stmt">
          <p>C3 A ccccc cccccccccccccc.</p>
       </part>
    </control>
@@ -56,7 +56,7 @@
       <prop name="label"
          value="eleventh" />
       <part name="statement"
-         id="c3-stmt">
+         id="c3.a-1-stmt">
          <p>C3 A-1 ccccc cccccccccccccc.</p>
       </part>
    </control>
