@@ -111,7 +111,12 @@
                 <define-flag name="id" as-type="token" required="yes">
                         <!-- This is an id because the idenfier is intended to be human-readable. -->
                         <formal-name>Parameter Identifier</formal-name>
-                        <description>A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a>, <a href="/concepts/identifier-use/#locally-unique">locally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined parameter elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. When referenced from another OSCAL instance, this identifier must be referenced in the context of the containing resource (e.g., import-profile). This id should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+                        <description>A unique identifier for the parameter.</description>
+                        <prop name="value-type" value="identifier"/>
+                        <prop name="identifier-type" value="human-oriented"/>
+                        <prop name="identifier-uniqueness" value="instance"/>
+                        <prop name="identifier-scope" value="cross-instance"/>
+                        <prop name="identifier-persistence" value="per-subject"/>
                 </define-flag>
                 <!-- TODO: What is the semantics of class here? -->
                 <define-flag name="class" as-type="token">

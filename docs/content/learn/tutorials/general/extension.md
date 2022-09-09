@@ -484,7 +484,7 @@ Links in OSCAL provide a means to reference an arbitrary resource, which allows 
 
 A link can:
 
-1. Reference (external) information that is not represented in OSCAL format.  This could include references to (cybersecurity) laws and regulations, references to organizational standards and guides, references to a software bill of materials (SBOM), and more. See [*linking to a network resolvable resource](/concepts/uri-use/#linking-to-a-network-resolvable-resource) for more information.
+1. Reference (external) information that is not represented in OSCAL format.  This could include references to (cybersecurity) laws and regulations, references to organizational standards and guides, references to a software bill of materials (SBOM), and more. See [*linking to a network resolvable resource*](/concepts/uri-use/#linking-to-a-network-resolvable-resource) for more information.
 2. Reference objects within the current OSCAL document. See [*linking to another OSCAL object*](/concepts/uri-use/#linking-to-another-oscal-object) for more information.
 
 Organizations can limit duplication of content, reduce the size of their OSCAL files, and maintain important content relationships by using links.

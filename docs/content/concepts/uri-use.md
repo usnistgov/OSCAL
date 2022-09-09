@@ -75,7 +75,7 @@ According to RFC 3986 section [1.1.3](https://www.rfc-editor.org/rfc/rfc3986#sec
 
 - To be a *locator*, the resource pointed to by a URI needs to have persistence.
 
-- To be a *name*, the URI needs to be used consistantly to refer to the thing that is named. A URI used only as a name is not required to resolve to a location. URIs schemes requiring an [*authority*](https://www.rfc-editor.org/rfc/rfc3986#section-3.2) element provide a means to use a registered DNS name to assert organizational control over a naming value space or namespace.
+- To be a *name*, the URI needs to be used consistently to refer to the thing that is named. A URI used only as a name is not required to resolve to a location. URIs schemes requiring an [*authority*](https://www.rfc-editor.org/rfc/rfc3986#section-3.2) element provide a means to use a registered DNS name to assert organizational control over a naming value space or namespace.
 
 A *Uniform Resource Locator (URL)* "refers to the subset of URIs that, in addition to identifying a resource, provide a means of locating the resource by describing its primary access mechanism (e.g., its network "location")."
 
@@ -130,7 +130,7 @@ URIs serving this purpose need to be used as a *locator*. URLs are typically use
 
 #### Linking to another OSCAL object
 
-A pointer to an OSCAL object identified by the referenced identifier, may be a [human-oriented](/concepts/identifier-use/#human-oriented) [`token`]() or a [machine-oriented](/concepts/identifier-use/#machine-oriented) [`uuid`](https://pages.nist.gov/OSCAL/reference/datatypes/#uuid).
+A pointer to an OSCAL object identified by the referenced identifier, may be a [human-oriented](/concepts/identifier-use/#human-oriented) [`token`](/reference/datatypes/#token) or a [machine-oriented](/concepts/identifier-use/#machine-oriented) [`uuid`](https://pages.nist.gov/OSCAL/reference/datatypes/#uuid).
 
 This approach uses a [*relative reference*](#relative-reference) consisting of only a URI *fragment* containing the identifier or UUID of the referenced object within the current documents effective data model. The effective data model of a document includes all objects identified with the document and any directly or transitively imported documents. Identifiers with a *cross-instance* [scope](/concepts/identifier-use/#scope) are available to importing documents.
 
@@ -152,7 +152,7 @@ An absolute URI that identifies the naming system. URIs serving this purpose are
 
 OSCAL supports a number of name/value and other controlled value collections. To allow independent organization to organize these value collections, namespaces are used to partition the value spaces on an organization-by-organization basis. An [*absolute URI*](#absolute-uri) is used as the namespace identifier for these situations.
 
-When used in this way the authority component of the URI must use a value that the organization has control over. Typically, a DNS domain name controlled by the organization is used for this purpose.
+When used in this way, the authority component of the URI must use a value that the organization has control over. Typically, a DNS domain name controlled by the organization is used for this purpose.
 
 OSCAL examples include:
 

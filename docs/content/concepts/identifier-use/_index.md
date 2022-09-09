@@ -32,7 +32,7 @@ The [OSCAL XML Reference Index](/reference/latest/complete/xml-index/#/@uuid) an
 
 #### Human-Oriented
 
-A [*human-oriented*](#human-oriented) identifier supports readability and use by human consumers. OSCAL implements [*human-oriented*](#human-oriented) identifiers as [`token`](/reference/datatypes/#token) data types, which are non-colonized names.  For example, control identifiers in a catalog may use a nomenclature that is familiar to the intended audience, allowing them to quickly determine what security control is being referred to, simply by its identifier value.  
+A [*human-oriented*](#human-oriented) identifier supports readability and use by human consumers. OSCAL implements [*human-oriented*](#human-oriented) identifiers as [`token`](/reference/datatypes/#token) data types. For example, control identifiers in a catalog may use a nomenclature that is familiar to the intended audience, allowing them to quickly determine what security control is being referred to, simply by its identifier value.  
 
 The [OSCAL XML Reference Index](/reference/latest/complete/xml-index/#/@id) and [OSCAL JSON Reference Index](/reference/latest/complete/json-index/#/id) provide a comprehensive listing of the [*human-oriented*](#human-oriented) IDs in the core OSCAL models.  References to these IDs are typically named according to the referenced object type (e.g., control) followed by “-id”, as seen here in the [XML Reference Index](/reference/latest/complete/xml-index/#/@control-id) (and likewise [JSON Reference Index](/reference/latest/complete/json-index/#/control-id) in the JSON reference index).
 
