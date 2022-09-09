@@ -81,7 +81,7 @@ A *Uniform Resource Locator (URL)* "refers to the subset of URIs that, in additi
 
 A URL, when applied consistently, can be used as a *name*. Optionally in such cases, the resource it resolves to can provide information about how to use the URL as a name.
 
-A *Uniform Resource Name (URN)* "has been used historically to refer to both URIs under the "urn" scheme [RFC2141](https://www.rfc-editor.org/rfc/rfc2141), which are required to remain globally unique and persistent even when the resource ceases to exist or becomes unavailable, and to any other URI with the properties of a name.
+A *Uniform Resource Name (URN)* "has been used historically to refer to both URIs under the `urn` scheme [RFC2141](https://www.rfc-editor.org/rfc/rfc2141), which are required to remain globally unique and persistent even when the resource ceases to exist or becomes unavailable, and to any other URI with the properties of a name.
 
 A URN is often not a good fit for use as a *locator*, since it requires a secondary resolution process that maps the URN's *name* to a specific *location*.
 
