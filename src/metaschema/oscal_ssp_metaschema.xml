@@ -705,8 +705,8 @@
       <field ref="remarks" in-xml="WITH_WRAPPER"/>
     </model>
     <constraint>
-      <allowed-values target="prop/@name" allow-other="yes">
-        <enum value="control-origination">Identifies the source of the implemented control.</enum>
+      <allowed-values target="(.|statement|.//by-component)/prop/@name" allow-other="yes">
+        <enum value="control-origination">Identifies the source of the implemented control.  Any <code>control-origination</code> prop defined in a child context will override the parent value.</enum>
       </allowed-values>
       <allowed-values target="prop[@name='control-origination']/@value">
         <enum value="organization">The control is implemented by the organization owning the system, but is not specific to the system itself.</enum>
