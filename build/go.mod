@@ -2,7 +2,7 @@ module github.com/usnistgov/OSCAL/build
 
 go 1.18
 
-require github.com/gohugoio/hugo v0.101.0
+require github.com/gohugoio/hugo v0.103.1
 
 require (
 	cloud.google.com/go v0.101.0 // indirect
@@ -43,18 +43,18 @@ require (
 	github.com/bep/tmc v0.5.1 // indirect
 	github.com/clbanning/mxj/v2 v2.5.6 // indirect
 	github.com/cli/safeexec v1.0.0 // indirect
-	github.com/cpuguy83/go-md2man/v2 v2.0.1 // indirect
+	github.com/cpuguy83/go-md2man/v2 v2.0.2 // indirect
 	github.com/disintegration/gift v1.2.1 // indirect
 	github.com/dlclark/regexp2 v1.4.0 // indirect
 	github.com/dustin/go-humanize v1.0.0 // indirect
-	github.com/evanw/esbuild v0.14.43 // indirect
+	github.com/evanw/esbuild v0.15.7 // indirect
 	github.com/frankban/quicktest v1.14.3 // indirect
 	github.com/fsnotify/fsnotify v1.5.4 // indirect
-	github.com/getkin/kin-openapi v0.97.0 // indirect
+	github.com/getkin/kin-openapi v0.100.0 // indirect
 	github.com/ghodss/yaml v1.0.0 // indirect
 	github.com/go-openapi/jsonpointer v0.19.5 // indirect
 	github.com/go-openapi/swag v0.19.5 // indirect
-	github.com/gobuffalo/flect v0.2.5 // indirect
+	github.com/gobuffalo/flect v0.3.0 // indirect
 	github.com/gobwas/glob v0.2.3 // indirect
 	github.com/gohugoio/go-i18n/v2 v2.1.3-0.20210430103248-4c28c89f8013 // indirect
 	github.com/gohugoio/locales v0.14.0 // indirect
@@ -75,40 +75,40 @@ require (
 	github.com/jmespath/go-jmespath v0.4.0 // indirect
 	github.com/kr/pretty v0.3.0 // indirect
 	github.com/kr/text v0.2.0 // indirect
-	github.com/kyokomi/emoji/v2 v2.2.9 // indirect
+	github.com/kyokomi/emoji/v2 v2.2.10 // indirect
 	github.com/magefile/mage v1.13.0 // indirect
 	github.com/mailru/easyjson v0.0.0-20190626092158-b2ccc519800e // indirect
 	github.com/mattn/go-ieproxy v0.0.1 // indirect
-	github.com/mattn/go-isatty v0.0.14 // indirect
+	github.com/mattn/go-isatty v0.0.16 // indirect
 	github.com/mattn/go-runewidth v0.0.9 // indirect
 	github.com/mitchellh/hashstructure v1.1.0 // indirect
 	github.com/mitchellh/mapstructure v1.5.0 // indirect
 	github.com/muesli/smartcrop v0.3.0 // indirect
 	github.com/niklasfasching/go-org v1.6.5 // indirect
 	github.com/olekukonko/tablewriter v0.0.5 // indirect
-	github.com/pelletier/go-toml/v2 v2.0.2 // indirect
-	github.com/rogpeppe/go-internal v1.8.1 // indirect
+	github.com/pelletier/go-toml/v2 v2.0.4 // indirect
+	github.com/rogpeppe/go-internal v1.9.0 // indirect
 	github.com/russross/blackfriday/v2 v2.1.0 // indirect
 	github.com/rwcarlsen/goexif v0.0.0-20190401172101-9e8deecbddbd // indirect
 	github.com/sanity-io/litter v1.5.5 // indirect
-	github.com/spf13/afero v1.8.2 // indirect
+	github.com/spf13/afero v1.9.2 // indirect
 	github.com/spf13/cast v1.5.0 // indirect
-	github.com/spf13/cobra v1.4.0 // indirect
+	github.com/spf13/cobra v1.5.0 // indirect
 	github.com/spf13/fsync v0.9.0 // indirect
 	github.com/spf13/jwalterweatherman v1.1.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
-	github.com/tdewolff/minify/v2 v2.11.10 // indirect
-	github.com/tdewolff/parse/v2 v2.6.0 // indirect
-	github.com/yuin/goldmark v1.4.12 // indirect
+	github.com/tdewolff/minify/v2 v2.12.1 // indirect
+	github.com/tdewolff/parse/v2 v2.6.3 // indirect
+	github.com/yuin/goldmark v1.4.14 // indirect
 	go.opencensus.io v0.23.0 // indirect
-	go.uber.org/atomic v1.9.0 // indirect
+	go.uber.org/atomic v1.10.0 // indirect
 	gocloud.dev v0.24.0 // indirect
 	golang.org/x/crypto v0.0.0-20211108221036-ceb1ce70b4fa // indirect
 	golang.org/x/image v0.0.0-20211028202545-6944b10bf410 // indirect
 	golang.org/x/net v0.0.0-20220607020251-c690dde0001d // indirect
 	golang.org/x/oauth2 v0.0.0-20220411215720-9780585627b5 // indirect
 	golang.org/x/sync v0.0.0-20210220032951-036812b2e83c // indirect
-	golang.org/x/sys v0.0.0-20220520151302-bc2c85ada10a // indirect
+	golang.org/x/sys v0.0.0-20220811171246-fbc7d0a398ab // indirect
 	golang.org/x/text v0.3.7 // indirect
 	golang.org/x/tools v0.1.11 // indirect
 	golang.org/x/xerrors v0.0.0-20220411194840-2f41105eb62f // indirect
