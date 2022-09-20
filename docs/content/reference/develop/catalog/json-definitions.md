@@ -2261,6 +2261,7 @@ The following is a reference for the JSON object definitions derived from the [m
                   <div class="body">
                      <p class="description"><span class="usa-tag">description</span> The relationship type for the mapping entry, which describes the relationship between
                         the effective requirements of the specified source and target sets.</p>
+                     <p><span class="usa-tag">value key</span> <code class="name">type</code></p>
                      <div class="remarks-group usa-prose">
                         <details open="open">
                            <summary class="subhead">Remarks</summary>
@@ -2334,7 +2335,7 @@ The following is a reference for the JSON object definitions derived from the [m
                            </div>
                            <div class="model-entry definition m:define-flag">
                               <div class="instance-header">
-                                 <h3 id="/assembly/oscal-mapping-common/map/relationship/STRVALUE" class="toc3 name">STRVALUE</h3>
+                                 <h3 id="/assembly/oscal-mapping-common/map/relationship/type" class="toc3 name">type</h3>
                                  <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                  <p class="occurrence">[0 or 1]</p>
                                  <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-mapping-common/map/relationship">Switch to XML</a></div>

@@ -4485,7 +4485,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h6 id="/mapping-collection/mappings/mapping/maps/relationship/STRVALUE" class="toc6 name">STRVALUE</h6>
+                                             <h6 id="/mapping-collection/mappings/mapping/maps/relationship/type" class="toc6 name">type</h6>
                                              <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../xml-reference/#/mapping-collection/mapping/map/relationship/_VALUE">Switch to XML</a></div>

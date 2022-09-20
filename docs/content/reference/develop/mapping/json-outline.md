@@ -936,7 +936,7 @@ The following outline is a representation of the [JSON format](https://github.co
                                              <p class="OM-line"><a class="OM-name" href="../json-reference/#/mapping-collection/mappings/mapping/maps/relationship/ns">ns</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uri">uri</a></span><span class="OM-lit">,</span></p>
                                           </div>
                                           <div class="OM-entry">
-                                             <p class="OM-line"><a class="OM-name" href="../json-reference/#/mapping-collection/mappings/mapping/maps/relationship/STRVALUE">STRVALUE</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                             <p class="OM-line"><a class="OM-name" href="../json-reference/#/mapping-collection/mappings/mapping/maps/relationship/type">type</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
                                           </div>
                                        </div>
                                        <p><span class="OM-lit"> }, </span></p>
