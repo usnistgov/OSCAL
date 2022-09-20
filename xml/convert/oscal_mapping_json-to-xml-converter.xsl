@@ -1791,7 +1791,7 @@
    <!-- matching mapping-collection/mapping/map/relationship-->
    <xsl:template match="j:map[@key='mapping-collection']/(j:array[@key='mappings']/j:map | j:map[@key='mappings'])/j:array[@key='maps']/j:map/j:map[@key='relationship']"
                  mode="get-value-property">
-      <value as-type="token" key="STRVALUE" in-json="string">
+      <value as-type="token" key="type" in-json="string">
          <xsl:apply-templates mode="keep-value-property"/>
       </value>
    </xsl:template>

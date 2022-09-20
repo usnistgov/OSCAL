@@ -998,10 +998,10 @@
               { "title" : "Relationship Value Namespace",
                 "description" : "A namespace qualifying the relationship's value. This allows different organizations to associate distinct semantics for relationships with the same name.",
                 "$ref" : "#/definitions/URIDatatype" },
-              "STRVALUE" : 
+              "type" : 
               { "type" : "string" } },
             "required" : 
-            [ "STRVALUE" ],
+            [ "type" ],
             "additionalProperties" : false,
             "enum" : 
             [ "equivalent-to",

@@ -2441,7 +2441,7 @@
    <!-- matching catalog//control/mapping/map/relationship-->
    <xsl:template match="j:map[@key='catalog']//j:array[@key='controls']/j:map/j:map[@key='mapping']/j:array[@key='maps']/j:map/j:map[@key='relationship']"
                  mode="get-value-property">
-      <value as-type="token" key="STRVALUE" in-json="string">
+      <value as-type="token" key="type" in-json="string">
          <xsl:apply-templates mode="keep-value-property"/>
       </value>
    </xsl:template>
@@ -3139,7 +3139,7 @@
    <!-- matching catalog//group//control/mapping/map/relationship-->
    <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='controls']/j:map/j:map[@key='mapping']/j:array[@key='maps']/j:map/j:map[@key='relationship']"
                  mode="get-value-property">
-      <value as-type="token" key="STRVALUE" in-json="string">
+      <value as-type="token" key="type" in-json="string">
          <xsl:apply-templates mode="keep-value-property"/>
       </value>
    </xsl:template>
