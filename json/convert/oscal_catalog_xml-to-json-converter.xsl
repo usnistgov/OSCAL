@@ -2409,7 +2409,7 @@
             <xsl:attribute name="key">relationship</xsl:attribute>
          </xsl:if>
          <xsl:apply-templates select="@ns"/>
-         <value as-type="token" key="STRVALUE" in-json="string">
+         <value as-type="token" key="type" in-json="string">
             <xsl:value-of select="."/>
          </value>
       </field>
@@ -2904,7 +2904,7 @@
             <xsl:attribute name="key">relationship</xsl:attribute>
          </xsl:if>
          <xsl:apply-templates select="@ns"/>
-         <value as-type="token" key="STRVALUE" in-json="string">
+         <value as-type="token" key="type" in-json="string">
             <xsl:value-of select="."/>
          </value>
       </field>
