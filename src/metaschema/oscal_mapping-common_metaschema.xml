@@ -27,6 +27,7 @@
             <define-field name="relationship" as-type="token" min-occurs="1">
                 <formal-name>Mapping Entry Relationship</formal-name>
                 <description>The relationship type for the mapping entry, which describes the relationship between the effective requirements of the specified source and target sets.</description>
+                <json-value-key>type</json-value-key>
                 <define-flag name="ns" as-type="uri">
                     <formal-name>Relationship Value Namespace</formal-name>
                     <description>A namespace qualifying the relationship's value. This allows different organizations to associate distinct semantics for relationships with the same name.</description>
