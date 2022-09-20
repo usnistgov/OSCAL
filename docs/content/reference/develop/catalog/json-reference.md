@@ -6485,7 +6485,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/catalog/controls/mapping/maps/relationship/STRVALUE" class="toc6 name">STRVALUE</h6>
+                                                      <h6 id="/catalog/controls/mapping/maps/relationship/type" class="toc6 name">type</h6>
                                                       <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../xml-reference/#/catalog/control/mapping/map/relationship/_VALUE">Switch to XML</a></div>
@@ -11595,7 +11595,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                             </div>
                                                             <div class="model-entry definition assembly">
                                                                <div class="instance-header">
-                                                                  <p id="/catalog/groups/controls/mapping/maps/relationship/STRVALUE" class="toc7 name">STRVALUE</p>
+                                                                  <p id="/catalog/groups/controls/mapping/maps/relationship/type" class="toc7 name">type</p>
                                                                   <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                                   <p class="occurrence">[0 or 1]</p>
                                                                   <div class="crosslink"><a class="usa-button" href="../xml-reference/#/catalog/group/control/mapping/map/relationship/_VALUE">Switch to XML</a></div>
