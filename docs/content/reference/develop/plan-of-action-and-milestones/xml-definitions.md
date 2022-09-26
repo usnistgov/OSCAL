@@ -24,6 +24,195 @@ The following is a reference for the XML element and attribute types derived fro
    </details>
    <div class="model-entry definition define-assembly">
       <div class="definition-header">
+         <h1 id="/assembly/oscal-metadata/action" class="toc1 name">action</h1>
+         <p class="type">assembly<br class="br" /> </p>
+         <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-metadata/action">Switch to JSON</a></div>
+         <p class="formal-name">Action</p>
+      </div>
+      <div class="body">
+         <p class="description"><span class="usa-tag">description</span> An action applied by a role within a given party to the content.</p>
+         <details>
+            <summary>Constraints (4)</summary>
+            
+            <div class="constraint">
+               <p><span class="usa-tag">index has key</span> for <code class="path">responsible-party</code>this value must correspond to a listing in the index <code>index-metadata-role-id</code> using a key constructed of key field(s) <code>@role-id</code></p>
+            </div>
+            
+            <div class="constraint">
+               <p><span class="usa-tag">index has key</span> for <code class="path">responsible-party</code>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>party-uuid</code></p>
+            </div>
+            
+            <div class="constraint">
+               <p><span class="usa-tag">allowed value</span> for <code class="path">./system/@value</code></p>
+               <p>The value <b>may be locally defined</b>, or the following:</p>
+               <ul>
+                  
+                  <li><strong>http://csrc.nist.gov/ns/oscal</strong>: This value identifies action types defined in the NIST OSCAL namespace.</li>
+                  </ul>
+            </div>
+            
+            <div class="constraint">
+               <p><span class="usa-tag">allowed values</span> for <code class="path">./type[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@value</code></p>
+               <p>The value <b>must</b> be one of the following:</p>
+               <ul>
+                  
+                  <li><strong>approval</strong>: An approval of a document instance's content.</li>
+                  
+                  <li><strong>request-changes</strong>: A request from the responisble party or parties to change the content.</li>
+                  </ul>
+            </div>
+            </details>
+         <details open="open">
+            <summary>Attributes (4):</summary>
+            <div class="model assembly-model">
+               <div class="model-entry definition define-flag">
+                  <div class="instance-header">
+                     <h2 id="/assembly/oscal-metadata/action/uuid" class="toc2 name">uuid</h2>
+                     <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                     <p class="occurrence">[0 or 1]</p>
+                     <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-metadata/action/uuid">Switch to JSON</a></div>
+                     <p class="formal-name">Action Universally Unique Identifier</p>
+                  </div>
+                  <div class="body">
+                     <p class="description"><span class="usa-tag">description</span> A unique identifier that can be used to reference this defined action elsewhere in
+                        an OSCAL document. A UUID should be consistently used for a given location across
+                        revisions of the document.</p>
+                  </div>
+               </div>
+               <div class="model-entry definition define-flag">
+                  <div class="instance-header">
+                     <h2 id="/assembly/oscal-metadata/action/date" class="toc2 name">date</h2>
+                     <p class="type"><a href="/reference/datatypes/#datetime-with-timezone">dateTime-with-timezone</a></p>
+                     <p class="occurrence">[0 or 1]</p>
+                     <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-metadata/action/date">Switch to JSON</a></div>
+                     <p class="formal-name">Action Occurrence Date</p>
+                  </div>
+                  <div class="body">
+                     <p class="description"><span class="usa-tag">description</span> The date and time when the action occurred.</p>
+                  </div>
+               </div>
+               <div class="model-entry definition define-flag">
+                  <div class="instance-header">
+                     <h2 id="/assembly/oscal-metadata/action/type" class="toc2 name">type</h2>
+                     <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                     <p class="occurrence">[0 or 1]</p>
+                     <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-metadata/action/type">Switch to JSON</a></div>
+                     <p class="formal-name">Action Type</p>
+                  </div>
+                  <div class="body">
+                     <p class="description"><span class="usa-tag">description</span> The type of action documented by the assembly, such as an approval.</p>
+                  </div>
+               </div>
+               <div class="model-entry definition define-flag">
+                  <div class="instance-header">
+                     <h2 id="/assembly/oscal-metadata/action/system" class="toc2 name">system</h2>
+                     <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
+                     <p class="occurrence">[0 or 1]</p>
+                     <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-metadata/action/system">Switch to JSON</a></div>
+                     <p class="formal-name">Action Type System</p>
+                  </div>
+                  <div class="body">
+                     <p class="description"><span class="usa-tag">description</span> Specifies the action type system used.</p>
+                     <div class="remarks-group usa-prose">
+                        <details open="open">
+                           <summary class="subhead">Remarks</summary>
+                           <div class="remarks">
+                              <p>Provides a means to segment the value space for the <code>type</code>, so that different organizations and individuals can assert control over the allowed
+                                 <code>action</code>'s <code>type</code>. This allows the semantics associated with a given <code>type</code> to be defined on an organization-by-organization basis.</p>
+                              <p>An organization MUST use a URI that they have control over. e.g., a domain registered
+                                 to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
+                           </div>
+                        </details>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </details>
+         <details open="open">
+            <summary>Elements (4):</summary>
+            <div class="model assembly-model">
+               <div class="model-entry definition assembly">
+                  <div class="instance-header">
+                     <h2 id="/assembly/oscal-metadata/action/prop" class="toc2 name">property</h2>
+                     <p class="type">assembly<br class="br" /> </p>
+                     <p class="occurrence">[0 to ∞]</p>
+                     <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-metadata/action/props">Switch to JSON</a></div>
+                     <p class="formal-name">Property</p>
+                  </div>
+                  <div class="body">
+                     <p><span class="usa-tag">use name</span> <code class="name">prop</code></p>
+                     <div class="remarks-group usa-prose">
+                        <details open="open">
+                           <summary class="subhead">Remarks</summary>
+                           <div class="remarks">
+                              <p>Properties permit the deployment and management of arbitrary controlled values, within
+                                 OSCAL objects. A property can be included for any purpose useful to an application
+                                 or implementation. Typically, properties will be used to sort, filter, select, order,
+                                 and arrange OSCAL content objects, to relate OSCAL objects to one another, or to associate
+                                 an OSCAL object to class hierarchies, taxonomies, or external authorities. Thus, the
+                                 lexical composition of properties may be constrained by external processes to ensure
+                                 consistency.</p>
+                              <p>Property allows for associated remarks that describe why the specific property value
+                                 was applied to the containing object, or the significance of the value in the context
+                                 of the containing object.</p>
+                           </div>
+                        </details>
+                     </div>
+                     <p class="definition-link"><a href="#/assembly/oscal-metadata/property">See definition</a></p>
+                  </div>
+               </div>
+               <div class="model-entry definition assembly">
+                  <div class="instance-header">
+                     <h2 id="/assembly/oscal-metadata/action/link" class="toc2 name">link</h2>
+                     <p class="type">assembly<br class="br" /> </p>
+                     <p class="occurrence">[0 to ∞]</p>
+                     <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-metadata/action/links">Switch to JSON</a></div>
+                     <p class="formal-name">Link</p>
+                  </div>
+                  <div class="body">
+                     <div class="remarks-group usa-prose">
+                        <details open="open">
+                           <summary class="subhead">Remarks</summary>
+                           <div class="remarks">
+                              <p>To provide a cryptographic hash for a remote target resource, a local reference to
+                                 a back matter <code>resource</code> is needed. The resource allows one or more hash values to be provided using the <code>rlink/hash</code> object.</p>
+                              <p>The OSCAL <code>link</code> is a roughly based on the HTML <a href="https://www.w3.org/TR/html401/struct/links.html#edef-LINK">link element</a>. </p>
+                           </div>
+                        </details>
+                     </div>
+                     <p class="definition-link"><a href="#/assembly/oscal-metadata/link">See definition</a></p>
+                  </div>
+               </div>
+               <div class="model-entry definition assembly">
+                  <div class="instance-header">
+                     <h2 id="/assembly/oscal-metadata/action/responsible-party" class="toc2 name">responsible-party</h2>
+                     <p class="type">assembly<br class="br" /> </p>
+                     <p class="occurrence">[0 to ∞]</p>
+                     <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-metadata/action/responsible-parties">Switch to JSON</a></div>
+                     <p class="formal-name">Responsible Party</p>
+                  </div>
+                  <div class="body">
+                     <p class="definition-link"><a href="#/assembly/oscal-metadata/responsible-party">See definition</a></p>
+                  </div>
+               </div>
+               <div class="model-entry definition field">
+                  <div class="instance-header">
+                     <h2 id="/assembly/oscal-metadata/action/remarks" class="toc2 name">remarks</h2>
+                     <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                     <p class="occurrence">[0 or 1]</p>
+                     <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-metadata/action/remarks">Switch to JSON</a></div>
+                     <p class="formal-name">Remarks</p>
+                  </div>
+                  <div class="body">
+                     <p class="definition-link"><a href="#/field/oscal-metadata/remarks">See definition</a></p>
+                  </div>
+               </div>
+            </div>
+         </details>
+      </div>
+   </div>
+   <div class="model-entry definition define-assembly">
+      <div class="definition-header">
          <h1 id="/assembly/oscal-assessment-common/activity" class="toc1 name">activity</h1>
          <p class="type">assembly<br class="br" /> </p>
          <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-assessment-common/activity">Switch to JSON</a></div>
@@ -4683,7 +4872,7 @@ The following is a reference for the XML element and attribute types derived fro
             </div>
             </details>
          <details open="open">
-            <summary>Elements (14):</summary>
+            <summary>Elements (15):</summary>
             <div class="model assembly-model">
                <div class="model-entry definition define-field">
                   <div class="instance-header">
@@ -4958,6 +5147,18 @@ The following is a reference for the XML element and attribute types derived fro
                   </div>
                   <div class="body">
                      <p class="definition-link"><a href="#/assembly/oscal-metadata/responsible-party">See definition</a></p>
+                  </div>
+               </div>
+               <div class="model-entry definition assembly">
+                  <div class="instance-header">
+                     <h2 id="/assembly/oscal-metadata/metadata/action" class="toc2 name">action</h2>
+                     <p class="type">assembly<br class="br" /> </p>
+                     <p class="occurrence">[0 to ∞]</p>
+                     <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-metadata/metadata/actions">Switch to JSON</a></div>
+                     <p class="formal-name">Action</p>
+                  </div>
+                  <div class="body">
+                     <p class="definition-link"><a href="#/assembly/oscal-metadata/action">See definition</a></p>
                   </div>
                </div>
                <div class="model-entry definition field">
