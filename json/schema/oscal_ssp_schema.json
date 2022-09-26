@@ -889,6 +889,11 @@
             "minItems" : 1,
             "items" : 
             { "$ref" : "#assembly_oscal-metadata_responsible-party" } },
+          "actions" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#assembly_oscal-metadata_action" } },
           "remarks" : 
           { "$ref" : "#field_oscal-metadata_remarks" } },
         "required" : 
@@ -1318,6 +1323,50 @@
         "required" : 
         [ "role-id",
           "party-uuids" ],
+        "additionalProperties" : false },
+      "oscal-ssp-oscal-metadata:action" : 
+      { "title" : "Action",
+        "description" : "An action applied by a role within a given party to the content.",
+        "$id" : "#assembly_oscal-metadata_action",
+        "type" : "object",
+        "properties" : 
+        { "uuid" : 
+          { "title" : "Action Universally Unique Identifier",
+            "description" : "A unique identifier that can be used to reference this defined action elsewhere in an OSCAL document. A UUID should be consistently used for a given location across revisions of the document.",
+            "$ref" : "#/definitions/UUIDDatatype" },
+          "date" : 
+          { "title" : "Action Occurrence Date",
+            "description" : "The date and time when the action occurred.",
+            "$ref" : "#/definitions/DateTimeWithTimezoneDatatype" },
+          "type" : 
+          { "title" : "Action Type",
+            "description" : "The type of action documented by the assembly, such as an approval.",
+            "$ref" : "#/definitions/TokenDatatype" },
+          "system" : 
+          { "title" : "Action Type System",
+            "description" : "Specifies the action type system used.",
+            "$ref" : "#/definitions/URIDatatype" },
+          "props" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#assembly_oscal-metadata_property" } },
+          "links" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#assembly_oscal-metadata_link" } },
+          "responsible-parties" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#assembly_oscal-metadata_responsible-party" } },
+          "remarks" : 
+          { "$ref" : "#field_oscal-metadata_remarks" } },
+        "required" : 
+        [ "uuid",
+          "type",
+          "system" ],
         "additionalProperties" : false },
       "oscal-ssp-oscal-metadata:responsible-role" : 
       { "title" : "Responsible Role",
