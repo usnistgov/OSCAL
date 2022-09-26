@@ -213,6 +213,10 @@
                      type="oscal-metadata-responsible-party-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
+         <xs:element name="action"
+                     type="oscal-metadata-action-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
          <xs:element name="remarks" minOccurs="0" maxOccurs="1">
             <xs:annotation>
                <xs:appinfo>
@@ -1014,6 +1018,83 @@
             </xs:appinfo>
             <xs:documentation>
                <b>Responsible Role</b>: A human-oriented identifier reference to roles served by the user.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+   </xs:complexType>
+   <xs:complexType name="oscal-metadata-action-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Action</m:formal-name>
+            <m:description>An action applied by a role within a given party to the content.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Action</b>: An action applied by a role within a given party to the content.</xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="prop"
+                     type="oscal-metadata-property-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="link"
+                     type="oscal-metadata-link-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="responsible-party"
+                     type="oscal-metadata-responsible-party-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Remarks</m:formal-name>
+                  <m:description>Additional commentary on the containing object.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Remarks</b>: Additional commentary on the containing object.</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+               <xs:group ref="blockElementGroup" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
+      <xs:attribute name="uuid" use="required" type="UUIDDatatype">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Action Universally Unique Identifier</m:formal-name>
+               <m:description>A unique identifier that can be used to reference this defined action elsewhere in an OSCAL document. A UUID should be consistently used for a given location across revisions of the document.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Action Universally Unique Identifier</b>: A unique identifier that can be used to reference this defined action elsewhere in an OSCAL document. A UUID should be consistently used for a given location across revisions of the document.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="date" type="DateTimeWithTimezoneDatatype">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Action Occurrence Date</m:formal-name>
+               <m:description>The date and time when the action occurred.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Action Occurrence Date</b>: The date and time when the action occurred.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="type" use="required" type="TokenDatatype">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Action Type</m:formal-name>
+               <m:description>The type of action documented by the assembly, such as an approval.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Action Type</b>: The type of action documented by the assembly, such as an approval.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="system" use="required" type="URIDatatype">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Action Type System</m:formal-name>
+               <m:description>Specifies the action type system used.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Action Type System</b>: Specifies the action type system used.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
