@@ -5,34 +5,36 @@
 <!DOCTYPE METASCHEMA [
    <!ENTITY allowed-values-control-group-property-name SYSTEM "shared-constraints/allowed-values-control-group-property-name.ent">
 ]>
-<METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xmlns:meta="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
-      xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/toolchains/xslt-M4/validate/metaschema.xsd">
+<?xml-stylesheet type="text/css" href="metaschema-author.css"?>
+<METASCHEMA xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0">
       <schema-name>OSCAL Control Catalog Model</schema-name>
       <schema-version>1.0.4</schema-version>
       <short-name>oscal-catalog</short-name>
       <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
       <json-base-uri>http://csrc.nist.gov/ns/oscal</json-base-uri>
       <remarks>
-            <p>The OSCAL Control Catalog format can be used to describe a collection of security controls and related control enhancements, along with contextualizing documentation and metadata. The root of the Control Catalog format is <code>catalog</code>.
-            </p>
+            <p>The OSCAL Control Catalog format can be used to describe a collection of security controls and related control enhancements, along with contextualizing documentation and metadata. The root of the Control Catalog format is <code>catalog</code>.</p>
       </remarks>
       <import href="oscal_control-common_metaschema.xml"/>
       <import href="oscal_metadata_metaschema.xml"/>
       <import href="oscal_mapping-common_metaschema.xml"/>
       <define-assembly name="catalog">
             <formal-name>Catalog</formal-name>
-            <description>A collection of controls.</description>
+            <description>A structured, <a href="https://pages.nist.gov/OSCAL/concepts/terminology/#catalog">organized collection</a> of control information.</description>
             <root-name>catalog</root-name>
             <define-flag name="uuid" as-type="uuid" required="yes">
                   <formal-name>Catalog Universally Unique Identifier</formal-name>
-                  <description>A globally unique identifier with cross-instance scope for this catalog instance. This UUID should be changed when this document is revised.</description>
+                  <description>Provides a globally unique means to identify a given catalog instance.</description>
+                  <prop name="value-type" value="identifier"/>
+                  <prop name="identifier-type" value="machine-oriented"/>
+                  <prop name="identifier-uniqueness" value="global"/>
+                  <prop name="identifier-scope" value="cross-instance"/>
+                  <prop name="identifier-persistence" value="change-on-write"/>
             </define-flag>
 
             <model>
                   <assembly ref="metadata" min-occurs="1"/>
                   <assembly ref="parameter" max-occurs="unbounded">
-                        <!-- CHANGED: "parameters" to "params" -->
                         <group-as name="params" in-json="ARRAY"/>
                   </assembly>
                   <assembly ref="control" max-occurs="unbounded">
@@ -50,21 +52,38 @@
             <constraint>
                   <allowed-values target="metadata/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
                         <enum value="resolution-tool">The tool used to produce a resolved profile.</enum>
+                        <enum value="source-profile-uuid">The document-level <code>uuid</code> of the source profile from which the catalog was produced by <a href="https://pages.nist.gov/OSCAL/concepts/processing/profile-resolution/">profile resolution</a>.</enum>
                   </allowed-values>
                   <allowed-values target="metadata/link/@rel">
-                        <enum value="source-profile">The tool used to produce a resolved profile.</enum>
+                        <enum value="source-profile">The profile from which the catalog was produced by <a href="https://pages.nist.gov/OSCAL/concepts/processing/profile-resolution/">profile resolution</a>.</enum>
+                        <enum value="source-profile-uuid">The document-level <code>uuid</code> of the profile from which the catalog was produced by <a href="https://pages.nist.gov/OSCAL/concepts/processing/profile-resolution/">profile resolution</a>.</enum>
                   </allowed-values>
+                  <index name="catalog-parts" target="//part" >
+                        <key-field target="@id"/>
+                  </index>
+                  <index name="catalog-props" target="//prop" >
+                        <key-field target="@uuid"/>
+                  </index>
+                  <index name="catalog-controls" target="//control" >
+                        <key-field target="@id"/>
+                  </index>
+                  <index name="catalog-params" target="//param" >
+                        <key-field target="@id"/>
+                  </index>
+                  <index name="catalog-groups" target="//group" >
+                        <key-field target="@id"/>
+                  </index>
             </constraint>
             <remarks>
                   <p>Catalogs may use one or more <code>group</code> objects to subdivide the control contents of a catalog.</p>
-                  <p>An OSCAL catalog model provides a structured representation of control information.</p>
             </remarks>
             <example>
-                  <description>A small catalog with a single control</description>
-                  <catalog xmlns="http://csrc.nist.gov/ns/oscal/example" id="simple-example" model-version="0.99">
+                  <description>A small catalog with a single control.</description>
+                  <catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0" uuid="35566cd4-7331-43ba-b023-988c38d62673">
                         <title>A Miniature Catalog</title>
                         <control id="single">
                               <title>A Single Control</title>
+                              <!-- TODO: this is not a complete valid example. Fix this. -->
                         </control>
                   </catalog>
             </example>
@@ -73,10 +92,15 @@
             <formal-name>Control Group</formal-name>
             <description>A group of controls, or of groups of controls.</description>
             <define-flag name="id" as-type="token">
-                  <!-- This is an id because the idenfier is assigned and managed externally by humans. -->
+                  <!-- This is an id because the identifier is assigned and managed externally by humans. -->
                   <formal-name>Group Identifier</formal-name>
                   <!-- Identifier Declaration -->
-                  <description>A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a>, <a href="/concepts/identifier-use/#locally-unique">locally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined group elsewhere in <a href="/concepts/identifier-use/#catalog-identifiers">in this and other OSCAL instances (e.g., profiles)</a>. This id should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same group across revisions of the document.</description>
+                  <description>Identifies the group for the purpose of cross-linking within the defining instance or from other instances that reference the catalog.</description>
+                  <prop name="value-type" value="identifier"/>
+                  <prop name="identifier-type" value="human-oriented"/>
+                  <prop name="identifier-uniqueness" value="instance"/>
+                  <prop name="identifier-scope" value="cross-instance"/>
+                  <prop name="identifier-persistence" value="per-subject"/>
             </define-flag>
             <define-flag name="class" as-type="token">
                   <formal-name>Group Class</formal-name>
@@ -92,7 +116,6 @@
                         <description>A name given to the group, which may be used by a tool for display and navigation.</description>
                   </define-field>
                   <assembly ref="parameter" max-occurs="unbounded">
-                        <!-- CHANGED: "parameters" to "params" -->
                         <group-as name="params" in-json="ARRAY"/>
                   </assembly>
 
@@ -116,7 +139,6 @@
                   <!--<any/>-->
             </model>
             <constraint>
-                  <!-- CHANGE: added allowed values for a property/@name -->
                   <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
             &allowed-values-control-group-property-name;
                   </allowed-values>
@@ -125,11 +147,11 @@
                   </allowed-values>
             </constraint>
             <remarks>
-                  <p>Catalogs can use a <code>group</code> to collect related controls into a single grouping. That can be useful to group controls into a family or other logical grouping.</p>
-                  <p>A <code>group</code> may have its own properties, statements, parameters, and references, which are inherited by all members of that group.</p>
+                  <p>Catalogs can use the catalog <code>group</code> construct to organize related controls into a single grouping, such as a family of controls or other logical organizational structure.</p>
+                  <p>A <code>group</code> may have its own properties, statements, parameters, and references, which are inherited by all controls of that are a member of the group.</p>
             </remarks>
             <example>
-                  <group xmlns="http://csrc.nist.gov/ns/oscal/example" id="xyz">
+                  <group xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="xyz">
                         <title>My Group</title>
                         <prop name="required" value="some value"/>
                         <control id="xyz1">
@@ -140,28 +162,41 @@
       </define-assembly>
       <define-assembly name="control">
             <formal-name>Control</formal-name>
-            <description>A structured information object representing a security or privacy control. Each security or privacy control within the Catalog is defined by a distinct control instance.</description>
+            <description>A <a href="https://pages.nist.gov/OSCAL/concepts/terminology/#control"
+                        >structured object</a> representing a requirement or guideline, which when
+                  implemented will reduce an aspect of risk related to an information system and its
+                  information.</description>
             <define-flag name="id" as-type="token" required="yes">
                   <!-- This is an id because the idenfier is managed externally. -->
                   <formal-name>Control Identifier</formal-name>
                   <!-- Identifier Declaration -->
-                  <description>A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a>, <a href="/concepts/identifier-use/#locally-unique">locally unique</a> identifier with <a href="/concepts/identifier-use/#instance">instance</a> scope that can be used to reference this control elsewhere <a href="/concepts/identifier-use/#catalog-identifiers">in this and other OSCAL instances (e.g., profiles)</a>. This id should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same control across revisions of the document.</description>
+                  <description>Identifies a control such that it can be referenced in the defining
+                        catalog and other OSCAL instances (e.g., profiles).</description>
+                  <prop name="value-type" value="identifier"/>
+                  <prop name="identifier-type" value="human-oriented"/>
+                  <prop name="identifier-uniqueness" value="local"/>
+                  <prop name="identifier-scope" value="instance"/>
+                  <prop name="identifier-persistence" value="per-subject"/>
             </define-flag>
             <define-flag name="class" as-type="token">
                   <formal-name>Control Class</formal-name>
-                  <description>A textual label that provides a sub-type or characterization of the control.</description>
+                  <description>A textual label that provides a sub-type or characterization of the
+                        control.</description>
                   <remarks>
-                        <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of a specific <code>class</code> value.</p>
-                        <p>A <code>class</code> can also be used in an OSCAL profile as a means to target an alteration to control content.</p>
+                        <p>A <code>class</code> can be used in validation rules to express extra
+                              constraints over named items of a specific <code>class</code>
+                              value.</p>
+                        <p>A <code>class</code> can also be used in an OSCAL profile as a means to
+                              target an alteration to control content.</p>
                   </remarks>
             </define-flag>
             <model>
                   <define-field name="title" as-type="markup-line" min-occurs="1">
                         <formal-name>Control Title</formal-name>
-                        <description>A name given to the control, which may be used by a tool for display and navigation.</description>
+                        <description>A name given to the control, which may be used by a tool for
+                              display and navigation.</description>
                   </define-field>
                   <assembly ref="parameter" max-occurs="unbounded">
-                        <!-- CHANGED: "parameters" to "params" -->
                         <group-as name="params" in-json="ARRAY"/>
                   </assembly>
                   <!-- TODO: Need to be able to add valid values in context -->
@@ -176,7 +211,8 @@
                   </assembly>
                   <define-assembly name="mapping">
                         <formal-name>Mapping</formal-name>
-                        <description>A mapping between the containing control and another resource.</description>
+                        <description>A mapping between the containing control and another
+                              resource.</description>
                         <define-flag name="uuid" as-type="uuid" required="yes">
                               <formal-name>Mapping Identifier</formal-name>
                               <description>The unique identifier for the mapping.</description>
@@ -197,70 +233,100 @@
                   <!-- <any/> -->
             </model>
             <constraint>
-                  <expect id="catalog-control-require-statement-when-not-withdrawn" target="." test="prop[@name='status']/@value=('withdrawn','Withdrawn') or part[@name='statement']" />
-                  <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
-            &allowed-values-control-group-property-name;
-                        <enum value="status">The status of a <code>control</code>. For example, a value of 'withdrawn' can indicate that the <code>control</code> has been withdrawn and should no longer be used.</enum>
+                  <expect id="catalog-control-require-statement-when-not-withdrawn" target="."
+                        test="prop[@name='status']/@value=('withdrawn','Withdrawn') or part[@name='statement']"/>
+                  <allowed-values
+                        target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+                        &allowed-values-control-group-property-name;
+                        <enum value="status">The status of a <code>control</code>. For example, a
+                              value of 'withdrawn' can indicate that the <code>control</code> has
+                              been withdrawn and should no longer be used.</enum>
                   </allowed-values>
-                  <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='status']/@value">
+                  <allowed-values
+                        target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='status']/@value">
                         <enum value="withdrawn">The control is no longer used.</enum>
-                        <enum value="Withdrawn" deprecated="1.0.0">**(deprecated)*** Use 'withdrawn' instead.</enum>
+                        <enum value="Withdrawn" deprecated="1.0.0">**(deprecated)*** Use 'withdrawn'
+                              instead.</enum>
                   </allowed-values>
                   <allowed-values target="link/@rel" allow-other="yes">
-                        <enum value="reference">The link cites an external resource related to this control.</enum>
-                        <enum value="related">The link identifies another control with bearing to this control.</enum>
-                        <enum value="required">The link identifies another control that must be present if this control is present.</enum>
-                        <enum value="incorporated-into">The link identifies other control content where this control content is now addressed.</enum>
-                        <enum value="moved-to">The containing control definition was moved to the referenced control.</enum>
+                        <enum value="reference">The link cites an external resource related to this
+                              control.</enum>
+                        <enum value="related">The link identifies another control with bearing to
+                              this control.</enum>
+                        <enum value="required">The link identifies another control that must be
+                              present if this control is present.</enum>
+                        <enum value="incorporated-into">The link identifies other control content
+                              where this control content is now addressed.</enum>
+                        <enum value="moved-to">The containing control definition was moved to the
+                              referenced control.</enum>
                   </allowed-values>
-                  
-                  <allowed-values target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
-                        <enum value="overview">An introduction to a control or a group of controls.</enum>
+                  <!-- TODO: add expect constraint to check for controls that reference themselves -->
+                  <index-has-key name="catalog-controls"
+                        target="link[@rel=('related','required','incorporated-into','moved-to') and starts-with(@href,'#')]">
+                        <key-field target="@href" pattern="#(.*)"/>
+                  </index-has-key>
+                  <allowed-values
+                        target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+                        <enum value="overview">An introduction to a control or a group of
+                              controls.</enum>
                         <enum value="statement">A set of control implementation requirements.</enum>
-                        <enum value="guidance">Additional information to consider when selecting, implementing, assessing, and monitoring a control.</enum>
-                        <enum value="assessment" deprecated="1.0.1">**(deprecated)** Use 'assessment-method' instead.</enum>
-                        <enum value="assessment-method">The part describes a method-based assessment over a set of assessment objects.</enum>
+                        <enum value="guidance">Additional information to consider when selecting,
+                              implementing, assessing, and monitoring a control.</enum>
+                        <enum value="assessment" deprecated="1.0.1">**(deprecated)** Use
+                              'assessment-method' instead.</enum>
+                        <enum value="assessment-method">The part describes a method-based assessment
+                              over a set of assessment objects.</enum>
                   </allowed-values>
-                  <allowed-values target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='statement']//part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+                  <allowed-values
+                        target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='statement']//part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
                         <enum value="item">An individual item within a control statement.</enum>
                         <remarks>
                               <p>Nested statement parts are "item" parts.</p>
                         </remarks>
                   </allowed-values>
-                  <allowed-values target=".//part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
-                        <enum value="objective" deprecated="1.0.1">**(deprecated)** Use 'assessment-objective' instead.</enum>
-                        <enum value="assessment-objective">The part describes a set of assessment objectives.</enum>
+                  <allowed-values
+                        target=".//part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+                        <enum value="objective" deprecated="1.0.1">**(deprecated)** Use
+                              'assessment-objective' instead.</enum>
+                        <enum value="assessment-objective">The part describes a set of assessment
+                              objectives.</enum>
                         <remarks>
                               <p>Objectives can be nested.</p>
                         </remarks>
                   </allowed-values>
-                  <allowed-values target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('assessment','assessment-method')]/part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
-                        <enum value="objects" deprecated="1.0.1">**(deprecated)** Use 'assessment-objects' instead.</enum>
-                        <enum value="assessment-objects">Provides a listing of assessment objects.</enum>
+                  <allowed-values
+                        target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('assessment','assessment-method')]/part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+                        <enum value="objects" deprecated="1.0.1">**(deprecated)** Use
+                              'assessment-objects' instead.</enum>
+                        <enum value="assessment-objects">Provides a listing of assessment
+                              objects.</enum>
                         <remarks>
                               <p>Assessment objects appear on assessment methods.</p>
                         </remarks>
                   </allowed-values>
-                  
-                  <allowed-values target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('assessment','assessment-method')]/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
-                        <enum value="method" deprecated="1.0.1">**(deprecated)** Use 'method' in the 'http://csrc.nist.gov/ns/rmf' namespace. The assessment method to use. This typically appears on parts with the name "assessment".</enum>
+                  <allowed-values
+                        target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('assessment','assessment-method')]/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+                        <enum value="method" deprecated="1.0.1">**(deprecated)** Use 'method' in the 'http://csrc.nist.gov/ns/rmf' namespace. The assessment method to use. This typically appears on parts with the name "assessment-method".</enum>
                   </allowed-values>
-                  <allowed-values target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('assessment','assessment-method')]/prop[has-oscal-namespace('http://csrc.nist.gov/ns/rmf')]/@name">
-                        <enum value="method">The assessment method to use. This typically appears on parts with the name "assessment".</enum>
+                  <allowed-values
+                        target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('assessment','assessment-method')]/prop[has-oscal-namespace('http://csrc.nist.gov/ns/rmf')]/@name">
+                        <enum value="method">The assessment method to use. This typically appears on
+                              parts with the name "assessment-method".</enum>
                   </allowed-values>
                   <expect level="WARNING" target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('assessment','assessment-method')]" test="prop[has-oscal-namespace(('http://csrc.nist.gov/ns/oscal','http://csrc.nist.gov/ns/rmf')) and @name='method']"/>
-                  <allowed-values target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('assessment','assessment-method')]/prop[has-oscal-namespace(('http://csrc.nist.gov/ns/oscal','http://csrc.nist.gov/ns/rmf')) and @name='method']/@value">
+                  <allowed-values
+                        target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('assessment','assessment-method')]/prop[has-oscal-namespace(('http://csrc.nist.gov/ns/oscal','http://csrc.nist.gov/ns/rmf')) and @name='method']/@value">
                         <enum value="INTERVIEW">The process of holding discussions with individuals or groups of individuals within an organization to once again, facilitate assessor understanding, achieve clarification, or obtain evidence.</enum>
                         <enum value="EXAMINE">The process of reviewing, inspecting, observing, studying, or analyzing one or more assessment objects (i.e., specifications, mechanisms, or activities).</enum>
                         <enum value="TEST">The process of exercising one or more assessment objects (i.e., activities or mechanisms) under specified conditions to compare actual with expected behavior.</enum>
                   </allowed-values>
             </constraint>
             <remarks>
-                  <p>Controls may be grouped using <code>group</code>, and controls may be partitioned using <code>part</code> or further enhanced (extended) using <code>control</code>.</p>
-                  <p>A control must have a part with the name "statement", which represents the textual narrative of the control. This "statement" part must occur only once, but may have nested parts to allow for multiple paragraphs or sections of text.</p>
+                  <p>Each security or privacy control within the catalog is defined by a distinct control instance. Controls may be as complex or as simple as a catalog defines them. They may be decomposed or further specified into child <code>control</code> objects, for example to represent control enhancements or specific breakouts of control functionality, to be maintained as discrete requirements. Controls may also contain structured parts (using <code>part</code>) and they may be grouped together in families or classes with <code>group</code>.</p>
+                  <p>Control structures in OSCAL will also exhibit regularities and rules that are not codified in OSCAL but in its applications or domains of application. For example, for catalogs describing controls as defined by NIST SP 800-53, a control must have a part with the name "statement", which represents the textual narrative of the control. This "statement" part must occur only once, but may have nested parts to allow for multiple paragraphs or sections of text. This organization supports addressability of this data content as long as, and only insofar as, it is consistently implemented across the control set. As given with these model definitions, constraints defined and assigned here can aid in ensuring this regularity; but other such constraints and other useful patterns of use remain to be discovered and described.</p>
             </remarks>
             <example>
-                  <control xmlns="http://csrc.nist.gov/ns/oscal/example" id="x">
+                  <control xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="x">
                         <title>Control 1</title>
                   </control>
             </example>
