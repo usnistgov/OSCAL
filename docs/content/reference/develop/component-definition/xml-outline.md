@@ -53,7 +53,7 @@ The following outline is a representation of the [XML format](https://github.com
                      <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/component-definition/metadata/revisions">revisions</a></span>&gt;<span class="show-closed"> … <span class="nobr">&lt;/revisions&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 or 1]</span></span></summary>
                      <div class="model-container">
                         <details class="OM-entry">
-                           <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/component-definition/metadata/revisions/revision">revision</a></span>&gt;<span class="show-closed"><span class="OM-lit OM-gloss"> (recursive: model like parent <span class="OM-ref">revision</span>) </span><span class="nobr">&lt;/revision&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
+                           <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/component-definition/metadata/revisions/revision">revision</a></span>&gt;<span class="show-closed"> … <span class="nobr">&lt;/revision&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
                            <div class="model-container">
                               <details class="OM-entry">
                                  <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/component-definition/metadata/revisions/revision/title">title</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span><span class="nobr">&lt;/title&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 or 1]</span></span></summary>
@@ -233,7 +233,7 @@ The following outline is a representation of the [XML format](https://github.com
                            <p class="close-tag nobr">&lt;/title&gt;</p>
                         </details>
                         <details class="OM-entry">
-                           <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/component-definition/metadata/location/address">address</a></span> <span class="nobr" id="/component-definition/metadata/location/address/@type"><a class="OM-name" href="../xml-reference/#/component-definition/metadata/location/address/@type">type</a>="<span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span>"</span>&gt;<span class="show-closed"> … <span class="nobr">&lt;/address&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[1]</span></span></summary>
+                           <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/component-definition/metadata/location/address">address</a></span> <span class="nobr" id="/component-definition/metadata/location/address/@type"><a class="OM-name" href="../xml-reference/#/component-definition/metadata/location/address/@type">type</a>="<span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span>"</span>&gt;<span class="show-closed"> … <span class="nobr">&lt;/address&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 or 1]</span></span></summary>
                            <div class="model-container">
                               <details class="OM-entry">
                                  <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/component-definition/metadata/location/address/addr-line">addr-line</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="nobr">&lt;/addr-line&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
@@ -273,6 +273,10 @@ The following outline is a representation of the [XML format](https://github.com
                         <details class="OM-entry">
                            <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/component-definition/metadata/location/telephone-number">telephone-number</a></span> <span class="nobr" id="/component-definition/metadata/location/telephone-number/@type"><a class="OM-name" href="../xml-reference/#/component-definition/metadata/location/telephone-number/@type">type</a>="<span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span>"</span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="nobr">&lt;/telephone-number&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
                            <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span> value</p>
+                           
+                           
+                           
+                           
                            <p class="close-tag nobr">&lt;/telephone-number&gt;</p>
                         </details>
                         <details class="OM-entry">
@@ -373,6 +377,10 @@ The following outline is a representation of the [XML format](https://github.com
                         <details class="OM-entry">
                            <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/component-definition/metadata/party/telephone-number">telephone-number</a></span> <span class="nobr" id="/component-definition/metadata/party/telephone-number/@type"><a class="OM-name" href="../xml-reference/#/component-definition/metadata/party/telephone-number/@type">type</a>="<span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span>"</span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="nobr">&lt;/telephone-number&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
                            <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span> value</p>
+                           
+                           
+                           
+                           
                            <p class="close-tag nobr">&lt;/telephone-number&gt;</p>
                         </details>
                         <div class="OM-choices">
@@ -428,6 +436,7 @@ The following outline is a representation of the [XML format](https://github.com
                         <details class="OM-entry">
                            <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/component-definition/metadata/party/member-of-organization">member-of-organization</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="nobr">&lt;/member-of-organization&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
                            <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span> value</p>
+                           
                            
                            
                            
@@ -1463,13 +1472,18 @@ The following outline is a representation of the [XML format](https://github.com
                               <details class="OM-entry">
                                  <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/component-definition/back-matter/resource/rlink/hash">hash</a></span> <span class="nobr" id="/component-definition/back-matter/resource/rlink/hash/@algorithm"><a class="OM-name" href="../xml-reference/#/component-definition/back-matter/resource/rlink/hash/@algorithm">algorithm</a>="<span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span>"</span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="nobr">&lt;/hash&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
                                  <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span> value</p>
+                                 
+                                 
+                                 
+                                 
+                                 
                                  <p class="close-tag nobr">&lt;/hash&gt;</p>
                               </details>
                            </div>
                            <p class="close-tag nobr">&lt;/rlink&gt;</p>
                         </details>
                         <details class="OM-entry">
-                           <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/component-definition/back-matter/resource/base64">base64</a></span> <span class="nobr" id="/component-definition/back-matter/resource/base64/@filename"><a class="OM-name" href="../xml-reference/#/component-definition/back-matter/resource/base64/@filename">filename</a>="<span class="OM-datatype"><a href="/reference/datatypes/#uri-reference">uri-reference</a></span>"</span> <span class="nobr" id="/component-definition/back-matter/resource/base64/@media-type"><a class="OM-name" href="../xml-reference/#/component-definition/back-matter/resource/base64/@media-type">media-type</a>="<span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span>"</span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#base64binary">base64binary</a></span><span class="nobr">&lt;/base64&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 or 1]</span></span></summary>
+                           <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/component-definition/back-matter/resource/base64">base64</a></span> <span class="nobr" id="/component-definition/back-matter/resource/base64/@filename"><a class="OM-name" href="../xml-reference/#/component-definition/back-matter/resource/base64/@filename">filename</a>="<span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span>"</span> <span class="nobr" id="/component-definition/back-matter/resource/base64/@media-type"><a class="OM-name" href="../xml-reference/#/component-definition/back-matter/resource/base64/@media-type">media-type</a>="<span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span>"</span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#base64binary">base64binary</a></span><span class="nobr">&lt;/base64&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 or 1]</span></span></summary>
                            <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#base64binary">base64binary</a></span> value</p>
                            <p class="close-tag nobr">&lt;/base64&gt;</p>
                         </details>
