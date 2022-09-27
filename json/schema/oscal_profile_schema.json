@@ -6,13 +6,13 @@
     "definitions" : 
     { "oscal-profile-oscal-profile:profile" : 
       { "title" : "Profile",
-        "description" : "Each OSCAL profile is defined by a Profile element",
+        "description" : "Each OSCAL profile is defined by a profile element.",
         "$id" : "#assembly_oscal-profile_profile",
         "type" : "object",
         "properties" : 
         { "uuid" : 
           { "title" : "Profile Universally Unique Identifier",
-            "description" : "A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this profile elsewhere in this or other OSCAL instances. The locally defined UUID of the profile can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance).This identifier should be assigned per-subject, which means it should be consistently used to identify the same profile across revisions of the document.",
+            "description" : "Provides a globally unique means to identify a given profile instance.",
             "$ref" : "#/definitions/UUIDDatatype" },
           "metadata" : 
           { "$ref" : "#assembly_oscal-metadata_metadata" },
@@ -33,8 +33,8 @@
           "imports" ],
         "additionalProperties" : false },
       "oscal-profile-oscal-profile:import" : 
-      { "title" : "Import resource",
-        "description" : "The import designates a catalog or profile to be included (referenced and potentially modified) by this profile. The import also identifies which controls to select using the include-all, include-controls, and exclude-controls directives.",
+      { "title" : "Import Resource",
+        "description" : "Designates a referenced source catalog or profile that provides a source of control information for use in creating a new overlay or baseline.",
         "$id" : "#assembly_oscal-profile_import",
         "type" : "object",
         "properties" : 
@@ -43,7 +43,7 @@
             "description" : "A resolvable URL reference to the base catalog or profile that this profile is tailoring.",
             "$ref" : "#/definitions/URIReferenceDatatype" },
           "include-all" : 
-          { "$ref" : "#assembly_oscal-catalog-common_include-all" },
+          { "$ref" : "#assembly_oscal-control-common_include-all" },
           "include-controls" : 
           { "type" : "array",
             "minItems" : 1,
@@ -58,19 +58,19 @@
         [ "href" ],
         "additionalProperties" : false },
       "oscal-profile-oscal-profile:merge" : 
-      { "title" : "Merge controls",
-        "description" : "A Merge element provides structuring directives that drive how controls are organized after resolution.",
+      { "title" : "Merge Controls",
+        "description" : "Provides structuring directives that instruct how controls are organized after profile resolution.",
         "$id" : "#assembly_oscal-profile_merge",
         "type" : "object",
         "properties" : 
         { "combine" : 
-          { "title" : "Combination rule",
-            "description" : "A Combine element defines how to combine multiple (competing) versions of the same control.",
+          { "title" : "Combination Rule",
+            "description" : "A Combine element defines how to resolve duplicate instances of the same control (e.g., controls with the same ID).",
             "type" : "object",
             "properties" : 
             { "method" : 
-              { "title" : "Combination method",
-                "description" : "How clashing controls should be handled",
+              { "title" : "Combination Method",
+                "description" : "Declare how clashing controls should be handled.",
                 "allOf" : 
                 [ 
                   { "$ref" : "#/definitions/StringDatatype" },
@@ -81,17 +81,17 @@
                       "keep" ] } ] } },
             "additionalProperties" : false },
           "flat" : 
-          { "title" : "Flat",
-            "description" : "Use the flat structuring method.",
+          { "title" : "Flat Without Grouping",
+            "description" : "Directs that controls appear without any grouping structure.",
             "type" : "object",
             "additionalProperties" : false },
           "as-is" : 
-          { "title" : "As-Is Structuring Directive",
-            "description" : "An As-is element indicates that the controls should be structured in resolution as they are structured in their source catalogs. It does not contain any elements or attributes.",
+          { "title" : "Group As-Is",
+            "description" : "Indicates that the controls selected should retain their original grouping as defined in the import source.",
             "$ref" : "#/definitions/BooleanDatatype" },
           "custom" : 
-          { "title" : "Custom grouping",
-            "description" : "A Custom element frames a structure for embedding represented controls in resolution.",
+          { "title" : "Custom Grouping",
+            "description" : "Provides an alternate grouping structure that selected controls will be placed in.",
             "type" : "object",
             "properties" : 
             { "groups" : 
@@ -107,14 +107,14 @@
             "additionalProperties" : false } },
         "additionalProperties" : false },
       "oscal-profile-oscal-profile:group" : 
-      { "title" : "Control group",
-        "description" : "A group of (selected) controls or of groups of controls",
+      { "title" : "Control Group",
+        "description" : "A group of (selected) controls or of groups of controls.",
         "$id" : "#assembly_oscal-profile_group",
         "type" : "object",
         "properties" : 
         { "id" : 
           { "title" : "Group Identifier",
-            "description" : "A human-oriented, locally unique identifier with cross-instance scope that can be used to reference this defined group elsewhere in this or other OSCAL instances. When referenced from another OSCAL instance, this identifier must be referenced in the context of the containing resource (e.g., import-profile). This id should be assigned per-subject, which means it should be consistently used to identify the same group across revisions of the document.",
+            "description" : "Identifies the group.",
             "$ref" : "#/definitions/TokenDatatype" },
           "class" : 
           { "title" : "Group Class",
@@ -122,13 +122,13 @@
             "$ref" : "#/definitions/TokenDatatype" },
           "title" : 
           { "title" : "Group Title",
-            "description" : "A name given to the group, which may be used by a tool for display and navigation.",
+            "description" : "A name to be given to the group for use in display.",
             "type" : "string" },
           "params" : 
           { "type" : "array",
             "minItems" : 1,
             "items" : 
-            { "$ref" : "#assembly_oscal-catalog-common_parameter" } },
+            { "$ref" : "#assembly_oscal-control-common_parameter" } },
           "props" : 
           { "type" : "array",
             "minItems" : 1,
@@ -143,7 +143,7 @@
           { "type" : "array",
             "minItems" : 1,
             "items" : 
-            { "$ref" : "#assembly_oscal-catalog-common_part" } },
+            { "$ref" : "#assembly_oscal-control-common_part" } },
           "groups" : 
           { "type" : "array",
             "minItems" : 1,
@@ -158,8 +158,8 @@
         [ "title" ],
         "additionalProperties" : false },
       "oscal-profile-oscal-profile:modify" : 
-      { "title" : "Modify controls",
-        "description" : "Set parameters or amend controls in resolution",
+      { "title" : "Modify Controls",
+        "description" : "Set parameters or amend controls in resolution.",
         "$id" : "#assembly_oscal-profile_modify",
         "type" : "object",
         "properties" : 
@@ -168,19 +168,19 @@
             "minItems" : 1,
             "items" : 
             { "title" : "Parameter Setting",
-              "description" : "A parameter setting, to be propagated to points of insertion",
+              "description" : "A parameter setting, to be propagated to points of insertion.",
               "type" : "object",
               "properties" : 
               { "param-id" : 
                 { "title" : "Parameter ID",
-                  "description" : "A human-oriented, locally unique identifier with cross-instance scope that can be used to reference this defined parameter elsewhere in this or other OSCAL instances. When referenced from another OSCAL instance, this identifier must be referenced in the context of the containing resource (e.g., import-profile). This id should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.",
+                  "description" : "An identifier for the parameter.",
                   "$ref" : "#/definitions/TokenDatatype" },
                 "class" : 
                 { "title" : "Parameter Class",
                   "description" : "A textual label that provides a characterization of the parameter.",
                   "$ref" : "#/definitions/TokenDatatype" },
                 "depends-on" : 
-                { "title" : "Depends on",
+                { "title" : "Depends On",
                   "description" : "**(deprecated)** Another parameter invoking this one. This construct has been deprecated and should not be used.",
                   "$ref" : "#/definitions/TokenDatatype" },
                 "props" : 
@@ -199,25 +199,25 @@
                   "type" : "string" },
                 "usage" : 
                 { "title" : "Parameter Usage Description",
-                  "description" : "Describes the purpose and use of a parameter",
+                  "description" : "Describes the purpose and use of a parameter.",
                   "type" : "string" },
                 "constraints" : 
                 { "type" : "array",
                   "minItems" : 1,
                   "items" : 
-                  { "$ref" : "#assembly_oscal-catalog-common_parameter-constraint" } },
+                  { "$ref" : "#assembly_oscal-control-common_parameter-constraint" } },
                 "guidelines" : 
                 { "type" : "array",
                   "minItems" : 1,
                   "items" : 
-                  { "$ref" : "#assembly_oscal-catalog-common_parameter-guideline" } },
+                  { "$ref" : "#assembly_oscal-control-common_parameter-guideline" } },
                 "values" : 
                 { "type" : "array",
                   "minItems" : 1,
                   "items" : 
-                  { "$ref" : "#field_oscal-catalog-common_parameter-value" } },
+                  { "$ref" : "#field_oscal-control-common_parameter-value" } },
                 "select" : 
-                { "$ref" : "#assembly_oscal-catalog-common_parameter-selection" } },
+                { "$ref" : "#assembly_oscal-control-common_parameter-selection" } },
               "required" : 
               [ "param-id" ],
               "additionalProperties" : false } },
@@ -226,12 +226,12 @@
             "minItems" : 1,
             "items" : 
             { "title" : "Alteration",
-              "description" : "An Alter element specifies changes to be made to an included control when a profile is resolved.",
+              "description" : "Specifies changes to be made to an included control when a profile is resolved.",
               "type" : "object",
               "properties" : 
               { "control-id" : 
                 { "title" : "Control Identifier Reference",
-                  "description" : "A human-oriented identifier reference to a control with a corresponding id value. When referencing an externally defined control, the Control Identifier Reference must be used in the context of the external / imported OSCAL instance (e.g., uri-reference).",
+                  "description" : "A reference to a control with a corresponding id value. When referencing an externally defined control, the Control Identifier Reference must be used in the context of the external / imported OSCAL instance (e.g., uri-reference).",
                   "$ref" : "#/definitions/TokenDatatype" },
                 "removes" : 
                 { "type" : "array",
@@ -243,7 +243,7 @@
                     "properties" : 
                     { "by-name" : 
                       { "title" : "Reference by (assigned) name",
-                        "description" : "Identify items to remove by matching their assigned name",
+                        "description" : "Identify items remove by matching their assigned name.",
                         "$ref" : "#/definitions/TokenDatatype" },
                       "by-class" : 
                       { "title" : "Reference by class",
@@ -255,7 +255,7 @@
                         "$ref" : "#/definitions/TokenDatatype" },
                       "by-item-name" : 
                       { "title" : "Item Name Reference",
-                        "description" : "Identify items to remove by the name of the item's information element name, e.g. title or prop",
+                        "description" : "Identify items to remove by the name of the item's information object name, e.g. title or prop.",
                         "allOf" : 
                         [ 
                           { "$ref" : "#/definitions/TokenDatatype" },
@@ -277,12 +277,12 @@
                   "minItems" : 1,
                   "items" : 
                   { "title" : "Addition",
-                    "description" : "Specifies contents to be added into controls, in resolution",
+                    "description" : "Specifies contents to be added into controls, in resolution.",
                     "type" : "object",
                     "properties" : 
                     { "position" : 
                       { "title" : "Position",
-                        "description" : "Where to add the new content with respect to the targeted element (beside it or inside it)",
+                        "description" : "Where to add the new content with respect to the targeted element (beside it or inside it).",
                         "allOf" : 
                         [ 
                           { "$ref" : "#/definitions/TokenDatatype" },
@@ -304,7 +304,7 @@
                       { "type" : "array",
                         "minItems" : 1,
                         "items" : 
-                        { "$ref" : "#assembly_oscal-catalog-common_parameter" } },
+                        { "$ref" : "#assembly_oscal-control-common_parameter" } },
                       "props" : 
                       { "type" : "array",
                         "minItems" : 1,
@@ -319,14 +319,14 @@
                       { "type" : "array",
                         "minItems" : 1,
                         "items" : 
-                        { "$ref" : "#assembly_oscal-catalog-common_part" } } },
+                        { "$ref" : "#assembly_oscal-control-common_part" } } },
                     "additionalProperties" : false } } },
               "required" : 
               [ "control-id" ],
               "additionalProperties" : false } } },
         "additionalProperties" : false },
       "oscal-profile-oscal-profile:insert-controls" : 
-      { "title" : "Select controls",
+      { "title" : "Select Controls",
         "description" : "Specifies which controls to use in the containing context.",
         "$id" : "#assembly_oscal-profile_insert-controls",
         "type" : "object",
@@ -343,7 +343,7 @@
                   "ascending",
                   "descending" ] } ] },
           "include-all" : 
-          { "$ref" : "#assembly_oscal-catalog-common_include-all" },
+          { "$ref" : "#assembly_oscal-control-common_include-all" },
           "include-controls" : 
           { "type" : "array",
             "minItems" : 1,
@@ -356,13 +356,13 @@
             { "$ref" : "#assembly_oscal-profile_select-control-by-id" } } },
         "additionalProperties" : false },
       "oscal-profile-oscal-profile:select-control-by-id" : 
-      { "title" : "Call",
-        "description" : "Call a control by its ID",
+      { "title" : "Select Control",
+        "description" : "Select a control or controls from an imported control set.",
         "$id" : "#assembly_oscal-profile_select-control-by-id",
         "type" : "object",
         "properties" : 
         { "with-child-controls" : 
-          { "title" : "Include contained controls with control",
+          { "title" : "Include Contained Controls with Control",
             "description" : "When a control is included, whether its child (dependent) controls are also included.",
             "allOf" : 
             [ 
@@ -376,14 +376,14 @@
             "minItems" : 1,
             "items" : 
             { "title" : "Match Controls by Identifier",
-              "description" : "",
+              "description" : "Selecting a control by its ID given as a literal.",
               "$ref" : "#/definitions/TokenDatatype" } },
           "matching" : 
           { "type" : "array",
             "minItems" : 1,
             "items" : 
             { "title" : "Match Controls by Pattern",
-              "description" : "Select controls by (regular expression) match on ID",
+              "description" : "Selecting a set of controls by matching their IDs with a wildcard pattern.",
               "type" : "object",
               "properties" : 
               { "pattern" : 
@@ -393,8 +393,8 @@
               "additionalProperties" : false } } },
         "additionalProperties" : false },
       "oscal-profile-oscal-metadata:metadata" : 
-      { "title" : "Publication metadata",
-        "description" : "Provides information about the publication and availability of the containing document.",
+      { "title" : "Document Metadata",
+        "description" : "Provides information about the containing document, and defines concepts that are shared across the document.",
         "$id" : "#assembly_oscal-metadata_metadata",
         "type" : "object",
         "properties" : 
@@ -414,7 +414,37 @@
           { "type" : "array",
             "minItems" : 1,
             "items" : 
-            { "$ref" : "#assembly_oscal-metadata_revision" } },
+            { "title" : "Revision History Entry",
+              "description" : "An entry in a sequential list of revisions to the containing document, expected to be in reverse chronological order (i.e. latest first).",
+              "type" : "object",
+              "properties" : 
+              { "title" : 
+                { "title" : "Document Title",
+                  "description" : "A name given to the document revision, which may be used by a tool for display and navigation.",
+                  "type" : "string" },
+                "published" : 
+                { "$ref" : "#field_oscal-metadata_published" },
+                "last-modified" : 
+                { "$ref" : "#field_oscal-metadata_last-modified" },
+                "version" : 
+                { "$ref" : "#field_oscal-metadata_version" },
+                "oscal-version" : 
+                { "$ref" : "#field_oscal-metadata_oscal-version" },
+                "props" : 
+                { "type" : "array",
+                  "minItems" : 1,
+                  "items" : 
+                  { "$ref" : "#assembly_oscal-metadata_property" } },
+                "links" : 
+                { "type" : "array",
+                  "minItems" : 1,
+                  "items" : 
+                  { "$ref" : "#assembly_oscal-metadata_link" } },
+                "remarks" : 
+                { "$ref" : "#field_oscal-metadata_remarks" } },
+              "required" : 
+              [ "version" ],
+              "additionalProperties" : false } },
           "document-ids" : 
           { "type" : "array",
             "minItems" : 1,
@@ -434,17 +464,183 @@
           { "type" : "array",
             "minItems" : 1,
             "items" : 
-            { "$ref" : "#assembly_oscal-metadata_role" } },
+            { "title" : "Role",
+              "description" : "Defines a function, which might be assigned to a party in a specific situation.",
+              "type" : "object",
+              "properties" : 
+              { "id" : 
+                { "title" : "Role Identifier",
+                  "description" : "A unique identifier for the role.",
+                  "$ref" : "#/definitions/TokenDatatype" },
+                "title" : 
+                { "title" : "Role Title",
+                  "description" : "A name given to the role, which may be used by a tool for display and navigation.",
+                  "type" : "string" },
+                "short-name" : 
+                { "title" : "Role Short Name",
+                  "description" : "A short common name, abbreviation, or acronym for the role.",
+                  "$ref" : "#/definitions/StringDatatype" },
+                "description" : 
+                { "title" : "Role Description",
+                  "description" : "A summary of the role's purpose and associated responsibilities.",
+                  "type" : "string" },
+                "props" : 
+                { "type" : "array",
+                  "minItems" : 1,
+                  "items" : 
+                  { "$ref" : "#assembly_oscal-metadata_property" } },
+                "links" : 
+                { "type" : "array",
+                  "minItems" : 1,
+                  "items" : 
+                  { "$ref" : "#assembly_oscal-metadata_link" } },
+                "remarks" : 
+                { "$ref" : "#field_oscal-metadata_remarks" } },
+              "required" : 
+              [ "id",
+                "title" ],
+              "additionalProperties" : false } },
           "locations" : 
           { "type" : "array",
             "minItems" : 1,
             "items" : 
-            { "$ref" : "#assembly_oscal-metadata_location" } },
+            { "title" : "Location",
+              "description" : "A physical point of presence, which may be associated with people, organizations, or other concepts within the current or linked OSCAL document.",
+              "type" : "object",
+              "properties" : 
+              { "uuid" : 
+                { "title" : "Location Universally Unique Identifier",
+                  "description" : "A unique ID for the location, for reference.",
+                  "$ref" : "#/definitions/UUIDDatatype" },
+                "title" : 
+                { "title" : "Location Title",
+                  "description" : "A name given to the location, which may be used by a tool for display and navigation.",
+                  "type" : "string" },
+                "address" : 
+                { "$ref" : "#assembly_oscal-metadata_address" },
+                "email-addresses" : 
+                { "type" : "array",
+                  "minItems" : 1,
+                  "items" : 
+                  { "$ref" : "#field_oscal-metadata_email-address" } },
+                "telephone-numbers" : 
+                { "type" : "array",
+                  "minItems" : 1,
+                  "items" : 
+                  { "$ref" : "#field_oscal-metadata_telephone-number" } },
+                "urls" : 
+                { "type" : "array",
+                  "minItems" : 1,
+                  "items" : 
+                  { "title" : "Location URL",
+                    "description" : "The uniform resource locator (URL) for a web site or other resource associated with the location.",
+                    "$ref" : "#/definitions/URIDatatype" } },
+                "props" : 
+                { "type" : "array",
+                  "minItems" : 1,
+                  "items" : 
+                  { "$ref" : "#assembly_oscal-metadata_property" } },
+                "links" : 
+                { "type" : "array",
+                  "minItems" : 1,
+                  "items" : 
+                  { "$ref" : "#assembly_oscal-metadata_link" } },
+                "remarks" : 
+                { "$ref" : "#field_oscal-metadata_remarks" } },
+              "required" : 
+              [ "uuid" ],
+              "additionalProperties" : false } },
           "parties" : 
           { "type" : "array",
             "minItems" : 1,
             "items" : 
-            { "$ref" : "#assembly_oscal-metadata_party" } },
+            { "title" : "Party",
+              "description" : "An organization or person, which may be associated with roles or other concepts within the current or linked OSCAL document.",
+              "type" : "object",
+              "properties" : 
+              { "uuid" : 
+                { "title" : "Party Universally Unique Identifier",
+                  "description" : "A unique identifier for the party.",
+                  "$ref" : "#/definitions/UUIDDatatype" },
+                "type" : 
+                { "title" : "Party Type",
+                  "description" : "A category describing the kind of party the object describes.",
+                  "allOf" : 
+                  [ 
+                    { "$ref" : "#/definitions/StringDatatype" },
+                    
+                    { "enum" : 
+                      [ "person",
+                        "organization" ] } ] },
+                "name" : 
+                { "title" : "Party Name",
+                  "description" : "The full name of the party. This is typically the legal name associated with the party.",
+                  "$ref" : "#/definitions/StringDatatype" },
+                "short-name" : 
+                { "title" : "Party Short Name",
+                  "description" : "A short common name, abbreviation, or acronym for the party.",
+                  "$ref" : "#/definitions/StringDatatype" },
+                "external-ids" : 
+                { "type" : "array",
+                  "minItems" : 1,
+                  "items" : 
+                  { "title" : "Party External Identifier",
+                    "description" : "An identifier for a person or organization using a designated scheme. e.g. an Open Researcher and Contributor ID (ORCID).",
+                    "type" : "object",
+                    "properties" : 
+                    { "scheme" : 
+                      { "title" : "External Identifier Schema",
+                        "description" : "Indicates the type of external identifier.",
+                        "$ref" : "#/definitions/URIDatatype" },
+                      "id" : 
+                      { "type" : "string" } },
+                    "required" : 
+                    [ "id",
+                      "scheme" ],
+                    "additionalProperties" : false } },
+                "props" : 
+                { "type" : "array",
+                  "minItems" : 1,
+                  "items" : 
+                  { "$ref" : "#assembly_oscal-metadata_property" } },
+                "links" : 
+                { "type" : "array",
+                  "minItems" : 1,
+                  "items" : 
+                  { "$ref" : "#assembly_oscal-metadata_link" } },
+                "email-addresses" : 
+                { "type" : "array",
+                  "minItems" : 1,
+                  "items" : 
+                  { "$ref" : "#field_oscal-metadata_email-address" } },
+                "telephone-numbers" : 
+                { "type" : "array",
+                  "minItems" : 1,
+                  "items" : 
+                  { "$ref" : "#field_oscal-metadata_telephone-number" } },
+                "addresses" : 
+                { "type" : "array",
+                  "minItems" : 1,
+                  "items" : 
+                  { "$ref" : "#assembly_oscal-metadata_address" } },
+                "location-uuids" : 
+                { "type" : "array",
+                  "minItems" : 1,
+                  "items" : 
+                  { "$ref" : "#field_oscal-metadata_location-uuid" } },
+                "member-of-organizations" : 
+                { "type" : "array",
+                  "minItems" : 1,
+                  "items" : 
+                  { "title" : "Organizational Affiliation",
+                    "description" : "A reference to another party by UUID, typically an organization, that this subject is associated with.",
+                    "$ref" : "#/definitions/UUIDDatatype" } },
+                "remarks" : 
+                { "$ref" : "#field_oscal-metadata_remarks" } },
+              "required" : 
+              [ "uuid",
+                "type" ],
+              "additionalProperties" : false } },
           "responsible-parties" : 
           { "type" : "array",
             "minItems" : 1,
@@ -463,233 +659,24 @@
           "version",
           "oscal-version" ],
         "additionalProperties" : false },
-      "oscal-profile-oscal-metadata:revision" : 
-      { "title" : "Revision History Entry",
-        "description" : "An entry in a sequential list of revisions to the containing document in reverse chronological order (i.e., most recent previous revision first).",
-        "$id" : "#assembly_oscal-metadata_revision",
-        "type" : "object",
-        "properties" : 
-        { "title" : 
-          { "title" : "Document Title",
-            "description" : "A name given to the document revision, which may be used by a tool for display and navigation.",
-            "type" : "string" },
-          "published" : 
-          { "$ref" : "#field_oscal-metadata_published" },
-          "last-modified" : 
-          { "$ref" : "#field_oscal-metadata_last-modified" },
-          "version" : 
-          { "$ref" : "#field_oscal-metadata_version" },
-          "oscal-version" : 
-          { "$ref" : "#field_oscal-metadata_oscal-version" },
-          "props" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#assembly_oscal-metadata_property" } },
-          "links" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#assembly_oscal-metadata_link" } },
-          "remarks" : 
-          { "$ref" : "#field_oscal-metadata_remarks" } },
-        "required" : 
-        [ "version" ],
-        "additionalProperties" : false },
-      "oscal-profile-oscal-metadata:location" : 
-      { "title" : "Location",
-        "description" : "A location, with associated metadata that can be referenced.",
-        "$id" : "#assembly_oscal-metadata_location",
-        "type" : "object",
-        "properties" : 
-        { "uuid" : 
-          { "title" : "Location Universally Unique Identifier",
-            "description" : "A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this defined location elsewhere in this or other OSCAL instances. The locally defined UUID of the location can be used to reference the data item locally or globally (e.g., from an importing OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.",
-            "$ref" : "#/definitions/UUIDDatatype" },
-          "title" : 
-          { "title" : "Location Title",
-            "description" : "A name given to the location, which may be used by a tool for display and navigation.",
-            "type" : "string" },
-          "address" : 
-          { "$ref" : "#assembly_oscal-metadata_address" },
-          "email-addresses" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#field_oscal-metadata_email-address" } },
-          "telephone-numbers" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#field_oscal-metadata_telephone-number" } },
-          "urls" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "title" : "Location URL",
-              "description" : "The uniform resource locator (URL) for a web site or Internet presence associated with the location.",
-              "$ref" : "#/definitions/URIDatatype" } },
-          "props" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#assembly_oscal-metadata_property" } },
-          "links" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#assembly_oscal-metadata_link" } },
-          "remarks" : 
-          { "$ref" : "#field_oscal-metadata_remarks" } },
-        "required" : 
-        [ "uuid",
-          "address" ],
-        "additionalProperties" : false },
       "oscal-profile-oscal-metadata:location-uuid" : 
-      { "title" : "Location Reference",
-        "description" : "A machine-oriented identifier reference to a location defined in the metadata section of this or another OSCAL instance. The UUID of the location in the source OSCAL instance is sufficient to reference the data item locally or globally (e.g., in an imported OSCAL instance).",
+      { "title" : "Location Universally Unique Identifier Reference",
+        "description" : "Reference to a location by UUID.",
         "$id" : "#field_oscal-metadata_location-uuid",
         "$ref" : "#/definitions/UUIDDatatype" },
-      "oscal-profile-oscal-metadata:party" : 
-      { "title" : "Party (organization or person)",
-        "description" : "A responsible entity which is either a person or an organization.",
-        "$id" : "#assembly_oscal-metadata_party",
-        "type" : "object",
-        "properties" : 
-        { "uuid" : 
-          { "title" : "Party Universally Unique Identifier",
-            "description" : "A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this defined party elsewhere in this or other OSCAL instances. The locally defined UUID of the party can be used to reference the data item locally or globally (e.g., from an importing OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.",
-            "$ref" : "#/definitions/UUIDDatatype" },
-          "type" : 
-          { "title" : "Party Type",
-            "description" : "A category describing the kind of party the object describes.",
-            "allOf" : 
-            [ 
-              { "$ref" : "#/definitions/StringDatatype" },
-              
-              { "enum" : 
-                [ "person",
-                  "organization" ] } ] },
-          "name" : 
-          { "title" : "Party Name",
-            "description" : "The full name of the party. This is typically the legal name associated with the party.",
-            "$ref" : "#/definitions/StringDatatype" },
-          "short-name" : 
-          { "title" : "Party Short Name",
-            "description" : "A short common name, abbreviation, or acronym for the party.",
-            "$ref" : "#/definitions/StringDatatype" },
-          "external-ids" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "title" : "Party External Identifier",
-              "description" : "An identifier for a person or organization using a designated scheme. e.g. an Open Researcher and Contributor ID (ORCID)",
-              "type" : "object",
-              "properties" : 
-              { "scheme" : 
-                { "title" : "External Identifier Schema",
-                  "description" : "Indicates the type of external identifier.",
-                  "$ref" : "#/definitions/URIDatatype" },
-                "id" : 
-                { "type" : "string" } },
-              "required" : 
-              [ "id",
-                "scheme" ],
-              "additionalProperties" : false } },
-          "props" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#assembly_oscal-metadata_property" } },
-          "links" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#assembly_oscal-metadata_link" } },
-          "email-addresses" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#field_oscal-metadata_email-address" } },
-          "telephone-numbers" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#field_oscal-metadata_telephone-number" } },
-          "addresses" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#assembly_oscal-metadata_address" } },
-          "location-uuids" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#field_oscal-metadata_location-uuid" } },
-          "member-of-organizations" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "title" : "Organizational Affiliation",
-              "description" : "A machine-oriented identifier reference to another party (person or organization) that this subject is associated with. The UUID of the party in the source OSCAL instance is sufficient to reference the data item locally or globally (e.g., in an imported OSCAL instance).",
-              "$ref" : "#/definitions/UUIDDatatype" } },
-          "remarks" : 
-          { "$ref" : "#field_oscal-metadata_remarks" } },
-        "required" : 
-        [ "uuid",
-          "type" ],
-        "additionalProperties" : false },
       "oscal-profile-oscal-metadata:party-uuid" : 
-      { "title" : "Party Reference",
-        "description" : "A machine-oriented identifier reference to another party defined in metadata. The UUID of the party in the source OSCAL instance is sufficient to reference the data item locally or globally (e.g., in an imported OSCAL instance).",
+      { "title" : "Party Universally Unique Identifier Reference",
+        "description" : "Reference to a party by UUID.",
         "$id" : "#field_oscal-metadata_party-uuid",
         "$ref" : "#/definitions/UUIDDatatype" },
-      "oscal-profile-oscal-metadata:role" : 
-      { "title" : "Role",
-        "description" : "Defines a function assumed or expected to be assumed by a party in a specific situation.",
-        "$id" : "#assembly_oscal-metadata_role",
-        "type" : "object",
-        "properties" : 
-        { "id" : 
-          { "title" : "Role Identifier",
-            "description" : "A human-oriented, locally unique identifier with cross-instance scope that can be used to reference this defined role elsewhere in this or other OSCAL instances. When referenced from another OSCAL instance, the locally defined ID of the Role from the imported OSCAL instance must be referenced in the context of the containing resource (e.g., import, import-component-definition, import-profile, import-ssp or import-ap). This ID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.",
-            "$ref" : "#/definitions/TokenDatatype" },
-          "title" : 
-          { "title" : "Role Title",
-            "description" : "A name given to the role, which may be used by a tool for display and navigation.",
-            "type" : "string" },
-          "short-name" : 
-          { "title" : "Role Short Name",
-            "description" : "A short common name, abbreviation, or acronym for the role.",
-            "$ref" : "#/definitions/StringDatatype" },
-          "description" : 
-          { "title" : "Role Description",
-            "description" : "A summary of the role's purpose and associated responsibilities.",
-            "type" : "string" },
-          "props" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#assembly_oscal-metadata_property" } },
-          "links" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#assembly_oscal-metadata_link" } },
-          "remarks" : 
-          { "$ref" : "#field_oscal-metadata_remarks" } },
-        "required" : 
-        [ "id",
-          "title" ],
-        "additionalProperties" : false },
       "oscal-profile-oscal-metadata:role-id" : 
       { "title" : "Role Identifier Reference",
-        "description" : "A human-oriented identifier reference to roles served by the user.",
+        "description" : "Reference to a role by UUID.",
         "$id" : "#field_oscal-metadata_role-id",
         "$ref" : "#/definitions/TokenDatatype" },
       "oscal-profile-oscal-metadata:back-matter" : 
       { "title" : "Back matter",
-        "description" : "A collection of resources, which may be included directly or by reference.",
+        "description" : "A collection of resources that may be referenced from within the OSCAL document instance.",
         "$id" : "#assembly_oscal-metadata_back-matter",
         "type" : "object",
         "properties" : 
@@ -698,20 +685,20 @@
             "minItems" : 1,
             "items" : 
             { "title" : "Resource",
-              "description" : "A resource associated with content in the containing document. A resource may be directly included in the document base64 encoded or may point to one or more equivalent internet resources.",
+              "description" : "A resource associated with content in the containing document instance. A resource may be directly included in the document using base64 encoding or may point to one or more equivalent internet resources.",
               "type" : "object",
               "properties" : 
               { "uuid" : 
                 { "title" : "Resource Universally Unique Identifier",
-                  "description" : "A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this defined resource elsewhere in this or other OSCAL instances. This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.",
+                  "description" : "A unique identifier for a resource.",
                   "$ref" : "#/definitions/UUIDDatatype" },
                 "title" : 
                 { "title" : "Resource Title",
-                  "description" : "A name given to the resource, which may be used by a tool for display and navigation.",
+                  "description" : "An optional name given to the resource, which may be used by a tool for display and navigation.",
                   "type" : "string" },
                 "description" : 
                 { "title" : "Resource Description",
-                  "description" : "A short summary of the resource used to indicate the purpose of the resource.",
+                  "description" : "An optional short summary of the resource used to indicate the purpose of the resource.",
                   "type" : "string" },
                 "props" : 
                 { "type" : "array",
@@ -725,7 +712,7 @@
                   { "$ref" : "#field_oscal-metadata_document-id" } },
                 "citation" : 
                 { "title" : "Citation",
-                  "description" : "A citation consisting of end note text and optional structured bibliographic data.",
+                  "description" : "An optional citation consisting of end note text using structured markup.",
                   "type" : "object",
                   "properties" : 
                   { "text" : 
@@ -750,16 +737,16 @@
                   "minItems" : 1,
                   "items" : 
                   { "title" : "Resource link",
-                    "description" : "A pointer to an external resource with an optional hash for verification and change detection.",
+                    "description" : "A URL-based pointer to an external resource with an optional hash for verification and change detection.",
                     "type" : "object",
                     "properties" : 
                     { "href" : 
                       { "title" : "Hypertext Reference",
-                        "description" : "A resolvable URI reference to a resource.",
+                        "description" : "A resolvable URL pointing to the referenced resource.",
                         "$ref" : "#/definitions/URIReferenceDatatype" },
                       "media-type" : 
                       { "title" : "Media Type",
-                        "description" : "Specifies a media type as defined by the Internet Assigned Numbers Authority (IANA) Media Types Registry.",
+                        "description" : "A label that indicates the nature of a resource, as a data serialization or format.",
                         "$ref" : "#/definitions/StringDatatype" },
                       "hashes" : 
                       { "type" : "array",
@@ -771,16 +758,16 @@
                     "additionalProperties" : false } },
                 "base64" : 
                 { "title" : "Base64",
-                  "description" : "The Base64 alphabet in RFC 2045 - aligned with XSD.",
+                  "description" : "A resource encoded using the Base64 alphabet defined by RFC 2045.",
                   "type" : "object",
                   "properties" : 
                   { "filename" : 
                     { "title" : "File Name",
                       "description" : "Name of the file before it was encoded as Base64 to be embedded in a resource. This is the name that will be assigned to the file when the file is decoded.",
-                      "$ref" : "#/definitions/URIReferenceDatatype" },
+                      "$ref" : "#/definitions/TokenDatatype" },
                     "media-type" : 
                     { "title" : "Media Type",
-                      "description" : "Specifies a media type as defined by the Internet Assigned Numbers Authority (IANA) Media Types Registry.",
+                      "description" : "A label that indicates the nature of a resource, as a data serialization or format.",
                       "$ref" : "#/definitions/StringDatatype" },
                     "value" : 
                     { "type" : "string" } },
@@ -795,17 +782,22 @@
         "additionalProperties" : false },
       "oscal-profile-oscal-metadata:property" : 
       { "title" : "Property",
-        "description" : "An attribute, characteristic, or quality of the containing object expressed as a namespace qualified name/value pair. The value of a property is a simple scalar value, which may be expressed as a list of values.",
+        "description" : "An attribute, characteristic, or quality of the containing object expressed as a namespace qualified name/value pair.",
         "$id" : "#assembly_oscal-metadata_property",
         "type" : "object",
         "properties" : 
         { "name" : 
           { "title" : "Property Name",
-            "description" : "A textual label that uniquely identifies a specific attribute, characteristic, or quality of the property's containing object.",
-            "$ref" : "#/definitions/TokenDatatype" },
+            "description" : "A textual label, within a namespace, that uniquely identifies a specific attribute, characteristic, or quality of the property's containing object.",
+            "allOf" : 
+            [ 
+              { "$ref" : "#/definitions/TokenDatatype" },
+              
+              { "enum" : 
+                [ "marking" ] } ] },
           "uuid" : 
           { "title" : "Property Universally Unique Identifier",
-            "description" : "A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this defined property elsewhere in this or other OSCAL instances. This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.",
+            "description" : "A unique identifier for a property.",
             "$ref" : "#/definitions/UUIDDatatype" },
           "ns" : 
           { "title" : "Property Namespace",
@@ -817,7 +809,7 @@
             "$ref" : "#/definitions/StringDatatype" },
           "class" : 
           { "title" : "Property Class",
-            "description" : "A textual label that provides a sub-type or characterization of the property's name. This can be used to further distinguish or discriminate between the semantics of multiple properties of the same object with the same name and ns.",
+            "description" : "A textual label that provides a sub-type or characterization of the property's name.",
             "$ref" : "#/definitions/TokenDatatype" },
           "group" : 
           { "title" : "Property Group",
@@ -831,7 +823,7 @@
         "additionalProperties" : false },
       "oscal-profile-oscal-metadata:link" : 
       { "title" : "Link",
-        "description" : "A reference to a local or remote resource",
+        "description" : "A reference to a local or remote resource, that has a specific relation to the containing object.",
         "$id" : "#assembly_oscal-metadata_link",
         "type" : "object",
         "properties" : 
@@ -840,12 +832,12 @@
             "description" : "A resolvable URL reference to a resource.",
             "$ref" : "#/definitions/URIReferenceDatatype" },
           "rel" : 
-          { "title" : "Relation",
-            "description" : "Describes the type of relationship provided by the link. This can be an indicator of the link's purpose.",
+          { "title" : "Link Relation Type",
+            "description" : "Describes the type of relationship provided by the link's hypertext reference. This can be an indicator of the link's purpose.",
             "$ref" : "#/definitions/TokenDatatype" },
           "media-type" : 
           { "title" : "Media Type",
-            "description" : "Specifies a media type as defined by the Internet Assigned Numbers Authority (IANA) Media Types Registry.",
+            "description" : "A label that indicates the nature of a resource, as a data serialization or format.",
             "$ref" : "#/definitions/StringDatatype" },
           "text" : 
           { "title" : "Link Text",
@@ -856,13 +848,13 @@
         "additionalProperties" : false },
       "oscal-profile-oscal-metadata:responsible-party" : 
       { "title" : "Responsible Party",
-        "description" : "A reference to a set of organizations or persons that have responsibility for performing a referenced role in the context of the containing object.",
+        "description" : "A reference to a set of persons and/or organizations that have responsibility for performing the referenced role in the context of the containing object.",
         "$id" : "#assembly_oscal-metadata_responsible-party",
         "type" : "object",
         "properties" : 
         { "role-id" : 
           { "title" : "Responsible Role",
-            "description" : "A human-oriented identifier reference to roles served by the user.",
+            "description" : "A reference to a role performed by a party.",
             "$ref" : "#/definitions/TokenDatatype" },
           "party-uuids" : 
           { "type" : "array",
@@ -931,13 +923,13 @@
         "additionalProperties" : false },
       "oscal-profile-oscal-metadata:responsible-role" : 
       { "title" : "Responsible Role",
-        "description" : "A reference to one or more roles with responsibility for performing a function relative to the containing object.",
+        "description" : "A reference to a role with responsibility for performing a function relative to the containing object, optionally associated with a set of persons and/or organizations that perform that role.",
         "$id" : "#assembly_oscal-metadata_responsible-role",
         "type" : "object",
         "properties" : 
         { "role-id" : 
           { "title" : "Responsible Role ID",
-            "description" : "A human-oriented identifier reference to roles responsible for the business function.",
+            "description" : "A human-oriented identifier reference to a role performed.",
             "$ref" : "#/definitions/TokenDatatype" },
           "props" : 
           { "type" : "array",
@@ -967,7 +959,7 @@
         "properties" : 
         { "algorithm" : 
           { "title" : "Hash algorithm",
-            "description" : "Method by which a hash is derived",
+            "description" : "The digest method by which a hash is derived.",
             "$ref" : "#/definitions/StringDatatype" },
           "value" : 
           { "type" : "string" } },
@@ -977,27 +969,27 @@
         "additionalProperties" : false },
       "oscal-profile-oscal-metadata:remarks" : 
       { "title" : "Remarks",
-        "description" : "Additional commentary on the containing object.",
+        "description" : "Additional commentary about the containing object.",
         "$id" : "#field_oscal-metadata_remarks",
         "type" : "string" },
       "oscal-profile-oscal-metadata:published" : 
       { "title" : "Publication Timestamp",
-        "description" : "The date and time the document was published. The date-time value must be formatted according to RFC 3339 with full time and time zone included.",
+        "description" : "The date and time the document was last made available.",
         "$id" : "#field_oscal-metadata_published",
         "$ref" : "#/definitions/DateTimeWithTimezoneDatatype" },
       "oscal-profile-oscal-metadata:last-modified" : 
       { "title" : "Last Modified Timestamp",
-        "description" : "The date and time the document was last modified. The date-time value must be formatted according to RFC 3339 with full time and time zone included.",
+        "description" : "The date and time the document was last stored for later retrieval.",
         "$id" : "#field_oscal-metadata_last-modified",
         "$ref" : "#/definitions/DateTimeWithTimezoneDatatype" },
       "oscal-profile-oscal-metadata:version" : 
       { "title" : "Document Version",
-        "description" : "A string used to distinguish the current version of the document from other previous (and future) versions.",
+        "description" : "Used to distinguish a specific revision of an OSCAL document from other previous and future versions.",
         "$id" : "#field_oscal-metadata_version",
         "$ref" : "#/definitions/StringDatatype" },
       "oscal-profile-oscal-metadata:oscal-version" : 
-      { "title" : "OSCAL version",
-        "description" : "The OSCAL model version the document was authored against.",
+      { "title" : "OSCAL Version",
+        "description" : "The OSCAL model version the document was authored against and will conform to as valid.",
         "$id" : "#field_oscal-metadata_oscal-version",
         "$ref" : "#/definitions/StringDatatype" },
       "oscal-profile-oscal-metadata:email-address" : 
@@ -1007,7 +999,7 @@
         "$ref" : "#/definitions/EmailAddressDatatype" },
       "oscal-profile-oscal-metadata:telephone-number" : 
       { "title" : "Telephone Number",
-        "description" : "Contact number by telephone.",
+        "description" : "A telephone service number as defined by ITU-T E.164.",
         "$id" : "#field_oscal-metadata_telephone-number",
         "type" : "object",
         "properties" : 
@@ -1041,11 +1033,11 @@
             "$ref" : "#/definitions/StringDatatype" },
           "state" : 
           { "title" : "State",
-            "description" : "State, province or analogous geographical region for mailing address",
+            "description" : "State, province or analogous geographical region for a mailing address.",
             "$ref" : "#/definitions/StringDatatype" },
           "postal-code" : 
           { "title" : "Postal Code",
-            "description" : "Postal or ZIP code for mailing address",
+            "description" : "Postal or ZIP code for mailing address.",
             "$ref" : "#/definitions/StringDatatype" },
           "country" : 
           { "title" : "Country Code",
@@ -1059,7 +1051,7 @@
         "$ref" : "#/definitions/StringDatatype" },
       "oscal-profile-oscal-metadata:document-id" : 
       { "title" : "Document Identifier",
-        "description" : "A document identifier qualified by an identifier scheme. A document identifier provides a globally unique identifier with a cross-instance scope that is used for a group of documents that are to be treated as different versions of the same document. If this element does not appear, or if the value of this element is empty, the value of \"document-id\" is equal to the value of the \"uuid\" flag of the top-level root element.",
+        "description" : "A document identifier qualified by an identifier scheme.",
         "$id" : "#field_oscal-metadata_document-id",
         "type" : "object",
         "properties" : 
@@ -1072,31 +1064,31 @@
         "required" : 
         [ "identifier" ],
         "additionalProperties" : false },
-      "oscal-profile-oscal-catalog-common:part" : 
+      "oscal-profile-oscal-control-common:part" : 
       { "title" : "Part",
-        "description" : "A partition of a control's definition or a child of another part.",
-        "$id" : "#assembly_oscal-catalog-common_part",
+        "description" : "An annotated, markup-based textual element of a control's or catalog group's definition, or a child of another part.",
+        "$id" : "#assembly_oscal-control-common_part",
         "type" : "object",
         "properties" : 
         { "id" : 
           { "title" : "Part Identifier",
-            "description" : "A human-oriented, locally unique identifier with cross-instance scope that can be used to reference this defined part elsewhere in this or other OSCAL instances. When referenced from another OSCAL instance, this identifier must be referenced in the context of the containing resource (e.g., import-profile). This id should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.",
+            "description" : "A unique identifier for the part.",
             "$ref" : "#/definitions/TokenDatatype" },
           "name" : 
           { "title" : "Part Name",
-            "description" : "A textual label that uniquely identifies the part's semantic type.",
+            "description" : "A textual label that uniquely identifies the part's semantic type, which exists in a value space qualified by the ns.",
             "$ref" : "#/definitions/TokenDatatype" },
           "ns" : 
           { "title" : "Part Namespace",
-            "description" : "A namespace qualifying the part's name. This allows different organizations to associate distinct semantics with the same name.",
+            "description" : "An optional namespace qualifying the part's name. This allows different organizations to associate distinct semantics with the same name.",
             "$ref" : "#/definitions/URIDatatype" },
           "class" : 
           { "title" : "Part Class",
-            "description" : "A textual label that provides a sub-type or characterization of the part's name. This can be used to further distinguish or discriminate between the semantics of multiple parts of the same control with the same name and ns.",
+            "description" : "An optional textual providing a sub-type or characterization of the part's name, or a category to which the part belongs.",
             "$ref" : "#/definitions/TokenDatatype" },
           "title" : 
           { "title" : "Part Title",
-            "description" : "A name given to the part, which may be used by a tool for display and navigation.",
+            "description" : "An optional name given to the part, which may be used by a tool for display and navigation.",
             "type" : "string" },
           "props" : 
           { "type" : "array",
@@ -1111,7 +1103,7 @@
           { "type" : "array",
             "minItems" : 1,
             "items" : 
-            { "$ref" : "#assembly_oscal-catalog-common_part" } },
+            { "$ref" : "#assembly_oscal-control-common_part" } },
           "links" : 
           { "type" : "array",
             "minItems" : 1,
@@ -1120,23 +1112,23 @@
         "required" : 
         [ "name" ],
         "additionalProperties" : false },
-      "oscal-profile-oscal-catalog-common:parameter" : 
+      "oscal-profile-oscal-control-common:parameter" : 
       { "title" : "Parameter",
         "description" : "Parameters provide a mechanism for the dynamic assignment of value(s) in a control.",
-        "$id" : "#assembly_oscal-catalog-common_parameter",
+        "$id" : "#assembly_oscal-control-common_parameter",
         "type" : "object",
         "properties" : 
         { "id" : 
           { "title" : "Parameter Identifier",
-            "description" : "A human-oriented, locally unique identifier with cross-instance scope that can be used to reference this defined parameter elsewhere in this or other OSCAL instances. When referenced from another OSCAL instance, this identifier must be referenced in the context of the containing resource (e.g., import-profile). This id should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.",
+            "description" : "A unique identifier for the parameter.",
             "$ref" : "#/definitions/TokenDatatype" },
           "class" : 
           { "title" : "Parameter Class",
-            "description" : "A textual label that provides a characterization of the parameter.",
+            "description" : "A textual label that provides a characterization of the type, purpose, use or scope of the parameter.",
             "$ref" : "#/definitions/TokenDatatype" },
           "depends-on" : 
           { "title" : "Depends on",
-            "description" : "**(deprecated)** Another parameter invoking this one. This construct has been deprecated and should not be used.",
+            "description" : "(deprecated) Another parameter invoking this one. This construct has been deprecated and should not be used.",
             "$ref" : "#/definitions/TokenDatatype" },
           "props" : 
           { "type" : "array",
@@ -1154,34 +1146,34 @@
             "type" : "string" },
           "usage" : 
           { "title" : "Parameter Usage Description",
-            "description" : "Describes the purpose and use of a parameter",
+            "description" : "Describes the purpose and use of a parameter.",
             "type" : "string" },
           "constraints" : 
           { "type" : "array",
             "minItems" : 1,
             "items" : 
-            { "$ref" : "#assembly_oscal-catalog-common_parameter-constraint" } },
+            { "$ref" : "#assembly_oscal-control-common_parameter-constraint" } },
           "guidelines" : 
           { "type" : "array",
             "minItems" : 1,
             "items" : 
-            { "$ref" : "#assembly_oscal-catalog-common_parameter-guideline" } },
+            { "$ref" : "#assembly_oscal-control-common_parameter-guideline" } },
           "values" : 
           { "type" : "array",
             "minItems" : 1,
             "items" : 
-            { "$ref" : "#field_oscal-catalog-common_parameter-value" } },
+            { "$ref" : "#field_oscal-control-common_parameter-value" } },
           "select" : 
-          { "$ref" : "#assembly_oscal-catalog-common_parameter-selection" },
+          { "$ref" : "#assembly_oscal-control-common_parameter-selection" },
           "remarks" : 
           { "$ref" : "#field_oscal-metadata_remarks" } },
         "required" : 
         [ "id" ],
         "additionalProperties" : false },
-      "oscal-profile-oscal-catalog-common:parameter-constraint" : 
+      "oscal-profile-oscal-control-common:parameter-constraint" : 
       { "title" : "Constraint",
-        "description" : "A formal or informal expression of a constraint or test",
-        "$id" : "#assembly_oscal-catalog-common_parameter-constraint",
+        "description" : "A formal or informal expression of a constraint or test.",
+        "$id" : "#assembly_oscal-control-common_parameter-constraint",
         "type" : "object",
         "properties" : 
         { "description" : 
@@ -1198,7 +1190,7 @@
               "properties" : 
               { "expression" : 
                 { "title" : "Constraint test",
-                  "description" : "A formal (executable) expression of a constraint",
+                  "description" : "A formal (executable) expression of a constraint.",
                   "$ref" : "#/definitions/StringDatatype" },
                 "remarks" : 
                 { "$ref" : "#field_oscal-metadata_remarks" } },
@@ -1206,10 +1198,10 @@
               [ "expression" ],
               "additionalProperties" : false } } },
         "additionalProperties" : false },
-      "oscal-profile-oscal-catalog-common:parameter-guideline" : 
+      "oscal-profile-oscal-control-common:parameter-guideline" : 
       { "title" : "Guideline",
         "description" : "A prose statement that provides a recommendation for the use of a parameter.",
-        "$id" : "#assembly_oscal-catalog-common_parameter-guideline",
+        "$id" : "#assembly_oscal-control-common_parameter-guideline",
         "type" : "object",
         "properties" : 
         { "prose" : 
@@ -1219,15 +1211,15 @@
         "required" : 
         [ "prose" ],
         "additionalProperties" : false },
-      "oscal-profile-oscal-catalog-common:parameter-value" : 
+      "oscal-profile-oscal-control-common:parameter-value" : 
       { "title" : "Parameter Value",
         "description" : "A parameter value or set of values.",
-        "$id" : "#field_oscal-catalog-common_parameter-value",
+        "$id" : "#field_oscal-control-common_parameter-value",
         "$ref" : "#/definitions/StringDatatype" },
-      "oscal-profile-oscal-catalog-common:parameter-selection" : 
+      "oscal-profile-oscal-control-common:parameter-selection" : 
       { "title" : "Selection",
-        "description" : "Presenting a choice among alternatives",
-        "$id" : "#assembly_oscal-catalog-common_parameter-selection",
+        "description" : "Presenting a choice among alternatives.",
+        "$id" : "#assembly_oscal-control-common_parameter-selection",
         "type" : "object",
         "properties" : 
         { "how-many" : 
@@ -1245,13 +1237,13 @@
             "minItems" : 1,
             "items" : 
             { "title" : "Choice",
-              "description" : "A value selection among several such options",
+              "description" : "A value selection among several such options.",
               "type" : "string" } } },
         "additionalProperties" : false },
-      "oscal-profile-oscal-catalog-common:include-all" : 
+      "oscal-profile-oscal-control-common:include-all" : 
       { "title" : "Include All",
         "description" : "Include all controls from the imported catalog or profile resources.",
-        "$id" : "#assembly_oscal-catalog-common_include-all",
+        "$id" : "#assembly_oscal-control-common_include-all",
         "type" : "object",
         "additionalProperties" : false },
       "Base64Datatype" : 

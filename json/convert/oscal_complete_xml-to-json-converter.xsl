@@ -211,143 +211,6 @@
          <xsl:apply-templates select="text"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="role"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly name="role" gi="role">
-         <xsl:apply-templates select="@id"/>
-         <xsl:apply-templates select="title"/>
-         <xsl:apply-templates select="short-name"/>
-         <xsl:apply-templates select="description"/>
-         <xsl:for-each-group select="prop" group-by="true()">
-            <group in-json="ARRAY" key="props">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:for-each-group select="link" group-by="true()">
-            <group in-json="ARRAY" key="links">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:apply-templates select="remarks"/>
-      </assembly>
-   </xsl:template>
-   <xsl:template match="location"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly name="location" gi="location">
-         <xsl:apply-templates select="@uuid"/>
-         <xsl:apply-templates select="title"/>
-         <xsl:apply-templates select="address"/>
-         <xsl:for-each-group select="email-address" group-by="true()">
-            <group in-json="ARRAY" key="email-addresses">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:for-each-group select="telephone-number" group-by="true()">
-            <group in-json="ARRAY" key="telephone-numbers">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:for-each-group select="url" group-by="true()">
-            <group in-json="ARRAY" key="urls">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:for-each-group select="prop" group-by="true()">
-            <group in-json="ARRAY" key="props">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:for-each-group select="link" group-by="true()">
-            <group in-json="ARRAY" key="links">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:apply-templates select="remarks"/>
-      </assembly>
-   </xsl:template>
-   <xsl:template match="party"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly name="party" gi="party">
-         <xsl:apply-templates select="@uuid"/>
-         <xsl:apply-templates select="@type"/>
-         <xsl:apply-templates select="name"/>
-         <xsl:apply-templates select="short-name"/>
-         <xsl:for-each-group select="external-id" group-by="true()">
-            <group in-json="ARRAY" key="external-ids">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:for-each-group select="prop" group-by="true()">
-            <group in-json="ARRAY" key="props">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:for-each-group select="link" group-by="true()">
-            <group in-json="ARRAY" key="links">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:for-each-group select="email-address" group-by="true()">
-            <group in-json="ARRAY" key="email-addresses">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:for-each-group select="telephone-number" group-by="true()">
-            <group in-json="ARRAY" key="telephone-numbers">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:for-each-group select="address" group-by="true()">
-            <group in-json="ARRAY" key="addresses">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:for-each-group select="location-uuid" group-by="true()">
-            <group in-json="ARRAY" key="location-uuids">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:for-each-group select="member-of-organization" group-by="true()">
-            <group in-json="ARRAY" key="member-of-organizations">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:apply-templates select="remarks"/>
-      </assembly>
-   </xsl:template>
    <xsl:template match="responsible-party"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
@@ -485,8 +348,8 @@
                    key="prose">
                <value in-json="string"
                       as-type="markup-multiline"
-                      _metaschema-xml-id="/assembly/oscal-catalog-common/parameter-guideline/prose/PROSE"
-                      _metaschema-json-id="/assembly/oscal-catalog-common/parameter-guideline/prose/PROSE">
+                      _metaschema-xml-id="/assembly/oscal-control-common/parameter-guideline/prose/PROSE"
+                      _metaschema-json-id="/assembly/oscal-control-common/parameter-guideline/prose/PROSE">
                   <xsl:apply-templates select="current-group()" mode="cast-prose"/>
                </value>
             </field>
@@ -581,8 +444,8 @@
                    key="prose">
                <value in-json="string"
                       as-type="markup-multiline"
-                      _metaschema-xml-id="/assembly/oscal-catalog-common/part/prose/PROSE"
-                      _metaschema-json-id="/assembly/oscal-catalog-common/part/prose/PROSE">
+                      _metaschema-xml-id="/assembly/oscal-control-common/part/prose/PROSE"
+                      _metaschema-json-id="/assembly/oscal-control-common/part/prose/PROSE">
                   <xsl:apply-templates select="current-group()" mode="cast-prose"/>
                </value>
             </field>
@@ -3070,7 +2933,12 @@
    <xsl:template match="prop/@ns"
                  priority="1"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string" as-type="uri" name="ns" key="ns" gi="ns">
+      <flag in-json="string"
+            as-type="uri"
+            name="ns"
+            key="ns"
+            default="http://csrc.nist.gov/ns/oscal"
+            gi="ns">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
@@ -3150,15 +3018,15 @@
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="role/@id"
-                 priority="1"
+   <xsl:template match="catalog/metadata/role/@id | mapping-collection/metadata/role/@id | profile/metadata/role/@id | component-definition/metadata/role/@id | system-security-plan/metadata/role/@id | assessment-plan/metadata/role/@id | assessment-results/metadata/role/@id | plan-of-action-and-milestones/metadata/role/@id"
+                 priority="6"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string" as-type="token" name="id" key="id" gi="id">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="location/@uuid"
-                 priority="1"
+   <xsl:template match="catalog/metadata/location/@uuid | mapping-collection/metadata/location/@uuid | profile/metadata/location/@uuid | component-definition/metadata/location/@uuid | system-security-plan/metadata/location/@uuid | assessment-plan/metadata/location/@uuid | assessment-results/metadata/location/@uuid | plan-of-action-and-milestones/metadata/location/@uuid"
+                 priority="6"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="uuid"
@@ -3189,8 +3057,8 @@
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="party/@uuid"
-                 priority="1"
+   <xsl:template match="catalog/metadata/party/@uuid | mapping-collection/metadata/party/@uuid | profile/metadata/party/@uuid | component-definition/metadata/party/@uuid | system-security-plan/metadata/party/@uuid | assessment-plan/metadata/party/@uuid | assessment-results/metadata/party/@uuid | plan-of-action-and-milestones/metadata/party/@uuid"
+                 priority="6"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="uuid"
@@ -3200,8 +3068,8 @@
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="party/@type"
-                 priority="1"
+   <xsl:template match="catalog/metadata/party/@type | mapping-collection/metadata/party/@type | profile/metadata/party/@type | component-definition/metadata/party/@type | system-security-plan/metadata/party/@type | assessment-plan/metadata/party/@type | assessment-results/metadata/party/@type | plan-of-action-and-milestones/metadata/party/@type"
+                 priority="6"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="string"
@@ -3357,7 +3225,12 @@
    <xsl:template match="part/@ns"
                  priority="1"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string" as-type="uri" name="ns" key="ns" gi="ns">
+      <flag in-json="string"
+            as-type="uri"
+            name="ns"
+            key="ns"
+            default="http://csrc.nist.gov/ns/oscal"
+            gi="ns">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
@@ -3419,7 +3292,12 @@
    <xsl:template match="catalog//control/mapping/map/relationship/@ns | catalog//group//control/mapping/map/relationship/@ns | mapping-collection/mapping/map/relationship/@ns"
                  priority="9"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string" as-type="uri" name="ns" key="ns" gi="ns">
+      <flag in-json="string"
+            as-type="uri"
+            name="ns"
+            key="ns"
+            default="http://csrc.nist.gov/ns/oscal"
+            gi="ns">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
@@ -3510,7 +3388,7 @@
                  priority="7"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
-            as-type="uri-reference"
+            as-type="token"
             name="filename"
             key="filename"
             gi="filename">
@@ -3874,6 +3752,7 @@
       </flag>
    </xsl:template>
    <xsl:template match="component-definition/component/control-implementation/@source | component-definition/capability/control-implementation/@source"
+                 priority="7"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="uri-reference"
@@ -4369,7 +4248,12 @@
    <xsl:template match="part/@ns"
                  priority="1"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string" as-type="uri" name="ns" key="ns" gi="ns">
+      <flag in-json="string"
+            as-type="uri"
+            name="ns"
+            key="ns"
+            default="http://csrc.nist.gov/ns/oscal"
+            gi="ns">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
@@ -5246,6 +5130,32 @@
          </value>
       </field>
    </xsl:template>
+   <xsl:template match="catalog/metadata/role"
+                 priority="5"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <assembly name="role" gi="role">
+         <xsl:apply-templates select="@id"/>
+         <xsl:apply-templates select="title"/>
+         <xsl:apply-templates select="short-name"/>
+         <xsl:apply-templates select="description"/>
+         <xsl:for-each-group select="prop" group-by="true()">
+            <group in-json="ARRAY" key="props">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="link" group-by="true()">
+            <group in-json="ARRAY" key="links">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:apply-templates select="remarks"/>
+      </assembly>
+   </xsl:template>
    <xsl:template match="catalog/metadata/role/title"
                  priority="6"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -5321,6 +5231,52 @@
             <xsl:apply-templates mode="cast-prose"/>
          </value>
       </field>
+   </xsl:template>
+   <xsl:template match="catalog/metadata/location"
+                 priority="5"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <assembly name="location" gi="location">
+         <xsl:apply-templates select="@uuid"/>
+         <xsl:apply-templates select="title"/>
+         <xsl:apply-templates select="address"/>
+         <xsl:for-each-group select="email-address" group-by="true()">
+            <group in-json="ARRAY" key="email-addresses">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="telephone-number" group-by="true()">
+            <group in-json="ARRAY" key="telephone-numbers">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="url" group-by="true()">
+            <group in-json="ARRAY" key="urls">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="prop" group-by="true()">
+            <group in-json="ARRAY" key="props">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="link" group-by="true()">
+            <group in-json="ARRAY" key="links">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:apply-templates select="remarks"/>
+      </assembly>
    </xsl:template>
    <xsl:template match="catalog/metadata/location/title"
                  priority="6"
@@ -5483,6 +5439,7 @@
       <field collapsible="no"
              as-type="uri"
              name="url"
+             deprecated="1.1.0"
              gi="url"
              in-json="SCALAR">
          <value as-type="uri" in-json="string">
@@ -5507,6 +5464,74 @@
             <xsl:apply-templates mode="cast-prose"/>
          </value>
       </field>
+   </xsl:template>
+   <xsl:template match="catalog/metadata/party"
+                 priority="5"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <assembly name="party" gi="party">
+         <xsl:apply-templates select="@uuid"/>
+         <xsl:apply-templates select="@type"/>
+         <xsl:apply-templates select="name"/>
+         <xsl:apply-templates select="short-name"/>
+         <xsl:for-each-group select="external-id" group-by="true()">
+            <group in-json="ARRAY" key="external-ids">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="prop" group-by="true()">
+            <group in-json="ARRAY" key="props">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="link" group-by="true()">
+            <group in-json="ARRAY" key="links">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="email-address" group-by="true()">
+            <group in-json="ARRAY" key="email-addresses">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="telephone-number" group-by="true()">
+            <group in-json="ARRAY" key="telephone-numbers">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="address" group-by="true()">
+            <group in-json="ARRAY" key="addresses">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="location-uuid" group-by="true()">
+            <group in-json="ARRAY" key="location-uuids">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="member-of-organization" group-by="true()">
+            <group in-json="ARRAY" key="member-of-organizations">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:apply-templates select="remarks"/>
+      </assembly>
    </xsl:template>
    <xsl:template match="catalog/metadata/party/name"
                  priority="6"
@@ -7151,6 +7176,32 @@
          </value>
       </field>
    </xsl:template>
+   <xsl:template match="mapping-collection/metadata/role"
+                 priority="5"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <assembly name="role" gi="role">
+         <xsl:apply-templates select="@id"/>
+         <xsl:apply-templates select="title"/>
+         <xsl:apply-templates select="short-name"/>
+         <xsl:apply-templates select="description"/>
+         <xsl:for-each-group select="prop" group-by="true()">
+            <group in-json="ARRAY" key="props">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="link" group-by="true()">
+            <group in-json="ARRAY" key="links">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:apply-templates select="remarks"/>
+      </assembly>
+   </xsl:template>
    <xsl:template match="mapping-collection/metadata/role/title"
                  priority="6"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -7226,6 +7277,52 @@
             <xsl:apply-templates mode="cast-prose"/>
          </value>
       </field>
+   </xsl:template>
+   <xsl:template match="mapping-collection/metadata/location"
+                 priority="5"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <assembly name="location" gi="location">
+         <xsl:apply-templates select="@uuid"/>
+         <xsl:apply-templates select="title"/>
+         <xsl:apply-templates select="address"/>
+         <xsl:for-each-group select="email-address" group-by="true()">
+            <group in-json="ARRAY" key="email-addresses">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="telephone-number" group-by="true()">
+            <group in-json="ARRAY" key="telephone-numbers">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="url" group-by="true()">
+            <group in-json="ARRAY" key="urls">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="prop" group-by="true()">
+            <group in-json="ARRAY" key="props">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="link" group-by="true()">
+            <group in-json="ARRAY" key="links">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:apply-templates select="remarks"/>
+      </assembly>
    </xsl:template>
    <xsl:template match="mapping-collection/metadata/location/title"
                  priority="6"
@@ -7388,6 +7485,7 @@
       <field collapsible="no"
              as-type="uri"
              name="url"
+             deprecated="1.1.0"
              gi="url"
              in-json="SCALAR">
          <value as-type="uri" in-json="string">
@@ -7412,6 +7510,74 @@
             <xsl:apply-templates mode="cast-prose"/>
          </value>
       </field>
+   </xsl:template>
+   <xsl:template match="mapping-collection/metadata/party"
+                 priority="5"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <assembly name="party" gi="party">
+         <xsl:apply-templates select="@uuid"/>
+         <xsl:apply-templates select="@type"/>
+         <xsl:apply-templates select="name"/>
+         <xsl:apply-templates select="short-name"/>
+         <xsl:for-each-group select="external-id" group-by="true()">
+            <group in-json="ARRAY" key="external-ids">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="prop" group-by="true()">
+            <group in-json="ARRAY" key="props">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="link" group-by="true()">
+            <group in-json="ARRAY" key="links">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="email-address" group-by="true()">
+            <group in-json="ARRAY" key="email-addresses">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="telephone-number" group-by="true()">
+            <group in-json="ARRAY" key="telephone-numbers">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="address" group-by="true()">
+            <group in-json="ARRAY" key="addresses">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="location-uuid" group-by="true()">
+            <group in-json="ARRAY" key="location-uuids">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="member-of-organization" group-by="true()">
+            <group in-json="ARRAY" key="member-of-organizations">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:apply-templates select="remarks"/>
+      </assembly>
    </xsl:template>
    <xsl:template match="mapping-collection/metadata/party/name"
                  priority="6"
@@ -8246,6 +8412,32 @@
          </value>
       </field>
    </xsl:template>
+   <xsl:template match="profile/metadata/role"
+                 priority="5"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <assembly name="role" gi="role">
+         <xsl:apply-templates select="@id"/>
+         <xsl:apply-templates select="title"/>
+         <xsl:apply-templates select="short-name"/>
+         <xsl:apply-templates select="description"/>
+         <xsl:for-each-group select="prop" group-by="true()">
+            <group in-json="ARRAY" key="props">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="link" group-by="true()">
+            <group in-json="ARRAY" key="links">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:apply-templates select="remarks"/>
+      </assembly>
+   </xsl:template>
    <xsl:template match="profile/metadata/role/title"
                  priority="6"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -8321,6 +8513,52 @@
             <xsl:apply-templates mode="cast-prose"/>
          </value>
       </field>
+   </xsl:template>
+   <xsl:template match="profile/metadata/location"
+                 priority="5"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <assembly name="location" gi="location">
+         <xsl:apply-templates select="@uuid"/>
+         <xsl:apply-templates select="title"/>
+         <xsl:apply-templates select="address"/>
+         <xsl:for-each-group select="email-address" group-by="true()">
+            <group in-json="ARRAY" key="email-addresses">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="telephone-number" group-by="true()">
+            <group in-json="ARRAY" key="telephone-numbers">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="url" group-by="true()">
+            <group in-json="ARRAY" key="urls">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="prop" group-by="true()">
+            <group in-json="ARRAY" key="props">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="link" group-by="true()">
+            <group in-json="ARRAY" key="links">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:apply-templates select="remarks"/>
+      </assembly>
    </xsl:template>
    <xsl:template match="profile/metadata/location/title"
                  priority="6"
@@ -8483,6 +8721,7 @@
       <field collapsible="no"
              as-type="uri"
              name="url"
+             deprecated="1.1.0"
              gi="url"
              in-json="SCALAR">
          <value as-type="uri" in-json="string">
@@ -8507,6 +8746,74 @@
             <xsl:apply-templates mode="cast-prose"/>
          </value>
       </field>
+   </xsl:template>
+   <xsl:template match="profile/metadata/party"
+                 priority="5"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <assembly name="party" gi="party">
+         <xsl:apply-templates select="@uuid"/>
+         <xsl:apply-templates select="@type"/>
+         <xsl:apply-templates select="name"/>
+         <xsl:apply-templates select="short-name"/>
+         <xsl:for-each-group select="external-id" group-by="true()">
+            <group in-json="ARRAY" key="external-ids">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="prop" group-by="true()">
+            <group in-json="ARRAY" key="props">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="link" group-by="true()">
+            <group in-json="ARRAY" key="links">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="email-address" group-by="true()">
+            <group in-json="ARRAY" key="email-addresses">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="telephone-number" group-by="true()">
+            <group in-json="ARRAY" key="telephone-numbers">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="address" group-by="true()">
+            <group in-json="ARRAY" key="addresses">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="location-uuid" group-by="true()">
+            <group in-json="ARRAY" key="location-uuids">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="member-of-organization" group-by="true()">
+            <group in-json="ARRAY" key="member-of-organizations">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:apply-templates select="remarks"/>
+      </assembly>
    </xsl:template>
    <xsl:template match="profile/metadata/party/name"
                  priority="6"
@@ -10187,6 +10494,32 @@
          </value>
       </field>
    </xsl:template>
+   <xsl:template match="component-definition/metadata/role"
+                 priority="5"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <assembly name="role" gi="role">
+         <xsl:apply-templates select="@id"/>
+         <xsl:apply-templates select="title"/>
+         <xsl:apply-templates select="short-name"/>
+         <xsl:apply-templates select="description"/>
+         <xsl:for-each-group select="prop" group-by="true()">
+            <group in-json="ARRAY" key="props">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="link" group-by="true()">
+            <group in-json="ARRAY" key="links">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:apply-templates select="remarks"/>
+      </assembly>
+   </xsl:template>
    <xsl:template match="component-definition/metadata/role/title"
                  priority="6"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -10262,6 +10595,52 @@
             <xsl:apply-templates mode="cast-prose"/>
          </value>
       </field>
+   </xsl:template>
+   <xsl:template match="component-definition/metadata/location"
+                 priority="5"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <assembly name="location" gi="location">
+         <xsl:apply-templates select="@uuid"/>
+         <xsl:apply-templates select="title"/>
+         <xsl:apply-templates select="address"/>
+         <xsl:for-each-group select="email-address" group-by="true()">
+            <group in-json="ARRAY" key="email-addresses">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="telephone-number" group-by="true()">
+            <group in-json="ARRAY" key="telephone-numbers">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="url" group-by="true()">
+            <group in-json="ARRAY" key="urls">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="prop" group-by="true()">
+            <group in-json="ARRAY" key="props">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="link" group-by="true()">
+            <group in-json="ARRAY" key="links">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:apply-templates select="remarks"/>
+      </assembly>
    </xsl:template>
    <xsl:template match="component-definition/metadata/location/title"
                  priority="6"
@@ -10424,6 +10803,7 @@
       <field collapsible="no"
              as-type="uri"
              name="url"
+             deprecated="1.1.0"
              gi="url"
              in-json="SCALAR">
          <value as-type="uri" in-json="string">
@@ -10448,6 +10828,74 @@
             <xsl:apply-templates mode="cast-prose"/>
          </value>
       </field>
+   </xsl:template>
+   <xsl:template match="component-definition/metadata/party"
+                 priority="5"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <assembly name="party" gi="party">
+         <xsl:apply-templates select="@uuid"/>
+         <xsl:apply-templates select="@type"/>
+         <xsl:apply-templates select="name"/>
+         <xsl:apply-templates select="short-name"/>
+         <xsl:for-each-group select="external-id" group-by="true()">
+            <group in-json="ARRAY" key="external-ids">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="prop" group-by="true()">
+            <group in-json="ARRAY" key="props">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="link" group-by="true()">
+            <group in-json="ARRAY" key="links">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="email-address" group-by="true()">
+            <group in-json="ARRAY" key="email-addresses">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="telephone-number" group-by="true()">
+            <group in-json="ARRAY" key="telephone-numbers">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="address" group-by="true()">
+            <group in-json="ARRAY" key="addresses">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="location-uuid" group-by="true()">
+            <group in-json="ARRAY" key="location-uuids">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="member-of-organization" group-by="true()">
+            <group in-json="ARRAY" key="member-of-organizations">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:apply-templates select="remarks"/>
+      </assembly>
    </xsl:template>
    <xsl:template match="component-definition/metadata/party/name"
                  priority="6"
@@ -11948,6 +12396,32 @@
          </value>
       </field>
    </xsl:template>
+   <xsl:template match="system-security-plan/metadata/role"
+                 priority="5"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <assembly name="role" gi="role">
+         <xsl:apply-templates select="@id"/>
+         <xsl:apply-templates select="title"/>
+         <xsl:apply-templates select="short-name"/>
+         <xsl:apply-templates select="description"/>
+         <xsl:for-each-group select="prop" group-by="true()">
+            <group in-json="ARRAY" key="props">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="link" group-by="true()">
+            <group in-json="ARRAY" key="links">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:apply-templates select="remarks"/>
+      </assembly>
+   </xsl:template>
    <xsl:template match="system-security-plan/metadata/role/title"
                  priority="6"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -12023,6 +12497,52 @@
             <xsl:apply-templates mode="cast-prose"/>
          </value>
       </field>
+   </xsl:template>
+   <xsl:template match="system-security-plan/metadata/location"
+                 priority="5"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <assembly name="location" gi="location">
+         <xsl:apply-templates select="@uuid"/>
+         <xsl:apply-templates select="title"/>
+         <xsl:apply-templates select="address"/>
+         <xsl:for-each-group select="email-address" group-by="true()">
+            <group in-json="ARRAY" key="email-addresses">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="telephone-number" group-by="true()">
+            <group in-json="ARRAY" key="telephone-numbers">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="url" group-by="true()">
+            <group in-json="ARRAY" key="urls">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="prop" group-by="true()">
+            <group in-json="ARRAY" key="props">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="link" group-by="true()">
+            <group in-json="ARRAY" key="links">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:apply-templates select="remarks"/>
+      </assembly>
    </xsl:template>
    <xsl:template match="system-security-plan/metadata/location/title"
                  priority="6"
@@ -12185,6 +12705,7 @@
       <field collapsible="no"
              as-type="uri"
              name="url"
+             deprecated="1.1.0"
              gi="url"
              in-json="SCALAR">
          <value as-type="uri" in-json="string">
@@ -12209,6 +12730,74 @@
             <xsl:apply-templates mode="cast-prose"/>
          </value>
       </field>
+   </xsl:template>
+   <xsl:template match="system-security-plan/metadata/party"
+                 priority="5"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <assembly name="party" gi="party">
+         <xsl:apply-templates select="@uuid"/>
+         <xsl:apply-templates select="@type"/>
+         <xsl:apply-templates select="name"/>
+         <xsl:apply-templates select="short-name"/>
+         <xsl:for-each-group select="external-id" group-by="true()">
+            <group in-json="ARRAY" key="external-ids">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="prop" group-by="true()">
+            <group in-json="ARRAY" key="props">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="link" group-by="true()">
+            <group in-json="ARRAY" key="links">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="email-address" group-by="true()">
+            <group in-json="ARRAY" key="email-addresses">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="telephone-number" group-by="true()">
+            <group in-json="ARRAY" key="telephone-numbers">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="address" group-by="true()">
+            <group in-json="ARRAY" key="addresses">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="location-uuid" group-by="true()">
+            <group in-json="ARRAY" key="location-uuids">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="member-of-organization" group-by="true()">
+            <group in-json="ARRAY" key="member-of-organizations">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:apply-templates select="remarks"/>
+      </assembly>
    </xsl:template>
    <xsl:template match="system-security-plan/metadata/party/name"
                  priority="6"
@@ -15531,6 +16120,32 @@
          </value>
       </field>
    </xsl:template>
+   <xsl:template match="assessment-plan/metadata/role"
+                 priority="5"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <assembly name="role" gi="role">
+         <xsl:apply-templates select="@id"/>
+         <xsl:apply-templates select="title"/>
+         <xsl:apply-templates select="short-name"/>
+         <xsl:apply-templates select="description"/>
+         <xsl:for-each-group select="prop" group-by="true()">
+            <group in-json="ARRAY" key="props">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="link" group-by="true()">
+            <group in-json="ARRAY" key="links">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:apply-templates select="remarks"/>
+      </assembly>
+   </xsl:template>
    <xsl:template match="assessment-plan/metadata/role/title"
                  priority="6"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -15606,6 +16221,52 @@
             <xsl:apply-templates mode="cast-prose"/>
          </value>
       </field>
+   </xsl:template>
+   <xsl:template match="assessment-plan/metadata/location"
+                 priority="5"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <assembly name="location" gi="location">
+         <xsl:apply-templates select="@uuid"/>
+         <xsl:apply-templates select="title"/>
+         <xsl:apply-templates select="address"/>
+         <xsl:for-each-group select="email-address" group-by="true()">
+            <group in-json="ARRAY" key="email-addresses">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="telephone-number" group-by="true()">
+            <group in-json="ARRAY" key="telephone-numbers">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="url" group-by="true()">
+            <group in-json="ARRAY" key="urls">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="prop" group-by="true()">
+            <group in-json="ARRAY" key="props">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="link" group-by="true()">
+            <group in-json="ARRAY" key="links">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:apply-templates select="remarks"/>
+      </assembly>
    </xsl:template>
    <xsl:template match="assessment-plan/metadata/location/title"
                  priority="6"
@@ -15768,6 +16429,7 @@
       <field collapsible="no"
              as-type="uri"
              name="url"
+             deprecated="1.1.0"
              gi="url"
              in-json="SCALAR">
          <value as-type="uri" in-json="string">
@@ -15792,6 +16454,74 @@
             <xsl:apply-templates mode="cast-prose"/>
          </value>
       </field>
+   </xsl:template>
+   <xsl:template match="assessment-plan/metadata/party"
+                 priority="5"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <assembly name="party" gi="party">
+         <xsl:apply-templates select="@uuid"/>
+         <xsl:apply-templates select="@type"/>
+         <xsl:apply-templates select="name"/>
+         <xsl:apply-templates select="short-name"/>
+         <xsl:for-each-group select="external-id" group-by="true()">
+            <group in-json="ARRAY" key="external-ids">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="prop" group-by="true()">
+            <group in-json="ARRAY" key="props">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="link" group-by="true()">
+            <group in-json="ARRAY" key="links">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="email-address" group-by="true()">
+            <group in-json="ARRAY" key="email-addresses">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="telephone-number" group-by="true()">
+            <group in-json="ARRAY" key="telephone-numbers">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="address" group-by="true()">
+            <group in-json="ARRAY" key="addresses">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="location-uuid" group-by="true()">
+            <group in-json="ARRAY" key="location-uuids">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="member-of-organization" group-by="true()">
+            <group in-json="ARRAY" key="member-of-organizations">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:apply-templates select="remarks"/>
+      </assembly>
    </xsl:template>
    <xsl:template match="assessment-plan/metadata/party/name"
                  priority="6"
@@ -18705,6 +19435,32 @@
          </value>
       </field>
    </xsl:template>
+   <xsl:template match="assessment-results/metadata/role"
+                 priority="5"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <assembly name="role" gi="role">
+         <xsl:apply-templates select="@id"/>
+         <xsl:apply-templates select="title"/>
+         <xsl:apply-templates select="short-name"/>
+         <xsl:apply-templates select="description"/>
+         <xsl:for-each-group select="prop" group-by="true()">
+            <group in-json="ARRAY" key="props">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="link" group-by="true()">
+            <group in-json="ARRAY" key="links">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:apply-templates select="remarks"/>
+      </assembly>
+   </xsl:template>
    <xsl:template match="assessment-results/metadata/role/title"
                  priority="6"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -18780,6 +19536,52 @@
             <xsl:apply-templates mode="cast-prose"/>
          </value>
       </field>
+   </xsl:template>
+   <xsl:template match="assessment-results/metadata/location"
+                 priority="5"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <assembly name="location" gi="location">
+         <xsl:apply-templates select="@uuid"/>
+         <xsl:apply-templates select="title"/>
+         <xsl:apply-templates select="address"/>
+         <xsl:for-each-group select="email-address" group-by="true()">
+            <group in-json="ARRAY" key="email-addresses">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="telephone-number" group-by="true()">
+            <group in-json="ARRAY" key="telephone-numbers">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="url" group-by="true()">
+            <group in-json="ARRAY" key="urls">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="prop" group-by="true()">
+            <group in-json="ARRAY" key="props">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="link" group-by="true()">
+            <group in-json="ARRAY" key="links">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:apply-templates select="remarks"/>
+      </assembly>
    </xsl:template>
    <xsl:template match="assessment-results/metadata/location/title"
                  priority="6"
@@ -18942,6 +19744,7 @@
       <field collapsible="no"
              as-type="uri"
              name="url"
+             deprecated="1.1.0"
              gi="url"
              in-json="SCALAR">
          <value as-type="uri" in-json="string">
@@ -18966,6 +19769,74 @@
             <xsl:apply-templates mode="cast-prose"/>
          </value>
       </field>
+   </xsl:template>
+   <xsl:template match="assessment-results/metadata/party"
+                 priority="5"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <assembly name="party" gi="party">
+         <xsl:apply-templates select="@uuid"/>
+         <xsl:apply-templates select="@type"/>
+         <xsl:apply-templates select="name"/>
+         <xsl:apply-templates select="short-name"/>
+         <xsl:for-each-group select="external-id" group-by="true()">
+            <group in-json="ARRAY" key="external-ids">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="prop" group-by="true()">
+            <group in-json="ARRAY" key="props">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="link" group-by="true()">
+            <group in-json="ARRAY" key="links">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="email-address" group-by="true()">
+            <group in-json="ARRAY" key="email-addresses">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="telephone-number" group-by="true()">
+            <group in-json="ARRAY" key="telephone-numbers">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="address" group-by="true()">
+            <group in-json="ARRAY" key="addresses">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="location-uuid" group-by="true()">
+            <group in-json="ARRAY" key="location-uuids">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="member-of-organization" group-by="true()">
+            <group in-json="ARRAY" key="member-of-organizations">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:apply-templates select="remarks"/>
+      </assembly>
    </xsl:template>
    <xsl:template match="assessment-results/metadata/party/name"
                  priority="6"
@@ -25165,6 +26036,32 @@
          </value>
       </field>
    </xsl:template>
+   <xsl:template match="plan-of-action-and-milestones/metadata/role"
+                 priority="5"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <assembly name="role" gi="role">
+         <xsl:apply-templates select="@id"/>
+         <xsl:apply-templates select="title"/>
+         <xsl:apply-templates select="short-name"/>
+         <xsl:apply-templates select="description"/>
+         <xsl:for-each-group select="prop" group-by="true()">
+            <group in-json="ARRAY" key="props">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="link" group-by="true()">
+            <group in-json="ARRAY" key="links">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:apply-templates select="remarks"/>
+      </assembly>
+   </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/metadata/role/title"
                  priority="6"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -25240,6 +26137,52 @@
             <xsl:apply-templates mode="cast-prose"/>
          </value>
       </field>
+   </xsl:template>
+   <xsl:template match="plan-of-action-and-milestones/metadata/location"
+                 priority="5"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <assembly name="location" gi="location">
+         <xsl:apply-templates select="@uuid"/>
+         <xsl:apply-templates select="title"/>
+         <xsl:apply-templates select="address"/>
+         <xsl:for-each-group select="email-address" group-by="true()">
+            <group in-json="ARRAY" key="email-addresses">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="telephone-number" group-by="true()">
+            <group in-json="ARRAY" key="telephone-numbers">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="url" group-by="true()">
+            <group in-json="ARRAY" key="urls">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="prop" group-by="true()">
+            <group in-json="ARRAY" key="props">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="link" group-by="true()">
+            <group in-json="ARRAY" key="links">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:apply-templates select="remarks"/>
+      </assembly>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/metadata/location/title"
                  priority="6"
@@ -25402,6 +26345,7 @@
       <field collapsible="no"
              as-type="uri"
              name="url"
+             deprecated="1.1.0"
              gi="url"
              in-json="SCALAR">
          <value as-type="uri" in-json="string">
@@ -25426,6 +26370,74 @@
             <xsl:apply-templates mode="cast-prose"/>
          </value>
       </field>
+   </xsl:template>
+   <xsl:template match="plan-of-action-and-milestones/metadata/party"
+                 priority="5"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <assembly name="party" gi="party">
+         <xsl:apply-templates select="@uuid"/>
+         <xsl:apply-templates select="@type"/>
+         <xsl:apply-templates select="name"/>
+         <xsl:apply-templates select="short-name"/>
+         <xsl:for-each-group select="external-id" group-by="true()">
+            <group in-json="ARRAY" key="external-ids">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="prop" group-by="true()">
+            <group in-json="ARRAY" key="props">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="link" group-by="true()">
+            <group in-json="ARRAY" key="links">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="email-address" group-by="true()">
+            <group in-json="ARRAY" key="email-addresses">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="telephone-number" group-by="true()">
+            <group in-json="ARRAY" key="telephone-numbers">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="address" group-by="true()">
+            <group in-json="ARRAY" key="addresses">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="location-uuid" group-by="true()">
+            <group in-json="ARRAY" key="location-uuids">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="member-of-organization" group-by="true()">
+            <group in-json="ARRAY" key="member-of-organizations">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:apply-templates select="remarks"/>
+      </assembly>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/metadata/party/name"
                  priority="6"
