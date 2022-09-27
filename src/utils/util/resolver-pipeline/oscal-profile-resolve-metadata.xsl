@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet version="2.0"
+<xsl:stylesheet version="3.0"
     xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+    xmlns:mh="http://csrc.nist.gov/ns/message"
     xmlns:o="http://csrc.nist.gov/ns/oscal/1.0"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:math="http://www.w3.org/2005/xpath-functions/math"
     xmlns:opr="http://csrc.nist.gov/ns/oscal/profile-resolution"
     xmlns:u="http://csrc.nist.gov/ns/uuid"
-    exclude-result-prefixes="xs math o opr u"
+    xmlns:v="http://csrc.nist.gov/ns/version"
+    exclude-result-prefixes="xs math o opr u v"
     xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0" >
-    
-    <!-- XSLT 2.0 so as to validate against XSLT 3.0 constructs -->
+
     
     <!-- How to specify top-level UUID for result catalog:
 
@@ -27,6 +28,9 @@
         $uuid-method, $top-uuid, and $uuid-service. -->
     <xsl:import href="uuid-method-choice.xsl"/>
 
+    <!-- version-util.xsl has semantic version comparison. -->
+    <xsl:import href="version-util.xsl"/>
+    
     <!-- Top-level UUID for result catalog. -->
     <xsl:param name="top-uuid-computed"  as="xs:string">
         <xsl:call-template name="u:determine-uuid"/>
@@ -38,9 +42,6 @@
         metadata, due to privacy or security concerns. This parameter is
         passed from oscal-profile-RESOLVE.xsl and the end user can override it. -->
     <xsl:param name="hide-source-profile-uri" as="xs:boolean" select="false()"/>
-    
-    <!-- Version of this resolution tool -->
-    <xsl:variable name="tool-oscal-version" as="xs:string" select="'1.1.0'"/>
 
     <xsl:variable name="source-profile" as="xs:string"
         select="if ($hide-source-profile-uri) then 'profile' else $profile-origin-uri"/>
@@ -84,21 +85,42 @@
         <xsl:copy>
             <xsl:sequence select="opr:oscal-version(
                 .,
-                ancestor::profile/selection/metadata/oscal-version/normalize-space(),
-                $tool-oscal-version
+                ancestor::profile/selection/metadata/oscal-version/normalize-space()
                 )"/>
         </xsl:copy>
     </xsl:template>
 
-    <!-- If there is a common major version among all inputs,
-        return the most recent minor version or the tool version,
-        whichever is earlier.
-        If there is no common major version, return fatal error. -->
-    <xsl:function name="opr:oscal-version" as="xs:string">
+    <!-- Return the oscal-version of the source profile.
+        Perform error checking as in requirement
+        "req-meta-oscalversion-error".
+    -->
+    <xsl:function name="opr:oscal-version" as="xs:string" visibility="public">
+        <!-- Without visiblity="public" the XSpec test returns
+            XTDE0041: Cannot invoke function opr:oscal-version#2 externally, because it is not public
+        -->
         <xsl:param name="source" as="xs:string"/>
         <xsl:param name="imported" as="xs:string*"/>
-        <xsl:param name="tool" as="xs:string"/>
-        <xsl:value-of select="'TODO: Not implemented yet'"/>
+
+        <xsl:variable name="options" as="map(*)"
+            select="map{
+            'normalize-space': true(),
+            'supply-missing-zeros': true(),
+            'remove-leading-zeros': true(),
+            'allow-empty-string': true()
+            }"/>
+        <xsl:for-each select="$imported">
+            <xsl:if test="v:compare($source, ., $options) eq xs:integer(-1)">
+                <xsl:call-template name="mh:message-handler">
+                    <xsl:with-param name="message-type" select="'Error'"/>
+                    <xsl:with-param name="terminate" select="true()"/>
+                    <xsl:with-param name="text" expand-text="yes">Import uses oscal-version of {.
+                        }, which is newer than profile oscal-version of {
+                        $source}.</xsl:with-param>
+                </xsl:call-template>
+            </xsl:if>
+        </xsl:for-each>
+        <!-- Return the version from the source parameter. -->
+        <xsl:value-of select="$source"/>
     </xsl:function>
 
     <!--<xsl:template match="selection" mode="imported-metadata">
