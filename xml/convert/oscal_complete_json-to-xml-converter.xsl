@@ -153,53 +153,6 @@
          <xsl:apply-templates select="*[@key='text']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:array[@key='roles']/j:map">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="role" -->
-      <assembly name="role" gi="role">
-         <xsl:apply-templates select="*[@key='id']"/>
-         <xsl:apply-templates select="*[@key='title']"/>
-         <xsl:apply-templates select="*[@key='short-name']"/>
-         <xsl:apply-templates select="*[@key='description']"/>
-         <xsl:apply-templates select="*[@key='props']"/>
-         <xsl:apply-templates select="*[@key='links']"/>
-         <xsl:apply-templates select="*[@key='remarks']"/>
-      </assembly>
-   </xsl:template>
-   <xsl:template match="j:array[@key='locations']/j:map">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="location" -->
-      <assembly name="location" gi="location">
-         <xsl:apply-templates select="*[@key='uuid']"/>
-         <xsl:apply-templates select="*[@key='title']"/>
-         <xsl:apply-templates select="*[@key='address']"/>
-         <xsl:apply-templates select="*[@key='email-addresses']"/>
-         <xsl:apply-templates select="*[@key='telephone-numbers']"/>
-         <xsl:apply-templates select="*[@key='urls']"/>
-         <xsl:apply-templates select="*[@key='props']"/>
-         <xsl:apply-templates select="*[@key='links']"/>
-         <xsl:apply-templates select="*[@key='remarks']"/>
-      </assembly>
-   </xsl:template>
-   <xsl:template match="j:array[@key='parties']/j:map">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="party" -->
-      <assembly name="party" gi="party">
-         <xsl:apply-templates select="*[@key='uuid']"/>
-         <xsl:apply-templates select="*[@key='type']"/>
-         <xsl:apply-templates select="*[@key='name']"/>
-         <xsl:apply-templates select="*[@key='short-name']"/>
-         <xsl:apply-templates select="*[@key='external-ids']"/>
-         <xsl:apply-templates select="*[@key='props']"/>
-         <xsl:apply-templates select="*[@key='links']"/>
-         <xsl:apply-templates select="*[@key='email-addresses']"/>
-         <xsl:apply-templates select="*[@key='telephone-numbers']"/>
-         <xsl:apply-templates select="*[@key='addresses']"/>
-         <xsl:apply-templates select="*[@key='location-uuids']"/>
-         <xsl:apply-templates select="*[@key='member-of-organizations']"/>
-         <xsl:apply-templates select="*[@key='remarks']"/>
-      </assembly>
-   </xsl:template>
    <xsl:template match="j:array[@key='responsible-parties']/j:map">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="responsible-party" -->
@@ -1615,7 +1568,12 @@
                  mode="keep-value-property"
                  priority="8"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:array[@key='props']/j:map/j:string[@key='ns']" priority="1"><!-- XML match="prop/@ns" -->
-      <flag in-json="string" as-type="uri" name="ns" key="ns" gi="ns">
+      <flag in-json="string"
+            as-type="uri"
+            name="ns"
+            key="ns"
+            default="http://csrc.nist.gov/ns/oscal"
+            gi="ns">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
@@ -1707,16 +1665,17 @@
    <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='document-ids']/j:map/j:string[@key='scheme'] | j:map[@key='catalog']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:array[@key='document-ids']/j:map/j:string[@key='scheme'] | j:map[@key='mapping-collection']/j:map[@key='metadata']/j:array[@key='document-ids']/j:map/j:string[@key='scheme'] | j:map[@key='mapping-collection']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:array[@key='document-ids']/j:map/j:string[@key='scheme'] | j:map[@key='profile']/j:map[@key='metadata']/j:array[@key='document-ids']/j:map/j:string[@key='scheme'] | j:map[@key='profile']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:array[@key='document-ids']/j:map/j:string[@key='scheme'] | j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='document-ids']/j:map/j:string[@key='scheme'] | j:map[@key='component-definition']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:array[@key='document-ids']/j:map/j:string[@key='scheme'] | j:map[@key='system-security-plan']/j:map[@key='metadata']/j:array[@key='document-ids']/j:map/j:string[@key='scheme'] | j:map[@key='system-security-plan']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:array[@key='document-ids']/j:map/j:string[@key='scheme'] | j:map[@key='assessment-plan']/j:map[@key='metadata']/j:array[@key='document-ids']/j:map/j:string[@key='scheme'] | j:map[@key='assessment-plan']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:array[@key='document-ids']/j:map/j:string[@key='scheme'] | j:map[@key='assessment-results']/j:map[@key='metadata']/j:array[@key='document-ids']/j:map/j:string[@key='scheme'] | j:map[@key='assessment-results']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:array[@key='document-ids']/j:map/j:string[@key='scheme'] | j:map[@key='plan-of-action-and-milestones']/j:map[@key='metadata']/j:array[@key='document-ids']/j:map/j:string[@key='scheme'] | j:map[@key='plan-of-action-and-milestones']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:array[@key='document-ids']/j:map/j:string[@key='scheme']"
                  mode="keep-value-property"
                  priority="6"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:array[@key='roles']/j:map/j:string[@key='id']" priority="1"><!-- XML match="role/@id" -->
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='roles']/j:map/j:string[@key='id'] | j:map[@key='mapping-collection']/j:map[@key='metadata']/j:array[@key='roles']/j:map/j:string[@key='id'] | j:map[@key='profile']/j:map[@key='metadata']/j:array[@key='roles']/j:map/j:string[@key='id'] | j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='roles']/j:map/j:string[@key='id'] | j:map[@key='system-security-plan']/j:map[@key='metadata']/j:array[@key='roles']/j:map/j:string[@key='id'] | j:map[@key='assessment-plan']/j:map[@key='metadata']/j:array[@key='roles']/j:map/j:string[@key='id'] | j:map[@key='assessment-results']/j:map[@key='metadata']/j:array[@key='roles']/j:map/j:string[@key='id'] | j:map[@key='plan-of-action-and-milestones']/j:map[@key='metadata']/j:array[@key='roles']/j:map/j:string[@key='id']"
+                 priority="6"><!-- XML match="catalog/metadata/role/@id | mapping-collection/metadata/role/@id | profile/metadata/role/@id | component-definition/metadata/role/@id | system-security-plan/metadata/role/@id | assessment-plan/metadata/role/@id | assessment-results/metadata/role/@id | plan-of-action-and-milestones/metadata/role/@id" -->
       <flag in-json="string" as-type="token" name="id" key="id" gi="id">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="j:array[@key='roles']/j:map/j:string[@key='id']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='roles']/j:map/j:string[@key='id'] | j:map[@key='mapping-collection']/j:map[@key='metadata']/j:array[@key='roles']/j:map/j:string[@key='id'] | j:map[@key='profile']/j:map[@key='metadata']/j:array[@key='roles']/j:map/j:string[@key='id'] | j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='roles']/j:map/j:string[@key='id'] | j:map[@key='system-security-plan']/j:map[@key='metadata']/j:array[@key='roles']/j:map/j:string[@key='id'] | j:map[@key='assessment-plan']/j:map[@key='metadata']/j:array[@key='roles']/j:map/j:string[@key='id'] | j:map[@key='assessment-results']/j:map[@key='metadata']/j:array[@key='roles']/j:map/j:string[@key='id'] | j:map[@key='plan-of-action-and-milestones']/j:map[@key='metadata']/j:array[@key='roles']/j:map/j:string[@key='id']"
                  mode="keep-value-property"
                  priority="6"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:array[@key='locations']/j:map/j:string[@key='uuid']"
-                 priority="1"><!-- XML match="location/@uuid" -->
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:string[@key='uuid'] | j:map[@key='mapping-collection']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:string[@key='uuid'] | j:map[@key='profile']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:string[@key='uuid'] | j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:string[@key='uuid'] | j:map[@key='system-security-plan']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:string[@key='uuid'] | j:map[@key='assessment-plan']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:string[@key='uuid'] | j:map[@key='assessment-results']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:string[@key='uuid'] | j:map[@key='plan-of-action-and-milestones']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:string[@key='uuid']"
+                 priority="6"><!-- XML match="catalog/metadata/location/@uuid | mapping-collection/metadata/location/@uuid | profile/metadata/location/@uuid | component-definition/metadata/location/@uuid | system-security-plan/metadata/location/@uuid | assessment-plan/metadata/location/@uuid | assessment-results/metadata/location/@uuid | plan-of-action-and-milestones/metadata/location/@uuid" -->
       <flag in-json="string"
             as-type="uuid"
             name="uuid"
@@ -1725,7 +1684,7 @@
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="j:array[@key='locations']/j:map/j:string[@key='uuid']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:string[@key='uuid'] | j:map[@key='mapping-collection']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:string[@key='uuid'] | j:map[@key='profile']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:string[@key='uuid'] | j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:string[@key='uuid'] | j:map[@key='system-security-plan']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:string[@key='uuid'] | j:map[@key='assessment-plan']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:string[@key='uuid'] | j:map[@key='assessment-results']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:string[@key='uuid'] | j:map[@key='plan-of-action-and-milestones']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:string[@key='uuid']"
                  mode="keep-value-property"
                  priority="6"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:map[@key='address']/j:string[@key='type'] | j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='addresses']/j:map/j:string[@key='type'] | j:map[@key='mapping-collection']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:map[@key='address']/j:string[@key='type'] | j:map[@key='mapping-collection']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='addresses']/j:map/j:string[@key='type'] | j:map[@key='profile']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:map[@key='address']/j:string[@key='type'] | j:map[@key='profile']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='addresses']/j:map/j:string[@key='type'] | j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:map[@key='address']/j:string[@key='type'] | j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='addresses']/j:map/j:string[@key='type'] | j:map[@key='system-security-plan']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:map[@key='address']/j:string[@key='type'] | j:map[@key='system-security-plan']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='addresses']/j:map/j:string[@key='type'] | j:map[@key='assessment-plan']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:map[@key='address']/j:string[@key='type'] | j:map[@key='assessment-plan']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='addresses']/j:map/j:string[@key='type'] | j:map[@key='assessment-results']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:map[@key='address']/j:string[@key='type'] | j:map[@key='assessment-results']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='addresses']/j:map/j:string[@key='type'] | j:map[@key='plan-of-action-and-milestones']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:map[@key='address']/j:string[@key='type'] | j:map[@key='plan-of-action-and-milestones']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='addresses']/j:map/j:string[@key='type']"><!-- XML match="catalog/metadata/location/address/@type | catalog/metadata/party/address/@type | mapping-collection/metadata/location/address/@type | mapping-collection/metadata/party/address/@type | profile/metadata/location/address/@type | profile/metadata/party/address/@type | component-definition/metadata/location/address/@type | component-definition/metadata/party/address/@type | system-security-plan/metadata/location/address/@type | system-security-plan/metadata/party/address/@type | assessment-plan/metadata/location/address/@type | assessment-plan/metadata/party/address/@type | assessment-results/metadata/location/address/@type | assessment-results/metadata/party/address/@type | plan-of-action-and-milestones/metadata/location/address/@type | plan-of-action-and-milestones/metadata/party/address/@type" -->
@@ -1753,8 +1712,8 @@
    <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:array[@key='telephone-numbers']/j:map/j:string[@key='type'] | j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='telephone-numbers']/j:map/j:string[@key='type'] | j:map[@key='mapping-collection']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:array[@key='telephone-numbers']/j:map/j:string[@key='type'] | j:map[@key='mapping-collection']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='telephone-numbers']/j:map/j:string[@key='type'] | j:map[@key='profile']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:array[@key='telephone-numbers']/j:map/j:string[@key='type'] | j:map[@key='profile']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='telephone-numbers']/j:map/j:string[@key='type'] | j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:array[@key='telephone-numbers']/j:map/j:string[@key='type'] | j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='telephone-numbers']/j:map/j:string[@key='type'] | j:map[@key='system-security-plan']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:array[@key='telephone-numbers']/j:map/j:string[@key='type'] | j:map[@key='system-security-plan']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='telephone-numbers']/j:map/j:string[@key='type'] | j:map[@key='assessment-plan']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:array[@key='telephone-numbers']/j:map/j:string[@key='type'] | j:map[@key='assessment-plan']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='telephone-numbers']/j:map/j:string[@key='type'] | j:map[@key='assessment-results']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:array[@key='telephone-numbers']/j:map/j:string[@key='type'] | j:map[@key='assessment-results']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='telephone-numbers']/j:map/j:string[@key='type'] | j:map[@key='plan-of-action-and-milestones']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:array[@key='telephone-numbers']/j:map/j:string[@key='type'] | j:map[@key='plan-of-action-and-milestones']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='telephone-numbers']/j:map/j:string[@key='type']"
                  mode="keep-value-property"
                  priority="8"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:array[@key='parties']/j:map/j:string[@key='uuid']"
-                 priority="1"><!-- XML match="party/@uuid" -->
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:string[@key='uuid'] | j:map[@key='mapping-collection']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:string[@key='uuid'] | j:map[@key='profile']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:string[@key='uuid'] | j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:string[@key='uuid'] | j:map[@key='system-security-plan']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:string[@key='uuid'] | j:map[@key='assessment-plan']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:string[@key='uuid'] | j:map[@key='assessment-results']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:string[@key='uuid'] | j:map[@key='plan-of-action-and-milestones']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:string[@key='uuid']"
+                 priority="6"><!-- XML match="catalog/metadata/party/@uuid | mapping-collection/metadata/party/@uuid | profile/metadata/party/@uuid | component-definition/metadata/party/@uuid | system-security-plan/metadata/party/@uuid | assessment-plan/metadata/party/@uuid | assessment-results/metadata/party/@uuid | plan-of-action-and-milestones/metadata/party/@uuid" -->
       <flag in-json="string"
             as-type="uuid"
             name="uuid"
@@ -1763,11 +1722,11 @@
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="j:array[@key='parties']/j:map/j:string[@key='uuid']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:string[@key='uuid'] | j:map[@key='mapping-collection']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:string[@key='uuid'] | j:map[@key='profile']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:string[@key='uuid'] | j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:string[@key='uuid'] | j:map[@key='system-security-plan']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:string[@key='uuid'] | j:map[@key='assessment-plan']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:string[@key='uuid'] | j:map[@key='assessment-results']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:string[@key='uuid'] | j:map[@key='plan-of-action-and-milestones']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:string[@key='uuid']"
                  mode="keep-value-property"
                  priority="6"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:array[@key='parties']/j:map/j:string[@key='type']"
-                 priority="1"><!-- XML match="party/@type" -->
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:string[@key='type'] | j:map[@key='mapping-collection']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:string[@key='type'] | j:map[@key='profile']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:string[@key='type'] | j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:string[@key='type'] | j:map[@key='system-security-plan']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:string[@key='type'] | j:map[@key='assessment-plan']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:string[@key='type'] | j:map[@key='assessment-results']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:string[@key='type'] | j:map[@key='plan-of-action-and-milestones']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:string[@key='type']"
+                 priority="6"><!-- XML match="catalog/metadata/party/@type | mapping-collection/metadata/party/@type | profile/metadata/party/@type | component-definition/metadata/party/@type | system-security-plan/metadata/party/@type | assessment-plan/metadata/party/@type | assessment-results/metadata/party/@type | plan-of-action-and-milestones/metadata/party/@type" -->
       <flag in-json="string"
             as-type="string"
             name="type"
@@ -1776,7 +1735,7 @@
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="j:array[@key='parties']/j:map/j:string[@key='type']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:string[@key='type'] | j:map[@key='mapping-collection']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:string[@key='type'] | j:map[@key='profile']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:string[@key='type'] | j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:string[@key='type'] | j:map[@key='system-security-plan']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:string[@key='type'] | j:map[@key='assessment-plan']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:string[@key='type'] | j:map[@key='assessment-results']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:string[@key='type'] | j:map[@key='plan-of-action-and-milestones']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:string[@key='type']"
                  mode="keep-value-property"
                  priority="6"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='external-ids']/j:map/j:string[@key='scheme'] | j:map[@key='mapping-collection']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='external-ids']/j:map/j:string[@key='scheme'] | j:map[@key='profile']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='external-ids']/j:map/j:string[@key='scheme'] | j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='external-ids']/j:map/j:string[@key='scheme'] | j:map[@key='system-security-plan']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='external-ids']/j:map/j:string[@key='scheme'] | j:map[@key='assessment-plan']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='external-ids']/j:map/j:string[@key='scheme'] | j:map[@key='assessment-results']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='external-ids']/j:map/j:string[@key='scheme'] | j:map[@key='plan-of-action-and-milestones']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='external-ids']/j:map/j:string[@key='scheme']"
@@ -1946,7 +1905,12 @@
                  mode="keep-value-property"
                  priority="7"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:array[@key='parts']/j:map/j:string[@key='ns']" priority="1"><!-- XML match="part/@ns" -->
-      <flag in-json="string" as-type="uri" name="ns" key="ns" gi="ns">
+      <flag in-json="string"
+            as-type="uri"
+            name="ns"
+            key="ns"
+            default="http://csrc.nist.gov/ns/oscal"
+            gi="ns">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
@@ -2018,7 +1982,12 @@
                  priority="8"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:map[@key='catalog']//j:array[@key='controls']/j:map/j:map[@key='mapping']/j:array[@key='maps']/j:map/j:map[@key='relationship']/j:string[@key='ns'] | j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='controls']/j:map/j:map[@key='mapping']/j:array[@key='maps']/j:map/j:map[@key='relationship']/j:string[@key='ns'] | j:map[@key='mapping-collection']/(j:array[@key='mappings']/j:map | j:map[@key='mappings'])/j:array[@key='maps']/j:map/j:map[@key='relationship']/j:string[@key='ns']"
                  priority="9"><!-- XML match="catalog//control/mapping/map/relationship/@ns | catalog//group//control/mapping/map/relationship/@ns | mapping-collection/mapping/map/relationship/@ns" -->
-      <flag in-json="string" as-type="uri" name="ns" key="ns" gi="ns">
+      <flag in-json="string"
+            as-type="uri"
+            name="ns"
+            key="ns"
+            default="http://csrc.nist.gov/ns/oscal"
+            gi="ns">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
@@ -2126,7 +2095,7 @@
    <xsl:template match="j:map[@key='catalog']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:map[@key='base64']/j:string[@key='filename'] | j:map[@key='mapping-collection']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:map[@key='base64']/j:string[@key='filename'] | j:map[@key='profile']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:map[@key='base64']/j:string[@key='filename'] | j:map[@key='component-definition']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:map[@key='base64']/j:string[@key='filename'] | j:map[@key='system-security-plan']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:map[@key='base64']/j:string[@key='filename'] | j:map[@key='assessment-plan']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:map[@key='base64']/j:string[@key='filename'] | j:map[@key='assessment-results']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:map[@key='base64']/j:string[@key='filename'] | j:map[@key='plan-of-action-and-milestones']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:map[@key='base64']/j:string[@key='filename']"
                  priority="7"><!-- XML match="catalog/back-matter/resource/base64/@filename | mapping-collection/back-matter/resource/base64/@filename | profile/back-matter/resource/base64/@filename | component-definition/back-matter/resource/base64/@filename | system-security-plan/back-matter/resource/base64/@filename | assessment-plan/back-matter/resource/base64/@filename | assessment-results/back-matter/resource/base64/@filename | plan-of-action-and-milestones/back-matter/resource/base64/@filename" -->
       <flag in-json="string"
-            as-type="uri-reference"
+            as-type="token"
             name="filename"
             key="filename"
             gi="filename">
@@ -2556,7 +2525,8 @@
    <xsl:template match="j:map[@key='component-definition']/j:array[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:string[@key='uuid'] | j:map[@key='component-definition']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:string[@key='uuid']"
                  mode="keep-value-property"
                  priority="7"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:map[@key='component-definition']/j:array[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:string[@key='source'] | j:map[@key='component-definition']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:string[@key='source']"><!-- XML match="component-definition/component/control-implementation/@source | component-definition/capability/control-implementation/@source" -->
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:string[@key='source'] | j:map[@key='component-definition']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:string[@key='source']"
+                 priority="7"><!-- XML match="component-definition/component/control-implementation/@source | component-definition/capability/control-implementation/@source" -->
       <flag in-json="string"
             as-type="uri-reference"
             name="source"
@@ -3137,7 +3107,12 @@
                  mode="keep-value-property"
                  priority="6"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:array[@key='parts']/j:map/j:string[@key='ns']" priority="1"><!-- XML match="part/@ns" -->
-      <flag in-json="string" as-type="uri" name="ns" key="ns" gi="ns">
+      <flag in-json="string"
+            as-type="uri"
+            name="ns"
+            key="ns"
+            default="http://csrc.nist.gov/ns/oscal"
+            gi="ns">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
@@ -4176,6 +4151,20 @@
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='roles']/j:map"
+                 priority="5">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="catalog/metadata/role" -->
+      <assembly name="role" gi="role">
+         <xsl:apply-templates select="*[@key='id']"/>
+         <xsl:apply-templates select="*[@key='title']"/>
+         <xsl:apply-templates select="*[@key='short-name']"/>
+         <xsl:apply-templates select="*[@key='description']"/>
+         <xsl:apply-templates select="*[@key='props']"/>
+         <xsl:apply-templates select="*[@key='links']"/>
+         <xsl:apply-templates select="*[@key='remarks']"/>
+      </assembly>
+   </xsl:template>
    <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='roles']/j:map/j:string[@key='title']"
                  priority="6">
       <xsl:param name="with-key" select="true()"/>
@@ -4268,6 +4257,22 @@
       <value as-type="markup-line" in-json="string">
          <xsl:value-of select="."/>
       </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='locations']/j:map"
+                 priority="5">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="catalog/metadata/location" -->
+      <assembly name="location" gi="location">
+         <xsl:apply-templates select="*[@key='uuid']"/>
+         <xsl:apply-templates select="*[@key='title']"/>
+         <xsl:apply-templates select="*[@key='address']"/>
+         <xsl:apply-templates select="*[@key='email-addresses']"/>
+         <xsl:apply-templates select="*[@key='telephone-numbers']"/>
+         <xsl:apply-templates select="*[@key='urls']"/>
+         <xsl:apply-templates select="*[@key='props']"/>
+         <xsl:apply-templates select="*[@key='links']"/>
+         <xsl:apply-templates select="*[@key='remarks']"/>
+      </assembly>
    </xsl:template>
    <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:string[@key='title']"
                  priority="6">
@@ -4464,6 +4469,7 @@
       <field collapsible="no"
              as-type="uri"
              name="url"
+             deprecated="1.1.0"
              gi="url"
              in-json="SCALAR">
          <xsl:apply-templates select="." mode="get-value-property"/>
@@ -4498,6 +4504,26 @@
       <value as-type="markup-line" in-json="string">
          <xsl:value-of select="."/>
       </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='parties']/j:map"
+                 priority="5">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="catalog/metadata/party" -->
+      <assembly name="party" gi="party">
+         <xsl:apply-templates select="*[@key='uuid']"/>
+         <xsl:apply-templates select="*[@key='type']"/>
+         <xsl:apply-templates select="*[@key='name']"/>
+         <xsl:apply-templates select="*[@key='short-name']"/>
+         <xsl:apply-templates select="*[@key='external-ids']"/>
+         <xsl:apply-templates select="*[@key='props']"/>
+         <xsl:apply-templates select="*[@key='links']"/>
+         <xsl:apply-templates select="*[@key='email-addresses']"/>
+         <xsl:apply-templates select="*[@key='telephone-numbers']"/>
+         <xsl:apply-templates select="*[@key='addresses']"/>
+         <xsl:apply-templates select="*[@key='location-uuids']"/>
+         <xsl:apply-templates select="*[@key='member-of-organizations']"/>
+         <xsl:apply-templates select="*[@key='remarks']"/>
+      </assembly>
    </xsl:template>
    <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:string[@key='name']"
                  priority="6">
@@ -4969,8 +4995,8 @@
       <field scope="local"
              _step="prose"
              _key="prose"
-             _metaschema-xml-id="/assembly/oscal-catalog-common/parameter-guideline/prose"
-             _metaschema-json-id="/assembly/oscal-catalog-common/parameter-guideline/prose"
+             _metaschema-xml-id="/assembly/oscal-control-common/parameter-guideline/prose"
+             _metaschema-json-id="/assembly/oscal-control-common/parameter-guideline/prose"
              in-xml="UNWRAPPED"
              collapsible="no"
              as-type="markup-multiline"
@@ -4980,8 +5006,8 @@
              _in-xml-name="p ul ol pre table h1 h2 h3 h4 h5 h6"
              _in-json-name="prose">
          <value as-type="markup-multiline"
-                _metaschema-xml-id="/assembly/oscal-catalog-common/parameter-guideline/prose/PROSE"
-                _metaschema-json-id="/assembly/oscal-catalog-common/parameter-guideline/prose/PROSE"
+                _metaschema-xml-id="/assembly/oscal-control-common/parameter-guideline/prose/PROSE"
+                _metaschema-json-id="/assembly/oscal-control-common/parameter-guideline/prose/PROSE"
                 in-json="string">
             <xsl:value-of select="."/>
          </value>
@@ -5161,8 +5187,8 @@
       <field scope="local"
              _step="prose"
              _key="prose"
-             _metaschema-xml-id="/assembly/oscal-catalog-common/parameter-guideline/prose"
-             _metaschema-json-id="/assembly/oscal-catalog-common/parameter-guideline/prose"
+             _metaschema-xml-id="/assembly/oscal-control-common/parameter-guideline/prose"
+             _metaschema-json-id="/assembly/oscal-control-common/parameter-guideline/prose"
              in-xml="UNWRAPPED"
              collapsible="no"
              as-type="markup-multiline"
@@ -5172,8 +5198,8 @@
              _in-xml-name="p ul ol pre table h1 h2 h3 h4 h5 h6"
              _in-json-name="prose">
          <value as-type="markup-multiline"
-                _metaschema-xml-id="/assembly/oscal-catalog-common/parameter-guideline/prose/PROSE"
-                _metaschema-json-id="/assembly/oscal-catalog-common/parameter-guideline/prose/PROSE"
+                _metaschema-xml-id="/assembly/oscal-control-common/parameter-guideline/prose/PROSE"
+                _metaschema-json-id="/assembly/oscal-control-common/parameter-guideline/prose/PROSE"
                 in-json="string">
             <xsl:value-of select="."/>
          </value>
@@ -5250,8 +5276,8 @@
       <field scope="local"
              _step="prose"
              _key="prose"
-             _metaschema-xml-id="/assembly/oscal-catalog-common/part/prose"
-             _metaschema-json-id="/assembly/oscal-catalog-common/part/prose"
+             _metaschema-xml-id="/assembly/oscal-control-common/part/prose"
+             _metaschema-json-id="/assembly/oscal-control-common/part/prose"
              in-xml="UNWRAPPED"
              collapsible="no"
              as-type="markup-multiline"
@@ -5261,8 +5287,8 @@
              _in-xml-name="p ul ol pre table h1 h2 h3 h4 h5 h6"
              _in-json-name="prose">
          <value as-type="markup-multiline"
-                _metaschema-xml-id="/assembly/oscal-catalog-common/part/prose/PROSE"
-                _metaschema-json-id="/assembly/oscal-catalog-common/part/prose/PROSE"
+                _metaschema-xml-id="/assembly/oscal-control-common/part/prose/PROSE"
+                _metaschema-json-id="/assembly/oscal-control-common/part/prose/PROSE"
                 in-json="string">
             <xsl:value-of select="."/>
          </value>
@@ -5574,8 +5600,8 @@
       <field scope="local"
              _step="prose"
              _key="prose"
-             _metaschema-xml-id="/assembly/oscal-catalog-common/parameter-guideline/prose"
-             _metaschema-json-id="/assembly/oscal-catalog-common/parameter-guideline/prose"
+             _metaschema-xml-id="/assembly/oscal-control-common/parameter-guideline/prose"
+             _metaschema-json-id="/assembly/oscal-control-common/parameter-guideline/prose"
              in-xml="UNWRAPPED"
              collapsible="no"
              as-type="markup-multiline"
@@ -5585,8 +5611,8 @@
              _in-xml-name="p ul ol pre table h1 h2 h3 h4 h5 h6"
              _in-json-name="prose">
          <value as-type="markup-multiline"
-                _metaschema-xml-id="/assembly/oscal-catalog-common/parameter-guideline/prose/PROSE"
-                _metaschema-json-id="/assembly/oscal-catalog-common/parameter-guideline/prose/PROSE"
+                _metaschema-xml-id="/assembly/oscal-control-common/parameter-guideline/prose/PROSE"
+                _metaschema-json-id="/assembly/oscal-control-common/parameter-guideline/prose/PROSE"
                 in-json="string">
             <xsl:value-of select="."/>
          </value>
@@ -5663,8 +5689,8 @@
       <field scope="local"
              _step="prose"
              _key="prose"
-             _metaschema-xml-id="/assembly/oscal-catalog-common/part/prose"
-             _metaschema-json-id="/assembly/oscal-catalog-common/part/prose"
+             _metaschema-xml-id="/assembly/oscal-control-common/part/prose"
+             _metaschema-json-id="/assembly/oscal-control-common/part/prose"
              in-xml="UNWRAPPED"
              collapsible="no"
              as-type="markup-multiline"
@@ -5674,8 +5700,8 @@
              _in-xml-name="p ul ol pre table h1 h2 h3 h4 h5 h6"
              _in-json-name="prose">
          <value as-type="markup-multiline"
-                _metaschema-xml-id="/assembly/oscal-catalog-common/part/prose/PROSE"
-                _metaschema-json-id="/assembly/oscal-catalog-common/part/prose/PROSE"
+                _metaschema-xml-id="/assembly/oscal-control-common/part/prose/PROSE"
+                _metaschema-json-id="/assembly/oscal-control-common/part/prose/PROSE"
                 in-json="string">
             <xsl:value-of select="."/>
          </value>
@@ -5859,8 +5885,8 @@
       <field scope="local"
              _step="prose"
              _key="prose"
-             _metaschema-xml-id="/assembly/oscal-catalog-common/parameter-guideline/prose"
-             _metaschema-json-id="/assembly/oscal-catalog-common/parameter-guideline/prose"
+             _metaschema-xml-id="/assembly/oscal-control-common/parameter-guideline/prose"
+             _metaschema-json-id="/assembly/oscal-control-common/parameter-guideline/prose"
              in-xml="UNWRAPPED"
              collapsible="no"
              as-type="markup-multiline"
@@ -5870,8 +5896,8 @@
              _in-xml-name="p ul ol pre table h1 h2 h3 h4 h5 h6"
              _in-json-name="prose">
          <value as-type="markup-multiline"
-                _metaschema-xml-id="/assembly/oscal-catalog-common/parameter-guideline/prose/PROSE"
-                _metaschema-json-id="/assembly/oscal-catalog-common/parameter-guideline/prose/PROSE"
+                _metaschema-xml-id="/assembly/oscal-control-common/parameter-guideline/prose/PROSE"
+                _metaschema-json-id="/assembly/oscal-control-common/parameter-guideline/prose/PROSE"
                 in-json="string">
             <xsl:value-of select="."/>
          </value>
@@ -5948,8 +5974,8 @@
       <field scope="local"
              _step="prose"
              _key="prose"
-             _metaschema-xml-id="/assembly/oscal-catalog-common/part/prose"
-             _metaschema-json-id="/assembly/oscal-catalog-common/part/prose"
+             _metaschema-xml-id="/assembly/oscal-control-common/part/prose"
+             _metaschema-json-id="/assembly/oscal-control-common/part/prose"
              in-xml="UNWRAPPED"
              collapsible="no"
              as-type="markup-multiline"
@@ -5959,8 +5985,8 @@
              _in-xml-name="p ul ol pre table h1 h2 h3 h4 h5 h6"
              _in-json-name="prose">
          <value as-type="markup-multiline"
-                _metaschema-xml-id="/assembly/oscal-catalog-common/part/prose/PROSE"
-                _metaschema-json-id="/assembly/oscal-catalog-common/part/prose/PROSE"
+                _metaschema-xml-id="/assembly/oscal-control-common/part/prose/PROSE"
+                _metaschema-json-id="/assembly/oscal-control-common/part/prose/PROSE"
                 in-json="string">
             <xsl:value-of select="."/>
          </value>
@@ -6617,6 +6643,20 @@
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
+   <xsl:template match="j:map[@key='mapping-collection']/j:map[@key='metadata']/j:array[@key='roles']/j:map"
+                 priority="5">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="mapping-collection/metadata/role" -->
+      <assembly name="role" gi="role">
+         <xsl:apply-templates select="*[@key='id']"/>
+         <xsl:apply-templates select="*[@key='title']"/>
+         <xsl:apply-templates select="*[@key='short-name']"/>
+         <xsl:apply-templates select="*[@key='description']"/>
+         <xsl:apply-templates select="*[@key='props']"/>
+         <xsl:apply-templates select="*[@key='links']"/>
+         <xsl:apply-templates select="*[@key='remarks']"/>
+      </assembly>
+   </xsl:template>
    <xsl:template match="j:map[@key='mapping-collection']/j:map[@key='metadata']/j:array[@key='roles']/j:map/j:string[@key='title']"
                  priority="6">
       <xsl:param name="with-key" select="true()"/>
@@ -6709,6 +6749,22 @@
       <value as-type="markup-line" in-json="string">
          <xsl:value-of select="."/>
       </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='mapping-collection']/j:map[@key='metadata']/j:array[@key='locations']/j:map"
+                 priority="5">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="mapping-collection/metadata/location" -->
+      <assembly name="location" gi="location">
+         <xsl:apply-templates select="*[@key='uuid']"/>
+         <xsl:apply-templates select="*[@key='title']"/>
+         <xsl:apply-templates select="*[@key='address']"/>
+         <xsl:apply-templates select="*[@key='email-addresses']"/>
+         <xsl:apply-templates select="*[@key='telephone-numbers']"/>
+         <xsl:apply-templates select="*[@key='urls']"/>
+         <xsl:apply-templates select="*[@key='props']"/>
+         <xsl:apply-templates select="*[@key='links']"/>
+         <xsl:apply-templates select="*[@key='remarks']"/>
+      </assembly>
    </xsl:template>
    <xsl:template match="j:map[@key='mapping-collection']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:string[@key='title']"
                  priority="6">
@@ -6905,6 +6961,7 @@
       <field collapsible="no"
              as-type="uri"
              name="url"
+             deprecated="1.1.0"
              gi="url"
              in-json="SCALAR">
          <xsl:apply-templates select="." mode="get-value-property"/>
@@ -6939,6 +6996,26 @@
       <value as-type="markup-line" in-json="string">
          <xsl:value-of select="."/>
       </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='mapping-collection']/j:map[@key='metadata']/j:array[@key='parties']/j:map"
+                 priority="5">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="mapping-collection/metadata/party" -->
+      <assembly name="party" gi="party">
+         <xsl:apply-templates select="*[@key='uuid']"/>
+         <xsl:apply-templates select="*[@key='type']"/>
+         <xsl:apply-templates select="*[@key='name']"/>
+         <xsl:apply-templates select="*[@key='short-name']"/>
+         <xsl:apply-templates select="*[@key='external-ids']"/>
+         <xsl:apply-templates select="*[@key='props']"/>
+         <xsl:apply-templates select="*[@key='links']"/>
+         <xsl:apply-templates select="*[@key='email-addresses']"/>
+         <xsl:apply-templates select="*[@key='telephone-numbers']"/>
+         <xsl:apply-templates select="*[@key='addresses']"/>
+         <xsl:apply-templates select="*[@key='location-uuids']"/>
+         <xsl:apply-templates select="*[@key='member-of-organizations']"/>
+         <xsl:apply-templates select="*[@key='remarks']"/>
+      </assembly>
    </xsl:template>
    <xsl:template match="j:map[@key='mapping-collection']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:string[@key='name']"
                  priority="6">
@@ -7916,6 +7993,20 @@
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
+   <xsl:template match="j:map[@key='profile']/j:map[@key='metadata']/j:array[@key='roles']/j:map"
+                 priority="5">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="profile/metadata/role" -->
+      <assembly name="role" gi="role">
+         <xsl:apply-templates select="*[@key='id']"/>
+         <xsl:apply-templates select="*[@key='title']"/>
+         <xsl:apply-templates select="*[@key='short-name']"/>
+         <xsl:apply-templates select="*[@key='description']"/>
+         <xsl:apply-templates select="*[@key='props']"/>
+         <xsl:apply-templates select="*[@key='links']"/>
+         <xsl:apply-templates select="*[@key='remarks']"/>
+      </assembly>
+   </xsl:template>
    <xsl:template match="j:map[@key='profile']/j:map[@key='metadata']/j:array[@key='roles']/j:map/j:string[@key='title']"
                  priority="6">
       <xsl:param name="with-key" select="true()"/>
@@ -8008,6 +8099,22 @@
       <value as-type="markup-line" in-json="string">
          <xsl:value-of select="."/>
       </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='profile']/j:map[@key='metadata']/j:array[@key='locations']/j:map"
+                 priority="5">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="profile/metadata/location" -->
+      <assembly name="location" gi="location">
+         <xsl:apply-templates select="*[@key='uuid']"/>
+         <xsl:apply-templates select="*[@key='title']"/>
+         <xsl:apply-templates select="*[@key='address']"/>
+         <xsl:apply-templates select="*[@key='email-addresses']"/>
+         <xsl:apply-templates select="*[@key='telephone-numbers']"/>
+         <xsl:apply-templates select="*[@key='urls']"/>
+         <xsl:apply-templates select="*[@key='props']"/>
+         <xsl:apply-templates select="*[@key='links']"/>
+         <xsl:apply-templates select="*[@key='remarks']"/>
+      </assembly>
    </xsl:template>
    <xsl:template match="j:map[@key='profile']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:string[@key='title']"
                  priority="6">
@@ -8204,6 +8311,7 @@
       <field collapsible="no"
              as-type="uri"
              name="url"
+             deprecated="1.1.0"
              gi="url"
              in-json="SCALAR">
          <xsl:apply-templates select="." mode="get-value-property"/>
@@ -8238,6 +8346,26 @@
       <value as-type="markup-line" in-json="string">
          <xsl:value-of select="."/>
       </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='profile']/j:map[@key='metadata']/j:array[@key='parties']/j:map"
+                 priority="5">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="profile/metadata/party" -->
+      <assembly name="party" gi="party">
+         <xsl:apply-templates select="*[@key='uuid']"/>
+         <xsl:apply-templates select="*[@key='type']"/>
+         <xsl:apply-templates select="*[@key='name']"/>
+         <xsl:apply-templates select="*[@key='short-name']"/>
+         <xsl:apply-templates select="*[@key='external-ids']"/>
+         <xsl:apply-templates select="*[@key='props']"/>
+         <xsl:apply-templates select="*[@key='links']"/>
+         <xsl:apply-templates select="*[@key='email-addresses']"/>
+         <xsl:apply-templates select="*[@key='telephone-numbers']"/>
+         <xsl:apply-templates select="*[@key='addresses']"/>
+         <xsl:apply-templates select="*[@key='location-uuids']"/>
+         <xsl:apply-templates select="*[@key='member-of-organizations']"/>
+         <xsl:apply-templates select="*[@key='remarks']"/>
+      </assembly>
    </xsl:template>
    <xsl:template match="j:map[@key='profile']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:string[@key='name']"
                  priority="6">
@@ -8862,8 +8990,8 @@
       <field scope="local"
              _step="prose"
              _key="prose"
-             _metaschema-xml-id="/assembly/oscal-catalog-common/parameter-guideline/prose"
-             _metaschema-json-id="/assembly/oscal-catalog-common/parameter-guideline/prose"
+             _metaschema-xml-id="/assembly/oscal-control-common/parameter-guideline/prose"
+             _metaschema-json-id="/assembly/oscal-control-common/parameter-guideline/prose"
              in-xml="UNWRAPPED"
              collapsible="no"
              as-type="markup-multiline"
@@ -8873,8 +9001,8 @@
              _in-xml-name="p ul ol pre table h1 h2 h3 h4 h5 h6"
              _in-json-name="prose">
          <value as-type="markup-multiline"
-                _metaschema-xml-id="/assembly/oscal-catalog-common/parameter-guideline/prose/PROSE"
-                _metaschema-json-id="/assembly/oscal-catalog-common/parameter-guideline/prose/PROSE"
+                _metaschema-xml-id="/assembly/oscal-control-common/parameter-guideline/prose/PROSE"
+                _metaschema-json-id="/assembly/oscal-control-common/parameter-guideline/prose/PROSE"
                 in-json="string">
             <xsl:value-of select="."/>
          </value>
@@ -8951,8 +9079,8 @@
       <field scope="local"
              _step="prose"
              _key="prose"
-             _metaschema-xml-id="/assembly/oscal-catalog-common/part/prose"
-             _metaschema-json-id="/assembly/oscal-catalog-common/part/prose"
+             _metaschema-xml-id="/assembly/oscal-control-common/part/prose"
+             _metaschema-json-id="/assembly/oscal-control-common/part/prose"
              in-xml="UNWRAPPED"
              collapsible="no"
              as-type="markup-multiline"
@@ -8962,8 +9090,8 @@
              _in-xml-name="p ul ol pre table h1 h2 h3 h4 h5 h6"
              _in-json-name="prose">
          <value as-type="markup-multiline"
-                _metaschema-xml-id="/assembly/oscal-catalog-common/part/prose/PROSE"
-                _metaschema-json-id="/assembly/oscal-catalog-common/part/prose/PROSE"
+                _metaschema-xml-id="/assembly/oscal-control-common/part/prose/PROSE"
+                _metaschema-json-id="/assembly/oscal-control-common/part/prose/PROSE"
                 in-json="string">
             <xsl:value-of select="."/>
          </value>
@@ -9290,8 +9418,8 @@
       <field scope="local"
              _step="prose"
              _key="prose"
-             _metaschema-xml-id="/assembly/oscal-catalog-common/parameter-guideline/prose"
-             _metaschema-json-id="/assembly/oscal-catalog-common/parameter-guideline/prose"
+             _metaschema-xml-id="/assembly/oscal-control-common/parameter-guideline/prose"
+             _metaschema-json-id="/assembly/oscal-control-common/parameter-guideline/prose"
              in-xml="UNWRAPPED"
              collapsible="no"
              as-type="markup-multiline"
@@ -9301,8 +9429,8 @@
              _in-xml-name="p ul ol pre table h1 h2 h3 h4 h5 h6"
              _in-json-name="prose">
          <value as-type="markup-multiline"
-                _metaschema-xml-id="/assembly/oscal-catalog-common/parameter-guideline/prose/PROSE"
-                _metaschema-json-id="/assembly/oscal-catalog-common/parameter-guideline/prose/PROSE"
+                _metaschema-xml-id="/assembly/oscal-control-common/parameter-guideline/prose/PROSE"
+                _metaschema-json-id="/assembly/oscal-control-common/parameter-guideline/prose/PROSE"
                 in-json="string">
             <xsl:value-of select="."/>
          </value>
@@ -9518,8 +9646,8 @@
       <field scope="local"
              _step="prose"
              _key="prose"
-             _metaschema-xml-id="/assembly/oscal-catalog-common/parameter-guideline/prose"
-             _metaschema-json-id="/assembly/oscal-catalog-common/parameter-guideline/prose"
+             _metaschema-xml-id="/assembly/oscal-control-common/parameter-guideline/prose"
+             _metaschema-json-id="/assembly/oscal-control-common/parameter-guideline/prose"
              in-xml="UNWRAPPED"
              collapsible="no"
              as-type="markup-multiline"
@@ -9529,8 +9657,8 @@
              _in-xml-name="p ul ol pre table h1 h2 h3 h4 h5 h6"
              _in-json-name="prose">
          <value as-type="markup-multiline"
-                _metaschema-xml-id="/assembly/oscal-catalog-common/parameter-guideline/prose/PROSE"
-                _metaschema-json-id="/assembly/oscal-catalog-common/parameter-guideline/prose/PROSE"
+                _metaschema-xml-id="/assembly/oscal-control-common/parameter-guideline/prose/PROSE"
+                _metaschema-json-id="/assembly/oscal-control-common/parameter-guideline/prose/PROSE"
                 in-json="string">
             <xsl:value-of select="."/>
          </value>
@@ -9607,8 +9735,8 @@
       <field scope="local"
              _step="prose"
              _key="prose"
-             _metaschema-xml-id="/assembly/oscal-catalog-common/part/prose"
-             _metaschema-json-id="/assembly/oscal-catalog-common/part/prose"
+             _metaschema-xml-id="/assembly/oscal-control-common/part/prose"
+             _metaschema-json-id="/assembly/oscal-control-common/part/prose"
              in-xml="UNWRAPPED"
              collapsible="no"
              as-type="markup-multiline"
@@ -9618,8 +9746,8 @@
              _in-xml-name="p ul ol pre table h1 h2 h3 h4 h5 h6"
              _in-json-name="prose">
          <value as-type="markup-multiline"
-                _metaschema-xml-id="/assembly/oscal-catalog-common/part/prose/PROSE"
-                _metaschema-json-id="/assembly/oscal-catalog-common/part/prose/PROSE"
+                _metaschema-xml-id="/assembly/oscal-control-common/part/prose/PROSE"
+                _metaschema-json-id="/assembly/oscal-control-common/part/prose/PROSE"
                 in-json="string">
             <xsl:value-of select="."/>
          </value>
@@ -10148,6 +10276,20 @@
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='roles']/j:map"
+                 priority="5">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/metadata/role" -->
+      <assembly name="role" gi="role">
+         <xsl:apply-templates select="*[@key='id']"/>
+         <xsl:apply-templates select="*[@key='title']"/>
+         <xsl:apply-templates select="*[@key='short-name']"/>
+         <xsl:apply-templates select="*[@key='description']"/>
+         <xsl:apply-templates select="*[@key='props']"/>
+         <xsl:apply-templates select="*[@key='links']"/>
+         <xsl:apply-templates select="*[@key='remarks']"/>
+      </assembly>
+   </xsl:template>
    <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='roles']/j:map/j:string[@key='title']"
                  priority="6">
       <xsl:param name="with-key" select="true()"/>
@@ -10240,6 +10382,22 @@
       <value as-type="markup-line" in-json="string">
          <xsl:value-of select="."/>
       </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='locations']/j:map"
+                 priority="5">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/metadata/location" -->
+      <assembly name="location" gi="location">
+         <xsl:apply-templates select="*[@key='uuid']"/>
+         <xsl:apply-templates select="*[@key='title']"/>
+         <xsl:apply-templates select="*[@key='address']"/>
+         <xsl:apply-templates select="*[@key='email-addresses']"/>
+         <xsl:apply-templates select="*[@key='telephone-numbers']"/>
+         <xsl:apply-templates select="*[@key='urls']"/>
+         <xsl:apply-templates select="*[@key='props']"/>
+         <xsl:apply-templates select="*[@key='links']"/>
+         <xsl:apply-templates select="*[@key='remarks']"/>
+      </assembly>
    </xsl:template>
    <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:string[@key='title']"
                  priority="6">
@@ -10436,6 +10594,7 @@
       <field collapsible="no"
              as-type="uri"
              name="url"
+             deprecated="1.1.0"
              gi="url"
              in-json="SCALAR">
          <xsl:apply-templates select="." mode="get-value-property"/>
@@ -10470,6 +10629,26 @@
       <value as-type="markup-line" in-json="string">
          <xsl:value-of select="."/>
       </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='parties']/j:map"
+                 priority="5">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/metadata/party" -->
+      <assembly name="party" gi="party">
+         <xsl:apply-templates select="*[@key='uuid']"/>
+         <xsl:apply-templates select="*[@key='type']"/>
+         <xsl:apply-templates select="*[@key='name']"/>
+         <xsl:apply-templates select="*[@key='short-name']"/>
+         <xsl:apply-templates select="*[@key='external-ids']"/>
+         <xsl:apply-templates select="*[@key='props']"/>
+         <xsl:apply-templates select="*[@key='links']"/>
+         <xsl:apply-templates select="*[@key='email-addresses']"/>
+         <xsl:apply-templates select="*[@key='telephone-numbers']"/>
+         <xsl:apply-templates select="*[@key='addresses']"/>
+         <xsl:apply-templates select="*[@key='location-uuids']"/>
+         <xsl:apply-templates select="*[@key='member-of-organizations']"/>
+         <xsl:apply-templates select="*[@key='remarks']"/>
+      </assembly>
    </xsl:template>
    <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:string[@key='name']"
                  priority="6">
@@ -12057,6 +12236,20 @@
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
+   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='metadata']/j:array[@key='roles']/j:map"
+                 priority="5">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="system-security-plan/metadata/role" -->
+      <assembly name="role" gi="role">
+         <xsl:apply-templates select="*[@key='id']"/>
+         <xsl:apply-templates select="*[@key='title']"/>
+         <xsl:apply-templates select="*[@key='short-name']"/>
+         <xsl:apply-templates select="*[@key='description']"/>
+         <xsl:apply-templates select="*[@key='props']"/>
+         <xsl:apply-templates select="*[@key='links']"/>
+         <xsl:apply-templates select="*[@key='remarks']"/>
+      </assembly>
+   </xsl:template>
    <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='metadata']/j:array[@key='roles']/j:map/j:string[@key='title']"
                  priority="6">
       <xsl:param name="with-key" select="true()"/>
@@ -12149,6 +12342,22 @@
       <value as-type="markup-line" in-json="string">
          <xsl:value-of select="."/>
       </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='metadata']/j:array[@key='locations']/j:map"
+                 priority="5">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="system-security-plan/metadata/location" -->
+      <assembly name="location" gi="location">
+         <xsl:apply-templates select="*[@key='uuid']"/>
+         <xsl:apply-templates select="*[@key='title']"/>
+         <xsl:apply-templates select="*[@key='address']"/>
+         <xsl:apply-templates select="*[@key='email-addresses']"/>
+         <xsl:apply-templates select="*[@key='telephone-numbers']"/>
+         <xsl:apply-templates select="*[@key='urls']"/>
+         <xsl:apply-templates select="*[@key='props']"/>
+         <xsl:apply-templates select="*[@key='links']"/>
+         <xsl:apply-templates select="*[@key='remarks']"/>
+      </assembly>
    </xsl:template>
    <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:string[@key='title']"
                  priority="6">
@@ -12345,6 +12554,7 @@
       <field collapsible="no"
              as-type="uri"
              name="url"
+             deprecated="1.1.0"
              gi="url"
              in-json="SCALAR">
          <xsl:apply-templates select="." mode="get-value-property"/>
@@ -12379,6 +12589,26 @@
       <value as-type="markup-line" in-json="string">
          <xsl:value-of select="."/>
       </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='metadata']/j:array[@key='parties']/j:map"
+                 priority="5">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="system-security-plan/metadata/party" -->
+      <assembly name="party" gi="party">
+         <xsl:apply-templates select="*[@key='uuid']"/>
+         <xsl:apply-templates select="*[@key='type']"/>
+         <xsl:apply-templates select="*[@key='name']"/>
+         <xsl:apply-templates select="*[@key='short-name']"/>
+         <xsl:apply-templates select="*[@key='external-ids']"/>
+         <xsl:apply-templates select="*[@key='props']"/>
+         <xsl:apply-templates select="*[@key='links']"/>
+         <xsl:apply-templates select="*[@key='email-addresses']"/>
+         <xsl:apply-templates select="*[@key='telephone-numbers']"/>
+         <xsl:apply-templates select="*[@key='addresses']"/>
+         <xsl:apply-templates select="*[@key='location-uuids']"/>
+         <xsl:apply-templates select="*[@key='member-of-organizations']"/>
+         <xsl:apply-templates select="*[@key='remarks']"/>
+      </assembly>
    </xsl:template>
    <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:string[@key='name']"
                  priority="6">
@@ -15947,6 +16177,20 @@
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
+   <xsl:template match="j:map[@key='assessment-plan']/j:map[@key='metadata']/j:array[@key='roles']/j:map"
+                 priority="5">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="assessment-plan/metadata/role" -->
+      <assembly name="role" gi="role">
+         <xsl:apply-templates select="*[@key='id']"/>
+         <xsl:apply-templates select="*[@key='title']"/>
+         <xsl:apply-templates select="*[@key='short-name']"/>
+         <xsl:apply-templates select="*[@key='description']"/>
+         <xsl:apply-templates select="*[@key='props']"/>
+         <xsl:apply-templates select="*[@key='links']"/>
+         <xsl:apply-templates select="*[@key='remarks']"/>
+      </assembly>
+   </xsl:template>
    <xsl:template match="j:map[@key='assessment-plan']/j:map[@key='metadata']/j:array[@key='roles']/j:map/j:string[@key='title']"
                  priority="6">
       <xsl:param name="with-key" select="true()"/>
@@ -16039,6 +16283,22 @@
       <value as-type="markup-line" in-json="string">
          <xsl:value-of select="."/>
       </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='assessment-plan']/j:map[@key='metadata']/j:array[@key='locations']/j:map"
+                 priority="5">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="assessment-plan/metadata/location" -->
+      <assembly name="location" gi="location">
+         <xsl:apply-templates select="*[@key='uuid']"/>
+         <xsl:apply-templates select="*[@key='title']"/>
+         <xsl:apply-templates select="*[@key='address']"/>
+         <xsl:apply-templates select="*[@key='email-addresses']"/>
+         <xsl:apply-templates select="*[@key='telephone-numbers']"/>
+         <xsl:apply-templates select="*[@key='urls']"/>
+         <xsl:apply-templates select="*[@key='props']"/>
+         <xsl:apply-templates select="*[@key='links']"/>
+         <xsl:apply-templates select="*[@key='remarks']"/>
+      </assembly>
    </xsl:template>
    <xsl:template match="j:map[@key='assessment-plan']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:string[@key='title']"
                  priority="6">
@@ -16235,6 +16495,7 @@
       <field collapsible="no"
              as-type="uri"
              name="url"
+             deprecated="1.1.0"
              gi="url"
              in-json="SCALAR">
          <xsl:apply-templates select="." mode="get-value-property"/>
@@ -16269,6 +16530,26 @@
       <value as-type="markup-line" in-json="string">
          <xsl:value-of select="."/>
       </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='assessment-plan']/j:map[@key='metadata']/j:array[@key='parties']/j:map"
+                 priority="5">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="assessment-plan/metadata/party" -->
+      <assembly name="party" gi="party">
+         <xsl:apply-templates select="*[@key='uuid']"/>
+         <xsl:apply-templates select="*[@key='type']"/>
+         <xsl:apply-templates select="*[@key='name']"/>
+         <xsl:apply-templates select="*[@key='short-name']"/>
+         <xsl:apply-templates select="*[@key='external-ids']"/>
+         <xsl:apply-templates select="*[@key='props']"/>
+         <xsl:apply-templates select="*[@key='links']"/>
+         <xsl:apply-templates select="*[@key='email-addresses']"/>
+         <xsl:apply-templates select="*[@key='telephone-numbers']"/>
+         <xsl:apply-templates select="*[@key='addresses']"/>
+         <xsl:apply-templates select="*[@key='location-uuids']"/>
+         <xsl:apply-templates select="*[@key='member-of-organizations']"/>
+         <xsl:apply-templates select="*[@key='remarks']"/>
+      </assembly>
    </xsl:template>
    <xsl:template match="j:map[@key='assessment-plan']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:string[@key='name']"
                  priority="6">
@@ -17121,8 +17402,8 @@
       <field scope="local"
              _step="prose"
              _key="prose"
-             _metaschema-xml-id="/assembly/oscal-catalog-common/part/prose"
-             _metaschema-json-id="/assembly/oscal-catalog-common/part/prose"
+             _metaschema-xml-id="/assembly/oscal-control-common/part/prose"
+             _metaschema-json-id="/assembly/oscal-control-common/part/prose"
              in-xml="UNWRAPPED"
              collapsible="no"
              as-type="markup-multiline"
@@ -17132,8 +17413,8 @@
              _in-xml-name="p ul ol pre table h1 h2 h3 h4 h5 h6"
              _in-json-name="prose">
          <value as-type="markup-multiline"
-                _metaschema-xml-id="/assembly/oscal-catalog-common/part/prose/PROSE"
-                _metaschema-json-id="/assembly/oscal-catalog-common/part/prose/PROSE"
+                _metaschema-xml-id="/assembly/oscal-control-common/part/prose/PROSE"
+                _metaschema-json-id="/assembly/oscal-control-common/part/prose/PROSE"
                 in-json="string">
             <xsl:value-of select="."/>
          </value>
@@ -19383,6 +19664,20 @@
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='metadata']/j:array[@key='roles']/j:map"
+                 priority="5">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="assessment-results/metadata/role" -->
+      <assembly name="role" gi="role">
+         <xsl:apply-templates select="*[@key='id']"/>
+         <xsl:apply-templates select="*[@key='title']"/>
+         <xsl:apply-templates select="*[@key='short-name']"/>
+         <xsl:apply-templates select="*[@key='description']"/>
+         <xsl:apply-templates select="*[@key='props']"/>
+         <xsl:apply-templates select="*[@key='links']"/>
+         <xsl:apply-templates select="*[@key='remarks']"/>
+      </assembly>
+   </xsl:template>
    <xsl:template match="j:map[@key='assessment-results']/j:map[@key='metadata']/j:array[@key='roles']/j:map/j:string[@key='title']"
                  priority="6">
       <xsl:param name="with-key" select="true()"/>
@@ -19475,6 +19770,22 @@
       <value as-type="markup-line" in-json="string">
          <xsl:value-of select="."/>
       </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='metadata']/j:array[@key='locations']/j:map"
+                 priority="5">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="assessment-results/metadata/location" -->
+      <assembly name="location" gi="location">
+         <xsl:apply-templates select="*[@key='uuid']"/>
+         <xsl:apply-templates select="*[@key='title']"/>
+         <xsl:apply-templates select="*[@key='address']"/>
+         <xsl:apply-templates select="*[@key='email-addresses']"/>
+         <xsl:apply-templates select="*[@key='telephone-numbers']"/>
+         <xsl:apply-templates select="*[@key='urls']"/>
+         <xsl:apply-templates select="*[@key='props']"/>
+         <xsl:apply-templates select="*[@key='links']"/>
+         <xsl:apply-templates select="*[@key='remarks']"/>
+      </assembly>
    </xsl:template>
    <xsl:template match="j:map[@key='assessment-results']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:string[@key='title']"
                  priority="6">
@@ -19671,6 +19982,7 @@
       <field collapsible="no"
              as-type="uri"
              name="url"
+             deprecated="1.1.0"
              gi="url"
              in-json="SCALAR">
          <xsl:apply-templates select="." mode="get-value-property"/>
@@ -19705,6 +20017,26 @@
       <value as-type="markup-line" in-json="string">
          <xsl:value-of select="."/>
       </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='metadata']/j:array[@key='parties']/j:map"
+                 priority="5">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="assessment-results/metadata/party" -->
+      <assembly name="party" gi="party">
+         <xsl:apply-templates select="*[@key='uuid']"/>
+         <xsl:apply-templates select="*[@key='type']"/>
+         <xsl:apply-templates select="*[@key='name']"/>
+         <xsl:apply-templates select="*[@key='short-name']"/>
+         <xsl:apply-templates select="*[@key='external-ids']"/>
+         <xsl:apply-templates select="*[@key='props']"/>
+         <xsl:apply-templates select="*[@key='links']"/>
+         <xsl:apply-templates select="*[@key='email-addresses']"/>
+         <xsl:apply-templates select="*[@key='telephone-numbers']"/>
+         <xsl:apply-templates select="*[@key='addresses']"/>
+         <xsl:apply-templates select="*[@key='location-uuids']"/>
+         <xsl:apply-templates select="*[@key='member-of-organizations']"/>
+         <xsl:apply-templates select="*[@key='remarks']"/>
+      </assembly>
    </xsl:template>
    <xsl:template match="j:map[@key='assessment-results']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:string[@key='name']"
                  priority="6">
@@ -20135,8 +20467,8 @@
       <field scope="local"
              _step="prose"
              _key="prose"
-             _metaschema-xml-id="/assembly/oscal-catalog-common/part/prose"
-             _metaschema-json-id="/assembly/oscal-catalog-common/part/prose"
+             _metaschema-xml-id="/assembly/oscal-control-common/part/prose"
+             _metaschema-json-id="/assembly/oscal-control-common/part/prose"
              in-xml="UNWRAPPED"
              collapsible="no"
              as-type="markup-multiline"
@@ -20146,8 +20478,8 @@
              _in-xml-name="p ul ol pre table h1 h2 h3 h4 h5 h6"
              _in-json-name="prose">
          <value as-type="markup-multiline"
-                _metaschema-xml-id="/assembly/oscal-catalog-common/part/prose/PROSE"
-                _metaschema-json-id="/assembly/oscal-catalog-common/part/prose/PROSE"
+                _metaschema-xml-id="/assembly/oscal-control-common/part/prose/PROSE"
+                _metaschema-json-id="/assembly/oscal-control-common/part/prose/PROSE"
                 in-json="string">
             <xsl:value-of select="."/>
          </value>
@@ -26434,6 +26766,20 @@
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
+   <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:map[@key='metadata']/j:array[@key='roles']/j:map"
+                 priority="5">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="plan-of-action-and-milestones/metadata/role" -->
+      <assembly name="role" gi="role">
+         <xsl:apply-templates select="*[@key='id']"/>
+         <xsl:apply-templates select="*[@key='title']"/>
+         <xsl:apply-templates select="*[@key='short-name']"/>
+         <xsl:apply-templates select="*[@key='description']"/>
+         <xsl:apply-templates select="*[@key='props']"/>
+         <xsl:apply-templates select="*[@key='links']"/>
+         <xsl:apply-templates select="*[@key='remarks']"/>
+      </assembly>
+   </xsl:template>
    <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:map[@key='metadata']/j:array[@key='roles']/j:map/j:string[@key='title']"
                  priority="6">
       <xsl:param name="with-key" select="true()"/>
@@ -26526,6 +26872,22 @@
       <value as-type="markup-line" in-json="string">
          <xsl:value-of select="."/>
       </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:map[@key='metadata']/j:array[@key='locations']/j:map"
+                 priority="5">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="plan-of-action-and-milestones/metadata/location" -->
+      <assembly name="location" gi="location">
+         <xsl:apply-templates select="*[@key='uuid']"/>
+         <xsl:apply-templates select="*[@key='title']"/>
+         <xsl:apply-templates select="*[@key='address']"/>
+         <xsl:apply-templates select="*[@key='email-addresses']"/>
+         <xsl:apply-templates select="*[@key='telephone-numbers']"/>
+         <xsl:apply-templates select="*[@key='urls']"/>
+         <xsl:apply-templates select="*[@key='props']"/>
+         <xsl:apply-templates select="*[@key='links']"/>
+         <xsl:apply-templates select="*[@key='remarks']"/>
+      </assembly>
    </xsl:template>
    <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:string[@key='title']"
                  priority="6">
@@ -26722,6 +27084,7 @@
       <field collapsible="no"
              as-type="uri"
              name="url"
+             deprecated="1.1.0"
              gi="url"
              in-json="SCALAR">
          <xsl:apply-templates select="." mode="get-value-property"/>
@@ -26756,6 +27119,26 @@
       <value as-type="markup-line" in-json="string">
          <xsl:value-of select="."/>
       </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:map[@key='metadata']/j:array[@key='parties']/j:map"
+                 priority="5">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="plan-of-action-and-milestones/metadata/party" -->
+      <assembly name="party" gi="party">
+         <xsl:apply-templates select="*[@key='uuid']"/>
+         <xsl:apply-templates select="*[@key='type']"/>
+         <xsl:apply-templates select="*[@key='name']"/>
+         <xsl:apply-templates select="*[@key='short-name']"/>
+         <xsl:apply-templates select="*[@key='external-ids']"/>
+         <xsl:apply-templates select="*[@key='props']"/>
+         <xsl:apply-templates select="*[@key='links']"/>
+         <xsl:apply-templates select="*[@key='email-addresses']"/>
+         <xsl:apply-templates select="*[@key='telephone-numbers']"/>
+         <xsl:apply-templates select="*[@key='addresses']"/>
+         <xsl:apply-templates select="*[@key='location-uuids']"/>
+         <xsl:apply-templates select="*[@key='member-of-organizations']"/>
+         <xsl:apply-templates select="*[@key='remarks']"/>
+      </assembly>
    </xsl:template>
    <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:string[@key='name']"
                  priority="6">
