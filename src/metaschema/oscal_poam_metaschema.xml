@@ -134,7 +134,7 @@
                 <description>Relates the poam-item to a set of referenced findings.</description>
                 <group-as name="related-findings" in-json="ARRAY"/>
                 <define-flag name="finding-uuid" as-type="uuid" required="yes">
-                    <formal-name>Observation Universally Unique Identifier Reference</formal-name>
+                    <formal-name>Finding Universally Unique Identifier Reference</formal-name>
                     <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a finding defined in the list of findings.</description>
                 </define-flag>
             </define-assembly>
