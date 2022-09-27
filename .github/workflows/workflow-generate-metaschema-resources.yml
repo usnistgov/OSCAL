@@ -134,4 +134,7 @@ jobs:
         repository: ${{ env.CHECKOUT_PATH }}
         file_pattern: xml json
         skip_dirty_check: false
+        commit_user_name: OSCAL GitHub Actions Bot
+        commit_user_email: oscal@nist.gov
+        commit_author: OSCAL GitHub Actions Bot <oscal@nist.gov>
         commit_message: Publishing generated metaschema resources [ci skip]
