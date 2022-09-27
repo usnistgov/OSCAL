@@ -19,10 +19,11 @@
   <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
   <json-base-uri>http://csrc.nist.gov/ns/oscal</json-base-uri>
   <remarks>
-    <p>The OSCAL Component Definition Model can be used to describe the implementation of controls in a <code>component</code> or a set of components grouped as a <code>capability</code>. A component can be either a <em>technical component</em>, or a <em>documentary component</em>. A technical component is a component that is implemented in hardware (physical or virtual) or software. A documentary component is a component implemented in a document, such as a process, procedure, or policy.</p>
-    <p>The root of the OSCAL Implementation Component format is <code>component-definition</code>.
-    </p>
-    <p>NOTE: This documentation is a work in progress. As a result, documentation for many of the information elements is missing or incomplete.</p>
+    <p>The OSCAL Component Definition Model can be used to describe the implementation of controls in a <code>component</code> or a set of components grouped as a <code>capability</code>. A component can be either a <em>technical component</em>, or a <em>documentary component</em>.</p>
+    <p>A technical component is a component that is implemented in hardware (physical or virtual) or software. Suppliers may document components in an OSCAL component definition that describes the implementation of controls in their hardware and software.</p>
+    <p>A documentary component is a component implemented for a documented process, procedure, or policy.  Suppliers may document components in an OSCAL component definition that describes the implementation of controls in their process, procedure, or policy.</p>
+    <p>The information provided by a technical or documentary component can be used by component consumers to provide starting narratives for documenting control implementations in an OSCAL SSP.</p>
+    <p>The root of the OSCAL Implementation Layer Component Definition model is <code>component-definition</code>.</p>
   </remarks>
 
   <import href="oscal_implementation-common_metaschema.xml"/>
@@ -34,7 +35,12 @@
     <define-flag name="uuid" as-type="uuid" required="yes">
       <formal-name>Component Definition Universally Unique Identifier</formal-name>
       <!-- Identifier Declaration -->
-      <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this component definition elsewhere in <a href="/concepts/identifier-use/#component-definition-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>component definition</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+      <description>Provides a globally unique means to identify a given component definition instance.</description>
+      <prop name="value-type" value="identifier"/>
+      <prop name="identifier-type" value="machine-oriented"/>
+      <prop name="identifier-uniqueness" value="global"/>
+      <prop name="identifier-scope" value="cross-instance"/>
+      <prop name="identifier-persistence" value="change-on-write"/>
     </define-flag>
     <model>
       <assembly ref="metadata" min-occurs="1"/>
@@ -72,6 +78,14 @@
     <define-flag name="href" as-type="uri-reference" required="yes">
       <formal-name>Hyperlink Reference</formal-name>
       <description>A link to a resource that defines a set of components and/or capabilities to import into this collection.</description>
+      <remarks>
+        <p>This value may be one of:</p>
+        <ol>
+          <li>an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
+          <li>a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing document, or</li>
+          <li>a bare URI fragment (i.e., `#uuid`) pointing to a <code>back-matter</code> resource in this or an imported document (see <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>).</li>
+        </ol>
+      </remarks>
     </define-flag>
   </define-assembly>
 
@@ -81,7 +95,12 @@
     <define-flag name="uuid" as-type="uuid" required="yes">
       <formal-name>Component Identifier</formal-name>
       <!-- Identifier Declaration -->
-      <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this component elsewhere in <a href="/concepts/identifier-use/#component-definition-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>component</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+      <description>Provides a globally unique means to identify a given component.</description>
+      <prop name="value-type" value="identifier"/>
+      <prop name="identifier-type" value="machine-oriented"/>
+      <prop name="identifier-uniqueness" value="global"/>
+      <prop name="identifier-scope" value="cross-instance"/>
+      <prop name="identifier-persistence" value="per-subject"/>
     </define-flag>
     <flag ref="defined-component-type" required="yes">
       <use-name>type</use-name>
@@ -252,7 +271,12 @@
     <define-flag required="yes" name="uuid" as-type="uuid">
       <formal-name>Capability Identifier</formal-name>
       <!-- Identifier Declaration -->
-      <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this capability elsewhere in <a href="/concepts/identifier-use/#component-definition-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>capability</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance).This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+      <description>Provides a globally unique means to identify a given capability.</description>
+      <prop name="value-type" value="identifier"/>
+      <prop name="identifier-type" value="machine-oriented"/>
+      <prop name="identifier-uniqueness" value="global"/>
+      <prop name="identifier-scope" value="cross-instance"/>
+      <prop name="identifier-persistence" value="per-subject"/>
     </define-flag>
     <define-flag name="name" as-type="string" required="yes">
       <formal-name>Capability Name</formal-name>
@@ -284,12 +308,13 @@
           <p>A given <code>component</code> must not be referenced more than once within the same <code>capability</code>.</p>
         </remarks>
       </is-unique>
+      <!-- Feature Request: add constraint ensuring a capability's incorporates-component references //component-definition/component/@uuid in the same component definition instance or an imported instance-->
     </constraint>
   </define-assembly>
   <define-assembly name="incorporates-component">
     <formal-name>Incorporates Component</formal-name>
     <!-- TODO: needs a description -->
-    <description>TBD</description>
+    <description>The collection of components comprising this capability.</description>
     <define-flag required="yes" name="component-uuid" as-type="uuid">
       <formal-name>Component Reference</formal-name>
       <!-- Identifier Reference -->
@@ -309,13 +334,25 @@
     <define-flag name="uuid" as-type="uuid" required="yes">
       <formal-name>Control Implementation Set Identifier</formal-name>
       <!-- Identifier Declaration -->
-      <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference a set of implemented controls elsewhere in <a href="/concepts/identifier-use/#component-definition-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>control implementation set</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+      <description>Provides a means to identify a set of control implementations that are supported by a given component or capability.</description>
+      <prop name="value-type" value="identifier"/>
+      <prop name="identifier-type" value="machine-oriented"/>
+      <prop name="identifier-uniqueness" value="global"/>
+      <prop name="identifier-scope" value="cross-instance"/>
+      <prop name="identifier-persistence" value="per-subject"/>
     </define-flag>
-    <flag ref="source" required="yes">
+    <define-flag name="source" as-type="uri-reference" required="yes">
+      <formal-name>Source Resource Reference</formal-name>
+      <description>A reference to an OSCAL catalog or profile providing the referenced control or subcontrol definition.</description>
       <remarks>
-        <p>A URL reference to the source catalog or profile for which this component is implementing controls for.</p>
+        <p>This value may be one of:</p>
+        <ol>
+          <li>an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
+          <li>a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing document, or</li>
+          <li>a bare URI fragment (i.e., `#uuid`) pointing to a <code>back-matter</code> resource in this or an imported document (see <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>).</li>
+        </ol>
       </remarks>
-    </flag>
+    </define-flag>
     <model>
       <define-field name="description" as-type="markup-multiline" min-occurs="1" in-xml="WITH_WRAPPER">
         <formal-name>Control Implementation Description</formal-name>
@@ -352,13 +389,18 @@
     <define-flag name="uuid" as-type="uuid" required="yes">
       <formal-name>Control Implementation Identifier</formal-name>
       <!-- Identifier Declaration -->
-      <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference a specific control implementation elsewhere in <a href="/concepts/identifier-use/#component-definition-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>control implementation</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance).This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+      <description>Provides a globally unique means to identify a given control implementation by a component.</description>
+      <prop name="value-type" value="identifier"/>
+      <prop name="identifier-type" value="machine-oriented"/>
+      <prop name="identifier-uniqueness" value="global"/>
+      <prop name="identifier-scope" value="cross-instance"/>
+      <prop name="identifier-persistence" value="per-subject"/>
     </define-flag>
     <flag ref="control-id" required="yes"/>
     <model>
       <define-field name="description" as-type="markup-multiline" min-occurs="1" in-xml="WITH_WRAPPER">
         <formal-name>Control Implementation Description</formal-name>
-        <description>A suggestion for how the specified control may be implemented if the containing component or capability is instantiated in a system security plan.</description>
+        <description>A suggestion from the supplier (e.g., component vendor or author) for how the specified control may be implemented if the containing component or capability is instantiated in a system security plan.</description>
       </define-field>
       <assembly ref="property" max-occurs="unbounded">
         <group-as name="props" in-json="ARRAY"/>
@@ -398,7 +440,7 @@
       </is-unique>
     </constraint>
     <remarks>
-      <p>Implemented requirements within a component or capability in a component definition provide a means to suggest possible control implementation details, which may be used by a different party when authoring a system security plan. Thus, these requirements defined in a component definition are only a suggestion of how to implement, which may be adopted wholesale, changed, or ignored by a person defining an information system implementation.</p>
+      <p>Implemented requirements within a component or capability in a component definition provide a means for component suppliers to suggest possible control implementation details, which may be used by a different party (e.g., component consumers) when authoring a system security plan. Thus, these requirements defined in a component definition are only a suggestion of how to implement, which may be adopted wholesale, changed, or ignored by a person defining an information system implementation.</p>
       <p>Use of <code>set-parameter</code> in this context, sets the parameter for the referenced control and any associated statements.</p>
     </remarks>
   </define-assembly>
