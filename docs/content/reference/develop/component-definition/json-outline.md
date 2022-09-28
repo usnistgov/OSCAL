@@ -10,7 +10,7 @@ sidenav:
 
 ---
 
-The following outline is a representation of the [JSON format](https://github.com/usnistgov/OSCAL/blob/develop/json/schema/oscal_component-definition_schema.json) for this [model](/concepts/layer/implementation/component-definition/). For each property, the name links to the corresponding entry in the [JSON Format Reference](../json-reference/). The cardinality and data type are also provided for each property where appropriate.
+The following outline is a representation of the [JSON format](https://github.com/usnistgov/OSCAL/blob/feature-rules/json/schema/oscal_component-definition_schema.json) for this [model](/concepts/layer/implementation/component-definition/). For each property, the name links to the corresponding entry in the [JSON Format Reference](../json-reference/). The cardinality and data type are also provided for each property where appropriate.
 
 <!-- DO NOT REMOVE. Generated text below -->
 {{< rawhtml >}}
@@ -894,6 +894,387 @@ The following outline is a representation of the [JSON format](https://github.co
                <p><span class="OM-lit">], </span></p>
             </details>
             <details class="OM-entry">
+               <summary><span class="sq"><a class="OM-name" href="../json-reference/#/component-definition/rules">rules</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+               <div class="model-container array">
+                  <div class="OM-entry">
+                     <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/component-definition/rules">rule</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                     <div class="model-container object">
+                        <div class="OM-entry">
+                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/rules/uuid">uuid</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="OM-lit">,</span></p>
+                        </div>
+                        <div class="OM-entry">
+                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/rules/title">title</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span><span class="OM-lit">,</span></p>
+                        </div>
+                        <div class="OM-entry">
+                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/rules/description">description</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
+                        </div>
+                        <details class="OM-entry">
+                           <summary><span class="sq"><a class="OM-name" href="../json-reference/#/component-definition/rules/props">props</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                           <div class="model-container array">
+                              <div class="OM-entry">
+                                 <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/component-definition/rules/props">prop</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                 <div class="model-container object">
+                                    <div class="OM-entry">
+                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/rules/props/name">name</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                    </div>
+                                    <div class="OM-entry">
+                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/rules/props/uuid">uuid</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="OM-lit">,</span></p>
+                                    </div>
+                                    <div class="OM-entry">
+                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/rules/props/ns">ns</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uri">uri</a></span><span class="OM-lit">,</span></p>
+                                    </div>
+                                    <div class="OM-entry">
+                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/rules/props/value">value</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                    </div>
+                                    <div class="OM-entry">
+                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/rules/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                    </div>
+                                    <div class="OM-entry">
+                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/rules/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                    </div>
+                                    <div class="OM-entry">
+                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/rules/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
+                                    </div>
+                                 </div>
+                                 <p><span class="OM-lit"> }</span></p>
+                              </div>
+                           </div>
+                           <p><span class="OM-lit">], </span></p>
+                        </details>
+                        <details class="OM-entry">
+                           <summary><span class="sq"><a class="OM-name" href="../json-reference/#/component-definition/rules/links">links</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                           <div class="model-container array">
+                              <div class="OM-entry">
+                                 <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/component-definition/rules/links">link</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                 <div class="model-container object">
+                                    <div class="OM-entry">
+                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/rules/links/href">href</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uri-reference">uri-reference</a></span><span class="OM-lit">,</span></p>
+                                    </div>
+                                    <div class="OM-entry">
+                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/rules/links/rel">rel</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                    </div>
+                                    <div class="OM-entry">
+                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/rules/links/media-type">media-type</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                    </div>
+                                    <div class="OM-entry">
+                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/rules/links/text">text</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span><span class="OM-lit">,</span></p>
+                                    </div>
+                                 </div>
+                                 <p><span class="OM-lit"> }</span></p>
+                              </div>
+                           </div>
+                           <p><span class="OM-lit">], </span></p>
+                        </details>
+                        <div class="OM-entry">
+                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/rules/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
+                        </div>
+                     </div>
+                     <p><span class="OM-lit"> }</span></p>
+                  </div>
+               </div>
+               <p><span class="OM-lit">], </span></p>
+            </details>
+            <details class="OM-entry">
+               <summary><span class="sq"><a class="OM-name" href="../json-reference/#/component-definition/tests">tests</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+               <div class="model-container array">
+                  <div class="OM-entry">
+                     <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/component-definition/tests">test</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                     <div class="model-container object">
+                        <div class="OM-entry">
+                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/tests/uuid">uuid</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="OM-lit">,</span></p>
+                        </div>
+                        <div class="OM-entry">
+                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/tests/title">title</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span><span class="OM-lit">,</span></p>
+                        </div>
+                        <div class="OM-entry">
+                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/tests/description">description</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
+                        </div>
+                        <details class="OM-entry">
+                           <summary><span class="sq"><a class="OM-name" href="../json-reference/#/component-definition/tests/props">props</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                           <div class="model-container array">
+                              <div class="OM-entry">
+                                 <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/component-definition/tests/props">prop</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                 <div class="model-container object">
+                                    <div class="OM-entry">
+                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/tests/props/name">name</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                    </div>
+                                    <div class="OM-entry">
+                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/tests/props/uuid">uuid</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="OM-lit">,</span></p>
+                                    </div>
+                                    <div class="OM-entry">
+                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/tests/props/ns">ns</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uri">uri</a></span><span class="OM-lit">,</span></p>
+                                    </div>
+                                    <div class="OM-entry">
+                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/tests/props/value">value</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                    </div>
+                                    <div class="OM-entry">
+                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/tests/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                    </div>
+                                    <div class="OM-entry">
+                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/tests/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                    </div>
+                                    <div class="OM-entry">
+                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/tests/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
+                                    </div>
+                                 </div>
+                                 <p><span class="OM-lit"> }</span></p>
+                              </div>
+                           </div>
+                           <p><span class="OM-lit">], </span></p>
+                        </details>
+                        <details class="OM-entry">
+                           <summary><span class="sq"><a class="OM-name" href="../json-reference/#/component-definition/tests/links">links</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                           <div class="model-container array">
+                              <div class="OM-entry">
+                                 <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/component-definition/tests/links">link</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                 <div class="model-container object">
+                                    <div class="OM-entry">
+                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/tests/links/href">href</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uri-reference">uri-reference</a></span><span class="OM-lit">,</span></p>
+                                    </div>
+                                    <div class="OM-entry">
+                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/tests/links/rel">rel</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                    </div>
+                                    <div class="OM-entry">
+                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/tests/links/media-type">media-type</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                    </div>
+                                    <div class="OM-entry">
+                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/tests/links/text">text</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span><span class="OM-lit">,</span></p>
+                                    </div>
+                                 </div>
+                                 <p><span class="OM-lit"> }</span></p>
+                              </div>
+                           </div>
+                           <p><span class="OM-lit">], </span></p>
+                        </details>
+                        <div class="OM-entry">
+                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/tests/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
+                        </div>
+                     </div>
+                     <p><span class="OM-lit"> }</span></p>
+                  </div>
+               </div>
+               <p><span class="OM-lit">], </span></p>
+            </details>
+            <details class="OM-entry">
+               <summary><span class="sq"><a class="OM-name" href="../json-reference/#/component-definition/testing-scenarios">testing-scenarios</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+               <div class="model-container array">
+                  <div class="OM-entry">
+                     <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/component-definition/testing-scenarios">testing-scenario</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                     <div class="model-container object">
+                        <div class="OM-entry">
+                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/testing-scenarios/uuid">uuid</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="OM-lit">,</span></p>
+                        </div>
+                        <div class="OM-entry">
+                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/testing-scenarios/rule-uuid">rule-uuid</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="OM-lit">,</span></p>
+                        </div>
+                        <details class="OM-entry">
+                           <summary><span class="sq"><a class="OM-name" href="../json-reference/#/component-definition/testing-scenarios/props">props</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                           <div class="model-container array">
+                              <div class="OM-entry">
+                                 <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/component-definition/testing-scenarios/props">prop</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                 <div class="model-container object">
+                                    <div class="OM-entry">
+                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/testing-scenarios/props/name">name</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                    </div>
+                                    <div class="OM-entry">
+                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/testing-scenarios/props/uuid">uuid</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="OM-lit">,</span></p>
+                                    </div>
+                                    <div class="OM-entry">
+                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/testing-scenarios/props/ns">ns</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uri">uri</a></span><span class="OM-lit">,</span></p>
+                                    </div>
+                                    <div class="OM-entry">
+                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/testing-scenarios/props/value">value</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                    </div>
+                                    <div class="OM-entry">
+                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/testing-scenarios/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                    </div>
+                                    <div class="OM-entry">
+                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/testing-scenarios/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                    </div>
+                                    <div class="OM-entry">
+                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/testing-scenarios/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
+                                    </div>
+                                 </div>
+                                 <p><span class="OM-lit"> }</span></p>
+                              </div>
+                           </div>
+                           <p><span class="OM-lit">], </span></p>
+                        </details>
+                        <details class="OM-entry">
+                           <summary><span class="sq"><a class="OM-name" href="../json-reference/#/component-definition/testing-scenarios/links">links</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                           <div class="model-container array">
+                              <div class="OM-entry">
+                                 <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/component-definition/testing-scenarios/links">link</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                 <div class="model-container object">
+                                    <div class="OM-entry">
+                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/testing-scenarios/links/href">href</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uri-reference">uri-reference</a></span><span class="OM-lit">,</span></p>
+                                    </div>
+                                    <div class="OM-entry">
+                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/testing-scenarios/links/rel">rel</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                    </div>
+                                    <div class="OM-entry">
+                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/testing-scenarios/links/media-type">media-type</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                    </div>
+                                    <div class="OM-entry">
+                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/testing-scenarios/links/text">text</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span><span class="OM-lit">,</span></p>
+                                    </div>
+                                 </div>
+                                 <p><span class="OM-lit"> }</span></p>
+                              </div>
+                           </div>
+                           <p><span class="OM-lit">], </span></p>
+                        </details>
+                        <div class="OM-choices">
+                           <p class="OM-lit">A choice of:</p>
+                           <div class="OM-choice">
+                              <details class="OM-entry">
+                                 <summary><a class="OM-name" href="../json-reference/#/component-definition/testing-scenarios/condition">condition</a> <span class="OM-cardinality">[1]</span>: <span class="OM-lit">{<span class="show-closed"> … }, </span></span></summary>
+                                 <div class="model-container object">
+                                    <div class="OM-entry">
+                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/testing-scenarios/condition/negate">negate</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#boolean">boolean</a></span><span class="OM-lit">,</span></p>
+                                    </div>
+                                    <div class="OM-entry">
+                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/testing-scenarios/condition/operator">operator</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                    </div>
+                                    <details class="OM-entry">
+                                       <summary><span class="sq"><a class="OM-name" href="../json-reference/#/component-definition/testing-scenarios/condition/props">props</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                       <div class="model-container array">
+                                          <div class="OM-entry">
+                                             <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/component-definition/testing-scenarios/condition/props">prop</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                             <div class="model-container object">
+                                                <div class="OM-entry">
+                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/testing-scenarios/condition/props/name">name</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                </div>
+                                                <div class="OM-entry">
+                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/testing-scenarios/condition/props/uuid">uuid</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="OM-lit">,</span></p>
+                                                </div>
+                                                <div class="OM-entry">
+                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/testing-scenarios/condition/props/ns">ns</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uri">uri</a></span><span class="OM-lit">,</span></p>
+                                                </div>
+                                                <div class="OM-entry">
+                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/testing-scenarios/condition/props/value">value</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                                </div>
+                                                <div class="OM-entry">
+                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/testing-scenarios/condition/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                </div>
+                                                <div class="OM-entry">
+                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/testing-scenarios/condition/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                </div>
+                                                <div class="OM-entry">
+                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/testing-scenarios/condition/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
+                                                </div>
+                                             </div>
+                                             <p><span class="OM-lit"> }</span></p>
+                                          </div>
+                                       </div>
+                                       <p><span class="OM-lit">], </span></p>
+                                    </details>
+                                    <details class="OM-entry">
+                                       <summary><span class="sq"><a class="OM-name" href="../json-reference/#/component-definition/testing-scenarios/condition/links">links</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                       <div class="model-container array">
+                                          <div class="OM-entry">
+                                             <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/component-definition/testing-scenarios/condition/links">link</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                             <div class="model-container object">
+                                                <div class="OM-entry">
+                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/testing-scenarios/condition/links/href">href</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uri-reference">uri-reference</a></span><span class="OM-lit">,</span></p>
+                                                </div>
+                                                <div class="OM-entry">
+                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/testing-scenarios/condition/links/rel">rel</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                </div>
+                                                <div class="OM-entry">
+                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/testing-scenarios/condition/links/media-type">media-type</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                                </div>
+                                                <div class="OM-entry">
+                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/testing-scenarios/condition/links/text">text</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span><span class="OM-lit">,</span></p>
+                                                </div>
+                                             </div>
+                                             <p><span class="OM-lit"> }</span></p>
+                                          </div>
+                                       </div>
+                                       <p><span class="OM-lit">], </span></p>
+                                    </details>
+                                    <details class="OM-entry">
+                                       <summary><a class="OM-name" href="../json-reference/#/component-definition/testing-scenarios/condition/prerequisite">prerequisite</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit">{<span class="show-closed"> … }, </span></span></summary>
+                                       <p><span class="OM-lit"> }, </span></p>
+                                    </details>
+                                    <div class="OM-choices">
+                                       <p class="OM-lit">A choice of:</p>
+                                       <div class="OM-choice">
+                                          <details class="OM-entry">
+                                             <summary><span class="sq"><a class="OM-name" href="../json-reference/#/component-definition/testing-scenarios/condition/rule-conditions">rule-conditions</a> <span class="OM-cardinality">[1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                             <div class="model-container array">
+                                                <div class="OM-entry">
+                                                   <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/component-definition/testing-scenarios/condition/rule-conditions">condition</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                                   <p><span class="OM-lit"> }</span></p>
+                                                </div>
+                                             </div>
+                                             <p><span class="OM-lit">], </span></p>
+                                          </details>
+                                       </div>
+                                       <div class="OM-choice">
+                                          <details class="OM-entry">
+                                             <summary><span class="sq"><a class="OM-name" href="../json-reference/#/component-definition/testing-scenarios/condition/test-references">test-references</a> <span class="OM-cardinality">[1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                             <div class="model-container array">
+                                                <div class="OM-entry">
+                                                   <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/component-definition/testing-scenarios/condition/test-references">test-reference</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                                   <div class="model-container object">
+                                                      <div class="OM-entry">
+                                                         <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/testing-scenarios/condition/test-references/test-uuid">test-uuid</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span></p>
+                                                      </div>
+                                                   </div>
+                                                   <p><span class="OM-lit"> }</span></p>
+                                                </div>
+                                             </div>
+                                             <p><span class="OM-lit">], </span></p>
+                                          </details>
+                                       </div>
+                                       <div class="OM-choice">
+                                          <details class="OM-entry">
+                                             <summary><span class="sq"><a class="OM-name" href="../json-reference/#/component-definition/testing-scenarios/condition/testing-scenario-references">testing-scenario-references</a> <span class="OM-cardinality">[1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ]</span></span></span></summary>
+                                             <div class="model-container array">
+                                                <div class="OM-entry">
+                                                   <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/component-definition/testing-scenarios/condition/testing-scenario-references">testing-scenario-reference</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                                   <div class="model-container object">
+                                                      <div class="OM-entry">
+                                                         <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/testing-scenarios/condition/testing-scenario-references/testing-scenario-uuid">testing-scenario-uuid</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span></p>
+                                                      </div>
+                                                   </div>
+                                                   <p><span class="OM-lit"> }</span></p>
+                                                </div>
+                                             </div>
+                                             <p><span class="OM-lit">]</span></p>
+                                          </details>
+                                       </div>
+                                    </div>
+                                    <div class="OM-entry">
+                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/testing-scenarios/condition/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span></p>
+                                    </div>
+                                 </div>
+                                 <p><span class="OM-lit"> }, </span></p>
+                              </details>
+                           </div>
+                           <div class="OM-choice">
+                              <details class="OM-entry">
+                                 <summary><a class="OM-name" href="../json-reference/#/component-definition/testing-scenarios/test-reference">test-reference</a> <span class="OM-cardinality">[1]</span>: <span class="OM-lit">{<span class="show-closed"> … }</span></span></summary>
+                                 <div class="model-container object">
+                                    <div class="OM-entry">
+                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/testing-scenarios/test-reference/test-uuid">test-uuid</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span></p>
+                                    </div>
+                                 </div>
+                                 <p><span class="OM-lit"> }</span></p>
+                              </details>
+                           </div>
+                        </div>
+                        <div class="OM-entry">
+                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/testing-scenarios/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span></p>
+                        </div>
+                     </div>
+                     <p><span class="OM-lit"> }</span></p>
+                  </div>
+               </div>
+               <p><span class="OM-lit">], </span></p>
+            </details>
+            <details class="OM-entry">
                <summary><span class="sq"><a class="OM-name" href="../json-reference/#/component-definition/components">components</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
                <div class="model-container array">
                   <div class="OM-entry">
@@ -1535,8 +1916,446 @@ The following outline is a representation of the [JSON format](https://github.co
                                                                </div>
                                                                <p><span class="OM-lit">], </span></p>
                                                             </details>
+                                                            <details class="OM-entry">
+                                                               <summary><span class="sq"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/rule-implementations">rule-implementations</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                                               <div class="model-container array">
+                                                                  <div class="OM-entry">
+                                                                     <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/rule-implementations">rule-implementation</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                                                     <div class="model-container object">
+                                                                        <div class="OM-entry">
+                                                                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/rule-implementations/uuid">uuid</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="OM-lit">,</span></p>
+                                                                        </div>
+                                                                        <div class="OM-entry">
+                                                                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/rule-implementations/description">description</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
+                                                                        </div>
+                                                                        <details class="OM-entry">
+                                                                           <summary><span class="sq"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/rule-implementations/props">props</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                                                           <div class="model-container array">
+                                                                              <div class="OM-entry">
+                                                                                 <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/rule-implementations/props">prop</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                                                                 <div class="model-container object">
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/rule-implementations/props/name">name</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/rule-implementations/props/uuid">uuid</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/rule-implementations/props/ns">ns</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uri">uri</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/rule-implementations/props/value">value</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/rule-implementations/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/rule-implementations/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/rule-implementations/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                 </div>
+                                                                                 <p><span class="OM-lit"> }</span></p>
+                                                                              </div>
+                                                                           </div>
+                                                                           <p><span class="OM-lit">], </span></p>
+                                                                        </details>
+                                                                        <details class="OM-entry">
+                                                                           <summary><span class="sq"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/rule-implementations/links">links</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                                                           <div class="model-container array">
+                                                                              <div class="OM-entry">
+                                                                                 <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/rule-implementations/links">link</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                                                                 <div class="model-container object">
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/rule-implementations/links/href">href</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uri-reference">uri-reference</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/rule-implementations/links/rel">rel</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/rule-implementations/links/media-type">media-type</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/rule-implementations/links/text">text</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                 </div>
+                                                                                 <p><span class="OM-lit"> }</span></p>
+                                                                              </div>
+                                                                           </div>
+                                                                           <p><span class="OM-lit">], </span></p>
+                                                                        </details>
+                                                                        <div class="OM-choices">
+                                                                           <p class="OM-lit">A choice of:</p>
+                                                                           <div class="OM-choice">
+                                                                              <details class="OM-entry">
+                                                                                 <summary><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/rule-implementations/condition">condition</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit">{<span class="show-closed"> … }, </span></span></summary>
+                                                                                 <div class="model-container object">
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/rule-implementations/condition/negate">negate</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#boolean">boolean</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/rule-implementations/condition/operator">operator</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                    <details class="OM-entry">
+                                                                                       <summary><span class="sq"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/rule-implementations/condition/props">props</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                                                                       <div class="model-container array">
+                                                                                          <div class="OM-entry">
+                                                                                             <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/rule-implementations/condition/props">prop</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                                                                             <div class="model-container object">
+                                                                                                <div class="OM-entry">
+                                                                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/rule-implementations/condition/props/name">name</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                                                </div>
+                                                                                                <div class="OM-entry">
+                                                                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/rule-implementations/condition/props/uuid">uuid</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="OM-lit">,</span></p>
+                                                                                                </div>
+                                                                                                <div class="OM-entry">
+                                                                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/rule-implementations/condition/props/ns">ns</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uri">uri</a></span><span class="OM-lit">,</span></p>
+                                                                                                </div>
+                                                                                                <div class="OM-entry">
+                                                                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/rule-implementations/condition/props/value">value</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                                                                                </div>
+                                                                                                <div class="OM-entry">
+                                                                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/rule-implementations/condition/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                                                </div>
+                                                                                                <div class="OM-entry">
+                                                                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/rule-implementations/condition/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                                                </div>
+                                                                                                <div class="OM-entry">
+                                                                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/rule-implementations/condition/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
+                                                                                                </div>
+                                                                                             </div>
+                                                                                             <p><span class="OM-lit"> }</span></p>
+                                                                                          </div>
+                                                                                       </div>
+                                                                                       <p><span class="OM-lit">], </span></p>
+                                                                                    </details>
+                                                                                    <details class="OM-entry">
+                                                                                       <summary><span class="sq"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/rule-implementations/condition/links">links</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                                                                       <div class="model-container array">
+                                                                                          <div class="OM-entry">
+                                                                                             <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/rule-implementations/condition/links">link</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                                                                             <div class="model-container object">
+                                                                                                <div class="OM-entry">
+                                                                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/rule-implementations/condition/links/href">href</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uri-reference">uri-reference</a></span><span class="OM-lit">,</span></p>
+                                                                                                </div>
+                                                                                                <div class="OM-entry">
+                                                                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/rule-implementations/condition/links/rel">rel</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                                                </div>
+                                                                                                <div class="OM-entry">
+                                                                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/rule-implementations/condition/links/media-type">media-type</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                                                                                </div>
+                                                                                                <div class="OM-entry">
+                                                                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/rule-implementations/condition/links/text">text</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span><span class="OM-lit">,</span></p>
+                                                                                                </div>
+                                                                                             </div>
+                                                                                             <p><span class="OM-lit"> }</span></p>
+                                                                                          </div>
+                                                                                       </div>
+                                                                                       <p><span class="OM-lit">], </span></p>
+                                                                                    </details>
+                                                                                    <details class="OM-entry">
+                                                                                       <summary><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/rule-implementations/condition/prerequisite">prerequisite</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit">{<span class="show-closed"> … }, </span></span></summary>
+                                                                                       <p><span class="OM-lit"> }, </span></p>
+                                                                                    </details>
+                                                                                    <div class="OM-choices">
+                                                                                       <p class="OM-lit">A choice of:</p>
+                                                                                       <div class="OM-choice">
+                                                                                          <details class="OM-entry">
+                                                                                             <summary><span class="sq"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/rule-implementations/condition/rule-conditions">rule-conditions</a> <span class="OM-cardinality">[1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                                                                             <div class="model-container array">
+                                                                                                <div class="OM-entry">
+                                                                                                   <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/rule-implementations/condition/rule-conditions">condition</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                                                                                   <p><span class="OM-lit"> }</span></p>
+                                                                                                </div>
+                                                                                             </div>
+                                                                                             <p><span class="OM-lit">], </span></p>
+                                                                                          </details>
+                                                                                       </div>
+                                                                                       <div class="OM-choice">
+                                                                                          <details class="OM-entry">
+                                                                                             <summary><span class="sq"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/rule-implementations/condition/test-references">test-references</a> <span class="OM-cardinality">[1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                                                                             <div class="model-container array">
+                                                                                                <div class="OM-entry">
+                                                                                                   <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/rule-implementations/condition/test-references">test-reference</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                                                                                   <div class="model-container object">
+                                                                                                      <div class="OM-entry">
+                                                                                                         <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/rule-implementations/condition/test-references/test-uuid">test-uuid</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span></p>
+                                                                                                      </div>
+                                                                                                   </div>
+                                                                                                   <p><span class="OM-lit"> }</span></p>
+                                                                                                </div>
+                                                                                             </div>
+                                                                                             <p><span class="OM-lit">], </span></p>
+                                                                                          </details>
+                                                                                       </div>
+                                                                                       <div class="OM-choice">
+                                                                                          <details class="OM-entry">
+                                                                                             <summary><span class="sq"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/rule-implementations/condition/testing-scenario-references">testing-scenario-references</a> <span class="OM-cardinality">[1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ]</span></span></span></summary>
+                                                                                             <div class="model-container array">
+                                                                                                <div class="OM-entry">
+                                                                                                   <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/rule-implementations/condition/testing-scenario-references">testing-scenario-reference</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                                                                                   <div class="model-container object">
+                                                                                                      <div class="OM-entry">
+                                                                                                         <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/rule-implementations/condition/testing-scenario-references/testing-scenario-uuid">testing-scenario-uuid</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span></p>
+                                                                                                      </div>
+                                                                                                   </div>
+                                                                                                   <p><span class="OM-lit"> }</span></p>
+                                                                                                </div>
+                                                                                             </div>
+                                                                                             <p><span class="OM-lit">]</span></p>
+                                                                                          </details>
+                                                                                       </div>
+                                                                                    </div>
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/rule-implementations/condition/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span></p>
+                                                                                    </div>
+                                                                                 </div>
+                                                                                 <p><span class="OM-lit"> }, </span></p>
+                                                                              </details>
+                                                                           </div>
+                                                                           <div class="OM-choice">
+                                                                              <details class="OM-entry">
+                                                                                 <summary><span class="sq"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/rule-implementations/rule-uuids">rule-uuids</a> <span class="OM-cardinality">[1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ]</span></span></span></summary>
+                                                                                 <div class="model-container array">
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/rule-implementations/rule-uuids">rule-uuid</a> strings</span> <span class="OM-cardinality">[1 to ∞]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span></p>
+                                                                                    </div>
+                                                                                 </div>
+                                                                                 <p><span class="OM-lit">]</span></p>
+                                                                              </details>
+                                                                           </div>
+                                                                        </div>
+                                                                        <div class="OM-entry">
+                                                                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/rule-implementations/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
+                                                                        </div>
+                                                                     </div>
+                                                                     <p><span class="OM-lit"> }</span></p>
+                                                                  </div>
+                                                               </div>
+                                                               <p><span class="OM-lit">], </span></p>
+                                                            </details>
                                                             <div class="OM-entry">
                                                                <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
+                                                            </div>
+                                                         </div>
+                                                         <p><span class="OM-lit"> }</span></p>
+                                                      </div>
+                                                   </div>
+                                                   <p><span class="OM-lit">], </span></p>
+                                                </details>
+                                                <details class="OM-entry">
+                                                   <summary><span class="sq"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/rule-implementations">rule-implementations</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                                   <div class="model-container array">
+                                                      <div class="OM-entry">
+                                                         <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/rule-implementations">rule-implementation</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                                         <div class="model-container object">
+                                                            <div class="OM-entry">
+                                                               <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/rule-implementations/uuid">uuid</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="OM-lit">,</span></p>
+                                                            </div>
+                                                            <div class="OM-entry">
+                                                               <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/rule-implementations/description">description</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
+                                                            </div>
+                                                            <details class="OM-entry">
+                                                               <summary><span class="sq"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/rule-implementations/props">props</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                                               <div class="model-container array">
+                                                                  <div class="OM-entry">
+                                                                     <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/rule-implementations/props">prop</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                                                     <div class="model-container object">
+                                                                        <div class="OM-entry">
+                                                                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/rule-implementations/props/name">name</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                        </div>
+                                                                        <div class="OM-entry">
+                                                                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/rule-implementations/props/uuid">uuid</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="OM-lit">,</span></p>
+                                                                        </div>
+                                                                        <div class="OM-entry">
+                                                                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/rule-implementations/props/ns">ns</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uri">uri</a></span><span class="OM-lit">,</span></p>
+                                                                        </div>
+                                                                        <div class="OM-entry">
+                                                                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/rule-implementations/props/value">value</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                                                        </div>
+                                                                        <div class="OM-entry">
+                                                                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/rule-implementations/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                        </div>
+                                                                        <div class="OM-entry">
+                                                                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/rule-implementations/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                        </div>
+                                                                        <div class="OM-entry">
+                                                                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/rule-implementations/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
+                                                                        </div>
+                                                                     </div>
+                                                                     <p><span class="OM-lit"> }</span></p>
+                                                                  </div>
+                                                               </div>
+                                                               <p><span class="OM-lit">], </span></p>
+                                                            </details>
+                                                            <details class="OM-entry">
+                                                               <summary><span class="sq"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/rule-implementations/links">links</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                                               <div class="model-container array">
+                                                                  <div class="OM-entry">
+                                                                     <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/rule-implementations/links">link</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                                                     <div class="model-container object">
+                                                                        <div class="OM-entry">
+                                                                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/rule-implementations/links/href">href</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uri-reference">uri-reference</a></span><span class="OM-lit">,</span></p>
+                                                                        </div>
+                                                                        <div class="OM-entry">
+                                                                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/rule-implementations/links/rel">rel</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                        </div>
+                                                                        <div class="OM-entry">
+                                                                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/rule-implementations/links/media-type">media-type</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                                                        </div>
+                                                                        <div class="OM-entry">
+                                                                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/rule-implementations/links/text">text</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span><span class="OM-lit">,</span></p>
+                                                                        </div>
+                                                                     </div>
+                                                                     <p><span class="OM-lit"> }</span></p>
+                                                                  </div>
+                                                               </div>
+                                                               <p><span class="OM-lit">], </span></p>
+                                                            </details>
+                                                            <div class="OM-choices">
+                                                               <p class="OM-lit">A choice of:</p>
+                                                               <div class="OM-choice">
+                                                                  <details class="OM-entry">
+                                                                     <summary><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/rule-implementations/condition">condition</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit">{<span class="show-closed"> … }, </span></span></summary>
+                                                                     <div class="model-container object">
+                                                                        <div class="OM-entry">
+                                                                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/rule-implementations/condition/negate">negate</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#boolean">boolean</a></span><span class="OM-lit">,</span></p>
+                                                                        </div>
+                                                                        <div class="OM-entry">
+                                                                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/rule-implementations/condition/operator">operator</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                        </div>
+                                                                        <details class="OM-entry">
+                                                                           <summary><span class="sq"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/rule-implementations/condition/props">props</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                                                           <div class="model-container array">
+                                                                              <div class="OM-entry">
+                                                                                 <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/rule-implementations/condition/props">prop</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                                                                 <div class="model-container object">
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/rule-implementations/condition/props/name">name</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/rule-implementations/condition/props/uuid">uuid</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/rule-implementations/condition/props/ns">ns</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uri">uri</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/rule-implementations/condition/props/value">value</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/rule-implementations/condition/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/rule-implementations/condition/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/rule-implementations/condition/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                 </div>
+                                                                                 <p><span class="OM-lit"> }</span></p>
+                                                                              </div>
+                                                                           </div>
+                                                                           <p><span class="OM-lit">], </span></p>
+                                                                        </details>
+                                                                        <details class="OM-entry">
+                                                                           <summary><span class="sq"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/rule-implementations/condition/links">links</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                                                           <div class="model-container array">
+                                                                              <div class="OM-entry">
+                                                                                 <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/rule-implementations/condition/links">link</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                                                                 <div class="model-container object">
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/rule-implementations/condition/links/href">href</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uri-reference">uri-reference</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/rule-implementations/condition/links/rel">rel</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/rule-implementations/condition/links/media-type">media-type</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/rule-implementations/condition/links/text">text</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                 </div>
+                                                                                 <p><span class="OM-lit"> }</span></p>
+                                                                              </div>
+                                                                           </div>
+                                                                           <p><span class="OM-lit">], </span></p>
+                                                                        </details>
+                                                                        <details class="OM-entry">
+                                                                           <summary><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/rule-implementations/condition/prerequisite">prerequisite</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit">{<span class="show-closed"> … }, </span></span></summary>
+                                                                           <p><span class="OM-lit"> }, </span></p>
+                                                                        </details>
+                                                                        <div class="OM-choices">
+                                                                           <p class="OM-lit">A choice of:</p>
+                                                                           <div class="OM-choice">
+                                                                              <details class="OM-entry">
+                                                                                 <summary><span class="sq"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/rule-implementations/condition/rule-conditions">rule-conditions</a> <span class="OM-cardinality">[1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                                                                 <div class="model-container array">
+                                                                                    <div class="OM-entry">
+                                                                                       <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/rule-implementations/condition/rule-conditions">condition</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                                                                       <p><span class="OM-lit"> }</span></p>
+                                                                                    </div>
+                                                                                 </div>
+                                                                                 <p><span class="OM-lit">], </span></p>
+                                                                              </details>
+                                                                           </div>
+                                                                           <div class="OM-choice">
+                                                                              <details class="OM-entry">
+                                                                                 <summary><span class="sq"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/rule-implementations/condition/test-references">test-references</a> <span class="OM-cardinality">[1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                                                                 <div class="model-container array">
+                                                                                    <div class="OM-entry">
+                                                                                       <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/rule-implementations/condition/test-references">test-reference</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                                                                       <div class="model-container object">
+                                                                                          <div class="OM-entry">
+                                                                                             <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/rule-implementations/condition/test-references/test-uuid">test-uuid</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span></p>
+                                                                                          </div>
+                                                                                       </div>
+                                                                                       <p><span class="OM-lit"> }</span></p>
+                                                                                    </div>
+                                                                                 </div>
+                                                                                 <p><span class="OM-lit">], </span></p>
+                                                                              </details>
+                                                                           </div>
+                                                                           <div class="OM-choice">
+                                                                              <details class="OM-entry">
+                                                                                 <summary><span class="sq"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/rule-implementations/condition/testing-scenario-references">testing-scenario-references</a> <span class="OM-cardinality">[1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ]</span></span></span></summary>
+                                                                                 <div class="model-container array">
+                                                                                    <div class="OM-entry">
+                                                                                       <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/rule-implementations/condition/testing-scenario-references">testing-scenario-reference</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                                                                       <div class="model-container object">
+                                                                                          <div class="OM-entry">
+                                                                                             <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/rule-implementations/condition/testing-scenario-references/testing-scenario-uuid">testing-scenario-uuid</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span></p>
+                                                                                          </div>
+                                                                                       </div>
+                                                                                       <p><span class="OM-lit"> }</span></p>
+                                                                                    </div>
+                                                                                 </div>
+                                                                                 <p><span class="OM-lit">]</span></p>
+                                                                              </details>
+                                                                           </div>
+                                                                        </div>
+                                                                        <div class="OM-entry">
+                                                                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/rule-implementations/condition/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span></p>
+                                                                        </div>
+                                                                     </div>
+                                                                     <p><span class="OM-lit"> }, </span></p>
+                                                                  </details>
+                                                               </div>
+                                                               <div class="OM-choice">
+                                                                  <details class="OM-entry">
+                                                                     <summary><span class="sq"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/rule-implementations/rule-uuids">rule-uuids</a> <span class="OM-cardinality">[1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ]</span></span></span></summary>
+                                                                     <div class="model-container array">
+                                                                        <div class="OM-entry">
+                                                                           <p class="OM-line"><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/rule-implementations/rule-uuids">rule-uuid</a> strings</span> <span class="OM-cardinality">[1 to ∞]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span></p>
+                                                                        </div>
+                                                                     </div>
+                                                                     <p><span class="OM-lit">]</span></p>
+                                                                  </details>
+                                                               </div>
+                                                            </div>
+                                                            <div class="OM-entry">
+                                                               <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/rule-implementations/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
                                                             </div>
                                                          </div>
                                                          <p><span class="OM-lit"> }</span></p>
@@ -2096,8 +2915,446 @@ The following outline is a representation of the [JSON format](https://github.co
                                                                </div>
                                                                <p><span class="OM-lit">], </span></p>
                                                             </details>
+                                                            <details class="OM-entry">
+                                                               <summary><span class="sq"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/rule-implementations">rule-implementations</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                                               <div class="model-container array">
+                                                                  <div class="OM-entry">
+                                                                     <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/rule-implementations">rule-implementation</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                                                     <div class="model-container object">
+                                                                        <div class="OM-entry">
+                                                                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/rule-implementations/uuid">uuid</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="OM-lit">,</span></p>
+                                                                        </div>
+                                                                        <div class="OM-entry">
+                                                                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/rule-implementations/description">description</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
+                                                                        </div>
+                                                                        <details class="OM-entry">
+                                                                           <summary><span class="sq"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/rule-implementations/props">props</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                                                           <div class="model-container array">
+                                                                              <div class="OM-entry">
+                                                                                 <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/rule-implementations/props">prop</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                                                                 <div class="model-container object">
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/rule-implementations/props/name">name</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/rule-implementations/props/uuid">uuid</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/rule-implementations/props/ns">ns</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uri">uri</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/rule-implementations/props/value">value</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/rule-implementations/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/rule-implementations/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/rule-implementations/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                 </div>
+                                                                                 <p><span class="OM-lit"> }</span></p>
+                                                                              </div>
+                                                                           </div>
+                                                                           <p><span class="OM-lit">], </span></p>
+                                                                        </details>
+                                                                        <details class="OM-entry">
+                                                                           <summary><span class="sq"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/rule-implementations/links">links</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                                                           <div class="model-container array">
+                                                                              <div class="OM-entry">
+                                                                                 <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/rule-implementations/links">link</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                                                                 <div class="model-container object">
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/rule-implementations/links/href">href</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uri-reference">uri-reference</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/rule-implementations/links/rel">rel</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/rule-implementations/links/media-type">media-type</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/rule-implementations/links/text">text</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                 </div>
+                                                                                 <p><span class="OM-lit"> }</span></p>
+                                                                              </div>
+                                                                           </div>
+                                                                           <p><span class="OM-lit">], </span></p>
+                                                                        </details>
+                                                                        <div class="OM-choices">
+                                                                           <p class="OM-lit">A choice of:</p>
+                                                                           <div class="OM-choice">
+                                                                              <details class="OM-entry">
+                                                                                 <summary><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/rule-implementations/condition">condition</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit">{<span class="show-closed"> … }, </span></span></summary>
+                                                                                 <div class="model-container object">
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/rule-implementations/condition/negate">negate</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#boolean">boolean</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/rule-implementations/condition/operator">operator</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                    <details class="OM-entry">
+                                                                                       <summary><span class="sq"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/rule-implementations/condition/props">props</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                                                                       <div class="model-container array">
+                                                                                          <div class="OM-entry">
+                                                                                             <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/rule-implementations/condition/props">prop</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                                                                             <div class="model-container object">
+                                                                                                <div class="OM-entry">
+                                                                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/rule-implementations/condition/props/name">name</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                                                </div>
+                                                                                                <div class="OM-entry">
+                                                                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/rule-implementations/condition/props/uuid">uuid</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="OM-lit">,</span></p>
+                                                                                                </div>
+                                                                                                <div class="OM-entry">
+                                                                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/rule-implementations/condition/props/ns">ns</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uri">uri</a></span><span class="OM-lit">,</span></p>
+                                                                                                </div>
+                                                                                                <div class="OM-entry">
+                                                                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/rule-implementations/condition/props/value">value</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                                                                                </div>
+                                                                                                <div class="OM-entry">
+                                                                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/rule-implementations/condition/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                                                </div>
+                                                                                                <div class="OM-entry">
+                                                                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/rule-implementations/condition/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                                                </div>
+                                                                                                <div class="OM-entry">
+                                                                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/rule-implementations/condition/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
+                                                                                                </div>
+                                                                                             </div>
+                                                                                             <p><span class="OM-lit"> }</span></p>
+                                                                                          </div>
+                                                                                       </div>
+                                                                                       <p><span class="OM-lit">], </span></p>
+                                                                                    </details>
+                                                                                    <details class="OM-entry">
+                                                                                       <summary><span class="sq"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/rule-implementations/condition/links">links</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                                                                       <div class="model-container array">
+                                                                                          <div class="OM-entry">
+                                                                                             <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/rule-implementations/condition/links">link</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                                                                             <div class="model-container object">
+                                                                                                <div class="OM-entry">
+                                                                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/rule-implementations/condition/links/href">href</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uri-reference">uri-reference</a></span><span class="OM-lit">,</span></p>
+                                                                                                </div>
+                                                                                                <div class="OM-entry">
+                                                                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/rule-implementations/condition/links/rel">rel</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                                                </div>
+                                                                                                <div class="OM-entry">
+                                                                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/rule-implementations/condition/links/media-type">media-type</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                                                                                </div>
+                                                                                                <div class="OM-entry">
+                                                                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/rule-implementations/condition/links/text">text</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span><span class="OM-lit">,</span></p>
+                                                                                                </div>
+                                                                                             </div>
+                                                                                             <p><span class="OM-lit"> }</span></p>
+                                                                                          </div>
+                                                                                       </div>
+                                                                                       <p><span class="OM-lit">], </span></p>
+                                                                                    </details>
+                                                                                    <details class="OM-entry">
+                                                                                       <summary><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/rule-implementations/condition/prerequisite">prerequisite</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit">{<span class="show-closed"> … }, </span></span></summary>
+                                                                                       <p><span class="OM-lit"> }, </span></p>
+                                                                                    </details>
+                                                                                    <div class="OM-choices">
+                                                                                       <p class="OM-lit">A choice of:</p>
+                                                                                       <div class="OM-choice">
+                                                                                          <details class="OM-entry">
+                                                                                             <summary><span class="sq"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/rule-implementations/condition/rule-conditions">rule-conditions</a> <span class="OM-cardinality">[1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                                                                             <div class="model-container array">
+                                                                                                <div class="OM-entry">
+                                                                                                   <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/rule-implementations/condition/rule-conditions">condition</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                                                                                   <p><span class="OM-lit"> }</span></p>
+                                                                                                </div>
+                                                                                             </div>
+                                                                                             <p><span class="OM-lit">], </span></p>
+                                                                                          </details>
+                                                                                       </div>
+                                                                                       <div class="OM-choice">
+                                                                                          <details class="OM-entry">
+                                                                                             <summary><span class="sq"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/rule-implementations/condition/test-references">test-references</a> <span class="OM-cardinality">[1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                                                                             <div class="model-container array">
+                                                                                                <div class="OM-entry">
+                                                                                                   <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/rule-implementations/condition/test-references">test-reference</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                                                                                   <div class="model-container object">
+                                                                                                      <div class="OM-entry">
+                                                                                                         <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/rule-implementations/condition/test-references/test-uuid">test-uuid</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span></p>
+                                                                                                      </div>
+                                                                                                   </div>
+                                                                                                   <p><span class="OM-lit"> }</span></p>
+                                                                                                </div>
+                                                                                             </div>
+                                                                                             <p><span class="OM-lit">], </span></p>
+                                                                                          </details>
+                                                                                       </div>
+                                                                                       <div class="OM-choice">
+                                                                                          <details class="OM-entry">
+                                                                                             <summary><span class="sq"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/rule-implementations/condition/testing-scenario-references">testing-scenario-references</a> <span class="OM-cardinality">[1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ]</span></span></span></summary>
+                                                                                             <div class="model-container array">
+                                                                                                <div class="OM-entry">
+                                                                                                   <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/rule-implementations/condition/testing-scenario-references">testing-scenario-reference</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                                                                                   <div class="model-container object">
+                                                                                                      <div class="OM-entry">
+                                                                                                         <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/rule-implementations/condition/testing-scenario-references/testing-scenario-uuid">testing-scenario-uuid</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span></p>
+                                                                                                      </div>
+                                                                                                   </div>
+                                                                                                   <p><span class="OM-lit"> }</span></p>
+                                                                                                </div>
+                                                                                             </div>
+                                                                                             <p><span class="OM-lit">]</span></p>
+                                                                                          </details>
+                                                                                       </div>
+                                                                                    </div>
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/rule-implementations/condition/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span></p>
+                                                                                    </div>
+                                                                                 </div>
+                                                                                 <p><span class="OM-lit"> }, </span></p>
+                                                                              </details>
+                                                                           </div>
+                                                                           <div class="OM-choice">
+                                                                              <details class="OM-entry">
+                                                                                 <summary><span class="sq"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/rule-implementations/rule-uuids">rule-uuids</a> <span class="OM-cardinality">[1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ]</span></span></span></summary>
+                                                                                 <div class="model-container array">
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/rule-implementations/rule-uuids">rule-uuid</a> strings</span> <span class="OM-cardinality">[1 to ∞]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span></p>
+                                                                                    </div>
+                                                                                 </div>
+                                                                                 <p><span class="OM-lit">]</span></p>
+                                                                              </details>
+                                                                           </div>
+                                                                        </div>
+                                                                        <div class="OM-entry">
+                                                                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/rule-implementations/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
+                                                                        </div>
+                                                                     </div>
+                                                                     <p><span class="OM-lit"> }</span></p>
+                                                                  </div>
+                                                               </div>
+                                                               <p><span class="OM-lit">], </span></p>
+                                                            </details>
                                                             <div class="OM-entry">
                                                                <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
+                                                            </div>
+                                                         </div>
+                                                         <p><span class="OM-lit"> }</span></p>
+                                                      </div>
+                                                   </div>
+                                                   <p><span class="OM-lit">], </span></p>
+                                                </details>
+                                                <details class="OM-entry">
+                                                   <summary><span class="sq"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/rule-implementations">rule-implementations</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                                   <div class="model-container array">
+                                                      <div class="OM-entry">
+                                                         <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/rule-implementations">rule-implementation</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                                         <div class="model-container object">
+                                                            <div class="OM-entry">
+                                                               <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/rule-implementations/uuid">uuid</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="OM-lit">,</span></p>
+                                                            </div>
+                                                            <div class="OM-entry">
+                                                               <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/rule-implementations/description">description</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
+                                                            </div>
+                                                            <details class="OM-entry">
+                                                               <summary><span class="sq"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/rule-implementations/props">props</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                                               <div class="model-container array">
+                                                                  <div class="OM-entry">
+                                                                     <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/rule-implementations/props">prop</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                                                     <div class="model-container object">
+                                                                        <div class="OM-entry">
+                                                                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/rule-implementations/props/name">name</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                        </div>
+                                                                        <div class="OM-entry">
+                                                                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/rule-implementations/props/uuid">uuid</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="OM-lit">,</span></p>
+                                                                        </div>
+                                                                        <div class="OM-entry">
+                                                                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/rule-implementations/props/ns">ns</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uri">uri</a></span><span class="OM-lit">,</span></p>
+                                                                        </div>
+                                                                        <div class="OM-entry">
+                                                                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/rule-implementations/props/value">value</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                                                        </div>
+                                                                        <div class="OM-entry">
+                                                                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/rule-implementations/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                        </div>
+                                                                        <div class="OM-entry">
+                                                                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/rule-implementations/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                        </div>
+                                                                        <div class="OM-entry">
+                                                                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/rule-implementations/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
+                                                                        </div>
+                                                                     </div>
+                                                                     <p><span class="OM-lit"> }</span></p>
+                                                                  </div>
+                                                               </div>
+                                                               <p><span class="OM-lit">], </span></p>
+                                                            </details>
+                                                            <details class="OM-entry">
+                                                               <summary><span class="sq"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/rule-implementations/links">links</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                                               <div class="model-container array">
+                                                                  <div class="OM-entry">
+                                                                     <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/rule-implementations/links">link</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                                                     <div class="model-container object">
+                                                                        <div class="OM-entry">
+                                                                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/rule-implementations/links/href">href</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uri-reference">uri-reference</a></span><span class="OM-lit">,</span></p>
+                                                                        </div>
+                                                                        <div class="OM-entry">
+                                                                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/rule-implementations/links/rel">rel</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                        </div>
+                                                                        <div class="OM-entry">
+                                                                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/rule-implementations/links/media-type">media-type</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                                                        </div>
+                                                                        <div class="OM-entry">
+                                                                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/rule-implementations/links/text">text</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span><span class="OM-lit">,</span></p>
+                                                                        </div>
+                                                                     </div>
+                                                                     <p><span class="OM-lit"> }</span></p>
+                                                                  </div>
+                                                               </div>
+                                                               <p><span class="OM-lit">], </span></p>
+                                                            </details>
+                                                            <div class="OM-choices">
+                                                               <p class="OM-lit">A choice of:</p>
+                                                               <div class="OM-choice">
+                                                                  <details class="OM-entry">
+                                                                     <summary><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/rule-implementations/condition">condition</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit">{<span class="show-closed"> … }, </span></span></summary>
+                                                                     <div class="model-container object">
+                                                                        <div class="OM-entry">
+                                                                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/rule-implementations/condition/negate">negate</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#boolean">boolean</a></span><span class="OM-lit">,</span></p>
+                                                                        </div>
+                                                                        <div class="OM-entry">
+                                                                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/rule-implementations/condition/operator">operator</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                        </div>
+                                                                        <details class="OM-entry">
+                                                                           <summary><span class="sq"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/rule-implementations/condition/props">props</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                                                           <div class="model-container array">
+                                                                              <div class="OM-entry">
+                                                                                 <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/rule-implementations/condition/props">prop</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                                                                 <div class="model-container object">
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/rule-implementations/condition/props/name">name</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/rule-implementations/condition/props/uuid">uuid</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/rule-implementations/condition/props/ns">ns</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uri">uri</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/rule-implementations/condition/props/value">value</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/rule-implementations/condition/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/rule-implementations/condition/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/rule-implementations/condition/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                 </div>
+                                                                                 <p><span class="OM-lit"> }</span></p>
+                                                                              </div>
+                                                                           </div>
+                                                                           <p><span class="OM-lit">], </span></p>
+                                                                        </details>
+                                                                        <details class="OM-entry">
+                                                                           <summary><span class="sq"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/rule-implementations/condition/links">links</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                                                           <div class="model-container array">
+                                                                              <div class="OM-entry">
+                                                                                 <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/rule-implementations/condition/links">link</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                                                                 <div class="model-container object">
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/rule-implementations/condition/links/href">href</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uri-reference">uri-reference</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/rule-implementations/condition/links/rel">rel</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/rule-implementations/condition/links/media-type">media-type</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/rule-implementations/condition/links/text">text</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                 </div>
+                                                                                 <p><span class="OM-lit"> }</span></p>
+                                                                              </div>
+                                                                           </div>
+                                                                           <p><span class="OM-lit">], </span></p>
+                                                                        </details>
+                                                                        <details class="OM-entry">
+                                                                           <summary><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/rule-implementations/condition/prerequisite">prerequisite</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit">{<span class="show-closed"> … }, </span></span></summary>
+                                                                           <p><span class="OM-lit"> }, </span></p>
+                                                                        </details>
+                                                                        <div class="OM-choices">
+                                                                           <p class="OM-lit">A choice of:</p>
+                                                                           <div class="OM-choice">
+                                                                              <details class="OM-entry">
+                                                                                 <summary><span class="sq"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/rule-implementations/condition/rule-conditions">rule-conditions</a> <span class="OM-cardinality">[1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                                                                 <div class="model-container array">
+                                                                                    <div class="OM-entry">
+                                                                                       <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/rule-implementations/condition/rule-conditions">condition</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                                                                       <p><span class="OM-lit"> }</span></p>
+                                                                                    </div>
+                                                                                 </div>
+                                                                                 <p><span class="OM-lit">], </span></p>
+                                                                              </details>
+                                                                           </div>
+                                                                           <div class="OM-choice">
+                                                                              <details class="OM-entry">
+                                                                                 <summary><span class="sq"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/rule-implementations/condition/test-references">test-references</a> <span class="OM-cardinality">[1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                                                                 <div class="model-container array">
+                                                                                    <div class="OM-entry">
+                                                                                       <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/rule-implementations/condition/test-references">test-reference</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                                                                       <div class="model-container object">
+                                                                                          <div class="OM-entry">
+                                                                                             <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/rule-implementations/condition/test-references/test-uuid">test-uuid</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span></p>
+                                                                                          </div>
+                                                                                       </div>
+                                                                                       <p><span class="OM-lit"> }</span></p>
+                                                                                    </div>
+                                                                                 </div>
+                                                                                 <p><span class="OM-lit">], </span></p>
+                                                                              </details>
+                                                                           </div>
+                                                                           <div class="OM-choice">
+                                                                              <details class="OM-entry">
+                                                                                 <summary><span class="sq"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/rule-implementations/condition/testing-scenario-references">testing-scenario-references</a> <span class="OM-cardinality">[1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ]</span></span></span></summary>
+                                                                                 <div class="model-container array">
+                                                                                    <div class="OM-entry">
+                                                                                       <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/rule-implementations/condition/testing-scenario-references">testing-scenario-reference</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                                                                       <div class="model-container object">
+                                                                                          <div class="OM-entry">
+                                                                                             <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/rule-implementations/condition/testing-scenario-references/testing-scenario-uuid">testing-scenario-uuid</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span></p>
+                                                                                          </div>
+                                                                                       </div>
+                                                                                       <p><span class="OM-lit"> }</span></p>
+                                                                                    </div>
+                                                                                 </div>
+                                                                                 <p><span class="OM-lit">]</span></p>
+                                                                              </details>
+                                                                           </div>
+                                                                        </div>
+                                                                        <div class="OM-entry">
+                                                                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/rule-implementations/condition/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span></p>
+                                                                        </div>
+                                                                     </div>
+                                                                     <p><span class="OM-lit"> }, </span></p>
+                                                                  </details>
+                                                               </div>
+                                                               <div class="OM-choice">
+                                                                  <details class="OM-entry">
+                                                                     <summary><span class="sq"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/rule-implementations/rule-uuids">rule-uuids</a> <span class="OM-cardinality">[1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ]</span></span></span></summary>
+                                                                     <div class="model-container array">
+                                                                        <div class="OM-entry">
+                                                                           <p class="OM-line"><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/rule-implementations/rule-uuids">rule-uuid</a> strings</span> <span class="OM-cardinality">[1 to ∞]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span></p>
+                                                                        </div>
+                                                                     </div>
+                                                                     <p><span class="OM-lit">]</span></p>
+                                                                  </details>
+                                                               </div>
+                                                            </div>
+                                                            <div class="OM-entry">
+                                                               <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/rule-implementations/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
                                                             </div>
                                                          </div>
                                                          <p><span class="OM-lit"> }</span></p>
