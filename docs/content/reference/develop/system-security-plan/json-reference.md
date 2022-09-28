@@ -10026,7 +10026,7 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                      </div>
                   </details>
                   <details class="properties" open="open">
-                     <summary>Properties (7)</summary>
+                     <summary>Properties (10)</summary>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
                            <h3 id="/system-security-plan/system-implementation/props" class="toc3 name">props</h3>
@@ -11328,6 +11328,1755 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                                     <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/user/remarks">Switch to XML</a></div>
+                                    <p class="formal-name">Remarks</p>
+                                 </div>
+                                 <div class="body">
+                                    <p class="description"><span class="usa-tag">Description</span> Additional commentary about the containing object.</p>
+                                    <div class="remarks-group usa-prose">
+                                       <details open="open">
+                                          <summary class="subhead">Remarks</summary>
+                                          <div class="remarks">
+                                             <p>The <code>remarks</code> field SHOULD not be used to store arbitrary data. Instead, a <code>prop</code> or <code>link</code> should be used to annotate or reference any additional data not formally supported
+                                                by OSCAL.</p>
+                                          </div>
+                                       </details>
+                                    </div>
+                                 </div>
+                              </div>
+                           </details>
+                        </div>
+                     </div>
+                     <div class="model-entry definition assembly">
+                        <div class="instance-header">
+                           <h3 id="/system-security-plan/system-implementation/rules" class="toc3 name">rules</h3>
+                           <p class="type">array<br /></p>
+                           <p class="occurrence">[0 or 1]</p>
+                           <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/rule">Switch to XML</a></div>
+                        </div>
+                        <div class="array-header">
+                           <p class="array-member">(array member)</p>
+                           <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-ssp/system-implementation/rules">(global definition)</a></p>
+                           <p class="occurrence">[1 to ∞]</p>
+                           <p class="formal-name">Rule Definition</p>
+                        </div>
+                        <div class="body">
+                           <p class="description"><span class="usa-tag">Description</span> TODO</p>
+                           <details class="constraints" open="open">
+                              <summary>Constraints (2)</summary>
+                              <div class="constraint">
+                                 <p><span class="usa-tag">allowed value</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                 <p>The value <b>must</b> be one of the following:</p>
+                                 <ul>
+                                    
+                                    <li><strong>version</strong>: A string that identifies the revision of the rule.</li>
+                                    </ul>
+                              </div>
+                              <div class="constraint">
+                                 <p><span class="usa-tag">allowed value</span>  for <code class="path">link/@rel</code></p>
+                                 <p>The value <b>must</b> be one of the following:</p>
+                                 <ul>
+                                    
+                                    <li><strong>source</strong>: A pointer to the resource that this rule is derived from.</li>
+                                    </ul>
+                              </div>
+                           </details>
+                           <details class="properties" open="open">
+                              <summary>Properties (6)</summary>
+                              <div class="model-entry definition assembly">
+                                 <div class="instance-header">
+                                    <h4 id="/system-security-plan/system-implementation/rules/uuid" class="toc4 name">uuid</h4>
+                                    <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                    <p class="occurrence">[1]</p>
+                                    <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/rule/@uuid">Switch to XML</a></div>
+                                    <p class="formal-name">Rule Definition Universally Unique Identifier</p>
+                                 </div>
+                                 <div class="body">
+                                    <p class="description"><span class="usa-tag">Description</span> TODO</p>
+                                 </div>
+                              </div>
+                              <div class="model-entry definition assembly">
+                                 <div class="instance-header">
+                                    <h4 id="/system-security-plan/system-implementation/rules/title" class="toc4 name">title</h4>
+                                    <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                    <p class="occurrence">[1]</p>
+                                    <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/rule/title">Switch to XML</a></div>
+                                    <p class="formal-name">Rule Title</p>
+                                 </div>
+                                 <div class="body">
+                                    <p class="description"><span class="usa-tag">Description</span> A name given to the rule, which may be used by a tool for display and navigation.</p>
+                                 </div>
+                              </div>
+                              <div class="model-entry definition assembly">
+                                 <div class="instance-header">
+                                    <h4 id="/system-security-plan/system-implementation/rules/description" class="toc4 name">description</h4>
+                                    <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                    <p class="occurrence">[1]</p>
+                                    <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/rule/description">Switch to XML</a></div>
+                                    <p class="formal-name">Rule Description</p>
+                                 </div>
+                                 <div class="body">
+                                    <p class="description"><span class="usa-tag">Description</span> A summary of the rule, including the requirement(s) to be met when evaluating the
+                                       rule against a target that the rule applies to.</p>
+                                 </div>
+                              </div>
+                              <div class="model-entry definition assembly">
+                                 <div class="instance-header">
+                                    <h4 id="/system-security-plan/system-implementation/rules/props" class="toc4 name">props</h4>
+                                    <p class="type">array<br /></p>
+                                    <p class="occurrence">[0 or 1]</p>
+                                    <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/rule/prop">Switch to XML</a></div>
+                                 </div>
+                                 <div class="array-header">
+                                    <p class="array-member">(array member)</p>
+                                    <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-rules-common/rule-definition/props">(global definition)</a></p>
+                                    <p class="occurrence">[1 to ∞]</p>
+                                    <p class="formal-name">Property</p>
+                                 </div>
+                                 <div class="body">
+                                    <p class="description"><span class="usa-tag">Description</span> An attribute, characteristic, or quality of the containing object expressed as a
+                                       namespace qualified name/value pair.</p>
+                                    <div class="remarks-group usa-prose">
+                                       <details open="open">
+                                          <summary class="subhead">Remarks</summary>
+                                          <div class="remarks">
+                                             <p>Properties permit the deployment and management of arbitrary controlled values, within
+                                                OSCAL objects. A property can be included for any purpose useful to an application
+                                                or implementation. Typically, properties will be used to sort, filter, select, order,
+                                                and arrange OSCAL content objects, to relate OSCAL objects to one another, or to associate
+                                                an OSCAL object to class hierarchies, taxonomies, or external authorities. Thus, the
+                                                lexical composition of properties may be constrained by external processes to ensure
+                                                consistency.</p>
+                                             <p>Property allows for associated remarks that describe why the specific property value
+                                                was applied to the containing object, or the significance of the value in the context
+                                                of the containing object.</p>
+                                          </div>
+                                       </details>
+                                    </div>
+                                    <details class="properties" open="open">
+                                       <summary>Properties (7)</summary>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/system-implementation/rules/props/name" class="toc5 name">name</h5>
+                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <p class="occurrence">[1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/rule/prop/@name">Switch to XML</a></div>
+                                             <p class="formal-name">Property Name</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
+                                                characteristic, or quality of the property's containing object.</p>
+                                             <details class="constraints" open="open">
+                                                <summary>Constraint (1)</summary>
+                                                <div class="constraint">
+                                                   <p><span class="usa-tag">allowed value</span></p>
+                                                   <p>The value <b>must</b> be one of the following:</p>
+                                                   <ul>
+                                                      
+                                                      
+                                                      <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                         An optional class can be used to define the specific marking system used for the associated
+                                                         value.</li>
+                                                      </ul>
+                                                </div>
+                                             </details>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/system-implementation/rules/props/uuid" class="toc5 name">uuid</h5>
+                                             <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/rule/prop/@uuid">Switch to XML</a></div>
+                                             <p class="formal-name">Property Universally Unique Identifier</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> A unique identifier for a property.</p>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/system-implementation/rules/props/ns" class="toc5 name">ns</h5>
+                                             <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/rule/prop/@ns">Switch to XML</a></div>
+                                             <p class="formal-name">Property Namespace</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> A namespace qualifying the property's name. This allows different organizations to
+                                                associate distinct semantics with the same name.</p>
+                                             <div class="remarks-group usa-prose">
+                                                <details open="open">
+                                                   <summary class="subhead">Remarks</summary>
+                                                   <div class="remarks">
+                                                      <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                      <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/system-implementation/rules/props/value" class="toc5 name">value</h5>
+                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                             <p class="occurrence">[1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/rule/prop/@value">Switch to XML</a></div>
+                                             <p class="formal-name">Property Value</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> Indicates the value of the attribute, characteristic, or quality.</p>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/system-implementation/rules/props/class" class="toc5 name">class</h5>
+                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/rule/prop/@class">Switch to XML</a></div>
+                                             <p class="formal-name">Property Class</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> A textual label that provides a sub-type or characterization of the property's <code>name</code>.</p>
+                                             <div class="remarks-group usa-prose">
+                                                <details open="open">
+                                                   <summary class="subhead">Remarks</summary>
+                                                   <div class="remarks">
+                                                      <p>This can be used to further distinguish or discriminate between the semantics of multiple
+                                                         properties of the same object with the same <code>name</code> and <code>ns</code>, or to group properties into categories.</p>
+                                                      <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
+                                                         a specific <code>class</code> value. It is available for grouping, but unlike <code>group</code> is not expected specifically to designate any group membership as such.</p>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/system-implementation/rules/props/group" class="toc5 name">group</h5>
+                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/rule/prop/@group">Switch to XML</a></div>
+                                             <p class="formal-name">Property Group</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                             <div class="remarks-group usa-prose">
+                                                <details open="open">
+                                                   <summary class="subhead">Remarks</summary>
+                                                   <div class="remarks">
+                                                      <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                         property to associate it with one or more other properties in a given context.</p>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/system-implementation/rules/props/remarks" class="toc5 name">remarks</h5>
+                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/rule/prop/remarks">Switch to XML</a></div>
+                                             <p class="formal-name">Remarks</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> Additional commentary about the containing object.</p>
+                                             <div class="remarks-group usa-prose">
+                                                <details open="open">
+                                                   <summary class="subhead">Remarks</summary>
+                                                   <div class="remarks">
+                                                      <p>The <code>remarks</code> field SHOULD not be used to store arbitrary data. Instead, a <code>prop</code> or <code>link</code> should be used to annotate or reference any additional data not formally supported
+                                                         by OSCAL.</p>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </details>
+                                 </div>
+                              </div>
+                              <div class="model-entry definition assembly">
+                                 <div class="instance-header">
+                                    <h4 id="/system-security-plan/system-implementation/rules/links" class="toc4 name">links</h4>
+                                    <p class="type">array<br /></p>
+                                    <p class="occurrence">[0 or 1]</p>
+                                    <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/rule/link">Switch to XML</a></div>
+                                 </div>
+                                 <div class="array-header">
+                                    <p class="array-member">(array member)</p>
+                                    <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-rules-common/rule-definition/links">(global definition)</a></p>
+                                    <p class="occurrence">[1 to ∞]</p>
+                                    <p class="formal-name">Link</p>
+                                 </div>
+                                 <div class="body">
+                                    <p class="description"><span class="usa-tag">Description</span> A reference to a local or remote resource, that has a specific relation to the containing
+                                       object.</p>
+                                    <div class="remarks-group usa-prose">
+                                       <details open="open">
+                                          <summary class="subhead">Remarks</summary>
+                                          <div class="remarks">
+                                             <p>To provide a cryptographic hash for a remote target resource, a local reference to
+                                                a back matter <code>resource</code> is needed. The resource allows one or more hash values to be provided using the <code>rlink/hash</code> object.</p>
+                                             <p>The OSCAL <code>link</code> is a roughly based on the HTML <a href="https://www.w3.org/TR/html401/struct/links.html#edef-LINK">link element</a>. </p>
+                                          </div>
+                                       </details>
+                                    </div>
+                                    <details class="constraints" open="open">
+                                       <summary>Constraints (3)</summary>
+                                       <div class="constraint">
+                                          <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
+                                       </div>
+                                       <div class="constraint">
+                                          <p><span class="usa-tag">index has key</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]</code>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
+                                       </div>
+                                       <div class="constraint">
+                                          <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
+                                       </div>
+                                    </details>
+                                    <details class="properties" open="open">
+                                       <summary>Properties (4)</summary>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/system-implementation/rules/links/href" class="toc5 name">href</h5>
+                                             <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
+                                             <p class="occurrence">[1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/rule/link/@href">Switch to XML</a></div>
+                                             <p class="formal-name">Hypertext Reference</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> A resolvable URL reference to a resource.</p>
+                                             <div class="remarks-group usa-prose">
+                                                <details open="open">
+                                                   <summary class="subhead">Remarks</summary>
+                                                   <div class="remarks">
+                                                      <p>This value may be one of:</p>
+                                                      <ol>
+                                                         
+                                                         <li>an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
+                                                         
+                                                         <li>a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
+                                                            document, or</li>
+                                                         
+                                                         <li>a bare URI fragment (i.e., `#uuid`) pointing to an OSCAL object by the objects identifier
+                                                            (e.g., id, uuid) in this or an imported document (see <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>). The specific object type will differ based on the link relationship type.</li>
+                                                         </ol>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/system-implementation/rules/links/rel" class="toc5 name">rel</h5>
+                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/rule/link/@rel">Switch to XML</a></div>
+                                             <p class="formal-name">Link Relation Type</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> Describes the type of relationship provided by the link's hypertext reference. This
+                                                can be an indicator of the link's purpose.</p>
+                                             <details class="constraints" open="open">
+                                                <summary>Constraint (1)</summary>
+                                                <div class="constraint">
+                                                   <p><span class="usa-tag">allowed value</span></p>
+                                                   <p>The value <b>may be locally defined</b>, or the following:</p>
+                                                   <ul>
+                                                      
+                                                      <li><strong>reference</strong>: A generalized reference to a network resource (relative or absolute) or to a back-matter
+                                                         resource by UUID expressed as a bare URI fragment.</li>
+                                                      </ul>
+                                                </div>
+                                             </details>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/system-implementation/rules/links/media-type" class="toc5 name">media-type</h5>
+                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/rule/link/@media-type">Switch to XML</a></div>
+                                             <p class="formal-name">Media Type</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> A label that indicates the nature of a resource, as a data serialization or format.</p>
+                                             <div class="remarks-group usa-prose">
+                                                <details open="open">
+                                                   <summary class="subhead">Remarks</summary>
+                                                   <div class="remarks">
+                                                      <p> The Internet Assigned Numbers Authority (IANA) <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">Media Types Registry</a> defines a standardized set of media types, which may be used here.</p>
+                                                      <p>The <code>application/oscal+xml</code>, <code>application/oscal+json</code> or <code>application/oscal+yaml</code> media types SHOULD be used when referencing OSCAL XML, JSON, or YAML resources respectively.</p>
+                                                      <p>**Note: There is no official media type for YAML at this time.** OSCAL documents should
+                                                         specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name
+                                                         suffix, per <a href="https://www.rfc-editor.org/rfc/rfc6838.html#section-4.2.8">RFC 6838 Section 4.2.8</a>.</p>
+                                                      <p>Some earlier OSCAL content incorporated the model into the media type. For example:
+                                                         <code>application/oscal.catalog+xml</code>. This practice SHOULD be avoided, since the OSCAL model can be detected by parsing
+                                                         the initial content of the referenced resource.</p>
+                                                   </div>
+                                                   <div class="remarks">
+                                                      <p>The <code>media-type</code> provides a hint about the content model of the referenced resource. A valid entry
+                                                         from the <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">IANA Media Types registry</a> SHOULD be used.</p>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/system-implementation/rules/links/text" class="toc5 name">text</h5>
+                                             <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/rule/link/text">Switch to XML</a></div>
+                                             <p class="formal-name">Link Text</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> A textual label to associate with the link, which may be used for presentation in
+                                                a tool.</p>
+                                          </div>
+                                       </div>
+                                    </details>
+                                 </div>
+                              </div>
+                              <div class="model-entry definition assembly">
+                                 <div class="instance-header">
+                                    <h4 id="/system-security-plan/system-implementation/rules/remarks" class="toc4 name">remarks</h4>
+                                    <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                    <p class="occurrence">[0 or 1]</p>
+                                    <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/rule/remarks">Switch to XML</a></div>
+                                    <p class="formal-name">Remarks</p>
+                                 </div>
+                                 <div class="body">
+                                    <p class="description"><span class="usa-tag">Description</span> Additional commentary about the containing object.</p>
+                                    <div class="remarks-group usa-prose">
+                                       <details open="open">
+                                          <summary class="subhead">Remarks</summary>
+                                          <div class="remarks">
+                                             <p>The <code>remarks</code> field SHOULD not be used to store arbitrary data. Instead, a <code>prop</code> or <code>link</code> should be used to annotate or reference any additional data not formally supported
+                                                by OSCAL.</p>
+                                          </div>
+                                       </details>
+                                    </div>
+                                 </div>
+                              </div>
+                           </details>
+                        </div>
+                     </div>
+                     <div class="model-entry definition assembly">
+                        <div class="instance-header">
+                           <h3 id="/system-security-plan/system-implementation/tests" class="toc3 name">tests</h3>
+                           <p class="type">array<br /></p>
+                           <p class="occurrence">[0 or 1]</p>
+                           <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/test">Switch to XML</a></div>
+                        </div>
+                        <div class="array-header">
+                           <p class="array-member">(array member)</p>
+                           <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-ssp/system-implementation/tests">(global definition)</a></p>
+                           <p class="occurrence">[1 to ∞]</p>
+                           <p class="formal-name">Test Definition</p>
+                        </div>
+                        <div class="body">
+                           <p class="description"><span class="usa-tag">Description</span> TODO</p>
+                           <details class="constraints" open="open">
+                              <summary>Constraints (2)</summary>
+                              <div class="constraint">
+                                 <p><span class="usa-tag">allowed value</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                 <p>The value <b>must</b> be one of the following:</p>
+                                 <ul>
+                                    
+                                    <li><strong>version</strong>: A string that identifies the revision of the test.</li>
+                                    </ul>
+                              </div>
+                              <div class="constraint">
+                                 <p><span class="usa-tag">allowed value</span>  for <code class="path">link/@rel</code></p>
+                                 <p>The value <b>must</b> be one of the following:</p>
+                                 <ul>
+                                    
+                                    <li><strong>source</strong>: A pointer to the resource that this test is derived from.</li>
+                                    </ul>
+                              </div>
+                           </details>
+                           <details class="properties" open="open">
+                              <summary>Properties (6)</summary>
+                              <div class="model-entry definition assembly">
+                                 <div class="instance-header">
+                                    <h4 id="/system-security-plan/system-implementation/tests/uuid" class="toc4 name">uuid</h4>
+                                    <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                    <p class="occurrence">[1]</p>
+                                    <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/test/@uuid">Switch to XML</a></div>
+                                    <p class="formal-name">Test Definition Universally Unique Identifier</p>
+                                 </div>
+                                 <div class="body">
+                                    <p class="description"><span class="usa-tag">Description</span> TODO</p>
+                                 </div>
+                              </div>
+                              <div class="model-entry definition assembly">
+                                 <div class="instance-header">
+                                    <h4 id="/system-security-plan/system-implementation/tests/title" class="toc4 name">title</h4>
+                                    <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                    <p class="occurrence">[0 or 1]</p>
+                                    <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/test/title">Switch to XML</a></div>
+                                    <p class="formal-name">Test Title</p>
+                                 </div>
+                                 <div class="body">
+                                    <p class="description"><span class="usa-tag">Description</span> A name given to the test, which may be used by a tool for display and navigation.</p>
+                                 </div>
+                              </div>
+                              <div class="model-entry definition assembly">
+                                 <div class="instance-header">
+                                    <h4 id="/system-security-plan/system-implementation/tests/description" class="toc4 name">description</h4>
+                                    <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                    <p class="occurrence">[0 or 1]</p>
+                                    <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/test/description">Switch to XML</a></div>
+                                    <p class="formal-name">Test Description</p>
+                                 </div>
+                                 <div class="body">
+                                    <p class="description"><span class="usa-tag">Description</span> A summary of the test, including implementation details of how its use examines an
+                                       aspect or trait of a system.</p>
+                                 </div>
+                              </div>
+                              <div class="model-entry definition assembly">
+                                 <div class="instance-header">
+                                    <h4 id="/system-security-plan/system-implementation/tests/props" class="toc4 name">props</h4>
+                                    <p class="type">array<br /></p>
+                                    <p class="occurrence">[0 or 1]</p>
+                                    <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/test/prop">Switch to XML</a></div>
+                                 </div>
+                                 <div class="array-header">
+                                    <p class="array-member">(array member)</p>
+                                    <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-rules-common/test-definition/props">(global definition)</a></p>
+                                    <p class="occurrence">[1 to ∞]</p>
+                                    <p class="formal-name">Property</p>
+                                 </div>
+                                 <div class="body">
+                                    <p class="description"><span class="usa-tag">Description</span> An attribute, characteristic, or quality of the containing object expressed as a
+                                       namespace qualified name/value pair.</p>
+                                    <div class="remarks-group usa-prose">
+                                       <details open="open">
+                                          <summary class="subhead">Remarks</summary>
+                                          <div class="remarks">
+                                             <p>Properties permit the deployment and management of arbitrary controlled values, within
+                                                OSCAL objects. A property can be included for any purpose useful to an application
+                                                or implementation. Typically, properties will be used to sort, filter, select, order,
+                                                and arrange OSCAL content objects, to relate OSCAL objects to one another, or to associate
+                                                an OSCAL object to class hierarchies, taxonomies, or external authorities. Thus, the
+                                                lexical composition of properties may be constrained by external processes to ensure
+                                                consistency.</p>
+                                             <p>Property allows for associated remarks that describe why the specific property value
+                                                was applied to the containing object, or the significance of the value in the context
+                                                of the containing object.</p>
+                                          </div>
+                                       </details>
+                                    </div>
+                                    <details class="properties" open="open">
+                                       <summary>Properties (7)</summary>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/system-implementation/tests/props/name" class="toc5 name">name</h5>
+                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <p class="occurrence">[1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/test/prop/@name">Switch to XML</a></div>
+                                             <p class="formal-name">Property Name</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
+                                                characteristic, or quality of the property's containing object.</p>
+                                             <details class="constraints" open="open">
+                                                <summary>Constraint (1)</summary>
+                                                <div class="constraint">
+                                                   <p><span class="usa-tag">allowed value</span></p>
+                                                   <p>The value <b>must</b> be one of the following:</p>
+                                                   <ul>
+                                                      
+                                                      
+                                                      <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                         An optional class can be used to define the specific marking system used for the associated
+                                                         value.</li>
+                                                      </ul>
+                                                </div>
+                                             </details>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/system-implementation/tests/props/uuid" class="toc5 name">uuid</h5>
+                                             <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/test/prop/@uuid">Switch to XML</a></div>
+                                             <p class="formal-name">Property Universally Unique Identifier</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> A unique identifier for a property.</p>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/system-implementation/tests/props/ns" class="toc5 name">ns</h5>
+                                             <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/test/prop/@ns">Switch to XML</a></div>
+                                             <p class="formal-name">Property Namespace</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> A namespace qualifying the property's name. This allows different organizations to
+                                                associate distinct semantics with the same name.</p>
+                                             <div class="remarks-group usa-prose">
+                                                <details open="open">
+                                                   <summary class="subhead">Remarks</summary>
+                                                   <div class="remarks">
+                                                      <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                      <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/system-implementation/tests/props/value" class="toc5 name">value</h5>
+                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                             <p class="occurrence">[1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/test/prop/@value">Switch to XML</a></div>
+                                             <p class="formal-name">Property Value</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> Indicates the value of the attribute, characteristic, or quality.</p>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/system-implementation/tests/props/class" class="toc5 name">class</h5>
+                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/test/prop/@class">Switch to XML</a></div>
+                                             <p class="formal-name">Property Class</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> A textual label that provides a sub-type or characterization of the property's <code>name</code>.</p>
+                                             <div class="remarks-group usa-prose">
+                                                <details open="open">
+                                                   <summary class="subhead">Remarks</summary>
+                                                   <div class="remarks">
+                                                      <p>This can be used to further distinguish or discriminate between the semantics of multiple
+                                                         properties of the same object with the same <code>name</code> and <code>ns</code>, or to group properties into categories.</p>
+                                                      <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
+                                                         a specific <code>class</code> value. It is available for grouping, but unlike <code>group</code> is not expected specifically to designate any group membership as such.</p>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/system-implementation/tests/props/group" class="toc5 name">group</h5>
+                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/test/prop/@group">Switch to XML</a></div>
+                                             <p class="formal-name">Property Group</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                             <div class="remarks-group usa-prose">
+                                                <details open="open">
+                                                   <summary class="subhead">Remarks</summary>
+                                                   <div class="remarks">
+                                                      <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                         property to associate it with one or more other properties in a given context.</p>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/system-implementation/tests/props/remarks" class="toc5 name">remarks</h5>
+                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/test/prop/remarks">Switch to XML</a></div>
+                                             <p class="formal-name">Remarks</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> Additional commentary about the containing object.</p>
+                                             <div class="remarks-group usa-prose">
+                                                <details open="open">
+                                                   <summary class="subhead">Remarks</summary>
+                                                   <div class="remarks">
+                                                      <p>The <code>remarks</code> field SHOULD not be used to store arbitrary data. Instead, a <code>prop</code> or <code>link</code> should be used to annotate or reference any additional data not formally supported
+                                                         by OSCAL.</p>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </details>
+                                 </div>
+                              </div>
+                              <div class="model-entry definition assembly">
+                                 <div class="instance-header">
+                                    <h4 id="/system-security-plan/system-implementation/tests/links" class="toc4 name">links</h4>
+                                    <p class="type">array<br /></p>
+                                    <p class="occurrence">[0 or 1]</p>
+                                    <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/test/link">Switch to XML</a></div>
+                                 </div>
+                                 <div class="array-header">
+                                    <p class="array-member">(array member)</p>
+                                    <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-rules-common/test-definition/links">(global definition)</a></p>
+                                    <p class="occurrence">[1 to ∞]</p>
+                                    <p class="formal-name">Link</p>
+                                 </div>
+                                 <div class="body">
+                                    <p class="description"><span class="usa-tag">Description</span> A reference to a local or remote resource, that has a specific relation to the containing
+                                       object.</p>
+                                    <div class="remarks-group usa-prose">
+                                       <details open="open">
+                                          <summary class="subhead">Remarks</summary>
+                                          <div class="remarks">
+                                             <p>To provide a cryptographic hash for a remote target resource, a local reference to
+                                                a back matter <code>resource</code> is needed. The resource allows one or more hash values to be provided using the <code>rlink/hash</code> object.</p>
+                                             <p>The OSCAL <code>link</code> is a roughly based on the HTML <a href="https://www.w3.org/TR/html401/struct/links.html#edef-LINK">link element</a>. </p>
+                                          </div>
+                                       </details>
+                                    </div>
+                                    <details class="constraints" open="open">
+                                       <summary>Constraints (3)</summary>
+                                       <div class="constraint">
+                                          <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
+                                       </div>
+                                       <div class="constraint">
+                                          <p><span class="usa-tag">index has key</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]</code>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
+                                       </div>
+                                       <div class="constraint">
+                                          <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
+                                       </div>
+                                    </details>
+                                    <details class="properties" open="open">
+                                       <summary>Properties (4)</summary>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/system-implementation/tests/links/href" class="toc5 name">href</h5>
+                                             <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
+                                             <p class="occurrence">[1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/test/link/@href">Switch to XML</a></div>
+                                             <p class="formal-name">Hypertext Reference</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> A resolvable URL reference to a resource.</p>
+                                             <div class="remarks-group usa-prose">
+                                                <details open="open">
+                                                   <summary class="subhead">Remarks</summary>
+                                                   <div class="remarks">
+                                                      <p>This value may be one of:</p>
+                                                      <ol>
+                                                         
+                                                         <li>an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
+                                                         
+                                                         <li>a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
+                                                            document, or</li>
+                                                         
+                                                         <li>a bare URI fragment (i.e., `#uuid`) pointing to an OSCAL object by the objects identifier
+                                                            (e.g., id, uuid) in this or an imported document (see <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>). The specific object type will differ based on the link relationship type.</li>
+                                                         </ol>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/system-implementation/tests/links/rel" class="toc5 name">rel</h5>
+                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/test/link/@rel">Switch to XML</a></div>
+                                             <p class="formal-name">Link Relation Type</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> Describes the type of relationship provided by the link's hypertext reference. This
+                                                can be an indicator of the link's purpose.</p>
+                                             <details class="constraints" open="open">
+                                                <summary>Constraint (1)</summary>
+                                                <div class="constraint">
+                                                   <p><span class="usa-tag">allowed value</span></p>
+                                                   <p>The value <b>may be locally defined</b>, or the following:</p>
+                                                   <ul>
+                                                      
+                                                      <li><strong>reference</strong>: A generalized reference to a network resource (relative or absolute) or to a back-matter
+                                                         resource by UUID expressed as a bare URI fragment.</li>
+                                                      </ul>
+                                                </div>
+                                             </details>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/system-implementation/tests/links/media-type" class="toc5 name">media-type</h5>
+                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/test/link/@media-type">Switch to XML</a></div>
+                                             <p class="formal-name">Media Type</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> A label that indicates the nature of a resource, as a data serialization or format.</p>
+                                             <div class="remarks-group usa-prose">
+                                                <details open="open">
+                                                   <summary class="subhead">Remarks</summary>
+                                                   <div class="remarks">
+                                                      <p> The Internet Assigned Numbers Authority (IANA) <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">Media Types Registry</a> defines a standardized set of media types, which may be used here.</p>
+                                                      <p>The <code>application/oscal+xml</code>, <code>application/oscal+json</code> or <code>application/oscal+yaml</code> media types SHOULD be used when referencing OSCAL XML, JSON, or YAML resources respectively.</p>
+                                                      <p>**Note: There is no official media type for YAML at this time.** OSCAL documents should
+                                                         specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name
+                                                         suffix, per <a href="https://www.rfc-editor.org/rfc/rfc6838.html#section-4.2.8">RFC 6838 Section 4.2.8</a>.</p>
+                                                      <p>Some earlier OSCAL content incorporated the model into the media type. For example:
+                                                         <code>application/oscal.catalog+xml</code>. This practice SHOULD be avoided, since the OSCAL model can be detected by parsing
+                                                         the initial content of the referenced resource.</p>
+                                                   </div>
+                                                   <div class="remarks">
+                                                      <p>The <code>media-type</code> provides a hint about the content model of the referenced resource. A valid entry
+                                                         from the <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">IANA Media Types registry</a> SHOULD be used.</p>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/system-implementation/tests/links/text" class="toc5 name">text</h5>
+                                             <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/test/link/text">Switch to XML</a></div>
+                                             <p class="formal-name">Link Text</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> A textual label to associate with the link, which may be used for presentation in
+                                                a tool.</p>
+                                          </div>
+                                       </div>
+                                    </details>
+                                 </div>
+                              </div>
+                              <div class="model-entry definition assembly">
+                                 <div class="instance-header">
+                                    <h4 id="/system-security-plan/system-implementation/tests/remarks" class="toc4 name">remarks</h4>
+                                    <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                    <p class="occurrence">[0 or 1]</p>
+                                    <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/test/remarks">Switch to XML</a></div>
+                                    <p class="formal-name">Remarks</p>
+                                 </div>
+                                 <div class="body">
+                                    <p class="description"><span class="usa-tag">Description</span> Additional commentary about the containing object.</p>
+                                    <div class="remarks-group usa-prose">
+                                       <details open="open">
+                                          <summary class="subhead">Remarks</summary>
+                                          <div class="remarks">
+                                             <p>The <code>remarks</code> field SHOULD not be used to store arbitrary data. Instead, a <code>prop</code> or <code>link</code> should be used to annotate or reference any additional data not formally supported
+                                                by OSCAL.</p>
+                                          </div>
+                                       </details>
+                                    </div>
+                                 </div>
+                              </div>
+                           </details>
+                        </div>
+                     </div>
+                     <div class="model-entry definition assembly">
+                        <div class="instance-header">
+                           <h3 id="/system-security-plan/system-implementation/testing-scenarios" class="toc3 name">testing-scenarios</h3>
+                           <p class="type">array<br /></p>
+                           <p class="occurrence">[0 or 1]</p>
+                           <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/testing-scenario">Switch to XML</a></div>
+                        </div>
+                        <div class="array-header">
+                           <p class="array-member">(array member)</p>
+                           <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-ssp/system-implementation/testing-scenarios">(global definition)</a></p>
+                           <p class="occurrence">[1 to ∞]</p>
+                           <p class="formal-name">Rule Testing Scenario</p>
+                        </div>
+                        <div class="body">
+                           <p class="description"><span class="usa-tag">Description</span> A rule testing scenario</p>
+                           <details class="properties" open="open">
+                              <summary>Properties (6)</summary>
+                              <div class="model-entry definition assembly">
+                                 <div class="instance-header">
+                                    <h4 id="/system-security-plan/system-implementation/testing-scenarios/uuid" class="toc4 name">uuid</h4>
+                                    <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                    <p class="occurrence">[1]</p>
+                                    <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/testing-scenario/@uuid">Switch to XML</a></div>
+                                    <p class="formal-name">Testing Scenario Universally Unique Identifier</p>
+                                 </div>
+                                 <div class="body">
+                                    <p class="description"><span class="usa-tag">Description</span> TODO</p>
+                                 </div>
+                              </div>
+                              <div class="model-entry definition assembly">
+                                 <div class="instance-header">
+                                    <h4 id="/system-security-plan/system-implementation/testing-scenarios/rule-uuid" class="toc4 name">rule-uuid</h4>
+                                    <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                    <p class="occurrence">[1]</p>
+                                    <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/testing-scenario/@rule-uuid">Switch to XML</a></div>
+                                    <p class="formal-name">Testing Scenario Rule Universally Unique Identifier Reference</p>
+                                 </div>
+                                 <div class="body">
+                                    <p class="description"><span class="usa-tag">Description</span> TODO</p>
+                                 </div>
+                              </div>
+                              <div class="model-entry definition assembly">
+                                 <div class="instance-header">
+                                    <h4 id="/system-security-plan/system-implementation/testing-scenarios/props" class="toc4 name">props</h4>
+                                    <p class="type">array<br /></p>
+                                    <p class="occurrence">[0 or 1]</p>
+                                    <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/testing-scenario/prop">Switch to XML</a></div>
+                                 </div>
+                                 <div class="array-header">
+                                    <p class="array-member">(array member)</p>
+                                    <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-rules-common/testing-scenario/props">(global definition)</a></p>
+                                    <p class="occurrence">[1 to ∞]</p>
+                                    <p class="formal-name">Property</p>
+                                 </div>
+                                 <div class="body">
+                                    <p class="description"><span class="usa-tag">Description</span> An attribute, characteristic, or quality of the containing object expressed as a
+                                       namespace qualified name/value pair.</p>
+                                    <div class="remarks-group usa-prose">
+                                       <details open="open">
+                                          <summary class="subhead">Remarks</summary>
+                                          <div class="remarks">
+                                             <p>Properties permit the deployment and management of arbitrary controlled values, within
+                                                OSCAL objects. A property can be included for any purpose useful to an application
+                                                or implementation. Typically, properties will be used to sort, filter, select, order,
+                                                and arrange OSCAL content objects, to relate OSCAL objects to one another, or to associate
+                                                an OSCAL object to class hierarchies, taxonomies, or external authorities. Thus, the
+                                                lexical composition of properties may be constrained by external processes to ensure
+                                                consistency.</p>
+                                             <p>Property allows for associated remarks that describe why the specific property value
+                                                was applied to the containing object, or the significance of the value in the context
+                                                of the containing object.</p>
+                                          </div>
+                                       </details>
+                                    </div>
+                                    <details class="properties" open="open">
+                                       <summary>Properties (7)</summary>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/system-implementation/testing-scenarios/props/name" class="toc5 name">name</h5>
+                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <p class="occurrence">[1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/testing-scenario/prop/@name">Switch to XML</a></div>
+                                             <p class="formal-name">Property Name</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
+                                                characteristic, or quality of the property's containing object.</p>
+                                             <details class="constraints" open="open">
+                                                <summary>Constraint (1)</summary>
+                                                <div class="constraint">
+                                                   <p><span class="usa-tag">allowed value</span></p>
+                                                   <p>The value <b>must</b> be one of the following:</p>
+                                                   <ul>
+                                                      
+                                                      
+                                                      <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                         An optional class can be used to define the specific marking system used for the associated
+                                                         value.</li>
+                                                      </ul>
+                                                </div>
+                                             </details>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/system-implementation/testing-scenarios/props/uuid" class="toc5 name">uuid</h5>
+                                             <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/testing-scenario/prop/@uuid">Switch to XML</a></div>
+                                             <p class="formal-name">Property Universally Unique Identifier</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> A unique identifier for a property.</p>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/system-implementation/testing-scenarios/props/ns" class="toc5 name">ns</h5>
+                                             <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/testing-scenario/prop/@ns">Switch to XML</a></div>
+                                             <p class="formal-name">Property Namespace</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> A namespace qualifying the property's name. This allows different organizations to
+                                                associate distinct semantics with the same name.</p>
+                                             <div class="remarks-group usa-prose">
+                                                <details open="open">
+                                                   <summary class="subhead">Remarks</summary>
+                                                   <div class="remarks">
+                                                      <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                      <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/system-implementation/testing-scenarios/props/value" class="toc5 name">value</h5>
+                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                             <p class="occurrence">[1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/testing-scenario/prop/@value">Switch to XML</a></div>
+                                             <p class="formal-name">Property Value</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> Indicates the value of the attribute, characteristic, or quality.</p>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/system-implementation/testing-scenarios/props/class" class="toc5 name">class</h5>
+                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/testing-scenario/prop/@class">Switch to XML</a></div>
+                                             <p class="formal-name">Property Class</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> A textual label that provides a sub-type or characterization of the property's <code>name</code>.</p>
+                                             <div class="remarks-group usa-prose">
+                                                <details open="open">
+                                                   <summary class="subhead">Remarks</summary>
+                                                   <div class="remarks">
+                                                      <p>This can be used to further distinguish or discriminate between the semantics of multiple
+                                                         properties of the same object with the same <code>name</code> and <code>ns</code>, or to group properties into categories.</p>
+                                                      <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
+                                                         a specific <code>class</code> value. It is available for grouping, but unlike <code>group</code> is not expected specifically to designate any group membership as such.</p>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/system-implementation/testing-scenarios/props/group" class="toc5 name">group</h5>
+                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/testing-scenario/prop/@group">Switch to XML</a></div>
+                                             <p class="formal-name">Property Group</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                             <div class="remarks-group usa-prose">
+                                                <details open="open">
+                                                   <summary class="subhead">Remarks</summary>
+                                                   <div class="remarks">
+                                                      <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                         property to associate it with one or more other properties in a given context.</p>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/system-implementation/testing-scenarios/props/remarks" class="toc5 name">remarks</h5>
+                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/testing-scenario/prop/remarks">Switch to XML</a></div>
+                                             <p class="formal-name">Remarks</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> Additional commentary about the containing object.</p>
+                                             <div class="remarks-group usa-prose">
+                                                <details open="open">
+                                                   <summary class="subhead">Remarks</summary>
+                                                   <div class="remarks">
+                                                      <p>The <code>remarks</code> field SHOULD not be used to store arbitrary data. Instead, a <code>prop</code> or <code>link</code> should be used to annotate or reference any additional data not formally supported
+                                                         by OSCAL.</p>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </details>
+                                 </div>
+                              </div>
+                              <div class="model-entry definition assembly">
+                                 <div class="instance-header">
+                                    <h4 id="/system-security-plan/system-implementation/testing-scenarios/links" class="toc4 name">links</h4>
+                                    <p class="type">array<br /></p>
+                                    <p class="occurrence">[0 or 1]</p>
+                                    <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/testing-scenario/link">Switch to XML</a></div>
+                                 </div>
+                                 <div class="array-header">
+                                    <p class="array-member">(array member)</p>
+                                    <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-rules-common/testing-scenario/links">(global definition)</a></p>
+                                    <p class="occurrence">[1 to ∞]</p>
+                                    <p class="formal-name">Link</p>
+                                 </div>
+                                 <div class="body">
+                                    <p class="description"><span class="usa-tag">Description</span> A reference to a local or remote resource, that has a specific relation to the containing
+                                       object.</p>
+                                    <div class="remarks-group usa-prose">
+                                       <details open="open">
+                                          <summary class="subhead">Remarks</summary>
+                                          <div class="remarks">
+                                             <p>To provide a cryptographic hash for a remote target resource, a local reference to
+                                                a back matter <code>resource</code> is needed. The resource allows one or more hash values to be provided using the <code>rlink/hash</code> object.</p>
+                                             <p>The OSCAL <code>link</code> is a roughly based on the HTML <a href="https://www.w3.org/TR/html401/struct/links.html#edef-LINK">link element</a>. </p>
+                                          </div>
+                                       </details>
+                                    </div>
+                                    <details class="constraints" open="open">
+                                       <summary>Constraints (3)</summary>
+                                       <div class="constraint">
+                                          <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
+                                       </div>
+                                       <div class="constraint">
+                                          <p><span class="usa-tag">index has key</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]</code>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
+                                       </div>
+                                       <div class="constraint">
+                                          <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
+                                       </div>
+                                    </details>
+                                    <details class="properties" open="open">
+                                       <summary>Properties (4)</summary>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/system-implementation/testing-scenarios/links/href" class="toc5 name">href</h5>
+                                             <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
+                                             <p class="occurrence">[1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/testing-scenario/link/@href">Switch to XML</a></div>
+                                             <p class="formal-name">Hypertext Reference</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> A resolvable URL reference to a resource.</p>
+                                             <div class="remarks-group usa-prose">
+                                                <details open="open">
+                                                   <summary class="subhead">Remarks</summary>
+                                                   <div class="remarks">
+                                                      <p>This value may be one of:</p>
+                                                      <ol>
+                                                         
+                                                         <li>an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
+                                                         
+                                                         <li>a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
+                                                            document, or</li>
+                                                         
+                                                         <li>a bare URI fragment (i.e., `#uuid`) pointing to an OSCAL object by the objects identifier
+                                                            (e.g., id, uuid) in this or an imported document (see <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>). The specific object type will differ based on the link relationship type.</li>
+                                                         </ol>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/system-implementation/testing-scenarios/links/rel" class="toc5 name">rel</h5>
+                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/testing-scenario/link/@rel">Switch to XML</a></div>
+                                             <p class="formal-name">Link Relation Type</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> Describes the type of relationship provided by the link's hypertext reference. This
+                                                can be an indicator of the link's purpose.</p>
+                                             <details class="constraints" open="open">
+                                                <summary>Constraint (1)</summary>
+                                                <div class="constraint">
+                                                   <p><span class="usa-tag">allowed value</span></p>
+                                                   <p>The value <b>may be locally defined</b>, or the following:</p>
+                                                   <ul>
+                                                      
+                                                      <li><strong>reference</strong>: A generalized reference to a network resource (relative or absolute) or to a back-matter
+                                                         resource by UUID expressed as a bare URI fragment.</li>
+                                                      </ul>
+                                                </div>
+                                             </details>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/system-implementation/testing-scenarios/links/media-type" class="toc5 name">media-type</h5>
+                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/testing-scenario/link/@media-type">Switch to XML</a></div>
+                                             <p class="formal-name">Media Type</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> A label that indicates the nature of a resource, as a data serialization or format.</p>
+                                             <div class="remarks-group usa-prose">
+                                                <details open="open">
+                                                   <summary class="subhead">Remarks</summary>
+                                                   <div class="remarks">
+                                                      <p> The Internet Assigned Numbers Authority (IANA) <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">Media Types Registry</a> defines a standardized set of media types, which may be used here.</p>
+                                                      <p>The <code>application/oscal+xml</code>, <code>application/oscal+json</code> or <code>application/oscal+yaml</code> media types SHOULD be used when referencing OSCAL XML, JSON, or YAML resources respectively.</p>
+                                                      <p>**Note: There is no official media type for YAML at this time.** OSCAL documents should
+                                                         specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name
+                                                         suffix, per <a href="https://www.rfc-editor.org/rfc/rfc6838.html#section-4.2.8">RFC 6838 Section 4.2.8</a>.</p>
+                                                      <p>Some earlier OSCAL content incorporated the model into the media type. For example:
+                                                         <code>application/oscal.catalog+xml</code>. This practice SHOULD be avoided, since the OSCAL model can be detected by parsing
+                                                         the initial content of the referenced resource.</p>
+                                                   </div>
+                                                   <div class="remarks">
+                                                      <p>The <code>media-type</code> provides a hint about the content model of the referenced resource. A valid entry
+                                                         from the <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">IANA Media Types registry</a> SHOULD be used.</p>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/system-implementation/testing-scenarios/links/text" class="toc5 name">text</h5>
+                                             <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/testing-scenario/link/text">Switch to XML</a></div>
+                                             <p class="formal-name">Link Text</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> A textual label to associate with the link, which may be used for presentation in
+                                                a tool.</p>
+                                          </div>
+                                       </div>
+                                    </details>
+                                 </div>
+                              </div>
+                              <div class="choice">
+                                 <p>A choice:</p>
+                                 <div class="model-entry definition assembly">
+                                    <div class="instance-header">
+                                       <h4 id="/system-security-plan/system-implementation/testing-scenarios/condition" class="toc4 name">condition</h4>
+                                       <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-rules-common/testing-scenario/condition">(global definition)</a></p>
+                                       <p class="occurrence">[1]</p>
+                                       <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/testing-scenario/condition">Switch to XML</a></div>
+                                       <p class="formal-name">Rule Condition</p>
+                                    </div>
+                                    <div class="body">
+                                       <p class="description"><span class="usa-tag">Description</span> A rule implementation condition</p>
+                                       <details class="properties" open="open">
+                                          <summary>Properties (7)</summary>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/system-security-plan/system-implementation/testing-scenarios/condition/negate" class="toc5 name">negate</h5>
+                                                <p class="type"><a href="/reference/datatypes/#boolean">boolean</a></p>
+                                                <p class="occurrence">[0 or 1]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/testing-scenario/condition/@negate">Switch to XML</a></div>
+                                                <p class="formal-name">Rule Condition Negation Flag</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> TODO</p>
+                                                <div class="remarks-group usa-prose">
+                                                   <details open="open">
+                                                      <summary class="subhead">Remarks</summary>
+                                                      <div class="remarks">
+                                                         <h1>Negate Truth Table</h1>
+                                                         <p>true -&gt; false, false -&gt; true, error -&gt; error, not-applicable -&gt; not-applicable</p>
+                                                      </div>
+                                                   </details>
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/system-security-plan/system-implementation/testing-scenarios/condition/operator" class="toc5 name">operator</h5>
+                                                <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                <p class="occurrence">[1]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/testing-scenario/condition/@operator">Switch to XML</a></div>
+                                                <p class="formal-name">Rule Condition Operator</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> TODO</p>
+                                                <div class="remarks-group usa-prose">
+                                                   <details open="open">
+                                                      <summary class="subhead">Remarks</summary>
+                                                      <div class="remarks">
+                                                         <h1>Operator Truth Table</h1>
+                                                         <p>What is eager evaluation and why does it matter?</p>
+                                                         <p>How do prerequisites work in the processing of condition operators and precedence.</p>
+                                                      </div>
+                                                   </details>
+                                                </div>
+                                                <details class="constraints" open="open">
+                                                   <summary>Constraint (1)</summary>
+                                                   <div class="constraint">
+                                                      <p><span class="usa-tag">allowed values</span></p>
+                                                      <p>The value <b>must</b> be one of the following:</p>
+                                                      <ul>
+                                                         
+                                                         <li><strong>and</strong>: and</li>
+                                                         
+                                                         <li><strong>or</strong>: or</li>
+                                                         </ul>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/system-security-plan/system-implementation/testing-scenarios/condition/props" class="toc5 name">props</h5>
+                                                <p class="type">array<br /></p>
+                                                <p class="occurrence">[0 or 1]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/testing-scenario/condition/prop">Switch to XML</a></div>
+                                             </div>
+                                             <div class="array-header">
+                                                <p class="array-member">(array member)</p>
+                                                <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-rules-common/rule-condition/props">(global definition)</a></p>
+                                                <p class="occurrence">[1 to ∞]</p>
+                                                <p class="formal-name">Property</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> An attribute, characteristic, or quality of the containing object expressed as a
+                                                   namespace qualified name/value pair.</p>
+                                                <div class="remarks-group usa-prose">
+                                                   <details open="open">
+                                                      <summary class="subhead">Remarks</summary>
+                                                      <div class="remarks">
+                                                         <p>Properties permit the deployment and management of arbitrary controlled values, within
+                                                            OSCAL objects. A property can be included for any purpose useful to an application
+                                                            or implementation. Typically, properties will be used to sort, filter, select, order,
+                                                            and arrange OSCAL content objects, to relate OSCAL objects to one another, or to associate
+                                                            an OSCAL object to class hierarchies, taxonomies, or external authorities. Thus, the
+                                                            lexical composition of properties may be constrained by external processes to ensure
+                                                            consistency.</p>
+                                                         <p>Property allows for associated remarks that describe why the specific property value
+                                                            was applied to the containing object, or the significance of the value in the context
+                                                            of the containing object.</p>
+                                                      </div>
+                                                   </details>
+                                                </div>
+                                                <details class="properties" open="open">
+                                                   <summary>Properties (7)</summary>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/system-security-plan/system-implementation/testing-scenarios/condition/props/name" class="toc6 name">name</h6>
+                                                         <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                         <p class="occurrence">[1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/testing-scenario/condition/prop/@name">Switch to XML</a></div>
+                                                         <p class="formal-name">Property Name</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
+                                                            characteristic, or quality of the property's containing object.</p>
+                                                         <details class="constraints" open="open">
+                                                            <summary>Constraint (1)</summary>
+                                                            <div class="constraint">
+                                                               <p><span class="usa-tag">allowed value</span></p>
+                                                               <p>The value <b>must</b> be one of the following:</p>
+                                                               <ul>
+                                                                  
+                                                                  
+                                                                  <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                                     An optional class can be used to define the specific marking system used for the associated
+                                                                     value.</li>
+                                                                  </ul>
+                                                            </div>
+                                                         </details>
+                                                      </div>
+                                                   </div>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/system-security-plan/system-implementation/testing-scenarios/condition/props/uuid" class="toc6 name">uuid</h6>
+                                                         <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                                         <p class="occurrence">[0 or 1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/testing-scenario/condition/prop/@uuid">Switch to XML</a></div>
+                                                         <p class="formal-name">Property Universally Unique Identifier</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> A unique identifier for a property.</p>
+                                                      </div>
+                                                   </div>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/system-security-plan/system-implementation/testing-scenarios/condition/props/ns" class="toc6 name">ns</h6>
+                                                         <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
+                                                         <p class="occurrence">[0 or 1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/testing-scenario/condition/prop/@ns">Switch to XML</a></div>
+                                                         <p class="formal-name">Property Namespace</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> A namespace qualifying the property's name. This allows different organizations to
+                                                            associate distinct semantics with the same name.</p>
+                                                         <div class="remarks-group usa-prose">
+                                                            <details open="open">
+                                                               <summary class="subhead">Remarks</summary>
+                                                               <div class="remarks">
+                                                                  <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                                  <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
+                                                               </div>
+                                                            </details>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/system-security-plan/system-implementation/testing-scenarios/condition/props/value" class="toc6 name">value</h6>
+                                                         <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                         <p class="occurrence">[1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/testing-scenario/condition/prop/@value">Switch to XML</a></div>
+                                                         <p class="formal-name">Property Value</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> Indicates the value of the attribute, characteristic, or quality.</p>
+                                                      </div>
+                                                   </div>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/system-security-plan/system-implementation/testing-scenarios/condition/props/class" class="toc6 name">class</h6>
+                                                         <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                         <p class="occurrence">[0 or 1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/testing-scenario/condition/prop/@class">Switch to XML</a></div>
+                                                         <p class="formal-name">Property Class</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> A textual label that provides a sub-type or characterization of the property's <code>name</code>.</p>
+                                                         <div class="remarks-group usa-prose">
+                                                            <details open="open">
+                                                               <summary class="subhead">Remarks</summary>
+                                                               <div class="remarks">
+                                                                  <p>This can be used to further distinguish or discriminate between the semantics of multiple
+                                                                     properties of the same object with the same <code>name</code> and <code>ns</code>, or to group properties into categories.</p>
+                                                                  <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
+                                                                     a specific <code>class</code> value. It is available for grouping, but unlike <code>group</code> is not expected specifically to designate any group membership as such.</p>
+                                                               </div>
+                                                            </details>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/system-security-plan/system-implementation/testing-scenarios/condition/props/group" class="toc6 name">group</h6>
+                                                         <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                         <p class="occurrence">[0 or 1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/testing-scenario/condition/prop/@group">Switch to XML</a></div>
+                                                         <p class="formal-name">Property Group</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                                         <div class="remarks-group usa-prose">
+                                                            <details open="open">
+                                                               <summary class="subhead">Remarks</summary>
+                                                               <div class="remarks">
+                                                                  <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                                     property to associate it with one or more other properties in a given context.</p>
+                                                               </div>
+                                                            </details>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/system-security-plan/system-implementation/testing-scenarios/condition/props/remarks" class="toc6 name">remarks</h6>
+                                                         <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                         <p class="occurrence">[0 or 1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/testing-scenario/condition/prop/remarks">Switch to XML</a></div>
+                                                         <p class="formal-name">Remarks</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> Additional commentary about the containing object.</p>
+                                                         <div class="remarks-group usa-prose">
+                                                            <details open="open">
+                                                               <summary class="subhead">Remarks</summary>
+                                                               <div class="remarks">
+                                                                  <p>The <code>remarks</code> field SHOULD not be used to store arbitrary data. Instead, a <code>prop</code> or <code>link</code> should be used to annotate or reference any additional data not formally supported
+                                                                     by OSCAL.</p>
+                                                               </div>
+                                                            </details>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/system-security-plan/system-implementation/testing-scenarios/condition/links" class="toc5 name">links</h5>
+                                                <p class="type">array<br /></p>
+                                                <p class="occurrence">[0 or 1]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/testing-scenario/condition/link">Switch to XML</a></div>
+                                             </div>
+                                             <div class="array-header">
+                                                <p class="array-member">(array member)</p>
+                                                <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-rules-common/rule-condition/links">(global definition)</a></p>
+                                                <p class="occurrence">[1 to ∞]</p>
+                                                <p class="formal-name">Link</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> A reference to a local or remote resource, that has a specific relation to the containing
+                                                   object.</p>
+                                                <div class="remarks-group usa-prose">
+                                                   <details open="open">
+                                                      <summary class="subhead">Remarks</summary>
+                                                      <div class="remarks">
+                                                         <p>To provide a cryptographic hash for a remote target resource, a local reference to
+                                                            a back matter <code>resource</code> is needed. The resource allows one or more hash values to be provided using the <code>rlink/hash</code> object.</p>
+                                                         <p>The OSCAL <code>link</code> is a roughly based on the HTML <a href="https://www.w3.org/TR/html401/struct/links.html#edef-LINK">link element</a>. </p>
+                                                      </div>
+                                                   </details>
+                                                </div>
+                                                <details class="constraints" open="open">
+                                                   <summary>Constraints (3)</summary>
+                                                   <div class="constraint">
+                                                      <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
+                                                   </div>
+                                                   <div class="constraint">
+                                                      <p><span class="usa-tag">index has key</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]</code>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
+                                                   </div>
+                                                   <div class="constraint">
+                                                      <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
+                                                   </div>
+                                                </details>
+                                                <details class="properties" open="open">
+                                                   <summary>Properties (4)</summary>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/system-security-plan/system-implementation/testing-scenarios/condition/links/href" class="toc6 name">href</h6>
+                                                         <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
+                                                         <p class="occurrence">[1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/testing-scenario/condition/link/@href">Switch to XML</a></div>
+                                                         <p class="formal-name">Hypertext Reference</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> A resolvable URL reference to a resource.</p>
+                                                         <div class="remarks-group usa-prose">
+                                                            <details open="open">
+                                                               <summary class="subhead">Remarks</summary>
+                                                               <div class="remarks">
+                                                                  <p>This value may be one of:</p>
+                                                                  <ol>
+                                                                     
+                                                                     <li>an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
+                                                                     
+                                                                     <li>a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
+                                                                        document, or</li>
+                                                                     
+                                                                     <li>a bare URI fragment (i.e., `#uuid`) pointing to an OSCAL object by the objects identifier
+                                                                        (e.g., id, uuid) in this or an imported document (see <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>). The specific object type will differ based on the link relationship type.</li>
+                                                                     </ol>
+                                                               </div>
+                                                            </details>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/system-security-plan/system-implementation/testing-scenarios/condition/links/rel" class="toc6 name">rel</h6>
+                                                         <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                         <p class="occurrence">[0 or 1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/testing-scenario/condition/link/@rel">Switch to XML</a></div>
+                                                         <p class="formal-name">Link Relation Type</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> Describes the type of relationship provided by the link's hypertext reference. This
+                                                            can be an indicator of the link's purpose.</p>
+                                                         <details class="constraints" open="open">
+                                                            <summary>Constraint (1)</summary>
+                                                            <div class="constraint">
+                                                               <p><span class="usa-tag">allowed value</span></p>
+                                                               <p>The value <b>may be locally defined</b>, or the following:</p>
+                                                               <ul>
+                                                                  
+                                                                  <li><strong>reference</strong>: A generalized reference to a network resource (relative or absolute) or to a back-matter
+                                                                     resource by UUID expressed as a bare URI fragment.</li>
+                                                                  </ul>
+                                                            </div>
+                                                         </details>
+                                                      </div>
+                                                   </div>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/system-security-plan/system-implementation/testing-scenarios/condition/links/media-type" class="toc6 name">media-type</h6>
+                                                         <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                         <p class="occurrence">[0 or 1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/testing-scenario/condition/link/@media-type">Switch to XML</a></div>
+                                                         <p class="formal-name">Media Type</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> A label that indicates the nature of a resource, as a data serialization or format.</p>
+                                                         <div class="remarks-group usa-prose">
+                                                            <details open="open">
+                                                               <summary class="subhead">Remarks</summary>
+                                                               <div class="remarks">
+                                                                  <p> The Internet Assigned Numbers Authority (IANA) <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">Media Types Registry</a> defines a standardized set of media types, which may be used here.</p>
+                                                                  <p>The <code>application/oscal+xml</code>, <code>application/oscal+json</code> or <code>application/oscal+yaml</code> media types SHOULD be used when referencing OSCAL XML, JSON, or YAML resources respectively.</p>
+                                                                  <p>**Note: There is no official media type for YAML at this time.** OSCAL documents should
+                                                                     specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name
+                                                                     suffix, per <a href="https://www.rfc-editor.org/rfc/rfc6838.html#section-4.2.8">RFC 6838 Section 4.2.8</a>.</p>
+                                                                  <p>Some earlier OSCAL content incorporated the model into the media type. For example:
+                                                                     <code>application/oscal.catalog+xml</code>. This practice SHOULD be avoided, since the OSCAL model can be detected by parsing
+                                                                     the initial content of the referenced resource.</p>
+                                                               </div>
+                                                               <div class="remarks">
+                                                                  <p>The <code>media-type</code> provides a hint about the content model of the referenced resource. A valid entry
+                                                                     from the <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">IANA Media Types registry</a> SHOULD be used.</p>
+                                                               </div>
+                                                            </details>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/system-security-plan/system-implementation/testing-scenarios/condition/links/text" class="toc6 name">text</h6>
+                                                         <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                         <p class="occurrence">[0 or 1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/testing-scenario/condition/link/text">Switch to XML</a></div>
+                                                         <p class="formal-name">Link Text</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> A textual label to associate with the link, which may be used for presentation in
+                                                            a tool.</p>
+                                                      </div>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/system-security-plan/system-implementation/testing-scenarios/condition/prerequisite" class="toc5 name">prerequisite</h5>
+                                                <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-rules-common/rule-condition/prerequisite">(global definition)</a></p>
+                                                <p class="occurrence">[0 or 1]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/testing-scenario/condition/prerequisite">Switch to XML</a></div>
+                                                <p class="formal-name">Rule Condition</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> A rule implementation condition</p>
+                                             </div>
+                                          </div>
+                                          <div class="choice">
+                                             <p>A choice:</p>
+                                             <div class="model-entry definition assembly">
+                                                <div class="instance-header">
+                                                   <h5 id="/system-security-plan/system-implementation/testing-scenarios/condition/rule-conditions" class="toc5 name">rule-conditions</h5>
+                                                   <p class="type">array<br /></p>
+                                                   <p class="occurrence">[1]</p>
+                                                   <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/testing-scenario/condition/condition">Switch to XML</a></div>
+                                                </div>
+                                                <div class="array-header">
+                                                   <p class="array-member">(array member)</p>
+                                                   <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-rules-common/rule-condition/rule-conditions">(global definition)</a></p>
+                                                   <p class="occurrence">[1 to ∞]</p>
+                                                   <p class="formal-name">Rule Condition</p>
+                                                </div>
+                                                <div class="body">
+                                                   <p class="description"><span class="usa-tag">Description</span> A rule implementation condition</p>
+                                                </div>
+                                             </div>
+                                             <div class="model-entry definition assembly">
+                                                <div class="instance-header">
+                                                   <h5 id="/system-security-plan/system-implementation/testing-scenarios/condition/test-references" class="toc5 name">test-references</h5>
+                                                   <p class="type">array<br /></p>
+                                                   <p class="occurrence">[1]</p>
+                                                   <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/testing-scenario/condition/test-reference">Switch to XML</a></div>
+                                                </div>
+                                                <div class="array-header">
+                                                   <p class="array-member">(array member)</p>
+                                                   <p class="type"><a href="/reference/datatypes/#empty">empty</a></p>
+                                                   <p class="occurrence">[1 to ∞]</p>
+                                                   <p class="formal-name">Test Reference</p>
+                                                </div>
+                                                <div class="body">
+                                                   <p class="description"><span class="usa-tag">Description</span> TODO</p>
+                                                   <details class="properties" open="open">
+                                                      <summary>Property (1)</summary>
+                                                      <div class="model-entry definition assembly">
+                                                         <div class="instance-header">
+                                                            <h6 id="/system-security-plan/system-implementation/testing-scenarios/condition/test-references/test-uuid" class="toc6 name">test-uuid</h6>
+                                                            <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                                            <p class="occurrence">[1]</p>
+                                                            <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/testing-scenario/condition/test-reference/@test-uuid">Switch to XML</a></div>
+                                                            <p class="formal-name">Test Universally Unique Identifier Reference</p>
+                                                         </div>
+                                                         <div class="body">
+                                                            <p class="description"><span class="usa-tag">Description</span> A test UUID reference</p>
+                                                         </div>
+                                                      </div>
+                                                   </details>
+                                                </div>
+                                             </div>
+                                             <div class="model-entry definition assembly">
+                                                <div class="instance-header">
+                                                   <h5 id="/system-security-plan/system-implementation/testing-scenarios/condition/testing-scenario-references" class="toc5 name">testing-scenario-references</h5>
+                                                   <p class="type">array<br /></p>
+                                                   <p class="occurrence">[1]</p>
+                                                   <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/testing-scenario/condition/testing-scenario-reference">Switch to XML</a></div>
+                                                </div>
+                                                <div class="array-header">
+                                                   <p class="array-member">(array member)</p>
+                                                   <p class="type"><a href="/reference/datatypes/#empty">empty</a></p>
+                                                   <p class="occurrence">[1 to ∞]</p>
+                                                   <p class="formal-name">Testing Scenario Reference</p>
+                                                </div>
+                                                <div class="body">
+                                                   <p class="description"><span class="usa-tag">Description</span> A reference to a testing scenario.</p>
+                                                   <details class="properties" open="open">
+                                                      <summary>Property (1)</summary>
+                                                      <div class="model-entry definition assembly">
+                                                         <div class="instance-header">
+                                                            <h6 id="/system-security-plan/system-implementation/testing-scenarios/condition/testing-scenario-references/testing-scenario-uuid" class="toc6 name">testing-scenario-uuid</h6>
+                                                            <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                                            <p class="occurrence">[0 or 1]</p>
+                                                            <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/testing-scenario/condition/testing-scenario-reference/@testing-scenario-uuid">Switch to XML</a></div>
+                                                            <p class="formal-name">Testing Scenario Universally Unique Identifier Reference</p>
+                                                         </div>
+                                                         <div class="body">
+                                                            <p class="description"><span class="usa-tag">Description</span> A testing scenario UUID reference</p>
+                                                         </div>
+                                                      </div>
+                                                   </details>
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/system-security-plan/system-implementation/testing-scenarios/condition/remarks" class="toc5 name">remarks</h5>
+                                                <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                <p class="occurrence">[0 or 1]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/testing-scenario/condition/remarks">Switch to XML</a></div>
+                                                <p class="formal-name">Remarks</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> Additional commentary about the containing object.</p>
+                                                <div class="remarks-group usa-prose">
+                                                   <details open="open">
+                                                      <summary class="subhead">Remarks</summary>
+                                                      <div class="remarks">
+                                                         <p>The <code>remarks</code> field SHOULD not be used to store arbitrary data. Instead, a <code>prop</code> or <code>link</code> should be used to annotate or reference any additional data not formally supported
+                                                            by OSCAL.</p>
+                                                      </div>
+                                                   </details>
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </details>
+                                    </div>
+                                 </div>
+                                 <div class="model-entry definition assembly">
+                                    <div class="instance-header">
+                                       <h4 id="/system-security-plan/system-implementation/testing-scenarios/test-reference" class="toc4 name">test-reference</h4>
+                                       <p class="type"><a href="/reference/datatypes/#empty">empty</a></p>
+                                       <p class="occurrence">[1]</p>
+                                       <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/testing-scenario/test-reference">Switch to XML</a></div>
+                                       <p class="formal-name">Test Reference</p>
+                                    </div>
+                                    <div class="body">
+                                       <p class="description"><span class="usa-tag">Description</span> TODO</p>
+                                       <details class="properties" open="open">
+                                          <summary>Property (1)</summary>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/system-security-plan/system-implementation/testing-scenarios/test-reference/test-uuid" class="toc5 name">test-uuid</h5>
+                                                <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                                <p class="occurrence">[1]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/testing-scenario/test-reference/@test-uuid">Switch to XML</a></div>
+                                                <p class="formal-name">Test Universally Unique Identifier Reference</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> A test UUID reference</p>
+                                             </div>
+                                          </div>
+                                       </details>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="model-entry definition assembly">
+                                 <div class="instance-header">
+                                    <h4 id="/system-security-plan/system-implementation/testing-scenarios/remarks" class="toc4 name">remarks</h4>
+                                    <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                    <p class="occurrence">[0 or 1]</p>
+                                    <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-implementation/testing-scenario/remarks">Switch to XML</a></div>
                                     <p class="formal-name">Remarks</p>
                                  </div>
                                  <div class="body">
@@ -15795,7 +17544,7 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                                        </div>
                                     </details>
                                     <details class="properties" open="open">
-                                       <summary>Properties (7)</summary>
+                                       <summary>Properties (8)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/control-implementation/implemented-requirements/statements/statement-id" class="toc5 name">statement-id</h5>
@@ -16629,7 +18378,7 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                                                 </div>
                                              </details>
                                              <details class="properties" open="open">
-                                                <summary>Properties (12)</summary>
+                                                <summary>Properties (13)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/system-security-plan/control-implementation/implemented-requirements/statements/by-components/component-uuid" class="toc6 name">component-uuid</h6>
@@ -21134,10 +22883,1846 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
+                                                      <h6 id="/system-security-plan/control-implementation/implemented-requirements/statements/by-components/rule-implementations" class="toc6 name">rule-implementations</h6>
+                                                      <p class="type">array<br /></p>
+                                                      <p class="occurrence">[0 or 1]</p>
+                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/by-component/rule-implementation">Switch to XML</a></div>
+                                                   </div>
+                                                   <div class="array-header">
+                                                      <p class="array-member">(array member)</p>
+                                                      <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-ssp/by-component/rule-implementations">(global definition)</a></p>
+                                                      <p class="occurrence">[1 to ∞]</p>
+                                                      <p class="formal-name">Rule Implementation</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p class="description"><span class="usa-tag">Description</span> TODO</p>
+                                                      <div class="remarks-group usa-prose">
+                                                         <details open="open">
+                                                            <summary class="subhead">Remarks</summary>
+                                                            <div class="remarks">
+                                                               <p>Multiple rule implementations can be provided to describe alternative approaches for
+                                                                  using rules to evaluate the implementation and effectiveness of the containing control.</p>
+                                                            </div>
+                                                         </details>
+                                                      </div>
+                                                      <details class="properties" open="open">
+                                                         <summary>Properties (6)</summary>
+                                                         <div class="model-entry definition assembly">
+                                                            <div class="instance-header">
+                                                               <p id="/system-security-plan/control-implementation/implemented-requirements/statements/by-components/rule-implementations/uuid" class="toc7 name">uuid</p>
+                                                               <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                                               <p class="occurrence">[1]</p>
+                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/by-component/rule-implementation/@uuid">Switch to XML</a></div>
+                                                               <p class="formal-name">Rule Implementation Universally Unique Identifier</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p class="description"><span class="usa-tag">Description</span> TODO</p>
+                                                            </div>
+                                                         </div>
+                                                         <div class="model-entry definition assembly">
+                                                            <div class="instance-header">
+                                                               <p id="/system-security-plan/control-implementation/implemented-requirements/statements/by-components/rule-implementations/description" class="toc7 name">description</p>
+                                                               <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                               <p class="occurrence">[1]</p>
+                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/by-component/rule-implementation/description">Switch to XML</a></div>
+                                                               <p class="formal-name">Rule Implementation Description</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p class="description"><span class="usa-tag">Description</span> A summary of the rule implementation.</p>
+                                                            </div>
+                                                         </div>
+                                                         <div class="model-entry definition assembly">
+                                                            <div class="instance-header">
+                                                               <p id="/system-security-plan/control-implementation/implemented-requirements/statements/by-components/rule-implementations/props" class="toc7 name">props</p>
+                                                               <p class="type">array<br /></p>
+                                                               <p class="occurrence">[0 or 1]</p>
+                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/by-component/rule-implementation/prop">Switch to XML</a></div>
+                                                            </div>
+                                                            <div class="array-header">
+                                                               <p class="array-member">(array member)</p>
+                                                               <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-rules-common/rule-implementation/props">(global definition)</a></p>
+                                                               <p class="occurrence">[1 to ∞]</p>
+                                                               <p class="formal-name">Property</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p class="description"><span class="usa-tag">Description</span> An attribute, characteristic, or quality of the containing object expressed as a
+                                                                  namespace qualified name/value pair.</p>
+                                                               <div class="remarks-group usa-prose">
+                                                                  <details open="open">
+                                                                     <summary class="subhead">Remarks</summary>
+                                                                     <div class="remarks">
+                                                                        <p>Properties permit the deployment and management of arbitrary controlled values, within
+                                                                           OSCAL objects. A property can be included for any purpose useful to an application
+                                                                           or implementation. Typically, properties will be used to sort, filter, select, order,
+                                                                           and arrange OSCAL content objects, to relate OSCAL objects to one another, or to associate
+                                                                           an OSCAL object to class hierarchies, taxonomies, or external authorities. Thus, the
+                                                                           lexical composition of properties may be constrained by external processes to ensure
+                                                                           consistency.</p>
+                                                                        <p>Property allows for associated remarks that describe why the specific property value
+                                                                           was applied to the containing object, or the significance of the value in the context
+                                                                           of the containing object.</p>
+                                                                     </div>
+                                                                  </details>
+                                                               </div>
+                                                               <details class="properties" open="open">
+                                                                  <summary>Properties (7)</summary>
+                                                                  <div class="model-entry definition assembly">
+                                                                     <div class="instance-header">
+                                                                        <p id="/system-security-plan/control-implementation/implemented-requirements/statements/by-components/rule-implementations/props/name" class="toc8 name">name</p>
+                                                                        <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                                        <p class="occurrence">[1]</p>
+                                                                        <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/by-component/rule-implementation/prop/@name">Switch to XML</a></div>
+                                                                        <p class="formal-name">Property Name</p>
+                                                                     </div>
+                                                                     <div class="body">
+                                                                        <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
+                                                                           characteristic, or quality of the property's containing object.</p>
+                                                                        <details class="constraints" open="open">
+                                                                           <summary>Constraint (1)</summary>
+                                                                           <div class="constraint">
+                                                                              <p><span class="usa-tag">allowed value</span></p>
+                                                                              <p>The value <b>must</b> be one of the following:</p>
+                                                                              <ul>
+                                                                                 
+                                                                                 
+                                                                                 <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                                                    An optional class can be used to define the specific marking system used for the associated
+                                                                                    value.</li>
+                                                                                 </ul>
+                                                                           </div>
+                                                                        </details>
+                                                                     </div>
+                                                                  </div>
+                                                                  <div class="model-entry definition assembly">
+                                                                     <div class="instance-header">
+                                                                        <p id="/system-security-plan/control-implementation/implemented-requirements/statements/by-components/rule-implementations/props/uuid" class="toc8 name">uuid</p>
+                                                                        <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                                                        <p class="occurrence">[0 or 1]</p>
+                                                                        <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/by-component/rule-implementation/prop/@uuid">Switch to XML</a></div>
+                                                                        <p class="formal-name">Property Universally Unique Identifier</p>
+                                                                     </div>
+                                                                     <div class="body">
+                                                                        <p class="description"><span class="usa-tag">Description</span> A unique identifier for a property.</p>
+                                                                     </div>
+                                                                  </div>
+                                                                  <div class="model-entry definition assembly">
+                                                                     <div class="instance-header">
+                                                                        <p id="/system-security-plan/control-implementation/implemented-requirements/statements/by-components/rule-implementations/props/ns" class="toc8 name">ns</p>
+                                                                        <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
+                                                                        <p class="occurrence">[0 or 1]</p>
+                                                                        <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/by-component/rule-implementation/prop/@ns">Switch to XML</a></div>
+                                                                        <p class="formal-name">Property Namespace</p>
+                                                                     </div>
+                                                                     <div class="body">
+                                                                        <p class="description"><span class="usa-tag">Description</span> A namespace qualifying the property's name. This allows different organizations to
+                                                                           associate distinct semantics with the same name.</p>
+                                                                        <div class="remarks-group usa-prose">
+                                                                           <details open="open">
+                                                                              <summary class="subhead">Remarks</summary>
+                                                                              <div class="remarks">
+                                                                                 <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                                                 <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
+                                                                              </div>
+                                                                           </details>
+                                                                        </div>
+                                                                     </div>
+                                                                  </div>
+                                                                  <div class="model-entry definition assembly">
+                                                                     <div class="instance-header">
+                                                                        <p id="/system-security-plan/control-implementation/implemented-requirements/statements/by-components/rule-implementations/props/value" class="toc8 name">value</p>
+                                                                        <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                                        <p class="occurrence">[1]</p>
+                                                                        <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/by-component/rule-implementation/prop/@value">Switch to XML</a></div>
+                                                                        <p class="formal-name">Property Value</p>
+                                                                     </div>
+                                                                     <div class="body">
+                                                                        <p class="description"><span class="usa-tag">Description</span> Indicates the value of the attribute, characteristic, or quality.</p>
+                                                                     </div>
+                                                                  </div>
+                                                                  <div class="model-entry definition assembly">
+                                                                     <div class="instance-header">
+                                                                        <p id="/system-security-plan/control-implementation/implemented-requirements/statements/by-components/rule-implementations/props/class" class="toc8 name">class</p>
+                                                                        <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                                        <p class="occurrence">[0 or 1]</p>
+                                                                        <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/by-component/rule-implementation/prop/@class">Switch to XML</a></div>
+                                                                        <p class="formal-name">Property Class</p>
+                                                                     </div>
+                                                                     <div class="body">
+                                                                        <p class="description"><span class="usa-tag">Description</span> A textual label that provides a sub-type or characterization of the property's <code>name</code>.</p>
+                                                                        <div class="remarks-group usa-prose">
+                                                                           <details open="open">
+                                                                              <summary class="subhead">Remarks</summary>
+                                                                              <div class="remarks">
+                                                                                 <p>This can be used to further distinguish or discriminate between the semantics of multiple
+                                                                                    properties of the same object with the same <code>name</code> and <code>ns</code>, or to group properties into categories.</p>
+                                                                                 <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
+                                                                                    a specific <code>class</code> value. It is available for grouping, but unlike <code>group</code> is not expected specifically to designate any group membership as such.</p>
+                                                                              </div>
+                                                                           </details>
+                                                                        </div>
+                                                                     </div>
+                                                                  </div>
+                                                                  <div class="model-entry definition assembly">
+                                                                     <div class="instance-header">
+                                                                        <p id="/system-security-plan/control-implementation/implemented-requirements/statements/by-components/rule-implementations/props/group" class="toc8 name">group</p>
+                                                                        <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                                        <p class="occurrence">[0 or 1]</p>
+                                                                        <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/by-component/rule-implementation/prop/@group">Switch to XML</a></div>
+                                                                        <p class="formal-name">Property Group</p>
+                                                                     </div>
+                                                                     <div class="body">
+                                                                        <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                                                        <div class="remarks-group usa-prose">
+                                                                           <details open="open">
+                                                                              <summary class="subhead">Remarks</summary>
+                                                                              <div class="remarks">
+                                                                                 <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                                                    property to associate it with one or more other properties in a given context.</p>
+                                                                              </div>
+                                                                           </details>
+                                                                        </div>
+                                                                     </div>
+                                                                  </div>
+                                                                  <div class="model-entry definition assembly">
+                                                                     <div class="instance-header">
+                                                                        <p id="/system-security-plan/control-implementation/implemented-requirements/statements/by-components/rule-implementations/props/remarks" class="toc8 name">remarks</p>
+                                                                        <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                                        <p class="occurrence">[0 or 1]</p>
+                                                                        <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/by-component/rule-implementation/prop/remarks">Switch to XML</a></div>
+                                                                        <p class="formal-name">Remarks</p>
+                                                                     </div>
+                                                                     <div class="body">
+                                                                        <p class="description"><span class="usa-tag">Description</span> Additional commentary about the containing object.</p>
+                                                                        <div class="remarks-group usa-prose">
+                                                                           <details open="open">
+                                                                              <summary class="subhead">Remarks</summary>
+                                                                              <div class="remarks">
+                                                                                 <p>The <code>remarks</code> field SHOULD not be used to store arbitrary data. Instead, a <code>prop</code> or <code>link</code> should be used to annotate or reference any additional data not formally supported
+                                                                                    by OSCAL.</p>
+                                                                              </div>
+                                                                           </details>
+                                                                        </div>
+                                                                     </div>
+                                                                  </div>
+                                                               </details>
+                                                            </div>
+                                                         </div>
+                                                         <div class="model-entry definition assembly">
+                                                            <div class="instance-header">
+                                                               <p id="/system-security-plan/control-implementation/implemented-requirements/statements/by-components/rule-implementations/links" class="toc7 name">links</p>
+                                                               <p class="type">array<br /></p>
+                                                               <p class="occurrence">[0 or 1]</p>
+                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/by-component/rule-implementation/link">Switch to XML</a></div>
+                                                            </div>
+                                                            <div class="array-header">
+                                                               <p class="array-member">(array member)</p>
+                                                               <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-rules-common/rule-implementation/links">(global definition)</a></p>
+                                                               <p class="occurrence">[1 to ∞]</p>
+                                                               <p class="formal-name">Link</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p class="description"><span class="usa-tag">Description</span> A reference to a local or remote resource, that has a specific relation to the containing
+                                                                  object.</p>
+                                                               <div class="remarks-group usa-prose">
+                                                                  <details open="open">
+                                                                     <summary class="subhead">Remarks</summary>
+                                                                     <div class="remarks">
+                                                                        <p>To provide a cryptographic hash for a remote target resource, a local reference to
+                                                                           a back matter <code>resource</code> is needed. The resource allows one or more hash values to be provided using the <code>rlink/hash</code> object.</p>
+                                                                        <p>The OSCAL <code>link</code> is a roughly based on the HTML <a href="https://www.w3.org/TR/html401/struct/links.html#edef-LINK">link element</a>. </p>
+                                                                     </div>
+                                                                  </details>
+                                                               </div>
+                                                               <details class="constraints" open="open">
+                                                                  <summary>Constraints (3)</summary>
+                                                                  <div class="constraint">
+                                                                     <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
+                                                                  </div>
+                                                                  <div class="constraint">
+                                                                     <p><span class="usa-tag">index has key</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]</code>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
+                                                                  </div>
+                                                                  <div class="constraint">
+                                                                     <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
+                                                                  </div>
+                                                               </details>
+                                                               <details class="properties" open="open">
+                                                                  <summary>Properties (4)</summary>
+                                                                  <div class="model-entry definition assembly">
+                                                                     <div class="instance-header">
+                                                                        <p id="/system-security-plan/control-implementation/implemented-requirements/statements/by-components/rule-implementations/links/href" class="toc8 name">href</p>
+                                                                        <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
+                                                                        <p class="occurrence">[1]</p>
+                                                                        <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/by-component/rule-implementation/link/@href">Switch to XML</a></div>
+                                                                        <p class="formal-name">Hypertext Reference</p>
+                                                                     </div>
+                                                                     <div class="body">
+                                                                        <p class="description"><span class="usa-tag">Description</span> A resolvable URL reference to a resource.</p>
+                                                                        <div class="remarks-group usa-prose">
+                                                                           <details open="open">
+                                                                              <summary class="subhead">Remarks</summary>
+                                                                              <div class="remarks">
+                                                                                 <p>This value may be one of:</p>
+                                                                                 <ol>
+                                                                                    
+                                                                                    <li>an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
+                                                                                    
+                                                                                    <li>a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
+                                                                                       document, or</li>
+                                                                                    
+                                                                                    <li>a bare URI fragment (i.e., `#uuid`) pointing to an OSCAL object by the objects identifier
+                                                                                       (e.g., id, uuid) in this or an imported document (see <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>). The specific object type will differ based on the link relationship type.</li>
+                                                                                    </ol>
+                                                                              </div>
+                                                                           </details>
+                                                                        </div>
+                                                                     </div>
+                                                                  </div>
+                                                                  <div class="model-entry definition assembly">
+                                                                     <div class="instance-header">
+                                                                        <p id="/system-security-plan/control-implementation/implemented-requirements/statements/by-components/rule-implementations/links/rel" class="toc8 name">rel</p>
+                                                                        <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                                        <p class="occurrence">[0 or 1]</p>
+                                                                        <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/by-component/rule-implementation/link/@rel">Switch to XML</a></div>
+                                                                        <p class="formal-name">Link Relation Type</p>
+                                                                     </div>
+                                                                     <div class="body">
+                                                                        <p class="description"><span class="usa-tag">Description</span> Describes the type of relationship provided by the link's hypertext reference. This
+                                                                           can be an indicator of the link's purpose.</p>
+                                                                        <details class="constraints" open="open">
+                                                                           <summary>Constraint (1)</summary>
+                                                                           <div class="constraint">
+                                                                              <p><span class="usa-tag">allowed value</span></p>
+                                                                              <p>The value <b>may be locally defined</b>, or the following:</p>
+                                                                              <ul>
+                                                                                 
+                                                                                 <li><strong>reference</strong>: A generalized reference to a network resource (relative or absolute) or to a back-matter
+                                                                                    resource by UUID expressed as a bare URI fragment.</li>
+                                                                                 </ul>
+                                                                           </div>
+                                                                        </details>
+                                                                     </div>
+                                                                  </div>
+                                                                  <div class="model-entry definition assembly">
+                                                                     <div class="instance-header">
+                                                                        <p id="/system-security-plan/control-implementation/implemented-requirements/statements/by-components/rule-implementations/links/media-type" class="toc8 name">media-type</p>
+                                                                        <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                                        <p class="occurrence">[0 or 1]</p>
+                                                                        <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/by-component/rule-implementation/link/@media-type">Switch to XML</a></div>
+                                                                        <p class="formal-name">Media Type</p>
+                                                                     </div>
+                                                                     <div class="body">
+                                                                        <p class="description"><span class="usa-tag">Description</span> A label that indicates the nature of a resource, as a data serialization or format.</p>
+                                                                        <div class="remarks-group usa-prose">
+                                                                           <details open="open">
+                                                                              <summary class="subhead">Remarks</summary>
+                                                                              <div class="remarks">
+                                                                                 <p> The Internet Assigned Numbers Authority (IANA) <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">Media Types Registry</a> defines a standardized set of media types, which may be used here.</p>
+                                                                                 <p>The <code>application/oscal+xml</code>, <code>application/oscal+json</code> or <code>application/oscal+yaml</code> media types SHOULD be used when referencing OSCAL XML, JSON, or YAML resources respectively.</p>
+                                                                                 <p>**Note: There is no official media type for YAML at this time.** OSCAL documents should
+                                                                                    specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name
+                                                                                    suffix, per <a href="https://www.rfc-editor.org/rfc/rfc6838.html#section-4.2.8">RFC 6838 Section 4.2.8</a>.</p>
+                                                                                 <p>Some earlier OSCAL content incorporated the model into the media type. For example:
+                                                                                    <code>application/oscal.catalog+xml</code>. This practice SHOULD be avoided, since the OSCAL model can be detected by parsing
+                                                                                    the initial content of the referenced resource.</p>
+                                                                              </div>
+                                                                              <div class="remarks">
+                                                                                 <p>The <code>media-type</code> provides a hint about the content model of the referenced resource. A valid entry
+                                                                                    from the <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">IANA Media Types registry</a> SHOULD be used.</p>
+                                                                              </div>
+                                                                           </details>
+                                                                        </div>
+                                                                     </div>
+                                                                  </div>
+                                                                  <div class="model-entry definition assembly">
+                                                                     <div class="instance-header">
+                                                                        <p id="/system-security-plan/control-implementation/implemented-requirements/statements/by-components/rule-implementations/links/text" class="toc8 name">text</p>
+                                                                        <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                                        <p class="occurrence">[0 or 1]</p>
+                                                                        <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/by-component/rule-implementation/link/text">Switch to XML</a></div>
+                                                                        <p class="formal-name">Link Text</p>
+                                                                     </div>
+                                                                     <div class="body">
+                                                                        <p class="description"><span class="usa-tag">Description</span> A textual label to associate with the link, which may be used for presentation in
+                                                                           a tool.</p>
+                                                                     </div>
+                                                                  </div>
+                                                               </details>
+                                                            </div>
+                                                         </div>
+                                                         <div class="choice">
+                                                            <p>A choice:</p>
+                                                            <div class="model-entry definition assembly">
+                                                               <div class="instance-header">
+                                                                  <p id="/system-security-plan/control-implementation/implemented-requirements/statements/by-components/rule-implementations/condition" class="toc7 name">condition</p>
+                                                                  <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-rules-common/rule-implementation/condition">(global definition)</a></p>
+                                                                  <p class="occurrence">[0 or 1]</p>
+                                                                  <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/by-component/rule-implementation/condition">Switch to XML</a></div>
+                                                                  <p class="formal-name">Rule Condition</p>
+                                                               </div>
+                                                               <div class="body">
+                                                                  <p class="description"><span class="usa-tag">Description</span> A rule implementation condition</p>
+                                                                  <details class="properties" open="open">
+                                                                     <summary>Properties (7)</summary>
+                                                                     <div class="model-entry definition assembly">
+                                                                        <div class="instance-header">
+                                                                           <p id="/system-security-plan/control-implementation/implemented-requirements/statements/by-components/rule-implementations/condition/negate" class="toc8 name">negate</p>
+                                                                           <p class="type"><a href="/reference/datatypes/#boolean">boolean</a></p>
+                                                                           <p class="occurrence">[0 or 1]</p>
+                                                                           <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/by-component/rule-implementation/condition/@negate">Switch to XML</a></div>
+                                                                           <p class="formal-name">Rule Condition Negation Flag</p>
+                                                                        </div>
+                                                                        <div class="body">
+                                                                           <p class="description"><span class="usa-tag">Description</span> TODO</p>
+                                                                           <div class="remarks-group usa-prose">
+                                                                              <details open="open">
+                                                                                 <summary class="subhead">Remarks</summary>
+                                                                                 <div class="remarks">
+                                                                                    <h1>Negate Truth Table</h1>
+                                                                                    <p>true -&gt; false, false -&gt; true, error -&gt; error, not-applicable -&gt; not-applicable</p>
+                                                                                 </div>
+                                                                              </details>
+                                                                           </div>
+                                                                        </div>
+                                                                     </div>
+                                                                     <div class="model-entry definition assembly">
+                                                                        <div class="instance-header">
+                                                                           <p id="/system-security-plan/control-implementation/implemented-requirements/statements/by-components/rule-implementations/condition/operator" class="toc8 name">operator</p>
+                                                                           <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                                           <p class="occurrence">[1]</p>
+                                                                           <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/by-component/rule-implementation/condition/@operator">Switch to XML</a></div>
+                                                                           <p class="formal-name">Rule Condition Operator</p>
+                                                                        </div>
+                                                                        <div class="body">
+                                                                           <p class="description"><span class="usa-tag">Description</span> TODO</p>
+                                                                           <div class="remarks-group usa-prose">
+                                                                              <details open="open">
+                                                                                 <summary class="subhead">Remarks</summary>
+                                                                                 <div class="remarks">
+                                                                                    <h1>Operator Truth Table</h1>
+                                                                                    <p>What is eager evaluation and why does it matter?</p>
+                                                                                    <p>How do prerequisites work in the processing of condition operators and precedence.</p>
+                                                                                 </div>
+                                                                              </details>
+                                                                           </div>
+                                                                           <details class="constraints" open="open">
+                                                                              <summary>Constraint (1)</summary>
+                                                                              <div class="constraint">
+                                                                                 <p><span class="usa-tag">allowed values</span></p>
+                                                                                 <p>The value <b>must</b> be one of the following:</p>
+                                                                                 <ul>
+                                                                                    
+                                                                                    <li><strong>and</strong>: and</li>
+                                                                                    
+                                                                                    <li><strong>or</strong>: or</li>
+                                                                                    </ul>
+                                                                              </div>
+                                                                           </details>
+                                                                        </div>
+                                                                     </div>
+                                                                     <div class="model-entry definition assembly">
+                                                                        <div class="instance-header">
+                                                                           <p id="/system-security-plan/control-implementation/implemented-requirements/statements/by-components/rule-implementations/condition/props" class="toc8 name">props</p>
+                                                                           <p class="type">array<br /></p>
+                                                                           <p class="occurrence">[0 or 1]</p>
+                                                                           <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/by-component/rule-implementation/condition/prop">Switch to XML</a></div>
+                                                                        </div>
+                                                                        <div class="array-header">
+                                                                           <p class="array-member">(array member)</p>
+                                                                           <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-rules-common/rule-condition/props">(global definition)</a></p>
+                                                                           <p class="occurrence">[1 to ∞]</p>
+                                                                           <p class="formal-name">Property</p>
+                                                                        </div>
+                                                                        <div class="body">
+                                                                           <p class="description"><span class="usa-tag">Description</span> An attribute, characteristic, or quality of the containing object expressed as a
+                                                                              namespace qualified name/value pair.</p>
+                                                                           <div class="remarks-group usa-prose">
+                                                                              <details open="open">
+                                                                                 <summary class="subhead">Remarks</summary>
+                                                                                 <div class="remarks">
+                                                                                    <p>Properties permit the deployment and management of arbitrary controlled values, within
+                                                                                       OSCAL objects. A property can be included for any purpose useful to an application
+                                                                                       or implementation. Typically, properties will be used to sort, filter, select, order,
+                                                                                       and arrange OSCAL content objects, to relate OSCAL objects to one another, or to associate
+                                                                                       an OSCAL object to class hierarchies, taxonomies, or external authorities. Thus, the
+                                                                                       lexical composition of properties may be constrained by external processes to ensure
+                                                                                       consistency.</p>
+                                                                                    <p>Property allows for associated remarks that describe why the specific property value
+                                                                                       was applied to the containing object, or the significance of the value in the context
+                                                                                       of the containing object.</p>
+                                                                                 </div>
+                                                                              </details>
+                                                                           </div>
+                                                                           <details class="properties" open="open">
+                                                                              <summary>Properties (7)</summary>
+                                                                              <div class="model-entry definition assembly">
+                                                                                 <div class="instance-header">
+                                                                                    <p id="/system-security-plan/control-implementation/implemented-requirements/statements/by-components/rule-implementations/condition/props/name" class="toc9 name">name</p>
+                                                                                    <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                                                    <p class="occurrence">[1]</p>
+                                                                                    <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/by-component/rule-implementation/condition/prop/@name">Switch to XML</a></div>
+                                                                                    <p class="formal-name">Property Name</p>
+                                                                                 </div>
+                                                                                 <div class="body">
+                                                                                    <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
+                                                                                       characteristic, or quality of the property's containing object.</p>
+                                                                                    <details class="constraints" open="open">
+                                                                                       <summary>Constraint (1)</summary>
+                                                                                       <div class="constraint">
+                                                                                          <p><span class="usa-tag">allowed value</span></p>
+                                                                                          <p>The value <b>must</b> be one of the following:</p>
+                                                                                          <ul>
+                                                                                             
+                                                                                             
+                                                                                             <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                                                                An optional class can be used to define the specific marking system used for the associated
+                                                                                                value.</li>
+                                                                                             </ul>
+                                                                                       </div>
+                                                                                    </details>
+                                                                                 </div>
+                                                                              </div>
+                                                                              <div class="model-entry definition assembly">
+                                                                                 <div class="instance-header">
+                                                                                    <p id="/system-security-plan/control-implementation/implemented-requirements/statements/by-components/rule-implementations/condition/props/uuid" class="toc9 name">uuid</p>
+                                                                                    <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                                                                    <p class="occurrence">[0 or 1]</p>
+                                                                                    <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/by-component/rule-implementation/condition/prop/@uuid">Switch to XML</a></div>
+                                                                                    <p class="formal-name">Property Universally Unique Identifier</p>
+                                                                                 </div>
+                                                                                 <div class="body">
+                                                                                    <p class="description"><span class="usa-tag">Description</span> A unique identifier for a property.</p>
+                                                                                 </div>
+                                                                              </div>
+                                                                              <div class="model-entry definition assembly">
+                                                                                 <div class="instance-header">
+                                                                                    <p id="/system-security-plan/control-implementation/implemented-requirements/statements/by-components/rule-implementations/condition/props/ns" class="toc9 name">ns</p>
+                                                                                    <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
+                                                                                    <p class="occurrence">[0 or 1]</p>
+                                                                                    <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/by-component/rule-implementation/condition/prop/@ns">Switch to XML</a></div>
+                                                                                    <p class="formal-name">Property Namespace</p>
+                                                                                 </div>
+                                                                                 <div class="body">
+                                                                                    <p class="description"><span class="usa-tag">Description</span> A namespace qualifying the property's name. This allows different organizations to
+                                                                                       associate distinct semantics with the same name.</p>
+                                                                                    <div class="remarks-group usa-prose">
+                                                                                       <details open="open">
+                                                                                          <summary class="subhead">Remarks</summary>
+                                                                                          <div class="remarks">
+                                                                                             <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                                                             <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
+                                                                                          </div>
+                                                                                       </details>
+                                                                                    </div>
+                                                                                 </div>
+                                                                              </div>
+                                                                              <div class="model-entry definition assembly">
+                                                                                 <div class="instance-header">
+                                                                                    <p id="/system-security-plan/control-implementation/implemented-requirements/statements/by-components/rule-implementations/condition/props/value" class="toc9 name">value</p>
+                                                                                    <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                                                    <p class="occurrence">[1]</p>
+                                                                                    <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/by-component/rule-implementation/condition/prop/@value">Switch to XML</a></div>
+                                                                                    <p class="formal-name">Property Value</p>
+                                                                                 </div>
+                                                                                 <div class="body">
+                                                                                    <p class="description"><span class="usa-tag">Description</span> Indicates the value of the attribute, characteristic, or quality.</p>
+                                                                                 </div>
+                                                                              </div>
+                                                                              <div class="model-entry definition assembly">
+                                                                                 <div class="instance-header">
+                                                                                    <p id="/system-security-plan/control-implementation/implemented-requirements/statements/by-components/rule-implementations/condition/props/class" class="toc9 name">class</p>
+                                                                                    <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                                                    <p class="occurrence">[0 or 1]</p>
+                                                                                    <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/by-component/rule-implementation/condition/prop/@class">Switch to XML</a></div>
+                                                                                    <p class="formal-name">Property Class</p>
+                                                                                 </div>
+                                                                                 <div class="body">
+                                                                                    <p class="description"><span class="usa-tag">Description</span> A textual label that provides a sub-type or characterization of the property's <code>name</code>.</p>
+                                                                                    <div class="remarks-group usa-prose">
+                                                                                       <details open="open">
+                                                                                          <summary class="subhead">Remarks</summary>
+                                                                                          <div class="remarks">
+                                                                                             <p>This can be used to further distinguish or discriminate between the semantics of multiple
+                                                                                                properties of the same object with the same <code>name</code> and <code>ns</code>, or to group properties into categories.</p>
+                                                                                             <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
+                                                                                                a specific <code>class</code> value. It is available for grouping, but unlike <code>group</code> is not expected specifically to designate any group membership as such.</p>
+                                                                                          </div>
+                                                                                       </details>
+                                                                                    </div>
+                                                                                 </div>
+                                                                              </div>
+                                                                              <div class="model-entry definition assembly">
+                                                                                 <div class="instance-header">
+                                                                                    <p id="/system-security-plan/control-implementation/implemented-requirements/statements/by-components/rule-implementations/condition/props/group" class="toc9 name">group</p>
+                                                                                    <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                                                    <p class="occurrence">[0 or 1]</p>
+                                                                                    <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/by-component/rule-implementation/condition/prop/@group">Switch to XML</a></div>
+                                                                                    <p class="formal-name">Property Group</p>
+                                                                                 </div>
+                                                                                 <div class="body">
+                                                                                    <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                                                                    <div class="remarks-group usa-prose">
+                                                                                       <details open="open">
+                                                                                          <summary class="subhead">Remarks</summary>
+                                                                                          <div class="remarks">
+                                                                                             <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                                                                property to associate it with one or more other properties in a given context.</p>
+                                                                                          </div>
+                                                                                       </details>
+                                                                                    </div>
+                                                                                 </div>
+                                                                              </div>
+                                                                              <div class="model-entry definition assembly">
+                                                                                 <div class="instance-header">
+                                                                                    <p id="/system-security-plan/control-implementation/implemented-requirements/statements/by-components/rule-implementations/condition/props/remarks" class="toc9 name">remarks</p>
+                                                                                    <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                                                    <p class="occurrence">[0 or 1]</p>
+                                                                                    <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/by-component/rule-implementation/condition/prop/remarks">Switch to XML</a></div>
+                                                                                    <p class="formal-name">Remarks</p>
+                                                                                 </div>
+                                                                                 <div class="body">
+                                                                                    <p class="description"><span class="usa-tag">Description</span> Additional commentary about the containing object.</p>
+                                                                                    <div class="remarks-group usa-prose">
+                                                                                       <details open="open">
+                                                                                          <summary class="subhead">Remarks</summary>
+                                                                                          <div class="remarks">
+                                                                                             <p>The <code>remarks</code> field SHOULD not be used to store arbitrary data. Instead, a <code>prop</code> or <code>link</code> should be used to annotate or reference any additional data not formally supported
+                                                                                                by OSCAL.</p>
+                                                                                          </div>
+                                                                                       </details>
+                                                                                    </div>
+                                                                                 </div>
+                                                                              </div>
+                                                                           </details>
+                                                                        </div>
+                                                                     </div>
+                                                                     <div class="model-entry definition assembly">
+                                                                        <div class="instance-header">
+                                                                           <p id="/system-security-plan/control-implementation/implemented-requirements/statements/by-components/rule-implementations/condition/links" class="toc8 name">links</p>
+                                                                           <p class="type">array<br /></p>
+                                                                           <p class="occurrence">[0 or 1]</p>
+                                                                           <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/by-component/rule-implementation/condition/link">Switch to XML</a></div>
+                                                                        </div>
+                                                                        <div class="array-header">
+                                                                           <p class="array-member">(array member)</p>
+                                                                           <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-rules-common/rule-condition/links">(global definition)</a></p>
+                                                                           <p class="occurrence">[1 to ∞]</p>
+                                                                           <p class="formal-name">Link</p>
+                                                                        </div>
+                                                                        <div class="body">
+                                                                           <p class="description"><span class="usa-tag">Description</span> A reference to a local or remote resource, that has a specific relation to the containing
+                                                                              object.</p>
+                                                                           <div class="remarks-group usa-prose">
+                                                                              <details open="open">
+                                                                                 <summary class="subhead">Remarks</summary>
+                                                                                 <div class="remarks">
+                                                                                    <p>To provide a cryptographic hash for a remote target resource, a local reference to
+                                                                                       a back matter <code>resource</code> is needed. The resource allows one or more hash values to be provided using the <code>rlink/hash</code> object.</p>
+                                                                                    <p>The OSCAL <code>link</code> is a roughly based on the HTML <a href="https://www.w3.org/TR/html401/struct/links.html#edef-LINK">link element</a>. </p>
+                                                                                 </div>
+                                                                              </details>
+                                                                           </div>
+                                                                           <details class="constraints" open="open">
+                                                                              <summary>Constraints (3)</summary>
+                                                                              <div class="constraint">
+                                                                                 <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
+                                                                              </div>
+                                                                              <div class="constraint">
+                                                                                 <p><span class="usa-tag">index has key</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]</code>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
+                                                                              </div>
+                                                                              <div class="constraint">
+                                                                                 <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
+                                                                              </div>
+                                                                           </details>
+                                                                           <details class="properties" open="open">
+                                                                              <summary>Properties (4)</summary>
+                                                                              <div class="model-entry definition assembly">
+                                                                                 <div class="instance-header">
+                                                                                    <p id="/system-security-plan/control-implementation/implemented-requirements/statements/by-components/rule-implementations/condition/links/href" class="toc9 name">href</p>
+                                                                                    <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
+                                                                                    <p class="occurrence">[1]</p>
+                                                                                    <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/by-component/rule-implementation/condition/link/@href">Switch to XML</a></div>
+                                                                                    <p class="formal-name">Hypertext Reference</p>
+                                                                                 </div>
+                                                                                 <div class="body">
+                                                                                    <p class="description"><span class="usa-tag">Description</span> A resolvable URL reference to a resource.</p>
+                                                                                    <div class="remarks-group usa-prose">
+                                                                                       <details open="open">
+                                                                                          <summary class="subhead">Remarks</summary>
+                                                                                          <div class="remarks">
+                                                                                             <p>This value may be one of:</p>
+                                                                                             <ol>
+                                                                                                
+                                                                                                <li>an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
+                                                                                                
+                                                                                                <li>a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
+                                                                                                   document, or</li>
+                                                                                                
+                                                                                                <li>a bare URI fragment (i.e., `#uuid`) pointing to an OSCAL object by the objects identifier
+                                                                                                   (e.g., id, uuid) in this or an imported document (see <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>). The specific object type will differ based on the link relationship type.</li>
+                                                                                                </ol>
+                                                                                          </div>
+                                                                                       </details>
+                                                                                    </div>
+                                                                                 </div>
+                                                                              </div>
+                                                                              <div class="model-entry definition assembly">
+                                                                                 <div class="instance-header">
+                                                                                    <p id="/system-security-plan/control-implementation/implemented-requirements/statements/by-components/rule-implementations/condition/links/rel" class="toc9 name">rel</p>
+                                                                                    <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                                                    <p class="occurrence">[0 or 1]</p>
+                                                                                    <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/by-component/rule-implementation/condition/link/@rel">Switch to XML</a></div>
+                                                                                    <p class="formal-name">Link Relation Type</p>
+                                                                                 </div>
+                                                                                 <div class="body">
+                                                                                    <p class="description"><span class="usa-tag">Description</span> Describes the type of relationship provided by the link's hypertext reference. This
+                                                                                       can be an indicator of the link's purpose.</p>
+                                                                                    <details class="constraints" open="open">
+                                                                                       <summary>Constraint (1)</summary>
+                                                                                       <div class="constraint">
+                                                                                          <p><span class="usa-tag">allowed value</span></p>
+                                                                                          <p>The value <b>may be locally defined</b>, or the following:</p>
+                                                                                          <ul>
+                                                                                             
+                                                                                             <li><strong>reference</strong>: A generalized reference to a network resource (relative or absolute) or to a back-matter
+                                                                                                resource by UUID expressed as a bare URI fragment.</li>
+                                                                                             </ul>
+                                                                                       </div>
+                                                                                    </details>
+                                                                                 </div>
+                                                                              </div>
+                                                                              <div class="model-entry definition assembly">
+                                                                                 <div class="instance-header">
+                                                                                    <p id="/system-security-plan/control-implementation/implemented-requirements/statements/by-components/rule-implementations/condition/links/media-type" class="toc9 name">media-type</p>
+                                                                                    <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                                                    <p class="occurrence">[0 or 1]</p>
+                                                                                    <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/by-component/rule-implementation/condition/link/@media-type">Switch to XML</a></div>
+                                                                                    <p class="formal-name">Media Type</p>
+                                                                                 </div>
+                                                                                 <div class="body">
+                                                                                    <p class="description"><span class="usa-tag">Description</span> A label that indicates the nature of a resource, as a data serialization or format.</p>
+                                                                                    <div class="remarks-group usa-prose">
+                                                                                       <details open="open">
+                                                                                          <summary class="subhead">Remarks</summary>
+                                                                                          <div class="remarks">
+                                                                                             <p> The Internet Assigned Numbers Authority (IANA) <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">Media Types Registry</a> defines a standardized set of media types, which may be used here.</p>
+                                                                                             <p>The <code>application/oscal+xml</code>, <code>application/oscal+json</code> or <code>application/oscal+yaml</code> media types SHOULD be used when referencing OSCAL XML, JSON, or YAML resources respectively.</p>
+                                                                                             <p>**Note: There is no official media type for YAML at this time.** OSCAL documents should
+                                                                                                specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name
+                                                                                                suffix, per <a href="https://www.rfc-editor.org/rfc/rfc6838.html#section-4.2.8">RFC 6838 Section 4.2.8</a>.</p>
+                                                                                             <p>Some earlier OSCAL content incorporated the model into the media type. For example:
+                                                                                                <code>application/oscal.catalog+xml</code>. This practice SHOULD be avoided, since the OSCAL model can be detected by parsing
+                                                                                                the initial content of the referenced resource.</p>
+                                                                                          </div>
+                                                                                          <div class="remarks">
+                                                                                             <p>The <code>media-type</code> provides a hint about the content model of the referenced resource. A valid entry
+                                                                                                from the <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">IANA Media Types registry</a> SHOULD be used.</p>
+                                                                                          </div>
+                                                                                       </details>
+                                                                                    </div>
+                                                                                 </div>
+                                                                              </div>
+                                                                              <div class="model-entry definition assembly">
+                                                                                 <div class="instance-header">
+                                                                                    <p id="/system-security-plan/control-implementation/implemented-requirements/statements/by-components/rule-implementations/condition/links/text" class="toc9 name">text</p>
+                                                                                    <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                                                    <p class="occurrence">[0 or 1]</p>
+                                                                                    <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/by-component/rule-implementation/condition/link/text">Switch to XML</a></div>
+                                                                                    <p class="formal-name">Link Text</p>
+                                                                                 </div>
+                                                                                 <div class="body">
+                                                                                    <p class="description"><span class="usa-tag">Description</span> A textual label to associate with the link, which may be used for presentation in
+                                                                                       a tool.</p>
+                                                                                 </div>
+                                                                              </div>
+                                                                           </details>
+                                                                        </div>
+                                                                     </div>
+                                                                     <div class="model-entry definition assembly">
+                                                                        <div class="instance-header">
+                                                                           <p id="/system-security-plan/control-implementation/implemented-requirements/statements/by-components/rule-implementations/condition/prerequisite" class="toc8 name">prerequisite</p>
+                                                                           <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-rules-common/rule-condition/prerequisite">(global definition)</a></p>
+                                                                           <p class="occurrence">[0 or 1]</p>
+                                                                           <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/by-component/rule-implementation/condition/prerequisite">Switch to XML</a></div>
+                                                                           <p class="formal-name">Rule Condition</p>
+                                                                        </div>
+                                                                        <div class="body">
+                                                                           <p class="description"><span class="usa-tag">Description</span> A rule implementation condition</p>
+                                                                        </div>
+                                                                     </div>
+                                                                     <div class="choice">
+                                                                        <p>A choice:</p>
+                                                                        <div class="model-entry definition assembly">
+                                                                           <div class="instance-header">
+                                                                              <p id="/system-security-plan/control-implementation/implemented-requirements/statements/by-components/rule-implementations/condition/rule-conditions" class="toc8 name">rule-conditions</p>
+                                                                              <p class="type">array<br /></p>
+                                                                              <p class="occurrence">[1]</p>
+                                                                              <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/by-component/rule-implementation/condition/condition">Switch to XML</a></div>
+                                                                           </div>
+                                                                           <div class="array-header">
+                                                                              <p class="array-member">(array member)</p>
+                                                                              <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-rules-common/rule-condition/rule-conditions">(global definition)</a></p>
+                                                                              <p class="occurrence">[1 to ∞]</p>
+                                                                              <p class="formal-name">Rule Condition</p>
+                                                                           </div>
+                                                                           <div class="body">
+                                                                              <p class="description"><span class="usa-tag">Description</span> A rule implementation condition</p>
+                                                                           </div>
+                                                                        </div>
+                                                                        <div class="model-entry definition assembly">
+                                                                           <div class="instance-header">
+                                                                              <p id="/system-security-plan/control-implementation/implemented-requirements/statements/by-components/rule-implementations/condition/test-references" class="toc8 name">test-references</p>
+                                                                              <p class="type">array<br /></p>
+                                                                              <p class="occurrence">[1]</p>
+                                                                              <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/by-component/rule-implementation/condition/test-reference">Switch to XML</a></div>
+                                                                           </div>
+                                                                           <div class="array-header">
+                                                                              <p class="array-member">(array member)</p>
+                                                                              <p class="type"><a href="/reference/datatypes/#empty">empty</a></p>
+                                                                              <p class="occurrence">[1 to ∞]</p>
+                                                                              <p class="formal-name">Test Reference</p>
+                                                                           </div>
+                                                                           <div class="body">
+                                                                              <p class="description"><span class="usa-tag">Description</span> TODO</p>
+                                                                              <details class="properties" open="open">
+                                                                                 <summary>Property (1)</summary>
+                                                                                 <div class="model-entry definition assembly">
+                                                                                    <div class="instance-header">
+                                                                                       <p id="/system-security-plan/control-implementation/implemented-requirements/statements/by-components/rule-implementations/condition/test-references/test-uuid" class="toc9 name">test-uuid</p>
+                                                                                       <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                                                                       <p class="occurrence">[1]</p>
+                                                                                       <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/by-component/rule-implementation/condition/test-reference/@test-uuid">Switch to XML</a></div>
+                                                                                       <p class="formal-name">Test Universally Unique Identifier Reference</p>
+                                                                                    </div>
+                                                                                    <div class="body">
+                                                                                       <p class="description"><span class="usa-tag">Description</span> A test UUID reference</p>
+                                                                                    </div>
+                                                                                 </div>
+                                                                              </details>
+                                                                           </div>
+                                                                        </div>
+                                                                        <div class="model-entry definition assembly">
+                                                                           <div class="instance-header">
+                                                                              <p id="/system-security-plan/control-implementation/implemented-requirements/statements/by-components/rule-implementations/condition/testing-scenario-references" class="toc8 name">testing-scenario-references</p>
+                                                                              <p class="type">array<br /></p>
+                                                                              <p class="occurrence">[1]</p>
+                                                                              <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/by-component/rule-implementation/condition/testing-scenario-reference">Switch to XML</a></div>
+                                                                           </div>
+                                                                           <div class="array-header">
+                                                                              <p class="array-member">(array member)</p>
+                                                                              <p class="type"><a href="/reference/datatypes/#empty">empty</a></p>
+                                                                              <p class="occurrence">[1 to ∞]</p>
+                                                                              <p class="formal-name">Testing Scenario Reference</p>
+                                                                           </div>
+                                                                           <div class="body">
+                                                                              <p class="description"><span class="usa-tag">Description</span> A reference to a testing scenario.</p>
+                                                                              <details class="properties" open="open">
+                                                                                 <summary>Property (1)</summary>
+                                                                                 <div class="model-entry definition assembly">
+                                                                                    <div class="instance-header">
+                                                                                       <p id="/system-security-plan/control-implementation/implemented-requirements/statements/by-components/rule-implementations/condition/testing-scenario-references/testing-scenario-uuid" class="toc9 name">testing-scenario-uuid</p>
+                                                                                       <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                                                                       <p class="occurrence">[0 or 1]</p>
+                                                                                       <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/by-component/rule-implementation/condition/testing-scenario-reference/@testing-scenario-uuid">Switch to XML</a></div>
+                                                                                       <p class="formal-name">Testing Scenario Universally Unique Identifier Reference</p>
+                                                                                    </div>
+                                                                                    <div class="body">
+                                                                                       <p class="description"><span class="usa-tag">Description</span> A testing scenario UUID reference</p>
+                                                                                    </div>
+                                                                                 </div>
+                                                                              </details>
+                                                                           </div>
+                                                                        </div>
+                                                                     </div>
+                                                                     <div class="model-entry definition assembly">
+                                                                        <div class="instance-header">
+                                                                           <p id="/system-security-plan/control-implementation/implemented-requirements/statements/by-components/rule-implementations/condition/remarks" class="toc8 name">remarks</p>
+                                                                           <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                                           <p class="occurrence">[0 or 1]</p>
+                                                                           <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/by-component/rule-implementation/condition/remarks">Switch to XML</a></div>
+                                                                           <p class="formal-name">Remarks</p>
+                                                                        </div>
+                                                                        <div class="body">
+                                                                           <p class="description"><span class="usa-tag">Description</span> Additional commentary about the containing object.</p>
+                                                                           <div class="remarks-group usa-prose">
+                                                                              <details open="open">
+                                                                                 <summary class="subhead">Remarks</summary>
+                                                                                 <div class="remarks">
+                                                                                    <p>The <code>remarks</code> field SHOULD not be used to store arbitrary data. Instead, a <code>prop</code> or <code>link</code> should be used to annotate or reference any additional data not formally supported
+                                                                                       by OSCAL.</p>
+                                                                                 </div>
+                                                                              </details>
+                                                                           </div>
+                                                                        </div>
+                                                                     </div>
+                                                                  </details>
+                                                               </div>
+                                                            </div>
+                                                            <div class="model-entry definition assembly">
+                                                               <div class="instance-header">
+                                                                  <p id="/system-security-plan/control-implementation/implemented-requirements/statements/by-components/rule-implementations/rule-uuids" class="toc7 name">rule-uuids</p>
+                                                                  <p class="type">array<br /></p>
+                                                                  <p class="occurrence">[1]</p>
+                                                                  <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/by-component/rule-implementation/rule-uuid">Switch to XML</a></div>
+                                                               </div>
+                                                               <div class="array-header">
+                                                                  <p class="array-member">(array member)</p>
+                                                                  <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                                                  <p class="occurrence">[1 to ∞]</p>
+                                                                  <p class="formal-name">Rule Universally Unique Identifier Reference</p>
+                                                               </div>
+                                                               <div class="body">
+                                                                  <p class="description"><span class="usa-tag">Description</span> A rule UUID reference</p>
+                                                               </div>
+                                                            </div>
+                                                         </div>
+                                                         <div class="model-entry definition assembly">
+                                                            <div class="instance-header">
+                                                               <p id="/system-security-plan/control-implementation/implemented-requirements/statements/by-components/rule-implementations/remarks" class="toc7 name">remarks</p>
+                                                               <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                               <p class="occurrence">[0 or 1]</p>
+                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/by-component/rule-implementation/remarks">Switch to XML</a></div>
+                                                               <p class="formal-name">Remarks</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p class="description"><span class="usa-tag">Description</span> Additional commentary about the containing object.</p>
+                                                               <div class="remarks-group usa-prose">
+                                                                  <details open="open">
+                                                                     <summary class="subhead">Remarks</summary>
+                                                                     <div class="remarks">
+                                                                        <p>The <code>remarks</code> field SHOULD not be used to store arbitrary data. Instead, a <code>prop</code> or <code>link</code> should be used to annotate or reference any additional data not formally supported
+                                                                           by OSCAL.</p>
+                                                                     </div>
+                                                                  </details>
+                                                               </div>
+                                                            </div>
+                                                         </div>
+                                                      </details>
+                                                   </div>
+                                                </div>
+                                                <div class="model-entry definition assembly">
+                                                   <div class="instance-header">
                                                       <h6 id="/system-security-plan/control-implementation/implemented-requirements/statements/by-components/remarks" class="toc6 name">remarks</h6>
                                                       <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/by-component/remarks">Switch to XML</a></div>
+                                                      <p class="formal-name">Remarks</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p class="description"><span class="usa-tag">Description</span> Additional commentary about the containing object.</p>
+                                                      <div class="remarks-group usa-prose">
+                                                         <details open="open">
+                                                            <summary class="subhead">Remarks</summary>
+                                                            <div class="remarks">
+                                                               <p>The <code>remarks</code> field SHOULD not be used to store arbitrary data. Instead, a <code>prop</code> or <code>link</code> should be used to annotate or reference any additional data not formally supported
+                                                                  by OSCAL.</p>
+                                                            </div>
+                                                         </details>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                             </details>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/control-implementation/implemented-requirements/statements/rule-implementations" class="toc5 name">rule-implementations</h5>
+                                             <p class="type">array<br /></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/rule-implementation">Switch to XML</a></div>
+                                          </div>
+                                          <div class="array-header">
+                                             <p class="array-member">(array member)</p>
+                                             <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-ssp/statement/rule-implementations">(global definition)</a></p>
+                                             <p class="occurrence">[1 to ∞]</p>
+                                             <p class="formal-name">Rule Implementation</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> TODO</p>
+                                             <div class="remarks-group usa-prose">
+                                                <details open="open">
+                                                   <summary class="subhead">Remarks</summary>
+                                                   <div class="remarks">
+                                                      <p>Multiple rule implementations can be provided to describe alternative rule-based implementations
+                                                         used to evaluate the implementation and effectiveness of the containing control statement.</p>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                             <details class="properties" open="open">
+                                                <summary>Properties (6)</summary>
+                                                <div class="model-entry definition assembly">
+                                                   <div class="instance-header">
+                                                      <h6 id="/system-security-plan/control-implementation/implemented-requirements/statements/rule-implementations/uuid" class="toc6 name">uuid</h6>
+                                                      <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                                      <p class="occurrence">[1]</p>
+                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/rule-implementation/@uuid">Switch to XML</a></div>
+                                                      <p class="formal-name">Rule Implementation Universally Unique Identifier</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p class="description"><span class="usa-tag">Description</span> TODO</p>
+                                                   </div>
+                                                </div>
+                                                <div class="model-entry definition assembly">
+                                                   <div class="instance-header">
+                                                      <h6 id="/system-security-plan/control-implementation/implemented-requirements/statements/rule-implementations/description" class="toc6 name">description</h6>
+                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                      <p class="occurrence">[1]</p>
+                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/rule-implementation/description">Switch to XML</a></div>
+                                                      <p class="formal-name">Rule Implementation Description</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p class="description"><span class="usa-tag">Description</span> A summary of the rule implementation.</p>
+                                                   </div>
+                                                </div>
+                                                <div class="model-entry definition assembly">
+                                                   <div class="instance-header">
+                                                      <h6 id="/system-security-plan/control-implementation/implemented-requirements/statements/rule-implementations/props" class="toc6 name">props</h6>
+                                                      <p class="type">array<br /></p>
+                                                      <p class="occurrence">[0 or 1]</p>
+                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/rule-implementation/prop">Switch to XML</a></div>
+                                                   </div>
+                                                   <div class="array-header">
+                                                      <p class="array-member">(array member)</p>
+                                                      <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-rules-common/rule-implementation/props">(global definition)</a></p>
+                                                      <p class="occurrence">[1 to ∞]</p>
+                                                      <p class="formal-name">Property</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p class="description"><span class="usa-tag">Description</span> An attribute, characteristic, or quality of the containing object expressed as a
+                                                         namespace qualified name/value pair.</p>
+                                                      <div class="remarks-group usa-prose">
+                                                         <details open="open">
+                                                            <summary class="subhead">Remarks</summary>
+                                                            <div class="remarks">
+                                                               <p>Properties permit the deployment and management of arbitrary controlled values, within
+                                                                  OSCAL objects. A property can be included for any purpose useful to an application
+                                                                  or implementation. Typically, properties will be used to sort, filter, select, order,
+                                                                  and arrange OSCAL content objects, to relate OSCAL objects to one another, or to associate
+                                                                  an OSCAL object to class hierarchies, taxonomies, or external authorities. Thus, the
+                                                                  lexical composition of properties may be constrained by external processes to ensure
+                                                                  consistency.</p>
+                                                               <p>Property allows for associated remarks that describe why the specific property value
+                                                                  was applied to the containing object, or the significance of the value in the context
+                                                                  of the containing object.</p>
+                                                            </div>
+                                                         </details>
+                                                      </div>
+                                                      <details class="properties" open="open">
+                                                         <summary>Properties (7)</summary>
+                                                         <div class="model-entry definition assembly">
+                                                            <div class="instance-header">
+                                                               <p id="/system-security-plan/control-implementation/implemented-requirements/statements/rule-implementations/props/name" class="toc7 name">name</p>
+                                                               <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                               <p class="occurrence">[1]</p>
+                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/rule-implementation/prop/@name">Switch to XML</a></div>
+                                                               <p class="formal-name">Property Name</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
+                                                                  characteristic, or quality of the property's containing object.</p>
+                                                               <details class="constraints" open="open">
+                                                                  <summary>Constraint (1)</summary>
+                                                                  <div class="constraint">
+                                                                     <p><span class="usa-tag">allowed value</span></p>
+                                                                     <p>The value <b>must</b> be one of the following:</p>
+                                                                     <ul>
+                                                                        
+                                                                        
+                                                                        <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                                           An optional class can be used to define the specific marking system used for the associated
+                                                                           value.</li>
+                                                                        </ul>
+                                                                  </div>
+                                                               </details>
+                                                            </div>
+                                                         </div>
+                                                         <div class="model-entry definition assembly">
+                                                            <div class="instance-header">
+                                                               <p id="/system-security-plan/control-implementation/implemented-requirements/statements/rule-implementations/props/uuid" class="toc7 name">uuid</p>
+                                                               <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                                               <p class="occurrence">[0 or 1]</p>
+                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/rule-implementation/prop/@uuid">Switch to XML</a></div>
+                                                               <p class="formal-name">Property Universally Unique Identifier</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p class="description"><span class="usa-tag">Description</span> A unique identifier for a property.</p>
+                                                            </div>
+                                                         </div>
+                                                         <div class="model-entry definition assembly">
+                                                            <div class="instance-header">
+                                                               <p id="/system-security-plan/control-implementation/implemented-requirements/statements/rule-implementations/props/ns" class="toc7 name">ns</p>
+                                                               <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
+                                                               <p class="occurrence">[0 or 1]</p>
+                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/rule-implementation/prop/@ns">Switch to XML</a></div>
+                                                               <p class="formal-name">Property Namespace</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p class="description"><span class="usa-tag">Description</span> A namespace qualifying the property's name. This allows different organizations to
+                                                                  associate distinct semantics with the same name.</p>
+                                                               <div class="remarks-group usa-prose">
+                                                                  <details open="open">
+                                                                     <summary class="subhead">Remarks</summary>
+                                                                     <div class="remarks">
+                                                                        <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                                        <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
+                                                                     </div>
+                                                                  </details>
+                                                               </div>
+                                                            </div>
+                                                         </div>
+                                                         <div class="model-entry definition assembly">
+                                                            <div class="instance-header">
+                                                               <p id="/system-security-plan/control-implementation/implemented-requirements/statements/rule-implementations/props/value" class="toc7 name">value</p>
+                                                               <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                               <p class="occurrence">[1]</p>
+                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/rule-implementation/prop/@value">Switch to XML</a></div>
+                                                               <p class="formal-name">Property Value</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p class="description"><span class="usa-tag">Description</span> Indicates the value of the attribute, characteristic, or quality.</p>
+                                                            </div>
+                                                         </div>
+                                                         <div class="model-entry definition assembly">
+                                                            <div class="instance-header">
+                                                               <p id="/system-security-plan/control-implementation/implemented-requirements/statements/rule-implementations/props/class" class="toc7 name">class</p>
+                                                               <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                               <p class="occurrence">[0 or 1]</p>
+                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/rule-implementation/prop/@class">Switch to XML</a></div>
+                                                               <p class="formal-name">Property Class</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p class="description"><span class="usa-tag">Description</span> A textual label that provides a sub-type or characterization of the property's <code>name</code>.</p>
+                                                               <div class="remarks-group usa-prose">
+                                                                  <details open="open">
+                                                                     <summary class="subhead">Remarks</summary>
+                                                                     <div class="remarks">
+                                                                        <p>This can be used to further distinguish or discriminate between the semantics of multiple
+                                                                           properties of the same object with the same <code>name</code> and <code>ns</code>, or to group properties into categories.</p>
+                                                                        <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
+                                                                           a specific <code>class</code> value. It is available for grouping, but unlike <code>group</code> is not expected specifically to designate any group membership as such.</p>
+                                                                     </div>
+                                                                  </details>
+                                                               </div>
+                                                            </div>
+                                                         </div>
+                                                         <div class="model-entry definition assembly">
+                                                            <div class="instance-header">
+                                                               <p id="/system-security-plan/control-implementation/implemented-requirements/statements/rule-implementations/props/group" class="toc7 name">group</p>
+                                                               <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                               <p class="occurrence">[0 or 1]</p>
+                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/rule-implementation/prop/@group">Switch to XML</a></div>
+                                                               <p class="formal-name">Property Group</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                                               <div class="remarks-group usa-prose">
+                                                                  <details open="open">
+                                                                     <summary class="subhead">Remarks</summary>
+                                                                     <div class="remarks">
+                                                                        <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                                           property to associate it with one or more other properties in a given context.</p>
+                                                                     </div>
+                                                                  </details>
+                                                               </div>
+                                                            </div>
+                                                         </div>
+                                                         <div class="model-entry definition assembly">
+                                                            <div class="instance-header">
+                                                               <p id="/system-security-plan/control-implementation/implemented-requirements/statements/rule-implementations/props/remarks" class="toc7 name">remarks</p>
+                                                               <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                               <p class="occurrence">[0 or 1]</p>
+                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/rule-implementation/prop/remarks">Switch to XML</a></div>
+                                                               <p class="formal-name">Remarks</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p class="description"><span class="usa-tag">Description</span> Additional commentary about the containing object.</p>
+                                                               <div class="remarks-group usa-prose">
+                                                                  <details open="open">
+                                                                     <summary class="subhead">Remarks</summary>
+                                                                     <div class="remarks">
+                                                                        <p>The <code>remarks</code> field SHOULD not be used to store arbitrary data. Instead, a <code>prop</code> or <code>link</code> should be used to annotate or reference any additional data not formally supported
+                                                                           by OSCAL.</p>
+                                                                     </div>
+                                                                  </details>
+                                                               </div>
+                                                            </div>
+                                                         </div>
+                                                      </details>
+                                                   </div>
+                                                </div>
+                                                <div class="model-entry definition assembly">
+                                                   <div class="instance-header">
+                                                      <h6 id="/system-security-plan/control-implementation/implemented-requirements/statements/rule-implementations/links" class="toc6 name">links</h6>
+                                                      <p class="type">array<br /></p>
+                                                      <p class="occurrence">[0 or 1]</p>
+                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/rule-implementation/link">Switch to XML</a></div>
+                                                   </div>
+                                                   <div class="array-header">
+                                                      <p class="array-member">(array member)</p>
+                                                      <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-rules-common/rule-implementation/links">(global definition)</a></p>
+                                                      <p class="occurrence">[1 to ∞]</p>
+                                                      <p class="formal-name">Link</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p class="description"><span class="usa-tag">Description</span> A reference to a local or remote resource, that has a specific relation to the containing
+                                                         object.</p>
+                                                      <div class="remarks-group usa-prose">
+                                                         <details open="open">
+                                                            <summary class="subhead">Remarks</summary>
+                                                            <div class="remarks">
+                                                               <p>To provide a cryptographic hash for a remote target resource, a local reference to
+                                                                  a back matter <code>resource</code> is needed. The resource allows one or more hash values to be provided using the <code>rlink/hash</code> object.</p>
+                                                               <p>The OSCAL <code>link</code> is a roughly based on the HTML <a href="https://www.w3.org/TR/html401/struct/links.html#edef-LINK">link element</a>. </p>
+                                                            </div>
+                                                         </details>
+                                                      </div>
+                                                      <details class="constraints" open="open">
+                                                         <summary>Constraints (3)</summary>
+                                                         <div class="constraint">
+                                                            <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
+                                                         </div>
+                                                         <div class="constraint">
+                                                            <p><span class="usa-tag">index has key</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]</code>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
+                                                         </div>
+                                                         <div class="constraint">
+                                                            <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
+                                                         </div>
+                                                      </details>
+                                                      <details class="properties" open="open">
+                                                         <summary>Properties (4)</summary>
+                                                         <div class="model-entry definition assembly">
+                                                            <div class="instance-header">
+                                                               <p id="/system-security-plan/control-implementation/implemented-requirements/statements/rule-implementations/links/href" class="toc7 name">href</p>
+                                                               <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
+                                                               <p class="occurrence">[1]</p>
+                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/rule-implementation/link/@href">Switch to XML</a></div>
+                                                               <p class="formal-name">Hypertext Reference</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p class="description"><span class="usa-tag">Description</span> A resolvable URL reference to a resource.</p>
+                                                               <div class="remarks-group usa-prose">
+                                                                  <details open="open">
+                                                                     <summary class="subhead">Remarks</summary>
+                                                                     <div class="remarks">
+                                                                        <p>This value may be one of:</p>
+                                                                        <ol>
+                                                                           
+                                                                           <li>an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
+                                                                           
+                                                                           <li>a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
+                                                                              document, or</li>
+                                                                           
+                                                                           <li>a bare URI fragment (i.e., `#uuid`) pointing to an OSCAL object by the objects identifier
+                                                                              (e.g., id, uuid) in this or an imported document (see <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>). The specific object type will differ based on the link relationship type.</li>
+                                                                           </ol>
+                                                                     </div>
+                                                                  </details>
+                                                               </div>
+                                                            </div>
+                                                         </div>
+                                                         <div class="model-entry definition assembly">
+                                                            <div class="instance-header">
+                                                               <p id="/system-security-plan/control-implementation/implemented-requirements/statements/rule-implementations/links/rel" class="toc7 name">rel</p>
+                                                               <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                               <p class="occurrence">[0 or 1]</p>
+                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/rule-implementation/link/@rel">Switch to XML</a></div>
+                                                               <p class="formal-name">Link Relation Type</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p class="description"><span class="usa-tag">Description</span> Describes the type of relationship provided by the link's hypertext reference. This
+                                                                  can be an indicator of the link's purpose.</p>
+                                                               <details class="constraints" open="open">
+                                                                  <summary>Constraint (1)</summary>
+                                                                  <div class="constraint">
+                                                                     <p><span class="usa-tag">allowed value</span></p>
+                                                                     <p>The value <b>may be locally defined</b>, or the following:</p>
+                                                                     <ul>
+                                                                        
+                                                                        <li><strong>reference</strong>: A generalized reference to a network resource (relative or absolute) or to a back-matter
+                                                                           resource by UUID expressed as a bare URI fragment.</li>
+                                                                        </ul>
+                                                                  </div>
+                                                               </details>
+                                                            </div>
+                                                         </div>
+                                                         <div class="model-entry definition assembly">
+                                                            <div class="instance-header">
+                                                               <p id="/system-security-plan/control-implementation/implemented-requirements/statements/rule-implementations/links/media-type" class="toc7 name">media-type</p>
+                                                               <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                               <p class="occurrence">[0 or 1]</p>
+                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/rule-implementation/link/@media-type">Switch to XML</a></div>
+                                                               <p class="formal-name">Media Type</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p class="description"><span class="usa-tag">Description</span> A label that indicates the nature of a resource, as a data serialization or format.</p>
+                                                               <div class="remarks-group usa-prose">
+                                                                  <details open="open">
+                                                                     <summary class="subhead">Remarks</summary>
+                                                                     <div class="remarks">
+                                                                        <p> The Internet Assigned Numbers Authority (IANA) <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">Media Types Registry</a> defines a standardized set of media types, which may be used here.</p>
+                                                                        <p>The <code>application/oscal+xml</code>, <code>application/oscal+json</code> or <code>application/oscal+yaml</code> media types SHOULD be used when referencing OSCAL XML, JSON, or YAML resources respectively.</p>
+                                                                        <p>**Note: There is no official media type for YAML at this time.** OSCAL documents should
+                                                                           specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name
+                                                                           suffix, per <a href="https://www.rfc-editor.org/rfc/rfc6838.html#section-4.2.8">RFC 6838 Section 4.2.8</a>.</p>
+                                                                        <p>Some earlier OSCAL content incorporated the model into the media type. For example:
+                                                                           <code>application/oscal.catalog+xml</code>. This practice SHOULD be avoided, since the OSCAL model can be detected by parsing
+                                                                           the initial content of the referenced resource.</p>
+                                                                     </div>
+                                                                     <div class="remarks">
+                                                                        <p>The <code>media-type</code> provides a hint about the content model of the referenced resource. A valid entry
+                                                                           from the <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">IANA Media Types registry</a> SHOULD be used.</p>
+                                                                     </div>
+                                                                  </details>
+                                                               </div>
+                                                            </div>
+                                                         </div>
+                                                         <div class="model-entry definition assembly">
+                                                            <div class="instance-header">
+                                                               <p id="/system-security-plan/control-implementation/implemented-requirements/statements/rule-implementations/links/text" class="toc7 name">text</p>
+                                                               <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                               <p class="occurrence">[0 or 1]</p>
+                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/rule-implementation/link/text">Switch to XML</a></div>
+                                                               <p class="formal-name">Link Text</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p class="description"><span class="usa-tag">Description</span> A textual label to associate with the link, which may be used for presentation in
+                                                                  a tool.</p>
+                                                            </div>
+                                                         </div>
+                                                      </details>
+                                                   </div>
+                                                </div>
+                                                <div class="choice">
+                                                   <p>A choice:</p>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/system-security-plan/control-implementation/implemented-requirements/statements/rule-implementations/condition" class="toc6 name">condition</h6>
+                                                         <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-rules-common/rule-implementation/condition">(global definition)</a></p>
+                                                         <p class="occurrence">[0 or 1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/rule-implementation/condition">Switch to XML</a></div>
+                                                         <p class="formal-name">Rule Condition</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> A rule implementation condition</p>
+                                                         <details class="properties" open="open">
+                                                            <summary>Properties (7)</summary>
+                                                            <div class="model-entry definition assembly">
+                                                               <div class="instance-header">
+                                                                  <p id="/system-security-plan/control-implementation/implemented-requirements/statements/rule-implementations/condition/negate" class="toc7 name">negate</p>
+                                                                  <p class="type"><a href="/reference/datatypes/#boolean">boolean</a></p>
+                                                                  <p class="occurrence">[0 or 1]</p>
+                                                                  <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/rule-implementation/condition/@negate">Switch to XML</a></div>
+                                                                  <p class="formal-name">Rule Condition Negation Flag</p>
+                                                               </div>
+                                                               <div class="body">
+                                                                  <p class="description"><span class="usa-tag">Description</span> TODO</p>
+                                                                  <div class="remarks-group usa-prose">
+                                                                     <details open="open">
+                                                                        <summary class="subhead">Remarks</summary>
+                                                                        <div class="remarks">
+                                                                           <h1>Negate Truth Table</h1>
+                                                                           <p>true -&gt; false, false -&gt; true, error -&gt; error, not-applicable -&gt; not-applicable</p>
+                                                                        </div>
+                                                                     </details>
+                                                                  </div>
+                                                               </div>
+                                                            </div>
+                                                            <div class="model-entry definition assembly">
+                                                               <div class="instance-header">
+                                                                  <p id="/system-security-plan/control-implementation/implemented-requirements/statements/rule-implementations/condition/operator" class="toc7 name">operator</p>
+                                                                  <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                                  <p class="occurrence">[1]</p>
+                                                                  <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/rule-implementation/condition/@operator">Switch to XML</a></div>
+                                                                  <p class="formal-name">Rule Condition Operator</p>
+                                                               </div>
+                                                               <div class="body">
+                                                                  <p class="description"><span class="usa-tag">Description</span> TODO</p>
+                                                                  <div class="remarks-group usa-prose">
+                                                                     <details open="open">
+                                                                        <summary class="subhead">Remarks</summary>
+                                                                        <div class="remarks">
+                                                                           <h1>Operator Truth Table</h1>
+                                                                           <p>What is eager evaluation and why does it matter?</p>
+                                                                           <p>How do prerequisites work in the processing of condition operators and precedence.</p>
+                                                                        </div>
+                                                                     </details>
+                                                                  </div>
+                                                                  <details class="constraints" open="open">
+                                                                     <summary>Constraint (1)</summary>
+                                                                     <div class="constraint">
+                                                                        <p><span class="usa-tag">allowed values</span></p>
+                                                                        <p>The value <b>must</b> be one of the following:</p>
+                                                                        <ul>
+                                                                           
+                                                                           <li><strong>and</strong>: and</li>
+                                                                           
+                                                                           <li><strong>or</strong>: or</li>
+                                                                           </ul>
+                                                                     </div>
+                                                                  </details>
+                                                               </div>
+                                                            </div>
+                                                            <div class="model-entry definition assembly">
+                                                               <div class="instance-header">
+                                                                  <p id="/system-security-plan/control-implementation/implemented-requirements/statements/rule-implementations/condition/props" class="toc7 name">props</p>
+                                                                  <p class="type">array<br /></p>
+                                                                  <p class="occurrence">[0 or 1]</p>
+                                                                  <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/rule-implementation/condition/prop">Switch to XML</a></div>
+                                                               </div>
+                                                               <div class="array-header">
+                                                                  <p class="array-member">(array member)</p>
+                                                                  <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-rules-common/rule-condition/props">(global definition)</a></p>
+                                                                  <p class="occurrence">[1 to ∞]</p>
+                                                                  <p class="formal-name">Property</p>
+                                                               </div>
+                                                               <div class="body">
+                                                                  <p class="description"><span class="usa-tag">Description</span> An attribute, characteristic, or quality of the containing object expressed as a
+                                                                     namespace qualified name/value pair.</p>
+                                                                  <div class="remarks-group usa-prose">
+                                                                     <details open="open">
+                                                                        <summary class="subhead">Remarks</summary>
+                                                                        <div class="remarks">
+                                                                           <p>Properties permit the deployment and management of arbitrary controlled values, within
+                                                                              OSCAL objects. A property can be included for any purpose useful to an application
+                                                                              or implementation. Typically, properties will be used to sort, filter, select, order,
+                                                                              and arrange OSCAL content objects, to relate OSCAL objects to one another, or to associate
+                                                                              an OSCAL object to class hierarchies, taxonomies, or external authorities. Thus, the
+                                                                              lexical composition of properties may be constrained by external processes to ensure
+                                                                              consistency.</p>
+                                                                           <p>Property allows for associated remarks that describe why the specific property value
+                                                                              was applied to the containing object, or the significance of the value in the context
+                                                                              of the containing object.</p>
+                                                                        </div>
+                                                                     </details>
+                                                                  </div>
+                                                                  <details class="properties" open="open">
+                                                                     <summary>Properties (7)</summary>
+                                                                     <div class="model-entry definition assembly">
+                                                                        <div class="instance-header">
+                                                                           <p id="/system-security-plan/control-implementation/implemented-requirements/statements/rule-implementations/condition/props/name" class="toc8 name">name</p>
+                                                                           <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                                           <p class="occurrence">[1]</p>
+                                                                           <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/rule-implementation/condition/prop/@name">Switch to XML</a></div>
+                                                                           <p class="formal-name">Property Name</p>
+                                                                        </div>
+                                                                        <div class="body">
+                                                                           <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
+                                                                              characteristic, or quality of the property's containing object.</p>
+                                                                           <details class="constraints" open="open">
+                                                                              <summary>Constraint (1)</summary>
+                                                                              <div class="constraint">
+                                                                                 <p><span class="usa-tag">allowed value</span></p>
+                                                                                 <p>The value <b>must</b> be one of the following:</p>
+                                                                                 <ul>
+                                                                                    
+                                                                                    
+                                                                                    <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                                                       An optional class can be used to define the specific marking system used for the associated
+                                                                                       value.</li>
+                                                                                    </ul>
+                                                                              </div>
+                                                                           </details>
+                                                                        </div>
+                                                                     </div>
+                                                                     <div class="model-entry definition assembly">
+                                                                        <div class="instance-header">
+                                                                           <p id="/system-security-plan/control-implementation/implemented-requirements/statements/rule-implementations/condition/props/uuid" class="toc8 name">uuid</p>
+                                                                           <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                                                           <p class="occurrence">[0 or 1]</p>
+                                                                           <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/rule-implementation/condition/prop/@uuid">Switch to XML</a></div>
+                                                                           <p class="formal-name">Property Universally Unique Identifier</p>
+                                                                        </div>
+                                                                        <div class="body">
+                                                                           <p class="description"><span class="usa-tag">Description</span> A unique identifier for a property.</p>
+                                                                        </div>
+                                                                     </div>
+                                                                     <div class="model-entry definition assembly">
+                                                                        <div class="instance-header">
+                                                                           <p id="/system-security-plan/control-implementation/implemented-requirements/statements/rule-implementations/condition/props/ns" class="toc8 name">ns</p>
+                                                                           <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
+                                                                           <p class="occurrence">[0 or 1]</p>
+                                                                           <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/rule-implementation/condition/prop/@ns">Switch to XML</a></div>
+                                                                           <p class="formal-name">Property Namespace</p>
+                                                                        </div>
+                                                                        <div class="body">
+                                                                           <p class="description"><span class="usa-tag">Description</span> A namespace qualifying the property's name. This allows different organizations to
+                                                                              associate distinct semantics with the same name.</p>
+                                                                           <div class="remarks-group usa-prose">
+                                                                              <details open="open">
+                                                                                 <summary class="subhead">Remarks</summary>
+                                                                                 <div class="remarks">
+                                                                                    <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                                                    <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
+                                                                                 </div>
+                                                                              </details>
+                                                                           </div>
+                                                                        </div>
+                                                                     </div>
+                                                                     <div class="model-entry definition assembly">
+                                                                        <div class="instance-header">
+                                                                           <p id="/system-security-plan/control-implementation/implemented-requirements/statements/rule-implementations/condition/props/value" class="toc8 name">value</p>
+                                                                           <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                                           <p class="occurrence">[1]</p>
+                                                                           <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/rule-implementation/condition/prop/@value">Switch to XML</a></div>
+                                                                           <p class="formal-name">Property Value</p>
+                                                                        </div>
+                                                                        <div class="body">
+                                                                           <p class="description"><span class="usa-tag">Description</span> Indicates the value of the attribute, characteristic, or quality.</p>
+                                                                        </div>
+                                                                     </div>
+                                                                     <div class="model-entry definition assembly">
+                                                                        <div class="instance-header">
+                                                                           <p id="/system-security-plan/control-implementation/implemented-requirements/statements/rule-implementations/condition/props/class" class="toc8 name">class</p>
+                                                                           <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                                           <p class="occurrence">[0 or 1]</p>
+                                                                           <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/rule-implementation/condition/prop/@class">Switch to XML</a></div>
+                                                                           <p class="formal-name">Property Class</p>
+                                                                        </div>
+                                                                        <div class="body">
+                                                                           <p class="description"><span class="usa-tag">Description</span> A textual label that provides a sub-type or characterization of the property's <code>name</code>.</p>
+                                                                           <div class="remarks-group usa-prose">
+                                                                              <details open="open">
+                                                                                 <summary class="subhead">Remarks</summary>
+                                                                                 <div class="remarks">
+                                                                                    <p>This can be used to further distinguish or discriminate between the semantics of multiple
+                                                                                       properties of the same object with the same <code>name</code> and <code>ns</code>, or to group properties into categories.</p>
+                                                                                    <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
+                                                                                       a specific <code>class</code> value. It is available for grouping, but unlike <code>group</code> is not expected specifically to designate any group membership as such.</p>
+                                                                                 </div>
+                                                                              </details>
+                                                                           </div>
+                                                                        </div>
+                                                                     </div>
+                                                                     <div class="model-entry definition assembly">
+                                                                        <div class="instance-header">
+                                                                           <p id="/system-security-plan/control-implementation/implemented-requirements/statements/rule-implementations/condition/props/group" class="toc8 name">group</p>
+                                                                           <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                                           <p class="occurrence">[0 or 1]</p>
+                                                                           <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/rule-implementation/condition/prop/@group">Switch to XML</a></div>
+                                                                           <p class="formal-name">Property Group</p>
+                                                                        </div>
+                                                                        <div class="body">
+                                                                           <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                                                           <div class="remarks-group usa-prose">
+                                                                              <details open="open">
+                                                                                 <summary class="subhead">Remarks</summary>
+                                                                                 <div class="remarks">
+                                                                                    <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                                                       property to associate it with one or more other properties in a given context.</p>
+                                                                                 </div>
+                                                                              </details>
+                                                                           </div>
+                                                                        </div>
+                                                                     </div>
+                                                                     <div class="model-entry definition assembly">
+                                                                        <div class="instance-header">
+                                                                           <p id="/system-security-plan/control-implementation/implemented-requirements/statements/rule-implementations/condition/props/remarks" class="toc8 name">remarks</p>
+                                                                           <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                                           <p class="occurrence">[0 or 1]</p>
+                                                                           <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/rule-implementation/condition/prop/remarks">Switch to XML</a></div>
+                                                                           <p class="formal-name">Remarks</p>
+                                                                        </div>
+                                                                        <div class="body">
+                                                                           <p class="description"><span class="usa-tag">Description</span> Additional commentary about the containing object.</p>
+                                                                           <div class="remarks-group usa-prose">
+                                                                              <details open="open">
+                                                                                 <summary class="subhead">Remarks</summary>
+                                                                                 <div class="remarks">
+                                                                                    <p>The <code>remarks</code> field SHOULD not be used to store arbitrary data. Instead, a <code>prop</code> or <code>link</code> should be used to annotate or reference any additional data not formally supported
+                                                                                       by OSCAL.</p>
+                                                                                 </div>
+                                                                              </details>
+                                                                           </div>
+                                                                        </div>
+                                                                     </div>
+                                                                  </details>
+                                                               </div>
+                                                            </div>
+                                                            <div class="model-entry definition assembly">
+                                                               <div class="instance-header">
+                                                                  <p id="/system-security-plan/control-implementation/implemented-requirements/statements/rule-implementations/condition/links" class="toc7 name">links</p>
+                                                                  <p class="type">array<br /></p>
+                                                                  <p class="occurrence">[0 or 1]</p>
+                                                                  <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/rule-implementation/condition/link">Switch to XML</a></div>
+                                                               </div>
+                                                               <div class="array-header">
+                                                                  <p class="array-member">(array member)</p>
+                                                                  <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-rules-common/rule-condition/links">(global definition)</a></p>
+                                                                  <p class="occurrence">[1 to ∞]</p>
+                                                                  <p class="formal-name">Link</p>
+                                                               </div>
+                                                               <div class="body">
+                                                                  <p class="description"><span class="usa-tag">Description</span> A reference to a local or remote resource, that has a specific relation to the containing
+                                                                     object.</p>
+                                                                  <div class="remarks-group usa-prose">
+                                                                     <details open="open">
+                                                                        <summary class="subhead">Remarks</summary>
+                                                                        <div class="remarks">
+                                                                           <p>To provide a cryptographic hash for a remote target resource, a local reference to
+                                                                              a back matter <code>resource</code> is needed. The resource allows one or more hash values to be provided using the <code>rlink/hash</code> object.</p>
+                                                                           <p>The OSCAL <code>link</code> is a roughly based on the HTML <a href="https://www.w3.org/TR/html401/struct/links.html#edef-LINK">link element</a>. </p>
+                                                                        </div>
+                                                                     </details>
+                                                                  </div>
+                                                                  <details class="constraints" open="open">
+                                                                     <summary>Constraints (3)</summary>
+                                                                     <div class="constraint">
+                                                                        <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
+                                                                     </div>
+                                                                     <div class="constraint">
+                                                                        <p><span class="usa-tag">index has key</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]</code>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
+                                                                     </div>
+                                                                     <div class="constraint">
+                                                                        <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
+                                                                     </div>
+                                                                  </details>
+                                                                  <details class="properties" open="open">
+                                                                     <summary>Properties (4)</summary>
+                                                                     <div class="model-entry definition assembly">
+                                                                        <div class="instance-header">
+                                                                           <p id="/system-security-plan/control-implementation/implemented-requirements/statements/rule-implementations/condition/links/href" class="toc8 name">href</p>
+                                                                           <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
+                                                                           <p class="occurrence">[1]</p>
+                                                                           <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/rule-implementation/condition/link/@href">Switch to XML</a></div>
+                                                                           <p class="formal-name">Hypertext Reference</p>
+                                                                        </div>
+                                                                        <div class="body">
+                                                                           <p class="description"><span class="usa-tag">Description</span> A resolvable URL reference to a resource.</p>
+                                                                           <div class="remarks-group usa-prose">
+                                                                              <details open="open">
+                                                                                 <summary class="subhead">Remarks</summary>
+                                                                                 <div class="remarks">
+                                                                                    <p>This value may be one of:</p>
+                                                                                    <ol>
+                                                                                       
+                                                                                       <li>an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
+                                                                                       
+                                                                                       <li>a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
+                                                                                          document, or</li>
+                                                                                       
+                                                                                       <li>a bare URI fragment (i.e., `#uuid`) pointing to an OSCAL object by the objects identifier
+                                                                                          (e.g., id, uuid) in this or an imported document (see <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>). The specific object type will differ based on the link relationship type.</li>
+                                                                                       </ol>
+                                                                                 </div>
+                                                                              </details>
+                                                                           </div>
+                                                                        </div>
+                                                                     </div>
+                                                                     <div class="model-entry definition assembly">
+                                                                        <div class="instance-header">
+                                                                           <p id="/system-security-plan/control-implementation/implemented-requirements/statements/rule-implementations/condition/links/rel" class="toc8 name">rel</p>
+                                                                           <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                                           <p class="occurrence">[0 or 1]</p>
+                                                                           <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/rule-implementation/condition/link/@rel">Switch to XML</a></div>
+                                                                           <p class="formal-name">Link Relation Type</p>
+                                                                        </div>
+                                                                        <div class="body">
+                                                                           <p class="description"><span class="usa-tag">Description</span> Describes the type of relationship provided by the link's hypertext reference. This
+                                                                              can be an indicator of the link's purpose.</p>
+                                                                           <details class="constraints" open="open">
+                                                                              <summary>Constraint (1)</summary>
+                                                                              <div class="constraint">
+                                                                                 <p><span class="usa-tag">allowed value</span></p>
+                                                                                 <p>The value <b>may be locally defined</b>, or the following:</p>
+                                                                                 <ul>
+                                                                                    
+                                                                                    <li><strong>reference</strong>: A generalized reference to a network resource (relative or absolute) or to a back-matter
+                                                                                       resource by UUID expressed as a bare URI fragment.</li>
+                                                                                    </ul>
+                                                                              </div>
+                                                                           </details>
+                                                                        </div>
+                                                                     </div>
+                                                                     <div class="model-entry definition assembly">
+                                                                        <div class="instance-header">
+                                                                           <p id="/system-security-plan/control-implementation/implemented-requirements/statements/rule-implementations/condition/links/media-type" class="toc8 name">media-type</p>
+                                                                           <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                                           <p class="occurrence">[0 or 1]</p>
+                                                                           <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/rule-implementation/condition/link/@media-type">Switch to XML</a></div>
+                                                                           <p class="formal-name">Media Type</p>
+                                                                        </div>
+                                                                        <div class="body">
+                                                                           <p class="description"><span class="usa-tag">Description</span> A label that indicates the nature of a resource, as a data serialization or format.</p>
+                                                                           <div class="remarks-group usa-prose">
+                                                                              <details open="open">
+                                                                                 <summary class="subhead">Remarks</summary>
+                                                                                 <div class="remarks">
+                                                                                    <p> The Internet Assigned Numbers Authority (IANA) <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">Media Types Registry</a> defines a standardized set of media types, which may be used here.</p>
+                                                                                    <p>The <code>application/oscal+xml</code>, <code>application/oscal+json</code> or <code>application/oscal+yaml</code> media types SHOULD be used when referencing OSCAL XML, JSON, or YAML resources respectively.</p>
+                                                                                    <p>**Note: There is no official media type for YAML at this time.** OSCAL documents should
+                                                                                       specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name
+                                                                                       suffix, per <a href="https://www.rfc-editor.org/rfc/rfc6838.html#section-4.2.8">RFC 6838 Section 4.2.8</a>.</p>
+                                                                                    <p>Some earlier OSCAL content incorporated the model into the media type. For example:
+                                                                                       <code>application/oscal.catalog+xml</code>. This practice SHOULD be avoided, since the OSCAL model can be detected by parsing
+                                                                                       the initial content of the referenced resource.</p>
+                                                                                 </div>
+                                                                                 <div class="remarks">
+                                                                                    <p>The <code>media-type</code> provides a hint about the content model of the referenced resource. A valid entry
+                                                                                       from the <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">IANA Media Types registry</a> SHOULD be used.</p>
+                                                                                 </div>
+                                                                              </details>
+                                                                           </div>
+                                                                        </div>
+                                                                     </div>
+                                                                     <div class="model-entry definition assembly">
+                                                                        <div class="instance-header">
+                                                                           <p id="/system-security-plan/control-implementation/implemented-requirements/statements/rule-implementations/condition/links/text" class="toc8 name">text</p>
+                                                                           <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                                           <p class="occurrence">[0 or 1]</p>
+                                                                           <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/rule-implementation/condition/link/text">Switch to XML</a></div>
+                                                                           <p class="formal-name">Link Text</p>
+                                                                        </div>
+                                                                        <div class="body">
+                                                                           <p class="description"><span class="usa-tag">Description</span> A textual label to associate with the link, which may be used for presentation in
+                                                                              a tool.</p>
+                                                                        </div>
+                                                                     </div>
+                                                                  </details>
+                                                               </div>
+                                                            </div>
+                                                            <div class="model-entry definition assembly">
+                                                               <div class="instance-header">
+                                                                  <p id="/system-security-plan/control-implementation/implemented-requirements/statements/rule-implementations/condition/prerequisite" class="toc7 name">prerequisite</p>
+                                                                  <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-rules-common/rule-condition/prerequisite">(global definition)</a></p>
+                                                                  <p class="occurrence">[0 or 1]</p>
+                                                                  <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/rule-implementation/condition/prerequisite">Switch to XML</a></div>
+                                                                  <p class="formal-name">Rule Condition</p>
+                                                               </div>
+                                                               <div class="body">
+                                                                  <p class="description"><span class="usa-tag">Description</span> A rule implementation condition</p>
+                                                               </div>
+                                                            </div>
+                                                            <div class="choice">
+                                                               <p>A choice:</p>
+                                                               <div class="model-entry definition assembly">
+                                                                  <div class="instance-header">
+                                                                     <p id="/system-security-plan/control-implementation/implemented-requirements/statements/rule-implementations/condition/rule-conditions" class="toc7 name">rule-conditions</p>
+                                                                     <p class="type">array<br /></p>
+                                                                     <p class="occurrence">[1]</p>
+                                                                     <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/rule-implementation/condition/condition">Switch to XML</a></div>
+                                                                  </div>
+                                                                  <div class="array-header">
+                                                                     <p class="array-member">(array member)</p>
+                                                                     <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-rules-common/rule-condition/rule-conditions">(global definition)</a></p>
+                                                                     <p class="occurrence">[1 to ∞]</p>
+                                                                     <p class="formal-name">Rule Condition</p>
+                                                                  </div>
+                                                                  <div class="body">
+                                                                     <p class="description"><span class="usa-tag">Description</span> A rule implementation condition</p>
+                                                                  </div>
+                                                               </div>
+                                                               <div class="model-entry definition assembly">
+                                                                  <div class="instance-header">
+                                                                     <p id="/system-security-plan/control-implementation/implemented-requirements/statements/rule-implementations/condition/test-references" class="toc7 name">test-references</p>
+                                                                     <p class="type">array<br /></p>
+                                                                     <p class="occurrence">[1]</p>
+                                                                     <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/rule-implementation/condition/test-reference">Switch to XML</a></div>
+                                                                  </div>
+                                                                  <div class="array-header">
+                                                                     <p class="array-member">(array member)</p>
+                                                                     <p class="type"><a href="/reference/datatypes/#empty">empty</a></p>
+                                                                     <p class="occurrence">[1 to ∞]</p>
+                                                                     <p class="formal-name">Test Reference</p>
+                                                                  </div>
+                                                                  <div class="body">
+                                                                     <p class="description"><span class="usa-tag">Description</span> TODO</p>
+                                                                     <details class="properties" open="open">
+                                                                        <summary>Property (1)</summary>
+                                                                        <div class="model-entry definition assembly">
+                                                                           <div class="instance-header">
+                                                                              <p id="/system-security-plan/control-implementation/implemented-requirements/statements/rule-implementations/condition/test-references/test-uuid" class="toc8 name">test-uuid</p>
+                                                                              <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                                                              <p class="occurrence">[1]</p>
+                                                                              <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/rule-implementation/condition/test-reference/@test-uuid">Switch to XML</a></div>
+                                                                              <p class="formal-name">Test Universally Unique Identifier Reference</p>
+                                                                           </div>
+                                                                           <div class="body">
+                                                                              <p class="description"><span class="usa-tag">Description</span> A test UUID reference</p>
+                                                                           </div>
+                                                                        </div>
+                                                                     </details>
+                                                                  </div>
+                                                               </div>
+                                                               <div class="model-entry definition assembly">
+                                                                  <div class="instance-header">
+                                                                     <p id="/system-security-plan/control-implementation/implemented-requirements/statements/rule-implementations/condition/testing-scenario-references" class="toc7 name">testing-scenario-references</p>
+                                                                     <p class="type">array<br /></p>
+                                                                     <p class="occurrence">[1]</p>
+                                                                     <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/rule-implementation/condition/testing-scenario-reference">Switch to XML</a></div>
+                                                                  </div>
+                                                                  <div class="array-header">
+                                                                     <p class="array-member">(array member)</p>
+                                                                     <p class="type"><a href="/reference/datatypes/#empty">empty</a></p>
+                                                                     <p class="occurrence">[1 to ∞]</p>
+                                                                     <p class="formal-name">Testing Scenario Reference</p>
+                                                                  </div>
+                                                                  <div class="body">
+                                                                     <p class="description"><span class="usa-tag">Description</span> A reference to a testing scenario.</p>
+                                                                     <details class="properties" open="open">
+                                                                        <summary>Property (1)</summary>
+                                                                        <div class="model-entry definition assembly">
+                                                                           <div class="instance-header">
+                                                                              <p id="/system-security-plan/control-implementation/implemented-requirements/statements/rule-implementations/condition/testing-scenario-references/testing-scenario-uuid" class="toc8 name">testing-scenario-uuid</p>
+                                                                              <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                                                              <p class="occurrence">[0 or 1]</p>
+                                                                              <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/rule-implementation/condition/testing-scenario-reference/@testing-scenario-uuid">Switch to XML</a></div>
+                                                                              <p class="formal-name">Testing Scenario Universally Unique Identifier Reference</p>
+                                                                           </div>
+                                                                           <div class="body">
+                                                                              <p class="description"><span class="usa-tag">Description</span> A testing scenario UUID reference</p>
+                                                                           </div>
+                                                                        </div>
+                                                                     </details>
+                                                                  </div>
+                                                               </div>
+                                                            </div>
+                                                            <div class="model-entry definition assembly">
+                                                               <div class="instance-header">
+                                                                  <p id="/system-security-plan/control-implementation/implemented-requirements/statements/rule-implementations/condition/remarks" class="toc7 name">remarks</p>
+                                                                  <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                                  <p class="occurrence">[0 or 1]</p>
+                                                                  <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/rule-implementation/condition/remarks">Switch to XML</a></div>
+                                                                  <p class="formal-name">Remarks</p>
+                                                               </div>
+                                                               <div class="body">
+                                                                  <p class="description"><span class="usa-tag">Description</span> Additional commentary about the containing object.</p>
+                                                                  <div class="remarks-group usa-prose">
+                                                                     <details open="open">
+                                                                        <summary class="subhead">Remarks</summary>
+                                                                        <div class="remarks">
+                                                                           <p>The <code>remarks</code> field SHOULD not be used to store arbitrary data. Instead, a <code>prop</code> or <code>link</code> should be used to annotate or reference any additional data not formally supported
+                                                                              by OSCAL.</p>
+                                                                        </div>
+                                                                     </details>
+                                                                  </div>
+                                                               </div>
+                                                            </div>
+                                                         </details>
+                                                      </div>
+                                                   </div>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/system-security-plan/control-implementation/implemented-requirements/statements/rule-implementations/rule-uuids" class="toc6 name">rule-uuids</h6>
+                                                         <p class="type">array<br /></p>
+                                                         <p class="occurrence">[1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/rule-implementation/rule-uuid">Switch to XML</a></div>
+                                                      </div>
+                                                      <div class="array-header">
+                                                         <p class="array-member">(array member)</p>
+                                                         <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                                         <p class="occurrence">[1 to ∞]</p>
+                                                         <p class="formal-name">Rule Universally Unique Identifier Reference</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> A rule UUID reference</p>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                                <div class="model-entry definition assembly">
+                                                   <div class="instance-header">
+                                                      <h6 id="/system-security-plan/control-implementation/implemented-requirements/statements/rule-implementations/remarks" class="toc6 name">remarks</h6>
+                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                      <p class="occurrence">[0 or 1]</p>
+                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/statement/rule-implementation/remarks">Switch to XML</a></div>
                                                       <p class="formal-name">Remarks</p>
                                                    </div>
                                                    <div class="body">
@@ -21256,7 +24841,7 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                                        </div>
                                     </details>
                                     <details class="properties" open="open">
-                                       <summary>Properties (12)</summary>
+                                       <summary>Properties (13)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/control-implementation/implemented-requirements/by-components/component-uuid" class="toc5 name">component-uuid</h5>
@@ -25741,6 +29326,924 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                                                       <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/by-component/responsible-role/remarks">Switch to XML</a></div>
+                                                      <p class="formal-name">Remarks</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p class="description"><span class="usa-tag">Description</span> Additional commentary about the containing object.</p>
+                                                      <div class="remarks-group usa-prose">
+                                                         <details open="open">
+                                                            <summary class="subhead">Remarks</summary>
+                                                            <div class="remarks">
+                                                               <p>The <code>remarks</code> field SHOULD not be used to store arbitrary data. Instead, a <code>prop</code> or <code>link</code> should be used to annotate or reference any additional data not formally supported
+                                                                  by OSCAL.</p>
+                                                            </div>
+                                                         </details>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                             </details>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/control-implementation/implemented-requirements/by-components/rule-implementations" class="toc5 name">rule-implementations</h5>
+                                             <p class="type">array<br /></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/by-component/rule-implementation">Switch to XML</a></div>
+                                          </div>
+                                          <div class="array-header">
+                                             <p class="array-member">(array member)</p>
+                                             <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-ssp/by-component/rule-implementations">(global definition)</a></p>
+                                             <p class="occurrence">[1 to ∞]</p>
+                                             <p class="formal-name">Rule Implementation</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> TODO</p>
+                                             <div class="remarks-group usa-prose">
+                                                <details open="open">
+                                                   <summary class="subhead">Remarks</summary>
+                                                   <div class="remarks">
+                                                      <p>Multiple rule implementations can be provided to describe alternative approaches for
+                                                         using rules to evaluate the implementation and effectiveness of the containing control.</p>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                             <details class="properties" open="open">
+                                                <summary>Properties (6)</summary>
+                                                <div class="model-entry definition assembly">
+                                                   <div class="instance-header">
+                                                      <h6 id="/system-security-plan/control-implementation/implemented-requirements/by-components/rule-implementations/uuid" class="toc6 name">uuid</h6>
+                                                      <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                                      <p class="occurrence">[1]</p>
+                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/by-component/rule-implementation/@uuid">Switch to XML</a></div>
+                                                      <p class="formal-name">Rule Implementation Universally Unique Identifier</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p class="description"><span class="usa-tag">Description</span> TODO</p>
+                                                   </div>
+                                                </div>
+                                                <div class="model-entry definition assembly">
+                                                   <div class="instance-header">
+                                                      <h6 id="/system-security-plan/control-implementation/implemented-requirements/by-components/rule-implementations/description" class="toc6 name">description</h6>
+                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                      <p class="occurrence">[1]</p>
+                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/by-component/rule-implementation/description">Switch to XML</a></div>
+                                                      <p class="formal-name">Rule Implementation Description</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p class="description"><span class="usa-tag">Description</span> A summary of the rule implementation.</p>
+                                                   </div>
+                                                </div>
+                                                <div class="model-entry definition assembly">
+                                                   <div class="instance-header">
+                                                      <h6 id="/system-security-plan/control-implementation/implemented-requirements/by-components/rule-implementations/props" class="toc6 name">props</h6>
+                                                      <p class="type">array<br /></p>
+                                                      <p class="occurrence">[0 or 1]</p>
+                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/by-component/rule-implementation/prop">Switch to XML</a></div>
+                                                   </div>
+                                                   <div class="array-header">
+                                                      <p class="array-member">(array member)</p>
+                                                      <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-rules-common/rule-implementation/props">(global definition)</a></p>
+                                                      <p class="occurrence">[1 to ∞]</p>
+                                                      <p class="formal-name">Property</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p class="description"><span class="usa-tag">Description</span> An attribute, characteristic, or quality of the containing object expressed as a
+                                                         namespace qualified name/value pair.</p>
+                                                      <div class="remarks-group usa-prose">
+                                                         <details open="open">
+                                                            <summary class="subhead">Remarks</summary>
+                                                            <div class="remarks">
+                                                               <p>Properties permit the deployment and management of arbitrary controlled values, within
+                                                                  OSCAL objects. A property can be included for any purpose useful to an application
+                                                                  or implementation. Typically, properties will be used to sort, filter, select, order,
+                                                                  and arrange OSCAL content objects, to relate OSCAL objects to one another, or to associate
+                                                                  an OSCAL object to class hierarchies, taxonomies, or external authorities. Thus, the
+                                                                  lexical composition of properties may be constrained by external processes to ensure
+                                                                  consistency.</p>
+                                                               <p>Property allows for associated remarks that describe why the specific property value
+                                                                  was applied to the containing object, or the significance of the value in the context
+                                                                  of the containing object.</p>
+                                                            </div>
+                                                         </details>
+                                                      </div>
+                                                      <details class="properties" open="open">
+                                                         <summary>Properties (7)</summary>
+                                                         <div class="model-entry definition assembly">
+                                                            <div class="instance-header">
+                                                               <p id="/system-security-plan/control-implementation/implemented-requirements/by-components/rule-implementations/props/name" class="toc7 name">name</p>
+                                                               <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                               <p class="occurrence">[1]</p>
+                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/by-component/rule-implementation/prop/@name">Switch to XML</a></div>
+                                                               <p class="formal-name">Property Name</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
+                                                                  characteristic, or quality of the property's containing object.</p>
+                                                               <details class="constraints" open="open">
+                                                                  <summary>Constraint (1)</summary>
+                                                                  <div class="constraint">
+                                                                     <p><span class="usa-tag">allowed value</span></p>
+                                                                     <p>The value <b>must</b> be one of the following:</p>
+                                                                     <ul>
+                                                                        
+                                                                        
+                                                                        <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                                           An optional class can be used to define the specific marking system used for the associated
+                                                                           value.</li>
+                                                                        </ul>
+                                                                  </div>
+                                                               </details>
+                                                            </div>
+                                                         </div>
+                                                         <div class="model-entry definition assembly">
+                                                            <div class="instance-header">
+                                                               <p id="/system-security-plan/control-implementation/implemented-requirements/by-components/rule-implementations/props/uuid" class="toc7 name">uuid</p>
+                                                               <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                                               <p class="occurrence">[0 or 1]</p>
+                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/by-component/rule-implementation/prop/@uuid">Switch to XML</a></div>
+                                                               <p class="formal-name">Property Universally Unique Identifier</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p class="description"><span class="usa-tag">Description</span> A unique identifier for a property.</p>
+                                                            </div>
+                                                         </div>
+                                                         <div class="model-entry definition assembly">
+                                                            <div class="instance-header">
+                                                               <p id="/system-security-plan/control-implementation/implemented-requirements/by-components/rule-implementations/props/ns" class="toc7 name">ns</p>
+                                                               <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
+                                                               <p class="occurrence">[0 or 1]</p>
+                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/by-component/rule-implementation/prop/@ns">Switch to XML</a></div>
+                                                               <p class="formal-name">Property Namespace</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p class="description"><span class="usa-tag">Description</span> A namespace qualifying the property's name. This allows different organizations to
+                                                                  associate distinct semantics with the same name.</p>
+                                                               <div class="remarks-group usa-prose">
+                                                                  <details open="open">
+                                                                     <summary class="subhead">Remarks</summary>
+                                                                     <div class="remarks">
+                                                                        <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                                        <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
+                                                                     </div>
+                                                                  </details>
+                                                               </div>
+                                                            </div>
+                                                         </div>
+                                                         <div class="model-entry definition assembly">
+                                                            <div class="instance-header">
+                                                               <p id="/system-security-plan/control-implementation/implemented-requirements/by-components/rule-implementations/props/value" class="toc7 name">value</p>
+                                                               <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                               <p class="occurrence">[1]</p>
+                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/by-component/rule-implementation/prop/@value">Switch to XML</a></div>
+                                                               <p class="formal-name">Property Value</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p class="description"><span class="usa-tag">Description</span> Indicates the value of the attribute, characteristic, or quality.</p>
+                                                            </div>
+                                                         </div>
+                                                         <div class="model-entry definition assembly">
+                                                            <div class="instance-header">
+                                                               <p id="/system-security-plan/control-implementation/implemented-requirements/by-components/rule-implementations/props/class" class="toc7 name">class</p>
+                                                               <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                               <p class="occurrence">[0 or 1]</p>
+                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/by-component/rule-implementation/prop/@class">Switch to XML</a></div>
+                                                               <p class="formal-name">Property Class</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p class="description"><span class="usa-tag">Description</span> A textual label that provides a sub-type or characterization of the property's <code>name</code>.</p>
+                                                               <div class="remarks-group usa-prose">
+                                                                  <details open="open">
+                                                                     <summary class="subhead">Remarks</summary>
+                                                                     <div class="remarks">
+                                                                        <p>This can be used to further distinguish or discriminate between the semantics of multiple
+                                                                           properties of the same object with the same <code>name</code> and <code>ns</code>, or to group properties into categories.</p>
+                                                                        <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
+                                                                           a specific <code>class</code> value. It is available for grouping, but unlike <code>group</code> is not expected specifically to designate any group membership as such.</p>
+                                                                     </div>
+                                                                  </details>
+                                                               </div>
+                                                            </div>
+                                                         </div>
+                                                         <div class="model-entry definition assembly">
+                                                            <div class="instance-header">
+                                                               <p id="/system-security-plan/control-implementation/implemented-requirements/by-components/rule-implementations/props/group" class="toc7 name">group</p>
+                                                               <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                               <p class="occurrence">[0 or 1]</p>
+                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/by-component/rule-implementation/prop/@group">Switch to XML</a></div>
+                                                               <p class="formal-name">Property Group</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                                               <div class="remarks-group usa-prose">
+                                                                  <details open="open">
+                                                                     <summary class="subhead">Remarks</summary>
+                                                                     <div class="remarks">
+                                                                        <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                                           property to associate it with one or more other properties in a given context.</p>
+                                                                     </div>
+                                                                  </details>
+                                                               </div>
+                                                            </div>
+                                                         </div>
+                                                         <div class="model-entry definition assembly">
+                                                            <div class="instance-header">
+                                                               <p id="/system-security-plan/control-implementation/implemented-requirements/by-components/rule-implementations/props/remarks" class="toc7 name">remarks</p>
+                                                               <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                               <p class="occurrence">[0 or 1]</p>
+                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/by-component/rule-implementation/prop/remarks">Switch to XML</a></div>
+                                                               <p class="formal-name">Remarks</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p class="description"><span class="usa-tag">Description</span> Additional commentary about the containing object.</p>
+                                                               <div class="remarks-group usa-prose">
+                                                                  <details open="open">
+                                                                     <summary class="subhead">Remarks</summary>
+                                                                     <div class="remarks">
+                                                                        <p>The <code>remarks</code> field SHOULD not be used to store arbitrary data. Instead, a <code>prop</code> or <code>link</code> should be used to annotate or reference any additional data not formally supported
+                                                                           by OSCAL.</p>
+                                                                     </div>
+                                                                  </details>
+                                                               </div>
+                                                            </div>
+                                                         </div>
+                                                      </details>
+                                                   </div>
+                                                </div>
+                                                <div class="model-entry definition assembly">
+                                                   <div class="instance-header">
+                                                      <h6 id="/system-security-plan/control-implementation/implemented-requirements/by-components/rule-implementations/links" class="toc6 name">links</h6>
+                                                      <p class="type">array<br /></p>
+                                                      <p class="occurrence">[0 or 1]</p>
+                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/by-component/rule-implementation/link">Switch to XML</a></div>
+                                                   </div>
+                                                   <div class="array-header">
+                                                      <p class="array-member">(array member)</p>
+                                                      <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-rules-common/rule-implementation/links">(global definition)</a></p>
+                                                      <p class="occurrence">[1 to ∞]</p>
+                                                      <p class="formal-name">Link</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p class="description"><span class="usa-tag">Description</span> A reference to a local or remote resource, that has a specific relation to the containing
+                                                         object.</p>
+                                                      <div class="remarks-group usa-prose">
+                                                         <details open="open">
+                                                            <summary class="subhead">Remarks</summary>
+                                                            <div class="remarks">
+                                                               <p>To provide a cryptographic hash for a remote target resource, a local reference to
+                                                                  a back matter <code>resource</code> is needed. The resource allows one or more hash values to be provided using the <code>rlink/hash</code> object.</p>
+                                                               <p>The OSCAL <code>link</code> is a roughly based on the HTML <a href="https://www.w3.org/TR/html401/struct/links.html#edef-LINK">link element</a>. </p>
+                                                            </div>
+                                                         </details>
+                                                      </div>
+                                                      <details class="constraints" open="open">
+                                                         <summary>Constraints (3)</summary>
+                                                         <div class="constraint">
+                                                            <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
+                                                         </div>
+                                                         <div class="constraint">
+                                                            <p><span class="usa-tag">index has key</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]</code>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
+                                                         </div>
+                                                         <div class="constraint">
+                                                            <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
+                                                         </div>
+                                                      </details>
+                                                      <details class="properties" open="open">
+                                                         <summary>Properties (4)</summary>
+                                                         <div class="model-entry definition assembly">
+                                                            <div class="instance-header">
+                                                               <p id="/system-security-plan/control-implementation/implemented-requirements/by-components/rule-implementations/links/href" class="toc7 name">href</p>
+                                                               <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
+                                                               <p class="occurrence">[1]</p>
+                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/by-component/rule-implementation/link/@href">Switch to XML</a></div>
+                                                               <p class="formal-name">Hypertext Reference</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p class="description"><span class="usa-tag">Description</span> A resolvable URL reference to a resource.</p>
+                                                               <div class="remarks-group usa-prose">
+                                                                  <details open="open">
+                                                                     <summary class="subhead">Remarks</summary>
+                                                                     <div class="remarks">
+                                                                        <p>This value may be one of:</p>
+                                                                        <ol>
+                                                                           
+                                                                           <li>an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
+                                                                           
+                                                                           <li>a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
+                                                                              document, or</li>
+                                                                           
+                                                                           <li>a bare URI fragment (i.e., `#uuid`) pointing to an OSCAL object by the objects identifier
+                                                                              (e.g., id, uuid) in this or an imported document (see <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>). The specific object type will differ based on the link relationship type.</li>
+                                                                           </ol>
+                                                                     </div>
+                                                                  </details>
+                                                               </div>
+                                                            </div>
+                                                         </div>
+                                                         <div class="model-entry definition assembly">
+                                                            <div class="instance-header">
+                                                               <p id="/system-security-plan/control-implementation/implemented-requirements/by-components/rule-implementations/links/rel" class="toc7 name">rel</p>
+                                                               <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                               <p class="occurrence">[0 or 1]</p>
+                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/by-component/rule-implementation/link/@rel">Switch to XML</a></div>
+                                                               <p class="formal-name">Link Relation Type</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p class="description"><span class="usa-tag">Description</span> Describes the type of relationship provided by the link's hypertext reference. This
+                                                                  can be an indicator of the link's purpose.</p>
+                                                               <details class="constraints" open="open">
+                                                                  <summary>Constraint (1)</summary>
+                                                                  <div class="constraint">
+                                                                     <p><span class="usa-tag">allowed value</span></p>
+                                                                     <p>The value <b>may be locally defined</b>, or the following:</p>
+                                                                     <ul>
+                                                                        
+                                                                        <li><strong>reference</strong>: A generalized reference to a network resource (relative or absolute) or to a back-matter
+                                                                           resource by UUID expressed as a bare URI fragment.</li>
+                                                                        </ul>
+                                                                  </div>
+                                                               </details>
+                                                            </div>
+                                                         </div>
+                                                         <div class="model-entry definition assembly">
+                                                            <div class="instance-header">
+                                                               <p id="/system-security-plan/control-implementation/implemented-requirements/by-components/rule-implementations/links/media-type" class="toc7 name">media-type</p>
+                                                               <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                               <p class="occurrence">[0 or 1]</p>
+                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/by-component/rule-implementation/link/@media-type">Switch to XML</a></div>
+                                                               <p class="formal-name">Media Type</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p class="description"><span class="usa-tag">Description</span> A label that indicates the nature of a resource, as a data serialization or format.</p>
+                                                               <div class="remarks-group usa-prose">
+                                                                  <details open="open">
+                                                                     <summary class="subhead">Remarks</summary>
+                                                                     <div class="remarks">
+                                                                        <p> The Internet Assigned Numbers Authority (IANA) <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">Media Types Registry</a> defines a standardized set of media types, which may be used here.</p>
+                                                                        <p>The <code>application/oscal+xml</code>, <code>application/oscal+json</code> or <code>application/oscal+yaml</code> media types SHOULD be used when referencing OSCAL XML, JSON, or YAML resources respectively.</p>
+                                                                        <p>**Note: There is no official media type for YAML at this time.** OSCAL documents should
+                                                                           specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name
+                                                                           suffix, per <a href="https://www.rfc-editor.org/rfc/rfc6838.html#section-4.2.8">RFC 6838 Section 4.2.8</a>.</p>
+                                                                        <p>Some earlier OSCAL content incorporated the model into the media type. For example:
+                                                                           <code>application/oscal.catalog+xml</code>. This practice SHOULD be avoided, since the OSCAL model can be detected by parsing
+                                                                           the initial content of the referenced resource.</p>
+                                                                     </div>
+                                                                     <div class="remarks">
+                                                                        <p>The <code>media-type</code> provides a hint about the content model of the referenced resource. A valid entry
+                                                                           from the <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">IANA Media Types registry</a> SHOULD be used.</p>
+                                                                     </div>
+                                                                  </details>
+                                                               </div>
+                                                            </div>
+                                                         </div>
+                                                         <div class="model-entry definition assembly">
+                                                            <div class="instance-header">
+                                                               <p id="/system-security-plan/control-implementation/implemented-requirements/by-components/rule-implementations/links/text" class="toc7 name">text</p>
+                                                               <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                               <p class="occurrence">[0 or 1]</p>
+                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/by-component/rule-implementation/link/text">Switch to XML</a></div>
+                                                               <p class="formal-name">Link Text</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p class="description"><span class="usa-tag">Description</span> A textual label to associate with the link, which may be used for presentation in
+                                                                  a tool.</p>
+                                                            </div>
+                                                         </div>
+                                                      </details>
+                                                   </div>
+                                                </div>
+                                                <div class="choice">
+                                                   <p>A choice:</p>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/system-security-plan/control-implementation/implemented-requirements/by-components/rule-implementations/condition" class="toc6 name">condition</h6>
+                                                         <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-rules-common/rule-implementation/condition">(global definition)</a></p>
+                                                         <p class="occurrence">[0 or 1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/by-component/rule-implementation/condition">Switch to XML</a></div>
+                                                         <p class="formal-name">Rule Condition</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> A rule implementation condition</p>
+                                                         <details class="properties" open="open">
+                                                            <summary>Properties (7)</summary>
+                                                            <div class="model-entry definition assembly">
+                                                               <div class="instance-header">
+                                                                  <p id="/system-security-plan/control-implementation/implemented-requirements/by-components/rule-implementations/condition/negate" class="toc7 name">negate</p>
+                                                                  <p class="type"><a href="/reference/datatypes/#boolean">boolean</a></p>
+                                                                  <p class="occurrence">[0 or 1]</p>
+                                                                  <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/by-component/rule-implementation/condition/@negate">Switch to XML</a></div>
+                                                                  <p class="formal-name">Rule Condition Negation Flag</p>
+                                                               </div>
+                                                               <div class="body">
+                                                                  <p class="description"><span class="usa-tag">Description</span> TODO</p>
+                                                                  <div class="remarks-group usa-prose">
+                                                                     <details open="open">
+                                                                        <summary class="subhead">Remarks</summary>
+                                                                        <div class="remarks">
+                                                                           <h1>Negate Truth Table</h1>
+                                                                           <p>true -&gt; false, false -&gt; true, error -&gt; error, not-applicable -&gt; not-applicable</p>
+                                                                        </div>
+                                                                     </details>
+                                                                  </div>
+                                                               </div>
+                                                            </div>
+                                                            <div class="model-entry definition assembly">
+                                                               <div class="instance-header">
+                                                                  <p id="/system-security-plan/control-implementation/implemented-requirements/by-components/rule-implementations/condition/operator" class="toc7 name">operator</p>
+                                                                  <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                                  <p class="occurrence">[1]</p>
+                                                                  <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/by-component/rule-implementation/condition/@operator">Switch to XML</a></div>
+                                                                  <p class="formal-name">Rule Condition Operator</p>
+                                                               </div>
+                                                               <div class="body">
+                                                                  <p class="description"><span class="usa-tag">Description</span> TODO</p>
+                                                                  <div class="remarks-group usa-prose">
+                                                                     <details open="open">
+                                                                        <summary class="subhead">Remarks</summary>
+                                                                        <div class="remarks">
+                                                                           <h1>Operator Truth Table</h1>
+                                                                           <p>What is eager evaluation and why does it matter?</p>
+                                                                           <p>How do prerequisites work in the processing of condition operators and precedence.</p>
+                                                                        </div>
+                                                                     </details>
+                                                                  </div>
+                                                                  <details class="constraints" open="open">
+                                                                     <summary>Constraint (1)</summary>
+                                                                     <div class="constraint">
+                                                                        <p><span class="usa-tag">allowed values</span></p>
+                                                                        <p>The value <b>must</b> be one of the following:</p>
+                                                                        <ul>
+                                                                           
+                                                                           <li><strong>and</strong>: and</li>
+                                                                           
+                                                                           <li><strong>or</strong>: or</li>
+                                                                           </ul>
+                                                                     </div>
+                                                                  </details>
+                                                               </div>
+                                                            </div>
+                                                            <div class="model-entry definition assembly">
+                                                               <div class="instance-header">
+                                                                  <p id="/system-security-plan/control-implementation/implemented-requirements/by-components/rule-implementations/condition/props" class="toc7 name">props</p>
+                                                                  <p class="type">array<br /></p>
+                                                                  <p class="occurrence">[0 or 1]</p>
+                                                                  <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/by-component/rule-implementation/condition/prop">Switch to XML</a></div>
+                                                               </div>
+                                                               <div class="array-header">
+                                                                  <p class="array-member">(array member)</p>
+                                                                  <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-rules-common/rule-condition/props">(global definition)</a></p>
+                                                                  <p class="occurrence">[1 to ∞]</p>
+                                                                  <p class="formal-name">Property</p>
+                                                               </div>
+                                                               <div class="body">
+                                                                  <p class="description"><span class="usa-tag">Description</span> An attribute, characteristic, or quality of the containing object expressed as a
+                                                                     namespace qualified name/value pair.</p>
+                                                                  <div class="remarks-group usa-prose">
+                                                                     <details open="open">
+                                                                        <summary class="subhead">Remarks</summary>
+                                                                        <div class="remarks">
+                                                                           <p>Properties permit the deployment and management of arbitrary controlled values, within
+                                                                              OSCAL objects. A property can be included for any purpose useful to an application
+                                                                              or implementation. Typically, properties will be used to sort, filter, select, order,
+                                                                              and arrange OSCAL content objects, to relate OSCAL objects to one another, or to associate
+                                                                              an OSCAL object to class hierarchies, taxonomies, or external authorities. Thus, the
+                                                                              lexical composition of properties may be constrained by external processes to ensure
+                                                                              consistency.</p>
+                                                                           <p>Property allows for associated remarks that describe why the specific property value
+                                                                              was applied to the containing object, or the significance of the value in the context
+                                                                              of the containing object.</p>
+                                                                        </div>
+                                                                     </details>
+                                                                  </div>
+                                                                  <details class="properties" open="open">
+                                                                     <summary>Properties (7)</summary>
+                                                                     <div class="model-entry definition assembly">
+                                                                        <div class="instance-header">
+                                                                           <p id="/system-security-plan/control-implementation/implemented-requirements/by-components/rule-implementations/condition/props/name" class="toc8 name">name</p>
+                                                                           <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                                           <p class="occurrence">[1]</p>
+                                                                           <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/by-component/rule-implementation/condition/prop/@name">Switch to XML</a></div>
+                                                                           <p class="formal-name">Property Name</p>
+                                                                        </div>
+                                                                        <div class="body">
+                                                                           <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
+                                                                              characteristic, or quality of the property's containing object.</p>
+                                                                           <details class="constraints" open="open">
+                                                                              <summary>Constraint (1)</summary>
+                                                                              <div class="constraint">
+                                                                                 <p><span class="usa-tag">allowed value</span></p>
+                                                                                 <p>The value <b>must</b> be one of the following:</p>
+                                                                                 <ul>
+                                                                                    
+                                                                                    
+                                                                                    <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                                                       An optional class can be used to define the specific marking system used for the associated
+                                                                                       value.</li>
+                                                                                    </ul>
+                                                                              </div>
+                                                                           </details>
+                                                                        </div>
+                                                                     </div>
+                                                                     <div class="model-entry definition assembly">
+                                                                        <div class="instance-header">
+                                                                           <p id="/system-security-plan/control-implementation/implemented-requirements/by-components/rule-implementations/condition/props/uuid" class="toc8 name">uuid</p>
+                                                                           <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                                                           <p class="occurrence">[0 or 1]</p>
+                                                                           <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/by-component/rule-implementation/condition/prop/@uuid">Switch to XML</a></div>
+                                                                           <p class="formal-name">Property Universally Unique Identifier</p>
+                                                                        </div>
+                                                                        <div class="body">
+                                                                           <p class="description"><span class="usa-tag">Description</span> A unique identifier for a property.</p>
+                                                                        </div>
+                                                                     </div>
+                                                                     <div class="model-entry definition assembly">
+                                                                        <div class="instance-header">
+                                                                           <p id="/system-security-plan/control-implementation/implemented-requirements/by-components/rule-implementations/condition/props/ns" class="toc8 name">ns</p>
+                                                                           <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
+                                                                           <p class="occurrence">[0 or 1]</p>
+                                                                           <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/by-component/rule-implementation/condition/prop/@ns">Switch to XML</a></div>
+                                                                           <p class="formal-name">Property Namespace</p>
+                                                                        </div>
+                                                                        <div class="body">
+                                                                           <p class="description"><span class="usa-tag">Description</span> A namespace qualifying the property's name. This allows different organizations to
+                                                                              associate distinct semantics with the same name.</p>
+                                                                           <div class="remarks-group usa-prose">
+                                                                              <details open="open">
+                                                                                 <summary class="subhead">Remarks</summary>
+                                                                                 <div class="remarks">
+                                                                                    <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                                                    <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
+                                                                                 </div>
+                                                                              </details>
+                                                                           </div>
+                                                                        </div>
+                                                                     </div>
+                                                                     <div class="model-entry definition assembly">
+                                                                        <div class="instance-header">
+                                                                           <p id="/system-security-plan/control-implementation/implemented-requirements/by-components/rule-implementations/condition/props/value" class="toc8 name">value</p>
+                                                                           <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                                           <p class="occurrence">[1]</p>
+                                                                           <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/by-component/rule-implementation/condition/prop/@value">Switch to XML</a></div>
+                                                                           <p class="formal-name">Property Value</p>
+                                                                        </div>
+                                                                        <div class="body">
+                                                                           <p class="description"><span class="usa-tag">Description</span> Indicates the value of the attribute, characteristic, or quality.</p>
+                                                                        </div>
+                                                                     </div>
+                                                                     <div class="model-entry definition assembly">
+                                                                        <div class="instance-header">
+                                                                           <p id="/system-security-plan/control-implementation/implemented-requirements/by-components/rule-implementations/condition/props/class" class="toc8 name">class</p>
+                                                                           <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                                           <p class="occurrence">[0 or 1]</p>
+                                                                           <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/by-component/rule-implementation/condition/prop/@class">Switch to XML</a></div>
+                                                                           <p class="formal-name">Property Class</p>
+                                                                        </div>
+                                                                        <div class="body">
+                                                                           <p class="description"><span class="usa-tag">Description</span> A textual label that provides a sub-type or characterization of the property's <code>name</code>.</p>
+                                                                           <div class="remarks-group usa-prose">
+                                                                              <details open="open">
+                                                                                 <summary class="subhead">Remarks</summary>
+                                                                                 <div class="remarks">
+                                                                                    <p>This can be used to further distinguish or discriminate between the semantics of multiple
+                                                                                       properties of the same object with the same <code>name</code> and <code>ns</code>, or to group properties into categories.</p>
+                                                                                    <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
+                                                                                       a specific <code>class</code> value. It is available for grouping, but unlike <code>group</code> is not expected specifically to designate any group membership as such.</p>
+                                                                                 </div>
+                                                                              </details>
+                                                                           </div>
+                                                                        </div>
+                                                                     </div>
+                                                                     <div class="model-entry definition assembly">
+                                                                        <div class="instance-header">
+                                                                           <p id="/system-security-plan/control-implementation/implemented-requirements/by-components/rule-implementations/condition/props/group" class="toc8 name">group</p>
+                                                                           <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                                           <p class="occurrence">[0 or 1]</p>
+                                                                           <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/by-component/rule-implementation/condition/prop/@group">Switch to XML</a></div>
+                                                                           <p class="formal-name">Property Group</p>
+                                                                        </div>
+                                                                        <div class="body">
+                                                                           <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
+                                                                           <div class="remarks-group usa-prose">
+                                                                              <details open="open">
+                                                                                 <summary class="subhead">Remarks</summary>
+                                                                                 <div class="remarks">
+                                                                                    <p>Different sets of properties may relate to separate contexts. Declare a group on a
+                                                                                       property to associate it with one or more other properties in a given context.</p>
+                                                                                 </div>
+                                                                              </details>
+                                                                           </div>
+                                                                        </div>
+                                                                     </div>
+                                                                     <div class="model-entry definition assembly">
+                                                                        <div class="instance-header">
+                                                                           <p id="/system-security-plan/control-implementation/implemented-requirements/by-components/rule-implementations/condition/props/remarks" class="toc8 name">remarks</p>
+                                                                           <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                                           <p class="occurrence">[0 or 1]</p>
+                                                                           <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/by-component/rule-implementation/condition/prop/remarks">Switch to XML</a></div>
+                                                                           <p class="formal-name">Remarks</p>
+                                                                        </div>
+                                                                        <div class="body">
+                                                                           <p class="description"><span class="usa-tag">Description</span> Additional commentary about the containing object.</p>
+                                                                           <div class="remarks-group usa-prose">
+                                                                              <details open="open">
+                                                                                 <summary class="subhead">Remarks</summary>
+                                                                                 <div class="remarks">
+                                                                                    <p>The <code>remarks</code> field SHOULD not be used to store arbitrary data. Instead, a <code>prop</code> or <code>link</code> should be used to annotate or reference any additional data not formally supported
+                                                                                       by OSCAL.</p>
+                                                                                 </div>
+                                                                              </details>
+                                                                           </div>
+                                                                        </div>
+                                                                     </div>
+                                                                  </details>
+                                                               </div>
+                                                            </div>
+                                                            <div class="model-entry definition assembly">
+                                                               <div class="instance-header">
+                                                                  <p id="/system-security-plan/control-implementation/implemented-requirements/by-components/rule-implementations/condition/links" class="toc7 name">links</p>
+                                                                  <p class="type">array<br /></p>
+                                                                  <p class="occurrence">[0 or 1]</p>
+                                                                  <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/by-component/rule-implementation/condition/link">Switch to XML</a></div>
+                                                               </div>
+                                                               <div class="array-header">
+                                                                  <p class="array-member">(array member)</p>
+                                                                  <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-rules-common/rule-condition/links">(global definition)</a></p>
+                                                                  <p class="occurrence">[1 to ∞]</p>
+                                                                  <p class="formal-name">Link</p>
+                                                               </div>
+                                                               <div class="body">
+                                                                  <p class="description"><span class="usa-tag">Description</span> A reference to a local or remote resource, that has a specific relation to the containing
+                                                                     object.</p>
+                                                                  <div class="remarks-group usa-prose">
+                                                                     <details open="open">
+                                                                        <summary class="subhead">Remarks</summary>
+                                                                        <div class="remarks">
+                                                                           <p>To provide a cryptographic hash for a remote target resource, a local reference to
+                                                                              a back matter <code>resource</code> is needed. The resource allows one or more hash values to be provided using the <code>rlink/hash</code> object.</p>
+                                                                           <p>The OSCAL <code>link</code> is a roughly based on the HTML <a href="https://www.w3.org/TR/html401/struct/links.html#edef-LINK">link element</a>. </p>
+                                                                        </div>
+                                                                     </details>
+                                                                  </div>
+                                                                  <details class="constraints" open="open">
+                                                                     <summary>Constraints (3)</summary>
+                                                                     <div class="constraint">
+                                                                        <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
+                                                                     </div>
+                                                                     <div class="constraint">
+                                                                        <p><span class="usa-tag">index has key</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]</code>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
+                                                                     </div>
+                                                                     <div class="constraint">
+                                                                        <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
+                                                                     </div>
+                                                                  </details>
+                                                                  <details class="properties" open="open">
+                                                                     <summary>Properties (4)</summary>
+                                                                     <div class="model-entry definition assembly">
+                                                                        <div class="instance-header">
+                                                                           <p id="/system-security-plan/control-implementation/implemented-requirements/by-components/rule-implementations/condition/links/href" class="toc8 name">href</p>
+                                                                           <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
+                                                                           <p class="occurrence">[1]</p>
+                                                                           <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/by-component/rule-implementation/condition/link/@href">Switch to XML</a></div>
+                                                                           <p class="formal-name">Hypertext Reference</p>
+                                                                        </div>
+                                                                        <div class="body">
+                                                                           <p class="description"><span class="usa-tag">Description</span> A resolvable URL reference to a resource.</p>
+                                                                           <div class="remarks-group usa-prose">
+                                                                              <details open="open">
+                                                                                 <summary class="subhead">Remarks</summary>
+                                                                                 <div class="remarks">
+                                                                                    <p>This value may be one of:</p>
+                                                                                    <ol>
+                                                                                       
+                                                                                       <li>an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
+                                                                                       
+                                                                                       <li>a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
+                                                                                          document, or</li>
+                                                                                       
+                                                                                       <li>a bare URI fragment (i.e., `#uuid`) pointing to an OSCAL object by the objects identifier
+                                                                                          (e.g., id, uuid) in this or an imported document (see <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>). The specific object type will differ based on the link relationship type.</li>
+                                                                                       </ol>
+                                                                                 </div>
+                                                                              </details>
+                                                                           </div>
+                                                                        </div>
+                                                                     </div>
+                                                                     <div class="model-entry definition assembly">
+                                                                        <div class="instance-header">
+                                                                           <p id="/system-security-plan/control-implementation/implemented-requirements/by-components/rule-implementations/condition/links/rel" class="toc8 name">rel</p>
+                                                                           <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                                           <p class="occurrence">[0 or 1]</p>
+                                                                           <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/by-component/rule-implementation/condition/link/@rel">Switch to XML</a></div>
+                                                                           <p class="formal-name">Link Relation Type</p>
+                                                                        </div>
+                                                                        <div class="body">
+                                                                           <p class="description"><span class="usa-tag">Description</span> Describes the type of relationship provided by the link's hypertext reference. This
+                                                                              can be an indicator of the link's purpose.</p>
+                                                                           <details class="constraints" open="open">
+                                                                              <summary>Constraint (1)</summary>
+                                                                              <div class="constraint">
+                                                                                 <p><span class="usa-tag">allowed value</span></p>
+                                                                                 <p>The value <b>may be locally defined</b>, or the following:</p>
+                                                                                 <ul>
+                                                                                    
+                                                                                    <li><strong>reference</strong>: A generalized reference to a network resource (relative or absolute) or to a back-matter
+                                                                                       resource by UUID expressed as a bare URI fragment.</li>
+                                                                                    </ul>
+                                                                              </div>
+                                                                           </details>
+                                                                        </div>
+                                                                     </div>
+                                                                     <div class="model-entry definition assembly">
+                                                                        <div class="instance-header">
+                                                                           <p id="/system-security-plan/control-implementation/implemented-requirements/by-components/rule-implementations/condition/links/media-type" class="toc8 name">media-type</p>
+                                                                           <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                                           <p class="occurrence">[0 or 1]</p>
+                                                                           <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/by-component/rule-implementation/condition/link/@media-type">Switch to XML</a></div>
+                                                                           <p class="formal-name">Media Type</p>
+                                                                        </div>
+                                                                        <div class="body">
+                                                                           <p class="description"><span class="usa-tag">Description</span> A label that indicates the nature of a resource, as a data serialization or format.</p>
+                                                                           <div class="remarks-group usa-prose">
+                                                                              <details open="open">
+                                                                                 <summary class="subhead">Remarks</summary>
+                                                                                 <div class="remarks">
+                                                                                    <p> The Internet Assigned Numbers Authority (IANA) <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">Media Types Registry</a> defines a standardized set of media types, which may be used here.</p>
+                                                                                    <p>The <code>application/oscal+xml</code>, <code>application/oscal+json</code> or <code>application/oscal+yaml</code> media types SHOULD be used when referencing OSCAL XML, JSON, or YAML resources respectively.</p>
+                                                                                    <p>**Note: There is no official media type for YAML at this time.** OSCAL documents should
+                                                                                       specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name
+                                                                                       suffix, per <a href="https://www.rfc-editor.org/rfc/rfc6838.html#section-4.2.8">RFC 6838 Section 4.2.8</a>.</p>
+                                                                                    <p>Some earlier OSCAL content incorporated the model into the media type. For example:
+                                                                                       <code>application/oscal.catalog+xml</code>. This practice SHOULD be avoided, since the OSCAL model can be detected by parsing
+                                                                                       the initial content of the referenced resource.</p>
+                                                                                 </div>
+                                                                                 <div class="remarks">
+                                                                                    <p>The <code>media-type</code> provides a hint about the content model of the referenced resource. A valid entry
+                                                                                       from the <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">IANA Media Types registry</a> SHOULD be used.</p>
+                                                                                 </div>
+                                                                              </details>
+                                                                           </div>
+                                                                        </div>
+                                                                     </div>
+                                                                     <div class="model-entry definition assembly">
+                                                                        <div class="instance-header">
+                                                                           <p id="/system-security-plan/control-implementation/implemented-requirements/by-components/rule-implementations/condition/links/text" class="toc8 name">text</p>
+                                                                           <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                                           <p class="occurrence">[0 or 1]</p>
+                                                                           <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/by-component/rule-implementation/condition/link/text">Switch to XML</a></div>
+                                                                           <p class="formal-name">Link Text</p>
+                                                                        </div>
+                                                                        <div class="body">
+                                                                           <p class="description"><span class="usa-tag">Description</span> A textual label to associate with the link, which may be used for presentation in
+                                                                              a tool.</p>
+                                                                        </div>
+                                                                     </div>
+                                                                  </details>
+                                                               </div>
+                                                            </div>
+                                                            <div class="model-entry definition assembly">
+                                                               <div class="instance-header">
+                                                                  <p id="/system-security-plan/control-implementation/implemented-requirements/by-components/rule-implementations/condition/prerequisite" class="toc7 name">prerequisite</p>
+                                                                  <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-rules-common/rule-condition/prerequisite">(global definition)</a></p>
+                                                                  <p class="occurrence">[0 or 1]</p>
+                                                                  <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/by-component/rule-implementation/condition/prerequisite">Switch to XML</a></div>
+                                                                  <p class="formal-name">Rule Condition</p>
+                                                               </div>
+                                                               <div class="body">
+                                                                  <p class="description"><span class="usa-tag">Description</span> A rule implementation condition</p>
+                                                               </div>
+                                                            </div>
+                                                            <div class="choice">
+                                                               <p>A choice:</p>
+                                                               <div class="model-entry definition assembly">
+                                                                  <div class="instance-header">
+                                                                     <p id="/system-security-plan/control-implementation/implemented-requirements/by-components/rule-implementations/condition/rule-conditions" class="toc7 name">rule-conditions</p>
+                                                                     <p class="type">array<br /></p>
+                                                                     <p class="occurrence">[1]</p>
+                                                                     <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/by-component/rule-implementation/condition/condition">Switch to XML</a></div>
+                                                                  </div>
+                                                                  <div class="array-header">
+                                                                     <p class="array-member">(array member)</p>
+                                                                     <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-rules-common/rule-condition/rule-conditions">(global definition)</a></p>
+                                                                     <p class="occurrence">[1 to ∞]</p>
+                                                                     <p class="formal-name">Rule Condition</p>
+                                                                  </div>
+                                                                  <div class="body">
+                                                                     <p class="description"><span class="usa-tag">Description</span> A rule implementation condition</p>
+                                                                  </div>
+                                                               </div>
+                                                               <div class="model-entry definition assembly">
+                                                                  <div class="instance-header">
+                                                                     <p id="/system-security-plan/control-implementation/implemented-requirements/by-components/rule-implementations/condition/test-references" class="toc7 name">test-references</p>
+                                                                     <p class="type">array<br /></p>
+                                                                     <p class="occurrence">[1]</p>
+                                                                     <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/by-component/rule-implementation/condition/test-reference">Switch to XML</a></div>
+                                                                  </div>
+                                                                  <div class="array-header">
+                                                                     <p class="array-member">(array member)</p>
+                                                                     <p class="type"><a href="/reference/datatypes/#empty">empty</a></p>
+                                                                     <p class="occurrence">[1 to ∞]</p>
+                                                                     <p class="formal-name">Test Reference</p>
+                                                                  </div>
+                                                                  <div class="body">
+                                                                     <p class="description"><span class="usa-tag">Description</span> TODO</p>
+                                                                     <details class="properties" open="open">
+                                                                        <summary>Property (1)</summary>
+                                                                        <div class="model-entry definition assembly">
+                                                                           <div class="instance-header">
+                                                                              <p id="/system-security-plan/control-implementation/implemented-requirements/by-components/rule-implementations/condition/test-references/test-uuid" class="toc8 name">test-uuid</p>
+                                                                              <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                                                              <p class="occurrence">[1]</p>
+                                                                              <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/by-component/rule-implementation/condition/test-reference/@test-uuid">Switch to XML</a></div>
+                                                                              <p class="formal-name">Test Universally Unique Identifier Reference</p>
+                                                                           </div>
+                                                                           <div class="body">
+                                                                              <p class="description"><span class="usa-tag">Description</span> A test UUID reference</p>
+                                                                           </div>
+                                                                        </div>
+                                                                     </details>
+                                                                  </div>
+                                                               </div>
+                                                               <div class="model-entry definition assembly">
+                                                                  <div class="instance-header">
+                                                                     <p id="/system-security-plan/control-implementation/implemented-requirements/by-components/rule-implementations/condition/testing-scenario-references" class="toc7 name">testing-scenario-references</p>
+                                                                     <p class="type">array<br /></p>
+                                                                     <p class="occurrence">[1]</p>
+                                                                     <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/by-component/rule-implementation/condition/testing-scenario-reference">Switch to XML</a></div>
+                                                                  </div>
+                                                                  <div class="array-header">
+                                                                     <p class="array-member">(array member)</p>
+                                                                     <p class="type"><a href="/reference/datatypes/#empty">empty</a></p>
+                                                                     <p class="occurrence">[1 to ∞]</p>
+                                                                     <p class="formal-name">Testing Scenario Reference</p>
+                                                                  </div>
+                                                                  <div class="body">
+                                                                     <p class="description"><span class="usa-tag">Description</span> A reference to a testing scenario.</p>
+                                                                     <details class="properties" open="open">
+                                                                        <summary>Property (1)</summary>
+                                                                        <div class="model-entry definition assembly">
+                                                                           <div class="instance-header">
+                                                                              <p id="/system-security-plan/control-implementation/implemented-requirements/by-components/rule-implementations/condition/testing-scenario-references/testing-scenario-uuid" class="toc8 name">testing-scenario-uuid</p>
+                                                                              <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                                                              <p class="occurrence">[0 or 1]</p>
+                                                                              <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/by-component/rule-implementation/condition/testing-scenario-reference/@testing-scenario-uuid">Switch to XML</a></div>
+                                                                              <p class="formal-name">Testing Scenario Universally Unique Identifier Reference</p>
+                                                                           </div>
+                                                                           <div class="body">
+                                                                              <p class="description"><span class="usa-tag">Description</span> A testing scenario UUID reference</p>
+                                                                           </div>
+                                                                        </div>
+                                                                     </details>
+                                                                  </div>
+                                                               </div>
+                                                            </div>
+                                                            <div class="model-entry definition assembly">
+                                                               <div class="instance-header">
+                                                                  <p id="/system-security-plan/control-implementation/implemented-requirements/by-components/rule-implementations/condition/remarks" class="toc7 name">remarks</p>
+                                                                  <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                                  <p class="occurrence">[0 or 1]</p>
+                                                                  <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/by-component/rule-implementation/condition/remarks">Switch to XML</a></div>
+                                                                  <p class="formal-name">Remarks</p>
+                                                               </div>
+                                                               <div class="body">
+                                                                  <p class="description"><span class="usa-tag">Description</span> Additional commentary about the containing object.</p>
+                                                                  <div class="remarks-group usa-prose">
+                                                                     <details open="open">
+                                                                        <summary class="subhead">Remarks</summary>
+                                                                        <div class="remarks">
+                                                                           <p>The <code>remarks</code> field SHOULD not be used to store arbitrary data. Instead, a <code>prop</code> or <code>link</code> should be used to annotate or reference any additional data not formally supported
+                                                                              by OSCAL.</p>
+                                                                        </div>
+                                                                     </details>
+                                                                  </div>
+                                                               </div>
+                                                            </div>
+                                                         </details>
+                                                      </div>
+                                                   </div>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/system-security-plan/control-implementation/implemented-requirements/by-components/rule-implementations/rule-uuids" class="toc6 name">rule-uuids</h6>
+                                                         <p class="type">array<br /></p>
+                                                         <p class="occurrence">[1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/by-component/rule-implementation/rule-uuid">Switch to XML</a></div>
+                                                      </div>
+                                                      <div class="array-header">
+                                                         <p class="array-member">(array member)</p>
+                                                         <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                                         <p class="occurrence">[1 to ∞]</p>
+                                                         <p class="formal-name">Rule Universally Unique Identifier Reference</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> A rule UUID reference</p>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                                <div class="model-entry definition assembly">
+                                                   <div class="instance-header">
+                                                      <h6 id="/system-security-plan/control-implementation/implemented-requirements/by-components/rule-implementations/remarks" class="toc6 name">remarks</h6>
+                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                      <p class="occurrence">[0 or 1]</p>
+                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/control-implementation/implemented-requirement/by-component/rule-implementation/remarks">Switch to XML</a></div>
                                                       <p class="formal-name">Remarks</p>
                                                    </div>
                                                    <div class="body">
