@@ -41,6 +41,18 @@
                      type="oscal-component-definition-import-component-definition-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
+         <xs:element name="rule"
+                     type="oscal-rules-common-rule-definition-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="test"
+                     type="oscal-rules-common-test-definition-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="testing-scenario"
+                     type="oscal-rules-common-testing-scenario-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
          <xs:element name="component"
                      type="oscal-component-definition-defined-component-ASSEMBLY"
                      minOccurs="0"
@@ -416,6 +428,10 @@
                      type="oscal-component-definition-statement-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
+         <xs:element name="rule-implementation"
+                     type="oscal-rules-common-rule-implementation-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
          <xs:element name="remarks" minOccurs="0" maxOccurs="1">
             <xs:annotation>
                <xs:appinfo>
@@ -486,6 +502,10 @@
                      maxOccurs="unbounded"/>
          <xs:element name="responsible-role"
                      type="oscal-metadata-responsible-role-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="rule-implementation"
+                     type="oscal-rules-common-rule-implementation-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="remarks" minOccurs="0" maxOccurs="1">
@@ -2696,6 +2716,416 @@
             <b>Include All</b>: Include all controls from the imported catalog or profile resources.</xs:documentation>
       </xs:annotation>
    </xs:complexType>
+   <xs:complexType name="oscal-rules-common-rule-definition-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Rule Definition</m:formal-name>
+            <m:description>TODO</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Rule Definition</b>: TODO</xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="title" minOccurs="1" maxOccurs="1">
+            <xs:complexType mixed="true">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Rule Title</m:formal-name>
+                     <m:description>A name given to the rule, which may be used by a tool for display and navigation.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Rule Title</b>: A name given to the rule, which may be used by a tool for display and navigation.</xs:documentation>
+               </xs:annotation>
+               <xs:complexContent>
+                  <xs:extension base="MarkupLineDatatype"/>
+               </xs:complexContent>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="description" minOccurs="1" maxOccurs="1">
+            <xs:complexType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Rule Description</m:formal-name>
+                     <m:description>A summary of the rule, including the requirement(s) to be met when evaluating the rule against a target that the rule applies to.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Rule Description</b>: A summary of the rule, including the requirement(s) to be met when evaluating the rule against a target that the rule applies to.</xs:documentation>
+               </xs:annotation>
+               <xs:complexContent>
+                  <xs:extension base="MarkupMultilineDatatype"/>
+               </xs:complexContent>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="prop"
+                     type="oscal-metadata-property-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="link"
+                     type="oscal-metadata-link-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Remarks</m:formal-name>
+                  <m:description>Additional commentary about the containing object.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Remarks</b>: Additional commentary about the containing object.</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+               <xs:group ref="blockElementGroup" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
+      <xs:attribute name="uuid" use="required" type="UUIDDatatype">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Rule Definition Universally Unique Identifier</m:formal-name>
+               <m:description>TODO</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Rule Definition Universally Unique Identifier</b>: TODO</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+   </xs:complexType>
+   <xs:simpleType name="oscal-rules-common-rule-uuid-FIELD">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Rule Universally Unique Identifier Reference</m:formal-name>
+            <m:description>A rule UUID reference</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Rule Universally Unique Identifier Reference</b>: A rule UUID reference</xs:documentation>
+      </xs:annotation>
+      <xs:restriction base="UUIDDatatype"/>
+   </xs:simpleType>
+   <xs:complexType name="oscal-rules-common-test-definition-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Test Definition</m:formal-name>
+            <m:description>TODO</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Test Definition</b>: TODO</xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="title" minOccurs="0" maxOccurs="1">
+            <xs:complexType mixed="true">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Test Title</m:formal-name>
+                     <m:description>A name given to the test, which may be used by a tool for display and navigation.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Test Title</b>: A name given to the test, which may be used by a tool for display and navigation.</xs:documentation>
+               </xs:annotation>
+               <xs:complexContent>
+                  <xs:extension base="MarkupLineDatatype"/>
+               </xs:complexContent>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="description" minOccurs="0" maxOccurs="1">
+            <xs:complexType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Test Description</m:formal-name>
+                     <m:description>A summary of the test, including implementation details of how its use examines an aspect or trait of a system.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Test Description</b>: A summary of the test, including implementation details of how its use examines an aspect or trait of a system.</xs:documentation>
+               </xs:annotation>
+               <xs:complexContent>
+                  <xs:extension base="MarkupMultilineDatatype"/>
+               </xs:complexContent>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="prop"
+                     type="oscal-metadata-property-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="link"
+                     type="oscal-metadata-link-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Remarks</m:formal-name>
+                  <m:description>Additional commentary about the containing object.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Remarks</b>: Additional commentary about the containing object.</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+               <xs:group ref="blockElementGroup" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
+      <xs:attribute name="uuid" use="required" type="UUIDDatatype">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Test Definition Universally Unique Identifier</m:formal-name>
+               <m:description>TODO</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Test Definition Universally Unique Identifier</b>: TODO</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+   </xs:complexType>
+   <xs:complexType name="oscal-rules-common-testing-scenario-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Rule Testing Scenario</m:formal-name>
+            <m:description>A rule testing scenario</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Rule Testing Scenario</b>: A rule testing scenario</xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="prop"
+                     type="oscal-metadata-property-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="link"
+                     type="oscal-metadata-link-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:choice>
+            <xs:element name="condition"
+                        type="oscal-rules-common-rule-condition-ASSEMBLY"
+                        minOccurs="1"
+                        maxOccurs="1"/>
+            <xs:element name="test-reference"
+                        type="oscal-rules-common-test-reference-ASSEMBLY"
+                        minOccurs="1"
+                        maxOccurs="1"/>
+         </xs:choice>
+         <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Remarks</m:formal-name>
+                  <m:description>Additional commentary about the containing object.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Remarks</b>: Additional commentary about the containing object.</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+               <xs:group ref="blockElementGroup" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
+      <xs:attribute name="uuid" use="required" type="UUIDDatatype">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Testing Scenario Universally Unique Identifier</m:formal-name>
+               <m:description>TODO</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Testing Scenario Universally Unique Identifier</b>: TODO</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="rule-uuid" use="required" type="UUIDDatatype">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Testing Scenario Rule Universally Unique Identifier Reference</m:formal-name>
+               <m:description>TODO</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Testing Scenario Rule Universally Unique Identifier Reference</b>: TODO</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+   </xs:complexType>
+   <xs:complexType name="oscal-rules-common-test-reference-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Test Reference</m:formal-name>
+            <m:description>TODO</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Test Reference</b>: TODO</xs:documentation>
+      </xs:annotation>
+      <xs:attribute name="test-uuid" use="required" type="UUIDDatatype">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Test Universally Unique Identifier Reference</m:formal-name>
+               <m:description>A test UUID reference</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Test Universally Unique Identifier Reference</b>: A test UUID reference</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+   </xs:complexType>
+   <xs:complexType name="oscal-rules-common-rule-condition-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Rule Condition</m:formal-name>
+            <m:description>A rule implementation condition</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Rule Condition</b>: A rule implementation condition</xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="prop"
+                     type="oscal-metadata-property-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="link"
+                     type="oscal-metadata-link-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="prerequisite"
+                     type="oscal-rules-common-rule-condition-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="1"/>
+         <xs:choice>
+            <xs:element name="condition"
+                        type="oscal-rules-common-rule-condition-ASSEMBLY"
+                        minOccurs="1"
+                        maxOccurs="unbounded"/>
+            <xs:element name="test-reference"
+                        type="oscal-rules-common-test-reference-ASSEMBLY"
+                        minOccurs="1"
+                        maxOccurs="unbounded"/>
+            <xs:element name="testing-scenario-reference"
+                        type="oscal-rules-common-testing-scenario-reference-ASSEMBLY"
+                        minOccurs="1"
+                        maxOccurs="unbounded"/>
+         </xs:choice>
+         <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Remarks</m:formal-name>
+                  <m:description>Additional commentary about the containing object.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Remarks</b>: Additional commentary about the containing object.</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+               <xs:group ref="blockElementGroup" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
+      <xs:attribute name="negate" type="BooleanDatatype">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Rule Condition Negation Flag</m:formal-name>
+               <m:description>TODO</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Rule Condition Negation Flag</b>: TODO</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="operator" use="required" type="TokenDatatype">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Rule Condition Operator</m:formal-name>
+               <m:description>TODO</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Rule Condition Operator</b>: TODO</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+   </xs:complexType>
+   <xs:simpleType name="oscal-rules-common-testing-scenario-uuid-FIELD">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Testing Scenario Universally Unique Identifier</m:formal-name>
+            <m:description>A testing scenario UUID reference</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Testing Scenario Universally Unique Identifier</b>: A testing scenario UUID reference</xs:documentation>
+      </xs:annotation>
+      <xs:restriction base="UUIDDatatype"/>
+   </xs:simpleType>
+   <xs:complexType name="oscal-rules-common-testing-scenario-reference-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Testing Scenario Reference</m:formal-name>
+            <m:description>A reference to a testing scenario.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Testing Scenario Reference</b>: A reference to a testing scenario.</xs:documentation>
+      </xs:annotation>
+      <xs:attribute name="testing-scenario-uuid" type="UUIDDatatype">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Testing Scenario Universally Unique Identifier Reference</m:formal-name>
+               <m:description>A testing scenario UUID reference</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Testing Scenario Universally Unique Identifier Reference</b>: A testing scenario UUID reference</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+   </xs:complexType>
+   <xs:complexType name="oscal-rules-common-rule-implementation-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Rule Implementation</m:formal-name>
+            <m:description>TODO</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Rule Implementation</b>: TODO</xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="description" minOccurs="1" maxOccurs="1">
+            <xs:complexType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Rule Implementation Description</m:formal-name>
+                     <m:description>A summary of the rule implementation.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Rule Implementation Description</b>: A summary of the rule implementation.</xs:documentation>
+               </xs:annotation>
+               <xs:complexContent>
+                  <xs:extension base="MarkupMultilineDatatype"/>
+               </xs:complexContent>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="prop"
+                     type="oscal-metadata-property-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="link"
+                     type="oscal-metadata-link-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:choice>
+            <xs:element name="condition"
+                        type="oscal-rules-common-rule-condition-ASSEMBLY"
+                        minOccurs="0"
+                        maxOccurs="1"/>
+            <xs:element name="rule-uuid"
+                        type="oscal-rules-common-rule-uuid-FIELD"
+                        minOccurs="1"
+                        maxOccurs="unbounded"/>
+         </xs:choice>
+         <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Remarks</m:formal-name>
+                  <m:description>Additional commentary about the containing object.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Remarks</b>: Additional commentary about the containing object.</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+               <xs:group ref="blockElementGroup" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
+      <xs:attribute name="uuid" use="required" type="UUIDDatatype">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Rule Implementation Universally Unique Identifier</m:formal-name>
+               <m:description>TODO</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Rule Implementation Universally Unique Identifier</b>: TODO</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+   </xs:complexType>
    <xs:complexType name="MarkupMultilineDatatype">
       <xs:choice minOccurs="1" maxOccurs="unbounded">
          <xs:group ref="blockElementGroup"/>
@@ -2840,6 +3270,16 @@
    </xs:complexType>
    <xs:simpleType name="Base64Datatype">
       <xs:restriction base="xs:base64Binary">
+         <xs:pattern value="\S(.*\S)?">
+            <xs:annotation>
+               <xs:documentation>A trimmed string, at least one character with no
+						leading or trailing whitespace.</xs:documentation>
+            </xs:annotation>
+         </xs:pattern>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="BooleanDatatype">
+      <xs:restriction base="xs:boolean">
          <xs:pattern value="\S(.*\S)?">
             <xs:annotation>
                <xs:documentation>A trimmed string, at least one character with no

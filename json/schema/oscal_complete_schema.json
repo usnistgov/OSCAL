@@ -1597,6 +1597,21 @@
             "minItems" : 1,
             "items" : 
             { "$ref" : "#assembly_oscal-component-definition_import-component-definition" } },
+          "rules" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#assembly_oscal-rules-common_rule-definition" } },
+          "tests" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#assembly_oscal-rules-common_test-definition" } },
+          "testing-scenarios" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#assembly_oscal-rules-common_testing-scenario" } },
           "components" : 
           { "type" : "array",
             "minItems" : 1,
@@ -1835,6 +1850,11 @@
             "minItems" : 1,
             "items" : 
             { "$ref" : "#assembly_oscal-component-definition_statement" } },
+          "rule-implementations" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#assembly_oscal-rules-common_rule-implementation" } },
           "remarks" : 
           { "$ref" : "#field_oscal-metadata_remarks" } },
         "required" : 
@@ -1875,6 +1895,11 @@
             "minItems" : 1,
             "items" : 
             { "$ref" : "#assembly_oscal-metadata_responsible-role" } },
+          "rule-implementations" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#assembly_oscal-rules-common_rule-implementation" } },
           "remarks" : 
           { "$ref" : "#field_oscal-metadata_remarks" } },
         "required" : 
@@ -2204,6 +2229,231 @@
           { "type" : "string" } },
         "required" : 
         [ "id" ],
+        "additionalProperties" : false },
+      "oscal-complete-oscal-rules-common:rule-definition" : 
+      { "title" : "Rule Definition",
+        "description" : "TODO",
+        "$id" : "#assembly_oscal-rules-common_rule-definition",
+        "type" : "object",
+        "properties" : 
+        { "uuid" : 
+          { "title" : "Rule Definition Universally Unique Identifier",
+            "description" : "TODO",
+            "$ref" : "#/definitions/UUIDDatatype" },
+          "title" : 
+          { "title" : "Rule Title",
+            "description" : "A name given to the rule, which may be used by a tool for display and navigation.",
+            "type" : "string" },
+          "description" : 
+          { "title" : "Rule Description",
+            "description" : "A summary of the rule, including the requirement(s) to be met when evaluating the rule against a target that the rule applies to.",
+            "type" : "string" },
+          "props" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#assembly_oscal-metadata_property" } },
+          "links" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#assembly_oscal-metadata_link" } },
+          "remarks" : 
+          { "$ref" : "#field_oscal-metadata_remarks" } },
+        "required" : 
+        [ "uuid",
+          "title",
+          "description" ],
+        "additionalProperties" : false },
+      "oscal-complete-oscal-rules-common:rule-uuid" : 
+      { "title" : "Rule Universally Unique Identifier Reference",
+        "description" : "A rule UUID reference",
+        "$id" : "#field_oscal-rules-common_rule-uuid",
+        "$ref" : "#/definitions/UUIDDatatype" },
+      "oscal-complete-oscal-rules-common:test-definition" : 
+      { "title" : "Test Definition",
+        "description" : "TODO",
+        "$id" : "#assembly_oscal-rules-common_test-definition",
+        "type" : "object",
+        "properties" : 
+        { "uuid" : 
+          { "title" : "Test Definition Universally Unique Identifier",
+            "description" : "TODO",
+            "$ref" : "#/definitions/UUIDDatatype" },
+          "title" : 
+          { "title" : "Test Title",
+            "description" : "A name given to the test, which may be used by a tool for display and navigation.",
+            "type" : "string" },
+          "description" : 
+          { "title" : "Test Description",
+            "description" : "A summary of the test, including implementation details of how its use examines an aspect or trait of a system.",
+            "type" : "string" },
+          "props" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#assembly_oscal-metadata_property" } },
+          "links" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#assembly_oscal-metadata_link" } },
+          "remarks" : 
+          { "$ref" : "#field_oscal-metadata_remarks" } },
+        "required" : 
+        [ "uuid" ],
+        "additionalProperties" : false },
+      "oscal-complete-oscal-rules-common:testing-scenario" : 
+      { "title" : "Rule Testing Scenario",
+        "description" : "A rule testing scenario",
+        "$id" : "#assembly_oscal-rules-common_testing-scenario",
+        "type" : "object",
+        "properties" : 
+        { "uuid" : 
+          { "title" : "Testing Scenario Universally Unique Identifier",
+            "description" : "TODO",
+            "$ref" : "#/definitions/UUIDDatatype" },
+          "rule-uuid" : 
+          { "title" : "Testing Scenario Rule Universally Unique Identifier Reference",
+            "description" : "TODO",
+            "$ref" : "#/definitions/UUIDDatatype" },
+          "props" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#assembly_oscal-metadata_property" } },
+          "links" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#assembly_oscal-metadata_link" } },
+          "condition" : 
+          { "$ref" : "#assembly_oscal-rules-common_rule-condition" },
+          "test-reference" : 
+          { "$ref" : "#assembly_oscal-rules-common_test-reference" },
+          "remarks" : 
+          { "$ref" : "#field_oscal-metadata_remarks" } },
+        "required" : 
+        [ "uuid",
+          "rule-uuid" ],
+        "additionalProperties" : false },
+      "oscal-complete-oscal-rules-common:test-reference" : 
+      { "title" : "Test Reference",
+        "description" : "TODO",
+        "$id" : "#assembly_oscal-rules-common_test-reference",
+        "type" : "object",
+        "properties" : 
+        { "test-uuid" : 
+          { "title" : "Test Universally Unique Identifier Reference",
+            "description" : "A test UUID reference",
+            "$ref" : "#/definitions/UUIDDatatype" } },
+        "required" : 
+        [ "test-uuid" ],
+        "additionalProperties" : false },
+      "oscal-complete-oscal-rules-common:rule-condition" : 
+      { "title" : "Rule Condition",
+        "description" : "A rule implementation condition",
+        "$id" : "#assembly_oscal-rules-common_rule-condition",
+        "type" : "object",
+        "properties" : 
+        { "negate" : 
+          { "title" : "Rule Condition Negation Flag",
+            "description" : "TODO",
+            "$ref" : "#/definitions/BooleanDatatype" },
+          "operator" : 
+          { "title" : "Rule Condition Operator",
+            "description" : "TODO",
+            "allOf" : 
+            [ 
+              { "$ref" : "#/definitions/TokenDatatype" },
+              
+              { "enum" : 
+                [ "and",
+                  "or" ] } ] },
+          "props" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#assembly_oscal-metadata_property" } },
+          "links" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#assembly_oscal-metadata_link" } },
+          "prerequisite" : 
+          { "$ref" : "#assembly_oscal-rules-common_rule-condition" },
+          "rule-conditions" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#assembly_oscal-rules-common_rule-condition" } },
+          "test-references" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#assembly_oscal-rules-common_test-reference" } },
+          "testing-scenario-references" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#assembly_oscal-rules-common_testing-scenario-reference" } },
+          "remarks" : 
+          { "$ref" : "#field_oscal-metadata_remarks" } },
+        "required" : 
+        [ "operator" ],
+        "additionalProperties" : false },
+      "oscal-complete-oscal-rules-common:testing-scenario-uuid" : 
+      { "title" : "Testing Scenario Universally Unique Identifier",
+        "description" : "A testing scenario UUID reference",
+        "$id" : "#field_oscal-rules-common_testing-scenario-uuid",
+        "$ref" : "#/definitions/UUIDDatatype" },
+      "oscal-complete-oscal-rules-common:testing-scenario-reference" : 
+      { "title" : "Testing Scenario Reference",
+        "description" : "A reference to a testing scenario.",
+        "$id" : "#assembly_oscal-rules-common_testing-scenario-reference",
+        "type" : "object",
+        "properties" : 
+        { "testing-scenario-uuid" : 
+          { "title" : "Testing Scenario Universally Unique Identifier Reference",
+            "description" : "A testing scenario UUID reference",
+            "$ref" : "#/definitions/UUIDDatatype" } },
+        "additionalProperties" : false },
+      "oscal-complete-oscal-rules-common:rule-implementation" : 
+      { "title" : "Rule Implementation",
+        "description" : "TODO",
+        "$id" : "#assembly_oscal-rules-common_rule-implementation",
+        "type" : "object",
+        "properties" : 
+        { "uuid" : 
+          { "title" : "Rule Implementation Universally Unique Identifier",
+            "description" : "TODO",
+            "$ref" : "#/definitions/UUIDDatatype" },
+          "description" : 
+          { "title" : "Rule Implementation Description",
+            "description" : "A summary of the rule implementation.",
+            "type" : "string" },
+          "props" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#assembly_oscal-metadata_property" } },
+          "links" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#assembly_oscal-metadata_link" } },
+          "condition" : 
+          { "$ref" : "#assembly_oscal-rules-common_rule-condition" },
+          "rule-uuids" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#field_oscal-rules-common_rule-uuid" } },
+          "remarks" : 
+          { "$ref" : "#field_oscal-metadata_remarks" } },
+        "required" : 
+        [ "uuid",
+          "description" ],
         "additionalProperties" : false },
       "oscal-complete-oscal-ssp:system-security-plan" : 
       { "title" : "System Security Plan (SSP)",
@@ -2675,6 +2925,21 @@
             "minItems" : 1,
             "items" : 
             { "$ref" : "#assembly_oscal-implementation-common_system-user" } },
+          "rules" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#assembly_oscal-rules-common_rule-definition" } },
+          "tests" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#assembly_oscal-rules-common_test-definition" } },
+          "testing-scenarios" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#assembly_oscal-rules-common_testing-scenario" } },
           "components" : 
           { "type" : "array",
             "minItems" : 1,
@@ -2799,6 +3064,11 @@
             "minItems" : 1,
             "items" : 
             { "$ref" : "#assembly_oscal-ssp_by-component" } },
+          "rule-implementations" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#assembly_oscal-rules-common_rule-implementation" } },
           "remarks" : 
           { "$ref" : "#field_oscal-metadata_remarks" } },
         "required" : 
@@ -3025,6 +3295,11 @@
             "minItems" : 1,
             "items" : 
             { "$ref" : "#assembly_oscal-metadata_responsible-role" } },
+          "rule-implementations" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#assembly_oscal-rules-common_rule-implementation" } },
           "remarks" : 
           { "$ref" : "#field_oscal-metadata_remarks" } },
         "required" : 
