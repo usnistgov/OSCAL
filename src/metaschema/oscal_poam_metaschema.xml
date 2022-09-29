@@ -44,6 +44,9 @@
             <assembly ref="risk" min-occurs="0" max-occurs="unbounded">
                 <group-as name="risks" in-json="ARRAY"/>
             </assembly>
+            <assembly ref="finding" min-occurs="0" max-occurs="unbounded">
+                <group-as name="findings" in-json="ARRAY"/>
+            </assembly>
             <assembly ref="poam-item" min-occurs="1" max-occurs="unbounded">
                 <!-- CHANGED: removed the top-level "poam-items" -->
                 <!-- CHANGED: "poam-item-group" to "poam-items" -->
