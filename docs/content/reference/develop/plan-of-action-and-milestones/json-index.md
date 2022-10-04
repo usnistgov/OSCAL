@@ -10,7 +10,7 @@ toc:
   headingselectors: "h1.toc1"
 ---
 
-The following is an index of each JSON property used in the [JSON format](https://github.com/usnistgov/OSCAL/blob/feature-rules/json/schema/oscal_poam_schema.json) for this [model](/concepts/layer/assessment/poam/). Each entry in the index lists all uses of the given property in the format, which is linked to the corresponding entry in the [JSON Format Reference](../json-reference/). Each entry also lists the formal name for the definition which is linked to the corresponding JSON definition in the [JSON Format Metaschema Reference](../json-definitions/).
+The following is an index of each JSON property used in the [JSON format](https://github.com/usnistgov/OSCAL/blob/develop/json/schema/oscal_poam_schema.json) for this [model](/concepts/layer/assessment/poam/). Each entry in the index lists all uses of the given property in the format, which is linked to the corresponding entry in the [JSON Format Reference](../json-reference/). Each entry also lists the formal name for the definition which is linked to the corresponding JSON definition in the [JSON Format Metaschema Reference](../json-definitions/).
 
 <!-- DO NOT REMOVE. Generated text below -->
 {{< rawhtml >}}
