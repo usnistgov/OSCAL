@@ -40,7 +40,7 @@ jobs:
     # 2) The target branch where the metaschemas exist that are the basis of reference information.
     # Checkout the current branch for reading
     - name: Checkout Latest
-      uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8
       with:
         path: ${{ env.BRANCH_PATH }}
         submodules: recursive
@@ -48,7 +48,7 @@ jobs:
     # use this for builds triggered from the UI on protected branches
     - name: Checkout Main (using COMMIT_TOKEN)
       if: github.event_name == 'workflow_dispatch' && github.event.inputs.commit_resources == 'true'
-      uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8
       with:
         path: ${{ env.MAIN_PATH }}
         ref: ${{ env.MAIN_BRANCH_REF }}
@@ -58,7 +58,7 @@ jobs:
     # use this for builds triggered from other workflows on protected branches
     - name: Checkout Main (using access_token)
       if: github.event_name == 'push' && inputs.commit_resources == true
-      uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8
       with:
         path: ${{ env.MAIN_PATH }}
         ref: ${{ env.MAIN_BRANCH_REF }}
@@ -68,7 +68,7 @@ jobs:
     # use this for overything else (i.e., pull requests) where publication is not needed
     - name: Checkout Main
       if: steps.checkout_main_workflow.conclusion == 'skipped' && steps.checkout_main_push.conclusion == 'skipped'
-      uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8
       with:
         path: ${{ env.MAIN_PATH }}
         ref: ${{ env.MAIN_BRANCH_REF }}
