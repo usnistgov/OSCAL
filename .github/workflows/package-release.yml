@@ -45,7 +45,7 @@ jobs:
             ${{ env.OSCAL_WORKING_PATH }}/${{ env.RELEASE_NAME }}.tar.bz2
             ${{ env.OSCAL_WORKING_PATH }}/${{ env.RELEASE_NAME }}.zip
           retention-days: 5
-      - uses: ncipollo/release-action@58ae73b360456532aafd58ee170c045abbeaee37
+      - uses: ncipollo/release-action@d9356040b0dc694f6d006b6cabee4d3c024f9e72
         with:
           name: OSCAL ${{ env.RELEASE_VERSION }} Release
           allowUpdates: false
