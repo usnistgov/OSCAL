@@ -12,7 +12,7 @@ sidenav:
 oscal:
     type: "branch"
     remote: "usnistgov/OSCAL"
-    branch: "feature-rules"
+    branch: "develop"
     revision: "develop"
     version: "develop"
 ---
