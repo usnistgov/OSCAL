@@ -433,7 +433,7 @@ In JSON Schema, this is represented as:
 
 A non-colonized name as defined by [XML Schema Part 2: Datatypes Second Edition](https://www.w3.org/TR/xmlschema11-2/#NCName).
 
-**Note: Use of this data type has been *deprecated* in favor of [token](#token).**
+**Note: Use of this data type has been *deprecated* in favor of [token](#token), which has a similar syntax.** `NCName` was replaced with `token` to avoid use of an XML-specific type. This data type is no longer in use, but is still provided here to support model documentation for older OSCAL revisions that make use of this data type.
 
 ### string
 
