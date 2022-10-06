@@ -8,5 +8,5 @@
 /xml/                   
 /src/                   @usnistgov/itl-oscal-maintainers
 /src/metaschema         @david-waltermire-nist
-/src/specifications/profile-resolution  @stephenbanghart
+/src/specifications/profile-resolution  @david-waltermire-nist @wendellpiez
 /src/utils              @wendellpiez
