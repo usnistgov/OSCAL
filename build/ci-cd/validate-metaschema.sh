@@ -96,14 +96,23 @@ fi
 
 # compile the schematron
 metaschema_toolchain="${OSCALDIR}/build/metaschema/toolchains/xslt-M4"
-schematron="${metaschema_toolchain}/validate/metaschema-composition-check.sch"
-compiled_schematron="${metaschema_toolchain}/validate/metaschema-composition-check-compiled.xsl"
+composition_check_schematron="${metaschema_toolchain}/validate/metaschema-composition-check.sch"
+documentation_check_schematron="${OSCALDIR}/src/utils/schematron/oscal-documentation.sch"
+compiled_composition_check_schematron="${metaschema_toolchain}/validate/metaschema-composition-check-compiled.xsl"
+compiled_documentation_check_schematron="${SCRATCH_DIR}/oscal-documentation.xsl"
 metaschema_xsd="${OSCALDIR}/build/metaschema/schema/xml/metaschema.xsd"
 
-build_schematron "$schematron" "$compiled_schematron"
+build_schematron "$composition_check_schematron" "$compiled_composition_check_schematron"
 cmd_exitcode=$?
 if [ $cmd_exitcode -ne 0 ]; then
-  echo -e "${P_ERROR}Compilation of Schematron '${P_END}${schematron}${P_ERROR}' failed.${P_END}"
+  echo -e "${P_ERROR}Compilation of Schematron '${P_END}${composition_check_schematron}${P_ERROR}' failed.${P_END}"
+  exit 1
+fi
+
+build_schematron "$documentation_check_schematron" "$compiled_documentation_check_schematron"
+cmd_exitcode=$?
+if [ $cmd_exitcode -ne 0 ]; then
+  echo -e "${P_ERROR}Compilation of Schematron '${P_END}${documentation_check_schematron}${P_ERROR}' failed.${P_END}"
   exit 1
 fi
 
@@ -137,19 +146,32 @@ while IFS="|" read path gen_schema gen_converter gen_docs || [[ -n "$path" ]]; d
       echo -e "${P_ERROR}XML Schema validation failed for metaschema '${P_END}${metaschema_relative}${P_ERROR}'.${P_END}"
       echo -e "${P_ERROR}${result}${P_END}"
       exitcode=1
+    fi
+
+    svrl_result="$SCRATCH_DIR/svrl/composition_check_${metaschema/$OSCALDIR\/src\//}.svrl"
+    svrl_result_dir=${svrl_result%/*}
+    mkdir -p "$svrl_result_dir"
+    result=$(validate_with_schematron "$compiled_composition_check_schematron" "$metaschema" "$svrl_result")
+    cmd_exitcode=$?
+    if [ $cmd_exitcode -ne 0 ]; then
+      echo -e "${P_ERROR}Schematron composition validation failed for metaschema '${P_END}${metaschema_relative}${P_ERROR}'.${P_END}"
+        echo -e "${P_ERROR}${result}${P_END}"
+        exitcode=1
     else
-      svrl_result="$SCRATCH_DIR/svrl/${metaschema/$OSCALDIR\/src\//}.svrl"
-      svrl_result_dir=${svrl_result%/*}
-      mkdir -p "$svrl_result_dir"
-      result=$(validate_with_schematron "$compiled_schematron" "$metaschema" "$svrl_result")
-      cmd_exitcode=$?
-      if [ $cmd_exitcode -ne 0 ]; then
-        echo -e "${P_ERROR}Schematron validation failed for metaschema '${P_END}${metaschema_relative}${P_ERROR}'.${P_END}"
-          echo -e "${P_ERROR}${result}${P_END}"
-          exitcode=1
-      else
-        echo -e "${P_OK}XML Schema and Schematron validation passed for '${P_END}${metaschema_relative}${P_OK}'.${P_END}"
-      fi
+      echo -e "${P_OK}Schematron composition validation passed for '${P_END}${metaschema_relative}${P_OK}'.${P_END}"
+    fi
+
+    svrl_result="$SCRATCH_DIR/svrl/documentation_check_${metaschema/$OSCALDIR\/src\//}.svrl"
+    svrl_result_dir=${svrl_result%/*}
+    mkdir -p "$svrl_result_dir"
+    result=$(validate_with_schematron "$compiled_documentation_check_schematron" "$metaschema" "$svrl_result")
+    cmd_exitcode=$?
+    if [ $cmd_exitcode -ne 0 ]; then
+      echo -e "${P_ERROR}Schematron documentation validation failed for metaschema '${P_END}${metaschema_relative}${P_ERROR}'.${P_END}"
+        echo -e "${P_ERROR}${result}${P_END}"
+        exitcode=1
+    else
+      echo -e "${P_OK}All XML Schema and Schematron validation passed for '${P_END}${metaschema_relative}${P_OK}'.${P_END}"
     fi
   done
 done < $OSCALDIR/build/ci-cd/config/metaschema
@@ -157,6 +179,6 @@ shopt -u nullglob
 shopt -u globstar
 
 # cleanup compiled schematron
-rm -f "$compiled_schematron"
+rm -f "$compiled_composition_check_schematron"
 
 exit $exitcode
