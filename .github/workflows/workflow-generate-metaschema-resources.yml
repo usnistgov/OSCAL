@@ -129,7 +129,7 @@ jobs:
     - name: Publish Schemas and Converters
       # only do this on master
       if: github.event.inputs.commit_resources == 'true' || inputs.commit_resources == true
-      uses: stefanzweifel/git-auto-commit-action@6c32682a4040e023c054b2fc60a7cf65cc77f7ad
+      uses: stefanzweifel/git-auto-commit-action@fd157da78fa13d9383e5580d1fd1184d89554b51
       with:
         repository: ${{ env.CHECKOUT_PATH }}
         file_pattern: xml json
