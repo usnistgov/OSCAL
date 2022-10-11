@@ -134,7 +134,7 @@
 
             <define-assembly name="related-finding" min-occurs="0" max-occurs="unbounded">
                 <formal-name>Related Finding</formal-name>
-                <description>Relates the poam-item to a set of referenced findings.</description>
+                <description>Relates the poam-item to referenced finding(s).</description>
                 <group-as name="related-findings" in-json="ARRAY"/>
                 <define-flag name="finding-uuid" as-type="uuid" required="yes">
                     <formal-name>Finding Universally Unique Identifier Reference</formal-name>
