@@ -35,7 +35,7 @@ jobs:
       id: linkchecker
       uses: lycheeverse/lychee-action@4a5af7cd2958a2282cefbd9c10f63bdb89982d76
       with:
-        args: --exclude-file ./build/config/.lycheeignore --verbose --no-progress --accept 200,206,429 './published/**/*.html'
+        args: --exclude-file ./build/config/.lycheeignore --verbose --no-progress --accept 200,206,429 './published/**/*.html' --exclude-mail
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Create issue if bad links detected
