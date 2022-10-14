@@ -139,7 +139,7 @@
                   <!--<any/>-->
             </model>
             <constraint>
-                  <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+                  <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name" allow-other="yes">
             &allowed-values-control-group-property-name;
                   </allowed-values>
                   <allowed-values target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
