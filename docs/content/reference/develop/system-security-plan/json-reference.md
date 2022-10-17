@@ -14838,15 +14838,16 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                            <details class="constraints" open="open">
                               <summary>Constraints (11)</summary>
                               <div class="constraint">
-                                 <p><span class="usa-tag">allowed value</span>  for <code class="path">prop/@name</code></p>
+                                 <p><span class="usa-tag">allowed value</span>  for <code class="path">(.|statement|.//by-component)/prop/@name</code></p>
                                  <p>The value <b>may be locally defined</b>, or the following:</p>
                                  <ul>
                                     
-                                    <li><strong>control-origination</strong>: Identifies the source of the implemented control.</li>
+                                    <li><strong>control-origination</strong>: Identifies the source of the implemented control.  Any control-origination prop
+                                       defined in a child context will override the parent value.</li>
                                     </ul>
                               </div>
                               <div class="constraint">
-                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[@name='control-origination']/@value</code></p>
+                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">(.|statement|.//by-component)/prop[@name='control-origination']/@value</code></p>
                                  <p>The value <b>must</b> be one of the following:</p>
                                  <ul>
                                     
