@@ -3048,6 +3048,244 @@ The following is a reference for the XML element and attribute types derived fro
    </div>
    <div class="model-entry definition define-assembly">
       <div class="definition-header">
+         <h1 id="/assembly/oscal-assessment-common/finding" class="toc1 name">finding</h1>
+         <p class="type">assembly<br class="br" /> </p>
+         <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-assessment-common/finding">Switch to JSON</a></div>
+         <p class="formal-name">Finding</p>
+      </div>
+      <div class="body">
+         <p class="description"><span class="usa-tag">description</span> Describes an individual finding.</p>
+         <details open="open">
+            <summary>Attribute (1):</summary>
+            <div class="model assembly-model">
+               <div class="model-entry definition define-flag">
+                  <div class="instance-header">
+                     <h2 id="/assembly/oscal-assessment-common/finding/uuid" class="toc2 name">uuid</h2>
+                     <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                     <p class="occurrence">[0 or 1]</p>
+                     <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-assessment-common/finding/uuid">Switch to JSON</a></div>
+                     <p class="formal-name">Finding Universally Unique Identifier</p>
+                  </div>
+                  <div class="body">
+                     <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this finding in <a href="/concepts/identifier-use/#ar-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>finding</code> can be used to reference the data item locally or globally (e.g., in an imported
+                        OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                        of the document.</p>
+                  </div>
+               </div>
+            </div>
+         </details>
+         <details open="open">
+            <summary>Elements (10):</summary>
+            <div class="model assembly-model">
+               <div class="model-entry definition define-field">
+                  <div class="instance-header">
+                     <h2 id="/assembly/oscal-assessment-common/finding/title" class="toc2 name">title</h2>
+                     <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                     <p class="occurrence">[1]</p>
+                     <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-assessment-common/finding/title">Switch to JSON</a></div>
+                     <p class="formal-name">Finding Title</p>
+                  </div>
+                  <div class="body">
+                     <p class="description"><span class="usa-tag">description</span> The title for this finding.</p>
+                  </div>
+               </div>
+               <div class="model-entry definition define-field">
+                  <div class="instance-header">
+                     <h2 id="/assembly/oscal-assessment-common/finding/description" class="toc2 name">description</h2>
+                     <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                     <p class="occurrence">[1]</p>
+                     <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-assessment-common/finding/description">Switch to JSON</a></div>
+                     <p class="formal-name">Finding Description</p>
+                  </div>
+                  <div class="body">
+                     <p class="description"><span class="usa-tag">description</span> A human-readable description of this finding.</p>
+                  </div>
+               </div>
+               <div class="model-entry definition assembly">
+                  <div class="instance-header">
+                     <h2 id="/assembly/oscal-assessment-common/finding/prop" class="toc2 name">property</h2>
+                     <p class="type">assembly<br class="br" /> </p>
+                     <p class="occurrence">[0 to ∞]</p>
+                     <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-assessment-common/finding/props">Switch to JSON</a></div>
+                     <p class="formal-name">Property</p>
+                  </div>
+                  <div class="body">
+                     <p><span class="usa-tag">use name</span> <code class="name">prop</code></p>
+                     <div class="remarks-group usa-prose">
+                        <details open="open">
+                           <summary class="subhead">Remarks</summary>
+                           <div class="remarks">
+                              <p>Properties permit the deployment and management of arbitrary controlled values, within
+                                 OSCAL objects. A property can be included for any purpose useful to an application
+                                 or implementation. Typically, properties will be used to sort, filter, select, order,
+                                 and arrange OSCAL content objects, to relate OSCAL objects to one another, or to associate
+                                 an OSCAL object to class hierarchies, taxonomies, or external authorities. Thus, the
+                                 lexical composition of properties may be constrained by external processes to ensure
+                                 consistency.</p>
+                              <p>Property allows for associated remarks that describe why the specific property value
+                                 was applied to the containing object, or the significance of the value in the context
+                                 of the containing object.</p>
+                           </div>
+                        </details>
+                     </div>
+                     <p class="definition-link"><a href="#/assembly/oscal-metadata/property">See definition</a></p>
+                  </div>
+               </div>
+               <div class="model-entry definition assembly">
+                  <div class="instance-header">
+                     <h2 id="/assembly/oscal-assessment-common/finding/link" class="toc2 name">link</h2>
+                     <p class="type">assembly<br class="br" /> </p>
+                     <p class="occurrence">[0 to ∞]</p>
+                     <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-assessment-common/finding/links">Switch to JSON</a></div>
+                     <p class="formal-name">Link</p>
+                  </div>
+                  <div class="body">
+                     <div class="remarks-group usa-prose">
+                        <details open="open">
+                           <summary class="subhead">Remarks</summary>
+                           <div class="remarks">
+                              <p>To provide a cryptographic hash for a remote target resource, a local reference to
+                                 a back matter <code>resource</code> is needed. The resource allows one or more hash values to be provided using the <code>rlink/hash</code> object.</p>
+                              <p>The OSCAL <code>link</code> is a roughly based on the HTML <a href="https://www.w3.org/TR/html401/struct/links.html#edef-LINK">link element</a>. </p>
+                           </div>
+                        </details>
+                     </div>
+                     <p class="definition-link"><a href="#/assembly/oscal-metadata/link">See definition</a></p>
+                  </div>
+               </div>
+               <div class="model-entry definition assembly">
+                  <div class="instance-header">
+                     <h2 id="/assembly/oscal-assessment-common/finding/origin" class="toc2 name">origin</h2>
+                     <p class="type">assembly<br class="br" /> </p>
+                     <p class="occurrence">[0 to ∞]</p>
+                     <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-assessment-common/finding/origins">Switch to JSON</a></div>
+                     <p class="formal-name">Origin</p>
+                  </div>
+                  <div class="body">
+                     <div class="remarks-group usa-prose">
+                        <details open="open">
+                           <summary class="subhead">Remarks</summary>
+                           <div class="remarks">
+                              <p>Used to identify the individual and/or tool generated this finding.</p>
+                           </div>
+                        </details>
+                     </div>
+                     <p class="definition-link"><a href="#/assembly/oscal-assessment-common/origin">See definition</a></p>
+                  </div>
+               </div>
+               <div class="model-entry definition assembly">
+                  <div class="instance-header">
+                     <h2 id="/assembly/oscal-assessment-common/finding/target" class="toc2 name">target</h2>
+                     <p class="type">assembly<br class="br" /> </p>
+                     <p class="occurrence">[1]</p>
+                     <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-assessment-common/finding/target">Switch to JSON</a></div>
+                     <p class="formal-name">Objective Status</p>
+                  </div>
+                  <div class="body">
+                     <p><span class="usa-tag">use name</span> <code class="name">target</code></p>
+                     <p class="definition-link"><a href="#/assembly/oscal-assessment-common/finding-target">See definition</a></p>
+                  </div>
+               </div>
+               <div class="model-entry definition define-field">
+                  <div class="instance-header">
+                     <h2 id="/assembly/oscal-assessment-common/finding/implementation-statement-uuid" class="toc2 name">implementation-statement-uuid</h2>
+                     <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                     <p class="occurrence">[0 or 1]</p>
+                     <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-assessment-common/finding/implementation-statement-uuid">Switch to JSON</a></div>
+                     <p class="formal-name">Implementation Statement UUID</p>
+                  </div>
+                  <div class="body">
+                     <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to the implementation statement in the SSP to which this finding
+                        is related.</p>
+                  </div>
+               </div>
+               <div class="model-entry definition define-assembly">
+                  <div class="instance-header">
+                     <h2 id="/assembly/oscal-assessment-common/finding/related-observation" class="toc2 name">related-observation</h2>
+                     <p class="type">assembly<br class="br" /> </p>
+                     <p class="occurrence">[0 to ∞]</p>
+                     <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-assessment-common/finding/related-observations">Switch to JSON</a></div>
+                     <p class="formal-name">Related Observation</p>
+                  </div>
+                  <div class="body">
+                     <p class="description"><span class="usa-tag">description</span> Relates the finding to a set of referenced observations that were used to determine
+                        the finding.</p>
+                     <details open="open">
+                        <summary>Attribute (1):</summary>
+                        <div class="model assembly-model">
+                           <div class="model-entry definition define-flag">
+                              <div class="instance-header">
+                                 <h3 id="/assembly/oscal-assessment-common/finding/related-observation/observation-uuid" class="toc3 name">observation-uuid</h3>
+                                 <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                 <p class="occurrence">[0 or 1]</p>
+                                 <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-assessment-common/finding/related-observations/observation-uuid">Switch to JSON</a></div>
+                                 <p class="formal-name">Observation Universally Unique Identifier Reference</p>
+                              </div>
+                              <div class="body">
+                                 <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to an observation defined in the list of observations.</p>
+                              </div>
+                           </div>
+                        </div>
+                     </details>
+                  </div>
+               </div>
+               <div class="model-entry definition define-assembly">
+                  <div class="instance-header">
+                     <h2 id="/assembly/oscal-assessment-common/finding/associated-risk" class="toc2 name">associated-risk</h2>
+                     <p class="type">assembly<br class="br" /> </p>
+                     <p class="occurrence">[0 to ∞]</p>
+                     <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-assessment-common/finding/related-risks">Switch to JSON</a></div>
+                     <p class="formal-name">Associated Risk</p>
+                  </div>
+                  <div class="body">
+                     <p class="description"><span class="usa-tag">description</span> Relates the finding to a set of referenced risks that were used to determine the
+                        finding.</p>
+                     <details open="open">
+                        <summary>Attribute (1):</summary>
+                        <div class="model assembly-model">
+                           <div class="model-entry definition define-flag">
+                              <div class="instance-header">
+                                 <h3 id="/assembly/oscal-assessment-common/finding/associated-risk/risk-uuid" class="toc3 name">risk-uuid</h3>
+                                 <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                 <p class="occurrence">[0 or 1]</p>
+                                 <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-assessment-common/finding/related-risks/risk-uuid">Switch to JSON</a></div>
+                                 <p class="formal-name">Risk Universally Unique Identifier Reference</p>
+                              </div>
+                              <div class="body">
+                                 <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a risk defined in the list of risks.</p>
+                              </div>
+                           </div>
+                        </div>
+                     </details>
+                  </div>
+               </div>
+               <div class="model-entry definition field">
+                  <div class="instance-header">
+                     <h2 id="/assembly/oscal-assessment-common/finding/remarks" class="toc2 name">remarks</h2>
+                     <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                     <p class="occurrence">[0 or 1]</p>
+                     <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-assessment-common/finding/remarks">Switch to JSON</a></div>
+                     <p class="formal-name">Remarks</p>
+                  </div>
+                  <div class="body">
+                     <div class="remarks-group usa-prose">
+                        <details open="open">
+                           <summary class="subhead">Remarks</summary>
+                           <div class="remarks">
+                              <p>The <code>remarks</code> field SHOULD not be used to store arbitrary data. Instead, a <code>prop</code> or <code>link</code> should be used to annotate or reference any additional data not formally supported
+                                 by OSCAL.</p>
+                           </div>
+                        </details>
+                     </div>
+                     <p class="definition-link"><a href="#/field/oscal-metadata/remarks">See definition</a></p>
+                  </div>
+               </div>
+            </div>
+         </details>
+      </div>
+   </div>
+   <div class="model-entry definition define-assembly">
+      <div class="definition-header">
          <h1 id="/assembly/oscal-assessment-common/finding-target" class="toc1 name">finding-target</h1>
          <p class="type">assembly<br class="br" /> </p>
          <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-assessment-common/finding-target">Switch to JSON</a></div>
@@ -7939,7 +8177,7 @@ The following is a reference for the XML element and attribute types derived fro
             </div>
          </details>
          <details open="open">
-            <summary>Elements (8):</summary>
+            <summary>Elements (9):</summary>
             <div class="model assembly-model">
                <div class="model-entry definition assembly">
                   <div class="instance-header">
@@ -8044,6 +8282,18 @@ The following is a reference for the XML element and attribute types derived fro
                </div>
                <div class="model-entry definition assembly">
                   <div class="instance-header">
+                     <h2 id="/assembly/oscal-poam/plan-of-action-and-milestones/finding" class="toc2 name">finding</h2>
+                     <p class="type">assembly<br class="br" /> </p>
+                     <p class="occurrence">[0 to ∞]</p>
+                     <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-poam/plan-of-action-and-milestones/findings">Switch to JSON</a></div>
+                     <p class="formal-name">Finding</p>
+                  </div>
+                  <div class="body">
+                     <p class="definition-link"><a href="#/assembly/oscal-assessment-common/finding">See definition</a></p>
+                  </div>
+               </div>
+               <div class="model-entry definition assembly">
+                  <div class="instance-header">
                      <h2 id="/assembly/oscal-poam/plan-of-action-and-milestones/poam-item" class="toc2 name">poam-item</h2>
                      <p class="type">assembly<br class="br" /> </p>
                      <p class="occurrence">[1 to ∞]</p>
@@ -8107,7 +8357,7 @@ The following is a reference for the XML element and attribute types derived fro
             </div>
          </details>
          <details open="open">
-            <summary>Elements (8):</summary>
+            <summary>Elements (9):</summary>
             <div class="model assembly-model">
                <div class="model-entry definition define-field">
                   <div class="instance-header">
@@ -8217,6 +8467,35 @@ The following is a reference for the XML element and attribute types derived fro
                               <div class="body">
                                  <p><span class="usa-tag">use name</span> <code class="name">actor</code></p>
                                  <p class="definition-link"><a href="#/assembly/oscal-assessment-common/origin-actor">See definition</a></p>
+                              </div>
+                           </div>
+                        </div>
+                     </details>
+                  </div>
+               </div>
+               <div class="model-entry definition define-assembly">
+                  <div class="instance-header">
+                     <h2 id="/assembly/oscal-poam/poam-item/related-finding" class="toc2 name">related-finding</h2>
+                     <p class="type">assembly<br class="br" /> </p>
+                     <p class="occurrence">[0 to ∞]</p>
+                     <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-poam/poam-item/related-findings">Switch to JSON</a></div>
+                     <p class="formal-name">Related Finding</p>
+                  </div>
+                  <div class="body">
+                     <p class="description"><span class="usa-tag">description</span> Relates the poam-item to referenced finding(s).</p>
+                     <details open="open">
+                        <summary>Attribute (1):</summary>
+                        <div class="model assembly-model">
+                           <div class="model-entry definition define-flag">
+                              <div class="instance-header">
+                                 <h3 id="/assembly/oscal-poam/poam-item/related-finding/finding-uuid" class="toc3 name">finding-uuid</h3>
+                                 <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                 <p class="occurrence">[0 or 1]</p>
+                                 <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-poam/poam-item/related-findings/finding-uuid">Switch to JSON</a></div>
+                                 <p class="formal-name">Finding Universally Unique Identifier Reference</p>
+                              </div>
+                              <div class="body">
+                                 <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a finding defined in the list of findings.</p>
                               </div>
                            </div>
                         </div>

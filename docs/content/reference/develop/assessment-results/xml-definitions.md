@@ -3237,9 +3237,9 @@ The following is a reference for the XML element and attribute types derived fro
    </div>
    <div class="model-entry definition define-assembly">
       <div class="definition-header">
-         <h1 id="/assembly/oscal-ar/finding" class="toc1 name">finding</h1>
+         <h1 id="/assembly/oscal-assessment-common/finding" class="toc1 name">finding</h1>
          <p class="type">assembly<br class="br" /> </p>
-         <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-ar/finding">Switch to JSON</a></div>
+         <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-assessment-common/finding">Switch to JSON</a></div>
          <p class="formal-name">Finding</p>
       </div>
       <div class="body">
@@ -3249,10 +3249,10 @@ The following is a reference for the XML element and attribute types derived fro
             <div class="model assembly-model">
                <div class="model-entry definition define-flag">
                   <div class="instance-header">
-                     <h2 id="/assembly/oscal-ar/finding/uuid" class="toc2 name">uuid</h2>
+                     <h2 id="/assembly/oscal-assessment-common/finding/uuid" class="toc2 name">uuid</h2>
                      <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                      <p class="occurrence">[0 or 1]</p>
-                     <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-ar/finding/uuid">Switch to JSON</a></div>
+                     <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-assessment-common/finding/uuid">Switch to JSON</a></div>
                      <p class="formal-name">Finding Universally Unique Identifier</p>
                   </div>
                   <div class="body">
@@ -3268,10 +3268,10 @@ The following is a reference for the XML element and attribute types derived fro
             <div class="model assembly-model">
                <div class="model-entry definition define-field">
                   <div class="instance-header">
-                     <h2 id="/assembly/oscal-ar/finding/title" class="toc2 name">title</h2>
+                     <h2 id="/assembly/oscal-assessment-common/finding/title" class="toc2 name">title</h2>
                      <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                      <p class="occurrence">[1]</p>
-                     <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-ar/finding/title">Switch to JSON</a></div>
+                     <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-assessment-common/finding/title">Switch to JSON</a></div>
                      <p class="formal-name">Finding Title</p>
                   </div>
                   <div class="body">
@@ -3280,10 +3280,10 @@ The following is a reference for the XML element and attribute types derived fro
                </div>
                <div class="model-entry definition define-field">
                   <div class="instance-header">
-                     <h2 id="/assembly/oscal-ar/finding/description" class="toc2 name">description</h2>
+                     <h2 id="/assembly/oscal-assessment-common/finding/description" class="toc2 name">description</h2>
                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                      <p class="occurrence">[1]</p>
-                     <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-ar/finding/description">Switch to JSON</a></div>
+                     <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-assessment-common/finding/description">Switch to JSON</a></div>
                      <p class="formal-name">Finding Description</p>
                   </div>
                   <div class="body">
@@ -3292,10 +3292,10 @@ The following is a reference for the XML element and attribute types derived fro
                </div>
                <div class="model-entry definition assembly">
                   <div class="instance-header">
-                     <h2 id="/assembly/oscal-ar/finding/prop" class="toc2 name">property</h2>
+                     <h2 id="/assembly/oscal-assessment-common/finding/prop" class="toc2 name">property</h2>
                      <p class="type">assembly<br class="br" /> </p>
                      <p class="occurrence">[0 to ∞]</p>
-                     <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-ar/finding/props">Switch to JSON</a></div>
+                     <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-assessment-common/finding/props">Switch to JSON</a></div>
                      <p class="formal-name">Property</p>
                   </div>
                   <div class="body">
@@ -3322,10 +3322,10 @@ The following is a reference for the XML element and attribute types derived fro
                </div>
                <div class="model-entry definition assembly">
                   <div class="instance-header">
-                     <h2 id="/assembly/oscal-ar/finding/link" class="toc2 name">link</h2>
+                     <h2 id="/assembly/oscal-assessment-common/finding/link" class="toc2 name">link</h2>
                      <p class="type">assembly<br class="br" /> </p>
                      <p class="occurrence">[0 to ∞]</p>
-                     <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-ar/finding/links">Switch to JSON</a></div>
+                     <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-assessment-common/finding/links">Switch to JSON</a></div>
                      <p class="formal-name">Link</p>
                   </div>
                   <div class="body">
@@ -3344,10 +3344,10 @@ The following is a reference for the XML element and attribute types derived fro
                </div>
                <div class="model-entry definition assembly">
                   <div class="instance-header">
-                     <h2 id="/assembly/oscal-ar/finding/origin" class="toc2 name">origin</h2>
+                     <h2 id="/assembly/oscal-assessment-common/finding/origin" class="toc2 name">origin</h2>
                      <p class="type">assembly<br class="br" /> </p>
                      <p class="occurrence">[0 to ∞]</p>
-                     <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-ar/finding/origins">Switch to JSON</a></div>
+                     <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-assessment-common/finding/origins">Switch to JSON</a></div>
                      <p class="formal-name">Origin</p>
                   </div>
                   <div class="body">
@@ -3364,10 +3364,10 @@ The following is a reference for the XML element and attribute types derived fro
                </div>
                <div class="model-entry definition assembly">
                   <div class="instance-header">
-                     <h2 id="/assembly/oscal-ar/finding/target" class="toc2 name">target</h2>
+                     <h2 id="/assembly/oscal-assessment-common/finding/target" class="toc2 name">target</h2>
                      <p class="type">assembly<br class="br" /> </p>
                      <p class="occurrence">[1]</p>
-                     <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-ar/finding/target">Switch to JSON</a></div>
+                     <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-assessment-common/finding/target">Switch to JSON</a></div>
                      <p class="formal-name">Objective Status</p>
                   </div>
                   <div class="body">
@@ -3377,10 +3377,10 @@ The following is a reference for the XML element and attribute types derived fro
                </div>
                <div class="model-entry definition define-field">
                   <div class="instance-header">
-                     <h2 id="/assembly/oscal-ar/finding/implementation-statement-uuid" class="toc2 name">implementation-statement-uuid</h2>
+                     <h2 id="/assembly/oscal-assessment-common/finding/implementation-statement-uuid" class="toc2 name">implementation-statement-uuid</h2>
                      <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                      <p class="occurrence">[0 or 1]</p>
-                     <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-ar/finding/implementation-statement-uuid">Switch to JSON</a></div>
+                     <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-assessment-common/finding/implementation-statement-uuid">Switch to JSON</a></div>
                      <p class="formal-name">Implementation Statement UUID</p>
                   </div>
                   <div class="body">
@@ -3390,10 +3390,10 @@ The following is a reference for the XML element and attribute types derived fro
                </div>
                <div class="model-entry definition define-assembly">
                   <div class="instance-header">
-                     <h2 id="/assembly/oscal-ar/finding/related-observation" class="toc2 name">related-observation</h2>
+                     <h2 id="/assembly/oscal-assessment-common/finding/related-observation" class="toc2 name">related-observation</h2>
                      <p class="type">assembly<br class="br" /> </p>
                      <p class="occurrence">[0 to ∞]</p>
-                     <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-ar/finding/related-observations">Switch to JSON</a></div>
+                     <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-assessment-common/finding/related-observations">Switch to JSON</a></div>
                      <p class="formal-name">Related Observation</p>
                   </div>
                   <div class="body">
@@ -3404,10 +3404,10 @@ The following is a reference for the XML element and attribute types derived fro
                         <div class="model assembly-model">
                            <div class="model-entry definition define-flag">
                               <div class="instance-header">
-                                 <h3 id="/assembly/oscal-ar/finding/related-observation/observation-uuid" class="toc3 name">observation-uuid</h3>
+                                 <h3 id="/assembly/oscal-assessment-common/finding/related-observation/observation-uuid" class="toc3 name">observation-uuid</h3>
                                  <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                  <p class="occurrence">[0 or 1]</p>
-                                 <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-ar/finding/related-observations/observation-uuid">Switch to JSON</a></div>
+                                 <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-assessment-common/finding/related-observations/observation-uuid">Switch to JSON</a></div>
                                  <p class="formal-name">Observation Universally Unique Identifier Reference</p>
                               </div>
                               <div class="body">
@@ -3420,10 +3420,10 @@ The following is a reference for the XML element and attribute types derived fro
                </div>
                <div class="model-entry definition define-assembly">
                   <div class="instance-header">
-                     <h2 id="/assembly/oscal-ar/finding/associated-risk" class="toc2 name">associated-risk</h2>
+                     <h2 id="/assembly/oscal-assessment-common/finding/associated-risk" class="toc2 name">associated-risk</h2>
                      <p class="type">assembly<br class="br" /> </p>
                      <p class="occurrence">[0 to ∞]</p>
-                     <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-ar/finding/related-risks">Switch to JSON</a></div>
+                     <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-assessment-common/finding/related-risks">Switch to JSON</a></div>
                      <p class="formal-name">Associated Risk</p>
                   </div>
                   <div class="body">
@@ -3434,10 +3434,10 @@ The following is a reference for the XML element and attribute types derived fro
                         <div class="model assembly-model">
                            <div class="model-entry definition define-flag">
                               <div class="instance-header">
-                                 <h3 id="/assembly/oscal-ar/finding/associated-risk/risk-uuid" class="toc3 name">risk-uuid</h3>
+                                 <h3 id="/assembly/oscal-assessment-common/finding/associated-risk/risk-uuid" class="toc3 name">risk-uuid</h3>
                                  <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                  <p class="occurrence">[0 or 1]</p>
-                                 <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-ar/finding/related-risks/risk-uuid">Switch to JSON</a></div>
+                                 <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-assessment-common/finding/related-risks/risk-uuid">Switch to JSON</a></div>
                                  <p class="formal-name">Risk Universally Unique Identifier Reference</p>
                               </div>
                               <div class="body">
@@ -3450,10 +3450,10 @@ The following is a reference for the XML element and attribute types derived fro
                </div>
                <div class="model-entry definition field">
                   <div class="instance-header">
-                     <h2 id="/assembly/oscal-ar/finding/remarks" class="toc2 name">remarks</h2>
+                     <h2 id="/assembly/oscal-assessment-common/finding/remarks" class="toc2 name">remarks</h2>
                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                      <p class="occurrence">[0 or 1]</p>
-                     <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-ar/finding/remarks">Switch to JSON</a></div>
+                     <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-assessment-common/finding/remarks">Switch to JSON</a></div>
                      <p class="formal-name">Remarks</p>
                   </div>
                   <div class="body">
@@ -10200,7 +10200,7 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="formal-name">Finding</p>
                   </div>
                   <div class="body">
-                     <p class="definition-link"><a href="#/assembly/oscal-ar/finding">See definition</a></p>
+                     <p class="definition-link"><a href="#/assembly/oscal-assessment-common/finding">See definition</a></p>
                   </div>
                </div>
                <div class="model-entry definition field">
