@@ -358,7 +358,7 @@
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="finding"
-                     type="oscal-ar-finding-ASSEMBLY"
+                     type="oscal-assessment-common-finding-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="remarks" minOccurs="0" maxOccurs="1">
@@ -383,144 +383,6 @@
             </xs:appinfo>
             <xs:documentation>
                <b>Results Universally Unique Identifier</b>: A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this set of results in this or other OSCAL instances. The locally defined UUID of the assessment result can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.</xs:documentation>
-         </xs:annotation>
-      </xs:attribute>
-   </xs:complexType>
-   <xs:complexType name="oscal-ar-finding-ASSEMBLY">
-      <xs:annotation>
-         <xs:appinfo>
-            <m:formal-name>Finding</m:formal-name>
-            <m:description>Describes an individual finding.</m:description>
-         </xs:appinfo>
-         <xs:documentation>
-            <b>Finding</b>: Describes an individual finding.</xs:documentation>
-      </xs:annotation>
-      <xs:sequence>
-         <xs:element name="title" minOccurs="1" maxOccurs="1">
-            <xs:complexType mixed="true">
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Finding Title</m:formal-name>
-                     <m:description>The title for this finding.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Finding Title</b>: The title for this finding.</xs:documentation>
-               </xs:annotation>
-               <xs:complexContent>
-                  <xs:extension base="MarkupLineDatatype"/>
-               </xs:complexContent>
-            </xs:complexType>
-         </xs:element>
-         <xs:element name="description" minOccurs="1" maxOccurs="1">
-            <xs:complexType>
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Finding Description</m:formal-name>
-                     <m:description>A human-readable description of this finding.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Finding Description</b>: A human-readable description of this finding.</xs:documentation>
-               </xs:annotation>
-               <xs:complexContent>
-                  <xs:extension base="MarkupMultilineDatatype"/>
-               </xs:complexContent>
-            </xs:complexType>
-         </xs:element>
-         <xs:element name="prop"
-                     type="oscal-metadata-property-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
-         <xs:element name="link"
-                     type="oscal-metadata-link-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
-         <xs:element name="origin"
-                     type="oscal-assessment-common-origin-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
-         <xs:element name="target"
-                     type="oscal-assessment-common-finding-target-ASSEMBLY"
-                     minOccurs="1"
-                     maxOccurs="1"/>
-         <xs:element name="implementation-statement-uuid" minOccurs="0" maxOccurs="1">
-            <xs:simpleType>
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Implementation Statement UUID</m:formal-name>
-                     <m:description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to the implementation statement in the SSP to which this finding is related.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Implementation Statement UUID</b>: A machine-oriented identifier reference to the implementation statement in the SSP to which this finding is related.</xs:documentation>
-               </xs:annotation>
-               <xs:restriction base="UUIDDatatype"/>
-            </xs:simpleType>
-         </xs:element>
-         <xs:element name="related-observation" minOccurs="0" maxOccurs="unbounded">
-            <xs:complexType>
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Related Observation</m:formal-name>
-                     <m:description>Relates the finding to a set of referenced observations that were used to determine the finding.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Related Observation</b>: Relates the finding to a set of referenced observations that were used to determine the finding.</xs:documentation>
-               </xs:annotation>
-               <xs:attribute name="observation-uuid" use="required" type="UUIDDatatype">
-                  <xs:annotation>
-                     <xs:appinfo>
-                        <m:formal-name>Observation Universally Unique Identifier Reference</m:formal-name>
-                        <m:description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to an observation defined in the list of observations.</m:description>
-                     </xs:appinfo>
-                     <xs:documentation>
-                        <b>Observation Universally Unique Identifier Reference</b>: A machine-oriented identifier reference to an observation defined in the list of observations.</xs:documentation>
-                  </xs:annotation>
-               </xs:attribute>
-            </xs:complexType>
-         </xs:element>
-         <xs:element name="associated-risk" minOccurs="0" maxOccurs="unbounded">
-            <xs:complexType>
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Associated Risk</m:formal-name>
-                     <m:description>Relates the finding to a set of referenced risks that were used to determine the finding.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Associated Risk</b>: Relates the finding to a set of referenced risks that were used to determine the finding.</xs:documentation>
-               </xs:annotation>
-               <xs:attribute name="risk-uuid" use="required" type="UUIDDatatype">
-                  <xs:annotation>
-                     <xs:appinfo>
-                        <m:formal-name>Risk Universally Unique Identifier Reference</m:formal-name>
-                        <m:description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a risk defined in the list of risks.</m:description>
-                     </xs:appinfo>
-                     <xs:documentation>
-                        <b>Risk Universally Unique Identifier Reference</b>: A machine-oriented identifier reference to a risk defined in the list of risks.</xs:documentation>
-                  </xs:annotation>
-               </xs:attribute>
-            </xs:complexType>
-         </xs:element>
-         <xs:element name="remarks" minOccurs="0" maxOccurs="1">
-            <xs:annotation>
-               <xs:appinfo>
-                  <m:formal-name>Remarks</m:formal-name>
-                  <m:description>Additional commentary about the containing object.</m:description>
-               </xs:appinfo>
-               <xs:documentation>
-                  <b>Remarks</b>: Additional commentary about the containing object.</xs:documentation>
-            </xs:annotation>
-            <xs:complexType>
-               <xs:group ref="blockElementGroup" maxOccurs="unbounded" minOccurs="0"/>
-            </xs:complexType>
-         </xs:element>
-      </xs:sequence>
-      <xs:attribute name="uuid" use="required" type="UUIDDatatype">
-         <xs:annotation>
-            <xs:appinfo>
-               <m:formal-name>Finding Universally Unique Identifier</m:formal-name>
-               <m:description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this finding in <a href="/concepts/identifier-use/#ar-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>finding</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</m:description>
-            </xs:appinfo>
-            <xs:documentation>
-               <b>Finding Universally Unique Identifier</b>: A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this finding in this or other OSCAL instances. The locally defined UUID of the finding can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
@@ -3171,6 +3033,144 @@
             </xs:appinfo>
             <xs:documentation>
                <b>Finding Target Identifier Reference</b>: A machine-oriented identifier reference for a specific target qualified by the type.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+   </xs:complexType>
+   <xs:complexType name="oscal-assessment-common-finding-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Finding</m:formal-name>
+            <m:description>Describes an individual finding.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Finding</b>: Describes an individual finding.</xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="title" minOccurs="1" maxOccurs="1">
+            <xs:complexType mixed="true">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Finding Title</m:formal-name>
+                     <m:description>The title for this finding.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Finding Title</b>: The title for this finding.</xs:documentation>
+               </xs:annotation>
+               <xs:complexContent>
+                  <xs:extension base="MarkupLineDatatype"/>
+               </xs:complexContent>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="description" minOccurs="1" maxOccurs="1">
+            <xs:complexType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Finding Description</m:formal-name>
+                     <m:description>A human-readable description of this finding.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Finding Description</b>: A human-readable description of this finding.</xs:documentation>
+               </xs:annotation>
+               <xs:complexContent>
+                  <xs:extension base="MarkupMultilineDatatype"/>
+               </xs:complexContent>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="prop"
+                     type="oscal-metadata-property-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="link"
+                     type="oscal-metadata-link-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="origin"
+                     type="oscal-assessment-common-origin-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="target"
+                     type="oscal-assessment-common-finding-target-ASSEMBLY"
+                     minOccurs="1"
+                     maxOccurs="1"/>
+         <xs:element name="implementation-statement-uuid" minOccurs="0" maxOccurs="1">
+            <xs:simpleType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Implementation Statement UUID</m:formal-name>
+                     <m:description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to the implementation statement in the SSP to which this finding is related.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Implementation Statement UUID</b>: A machine-oriented identifier reference to the implementation statement in the SSP to which this finding is related.</xs:documentation>
+               </xs:annotation>
+               <xs:restriction base="UUIDDatatype"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="related-observation" minOccurs="0" maxOccurs="unbounded">
+            <xs:complexType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Related Observation</m:formal-name>
+                     <m:description>Relates the finding to a set of referenced observations that were used to determine the finding.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Related Observation</b>: Relates the finding to a set of referenced observations that were used to determine the finding.</xs:documentation>
+               </xs:annotation>
+               <xs:attribute name="observation-uuid" use="required" type="UUIDDatatype">
+                  <xs:annotation>
+                     <xs:appinfo>
+                        <m:formal-name>Observation Universally Unique Identifier Reference</m:formal-name>
+                        <m:description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to an observation defined in the list of observations.</m:description>
+                     </xs:appinfo>
+                     <xs:documentation>
+                        <b>Observation Universally Unique Identifier Reference</b>: A machine-oriented identifier reference to an observation defined in the list of observations.</xs:documentation>
+                  </xs:annotation>
+               </xs:attribute>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="associated-risk" minOccurs="0" maxOccurs="unbounded">
+            <xs:complexType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Associated Risk</m:formal-name>
+                     <m:description>Relates the finding to a set of referenced risks that were used to determine the finding.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Associated Risk</b>: Relates the finding to a set of referenced risks that were used to determine the finding.</xs:documentation>
+               </xs:annotation>
+               <xs:attribute name="risk-uuid" use="required" type="UUIDDatatype">
+                  <xs:annotation>
+                     <xs:appinfo>
+                        <m:formal-name>Risk Universally Unique Identifier Reference</m:formal-name>
+                        <m:description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a risk defined in the list of risks.</m:description>
+                     </xs:appinfo>
+                     <xs:documentation>
+                        <b>Risk Universally Unique Identifier Reference</b>: A machine-oriented identifier reference to a risk defined in the list of risks.</xs:documentation>
+                  </xs:annotation>
+               </xs:attribute>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Remarks</m:formal-name>
+                  <m:description>Additional commentary about the containing object.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Remarks</b>: Additional commentary about the containing object.</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+               <xs:group ref="blockElementGroup" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
+      <xs:attribute name="uuid" use="required" type="UUIDDatatype">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Finding Universally Unique Identifier</m:formal-name>
+               <m:description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this finding in <a href="/concepts/identifier-use/#ar-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>finding</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Finding Universally Unique Identifier</b>: A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this finding in this or other OSCAL instances. The locally defined UUID of the finding can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>

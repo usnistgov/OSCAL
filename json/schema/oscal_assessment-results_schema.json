@@ -212,7 +212,7 @@
           { "type" : "array",
             "minItems" : 1,
             "items" : 
-            { "$ref" : "#assembly_oscal-ar_finding" } },
+            { "$ref" : "#assembly_oscal-assessment-common_finding" } },
           "remarks" : 
           { "$ref" : "#field_oscal-metadata_remarks" } },
         "required" : 
@@ -221,83 +221,6 @@
           "description",
           "start",
           "reviewed-controls" ],
-        "additionalProperties" : false },
-      "oscal-ar-oscal-ar:finding" : 
-      { "title" : "Finding",
-        "description" : "Describes an individual finding.",
-        "$id" : "#assembly_oscal-ar_finding",
-        "type" : "object",
-        "properties" : 
-        { "uuid" : 
-          { "title" : "Finding Universally Unique Identifier",
-            "description" : "A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this finding in this or other OSCAL instances. The locally defined UUID of the finding can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.",
-            "$ref" : "#/definitions/UUIDDatatype" },
-          "title" : 
-          { "title" : "Finding Title",
-            "description" : "The title for this finding.",
-            "type" : "string" },
-          "description" : 
-          { "title" : "Finding Description",
-            "description" : "A human-readable description of this finding.",
-            "type" : "string" },
-          "props" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#assembly_oscal-metadata_property" } },
-          "links" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#assembly_oscal-metadata_link" } },
-          "origins" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#assembly_oscal-assessment-common_origin" } },
-          "target" : 
-          { "$ref" : "#assembly_oscal-assessment-common_finding-target" },
-          "implementation-statement-uuid" : 
-          { "title" : "Implementation Statement UUID",
-            "description" : "A machine-oriented identifier reference to the implementation statement in the SSP to which this finding is related.",
-            "$ref" : "#/definitions/UUIDDatatype" },
-          "related-observations" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "title" : "Related Observation",
-              "description" : "Relates the finding to a set of referenced observations that were used to determine the finding.",
-              "type" : "object",
-              "properties" : 
-              { "observation-uuid" : 
-                { "title" : "Observation Universally Unique Identifier Reference",
-                  "description" : "A machine-oriented identifier reference to an observation defined in the list of observations.",
-                  "$ref" : "#/definitions/UUIDDatatype" } },
-              "required" : 
-              [ "observation-uuid" ],
-              "additionalProperties" : false } },
-          "related-risks" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "title" : "Associated Risk",
-              "description" : "Relates the finding to a set of referenced risks that were used to determine the finding.",
-              "type" : "object",
-              "properties" : 
-              { "risk-uuid" : 
-                { "title" : "Risk Universally Unique Identifier Reference",
-                  "description" : "A machine-oriented identifier reference to a risk defined in the list of risks.",
-                  "$ref" : "#/definitions/UUIDDatatype" } },
-              "required" : 
-              [ "risk-uuid" ],
-              "additionalProperties" : false } },
-          "remarks" : 
-          { "$ref" : "#field_oscal-metadata_remarks" } },
-        "required" : 
-        [ "uuid",
-          "title",
-          "description",
-          "target" ],
         "additionalProperties" : false },
       "oscal-ar-oscal-ar:import-ap" : 
       { "title" : "Import Assessment Plan",
@@ -1752,6 +1675,83 @@
         [ "type",
           "target-id",
           "status" ],
+        "additionalProperties" : false },
+      "oscal-ar-oscal-assessment-common:finding" : 
+      { "title" : "Finding",
+        "description" : "Describes an individual finding.",
+        "$id" : "#assembly_oscal-assessment-common_finding",
+        "type" : "object",
+        "properties" : 
+        { "uuid" : 
+          { "title" : "Finding Universally Unique Identifier",
+            "description" : "A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this finding in this or other OSCAL instances. The locally defined UUID of the finding can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.",
+            "$ref" : "#/definitions/UUIDDatatype" },
+          "title" : 
+          { "title" : "Finding Title",
+            "description" : "The title for this finding.",
+            "type" : "string" },
+          "description" : 
+          { "title" : "Finding Description",
+            "description" : "A human-readable description of this finding.",
+            "type" : "string" },
+          "props" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#assembly_oscal-metadata_property" } },
+          "links" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#assembly_oscal-metadata_link" } },
+          "origins" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#assembly_oscal-assessment-common_origin" } },
+          "target" : 
+          { "$ref" : "#assembly_oscal-assessment-common_finding-target" },
+          "implementation-statement-uuid" : 
+          { "title" : "Implementation Statement UUID",
+            "description" : "A machine-oriented identifier reference to the implementation statement in the SSP to which this finding is related.",
+            "$ref" : "#/definitions/UUIDDatatype" },
+          "related-observations" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "title" : "Related Observation",
+              "description" : "Relates the finding to a set of referenced observations that were used to determine the finding.",
+              "type" : "object",
+              "properties" : 
+              { "observation-uuid" : 
+                { "title" : "Observation Universally Unique Identifier Reference",
+                  "description" : "A machine-oriented identifier reference to an observation defined in the list of observations.",
+                  "$ref" : "#/definitions/UUIDDatatype" } },
+              "required" : 
+              [ "observation-uuid" ],
+              "additionalProperties" : false } },
+          "related-risks" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "title" : "Associated Risk",
+              "description" : "Relates the finding to a set of referenced risks that were used to determine the finding.",
+              "type" : "object",
+              "properties" : 
+              { "risk-uuid" : 
+                { "title" : "Risk Universally Unique Identifier Reference",
+                  "description" : "A machine-oriented identifier reference to a risk defined in the list of risks.",
+                  "$ref" : "#/definitions/UUIDDatatype" } },
+              "required" : 
+              [ "risk-uuid" ],
+              "additionalProperties" : false } },
+          "remarks" : 
+          { "$ref" : "#field_oscal-metadata_remarks" } },
+        "required" : 
+        [ "uuid",
+          "title",
+          "description",
+          "target" ],
         "additionalProperties" : false },
       "oscal-ar-oscal-assessment-common:observation" : 
       { "title" : "Observation",
