@@ -44,6 +44,9 @@
             <assembly ref="risk" min-occurs="0" max-occurs="unbounded">
                 <group-as name="risks" in-json="ARRAY"/>
             </assembly>
+            <assembly ref="finding" min-occurs="0" max-occurs="unbounded">
+                <group-as name="findings" in-json="ARRAY"/>
+            </assembly>
             <assembly ref="poam-item" min-occurs="1" max-occurs="unbounded">
                 <!-- CHANGED: removed the top-level "poam-items" -->
                 <!-- CHANGED: "poam-item-group" to "poam-items" -->
@@ -127,6 +130,16 @@
                 <remarks>
                     <p>Used to identify the individual and/or tool generated this poam-item.</p>
                 </remarks>
+            </define-assembly>
+
+            <define-assembly name="related-finding" min-occurs="0" max-occurs="unbounded">
+                <formal-name>Related Finding</formal-name>
+                <description>Relates the poam-item to referenced finding(s).</description>
+                <group-as name="related-findings" in-json="ARRAY"/>
+                <define-flag name="finding-uuid" as-type="uuid" required="yes">
+                    <formal-name>Finding Universally Unique Identifier Reference</formal-name>
+                    <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a finding defined in the list of findings.</description>
+                </define-flag>
             </define-assembly>
 
             <!-- TODO: add link; check in the other assessment models -->
