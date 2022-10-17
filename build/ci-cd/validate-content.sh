@@ -6,6 +6,7 @@ if [ -z ${OSCAL_SCRIPT_INIT+x} ]; then
     source "$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null && pwd)/include/init-oscal.sh"
 fi
 source "$OSCALDIR/build/metaschema/scripts/include/init-validate-content.sh"
+source "$OSCALDIR/build/metaschema/scripts/include/init-schematron.sh"
 
 # Option defaults
 ARTIFACT_DIR="${OSCALDIR}"
@@ -23,10 +24,16 @@ Usage: $0 [options]
 -o DIR, --oscal-dir DIR           OSCAL schema are located in DIR.
 -h, --help                        Display help
 -v                                Provide verbose output
+--scratch-dir DIR                 Generate temporary artifacts in DIR
+                                  If not provided a new directory will be
+                                  created under \$TMPDIR if set or in /tmp.
+--keep-temp-scratch-dir           If a scratch directory is automatically
+                                  created, it will not be automatically removed.
 EOF
 }
 
-if ! OPTS=$(getopt -o o:vhc:a: --long artifact-dir:,oscal-dir:,help,config-file: -n "$0" -- "$@"); then echo "Failed parsing options." >&2 ; usage ; exit 1 ; fi
+OPTS=$(getopt -o o:vhc:a: --long artifact-dir:,oscal-dir:,help,config-file:,scratch-dir:,keep-temp-scratch-dir -n "$0" -- "$@")
+if [ $? != 0 ] ; then echo "Failed parsing options." >&2 ; usage ; exit 1 ; fi
 
 # Process arguments
 eval set -- "$OPTS"
@@ -45,6 +52,13 @@ while [ $# -gt 0 ]; do
       ARTIFACT_DIR="$(realpath "$2")"
       shift # past path
       ;;
+    --scratch-dir)
+      SCRATCH_DIR="$(realpath "$2")"
+      shift # past path
+      ;;
+    --keep-temp-scratch-dir)
+      KEEP_TEMP_SCRATCH_DIR=true
+    ;;
     -v)
       VERBOSE=true
       ;;
@@ -75,6 +89,28 @@ if [ "$VERBOSE" = "true" ]; then
   echo -e "${P_INFO}Using artifact directory:${P_END} ${ARTIFACT_DIR}"
   echo -e "${P_INFO}Using config file:${P_END} ${CONFIG_FILE}"
 fi
+
+if [ -z "${SCRATCH_DIR+x}" ]; then
+  SCRATCH_DIR="$(mktemp -d)"
+  if [ "$KEEP_TEMP_SCRATCH_DIR" != "true" ]; then
+    function CleanupScratchDir() {
+      rc=$?
+      if [ "$VERBOSE" = "true" ]; then
+        echo -e ""
+        echo -e "${P_INFO}Cleanup${P_END}"
+        echo -e "${P_INFO}=======${P_END}"
+        echo -e "${P_INFO}Deleting scratch directory:${P_END} ${SCRATCH_DIR}"
+      fi
+      rm -rf "${SCRATCH_DIR}"
+      exit $rc
+    }
+    trap CleanupScratchDir EXIT
+  fi
+fi
+
+profile_schematron="oscal/src/utils/schematron/oscal-profile.sch"
+compiled_profile_schematron="${SCRATCH_DIR}/oscal-profile.xsl"
+build_schematron "${profile_schematron}" "${compiled_profile_schematron}"
 
 exitcode=0
 shopt -s nullglob
@@ -112,6 +148,21 @@ while IFS="|" read path format model converttoformats || [ -n "$path" ]; do
             exitcode=1
           else
             echo -e "${P_OK}XML Schema validation passed for '${P_END}${file_relative}${P_OK}' using schema '${P_END}${schema_relative}${P_OK}'.${P_END}"
+          fi
+
+          if [ "${model}" == "profile" ]; then
+            echo -e "${P_INFO}Validating profile with Schematron for project's requirements and recommendations.${P_INFO}${P_END}"
+            target_file=$(basename -- "${file_relative}")
+            svrl_result="/tmp/${target_file}.svrl"
+            result=$(validate_with_schematron "${SCRATCH_DIR}/oscal-profile.xsl" "${file_relative}" "$svrl_result" 2>&1)
+            cmd_exitcode=$?
+            if [ $cmd_exitcode -ne 0 ]; then
+              echo -e "${P_ERROR}Profile validation execution for '${P_END}${file_relative}${P_ERROR}' with Schematron '${P_END}${profile_schematron}${P_ERROR}' did not complete.${P_END}"
+              echo -e "${P_ERROR}${result}${P_END}"
+              exitcode=1
+            else
+              echo -e "${P_OK}Profile validation execution for '${P_END}${file_relative}${P_OK}' with Schematron '${P_END}${profile_schematron}${P_OK}' completed successfully.${P_END}"
+            fi
           fi
         ;;
       json)
