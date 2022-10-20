@@ -20,7 +20,7 @@
       <import href="oscal_mapping-common_metaschema.xml"/>
       <define-assembly name="catalog">
             <formal-name>Catalog</formal-name>
-            <description>A structured, <a href="https://pages.nist.gov/OSCAL/concepts/terminology/#catalog">organized collection</a> of control information.</description>
+            <description>A structured, <a href="/concepts/terminology/#catalog">organized collection</a> of control information.</description>
             <root-name>catalog</root-name>
             <define-flag name="uuid" as-type="uuid" required="yes">
                   <formal-name>Catalog Universally Unique Identifier</formal-name>
@@ -52,11 +52,11 @@
             <constraint>
                   <allowed-values target="metadata/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
                         <enum value="resolution-tool">The tool used to produce a resolved profile.</enum>
-                        <enum value="source-profile-uuid">The document-level <code>uuid</code> of the source profile from which the catalog was produced by <a href="https://pages.nist.gov/OSCAL/concepts/processing/profile-resolution/">profile resolution</a>.</enum>
+                        <enum value="source-profile-uuid">The document-level <code>uuid</code> of the source profile from which the catalog was produced by <a href="/concepts/processing/profile-resolution/">profile resolution</a>.</enum>
                   </allowed-values>
                   <allowed-values target="metadata/link/@rel">
-                        <enum value="source-profile">The profile from which the catalog was produced by <a href="https://pages.nist.gov/OSCAL/concepts/processing/profile-resolution/">profile resolution</a>.</enum>
-                        <enum value="source-profile-uuid">The document-level <code>uuid</code> of the profile from which the catalog was produced by <a href="https://pages.nist.gov/OSCAL/concepts/processing/profile-resolution/">profile resolution</a>.</enum>
+                        <enum value="source-profile">The profile from which the catalog was produced by <a href="/concepts/processing/profile-resolution/">profile resolution</a>.</enum>
+                        <enum value="source-profile-uuid">The document-level <code>uuid</code> of the profile from which the catalog was produced by <a href="/concepts/processing/profile-resolution/">profile resolution</a>.</enum>
                   </allowed-values>
                   <index name="catalog-parts" target="//part" >
                         <key-field target="@id"/>
@@ -162,7 +162,7 @@
       </define-assembly>
       <define-assembly name="control">
             <formal-name>Control</formal-name>
-            <description>A <a href="https://pages.nist.gov/OSCAL/concepts/terminology/#control"
+            <description>A <a href="/concepts/terminology/#control"
                         >structured object</a> representing a requirement or guideline, which when
                   implemented will reduce an aspect of risk related to an information system and its
                   information.</description>

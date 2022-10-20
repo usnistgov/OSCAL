@@ -684,7 +684,7 @@
                         </allowed-values>
                   </constraint>
                   <remarks>
-                        <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                        <p>This value must be an <a href="/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                   </remarks>
             </define-flag>
       </define-field>

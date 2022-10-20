@@ -13,15 +13,15 @@
       <json-base-uri>http://csrc.nist.gov/ns/oscal</json-base-uri>
       <remarks>
             <p>In OSCAL a profile represents a set of selected <a
-                        href="https://pages.nist.gov/OSCAL/concepts/terminology/#control"
+                        href="/concepts/terminology/#control"
                         >controls</a> from one or more control catalogs. Such a set of controls can
                   be referenced by an OSCAL <a
-                        href="https://pages.nist.gov/OSCAL/concepts/layer/implementation/ssp/"
+                        href="/concepts/layer/implementation/ssp/"
                         >system security plan</a> (SSP) to establish a control <a
-                        href="https://pages.nist.gov/OSCAL/concepts/terminology/#baseline"
+                        href="/concepts/terminology/#baseline"
                         >baseline</a>. This effective set of controls is produced from an OSCAL
                   profile using a deterministic, predictable process called <a
-                        href="https://pages.nist.gov/OSCAL/concepts/processing/profile-resolution/"
+                        href="/concepts/processing/profile-resolution/"
                         >profile resolution</a>.</p>
             <p>A profile references one or more OSCAL catalogs or profiles to import controls for control selection and tailoring. A profile can also describe how a resulting catalog is structured. When the profile is resolved, these selections and modifications are processed to produce a resulting OSCAL catalog.</p>
             <p>OSCAL profiles have uses beyond establishing control baselines, such as documentation
@@ -68,9 +68,9 @@
                   <remarks>
                         <p>This value may be one of:</p>
                         <ol>
-                              <li>an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
-                              <li>a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing document, or</li>
-                              <li>a bare URI fragment (i.e., `#uuid`) pointing to a <code>back-matter</code> resource in this or an imported document (see <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>).</li>
+                              <li>an <a href="/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
+                              <li>a <a href="/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing document, or</li>
+                              <li>a bare URI fragment (i.e., `#uuid`) pointing to a <code>back-matter</code> resource in this or an imported document (see <a href="/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>).</li>
                         </ol>
                   </remarks>
             </define-flag>
