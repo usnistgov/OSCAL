@@ -561,7 +561,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
                                                    <div class="remarks">
-                                                      <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                      <p>This value must be an <a href="/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                                                       <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                    </div>
                                                 </details>
@@ -705,13 +705,13 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                       <p>This value may be one of:</p>
                                                       <ol>
                                                          
-                                                         <li>an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
+                                                         <li>an <a href="/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
                                                          
-                                                         <li>a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
+                                                         <li>a <a href="/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
                                                             document, or</li>
                                                          
                                                          <li>a bare URI fragment (i.e., `#uuid`) pointing to an OSCAL object by the objects identifier
-                                                            (e.g., id, uuid) in this or an imported document (see <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>). The specific object type will differ based on the link relationship type.</li>
+                                                            (e.g., id, uuid) in this or an imported document (see <a href="/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>). The specific object type will differ based on the link relationship type.</li>
                                                          </ol>
                                                    </div>
                                                 </details>
@@ -863,7 +863,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                        <details open="open">
                                           <summary class="subhead">Remarks</summary>
                                           <div class="remarks">
-                                             <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                             <p>This value must be an <a href="/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                                           </div>
                                        </details>
                                     </div>
@@ -981,7 +981,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                        <details open="open">
                                           <summary class="subhead">Remarks</summary>
                                           <div class="remarks">
-                                             <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                             <p>This value must be an <a href="/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                                              <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                           </div>
                                        </details>
@@ -1125,13 +1125,13 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                              <p>This value may be one of:</p>
                                              <ol>
                                                 
-                                                <li>an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
+                                                <li>an <a href="/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
                                                 
-                                                <li>a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
+                                                <li>a <a href="/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
                                                    document, or</li>
                                                 
                                                 <li>a bare URI fragment (i.e., `#uuid`) pointing to an OSCAL object by the objects identifier
-                                                   (e.g., id, uuid) in this or an imported document (see <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>). The specific object type will differ based on the link relationship type.</li>
+                                                   (e.g., id, uuid) in this or an imported document (see <a href="/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>). The specific object type will differ based on the link relationship type.</li>
                                                 </ol>
                                           </div>
                                        </details>
@@ -1378,7 +1378,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
                                                    <div class="remarks">
-                                                      <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                      <p>This value must be an <a href="/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                                                       <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                    </div>
                                                 </details>
@@ -1522,13 +1522,13 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                       <p>This value may be one of:</p>
                                                       <ol>
                                                          
-                                                         <li>an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
+                                                         <li>an <a href="/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
                                                          
-                                                         <li>a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
+                                                         <li>a <a href="/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
                                                             document, or</li>
                                                          
                                                          <li>a bare URI fragment (i.e., `#uuid`) pointing to an OSCAL object by the objects identifier
-                                                            (e.g., id, uuid) in this or an imported document (see <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>). The specific object type will differ based on the link relationship type.</li>
+                                                            (e.g., id, uuid) in this or an imported document (see <a href="/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>). The specific object type will differ based on the link relationship type.</li>
                                                          </ol>
                                                    </div>
                                                 </details>
@@ -2047,7 +2047,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
                                                    <div class="remarks">
-                                                      <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                      <p>This value must be an <a href="/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                                                       <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                    </div>
                                                 </details>
@@ -2191,13 +2191,13 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                       <p>This value may be one of:</p>
                                                       <ol>
                                                          
-                                                         <li>an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
+                                                         <li>an <a href="/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
                                                          
-                                                         <li>a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
+                                                         <li>a <a href="/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
                                                             document, or</li>
                                                          
                                                          <li>a bare URI fragment (i.e., `#uuid`) pointing to an OSCAL object by the objects identifier
-                                                            (e.g., id, uuid) in this or an imported document (see <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>). The specific object type will differ based on the link relationship type.</li>
+                                                            (e.g., id, uuid) in this or an imported document (see <a href="/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>). The specific object type will differ based on the link relationship type.</li>
                                                          </ol>
                                                    </div>
                                                 </details>
@@ -2437,7 +2437,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
                                                    <div class="remarks">
-                                                      <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                      <p>This value must be an <a href="/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                                                    </div>
                                                 </details>
                                              </div>
@@ -2554,7 +2554,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
                                                    <div class="remarks">
-                                                      <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                      <p>This value must be an <a href="/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                                                       <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                    </div>
                                                 </details>
@@ -2698,13 +2698,13 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                       <p>This value may be one of:</p>
                                                       <ol>
                                                          
-                                                         <li>an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
+                                                         <li>an <a href="/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
                                                          
-                                                         <li>a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
+                                                         <li>a <a href="/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
                                                             document, or</li>
                                                          
                                                          <li>a bare URI fragment (i.e., `#uuid`) pointing to an OSCAL object by the objects identifier
-                                                            (e.g., id, uuid) in this or an imported document (see <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>). The specific object type will differ based on the link relationship type.</li>
+                                                            (e.g., id, uuid) in this or an imported document (see <a href="/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>). The specific object type will differ based on the link relationship type.</li>
                                                          </ol>
                                                    </div>
                                                 </details>
@@ -3234,7 +3234,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
                                                    <div class="remarks">
-                                                      <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                      <p>This value must be an <a href="/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                                                       <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                    </div>
                                                 </details>
@@ -3378,13 +3378,13 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                       <p>This value may be one of:</p>
                                                       <ol>
                                                          
-                                                         <li>an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
+                                                         <li>an <a href="/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
                                                          
-                                                         <li>a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
+                                                         <li>a <a href="/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
                                                             document, or</li>
                                                          
                                                          <li>a bare URI fragment (i.e., `#uuid`) pointing to an OSCAL object by the objects identifier
-                                                            (e.g., id, uuid) in this or an imported document (see <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>). The specific object type will differ based on the link relationship type.</li>
+                                                            (e.g., id, uuid) in this or an imported document (see <a href="/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>). The specific object type will differ based on the link relationship type.</li>
                                                          </ol>
                                                    </div>
                                                 </details>
@@ -3681,7 +3681,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
                                                    <div class="remarks">
-                                                      <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                      <p>This value must be an <a href="/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                                                       <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                    </div>
                                                 </details>
@@ -3825,13 +3825,13 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                       <p>This value may be one of:</p>
                                                       <ol>
                                                          
-                                                         <li>an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
+                                                         <li>an <a href="/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
                                                          
-                                                         <li>a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
+                                                         <li>a <a href="/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
                                                             document, or</li>
                                                          
                                                          <li>a bare URI fragment (i.e., `#uuid`) pointing to an OSCAL object by the objects identifier
-                                                            (e.g., id, uuid) in this or an imported document (see <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>). The specific object type will differ based on the link relationship type.</li>
+                                                            (e.g., id, uuid) in this or an imported document (see <a href="/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>). The specific object type will differ based on the link relationship type.</li>
                                                          </ol>
                                                    </div>
                                                 </details>
@@ -4068,7 +4068,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                          <details open="open">
                                                             <summary class="subhead">Remarks</summary>
                                                             <div class="remarks">
-                                                               <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                               <p>This value must be an <a href="/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                                                                <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                             </div>
                                                          </details>
@@ -4212,13 +4212,13 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                                <p>This value may be one of:</p>
                                                                <ol>
                                                                   
-                                                                  <li>an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
+                                                                  <li>an <a href="/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
                                                                   
-                                                                  <li>a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
+                                                                  <li>a <a href="/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
                                                                      document, or</li>
                                                                   
                                                                   <li>a bare URI fragment (i.e., `#uuid`) pointing to an OSCAL object by the objects identifier
-                                                                     (e.g., id, uuid) in this or an imported document (see <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>). The specific object type will differ based on the link relationship type.</li>
+                                                                     (e.g., id, uuid) in this or an imported document (see <a href="/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>). The specific object type will differ based on the link relationship type.</li>
                                                                   </ol>
                                                             </div>
                                                          </details>
@@ -4413,12 +4413,12 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                     <p>This value may be one of:</p>
                                     <ol>
                                        
-                                       <li>an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
+                                       <li>an <a href="/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
                                        
-                                       <li>a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
+                                       <li>a <a href="/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
                                           document, or</li>
                                        
-                                       <li>a bare URI fragment (i.e., `#uuid`) pointing to a <code>back-matter</code> resource in this or an imported document (see <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>).</li>
+                                       <li>a bare URI fragment (i.e., `#uuid`) pointing to a <code>back-matter</code> resource in this or an imported document (see <a href="/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>).</li>
                                        </ol>
                                  </div>
                               </details>
@@ -5060,7 +5060,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                                      <details open="open">
                                                                         <summary class="subhead">Remarks</summary>
                                                                         <div class="remarks">
-                                                                           <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                                           <p>This value must be an <a href="/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                                                                            <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                                         </div>
                                                                      </details>
@@ -5204,13 +5204,13 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                                            <p>This value may be one of:</p>
                                                                            <ol>
                                                                               
-                                                                              <li>an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
+                                                                              <li>an <a href="/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
                                                                               
-                                                                              <li>a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
+                                                                              <li>a <a href="/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
                                                                                  document, or</li>
                                                                               
                                                                               <li>a bare URI fragment (i.e., `#uuid`) pointing to an OSCAL object by the objects identifier
-                                                                                 (e.g., id, uuid) in this or an imported document (see <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>). The specific object type will differ based on the link relationship type.</li>
+                                                                                 (e.g., id, uuid) in this or an imported document (see <a href="/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>). The specific object type will differ based on the link relationship type.</li>
                                                                               </ol>
                                                                         </div>
                                                                      </details>
@@ -5661,7 +5661,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                             <details open="open">
                                                                <summary class="subhead">Remarks</summary>
                                                                <div class="remarks">
-                                                                  <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                                  <p>This value must be an <a href="/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                                                                   <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                                </div>
                                                             </details>
@@ -5805,13 +5805,13 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                                   <p>This value may be one of:</p>
                                                                   <ol>
                                                                      
-                                                                     <li>an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
+                                                                     <li>an <a href="/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
                                                                      
-                                                                     <li>a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
+                                                                     <li>a <a href="/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
                                                                         document, or</li>
                                                                      
                                                                      <li>a bare URI fragment (i.e., `#uuid`) pointing to an OSCAL object by the objects identifier
-                                                                        (e.g., id, uuid) in this or an imported document (see <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>). The specific object type will differ based on the link relationship type.</li>
+                                                                        (e.g., id, uuid) in this or an imported document (see <a href="/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>). The specific object type will differ based on the link relationship type.</li>
                                                                      </ol>
                                                                </div>
                                                             </details>
@@ -6009,7 +6009,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                             <details open="open">
                                                                <summary class="subhead">Remarks</summary>
                                                                <div class="remarks">
-                                                                  <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                                  <p>This value must be an <a href="/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                                                                   <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                                </div>
                                                             </details>
@@ -6142,7 +6142,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                                      <details open="open">
                                                                         <summary class="subhead">Remarks</summary>
                                                                         <div class="remarks">
-                                                                           <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                                           <p>This value must be an <a href="/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                                                                            <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                                         </div>
                                                                      </details>
@@ -6367,13 +6367,13 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                                            <p>This value may be one of:</p>
                                                                            <ol>
                                                                               
-                                                                              <li>an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
+                                                                              <li>an <a href="/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
                                                                               
-                                                                              <li>a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
+                                                                              <li>a <a href="/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
                                                                                  document, or</li>
                                                                               
                                                                               <li>a bare URI fragment (i.e., `#uuid`) pointing to an OSCAL object by the objects identifier
-                                                                                 (e.g., id, uuid) in this or an imported document (see <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>). The specific object type will differ based on the link relationship type.</li>
+                                                                                 (e.g., id, uuid) in this or an imported document (see <a href="/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>). The specific object type will differ based on the link relationship type.</li>
                                                                               </ol>
                                                                         </div>
                                                                      </details>
@@ -7249,7 +7249,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
                                                    <div class="remarks">
-                                                      <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                      <p>This value must be an <a href="/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                                                       <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                    </div>
                                                 </details>
@@ -7393,13 +7393,13 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                       <p>This value may be one of:</p>
                                                       <ol>
                                                          
-                                                         <li>an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
+                                                         <li>an <a href="/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
                                                          
-                                                         <li>a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
+                                                         <li>a <a href="/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
                                                             document, or</li>
                                                          
                                                          <li>a bare URI fragment (i.e., `#uuid`) pointing to an OSCAL object by the objects identifier
-                                                            (e.g., id, uuid) in this or an imported document (see <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>). The specific object type will differ based on the link relationship type.</li>
+                                                            (e.g., id, uuid) in this or an imported document (see <a href="/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>). The specific object type will differ based on the link relationship type.</li>
                                                          </ol>
                                                    </div>
                                                 </details>
@@ -8180,7 +8180,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                                   <details open="open">
                                                                      <summary class="subhead">Remarks</summary>
                                                                      <div class="remarks">
-                                                                        <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                                        <p>This value must be an <a href="/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                                                                         <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                                      </div>
                                                                   </details>
@@ -8324,13 +8324,13 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                                         <p>This value may be one of:</p>
                                                                         <ol>
                                                                            
-                                                                           <li>an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
+                                                                           <li>an <a href="/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
                                                                            
-                                                                           <li>a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
+                                                                           <li>a <a href="/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
                                                                               document, or</li>
                                                                            
                                                                            <li>a bare URI fragment (i.e., `#uuid`) pointing to an OSCAL object by the objects identifier
-                                                                              (e.g., id, uuid) in this or an imported document (see <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>). The specific object type will differ based on the link relationship type.</li>
+                                                                              (e.g., id, uuid) in this or an imported document (see <a href="/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>). The specific object type will differ based on the link relationship type.</li>
                                                                            </ol>
                                                                      </div>
                                                                   </details>
@@ -8781,7 +8781,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                          <details open="open">
                                                             <summary class="subhead">Remarks</summary>
                                                             <div class="remarks">
-                                                               <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                               <p>This value must be an <a href="/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                                                                <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                             </div>
                                                          </details>
@@ -8925,13 +8925,13 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                                <p>This value may be one of:</p>
                                                                <ol>
                                                                   
-                                                                  <li>an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
+                                                                  <li>an <a href="/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
                                                                   
-                                                                  <li>a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
+                                                                  <li>a <a href="/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
                                                                      document, or</li>
                                                                   
                                                                   <li>a bare URI fragment (i.e., `#uuid`) pointing to an OSCAL object by the objects identifier
-                                                                     (e.g., id, uuid) in this or an imported document (see <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>). The specific object type will differ based on the link relationship type.</li>
+                                                                     (e.g., id, uuid) in this or an imported document (see <a href="/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>). The specific object type will differ based on the link relationship type.</li>
                                                                   </ol>
                                                             </div>
                                                          </details>
@@ -9129,7 +9129,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                          <details open="open">
                                                             <summary class="subhead">Remarks</summary>
                                                             <div class="remarks">
-                                                               <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                               <p>This value must be an <a href="/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                                                                <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                             </div>
                                                          </details>
@@ -9262,7 +9262,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                                   <details open="open">
                                                                      <summary class="subhead">Remarks</summary>
                                                                      <div class="remarks">
-                                                                        <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                                        <p>This value must be an <a href="/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                                                                         <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                                      </div>
                                                                   </details>
@@ -9487,13 +9487,13 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                                         <p>This value may be one of:</p>
                                                                         <ol>
                                                                            
-                                                                           <li>an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
+                                                                           <li>an <a href="/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
                                                                            
-                                                                           <li>a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
+                                                                           <li>a <a href="/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
                                                                               document, or</li>
                                                                            
                                                                            <li>a bare URI fragment (i.e., `#uuid`) pointing to an OSCAL object by the objects identifier
-                                                                              (e.g., id, uuid) in this or an imported document (see <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>). The specific object type will differ based on the link relationship type.</li>
+                                                                              (e.g., id, uuid) in this or an imported document (see <a href="/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>). The specific object type will differ based on the link relationship type.</li>
                                                                            </ol>
                                                                      </div>
                                                                   </details>
@@ -9864,7 +9864,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
                                                    <div class="remarks">
-                                                      <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                      <p>This value must be an <a href="/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                                                       <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                    </div>
                                                 </details>
@@ -10000,7 +10000,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
                                                    <div class="remarks">
-                                                      <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                      <p>This value must be an <a href="/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                                                    </div>
                                                 </details>
                                              </div>
@@ -10142,7 +10142,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                          <details open="open">
                                                             <summary class="subhead">Remarks</summary>
                                                             <div class="remarks">
-                                                               <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                               <p>This value must be an <a href="/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                                                                <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                             </div>
                                                          </details>
@@ -10286,13 +10286,13 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                                <p>This value may be one of:</p>
                                                                <ol>
                                                                   
-                                                                  <li>an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
+                                                                  <li>an <a href="/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
                                                                   
-                                                                  <li>a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
+                                                                  <li>a <a href="/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
                                                                      document, or</li>
                                                                   
                                                                   <li>a bare URI fragment (i.e., `#uuid`) pointing to an OSCAL object by the objects identifier
-                                                                     (e.g., id, uuid) in this or an imported document (see <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>). The specific object type will differ based on the link relationship type.</li>
+                                                                     (e.g., id, uuid) in this or an imported document (see <a href="/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>). The specific object type will differ based on the link relationship type.</li>
                                                                   </ol>
                                                             </div>
                                                          </details>
@@ -10420,9 +10420,9 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                       <p>This value may be either:</p>
                                                       <ol>
                                                          
-                                                         <li>an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
+                                                         <li>an <a href="/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
                                                          
-                                                         <li>a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
+                                                         <li>a <a href="/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
                                                             document, or</li>
                                                          </ol>
                                                    </div>
