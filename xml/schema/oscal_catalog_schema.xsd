@@ -1566,7 +1566,7 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Responsible Role ID</m:formal-name>
-               <m:description>A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a> identifier reference to a <code>role</code> performed.</m:description>
+               <m:description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#human-oriented">human-oriented</a> identifier reference to a <code>role</code> performed.</m:description>
             </xs:appinfo>
             <xs:documentation>
                <b>Responsible Role ID</b>: A human-oriented identifier reference to a role performed.</xs:documentation>
