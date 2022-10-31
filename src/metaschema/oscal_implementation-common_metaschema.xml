@@ -31,7 +31,7 @@
             <define-flag name="uuid" as-type="uuid" required="yes">
                   <formal-name>Component Identifier</formal-name>
                   <!-- Identifier Declaration -->
-                  <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this component elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>component</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+                  <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this component elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>component</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
             </define-flag>
             <flag ref="system-component-type" required="yes">
                   <!-- CHANGED: "component-type" to "type" -->
@@ -252,7 +252,7 @@
             <define-flag name="uuid" as-type="uuid">
                   <formal-name>Service Protocol Information Universally Unique Identifier</formal-name>
                   <!-- Identifier Declaration -->
-                  <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this service protocol information elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>service protocol</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+                  <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this service protocol information elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>service protocol</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
             </define-flag>
             <define-flag name="name" required="yes">
                   <formal-name>Protocol Name</formal-name>
@@ -346,7 +346,7 @@
             <define-flag name="uuid" as-type="uuid" required="yes">
                   <formal-name>User Universally Unique Identifier</formal-name>
                   <!-- Identifier Declaration -->
-                  <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this user class elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>system user</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+                  <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this user class elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>system user</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
             </define-flag>
             <model>
                   <define-field name="title" as-type="markup-line">
@@ -432,7 +432,7 @@
             <define-flag name="uuid" as-type="uuid" required="yes">
                   <formal-name>Inventory Item Universally Unique Identifier</formal-name>
                   <!-- Identifier Declaration -->
-                  <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this inventory item elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>inventory item</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+                  <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this inventory item elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>inventory item</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
             </define-flag>
             <!-- CHANGED: Moved to property[@name='asset-id']. -->
             <!--      <define-flag name="asset-id">
@@ -463,7 +463,7 @@
                         <define-flag required="yes" name="component-uuid" as-type="uuid">
                               <formal-name>Component Universally Unique Identifier Reference</formal-name>
                               <!-- Identifier Reference -->
-                              <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a <code>component</code> that is implemented as part of an inventory item.</description>
+                              <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a <code>component</code> that is implemented as part of an inventory item.</description>
                         </define-flag>
 
                         <!-- CHANGED (daw): the following is not needed since it is required on the referenced component -->
@@ -640,7 +640,7 @@
       <define-flag name="statement-id" as-type="token">
             <formal-name>Control Statement Reference</formal-name>
             <!-- Identifier Reference -->
-            <description>A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a> identifier reference to a <code>control statement</code>.</description>
+            <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#human-oriented">human-oriented</a> identifier reference to a <code>control statement</code>.</description>
       </define-flag>
       <define-assembly name="set-parameter">
             <formal-name>Set Parameter Value</formal-name>
@@ -670,7 +670,7 @@
                   We need to determine if both identifier-type='machine-oriented' and identifier-type='human-oriented'.
                   Option 2 is identifier-type='unspecified'.
             -->
-            <description>A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this system identification property elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. When referencing an externally defined <code>system identification</code>, the <code>system identification</code> must be used in the context of the external / imported OSCAL instance (e.g., uri-reference). This string should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same system across revisions of the document.</description>
+            <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#human-oriented">human-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this system identification property elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#scope">this or other OSCAL instances</a>. When referencing an externally defined <code>system identification</code>, the <code>system identification</code> must be used in the context of the external / imported OSCAL instance (e.g., uri-reference). This string should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same system across revisions of the document.</description>
             <json-value-key>id</json-value-key>
             <define-flag name="identifier-type" as-type="uri">
                   <formal-name>Identification System Type</formal-name>
@@ -684,7 +684,7 @@
                         </allowed-values>
                   </constraint>
                   <remarks>
-                        <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                        <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                   </remarks>
             </define-flag>
       </define-field>
@@ -694,7 +694,7 @@
             <!-- This is an id because the idenfier is assigned and managed by humans. -->
             <formal-name>Parameter ID</formal-name>
             <!-- Identifier Reference -->
-            <description>A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a> reference to a <code>parameter</code> within a control, who's catalog has been imported into the current implementation context.</description>
+            <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#human-oriented">human-oriented</a> reference to a <code>parameter</code> within a control, who's catalog has been imported into the current implementation context.</description>
             <example>
                   <set-param xmlns="http://csrc.nist.gov/ns/oscal/example" param-id="ac-2_prm_2">
                         <enum>System ISSO</enum>

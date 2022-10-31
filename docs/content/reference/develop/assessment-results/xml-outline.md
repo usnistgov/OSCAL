@@ -695,10 +695,9 @@ The following outline is a representation of the [XML format](https://github.com
                               <div class="OM-entry">
                                  <p class="OM-line">&lt;p&gt; <span class="OM-lit OM-gloss">or other elements defined as <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span></span> <span class="OM-cardinality">[0 to ∞]</span></p>
                               </div>
-                              <details class="OM-entry">
-                                 <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/assessment-results/local-definitions/objectives-and-methods/part/part">part</a></span>&gt;<span class="show-closed"><span class="OM-lit OM-gloss"> (recursive: model like parent <span class="OM-ref">part</span>) </span><span class="nobr">&lt;/part&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
-                                 <p class="OM-map-name">[Empty]</p>
-                              </details>
+                              <div class="OM-entry">
+                                 <p class="OM-line"><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/assessment-results/local-definitions/objectives-and-methods/part/part">part</a></span>&gt;<span class="show-closed"><span class="OM-lit OM-gloss"> (recursive: model like parent <span class="OM-ref">part</span>) </span><span class="nobr">&lt;/part&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></p>
+                              </div>
                               <details class="OM-entry">
                                  <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/assessment-results/local-definitions/objectives-and-methods/part/link">link</a></span> <span class="nobr" id="/assessment-results/local-definitions/objectives-and-methods/part/link/@href"><a class="OM-name" href="../xml-reference/#/assessment-results/local-definitions/objectives-and-methods/part/link/@href">href</a>="<span class="OM-datatype"><a href="/reference/datatypes/#uri-reference">uri-reference</a></span>"</span> <span class="nobr" id="/assessment-results/local-definitions/objectives-and-methods/part/link/@rel"><a class="OM-name" href="../xml-reference/#/assessment-results/local-definitions/objectives-and-methods/part/link/@rel">rel</a>="<span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span>"</span> <span class="nobr" id="/assessment-results/local-definitions/objectives-and-methods/part/link/@media-type"><a class="OM-name" href="../xml-reference/#/assessment-results/local-definitions/objectives-and-methods/part/link/@media-type">media-type</a>="<span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span>"</span>&gt;<span class="show-closed"> … <span class="nobr">&lt;/link&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
                                  <div class="model-container">
@@ -2255,10 +2254,9 @@ The following outline is a representation of the [XML format](https://github.com
                                  </div>
                                  <p class="close-tag nobr">&lt;/dependency&gt;</p>
                               </details>
-                              <details class="OM-entry">
-                                 <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/assessment-results/result/local-definitions/assessment-task/task">task</a></span>&gt;<span class="show-closed"><span class="OM-lit OM-gloss"> (recursive: model like parent <span class="OM-ref">task</span>) </span><span class="nobr">&lt;/task&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
-                                 <p class="OM-map-name">[Empty]</p>
-                              </details>
+                              <div class="OM-entry">
+                                 <p class="OM-line"><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/assessment-results/result/local-definitions/assessment-task/task">task</a></span>&gt;<span class="show-closed"><span class="OM-lit OM-gloss"> (recursive: model like parent <span class="OM-ref">task</span>) </span><span class="nobr">&lt;/task&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></p>
+                              </div>
                               <details class="OM-entry">
                                  <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/assessment-results/result/local-definitions/assessment-task/associated-activity">associated-activity</a></span> <span class="nobr" id="/assessment-results/result/local-definitions/assessment-task/associated-activity/@activity-uuid"><a class="OM-name" href="../xml-reference/#/assessment-results/result/local-definitions/assessment-task/associated-activity/@activity-uuid">activity-uuid</a>="<span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span>"</span>&gt;<span class="show-closed"> … <span class="nobr">&lt;/associated-activity&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
                                  <div class="model-container">
@@ -2994,10 +2992,9 @@ The following outline is a representation of the [XML format](https://github.com
                               <div class="OM-entry">
                                  <p class="OM-line">&lt;p&gt; <span class="OM-lit OM-gloss">or other elements defined as <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span></span> <span class="OM-cardinality">[0 to ∞]</span></p>
                               </div>
-                              <details class="OM-entry">
-                                 <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/assessment-results/result/attestation/part/part">part</a></span>&gt;<span class="show-closed"><span class="OM-lit OM-gloss"> (recursive: model like parent <span class="OM-ref">part</span>) </span><span class="nobr">&lt;/part&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
-                                 <p class="OM-map-name">[Empty]</p>
-                              </details>
+                              <div class="OM-entry">
+                                 <p class="OM-line"><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/assessment-results/result/attestation/part/part">part</a></span>&gt;<span class="show-closed"><span class="OM-lit OM-gloss"> (recursive: model like parent <span class="OM-ref">part</span>) </span><span class="nobr">&lt;/part&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></p>
+                              </div>
                               <details class="OM-entry">
                                  <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/assessment-results/result/attestation/part/link">link</a></span> <span class="nobr" id="/assessment-results/result/attestation/part/link/@href"><a class="OM-name" href="../xml-reference/#/assessment-results/result/attestation/part/link/@href">href</a>="<span class="OM-datatype"><a href="/reference/datatypes/#uri-reference">uri-reference</a></span>"</span> <span class="nobr" id="/assessment-results/result/attestation/part/link/@rel"><a class="OM-name" href="../xml-reference/#/assessment-results/result/attestation/part/link/@rel">rel</a>="<span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span>"</span> <span class="nobr" id="/assessment-results/result/attestation/part/link/@media-type"><a class="OM-name" href="../xml-reference/#/assessment-results/result/attestation/part/link/@media-type">media-type</a>="<span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span>"</span>&gt;<span class="show-closed"> … <span class="nobr">&lt;/link&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
                                  <div class="model-container">
@@ -5892,10 +5889,9 @@ The following outline is a representation of the [XML format](https://github.com
                                        </div>
                                        <p class="close-tag nobr">&lt;/dependency&gt;</p>
                                     </details>
-                                    <details class="OM-entry">
-                                       <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/assessment-results/result/risk/response/task/task">task</a></span>&gt;<span class="show-closed"><span class="OM-lit OM-gloss"> (recursive: model like parent <span class="OM-ref">task</span>) </span><span class="nobr">&lt;/task&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
-                                       <p class="OM-map-name">[Empty]</p>
-                                    </details>
+                                    <div class="OM-entry">
+                                       <p class="OM-line"><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/assessment-results/result/risk/response/task/task">task</a></span>&gt;<span class="show-closed"><span class="OM-lit OM-gloss"> (recursive: model like parent <span class="OM-ref">task</span>) </span><span class="nobr">&lt;/task&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></p>
+                                    </div>
                                     <details class="OM-entry">
                                        <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/assessment-results/result/risk/response/task/associated-activity">associated-activity</a></span> <span class="nobr" id="/assessment-results/result/risk/response/task/associated-activity/@activity-uuid"><a class="OM-name" href="../xml-reference/#/assessment-results/result/risk/response/task/associated-activity/@activity-uuid">activity-uuid</a>="<span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span>"</span>&gt;<span class="show-closed"> … <span class="nobr">&lt;/associated-activity&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
                                        <div class="model-container">

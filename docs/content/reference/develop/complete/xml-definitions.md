@@ -290,8 +290,8 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="formal-name">Assessment Activity Universally Unique Identifier</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this assessment activity elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>activity</code> can be used to reference the data item locally or globally (e.g., in an imported
-                        OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                     <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this assessment activity elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>activity</code> can be used to reference the data item locally or globally (e.g., in an imported
+                        OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                         of the document.</p>
                   </div>
                </div>
@@ -406,8 +406,8 @@ The following is a reference for the XML element and attribute types derived fro
                                  <p class="formal-name">Step Universally Unique Identifier</p>
                               </div>
                               <div class="body">
-                                 <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this step elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>step</code> (in a series of steps) can be used to reference the data item locally or globally
-                                    (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                                 <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this step elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>step</code> (in a series of steps) can be used to reference the data item locally or globally
+                                    (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                                     of the document.</p>
                               </div>
                            </div>
@@ -861,8 +861,8 @@ The following is a reference for the XML element and attribute types derived fro
                                  <p class="formal-name">Assessment Platform Universally Unique Identifier</p>
                               </div>
                               <div class="body">
-                                 <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this assessment platform elsewhere in this or
-                                    other OSCAL instances. The locally defined <em>UUID</em> of the <code>assessment platform</code> can be used to reference the data item locally or globally (e.g., in an <a href="/concepts/identifier-use/#scope">imported OSCAL instance</a>). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                                 <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this assessment platform elsewhere in this or
+                                    other OSCAL instances. The locally defined <em>UUID</em> of the <code>assessment platform</code> can be used to reference the data item locally or globally (e.g., in an <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#scope">imported OSCAL instance</a>). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                                     of the document.</p>
                               </div>
                            </div>
@@ -964,7 +964,7 @@ The following is a reference for the XML element and attribute types derived fro
                                              <p class="formal-name">Component Universally Unique Identifier Reference</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a component that is implemented as part of an inventory item.</p>
+                                             <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a component that is implemented as part of an inventory item.</p>
                                           </div>
                                        </div>
                                     </div>
@@ -1122,8 +1122,8 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="formal-name">Assessment Method Universally Unique Identifier</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this assessment method elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>assessment method</code> can be used to reference the data item locally or globally (e.g., in an imported
-                        OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                     <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this assessment method elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>assessment method</code> can be used to reference the data item locally or globally (e.g., in an imported
+                        OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                         of the document.</p>
                   </div>
                </div>
@@ -1281,8 +1281,8 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="formal-name">Assessment Plan Universally Unique Identifier</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this assessment plan in <a href="/concepts/identifier-use/#ap-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>assessment plan</code> can be used to reference the data item locally or globally (e.g., in an imported
-                        OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                     <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this assessment plan in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ap-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>assessment plan</code> can be used to reference the data item locally or globally (e.g., in an imported
+                        OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                         of the document.</p>
                   </div>
                </div>
@@ -1702,8 +1702,8 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="formal-name">Assessment Results Universally Unique Identifier</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this assessment results instance in <a href="/concepts/identifier-use/#ar-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>assessment result</code> can be used to reference the data item locally or globally (e.g., in an imported
-                        OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                     <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this assessment results instance in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ar-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>assessment result</code> can be used to reference the data item locally or globally (e.g., in an imported
+                        OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                         of the document.</p>
                   </div>
                </div>
@@ -2095,8 +2095,8 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="formal-name">Assessment Subject Placeholder Universally Unique Identifier</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier for a set of assessment subjects that will be identified by a task or
-                        an activity that is part of a task. The locally defined <em>UUID</em> of the <code>assessment subject placeholder</code> can be used to reference the data item locally or globally (e.g., in an <a href="/concepts/identifier-use/#scope">imported OSCAL instance</a>). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                     <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier for a set of assessment subjects that will be identified by a task or
+                        an activity that is part of a task. The locally defined <em>UUID</em> of the <code>assessment subject placeholder</code> can be used to reference the data item locally or globally (e.g., in an <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#scope">imported OSCAL instance</a>). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                         of the document.</p>
                   </div>
                </div>
@@ -2139,8 +2139,8 @@ The following is a reference for the XML element and attribute types derived fro
                                  <p class="formal-name">Task Universally Unique Identifier</p>
                               </div>
                               <div class="body">
-                                 <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference (in this or other OSCAL instances) an assessment
-                                    activity to be performed as part of the event. The locally defined <em>UUID</em> of the <code>task</code> can be used to reference the data item locally or globally (e.g., in an <a href="/concepts/identifier-use/#scope">imported OSCAL instance</a>). This UUID should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions
+                                 <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference (in this or other OSCAL instances) an assessment
+                                    activity to be performed as part of the event. The locally defined <em>UUID</em> of the <code>task</code> can be used to reference the data item locally or globally (e.g., in an <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#scope">imported OSCAL instance</a>). This UUID should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions
                                     of the document.</p>
                               </div>
                            </div>
@@ -2656,7 +2656,7 @@ The following is a reference for the XML element and attribute types derived fro
                                     <details open="open">
                                        <summary class="subhead">Remarks</summary>
                                        <div class="remarks">
-                                          <p>A document identifier provides a <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with a <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that is used for a group of documents that are to be treated as different versions,
+                                          <p>A document identifier provides a <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with a <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that is used for a group of documents that are to be treated as different versions,
                                              representations or digital surrogates of the same document.</p>
                                           <p>A document identifier provides an additional data point for identifying a document
                                              that can be assigned by a publisher or organization for purposes in a wider system,
@@ -3044,7 +3044,7 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="formal-name">Component Universally Unique Identifier Reference</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to the <code>component</code> that is implemeting a given control.</p>
+                     <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to the <code>component</code> that is implemeting a given control.</p>
                   </div>
                </div>
                <div class="model-entry definition define-flag">
@@ -3056,8 +3056,8 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="formal-name">By-Component Universally Unique Identifier</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this by-component entry elsewhere in <a href="/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>by-component</code> entry can be used to reference the data item locally or globally (e.g., in an imported
-                        OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                     <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this by-component entry elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>by-component</code> entry can be used to reference the data item locally or globally (e.g., in an imported
+                        OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                         of the document.</p>
                   </div>
                </div>
@@ -3281,8 +3281,8 @@ The following is a reference for the XML element and attribute types derived fro
                                              <p class="formal-name">Provided Universally Unique Identifier</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this provided entry elsewhere in <a href="/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>provided</code> entry can be used to reference the data item locally or globally (e.g., in an imported
-                                                OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                                             <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this provided entry elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>provided</code> entry can be used to reference the data item locally or globally (e.g., in an imported
+                                                OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                                                 of the document.</p>
                                           </div>
                                        </div>
@@ -3432,8 +3432,8 @@ The following is a reference for the XML element and attribute types derived fro
                                              <p class="formal-name">Responsibility Universally Unique Identifier</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this responsibility elsewhere in <a href="/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>responsibility</code> can be used to reference the data item locally or globally (e.g., in an imported
-                                                OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                                             <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this responsibility elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>responsibility</code> can be used to reference the data item locally or globally (e.g., in an imported
+                                                OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                                                 of the document.</p>
                                           </div>
                                        </div>
@@ -3625,8 +3625,8 @@ The following is a reference for the XML element and attribute types derived fro
                                  <p class="formal-name">Inherited Universally Unique Identifier</p>
                               </div>
                               <div class="body">
-                                 <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this inherited entry elsewhere in <a href="/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>inherited control implementation</code> can be used to reference the data item locally or globally (e.g., in an imported
-                                    OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                                 <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this inherited entry elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>inherited control implementation</code> can be used to reference the data item locally or globally (e.g., in an imported
+                                    OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                                     of the document.</p>
                               </div>
                            </div>
@@ -3767,9 +3767,9 @@ The following is a reference for the XML element and attribute types derived fro
                                  <p class="formal-name">Satisfied Universally Unique Identifier</p>
                               </div>
                               <div class="body">
-                                 <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this satisfied control implementation entry elsewhere
-                                    in <a href="/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>control implementation</code> can be used to reference the data item locally or globally (e.g., in an imported
-                                    OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                                 <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this satisfied control implementation entry elsewhere
+                                    in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>control implementation</code> can be used to reference the data item locally or globally (e.g., in an imported
+                                    OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                                     of the document.</p>
                               </div>
                            </div>
@@ -4980,7 +4980,7 @@ The following is a reference for the XML element and attribute types derived fro
                                     <details open="open">
                                        <summary class="subhead">Remarks</summary>
                                        <div class="remarks">
-                                          <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                          <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                                        </div>
                                     </details>
                                  </div>
@@ -6774,8 +6774,8 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="formal-name">Diagram ID</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this diagram elsewhere in <a href="/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>diagram</code> can be used to reference the data item locally or globally (e.g., in an imported
-                        OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                     <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this diagram elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>diagram</code> can be used to reference the data item locally or globally (e.g., in an imported
+                        OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                         of the document.</p>
                   </div>
                </div>
@@ -6907,7 +6907,7 @@ The following is a reference for the XML element and attribute types derived fro
             <details open="open">
                <summary class="subhead">Remarks</summary>
                <div class="remarks">
-                  <p>A document identifier provides a <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with a <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that is used for a group of documents that are to be treated as different versions,
+                  <p>A document identifier provides a <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with a <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that is used for a group of documents that are to be treated as different versions,
                      representations or digital surrogates of the same document.</p>
                   <p>A document identifier provides an additional data point for identifying a document
                      that can be assigned by a publisher or organization for purposes in a wider system,
@@ -6938,7 +6938,7 @@ The following is a reference for the XML element and attribute types derived fro
                         <details open="open">
                            <summary class="subhead">Remarks</summary>
                            <div class="remarks">
-                              <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                              <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                            </div>
                         </details>
                      </div>
@@ -6993,8 +6993,8 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="formal-name">Finding Universally Unique Identifier</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this finding in <a href="/concepts/identifier-use/#ar-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>finding</code> can be used to reference the data item locally or globally (e.g., in an imported
-                        OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                     <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this finding in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ar-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>finding</code> can be used to reference the data item locally or globally (e.g., in an imported
+                        OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                         of the document.</p>
                   </div>
                </div>
@@ -7121,7 +7121,7 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="formal-name">Implementation Statement UUID</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to the implementation statement in the SSP to which this finding
+                     <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to the implementation statement in the SSP to which this finding
                         is related.</p>
                   </div>
                </div>
@@ -7148,7 +7148,7 @@ The following is a reference for the XML element and attribute types derived fro
                                  <p class="formal-name">Observation Universally Unique Identifier Reference</p>
                               </div>
                               <div class="body">
-                                 <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to an observation defined in the list of observations.</p>
+                                 <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to an observation defined in the list of observations.</p>
                               </div>
                            </div>
                         </div>
@@ -7178,7 +7178,7 @@ The following is a reference for the XML element and attribute types derived fro
                                  <p class="formal-name">Risk Universally Unique Identifier Reference</p>
                               </div>
                               <div class="body">
-                                 <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a risk defined in the list of risks.</p>
+                                 <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a risk defined in the list of risks.</p>
                               </div>
                            </div>
                         </div>
@@ -7269,7 +7269,7 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="formal-name">Finding Target Identifier Reference</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference for a specific target qualified by the <code>type</code>.</p>
+                     <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference for a specific target qualified by the <code>type</code>.</p>
                   </div>
                </div>
             </div>
@@ -8662,8 +8662,8 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="formal-name">Control Requirement Universally Unique Identifier</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this control requirement elsewhere in <a href="/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>control requirement</code> can be used to reference the data item locally or globally (e.g., in an imported
-                        OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                     <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this control requirement elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>control requirement</code> can be used to reference the data item locally or globally (e.g., in an imported
+                        OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                         of the document.</p>
                   </div>
                </div>
@@ -9280,7 +9280,7 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="formal-name">Component Reference</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a <code>component</code>.</p>
+                     <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a <code>component</code>.</p>
                   </div>
                </div>
             </div>
@@ -9663,8 +9663,8 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="formal-name">Inventory Item Universally Unique Identifier</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this inventory item elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>inventory item</code> can be used to reference the data item locally or globally (e.g., in an imported
-                        OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                     <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this inventory item elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>inventory item</code> can be used to reference the data item locally or globally (e.g., in an imported
+                        OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                         of the document.</p>
                   </div>
                </div>
@@ -9885,7 +9885,7 @@ The following is a reference for the XML element and attribute types derived fro
                                  <p class="formal-name">Component Universally Unique Identifier Reference</p>
                               </div>
                               <div class="body">
-                                 <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a <code>component</code> that is implemented as part of an inventory item.</p>
+                                 <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a <code>component</code> that is implemented as part of an inventory item.</p>
                               </div>
                            </div>
                         </div>
@@ -10617,7 +10617,7 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="formal-name">Party UUID Reference</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to the party who is making the log entry.</p>
+                     <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to the party who is making the log entry.</p>
                   </div>
                </div>
                <div class="model-entry definition define-flag">
@@ -10792,7 +10792,7 @@ The following is a reference for the XML element and attribute types derived fro
                                     <details open="open">
                                        <summary class="subhead">Remarks</summary>
                                        <div class="remarks">
-                                          <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                          <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                                           <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                        </div>
                                     </details>
@@ -10875,9 +10875,9 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="formal-name">Mapping Universally Unique Identifier</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this mapping definition elsewhere in this or
+                     <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this mapping definition elsewhere in this or
                         other OSCAL instances. The locally defined <em>UUID</em> of the <code>mapping</code> can be used to reference the data item locally or globally (e.g., in an imported
-                        OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same mapping across revisions
+                        OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same mapping across revisions
                         of the document.</p>
                   </div>
                </div>
@@ -12019,7 +12019,7 @@ The following is a reference for the XML element and attribute types derived fro
                         <details open="open">
                            <summary class="subhead">Remarks</summary>
                            <div class="remarks">
-                              <p>A document identifier provides a <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with a <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that is used for a group of documents that are to be treated as different versions,
+                              <p>A document identifier provides a <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with a <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that is used for a group of documents that are to be treated as different versions,
                                  representations or digital surrogates of the same document.</p>
                               <p>A document identifier provides an additional data point for identifying a document
                                  that can be assigned by a publisher or organization for purposes in a wider system,
@@ -12632,7 +12632,7 @@ The following is a reference for the XML element and attribute types derived fro
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
                                                    <div class="remarks">
-                                                      <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                      <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                                                    </div>
                                                 </details>
                                              </div>
@@ -12784,7 +12784,7 @@ The following is a reference for the XML element and attribute types derived fro
                                     <details open="open">
                                        <summary class="subhead">Remarks</summary>
                                        <div class="remarks">
-                                          <p>Since the reference target of an organizational affiliation must be another <code>party</code> (whether further qualified as person or organization) as inidcated by its <code>uuid</code>. As a <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier with uniqueness across document and trans-document scope, this <code>uuid</code> value is sufficient to reference the data item locally or globally across related
+                                          <p>Since the reference target of an organizational affiliation must be another <code>party</code> (whether further qualified as person or organization) as inidcated by its <code>uuid</code>. As a <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier with uniqueness across document and trans-document scope, this <code>uuid</code> value is sufficient to reference the data item locally or globally across related
                                              documents, e.g., in an imported OSCAL instance. </p>
                                           <p>Parties of both the <code>person</code> or <code>organization</code> type can be associated with an organization using the <code>member-of-organization</code>.</p>
                                        </div>
@@ -13681,8 +13681,8 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="formal-name">Observation Universally Unique Identifier</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <em>cross-instance</em> scope that can be used to reference this observation elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>observation</code> can be used to reference the data item locally or globally (e.g., in an imorted OSCAL
-                        instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                     <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <em>cross-instance</em> scope that can be used to reference this observation elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>observation</code> can be used to reference the data item locally or globally (e.g., in an imorted OSCAL
+                        instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                         of the document.</p>
                   </div>
                </div>
@@ -14155,7 +14155,7 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="formal-name">Actor Universally Unique Identifier Reference</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to the tool or person based on the associated type.</p>
+                     <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to the tool or person based on the associated type.</p>
                   </div>
                </div>
                <div class="model-entry definition define-flag">
@@ -14572,7 +14572,7 @@ The following is a reference for the XML element and attribute types derived fro
          <p class="formal-name">Parameter ID</p>
       </div>
       <div class="body">
-         <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a> reference to a <code>parameter</code> within a control, who's catalog has been imported into the current implementation
+         <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#human-oriented">human-oriented</a> reference to a <code>parameter</code> within a control, who's catalog has been imported into the current implementation
             context.</p>
       </div>
    </div>
@@ -14877,7 +14877,7 @@ The following is a reference for the XML element and attribute types derived fro
                         <details open="open">
                            <summary class="subhead">Remarks</summary>
                            <div class="remarks">
-                              <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                              <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                               <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                            </div>
                         </details>
@@ -15119,8 +15119,8 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="formal-name">Part Identifier</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this part elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>part</code> can be used to reference the data item locally or globally (e.g., in an ported OSCAL
-                        instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                     <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this part elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>part</code> can be used to reference the data item locally or globally (e.g., in an ported OSCAL
+                        instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                         of the document.</p>
                   </div>
                </div>
@@ -15168,7 +15168,7 @@ The following is a reference for the XML element and attribute types derived fro
                         <details open="open">
                            <summary class="subhead">Remarks</summary>
                            <div class="remarks">
-                              <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                              <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                               <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                            </div>
                         </details>
@@ -15383,7 +15383,7 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="formal-name">POA&amp;M Universally Unique Identifier</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#instance">instance</a>scope that can be used to reference this POA&amp;M instance in <a href="/concepts/identifier-use/#poam-identifiers">this OSCAL instance</a>. This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                     <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#instance">instance</a>scope that can be used to reference this POA&amp;M instance in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#poam-identifiers">this OSCAL instance</a>. This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                         of the document.</p>
                   </div>
                </div>
@@ -15563,7 +15563,7 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="formal-name">POA&amp;M Item Universally Unique Identifier</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#instance">instance</a> scope that can be used to reference this POA&amp;M item entry in <a href="/concepts/identifier-use/#poam-identifiers">this OSCAL instance</a>. This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                     <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#instance">instance</a> scope that can be used to reference this POA&amp;M item entry in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#poam-identifiers">this OSCAL instance</a>. This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                         of the document.</p>
                   </div>
                </div>
@@ -15708,7 +15708,7 @@ The following is a reference for the XML element and attribute types derived fro
                                  <p class="formal-name">Finding Universally Unique Identifier Reference</p>
                               </div>
                               <div class="body">
-                                 <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a finding defined in the list of findings.</p>
+                                 <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a finding defined in the list of findings.</p>
                               </div>
                            </div>
                         </div>
@@ -15738,7 +15738,7 @@ The following is a reference for the XML element and attribute types derived fro
                                  <p class="formal-name">Observation Universally Unique Identifier Reference</p>
                               </div>
                               <div class="body">
-                                 <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to an observation defined in the list of observations.</p>
+                                 <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to an observation defined in the list of observations.</p>
                               </div>
                            </div>
                         </div>
@@ -15768,7 +15768,7 @@ The following is a reference for the XML element and attribute types derived fro
                                  <p class="formal-name">Risk Universally Unique Identifier Reference</p>
                               </div>
                               <div class="body">
-                                 <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a risk defined in the list of risks.</p>
+                                 <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a risk defined in the list of risks.</p>
                               </div>
                            </div>
                         </div>
@@ -16124,7 +16124,7 @@ The following is a reference for the XML element and attribute types derived fro
                         <details open="open">
                            <summary class="subhead">Remarks</summary>
                            <div class="remarks">
-                              <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                              <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                               <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                            </div>
                         </details>
@@ -16238,9 +16238,9 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="formal-name">Service Protocol Information Universally Unique Identifier</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this service protocol information elsewhere in
-                        <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>service protocol</code> can be used to reference the data item locally or globally (e.g., in an imported
-                        OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                     <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this service protocol information elsewhere in
+                        <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>service protocol</code> can be used to reference the data item locally or globally (e.g., in an imported
+                        OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                         of the document.</p>
                   </div>
                </div>
@@ -16315,7 +16315,7 @@ The following is a reference for the XML element and attribute types derived fro
          <p class="formal-name">Provided UUID</p>
       </div>
       <div class="body">
-         <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to an inherited control implementation that a leveraging system
+         <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to an inherited control implementation that a leveraging system
             is inheriting from a leveraged system.</p>
       </div>
    </div>
@@ -16370,7 +16370,7 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="formal-name">Task Universally Unique Identifier Reference</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a unique task.</p>
+                     <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a unique task.</p>
                   </div>
                </div>
             </div>
@@ -16503,7 +16503,7 @@ The following is a reference for the XML element and attribute types derived fro
                                  <p class="formal-name">Assessment Subject Placeholder Universally Unique Identifier Reference</p>
                               </div>
                               <div class="body">
-                                 <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a unique assessment subject placeholder defined by this task.</p>
+                                 <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a unique assessment subject placeholder defined by this task.</p>
                               </div>
                            </div>
                         </div>
@@ -16642,8 +16642,8 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="formal-name">Remediation Universally Unique Identifier</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this remediation elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>risk response</code> can be used to reference the data item locally or globally (e.g., in an imported
-                        OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                     <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this remediation elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>risk response</code> can be used to reference the data item locally or globally (e.g., in an imported
+                        OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                         of the document.</p>
                   </div>
                </div>
@@ -16800,8 +16800,8 @@ The following is a reference for the XML element and attribute types derived fro
                                  <p class="formal-name">Required Universally Unique Identifier</p>
                               </div>
                               <div class="body">
-                                 <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this required asset elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>asset</code> can be used to reference the data item locally or globally (e.g., in an imported
-                                    OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                                 <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this required asset elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>asset</code> can be used to reference the data item locally or globally (e.g., in an imported
+                                    OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                                     of the document.</p>
                               </div>
                            </div>
@@ -16982,7 +16982,7 @@ The following is a reference for the XML element and attribute types derived fro
          <p class="formal-name">Responsibility UUID</p>
       </div>
       <div class="body">
-         <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a control implementation that satisfies a responsibility
+         <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a control implementation that satisfies a responsibility
             imposed by a leveraged system.</p>
       </div>
    </div>
@@ -17156,7 +17156,7 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="formal-name">Responsible Role ID</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a> identifier reference to a <code>role</code> performed.</p>
+                     <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#human-oriented">human-oriented</a> identifier reference to a <code>role</code> performed.</p>
                   </div>
                </div>
             </div>
@@ -17278,8 +17278,8 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="formal-name">Results Universally Unique Identifier</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this set of results in <a href="/concepts/identifier-use/#ar-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>assessment result</code> can be used to reference the data item locally or globally (e.g., in an imported
-                        OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                     <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this set of results in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ar-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>assessment result</code> can be used to reference the data item locally or globally (e.g., in an imported
+                        OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                         of the document.</p>
                   </div>
                </div>
@@ -17688,8 +17688,8 @@ The following is a reference for the XML element and attribute types derived fro
                                              <p class="formal-name">Assessment Log Entry Universally Unique Identifier</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference an assessment event in <a href="/concepts/identifier-use/#ar-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>assessment log entry</code> can be used to reference the data item locally or globally (e.g., in an imported
-                                                OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                                             <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference an assessment event in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ar-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>assessment log entry</code> can be used to reference the data item locally or globally (e.g., in an imported
+                                                OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                                                 of the document.</p>
                                           </div>
                                        </div>
@@ -18429,8 +18429,8 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="formal-name">Risk Universally Unique Identifier</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this risk elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>risk</code> can be used to reference the data item locally or globally (e.g., in an imported
-                        OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                     <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this risk elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>risk</code> can be used to reference the data item locally or globally (e.g., in an imported
+                        OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                         of the document.</p>
                   </div>
                </div>
@@ -18608,8 +18608,8 @@ The following is a reference for the XML element and attribute types derived fro
                                  <p class="formal-name">Mitigating Factor Universally Unique Identifier</p>
                               </div>
                               <div class="body">
-                                 <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this mitigating factor elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>mitigating factor</code> can be used to reference the data item locally or globally (e.g., in an imported
-                                    OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                                 <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this mitigating factor elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>mitigating factor</code> can be used to reference the data item locally or globally (e.g., in an imported
+                                    OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                                     of the document.</p>
                               </div>
                            </div>
@@ -18622,8 +18622,8 @@ The following is a reference for the XML element and attribute types derived fro
                                  <p class="formal-name">Implementation UUID</p>
                               </div>
                               <div class="body">
-                                 <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this implementation statement elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>s. The locally defined <em>UUID</em> of the <code>implementation statement</code> can be used to reference the data item locally or globally (e.g., in an imported
-                                    OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                                 <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this implementation statement elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#scope">this or other OSCAL instances</a>s. The locally defined <em>UUID</em> of the <code>implementation statement</code> can be used to reference the data item locally or globally (e.g., in an imported
+                                    OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                                     of the document.</p>
                               </div>
                            </div>
@@ -18826,8 +18826,8 @@ The following is a reference for the XML element and attribute types derived fro
                                              <p class="formal-name">Risk Log Entry Universally Unique Identifier</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this risk log entry elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>risk log entry</code> can be used to reference the data item locally or globally (e.g., in an imported
-                                                OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                                             <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this risk log entry elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>risk log entry</code> can be used to reference the data item locally or globally (e.g., in an imported
+                                                OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                                                 of the document.</p>
                                           </div>
                                        </div>
@@ -18994,7 +18994,7 @@ The following is a reference for the XML element and attribute types derived fro
                                                          <p class="formal-name">Response Universally Unique Identifier Reference</p>
                                                       </div>
                                                       <div class="body">
-                                                         <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a unique risk response.</p>
+                                                         <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a unique risk response.</p>
                                                       </div>
                                                    </div>
                                                 </div>
@@ -19151,7 +19151,7 @@ The following is a reference for the XML element and attribute types derived fro
                                  <p class="formal-name">Observation Universally Unique Identifier Reference</p>
                               </div>
                               <div class="body">
-                                 <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to an observation defined in the list of observations.</p>
+                                 <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to an observation defined in the list of observations.</p>
                               </div>
                            </div>
                         </div>
@@ -19678,7 +19678,7 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="formal-name">Control Statement Reference Universally Unique Identifier</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this control statement elsewhere in <a href="/concepts/identifier-use/#component-definition-identifiers">this or other OSCAL instances</a>. The <em>UUID</em> of the <code>control statement</code> in the source OSCAL instance is sufficient to reference the data item locally or
+                     <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this control statement elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#component-definition-identifiers">this or other OSCAL instances</a>. The <em>UUID</em> of the <code>control statement</code> in the source OSCAL instance is sufficient to reference the data item locally or
                         globally (e.g., in an imported OSCAL instance).</p>
                   </div>
                </div>
@@ -19880,7 +19880,7 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="formal-name">Control Statement Reference Universally Unique Identifier</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this control statement elsewhere in <a href="/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The <em>UUID</em> of the <code>control statement</code> in the source OSCAL instance is sufficient to reference the data item locally or
+                     <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this control statement elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The <em>UUID</em> of the <code>control statement</code> in the source OSCAL instance is sufficient to reference the data item locally or
                         globally (e.g., in an imported OSCAL instance).</p>
                   </div>
                </div>
@@ -20019,7 +20019,7 @@ The following is a reference for the XML element and attribute types derived fro
          <p class="formal-name">Control Statement Reference</p>
       </div>
       <div class="body">
-         <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a> identifier reference to a <code>control statement</code>.</p>
+         <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#human-oriented">human-oriented</a> identifier reference to a <code>control statement</code>.</p>
       </div>
    </div>
    <div class="model-entry definition define-assembly">
@@ -20112,7 +20112,7 @@ The following is a reference for the XML element and attribute types derived fro
          <p class="formal-name">Identifies the Subject</p>
       </div>
       <div class="body">
-         <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a> identifier reference to a resource. Use type to indicate whether the identified resource
+         <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#human-oriented">human-oriented</a> identifier reference to a resource. Use type to indicate whether the identified resource
             is a component, inventory item, location, user, or something else.</p>
          <div class="remarks-group usa-prose">
             <details open="open">
@@ -20286,7 +20286,7 @@ The following is a reference for the XML element and attribute types derived fro
          <p class="formal-name">Subject Universally Unique Identifier Reference</p>
       </div>
       <div class="body">
-         <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a component, inventory-item, location, party, user, or resource
+         <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a component, inventory-item, location, party, user, or resource
             using it's UUID.</p>
       </div>
    </div>
@@ -21126,8 +21126,8 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="formal-name">Component Identifier</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this component elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>component</code> can be used to reference the data item locally or globally (e.g., in an imported
-                        OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                     <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this component elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>component</code> can be used to reference the data item locally or globally (e.g., in an imported
+                        OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                         of the document.</p>
                   </div>
                </div>
@@ -21437,9 +21437,9 @@ The following is a reference for the XML element and attribute types derived fro
          <p class="formal-name">System Identification</p>
       </div>
       <div class="body">
-         <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this system identification property elsewhere
-            in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. When referencing an externally defined <code>system identification</code>, the <code>system identification</code> must be used in the context of the external / imported OSCAL instance (e.g., uri-reference).
-            This string should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same system across revisions
+         <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#human-oriented">human-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this system identification property elsewhere
+            in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#scope">this or other OSCAL instances</a>. When referencing an externally defined <code>system identification</code>, the <code>system identification</code> must be used in the context of the external / imported OSCAL instance (e.g., uri-reference).
+            This string should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same system across revisions
             of the document.</p>
          <details open="open">
             <summary>Attribute (1):</summary>
@@ -21459,7 +21459,7 @@ The following is a reference for the XML element and attribute types derived fro
                         <details open="open">
                            <summary class="subhead">Remarks</summary>
                            <div class="remarks">
-                              <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                              <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                            </div>
                         </details>
                      </div>
@@ -21675,8 +21675,8 @@ The following is a reference for the XML element and attribute types derived fro
                                  <p class="formal-name">Leveraged Authorization Universally Unique Identifier</p>
                               </div>
                               <div class="body">
-                                 <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope and can be used to reference this leveraged authorization elsewhere in <a href="/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>leveraged authorization</code> can be used to reference the data item locally or globally (e.g., in an imported
-                                    OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                                 <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope and can be used to reference this leveraged authorization elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>leveraged authorization</code> can be used to reference the data item locally or globally (e.g., in an imported
+                                    OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                                     of the document.</p>
                               </div>
                            </div>
@@ -21758,7 +21758,7 @@ The following is a reference for the XML element and attribute types derived fro
                                  <p class="formal-name">party-uuid field</p>
                               </div>
                               <div class="body">
-                                 <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to the <code>party</code> that manages the leveraged system.</p>
+                                 <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to the <code>party</code> that manages the leveraged system.</p>
                               </div>
                            </div>
                            <div class="model-entry definition field">
@@ -22042,8 +22042,8 @@ The following is a reference for the XML element and attribute types derived fro
                                  <p class="formal-name">Information Type Universally Unique Identifier</p>
                               </div>
                               <div class="body">
-                                 <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this information type elsewhere in <a href="/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>information type</code> can be used to reference the data item locally or globally (e.g., in an imported
-                                    OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                                 <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this information type elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>information type</code> can be used to reference the data item locally or globally (e.g., in an imported
+                                    OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                                     of the document.</p>
                               </div>
                            </div>
@@ -22104,7 +22104,7 @@ The following is a reference for the XML element and attribute types derived fro
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
                                                    <div class="remarks">
-                                                      <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                      <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                                                    </div>
                                                 </details>
                                              </div>
@@ -22137,7 +22137,7 @@ The following is a reference for the XML element and attribute types derived fro
                                              <p class="formal-name">Information Type Systematized Identifier</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier qualified by the given identification <code>system</code> used, such as NIST SP 800-60. This identifier has <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope and can be used to reference this system elsewhere in <a href="/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. This id should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                                             <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#human-oriented">human-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier qualified by the given identification <code>system</code> used, such as NIST SP 800-60. This identifier has <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope and can be used to reference this system elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. This id should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                                                 of the document.</p>
                                           </div>
                                        </div>
@@ -22272,9 +22272,9 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="formal-name">System Security Plan Universally Unique Identifier</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this system security plan (SSP) elsewhere in
-                        <a href="/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>SSP</code> can be used to reference the data item locally or globally (e.g., in an imported
-                        OSCAL instance).This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                     <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this system security plan (SSP) elsewhere in
+                        <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>SSP</code> can be used to reference the data item locally or globally (e.g., in an imported
+                        OSCAL instance).This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                         of the document.</p>
                   </div>
                </div>
@@ -22500,8 +22500,8 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="formal-name">User Universally Unique Identifier</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this user class elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>system user</code> can be used to reference the data item locally or globally (e.g., in an imported
-                        OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                     <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this user class elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>system user</code> can be used to reference the data item locally or globally (e.g., in an imported
+                        OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                         of the document.</p>
                   </div>
                </div>
@@ -22669,8 +22669,8 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="formal-name">Task Universally Unique Identifier</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this task elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>task</code> can be used to reference the data item locally or globally (e.g., in an imported
-                        OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                     <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this task elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>task</code> can be used to reference the data item locally or globally (e.g., in an imported
+                        OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                         of the document.</p>
                   </div>
                </div>
@@ -22953,7 +22953,7 @@ The following is a reference for the XML element and attribute types derived fro
                                  <p class="formal-name">Task Universally Unique Identifier Reference</p>
                               </div>
                               <div class="body">
-                                 <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a unique task.</p>
+                                 <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a unique task.</p>
                               </div>
                            </div>
                         </div>
@@ -23027,7 +23027,7 @@ The following is a reference for the XML element and attribute types derived fro
                                  <p class="formal-name">Activity Universally Unique Identifier Reference</p>
                               </div>
                               <div class="body">
-                                 <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to an activity defined in the list of activities.</p>
+                                 <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to an activity defined in the list of activities.</p>
                               </div>
                            </div>
                         </div>
@@ -23313,7 +23313,7 @@ The following is a reference for the XML element and attribute types derived fro
                         <details open="open">
                            <summary class="subhead">Remarks</summary>
                            <div class="remarks">
-                              <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                              <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                            </div>
                         </details>
                      </div>

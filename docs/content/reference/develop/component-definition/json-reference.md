@@ -560,7 +560,7 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
                                                    <div class="remarks">
-                                                      <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                      <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                                                       <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                    </div>
                                                 </details>
@@ -832,7 +832,7 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                               <details open="open">
                                  <summary class="subhead">Remarks</summary>
                                  <div class="remarks">
-                                    <p>A document identifier provides a <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with a <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that is used for a group of documents that are to be treated as different versions,
+                                    <p>A document identifier provides a <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with a <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that is used for a group of documents that are to be treated as different versions,
                                        representations or digital surrogates of the same document.</p>
                                     <p>A document identifier provides an additional data point for identifying a document
                                        that can be assigned by a publisher or organization for purposes in a wider system,
@@ -862,7 +862,7 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                                        <details open="open">
                                           <summary class="subhead">Remarks</summary>
                                           <div class="remarks">
-                                             <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                             <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                                           </div>
                                        </details>
                                     </div>
@@ -980,7 +980,7 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                                        <details open="open">
                                           <summary class="subhead">Remarks</summary>
                                           <div class="remarks">
-                                             <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                             <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                                              <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                           </div>
                                        </details>
@@ -1377,7 +1377,7 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
                                                    <div class="remarks">
-                                                      <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                      <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                                                       <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                    </div>
                                                 </details>
@@ -2046,7 +2046,7 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
                                                    <div class="remarks">
-                                                      <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                      <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                                                       <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                    </div>
                                                 </details>
@@ -2436,7 +2436,7 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
                                                    <div class="remarks">
-                                                      <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                      <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                                                    </div>
                                                 </details>
                                              </div>
@@ -2553,7 +2553,7 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
                                                    <div class="remarks">
-                                                      <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                      <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                                                       <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                    </div>
                                                 </details>
@@ -3037,7 +3037,7 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                                        <details open="open">
                                           <summary class="subhead">Remarks</summary>
                                           <div class="remarks">
-                                             <p>Since the reference target of an organizational affiliation must be another <code>party</code> (whether further qualified as person or organization) as inidcated by its <code>uuid</code>. As a <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier with uniqueness across document and trans-document scope, this <code>uuid</code> value is sufficient to reference the data item locally or globally across related
+                                             <p>Since the reference target of an organizational affiliation must be another <code>party</code> (whether further qualified as person or organization) as inidcated by its <code>uuid</code>. As a <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier with uniqueness across document and trans-document scope, this <code>uuid</code> value is sufficient to reference the data item locally or globally across related
                                                 documents, e.g., in an imported OSCAL instance. </p>
                                              <p>Parties of both the <code>person</code> or <code>organization</code> type can be associated with an organization using the <code>member-of-organization</code>.</p>
                                           </div>
@@ -3233,7 +3233,7 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
                                                    <div class="remarks">
-                                                      <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                      <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                                                       <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                    </div>
                                                 </details>
@@ -3680,7 +3680,7 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
                                                    <div class="remarks">
-                                                      <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                      <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                                                       <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                    </div>
                                                 </details>
@@ -4067,7 +4067,7 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                                                          <details open="open">
                                                             <summary class="subhead">Remarks</summary>
                                                             <div class="remarks">
-                                                               <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                               <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                                                                <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                             </div>
                                                          </details>
@@ -4873,7 +4873,7 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                                        <details open="open">
                                           <summary class="subhead">Remarks</summary>
                                           <div class="remarks">
-                                             <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                             <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                                              <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                           </div>
                                        </details>
@@ -5140,7 +5140,7 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                                     <p class="formal-name">Responsible Role ID</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a> identifier reference to a <code>role</code> performed.</p>
+                                    <p class="description"><span class="usa-tag">Description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#human-oriented">human-oriented</a> identifier reference to a <code>role</code> performed.</p>
                                  </div>
                               </div>
                               <div class="model-entry definition assembly">
@@ -5232,7 +5232,7 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
                                                    <div class="remarks">
-                                                      <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                      <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                                                       <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                    </div>
                                                 </details>
@@ -5542,9 +5542,9 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                                     <p class="formal-name">Service Protocol Information Universally Unique Identifier</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this service protocol information elsewhere in
-                                       <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>service protocol</code> can be used to reference the data item locally or globally (e.g., in an imported
-                                       OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                                    <p class="description"><span class="usa-tag">Description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this service protocol information elsewhere in
+                                       <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>service protocol</code> can be used to reference the data item locally or globally (e.g., in an imported
+                                       OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                                        of the document.</p>
                                  </div>
                               </div>
@@ -5855,7 +5855,7 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
                                                    <div class="remarks">
-                                                      <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                      <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                                                       <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                    </div>
                                                 </details>
@@ -6110,7 +6110,7 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                                              <p class="formal-name">Parameter ID</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a> reference to a <code>parameter</code> within a control, who's catalog has been imported into the current implementation
+                                             <p class="description"><span class="usa-tag">Description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#human-oriented">human-oriented</a> reference to a <code>parameter</code> within a control, who's catalog has been imported into the current implementation
                                                 context.</p>
                                           </div>
                                        </div>
@@ -6327,7 +6327,7 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                                                          <details open="open">
                                                             <summary class="subhead">Remarks</summary>
                                                             <div class="remarks">
-                                                               <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                               <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                                                                <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                             </div>
                                                          </details>
@@ -6582,7 +6582,7 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                                                       <p class="formal-name">Parameter ID</p>
                                                    </div>
                                                    <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a> reference to a <code>parameter</code> within a control, who's catalog has been imported into the current implementation
+                                                      <p class="description"><span class="usa-tag">Description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#human-oriented">human-oriented</a> reference to a <code>parameter</code> within a control, who's catalog has been imported into the current implementation
                                                          context.</p>
                                                    </div>
                                                 </div>
@@ -6665,7 +6665,7 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                                                       <p class="formal-name">Responsible Role ID</p>
                                                    </div>
                                                    <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a> identifier reference to a <code>role</code> performed.</p>
+                                                      <p class="description"><span class="usa-tag">Description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#human-oriented">human-oriented</a> identifier reference to a <code>role</code> performed.</p>
                                                    </div>
                                                 </div>
                                                 <div class="model-entry definition assembly">
@@ -6757,7 +6757,7 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                                                                   <details open="open">
                                                                      <summary class="subhead">Remarks</summary>
                                                                      <div class="remarks">
-                                                                        <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                                        <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                                                                         <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                                      </div>
                                                                   </details>
@@ -7065,7 +7065,7 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                                                       <p class="formal-name">Control Statement Reference</p>
                                                    </div>
                                                    <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a> identifier reference to a <code>control statement</code>.</p>
+                                                      <p class="description"><span class="usa-tag">Description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#human-oriented">human-oriented</a> identifier reference to a <code>control statement</code>.</p>
                                                       <div class="remarks-group usa-prose">
                                                          <details open="open">
                                                             <summary class="subhead">Remarks</summary>
@@ -7085,7 +7085,7 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                                                       <p class="formal-name">Control Statement Reference Universally Unique Identifier</p>
                                                    </div>
                                                    <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this control statement elsewhere in <a href="/concepts/identifier-use/#component-definition-identifiers">this or other OSCAL instances</a>. The <em>UUID</em> of the <code>control statement</code> in the source OSCAL instance is sufficient to reference the data item locally or
+                                                      <p class="description"><span class="usa-tag">Description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this control statement elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#component-definition-identifiers">this or other OSCAL instances</a>. The <em>UUID</em> of the <code>control statement</code> in the source OSCAL instance is sufficient to reference the data item locally or
                                                          globally (e.g., in an imported OSCAL instance).</p>
                                                    </div>
                                                 </div>
@@ -7191,7 +7191,7 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                                                                   <details open="open">
                                                                      <summary class="subhead">Remarks</summary>
                                                                      <div class="remarks">
-                                                                        <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                                        <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                                                                         <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                                      </div>
                                                                   </details>
@@ -7458,7 +7458,7 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                                                                <p class="formal-name">Responsible Role ID</p>
                                                             </div>
                                                             <div class="body">
-                                                               <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a> identifier reference to a <code>role</code> performed.</p>
+                                                               <p class="description"><span class="usa-tag">Description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#human-oriented">human-oriented</a> identifier reference to a <code>role</code> performed.</p>
                                                             </div>
                                                          </div>
                                                          <div class="model-entry definition assembly">
@@ -7550,7 +7550,7 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                                                                            <details open="open">
                                                                               <summary class="subhead">Remarks</summary>
                                                                               <div class="remarks">
-                                                                                 <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                                                 <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                                                                                  <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                                               </div>
                                                                            </details>
@@ -8049,7 +8049,7 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                                        <details open="open">
                                           <summary class="subhead">Remarks</summary>
                                           <div class="remarks">
-                                             <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                             <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                                              <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                           </div>
                                        </details>
@@ -8304,7 +8304,7 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                                     <p class="formal-name">Component Reference</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a <code>component</code>.</p>
+                                    <p class="description"><span class="usa-tag">Description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a <code>component</code>.</p>
                                  </div>
                               </div>
                               <div class="model-entry definition assembly">
@@ -8499,7 +8499,7 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
                                                    <div class="remarks">
-                                                      <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                      <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                                                       <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                    </div>
                                                 </details>
@@ -8754,7 +8754,7 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                                              <p class="formal-name">Parameter ID</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a> reference to a <code>parameter</code> within a control, who's catalog has been imported into the current implementation
+                                             <p class="description"><span class="usa-tag">Description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#human-oriented">human-oriented</a> reference to a <code>parameter</code> within a control, who's catalog has been imported into the current implementation
                                                 context.</p>
                                           </div>
                                        </div>
@@ -8971,7 +8971,7 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                                                          <details open="open">
                                                             <summary class="subhead">Remarks</summary>
                                                             <div class="remarks">
-                                                               <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                               <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                                                                <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                             </div>
                                                          </details>
@@ -9226,7 +9226,7 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                                                       <p class="formal-name">Parameter ID</p>
                                                    </div>
                                                    <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a> reference to a <code>parameter</code> within a control, who's catalog has been imported into the current implementation
+                                                      <p class="description"><span class="usa-tag">Description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#human-oriented">human-oriented</a> reference to a <code>parameter</code> within a control, who's catalog has been imported into the current implementation
                                                          context.</p>
                                                    </div>
                                                 </div>
@@ -9309,7 +9309,7 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                                                       <p class="formal-name">Responsible Role ID</p>
                                                    </div>
                                                    <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a> identifier reference to a <code>role</code> performed.</p>
+                                                      <p class="description"><span class="usa-tag">Description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#human-oriented">human-oriented</a> identifier reference to a <code>role</code> performed.</p>
                                                    </div>
                                                 </div>
                                                 <div class="model-entry definition assembly">
@@ -9401,7 +9401,7 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                                                                   <details open="open">
                                                                      <summary class="subhead">Remarks</summary>
                                                                      <div class="remarks">
-                                                                        <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                                        <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                                                                         <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                                      </div>
                                                                   </details>
@@ -9709,7 +9709,7 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                                                       <p class="formal-name">Control Statement Reference</p>
                                                    </div>
                                                    <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a> identifier reference to a <code>control statement</code>.</p>
+                                                      <p class="description"><span class="usa-tag">Description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#human-oriented">human-oriented</a> identifier reference to a <code>control statement</code>.</p>
                                                       <div class="remarks-group usa-prose">
                                                          <details open="open">
                                                             <summary class="subhead">Remarks</summary>
@@ -9729,7 +9729,7 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                                                       <p class="formal-name">Control Statement Reference Universally Unique Identifier</p>
                                                    </div>
                                                    <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this control statement elsewhere in <a href="/concepts/identifier-use/#component-definition-identifiers">this or other OSCAL instances</a>. The <em>UUID</em> of the <code>control statement</code> in the source OSCAL instance is sufficient to reference the data item locally or
+                                                      <p class="description"><span class="usa-tag">Description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this control statement elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#component-definition-identifiers">this or other OSCAL instances</a>. The <em>UUID</em> of the <code>control statement</code> in the source OSCAL instance is sufficient to reference the data item locally or
                                                          globally (e.g., in an imported OSCAL instance).</p>
                                                    </div>
                                                 </div>
@@ -9835,7 +9835,7 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                                                                   <details open="open">
                                                                      <summary class="subhead">Remarks</summary>
                                                                      <div class="remarks">
-                                                                        <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                                        <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                                                                         <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                                      </div>
                                                                   </details>
@@ -10102,7 +10102,7 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                                                                <p class="formal-name">Responsible Role ID</p>
                                                             </div>
                                                             <div class="body">
-                                                               <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a> identifier reference to a <code>role</code> performed.</p>
+                                                               <p class="description"><span class="usa-tag">Description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#human-oriented">human-oriented</a> identifier reference to a <code>role</code> performed.</p>
                                                             </div>
                                                          </div>
                                                          <div class="model-entry definition assembly">
@@ -10194,7 +10194,7 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                                                                            <details open="open">
                                                                               <summary class="subhead">Remarks</summary>
                                                                               <div class="remarks">
-                                                                                 <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                                                 <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                                                                                  <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                                               </div>
                                                                            </details>
@@ -10825,7 +10825,7 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
                                                    <div class="remarks">
-                                                      <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                      <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                                                       <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                    </div>
                                                 </details>
@@ -10931,7 +10931,7 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                                        <details open="open">
                                           <summary class="subhead">Remarks</summary>
                                           <div class="remarks">
-                                             <p>A document identifier provides a <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with a <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that is used for a group of documents that are to be treated as different versions,
+                                             <p>A document identifier provides a <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with a <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that is used for a group of documents that are to be treated as different versions,
                                                 representations or digital surrogates of the same document.</p>
                                              <p>A document identifier provides an additional data point for identifying a document
                                                 that can be assigned by a publisher or organization for purposes in a wider system,
@@ -10961,7 +10961,7 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
                                                    <div class="remarks">
-                                                      <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                      <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                                                    </div>
                                                 </details>
                                              </div>
@@ -11103,7 +11103,7 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                                                          <details open="open">
                                                             <summary class="subhead">Remarks</summary>
                                                             <div class="remarks">
-                                                               <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                               <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                                                                <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                             </div>
                                                          </details>
