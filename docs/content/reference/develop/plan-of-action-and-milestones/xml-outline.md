@@ -3696,10 +3696,9 @@ The following outline is a representation of the [XML format](https://github.com
                                  </div>
                                  <p class="close-tag nobr">&lt;/dependency&gt;</p>
                               </details>
-                              <details class="OM-entry">
-                                 <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/plan-of-action-and-milestones/risk/response/task/task">task</a></span>&gt;<span class="show-closed"><span class="OM-lit OM-gloss"> (recursive: model like parent <span class="OM-ref">task</span>) </span><span class="nobr">&lt;/task&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
-                                 <p class="OM-map-name">[Empty]</p>
-                              </details>
+                              <div class="OM-entry">
+                                 <p class="OM-line"><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/plan-of-action-and-milestones/risk/response/task/task">task</a></span>&gt;<span class="show-closed"><span class="OM-lit OM-gloss"> (recursive: model like parent <span class="OM-ref">task</span>) </span><span class="nobr">&lt;/task&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></p>
+                              </div>
                               <details class="OM-entry">
                                  <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/plan-of-action-and-milestones/risk/response/task/associated-activity">associated-activity</a></span> <span class="nobr" id="/plan-of-action-and-milestones/risk/response/task/associated-activity/@activity-uuid"><a class="OM-name" href="../xml-reference/#/plan-of-action-and-milestones/risk/response/task/associated-activity/@activity-uuid">activity-uuid</a>="<span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span>"</span>&gt;<span class="show-closed"> … <span class="nobr">&lt;/associated-activity&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
                                  <div class="model-container">
