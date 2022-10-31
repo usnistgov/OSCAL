@@ -143,7 +143,7 @@ jobs:
       id: linkchecker
       uses: lycheeverse/lychee-action@4a5af7cd2958a2282cefbd9c10f63bdb89982d76
       with:
-        args: --exclude-file ./build/config/.lycheeignore --verbose --no-progress './docs/public/**/*.html' --accept 200,206,429
+        args: --exclude-file ./build/config/.lycheeignore --verbose --no-progress --accept 200,206,429 './docs/public/**/*.html' --remap "https://pages.nist.gov/OSCAL/ file://${GITHUB_WORKSPACE}/docs/public/" --exclude-mail
         format: markdown
         output: html-link-report.md
       env:
