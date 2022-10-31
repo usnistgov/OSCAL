@@ -581,7 +581,7 @@ The following is a reference for the JSON object definitions derived from the [m
                                     <details open="open">
                                        <summary class="subhead">Remarks</summary>
                                        <div class="remarks">
-                                          <p>A document identifier provides a <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with a <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that is used for a group of documents that are to be treated as different versions,
+                                          <p>A document identifier provides a <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with a <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that is used for a group of documents that are to be treated as different versions,
                                              representations or digital surrogates of the same document.</p>
                                           <p>A document identifier provides an additional data point for identifying a document
                                              that can be assigned by a publisher or organization for purposes in a wider system,
@@ -723,9 +723,9 @@ The following is a reference for the JSON object definitions derived from the [m
                                                       <p>This value may be either:</p>
                                                       <ol>
                                                          
-                                                         <li>an <a href="/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
+                                                         <li>an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
                                                          
-                                                         <li>a <a href="/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
+                                                         <li>a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
                                                             document, or</li>
                                                          </ol>
                                                    </div>
@@ -894,7 +894,7 @@ The following is a reference for the JSON object definitions derived from the [m
          <p class="formal-name">Catalog</p>
       </div>
       <div class="body">
-         <p class="description"><span class="usa-tag">description</span> A structured, <a href="/concepts/terminology/#catalog">organized collection</a> of control information.</p>
+         <p class="description"><span class="usa-tag">description</span> A structured, <a href="https://pages.nist.gov/OSCAL/concepts/terminology/#catalog">organized collection</a> of control information.</p>
          <p><span class="usa-tag">root name</span> <code class="name">catalog</code></p>
          <div class="remarks-group usa-prose">
             <details open="open">
@@ -1123,7 +1123,7 @@ The following is a reference for the JSON object definitions derived from the [m
          <p class="formal-name">Control</p>
       </div>
       <div class="body">
-         <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/terminology/#control">structured object</a> representing a requirement or guideline, which when implemented will reduce an aspect
+         <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/terminology/#control">structured object</a> representing a requirement or guideline, which when implemented will reduce an aspect
             of risk related to an information system and its information.</p>
          <div class="remarks-group usa-prose">
             <details open="open">
@@ -1607,7 +1607,7 @@ The following is a reference for the JSON object definitions derived from the [m
             <details open="open">
                <summary class="subhead">Remarks</summary>
                <div class="remarks">
-                  <p>A document identifier provides a <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with a <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that is used for a group of documents that are to be treated as different versions,
+                  <p>A document identifier provides a <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with a <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that is used for a group of documents that are to be treated as different versions,
                      representations or digital surrogates of the same document.</p>
                   <p>A document identifier provides an additional data point for identifying a document
                      that can be assigned by a publisher or organization for purposes in a wider system,
@@ -1638,7 +1638,7 @@ The following is a reference for the JSON object definitions derived from the [m
                         <details open="open">
                            <summary class="subhead">Remarks</summary>
                            <div class="remarks">
-                              <p>This value must be an <a href="/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                              <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                            </div>
                         </details>
                      </div>
@@ -2190,13 +2190,13 @@ The following is a reference for the JSON object definitions derived from the [m
                               <p>This value may be one of:</p>
                               <ol>
                                  
-                                 <li>an <a href="/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
+                                 <li>an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
                                  
-                                 <li>a <a href="/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
+                                 <li>a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
                                     document, or</li>
                                  
                                  <li>a bare URI fragment (i.e., `#uuid`) pointing to an OSCAL object by the objects identifier
-                                    (e.g., id, uuid) in this or an imported document (see <a href="/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>). The specific object type will differ based on the link relationship type.</li>
+                                    (e.g., id, uuid) in this or an imported document (see <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>). The specific object type will differ based on the link relationship type.</li>
                                  </ol>
                            </div>
                         </details>
@@ -2493,7 +2493,7 @@ The following is a reference for the JSON object definitions derived from the [m
                                     <details open="open">
                                        <summary class="subhead">Remarks</summary>
                                        <div class="remarks">
-                                          <p>This value must be an <a href="/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                          <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                                           <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                        </div>
                                     </details>
@@ -2751,12 +2751,12 @@ The following is a reference for the JSON object definitions derived from the [m
                               <p>This value may be one of:</p>
                               <ol>
                                  
-                                 <li>an <a href="/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
+                                 <li>an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
                                  
-                                 <li>a <a href="/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
+                                 <li>a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
                                     document, or</li>
                                  
-                                 <li>a bare URI fragment (i.e., `#uuid`) pointing to a <code>back-matter</code> resource in this or an imported document (see <a href="/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>).</li>
+                                 <li>a bare URI fragment (i.e., `#uuid`) pointing to a <code>back-matter</code> resource in this or an imported document (see <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>).</li>
                                  </ol>
                            </div>
                         </details>
@@ -3382,7 +3382,7 @@ The following is a reference for the JSON object definitions derived from the [m
                         <details open="open">
                            <summary class="subhead">Remarks</summary>
                            <div class="remarks">
-                              <p>A document identifier provides a <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with a <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that is used for a group of documents that are to be treated as different versions,
+                              <p>A document identifier provides a <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with a <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that is used for a group of documents that are to be treated as different versions,
                                  representations or digital surrogates of the same document.</p>
                               <p>A document identifier provides an additional data point for identifying a document
                                  that can be assigned by a publisher or organization for purposes in a wider system,
@@ -3995,7 +3995,7 @@ The following is a reference for the JSON object definitions derived from the [m
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
                                                    <div class="remarks">
-                                                      <p>This value must be an <a href="/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                      <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                                                    </div>
                                                 </details>
                                              </div>
@@ -4167,7 +4167,7 @@ The following is a reference for the JSON object definitions derived from the [m
                                     <details open="open">
                                        <summary class="subhead">Remarks</summary>
                                        <div class="remarks">
-                                          <p>Since the reference target of an organizational affiliation must be another <code>party</code> (whether further qualified as person or organization) as inidcated by its <code>uuid</code>. As a <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier with uniqueness across document and trans-document scope, this <code>uuid</code> value is sufficient to reference the data item locally or globally across related
+                                          <p>Since the reference target of an organizational affiliation must be another <code>party</code> (whether further qualified as person or organization) as inidcated by its <code>uuid</code>. As a <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier with uniqueness across document and trans-document scope, this <code>uuid</code> value is sufficient to reference the data item locally or globally across related
                                              documents, e.g., in an imported OSCAL instance. </p>
                                           <p>Parties of both the <code>person</code> or <code>organization</code> type can be associated with an organization using the <code>member-of-organization</code>.</p>
                                        </div>
@@ -4901,7 +4901,7 @@ The following is a reference for the JSON object definitions derived from the [m
                         <details open="open">
                            <summary class="subhead">Remarks</summary>
                            <div class="remarks">
-                              <p>This value must be an <a href="/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                              <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                               <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                            </div>
                         </details>
@@ -5166,7 +5166,7 @@ The following is a reference for the JSON object definitions derived from the [m
                         <details open="open">
                            <summary class="subhead">Remarks</summary>
                            <div class="remarks">
-                              <p>This value must be an <a href="/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                              <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                               <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                            </div>
                         </details>
@@ -5465,7 +5465,7 @@ The following is a reference for the JSON object definitions derived from the [m
                      <p class="formal-name">Responsible Role ID</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a> identifier reference to a <code>role</code> performed.</p>
+                     <p class="description"><span class="usa-tag">description</span> A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#human-oriented">human-oriented</a> identifier reference to a <code>role</code> performed.</p>
                   </div>
                </div>
                <div class="model-entry definition assembly">

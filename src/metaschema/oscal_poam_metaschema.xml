@@ -24,7 +24,7 @@
         <define-flag name="uuid" required="yes" as-type="uuid">
             <formal-name>POA&amp;M Universally Unique Identifier</formal-name>
              <!-- Identifier Declaration -->
-            <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#instance">instance</a>scope that can be used to reference this POA&amp;M instance in <a href="/concepts/identifier-use/#poam-identifiers">this OSCAL instance</a>. This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+            <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#instance">instance</a>scope that can be used to reference this POA&amp;M instance in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#poam-identifiers">this OSCAL instance</a>. This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
         </define-flag>
         <model>
             <assembly ref="metadata" min-occurs="1" max-occurs="1"/>
@@ -99,7 +99,7 @@
         <define-flag name="uuid" as-type="uuid">
             <formal-name>POA&amp;M Item Universally Unique Identifier</formal-name>
             <!-- Identifier Declaration -->
-            <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#instance">instance</a> scope that can be used to reference this POA&amp;M item entry in <a href="/concepts/identifier-use/#poam-identifiers">this OSCAL instance</a>. This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+            <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#instance">instance</a> scope that can be used to reference this POA&amp;M item entry in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#poam-identifiers">this OSCAL instance</a>. This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
         </define-flag>
         <model>
             <define-field name="title" min-occurs="1" max-occurs="1" as-type="markup-line">
@@ -138,7 +138,7 @@
                 <group-as name="related-findings" in-json="ARRAY"/>
                 <define-flag name="finding-uuid" as-type="uuid" required="yes">
                     <formal-name>Finding Universally Unique Identifier Reference</formal-name>
-                    <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a finding defined in the list of findings.</description>
+                    <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a finding defined in the list of findings.</description>
                 </define-flag>
             </define-assembly>
 
@@ -154,7 +154,7 @@
                 <define-flag name="observation-uuid" as-type="uuid" required="yes">
                     <formal-name>Observation Universally Unique Identifier Reference</formal-name>
                     <!-- Identifier Reference -->
-                    <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to an observation defined in the list of observations.</description>
+                    <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to an observation defined in the list of observations.</description>
                 </define-flag>
             </define-assembly>
 
@@ -166,7 +166,7 @@
                 <define-flag name="risk-uuid" as-type="uuid" required="yes">
                     <formal-name>Risk Universally Unique Identifier Reference</formal-name>
                     <!-- Identifier Reference -->
-                    <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a risk defined in the list of risks.</description>
+                    <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a risk defined in the list of risks.</description>
                 </define-flag>
             </define-assembly>
             <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>

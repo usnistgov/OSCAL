@@ -42,7 +42,7 @@
                         <formal-name>Part Namespace</formal-name>
                         <description>An optional namespace qualifying the part's <code>name</code>. This allows different organizations to associate distinct semantics with the same name.</description>
                         <remarks>
-                                <p>This value must be an <a href="/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                                 <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                         </remarks>
                 </define-flag>
