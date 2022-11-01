@@ -673,7 +673,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                 </details>
                                              </div>
                                              <details class="constraints" open="open">
-                                                <summary>Constraints (3)</summary>
+                                                <summary>Constraints (4)</summary>
                                                 <div class="constraint">
                                                    <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                                 </div>
@@ -683,9 +683,12 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                 <div class="constraint">
                                                    <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                                 </div>
+                                                <div class="constraint">
+                                                   <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                                </div>
                                              </details>
                                              <details class="properties attributes" open="open">
-                                                <summary>Attributes (3)</summary>
+                                                <summary>Attributes (4)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/system-security-plan/metadata/revisions/revision/link/@href" class="toc6 name">href</h6>
@@ -770,6 +773,18 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                             </div>
                                                          </details>
                                                       </div>
+                                                   </div>
+                                                </div>
+                                                <div class="model-entry definition assembly">
+                                                   <div class="instance-header">
+                                                      <h6 id="/system-security-plan/metadata/revisions/revision/link/@resource-fragment" class="toc6 name">resource-fragment</h6>
+                                                      <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                      <p class="occurrence">[0 or 1]</p>
+                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/revisions/links/resource-fragment">Switch to JSON</a></div>
+                                                      <p class="formal-name">Resource Fragment</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                                    </div>
                                                 </div>
                                              </details>
@@ -1105,7 +1120,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                               </details>
                            </div>
                            <details class="constraints" open="open">
-                              <summary>Constraints (3)</summary>
+                              <summary>Constraints (4)</summary>
                               <div class="constraint">
                                  <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                               </div>
@@ -1115,9 +1130,12 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                               <div class="constraint">
                                  <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                               </div>
+                              <div class="constraint">
+                                 <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                              </div>
                            </details>
                            <details class="properties attributes" open="open">
-                              <summary>Attributes (3)</summary>
+                              <summary>Attributes (4)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/system-security-plan/metadata/link/@href" class="toc4 name">href</h4>
@@ -1202,6 +1220,18 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                           </div>
                                        </details>
                                     </div>
+                                 </div>
+                              </div>
+                              <div class="model-entry definition assembly">
+                                 <div class="instance-header">
+                                    <h4 id="/system-security-plan/metadata/link/@resource-fragment" class="toc4 name">resource-fragment</h4>
+                                    <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                    <p class="occurrence">[0 or 1]</p>
+                                    <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/links/resource-fragment">Switch to JSON</a></div>
+                                    <p class="formal-name">Resource Fragment</p>
+                                 </div>
+                                 <div class="body">
+                                    <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                  </div>
                               </div>
                            </details>
@@ -1522,7 +1552,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                        </details>
                                     </div>
                                     <details class="constraints" open="open">
-                                       <summary>Constraints (3)</summary>
+                                       <summary>Constraints (4)</summary>
                                        <div class="constraint">
                                           <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                        </div>
@@ -1532,9 +1562,12 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                        <div class="constraint">
                                           <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                        </div>
+                                       <div class="constraint">
+                                          <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                       </div>
                                     </details>
                                     <details class="properties attributes" open="open">
-                                       <summary>Attributes (3)</summary>
+                                       <summary>Attributes (4)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/metadata/role/link/@href" class="toc5 name">href</h5>
@@ -1619,6 +1652,18 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                    </div>
                                                 </details>
                                              </div>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/metadata/role/link/@resource-fragment" class="toc5 name">resource-fragment</h5>
+                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/roles/links/resource-fragment">Switch to JSON</a></div>
+                                             <p class="formal-name">Resource Fragment</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                           </div>
                                        </div>
                                     </details>
@@ -2186,7 +2231,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                        </details>
                                     </div>
                                     <details class="constraints" open="open">
-                                       <summary>Constraints (3)</summary>
+                                       <summary>Constraints (4)</summary>
                                        <div class="constraint">
                                           <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                        </div>
@@ -2196,9 +2241,12 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                        <div class="constraint">
                                           <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                        </div>
+                                       <div class="constraint">
+                                          <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                       </div>
                                     </details>
                                     <details class="properties attributes" open="open">
-                                       <summary>Attributes (3)</summary>
+                                       <summary>Attributes (4)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/metadata/location/link/@href" class="toc5 name">href</h5>
@@ -2283,6 +2331,18 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                    </div>
                                                 </details>
                                              </div>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/metadata/location/link/@resource-fragment" class="toc5 name">resource-fragment</h5>
+                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/locations/links/resource-fragment">Switch to JSON</a></div>
+                                             <p class="formal-name">Resource Fragment</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                           </div>
                                        </div>
                                     </details>
@@ -2700,7 +2760,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                        </details>
                                     </div>
                                     <details class="constraints" open="open">
-                                       <summary>Constraints (3)</summary>
+                                       <summary>Constraints (4)</summary>
                                        <div class="constraint">
                                           <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                        </div>
@@ -2710,9 +2770,12 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                        <div class="constraint">
                                           <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                        </div>
+                                       <div class="constraint">
+                                          <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                       </div>
                                     </details>
                                     <details class="properties attributes" open="open">
-                                       <summary>Attributes (3)</summary>
+                                       <summary>Attributes (4)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/metadata/party/link/@href" class="toc5 name">href</h5>
@@ -2797,6 +2860,18 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                    </div>
                                                 </details>
                                              </div>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/metadata/party/link/@resource-fragment" class="toc5 name">resource-fragment</h5>
+                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/parties/links/resource-fragment">Switch to JSON</a></div>
+                                             <p class="formal-name">Resource Fragment</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                           </div>
                                        </div>
                                     </details>
@@ -3360,7 +3435,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                        </details>
                                     </div>
                                     <details class="constraints" open="open">
-                                       <summary>Constraints (3)</summary>
+                                       <summary>Constraints (4)</summary>
                                        <div class="constraint">
                                           <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                        </div>
@@ -3370,9 +3445,12 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                        <div class="constraint">
                                           <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                        </div>
+                                       <div class="constraint">
+                                          <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                       </div>
                                     </details>
                                     <details class="properties attributes" open="open">
-                                       <summary>Attributes (3)</summary>
+                                       <summary>Attributes (4)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/metadata/responsible-party/link/@href" class="toc5 name">href</h5>
@@ -3457,6 +3535,18 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                    </div>
                                                 </details>
                                              </div>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/metadata/responsible-party/link/@resource-fragment" class="toc5 name">resource-fragment</h5>
+                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/responsible-parties/links/resource-fragment">Switch to JSON</a></div>
+                                             <p class="formal-name">Resource Fragment</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                           </div>
                                        </div>
                                     </details>
@@ -3827,7 +3917,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                        </details>
                                     </div>
                                     <details class="constraints" open="open">
-                                       <summary>Constraints (3)</summary>
+                                       <summary>Constraints (4)</summary>
                                        <div class="constraint">
                                           <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                        </div>
@@ -3837,9 +3927,12 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                        <div class="constraint">
                                           <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                        </div>
+                                       <div class="constraint">
+                                          <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                       </div>
                                     </details>
                                     <details class="properties attributes" open="open">
-                                       <summary>Attributes (3)</summary>
+                                       <summary>Attributes (4)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/metadata/action/link/@href" class="toc5 name">href</h5>
@@ -3924,6 +4017,18 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                    </div>
                                                 </details>
                                              </div>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/metadata/action/link/@resource-fragment" class="toc5 name">resource-fragment</h5>
+                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/actions/links/resource-fragment">Switch to JSON</a></div>
+                                             <p class="formal-name">Resource Fragment</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                           </div>
                                        </div>
                                     </details>
@@ -4216,7 +4321,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                 </details>
                                              </div>
                                              <details class="constraints" open="open">
-                                                <summary>Constraints (3)</summary>
+                                                <summary>Constraints (4)</summary>
                                                 <div class="constraint">
                                                    <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                                 </div>
@@ -4226,9 +4331,12 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                 <div class="constraint">
                                                    <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                                 </div>
+                                                <div class="constraint">
+                                                   <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                                </div>
                                              </details>
                                              <details class="properties attributes" open="open">
-                                                <summary>Attributes (3)</summary>
+                                                <summary>Attributes (4)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/system-security-plan/metadata/action/responsible-party/link/@href" class="toc6 name">href</h6>
@@ -4313,6 +4421,18 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                             </div>
                                                          </details>
                                                       </div>
+                                                   </div>
+                                                </div>
+                                                <div class="model-entry definition assembly">
+                                                   <div class="instance-header">
+                                                      <h6 id="/system-security-plan/metadata/action/responsible-party/link/@resource-fragment" class="toc6 name">resource-fragment</h6>
+                                                      <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                      <p class="occurrence">[0 or 1]</p>
+                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/actions/responsible-parties/links/resource-fragment">Switch to JSON</a></div>
+                                                      <p class="formal-name">Resource Fragment</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                                    </div>
                                                 </div>
                                              </details>
@@ -4990,7 +5110,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                               </details>
                            </div>
                            <details class="constraints" open="open">
-                              <summary>Constraints (3)</summary>
+                              <summary>Constraints (4)</summary>
                               <div class="constraint">
                                  <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                               </div>
@@ -5000,9 +5120,12 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                               <div class="constraint">
                                  <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                               </div>
+                              <div class="constraint">
+                                 <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                              </div>
                            </details>
                            <details class="properties attributes" open="open">
-                              <summary>Attributes (3)</summary>
+                              <summary>Attributes (4)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/system-security-plan/system-characteristics/link/@href" class="toc4 name">href</h4>
@@ -5087,6 +5210,18 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                           </div>
                                        </details>
                                     </div>
+                                 </div>
+                              </div>
+                              <div class="model-entry definition assembly">
+                                 <div class="instance-header">
+                                    <h4 id="/system-security-plan/system-characteristics/link/@resource-fragment" class="toc4 name">resource-fragment</h4>
+                                    <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                    <p class="occurrence">[0 or 1]</p>
+                                    <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/links/resource-fragment">Switch to JSON</a></div>
+                                    <p class="formal-name">Resource Fragment</p>
+                                 </div>
+                                 <div class="body">
+                                    <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                  </div>
                               </div>
                            </details>
@@ -5418,7 +5553,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                        </details>
                                     </div>
                                     <details class="constraints" open="open">
-                                       <summary>Constraints (3)</summary>
+                                       <summary>Constraints (4)</summary>
                                        <div class="constraint">
                                           <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                        </div>
@@ -5428,9 +5563,12 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                        <div class="constraint">
                                           <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                        </div>
+                                       <div class="constraint">
+                                          <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                       </div>
                                     </details>
                                     <details class="properties attributes" open="open">
-                                       <summary>Attributes (3)</summary>
+                                       <summary>Attributes (4)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/system-characteristics/system-information/link/@href" class="toc5 name">href</h5>
@@ -5515,6 +5653,18 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                    </div>
                                                 </details>
                                              </div>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/system-characteristics/system-information/link/@resource-fragment" class="toc5 name">resource-fragment</h5>
+                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/system-information/links/resource-fragment">Switch to JSON</a></div>
+                                             <p class="formal-name">Resource Fragment</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                           </div>
                                        </div>
                                     </details>
@@ -5876,7 +6026,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                 </details>
                                              </div>
                                              <details class="constraints" open="open">
-                                                <summary>Constraints (3)</summary>
+                                                <summary>Constraints (4)</summary>
                                                 <div class="constraint">
                                                    <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                                 </div>
@@ -5886,9 +6036,12 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                 <div class="constraint">
                                                    <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                                 </div>
+                                                <div class="constraint">
+                                                   <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                                </div>
                                              </details>
                                              <details class="properties attributes" open="open">
-                                                <summary>Attributes (3)</summary>
+                                                <summary>Attributes (4)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/system-security-plan/system-characteristics/system-information/information-type/link/@href" class="toc6 name">href</h6>
@@ -5973,6 +6126,18 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                             </div>
                                                          </details>
                                                       </div>
+                                                   </div>
+                                                </div>
+                                                <div class="model-entry definition assembly">
+                                                   <div class="instance-header">
+                                                      <h6 id="/system-security-plan/system-characteristics/system-information/information-type/link/@resource-fragment" class="toc6 name">resource-fragment</h6>
+                                                      <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                      <p class="occurrence">[0 or 1]</p>
+                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/system-information/information-types/links/resource-fragment">Switch to JSON</a></div>
+                                                      <p class="formal-name">Resource Fragment</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                                    </div>
                                                 </div>
                                              </details>
@@ -6215,7 +6380,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                          </details>
                                                       </div>
                                                       <details class="constraints" open="open">
-                                                         <summary>Constraints (3)</summary>
+                                                         <summary>Constraints (4)</summary>
                                                          <div class="constraint">
                                                             <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                                          </div>
@@ -6225,9 +6390,12 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                          <div class="constraint">
                                                             <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                                          </div>
+                                                         <div class="constraint">
+                                                            <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                                         </div>
                                                       </details>
                                                       <details class="properties attributes" open="open">
-                                                         <summary>Attributes (3)</summary>
+                                                         <summary>Attributes (4)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
                                                                <p id="/system-security-plan/system-characteristics/system-information/information-type/confidentiality-impact/link/@href" class="toc7 name">href</p>
@@ -6312,6 +6480,18 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                      </div>
                                                                   </details>
                                                                </div>
+                                                            </div>
+                                                         </div>
+                                                         <div class="model-entry definition assembly">
+                                                            <div class="instance-header">
+                                                               <p id="/system-security-plan/system-characteristics/system-information/information-type/confidentiality-impact/link/@resource-fragment" class="toc7 name">resource-fragment</p>
+                                                               <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                               <p class="occurrence">[0 or 1]</p>
+                                                               <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/system-information/information-types/confidentiality-impact/links/resource-fragment">Switch to JSON</a></div>
+                                                               <p class="formal-name">Resource Fragment</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                                             </div>
                                                          </div>
                                                       </details>
@@ -6608,7 +6788,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                          </details>
                                                       </div>
                                                       <details class="constraints" open="open">
-                                                         <summary>Constraints (3)</summary>
+                                                         <summary>Constraints (4)</summary>
                                                          <div class="constraint">
                                                             <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                                          </div>
@@ -6618,9 +6798,12 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                          <div class="constraint">
                                                             <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                                          </div>
+                                                         <div class="constraint">
+                                                            <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                                         </div>
                                                       </details>
                                                       <details class="properties attributes" open="open">
-                                                         <summary>Attributes (3)</summary>
+                                                         <summary>Attributes (4)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
                                                                <p id="/system-security-plan/system-characteristics/system-information/information-type/integrity-impact/link/@href" class="toc7 name">href</p>
@@ -6705,6 +6888,18 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                      </div>
                                                                   </details>
                                                                </div>
+                                                            </div>
+                                                         </div>
+                                                         <div class="model-entry definition assembly">
+                                                            <div class="instance-header">
+                                                               <p id="/system-security-plan/system-characteristics/system-information/information-type/integrity-impact/link/@resource-fragment" class="toc7 name">resource-fragment</p>
+                                                               <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                               <p class="occurrence">[0 or 1]</p>
+                                                               <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/system-information/information-types/integrity-impact/links/resource-fragment">Switch to JSON</a></div>
+                                                               <p class="formal-name">Resource Fragment</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                                             </div>
                                                          </div>
                                                       </details>
@@ -7001,7 +7196,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                          </details>
                                                       </div>
                                                       <details class="constraints" open="open">
-                                                         <summary>Constraints (3)</summary>
+                                                         <summary>Constraints (4)</summary>
                                                          <div class="constraint">
                                                             <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                                          </div>
@@ -7011,9 +7206,12 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                          <div class="constraint">
                                                             <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                                          </div>
+                                                         <div class="constraint">
+                                                            <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                                         </div>
                                                       </details>
                                                       <details class="properties attributes" open="open">
-                                                         <summary>Attributes (3)</summary>
+                                                         <summary>Attributes (4)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
                                                                <p id="/system-security-plan/system-characteristics/system-information/information-type/availability-impact/link/@href" class="toc7 name">href</p>
@@ -7098,6 +7296,18 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                      </div>
                                                                   </details>
                                                                </div>
+                                                            </div>
+                                                         </div>
+                                                         <div class="model-entry definition assembly">
+                                                            <div class="instance-header">
+                                                               <p id="/system-security-plan/system-characteristics/system-information/information-type/availability-impact/link/@resource-fragment" class="toc7 name">resource-fragment</p>
+                                                               <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                               <p class="occurrence">[0 or 1]</p>
+                                                               <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/system-information/information-types/availability-impact/links/resource-fragment">Switch to JSON</a></div>
+                                                               <p class="formal-name">Resource Fragment</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                                             </div>
                                                          </div>
                                                       </details>
@@ -7578,7 +7788,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                        </details>
                                     </div>
                                     <details class="constraints" open="open">
-                                       <summary>Constraints (3)</summary>
+                                       <summary>Constraints (4)</summary>
                                        <div class="constraint">
                                           <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                        </div>
@@ -7588,9 +7798,12 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                        <div class="constraint">
                                           <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                        </div>
+                                       <div class="constraint">
+                                          <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                       </div>
                                     </details>
                                     <details class="properties attributes" open="open">
-                                       <summary>Attributes (3)</summary>
+                                       <summary>Attributes (4)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/system-characteristics/authorization-boundary/link/@href" class="toc5 name">href</h5>
@@ -7675,6 +7888,18 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                    </div>
                                                 </details>
                                              </div>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/system-characteristics/authorization-boundary/link/@resource-fragment" class="toc5 name">resource-fragment</h5>
+                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/authorization-boundary/links/resource-fragment">Switch to JSON</a></div>
+                                             <p class="formal-name">Resource Fragment</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                           </div>
                                        </div>
                                     </details>
@@ -8000,7 +8225,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                 </details>
                                              </div>
                                              <details class="constraints" open="open">
-                                                <summary>Constraints (3)</summary>
+                                                <summary>Constraints (4)</summary>
                                                 <div class="constraint">
                                                    <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                                 </div>
@@ -8010,9 +8235,12 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                 <div class="constraint">
                                                    <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                                 </div>
+                                                <div class="constraint">
+                                                   <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                                </div>
                                              </details>
                                              <details class="properties attributes" open="open">
-                                                <summary>Attributes (3)</summary>
+                                                <summary>Attributes (4)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/system-security-plan/system-characteristics/authorization-boundary/diagram/link/@href" class="toc6 name">href</h6>
@@ -8097,6 +8325,18 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                             </div>
                                                          </details>
                                                       </div>
+                                                   </div>
+                                                </div>
+                                                <div class="model-entry definition assembly">
+                                                   <div class="instance-header">
+                                                      <h6 id="/system-security-plan/system-characteristics/authorization-boundary/diagram/link/@resource-fragment" class="toc6 name">resource-fragment</h6>
+                                                      <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                      <p class="occurrence">[0 or 1]</p>
+                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/authorization-boundary/diagrams/links/resource-fragment">Switch to JSON</a></div>
+                                                      <p class="formal-name">Resource Fragment</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                                    </div>
                                                 </div>
                                              </details>
@@ -8457,7 +8697,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                        </details>
                                     </div>
                                     <details class="constraints" open="open">
-                                       <summary>Constraints (3)</summary>
+                                       <summary>Constraints (4)</summary>
                                        <div class="constraint">
                                           <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                        </div>
@@ -8467,9 +8707,12 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                        <div class="constraint">
                                           <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                        </div>
+                                       <div class="constraint">
+                                          <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                       </div>
                                     </details>
                                     <details class="properties attributes" open="open">
-                                       <summary>Attributes (3)</summary>
+                                       <summary>Attributes (4)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/system-characteristics/network-architecture/link/@href" class="toc5 name">href</h5>
@@ -8554,6 +8797,18 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                    </div>
                                                 </details>
                                              </div>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/system-characteristics/network-architecture/link/@resource-fragment" class="toc5 name">resource-fragment</h5>
+                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/network-architecture/links/resource-fragment">Switch to JSON</a></div>
+                                             <p class="formal-name">Resource Fragment</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                           </div>
                                        </div>
                                     </details>
@@ -8876,7 +9131,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                 </details>
                                              </div>
                                              <details class="constraints" open="open">
-                                                <summary>Constraints (3)</summary>
+                                                <summary>Constraints (4)</summary>
                                                 <div class="constraint">
                                                    <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                                 </div>
@@ -8886,9 +9141,12 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                 <div class="constraint">
                                                    <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                                 </div>
+                                                <div class="constraint">
+                                                   <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                                </div>
                                              </details>
                                              <details class="properties attributes" open="open">
-                                                <summary>Attributes (3)</summary>
+                                                <summary>Attributes (4)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/system-security-plan/system-characteristics/network-architecture/diagram/link/@href" class="toc6 name">href</h6>
@@ -8973,6 +9231,18 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                             </div>
                                                          </details>
                                                       </div>
+                                                   </div>
+                                                </div>
+                                                <div class="model-entry definition assembly">
+                                                   <div class="instance-header">
+                                                      <h6 id="/system-security-plan/system-characteristics/network-architecture/diagram/link/@resource-fragment" class="toc6 name">resource-fragment</h6>
+                                                      <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                      <p class="occurrence">[0 or 1]</p>
+                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/network-architecture/diagrams/links/resource-fragment">Switch to JSON</a></div>
+                                                      <p class="formal-name">Resource Fragment</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                                    </div>
                                                 </div>
                                              </details>
@@ -9333,7 +9603,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                        </details>
                                     </div>
                                     <details class="constraints" open="open">
-                                       <summary>Constraints (3)</summary>
+                                       <summary>Constraints (4)</summary>
                                        <div class="constraint">
                                           <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                        </div>
@@ -9343,9 +9613,12 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                        <div class="constraint">
                                           <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                        </div>
+                                       <div class="constraint">
+                                          <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                       </div>
                                     </details>
                                     <details class="properties attributes" open="open">
-                                       <summary>Attributes (3)</summary>
+                                       <summary>Attributes (4)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/system-characteristics/data-flow/link/@href" class="toc5 name">href</h5>
@@ -9430,6 +9703,18 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                    </div>
                                                 </details>
                                              </div>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/system-characteristics/data-flow/link/@resource-fragment" class="toc5 name">resource-fragment</h5>
+                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/data-flow/links/resource-fragment">Switch to JSON</a></div>
+                                             <p class="formal-name">Resource Fragment</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                           </div>
                                        </div>
                                     </details>
@@ -9752,7 +10037,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                 </details>
                                              </div>
                                              <details class="constraints" open="open">
-                                                <summary>Constraints (3)</summary>
+                                                <summary>Constraints (4)</summary>
                                                 <div class="constraint">
                                                    <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                                 </div>
@@ -9762,9 +10047,12 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                 <div class="constraint">
                                                    <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                                 </div>
+                                                <div class="constraint">
+                                                   <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                                </div>
                                              </details>
                                              <details class="properties attributes" open="open">
-                                                <summary>Attributes (3)</summary>
+                                                <summary>Attributes (4)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/system-security-plan/system-characteristics/data-flow/diagram/link/@href" class="toc6 name">href</h6>
@@ -9849,6 +10137,18 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                             </div>
                                                          </details>
                                                       </div>
+                                                   </div>
+                                                </div>
+                                                <div class="model-entry definition assembly">
+                                                   <div class="instance-header">
+                                                      <h6 id="/system-security-plan/system-characteristics/data-flow/diagram/link/@resource-fragment" class="toc6 name">resource-fragment</h6>
+                                                      <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                      <p class="occurrence">[0 or 1]</p>
+                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/data-flow/diagrams/links/resource-fragment">Switch to JSON</a></div>
+                                                      <p class="formal-name">Resource Fragment</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                                    </div>
                                                 </div>
                                              </details>
@@ -10227,7 +10527,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                        </details>
                                     </div>
                                     <details class="constraints" open="open">
-                                       <summary>Constraints (3)</summary>
+                                       <summary>Constraints (4)</summary>
                                        <div class="constraint">
                                           <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                        </div>
@@ -10237,9 +10537,12 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                        <div class="constraint">
                                           <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                        </div>
+                                       <div class="constraint">
+                                          <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                       </div>
                                     </details>
                                     <details class="properties attributes" open="open">
-                                       <summary>Attributes (3)</summary>
+                                       <summary>Attributes (4)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/system-characteristics/responsible-party/link/@href" class="toc5 name">href</h5>
@@ -10324,6 +10627,18 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                    </div>
                                                 </details>
                                              </div>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/system-characteristics/responsible-party/link/@resource-fragment" class="toc5 name">resource-fragment</h5>
+                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/responsible-parties/links/resource-fragment">Switch to JSON</a></div>
+                                             <p class="formal-name">Resource Fragment</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                           </div>
                                        </div>
                                     </details>
@@ -10689,7 +11004,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                               </details>
                            </div>
                            <details class="constraints" open="open">
-                              <summary>Constraints (3)</summary>
+                              <summary>Constraints (4)</summary>
                               <div class="constraint">
                                  <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                               </div>
@@ -10699,9 +11014,12 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                               <div class="constraint">
                                  <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                               </div>
+                              <div class="constraint">
+                                 <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                              </div>
                            </details>
                            <details class="properties attributes" open="open">
-                              <summary>Attributes (3)</summary>
+                              <summary>Attributes (4)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/system-security-plan/system-implementation/link/@href" class="toc4 name">href</h4>
@@ -10786,6 +11104,18 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                           </div>
                                        </details>
                                     </div>
+                                 </div>
+                              </div>
+                              <div class="model-entry definition assembly">
+                                 <div class="instance-header">
+                                    <h4 id="/system-security-plan/system-implementation/link/@resource-fragment" class="toc4 name">resource-fragment</h4>
+                                    <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                    <p class="occurrence">[0 or 1]</p>
+                                    <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-implementation/links/resource-fragment">Switch to JSON</a></div>
+                                    <p class="formal-name">Resource Fragment</p>
+                                 </div>
+                                 <div class="body">
+                                    <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                  </div>
                               </div>
                            </details>
@@ -11078,7 +11408,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                        </details>
                                     </div>
                                     <details class="constraints" open="open">
-                                       <summary>Constraints (3)</summary>
+                                       <summary>Constraints (4)</summary>
                                        <div class="constraint">
                                           <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                        </div>
@@ -11088,9 +11418,12 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                        <div class="constraint">
                                           <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                        </div>
+                                       <div class="constraint">
+                                          <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                       </div>
                                     </details>
                                     <details class="properties attributes" open="open">
-                                       <summary>Attributes (3)</summary>
+                                       <summary>Attributes (4)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/system-implementation/leveraged-authorization/link/@href" class="toc5 name">href</h5>
@@ -11175,6 +11508,18 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                    </div>
                                                 </details>
                                              </div>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/system-implementation/leveraged-authorization/link/@resource-fragment" class="toc5 name">resource-fragment</h5>
+                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-implementation/leveraged-authorizations/links/resource-fragment">Switch to JSON</a></div>
+                                             <p class="formal-name">Resource Fragment</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                           </div>
                                        </div>
                                     </details>
@@ -11621,7 +11966,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                        </details>
                                     </div>
                                     <details class="constraints" open="open">
-                                       <summary>Constraints (3)</summary>
+                                       <summary>Constraints (4)</summary>
                                        <div class="constraint">
                                           <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                        </div>
@@ -11631,9 +11976,12 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                        <div class="constraint">
                                           <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                        </div>
+                                       <div class="constraint">
+                                          <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                       </div>
                                     </details>
                                     <details class="properties attributes" open="open">
-                                       <summary>Attributes (3)</summary>
+                                       <summary>Attributes (4)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/system-implementation/user/link/@href" class="toc5 name">href</h5>
@@ -11718,6 +12066,18 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                    </div>
                                                 </details>
                                              </div>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/system-implementation/user/link/@resource-fragment" class="toc5 name">resource-fragment</h5>
+                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-implementation/users/links/resource-fragment">Switch to JSON</a></div>
+                                             <p class="formal-name">Resource Fragment</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                           </div>
                                        </div>
                                     </details>
@@ -12550,7 +12910,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                        </details>
                                     </div>
                                     <details class="constraints" open="open">
-                                       <summary>Constraints (3)</summary>
+                                       <summary>Constraints (4)</summary>
                                        <div class="constraint">
                                           <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                        </div>
@@ -12560,9 +12920,12 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                        <div class="constraint">
                                           <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                        </div>
+                                       <div class="constraint">
+                                          <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                       </div>
                                     </details>
                                     <details class="properties attributes" open="open">
-                                       <summary>Attributes (3)</summary>
+                                       <summary>Attributes (4)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/system-implementation/component/link/@href" class="toc5 name">href</h5>
@@ -12647,6 +13010,18 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                    </div>
                                                 </details>
                                              </div>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/system-implementation/component/link/@resource-fragment" class="toc5 name">resource-fragment</h5>
+                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-implementation/components/links/resource-fragment">Switch to JSON</a></div>
+                                             <p class="formal-name">Resource Fragment</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                           </div>
                                        </div>
                                     </details>
@@ -12997,7 +13372,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                 </details>
                                              </div>
                                              <details class="constraints" open="open">
-                                                <summary>Constraints (3)</summary>
+                                                <summary>Constraints (4)</summary>
                                                 <div class="constraint">
                                                    <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                                 </div>
@@ -13007,9 +13382,12 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                 <div class="constraint">
                                                    <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                                 </div>
+                                                <div class="constraint">
+                                                   <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                                </div>
                                              </details>
                                              <details class="properties attributes" open="open">
-                                                <summary>Attributes (3)</summary>
+                                                <summary>Attributes (4)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/system-security-plan/system-implementation/component/responsible-role/link/@href" class="toc6 name">href</h6>
@@ -13094,6 +13472,18 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                             </div>
                                                          </details>
                                                       </div>
+                                                   </div>
+                                                </div>
+                                                <div class="model-entry definition assembly">
+                                                   <div class="instance-header">
+                                                      <h6 id="/system-security-plan/system-implementation/component/responsible-role/link/@resource-fragment" class="toc6 name">resource-fragment</h6>
+                                                      <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                      <p class="occurrence">[0 or 1]</p>
+                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-implementation/components/responsible-roles/links/resource-fragment">Switch to JSON</a></div>
+                                                      <p class="formal-name">Resource Fragment</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                                    </div>
                                                 </div>
                                              </details>
@@ -13833,7 +14223,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                        </details>
                                     </div>
                                     <details class="constraints" open="open">
-                                       <summary>Constraints (3)</summary>
+                                       <summary>Constraints (4)</summary>
                                        <div class="constraint">
                                           <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                        </div>
@@ -13843,9 +14233,12 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                        <div class="constraint">
                                           <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                        </div>
+                                       <div class="constraint">
+                                          <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                       </div>
                                     </details>
                                     <details class="properties attributes" open="open">
-                                       <summary>Attributes (3)</summary>
+                                       <summary>Attributes (4)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/system-implementation/inventory-item/link/@href" class="toc5 name">href</h5>
@@ -13930,6 +14323,18 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                    </div>
                                                 </details>
                                              </div>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/system-implementation/inventory-item/link/@resource-fragment" class="toc5 name">resource-fragment</h5>
+                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-implementation/inventory-items/links/resource-fragment">Switch to JSON</a></div>
+                                             <p class="formal-name">Resource Fragment</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                           </div>
                                        </div>
                                     </details>
@@ -14222,7 +14627,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                 </details>
                                              </div>
                                              <details class="constraints" open="open">
-                                                <summary>Constraints (3)</summary>
+                                                <summary>Constraints (4)</summary>
                                                 <div class="constraint">
                                                    <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                                 </div>
@@ -14232,9 +14637,12 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                 <div class="constraint">
                                                    <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                                 </div>
+                                                <div class="constraint">
+                                                   <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                                </div>
                                              </details>
                                              <details class="properties attributes" open="open">
-                                                <summary>Attributes (3)</summary>
+                                                <summary>Attributes (4)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/system-security-plan/system-implementation/inventory-item/responsible-party/link/@href" class="toc6 name">href</h6>
@@ -14319,6 +14727,18 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                             </div>
                                                          </details>
                                                       </div>
+                                                   </div>
+                                                </div>
+                                                <div class="model-entry definition assembly">
+                                                   <div class="instance-header">
+                                                      <h6 id="/system-security-plan/system-implementation/inventory-item/responsible-party/link/@resource-fragment" class="toc6 name">resource-fragment</h6>
+                                                      <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                      <p class="occurrence">[0 or 1]</p>
+                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-implementation/inventory-items/responsible-parties/links/resource-fragment">Switch to JSON</a></div>
+                                                      <p class="formal-name">Resource Fragment</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                                    </div>
                                                 </div>
                                              </details>
@@ -14703,7 +15123,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                 </details>
                                              </div>
                                              <details class="constraints" open="open">
-                                                <summary>Constraints (3)</summary>
+                                                <summary>Constraints (4)</summary>
                                                 <div class="constraint">
                                                    <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                                 </div>
@@ -14713,9 +15133,12 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                 <div class="constraint">
                                                    <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                                 </div>
+                                                <div class="constraint">
+                                                   <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                                </div>
                                              </details>
                                              <details class="properties attributes" open="open">
-                                                <summary>Attributes (3)</summary>
+                                                <summary>Attributes (4)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/system-security-plan/system-implementation/inventory-item/implemented-component/link/@href" class="toc6 name">href</h6>
@@ -14800,6 +15223,18 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                             </div>
                                                          </details>
                                                       </div>
+                                                   </div>
+                                                </div>
+                                                <div class="model-entry definition assembly">
+                                                   <div class="instance-header">
+                                                      <h6 id="/system-security-plan/system-implementation/inventory-item/implemented-component/link/@resource-fragment" class="toc6 name">resource-fragment</h6>
+                                                      <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                      <p class="occurrence">[0 or 1]</p>
+                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-implementation/inventory-items/implemented-components/links/resource-fragment">Switch to JSON</a></div>
+                                                      <p class="formal-name">Resource Fragment</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                                    </div>
                                                 </div>
                                              </details>
@@ -15097,7 +15532,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                          </details>
                                                       </div>
                                                       <details class="constraints" open="open">
-                                                         <summary>Constraints (3)</summary>
+                                                         <summary>Constraints (4)</summary>
                                                          <div class="constraint">
                                                             <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                                          </div>
@@ -15107,9 +15542,12 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                          <div class="constraint">
                                                             <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                                          </div>
+                                                         <div class="constraint">
+                                                            <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                                         </div>
                                                       </details>
                                                       <details class="properties attributes" open="open">
-                                                         <summary>Attributes (3)</summary>
+                                                         <summary>Attributes (4)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
                                                                <p id="/system-security-plan/system-implementation/inventory-item/implemented-component/responsible-party/link/@href" class="toc7 name">href</p>
@@ -15194,6 +15632,18 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                      </div>
                                                                   </details>
                                                                </div>
+                                                            </div>
+                                                         </div>
+                                                         <div class="model-entry definition assembly">
+                                                            <div class="instance-header">
+                                                               <p id="/system-security-plan/system-implementation/inventory-item/implemented-component/responsible-party/link/@resource-fragment" class="toc7 name">resource-fragment</p>
+                                                               <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                               <p class="occurrence">[0 or 1]</p>
+                                                               <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-implementation/inventory-items/implemented-components/responsible-parties/links/resource-fragment">Switch to JSON</a></div>
+                                                               <p class="formal-name">Resource Fragment</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                                             </div>
                                                          </div>
                                                       </details>
@@ -15841,7 +16291,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                        </details>
                                     </div>
                                     <details class="constraints" open="open">
-                                       <summary>Constraints (3)</summary>
+                                       <summary>Constraints (4)</summary>
                                        <div class="constraint">
                                           <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                        </div>
@@ -15851,9 +16301,12 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                        <div class="constraint">
                                           <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                        </div>
+                                       <div class="constraint">
+                                          <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                       </div>
                                     </details>
                                     <details class="properties attributes" open="open">
-                                       <summary>Attributes (3)</summary>
+                                       <summary>Attributes (4)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/control-implementation/implemented-requirement/link/@href" class="toc5 name">href</h5>
@@ -15938,6 +16391,18 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                    </div>
                                                 </details>
                                              </div>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/system-security-plan/control-implementation/implemented-requirement/link/@resource-fragment" class="toc5 name">resource-fragment</h5>
+                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/links/resource-fragment">Switch to JSON</a></div>
+                                             <p class="formal-name">Resource Fragment</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                           </div>
                                        </div>
                                     </details>
@@ -16284,7 +16749,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                 </details>
                                              </div>
                                              <details class="constraints" open="open">
-                                                <summary>Constraints (3)</summary>
+                                                <summary>Constraints (4)</summary>
                                                 <div class="constraint">
                                                    <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                                 </div>
@@ -16294,9 +16759,12 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                 <div class="constraint">
                                                    <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                                 </div>
+                                                <div class="constraint">
+                                                   <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                                </div>
                                              </details>
                                              <details class="properties attributes" open="open">
-                                                <summary>Attributes (3)</summary>
+                                                <summary>Attributes (4)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/system-security-plan/control-implementation/implemented-requirement/responsible-role/link/@href" class="toc6 name">href</h6>
@@ -16381,6 +16849,18 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                             </div>
                                                          </details>
                                                       </div>
+                                                   </div>
+                                                </div>
+                                                <div class="model-entry definition assembly">
+                                                   <div class="instance-header">
+                                                      <h6 id="/system-security-plan/control-implementation/implemented-requirement/responsible-role/link/@resource-fragment" class="toc6 name">resource-fragment</h6>
+                                                      <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                      <p class="occurrence">[0 or 1]</p>
+                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/responsible-roles/links/resource-fragment">Switch to JSON</a></div>
+                                                      <p class="formal-name">Resource Fragment</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                                    </div>
                                                 </div>
                                              </details>
@@ -16750,7 +17230,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                 </details>
                                              </div>
                                              <details class="constraints" open="open">
-                                                <summary>Constraints (3)</summary>
+                                                <summary>Constraints (4)</summary>
                                                 <div class="constraint">
                                                    <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                                 </div>
@@ -16760,9 +17240,12 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                 <div class="constraint">
                                                    <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                                 </div>
+                                                <div class="constraint">
+                                                   <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                                </div>
                                              </details>
                                              <details class="properties attributes" open="open">
-                                                <summary>Attributes (3)</summary>
+                                                <summary>Attributes (4)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/system-security-plan/control-implementation/implemented-requirement/statement/link/@href" class="toc6 name">href</h6>
@@ -16847,6 +17330,18 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                             </div>
                                                          </details>
                                                       </div>
+                                                   </div>
+                                                </div>
+                                                <div class="model-entry definition assembly">
+                                                   <div class="instance-header">
+                                                      <h6 id="/system-security-plan/control-implementation/implemented-requirement/statement/link/@resource-fragment" class="toc6 name">resource-fragment</h6>
+                                                      <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                      <p class="occurrence">[0 or 1]</p>
+                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/links/resource-fragment">Switch to JSON</a></div>
+                                                      <p class="formal-name">Resource Fragment</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                                    </div>
                                                 </div>
                                              </details>
@@ -17116,7 +17611,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                          </details>
                                                       </div>
                                                       <details class="constraints" open="open">
-                                                         <summary>Constraints (3)</summary>
+                                                         <summary>Constraints (4)</summary>
                                                          <div class="constraint">
                                                             <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                                          </div>
@@ -17126,9 +17621,12 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                          <div class="constraint">
                                                             <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                                          </div>
+                                                         <div class="constraint">
+                                                            <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                                         </div>
                                                       </details>
                                                       <details class="properties attributes" open="open">
-                                                         <summary>Attributes (3)</summary>
+                                                         <summary>Attributes (4)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
                                                                <p id="/system-security-plan/control-implementation/implemented-requirement/statement/responsible-role/link/@href" class="toc7 name">href</p>
@@ -17213,6 +17711,18 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                      </div>
                                                                   </details>
                                                                </div>
+                                                            </div>
+                                                         </div>
+                                                         <div class="model-entry definition assembly">
+                                                            <div class="instance-header">
+                                                               <p id="/system-security-plan/control-implementation/implemented-requirement/statement/responsible-role/link/@resource-fragment" class="toc7 name">resource-fragment</p>
+                                                               <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                               <p class="occurrence">[0 or 1]</p>
+                                                               <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/responsible-roles/links/resource-fragment">Switch to JSON</a></div>
+                                                               <p class="formal-name">Resource Fragment</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                                             </div>
                                                          </div>
                                                       </details>
@@ -17625,7 +18135,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                          </details>
                                                       </div>
                                                       <details class="constraints" open="open">
-                                                         <summary>Constraints (3)</summary>
+                                                         <summary>Constraints (4)</summary>
                                                          <div class="constraint">
                                                             <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                                          </div>
@@ -17635,9 +18145,12 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                          <div class="constraint">
                                                             <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                                          </div>
+                                                         <div class="constraint">
+                                                            <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                                         </div>
                                                       </details>
                                                       <details class="properties attributes" open="open">
-                                                         <summary>Attributes (3)</summary>
+                                                         <summary>Attributes (4)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
                                                                <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/link/@href" class="toc7 name">href</p>
@@ -17722,6 +18235,18 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                      </div>
                                                                   </details>
                                                                </div>
+                                                            </div>
+                                                         </div>
+                                                         <div class="model-entry definition assembly">
+                                                            <div class="instance-header">
+                                                               <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/link/@resource-fragment" class="toc7 name">resource-fragment</p>
+                                                               <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                               <p class="occurrence">[0 or 1]</p>
+                                                               <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/by-components/links/resource-fragment">Switch to JSON</a></div>
+                                                               <p class="formal-name">Resource Fragment</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                                             </div>
                                                          </div>
                                                       </details>
@@ -18167,7 +18692,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                   </details>
                                                                </div>
                                                                <details class="constraints" open="open">
-                                                                  <summary>Constraints (3)</summary>
+                                                                  <summary>Constraints (4)</summary>
                                                                   <div class="constraint">
                                                                      <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                                                   </div>
@@ -18177,9 +18702,12 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                   <div class="constraint">
                                                                      <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                                                   </div>
+                                                                  <div class="constraint">
+                                                                     <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                                                  </div>
                                                                </details>
                                                                <details class="properties attributes" open="open">
-                                                                  <summary>Attributes (3)</summary>
+                                                                  <summary>Attributes (4)</summary>
                                                                   <div class="model-entry definition assembly">
                                                                      <div class="instance-header">
                                                                         <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/link/@href" class="toc8 name">href</p>
@@ -18264,6 +18792,18 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                               </div>
                                                                            </details>
                                                                         </div>
+                                                                     </div>
+                                                                  </div>
+                                                                  <div class="model-entry definition assembly">
+                                                                     <div class="instance-header">
+                                                                        <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/link/@resource-fragment" class="toc8 name">resource-fragment</p>
+                                                                        <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                                        <p class="occurrence">[0 or 1]</p>
+                                                                        <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/by-components/export/links/resource-fragment">Switch to JSON</a></div>
+                                                                        <p class="formal-name">Resource Fragment</p>
+                                                                     </div>
+                                                                     <div class="body">
+                                                                        <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                                                      </div>
                                                                   </div>
                                                                </details>
@@ -18555,7 +19095,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                            </details>
                                                                         </div>
                                                                         <details class="constraints" open="open">
-                                                                           <summary>Constraints (3)</summary>
+                                                                           <summary>Constraints (4)</summary>
                                                                            <div class="constraint">
                                                                               <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                                                            </div>
@@ -18565,9 +19105,12 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                            <div class="constraint">
                                                                               <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                                                            </div>
+                                                                           <div class="constraint">
+                                                                              <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                                                           </div>
                                                                         </details>
                                                                         <details class="properties attributes" open="open">
-                                                                           <summary>Attributes (3)</summary>
+                                                                           <summary>Attributes (4)</summary>
                                                                            <div class="model-entry definition assembly">
                                                                               <div class="instance-header">
                                                                                  <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/provided/link/@href" class="toc9 name">href</p>
@@ -18652,6 +19195,18 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                                        </div>
                                                                                     </details>
                                                                                  </div>
+                                                                              </div>
+                                                                           </div>
+                                                                           <div class="model-entry definition assembly">
+                                                                              <div class="instance-header">
+                                                                                 <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/provided/link/@resource-fragment" class="toc9 name">resource-fragment</p>
+                                                                                 <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                                                 <p class="occurrence">[0 or 1]</p>
+                                                                                 <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/by-components/export/provided/links/resource-fragment">Switch to JSON</a></div>
+                                                                                 <p class="formal-name">Resource Fragment</p>
+                                                                              </div>
+                                                                              <div class="body">
+                                                                                 <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                                                               </div>
                                                                            </div>
                                                                         </details>
@@ -18921,7 +19476,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                                     </details>
                                                                                  </div>
                                                                                  <details class="constraints" open="open">
-                                                                                    <summary>Constraints (3)</summary>
+                                                                                    <summary>Constraints (4)</summary>
                                                                                     <div class="constraint">
                                                                                        <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                                                                     </div>
@@ -18931,9 +19486,12 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                                     <div class="constraint">
                                                                                        <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                                                                     </div>
+                                                                                    <div class="constraint">
+                                                                                       <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                                                                    </div>
                                                                                  </details>
                                                                                  <details class="properties attributes" open="open">
-                                                                                    <summary>Attributes (3)</summary>
+                                                                                    <summary>Attributes (4)</summary>
                                                                                     <div class="model-entry definition assembly">
                                                                                        <div class="instance-header">
                                                                                           <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/provided/responsible-role/link/@href" class="toc10 name">href</p>
@@ -19018,6 +19576,18 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                                                 </div>
                                                                                              </details>
                                                                                           </div>
+                                                                                       </div>
+                                                                                    </div>
+                                                                                    <div class="model-entry definition assembly">
+                                                                                       <div class="instance-header">
+                                                                                          <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/provided/responsible-role/link/@resource-fragment" class="toc10 name">resource-fragment</p>
+                                                                                          <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                                                          <p class="occurrence">[0 or 1]</p>
+                                                                                          <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/by-components/export/provided/responsible-roles/links/resource-fragment">Switch to JSON</a></div>
+                                                                                          <p class="formal-name">Resource Fragment</p>
+                                                                                       </div>
+                                                                                       <div class="body">
+                                                                                          <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                                                                        </div>
                                                                                     </div>
                                                                                  </details>
@@ -19415,7 +19985,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                            </details>
                                                                         </div>
                                                                         <details class="constraints" open="open">
-                                                                           <summary>Constraints (3)</summary>
+                                                                           <summary>Constraints (4)</summary>
                                                                            <div class="constraint">
                                                                               <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                                                            </div>
@@ -19425,9 +19995,12 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                            <div class="constraint">
                                                                               <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                                                            </div>
+                                                                           <div class="constraint">
+                                                                              <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                                                           </div>
                                                                         </details>
                                                                         <details class="properties attributes" open="open">
-                                                                           <summary>Attributes (3)</summary>
+                                                                           <summary>Attributes (4)</summary>
                                                                            <div class="model-entry definition assembly">
                                                                               <div class="instance-header">
                                                                                  <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/responsibility/link/@href" class="toc9 name">href</p>
@@ -19512,6 +20085,18 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                                        </div>
                                                                                     </details>
                                                                                  </div>
+                                                                              </div>
+                                                                           </div>
+                                                                           <div class="model-entry definition assembly">
+                                                                              <div class="instance-header">
+                                                                                 <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/responsibility/link/@resource-fragment" class="toc9 name">resource-fragment</p>
+                                                                                 <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                                                 <p class="occurrence">[0 or 1]</p>
+                                                                                 <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/by-components/export/responsibilities/links/resource-fragment">Switch to JSON</a></div>
+                                                                                 <p class="formal-name">Resource Fragment</p>
+                                                                              </div>
+                                                                              <div class="body">
+                                                                                 <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                                                               </div>
                                                                            </div>
                                                                         </details>
@@ -19785,7 +20370,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                                     </details>
                                                                                  </div>
                                                                                  <details class="constraints" open="open">
-                                                                                    <summary>Constraints (3)</summary>
+                                                                                    <summary>Constraints (4)</summary>
                                                                                     <div class="constraint">
                                                                                        <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                                                                     </div>
@@ -19795,9 +20380,12 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                                     <div class="constraint">
                                                                                        <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                                                                     </div>
+                                                                                    <div class="constraint">
+                                                                                       <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                                                                    </div>
                                                                                  </details>
                                                                                  <details class="properties attributes" open="open">
-                                                                                    <summary>Attributes (3)</summary>
+                                                                                    <summary>Attributes (4)</summary>
                                                                                     <div class="model-entry definition assembly">
                                                                                        <div class="instance-header">
                                                                                           <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/responsibility/responsible-role/link/@href" class="toc10 name">href</p>
@@ -19882,6 +20470,18 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                                                 </div>
                                                                                              </details>
                                                                                           </div>
+                                                                                       </div>
+                                                                                    </div>
+                                                                                    <div class="model-entry definition assembly">
+                                                                                       <div class="instance-header">
+                                                                                          <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/responsibility/responsible-role/link/@resource-fragment" class="toc10 name">resource-fragment</p>
+                                                                                          <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                                                          <p class="occurrence">[0 or 1]</p>
+                                                                                          <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/by-components/export/responsibilities/responsible-roles/links/resource-fragment">Switch to JSON</a></div>
+                                                                                          <p class="formal-name">Resource Fragment</p>
+                                                                                       </div>
+                                                                                       <div class="body">
+                                                                                          <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                                                                        </div>
                                                                                     </div>
                                                                                  </details>
@@ -20315,7 +20915,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                   </details>
                                                                </div>
                                                                <details class="constraints" open="open">
-                                                                  <summary>Constraints (3)</summary>
+                                                                  <summary>Constraints (4)</summary>
                                                                   <div class="constraint">
                                                                      <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                                                   </div>
@@ -20325,9 +20925,12 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                   <div class="constraint">
                                                                      <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                                                   </div>
+                                                                  <div class="constraint">
+                                                                     <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                                                  </div>
                                                                </details>
                                                                <details class="properties attributes" open="open">
-                                                                  <summary>Attributes (3)</summary>
+                                                                  <summary>Attributes (4)</summary>
                                                                   <div class="model-entry definition assembly">
                                                                      <div class="instance-header">
                                                                         <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/inherited/link/@href" class="toc8 name">href</p>
@@ -20412,6 +21015,18 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                               </div>
                                                                            </details>
                                                                         </div>
+                                                                     </div>
+                                                                  </div>
+                                                                  <div class="model-entry definition assembly">
+                                                                     <div class="instance-header">
+                                                                        <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/inherited/link/@resource-fragment" class="toc8 name">resource-fragment</p>
+                                                                        <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                                        <p class="occurrence">[0 or 1]</p>
+                                                                        <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/by-components/inherited/links/resource-fragment">Switch to JSON</a></div>
+                                                                        <p class="formal-name">Resource Fragment</p>
+                                                                     </div>
+                                                                     <div class="body">
+                                                                        <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                                                      </div>
                                                                   </div>
                                                                </details>
@@ -20681,7 +21296,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                            </details>
                                                                         </div>
                                                                         <details class="constraints" open="open">
-                                                                           <summary>Constraints (3)</summary>
+                                                                           <summary>Constraints (4)</summary>
                                                                            <div class="constraint">
                                                                               <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                                                            </div>
@@ -20691,9 +21306,12 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                            <div class="constraint">
                                                                               <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                                                            </div>
+                                                                           <div class="constraint">
+                                                                              <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                                                           </div>
                                                                         </details>
                                                                         <details class="properties attributes" open="open">
-                                                                           <summary>Attributes (3)</summary>
+                                                                           <summary>Attributes (4)</summary>
                                                                            <div class="model-entry definition assembly">
                                                                               <div class="instance-header">
                                                                                  <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/inherited/responsible-role/link/@href" class="toc9 name">href</p>
@@ -20778,6 +21396,18 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                                        </div>
                                                                                     </details>
                                                                                  </div>
+                                                                              </div>
+                                                                           </div>
+                                                                           <div class="model-entry definition assembly">
+                                                                              <div class="instance-header">
+                                                                                 <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/inherited/responsible-role/link/@resource-fragment" class="toc9 name">resource-fragment</p>
+                                                                                 <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                                                 <p class="occurrence">[0 or 1]</p>
+                                                                                 <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/by-components/inherited/responsible-roles/links/resource-fragment">Switch to JSON</a></div>
+                                                                                 <p class="formal-name">Resource Fragment</p>
+                                                                              </div>
+                                                                              <div class="body">
+                                                                                 <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                                                               </div>
                                                                            </div>
                                                                         </details>
@@ -21142,7 +21772,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                   </details>
                                                                </div>
                                                                <details class="constraints" open="open">
-                                                                  <summary>Constraints (3)</summary>
+                                                                  <summary>Constraints (4)</summary>
                                                                   <div class="constraint">
                                                                      <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                                                   </div>
@@ -21152,9 +21782,12 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                   <div class="constraint">
                                                                      <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                                                   </div>
+                                                                  <div class="constraint">
+                                                                     <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                                                  </div>
                                                                </details>
                                                                <details class="properties attributes" open="open">
-                                                                  <summary>Attributes (3)</summary>
+                                                                  <summary>Attributes (4)</summary>
                                                                   <div class="model-entry definition assembly">
                                                                      <div class="instance-header">
                                                                         <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/satisfied/link/@href" class="toc8 name">href</p>
@@ -21239,6 +21872,18 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                               </div>
                                                                            </details>
                                                                         </div>
+                                                                     </div>
+                                                                  </div>
+                                                                  <div class="model-entry definition assembly">
+                                                                     <div class="instance-header">
+                                                                        <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/satisfied/link/@resource-fragment" class="toc8 name">resource-fragment</p>
+                                                                        <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                                        <p class="occurrence">[0 or 1]</p>
+                                                                        <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/by-components/satisfied/links/resource-fragment">Switch to JSON</a></div>
+                                                                        <p class="formal-name">Resource Fragment</p>
+                                                                     </div>
+                                                                     <div class="body">
+                                                                        <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                                                      </div>
                                                                   </div>
                                                                </details>
@@ -21508,7 +22153,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                            </details>
                                                                         </div>
                                                                         <details class="constraints" open="open">
-                                                                           <summary>Constraints (3)</summary>
+                                                                           <summary>Constraints (4)</summary>
                                                                            <div class="constraint">
                                                                               <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                                                            </div>
@@ -21518,9 +22163,12 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                            <div class="constraint">
                                                                               <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                                                            </div>
+                                                                           <div class="constraint">
+                                                                              <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                                                           </div>
                                                                         </details>
                                                                         <details class="properties attributes" open="open">
-                                                                           <summary>Attributes (3)</summary>
+                                                                           <summary>Attributes (4)</summary>
                                                                            <div class="model-entry definition assembly">
                                                                               <div class="instance-header">
                                                                                  <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/satisfied/responsible-role/link/@href" class="toc9 name">href</p>
@@ -21605,6 +22253,18 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                                        </div>
                                                                                     </details>
                                                                                  </div>
+                                                                              </div>
+                                                                           </div>
+                                                                           <div class="model-entry definition assembly">
+                                                                              <div class="instance-header">
+                                                                                 <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/satisfied/responsible-role/link/@resource-fragment" class="toc9 name">resource-fragment</p>
+                                                                                 <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                                                 <p class="occurrence">[0 or 1]</p>
+                                                                                 <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/by-components/satisfied/responsible-roles/links/resource-fragment">Switch to JSON</a></div>
+                                                                                 <p class="formal-name">Resource Fragment</p>
+                                                                              </div>
+                                                                              <div class="body">
+                                                                                 <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                                                               </div>
                                                                            </div>
                                                                         </details>
@@ -21966,7 +22626,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                   </details>
                                                                </div>
                                                                <details class="constraints" open="open">
-                                                                  <summary>Constraints (3)</summary>
+                                                                  <summary>Constraints (4)</summary>
                                                                   <div class="constraint">
                                                                      <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                                                   </div>
@@ -21976,9 +22636,12 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                   <div class="constraint">
                                                                      <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                                                   </div>
+                                                                  <div class="constraint">
+                                                                     <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                                                  </div>
                                                                </details>
                                                                <details class="properties attributes" open="open">
-                                                                  <summary>Attributes (3)</summary>
+                                                                  <summary>Attributes (4)</summary>
                                                                   <div class="model-entry definition assembly">
                                                                      <div class="instance-header">
                                                                         <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/responsible-role/link/@href" class="toc8 name">href</p>
@@ -22063,6 +22726,18 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                               </div>
                                                                            </details>
                                                                         </div>
+                                                                     </div>
+                                                                  </div>
+                                                                  <div class="model-entry definition assembly">
+                                                                     <div class="instance-header">
+                                                                        <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/responsible-role/link/@resource-fragment" class="toc8 name">resource-fragment</p>
+                                                                        <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                                        <p class="occurrence">[0 or 1]</p>
+                                                                        <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/by-components/responsible-roles/links/resource-fragment">Switch to JSON</a></div>
+                                                                        <p class="formal-name">Resource Fragment</p>
+                                                                     </div>
+                                                                     <div class="body">
+                                                                        <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                                                      </div>
                                                                   </div>
                                                                </details>
@@ -22549,7 +23224,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                 </details>
                                              </div>
                                              <details class="constraints" open="open">
-                                                <summary>Constraints (3)</summary>
+                                                <summary>Constraints (4)</summary>
                                                 <div class="constraint">
                                                    <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                                 </div>
@@ -22559,9 +23234,12 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                 <div class="constraint">
                                                    <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                                 </div>
+                                                <div class="constraint">
+                                                   <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                                </div>
                                              </details>
                                              <details class="properties attributes" open="open">
-                                                <summary>Attributes (3)</summary>
+                                                <summary>Attributes (4)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/system-security-plan/control-implementation/implemented-requirement/by-component/link/@href" class="toc6 name">href</h6>
@@ -22646,6 +23324,18 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                             </div>
                                                          </details>
                                                       </div>
+                                                   </div>
+                                                </div>
+                                                <div class="model-entry definition assembly">
+                                                   <div class="instance-header">
+                                                      <h6 id="/system-security-plan/control-implementation/implemented-requirement/by-component/link/@resource-fragment" class="toc6 name">resource-fragment</h6>
+                                                      <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                      <p class="occurrence">[0 or 1]</p>
+                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/links/resource-fragment">Switch to JSON</a></div>
+                                                      <p class="formal-name">Resource Fragment</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                                    </div>
                                                 </div>
                                              </details>
@@ -23091,7 +23781,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                          </details>
                                                       </div>
                                                       <details class="constraints" open="open">
-                                                         <summary>Constraints (3)</summary>
+                                                         <summary>Constraints (4)</summary>
                                                          <div class="constraint">
                                                             <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                                          </div>
@@ -23101,9 +23791,12 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                          <div class="constraint">
                                                             <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                                          </div>
+                                                         <div class="constraint">
+                                                            <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                                         </div>
                                                       </details>
                                                       <details class="properties attributes" open="open">
-                                                         <summary>Attributes (3)</summary>
+                                                         <summary>Attributes (4)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
                                                                <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/export/link/@href" class="toc7 name">href</p>
@@ -23188,6 +23881,18 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                      </div>
                                                                   </details>
                                                                </div>
+                                                            </div>
+                                                         </div>
+                                                         <div class="model-entry definition assembly">
+                                                            <div class="instance-header">
+                                                               <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/export/link/@resource-fragment" class="toc7 name">resource-fragment</p>
+                                                               <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                               <p class="occurrence">[0 or 1]</p>
+                                                               <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/export/links/resource-fragment">Switch to JSON</a></div>
+                                                               <p class="formal-name">Resource Fragment</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                                             </div>
                                                          </div>
                                                       </details>
@@ -23479,7 +24184,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                   </details>
                                                                </div>
                                                                <details class="constraints" open="open">
-                                                                  <summary>Constraints (3)</summary>
+                                                                  <summary>Constraints (4)</summary>
                                                                   <div class="constraint">
                                                                      <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                                                   </div>
@@ -23489,9 +24194,12 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                   <div class="constraint">
                                                                      <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                                                   </div>
+                                                                  <div class="constraint">
+                                                                     <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                                                  </div>
                                                                </details>
                                                                <details class="properties attributes" open="open">
-                                                                  <summary>Attributes (3)</summary>
+                                                                  <summary>Attributes (4)</summary>
                                                                   <div class="model-entry definition assembly">
                                                                      <div class="instance-header">
                                                                         <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/export/provided/link/@href" class="toc8 name">href</p>
@@ -23576,6 +24284,18 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                               </div>
                                                                            </details>
                                                                         </div>
+                                                                     </div>
+                                                                  </div>
+                                                                  <div class="model-entry definition assembly">
+                                                                     <div class="instance-header">
+                                                                        <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/export/provided/link/@resource-fragment" class="toc8 name">resource-fragment</p>
+                                                                        <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                                        <p class="occurrence">[0 or 1]</p>
+                                                                        <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/export/provided/links/resource-fragment">Switch to JSON</a></div>
+                                                                        <p class="formal-name">Resource Fragment</p>
+                                                                     </div>
+                                                                     <div class="body">
+                                                                        <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                                                      </div>
                                                                   </div>
                                                                </details>
@@ -23845,7 +24565,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                            </details>
                                                                         </div>
                                                                         <details class="constraints" open="open">
-                                                                           <summary>Constraints (3)</summary>
+                                                                           <summary>Constraints (4)</summary>
                                                                            <div class="constraint">
                                                                               <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                                                            </div>
@@ -23855,9 +24575,12 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                            <div class="constraint">
                                                                               <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                                                            </div>
+                                                                           <div class="constraint">
+                                                                              <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                                                           </div>
                                                                         </details>
                                                                         <details class="properties attributes" open="open">
-                                                                           <summary>Attributes (3)</summary>
+                                                                           <summary>Attributes (4)</summary>
                                                                            <div class="model-entry definition assembly">
                                                                               <div class="instance-header">
                                                                                  <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/export/provided/responsible-role/link/@href" class="toc9 name">href</p>
@@ -23942,6 +24665,18 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                                        </div>
                                                                                     </details>
                                                                                  </div>
+                                                                              </div>
+                                                                           </div>
+                                                                           <div class="model-entry definition assembly">
+                                                                              <div class="instance-header">
+                                                                                 <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/export/provided/responsible-role/link/@resource-fragment" class="toc9 name">resource-fragment</p>
+                                                                                 <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                                                 <p class="occurrence">[0 or 1]</p>
+                                                                                 <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/export/provided/responsible-roles/links/resource-fragment">Switch to JSON</a></div>
+                                                                                 <p class="formal-name">Resource Fragment</p>
+                                                                              </div>
+                                                                              <div class="body">
+                                                                                 <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                                                               </div>
                                                                            </div>
                                                                         </details>
@@ -24339,7 +25074,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                   </details>
                                                                </div>
                                                                <details class="constraints" open="open">
-                                                                  <summary>Constraints (3)</summary>
+                                                                  <summary>Constraints (4)</summary>
                                                                   <div class="constraint">
                                                                      <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                                                   </div>
@@ -24349,9 +25084,12 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                   <div class="constraint">
                                                                      <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                                                   </div>
+                                                                  <div class="constraint">
+                                                                     <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                                                  </div>
                                                                </details>
                                                                <details class="properties attributes" open="open">
-                                                                  <summary>Attributes (3)</summary>
+                                                                  <summary>Attributes (4)</summary>
                                                                   <div class="model-entry definition assembly">
                                                                      <div class="instance-header">
                                                                         <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/export/responsibility/link/@href" class="toc8 name">href</p>
@@ -24436,6 +25174,18 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                               </div>
                                                                            </details>
                                                                         </div>
+                                                                     </div>
+                                                                  </div>
+                                                                  <div class="model-entry definition assembly">
+                                                                     <div class="instance-header">
+                                                                        <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/export/responsibility/link/@resource-fragment" class="toc8 name">resource-fragment</p>
+                                                                        <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                                        <p class="occurrence">[0 or 1]</p>
+                                                                        <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/export/responsibilities/links/resource-fragment">Switch to JSON</a></div>
+                                                                        <p class="formal-name">Resource Fragment</p>
+                                                                     </div>
+                                                                     <div class="body">
+                                                                        <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                                                      </div>
                                                                   </div>
                                                                </details>
@@ -24709,7 +25459,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                            </details>
                                                                         </div>
                                                                         <details class="constraints" open="open">
-                                                                           <summary>Constraints (3)</summary>
+                                                                           <summary>Constraints (4)</summary>
                                                                            <div class="constraint">
                                                                               <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                                                            </div>
@@ -24719,9 +25469,12 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                            <div class="constraint">
                                                                               <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                                                            </div>
+                                                                           <div class="constraint">
+                                                                              <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                                                           </div>
                                                                         </details>
                                                                         <details class="properties attributes" open="open">
-                                                                           <summary>Attributes (3)</summary>
+                                                                           <summary>Attributes (4)</summary>
                                                                            <div class="model-entry definition assembly">
                                                                               <div class="instance-header">
                                                                                  <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/export/responsibility/responsible-role/link/@href" class="toc9 name">href</p>
@@ -24806,6 +25559,18 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                                        </div>
                                                                                     </details>
                                                                                  </div>
+                                                                              </div>
+                                                                           </div>
+                                                                           <div class="model-entry definition assembly">
+                                                                              <div class="instance-header">
+                                                                                 <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/export/responsibility/responsible-role/link/@resource-fragment" class="toc9 name">resource-fragment</p>
+                                                                                 <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                                                 <p class="occurrence">[0 or 1]</p>
+                                                                                 <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/export/responsibilities/responsible-roles/links/resource-fragment">Switch to JSON</a></div>
+                                                                                 <p class="formal-name">Resource Fragment</p>
+                                                                              </div>
+                                                                              <div class="body">
+                                                                                 <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                                                               </div>
                                                                            </div>
                                                                         </details>
@@ -25239,7 +26004,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                          </details>
                                                       </div>
                                                       <details class="constraints" open="open">
-                                                         <summary>Constraints (3)</summary>
+                                                         <summary>Constraints (4)</summary>
                                                          <div class="constraint">
                                                             <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                                          </div>
@@ -25249,9 +26014,12 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                          <div class="constraint">
                                                             <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                                          </div>
+                                                         <div class="constraint">
+                                                            <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                                         </div>
                                                       </details>
                                                       <details class="properties attributes" open="open">
-                                                         <summary>Attributes (3)</summary>
+                                                         <summary>Attributes (4)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
                                                                <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/inherited/link/@href" class="toc7 name">href</p>
@@ -25336,6 +26104,18 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                      </div>
                                                                   </details>
                                                                </div>
+                                                            </div>
+                                                         </div>
+                                                         <div class="model-entry definition assembly">
+                                                            <div class="instance-header">
+                                                               <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/inherited/link/@resource-fragment" class="toc7 name">resource-fragment</p>
+                                                               <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                               <p class="occurrence">[0 or 1]</p>
+                                                               <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/inherited/links/resource-fragment">Switch to JSON</a></div>
+                                                               <p class="formal-name">Resource Fragment</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                                             </div>
                                                          </div>
                                                       </details>
@@ -25605,7 +26385,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                   </details>
                                                                </div>
                                                                <details class="constraints" open="open">
-                                                                  <summary>Constraints (3)</summary>
+                                                                  <summary>Constraints (4)</summary>
                                                                   <div class="constraint">
                                                                      <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                                                   </div>
@@ -25615,9 +26395,12 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                   <div class="constraint">
                                                                      <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                                                   </div>
+                                                                  <div class="constraint">
+                                                                     <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                                                  </div>
                                                                </details>
                                                                <details class="properties attributes" open="open">
-                                                                  <summary>Attributes (3)</summary>
+                                                                  <summary>Attributes (4)</summary>
                                                                   <div class="model-entry definition assembly">
                                                                      <div class="instance-header">
                                                                         <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/inherited/responsible-role/link/@href" class="toc8 name">href</p>
@@ -25702,6 +26485,18 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                               </div>
                                                                            </details>
                                                                         </div>
+                                                                     </div>
+                                                                  </div>
+                                                                  <div class="model-entry definition assembly">
+                                                                     <div class="instance-header">
+                                                                        <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/inherited/responsible-role/link/@resource-fragment" class="toc8 name">resource-fragment</p>
+                                                                        <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                                        <p class="occurrence">[0 or 1]</p>
+                                                                        <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/inherited/responsible-roles/links/resource-fragment">Switch to JSON</a></div>
+                                                                        <p class="formal-name">Resource Fragment</p>
+                                                                     </div>
+                                                                     <div class="body">
+                                                                        <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                                                      </div>
                                                                   </div>
                                                                </details>
@@ -26066,7 +26861,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                          </details>
                                                       </div>
                                                       <details class="constraints" open="open">
-                                                         <summary>Constraints (3)</summary>
+                                                         <summary>Constraints (4)</summary>
                                                          <div class="constraint">
                                                             <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                                          </div>
@@ -26076,9 +26871,12 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                          <div class="constraint">
                                                             <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                                          </div>
+                                                         <div class="constraint">
+                                                            <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                                         </div>
                                                       </details>
                                                       <details class="properties attributes" open="open">
-                                                         <summary>Attributes (3)</summary>
+                                                         <summary>Attributes (4)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
                                                                <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/satisfied/link/@href" class="toc7 name">href</p>
@@ -26163,6 +26961,18 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                      </div>
                                                                   </details>
                                                                </div>
+                                                            </div>
+                                                         </div>
+                                                         <div class="model-entry definition assembly">
+                                                            <div class="instance-header">
+                                                               <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/satisfied/link/@resource-fragment" class="toc7 name">resource-fragment</p>
+                                                               <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                               <p class="occurrence">[0 or 1]</p>
+                                                               <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/satisfied/links/resource-fragment">Switch to JSON</a></div>
+                                                               <p class="formal-name">Resource Fragment</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                                             </div>
                                                          </div>
                                                       </details>
@@ -26432,7 +27242,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                   </details>
                                                                </div>
                                                                <details class="constraints" open="open">
-                                                                  <summary>Constraints (3)</summary>
+                                                                  <summary>Constraints (4)</summary>
                                                                   <div class="constraint">
                                                                      <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                                                   </div>
@@ -26442,9 +27252,12 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                   <div class="constraint">
                                                                      <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                                                   </div>
+                                                                  <div class="constraint">
+                                                                     <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                                                  </div>
                                                                </details>
                                                                <details class="properties attributes" open="open">
-                                                                  <summary>Attributes (3)</summary>
+                                                                  <summary>Attributes (4)</summary>
                                                                   <div class="model-entry definition assembly">
                                                                      <div class="instance-header">
                                                                         <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/satisfied/responsible-role/link/@href" class="toc8 name">href</p>
@@ -26529,6 +27342,18 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                               </div>
                                                                            </details>
                                                                         </div>
+                                                                     </div>
+                                                                  </div>
+                                                                  <div class="model-entry definition assembly">
+                                                                     <div class="instance-header">
+                                                                        <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/satisfied/responsible-role/link/@resource-fragment" class="toc8 name">resource-fragment</p>
+                                                                        <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                                        <p class="occurrence">[0 or 1]</p>
+                                                                        <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/satisfied/responsible-roles/links/resource-fragment">Switch to JSON</a></div>
+                                                                        <p class="formal-name">Resource Fragment</p>
+                                                                     </div>
+                                                                     <div class="body">
+                                                                        <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                                                      </div>
                                                                   </div>
                                                                </details>
@@ -26890,7 +27715,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                          </details>
                                                       </div>
                                                       <details class="constraints" open="open">
-                                                         <summary>Constraints (3)</summary>
+                                                         <summary>Constraints (4)</summary>
                                                          <div class="constraint">
                                                             <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                                          </div>
@@ -26900,9 +27725,12 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                          <div class="constraint">
                                                             <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                                          </div>
+                                                         <div class="constraint">
+                                                            <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                                         </div>
                                                       </details>
                                                       <details class="properties attributes" open="open">
-                                                         <summary>Attributes (3)</summary>
+                                                         <summary>Attributes (4)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
                                                                <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/responsible-role/link/@href" class="toc7 name">href</p>
@@ -26987,6 +27815,18 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                                      </div>
                                                                   </details>
                                                                </div>
+                                                            </div>
+                                                         </div>
+                                                         <div class="model-entry definition assembly">
+                                                            <div class="instance-header">
+                                                               <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/responsible-role/link/@resource-fragment" class="toc7 name">resource-fragment</p>
+                                                               <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                               <p class="occurrence">[0 or 1]</p>
+                                                               <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/responsible-roles/links/resource-fragment">Switch to JSON</a></div>
+                                                               <p class="formal-name">Resource Fragment</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                                             </div>
                                                          </div>
                                                       </details>
@@ -27827,7 +28667,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                 </details>
                                              </div>
                                              <details class="constraints" open="open">
-                                                <summary>Constraints (3)</summary>
+                                                <summary>Constraints (4)</summary>
                                                 <div class="constraint">
                                                    <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                                 </div>
@@ -27837,9 +28677,12 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                 <div class="constraint">
                                                    <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                                 </div>
+                                                <div class="constraint">
+                                                   <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                                </div>
                                              </details>
                                              <details class="properties attributes" open="open">
-                                                <summary>Attributes (3)</summary>
+                                                <summary>Attributes (4)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/system-security-plan/back-matter/resource/citation/link/@href" class="toc6 name">href</h6>
@@ -27924,6 +28767,18 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                             </div>
                                                          </details>
                                                       </div>
+                                                   </div>
+                                                </div>
+                                                <div class="model-entry definition assembly">
+                                                   <div class="instance-header">
+                                                      <h6 id="/system-security-plan/back-matter/resource/citation/link/@resource-fragment" class="toc6 name">resource-fragment</h6>
+                                                      <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                      <p class="occurrence">[0 or 1]</p>
+                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/back-matter/resources/citation/links/resource-fragment">Switch to JSON</a></div>
+                                                      <p class="formal-name">Resource Fragment</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                                    </div>
                                                 </div>
                                              </details>

@@ -704,7 +704,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                        </details>
                                     </div>
                                     <details class="constraints" open="open">
-                                       <summary>Constraints (3)</summary>
+                                       <summary>Constraints (4)</summary>
                                        <div class="constraint">
                                           <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                        </div>
@@ -714,9 +714,12 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                        <div class="constraint">
                                           <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                        </div>
+                                       <div class="constraint">
+                                          <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                       </div>
                                     </details>
                                     <details class="properties" open="open">
-                                       <summary>Properties (4)</summary>
+                                       <summary>Properties (5)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/catalog/metadata/revisions/links/href" class="toc5 name">href</h5>
@@ -801,6 +804,18 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                    </div>
                                                 </details>
                                              </div>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/catalog/metadata/revisions/links/resource-fragment" class="toc5 name">resource-fragment</h5>
+                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/catalog/metadata/revisions/revision/link/@resource-fragment">Switch to XML</a></div>
+                                             <p class="formal-name">Resource Fragment</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -1124,7 +1139,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                               </details>
                            </div>
                            <details class="constraints" open="open">
-                              <summary>Constraints (3)</summary>
+                              <summary>Constraints (4)</summary>
                               <div class="constraint">
                                  <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                               </div>
@@ -1134,9 +1149,12 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                               <div class="constraint">
                                  <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                               </div>
+                              <div class="constraint">
+                                 <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                              </div>
                            </details>
                            <details class="properties" open="open">
-                              <summary>Properties (4)</summary>
+                              <summary>Properties (5)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/catalog/metadata/links/href" class="toc4 name">href</h4>
@@ -1221,6 +1239,18 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                           </div>
                                        </details>
                                     </div>
+                                 </div>
+                              </div>
+                              <div class="model-entry definition assembly">
+                                 <div class="instance-header">
+                                    <h4 id="/catalog/metadata/links/resource-fragment" class="toc4 name">resource-fragment</h4>
+                                    <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                    <p class="occurrence">[0 or 1]</p>
+                                    <div class="crosslink"><a class="usa-button" href="../xml-reference/#/catalog/metadata/link/@resource-fragment">Switch to XML</a></div>
+                                    <p class="formal-name">Resource Fragment</p>
+                                 </div>
+                                 <div class="body">
+                                    <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                  </div>
                               </div>
                               <div class="model-entry definition assembly">
@@ -1521,7 +1551,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                        </details>
                                     </div>
                                     <details class="constraints" open="open">
-                                       <summary>Constraints (3)</summary>
+                                       <summary>Constraints (4)</summary>
                                        <div class="constraint">
                                           <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                        </div>
@@ -1531,9 +1561,12 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                        <div class="constraint">
                                           <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                        </div>
+                                       <div class="constraint">
+                                          <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                       </div>
                                     </details>
                                     <details class="properties" open="open">
-                                       <summary>Properties (4)</summary>
+                                       <summary>Properties (5)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/catalog/metadata/roles/links/href" class="toc5 name">href</h5>
@@ -1618,6 +1651,18 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                    </div>
                                                 </details>
                                              </div>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/catalog/metadata/roles/links/resource-fragment" class="toc5 name">resource-fragment</h5>
+                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/catalog/metadata/role/link/@resource-fragment">Switch to XML</a></div>
+                                             <p class="formal-name">Resource Fragment</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -2190,7 +2235,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                        </details>
                                     </div>
                                     <details class="constraints" open="open">
-                                       <summary>Constraints (3)</summary>
+                                       <summary>Constraints (4)</summary>
                                        <div class="constraint">
                                           <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                        </div>
@@ -2200,9 +2245,12 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                        <div class="constraint">
                                           <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                        </div>
+                                       <div class="constraint">
+                                          <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                       </div>
                                     </details>
                                     <details class="properties" open="open">
-                                       <summary>Properties (4)</summary>
+                                       <summary>Properties (5)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/catalog/metadata/locations/links/href" class="toc5 name">href</h5>
@@ -2287,6 +2335,18 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                    </div>
                                                 </details>
                                              </div>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/catalog/metadata/locations/links/resource-fragment" class="toc5 name">resource-fragment</h5>
+                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/catalog/metadata/location/link/@resource-fragment">Switch to XML</a></div>
+                                             <p class="formal-name">Resource Fragment</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -2697,7 +2757,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                        </details>
                                     </div>
                                     <details class="constraints" open="open">
-                                       <summary>Constraints (3)</summary>
+                                       <summary>Constraints (4)</summary>
                                        <div class="constraint">
                                           <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                        </div>
@@ -2707,9 +2767,12 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                        <div class="constraint">
                                           <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                        </div>
+                                       <div class="constraint">
+                                          <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                       </div>
                                     </details>
                                     <details class="properties" open="open">
-                                       <summary>Properties (4)</summary>
+                                       <summary>Properties (5)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/catalog/metadata/parties/links/href" class="toc5 name">href</h5>
@@ -2794,6 +2857,18 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                    </div>
                                                 </details>
                                              </div>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/catalog/metadata/parties/links/resource-fragment" class="toc5 name">resource-fragment</h5>
+                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/catalog/metadata/party/link/@resource-fragment">Switch to XML</a></div>
+                                             <p class="formal-name">Resource Fragment</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -3377,7 +3452,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                        </details>
                                     </div>
                                     <details class="constraints" open="open">
-                                       <summary>Constraints (3)</summary>
+                                       <summary>Constraints (4)</summary>
                                        <div class="constraint">
                                           <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                        </div>
@@ -3387,9 +3462,12 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                        <div class="constraint">
                                           <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                        </div>
+                                       <div class="constraint">
+                                          <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                       </div>
                                     </details>
                                     <details class="properties" open="open">
-                                       <summary>Properties (4)</summary>
+                                       <summary>Properties (5)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/catalog/metadata/responsible-parties/links/href" class="toc5 name">href</h5>
@@ -3474,6 +3552,18 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                    </div>
                                                 </details>
                                              </div>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/catalog/metadata/responsible-parties/links/resource-fragment" class="toc5 name">resource-fragment</h5>
+                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/catalog/metadata/responsible-party/link/@resource-fragment">Switch to XML</a></div>
+                                             <p class="formal-name">Resource Fragment</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -3824,7 +3914,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                        </details>
                                     </div>
                                     <details class="constraints" open="open">
-                                       <summary>Constraints (3)</summary>
+                                       <summary>Constraints (4)</summary>
                                        <div class="constraint">
                                           <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                        </div>
@@ -3834,9 +3924,12 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                        <div class="constraint">
                                           <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                        </div>
+                                       <div class="constraint">
+                                          <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                       </div>
                                     </details>
                                     <details class="properties" open="open">
-                                       <summary>Properties (4)</summary>
+                                       <summary>Properties (5)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/catalog/metadata/actions/links/href" class="toc5 name">href</h5>
@@ -3921,6 +4014,18 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                    </div>
                                                 </details>
                                              </div>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/catalog/metadata/actions/links/resource-fragment" class="toc5 name">resource-fragment</h5>
+                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/catalog/metadata/action/link/@resource-fragment">Switch to XML</a></div>
+                                             <p class="formal-name">Resource Fragment</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -4211,7 +4316,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                 </details>
                                              </div>
                                              <details class="constraints" open="open">
-                                                <summary>Constraints (3)</summary>
+                                                <summary>Constraints (4)</summary>
                                                 <div class="constraint">
                                                    <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                                 </div>
@@ -4221,9 +4326,12 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                 <div class="constraint">
                                                    <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                                 </div>
+                                                <div class="constraint">
+                                                   <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                                </div>
                                              </details>
                                              <details class="properties" open="open">
-                                                <summary>Properties (4)</summary>
+                                                <summary>Properties (5)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/catalog/metadata/actions/responsible-parties/links/href" class="toc6 name">href</h6>
@@ -4308,6 +4416,18 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                             </div>
                                                          </details>
                                                       </div>
+                                                   </div>
+                                                </div>
+                                                <div class="model-entry definition assembly">
+                                                   <div class="instance-header">
+                                                      <h6 id="/catalog/metadata/actions/responsible-parties/links/resource-fragment" class="toc6 name">resource-fragment</h6>
+                                                      <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                      <p class="occurrence">[0 or 1]</p>
+                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/catalog/metadata/action/responsible-party/link/@resource-fragment">Switch to XML</a></div>
+                                                      <p class="formal-name">Resource Fragment</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                                    </div>
                                                 </div>
                                                 <div class="model-entry definition assembly">
@@ -4711,7 +4831,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                               </details>
                            </div>
                            <details class="constraints" open="open">
-                              <summary>Constraints (3)</summary>
+                              <summary>Constraints (4)</summary>
                               <div class="constraint">
                                  <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                               </div>
@@ -4721,9 +4841,12 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                               <div class="constraint">
                                  <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                               </div>
+                              <div class="constraint">
+                                 <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                              </div>
                            </details>
                            <details class="properties" open="open">
-                              <summary>Properties (4)</summary>
+                              <summary>Properties (5)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/catalog/params/links/href" class="toc4 name">href</h4>
@@ -4808,6 +4931,18 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                           </div>
                                        </details>
                                     </div>
+                                 </div>
+                              </div>
+                              <div class="model-entry definition assembly">
+                                 <div class="instance-header">
+                                    <h4 id="/catalog/params/links/resource-fragment" class="toc4 name">resource-fragment</h4>
+                                    <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                    <p class="occurrence">[0 or 1]</p>
+                                    <div class="crosslink"><a class="usa-button" href="../xml-reference/#/catalog/param/link/@resource-fragment">Switch to XML</a></div>
+                                    <p class="formal-name">Resource Fragment</p>
+                                 </div>
+                                 <div class="body">
+                                    <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                  </div>
                               </div>
                               <div class="model-entry definition assembly">
@@ -5657,7 +5792,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                        </details>
                                     </div>
                                     <details class="constraints" open="open">
-                                       <summary>Constraints (3)</summary>
+                                       <summary>Constraints (4)</summary>
                                        <div class="constraint">
                                           <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                        </div>
@@ -5667,9 +5802,12 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                        <div class="constraint">
                                           <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                        </div>
+                                       <div class="constraint">
+                                          <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                       </div>
                                     </details>
                                     <details class="properties" open="open">
-                                       <summary>Properties (4)</summary>
+                                       <summary>Properties (5)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/catalog/controls/params/links/href" class="toc5 name">href</h5>
@@ -5754,6 +5892,18 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                    </div>
                                                 </details>
                                              </div>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/catalog/controls/params/links/resource-fragment" class="toc5 name">resource-fragment</h5>
+                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/catalog/control/param/link/@resource-fragment">Switch to XML</a></div>
+                                             <p class="formal-name">Resource Fragment</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -6258,7 +6408,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                               </details>
                            </div>
                            <details class="constraints" open="open">
-                              <summary>Constraints (3)</summary>
+                              <summary>Constraints (4)</summary>
                               <div class="constraint">
                                  <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                               </div>
@@ -6268,9 +6418,12 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                               <div class="constraint">
                                  <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                               </div>
+                              <div class="constraint">
+                                 <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                              </div>
                            </details>
                            <details class="properties" open="open">
-                              <summary>Properties (4)</summary>
+                              <summary>Properties (5)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/catalog/controls/links/href" class="toc4 name">href</h4>
@@ -6355,6 +6508,18 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                           </div>
                                        </details>
                                     </div>
+                                 </div>
+                              </div>
+                              <div class="model-entry definition assembly">
+                                 <div class="instance-header">
+                                    <h4 id="/catalog/controls/links/resource-fragment" class="toc4 name">resource-fragment</h4>
+                                    <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                    <p class="occurrence">[0 or 1]</p>
+                                    <div class="crosslink"><a class="usa-button" href="../xml-reference/#/catalog/control/link/@resource-fragment">Switch to XML</a></div>
+                                    <p class="formal-name">Resource Fragment</p>
+                                 </div>
+                                 <div class="body">
+                                    <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                  </div>
                               </div>
                               <div class="model-entry definition assembly">
@@ -6820,7 +6985,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                        </details>
                                     </div>
                                     <details class="constraints" open="open">
-                                       <summary>Constraints (3)</summary>
+                                       <summary>Constraints (4)</summary>
                                        <div class="constraint">
                                           <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                        </div>
@@ -6830,9 +6995,12 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                        <div class="constraint">
                                           <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                        </div>
+                                       <div class="constraint">
+                                          <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                       </div>
                                     </details>
                                     <details class="properties" open="open">
-                                       <summary>Properties (4)</summary>
+                                       <summary>Properties (5)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/catalog/controls/parts/links/href" class="toc5 name">href</h5>
@@ -6917,6 +7085,18 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                    </div>
                                                 </details>
                                              </div>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/catalog/controls/parts/links/resource-fragment" class="toc5 name">resource-fragment</h5>
+                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/catalog/control/part/link/@resource-fragment">Switch to XML</a></div>
+                                             <p class="formal-name">Resource Fragment</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -7229,7 +7409,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                 </details>
                                              </div>
                                              <details class="constraints" open="open">
-                                                <summary>Constraints (3)</summary>
+                                                <summary>Constraints (4)</summary>
                                                 <div class="constraint">
                                                    <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                                 </div>
@@ -7239,9 +7419,12 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                 <div class="constraint">
                                                    <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                                 </div>
+                                                <div class="constraint">
+                                                   <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                                </div>
                                              </details>
                                              <details class="properties" open="open">
-                                                <summary>Properties (4)</summary>
+                                                <summary>Properties (5)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/catalog/controls/mapping/target-resource/links/href" class="toc6 name">href</h6>
@@ -7326,6 +7509,18 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                             </div>
                                                          </details>
                                                       </div>
+                                                   </div>
+                                                </div>
+                                                <div class="model-entry definition assembly">
+                                                   <div class="instance-header">
+                                                      <h6 id="/catalog/controls/mapping/target-resource/links/resource-fragment" class="toc6 name">resource-fragment</h6>
+                                                      <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                      <p class="occurrence">[0 or 1]</p>
+                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/catalog/control/mapping/target-resource/link/@resource-fragment">Switch to XML</a></div>
+                                                      <p class="formal-name">Resource Fragment</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                                    </div>
                                                 </div>
                                                 <div class="model-entry definition assembly">
@@ -7601,7 +7796,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                 </details>
                                              </div>
                                              <details class="constraints" open="open">
-                                                <summary>Constraints (3)</summary>
+                                                <summary>Constraints (4)</summary>
                                                 <div class="constraint">
                                                    <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                                 </div>
@@ -7611,9 +7806,12 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                 <div class="constraint">
                                                    <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                                 </div>
+                                                <div class="constraint">
+                                                   <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                                </div>
                                              </details>
                                              <details class="properties" open="open">
-                                                <summary>Properties (4)</summary>
+                                                <summary>Properties (5)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/catalog/controls/mapping/maps/links/href" class="toc6 name">href</h6>
@@ -7698,6 +7896,18 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                             </div>
                                                          </details>
                                                       </div>
+                                                   </div>
+                                                </div>
+                                                <div class="model-entry definition assembly">
+                                                   <div class="instance-header">
+                                                      <h6 id="/catalog/controls/mapping/maps/links/resource-fragment" class="toc6 name">resource-fragment</h6>
+                                                      <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                      <p class="occurrence">[0 or 1]</p>
+                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/catalog/control/mapping/map/link/@resource-fragment">Switch to XML</a></div>
+                                                      <p class="formal-name">Resource Fragment</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                                    </div>
                                                 </div>
                                                 <div class="model-entry definition assembly">
@@ -8063,7 +8273,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                          </details>
                                                       </div>
                                                       <details class="constraints" open="open">
-                                                         <summary>Constraints (3)</summary>
+                                                         <summary>Constraints (4)</summary>
                                                          <div class="constraint">
                                                             <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                                          </div>
@@ -8073,9 +8283,12 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                          <div class="constraint">
                                                             <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                                          </div>
+                                                         <div class="constraint">
+                                                            <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                                         </div>
                                                       </details>
                                                       <details class="properties" open="open">
-                                                         <summary>Properties (4)</summary>
+                                                         <summary>Properties (5)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
                                                                <p id="/catalog/controls/mapping/maps/sources/links/href" class="toc7 name">href</p>
@@ -8160,6 +8373,18 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                                      </div>
                                                                   </details>
                                                                </div>
+                                                            </div>
+                                                         </div>
+                                                         <div class="model-entry definition assembly">
+                                                            <div class="instance-header">
+                                                               <p id="/catalog/controls/mapping/maps/sources/links/resource-fragment" class="toc7 name">resource-fragment</p>
+                                                               <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                               <p class="occurrence">[0 or 1]</p>
+                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/catalog/control/mapping/map/source/link/@resource-fragment">Switch to XML</a></div>
+                                                               <p class="formal-name">Resource Fragment</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                                             </div>
                                                          </div>
                                                          <div class="model-entry definition assembly">
@@ -8459,7 +8684,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                          </details>
                                                       </div>
                                                       <details class="constraints" open="open">
-                                                         <summary>Constraints (3)</summary>
+                                                         <summary>Constraints (4)</summary>
                                                          <div class="constraint">
                                                             <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                                          </div>
@@ -8469,9 +8694,12 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                          <div class="constraint">
                                                             <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                                          </div>
+                                                         <div class="constraint">
+                                                            <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                                         </div>
                                                       </details>
                                                       <details class="properties" open="open">
-                                                         <summary>Properties (4)</summary>
+                                                         <summary>Properties (5)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
                                                                <p id="/catalog/controls/mapping/maps/targets/links/href" class="toc7 name">href</p>
@@ -8556,6 +8784,18 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                                      </div>
                                                                   </details>
                                                                </div>
+                                                            </div>
+                                                         </div>
+                                                         <div class="model-entry definition assembly">
+                                                            <div class="instance-header">
+                                                               <p id="/catalog/controls/mapping/maps/targets/links/resource-fragment" class="toc7 name">resource-fragment</p>
+                                                               <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                               <p class="occurrence">[0 or 1]</p>
+                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/catalog/control/mapping/map/target/link/@resource-fragment">Switch to XML</a></div>
+                                                               <p class="formal-name">Resource Fragment</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                                             </div>
                                                          </div>
                                                          <div class="model-entry definition assembly">
@@ -9230,7 +9470,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                        </details>
                                     </div>
                                     <details class="constraints" open="open">
-                                       <summary>Constraints (3)</summary>
+                                       <summary>Constraints (4)</summary>
                                        <div class="constraint">
                                           <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                        </div>
@@ -9240,9 +9480,12 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                        <div class="constraint">
                                           <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                        </div>
+                                       <div class="constraint">
+                                          <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                       </div>
                                     </details>
                                     <details class="properties" open="open">
-                                       <summary>Properties (4)</summary>
+                                       <summary>Properties (5)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/catalog/groups/params/links/href" class="toc5 name">href</h5>
@@ -9327,6 +9570,18 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                    </div>
                                                 </details>
                                              </div>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/catalog/groups/params/links/resource-fragment" class="toc5 name">resource-fragment</h5>
+                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/catalog/group/param/link/@resource-fragment">Switch to XML</a></div>
+                                             <p class="formal-name">Resource Fragment</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -9831,7 +10086,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                               </details>
                            </div>
                            <details class="constraints" open="open">
-                              <summary>Constraints (3)</summary>
+                              <summary>Constraints (4)</summary>
                               <div class="constraint">
                                  <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                               </div>
@@ -9841,9 +10096,12 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                               <div class="constraint">
                                  <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                               </div>
+                              <div class="constraint">
+                                 <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                              </div>
                            </details>
                            <details class="properties" open="open">
-                              <summary>Properties (4)</summary>
+                              <summary>Properties (5)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/catalog/groups/links/href" class="toc4 name">href</h4>
@@ -9928,6 +10186,18 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                           </div>
                                        </details>
                                     </div>
+                                 </div>
+                              </div>
+                              <div class="model-entry definition assembly">
+                                 <div class="instance-header">
+                                    <h4 id="/catalog/groups/links/resource-fragment" class="toc4 name">resource-fragment</h4>
+                                    <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                    <p class="occurrence">[0 or 1]</p>
+                                    <div class="crosslink"><a class="usa-button" href="../xml-reference/#/catalog/group/link/@resource-fragment">Switch to XML</a></div>
+                                    <p class="formal-name">Resource Fragment</p>
+                                 </div>
+                                 <div class="body">
+                                    <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                  </div>
                               </div>
                               <div class="model-entry definition assembly">
@@ -10393,7 +10663,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                        </details>
                                     </div>
                                     <details class="constraints" open="open">
-                                       <summary>Constraints (3)</summary>
+                                       <summary>Constraints (4)</summary>
                                        <div class="constraint">
                                           <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                        </div>
@@ -10403,9 +10673,12 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                        <div class="constraint">
                                           <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                        </div>
+                                       <div class="constraint">
+                                          <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                       </div>
                                     </details>
                                     <details class="properties" open="open">
-                                       <summary>Properties (4)</summary>
+                                       <summary>Properties (5)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/catalog/groups/parts/links/href" class="toc5 name">href</h5>
@@ -10490,6 +10763,18 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                    </div>
                                                 </details>
                                              </div>
+                                          </div>
+                                       </div>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h5 id="/catalog/groups/parts/links/resource-fragment" class="toc5 name">resource-fragment</h5>
+                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                             <p class="occurrence">[0 or 1]</p>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/catalog/group/part/link/@resource-fragment">Switch to XML</a></div>
+                                             <p class="formal-name">Resource Fragment</p>
+                                          </div>
+                                          <div class="body">
+                                             <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -11115,7 +11400,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                    </details>
                                                 </div>
                                                 <details class="constraints" open="open">
-                                                   <summary>Constraints (3)</summary>
+                                                   <summary>Constraints (4)</summary>
                                                    <div class="constraint">
                                                       <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                                    </div>
@@ -11125,9 +11410,12 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                    <div class="constraint">
                                                       <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                                    </div>
+                                                   <div class="constraint">
+                                                      <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                                   </div>
                                                 </details>
                                                 <details class="properties" open="open">
-                                                   <summary>Properties (4)</summary>
+                                                   <summary>Properties (5)</summary>
                                                    <div class="model-entry definition assembly">
                                                       <div class="instance-header">
                                                          <h6 id="/catalog/groups/controls/params/links/href" class="toc6 name">href</h6>
@@ -11212,6 +11500,18 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                                </div>
                                                             </details>
                                                          </div>
+                                                      </div>
+                                                   </div>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/catalog/groups/controls/params/links/resource-fragment" class="toc6 name">resource-fragment</h6>
+                                                         <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                         <p class="occurrence">[0 or 1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../xml-reference/#/catalog/group/control/param/link/@resource-fragment">Switch to XML</a></div>
+                                                         <p class="formal-name">Resource Fragment</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                                       </div>
                                                    </div>
                                                    <div class="model-entry definition assembly">
@@ -11716,7 +12016,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                           </details>
                                        </div>
                                        <details class="constraints" open="open">
-                                          <summary>Constraints (3)</summary>
+                                          <summary>Constraints (4)</summary>
                                           <div class="constraint">
                                              <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                           </div>
@@ -11726,9 +12026,12 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                           <div class="constraint">
                                              <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                           </div>
+                                          <div class="constraint">
+                                             <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                          </div>
                                        </details>
                                        <details class="properties" open="open">
-                                          <summary>Properties (4)</summary>
+                                          <summary>Properties (5)</summary>
                                           <div class="model-entry definition assembly">
                                              <div class="instance-header">
                                                 <h5 id="/catalog/groups/controls/links/href" class="toc5 name">href</h5>
@@ -11813,6 +12116,18 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                       </div>
                                                    </details>
                                                 </div>
+                                             </div>
+                                          </div>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/catalog/groups/controls/links/resource-fragment" class="toc5 name">resource-fragment</h5>
+                                                <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                <p class="occurrence">[0 or 1]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../xml-reference/#/catalog/group/control/link/@resource-fragment">Switch to XML</a></div>
+                                                <p class="formal-name">Resource Fragment</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                              </div>
                                           </div>
                                           <div class="model-entry definition assembly">
@@ -12278,7 +12593,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                    </details>
                                                 </div>
                                                 <details class="constraints" open="open">
-                                                   <summary>Constraints (3)</summary>
+                                                   <summary>Constraints (4)</summary>
                                                    <div class="constraint">
                                                       <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                                    </div>
@@ -12288,9 +12603,12 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                    <div class="constraint">
                                                       <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                                    </div>
+                                                   <div class="constraint">
+                                                      <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                                   </div>
                                                 </details>
                                                 <details class="properties" open="open">
-                                                   <summary>Properties (4)</summary>
+                                                   <summary>Properties (5)</summary>
                                                    <div class="model-entry definition assembly">
                                                       <div class="instance-header">
                                                          <h6 id="/catalog/groups/controls/parts/links/href" class="toc6 name">href</h6>
@@ -12375,6 +12693,18 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                                </div>
                                                             </details>
                                                          </div>
+                                                      </div>
+                                                   </div>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/catalog/groups/controls/parts/links/resource-fragment" class="toc6 name">resource-fragment</h6>
+                                                         <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                         <p class="occurrence">[0 or 1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../xml-reference/#/catalog/group/control/part/link/@resource-fragment">Switch to XML</a></div>
+                                                         <p class="formal-name">Resource Fragment</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                                       </div>
                                                    </div>
                                                    <div class="model-entry definition assembly">
@@ -12687,7 +13017,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                             </details>
                                                          </div>
                                                          <details class="constraints" open="open">
-                                                            <summary>Constraints (3)</summary>
+                                                            <summary>Constraints (4)</summary>
                                                             <div class="constraint">
                                                                <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                                             </div>
@@ -12697,9 +13027,12 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                             <div class="constraint">
                                                                <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                                             </div>
+                                                            <div class="constraint">
+                                                               <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                                            </div>
                                                          </details>
                                                          <details class="properties" open="open">
-                                                            <summary>Properties (4)</summary>
+                                                            <summary>Properties (5)</summary>
                                                             <div class="model-entry definition assembly">
                                                                <div class="instance-header">
                                                                   <p id="/catalog/groups/controls/mapping/target-resource/links/href" class="toc7 name">href</p>
@@ -12784,6 +13117,18 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                                         </div>
                                                                      </details>
                                                                   </div>
+                                                               </div>
+                                                            </div>
+                                                            <div class="model-entry definition assembly">
+                                                               <div class="instance-header">
+                                                                  <p id="/catalog/groups/controls/mapping/target-resource/links/resource-fragment" class="toc7 name">resource-fragment</p>
+                                                                  <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                                  <p class="occurrence">[0 or 1]</p>
+                                                                  <div class="crosslink"><a class="usa-button" href="../xml-reference/#/catalog/group/control/mapping/target-resource/link/@resource-fragment">Switch to XML</a></div>
+                                                                  <p class="formal-name">Resource Fragment</p>
+                                                               </div>
+                                                               <div class="body">
+                                                                  <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                                                </div>
                                                             </div>
                                                             <div class="model-entry definition assembly">
@@ -13059,7 +13404,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                             </details>
                                                          </div>
                                                          <details class="constraints" open="open">
-                                                            <summary>Constraints (3)</summary>
+                                                            <summary>Constraints (4)</summary>
                                                             <div class="constraint">
                                                                <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                                             </div>
@@ -13069,9 +13414,12 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                             <div class="constraint">
                                                                <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                                             </div>
+                                                            <div class="constraint">
+                                                               <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                                            </div>
                                                          </details>
                                                          <details class="properties" open="open">
-                                                            <summary>Properties (4)</summary>
+                                                            <summary>Properties (5)</summary>
                                                             <div class="model-entry definition assembly">
                                                                <div class="instance-header">
                                                                   <p id="/catalog/groups/controls/mapping/maps/links/href" class="toc7 name">href</p>
@@ -13156,6 +13504,18 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                                         </div>
                                                                      </details>
                                                                   </div>
+                                                               </div>
+                                                            </div>
+                                                            <div class="model-entry definition assembly">
+                                                               <div class="instance-header">
+                                                                  <p id="/catalog/groups/controls/mapping/maps/links/resource-fragment" class="toc7 name">resource-fragment</p>
+                                                                  <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                                  <p class="occurrence">[0 or 1]</p>
+                                                                  <div class="crosslink"><a class="usa-button" href="../xml-reference/#/catalog/group/control/mapping/map/link/@resource-fragment">Switch to XML</a></div>
+                                                                  <p class="formal-name">Resource Fragment</p>
+                                                               </div>
+                                                               <div class="body">
+                                                                  <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                                                </div>
                                                             </div>
                                                             <div class="model-entry definition assembly">
@@ -13521,7 +13881,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                                      </details>
                                                                   </div>
                                                                   <details class="constraints" open="open">
-                                                                     <summary>Constraints (3)</summary>
+                                                                     <summary>Constraints (4)</summary>
                                                                      <div class="constraint">
                                                                         <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                                                      </div>
@@ -13531,9 +13891,12 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                                      <div class="constraint">
                                                                         <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                                                      </div>
+                                                                     <div class="constraint">
+                                                                        <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                                                     </div>
                                                                   </details>
                                                                   <details class="properties" open="open">
-                                                                     <summary>Properties (4)</summary>
+                                                                     <summary>Properties (5)</summary>
                                                                      <div class="model-entry definition assembly">
                                                                         <div class="instance-header">
                                                                            <p id="/catalog/groups/controls/mapping/maps/sources/links/href" class="toc8 name">href</p>
@@ -13618,6 +13981,18 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                                                  </div>
                                                                               </details>
                                                                            </div>
+                                                                        </div>
+                                                                     </div>
+                                                                     <div class="model-entry definition assembly">
+                                                                        <div class="instance-header">
+                                                                           <p id="/catalog/groups/controls/mapping/maps/sources/links/resource-fragment" class="toc8 name">resource-fragment</p>
+                                                                           <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                                           <p class="occurrence">[0 or 1]</p>
+                                                                           <div class="crosslink"><a class="usa-button" href="../xml-reference/#/catalog/group/control/mapping/map/source/link/@resource-fragment">Switch to XML</a></div>
+                                                                           <p class="formal-name">Resource Fragment</p>
+                                                                        </div>
+                                                                        <div class="body">
+                                                                           <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                                                         </div>
                                                                      </div>
                                                                      <div class="model-entry definition assembly">
@@ -13917,7 +14292,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                                      </details>
                                                                   </div>
                                                                   <details class="constraints" open="open">
-                                                                     <summary>Constraints (3)</summary>
+                                                                     <summary>Constraints (4)</summary>
                                                                      <div class="constraint">
                                                                         <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                                                      </div>
@@ -13927,9 +14302,12 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                                      <div class="constraint">
                                                                         <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                                                      </div>
+                                                                     <div class="constraint">
+                                                                        <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                                                     </div>
                                                                   </details>
                                                                   <details class="properties" open="open">
-                                                                     <summary>Properties (4)</summary>
+                                                                     <summary>Properties (5)</summary>
                                                                      <div class="model-entry definition assembly">
                                                                         <div class="instance-header">
                                                                            <p id="/catalog/groups/controls/mapping/maps/targets/links/href" class="toc8 name">href</p>
@@ -14014,6 +14392,18 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                                                  </div>
                                                                               </details>
                                                                            </div>
+                                                                        </div>
+                                                                     </div>
+                                                                     <div class="model-entry definition assembly">
+                                                                        <div class="instance-header">
+                                                                           <p id="/catalog/groups/controls/mapping/maps/targets/links/resource-fragment" class="toc8 name">resource-fragment</p>
+                                                                           <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                                           <p class="occurrence">[0 or 1]</p>
+                                                                           <div class="crosslink"><a class="usa-button" href="../xml-reference/#/catalog/group/control/mapping/map/target/link/@resource-fragment">Switch to XML</a></div>
+                                                                           <p class="formal-name">Resource Fragment</p>
+                                                                        </div>
+                                                                        <div class="body">
+                                                                           <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                                                         </div>
                                                                      </div>
                                                                      <div class="model-entry definition assembly">
@@ -14952,7 +15342,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                 </details>
                                              </div>
                                              <details class="constraints" open="open">
-                                                <summary>Constraints (3)</summary>
+                                                <summary>Constraints (4)</summary>
                                                 <div class="constraint">
                                                    <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                                 </div>
@@ -14962,9 +15352,12 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                 <div class="constraint">
                                                    <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                                 </div>
+                                                <div class="constraint">
+                                                   <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+                                                </div>
                                              </details>
                                              <details class="properties" open="open">
-                                                <summary>Properties (4)</summary>
+                                                <summary>Properties (5)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/catalog/back-matter/resources/citation/links/href" class="toc6 name">href</h6>
@@ -15049,6 +15442,18 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                             </div>
                                                          </details>
                                                       </div>
+                                                   </div>
+                                                </div>
+                                                <div class="model-entry definition assembly">
+                                                   <div class="instance-header">
+                                                      <h6 id="/catalog/back-matter/resources/citation/links/resource-fragment" class="toc6 name">resource-fragment</h6>
+                                                      <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                      <p class="occurrence">[0 or 1]</p>
+                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/catalog/back-matter/resource/citation/link/@resource-fragment">Switch to XML</a></div>
+                                                      <p class="formal-name">Resource Fragment</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                                    </div>
                                                 </div>
                                                 <div class="model-entry definition assembly">

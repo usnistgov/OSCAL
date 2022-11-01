@@ -1133,7 +1133,7 @@ The following is a reference for the JSON object definitions derived from the [m
             </details>
          </div>
          <details>
-            <summary>Constraints (3)</summary>
+            <summary>Constraints (4)</summary>
             
             A local reference SHOULD NOT have a media-type.
             Since both link and back-matter/resource both allow specification of a media-type,
@@ -1152,9 +1152,13 @@ The following is a reference for the JSON object definitions derived from the [m
             <div class="constraint">
                <p><span class="usa-tag">matches</span> for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
             </div>
+            
+            <div class="constraint">
+               <p><span class="usa-tag">matches</span> for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
+            </div>
             </details>
          <details open="open">
-            <summary>Properties (4)</summary>
+            <summary>Properties (5)</summary>
             <div class="model assembly-model">
                <div class="model-entry definition define-flag">
                   <div class="instance-header">
@@ -1241,6 +1245,18 @@ The following is a reference for the JSON object definitions derived from the [m
                         </details>
                      </div>
                      <p class="definition-link"><a href="#/flag/oscal-metadata/media-type">See definition</a></p>
+                  </div>
+               </div>
+               <div class="model-entry definition define-flag">
+                  <div class="instance-header">
+                     <h2 id="/assembly/oscal-metadata/link/resource-fragment" class="toc2 name">resource-fragment</h2>
+                     <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                     <p class="occurrence">[0 or 1]</p>
+                     <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-metadata/link/resource-fragment">Switch to XML</a></div>
+                     <p class="formal-name">Resource Fragment</p>
+                  </div>
+                  <div class="body">
+                     <p class="description"><span class="usa-tag">description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                   </div>
                </div>
                <div class="model-entry definition define-field">
