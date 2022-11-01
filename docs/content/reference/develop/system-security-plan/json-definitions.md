@@ -7877,7 +7877,7 @@ The following is a reference for the JSON object definitions derived from the [m
                      <p class="formal-name">Security Sensitivity Level</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> The overall information system sensitivity categorization, such as defined by <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>. </p>
+                     <p class="description"><span class="usa-tag">description</span> The overall information system sensitivity categorization, such as defined by <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</p>
                      <div class="remarks-group usa-prose">
                         <details open="open">
                            <summary class="subhead">Remarks</summary>
@@ -8970,7 +8970,7 @@ The following is a reference for the JSON object definitions derived from the [m
                   </div>
                   <div class="body">
                      <p class="description"><span class="usa-tag">description</span> A description of another authorized system from which this system inherits capabilities
-                        that satisfy security requirements. Another term for this concept is a <em>common control provider</em>. </p>
+                        that satisfy security requirements. Another term for this concept is a <em>common control provider</em>.</p>
                      <p><span class="usa-tag">group as</span> <code class="name">leveraged-authorizations</code></p>
                      <details>
                         <summary>Constraints (4)</summary>
@@ -9233,7 +9233,7 @@ The following is a reference for the JSON object definitions derived from the [m
       </div>
       <div class="body">
          <p class="description"><span class="usa-tag">description</span> Contains details about all information types that are stored, processed, or transmitted
-            by the system, such as privacy information, and those defined in <a href="https://doi.org/10.6028/NIST.SP.800-60v2r1">NIST SP 800-60</a>. </p>
+            by the system, such as privacy information, and those defined in <a href="https://doi.org/10.6028/NIST.SP.800-60v2r1">NIST SP 800-60</a>.</p>
          <details>
             <summary>Constraints (7)</summary>
             
@@ -9364,7 +9364,7 @@ The following is a reference for the JSON object definitions derived from the [m
                   </div>
                   <div class="body">
                      <p class="description"><span class="usa-tag">description</span> Contains details about one information type that is stored, processed, or transmitted
-                        by the system, such as privacy information, and those defined in <a href="https://doi.org/10.6028/NIST.SP.800-60v2r1">NIST SP 800-60</a>. </p>
+                        by the system, such as privacy information, and those defined in <a href="https://doi.org/10.6028/NIST.SP.800-60v2r1">NIST SP 800-60</a>.</p>
                      <p><span class="usa-tag">group as</span> <code class="name">information-types</code></p>
                      <details open="open">
                         <summary>Properties (9)</summary>
@@ -9589,7 +9589,7 @@ The following is a reference for the JSON object definitions derived from the [m
          <p class="formal-name">System Security Plan (SSP)</p>
       </div>
       <div class="body">
-         <p class="description"><span class="usa-tag">description</span> A system security plan, such as those described in NIST SP 800-18</p>
+         <p class="description"><span class="usa-tag">description</span> A system security plan, such as those described in NIST SP 800-18.</p>
          <p><span class="usa-tag">root name</span> <code class="name">system-security-plan</code></p>
          <details open="open">
             <summary>Properties (7)</summary>

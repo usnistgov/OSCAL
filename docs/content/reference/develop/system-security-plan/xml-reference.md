@@ -28,7 +28,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
          <p class="formal-name">System Security Plan (SSP)</p>
       </div>
       <div class="body">
-         <p class="description"><span class="usa-tag">Description</span> A system security plan, such as those described in NIST SP 800-18</p>
+         <p class="description"><span class="usa-tag">Description</span> A system security plan, such as those described in NIST SP 800-18.</p>
          <details class="properties attributes" open="open">
             <summary>Attribute (1)</summary>
             <div class="model-entry definition assembly">
@@ -5129,7 +5129,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                            <p class="formal-name">Security Sensitivity Level</p>
                         </div>
                         <div class="body">
-                           <p class="description"><span class="usa-tag">Description</span> The overall information system sensitivity categorization, such as defined by <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>. </p>
+                           <p class="description"><span class="usa-tag">Description</span> The overall information system sensitivity categorization, such as defined by <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</p>
                            <div class="remarks-group usa-prose">
                               <details open="open">
                                  <summary class="subhead">Remarks</summary>
@@ -5151,7 +5151,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                         </div>
                         <div class="body">
                            <p class="description"><span class="usa-tag">Description</span> Contains details about all information types that are stored, processed, or transmitted
-                              by the system, such as privacy information, and those defined in <a href="https://doi.org/10.6028/NIST.SP.800-60v2r1">NIST SP 800-60</a>. </p>
+                              by the system, such as privacy information, and those defined in <a href="https://doi.org/10.6028/NIST.SP.800-60v2r1">NIST SP 800-60</a>.</p>
                            <details class="constraints" open="open">
                               <summary>Constraints (7)</summary>
                               <div class="constraint">
@@ -5546,7 +5546,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> Contains details about one information type that is stored, processed, or transmitted
-                                       by the system, such as privacy information, and those defined in <a href="https://doi.org/10.6028/NIST.SP.800-60v2r1">NIST SP 800-60</a>. </p>
+                                       by the system, such as privacy information, and those defined in <a href="https://doi.org/10.6028/NIST.SP.800-60v2r1">NIST SP 800-60</a>.</p>
                                     <details class="properties attributes" open="open">
                                        <summary>Attribute (1)</summary>
                                        <div class="model-entry definition assembly">
@@ -10817,7 +10817,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                         </div>
                         <div class="body">
                            <p class="description"><span class="usa-tag">Description</span> A description of another authorized system from which this system inherits capabilities
-                              that satisfy security requirements. Another term for this concept is a <em>common control provider</em>. </p>
+                              that satisfy security requirements. Another term for this concept is a <em>common control provider</em>.</p>
                            <details class="constraints" open="open">
                               <summary>Constraints (4)</summary>
                               <div class="constraint">
