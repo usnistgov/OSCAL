@@ -1449,6 +1449,16 @@
                <b>Media Type</b>: A label that indicates the nature of a resource, as a data serialization or format.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
+      <xs:attribute name="resource-fragment" type="StringDatatype">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Resource Fragment</m:formal-name>
+               <m:description>In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Resource Fragment</b>: In case where the href points to a back-matter/resource, this value will indicate the URI fragment to append to any rlink associated with the resource. This value MUST be URI encoded.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
    </xs:complexType>
    <xs:complexType name="oscal-metadata-responsible-party-ASSEMBLY">
       <xs:annotation>

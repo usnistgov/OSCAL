@@ -193,6 +193,7 @@
          <xsl:apply-templates select="@href"/>
          <xsl:apply-templates select="@rel"/>
          <xsl:apply-templates select="@media-type"/>
+         <xsl:apply-templates select="@resource-fragment"/>
          <xsl:apply-templates select="text"/>
       </assembly>
    </xsl:template>
@@ -1110,6 +1111,17 @@
             name="media-type"
             key="media-type"
             gi="media-type">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="link/@resource-fragment"
+                 priority="1"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="string"
+            as-type="string"
+            name="resource-fragment"
+            key="resource-fragment"
+            gi="resource-fragment">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
