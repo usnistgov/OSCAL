@@ -2207,7 +2207,7 @@
         "additionalProperties" : false },
       "oscal-complete-oscal-ssp:system-security-plan" : 
       { "title" : "System Security Plan (SSP)",
-        "description" : "A system security plan, such as those described in NIST SP 800-18",
+        "description" : "A system security plan, such as those described in NIST SP 800-18.",
         "$id" : "#assembly_oscal-ssp_system-security-plan",
         "type" : "object",
         "properties" : 
