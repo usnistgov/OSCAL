@@ -785,6 +785,10 @@
           { "title" : "Media Type",
             "description" : "A label that indicates the nature of a resource, as a data serialization or format.",
             "$ref" : "#/definitions/StringDatatype" },
+          "resource-fragment" : 
+          { "title" : "Resource Fragment",
+            "description" : "In case where the href points to a back-matter/resource, this value will indicate the URI fragment to append to any rlink associated with the resource. This value MUST be URI encoded.",
+            "$ref" : "#/definitions/StringDatatype" },
           "text" : 
           { "title" : "Link Text",
             "description" : "A textual label to associate with the link, which may be used for presentation in a tool.",

@@ -152,6 +152,7 @@
          <xsl:apply-templates select="*[@key='href']"/>
          <xsl:apply-templates select="*[@key='rel']"/>
          <xsl:apply-templates select="*[@key='media-type']"/>
+         <xsl:apply-templates select="*[@key='resource-fragment']"/>
          <xsl:apply-templates select="*[@key='text']"/>
       </assembly>
    </xsl:template>
@@ -470,6 +471,19 @@
       </flag>
    </xsl:template>
    <xsl:template match="j:array[@key='links']/j:map/j:string[@key='media-type']"
+                 mode="keep-value-property"
+                 priority="8"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='links']/j:map/j:string[@key='resource-fragment']"
+                 priority="1"><!-- XML match="link/@resource-fragment" -->
+      <flag in-json="string"
+            as-type="string"
+            name="resource-fragment"
+            key="resource-fragment"
+            gi="resource-fragment">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='links']/j:map/j:string[@key='resource-fragment']"
                  mode="keep-value-property"
                  priority="8"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='document-ids']/j:map/j:string[@key='scheme'] | j:map[@key='component-definition']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:array[@key='document-ids']/j:map/j:string[@key='scheme']"
