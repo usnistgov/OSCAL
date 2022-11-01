@@ -3764,10 +3764,10 @@
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>System Security Plan (SSP)</m:formal-name>
-            <m:description>A system security plan, such as those described in NIST SP 800-18</m:description>
+            <m:description>A system security plan, such as those described in NIST SP 800-18.</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>System Security Plan (SSP)</b>: A system security plan, such as those described in NIST SP 800-18</xs:documentation>
+            <b>System Security Plan (SSP)</b>: A system security plan, such as those described in NIST SP 800-18.</xs:documentation>
       </xs:annotation>
       <xs:sequence>
          <xs:element name="metadata"
@@ -3913,10 +3913,10 @@
                <xs:annotation>
                   <xs:appinfo>
                      <m:formal-name>Security Sensitivity Level</m:formal-name>
-                     <m:description>The overall information system sensitivity categorization, such as defined by <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>. </m:description>
+                     <m:description>The overall information system sensitivity categorization, such as defined by <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</m:description>
                   </xs:appinfo>
                   <xs:documentation>
-                     <b>Security Sensitivity Level</b>: The overall information system sensitivity categorization, such as defined by FIPS-199. </xs:documentation>
+                     <b>Security Sensitivity Level</b>: The overall information system sensitivity categorization, such as defined by FIPS-199.</xs:documentation>
                </xs:annotation>
                <xs:restriction base="StringDatatype"/>
             </xs:simpleType>
@@ -3968,10 +3968,10 @@
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>System Information</m:formal-name>
-            <m:description>Contains details about all information types that are stored, processed, or transmitted by the system, such as privacy information, and those defined in <a href="https://doi.org/10.6028/NIST.SP.800-60v2r1">NIST SP 800-60</a>. </m:description>
+            <m:description>Contains details about all information types that are stored, processed, or transmitted by the system, such as privacy information, and those defined in <a href="https://doi.org/10.6028/NIST.SP.800-60v2r1">NIST SP 800-60</a>.</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>System Information</b>: Contains details about all information types that are stored, processed, or transmitted by the system, such as privacy information, and those defined in NIST SP 800-60. </xs:documentation>
+            <b>System Information</b>: Contains details about all information types that are stored, processed, or transmitted by the system, such as privacy information, and those defined in NIST SP 800-60.</xs:documentation>
       </xs:annotation>
       <xs:sequence>
          <xs:element name="prop"
@@ -3987,10 +3987,10 @@
                <xs:annotation>
                   <xs:appinfo>
                      <m:formal-name>Information Type</m:formal-name>
-                     <m:description>Contains details about one information type that is stored, processed, or transmitted by the system, such as privacy information, and those defined in <a href="https://doi.org/10.6028/NIST.SP.800-60v2r1">NIST SP 800-60</a>. </m:description>
+                     <m:description>Contains details about one information type that is stored, processed, or transmitted by the system, such as privacy information, and those defined in <a href="https://doi.org/10.6028/NIST.SP.800-60v2r1">NIST SP 800-60</a>.</m:description>
                   </xs:appinfo>
                   <xs:documentation>
-                     <b>Information Type</b>: Contains details about one information type that is stored, processed, or transmitted by the system, such as privacy information, and those defined in NIST SP 800-60. </xs:documentation>
+                     <b>Information Type</b>: Contains details about one information type that is stored, processed, or transmitted by the system, such as privacy information, and those defined in NIST SP 800-60.</xs:documentation>
                </xs:annotation>
                <xs:sequence>
                   <xs:element name="title" minOccurs="1" maxOccurs="1">
@@ -4522,10 +4522,10 @@
                <xs:annotation>
                   <xs:appinfo>
                      <m:formal-name>Leveraged Authorization</m:formal-name>
-                     <m:description>A description of another authorized system from which this system inherits capabilities that satisfy security requirements. Another term for this concept is a <em>common control provider</em>. </m:description>
+                     <m:description>A description of another authorized system from which this system inherits capabilities that satisfy security requirements. Another term for this concept is a <em>common control provider</em>.</m:description>
                   </xs:appinfo>
                   <xs:documentation>
-                     <b>Leveraged Authorization</b>: A description of another authorized system from which this system inherits capabilities that satisfy security requirements. Another term for this concept is a common control provider. </xs:documentation>
+                     <b>Leveraged Authorization</b>: A description of another authorized system from which this system inherits capabilities that satisfy security requirements. Another term for this concept is a common control provider.</xs:documentation>
                </xs:annotation>
                <xs:sequence>
                   <xs:element name="title" minOccurs="1" maxOccurs="1">
@@ -8601,13 +8601,13 @@
    </xs:complexType>
    <xs:group name="blockElementGroup">
       <xs:choice>
-         <xs:element name="h1" type="inlineType"/>
-         <xs:element name="h2" type="inlineType"/>
-         <xs:element name="h3" type="inlineType"/>
-         <xs:element name="h4" type="inlineType"/>
-         <xs:element name="h5" type="inlineType"/>
-         <xs:element name="h6" type="inlineType"/>
-         <xs:element name="p" type="inlineType"/>
+         <xs:element name="h1" type="inlineMarkupType"/>
+         <xs:element name="h2" type="inlineMarkupType"/>
+         <xs:element name="h3" type="inlineMarkupType"/>
+         <xs:element name="h4" type="inlineMarkupType"/>
+         <xs:element name="h5" type="inlineMarkupType"/>
+         <xs:element name="h6" type="inlineMarkupType"/>
+         <xs:element name="p" type="inlineMarkupType"/>
          <xs:element name="ul" type="listType"/>
          <xs:element name="ol" type="listType"/>
          <xs:element name="pre" type="preformattedType"/>
@@ -8616,16 +8616,11 @@
          <!-- TODO: need to add support for blockquote, which can contain block elements. usnistgov/metaschema#70 -->
       </xs:choice>
    </xs:group>
-   <xs:complexType name="inlineType" mixed="true">
-      <xs:choice minOccurs="0" maxOccurs="unbounded">
-         <xs:group ref="inlineMarkupGroup"/>
-      </xs:choice>
-   </xs:complexType>
    <xs:complexType name="preformattedType" mixed="true">
       <xs:complexContent>
-         <xs:extension base="inlineType">
+         <xs:extension base="inlineMarkupType">
             <xs:annotation>
-               <xs:documentation>The content model is the same as inlineType, but line endings need
+               <xs:documentation>The content model is the same as inlineMarkupType, but line endings need
             to be preserved, since this is preformatted.</xs:documentation>
             </xs:annotation>
          </xs:extension>
@@ -8662,7 +8657,7 @@
    <xs:complexType name="tableCellType" mixed="true">
       <xs:complexContent>
       <!-- TODO: consider adding a choice between the inline or paragraphs. We need to figure out what is supported in Markdown. -->
-         <xs:extension base="inlineType">
+         <xs:extension base="inlineMarkupType">
         <!-- TODO: need to add support for alignment. usnistgov/metaschema#70 -->
             <xs:attribute name="align" type="alignType" default="left"/>
          </xs:extension>
@@ -8676,6 +8671,11 @@
       </xs:restriction>
    </xs:simpleType>
    <xs:complexType name="MarkupLineDatatype" mixed="true">
+      <xs:complexContent>
+         <xs:extension base="inlineMarkupType"/>
+      </xs:complexContent>
+   </xs:complexType>
+   <xs:complexType name="inlineMarkupType" mixed="true">
       <xs:choice minOccurs="0" maxOccurs="unbounded">
          <xs:group ref="inlineMarkupGroup"/>
       </xs:choice>
@@ -8685,31 +8685,21 @@
          <xs:element name="a" type="anchorType"/>
          <xs:element name="insert" type="insertType"/>
          <xs:group ref="phraseMarkupGroup"/>
-         <xs:group ref="imageMarkupGroup"/>
-      </xs:choice>
-   </xs:group>
-   <xs:group name="imageMarkupGroup">
-      <xs:choice>
-         <xs:element name="img" type="imageType"/>
       </xs:choice>
    </xs:group>
    <xs:group name="phraseMarkupGroup">
       <xs:choice>
-         <xs:element name="code" type="inlineMarkupType" minOccurs="1"/>
-         <xs:element name="em" type="inlineMarkupType" minOccurs="1"/>
-         <xs:element name="i" type="inlineMarkupType" minOccurs="1"/>
-         <xs:element name="b" type="inlineMarkupType" minOccurs="1"/>
-         <xs:element name="strong" type="inlineMarkupType" minOccurs="1"/>
-         <xs:element name="sub" type="inlineMarkupType" minOccurs="1"/>
-         <xs:element name="sup" type="inlineMarkupType" minOccurs="1"/>
-         <xs:element name="q" type="inlineMarkupType" minOccurs="1"/>
+         <xs:element name="code" type="inlineMarkupType"/>
+         <xs:element name="em" type="inlineMarkupType"/>
+         <xs:element name="i" type="inlineMarkupType"/>
+         <xs:element name="b" type="inlineMarkupType"/>
+         <xs:element name="strong" type="inlineMarkupType"/>
+         <xs:element name="sub" type="inlineMarkupType"/>
+         <xs:element name="sup" type="inlineMarkupType"/>
+         <xs:element name="q" type="inlineMarkupType"/>
+         <xs:element name="img" type="imageType"/>
       </xs:choice>
    </xs:group>
-   <xs:complexType name="inlineMarkupType" mixed="true">
-      <xs:choice minOccurs="0" maxOccurs="unbounded">
-         <xs:group ref="inlineMarkupGroup"/>
-      </xs:choice>
-   </xs:complexType>
    <xs:complexType name="imageType">
       <xs:attribute name="alt" type="xs:string"/>
       <xs:attribute name="src" use="required" type="xs:anyURI"/>
@@ -8717,7 +8707,6 @@
    <xs:complexType name="anchorType" mixed="true">
       <xs:choice minOccurs="0" maxOccurs="unbounded">
          <xs:group ref="phraseMarkupGroup"/>
-         <xs:group ref="imageMarkupGroup"/>
       </xs:choice>
       <xs:attribute name="href" type="xs:anyURI"/>
    </xs:complexType>

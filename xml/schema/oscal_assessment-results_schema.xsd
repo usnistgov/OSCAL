@@ -5233,13 +5233,13 @@
    </xs:complexType>
    <xs:group name="blockElementGroup">
       <xs:choice>
-         <xs:element name="h1" type="inlineType"/>
-         <xs:element name="h2" type="inlineType"/>
-         <xs:element name="h3" type="inlineType"/>
-         <xs:element name="h4" type="inlineType"/>
-         <xs:element name="h5" type="inlineType"/>
-         <xs:element name="h6" type="inlineType"/>
-         <xs:element name="p" type="inlineType"/>
+         <xs:element name="h1" type="inlineMarkupType"/>
+         <xs:element name="h2" type="inlineMarkupType"/>
+         <xs:element name="h3" type="inlineMarkupType"/>
+         <xs:element name="h4" type="inlineMarkupType"/>
+         <xs:element name="h5" type="inlineMarkupType"/>
+         <xs:element name="h6" type="inlineMarkupType"/>
+         <xs:element name="p" type="inlineMarkupType"/>
          <xs:element name="ul" type="listType"/>
          <xs:element name="ol" type="listType"/>
          <xs:element name="pre" type="preformattedType"/>
@@ -5248,16 +5248,11 @@
          <!-- TODO: need to add support for blockquote, which can contain block elements. usnistgov/metaschema#70 -->
       </xs:choice>
    </xs:group>
-   <xs:complexType name="inlineType" mixed="true">
-      <xs:choice minOccurs="0" maxOccurs="unbounded">
-         <xs:group ref="inlineMarkupGroup"/>
-      </xs:choice>
-   </xs:complexType>
    <xs:complexType name="preformattedType" mixed="true">
       <xs:complexContent>
-         <xs:extension base="inlineType">
+         <xs:extension base="inlineMarkupType">
             <xs:annotation>
-               <xs:documentation>The content model is the same as inlineType, but line endings need
+               <xs:documentation>The content model is the same as inlineMarkupType, but line endings need
             to be preserved, since this is preformatted.</xs:documentation>
             </xs:annotation>
          </xs:extension>
@@ -5294,7 +5289,7 @@
    <xs:complexType name="tableCellType" mixed="true">
       <xs:complexContent>
       <!-- TODO: consider adding a choice between the inline or paragraphs. We need to figure out what is supported in Markdown. -->
-         <xs:extension base="inlineType">
+         <xs:extension base="inlineMarkupType">
         <!-- TODO: need to add support for alignment. usnistgov/metaschema#70 -->
             <xs:attribute name="align" type="alignType" default="left"/>
          </xs:extension>
@@ -5308,6 +5303,11 @@
       </xs:restriction>
    </xs:simpleType>
    <xs:complexType name="MarkupLineDatatype" mixed="true">
+      <xs:complexContent>
+         <xs:extension base="inlineMarkupType"/>
+      </xs:complexContent>
+   </xs:complexType>
+   <xs:complexType name="inlineMarkupType" mixed="true">
       <xs:choice minOccurs="0" maxOccurs="unbounded">
          <xs:group ref="inlineMarkupGroup"/>
       </xs:choice>
@@ -5317,31 +5317,21 @@
          <xs:element name="a" type="anchorType"/>
          <xs:element name="insert" type="insertType"/>
          <xs:group ref="phraseMarkupGroup"/>
-         <xs:group ref="imageMarkupGroup"/>
-      </xs:choice>
-   </xs:group>
-   <xs:group name="imageMarkupGroup">
-      <xs:choice>
-         <xs:element name="img" type="imageType"/>
       </xs:choice>
    </xs:group>
    <xs:group name="phraseMarkupGroup">
       <xs:choice>
-         <xs:element name="code" type="inlineMarkupType" minOccurs="1"/>
-         <xs:element name="em" type="inlineMarkupType" minOccurs="1"/>
-         <xs:element name="i" type="inlineMarkupType" minOccurs="1"/>
-         <xs:element name="b" type="inlineMarkupType" minOccurs="1"/>
-         <xs:element name="strong" type="inlineMarkupType" minOccurs="1"/>
-         <xs:element name="sub" type="inlineMarkupType" minOccurs="1"/>
-         <xs:element name="sup" type="inlineMarkupType" minOccurs="1"/>
-         <xs:element name="q" type="inlineMarkupType" minOccurs="1"/>
+         <xs:element name="code" type="inlineMarkupType"/>
+         <xs:element name="em" type="inlineMarkupType"/>
+         <xs:element name="i" type="inlineMarkupType"/>
+         <xs:element name="b" type="inlineMarkupType"/>
+         <xs:element name="strong" type="inlineMarkupType"/>
+         <xs:element name="sub" type="inlineMarkupType"/>
+         <xs:element name="sup" type="inlineMarkupType"/>
+         <xs:element name="q" type="inlineMarkupType"/>
+         <xs:element name="img" type="imageType"/>
       </xs:choice>
    </xs:group>
-   <xs:complexType name="inlineMarkupType" mixed="true">
-      <xs:choice minOccurs="0" maxOccurs="unbounded">
-         <xs:group ref="inlineMarkupGroup"/>
-      </xs:choice>
-   </xs:complexType>
    <xs:complexType name="imageType">
       <xs:attribute name="alt" type="xs:string"/>
       <xs:attribute name="src" use="required" type="xs:anyURI"/>
@@ -5349,7 +5339,6 @@
    <xs:complexType name="anchorType" mixed="true">
       <xs:choice minOccurs="0" maxOccurs="unbounded">
          <xs:group ref="phraseMarkupGroup"/>
-         <xs:group ref="imageMarkupGroup"/>
       </xs:choice>
       <xs:attribute name="href" type="xs:anyURI"/>
    </xs:complexType>
