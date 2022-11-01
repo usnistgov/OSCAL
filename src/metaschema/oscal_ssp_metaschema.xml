@@ -30,7 +30,7 @@
   <!-- ############################################## -->
   <define-assembly name="system-security-plan">
     <formal-name>System Security Plan (SSP)</formal-name>
-    <description>A system security plan, such as those described in NIST SP 800-18</description>
+    <description>A system security plan, such as those described in NIST SP 800-18.</description>
     <root-name>system-security-plan</root-name>
     <define-flag name="uuid" as-type="uuid" required="yes">
       <formal-name>System Security Plan Universally Unique Identifier</formal-name>
@@ -106,8 +106,7 @@
       <field ref="date-authorized"/>
       <define-field name="security-sensitivity-level" min-occurs="1">
         <formal-name>Security Sensitivity Level</formal-name>
-        <description>The overall information system sensitivity categorization, such as defined by <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.
-        </description>
+        <description>The overall information system sensitivity categorization, such as defined by <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</description>
         <remarks>
           <p>Often, organizations require the security sensitivity level to correspond with the highest confidentiality, integrity, or availability level identified by <code>security-impact-level</code>.
           </p>
@@ -181,8 +180,7 @@
   </define-assembly>
   <define-assembly name="system-information">
     <formal-name>System Information</formal-name>
-    <description>Contains details about all information types that are stored, processed, or transmitted by the system, such as privacy information, and those defined in <a href="https://doi.org/10.6028/NIST.SP.800-60v2r1">NIST SP 800-60</a>.
-    </description>
+    <description>Contains details about all information types that are stored, processed, or transmitted by the system, such as privacy information, and those defined in <a href="https://doi.org/10.6028/NIST.SP.800-60v2r1">NIST SP 800-60</a>.</description>
     <model>
       <assembly ref="property" max-occurs="unbounded">
         <group-as name="props" in-json="ARRAY"/>
@@ -192,8 +190,7 @@
       </assembly>
       <define-assembly name="information-type" min-occurs="1" max-occurs="unbounded">
         <formal-name>Information Type</formal-name>
-        <description>Contains details about one information type that is stored, processed, or transmitted by the system, such as privacy information, and those defined in <a href="https://doi.org/10.6028/NIST.SP.800-60v2r1">NIST SP 800-60</a>.
-        </description>
+        <description>Contains details about one information type that is stored, processed, or transmitted by the system, such as privacy information, and those defined in <a href="https://doi.org/10.6028/NIST.SP.800-60v2r1">NIST SP 800-60</a>.</description>
         <group-as name="information-types" in-json="ARRAY"/>
         <define-flag name="uuid" as-type="uuid">
           <formal-name>Information Type Universally Unique Identifier</formal-name>
@@ -535,8 +532,7 @@
       </assembly>
       <define-assembly name="leveraged-authorization" max-occurs="unbounded">
         <formal-name>Leveraged Authorization</formal-name>
-        <description>A description of another authorized system from which this system inherits capabilities that satisfy security requirements. Another term for this concept is a <em>common control provider</em>.
-        </description>
+        <description>A description of another authorized system from which this system inherits capabilities that satisfy security requirements. Another term for this concept is a <em>common control provider</em>.</description>
         <group-as name="leveraged-authorizations" in-json="ARRAY"/>
         <define-flag name="uuid" as-type="uuid" required="yes">
           <formal-name>Leveraged Authorization Universally Unique Identifier</formal-name>
