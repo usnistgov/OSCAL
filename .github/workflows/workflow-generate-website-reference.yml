@@ -105,7 +105,7 @@ jobs:
         echo "/home/runner/go/bin" >> $GITHUB_PATH
     - name: Setup Golang
       if: steps.cache-hugo.outputs.cache-hit != 'true'
-      uses: actions/setup-go@268d8c0ca0432bb2cf416faae41297df9d262d7f
+      uses: actions/setup-go@c4a742cab115ed795e34d4513e2cf7d472deb55f
       with:
         go-version-file: '${{ env.BRANCH_PATH }}/build/go.mod'
         cache: true
@@ -149,7 +149,7 @@ jobs:
       run: |
         zip ${{ runner.temp }}/metaschema-website.zip -r public/
       working-directory: ${{ env.MAIN_PATH }}/docs
-    - uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8
+    - uses: actions/upload-artifact@83fd05a356d7e2593de66fc9913b3002723633cb
       with:
         name: website
         path: |
@@ -158,7 +158,7 @@ jobs:
     - name: Publish Generated Pages
       # only do this on master
       if: github.event.inputs.commit_resources == 'true' || inputs.commit_resources == true
-      uses: stefanzweifel/git-auto-commit-action@fd157da78fa13d9383e5580d1fd1184d89554b51
+      uses: stefanzweifel/git-auto-commit-action@0049e3fa4059ca715255fbbcb7dea4516f02ce0a
       with:
         repository: ${{ env.MAIN_PATH }}
         file_pattern: docs

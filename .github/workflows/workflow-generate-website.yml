@@ -96,7 +96,7 @@ jobs:
     - name: Generate specification documentation
       run: |
         bash "${CICD_PATH}/generate-specification-documentation.sh"
-    - uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8
+    - uses: actions/upload-artifact@83fd05a356d7e2593de66fc9913b3002723633cb
       with:
         name: specification-docs
         path: |
@@ -115,7 +115,7 @@ jobs:
         echo "/home/runner/go/bin" >> $GITHUB_PATH
     - name: Setup Golang
       if: steps.cache-hugo.outputs.cache-hit != 'true'
-      uses: actions/setup-go@268d8c0ca0432bb2cf416faae41297df9d262d7f
+      uses: actions/setup-go@c4a742cab115ed795e34d4513e2cf7d472deb55f
       with:
         go-version-file: '${{ env.BUILD_PATH }}/go.mod'
         cache: true
@@ -133,7 +133,7 @@ jobs:
       run: |
         zip ${{ runner.temp }}/metaschema-website.zip -r public/
       working-directory: ${{ github.workspace }}/docs
-    - uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8
+    - uses: actions/upload-artifact@83fd05a356d7e2593de66fc9913b3002723633cb
       with:
         name: website
         path: |
@@ -148,7 +148,7 @@ jobs:
         output: html-link-report.md
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    - uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8
+    - uses: actions/upload-artifact@83fd05a356d7e2593de66fc9913b3002723633cb
       with:
         name: html-link-report
         path: html-link-report.md
@@ -164,7 +164,7 @@ jobs:
         script: |
           core.setFailed('Link checker detected broken or invalid links, read attached report.')
     - name: Deploy Website (using access_token)
-      uses: peaceiris/actions-gh-pages@068dc23d9710f1ba62e86896f84735d869951305
+      uses: peaceiris/actions-gh-pages@de7ea6f8efb354206b205ef54722213d99067935
       if: github.event_name == 'push' && inputs.commit_resources == true && github.ref_name == 'main'
       with:
         github_token: ${{ secrets.access_token }}
@@ -173,7 +173,7 @@ jobs:
         publish_branch: nist-pages
         commit_message: Deploying website [ci deploy skip]
     - name: Deploy Website (using COMMIT_TOKEN)
-      uses: peaceiris/actions-gh-pages@068dc23d9710f1ba62e86896f84735d869951305
+      uses: peaceiris/actions-gh-pages@de7ea6f8efb354206b205ef54722213d99067935
       if: github.event_name == 'workflow_dispatch' && github.event.inputs.commit_resources == 'true' && github.ref_name == 'main'
       with:
         github_token: ${{ secrets.COMMIT_TOKEN }}
