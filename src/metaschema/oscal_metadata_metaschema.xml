@@ -776,6 +776,10 @@
                 <p>The <code>media-type</code> provides a hint about the content model of the referenced resource. A valid entry from the <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">IANA Media Types registry</a> SHOULD be used.</p>
             </remarks>
         </flag>
+        <define-flag name="resource-fragment" as-type="string">
+            <formal-name>Resource Fragment</formal-name>
+            <description>In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</description>
+        </define-flag>
         <model>
             <define-field name="text" as-type="markup-line">
                 <formal-name>Link Text</formal-name>
@@ -794,6 +798,11 @@
                 <key-field target="@href" pattern="#(.*)"/>
             </index-has-key>
             <matches target=".[@rel=('reference') and not(starts-with(@href,'#'))]/@href" datatype="uri"/>
+            <matches target="@resource-fragment" regex="(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+">
+                <remarks>
+                    <p>This pattern is based on the fragment Augmented Backus-Naur form (ABNF) syntax provided in [RFC3986 section 3.5](https://www.rfc-editor.org/rfc/rfc3986#section-3.5). Uppercase alpha hex digits are required, which is the preferred normalized form defined in RFC3986.</p>
+                </remarks>
+            </matches>
         </constraint>
         <remarks>
             <p>To provide a cryptographic hash for a remote target resource, a local reference to a back matter <code>resource</code> is needed. The resource allows one or more hash values to be provided using the <code>rlink/hash</code> object.</p>
