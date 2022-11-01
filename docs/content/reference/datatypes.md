@@ -574,26 +574,25 @@ In JSON Schema, this is represented as:
 
 ## Markup Data Types
 
-Structured prose text in OSCAL is designed to map cleanly to equivalent subsets of HTML and Markdown. This allows HTML-like markup to be incorporated in OSCAL XML-based content using an element set maintained in the OSCAL namespace. This HTML-equivalent element set is not intended to be treated directly as HTML, but to be readily and transparently converted to HTML (or other presentational formats) as needed. Similarly, OSCAL uses a subset of Markdown for use in OSCAL JSON- and YAML-based content. A mapping is supported between the HTML-like element set and the Markdown syntax, which supports transparent and lossless bidirectional mapping between both OSCAL markup representations.
+Structured prose text is designed to map cleanly to equivalent subsets of HTML and Markdown. This allows HTML-like markup to be incorporated in OSCAL XML-based content using an element set maintained in the OSCAL namespace. This HTML-equivalent element set is not intended to be treated directly as HTML, but to be readily and transparently converted to HTML (or other presentational formats) as needed. Similarly, OSCAL uses a subset of Markdown for use in OSCAL JSON- and YAML-based content. A mapping is supported between the HTML-like element set and the Markdown syntax, which supports transparent and lossless bidirectional mapping between both markup representations.
 
-The OSCAL HTML-like syntax supports:
+The HTML-like syntax supports:
 
 - HTML paragraphs (`p`), headers (`h1`-`h6`), tables (`table`), preformatted text (`pre`), code blocks (`code`), and ordered and unordered lists (`ol` and `ul`.)
 
 - Within paragraphs or text content: `a`, `img`, `strong`, `em`, `b`, `i`, `sup`, `sub`.
 
+In remarks below and throughout this documentation, this element set may be referred to as "prose content" or "prose". This tag set (and Markdown equivalent) is defined as a module.
 
-In remarks below and throughout this documentation, this element set may be referred to as "prose content" or "prose". A future OSCAL could support the definition of this tag set (and Markdown equivalent) as a module, enabling our HTML subset to be switched out for something else. (Its prose model would be different from OSCAL prose as currently defined.)
+Note that elements such as `div`, `blockquote`, `section` or `aside`, used in HTML to provide structure, are *not permitted*. Instead, structures should be represented using specific model elements (or objects in JSON) such as `part`, which can include prose.
 
-Note that elements such as `div`, `blockquote`, `section` or `aside`, used in HTML to provide structure, are *not permitted in OSCAL*. Structures in OSCAL should be represented using OSCAL elements (or objects in JSON) such as `part`, which can include prose.
+In addition, there are contexts where prose usage may be further constrained. For example, at a higher level (outside the base schema) an application could forbid the use of prose headers `h1-h6` in favor of nested `part` elements with their own titles.
 
-In addition, there are contexts in OSCAL where prose usage may be further constrained. For example, at a higher level (outside the base schema) an OSCAL application could forbid the use of prose headers `h1-h6` in favor of nested OSCAL `part` elements with their own titles.
-
-The OSCAL Markdown syntax is loosely based on CommonMark. When in doubt about Markdown features and syntax, we look to CommonMark for guidance, largely because it is more rigorously tested than many other forms of Markdown.
+The Markdown syntax is loosely based on [CommonMark](https://commonmark.org/). When in doubt about Markdown features and syntax, we look to CommonMark for guidance, largely because it is more rigorously tested than many other forms of Markdown.
 
 ### markup-line
 
-The following table describes the equivalent constructs in HTML and Markdown used in OSCAL within the `markup-line` data type.
+The following table describes the equivalent constructs in HTML and Markdown used within the `markup-line` data type.
 
 | Markup Type | HTML | Markdown |
 |:--- |:--- |:--- |
@@ -608,13 +607,13 @@ The following table describes the equivalent constructs in HTML and Markdown use
 | Image | &lt;img alt="*alt text*" src="*url*" title="*title text*"/&gt; | !\[*alt text*](*url* "*title text*")
 | Link | &lt;a *href*="*url*"&gt;*text*&lt;/a&gt; | \[*text*](*url*)
 
-Note: Markdown does not have an equivalent of the HTML &lt;i&gt; and &lt;b&gt; tags, which indicate italics and bold respectively. These concepts are mapped in OSCAL markup text to &lt;em&gt; and &lt;strong&gt; [common mark](https://spec.commonmark.org/0.29/#emphasis-and-strong-emphasis), which render equivalently in browsers, but do not have exactly the same semantics. While this mapping is imperfect, it represents the common uses of these HTML tags.
+Note: Markdown does not have an equivalent of the HTML &lt;i&gt; and &lt;b&gt; tags, which indicate italics and bold respectively. These concepts are mapped in markup text to &lt;em&gt; and &lt;strong&gt; (see [common mark](https://spec.commonmark.org/0.29/#emphasis-and-strong-emphasis)), which render equivalently in browsers, but do not have exactly the same semantics. While this mapping is imperfect, it represents the common uses of these HTML tags.
 
 #### Parameter Insertion
 
 The OSCAL catalog, profile, and implementation layer models allow for control parameters to be defined and injected into prose text.
 
-Parameter injection is handled in OSCAL as follows using the <code>&lt;insert&gt;</code> tag, where you must provide its <code>type</code> and the identifier reference with <code>id-ref</code>:
+Reference injection is handled using the <code>&lt;insert&gt;</code> tag, where you must provide its <code>type</code> and the identifier reference with <code>id-ref</code>:
 
 ```html
 This implements <insert type="param" id-ref="pm-9_prm_1"/> as required to address organizational changes.
@@ -677,14 +676,14 @@ Tables are also supported by `markup-multiline` which are mapped from Markdown t
 - The first row in a Markdown table is considered a header row, with each cell mapped as a &lt;th&gt;.
 - The alignment formatting (second) row of the Markdown table is not converted to HTML. Formatting is currently ignored.
 - Each remaining row is mapped as a cell using the &lt;td&gt; tag.
-- HTML `colspan` and `rowspan` are not supported by Markdown, and so are excluded from OSCAL.
+- HTML `colspan` and `rowspan` are not supported by Markdown, and so are excluded from use.
 
-OSCAL attempts to support simple tables mainly due to the prevalence of tables in legacy data sets. However, producers of OSCAL data should note that when they have tabular information, these are frequently semantic structures or matrices that can be described directly in OSCAL as named parts and properties or as parts, sub-parts and paragraphs. This ensures that their nominal or represented semantics are accessible for processing when this information would be lost in plain table cells. Table markup should be used only as a fallback option when stronger semantic labeling is not possible.
+Simple tables are mainly supported due to the prevalence of tables in legacy data sets. However, producers of OSCAL data should note that when they have tabular information, these are frequently semantic structures or matrices that can be described directly in OSCAL as named parts and properties or as parts, sub-parts and paragraphs. This ensures that their nominal or represented semantics are accessible for processing when this information would be lost in plain table cells. Table markup should be used only as a fallback option when stronger semantic labeling is not possible.
 
 Tables are mapped from HTML to Markdown as follows:
 
 * Only a single header row &lt;tr&gt;&lt;th&gt; is supported. This row is mapped to the Markdown table header, with header cells preceded, delimited, and terminated by `|`.
-* The second row is given as a sequence of `---`, as many as the table has columns, delimited by single `|`. In Markdown, a simple syntax here can be used to indicate the alignment of cells; OSCAL HTML does not support this feature.
+* The second row is given as a sequence of `---`, as many as the table has columns, delimited by single `|`. In Markdown, a simple syntax here can be used to indicate the alignment of cells; the HTML binding does not support this feature.
 * Each subsequent row is mapped to the Markdown table rows, with cells preceded, delimited, and terminated by `|`.
 
 For example:
@@ -705,7 +704,6 @@ Is mapped to the Markdown table:
 | --- | --- |
 | Have some of | Try all of |
 ```
-
 
 #### Line feeds in Markdown
 
