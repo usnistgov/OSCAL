@@ -45,6 +45,11 @@
       <assembly ref="control-implementation" min-occurs="1"/>
       <assembly ref="back-matter"/>
     </model>
+    <constraint>
+      <index name="by-component-uuid" target="control-implementation/implemented-requirement//by-component|doc(system-implementation/leveraged-authorization/link[@rel='system-security-plan']/@href)/system-security-plan/control-implementation/implemented-requirement//by-component">
+        <key-field target="@uuid"/>
+      </index>
+    </constraint>
   </define-assembly>
 
   <!-- ######################################################### -->
@@ -672,7 +677,7 @@
           <p>Since multiple <code>set-parameter</code> entries can be provided, each parameter must be set only once.</p>
         </remarks>
       </is-unique>
-      <index name="by-component-export-provided-uuid" target="implemented-requirement/by-component/export/provided">
+      <index name="by-component-export-provided-uuid" target="implemented-requirement//by-component/export/provided">
         <key-field target="@uuid"/>
       </index>
     </constraint>
@@ -1042,6 +1047,13 @@
           <p>Since multiple <code>set-parameter</code> entries can be provided, each parameter must be set only once.</p>
         </remarks>
       </is-unique>
+
+      <allowed-values target="link/@rel">
+        <enum value="provided-by">A reference to the UUID of a control or statement <code>by-component</code> object that is used as evidence of implementation.</enum>
+      </allowed-values>
+      <index-has-key name="by-component-uuid" target="link[@rel='provided-by']">
+        <key-field target="@href" pattern="#(.*)" />
+      </index-has-key>
     </constraint>
     <remarks>
       <p>Use of <code>set-parameter</code> in this context, sets the parameter for the control referenced in the containing <code>implemented-requirement</code> applied to the referenced component. If the <code>by-component</code> is used as a child of a <code>statement</code>, then the parameter value also applies only in the context of the referenced statement. If the same parameter is also set in the <code>control-implementation</code> or a specific <code>implemented-requirement</code>, then this <code>by-component/set-parameter</code> value will override the other value(s) in the context of the referenced component, control, and statement (if parent).</p>
