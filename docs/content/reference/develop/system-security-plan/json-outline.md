@@ -5157,7 +5157,7 @@ The following outline is a representation of the [JSON format](https://github.co
                <p><span class="OM-lit"> }, </span></p>
             </details>
             <details class="OM-entry">
-               <summary><a class="OM-name" href="../json-reference/#/system-security-plan/back-matter">back-matter</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit">{<span class="show-closed"> … }</span></span></summary>
+               <summary><a class="OM-name" href="../json-reference/#/system-security-plan/back-matter">back-matter</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit">{<span class="show-closed"> … }, </span></span></summary>
                <div class="model-container object">
                   <details class="OM-entry">
                      <summary><span class="sq"><a class="OM-name" href="../json-reference/#/system-security-plan/back-matter/resources">resources</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
@@ -5355,7 +5355,7 @@ The following outline is a representation of the [JSON format](https://github.co
                      <p><span class="OM-lit">], </span></p>
                   </details>
                </div>
-               <p><span class="OM-lit"> }</span></p>
+               <p><span class="OM-lit"> }, </span></p>
             </details>
          </div>
          <p><span class="OM-lit"> }</span></p>

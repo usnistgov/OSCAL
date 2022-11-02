@@ -2982,7 +2982,7 @@ The following is a reference for the JSON object definitions derived from this m
             </details>
          </div>
          <details>
-            <summary>Constraints (3)</summary>
+            <summary>Constraints (5)</summary>
             
             <div class="constraint">
                <p><span class="usa-tag">allowed value</span> for <code class="path">link/@rel</code></p>
@@ -3031,6 +3031,21 @@ The following is a reference for the JSON object definitions derived from this m
             
             <div class="constraint">
                <p><span class="usa-tag">is unique</span> for <code class="path">set-parameter</code>: any target value must be unique (i.e., occur only once)</p>
+            </div>
+            
+            
+            <div class="constraint">
+               <p><span class="usa-tag">allowed value</span> for <code class="path">link/@rel</code></p>
+               <p>The value <b>must</b> be one of the following:</p>
+               <ul>
+                  
+                  <li><strong>provided-by</strong>: A reference to the UUID of a control or statement by-component object that is used
+                     as evidence of implementation.</li>
+                  </ul>
+            </div>
+            
+            <div class="constraint">
+               <p><span class="usa-tag">index has key</span> for <code class="path">link[@rel='provided-by']</code>this value must correspond to a listing in the index <code>by-component-uuid</code> using a key constructed of key field(s) <code>@href</code></p>
             </div>
             </details>
          <details open="open">
@@ -5942,7 +5957,7 @@ The following is a reference for the JSON object definitions derived from this m
             </div>
             
             <div class="constraint">
-               <p><span class="usa-tag">index</span> for <code class="path">implemented-requirement/by-component/export/provided</code> an index <code>by-component-export-provided-uuid</code> shall list values returned by targets <code>implemented-requirement/by-component/export/provided</code> using keys constructed of key field(s) <code>@uuid</code></p>
+               <p><span class="usa-tag">index</span> for <code class="path">implemented-requirement//by-component/export/provided</code> an index <code>by-component-export-provided-uuid</code> shall list values returned by targets <code>implemented-requirement//by-component/export/provided</code> using keys constructed of key field(s) <code>@uuid</code></p>
             </div>
             </details>
          <details open="open">
@@ -22254,6 +22269,13 @@ The following is a reference for the JSON object definitions derived from this m
       <div class="body">
          <p class="description"><span class="usa-tag">description</span> A system security plan, such as those described in NIST SP 800-18.</p>
          <p><span class="usa-tag">root name</span> <code class="name">system-security-plan</code></p>
+         <details>
+            <summary>Constraint (1)</summary>
+            
+            <div class="constraint">
+               <p><span class="usa-tag">index</span> for <code class="path">control-implementation/implemented-requirement//by-component|doc(system-implementation/leveraged-authorization/link[@rel='system-security-plan']/@href)/system-security-plan/control-implementation/implemented-requirement//by-component</code> an index <code>by-component-uuid</code> shall list values returned by targets <code>control-implementation/implemented-requirement//by-component|doc(system-implementation/leveraged-authorization/link[@rel='system-security-plan']/@href)/system-security-plan/control-implementation/implemented-requirement//by-component</code> using keys constructed of key field(s) <code>@uuid</code></p>
+            </div>
+            </details>
          <details open="open">
             <summary>Properties (7)</summary>
             <div class="model assembly-model">
