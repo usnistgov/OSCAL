@@ -34,7 +34,7 @@
         <dependency>
             <groupId>com.xmlcalabash</groupId>
             <artifactId>xmlcalabash</artifactId>
-            <version>1.5.1-100</version>
+            <version>1.5.2-110</version>
         </dependency>
     </dependencies>
 
