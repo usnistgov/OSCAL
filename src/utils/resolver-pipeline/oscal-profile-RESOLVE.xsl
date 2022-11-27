@@ -35,7 +35,12 @@
          - retain opr:ERROR and opr:WARNING messages in results. -->
 
     <xsl:param name="trace" as="xs:string">off</xsl:param>
-    
+
+    <!-- Turning $save-intermediate to 'on' will save the intermediate file from
+        each transformation of the input profile. Intermediate files from
+        processing imported profiles are not saved. -->
+    <xsl:param name="save-intermediate" as="xs:string">off</xsl:param>
+
     <xsl:param name="uri-stack" as="xs:anyURI*" select="()"/>
     
     <!-- $path-to-source should point back to the location of the source catalog (or profile) from its result,
@@ -91,11 +96,18 @@
         </xsl:map-entry>
         <xsl:map-entry key="QName('','hide-source-profile-uri')" select="$hide-source-profile-uri"/>
     </xsl:template>
-    
+
+    <xsl:template mode="opr:provide-parameters" match="opr:transform[.='oscal-profile-resolve-select.xsl']">
+        <xsl:map-entry key="QName('','trace')" select="$trace"/>
+    </xsl:template>
+
     <!-- for opr:transformation, the semantics are "apply this XSLT" -->
     <xsl:template mode="opr:execute" match="opr:transform">
         <xsl:param name="sourcedoc" as="document-node()"/>
         <xsl:variable name="xslt-spec" select="."/>
+        <xsl:call-template name="alert">
+            <xsl:with-param name="msg" expand-text="true">Start of step { count(.|preceding-sibling::*) }: XSLT { $xslt-spec }, document {$home/base-uri() => replace('.*/','')} ... </xsl:with-param>
+        </xsl:call-template>
         <xsl:variable name="runtime-params" as="map(xs:QName,item()*)">
             <xsl:map>
                 <xsl:map-entry key="QName('','profile-origin-uri')" select="base-uri($home)"/>
@@ -124,15 +136,29 @@
              https://www.w3.org/TR/xpath-functions-31/#func-transform -->
         <xsl:sequence select="transform($runtime)?output"/>
         <xsl:call-template name="alert">
-            <xsl:with-param name="msg" expand-text="true"> ... applied step { count(.|preceding-sibling::*) }: XSLT { $xslt-spec } ... </xsl:with-param>
+            <xsl:with-param name="msg" expand-text="true">End of step { count(.|preceding-sibling::*) }: XSLT { $xslt-spec }, document {$home/base-uri() => replace('.*/','')} ... </xsl:with-param>
         </xsl:call-template>
+    </xsl:template>
+
+    <!-- If there were any terminating error messages, issue the first one and
+            stop. In this case, the output document has no elements. -->
+    <xsl:template mode="opr:execute" match="opr:terminate-if-severe-errors">
+        <xsl:param name="sourcedoc" as="document-node()"/>
+        <xsl:call-template name="alert">
+            <xsl:with-param name="msg" expand-text="true">Applying step { count(.|preceding-sibling::*) }: checking for severe errors ... </xsl:with-param>
+        </xsl:call-template>
+        <xsl:for-each select="$sourcedoc/descendant::processing-instruction('message-handler')[starts-with(.,$terminating-message)]">
+            <xsl:message terminate="yes" expand-text="yes">{.}</xsl:message>
+        </xsl:for-each>
+        <!-- If we reach this point, pass $sourcedoc back for the next pipeline step. -->
+        <xsl:sequence select="$sourcedoc"/>
     </xsl:template>
 
     <!-- The finalize step performs any last cleanup. -->
     <xsl:template mode="opr:execute" match="opr:finalize">
         <xsl:param name="sourcedoc" as="document-node()"/>
         <xsl:call-template name="alert">
-            <xsl:with-param name="msg" expand-text="true"> ... applied step {
+            <xsl:with-param name="msg" expand-text="true">Applying step {
                 count(.|preceding-sibling::*) }: finalize ... </xsl:with-param>
         </xsl:call-template>
 
