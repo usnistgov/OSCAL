@@ -486,25 +486,88 @@
     </x:scenario>
 
     <x:scenario label="Tests for match='profile' mode='o:select' template">
-        <!-- Tests for this template are incomplete. When it is decided whether to keep this
-            approach, we can add more test scenarios.-->
-        <x:scenario label="Profile that calls itself" catch="yes" pending="Returns nothing now">
-            <x:context mode="o:select" select="doc($ov:filedir || '/base-test_profile.xml')/o:profile">
-                <x:param name="uri-stack" tunnel="yes"
-                    select="xs:anyURI($ov:filedir || '/base-test_profile.xml')"/>
-            </x:context>
-            <x:expect label="Fatal XSLT error due to circular reference"
-                test="$x:result instance of map(*) and $x:result('err') instance of map(*)"/>
+        <x:scenario label="Tests for circularity error checking: circular_profile.xml > home_profile.xml > circular_profile.xml; ">
+            <x:scenario label="Template context is home_profile.xml, coming from circular_profile.xml" catch="yes">
+                <x:context mode="o:select" select="doc($ov:filedir || '/home_profile.xml')/o:profile">
+                    <x:param name="uri-stack" tunnel="yes"
+                        select="xs:anyURI($ov:filedir || '/circular_profile.xml')"/>
+                </x:context>
+                <!-- Calling oscal-profile-RESOLVE.xsl causes a terminating error, not only a PI representing a terminating error. -->
+                <x:expect label="Fatal XSLT error due to circular reference"
+                    test="$x:result instance of map(*) and $x:result('err') instance of map(*)"/>
+                <x:variable name="error-message" select="$x:result('err')('value')/string()" as="xs:string?"/>
+                <x:expect label="Error message mentions circularity"
+                    test="contains($error-message, 'Terminating Error: Circular reference to profile ')"/>
+                <x:expect label="Problematic import is circular_profile.xml"
+                    test="matches($error-message, 'reference to profile .*/circular_profile\.xml.+Stack:')"/>
+                <x:expect label="Stack of profiles is circular_profile.xml followed by home_profile.xml"
+                    test="matches($error-message, 'Stack: .*/circular_profile\.xml.+/home_profile\.xml')"/>
+            </x:scenario>
+            <x:scenario label="Template context is circular_profile.xml, coming from home_profile.xml" catch="yes">
+                <x:context mode="o:select" select="doc($ov:filedir || '/circular_profile.xml')/o:profile">
+                    <x:param name="uri-stack" tunnel="yes"
+                        select="xs:anyURI($ov:filedir || '/home_profile.xml')"/>
+                </x:context>
+                <x:expect label="Fatal XSLT error due to circular reference"
+                    test="$x:result instance of map(*) and $x:result('err') instance of map(*)"/>
+                <x:variable name="error-message" select="$x:result('err')('value')/string()" as="xs:string?"/>
+                <x:expect label="Error message mentions circularity"
+                    test="contains($error-message, 'Terminating Error: Circular reference to profile ')"/>
+                <x:expect label="Problematic import is home_profile.xml"
+                    test="matches($error-message, 'reference to profile .*/home_profile\.xml.+Stack:')"/>
+                <x:expect label="Stack of profiles is home_profile.xml followed by circular_profile.xml"
+                    test="matches($error-message, 'Stack: .*/home_profile\.xml.+/circular_profile\.xml')"/>
+            </x:scenario>
         </x:scenario>
-        <x:scenario label="Profile that calls a distinct profile"
-            pending="Not implemented yet; revisit later">
-            <x:context mode="o:select" select="doc($ov:filedir || '/base2-test_profile.xml')/o:profile">
-                <x:param name="uri-stack" tunnel="yes"
-                    select="xs:anyURI($ov:filedir || '/base-test_profile.xml')"/>
-            </x:context>
-            <x:expect label="Catalog">
-                <catalog uuid="...">...</catalog>
-            </x:expect>
+        <x:scenario label="Tests for profiles that import distinct profiles: import-profile_profile.xml > import-profile2_profile.xml > base-test_profile.xml; ">
+            <x:scenario label="Template context is import-profile2_profile.xml, coming from import-profile_profile.xml">
+                <!-- import-profile2_profile.xml is the profile we're trying to import, from import-profile_profile.xml. -->
+                <x:context mode="o:select" select="doc($ov:filedir || '/import-profile2_profile.xml')/o:profile">
+                    <x:param name="uri-stack" tunnel="yes"
+                        select="xs:anyURI($ov:filedir || '/import-profile_profile.xml')"/>
+                    <!-- The import instruction tunnel parameter is from the profile
+                        we're coming from, not the profile we're about to import. -->
+                    <x:param name="import-instruction" tunnel="yes"
+                        select="doc($ov:filedir || '/import-profile_profile.xml')/o:profile/o:import"/>
+                </x:context>
+                <x:expect label="selection element, as when importing the catalog that results from resolving import-profile2_profile.xml"
+                    test="*">
+                    <selection opr:src="..." uuid="...">...</selection>
+                </x:expect>
+                <x:expect label="PI indicating recursion"
+                    test="exists(processing-instruction('message-handler')[starts-with(.,'Info: Resolving imported profile')])"/>
+                <x:expect label="The controls included in import-profile2_profile.xml that are also included by import-profile1_profile.xml: a1 and c1"
+                    test="$x:result/descendant::o:control/@id/string()"
+                    select="('a1','c1')"/>
+                <x:expect label="Control a1 has props from import-profile2_profile.xml and the catalog"
+                    test="$x:result/descendant::o:control[@id='a1']/o:prop/@name/string()"
+                    select="('target_child','label')"/>
+            </x:scenario>
+            <x:scenario label="Template context is base-test_profile.xml, coming from import-profile2_profile.xml">
+                <x:context mode="o:select" select="doc($ov:filedir || '/base-test_profile.xml')/o:profile">
+                    <x:param name="uri-stack" tunnel="yes"
+                        select="(
+                        )"/>
+                    <!-- The import instruction tunnel parameter is from the profile
+                        we're coming from, not the profile we're about to import. -->
+                    <x:param name="import-instruction" tunnel="yes"
+                        select="doc($ov:filedir || '/import-profile2_profile.xml')/o:profile/o:import"/>
+                </x:context>
+                <x:expect label="selection element, as when importing the catalog that results from resolving base-test_profile.xml"
+                    test="*">
+                    <selection opr:src="..." uuid="...">...</selection>
+                </x:expect>
+                <x:expect label="PI indicating recursion"
+                    test="exists(processing-instruction('message-handler')[starts-with(.,'Info: Resolving imported profile')])"/>
+                <x:expect label="The controls included in base-test_profile.xml that are also included by import-profile2_profile.xml: a1, b1, and c1"
+                    test="$x:result/descendant::o:control/@id/string()"
+                    select="('a1','b1','c1')"/>
+                <!-- Note about the next x:expect element: A top-level test would see the prop that import-profile2_profile.xml
+                    adds (target_child). However, it is not in the output of this template call, so this scenario does not see it. -->
+                <x:expect label="Control a1 has the prop from the catalog (base-test_profile.xml didn't add any)"
+                    test="$x:result/descendant::o:control[@id='a1']/o:prop/@name/string()"
+                    select="('label')"/>
+            </x:scenario>
         </x:scenario>
     </x:scenario>
 
@@ -603,16 +666,21 @@
             <x:expect label="PI indicating a terminating error"
                 test="exists($x:result/self::processing-instruction('message-handler')[starts-with(.,'Terminating ')])"/>
         </x:scenario>
-        <x:scenario label="Error case: Resource reference is circular" catch="yes" pending="XSLT needs to catch up to spec">
-            <x:context mode="o:select"
-                select="(doc($ov:filedir || '/circular_profile.xml')//o:import)[1]"/>
-            <x:expect label="PI indicating a terminating error"
-                test="exists($x:result/self::processing-instruction('message-handler')[starts-with(.,'Terminating ')])"/>
-        </x:scenario>
         <x:scenario label="Error case: href is not castable as xs:anyURI">
             <x:context mode="o:select"><import/></x:context>
             <x:expect label="PI indicating a terminating error"
                 test="exists($x:result/self::processing-instruction('message-handler')[starts-with(.,'Terminating ')])"/>
+        </x:scenario>
+        <x:scenario label="Error case: Resource reference is circular" catch="yes">
+            <x:context mode="o:select"
+                select="(doc($ov:filedir || '/circular_profile.xml')//o:import)[1]"/>
+            <!-- Calling oscal-profile-RESOLVE.xsl downstream from this template causes a
+                terminating error, not only a PI representing a terminating error. -->
+            <x:expect label="Fatal XSLT error due to circular reference"
+                test="$x:result instance of map(*) and $x:result('err') instance of map(*)"/>
+            <x:variable name="error-message" select="$x:result('err')('value')/string()" as="xs:string?"/>
+            <x:expect label="Error message mentions circularity"
+                test="contains($error-message, 'Terminating Error: Circular reference to profile ')"/>
         </x:scenario>
     </x:scenario>
 
@@ -1495,21 +1563,46 @@
         </x:scenario>
     </x:scenario>
     
-    <x:scenario label="Tests for o:resolve-profile function" pending="incomplete">
-        <!-- Intended for the case where an profile imports another profile,
-            this function is not in use yet. For now, just test that the
-            function can run. When it is decided whether to keep this
-            approach, we can add more test scenarios. -->
-        <x:scenario label="Sanity check">
+    <x:scenario label="Tests for o:resolve-profile function">
+        <x:scenario label="Sanity check: Resolve base-test_profile.xml as if importing from import-profile2_profile.xml">
             <x:call function="o:resolve-profile">
-                <x:param name="profile">
-                    <o:profile href="{$ov:filedir}/base-test_profile.xml"/>
-                </x:param>
-                <x:param name="uri-stack" select="xs:anyURI($ov:filedir || '/base-test_profile.xml')"/>
+                <x:param name="profile" select="doc($ov:filedir || '/base-test_profile.xml')/o:profile"/>
+                <x:param name="uri-stack" select="xs:anyURI($ov:filedir || '/import-profile2_profile.xml')"/>
             </x:call>
-            <x:expect label="Catalog">
+            <x:expect label="Catalog" test="/o:catalog">
                 <catalog uuid="...">...</catalog>
             </x:expect>
+            <x:expect label="Catalog contains the controls included in base-test_profile.xml, including child controls"
+                test="$x:result/descendant::o:control/@id/string()"
+                select="('a1','b1','c1','c3','c3.a','c3.a-1')"/>
+        </x:scenario>
+        <x:scenario label="Resolve base-test_profile.xml as if importing from import-profile1_profile.xml">
+            <x:call function="o:resolve-profile">
+                <x:param name="profile" select="doc($ov:filedir || '/base-test_profile.xml')/o:profile"/>
+                <x:param name="uri-stack" select="(
+                    xs:anyURI($ov:filedir || '/import-profile1_profile.xml'),
+                    xs:anyURI($ov:filedir || '/import-profile2_profile.xml')
+                    )"/>
+            </x:call>
+            <x:expect label="Catalog" test="/o:catalog">
+                <catalog uuid="...">...</catalog>
+            </x:expect>
+            <x:expect label="Catalog contains the controls included in base-test_profile.xml, including child controls"
+                test="$x:result/descendant::o:control/@id/string()"
+                select="('a1','b1','c1','c3','c3.a','c3.a-1')"/>
+        </x:scenario>
+        <x:scenario label="Resolve circular_profile.xml as if importing from home_profile.xml" catch="yes">
+            <x:call function="o:resolve-profile">
+                <x:param name="profile" select="doc($ov:filedir || '/circular_profile.xml')/o:profile"/>
+                <x:param name="uri-stack" select="xs:anyURI($ov:filedir || '/home_profile.xml')"/>
+            </x:call>
+            <x:expect label="Fatal XSLT error due to circular reference"
+                test="$x:result instance of map(*) and $x:result('err') instance of map(*)"/>
+            <x:variable name="error-message" select="$x:result('err')('value')/string()" as="xs:string?"/>
+            <x:expect label="Error message mentions circularity"
+                test="contains($error-message, 'Terminating Error: Circular reference to profile ')"/>
+            <x:expect label="Problematic import is home_profile.xml"
+                test="matches($error-message, 'reference to profile .*/home_profile\.xml.+Stack:')"/>
         </x:scenario>
     </x:scenario>
 </x:description>

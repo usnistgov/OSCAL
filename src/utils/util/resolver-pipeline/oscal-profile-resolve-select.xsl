@@ -21,6 +21,11 @@
 
     <!--<xsl:param name="profile-origin-uri"   required="yes" as="xs:anyURI"/>-->
     <xsl:param name="uri-stack-in" select="()" as="xs:anyURI*"/>
+    
+    <!-- Receive $trace from oscal-profile-RESOLVE.xsl so that we can pass it
+        back if calling oscal-profile-RESOLVE.xsl recursively when importing
+        a profile. -->
+    <xsl:param name="trace" as="xs:string">off</xsl:param>
 
 <!-- The default processing is to pass everything through.
      Note: The source catalog includes other contents besides selected controls
@@ -48,32 +53,55 @@
         </xsl:copy>
     </xsl:template>
 
-<!-- We reach a profile document in mode o:select only by way of an import/@href (see below)
-     when we do, we have to see to it that we haven't already been called; if
+<!-- We reach a profile document in mode o:select only by way of an import/@href (see below).
+     When we do, we have to see to it that we haven't already been called; if
      not, we execute the Ourobouros function, which calls the parent wrapper RESOLVE pipeline
      to return a catalog. -->
     <xsl:template match="profile" mode="o:select">
-        <xsl:param name="uri-stack" tunnel="yes" select="()"/>
-        <!-- $uri-stack contains an import call stack trace from the point of entry -->
-        <xsl:variable name="uri-here" select="base-uri(.)"/>
-        <xsl:if test="not($uri-here = $uri-stack)">
-          <!--<xsl:sequence select="o:resolve-profile(.,$uri-stack)"/>-->
-            <xsl:copy copy-namespaces="no">
-                <xsl:call-template name="mh:message-handler">
-                    <xsl:with-param name="message-type" select="'Warning'"/>
-                    <xsl:with-param name="text" expand-text="yes">Profile '{$uri-here
-                        }' not imported. Implementation supports only catalogs so far.</xsl:with-param>
-                </xsl:call-template>
-                <!--<xsl:apply-templates mode="o:select" select="node() | @*">
-                    <xsl:with-param name="uri-stack" tunnel="yes" select="$uri-stack,$uri-here"/>
-                </xsl:apply-templates>-->
-            </xsl:copy>                
-            </xsl:if>
+        <xsl:param name="uri-stack" tunnel="yes" as="xs:anyURI*" select="()"/>
+        <!-- $uri-stack contains an import call stack trace from the point of entry.
+            For instance, if C:/profile1.xml imports C:/profile2.xml, which in turn imports
+            C:/profile3.xml, and we reach this template on document C:/profile3.xml,
+            then uri-stack is ('file:/C:/profile1.xml', 'file:/C:/profile2.xml').-->
 
+        <!-- If debugging makes it desirable to see the import instruction in effect
+            when this template is called, make it accessible by uncommenting xsl:param:
+        <xsl:param name="import-instruction" tunnel="yes"/>
+        -->
+
+        <xsl:variable name="uri-here" as="xs:anyURI?" select="base-uri(.)"/>
+        <xsl:choose>
+            <xsl:when test="($uri-here = $uri-stack)">
+                <!-- If $uri-here is in the $uri-stack sequence, it means we have been here before.
+                    Return PI indicating terminating error and do not call oscal-profile-RESOLVE.xsl.
+                    We don't terminate immediately, though.
+                -->
+                <xsl:call-template name="mh:message-handler">
+                    <xsl:with-param name="message-type" select="'Error'"/>
+                    <xsl:with-param name="text" expand-text="yes">Circular reference to profile '{$uri-here
+                        }'. Stack: {string-join($uri-stack,'; ')}.</xsl:with-param>
+                    <xsl:with-param name="terminate" select="true()"/>
+                </xsl:call-template>                
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:call-template name="mh:message-handler">
+                    <xsl:with-param name="message-type" select="'Info'"/>
+                    <xsl:with-param name="text" expand-text="yes">Resolving imported profile '{$uri-here
+                        }'.</xsl:with-param>
+                </xsl:call-template>
+                <xsl:variable name="resolved-profile" select="o:resolve-profile(.,$uri-stack)"/>
+                <xsl:apply-templates mode="o:select" select="$resolved-profile/o:catalog">
+                    <!-- When selecting from resolved profile, add this document's URI to end of
+                        $uri-stack sequence. -->
+                    <xsl:with-param name="uri-stack" tunnel="yes" select="($uri-stack,$uri-here)"/>
+                </xsl:apply-templates>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:template>
 
     <xsl:template match="catalog" mode="o:select">
-        <selection opr:src="{document-uri(root())}">
+        <xsl:param name="uri-stack" tunnel="yes" as="xs:anyURI*" select="()"/>
+        <selection opr:src="{if (exists($uri-stack)) then $uri-stack[last()] else document-uri(root())}">
             <xsl:copy-of select="@* except @xsi:*" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
             <!--<xsl:attribute name="opr:base" select="document-uri(root())"/>-->
             <xsl:apply-templates mode="#current"/>
@@ -115,12 +143,28 @@
 
 <!-- OSCAL issue        -->
         <xsl:variable name="linked-resource" select="key('cross-reference',@href)"/>
-        <xsl:apply-templates select="$linked-resource" mode="o:import">
-            <xsl:with-param name="import-instruction" select="." tunnel="yes"/>
-        </xsl:apply-templates>
-        <xsl:apply-templates mode="#current" select="o:resource-or-error(@href)">
-            <xsl:with-param name="import-instruction" select="." tunnel="yes"/>
-        </xsl:apply-templates>
+        <xsl:variable name="importing-linked-resource">
+            <xsl:apply-templates select="$linked-resource" mode="o:import">
+                <xsl:with-param name="import-instruction" select="." tunnel="yes"/>
+            </xsl:apply-templates>
+        </xsl:variable>
+        <xsl:variable name="selecting-resource">
+            <xsl:apply-templates mode="#current" select="o:resource-or-error(@href)">
+                <xsl:with-param name="import-instruction" select="." tunnel="yes"/>
+            </xsl:apply-templates>
+        </xsl:variable>
+        <xsl:variable name="terminating-errors" as="processing-instruction('message-handler')*"
+            select="($importing-linked-resource,$selecting-resource)/
+            descendant::processing-instruction('message-handler')[starts-with(.,'Terminating ')]"/>
+        <xsl:choose>
+            <xsl:when test="exists($terminating-errors)">
+                <xsl:sequence select="$terminating-errors"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:sequence select="$importing-linked-resource"/>
+                <xsl:sequence select="$selecting-resource"/>                
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:template>
 
     <!-- We want a group even if there is nothing to put in it, for potential merging downstream  -->
@@ -176,12 +220,13 @@
 
     <xsl:function name="o:resolve-profile">
         <xsl:param name="profile" as="element(profile)"/>
-        <xsl:param name="uri-stack" as="xs:anyURI*"/>
+        <xsl:param name="uri-stack" as="xs:anyURI*"/><!-- prior stack, not including URI of $profile -->
         <xsl:variable name="runtime-params" as="map(xs:QName,item()*)">
             <xsl:map>
                 <xsl:map-entry key="QName('','profile-origin-uri')" select="base-uri($profile)"/>
                 <xsl:map-entry key="QName('','path-to-source')"     select="'.'"/>
-                <xsl:map-entry key="QName('','uri-stack-in')"       select="$uri-stack"/>
+                <xsl:map-entry key="QName('','uri-stack')"          select="$uri-stack"/>
+                <xsl:map-entry key="QName('','trace')"              select="$trace"/>
             </xsl:map>
         </xsl:variable>
         <xsl:variable name="runtime" as="map(xs:string, item())">
@@ -197,9 +242,7 @@
              unless a base output URI is given
              https://www.w3.org/TR/xpath-functions-31/#func-transform -->
         <xsl:sequence select="transform($runtime)?output"/>
-        <!--<xsl:call-template name="alert">
-            <xsl:with-param name="msg" expand-text="true"> ... applied step { count(.|preceding-sibling::*) }: XSLT { $xslt-spec } ... </xsl:with-param>
-        </xsl:call-template>-->
+
     </xsl:function>
 
 
