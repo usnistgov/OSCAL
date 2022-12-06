@@ -39,7 +39,7 @@
             <define-flag name="uuid" as-type="uuid" required="yes">
                   <formal-name>Profile Universally Unique Identifier</formal-name>
                   <!-- Identifier Declaration -->
-                  <description>Provides a globally unique means to identify a given profile instance.</description>
+                  <description>Provides a globally unique means to identify a given profile instance. This UUID MUST be changed when this document is revised.</description>
                   <prop name="value-type" value="identifier"/>
                   <prop name="identifier-type" value="machine-oriented"/>
                   <prop name="identifier-uniqueness" value="global"/>

@@ -162,7 +162,12 @@
                 <group-as name="locations" in-json="ARRAY"/>
                 <define-flag name="uuid" as-type="uuid" required="yes">
                     <formal-name>Location Universally Unique Identifier</formal-name>
-                    <description>A unique ID for the location, for reference.</description>
+                    <description>Provides a globally unique identifier for the location.</description>
+                    <prop name="value-type" value="identifier"/>
+                    <prop name="identifier-type" value="machine-oriented"/>
+                    <prop name="identifier-uniqueness" value="global"/>
+                    <prop name="identifier-scope" value="cross-instance"/>
+                    <prop name="identifier-persistence" value="per-subject"/>
                 </define-flag>
                 <model>
                     <define-field name="title" as-type="markup-line">
@@ -231,10 +236,10 @@
                 <define-flag name="uuid" as-type="uuid" required="yes">
                     <formal-name>Party Universally Unique Identifier</formal-name>
                     <!-- Identifier Declaration -->
-                    <description>A unique identifier for the party.</description>
+                    <description>Provides a globally unique identifier for the party.</description>
                     <prop name="value-type" value="identifier"/>
                     <prop name="identifier-type" value="machine-oriented"/>
-                    <prop name="identifier-uniqueness" value="instance"/>
+                    <prop name="identifier-uniqueness" value="global"/>
                     <prop name="identifier-scope" value="cross-instance"/>
                     <prop name="identifier-persistence" value="per-subject"/>
                 </define-flag>
@@ -504,8 +509,12 @@
                 <group-as name="resources" in-json="ARRAY"/>
                 <define-flag name="uuid" as-type="uuid" required="yes">
                     <formal-name>Resource Universally Unique Identifier</formal-name>
-                    <description>A unique identifier for a resource.</description>
-                    <!-- identifier declaration -->
+                    <description>Provides a globally unique identifier for the resource.</description>
+                    <prop name="value-type" value="identifier"/>
+                    <prop name="identifier-type" value="machine-oriented"/>
+                    <prop name="identifier-uniqueness" value="global"/>
+                    <prop name="identifier-scope" value="cross-instance"/>
+                    <prop name="identifier-persistence" value="per-subject"/>
                 </define-flag>
                 <model>
                     <define-field name="title" as-type="markup-line">
@@ -707,7 +716,12 @@
         <define-flag name="uuid" as-type="uuid">
             <formal-name>Property Universally Unique Identifier</formal-name>
             <!-- identifier declaration -->
-            <description>A unique identifier for a property.</description>
+            <description>Provides a globally unique identifier for the property.</description>
+            <prop name="value-type" value="identifier"/>
+            <prop name="identifier-type" value="machine-oriented"/>
+            <prop name="identifier-uniqueness" value="global"/>
+            <prop name="identifier-scope" value="cross-instance"/>
+            <prop name="identifier-persistence" value="per-subject"/>
         </define-flag>
         <define-flag name="ns" as-type="uri" default="http://csrc.nist.gov/ns/oscal">
             <formal-name>Property Namespace</formal-name>
@@ -868,7 +882,12 @@
         <description>An action applied by a role within a given party to the content.</description>
         <define-flag name="uuid" as-type="uuid" required="yes">
             <formal-name>Action Universally Unique Identifier</formal-name>
-            <description>A unique identifier that can be used to reference this defined action elsewhere in an OSCAL document. A UUID should be consistently used for a given location across revisions of the document.</description>
+            <description>Provides a globally unique identifier for the action.</description>
+            <prop name="value-type" value="identifier"/>
+            <prop name="identifier-type" value="machine-oriented"/>
+            <prop name="identifier-uniqueness" value="global"/>
+            <prop name="identifier-scope" value="cross-instance"/>
+            <prop name="identifier-persistence" value="per-subject"/>
         </define-flag>
         <define-flag name="date" as-type="dateTime-with-timezone">
             <formal-name>Action Occurrence Date</formal-name>

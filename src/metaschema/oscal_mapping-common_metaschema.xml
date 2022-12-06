@@ -15,7 +15,12 @@
         <description>A relationship-based mapping between a source and target set consisting of members (i.e., controls, control statements) from the respective source and target.</description>
         <define-flag name="uuid" as-type="uuid" required="yes">
             <formal-name>Mapping Entry Identifier</formal-name>
-            <description>The unique identifier for the mapping entry.</description>
+            <description>Provides a globally unique identifier for the mapping entry.</description>
+            <prop name="value-type" value="identifier"/>
+            <prop name="identifier-type" value="machine-oriented"/>
+            <prop name="identifier-uniqueness" value="global"/>
+            <prop name="identifier-scope" value="cross-instance"/>
+            <prop name="identifier-persistence" value="per-subject"/>
         </define-flag>
         <model>
             <assembly ref="property" max-occurs="unbounded">

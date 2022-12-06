@@ -26,7 +26,13 @@
             <root-name>mapping-collection</root-name>
             <define-flag name="uuid" as-type="uuid" required="yes">
                   <formal-name>Mapping Collection Universally Unique Identifier</formal-name>
-                  <description>A globally unique identifier with cross-instance scope for this catalog instance. This UUID should be changed when this document is revised.</description>
+                  <description>Provides a globally unique means to identify a given mapping collection instance. This UUID MUST be changed when this document is revised.</description>
+                  <prop name="value-type" value="identifier"/>
+                  <prop name="identifier-type" value="machine-oriented"/>
+                  <prop name="identifier-uniqueness" value="global"/>
+                  <prop name="identifier-scope" value="cross-instance"/>
+                  <prop name="identifier-persistence" value="change-on-write"/>
+                  
             </define-flag>
 
             <model>

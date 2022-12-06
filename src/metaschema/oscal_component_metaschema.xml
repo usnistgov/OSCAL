@@ -35,7 +35,7 @@
     <define-flag name="uuid" as-type="uuid" required="yes">
       <formal-name>Component Definition Universally Unique Identifier</formal-name>
       <!-- Identifier Declaration -->
-      <description>Provides a globally unique means to identify a given component definition instance.</description>
+      <description>Provides a globally unique means to identify a given component definition instance. This UUID MUST be changed when this document is revised.</description>
       <prop name="value-type" value="identifier"/>
       <prop name="identifier-type" value="machine-oriented"/>
       <prop name="identifier-uniqueness" value="global"/>
@@ -95,7 +95,7 @@
     <define-flag name="uuid" as-type="uuid" required="yes">
       <formal-name>Component Identifier</formal-name>
       <!-- Identifier Declaration -->
-      <description>Provides a globally unique means to identify a given component.</description>
+      <description>Provides a globally unique identifier for the component.</description>
       <prop name="value-type" value="identifier"/>
       <prop name="identifier-type" value="machine-oriented"/>
       <prop name="identifier-uniqueness" value="global"/>
@@ -271,7 +271,7 @@
     <define-flag required="yes" name="uuid" as-type="uuid">
       <formal-name>Capability Identifier</formal-name>
       <!-- Identifier Declaration -->
-      <description>Provides a globally unique means to identify a given capability.</description>
+      <description>Provides a globally unique identifier for the capability.</description>
       <prop name="value-type" value="identifier"/>
       <prop name="identifier-type" value="machine-oriented"/>
       <prop name="identifier-uniqueness" value="global"/>
@@ -455,7 +455,12 @@
     <define-flag name="uuid" as-type="uuid" required="yes">
       <formal-name>Control Statement Reference Universally Unique Identifier</formal-name>
       <!-- Identifier Reference -->
-      <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this control statement elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#component-definition-identifiers">this or other OSCAL instances</a>. The <em>UUID</em> of the <code>control statement</code> in the source OSCAL instance is sufficient to reference the data item locally or globally (e.g., in an imported OSCAL instance).</description>
+      <description>Provides a globally unique identifier for the control implementation statement.</description>
+      <prop name="value-type" value="identifier"/>
+      <prop name="identifier-type" value="machine-oriented"/>
+      <prop name="identifier-uniqueness" value="global"/>
+      <prop name="identifier-scope" value="cross-instance"/>
+      <prop name="identifier-persistence" value="per-subject"/>
     </define-flag>
     <model>
       <define-field name="description" as-type="markup-multiline" min-occurs="1" in-xml="WITH_WRAPPER">

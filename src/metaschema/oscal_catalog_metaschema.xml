@@ -24,7 +24,7 @@
             <root-name>catalog</root-name>
             <define-flag name="uuid" as-type="uuid" required="yes">
                   <formal-name>Catalog Universally Unique Identifier</formal-name>
-                  <description>Provides a globally unique means to identify a given catalog instance.</description>
+                  <description>Provides a globally unique means to identify a given catalog instance. This UUID MUST be changed when this document is revised.</description>
                   <prop name="value-type" value="identifier"/>
                   <prop name="identifier-type" value="machine-oriented"/>
                   <prop name="identifier-uniqueness" value="global"/>
@@ -215,7 +215,12 @@
                               resource.</description>
                         <define-flag name="uuid" as-type="uuid" required="yes">
                               <formal-name>Mapping Identifier</formal-name>
-                              <description>The unique identifier for the mapping.</description>
+                              <description>Provides a globally unique identifier for the mapping.</description>
+                              <prop name="value-type" value="identifier"/>
+                              <prop name="identifier-type" value="machine-oriented"/>
+                              <prop name="identifier-uniqueness" value="global"/>
+                              <prop name="identifier-scope" value="cross-instance"/>
+                              <prop name="identifier-persistence" value="per-subject"/>
                         </define-flag>
                         <model>
                               <assembly ref="mapping-resource-reference" min-occurs="1">

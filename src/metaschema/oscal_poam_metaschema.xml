@@ -24,7 +24,12 @@
         <define-flag name="uuid" required="yes" as-type="uuid">
             <formal-name>POA&amp;M Universally Unique Identifier</formal-name>
              <!-- Identifier Declaration -->
-            <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#instance">instance</a>scope that can be used to reference this POA&amp;M instance in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#poam-identifiers">this OSCAL instance</a>. This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+            <description>Provides a globally unique means to identify a given plan of action and milestones instance. This UUID MUST be changed when this document is revised.</description>
+            <prop name="value-type" value="identifier"/>
+            <prop name="identifier-type" value="machine-oriented"/>
+            <prop name="identifier-uniqueness" value="global"/>
+            <prop name="identifier-scope" value="cross-instance"/>
+            <prop name="identifier-persistence" value="change-on-write"/>
         </define-flag>
         <model>
             <assembly ref="metadata" min-occurs="1" max-occurs="1"/>

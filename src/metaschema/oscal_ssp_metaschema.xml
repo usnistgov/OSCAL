@@ -35,7 +35,12 @@
     <define-flag name="uuid" as-type="uuid" required="yes">
       <formal-name>System Security Plan Universally Unique Identifier</formal-name>
       <!-- Identifier Declaration -->
-      <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this system security plan (SSP) elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>SSP</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance).This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+      <description>Provides a globally unique means to identify a given system security plan instance. This UUID MUST be changed when this document is revised.</description>
+      <prop name="value-type" value="identifier"/>
+      <prop name="identifier-type" value="machine-oriented"/>
+      <prop name="identifier-uniqueness" value="global"/>
+      <prop name="identifier-scope" value="cross-instance"/>
+      <prop name="identifier-persistence" value="change-on-write"/>
     </define-flag>
     <model>
       <assembly ref="metadata" min-occurs="1"/>
@@ -200,7 +205,12 @@
         <define-flag name="uuid" as-type="uuid">
           <formal-name>Information Type Universally Unique Identifier</formal-name>
           <!-- Identifier Declaration -->
-          <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this information type elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>information type</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+          <description>Provides a globally unique identifier for the information type.</description>
+          <prop name="value-type" value="identifier"/>
+          <prop name="identifier-type" value="machine-oriented"/>
+          <prop name="identifier-uniqueness" value="global"/>
+          <prop name="identifier-scope" value="cross-instance"/>
+          <prop name="identifier-persistence" value="per-subject"/>
         </define-flag>
         <model>
           <define-field name="title" as-type="markup-line" min-occurs="1">
@@ -415,7 +425,12 @@
     <define-flag name="uuid" as-type="uuid" required="yes">
       <formal-name>Diagram ID</formal-name>
       <!-- Identifier Declaration -->
-      <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this diagram elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>diagram</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+      <description>Provides a globally unique identifier for the diagram.</description>
+      <prop name="value-type" value="identifier"/>
+      <prop name="identifier-type" value="machine-oriented"/>
+      <prop name="identifier-uniqueness" value="global"/>
+      <prop name="identifier-scope" value="cross-instance"/>
+      <prop name="identifier-persistence" value="per-subject"/>
     </define-flag>
     <model>
       <define-field name="description" as-type="markup-multiline" in-xml="WITH_WRAPPER">
@@ -542,7 +557,12 @@
         <define-flag name="uuid" as-type="uuid" required="yes">
           <formal-name>Leveraged Authorization Universally Unique Identifier</formal-name>
           <!-- Identifier Declaration -->
-          <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope and can be used to reference this leveraged authorization elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>leveraged authorization</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+          <description>Provides a globally unique identifier for the leveraged authorization.</description>
+          <prop name="value-type" value="identifier"/>
+          <prop name="identifier-type" value="machine-oriented"/>
+          <prop name="identifier-uniqueness" value="global"/>
+          <prop name="identifier-scope" value="cross-instance"/>
+          <prop name="identifier-persistence" value="per-subject"/>
         </define-flag>
         <model>
           <define-field name="title" as-type="markup-line" min-occurs="1">
@@ -691,7 +711,12 @@
     <define-flag name="uuid" as-type="uuid" required="yes">
       <formal-name>Control Requirement Universally Unique Identifier</formal-name>
       <!-- Identifier Declaration -->
-      <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this control requirement elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>control requirement</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+      <description>Provides a globally unique identifier for the control requirement.</description>
+      <prop name="value-type" value="identifier"/>
+      <prop name="identifier-type" value="machine-oriented"/>
+      <prop name="identifier-uniqueness" value="global"/>
+      <prop name="identifier-scope" value="cross-instance"/>
+      <prop name="identifier-persistence" value="per-subject"/>
     </define-flag>
     <flag ref="control-id" required="yes"/>
     <model>
@@ -783,9 +808,14 @@
       </remarks>
     </flag>
     <define-flag name="uuid" as-type="uuid" required="yes">
-      <formal-name>Control Statement Reference Universally Unique Identifier</formal-name>
+      <formal-name>Control Statement Universally Unique Identifier</formal-name>
       <!-- Identifier Reference -->
-      <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this control statement elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The <em>UUID</em> of the <code>control statement</code> in the source OSCAL instance is sufficient to reference the data item locally or globally (e.g., in an imported OSCAL instance).</description>
+      <description>Provides a globally unique identifier for the control statement.</description>
+      <prop name="value-type" value="identifier"/>
+      <prop name="identifier-type" value="machine-oriented"/>
+      <prop name="identifier-uniqueness" value="global"/>
+      <prop name="identifier-scope" value="cross-instance"/>
+      <prop name="identifier-persistence" value="per-subject"/>
     </define-flag>
     <model>
       <assembly ref="property" max-occurs="unbounded">
@@ -833,7 +863,12 @@
     <define-flag name="uuid" as-type="uuid" required="yes">
       <formal-name>By-Component Universally Unique Identifier</formal-name>
       <!-- Identifier Declaration -->
-      <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this by-component entry elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>by-component</code> entry can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+      <description>Provides a globally unique identifier for the component control implementation.</description>
+      <prop name="value-type" value="identifier"/>
+      <prop name="identifier-type" value="machine-oriented"/>
+      <prop name="identifier-uniqueness" value="global"/>
+      <prop name="identifier-scope" value="cross-instance"/>
+      <prop name="identifier-persistence" value="per-subject"/>
     </define-flag>
     <model>
       <define-field name="description" as-type="markup-multiline" min-occurs="1" in-xml="WITH_WRAPPER">
@@ -877,7 +912,12 @@
             <define-flag name="uuid" as-type="uuid" required="yes">
               <formal-name>Provided Universally Unique Identifier</formal-name>
               <!-- Identifier Declaration -->
-              <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this provided entry elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>provided</code> entry can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+              <description>Provides a globally unique identifier for the provided control implementation.</description>
+              <prop name="value-type" value="identifier"/>
+              <prop name="identifier-type" value="machine-oriented"/>
+              <prop name="identifier-uniqueness" value="global"/>
+              <prop name="identifier-scope" value="cross-instance"/>
+              <prop name="identifier-persistence" value="per-subject"/>
             </define-flag>
             <model>
               <define-field name="description" as-type="markup-multiline" min-occurs="1" in-xml="WITH_WRAPPER">
@@ -912,7 +952,12 @@
             <define-flag name="uuid" as-type="uuid" required="yes">
               <formal-name>Responsibility Universally Unique Identifier</formal-name>
               <!-- Identifier Declaration -->
-              <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this responsibility elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>responsibility</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+              <description>Provides a globally unique identifier for the control implementation responsibility.</description>
+              <prop name="value-type" value="identifier"/>
+              <prop name="identifier-type" value="machine-oriented"/>
+              <prop name="identifier-uniqueness" value="global"/>
+              <prop name="identifier-scope" value="cross-instance"/>
+              <prop name="identifier-persistence" value="per-subject"/>
             </define-flag>
             <flag ref="provided-uuid" required="no" />
             <model>
@@ -961,7 +1006,12 @@
         <define-flag name="uuid" as-type="uuid" required="yes">
           <formal-name>Inherited Universally Unique Identifier</formal-name>
           <!-- Identifier Declaration -->
-          <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this inherited entry elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>inherited control implementation</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+          <description>Provides a globally unique identifier for the inherited control implementation.</description>
+          <prop name="value-type" value="identifier"/>
+          <prop name="identifier-type" value="machine-oriented"/>
+          <prop name="identifier-uniqueness" value="global"/>
+          <prop name="identifier-scope" value="cross-instance"/>
+          <prop name="identifier-persistence" value="per-subject"/>
         </define-flag>
         <flag ref="provided-uuid" required="no" />
         <model>
@@ -997,7 +1047,12 @@
         <define-flag name="uuid" as-type="uuid" required="yes">
           <formal-name>Satisfied Universally Unique Identifier</formal-name>
           <!-- Identifier Declaration -->
-          <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this satisfied control implementation entry elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>control implementation</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+          <description>Provides a globally unique identifier for the satisfied control implementation responsibility.</description>
+          <prop name="value-type" value="identifier"/>
+          <prop name="identifier-type" value="machine-oriented"/>
+          <prop name="identifier-uniqueness" value="global"/>
+          <prop name="identifier-scope" value="cross-instance"/>
+          <prop name="identifier-persistence" value="per-subject"/>
         </define-flag>
         <flag ref="responsibility-uuid" required="no" />
         <model>
