@@ -100,7 +100,7 @@ OSCAL is designed to allow capture relevant details related to independent valid
 
 The following tutorials are provided that are related to the component definition model.
 
-- [Creating a Component Definition](/learn/tutorials/component-definition/): Covers creating a basic OSCAL component definition for a software product.
+- [Creating a Component Definition](/learn/tutorials/simple-component-definition/): Covers creating a basic OSCAL component definition for a software product.
 - [Representing Test Validation Information](/learn/tutorials/validation-modeling/): Explains how to represent test validation information (e.g., FIPS-140-2) for a component in an OSCAL component definition.
 
 ## Content Examples
