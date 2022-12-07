@@ -10725,16 +10725,16 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                              <details class="constraints" open="open">
                                                 <summary>Constraints (4)</summary>
                                                 <div class="constraint">
-                                                   <p><span class="usa-tag">matches</span>  for <code class="path">.[@algorithm=('SHA-224','SHA3-224')</code>: a target (value) must match the regular expression '^[0-9a-fA-F]{28}$'.</p>
+                                                   <p><span class="usa-tag">matches</span>  for <code class="path">.[@algorithm=('SHA-224','SHA3-224')]</code>: a target (value) must match the regular expression '^[0-9a-fA-F]{28}$'.</p>
                                                 </div>
                                                 <div class="constraint">
-                                                   <p><span class="usa-tag">matches</span>  for <code class="path">.[@algorithm=('SHA-256','SHA3-256')</code>: a target (value) must match the regular expression '^[0-9a-fA-F]{32}$'.</p>
+                                                   <p><span class="usa-tag">matches</span>  for <code class="path">.[@algorithm=('SHA-256','SHA3-256')]</code>: a target (value) must match the regular expression '^[0-9a-fA-F]{32}$'.</p>
                                                 </div>
                                                 <div class="constraint">
-                                                   <p><span class="usa-tag">matches</span>  for <code class="path">.[@algorithm=('SHA-384','SHA3-384')</code>: a target (value) must match the regular expression '^[0-9a-fA-F]{48}$'.</p>
+                                                   <p><span class="usa-tag">matches</span>  for <code class="path">.[@algorithm=('SHA-384','SHA3-384')]</code>: a target (value) must match the regular expression '^[0-9a-fA-F]{48}$'.</p>
                                                 </div>
                                                 <div class="constraint">
-                                                   <p><span class="usa-tag">matches</span>  for <code class="path">.[@algorithm=('SHA-512','SHA3-512')</code>: a target (value) must match the regular expression '^[0-9a-fA-F]{64}$'.</p>
+                                                   <p><span class="usa-tag">matches</span>  for <code class="path">.[@algorithm=('SHA-512','SHA3-512')]</code>: a target (value) must match the regular expression '^[0-9a-fA-F]{64}$'.</p>
                                                 </div>
                                              </details>
                                              <details class="properties" open="open">
