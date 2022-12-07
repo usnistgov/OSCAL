@@ -91,7 +91,7 @@
                     </assembly>
                 </model>
                 <constraint>
-                    <allowed-values target="part/@name">
+                    <allowed-values target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
                         <enum value="rules-of-engagement">Defines the circumstances, conditions, degree, and manner in which the use of cyber-attack techniques or actions may be applied to the assessment.</enum>
                         <enum value="disclosures">Any information the assessor should make known to the system owner or authorizing official. Has child 'item' parts for each individual disclosure.</enum>
                         <enum value="assessment-inclusions">Defines any assessment activities which the system owner or authorizing official wishes to ensure are performed as part of the assessment.</enum>

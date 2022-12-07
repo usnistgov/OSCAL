@@ -600,7 +600,7 @@
                     <!-- <any/> -->
                 </model>
                 <constraint>
-                    <allowed-values target="prop/@name">
+                    <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
                         <enum value="type">Identifies the type of resource represented. The most specific appropriate type value SHOULD be used.</enum>
                         <enum value="version">For resources representing a published document, this represents the version number of that document.</enum>
                         <enum value="published">For resources representing a published document, this represents the publication date of that document.</enum>
@@ -696,13 +696,6 @@
         <define-flag name="name" as-type="token" required="yes">
             <formal-name>Property Name</formal-name>
             <description>A textual label, within a namespace, that uniquely identifies a specific attribute, characteristic, or quality of the property's containing object.</description>
-            <constraint>
-                
-                <allowed-values>
-                    <!-- TODO: make extensible="model" -->
-                    <enum value="marking">A label or descriptor that is tied to a sensitivity or classification marking system. An optional class can be used to define the specific marking system used for the associated value.</enum>
-                </allowed-values>
-            </constraint>
         </define-flag>
         <define-flag name="uuid" as-type="uuid">
             <formal-name>Property Universally Unique Identifier</formal-name>
@@ -740,6 +733,11 @@
         <model>
             <field ref="remarks" in-xml="WITH_WRAPPER"/>
         </model>
+        <constraint>
+            <allowed-values target=".[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+                <enum value="marking">A label or descriptor that is tied to a sensitivity or classification marking system. An optional class can be used to define the specific marking system used for the associated value.</enum>
+            </allowed-values>
+        </constraint>
         <remarks>
             <p>Properties permit the deployment and management of arbitrary controlled values, within OSCAL objects. A property can be included for any purpose useful to an application or implementation. Typically, properties will be used to sort, filter, select, order, and arrange OSCAL content objects, to relate OSCAL objects to one another, or to associate an OSCAL object to class hierarchies, taxonomies, or external authorities. Thus, the lexical composition of properties may be constrained by external processes to ensure consistency.</p>
             <p>Property allows for associated remarks that describe why the specific property value was applied to the containing object, or the significance of the value in the context of the containing object.</p>

@@ -183,11 +183,11 @@
       </model>
       <constraint>
          <!-- TODO: Dave to double-check constraints here -->
-         <allowed-values target="prop/@name" allow-other="yes">
+         <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
             <enum value="method">The assessment method to use. This typically appears on parts with the name "assessment".</enum>
          </allowed-values>
-         <has-cardinality target="prop[@name='method']" min-occurs="1"/>
-         <allowed-values target="prop[@name='method']/@value">
+         <has-cardinality target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='method']" min-occurs="1"/>
+         <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='method']/@value">
             <enum value="INTERVIEW">The process of holding discussions with individuals or groups of individuals within an organization to once again, facilitate assessor understanding, achieve clarification, or obtain evidence.</enum>
             <enum value="EXAMINE">The process of reviewing, inspecting, observing, studying, or analyzing one or more assessment objects (i.e., specifications, mechanisms, or activities).</enum>
             <enum value="TEST">The process of exercising one or more assessment objects (i.e., activities or mechanisms) under specified conditions to compare actual with expected behavior.</enum>
@@ -1272,10 +1272,10 @@
                      <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
                   </model>
                   <constraint>
-                     <allowed-values target="prop/@name" allow-other="yes">
+                     <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
                         <enum value="type">The type of remediation tracking entry. Can be multi-valued.</enum>
                      </allowed-values>
-                     <allowed-values target="prop[@name='type']/@value" allow-other="yes">
+                     <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='type']/@value" allow-other="yes">
                         <enum value="vendor-check-in">Contacted vendor to determine the status of a pending fix to a known vulnerability.</enum>
                         <enum value="status-update">Information related to the current state of response to this risk.</enum>
                         <enum value="milestone-complete">A significant step in the response plan has been achieved.</enum>
@@ -1305,13 +1305,13 @@
          </define-assembly>
       </model>
       <constraint>
-         <allowed-values target="prop/@name">
+         <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
             <enum value="false-positive">The risk has been confirmed to be a false positive.</enum>
             <enum value="accepted">The risk has been accepted. No further action will be taken.</enum>
             <enum value="risk-adjusted">The risk has been adjusted.</enum>
             <enum value="priority">A numeric value indicating the sequence in which risks should be addressed. (Lower numbers are higher priority)</enum>
          </allowed-values>
-         <matches target="prop[@name='priority']/@value" datatype="integer" />
+         <matches target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='priority']/@value" datatype="integer" />
       </constraint>
    </define-assembly>
 
@@ -1401,21 +1401,21 @@
                <field ref="remarks" in-xml="WITH_WRAPPER"/>
             </model>
             <constraint>
-               <allowed-values target="prop/@name">
+               <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
                   <enum value="state">Indicates if the facet is 'initial' as first identified, or 'adjusted' indicating that the value has be changed after some adjustments have been made (e.g., to identify residual risk).</enum>
                </allowed-values>
-               <allowed-values target="prop[@name='risk-state']/@value" allow-other="yes"><!-- For values related to initial and residual (mitigated) risk -->
+               <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='state']/@value"><!-- For values related to initial and residual (mitigated) risk -->
                   <enum value="initial">As first identified.</enum>
                   <enum value="adjusted">Indicates that residual risk remains after some adjustments have been made.</enum>
                </allowed-values>
                <!-- TODO: What about "vulnerability-id", "plugin-id"? Should this be added to FedRAMP? -->
-               <allowed-values target="(.)[@system='http://csrc.nist.gov/ns/oscal']/@name" allow-other="yes">
+               <allowed-values target="(.)[@system='http://csrc.nist.gov/ns/oscal']/@name">
                   <enum value="likelihood">General likelihood rating.</enum>
                   <enum value="impact">General impact rating.</enum>
                   <enum value="risk">General risk rating.</enum>
                   <enum value="severity">General severity rating.</enum>
                </allowed-values>
-               <allowed-values target="(.)[@system=('http://fedramp.gov','http://fedramp.gov/ns/oscal')]/@name" allow-other="yes">
+               <allowed-values target="(.)[@system=('http://fedramp.gov','http://fedramp.gov/ns/oscal')]/@name">
                   <enum value="likelihood">Likelihood as defined by FedRAMP. The <code>class</code> can be used to specify 'initial' and 'adjusted' risk states.</enum>
                   <enum value="impact">Impact as defined by FedRAMP. The <code>class</code> can be used to specify 'initial' and 'adjusted' risk states.</enum>
                   <enum value="risk">Risk as calculated according to FedRAMP. The <code>class</code> can be used to specify 'initial' and 'adjusted' risk states.</enum>
@@ -1683,10 +1683,10 @@
          <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
       </model>
       <constraint>
-         <allowed-values target="prop/@name" allow-other="yes">
+         <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
             <enum value="type"></enum>
          </allowed-values>
-         <allowed-values target="prop[@name='type']/@value" allow-other="yes">
+         <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='type']/@value">
             <enum value="avoid">The risk will be eliminated.</enum>
             <enum value="mitigate">The risk will be reduced.</enum>
             <enum value="transfer">The risk will be transferred to another organization or entity.</enum>
@@ -1766,11 +1766,11 @@
          <!-- <any/> -->
       </model>
       <constraint>
-         <allowed-values target=".[@name='objective']/prop/@name" allow-other="yes">
+         <allowed-values target=".[@name='objective']/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
             <enum value="method">The assessment method to use. This typically appears on parts with the name "objective".</enum>
          </allowed-values>
-         <has-cardinality target=".[@name='objective']/prop[@name='method']" min-occurs="1"/>
-         <allowed-values target=".[@name='objective']/prop[@name='method']/@value">
+         <has-cardinality target=".[@name='objective']/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='method']" min-occurs="1"/>
+         <allowed-values target=".[@name='objective']/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='method']/@value">
             <enum value="INTERVIEW">The process of holding discussions with individuals or groups of individuals within an organization to once again, facilitate assessor understanding, achieve clarification, or obtain evidence.</enum>
             <enum value="EXAMINE">The process of reviewing, inspecting, observing, studying, or analyzing one or more assessment objects (i.e., specifications, mechanisms, or activities).</enum>
             <enum value="TEST">The process of exercising one or more assessment objects (i.e., activities or mechanisms) under specified conditions to compare actual with expected behavior.</enum>

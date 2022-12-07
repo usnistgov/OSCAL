@@ -377,7 +377,7 @@
                                           </assembly>
                                     </model>
                                     <constraint>
-                                          <allowed-values target="prop/@name" allow-other="yes">
+                                          <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
                                                 &allowed-values-control-group-property-name;
                                           </allowed-values>
                                     </constraint>

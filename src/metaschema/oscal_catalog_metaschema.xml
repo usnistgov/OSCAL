@@ -54,7 +54,7 @@
                         <enum value="resolution-tool">The tool used to produce a resolved profile.</enum>
                         <enum value="source-profile-uuid">The document-level <code>uuid</code> of the source profile from which the catalog was produced by <a href="https://pages.nist.gov/OSCAL/concepts/processing/profile-resolution/">profile resolution</a>.</enum>
                   </allowed-values>
-                  <allowed-values target="metadata/link/@rel">
+                  <allowed-values target="metadata/link/@rel" allow-other="yes">
                         <enum value="source-profile">The profile from which the catalog was produced by <a href="https://pages.nist.gov/OSCAL/concepts/processing/profile-resolution/">profile resolution</a>.</enum>
                         <enum value="source-profile-uuid">The document-level <code>uuid</code> of the profile from which the catalog was produced by <a href="https://pages.nist.gov/OSCAL/concepts/processing/profile-resolution/">profile resolution</a>.</enum>
                   </allowed-values>
