@@ -247,8 +247,8 @@ The following is a reference for the XML element and attribute types derived fro
             
             
             <div class="constraint">
-               <p><span class="usa-tag">allowed value</span> for <code class="path">prop/@name</code></p>
-               <p>The value <b>may be locally defined</b>, or the following:</p>
+               <p><span class="usa-tag">allowed value</span> for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+               <p>The value <b>must</b> be one of the following:</p>
                <ul>
                   
                   <li><strong>method</strong>: The assessment method to use. This typically appears on parts with the name "assessment".</li>
@@ -256,11 +256,11 @@ The following is a reference for the XML element and attribute types derived fro
             </div>
             
             <div class="constraint">
-               <p><span class="usa-tag">has cardinality</span> for <code class="path">prop[@name='method']</code> the cardinality of  <code>prop[@name='method']</code> is constrained: <b>1</b>; maximum <b>unbounded</b>.</p>
+               <p><span class="usa-tag">has cardinality</span> for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='method']</code> the cardinality of  <code>prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='method']</code> is constrained: <b>1</b>; maximum <b>unbounded</b>.</p>
             </div>
             
             <div class="constraint">
-               <p><span class="usa-tag">allowed values</span> for <code class="path">prop[@name='method']/@value</code></p>
+               <p><span class="usa-tag">allowed values</span> for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='method']/@value</code></p>
                <p>The value <b>must</b> be one of the following:</p>
                <ul>
                   
@@ -1499,7 +1499,7 @@ The following is a reference for the XML element and attribute types derived fro
                         <summary>Constraint (1)</summary>
                         
                         <div class="constraint">
-                           <p><span class="usa-tag">allowed values</span> for <code class="path">part/@name</code></p>
+                           <p><span class="usa-tag">allowed values</span> for <code class="path">part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
                            <p>The value <b>must</b> be one of the following:</p>
                            <ul>
                               
@@ -2140,7 +2140,7 @@ The following is a reference for the XML element and attribute types derived fro
                         <summary>Constraints (6)</summary>
                         
                         <div class="constraint">
-                           <p><span class="usa-tag">allowed values</span> for <code class="path">prop/@name</code></p>
+                           <p><span class="usa-tag">allowed values</span> for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
                            <p>The value <b>must</b> be one of the following:</p>
                            <ul>
                               
@@ -2714,7 +2714,7 @@ The following is a reference for the XML element and attribute types derived fro
                         <summary>Constraints (30)</summary>
                         
                         <div class="constraint">
-                           <p><span class="usa-tag">allowed value</span> for <code class="path">prop/@name</code></p>
+                           <p><span class="usa-tag">allowed value</span> for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
                            <p>The value <b>must</b> be one of the following:</p>
                            <ul>
                               
@@ -2725,8 +2725,8 @@ The following is a reference for the XML element and attribute types derived fro
                         </div>
                         
                         <div class="constraint">
-                           <p><span class="usa-tag">allowed values</span> for <code class="path">prop[@name='risk-state']/@value</code></p>
-                           <p>The value <b>may be locally defined</b>, or one of the following:</p>
+                           <p><span class="usa-tag">allowed values</span> for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='state']/@value</code></p>
+                           <p>The value <b>must</b> be one of the following:</p>
                            <ul>
                               
                               <li><strong>initial</strong>: As first identified.</li>
@@ -2738,7 +2738,7 @@ The following is a reference for the XML element and attribute types derived fro
                         
                         <div class="constraint">
                            <p><span class="usa-tag">allowed values</span> for <code class="path">(.)[@system='http://csrc.nist.gov/ns/oscal']/@name</code></p>
-                           <p>The value <b>may be locally defined</b>, or one of the following:</p>
+                           <p>The value <b>must</b> be one of the following:</p>
                            <ul>
                               
                               <li><strong>likelihood</strong>: General likelihood rating.</li>
@@ -2753,7 +2753,7 @@ The following is a reference for the XML element and attribute types derived fro
                         
                         <div class="constraint">
                            <p><span class="usa-tag">allowed values</span> for <code class="path">(.)[@system=('http://fedramp.gov','http://fedramp.gov/ns/oscal')]/@name</code></p>
-                           <p>The value <b>may be locally defined</b>, or one of the following:</p>
+                           <p>The value <b>must</b> be one of the following:</p>
                            <ul>
                               
                               <li><strong>likelihood</strong>: Likelihood as defined by FedRAMP. The class can be used to specify 'initial' and
@@ -4277,8 +4277,8 @@ The following is a reference for the XML element and attribute types derived fro
             <summary>Constraints (9)</summary>
             
             <div class="constraint">
-               <p><span class="usa-tag">allowed values</span> for <code class="path">prop/@name</code></p>
-               <p>The value <b>may be locally defined</b>, or one of the following:</p>
+               <p><span class="usa-tag">allowed values</span> for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+               <p>The value <b>must</b> be one of the following:</p>
                <ul>
                   
                   <li><strong>ipv4-address</strong>: The Internet Protocol v4 Address of the asset.</li>
@@ -4358,7 +4358,7 @@ The following is a reference for the XML element and attribute types derived fro
             </div>
             
             <div class="constraint">
-               <p><span class="usa-tag">allowed values</span> for <code class="path">prop[@name='asset-type']/@value</code></p>
+               <p><span class="usa-tag">allowed values</span> for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='asset-type']/@value</code></p>
                <p>The value <b>must</b> be one of the following:</p>
                <ul>
                   
@@ -4401,8 +4401,8 @@ The following is a reference for the XML element and attribute types derived fro
             
             
             <div class="constraint">
-               <p><span class="usa-tag">allowed value</span> for <code class="path">(.)[@type=('software', 'hardware', 'service')]/prop/@name</code></p>
-               <p>The value <b>may be locally defined</b>, or the following:</p>
+               <p><span class="usa-tag">allowed value</span> for <code class="path">(.)[@type=('software', 'hardware', 'service')]/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+               <p>The value <b>must</b> be one of the following:</p>
                <ul>
                   
                   <li><strong>vendor-name</strong>: The name of the company or organization </li>
@@ -4412,7 +4412,7 @@ The following is a reference for the XML element and attribute types derived fro
             
             
             <div class="constraint">
-               <p><span class="usa-tag">allowed values</span> for <code class="path">prop[@name='is-scanned']/@value</code></p>
+               <p><span class="usa-tag">allowed values</span> for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='is-scanned']/@value</code></p>
                <p>The value <b>must</b> be one of the following:</p>
                <ul>
                   
@@ -4607,8 +4607,8 @@ The following is a reference for the XML element and attribute types derived fro
                         
                         
                         <div class="constraint">
-                           <p><span class="usa-tag">allowed values</span> for <code class="path">prop/@name</code></p>
-                           <p>The value <b>may be locally defined</b>, or one of the following:</p>
+                           <p><span class="usa-tag">allowed values</span> for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                           <p>The value <b>must</b> be one of the following:</p>
                            <ul>
                               
                               
@@ -4663,7 +4663,7 @@ The following is a reference for the XML element and attribute types derived fro
                         
                         
                         <div class="constraint">
-                           <p><span class="usa-tag">has cardinality</span> for <code class="path">prop[@name='asset-id']</code> the cardinality of  <code>prop[@name='asset-id']</code> is constrained: <b>1</b>; maximum <b>unbounded</b>.</p>
+                           <p><span class="usa-tag">has cardinality</span> for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='asset-id']</code> the cardinality of  <code>prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='asset-id']</code> is constrained: <b>1</b>; maximum <b>unbounded</b>.</p>
                         </div>
                         
                         
@@ -7921,8 +7921,8 @@ The following is a reference for the XML element and attribute types derived fro
             <summary>Constraints (3)</summary>
             
             <div class="constraint">
-               <p><span class="usa-tag">allowed value</span> for <code class="path">.[@name='objective']/prop/@name</code></p>
-               <p>The value <b>may be locally defined</b>, or the following:</p>
+               <p><span class="usa-tag">allowed value</span> for <code class="path">.[@name='objective']/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+               <p>The value <b>must</b> be one of the following:</p>
                <ul>
                   
                   <li><strong>method</strong>: The assessment method to use. This typically appears on parts with the name "objective".</li>
@@ -7930,11 +7930,14 @@ The following is a reference for the XML element and attribute types derived fro
             </div>
             
             <div class="constraint">
-               <p><span class="usa-tag">has cardinality</span> for <code class="path">.[@name='objective']/prop[@name='method']</code> the cardinality of  <code>.[@name='objective']/prop[@name='method']</code> is constrained: <b>1</b>; maximum <b>unbounded</b>.</p>
+               <p><span class="usa-tag">has cardinality</span> for <code class="path">.[@name='objective']/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and
+                     @name='method']</code> the cardinality of  <code>.[@name='objective']/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and
+                     @name='method']</code> is constrained: <b>1</b>; maximum <b>unbounded</b>.</p>
             </div>
             
             <div class="constraint">
-               <p><span class="usa-tag">allowed values</span> for <code class="path">.[@name='objective']/prop[@name='method']/@value</code></p>
+               <p><span class="usa-tag">allowed values</span> for <code class="path">.[@name='objective']/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and
+                     @name='method']/@value</code></p>
                <p>The value <b>must</b> be one of the following:</p>
                <ul>
                   
@@ -8579,6 +8582,20 @@ The following is a reference for the XML element and attribute types derived fro
                </div>
             </details>
          </div>
+         <details>
+            <summary>Constraint (1)</summary>
+            
+            <div class="constraint">
+               <p><span class="usa-tag">allowed value</span> for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+               <p>The value <b>must</b> be one of the following:</p>
+               <ul>
+                  
+                  <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                     An optional class can be used to define the specific marking system used for the associated
+                     value.</li>
+                  </ul>
+            </div>
+            </details>
          <details open="open">
             <summary>Attributes (6):</summary>
             <div class="model assembly-model">
@@ -8593,22 +8610,6 @@ The following is a reference for the XML element and attribute types derived fro
                   <div class="body">
                      <p class="description"><span class="usa-tag">description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
                         characteristic, or quality of the property's containing object.</p>
-                     <details>
-                        <summary>Constraint (1)</summary>
-                        
-                        
-                        <div class="constraint">
-                           <p><span class="usa-tag">allowed value</span></p>
-                           <p>The value <b>must</b> be one of the following:</p>
-                           <ul>
-                              
-                              
-                              <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                 An optional class can be used to define the specific marking system used for the associated
-                                 value.</li>
-                              </ul>
-                        </div>
-                        </details>
                   </div>
                </div>
                <div class="model-entry definition define-flag">
@@ -9101,8 +9102,8 @@ The following is a reference for the XML element and attribute types derived fro
             <summary>Constraints (2)</summary>
             
             <div class="constraint">
-               <p><span class="usa-tag">allowed value</span> for <code class="path">prop/@name</code></p>
-               <p>The value <b>may be locally defined</b>, or the following:</p>
+               <p><span class="usa-tag">allowed value</span> for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+               <p>The value <b>must</b> be one of the following:</p>
                <ul>
                   
                   <li><strong>type</strong></li>
@@ -9110,8 +9111,8 @@ The following is a reference for the XML element and attribute types derived fro
             </div>
             
             <div class="constraint">
-               <p><span class="usa-tag">allowed values</span> for <code class="path">prop[@name='type']/@value</code></p>
-               <p>The value <b>may be locally defined</b>, or one of the following:</p>
+               <p><span class="usa-tag">allowed values</span> for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='type']/@value</code></p>
+               <p>The value <b>must</b> be one of the following:</p>
                <ul>
                   
                   <li><strong>avoid</strong>: The risk will be eliminated.</li>
@@ -10229,7 +10230,7 @@ The following is a reference for the XML element and attribute types derived fro
             <summary>Constraints (2)</summary>
             
             <div class="constraint">
-               <p><span class="usa-tag">allowed values</span> for <code class="path">prop/@name</code></p>
+               <p><span class="usa-tag">allowed values</span> for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
                <p>The value <b>must</b> be one of the following:</p>
                <ul>
                   
@@ -10245,7 +10246,7 @@ The following is a reference for the XML element and attribute types derived fro
             </div>
             
             <div class="constraint">
-               <p><span class="usa-tag">matches</span> for <code class="path">prop[@name='priority']/@value</code>: the target value must match the lexical form of the 'integer' data type.</p>
+               <p><span class="usa-tag">matches</span> for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='priority']/@value</code>: the target value must match the lexical form of the 'integer' data type.</p>
             </div>
             </details>
          <details open="open">
@@ -10609,8 +10610,8 @@ The following is a reference for the XML element and attribute types derived fro
                                     <summary>Constraints (2)</summary>
                                     
                                     <div class="constraint">
-                                       <p><span class="usa-tag">allowed value</span> for <code class="path">prop/@name</code></p>
-                                       <p>The value <b>may be locally defined</b>, or the following:</p>
+                                       <p><span class="usa-tag">allowed value</span> for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                       <p>The value <b>must</b> be one of the following:</p>
                                        <ul>
                                           
                                           <li><strong>type</strong>: The type of remediation tracking entry. Can be multi-valued.</li>
@@ -10618,7 +10619,7 @@ The following is a reference for the XML element and attribute types derived fro
                                     </div>
                                     
                                     <div class="constraint">
-                                       <p><span class="usa-tag">allowed values</span> for <code class="path">prop[@name='type']/@value</code></p>
+                                       <p><span class="usa-tag">allowed values</span> for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='type']/@value</code></p>
                                        <p>The value <b>may be locally defined</b>, or one of the following:</p>
                                        <ul>
                                           
@@ -11532,8 +11533,8 @@ The following is a reference for the XML element and attribute types derived fro
             <summary>Constraints (24)</summary>
             
             <div class="constraint">
-               <p><span class="usa-tag">allowed values</span> for <code class="path">prop/@name</code></p>
-               <p>The value <b>may be locally defined</b>, or one of the following:</p>
+               <p><span class="usa-tag">allowed values</span> for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+               <p>The value <b>must</b> be one of the following:</p>
                <ul>
                   
                   
@@ -11671,7 +11672,7 @@ The following is a reference for the XML element and attribute types derived fro
             
             
             <div class="constraint">
-               <p><span class="usa-tag">allowed values</span> for <code class="path">prop[@name='asset-type']/@value</code></p>
+               <p><span class="usa-tag">allowed values</span> for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='asset-type']/@value</code></p>
                <p>The value <b>must</b> be one of the following:</p>
                <ul>
                   
@@ -11714,7 +11715,7 @@ The following is a reference for the XML element and attribute types derived fro
             
             
             <div class="constraint">
-               <p><span class="usa-tag">allowed values</span> for <code class="path">prop[@name='allows-authenticated-scan']/@value</code></p>
+               <p><span class="usa-tag">allowed values</span> for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='allows-authenticated-scan']/@value</code></p>
                <p>The value <b>must</b> be one of the following:</p>
                <ul>
                   
@@ -11726,7 +11727,7 @@ The following is a reference for the XML element and attribute types derived fro
             
             
             <div class="constraint">
-               <p><span class="usa-tag">allowed values</span> for <code class="path">prop[@name='public']/@value</code></p>
+               <p><span class="usa-tag">allowed values</span> for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='public']/@value</code></p>
                <p>The value <b>must</b> be one of the following:</p>
                <ul>
                   
@@ -11738,7 +11739,7 @@ The following is a reference for the XML element and attribute types derived fro
             
             
             <div class="constraint">
-               <p><span class="usa-tag">allowed values</span> for <code class="path">prop[@name='virtual']/@value</code></p>
+               <p><span class="usa-tag">allowed values</span> for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='virtual']/@value</code></p>
                <p>The value <b>must</b> be one of the following:</p>
                <ul>
                   
@@ -11750,7 +11751,7 @@ The following is a reference for the XML element and attribute types derived fro
             
             
             <div class="constraint">
-               <p><span class="usa-tag">allowed values</span> for <code class="path">prop[@name='implementation-point']/@value</code></p>
+               <p><span class="usa-tag">allowed values</span> for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='implementation-point']/@value</code></p>
                <p>The value <b>must</b> be one of the following:</p>
                <ul>
                   
@@ -11767,11 +11768,11 @@ The following is a reference for the XML element and attribute types derived fro
             
             
             <div class="constraint">
-               <p><span class="usa-tag">matches</span> for <code class="path">prop[@name='inherited-uuid']/@value</code>: the target value must match the lexical form of the 'uuid' data type.</p>
+               <p><span class="usa-tag">matches</span> for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='inherited-uuid']/@value</code>: the target value must match the lexical form of the 'uuid' data type.</p>
             </div>
             
             <div class="constraint">
-               <p><span class="usa-tag">matches</span> for <code class="path">prop[@name='release-date']/@value</code>: the target value must match the lexical form of the 'date' data type.</p>
+               <p><span class="usa-tag">matches</span> for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='release-date']/@value</code>: the target value must match the lexical form of the 'date' data type.</p>
             </div>
             
             
@@ -11780,8 +11781,8 @@ The following is a reference for the XML element and attribute types derived fro
             
             
             <div class="constraint">
-               <p><span class="usa-tag">allowed value</span> for <code class="path">(.)[@type=('software', 'hardware', 'service')]/prop/@name</code></p>
-               <p>The value <b>may be locally defined</b>, or the following:</p>
+               <p><span class="usa-tag">allowed value</span> for <code class="path">(.)[@type=('software', 'hardware', 'service')]/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+               <p>The value <b>must</b> be one of the following:</p>
                <ul>
                   
                   <li><strong>vendor-name</strong>: The name of the company or organization </li>
@@ -11809,8 +11810,8 @@ The following is a reference for the XML element and attribute types derived fro
             
             
             <div class="constraint">
-               <p><span class="usa-tag">allowed value</span> for <code class="path">(.)[@type='software']/prop/@name</code></p>
-               <p>The value <b>may be locally defined</b>, or the following:</p>
+               <p><span class="usa-tag">allowed value</span> for <code class="path">(.)[@type='software']/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+               <p>The value <b>must</b> be one of the following:</p>
                <ul>
                   
                   <li><strong>software-identifier</strong>: If a "software" component-type, the identifier, such as a SWID tag, for the software
@@ -11843,8 +11844,8 @@ The following is a reference for the XML element and attribute types derived fro
             
             
             <div class="constraint">
-               <p><span class="usa-tag">allowed values</span> for <code class="path">(.)[@type='interconnection']/prop/@name</code></p>
-               <p>The value <b>may be locally defined</b>, or one of the following:</p>
+               <p><span class="usa-tag">allowed values</span> for <code class="path">(.)[@type='interconnection']/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+               <p>The value <b>must</b> be one of the following:</p>
                <ul>
                   
                   <li><strong>isa-title</strong>: Title of the Interconnection Security Agreement (ISA).</li>
@@ -11862,8 +11863,8 @@ The following is a reference for the XML element and attribute types derived fro
             </div>
             
             <div class="constraint">
-               <p><span class="usa-tag">allowed values</span> for <code class="path">prop[@name=('ipv4-address','ipv6-address')]/@class</code></p>
-               <p>The value <b>may be locally defined</b>, or one of the following:</p>
+               <p><span class="usa-tag">allowed values</span> for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('ipv4-address','ipv6-address')]/@class</code></p>
+               <p>The value <b>must</b> be one of the following:</p>
                <ul>
                   
                   <li><strong>local</strong>: The identified IP address is for this system.</li>
@@ -11900,20 +11901,20 @@ The following is a reference for the XML element and attribute types derived fro
             </div>
             
             <div class="constraint">
-               <p><span class="usa-tag">matches</span> for <code class="path">prop[@name='isa-date']/@value</code>: the target value must match the lexical form of the 'dateTime' data type.</p>
+               <p><span class="usa-tag">matches</span> for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='isa-date']/@value</code>: the target value must match the lexical form of the 'dateTime' data type.</p>
             </div>
             
             <div class="constraint">
-               <p><span class="usa-tag">matches</span> for <code class="path">prop[@name='ipv4-address']/@value</code>: the target value must match the lexical form of the 'ip-v4-address' data type.</p>
+               <p><span class="usa-tag">matches</span> for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='ipv4-address']/@value</code>: the target value must match the lexical form of the 'ip-v4-address' data type.</p>
             </div>
             
             <div class="constraint">
-               <p><span class="usa-tag">matches</span> for <code class="path">prop[@name='ipv6-address']/@value</code>: the target value must match the lexical form of the 'ip-v6-address' data type.</p>
+               <p><span class="usa-tag">matches</span> for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='ipv6-address']/@value</code>: the target value must match the lexical form of the 'ip-v6-address' data type.</p>
             </div>
             
             <div class="constraint">
-               <p><span class="usa-tag">allowed values</span> for <code class="path">prop[@name='direction']/@value</code></p>
-               <p>The value <b>may be locally defined</b>, or one of the following:</p>
+               <p><span class="usa-tag">allowed values</span> for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='direction']/@value</code></p>
+               <p>The value <b>must</b> be one of the following:</p>
                <ul>
                   
                   <li><strong>incoming</strong>: Data from the remote system flows into this system.</li>
@@ -12323,8 +12324,8 @@ The following is a reference for the XML element and attribute types derived fro
             <summary>Constraints (4)</summary>
             
             <div class="constraint">
-               <p><span class="usa-tag">allowed values</span> for <code class="path">prop/@name</code></p>
-               <p>The value <b>may be locally defined</b>, or one of the following:</p>
+               <p><span class="usa-tag">allowed values</span> for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+               <p>The value <b>must</b> be one of the following:</p>
                <ul>
                   
                   <li><strong>type</strong>: The type of user, such as internal, external, or general-public.</li>
@@ -12335,7 +12336,7 @@ The following is a reference for the XML element and attribute types derived fro
             </div>
             
             <div class="constraint">
-               <p><span class="usa-tag">allowed values</span> for <code class="path">prop[@name='type']/@value</code></p>
+               <p><span class="usa-tag">allowed values</span> for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='type']/@value</code></p>
                <p>The value <b>must</b> be one of the following:</p>
                <ul>
                   
@@ -12350,7 +12351,7 @@ The following is a reference for the XML element and attribute types derived fro
             </div>
             
             <div class="constraint">
-               <p><span class="usa-tag">allowed values</span> for <code class="path">prop[@name='privilege-level']/@value</code></p>
+               <p><span class="usa-tag">allowed values</span> for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='privilege-level']/@value</code></p>
                <p>The value <b>must</b> be one of the following:</p>
                <ul>
                   
