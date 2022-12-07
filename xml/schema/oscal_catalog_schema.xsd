@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-           xmlns:m="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
-           xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-           elementFormDefault="qualified"
-           targetNamespace="http://csrc.nist.gov/ns/oscal/1.0"
-           version="1.0.4">
+            xmlns:m="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
+            xmlns:xs="http://www.w3.org/2001/XMLSchema"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            elementFormDefault="qualified"
+            targetNamespace="http://csrc.nist.gov/ns/oscal/1.0"
+            version="1.0.4">
    <xs:annotation>
       <xs:appinfo>
          <m:schema-name>OSCAL Control Catalog Model</m:schema-name>
@@ -29,25 +29,25 @@
       </xs:annotation>
       <xs:sequence>
          <xs:element name="metadata"
-                     type="oscal-metadata-metadata-ASSEMBLY"
-                     minOccurs="1"
-                     maxOccurs="1"/>
+                      type="oscal-metadata-metadata-ASSEMBLY"
+                      minOccurs="1"
+                      maxOccurs="1"/>
          <xs:element name="param"
-                     type="oscal-control-common-parameter-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
+                      type="oscal-control-common-parameter-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
          <xs:element name="control"
-                     type="oscal-catalog-control-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
+                      type="oscal-catalog-control-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
          <xs:element name="group"
-                     type="oscal-catalog-group-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
+                      type="oscal-catalog-group-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
          <xs:element name="back-matter"
-                     type="oscal-metadata-back-matter-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="1"/>
+                      type="oscal-metadata-back-matter-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="1"/>
       </xs:sequence>
       <xs:attribute name="uuid" use="required" type="UUIDDatatype">
          <xs:annotation>
@@ -86,30 +86,30 @@
             </xs:complexType>
          </xs:element>
          <xs:element name="param"
-                     type="oscal-control-common-parameter-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
+                      type="oscal-control-common-parameter-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
          <xs:element name="prop"
-                     type="oscal-metadata-property-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
+                      type="oscal-metadata-property-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
          <xs:element name="link"
-                     type="oscal-metadata-link-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
+                      type="oscal-metadata-link-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
          <xs:element name="part"
-                     type="oscal-control-common-part-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
+                      type="oscal-control-common-part-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
          <xs:choice>
             <xs:element name="group"
-                        type="oscal-catalog-group-ASSEMBLY"
-                        minOccurs="0"
-                        maxOccurs="unbounded"/>
+                         type="oscal-catalog-group-ASSEMBLY"
+                         minOccurs="0"
+                         maxOccurs="unbounded"/>
             <xs:element name="control"
-                        type="oscal-catalog-control-ASSEMBLY"
-                        minOccurs="0"
-                        maxOccurs="unbounded"/>
+                         type="oscal-catalog-control-ASSEMBLY"
+                         minOccurs="0"
+                         maxOccurs="unbounded"/>
          </xs:choice>
       </xs:sequence>
       <xs:attribute name="id" type="TokenDatatype">
@@ -159,21 +159,21 @@
             </xs:complexType>
          </xs:element>
          <xs:element name="param"
-                     type="oscal-control-common-parameter-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
+                      type="oscal-control-common-parameter-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
          <xs:element name="prop"
-                     type="oscal-metadata-property-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
+                      type="oscal-metadata-property-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
          <xs:element name="link"
-                     type="oscal-metadata-link-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
+                      type="oscal-metadata-link-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
          <xs:element name="part"
-                     type="oscal-control-common-part-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
+                      type="oscal-control-common-part-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
          <xs:element name="mapping" minOccurs="0" maxOccurs="1">
             <xs:complexType>
                <xs:annotation>
@@ -186,13 +186,13 @@
                </xs:annotation>
                <xs:sequence>
                   <xs:element name="target-resource"
-                              type="oscal-mapping-common-mapping-resource-reference-ASSEMBLY"
-                              minOccurs="1"
-                              maxOccurs="1"/>
+                               type="oscal-mapping-common-mapping-resource-reference-ASSEMBLY"
+                               minOccurs="1"
+                               maxOccurs="1"/>
                   <xs:element name="map"
-                              type="oscal-mapping-common-map-ASSEMBLY"
-                              minOccurs="1"
-                              maxOccurs="unbounded"/>
+                               type="oscal-mapping-common-map-ASSEMBLY"
+                               minOccurs="1"
+                               maxOccurs="unbounded"/>
                </xs:sequence>
                <xs:attribute name="uuid" use="required" type="UUIDDatatype">
                   <xs:annotation>
@@ -207,9 +207,9 @@
             </xs:complexType>
          </xs:element>
          <xs:element name="control"
-                     type="oscal-catalog-control-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
+                      type="oscal-catalog-control-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
       </xs:sequence>
       <xs:attribute name="id" use="required" type="TokenDatatype">
          <xs:annotation>
@@ -258,18 +258,18 @@
             </xs:complexType>
          </xs:element>
          <xs:element name="prop"
-                     type="oscal-metadata-property-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
+                      type="oscal-metadata-property-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
          <xs:group ref="blockElementGroup" maxOccurs="unbounded" minOccurs="0"/>
          <xs:element name="part"
-                     type="oscal-control-common-part-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
+                      type="oscal-control-common-part-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
          <xs:element name="link"
-                     type="oscal-metadata-link-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
+                      type="oscal-metadata-link-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
       </xs:sequence>
       <xs:attribute name="id" type="TokenDatatype">
          <xs:annotation>
@@ -323,13 +323,13 @@
       </xs:annotation>
       <xs:sequence>
          <xs:element name="prop"
-                     type="oscal-metadata-property-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
+                      type="oscal-metadata-property-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
          <xs:element name="link"
-                     type="oscal-metadata-link-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
+                      type="oscal-metadata-link-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
          <xs:element name="label" minOccurs="0" maxOccurs="1">
             <xs:complexType mixed="true">
                <xs:annotation>
@@ -361,22 +361,22 @@
             </xs:complexType>
          </xs:element>
          <xs:element name="constraint"
-                     type="oscal-control-common-parameter-constraint-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
+                      type="oscal-control-common-parameter-constraint-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
          <xs:element name="guideline"
-                     type="oscal-control-common-parameter-guideline-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
+                      type="oscal-control-common-parameter-guideline-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
          <xs:choice>
             <xs:element name="value"
-                        type="oscal-control-common-parameter-value-FIELD"
-                        minOccurs="0"
-                        maxOccurs="unbounded"/>
+                         type="oscal-control-common-parameter-value-FIELD"
+                         minOccurs="0"
+                         maxOccurs="unbounded"/>
             <xs:element name="select"
-                        type="oscal-control-common-parameter-selection-ASSEMBLY"
-                        minOccurs="0"
-                        maxOccurs="1"/>
+                         type="oscal-control-common-parameter-selection-ASSEMBLY"
+                         minOccurs="0"
+                         maxOccurs="1"/>
          </xs:choice>
          <xs:element name="remarks" minOccurs="0" maxOccurs="1">
             <xs:annotation>
@@ -588,21 +588,21 @@
             </xs:complexType>
          </xs:element>
          <xs:element name="published"
-                     type="oscal-metadata-published-FIELD"
-                     minOccurs="0"
-                     maxOccurs="1"/>
+                      type="oscal-metadata-published-FIELD"
+                      minOccurs="0"
+                      maxOccurs="1"/>
          <xs:element name="last-modified"
-                     type="oscal-metadata-last-modified-FIELD"
-                     minOccurs="1"
-                     maxOccurs="1"/>
+                      type="oscal-metadata-last-modified-FIELD"
+                      minOccurs="1"
+                      maxOccurs="1"/>
          <xs:element name="version"
-                     type="oscal-metadata-version-FIELD"
-                     minOccurs="1"
-                     maxOccurs="1"/>
+                      type="oscal-metadata-version-FIELD"
+                      minOccurs="1"
+                      maxOccurs="1"/>
          <xs:element name="oscal-version"
-                     type="oscal-metadata-oscal-version-FIELD"
-                     minOccurs="1"
-                     maxOccurs="1"/>
+                      type="oscal-metadata-oscal-version-FIELD"
+                      minOccurs="1"
+                      maxOccurs="1"/>
          <xs:element name="revisions" minOccurs="0" maxOccurs="1">
             <xs:annotation>
                <xs:appinfo>
@@ -641,29 +641,29 @@
                               </xs:complexType>
                            </xs:element>
                            <xs:element name="published"
-                                       type="oscal-metadata-published-FIELD"
-                                       minOccurs="0"
-                                       maxOccurs="1"/>
+                                        type="oscal-metadata-published-FIELD"
+                                        minOccurs="0"
+                                        maxOccurs="1"/>
                            <xs:element name="last-modified"
-                                       type="oscal-metadata-last-modified-FIELD"
-                                       minOccurs="0"
-                                       maxOccurs="1"/>
+                                        type="oscal-metadata-last-modified-FIELD"
+                                        minOccurs="0"
+                                        maxOccurs="1"/>
                            <xs:element name="version"
-                                       type="oscal-metadata-version-FIELD"
-                                       minOccurs="1"
-                                       maxOccurs="1"/>
+                                        type="oscal-metadata-version-FIELD"
+                                        minOccurs="1"
+                                        maxOccurs="1"/>
                            <xs:element name="oscal-version"
-                                       type="oscal-metadata-oscal-version-FIELD"
-                                       minOccurs="0"
-                                       maxOccurs="1"/>
+                                        type="oscal-metadata-oscal-version-FIELD"
+                                        minOccurs="0"
+                                        maxOccurs="1"/>
                            <xs:element name="prop"
-                                       type="oscal-metadata-property-ASSEMBLY"
-                                       minOccurs="0"
-                                       maxOccurs="unbounded"/>
+                                        type="oscal-metadata-property-ASSEMBLY"
+                                        minOccurs="0"
+                                        maxOccurs="unbounded"/>
                            <xs:element name="link"
-                                       type="oscal-metadata-link-ASSEMBLY"
-                                       minOccurs="0"
-                                       maxOccurs="unbounded"/>
+                                        type="oscal-metadata-link-ASSEMBLY"
+                                        minOccurs="0"
+                                        maxOccurs="unbounded"/>
                            <xs:element name="remarks" minOccurs="0" maxOccurs="1">
                               <xs:annotation>
                                  <xs:appinfo>
@@ -684,17 +684,17 @@
             </xs:complexType>
          </xs:element>
          <xs:element name="document-id"
-                     type="oscal-metadata-document-id-FIELD"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
+                      type="oscal-metadata-document-id-FIELD"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
          <xs:element name="prop"
-                     type="oscal-metadata-property-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
+                      type="oscal-metadata-property-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
          <xs:element name="link"
-                     type="oscal-metadata-link-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
+                      type="oscal-metadata-link-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
          <xs:element name="role" minOccurs="0" maxOccurs="unbounded">
             <xs:complexType>
                <xs:annotation>
@@ -750,13 +750,13 @@
                      </xs:complexType>
                   </xs:element>
                   <xs:element name="prop"
-                              type="oscal-metadata-property-ASSEMBLY"
-                              minOccurs="0"
-                              maxOccurs="unbounded"/>
+                               type="oscal-metadata-property-ASSEMBLY"
+                               minOccurs="0"
+                               maxOccurs="unbounded"/>
                   <xs:element name="link"
-                              type="oscal-metadata-link-ASSEMBLY"
-                              minOccurs="0"
-                              maxOccurs="unbounded"/>
+                               type="oscal-metadata-link-ASSEMBLY"
+                               minOccurs="0"
+                               maxOccurs="unbounded"/>
                   <xs:element name="remarks" minOccurs="0" maxOccurs="1">
                      <xs:annotation>
                         <xs:appinfo>
@@ -810,17 +810,17 @@
                      </xs:complexType>
                   </xs:element>
                   <xs:element name="address"
-                              type="oscal-metadata-address-ASSEMBLY"
-                              minOccurs="0"
-                              maxOccurs="1"/>
+                               type="oscal-metadata-address-ASSEMBLY"
+                               minOccurs="0"
+                               maxOccurs="1"/>
                   <xs:element name="email-address"
-                              type="oscal-metadata-email-address-FIELD"
-                              minOccurs="0"
-                              maxOccurs="unbounded"/>
+                               type="oscal-metadata-email-address-FIELD"
+                               minOccurs="0"
+                               maxOccurs="unbounded"/>
                   <xs:element name="telephone-number"
-                              type="oscal-metadata-telephone-number-FIELD"
-                              minOccurs="0"
-                              maxOccurs="unbounded"/>
+                               type="oscal-metadata-telephone-number-FIELD"
+                               minOccurs="0"
+                               maxOccurs="unbounded"/>
                   <xs:element name="url" minOccurs="0" maxOccurs="unbounded">
                      <xs:simpleType>
                         <xs:annotation>
@@ -835,13 +835,13 @@
                      </xs:simpleType>
                   </xs:element>
                   <xs:element name="prop"
-                              type="oscal-metadata-property-ASSEMBLY"
-                              minOccurs="0"
-                              maxOccurs="unbounded"/>
+                               type="oscal-metadata-property-ASSEMBLY"
+                               minOccurs="0"
+                               maxOccurs="unbounded"/>
                   <xs:element name="link"
-                              type="oscal-metadata-link-ASSEMBLY"
-                              minOccurs="0"
-                              maxOccurs="unbounded"/>
+                               type="oscal-metadata-link-ASSEMBLY"
+                               minOccurs="0"
+                               maxOccurs="unbounded"/>
                   <xs:element name="remarks" minOccurs="0" maxOccurs="1">
                      <xs:annotation>
                         <xs:appinfo>
@@ -932,30 +932,30 @@
                      </xs:complexType>
                   </xs:element>
                   <xs:element name="prop"
-                              type="oscal-metadata-property-ASSEMBLY"
-                              minOccurs="0"
-                              maxOccurs="unbounded"/>
+                               type="oscal-metadata-property-ASSEMBLY"
+                               minOccurs="0"
+                               maxOccurs="unbounded"/>
                   <xs:element name="link"
-                              type="oscal-metadata-link-ASSEMBLY"
-                              minOccurs="0"
-                              maxOccurs="unbounded"/>
+                               type="oscal-metadata-link-ASSEMBLY"
+                               minOccurs="0"
+                               maxOccurs="unbounded"/>
                   <xs:element name="email-address"
-                              type="oscal-metadata-email-address-FIELD"
-                              minOccurs="0"
-                              maxOccurs="unbounded"/>
+                               type="oscal-metadata-email-address-FIELD"
+                               minOccurs="0"
+                               maxOccurs="unbounded"/>
                   <xs:element name="telephone-number"
-                              type="oscal-metadata-telephone-number-FIELD"
-                              minOccurs="0"
-                              maxOccurs="unbounded"/>
+                               type="oscal-metadata-telephone-number-FIELD"
+                               minOccurs="0"
+                               maxOccurs="unbounded"/>
                   <xs:choice>
                      <xs:element name="address"
-                                 type="oscal-metadata-address-ASSEMBLY"
-                                 minOccurs="0"
-                                 maxOccurs="unbounded"/>
+                                  type="oscal-metadata-address-ASSEMBLY"
+                                  minOccurs="0"
+                                  maxOccurs="unbounded"/>
                      <xs:element name="location-uuid"
-                                 type="oscal-metadata-location-uuid-FIELD"
-                                 minOccurs="0"
-                                 maxOccurs="unbounded"/>
+                                  type="oscal-metadata-location-uuid-FIELD"
+                                  minOccurs="0"
+                                  maxOccurs="unbounded"/>
                   </xs:choice>
                   <xs:element name="member-of-organization" minOccurs="0" maxOccurs="unbounded">
                      <xs:simpleType>
@@ -1007,13 +1007,13 @@
             </xs:complexType>
          </xs:element>
          <xs:element name="responsible-party"
-                     type="oscal-metadata-responsible-party-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
+                      type="oscal-metadata-responsible-party-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
          <xs:element name="action"
-                     type="oscal-metadata-action-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
+                      type="oscal-metadata-action-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
          <xs:element name="remarks" minOccurs="0" maxOccurs="1">
             <xs:annotation>
                <xs:appinfo>
@@ -1114,13 +1114,13 @@
                      </xs:complexType>
                   </xs:element>
                   <xs:element name="prop"
-                              type="oscal-metadata-property-ASSEMBLY"
-                              minOccurs="0"
-                              maxOccurs="unbounded"/>
+                               type="oscal-metadata-property-ASSEMBLY"
+                               minOccurs="0"
+                               maxOccurs="unbounded"/>
                   <xs:element name="document-id"
-                              type="oscal-metadata-document-id-FIELD"
-                              minOccurs="0"
-                              maxOccurs="unbounded"/>
+                               type="oscal-metadata-document-id-FIELD"
+                               minOccurs="0"
+                               maxOccurs="unbounded"/>
                   <xs:element name="citation" minOccurs="0" maxOccurs="1">
                      <xs:complexType>
                         <xs:annotation>
@@ -1148,13 +1148,13 @@
                               </xs:complexType>
                            </xs:element>
                            <xs:element name="prop"
-                                       type="oscal-metadata-property-ASSEMBLY"
-                                       minOccurs="0"
-                                       maxOccurs="unbounded"/>
+                                        type="oscal-metadata-property-ASSEMBLY"
+                                        minOccurs="0"
+                                        maxOccurs="unbounded"/>
                            <xs:element name="link"
-                                       type="oscal-metadata-link-ASSEMBLY"
-                                       minOccurs="0"
-                                       maxOccurs="unbounded"/>
+                                        type="oscal-metadata-link-ASSEMBLY"
+                                        minOccurs="0"
+                                        maxOccurs="unbounded"/>
                         </xs:sequence>
                      </xs:complexType>
                   </xs:element>
@@ -1170,9 +1170,9 @@
                         </xs:annotation>
                         <xs:sequence>
                            <xs:element name="hash"
-                                       type="oscal-metadata-hash-FIELD"
-                                       minOccurs="0"
-                                       maxOccurs="unbounded"/>
+                                        type="oscal-metadata-hash-FIELD"
+                                        minOccurs="0"
+                                        maxOccurs="unbounded"/>
                         </xs:sequence>
                         <xs:attribute name="href" use="required" type="URIReferenceDatatype">
                            <xs:annotation>
@@ -1423,17 +1423,17 @@
       </xs:annotation>
       <xs:sequence>
          <xs:element name="party-uuid"
-                     type="oscal-metadata-party-uuid-FIELD"
-                     minOccurs="1"
-                     maxOccurs="unbounded"/>
+                      type="oscal-metadata-party-uuid-FIELD"
+                      minOccurs="1"
+                      maxOccurs="unbounded"/>
          <xs:element name="prop"
-                     type="oscal-metadata-property-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
+                      type="oscal-metadata-property-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
          <xs:element name="link"
-                     type="oscal-metadata-link-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
+                      type="oscal-metadata-link-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
          <xs:element name="remarks" minOccurs="0" maxOccurs="1">
             <xs:annotation>
                <xs:appinfo>
@@ -1470,17 +1470,17 @@
       </xs:annotation>
       <xs:sequence>
          <xs:element name="prop"
-                     type="oscal-metadata-property-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
+                      type="oscal-metadata-property-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
          <xs:element name="link"
-                     type="oscal-metadata-link-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
+                      type="oscal-metadata-link-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
          <xs:element name="responsible-party"
-                     type="oscal-metadata-responsible-party-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
+                      type="oscal-metadata-responsible-party-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
          <xs:element name="remarks" minOccurs="0" maxOccurs="1">
             <xs:annotation>
                <xs:appinfo>
@@ -1547,17 +1547,17 @@
       </xs:annotation>
       <xs:sequence>
          <xs:element name="prop"
-                     type="oscal-metadata-property-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
+                      type="oscal-metadata-property-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
          <xs:element name="link"
-                     type="oscal-metadata-link-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
+                      type="oscal-metadata-link-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
          <xs:element name="party-uuid"
-                     type="oscal-metadata-party-uuid-FIELD"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
+                      type="oscal-metadata-party-uuid-FIELD"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
          <xs:element name="remarks" minOccurs="0" maxOccurs="1">
             <xs:annotation>
                <xs:appinfo>
@@ -1710,9 +1710,9 @@
       </xs:annotation>
       <xs:sequence>
          <xs:element name="addr-line"
-                     type="oscal-metadata-addr-line-FIELD"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
+                      type="oscal-metadata-addr-line-FIELD"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
          <xs:element name="city" minOccurs="0" maxOccurs="1">
             <xs:simpleType>
                <xs:annotation>
@@ -1823,13 +1823,13 @@
       </xs:annotation>
       <xs:sequence>
          <xs:element name="prop"
-                     type="oscal-metadata-property-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
+                      type="oscal-metadata-property-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
          <xs:element name="link"
-                     type="oscal-metadata-link-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
+                      type="oscal-metadata-link-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
          <xs:element name="relationship" minOccurs="1" maxOccurs="1">
             <xs:complexType>
                <xs:annotation>
@@ -1857,13 +1857,13 @@
             </xs:complexType>
          </xs:element>
          <xs:element name="source"
-                     type="oscal-mapping-common-mapping-item-ASSEMBLY"
-                     minOccurs="1"
-                     maxOccurs="unbounded"/>
+                      type="oscal-mapping-common-mapping-item-ASSEMBLY"
+                      minOccurs="1"
+                      maxOccurs="unbounded"/>
          <xs:element name="target"
-                     type="oscal-mapping-common-mapping-item-ASSEMBLY"
-                     minOccurs="1"
-                     maxOccurs="unbounded"/>
+                      type="oscal-mapping-common-mapping-item-ASSEMBLY"
+                      minOccurs="1"
+                      maxOccurs="unbounded"/>
          <xs:element name="remarks" minOccurs="0" maxOccurs="1">
             <xs:annotation>
                <xs:appinfo>
@@ -1900,13 +1900,13 @@
       </xs:annotation>
       <xs:sequence>
          <xs:element name="prop"
-                     type="oscal-metadata-property-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
+                      type="oscal-metadata-property-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
          <xs:element name="link"
-                     type="oscal-metadata-link-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
+                      type="oscal-metadata-link-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
          <xs:element name="remarks" minOccurs="0" maxOccurs="1">
             <xs:annotation>
                <xs:appinfo>
@@ -1953,13 +1953,13 @@
       </xs:annotation>
       <xs:sequence>
          <xs:element name="prop"
-                     type="oscal-metadata-property-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
+                      type="oscal-metadata-property-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
          <xs:element name="link"
-                     type="oscal-metadata-link-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
+                      type="oscal-metadata-link-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
          <xs:element name="remarks" minOccurs="0" maxOccurs="1">
             <xs:annotation>
                <xs:appinfo>
@@ -2030,9 +2030,9 @@
    <xs:complexType name="listType">
       <xs:sequence>
          <xs:element name="li"
-                     type="listItemType"
-                     minOccurs="1"
-                     maxOccurs="unbounded"/>
+                      type="listItemType"
+                      minOccurs="1"
+                      maxOccurs="unbounded"/>
       </xs:sequence>
    </xs:complexType>
    <xs:complexType name="listItemType" mixed="true">
