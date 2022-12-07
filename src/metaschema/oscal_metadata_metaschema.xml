@@ -974,10 +974,10 @@
             </remarks>
         </define-flag>
         <constraint>
-            <matches target=".[@algorithm=('SHA-224','SHA3-224')" regex="^[0-9a-fA-F]{28}$"/>
-            <matches target=".[@algorithm=('SHA-256','SHA3-256')" regex="^[0-9a-fA-F]{32}$"/>
-            <matches target=".[@algorithm=('SHA-384','SHA3-384')" regex="^[0-9a-fA-F]{48}$"/>
-            <matches target=".[@algorithm=('SHA-512','SHA3-512')" regex="^[0-9a-fA-F]{64}$"/>
+            <matches target=".[@algorithm=('SHA-224','SHA3-224')]" regex="^[0-9a-fA-F]{28}$"/>
+            <matches target=".[@algorithm=('SHA-256','SHA3-256')]" regex="^[0-9a-fA-F]{32}$"/>
+            <matches target=".[@algorithm=('SHA-384','SHA3-384')]" regex="^[0-9a-fA-F]{48}$"/>
+            <matches target=".[@algorithm=('SHA-512','SHA3-512')]" regex="^[0-9a-fA-F]{64}$"/>
         </constraint>
     </define-field>
 
