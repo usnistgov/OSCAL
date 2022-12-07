@@ -2,7 +2,7 @@ module github.com/usnistgov/OSCAL/build
 
 go 1.18
 
-require github.com/gohugoio/hugo v0.107.0
+require github.com/gohugoio/hugo v0.108.0
 
 require (
 	cloud.google.com/go v0.101.0 // indirect
@@ -36,7 +36,7 @@ require (
 	github.com/bep/debounce v1.2.0 // indirect
 	github.com/bep/gitmap v1.1.2 // indirect
 	github.com/bep/goat v0.5.0 // indirect
-	github.com/bep/godartsass v0.14.0 // indirect
+	github.com/bep/godartsass v0.16.0 // indirect
 	github.com/bep/golibsass v1.1.0 // indirect
 	github.com/bep/gowebp v0.2.0 // indirect
 	github.com/bep/overlayfs v0.6.0 // indirect
@@ -47,10 +47,10 @@ require (
 	github.com/disintegration/gift v1.2.1 // indirect
 	github.com/dlclark/regexp2 v1.7.0 // indirect
 	github.com/dustin/go-humanize v1.0.0 // indirect
-	github.com/evanw/esbuild v0.15.15 // indirect
+	github.com/evanw/esbuild v0.15.18 // indirect
 	github.com/frankban/quicktest v1.14.4 // indirect
 	github.com/fsnotify/fsnotify v1.6.0 // indirect
-	github.com/getkin/kin-openapi v0.109.0 // indirect
+	github.com/getkin/kin-openapi v0.110.0 // indirect
 	github.com/ghodss/yaml v1.0.0 // indirect
 	github.com/go-openapi/jsonpointer v0.19.5 // indirect
 	github.com/go-openapi/swag v0.19.5 // indirect
@@ -111,14 +111,14 @@ require (
 	golang.org/x/oauth2 v0.0.0-20220411215720-9780585627b5 // indirect
 	golang.org/x/sync v0.1.0 // indirect
 	golang.org/x/sys v0.2.0 // indirect
-	golang.org/x/text v0.4.0 // indirect
+	golang.org/x/text v0.5.0 // indirect
 	golang.org/x/tools v0.3.0 // indirect
 	golang.org/x/xerrors v0.0.0-20220411194840-2f41105eb62f // indirect
 	google.golang.org/api v0.76.0 // indirect
 	google.golang.org/appengine v1.6.7 // indirect
 	google.golang.org/genproto v0.0.0-20220426171045-31bebdecfb46 // indirect
 	google.golang.org/grpc v1.46.0 // indirect
-	google.golang.org/protobuf v1.28.0 // indirect
+	google.golang.org/protobuf v1.28.1 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
