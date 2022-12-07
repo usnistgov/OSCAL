@@ -403,7 +403,7 @@ The following is a reference for the XML element and attribute types derived fro
                         <summary>Constraints (6)</summary>
                         
                         <div class="constraint">
-                           <p><span class="usa-tag">allowed values</span> for <code class="path">prop/@name</code></p>
+                           <p><span class="usa-tag">allowed values</span> for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
                            <p>The value <b>must</b> be one of the following:</p>
                            <ul>
                               
@@ -914,7 +914,7 @@ The following is a reference for the XML element and attribute types derived fro
             
             <div class="constraint">
                <p><span class="usa-tag">allowed values</span> for <code class="path">metadata/link/@rel</code></p>
-               <p>The value <b>must</b> be one of the following:</p>
+               <p>The value <b>may be locally defined</b>, or one of the following:</p>
                <ul>
                   
                   <li><strong>source-profile</strong>: The profile from which the catalog was produced by profile resolution.</li>
@@ -5072,6 +5072,20 @@ The following is a reference for the XML element and attribute types derived fro
                </div>
             </details>
          </div>
+         <details>
+            <summary>Constraint (1)</summary>
+            
+            <div class="constraint">
+               <p><span class="usa-tag">allowed value</span> for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+               <p>The value <b>must</b> be one of the following:</p>
+               <ul>
+                  
+                  <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                     An optional class can be used to define the specific marking system used for the associated
+                     value.</li>
+                  </ul>
+            </div>
+            </details>
          <details open="open">
             <summary>Attributes (6):</summary>
             <div class="model assembly-model">
@@ -5086,22 +5100,6 @@ The following is a reference for the XML element and attribute types derived fro
                   <div class="body">
                      <p class="description"><span class="usa-tag">description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
                         characteristic, or quality of the property's containing object.</p>
-                     <details>
-                        <summary>Constraint (1)</summary>
-                        
-                        
-                        <div class="constraint">
-                           <p><span class="usa-tag">allowed value</span></p>
-                           <p>The value <b>must</b> be one of the following:</p>
-                           <ul>
-                              
-                              
-                              <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                 An optional class can be used to define the specific marking system used for the associated
-                                 value.</li>
-                              </ul>
-                        </div>
-                        </details>
                   </div>
                </div>
                <div class="model-entry definition define-flag">

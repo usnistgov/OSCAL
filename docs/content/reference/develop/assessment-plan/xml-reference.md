@@ -491,6 +491,19 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                    </div>
                                                 </details>
                                              </div>
+                                             <details class="constraints" open="open">
+                                                <summary>Constraint (1)</summary>
+                                                <div class="constraint">
+                                                   <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                                   <p>The value <b>must</b> be one of the following:</p>
+                                                   <ul>
+                                                      
+                                                      <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                         An optional class can be used to define the specific marking system used for the associated
+                                                         value.</li>
+                                                      </ul>
+                                                </div>
+                                             </details>
                                              <details class="properties attributes" open="open">
                                                 <summary>Attributes (6)</summary>
                                                 <div class="model-entry definition assembly">
@@ -504,20 +517,6 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                    <div class="body">
                                                       <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
                                                          characteristic, or quality of the property's containing object.</p>
-                                                      <details class="constraints" open="open">
-                                                         <summary>Constraint (1)</summary>
-                                                         <div class="constraint">
-                                                            <p><span class="usa-tag">allowed value</span></p>
-                                                            <p>The value <b>must</b> be one of the following:</p>
-                                                            <ul>
-                                                               
-                                                               
-                                                               <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                                  An optional class can be used to define the specific marking system used for the associated
-                                                                  value.</li>
-                                                               </ul>
-                                                         </div>
-                                                      </details>
                                                    </div>
                                                 </div>
                                                 <div class="model-entry definition assembly">
@@ -938,6 +937,19 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                  </div>
                               </details>
                            </div>
+                           <details class="constraints" open="open">
+                              <summary>Constraint (1)</summary>
+                              <div class="constraint">
+                                 <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                 <p>The value <b>must</b> be one of the following:</p>
+                                 <ul>
+                                    
+                                    <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                       An optional class can be used to define the specific marking system used for the associated
+                                       value.</li>
+                                    </ul>
+                              </div>
+                           </details>
                            <details class="properties attributes" open="open">
                               <summary>Attributes (6)</summary>
                               <div class="model-entry definition assembly">
@@ -951,20 +963,6 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
                                        characteristic, or quality of the property's containing object.</p>
-                                    <details class="constraints" open="open">
-                                       <summary>Constraint (1)</summary>
-                                       <div class="constraint">
-                                          <p><span class="usa-tag">allowed value</span></p>
-                                          <p>The value <b>must</b> be one of the following:</p>
-                                          <ul>
-                                             
-                                             
-                                             <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                An optional class can be used to define the specific marking system used for the associated
-                                                value.</li>
-                                             </ul>
-                                       </div>
-                                    </details>
                                  </div>
                               </div>
                               <div class="model-entry definition assembly">
@@ -1370,6 +1368,19 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                           </div>
                                        </details>
                                     </div>
+                                    <details class="constraints" open="open">
+                                       <summary>Constraint (1)</summary>
+                                       <div class="constraint">
+                                          <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                          <p>The value <b>must</b> be one of the following:</p>
+                                          <ul>
+                                             
+                                             <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                An optional class can be used to define the specific marking system used for the associated
+                                                value.</li>
+                                             </ul>
+                                       </div>
+                                    </details>
                                     <details class="properties attributes" open="open">
                                        <summary>Attributes (6)</summary>
                                        <div class="model-entry definition assembly">
@@ -1383,20 +1394,6 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
                                                 characteristic, or quality of the property's containing object.</p>
-                                             <details class="constraints" open="open">
-                                                <summary>Constraint (1)</summary>
-                                                <div class="constraint">
-                                                   <p><span class="usa-tag">allowed value</span></p>
-                                                   <p>The value <b>must</b> be one of the following:</p>
-                                                   <ul>
-                                                      
-                                                      
-                                                      <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                         An optional class can be used to define the specific marking system used for the associated
-                                                         value.</li>
-                                                      </ul>
-                                                </div>
-                                             </details>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -2049,6 +2046,19 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                           </div>
                                        </details>
                                     </div>
+                                    <details class="constraints" open="open">
+                                       <summary>Constraint (1)</summary>
+                                       <div class="constraint">
+                                          <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                          <p>The value <b>must</b> be one of the following:</p>
+                                          <ul>
+                                             
+                                             <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                An optional class can be used to define the specific marking system used for the associated
+                                                value.</li>
+                                             </ul>
+                                       </div>
+                                    </details>
                                     <details class="properties attributes" open="open">
                                        <summary>Attributes (6)</summary>
                                        <div class="model-entry definition assembly">
@@ -2062,20 +2072,6 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
                                                 characteristic, or quality of the property's containing object.</p>
-                                             <details class="constraints" open="open">
-                                                <summary>Constraint (1)</summary>
-                                                <div class="constraint">
-                                                   <p><span class="usa-tag">allowed value</span></p>
-                                                   <p>The value <b>must</b> be one of the following:</p>
-                                                   <ul>
-                                                      
-                                                      
-                                                      <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                         An optional class can be used to define the specific marking system used for the associated
-                                                         value.</li>
-                                                      </ul>
-                                                </div>
-                                             </details>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -2578,6 +2574,19 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                           </div>
                                        </details>
                                     </div>
+                                    <details class="constraints" open="open">
+                                       <summary>Constraint (1)</summary>
+                                       <div class="constraint">
+                                          <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                          <p>The value <b>must</b> be one of the following:</p>
+                                          <ul>
+                                             
+                                             <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                An optional class can be used to define the specific marking system used for the associated
+                                                value.</li>
+                                             </ul>
+                                       </div>
+                                    </details>
                                     <details class="properties attributes" open="open">
                                        <summary>Attributes (6)</summary>
                                        <div class="model-entry definition assembly">
@@ -2591,20 +2600,6 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
                                                 characteristic, or quality of the property's containing object.</p>
-                                             <details class="constraints" open="open">
-                                                <summary>Constraint (1)</summary>
-                                                <div class="constraint">
-                                                   <p><span class="usa-tag">allowed value</span></p>
-                                                   <p>The value <b>must</b> be one of the following:</p>
-                                                   <ul>
-                                                      
-                                                      
-                                                      <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                         An optional class can be used to define the specific marking system used for the associated
-                                                         value.</li>
-                                                      </ul>
-                                                </div>
-                                             </details>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -3253,6 +3248,19 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                           </div>
                                        </details>
                                     </div>
+                                    <details class="constraints" open="open">
+                                       <summary>Constraint (1)</summary>
+                                       <div class="constraint">
+                                          <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                          <p>The value <b>must</b> be one of the following:</p>
+                                          <ul>
+                                             
+                                             <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                An optional class can be used to define the specific marking system used for the associated
+                                                value.</li>
+                                             </ul>
+                                       </div>
+                                    </details>
                                     <details class="properties attributes" open="open">
                                        <summary>Attributes (6)</summary>
                                        <div class="model-entry definition assembly">
@@ -3266,20 +3274,6 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
                                                 characteristic, or quality of the property's containing object.</p>
-                                             <details class="constraints" open="open">
-                                                <summary>Constraint (1)</summary>
-                                                <div class="constraint">
-                                                   <p><span class="usa-tag">allowed value</span></p>
-                                                   <p>The value <b>must</b> be one of the following:</p>
-                                                   <ul>
-                                                      
-                                                      
-                                                      <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                         An optional class can be used to define the specific marking system used for the associated
-                                                         value.</li>
-                                                      </ul>
-                                                </div>
-                                             </details>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -3735,6 +3729,19 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                           </div>
                                        </details>
                                     </div>
+                                    <details class="constraints" open="open">
+                                       <summary>Constraint (1)</summary>
+                                       <div class="constraint">
+                                          <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                          <p>The value <b>must</b> be one of the following:</p>
+                                          <ul>
+                                             
+                                             <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                An optional class can be used to define the specific marking system used for the associated
+                                                value.</li>
+                                             </ul>
+                                       </div>
+                                    </details>
                                     <details class="properties attributes" open="open">
                                        <summary>Attributes (6)</summary>
                                        <div class="model-entry definition assembly">
@@ -3748,20 +3755,6 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
                                                 characteristic, or quality of the property's containing object.</p>
-                                             <details class="constraints" open="open">
-                                                <summary>Constraint (1)</summary>
-                                                <div class="constraint">
-                                                   <p><span class="usa-tag">allowed value</span></p>
-                                                   <p>The value <b>must</b> be one of the following:</p>
-                                                   <ul>
-                                                      
-                                                      
-                                                      <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                         An optional class can be used to define the specific marking system used for the associated
-                                                         value.</li>
-                                                      </ul>
-                                                </div>
-                                             </details>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -4139,6 +4132,19 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                    </div>
                                                 </details>
                                              </div>
+                                             <details class="constraints" open="open">
+                                                <summary>Constraint (1)</summary>
+                                                <div class="constraint">
+                                                   <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                                   <p>The value <b>must</b> be one of the following:</p>
+                                                   <ul>
+                                                      
+                                                      <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                         An optional class can be used to define the specific marking system used for the associated
+                                                         value.</li>
+                                                      </ul>
+                                                </div>
+                                             </details>
                                              <details class="properties attributes" open="open">
                                                 <summary>Attributes (6)</summary>
                                                 <div class="model-entry definition assembly">
@@ -4152,20 +4158,6 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                    <div class="body">
                                                       <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
                                                          characteristic, or quality of the property's containing object.</p>
-                                                      <details class="constraints" open="open">
-                                                         <summary>Constraint (1)</summary>
-                                                         <div class="constraint">
-                                                            <p><span class="usa-tag">allowed value</span></p>
-                                                            <p>The value <b>must</b> be one of the following:</p>
-                                                            <ul>
-                                                               
-                                                               
-                                                               <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                                  An optional class can be used to define the specific marking system used for the associated
-                                                                  value.</li>
-                                                               </ul>
-                                                         </div>
-                                                      </details>
                                                    </div>
                                                 </div>
                                                 <div class="model-entry definition assembly">
@@ -4704,8 +4696,8 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                            <details class="constraints" open="open">
                               <summary>Constraints (24)</summary>
                               <div class="constraint">
-                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop/@name</code></p>
-                                 <p>The value <b>may be locally defined</b>, or one of the following:</p>
+                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                 <p>The value <b>must</b> be one of the following:</p>
                                  <ul>
                                     
                                     
@@ -4837,7 +4829,7 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                     </ul>
                               </div>
                               <div class="constraint">
-                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[@name='asset-type']/@value</code></p>
+                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='asset-type']/@value</code></p>
                                  <p>The value <b>must</b> be one of the following:</p>
                                  <ul>
                                     
@@ -4878,7 +4870,7 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                     </ul>
                               </div>
                               <div class="constraint">
-                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[@name='allows-authenticated-scan']/@value</code></p>
+                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='allows-authenticated-scan']/@value</code></p>
                                  <p>The value <b>must</b> be one of the following:</p>
                                  <ul>
                                     
@@ -4888,7 +4880,7 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                     </ul>
                               </div>
                               <div class="constraint">
-                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[@name='public']/@value</code></p>
+                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='public']/@value</code></p>
                                  <p>The value <b>must</b> be one of the following:</p>
                                  <ul>
                                     
@@ -4898,7 +4890,7 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                     </ul>
                               </div>
                               <div class="constraint">
-                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[@name='virtual']/@value</code></p>
+                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='virtual']/@value</code></p>
                                  <p>The value <b>must</b> be one of the following:</p>
                                  <ul>
                                     
@@ -4908,7 +4900,7 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                     </ul>
                               </div>
                               <div class="constraint">
-                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[@name='implementation-point']/@value</code></p>
+                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='implementation-point']/@value</code></p>
                                  <p>The value <b>must</b> be one of the following:</p>
                                  <ul>
                                     
@@ -4921,14 +4913,14 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                  <p><span class="usa-tag">index has key</span>  for <code class="path">prop[@name='physical-location']</code>this value must correspond to a listing in the index <code>index-metadata-location-uuid</code> using a key constructed of key field(s) <code>@value</code></p>
                               </div>
                               <div class="constraint">
-                                 <p><span class="usa-tag">matches</span>  for <code class="path">prop[@name='inherited-uuid']/@value</code>: the target value must match the lexical form of the 'uuid' data type.</p>
+                                 <p><span class="usa-tag">matches</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='inherited-uuid']/@value</code>: the target value must match the lexical form of the 'uuid' data type.</p>
                               </div>
                               <div class="constraint">
-                                 <p><span class="usa-tag">matches</span>  for <code class="path">prop[@name='release-date']/@value</code>: the target value must match the lexical form of the 'date' data type.</p>
+                                 <p><span class="usa-tag">matches</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='release-date']/@value</code>: the target value must match the lexical form of the 'date' data type.</p>
                               </div>
                               <div class="constraint">
-                                 <p><span class="usa-tag">allowed value</span>  for <code class="path">(.)[@type=('software', 'hardware', 'service')]/prop/@name</code></p>
-                                 <p>The value <b>may be locally defined</b>, or the following:</p>
+                                 <p><span class="usa-tag">allowed value</span>  for <code class="path">(.)[@type=('software', 'hardware', 'service')]/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                 <p>The value <b>must</b> be one of the following:</p>
                                  <ul>
                                     
                                     <li><strong>vendor-name</strong>: The name of the company or organization </li>
@@ -4943,8 +4935,8 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                     </ul>
                               </div>
                               <div class="constraint">
-                                 <p><span class="usa-tag">allowed value</span>  for <code class="path">(.)[@type='software']/prop/@name</code></p>
-                                 <p>The value <b>may be locally defined</b>, or the following:</p>
+                                 <p><span class="usa-tag">allowed value</span>  for <code class="path">(.)[@type='software']/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                 <p>The value <b>must</b> be one of the following:</p>
                                  <ul>
                                     
                                     <li><strong>software-identifier</strong>: If a "software" component-type, the identifier, such as a SWID tag, for the software
@@ -4965,8 +4957,8 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                     </ul>
                               </div>
                               <div class="constraint">
-                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">(.)[@type='interconnection']/prop/@name</code></p>
-                                 <p>The value <b>may be locally defined</b>, or one of the following:</p>
+                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">(.)[@type='interconnection']/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                 <p>The value <b>must</b> be one of the following:</p>
                                  <ul>
                                     
                                     <li><strong>isa-title</strong>: Title of the Interconnection Security Agreement (ISA).</li>
@@ -4983,8 +4975,8 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                     </ul>
                               </div>
                               <div class="constraint">
-                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[@name=('ipv4-address','ipv6-address')]/@class</code></p>
-                                 <p>The value <b>may be locally defined</b>, or one of the following:</p>
+                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('ipv4-address','ipv6-address')]/@class</code></p>
+                                 <p>The value <b>must</b> be one of the following:</p>
                                  <ul>
                                     
                                     <li><strong>local</strong>: The identified IP address is for this system.</li>
@@ -5018,17 +5010,17 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                     </ul>
                               </div>
                               <div class="constraint">
-                                 <p><span class="usa-tag">matches</span>  for <code class="path">prop[@name='isa-date']/@value</code>: the target value must match the lexical form of the 'dateTime' data type.</p>
+                                 <p><span class="usa-tag">matches</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='isa-date']/@value</code>: the target value must match the lexical form of the 'dateTime' data type.</p>
                               </div>
                               <div class="constraint">
-                                 <p><span class="usa-tag">matches</span>  for <code class="path">prop[@name='ipv4-address']/@value</code>: the target value must match the lexical form of the 'ip-v4-address' data type.</p>
+                                 <p><span class="usa-tag">matches</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='ipv4-address']/@value</code>: the target value must match the lexical form of the 'ip-v4-address' data type.</p>
                               </div>
                               <div class="constraint">
-                                 <p><span class="usa-tag">matches</span>  for <code class="path">prop[@name='ipv6-address']/@value</code>: the target value must match the lexical form of the 'ip-v6-address' data type.</p>
+                                 <p><span class="usa-tag">matches</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='ipv6-address']/@value</code>: the target value must match the lexical form of the 'ip-v6-address' data type.</p>
                               </div>
                               <div class="constraint">
-                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[@name='direction']/@value</code></p>
-                                 <p>The value <b>may be locally defined</b>, or one of the following:</p>
+                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='direction']/@value</code></p>
+                                 <p>The value <b>must</b> be one of the following:</p>
                                  <ul>
                                     
                                     <li><strong>incoming</strong>: Data from the remote system flows into this system.</li>
@@ -5188,6 +5180,19 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                           </div>
                                        </details>
                                     </div>
+                                    <details class="constraints" open="open">
+                                       <summary>Constraint (1)</summary>
+                                       <div class="constraint">
+                                          <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                          <p>The value <b>must</b> be one of the following:</p>
+                                          <ul>
+                                             
+                                             <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                An optional class can be used to define the specific marking system used for the associated
+                                                value.</li>
+                                             </ul>
+                                       </div>
+                                    </details>
                                     <details class="properties attributes" open="open">
                                        <summary>Attributes (6)</summary>
                                        <div class="model-entry definition assembly">
@@ -5201,20 +5206,6 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
                                                 characteristic, or quality of the property's containing object.</p>
-                                             <details class="constraints" open="open">
-                                                <summary>Constraint (1)</summary>
-                                                <div class="constraint">
-                                                   <p><span class="usa-tag">allowed value</span></p>
-                                                   <p>The value <b>must</b> be one of the following:</p>
-                                                   <ul>
-                                                      
-                                                      
-                                                      <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                         An optional class can be used to define the specific marking system used for the associated
-                                                         value.</li>
-                                                      </ul>
-                                                </div>
-                                             </details>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -5650,6 +5641,19 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                    </div>
                                                 </details>
                                              </div>
+                                             <details class="constraints" open="open">
+                                                <summary>Constraint (1)</summary>
+                                                <div class="constraint">
+                                                   <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                                   <p>The value <b>must</b> be one of the following:</p>
+                                                   <ul>
+                                                      
+                                                      <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                         An optional class can be used to define the specific marking system used for the associated
+                                                         value.</li>
+                                                      </ul>
+                                                </div>
+                                             </details>
                                              <details class="properties attributes" open="open">
                                                 <summary>Attributes (6)</summary>
                                                 <div class="model-entry definition assembly">
@@ -5663,20 +5667,6 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                    <div class="body">
                                                       <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
                                                          characteristic, or quality of the property's containing object.</p>
-                                                      <details class="constraints" open="open">
-                                                         <summary>Constraint (1)</summary>
-                                                         <div class="constraint">
-                                                            <p><span class="usa-tag">allowed value</span></p>
-                                                            <p>The value <b>must</b> be one of the following:</p>
-                                                            <ul>
-                                                               
-                                                               
-                                                               <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                                  An optional class can be used to define the specific marking system used for the associated
-                                                                  value.</li>
-                                                               </ul>
-                                                         </div>
-                                                      </details>
                                                    </div>
                                                 </div>
                                                 <div class="model-entry definition assembly">
@@ -6240,8 +6230,8 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                            <details class="constraints" open="open">
                               <summary>Constraints (9)</summary>
                               <div class="constraint">
-                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop/@name</code></p>
-                                 <p>The value <b>may be locally defined</b>, or one of the following:</p>
+                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                 <p>The value <b>must</b> be one of the following:</p>
                                  <ul>
                                     
                                     <li><strong>ipv4-address</strong>: The Internet Protocol v4 Address of the asset.</li>
@@ -6320,7 +6310,7 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                     </ul>
                               </div>
                               <div class="constraint">
-                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[@name='asset-type']/@value</code></p>
+                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='asset-type']/@value</code></p>
                                  <p>The value <b>must</b> be one of the following:</p>
                                  <ul>
                                     
@@ -6361,15 +6351,15 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                     </ul>
                               </div>
                               <div class="constraint">
-                                 <p><span class="usa-tag">allowed value</span>  for <code class="path">(.)[@type=('software', 'hardware', 'service')]/prop/@name</code></p>
-                                 <p>The value <b>may be locally defined</b>, or the following:</p>
+                                 <p><span class="usa-tag">allowed value</span>  for <code class="path">(.)[@type=('software', 'hardware', 'service')]/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                 <p>The value <b>must</b> be one of the following:</p>
                                  <ul>
                                     
                                     <li><strong>vendor-name</strong>: The name of the company or organization </li>
                                     </ul>
                               </div>
                               <div class="constraint">
-                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[@name='is-scanned']/@value</code></p>
+                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='is-scanned']/@value</code></p>
                                  <p>The value <b>must</b> be one of the following:</p>
                                  <ul>
                                     
@@ -6501,6 +6491,19 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                           </div>
                                        </details>
                                     </div>
+                                    <details class="constraints" open="open">
+                                       <summary>Constraint (1)</summary>
+                                       <div class="constraint">
+                                          <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                          <p>The value <b>must</b> be one of the following:</p>
+                                          <ul>
+                                             
+                                             <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                An optional class can be used to define the specific marking system used for the associated
+                                                value.</li>
+                                             </ul>
+                                       </div>
+                                    </details>
                                     <details class="properties attributes" open="open">
                                        <summary>Attributes (6)</summary>
                                        <div class="model-entry definition assembly">
@@ -6514,20 +6517,6 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
                                                 characteristic, or quality of the property's containing object.</p>
-                                             <details class="constraints" open="open">
-                                                <summary>Constraint (1)</summary>
-                                                <div class="constraint">
-                                                   <p><span class="usa-tag">allowed value</span></p>
-                                                   <p>The value <b>must</b> be one of the following:</p>
-                                                   <ul>
-                                                      
-                                                      
-                                                      <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                         An optional class can be used to define the specific marking system used for the associated
-                                                         value.</li>
-                                                      </ul>
-                                                </div>
-                                             </details>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -6905,6 +6894,19 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                    </div>
                                                 </details>
                                              </div>
+                                             <details class="constraints" open="open">
+                                                <summary>Constraint (1)</summary>
+                                                <div class="constraint">
+                                                   <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                                   <p>The value <b>must</b> be one of the following:</p>
+                                                   <ul>
+                                                      
+                                                      <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                         An optional class can be used to define the specific marking system used for the associated
+                                                         value.</li>
+                                                      </ul>
+                                                </div>
+                                             </details>
                                              <details class="properties attributes" open="open">
                                                 <summary>Attributes (6)</summary>
                                                 <div class="model-entry definition assembly">
@@ -6918,20 +6920,6 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                    <div class="body">
                                                       <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
                                                          characteristic, or quality of the property's containing object.</p>
-                                                      <details class="constraints" open="open">
-                                                         <summary>Constraint (1)</summary>
-                                                         <div class="constraint">
-                                                            <p><span class="usa-tag">allowed value</span></p>
-                                                            <p>The value <b>must</b> be one of the following:</p>
-                                                            <ul>
-                                                               
-                                                               
-                                                               <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                                  An optional class can be used to define the specific marking system used for the associated
-                                                                  value.</li>
-                                                               </ul>
-                                                         </div>
-                                                      </details>
                                                    </div>
                                                 </div>
                                                 <div class="model-entry definition assembly">
@@ -7269,8 +7257,8 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                     <details class="constraints" open="open">
                                        <summary>Constraints (4)</summary>
                                        <div class="constraint">
-                                          <p><span class="usa-tag">allowed values</span>  for <code class="path">prop/@name</code></p>
-                                          <p>The value <b>may be locally defined</b>, or one of the following:</p>
+                                          <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                          <p>The value <b>must</b> be one of the following:</p>
                                           <ul>
                                              
                                              
@@ -7323,7 +7311,7 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                              </ul>
                                        </div>
                                        <div class="constraint">
-                                          <p><span class="usa-tag">has cardinality</span>  for <code class="path">prop[@name='asset-id']</code> the cardinality of  <code>prop[@name='asset-id']</code> is constrained: <b>1</b>; maximum <b>unbounded</b>.</p>
+                                          <p><span class="usa-tag">has cardinality</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='asset-id']</code> the cardinality of  <code>prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='asset-id']</code> is constrained: <b>1</b>; maximum <b>unbounded</b>.</p>
                                        </div>
                                        <div class="constraint">
                                           <p><span class="usa-tag">allowed values</span>  for <code class="path">responsible-party/@role-id</code></p>
@@ -7401,6 +7389,19 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                    </div>
                                                 </details>
                                              </div>
+                                             <details class="constraints" open="open">
+                                                <summary>Constraint (1)</summary>
+                                                <div class="constraint">
+                                                   <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                                   <p>The value <b>must</b> be one of the following:</p>
+                                                   <ul>
+                                                      
+                                                      <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                         An optional class can be used to define the specific marking system used for the associated
+                                                         value.</li>
+                                                      </ul>
+                                                </div>
+                                             </details>
                                              <details class="properties attributes" open="open">
                                                 <summary>Attributes (6)</summary>
                                                 <div class="model-entry definition assembly">
@@ -7414,20 +7415,6 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                    <div class="body">
                                                       <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
                                                          characteristic, or quality of the property's containing object.</p>
-                                                      <details class="constraints" open="open">
-                                                         <summary>Constraint (1)</summary>
-                                                         <div class="constraint">
-                                                            <p><span class="usa-tag">allowed value</span></p>
-                                                            <p>The value <b>must</b> be one of the following:</p>
-                                                            <ul>
-                                                               
-                                                               
-                                                               <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                                  An optional class can be used to define the specific marking system used for the associated
-                                                                  value.</li>
-                                                               </ul>
-                                                         </div>
-                                                      </details>
                                                    </div>
                                                 </div>
                                                 <div class="model-entry definition assembly">
@@ -7810,6 +7797,19 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                             </div>
                                                          </details>
                                                       </div>
+                                                      <details class="constraints" open="open">
+                                                         <summary>Constraint (1)</summary>
+                                                         <div class="constraint">
+                                                            <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                                            <p>The value <b>must</b> be one of the following:</p>
+                                                            <ul>
+                                                               
+                                                               <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                                  An optional class can be used to define the specific marking system used for the associated
+                                                                  value.</li>
+                                                               </ul>
+                                                         </div>
+                                                      </details>
                                                       <details class="properties attributes" open="open">
                                                          <summary>Attributes (6)</summary>
                                                          <div class="model-entry definition assembly">
@@ -7823,20 +7823,6 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                             <div class="body">
                                                                <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
                                                                   characteristic, or quality of the property's containing object.</p>
-                                                               <details class="constraints" open="open">
-                                                                  <summary>Constraint (1)</summary>
-                                                                  <div class="constraint">
-                                                                     <p><span class="usa-tag">allowed value</span></p>
-                                                                     <p>The value <b>must</b> be one of the following:</p>
-                                                                     <ul>
-                                                                        
-                                                                        
-                                                                        <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                                           An optional class can be used to define the specific marking system used for the associated
-                                                                           value.</li>
-                                                                        </ul>
-                                                                  </div>
-                                                               </details>
                                                             </div>
                                                          </div>
                                                          <div class="model-entry definition assembly">
@@ -8260,8 +8246,8 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                            <details class="constraints" open="open">
                               <summary>Constraints (4)</summary>
                               <div class="constraint">
-                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop/@name</code></p>
-                                 <p>The value <b>may be locally defined</b>, or one of the following:</p>
+                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                 <p>The value <b>must</b> be one of the following:</p>
                                  <ul>
                                     
                                     <li><strong>type</strong>: The type of user, such as internal, external, or general-public.</li>
@@ -8271,7 +8257,7 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                     </ul>
                               </div>
                               <div class="constraint">
-                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[@name='type']/@value</code></p>
+                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='type']/@value</code></p>
                                  <p>The value <b>must</b> be one of the following:</p>
                                  <ul>
                                     
@@ -8285,7 +8271,7 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                     </ul>
                               </div>
                               <div class="constraint">
-                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[@name='privilege-level']/@value</code></p>
+                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='privilege-level']/@value</code></p>
                                  <p>The value <b>must</b> be one of the following:</p>
                                  <ul>
                                     
@@ -8421,6 +8407,19 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                           </div>
                                        </details>
                                     </div>
+                                    <details class="constraints" open="open">
+                                       <summary>Constraint (1)</summary>
+                                       <div class="constraint">
+                                          <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                          <p>The value <b>must</b> be one of the following:</p>
+                                          <ul>
+                                             
+                                             <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                An optional class can be used to define the specific marking system used for the associated
+                                                value.</li>
+                                             </ul>
+                                       </div>
+                                    </details>
                                     <details class="properties attributes" open="open">
                                        <summary>Attributes (6)</summary>
                                        <div class="model-entry definition assembly">
@@ -8434,20 +8433,6 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
                                                 characteristic, or quality of the property's containing object.</p>
-                                             <details class="constraints" open="open">
-                                                <summary>Constraint (1)</summary>
-                                                <div class="constraint">
-                                                   <p><span class="usa-tag">allowed value</span></p>
-                                                   <p>The value <b>must</b> be one of the following:</p>
-                                                   <ul>
-                                                      
-                                                      
-                                                      <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                         An optional class can be used to define the specific marking system used for the associated
-                                                         value.</li>
-                                                      </ul>
-                                                </div>
-                                             </details>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -8980,6 +8965,19 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                           </div>
                                        </details>
                                     </div>
+                                    <details class="constraints" open="open">
+                                       <summary>Constraint (1)</summary>
+                                       <div class="constraint">
+                                          <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                          <p>The value <b>must</b> be one of the following:</p>
+                                          <ul>
+                                             
+                                             <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                An optional class can be used to define the specific marking system used for the associated
+                                                value.</li>
+                                             </ul>
+                                       </div>
+                                    </details>
                                     <details class="properties attributes" open="open">
                                        <summary>Attributes (6)</summary>
                                        <div class="model-entry definition assembly">
@@ -8993,20 +8991,6 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
                                                 characteristic, or quality of the property's containing object.</p>
-                                             <details class="constraints" open="open">
-                                                <summary>Constraint (1)</summary>
-                                                <div class="constraint">
-                                                   <p><span class="usa-tag">allowed value</span></p>
-                                                   <p>The value <b>must</b> be one of the following:</p>
-                                                   <ul>
-                                                      
-                                                      
-                                                      <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                         An optional class can be used to define the specific marking system used for the associated
-                                                         value.</li>
-                                                      </ul>
-                                                </div>
-                                             </details>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -9483,6 +9467,19 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                    </div>
                                                 </details>
                                              </div>
+                                             <details class="constraints" open="open">
+                                                <summary>Constraint (1)</summary>
+                                                <div class="constraint">
+                                                   <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                                   <p>The value <b>must</b> be one of the following:</p>
+                                                   <ul>
+                                                      
+                                                      <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                         An optional class can be used to define the specific marking system used for the associated
+                                                         value.</li>
+                                                      </ul>
+                                                </div>
+                                             </details>
                                              <details class="properties attributes" open="open">
                                                 <summary>Attributes (6)</summary>
                                                 <div class="model-entry definition assembly">
@@ -9496,20 +9493,6 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                    <div class="body">
                                                       <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
                                                          characteristic, or quality of the property's containing object.</p>
-                                                      <details class="constraints" open="open">
-                                                         <summary>Constraint (1)</summary>
-                                                         <div class="constraint">
-                                                            <p><span class="usa-tag">allowed value</span></p>
-                                                            <p>The value <b>must</b> be one of the following:</p>
-                                                            <ul>
-                                                               
-                                                               
-                                                               <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                                  An optional class can be used to define the specific marking system used for the associated
-                                                                  value.</li>
-                                                               </ul>
-                                                         </div>
-                                                      </details>
                                                    </div>
                                                 </div>
                                                 <div class="model-entry definition assembly">
@@ -9927,18 +9910,18 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                            <details class="constraints" open="open">
                               <summary>Constraints (4)</summary>
                               <div class="constraint">
-                                 <p><span class="usa-tag">allowed value</span>  for <code class="path">prop/@name</code></p>
-                                 <p>The value <b>may be locally defined</b>, or the following:</p>
+                                 <p><span class="usa-tag">allowed value</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                 <p>The value <b>must</b> be one of the following:</p>
                                  <ul>
                                     
                                     <li><strong>method</strong>: The assessment method to use. This typically appears on parts with the name "assessment".</li>
                                     </ul>
                               </div>
                               <div class="constraint">
-                                 <p><span class="usa-tag">has cardinality</span>  for <code class="path">prop[@name='method']</code> the cardinality of  <code>prop[@name='method']</code> is constrained: <b>1</b>; maximum <b>unbounded</b>.</p>
+                                 <p><span class="usa-tag">has cardinality</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='method']</code> the cardinality of  <code>prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='method']</code> is constrained: <b>1</b>; maximum <b>unbounded</b>.</p>
                               </div>
                               <div class="constraint">
-                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[@name='method']/@value</code></p>
+                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='method']/@value</code></p>
                                  <p>The value <b>must</b> be one of the following:</p>
                                  <ul>
                                     
@@ -10041,6 +10024,19 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                           </div>
                                        </details>
                                     </div>
+                                    <details class="constraints" open="open">
+                                       <summary>Constraint (1)</summary>
+                                       <div class="constraint">
+                                          <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                          <p>The value <b>must</b> be one of the following:</p>
+                                          <ul>
+                                             
+                                             <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                An optional class can be used to define the specific marking system used for the associated
+                                                value.</li>
+                                             </ul>
+                                       </div>
+                                    </details>
                                     <details class="properties attributes" open="open">
                                        <summary>Attributes (6)</summary>
                                        <div class="model-entry definition assembly">
@@ -10054,20 +10050,6 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
                                                 characteristic, or quality of the property's containing object.</p>
-                                             <details class="constraints" open="open">
-                                                <summary>Constraint (1)</summary>
-                                                <div class="constraint">
-                                                   <p><span class="usa-tag">allowed value</span></p>
-                                                   <p>The value <b>must</b> be one of the following:</p>
-                                                   <ul>
-                                                      
-                                                      
-                                                      <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                         An optional class can be used to define the specific marking system used for the associated
-                                                         value.</li>
-                                                      </ul>
-                                                </div>
-                                             </details>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -10456,6 +10438,19 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                    </div>
                                                 </details>
                                              </div>
+                                             <details class="constraints" open="open">
+                                                <summary>Constraint (1)</summary>
+                                                <div class="constraint">
+                                                   <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                                   <p>The value <b>must</b> be one of the following:</p>
+                                                   <ul>
+                                                      
+                                                      <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                         An optional class can be used to define the specific marking system used for the associated
+                                                         value.</li>
+                                                      </ul>
+                                                </div>
+                                             </details>
                                              <details class="properties attributes" open="open">
                                                 <summary>Attributes (6)</summary>
                                                 <div class="model-entry definition assembly">
@@ -10469,20 +10464,6 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                    <div class="body">
                                                       <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
                                                          characteristic, or quality of the property's containing object.</p>
-                                                      <details class="constraints" open="open">
-                                                         <summary>Constraint (1)</summary>
-                                                         <div class="constraint">
-                                                            <p><span class="usa-tag">allowed value</span></p>
-                                                            <p>The value <b>must</b> be one of the following:</p>
-                                                            <ul>
-                                                               
-                                                               
-                                                               <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                                  An optional class can be used to define the specific marking system used for the associated
-                                                                  value.</li>
-                                                               </ul>
-                                                         </div>
-                                                      </details>
                                                    </div>
                                                 </div>
                                                 <div class="model-entry definition assembly">
@@ -10857,6 +10838,19 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                             </div>
                                                          </details>
                                                       </div>
+                                                      <details class="constraints" open="open">
+                                                         <summary>Constraint (1)</summary>
+                                                         <div class="constraint">
+                                                            <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                                            <p>The value <b>must</b> be one of the following:</p>
+                                                            <ul>
+                                                               
+                                                               <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                                  An optional class can be used to define the specific marking system used for the associated
+                                                                  value.</li>
+                                                               </ul>
+                                                         </div>
+                                                      </details>
                                                       <details class="properties attributes" open="open">
                                                          <summary>Attributes (6)</summary>
                                                          <div class="model-entry definition assembly">
@@ -10870,20 +10864,6 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                             <div class="body">
                                                                <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
                                                                   characteristic, or quality of the property's containing object.</p>
-                                                               <details class="constraints" open="open">
-                                                                  <summary>Constraint (1)</summary>
-                                                                  <div class="constraint">
-                                                                     <p><span class="usa-tag">allowed value</span></p>
-                                                                     <p>The value <b>must</b> be one of the following:</p>
-                                                                     <ul>
-                                                                        
-                                                                        
-                                                                        <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                                           An optional class can be used to define the specific marking system used for the associated
-                                                                           value.</li>
-                                                                        </ul>
-                                                                  </div>
-                                                               </details>
                                                             </div>
                                                          </div>
                                                          <div class="model-entry definition assembly">
@@ -11247,6 +11227,19 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                                      </div>
                                                                   </details>
                                                                </div>
+                                                               <details class="constraints" open="open">
+                                                                  <summary>Constraint (1)</summary>
+                                                                  <div class="constraint">
+                                                                     <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                                                     <p>The value <b>must</b> be one of the following:</p>
+                                                                     <ul>
+                                                                        
+                                                                        <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                                           An optional class can be used to define the specific marking system used for the associated
+                                                                           value.</li>
+                                                                        </ul>
+                                                                  </div>
+                                                               </details>
                                                                <details class="properties attributes" open="open">
                                                                   <summary>Attributes (6)</summary>
                                                                   <div class="model-entry definition assembly">
@@ -11260,20 +11253,6 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                                      <div class="body">
                                                                         <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
                                                                            characteristic, or quality of the property's containing object.</p>
-                                                                        <details class="constraints" open="open">
-                                                                           <summary>Constraint (1)</summary>
-                                                                           <div class="constraint">
-                                                                              <p><span class="usa-tag">allowed value</span></p>
-                                                                              <p>The value <b>must</b> be one of the following:</p>
-                                                                              <ul>
-                                                                                 
-                                                                                 
-                                                                                 <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                                                    An optional class can be used to define the specific marking system used for the associated
-                                                                                    value.</li>
-                                                                                 </ul>
-                                                                           </div>
-                                                                        </details>
                                                                      </div>
                                                                   </div>
                                                                   <div class="model-entry definition assembly">
@@ -11806,6 +11785,19 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                                      </div>
                                                                   </details>
                                                                </div>
+                                                               <details class="constraints" open="open">
+                                                                  <summary>Constraint (1)</summary>
+                                                                  <div class="constraint">
+                                                                     <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                                                     <p>The value <b>must</b> be one of the following:</p>
+                                                                     <ul>
+                                                                        
+                                                                        <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                                           An optional class can be used to define the specific marking system used for the associated
+                                                                           value.</li>
+                                                                        </ul>
+                                                                  </div>
+                                                               </details>
                                                                <details class="properties attributes" open="open">
                                                                   <summary>Attributes (6)</summary>
                                                                   <div class="model-entry definition assembly">
@@ -11819,20 +11811,6 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                                      <div class="body">
                                                                         <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
                                                                            characteristic, or quality of the property's containing object.</p>
-                                                                        <details class="constraints" open="open">
-                                                                           <summary>Constraint (1)</summary>
-                                                                           <div class="constraint">
-                                                                              <p><span class="usa-tag">allowed value</span></p>
-                                                                              <p>The value <b>must</b> be one of the following:</p>
-                                                                              <ul>
-                                                                                 
-                                                                                 
-                                                                                 <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                                                    An optional class can be used to define the specific marking system used for the associated
-                                                                                    value.</li>
-                                                                                 </ul>
-                                                                           </div>
-                                                                        </details>
                                                                      </div>
                                                                   </div>
                                                                   <div class="model-entry definition assembly">
@@ -12360,6 +12338,19 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                             </div>
                                                          </details>
                                                       </div>
+                                                      <details class="constraints" open="open">
+                                                         <summary>Constraint (1)</summary>
+                                                         <div class="constraint">
+                                                            <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                                            <p>The value <b>must</b> be one of the following:</p>
+                                                            <ul>
+                                                               
+                                                               <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                                  An optional class can be used to define the specific marking system used for the associated
+                                                                  value.</li>
+                                                               </ul>
+                                                         </div>
+                                                      </details>
                                                       <details class="properties attributes" open="open">
                                                          <summary>Attributes (6)</summary>
                                                          <div class="model-entry definition assembly">
@@ -12373,20 +12364,6 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                             <div class="body">
                                                                <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
                                                                   characteristic, or quality of the property's containing object.</p>
-                                                               <details class="constraints" open="open">
-                                                                  <summary>Constraint (1)</summary>
-                                                                  <div class="constraint">
-                                                                     <p><span class="usa-tag">allowed value</span></p>
-                                                                     <p>The value <b>must</b> be one of the following:</p>
-                                                                     <ul>
-                                                                        
-                                                                        
-                                                                        <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                                           An optional class can be used to define the specific marking system used for the associated
-                                                                           value.</li>
-                                                                        </ul>
-                                                                  </div>
-                                                               </details>
                                                             </div>
                                                          </div>
                                                          <div class="model-entry definition assembly">
@@ -12853,6 +12830,19 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                    </div>
                                                 </details>
                                              </div>
+                                             <details class="constraints" open="open">
+                                                <summary>Constraint (1)</summary>
+                                                <div class="constraint">
+                                                   <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                                   <p>The value <b>must</b> be one of the following:</p>
+                                                   <ul>
+                                                      
+                                                      <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                         An optional class can be used to define the specific marking system used for the associated
+                                                         value.</li>
+                                                      </ul>
+                                                </div>
+                                             </details>
                                              <details class="properties attributes" open="open">
                                                 <summary>Attributes (6)</summary>
                                                 <div class="model-entry definition assembly">
@@ -12866,20 +12856,6 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                    <div class="body">
                                                       <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
                                                          characteristic, or quality of the property's containing object.</p>
-                                                      <details class="constraints" open="open">
-                                                         <summary>Constraint (1)</summary>
-                                                         <div class="constraint">
-                                                            <p><span class="usa-tag">allowed value</span></p>
-                                                            <p>The value <b>must</b> be one of the following:</p>
-                                                            <ul>
-                                                               
-                                                               
-                                                               <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                                  An optional class can be used to define the specific marking system used for the associated
-                                                                  value.</li>
-                                                               </ul>
-                                                         </div>
-                                                      </details>
                                                    </div>
                                                 </div>
                                                 <div class="model-entry definition assembly">
@@ -13243,6 +13219,19 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                             </div>
                                                          </details>
                                                       </div>
+                                                      <details class="constraints" open="open">
+                                                         <summary>Constraint (1)</summary>
+                                                         <div class="constraint">
+                                                            <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                                            <p>The value <b>must</b> be one of the following:</p>
+                                                            <ul>
+                                                               
+                                                               <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                                  An optional class can be used to define the specific marking system used for the associated
+                                                                  value.</li>
+                                                               </ul>
+                                                         </div>
+                                                      </details>
                                                       <details class="properties attributes" open="open">
                                                          <summary>Attributes (6)</summary>
                                                          <div class="model-entry definition assembly">
@@ -13256,20 +13245,6 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                             <div class="body">
                                                                <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
                                                                   characteristic, or quality of the property's containing object.</p>
-                                                               <details class="constraints" open="open">
-                                                                  <summary>Constraint (1)</summary>
-                                                                  <div class="constraint">
-                                                                     <p><span class="usa-tag">allowed value</span></p>
-                                                                     <p>The value <b>must</b> be one of the following:</p>
-                                                                     <ul>
-                                                                        
-                                                                        
-                                                                        <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                                           An optional class can be used to define the specific marking system used for the associated
-                                                                           value.</li>
-                                                                        </ul>
-                                                                  </div>
-                                                               </details>
                                                             </div>
                                                          </div>
                                                          <div class="model-entry definition assembly">
@@ -13802,6 +13777,19 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                             </div>
                                                          </details>
                                                       </div>
+                                                      <details class="constraints" open="open">
+                                                         <summary>Constraint (1)</summary>
+                                                         <div class="constraint">
+                                                            <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                                            <p>The value <b>must</b> be one of the following:</p>
+                                                            <ul>
+                                                               
+                                                               <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                                  An optional class can be used to define the specific marking system used for the associated
+                                                                  value.</li>
+                                                               </ul>
+                                                         </div>
+                                                      </details>
                                                       <details class="properties attributes" open="open">
                                                          <summary>Attributes (6)</summary>
                                                          <div class="model-entry definition assembly">
@@ -13815,20 +13803,6 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                             <div class="body">
                                                                <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
                                                                   characteristic, or quality of the property's containing object.</p>
-                                                               <details class="constraints" open="open">
-                                                                  <summary>Constraint (1)</summary>
-                                                                  <div class="constraint">
-                                                                     <p><span class="usa-tag">allowed value</span></p>
-                                                                     <p>The value <b>must</b> be one of the following:</p>
-                                                                     <ul>
-                                                                        
-                                                                        
-                                                                        <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                                           An optional class can be used to define the specific marking system used for the associated
-                                                                           value.</li>
-                                                                        </ul>
-                                                                  </div>
-                                                               </details>
                                                             </div>
                                                          </div>
                                                          <div class="model-entry definition assembly">
@@ -14355,6 +14329,19 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                    </div>
                                                 </details>
                                              </div>
+                                             <details class="constraints" open="open">
+                                                <summary>Constraint (1)</summary>
+                                                <div class="constraint">
+                                                   <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                                   <p>The value <b>must</b> be one of the following:</p>
+                                                   <ul>
+                                                      
+                                                      <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                         An optional class can be used to define the specific marking system used for the associated
+                                                         value.</li>
+                                                      </ul>
+                                                </div>
+                                             </details>
                                              <details class="properties attributes" open="open">
                                                 <summary>Attributes (6)</summary>
                                                 <div class="model-entry definition assembly">
@@ -14368,20 +14355,6 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                    <div class="body">
                                                       <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
                                                          characteristic, or quality of the property's containing object.</p>
-                                                      <details class="constraints" open="open">
-                                                         <summary>Constraint (1)</summary>
-                                                         <div class="constraint">
-                                                            <p><span class="usa-tag">allowed value</span></p>
-                                                            <p>The value <b>must</b> be one of the following:</p>
-                                                            <ul>
-                                                               
-                                                               
-                                                               <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                                  An optional class can be used to define the specific marking system used for the associated
-                                                                  value.</li>
-                                                               </ul>
-                                                         </div>
-                                                      </details>
                                                    </div>
                                                 </div>
                                                 <div class="model-entry definition assembly">
@@ -14813,7 +14786,7 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                   <details class="constraints" open="open">
                      <summary>Constraint (1)</summary>
                      <div class="constraint">
-                        <p><span class="usa-tag">allowed values</span>  for <code class="path">part/@name</code></p>
+                        <p><span class="usa-tag">allowed values</span>  for <code class="path">part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
                         <p>The value <b>must</b> be one of the following:</p>
                         <ul>
                            
@@ -14878,18 +14851,21 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                            <details class="constraints" open="open">
                               <summary>Constraints (3)</summary>
                               <div class="constraint">
-                                 <p><span class="usa-tag">allowed value</span>  for <code class="path">.[@name='objective']/prop/@name</code></p>
-                                 <p>The value <b>may be locally defined</b>, or the following:</p>
+                                 <p><span class="usa-tag">allowed value</span>  for <code class="path">.[@name='objective']/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                 <p>The value <b>must</b> be one of the following:</p>
                                  <ul>
                                     
                                     <li><strong>method</strong>: The assessment method to use. This typically appears on parts with the name "objective".</li>
                                     </ul>
                               </div>
                               <div class="constraint">
-                                 <p><span class="usa-tag">has cardinality</span>  for <code class="path">.[@name='objective']/prop[@name='method']</code> the cardinality of  <code>.[@name='objective']/prop[@name='method']</code> is constrained: <b>1</b>; maximum <b>unbounded</b>.</p>
+                                 <p><span class="usa-tag">has cardinality</span>  for <code class="path">.[@name='objective']/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and
+                                       @name='method']</code> the cardinality of  <code>.[@name='objective']/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and
+                                       @name='method']</code> is constrained: <b>1</b>; maximum <b>unbounded</b>.</p>
                               </div>
                               <div class="constraint">
-                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">.[@name='objective']/prop[@name='method']/@value</code></p>
+                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">.[@name='objective']/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and
+                                       @name='method']/@value</code></p>
                                  <p>The value <b>must</b> be one of the following:</p>
                                  <ul>
                                     
@@ -15038,6 +15014,19 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                           </div>
                                        </details>
                                     </div>
+                                    <details class="constraints" open="open">
+                                       <summary>Constraint (1)</summary>
+                                       <div class="constraint">
+                                          <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                          <p>The value <b>must</b> be one of the following:</p>
+                                          <ul>
+                                             
+                                             <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                An optional class can be used to define the specific marking system used for the associated
+                                                value.</li>
+                                             </ul>
+                                       </div>
+                                    </details>
                                     <details class="properties attributes" open="open">
                                        <summary>Attributes (6)</summary>
                                        <div class="model-entry definition assembly">
@@ -15051,20 +15040,6 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
                                                 characteristic, or quality of the property's containing object.</p>
-                                             <details class="constraints" open="open">
-                                                <summary>Constraint (1)</summary>
-                                                <div class="constraint">
-                                                   <p><span class="usa-tag">allowed value</span></p>
-                                                   <p>The value <b>must</b> be one of the following:</p>
-                                                   <ul>
-                                                      
-                                                      
-                                                      <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                         An optional class can be used to define the specific marking system used for the associated
-                                                         value.</li>
-                                                      </ul>
-                                                </div>
-                                             </details>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -15245,18 +15220,21 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                     <details class="constraints" open="open">
                                        <summary>Constraints (3)</summary>
                                        <div class="constraint">
-                                          <p><span class="usa-tag">allowed value</span>  for <code class="path">.[@name='objective']/prop/@name</code></p>
-                                          <p>The value <b>may be locally defined</b>, or the following:</p>
+                                          <p><span class="usa-tag">allowed value</span>  for <code class="path">.[@name='objective']/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                          <p>The value <b>must</b> be one of the following:</p>
                                           <ul>
                                              
                                              <li><strong>method</strong>: The assessment method to use. This typically appears on parts with the name "objective".</li>
                                              </ul>
                                        </div>
                                        <div class="constraint">
-                                          <p><span class="usa-tag">has cardinality</span>  for <code class="path">.[@name='objective']/prop[@name='method']</code> the cardinality of  <code>.[@name='objective']/prop[@name='method']</code> is constrained: <b>1</b>; maximum <b>unbounded</b>.</p>
+                                          <p><span class="usa-tag">has cardinality</span>  for <code class="path">.[@name='objective']/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and
+                                                @name='method']</code> the cardinality of  <code>.[@name='objective']/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and
+                                                @name='method']</code> is constrained: <b>1</b>; maximum <b>unbounded</b>.</p>
                                        </div>
                                        <div class="constraint">
-                                          <p><span class="usa-tag">allowed values</span>  for <code class="path">.[@name='objective']/prop[@name='method']/@value</code></p>
+                                          <p><span class="usa-tag">allowed values</span>  for <code class="path">.[@name='objective']/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and
+                                                @name='method']/@value</code></p>
                                           <p>The value <b>must</b> be one of the following:</p>
                                           <ul>
                                              
@@ -15518,6 +15496,19 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                  </div>
                               </details>
                            </div>
+                           <details class="constraints" open="open">
+                              <summary>Constraint (1)</summary>
+                              <div class="constraint">
+                                 <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                 <p>The value <b>must</b> be one of the following:</p>
+                                 <ul>
+                                    
+                                    <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                       An optional class can be used to define the specific marking system used for the associated
+                                       value.</li>
+                                    </ul>
+                              </div>
+                           </details>
                            <details class="properties attributes" open="open">
                               <summary>Attributes (6)</summary>
                               <div class="model-entry definition assembly">
@@ -15531,20 +15522,6 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
                                        characteristic, or quality of the property's containing object.</p>
-                                    <details class="constraints" open="open">
-                                       <summary>Constraint (1)</summary>
-                                       <div class="constraint">
-                                          <p><span class="usa-tag">allowed value</span></p>
-                                          <p>The value <b>must</b> be one of the following:</p>
-                                          <ul>
-                                             
-                                             
-                                             <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                An optional class can be used to define the specific marking system used for the associated
-                                                value.</li>
-                                             </ul>
-                                       </div>
-                                    </details>
                                  </div>
                               </div>
                               <div class="model-entry definition assembly">
@@ -15908,6 +15885,19 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                           </div>
                                        </details>
                                     </div>
+                                    <details class="constraints" open="open">
+                                       <summary>Constraint (1)</summary>
+                                       <div class="constraint">
+                                          <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                          <p>The value <b>must</b> be one of the following:</p>
+                                          <ul>
+                                             
+                                             <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                An optional class can be used to define the specific marking system used for the associated
+                                                value.</li>
+                                             </ul>
+                                       </div>
+                                    </details>
                                     <details class="properties attributes" open="open">
                                        <summary>Attributes (6)</summary>
                                        <div class="model-entry definition assembly">
@@ -15921,20 +15911,6 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
                                                 characteristic, or quality of the property's containing object.</p>
-                                             <details class="constraints" open="open">
-                                                <summary>Constraint (1)</summary>
-                                                <div class="constraint">
-                                                   <p><span class="usa-tag">allowed value</span></p>
-                                                   <p>The value <b>must</b> be one of the following:</p>
-                                                   <ul>
-                                                      
-                                                      
-                                                      <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                         An optional class can be used to define the specific marking system used for the associated
-                                                         value.</li>
-                                                      </ul>
-                                                </div>
-                                             </details>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -16467,6 +16443,19 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                           </div>
                                        </details>
                                     </div>
+                                    <details class="constraints" open="open">
+                                       <summary>Constraint (1)</summary>
+                                       <div class="constraint">
+                                          <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                          <p>The value <b>must</b> be one of the following:</p>
+                                          <ul>
+                                             
+                                             <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                An optional class can be used to define the specific marking system used for the associated
+                                                value.</li>
+                                             </ul>
+                                       </div>
+                                    </details>
                                     <details class="properties attributes" open="open">
                                        <summary>Attributes (6)</summary>
                                        <div class="model-entry definition assembly">
@@ -16480,20 +16469,6 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
                                                 characteristic, or quality of the property's containing object.</p>
-                                             <details class="constraints" open="open">
-                                                <summary>Constraint (1)</summary>
-                                                <div class="constraint">
-                                                   <p><span class="usa-tag">allowed value</span></p>
-                                                   <p>The value <b>must</b> be one of the following:</p>
-                                                   <ul>
-                                                      
-                                                      
-                                                      <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                         An optional class can be used to define the specific marking system used for the associated
-                                                         value.</li>
-                                                      </ul>
-                                                </div>
-                                             </details>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -17069,6 +17044,19 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                  </div>
                               </details>
                            </div>
+                           <details class="constraints" open="open">
+                              <summary>Constraint (1)</summary>
+                              <div class="constraint">
+                                 <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                 <p>The value <b>must</b> be one of the following:</p>
+                                 <ul>
+                                    
+                                    <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                       An optional class can be used to define the specific marking system used for the associated
+                                       value.</li>
+                                    </ul>
+                              </div>
+                           </details>
                            <details class="properties attributes" open="open">
                               <summary>Attributes (6)</summary>
                               <div class="model-entry definition assembly">
@@ -17082,20 +17070,6 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
                                        characteristic, or quality of the property's containing object.</p>
-                                    <details class="constraints" open="open">
-                                       <summary>Constraint (1)</summary>
-                                       <div class="constraint">
-                                          <p><span class="usa-tag">allowed value</span></p>
-                                          <p>The value <b>must</b> be one of the following:</p>
-                                          <ul>
-                                             
-                                             
-                                             <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                An optional class can be used to define the specific marking system used for the associated
-                                                value.</li>
-                                             </ul>
-                                       </div>
-                                    </details>
                                  </div>
                               </div>
                               <div class="model-entry definition assembly">
@@ -17494,6 +17468,19 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                              </div>
                                           </details>
                                        </div>
+                                       <details class="constraints" open="open">
+                                          <summary>Constraint (1)</summary>
+                                          <div class="constraint">
+                                             <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                             <p>The value <b>must</b> be one of the following:</p>
+                                             <ul>
+                                                
+                                                <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                   An optional class can be used to define the specific marking system used for the associated
+                                                   value.</li>
+                                                </ul>
+                                          </div>
+                                       </details>
                                        <details class="properties attributes" open="open">
                                           <summary>Attributes (6)</summary>
                                           <div class="model-entry definition assembly">
@@ -17507,20 +17494,6 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                              <div class="body">
                                                 <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
                                                    characteristic, or quality of the property's containing object.</p>
-                                                <details class="constraints" open="open">
-                                                   <summary>Constraint (1)</summary>
-                                                   <div class="constraint">
-                                                      <p><span class="usa-tag">allowed value</span></p>
-                                                      <p>The value <b>must</b> be one of the following:</p>
-                                                      <ul>
-                                                         
-                                                         
-                                                         <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                            An optional class can be used to define the specific marking system used for the associated
-                                                            value.</li>
-                                                         </ul>
-                                                   </div>
-                                                </details>
                                              </div>
                                           </div>
                                           <div class="model-entry definition assembly">
@@ -17935,6 +17908,19 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                           </div>
                                        </details>
                                     </div>
+                                    <details class="constraints" open="open">
+                                       <summary>Constraint (1)</summary>
+                                       <div class="constraint">
+                                          <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                          <p>The value <b>must</b> be one of the following:</p>
+                                          <ul>
+                                             
+                                             <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                An optional class can be used to define the specific marking system used for the associated
+                                                value.</li>
+                                             </ul>
+                                       </div>
+                                    </details>
                                     <details class="properties attributes" open="open">
                                        <summary>Attributes (6)</summary>
                                        <div class="model-entry definition assembly">
@@ -17948,20 +17934,6 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
                                                 characteristic, or quality of the property's containing object.</p>
-                                             <details class="constraints" open="open">
-                                                <summary>Constraint (1)</summary>
-                                                <div class="constraint">
-                                                   <p><span class="usa-tag">allowed value</span></p>
-                                                   <p>The value <b>must</b> be one of the following:</p>
-                                                   <ul>
-                                                      
-                                                      
-                                                      <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                         An optional class can be used to define the specific marking system used for the associated
-                                                         value.</li>
-                                                      </ul>
-                                                </div>
-                                             </details>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -18375,8 +18347,8 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                            <details class="constraints" open="open">
                               <summary>Constraints (24)</summary>
                               <div class="constraint">
-                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop/@name</code></p>
-                                 <p>The value <b>may be locally defined</b>, or one of the following:</p>
+                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                 <p>The value <b>must</b> be one of the following:</p>
                                  <ul>
                                     
                                     
@@ -18508,7 +18480,7 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                     </ul>
                               </div>
                               <div class="constraint">
-                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[@name='asset-type']/@value</code></p>
+                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='asset-type']/@value</code></p>
                                  <p>The value <b>must</b> be one of the following:</p>
                                  <ul>
                                     
@@ -18549,7 +18521,7 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                     </ul>
                               </div>
                               <div class="constraint">
-                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[@name='allows-authenticated-scan']/@value</code></p>
+                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='allows-authenticated-scan']/@value</code></p>
                                  <p>The value <b>must</b> be one of the following:</p>
                                  <ul>
                                     
@@ -18559,7 +18531,7 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                     </ul>
                               </div>
                               <div class="constraint">
-                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[@name='public']/@value</code></p>
+                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='public']/@value</code></p>
                                  <p>The value <b>must</b> be one of the following:</p>
                                  <ul>
                                     
@@ -18569,7 +18541,7 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                     </ul>
                               </div>
                               <div class="constraint">
-                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[@name='virtual']/@value</code></p>
+                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='virtual']/@value</code></p>
                                  <p>The value <b>must</b> be one of the following:</p>
                                  <ul>
                                     
@@ -18579,7 +18551,7 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                     </ul>
                               </div>
                               <div class="constraint">
-                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[@name='implementation-point']/@value</code></p>
+                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='implementation-point']/@value</code></p>
                                  <p>The value <b>must</b> be one of the following:</p>
                                  <ul>
                                     
@@ -18592,14 +18564,14 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                  <p><span class="usa-tag">index has key</span>  for <code class="path">prop[@name='physical-location']</code>this value must correspond to a listing in the index <code>index-metadata-location-uuid</code> using a key constructed of key field(s) <code>@value</code></p>
                               </div>
                               <div class="constraint">
-                                 <p><span class="usa-tag">matches</span>  for <code class="path">prop[@name='inherited-uuid']/@value</code>: the target value must match the lexical form of the 'uuid' data type.</p>
+                                 <p><span class="usa-tag">matches</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='inherited-uuid']/@value</code>: the target value must match the lexical form of the 'uuid' data type.</p>
                               </div>
                               <div class="constraint">
-                                 <p><span class="usa-tag">matches</span>  for <code class="path">prop[@name='release-date']/@value</code>: the target value must match the lexical form of the 'date' data type.</p>
+                                 <p><span class="usa-tag">matches</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='release-date']/@value</code>: the target value must match the lexical form of the 'date' data type.</p>
                               </div>
                               <div class="constraint">
-                                 <p><span class="usa-tag">allowed value</span>  for <code class="path">(.)[@type=('software', 'hardware', 'service')]/prop/@name</code></p>
-                                 <p>The value <b>may be locally defined</b>, or the following:</p>
+                                 <p><span class="usa-tag">allowed value</span>  for <code class="path">(.)[@type=('software', 'hardware', 'service')]/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                 <p>The value <b>must</b> be one of the following:</p>
                                  <ul>
                                     
                                     <li><strong>vendor-name</strong>: The name of the company or organization </li>
@@ -18614,8 +18586,8 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                     </ul>
                               </div>
                               <div class="constraint">
-                                 <p><span class="usa-tag">allowed value</span>  for <code class="path">(.)[@type='software']/prop/@name</code></p>
-                                 <p>The value <b>may be locally defined</b>, or the following:</p>
+                                 <p><span class="usa-tag">allowed value</span>  for <code class="path">(.)[@type='software']/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                 <p>The value <b>must</b> be one of the following:</p>
                                  <ul>
                                     
                                     <li><strong>software-identifier</strong>: If a "software" component-type, the identifier, such as a SWID tag, for the software
@@ -18636,8 +18608,8 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                     </ul>
                               </div>
                               <div class="constraint">
-                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">(.)[@type='interconnection']/prop/@name</code></p>
-                                 <p>The value <b>may be locally defined</b>, or one of the following:</p>
+                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">(.)[@type='interconnection']/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                 <p>The value <b>must</b> be one of the following:</p>
                                  <ul>
                                     
                                     <li><strong>isa-title</strong>: Title of the Interconnection Security Agreement (ISA).</li>
@@ -18654,8 +18626,8 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                     </ul>
                               </div>
                               <div class="constraint">
-                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[@name=('ipv4-address','ipv6-address')]/@class</code></p>
-                                 <p>The value <b>may be locally defined</b>, or one of the following:</p>
+                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('ipv4-address','ipv6-address')]/@class</code></p>
+                                 <p>The value <b>must</b> be one of the following:</p>
                                  <ul>
                                     
                                     <li><strong>local</strong>: The identified IP address is for this system.</li>
@@ -18689,17 +18661,17 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                     </ul>
                               </div>
                               <div class="constraint">
-                                 <p><span class="usa-tag">matches</span>  for <code class="path">prop[@name='isa-date']/@value</code>: the target value must match the lexical form of the 'dateTime' data type.</p>
+                                 <p><span class="usa-tag">matches</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='isa-date']/@value</code>: the target value must match the lexical form of the 'dateTime' data type.</p>
                               </div>
                               <div class="constraint">
-                                 <p><span class="usa-tag">matches</span>  for <code class="path">prop[@name='ipv4-address']/@value</code>: the target value must match the lexical form of the 'ip-v4-address' data type.</p>
+                                 <p><span class="usa-tag">matches</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='ipv4-address']/@value</code>: the target value must match the lexical form of the 'ip-v4-address' data type.</p>
                               </div>
                               <div class="constraint">
-                                 <p><span class="usa-tag">matches</span>  for <code class="path">prop[@name='ipv6-address']/@value</code>: the target value must match the lexical form of the 'ip-v6-address' data type.</p>
+                                 <p><span class="usa-tag">matches</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='ipv6-address']/@value</code>: the target value must match the lexical form of the 'ip-v6-address' data type.</p>
                               </div>
                               <div class="constraint">
-                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[@name='direction']/@value</code></p>
-                                 <p>The value <b>may be locally defined</b>, or one of the following:</p>
+                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='direction']/@value</code></p>
+                                 <p>The value <b>must</b> be one of the following:</p>
                                  <ul>
                                     
                                     <li><strong>incoming</strong>: Data from the remote system flows into this system.</li>
@@ -18859,6 +18831,19 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                           </div>
                                        </details>
                                     </div>
+                                    <details class="constraints" open="open">
+                                       <summary>Constraint (1)</summary>
+                                       <div class="constraint">
+                                          <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                          <p>The value <b>must</b> be one of the following:</p>
+                                          <ul>
+                                             
+                                             <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                An optional class can be used to define the specific marking system used for the associated
+                                                value.</li>
+                                             </ul>
+                                       </div>
+                                    </details>
                                     <details class="properties attributes" open="open">
                                        <summary>Attributes (6)</summary>
                                        <div class="model-entry definition assembly">
@@ -18872,20 +18857,6 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
                                                 characteristic, or quality of the property's containing object.</p>
-                                             <details class="constraints" open="open">
-                                                <summary>Constraint (1)</summary>
-                                                <div class="constraint">
-                                                   <p><span class="usa-tag">allowed value</span></p>
-                                                   <p>The value <b>must</b> be one of the following:</p>
-                                                   <ul>
-                                                      
-                                                      
-                                                      <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                         An optional class can be used to define the specific marking system used for the associated
-                                                         value.</li>
-                                                      </ul>
-                                                </div>
-                                             </details>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -19321,6 +19292,19 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                    </div>
                                                 </details>
                                              </div>
+                                             <details class="constraints" open="open">
+                                                <summary>Constraint (1)</summary>
+                                                <div class="constraint">
+                                                   <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                                   <p>The value <b>must</b> be one of the following:</p>
+                                                   <ul>
+                                                      
+                                                      <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                         An optional class can be used to define the specific marking system used for the associated
+                                                         value.</li>
+                                                      </ul>
+                                                </div>
+                                             </details>
                                              <details class="properties attributes" open="open">
                                                 <summary>Attributes (6)</summary>
                                                 <div class="model-entry definition assembly">
@@ -19334,20 +19318,6 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                    <div class="body">
                                                       <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
                                                          characteristic, or quality of the property's containing object.</p>
-                                                      <details class="constraints" open="open">
-                                                         <summary>Constraint (1)</summary>
-                                                         <div class="constraint">
-                                                            <p><span class="usa-tag">allowed value</span></p>
-                                                            <p>The value <b>must</b> be one of the following:</p>
-                                                            <ul>
-                                                               
-                                                               
-                                                               <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                                  An optional class can be used to define the specific marking system used for the associated
-                                                                  value.</li>
-                                                               </ul>
-                                                         </div>
-                                                      </details>
                                                    </div>
                                                 </div>
                                                 <div class="model-entry definition assembly">
@@ -19959,6 +19929,19 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                           </div>
                                        </details>
                                     </div>
+                                    <details class="constraints" open="open">
+                                       <summary>Constraint (1)</summary>
+                                       <div class="constraint">
+                                          <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                          <p>The value <b>must</b> be one of the following:</p>
+                                          <ul>
+                                             
+                                             <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                An optional class can be used to define the specific marking system used for the associated
+                                                value.</li>
+                                             </ul>
+                                       </div>
+                                    </details>
                                     <details class="properties attributes" open="open">
                                        <summary>Attributes (6)</summary>
                                        <div class="model-entry definition assembly">
@@ -19972,20 +19955,6 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
                                                 characteristic, or quality of the property's containing object.</p>
-                                             <details class="constraints" open="open">
-                                                <summary>Constraint (1)</summary>
-                                                <div class="constraint">
-                                                   <p><span class="usa-tag">allowed value</span></p>
-                                                   <p>The value <b>must</b> be one of the following:</p>
-                                                   <ul>
-                                                      
-                                                      
-                                                      <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                         An optional class can be used to define the specific marking system used for the associated
-                                                         value.</li>
-                                                      </ul>
-                                                </div>
-                                             </details>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -20334,6 +20303,19 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                    </div>
                                                 </details>
                                              </div>
+                                             <details class="constraints" open="open">
+                                                <summary>Constraint (1)</summary>
+                                                <div class="constraint">
+                                                   <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                                   <p>The value <b>must</b> be one of the following:</p>
+                                                   <ul>
+                                                      
+                                                      <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                         An optional class can be used to define the specific marking system used for the associated
+                                                         value.</li>
+                                                      </ul>
+                                                </div>
+                                             </details>
                                              <details class="properties attributes" open="open">
                                                 <summary>Attributes (6)</summary>
                                                 <div class="model-entry definition assembly">
@@ -20347,20 +20329,6 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                    <div class="body">
                                                       <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
                                                          characteristic, or quality of the property's containing object.</p>
-                                                      <details class="constraints" open="open">
-                                                         <summary>Constraint (1)</summary>
-                                                         <div class="constraint">
-                                                            <p><span class="usa-tag">allowed value</span></p>
-                                                            <p>The value <b>must</b> be one of the following:</p>
-                                                            <ul>
-                                                               
-                                                               
-                                                               <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                                  An optional class can be used to define the specific marking system used for the associated
-                                                                  value.</li>
-                                                               </ul>
-                                                         </div>
-                                                      </details>
                                                    </div>
                                                 </div>
                                                 <div class="model-entry definition assembly">
@@ -20738,6 +20706,19 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                             </div>
                                                          </details>
                                                       </div>
+                                                      <details class="constraints" open="open">
+                                                         <summary>Constraint (1)</summary>
+                                                         <div class="constraint">
+                                                            <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                                            <p>The value <b>must</b> be one of the following:</p>
+                                                            <ul>
+                                                               
+                                                               <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                                  An optional class can be used to define the specific marking system used for the associated
+                                                                  value.</li>
+                                                               </ul>
+                                                         </div>
+                                                      </details>
                                                       <details class="properties attributes" open="open">
                                                          <summary>Attributes (6)</summary>
                                                          <div class="model-entry definition assembly">
@@ -20751,20 +20732,6 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                             <div class="body">
                                                                <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
                                                                   characteristic, or quality of the property's containing object.</p>
-                                                               <details class="constraints" open="open">
-                                                                  <summary>Constraint (1)</summary>
-                                                                  <div class="constraint">
-                                                                     <p><span class="usa-tag">allowed value</span></p>
-                                                                     <p>The value <b>must</b> be one of the following:</p>
-                                                                     <ul>
-                                                                        
-                                                                        
-                                                                        <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                                           An optional class can be used to define the specific marking system used for the associated
-                                                                           value.</li>
-                                                                        </ul>
-                                                                  </div>
-                                                               </details>
                                                             </div>
                                                          </div>
                                                          <div class="model-entry definition assembly">
@@ -21286,6 +21253,19 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                  </div>
                               </details>
                            </div>
+                           <details class="constraints" open="open">
+                              <summary>Constraint (1)</summary>
+                              <div class="constraint">
+                                 <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                 <p>The value <b>must</b> be one of the following:</p>
+                                 <ul>
+                                    
+                                    <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                       An optional class can be used to define the specific marking system used for the associated
+                                       value.</li>
+                                    </ul>
+                              </div>
+                           </details>
                            <details class="properties attributes" open="open">
                               <summary>Attributes (6)</summary>
                               <div class="model-entry definition assembly">
@@ -21299,20 +21279,6 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
                                        characteristic, or quality of the property's containing object.</p>
-                                    <details class="constraints" open="open">
-                                       <summary>Constraint (1)</summary>
-                                       <div class="constraint">
-                                          <p><span class="usa-tag">allowed value</span></p>
-                                          <p>The value <b>must</b> be one of the following:</p>
-                                          <ul>
-                                             
-                                             
-                                             <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                An optional class can be used to define the specific marking system used for the associated
-                                                value.</li>
-                                             </ul>
-                                       </div>
-                                    </details>
                                  </div>
                               </div>
                               <div class="model-entry definition assembly">
@@ -21882,6 +21848,19 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                           </div>
                                        </details>
                                     </div>
+                                    <details class="constraints" open="open">
+                                       <summary>Constraint (1)</summary>
+                                       <div class="constraint">
+                                          <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                          <p>The value <b>must</b> be one of the following:</p>
+                                          <ul>
+                                             
+                                             <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                An optional class can be used to define the specific marking system used for the associated
+                                                value.</li>
+                                             </ul>
+                                       </div>
+                                    </details>
                                     <details class="properties attributes" open="open">
                                        <summary>Attributes (6)</summary>
                                        <div class="model-entry definition assembly">
@@ -21895,20 +21874,6 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
                                                 characteristic, or quality of the property's containing object.</p>
-                                             <details class="constraints" open="open">
-                                                <summary>Constraint (1)</summary>
-                                                <div class="constraint">
-                                                   <p><span class="usa-tag">allowed value</span></p>
-                                                   <p>The value <b>must</b> be one of the following:</p>
-                                                   <ul>
-                                                      
-                                                      
-                                                      <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                         An optional class can be used to define the specific marking system used for the associated
-                                                         value.</li>
-                                                      </ul>
-                                                </div>
-                                             </details>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -22267,6 +22232,19 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                    </div>
                                                 </details>
                                              </div>
+                                             <details class="constraints" open="open">
+                                                <summary>Constraint (1)</summary>
+                                                <div class="constraint">
+                                                   <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                                   <p>The value <b>must</b> be one of the following:</p>
+                                                   <ul>
+                                                      
+                                                      <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                         An optional class can be used to define the specific marking system used for the associated
+                                                         value.</li>
+                                                      </ul>
+                                                </div>
+                                             </details>
                                              <details class="properties attributes" open="open">
                                                 <summary>Attributes (6)</summary>
                                                 <div class="model-entry definition assembly">
@@ -22280,20 +22258,6 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                    <div class="body">
                                                       <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
                                                          characteristic, or quality of the property's containing object.</p>
-                                                      <details class="constraints" open="open">
-                                                         <summary>Constraint (1)</summary>
-                                                         <div class="constraint">
-                                                            <p><span class="usa-tag">allowed value</span></p>
-                                                            <p>The value <b>must</b> be one of the following:</p>
-                                                            <ul>
-                                                               
-                                                               
-                                                               <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                                  An optional class can be used to define the specific marking system used for the associated
-                                                                  value.</li>
-                                                               </ul>
-                                                         </div>
-                                                      </details>
                                                    </div>
                                                 </div>
                                                 <div class="model-entry definition assembly">
@@ -22755,6 +22719,19 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                    </div>
                                                 </details>
                                              </div>
+                                             <details class="constraints" open="open">
+                                                <summary>Constraint (1)</summary>
+                                                <div class="constraint">
+                                                   <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                                   <p>The value <b>must</b> be one of the following:</p>
+                                                   <ul>
+                                                      
+                                                      <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                         An optional class can be used to define the specific marking system used for the associated
+                                                         value.</li>
+                                                      </ul>
+                                                </div>
+                                             </details>
                                              <details class="properties attributes" open="open">
                                                 <summary>Attributes (6)</summary>
                                                 <div class="model-entry definition assembly">
@@ -22768,20 +22745,6 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                    <div class="body">
                                                       <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
                                                          characteristic, or quality of the property's containing object.</p>
-                                                      <details class="constraints" open="open">
-                                                         <summary>Constraint (1)</summary>
-                                                         <div class="constraint">
-                                                            <p><span class="usa-tag">allowed value</span></p>
-                                                            <p>The value <b>must</b> be one of the following:</p>
-                                                            <ul>
-                                                               
-                                                               
-                                                               <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                                  An optional class can be used to define the specific marking system used for the associated
-                                                                  value.</li>
-                                                               </ul>
-                                                         </div>
-                                                      </details>
                                                    </div>
                                                 </div>
                                                 <div class="model-entry definition assembly">
@@ -23180,6 +23143,19 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                                </div>
                                                             </details>
                                                          </div>
+                                                         <details class="constraints" open="open">
+                                                            <summary>Constraint (1)</summary>
+                                                            <div class="constraint">
+                                                               <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                                               <p>The value <b>must</b> be one of the following:</p>
+                                                               <ul>
+                                                                  
+                                                                  <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                                     An optional class can be used to define the specific marking system used for the associated
+                                                                     value.</li>
+                                                                  </ul>
+                                                            </div>
+                                                         </details>
                                                          <details class="properties attributes" open="open">
                                                             <summary>Attributes (6)</summary>
                                                             <div class="model-entry definition assembly">
@@ -23193,20 +23169,6 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                                <div class="body">
                                                                   <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
                                                                      characteristic, or quality of the property's containing object.</p>
-                                                                  <details class="constraints" open="open">
-                                                                     <summary>Constraint (1)</summary>
-                                                                     <div class="constraint">
-                                                                        <p><span class="usa-tag">allowed value</span></p>
-                                                                        <p>The value <b>must</b> be one of the following:</p>
-                                                                        <ul>
-                                                                           
-                                                                           
-                                                                           <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                                              An optional class can be used to define the specific marking system used for the associated
-                                                                              value.</li>
-                                                                           </ul>
-                                                                     </div>
-                                                                  </details>
                                                                </div>
                                                             </div>
                                                             <div class="model-entry definition assembly">
@@ -23621,6 +23583,19 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                             </div>
                                                          </details>
                                                       </div>
+                                                      <details class="constraints" open="open">
+                                                         <summary>Constraint (1)</summary>
+                                                         <div class="constraint">
+                                                            <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                                            <p>The value <b>must</b> be one of the following:</p>
+                                                            <ul>
+                                                               
+                                                               <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                                  An optional class can be used to define the specific marking system used for the associated
+                                                                  value.</li>
+                                                               </ul>
+                                                         </div>
+                                                      </details>
                                                       <details class="properties attributes" open="open">
                                                          <summary>Attributes (6)</summary>
                                                          <div class="model-entry definition assembly">
@@ -23634,20 +23609,6 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                             <div class="body">
                                                                <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
                                                                   characteristic, or quality of the property's containing object.</p>
-                                                               <details class="constraints" open="open">
-                                                                  <summary>Constraint (1)</summary>
-                                                                  <div class="constraint">
-                                                                     <p><span class="usa-tag">allowed value</span></p>
-                                                                     <p>The value <b>must</b> be one of the following:</p>
-                                                                     <ul>
-                                                                        
-                                                                        
-                                                                        <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                                           An optional class can be used to define the specific marking system used for the associated
-                                                                           value.</li>
-                                                                        </ul>
-                                                                  </div>
-                                                               </details>
                                                             </div>
                                                          </div>
                                                          <div class="model-entry definition assembly">
@@ -24168,6 +24129,19 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                           </div>
                                        </details>
                                     </div>
+                                    <details class="constraints" open="open">
+                                       <summary>Constraint (1)</summary>
+                                       <div class="constraint">
+                                          <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                          <p>The value <b>must</b> be one of the following:</p>
+                                          <ul>
+                                             
+                                             <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                An optional class can be used to define the specific marking system used for the associated
+                                                value.</li>
+                                             </ul>
+                                       </div>
+                                    </details>
                                     <details class="properties attributes" open="open">
                                        <summary>Attributes (6)</summary>
                                        <div class="model-entry definition assembly">
@@ -24181,20 +24155,6 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
                                                 characteristic, or quality of the property's containing object.</p>
-                                             <details class="constraints" open="open">
-                                                <summary>Constraint (1)</summary>
-                                                <div class="constraint">
-                                                   <p><span class="usa-tag">allowed value</span></p>
-                                                   <p>The value <b>must</b> be one of the following:</p>
-                                                   <ul>
-                                                      
-                                                      
-                                                      <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                         An optional class can be used to define the specific marking system used for the associated
-                                                         value.</li>
-                                                      </ul>
-                                                </div>
-                                             </details>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -24593,6 +24553,19 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                       </div>
                                                    </details>
                                                 </div>
+                                                <details class="constraints" open="open">
+                                                   <summary>Constraint (1)</summary>
+                                                   <div class="constraint">
+                                                      <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                                      <p>The value <b>must</b> be one of the following:</p>
+                                                      <ul>
+                                                         
+                                                         <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                            An optional class can be used to define the specific marking system used for the associated
+                                                            value.</li>
+                                                         </ul>
+                                                   </div>
+                                                </details>
                                                 <details class="properties attributes" open="open">
                                                    <summary>Attributes (6)</summary>
                                                    <div class="model-entry definition assembly">
@@ -24606,20 +24579,6 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                       <div class="body">
                                                          <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
                                                             characteristic, or quality of the property's containing object.</p>
-                                                         <details class="constraints" open="open">
-                                                            <summary>Constraint (1)</summary>
-                                                            <div class="constraint">
-                                                               <p><span class="usa-tag">allowed value</span></p>
-                                                               <p>The value <b>must</b> be one of the following:</p>
-                                                               <ul>
-                                                                  
-                                                                  
-                                                                  <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                                     An optional class can be used to define the specific marking system used for the associated
-                                                                     value.</li>
-                                                                  </ul>
-                                                            </div>
-                                                         </details>
                                                       </div>
                                                    </div>
                                                    <div class="model-entry definition assembly">
@@ -25034,6 +24993,19 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                    </div>
                                                 </details>
                                              </div>
+                                             <details class="constraints" open="open">
+                                                <summary>Constraint (1)</summary>
+                                                <div class="constraint">
+                                                   <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                                   <p>The value <b>must</b> be one of the following:</p>
+                                                   <ul>
+                                                      
+                                                      <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                         An optional class can be used to define the specific marking system used for the associated
+                                                         value.</li>
+                                                      </ul>
+                                                </div>
+                                             </details>
                                              <details class="properties attributes" open="open">
                                                 <summary>Attributes (6)</summary>
                                                 <div class="model-entry definition assembly">
@@ -25047,20 +25019,6 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                    <div class="body">
                                                       <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
                                                          characteristic, or quality of the property's containing object.</p>
-                                                      <details class="constraints" open="open">
-                                                         <summary>Constraint (1)</summary>
-                                                         <div class="constraint">
-                                                            <p><span class="usa-tag">allowed value</span></p>
-                                                            <p>The value <b>must</b> be one of the following:</p>
-                                                            <ul>
-                                                               
-                                                               
-                                                               <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                                  An optional class can be used to define the specific marking system used for the associated
-                                                                  value.</li>
-                                                               </ul>
-                                                         </div>
-                                                      </details>
                                                    </div>
                                                 </div>
                                                 <div class="model-entry definition assembly">
@@ -25493,6 +25451,19 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                           </div>
                                        </details>
                                     </div>
+                                    <details class="constraints" open="open">
+                                       <summary>Constraint (1)</summary>
+                                       <div class="constraint">
+                                          <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                          <p>The value <b>must</b> be one of the following:</p>
+                                          <ul>
+                                             
+                                             <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                An optional class can be used to define the specific marking system used for the associated
+                                                value.</li>
+                                             </ul>
+                                       </div>
+                                    </details>
                                     <details class="properties attributes" open="open">
                                        <summary>Attributes (6)</summary>
                                        <div class="model-entry definition assembly">
@@ -25506,20 +25477,6 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
                                                 characteristic, or quality of the property's containing object.</p>
-                                             <details class="constraints" open="open">
-                                                <summary>Constraint (1)</summary>
-                                                <div class="constraint">
-                                                   <p><span class="usa-tag">allowed value</span></p>
-                                                   <p>The value <b>must</b> be one of the following:</p>
-                                                   <ul>
-                                                      
-                                                      
-                                                      <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                         An optional class can be used to define the specific marking system used for the associated
-                                                         value.</li>
-                                                      </ul>
-                                                </div>
-                                             </details>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -25958,7 +25915,7 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                            <details class="constraints" open="open">
                               <summary>Constraints (6)</summary>
                               <div class="constraint">
-                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop/@name</code></p>
+                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
                                  <p>The value <b>must</b> be one of the following:</p>
                                  <ul>
                                     
@@ -26129,6 +26086,19 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                           </div>
                                        </details>
                                     </div>
+                                    <details class="constraints" open="open">
+                                       <summary>Constraint (1)</summary>
+                                       <div class="constraint">
+                                          <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                          <p>The value <b>must</b> be one of the following:</p>
+                                          <ul>
+                                             
+                                             <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                An optional class can be used to define the specific marking system used for the associated
+                                                value.</li>
+                                             </ul>
+                                       </div>
+                                    </details>
                                     <details class="properties attributes" open="open">
                                        <summary>Attributes (6)</summary>
                                        <div class="model-entry definition assembly">
@@ -26142,20 +26112,6 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
                                                 characteristic, or quality of the property's containing object.</p>
-                                             <details class="constraints" open="open">
-                                                <summary>Constraint (1)</summary>
-                                                <div class="constraint">
-                                                   <p><span class="usa-tag">allowed value</span></p>
-                                                   <p>The value <b>must</b> be one of the following:</p>
-                                                   <ul>
-                                                      
-                                                      
-                                                      <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                         An optional class can be used to define the specific marking system used for the associated
-                                                         value.</li>
-                                                      </ul>
-                                                </div>
-                                             </details>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -26405,6 +26361,19 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                    </div>
                                                 </details>
                                              </div>
+                                             <details class="constraints" open="open">
+                                                <summary>Constraint (1)</summary>
+                                                <div class="constraint">
+                                                   <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                                   <p>The value <b>must</b> be one of the following:</p>
+                                                   <ul>
+                                                      
+                                                      <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                         An optional class can be used to define the specific marking system used for the associated
+                                                         value.</li>
+                                                      </ul>
+                                                </div>
+                                             </details>
                                              <details class="properties attributes" open="open">
                                                 <summary>Attributes (6)</summary>
                                                 <div class="model-entry definition assembly">
@@ -26418,20 +26387,6 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                    <div class="body">
                                                       <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
                                                          characteristic, or quality of the property's containing object.</p>
-                                                      <details class="constraints" open="open">
-                                                         <summary>Constraint (1)</summary>
-                                                         <div class="constraint">
-                                                            <p><span class="usa-tag">allowed value</span></p>
-                                                            <p>The value <b>must</b> be one of the following:</p>
-                                                            <ul>
-                                                               
-                                                               
-                                                               <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                                  An optional class can be used to define the specific marking system used for the associated
-                                                                  value.</li>
-                                                               </ul>
-                                                         </div>
-                                                      </details>
                                                    </div>
                                                 </div>
                                                 <div class="model-entry definition assembly">
