@@ -29,12 +29,12 @@
         <dependency>
             <groupId>net.sf.saxon</groupId>
             <artifactId>Saxon-HE</artifactId>
-            <version>10.8</version>
+            <version>11.4</version>
         </dependency>
         <dependency>
             <groupId>com.xmlcalabash</groupId>
             <artifactId>xmlcalabash</artifactId>
-            <version>1.5.1-100</version>
+            <version>1.5.3-110</version>
         </dependency>
     </dependencies>
 
