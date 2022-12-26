@@ -700,6 +700,20 @@
             </x:context>
             <x:expect label="Nothing" select="()"/>
         </x:scenario>
+        <x:scenario label="Control is not selected but its child controls are selected">
+            <!--Below, $import-instruction is an <import> element that
+                selects children a1.a and a1.c of the control with id="a1",
+                and the context node has id="a1". -->
+            <x:context mode="o:select"
+                select="doc($ov:filedir || '/catalogs/abc-multiple-children_catalog.xml')//o:control[@id='a1']">
+                <x:param name="import-instruction" tunnel="yes"
+                    select="(doc($ov:filedir || '/without-parent_profile.xml')//o:import)[1]"/>
+            </x:context>
+            <x:expect label="Copy of selected child control elements with opr:id inserted">
+                <control id="a1.a" opr:id="...">...</control>
+                <control id="a1.c" opr:id="...">...</control>
+            </x:expect>
+        </x:scenario>
     </x:scenario>
 
     <x:scenario label="Tests for match='param' mode='o:select' template">
