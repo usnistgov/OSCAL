@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../example-checkup.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!-- Modified by conversion XSLT 2021-04-05T11:12:31.584-04:00 - RC2 OSCAL becomes RC3 OSCAL -->
+<catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         uuid="6c5149e8-f3a6-437c-8035-025e9b5fc0bf"
+         xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../../../../xml/schema/oscal_catalog_schema.xsd">
+   <metadata>
+      <title>Alphabet Catalog</title>
+      <last-modified>2020-05-30T14:51:41.185-04:00</last-modified>
+      <version>1.0</version>
+      <oscal-version>1.0.0-rc2</oscal-version>
+   </metadata>
+   <control id="a1">
+      <title>Control A1</title>
+      <prop name="label" value="first"/>
+      <part name="statement" id="a1-stmt">
+         <p>A1 ccccc cccccccccccccc.</p>
+      </part>
+      <control id="a1.a">
+         <title>Control A1-A</title>
+         <prop name="label" value="second"/>
+         <part name="statement" id="a1.a-stmt">
+            <p>A1 A ccccc cccccccccccccc.</p>
+         </part>
+      </control>
+      <control id="a1.b">
+         <title>Control A1-B</title>
+         <prop name="label" value="third"/>
+         <part name="statement" id="a1.b-stmt">
+            <p>A1 B ccccc cccccccccccccc.</p>
+         </part>
+      </control>
+      <control id="a1.c">
+         <title>Control A1-C</title>
+         <prop name="label" value="fourth"/>
+         <part name="statement" id="a1.c-stmt">
+            <p>A1 C ccccc cccccccccccccc.</p>
+         </part>
+      </control>
+   </control>
+</catalog>

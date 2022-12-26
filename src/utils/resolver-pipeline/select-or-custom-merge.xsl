@@ -11,8 +11,9 @@
 
     <xsl:include href="oscal-profile-resolve-functions.xsl"/>
 
-    <!-- A control is included if it is selected by the provided import instruction -->
-    <xsl:template match="control" mode="o:select" as="element(o:control)?">
+    <!-- A control is included if it is selected by the provided import instruction. -->
+    <!-- Also, for a nonselected control, this template can return selected children. -->
+    <xsl:template match="control" mode="o:select" as="element(o:control)*">
         <xsl:param name="import-instruction" tunnel="yes" required="yes"/>
         <xsl:choose>
             <xsl:when test="o:selects($import-instruction,.)">
@@ -20,12 +21,12 @@
                     <xsl:call-template name="add-process-id"/>
                     <xsl:apply-templates mode="#current" select="node() | @*"/>
                 </xsl:copy>
-           </xsl:when>
-           <xsl:otherwise>
-               <!-- Visit child controls in case they are selected using
+            </xsl:when>
+            <xsl:otherwise>
+                <!-- Visit child controls in case they are selected using
                    with-parent-controls="no". -->
-               <xsl:apply-templates mode="#current" select="control"/>
-           </xsl:otherwise>
+                <xsl:apply-templates mode="#current" select="control"/>
+            </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
 
