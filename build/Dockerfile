@@ -47,4 +47,6 @@ ENV SAXON_HOME=/opt/oscal
 ENV CALABASH_HOME=${SAXON_HOME}
 ENV PATH=/opt/oscal/node_modules/.bin:${PATH}
 
+RUN git config --global --add safe.directory /oscal
+
 ENTRYPOINT ["/bin/bash"]
