@@ -108,7 +108,7 @@ if [ -z "${SCRATCH_DIR+x}" ]; then
   fi
 fi
 
-profile_schematron="oscal/src/utils/schematron/oscal-profile.sch"
+profile_schematron="${OSCAL_DIR}/src/utils/schematron/oscal-profile.sch"
 compiled_profile_schematron="${SCRATCH_DIR}/oscal-profile.xsl"
 build_schematron "${profile_schematron}" "${compiled_profile_schematron}"
 
@@ -154,7 +154,7 @@ while IFS="|" read path format model converttoformats || [ -n "$path" ]; do
             echo -e "${P_INFO}Validating profile with Schematron for project's requirements and recommendations.${P_INFO}${P_END}"
             target_file=$(basename -- "${file_relative}")
             svrl_result="/tmp/${target_file}.svrl"
-            result=$(validate_with_schematron "${SCRATCH_DIR}/oscal-profile.xsl" "${file_relative}" "$svrl_result" 2>&1)
+            result=$(validate_with_schematron "${SCRATCH_DIR}/oscal-profile.xsl" "${file}" "$svrl_result" 2>&1)
             cmd_exitcode=$?
             if [ $cmd_exitcode -ne 0 ]; then
               echo -e "${P_ERROR}Profile validation execution for '${P_END}${file_relative}${P_ERROR}' with Schematron '${P_END}${profile_schematron}${P_ERROR}' did not complete.${P_END}"
