@@ -50,6 +50,7 @@
     <xsl:variable name="louder" select="$trace = 'on'"/>
 
     <xsl:variable name="home" select="/"/>
+    <xsl:variable name="home-filename" select="$home/base-uri() => replace('.*/','')"/>
 
     <!-- If true, do not record profile URI in output catalog's source-profile
         metadata, due to privacy or security concerns. -->
@@ -72,7 +73,7 @@
              Each represents a stage in processing.
              The result of each processing step is passed to the next step as its input, until no steps are left. -->
         <xsl:call-template name="alert">
-            <xsl:with-param name="msg" expand-text="yes"> RESOLVING PROFILE { base-uri($source) } </xsl:with-param>
+            <xsl:with-param name="msg" expand-text="yes">RESOLVING PROFILE { document-uri($source) } </xsl:with-param>
         </xsl:call-template>
         <xsl:iterate select="$transformation-sequence/*">
             <xsl:param name="doc" select="$source" as="document-node()"/>
@@ -106,7 +107,7 @@
         <xsl:param name="sourcedoc" as="document-node()"/>
         <xsl:variable name="xslt-spec" select="."/>
         <xsl:call-template name="alert">
-            <xsl:with-param name="msg" expand-text="true">Start of step { count(.|preceding-sibling::*) }: XSLT { $xslt-spec }, document {$home/base-uri() => replace('.*/','')} ... </xsl:with-param>
+            <xsl:with-param name="msg" expand-text="true">Step { count(.|preceding-sibling::*) } start : document { $home-filename }, XSLT { $xslt-spec }</xsl:with-param>
         </xsl:call-template>
         <xsl:variable name="runtime-params" as="map(xs:QName,item()*)">
             <xsl:map>
@@ -136,7 +137,7 @@
              https://www.w3.org/TR/xpath-functions-31/#func-transform -->
         <xsl:sequence select="transform($runtime)?output"/>
         <xsl:call-template name="alert">
-            <xsl:with-param name="msg" expand-text="true">End of step { count(.|preceding-sibling::*) }: XSLT { $xslt-spec }, document {$home/base-uri() => replace('.*/','')} ... </xsl:with-param>
+            <xsl:with-param name="msg" expand-text="true">Step { count(.|preceding-sibling::*) } end   : document { $home-filename }, XSLT { $xslt-spec }</xsl:with-param>
         </xsl:call-template>
     </xsl:template>
 
@@ -145,7 +146,7 @@
     <xsl:template mode="opr:execute" match="opr:terminate-if-severe-errors">
         <xsl:param name="sourcedoc" as="document-node()"/>
         <xsl:call-template name="alert">
-            <xsl:with-param name="msg" expand-text="true">Applying step { count(.|preceding-sibling::*) }: checking for severe errors ... </xsl:with-param>
+            <xsl:with-param name="msg" expand-text="true">Step { count(.|preceding-sibling::*) }       : document { $home-filename }, check for severe errors</xsl:with-param>
         </xsl:call-template>
         <xsl:for-each select="$sourcedoc/descendant::processing-instruction('message-handler')[starts-with(.,$terminating-message)]">
             <xsl:message terminate="yes" expand-text="yes">{.}</xsl:message>
@@ -158,8 +159,7 @@
     <xsl:template mode="opr:execute" match="opr:finalize">
         <xsl:param name="sourcedoc" as="document-node()"/>
         <xsl:call-template name="alert">
-            <xsl:with-param name="msg" expand-text="true">Applying step {
-                count(.|preceding-sibling::*) }: finalize ... </xsl:with-param>
+            <xsl:with-param name="msg" expand-text="true">Step { count(.|preceding-sibling::*) }       : document { $home-filename }, finalize</xsl:with-param>
         </xsl:call-template>
 
         <xsl:apply-templates select="$sourcedoc" mode="opr:finalize"/>
@@ -169,7 +169,7 @@
     <xsl:template mode="opr:execute" match="*">
         <xsl:param name="sourcedoc" as="document-node()"/>
         <xsl:call-template name="alert">
-            <xsl:with-param name="msg" expand-text="true"> ... applied step { count(.|preceding-sibling::*) }: { name() } ...</xsl:with-param>
+            <xsl:with-param name="msg" expand-text="true">Step { count(.|preceding-sibling::*) } : { name() }</xsl:with-param>
         </xsl:call-template>
                 <xsl:sequence select="$sourcedoc"/>
     </xsl:template>
