@@ -252,8 +252,8 @@
                         </selection>
                     </profile>
                 </x:context>
-                <x:expect label="Error"
-                    test="$x:result instance of map(*) and $x:result('err') instance of map(*)"/>
+                <x:expect label="oscal-version containing PI indicating a terminating error"
+                    test="exists($x:result/self::o:oscal-version/processing-instruction('message-handler')[starts-with(.,'Terminating ')])"/>
             </x:scenario>
             <x:scenario label="Most recent version is in profile metadata">
                 <x:context select="/o:profile/o:metadata/o:oscal-version">
@@ -289,16 +289,16 @@
                     <x:param name="source" select="'1.0.0'"/>
                     <x:param name="imported" select="('1.0.0','1.0.1')"/>
                 </x:call>
-                <x:expect label="Error"
-                    test="$x:result instance of map(*) and $x:result('err') instance of map(*)"/>
+                <x:expect label="PI indicating a terminating error"
+                    test="exists($x:result/self::processing-instruction('message-handler')[starts-with(.,'Terminating ')])"/>
             </x:scenario>
             <x:scenario label="Imported document has a newer pre-release identifier" catch="yes">
                 <x:call function="opr:oscal-version">
                     <x:param name="source" select="'1.0.1-rc1'"/>
                     <x:param name="imported" select="('1.0.0','1.0.1-rc2')"/>
                 </x:call>
-                <x:expect label="Error"
-                    test="$x:result instance of map(*) and $x:result('err') instance of map(*)"/>
+                <x:expect label="PI indicating a terminating error"
+                    test="exists($x:result/self::processing-instruction('message-handler')[starts-with(.,'Terminating ')])"/>
             </x:scenario>
         </x:scenario>
         <x:scenario label="Different major version">
@@ -314,8 +314,8 @@
                     <x:param name="source" select="'1.37.40'"/>
                     <x:param name="imported" select="('2.0','1.0.1')"/>
                 </x:call>
-                <x:expect label="Error"
-                    test="$x:result instance of map(*) and $x:result('err') instance of map(*)"/>
+                <x:expect label="PI indicating a terminating error"
+                    test="exists($x:result/self::processing-instruction('message-handler')[starts-with(.,'Terminating ')])"/>
             </x:scenario>
         </x:scenario>
     </x:scenario>
