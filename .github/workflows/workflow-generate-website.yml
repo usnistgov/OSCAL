@@ -175,7 +175,7 @@ jobs:
         script: |
           core.setFailed('Link checker detected broken or invalid links, read attached report.')
     - name: Deploy Website (using access_token)
-      uses: peaceiris/actions-gh-pages@de7ea6f8efb354206b205ef54722213d99067935
+      uses: peaceiris/actions-gh-pages@64b46b4226a4a12da2239ba3ea5aa73e3163c75b
       if: github.event_name == 'push' && inputs.commit_resources == true && github.ref_name == 'main'
       with:
         personal_token: ${{ secrets.access_token }}
@@ -184,7 +184,7 @@ jobs:
         publish_branch: nist-pages
         commit_message: Deploying website [ci deploy skip]
     - name: Deploy Website (using COMMIT_TOKEN)
-      uses: peaceiris/actions-gh-pages@de7ea6f8efb354206b205ef54722213d99067935
+      uses: peaceiris/actions-gh-pages@64b46b4226a4a12da2239ba3ea5aa73e3163c75b
       if: github.event_name == 'workflow_dispatch' && github.event.inputs.commit_resources == 'true' && github.ref_name == 'main'
       with:
         personal_token: ${{ secrets.COMMIT_TOKEN }}
