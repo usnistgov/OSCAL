@@ -3,7 +3,8 @@ title: OSCAL DEFINE Meeting
 description: Details about the OSCAL DEFINE Meeting
 layout: devlunch
 aliases:
-- /contribute/model-review/
+- /contribute/oscal-define-meeting/
+- /contribute/research-meeting/
 toc:
   headingselectors: "h3,h4"
   includeHtml: true

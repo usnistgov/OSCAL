@@ -5,6 +5,7 @@ layout: devlunch
 aliases:
 - /contribute/devlunch/
 - /contribute/dev-lunch/
+- /contribute/model-review/
 toc:
   enabled: true
   headingselectors: "h3,h4"
