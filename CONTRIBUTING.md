@@ -27,7 +27,7 @@ This page is for potential contributors to the OSCAL project. It provides basic 
 
 The approach we’re taking with OSCAL is agile. We’re adopting the philosophy of implementing the 20% of the functionality that solves 80% of the problem. We’re trying to focus on the core capabilities that are needed to provide the greatest amount of benefit. Because we’re working on a small set of capabilities, that allows us to make very fast progress. We’re building the features that we believe solve the biggest problems, so we’re providing the most value.
 
-We track our current work items using GitHub [project cards](../../projects). The active project is typically the lowest numbered open project within the previously referenced page.
+We track our current work items using GitHub [project cards](https://github.com/orgs/usnistgov/projects/25). The active project is typically the lowest numbered open project within the previously referenced page.
 
 ## Contribution options
 
@@ -97,7 +97,7 @@ This repository consists of the following directories and files pertaining to th
 
 # Contributing to a Development Sprint
 
-The NIST OSCAL team is using the GitHub [project cards](../../projects) feature to track development sprints as part of the core OSCAL work stream. A typical development sprint lasts roughly a month, with some sprints lasting slightly less or more to work around major holidays or events attended by the core project team. The active sprint is typically the lowest numbered open project within the previously referenced page.
+The NIST OSCAL team is using the GitHub [project cards](https://github.com/orgs/usnistgov/projects/25) feature to track development sprints as part of the core OSCAL work stream. A typical development sprint lasts roughly a month, with some sprints lasting slightly less or more to work around major holidays or events attended by the core project team. The active sprint is typically the lowest numbered open project within the previously referenced page.
 
 ## User Stories
 
