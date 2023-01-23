@@ -13,7 +13,7 @@ weight: 20
 
 {{% usa-intro %}}OSCAL DEFINE (**D**evelop **E**nhancements, **F**uture **I**mplementations and **N**ew **E**ducation) is a new meeting to discuss the research and educational pursuits of OSCAL using an iterative and collaborative approach with the community.  Our goal is to establish an OSCAL research framework that allows topics to receive the necessary definition and understanding sufficient to create educational content, demonstrate usage in practice, gain community’s endorsement, and serve as a catalyst for continued development of OSCAL.{{% /usa-intro %}}
 
-{{% usa-tag %}}Day and Time{{% /usa-tag %}} Monthly Thursday at 11:00 AM ET, starting February 16, 2023
+{{% usa-tag %}}Day and Time{{% /usa-tag %}} Third Thursday of every month at 11:00 AM ET, starting February 16, 2023
 
 {{% usa-tag %}}Meeting Link{{% /usa-tag %}} https://bluejeans.com/297844362/6456
 
