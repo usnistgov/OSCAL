@@ -31,7 +31,7 @@ You can connect with us and other developers working on OSCAL related projects o
 
 The NIST OSCAL team hosts meetings with the OSCAL community on different topics.
 
-- **Lunch with the OSCAL Developers**: A [bi-weekly meeting](dev-lunch/) hosted by the NIST OSCAL development team to share information about current development efforts, discuss issues, collect feedback on priorities, and to answer development-related questions.
-- **OSCAL Model Review**: A [bi-weekly meeting](model-review/) hosted by the NIST OSCAL development team to update adopters on the latest improvements to the OSCAL models, and for community members to provide high-bandwidth feedback on concerns, gaps, and other issues with the OSCAL models.
+- **OSCAL Model Engineering Meeting**: A [bi-weekly meeting](model-engineering-meeting/) to discuss OSCAL models, how they are developed, and development efforts by NIST staff and the greater OSCAL community using them.
+- **OSCAL DEFINE Meeting**: A [bi-weekly meeting](define-meeting/) meeting to discuss the research and educational pursuits of OSCAL using an iterative and collaborative approach with the community.
 
 We encourage you to attend these meetings as a way to keep up-to-date on and contribute to the development of OSCAL.
