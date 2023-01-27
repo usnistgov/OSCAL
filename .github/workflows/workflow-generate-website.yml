@@ -153,12 +153,12 @@ jobs:
         name: html-link-report
         path: html-link-report.md
         retention-days: 5
-    - uses: actions/github-script@d556feaca394842dc55e4734bf3bb9f685482fa0
+    - uses: actions/github-script@98814c53be79b1d30f795b907e553d8679345975
       if: steps.linkchecker.outputs.exit_code != 0
       with:
         script: |
           core.setFailed('Link checker detected broken or invalid links, read attached report.')
-    - uses: actions/github-script@d556feaca394842dc55e4734bf3bb9f685482fa0
+    - uses: actions/github-script@98814c53be79b1d30f795b907e553d8679345975
       if: steps.linkchecker.outputs.exit_code != 0 && (github.event.inputs.bad_links_fail_build == 'true' || inputs.bad_links_fail_build == true)
       with:
         script: |
