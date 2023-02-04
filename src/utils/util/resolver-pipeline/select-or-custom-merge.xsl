@@ -91,7 +91,7 @@
 
     <xsl:function name="opr:catalog-identifier" as="xs:string">
         <xsl:param name="catalog-or-profile" as="element()"/>
-        <xsl:sequence select="$catalog-or-profile/(@uuid,document-uri(root(.)))[1]"/>
+        <xsl:sequence select="$catalog-or-profile/(@uuid,base-uri(root(.)))[1]"/>
     </xsl:function>
 
 </xsl:stylesheet>

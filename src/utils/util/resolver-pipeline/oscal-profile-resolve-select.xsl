@@ -101,9 +101,8 @@
 
     <xsl:template match="catalog" mode="o:select">
         <xsl:param name="uri-stack" tunnel="yes" as="xs:anyURI*" select="()"/>
-        <selection opr:src="{if (exists($uri-stack)) then $uri-stack[last()] else document-uri(root())}">
+        <selection opr:src="{if (exists($uri-stack)) then $uri-stack[last()] else base-uri(root())}">
             <xsl:copy-of select="@* except @xsi:*" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
-            <!--<xsl:attribute name="opr:base" select="document-uri(root())"/>-->
             <xsl:apply-templates mode="#current"/>
         </selection>
     </xsl:template>
