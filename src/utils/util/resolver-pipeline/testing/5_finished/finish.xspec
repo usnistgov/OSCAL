@@ -150,8 +150,8 @@
             </x:call>
             <x:expect label="Processing instructions about 'published' and 'unknown-element' elements"
                 test="/processing-instruction('message-handler')">
-                <?message-handler Error: Element of type <published> is not valid inside <parent>, so it will not be present in result.?>
-                <?message-handler Error: Element of type <unknown-element> is not valid inside <parent>, so it will not be present in result.?>
+                <?message-handler Error: Element of type <published> is not valid inside <parent> and will not be present in result.?>
+                <?message-handler Error: Element of type <unknown-element> is not valid inside <parent> and will not be present in result.?>
             </x:expect>
         </x:scenario>
         <x:scenario label="No unexpected child elements">
