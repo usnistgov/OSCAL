@@ -89,7 +89,7 @@
         <!-- condition not(@by-id != $id) includes any addition without an @by-id, or whose @by-id is the control id -->
         <xsl:variable name="implicit-patches-to-id" select="$modifications/key('alteration-for-control-id',$id,.)/add[not(@by-id != $id)]" as="element(add)*"/>
 
-        <xsl:copy-of select="$patches-to-id-targeting-ancestor[@position = 'before']/*"/><xsl:message>got here! removable is <xsl:sequence select="oscal:removable(./*[1],$modifications)"/></xsl:message>
+        <xsl:copy-of select="$patches-to-id-targeting-ancestor[@position = 'before']/*"/>
         <xsl:if test="not(ancestor::control and oscal:removable(.,$modifications))">
             <xsl:copy>
                 <xsl:copy-of select="@*"/>
