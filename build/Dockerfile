@@ -1,4 +1,4 @@
-FROM ubuntu:22.04 as oscal-os-dependencies
+FROM ubuntu:22.10 as oscal-os-dependencies
 
 ENV TZ=US/Eastern
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone && \
