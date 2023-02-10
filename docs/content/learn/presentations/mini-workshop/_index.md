@@ -31,7 +31,7 @@ NIST OSCAL Mini Workshop program committee is seeking timely, topical, and thoug
 
 We encourage proposals from a diverse array of organizations and individuals with different perspectives, from the public and private sectors, international bodies, assessment and authorization (A&A), or certification and authorization (C&A) providers.
 
-Please find below the calendar of proposed dates. Before submitting a proposal, please consult the calendar and indicate the preferred date with your submission and the duration of your presentation (30 min or 60 min, including Q&A). We will do our best to update the calendar as soon as a submission is approved.
+Please find below the calendar of proposed dates. Before submitting a proposal, please consult the calendar and indicate the preferred date with your submission and the duration of your presentation (60 min, including Q&A). We will do our best to update the calendar as soon as a submission is approved.
 
 Submit your proposal via email to [oscal@nist.gov](mailto:oscal@nist.gov), with the subject line: “OSCAL Workshop - [Date: yyyy/mm/dd]”, where the “Date” is the selected date from the calendar below. Please include in your submission a pre-assessment of the OSCAL knowledge level the audience will need using a 4-levels scale with level one (L1/bronze) being equivalent to novice and level four (L4/platinum) being an OSCAL expert. 
 
@@ -43,10 +43,29 @@ Enter the meeting ID and passcode as follows:
 Meeting ID: 743 906 781
 Participant Passcode: 9254
 
-## Workshops Calendar
+## Workshops Calendar: jump to: [2023](#2023), [2022](#2022)
+
+### 2023
 
 | Date | Time | Talk/Demo/Discussion | Presenter & Affiliation | Type | Knowledge Level |
-| ---- | ---- | ---------------------| ----------------------- | ---- | --------------- |
+| :---:|:----:|:-------------------- |:----------------------- |:----:|:---------------:|
+| 2023/02/01 SPECIAL EDITION |  11:00AM-12:00PM EDT  |  A Modern Authorization and Accreditation Platform, Enabled by OSCAL |  John Tibbitts, Principal, IMPLERUS Corporation; Marcin Staszewski, Chief Development Officer, IMPLERUS Corporation |  presentation & demo, video, transcript |  L2-L3 |
+| 2023/02/15 |  11:00AM-12:00PM EDT  | Google's Internal OSCAL Adoption  | Vikram Khare, Director – Continuous Assurance and Controls Engineering, Google &  Val Mihai, Cloud CISO - Continuous Assurance and Controls Engineering, Google | presentation, video, transcript  | L2  |
+| 2023/03/01 SPECIAL EDITION |  11:00AM-12:00PM EDT  |  Shifting Left the Right Way With OSCAL (research use case and proof of concept)  | Chris Compton, Senior IT Specialist; Alexander Stein, Senior IT Specialist; Nikita Wootten, Project Lead, IT Specialist  | presentation & demo, video, transcript  | L3-L4 |
+| 2023/03/15 |  11:00AM-12:00PM EDT  | Telos's Journey of Bringing OSCAL Adoption to Reality  |  Stephanie Lacy, Senior Solution Architect, Telos;  Connor Hite, Solution Architect, Telos|   |   |
+| 2023/04/19 |  11:00AM-12:00PM EDT  |   |   |   |   |
+| 2023/05/17 |  11:00AM-12:00PM EDT  |   |   |   |   |
+| 2023/06/14 |  11:00AM-12:00PM EDT  |   |   |   |   |
+| 2023/07/19 |  11:00AM-12:00PM EDT  |   |   |   |   |
+| 2023/08/16 |  11:00AM-12:00PM EDT  |   |   |   |   |
+| 2023/09/20 |  11:00AM-12:00PM EDT  |   |   |   |   |
+| 2023/10/18 |  11:00AM-12:00PM EDT  |   |   |   |   |
+| 2023/11/15 |  11:00AM-12:00PM EDT  |   |   |   |   |
+
+### 2022
+
+| Date | Time | Talk/Demo/Discussion | Presenter & Affiliation | Type | Knowledge Level |
+| :---:|:----:|:-------------------- |:----------------------- |:----:|:---------------:|
 | 2022/05/18 | 11:00AM-11:40AM EDT | 1.  Compliance as Code for Big Bang Risk Management Framework (RMF) Control Mapping to Accelerate Department of Defense (DoD) Authorization to Operate (ATO) | Maj Camdon Cady, Chief Operating Officer, Platform One, US Airforce & Tom Runyon, Defense Unicorns   | [presentation](https://csrc.nist.gov/csrc/media/Presentations/2022/oscal-mini-workshop-1-P1_DoD%2BNIST/P1%20OSCAL%20PA%20Approved.pdf) |  L2 |
 |  | 11:40AM-12:00PM EDT | 2. OSCAL Catalog Authoring Tool (CAT) | Dmitry Cousin, NIST |[presentation](https://csrc.nist.gov/csrc/media/Presentations/2022/oscal-mini-workshop-1-P1_DoD%2BNIST/OSCAL-CAT_Dmitry-Cousin.pdf) demo |  L1 | 
 |  2022/06/15 |  11:00AM-12:00PM EDT  | IBM's Trestle - compliance as code orchestrator and automation workflow  | Dr. Anca Sailer [video](https://csrc.nist.gov/csrc/media/Presentations/2022/oscal-mini-workshop-2-ibm-s-trestle/images-media/IBM-Trestle-part1-ASailer-2022-06-15-caption.mp4), Dr. Vikas Agarwal [video](https://csrc.nist.gov/csrc/media/Presentations/2022/oscal-mini-workshop-2-ibm-s-trestle/images-media/IBM-Trestle-part2-VAgarwal-2022-06-15-caption.mp4), and Lou DeGenaro [video](https://csrc.nist.gov/csrc/media/Presentations/2022/oscal-mini-workshop-2-ibm-s-trestle/images-media/IBM-Trestle-part3-LDegenaro-2022-06-15-caption.mp4)| [presentation](trestle-agile-authoring.pdf) & [demo summary](trestle-agile-authoring-demo.pdf) | L4 |   
@@ -54,6 +73,6 @@ Participant Passcode: 9254
 |  2022/08/10 |  11:00AM-12:00PM EDT  | Extreme Automation with OSCAL - Exercising the Full OSCAL Stack in a Next Generation GRC [video](https://csrc.nist.gov/csrc/media/Presentations/2022/oscal-mini-workshop-20220810-regscale/images-media/RegScale_2022-08-10_caption.mp4) | Travis Howerton, Co-Founder & CTO, RegScale | [presentation](regscale-extreme_automation.pdf) & demo | L1-L3 |    
 |  2022/09/07 |  11:00AM-12:00PM EDT  | NIST OSCAL Open Source Tooling | David Waltermire, OSCAL Technical Director, Dmitry Cousin, OSCAL team member, NIST | [video p1&p2](https://csrc.nist.gov/csrc/media/Presentations/2022/oscal-mini-workshop-5-nist-20220907/NIST-OSCAL-Tools-HD.mp4), presentation1, [presentation2](https://csrc.nist.gov/csrc/media/Presentations/2022/oscal-mini-workshop-5-nist-20220907/OSCAL-CAT_Dmitry-Cousin.pdf) & demos | L1-L3 |  
 |  2022/10/05 |  11:00AM-12:00PM EDT  | Compliance as Code - from Upstream to Ops | Brandt Keller, Software Engineer, Defense Unicorns | [presentation](https://csrc.nist.gov/csrc/media/Presentations/2022/P1%20OSCAL%20PA%20Approved_10.2022.pdf) & demo | L2-L3 |  
-|  2022/11/02 |  11:00AM-12:00PM EDT  | Implementing an Agency Security Assessment Framework (SAF) with OSCAL "ComplianceOps" | Robert Ficcaglia, CNCF Kubernetes Policy Co-Chair, CNCF Security Technical Advisory Group Lead Assessor, Kubernetes SIG-Security Audit Team | presentation | L1-L3  |   
-|  2022/11/30 |  11:00AM-12:00PM EDT  | The OSCAL Futurist: Musing on What Is Possible and What is Needed | Greg Elin, Founder & CEO, GovReady PBC | presentation | L2-L3 |  
+|  2022/11/02 |  11:00AM-12:00PM EDT  | Implementing an Agency Security Assessment Framework (SAF) with OSCAL "ComplianceOps" | Robert Ficcaglia, CNCF Kubernetes Policy Co-Chair, CNCF Security Technical Advisory Group Lead Assessor, Kubernetes SIG-Security Audit Team | [presentation](https://csrc.nist.gov/csrc/media/Presentations/2022/oscal-mini-workshop-7-CNCF/images-media/OSCAL%20Mini%20Workshop%2011-2022-NEW.pdf), [video](https://csrc.nist.gov/csrc/media/Presentations/2022/oscal-mini-workshop-7-CNCF/images-media/CNCF-Roberrt-Ficcaglia-2022-11-02-captions.mp4), [transcript](https://csrc.nist.gov/csrc/media/Presentations/2022/oscal-mini-workshop-7-CNCF/images-media/CNCF-Roberrt_Ficcaglia_2022-11-02-caption.pdf) | L1-L3  |   
+|  2022/11/30 |  11:00AM-12:00PM EDT  | The OSCAL Futurist: Musing on What Is Possible and What is Needed | Greg Elin, Founder & CEO, GovReady PBC | [presentation](https://csrc.nist.gov/csrc/media/Presentations/2022/oscal-mini-workshop-8-GovReady/images-media/OSCAL-Futurist-Nov-30-2022%20v2.pdf), [video](https://csrc.nist.gov/csrc/media/Presentations/2022/oscal-mini-workshop-8-GovReady/images-media/GovReady-Greg_Elin-2022-11-30.mp4), [transcript](https://csrc.nist.gov/csrc/media/Presentations/2022/oscal-mini-workshop-8-GovReady/images-media/GovReady-Greg_Elin-2022-11-30_caption.pdf) | L2-L3 |  
   
