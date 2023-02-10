@@ -51,7 +51,7 @@ Participant Passcode: 9254
 | :---:|:----:|:-------------------- |:----------------------- |:----:|:---------------:|
 | 2023/02/01 SPECIAL EDITION |  11:00AM-12:00PM EDT  |  A Modern Authorization and Accreditation Platform, Enabled by OSCAL |  John Tibbitts, Principal, IMPLERUS Corporation; Marcin Staszewski, Chief Development Officer, IMPLERUS Corporation |  presentation & demo, video, transcript |  L2-L3 |
 | 2023/02/15 |  11:00AM-12:00PM EDT  | Google's Internal OSCAL Adoption  | Vikram Khare, Director – Continuous Assurance and Controls Engineering, Google &  Val Mihai, Cloud CISO - Continuous Assurance and Controls Engineering, Google | presentation, video, transcript  | L2  |
-| 2023/03/01 SPECIAL EDITION |  11:00AM-12:00PM EDT  |  Shifting Left the Right Way With OSCAL (research use case and proof of concept)  | Chris Compton, Senior IT Specialist; Alexander Steine, Senior IT Specialist; Nikita Wootten, Project Lead, IT Specialist  | presentation & demo, video, transcript  | L3-L4 |
+| 2023/03/01 SPECIAL EDITION |  11:00AM-12:00PM EDT  |  Shifting Left the Right Way With OSCAL (research use case and proof of concept)  | Chris Compton, Senior IT Specialist; Alexander Stein, Senior IT Specialist; Nikita Wootten, Project Lead, IT Specialist  | presentation & demo, video, transcript  | L3-L4 |
 | 2023/03/15 |  11:00AM-12:00PM EDT  | Telos's Journey of Bringing OSCAL Adoption to Reality  |  Stephanie Lacy, Senior Solution Architect, Telos;  Connor Hite, Solution Architect, Telos|   |   |
 | 2023/04/19 |  11:00AM-12:00PM EDT  |   |   |   |   |
 | 2023/05/17 |  11:00AM-12:00PM EDT  |   |   |   |   |
