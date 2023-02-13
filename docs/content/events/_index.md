@@ -15,8 +15,9 @@ Additionally, you can configure the calendar in your browser, app, or mobile dev
 
 </br>
 
-<ul class="usa-card-group">
-    <li class="usa-card tablet:grid-col-4">
+<div class="usa-card-group">
+    <div class="usa-card tablet:grid-col-1"></div>
+    <div class="usa-card tablet:grid-col-4">
         <div class="usa-card__container">
             <div class="usa-card__header">
                 <h2 class="usa-card__heading"><a id="section_6" class="usa-anchor"></a>Open on the web</h2>
@@ -34,8 +35,9 @@ Additionally, you can configure the calendar in your browser, app, or mobile dev
                     id="events-web-calendar">Open</button>
             </div>
         </div>
-    </li>
-    <li class="usa-card tablet:grid-col-4">
+    </div>
+    <div class="usa-card tablet:grid-col-2"></div>
+    <div class="usa-card tablet:grid-col-4">
         <div class="usa-card__container">
             <div class="usa-card__header">
                 <h2 class="usa-card__heading"><a id="section_6" class="usa-anchor"></a>Configure in an app</h2>
@@ -45,6 +47,7 @@ Additionally, you can configure the calendar in your browser, app, or mobile dev
                     <img src="/img/usa-icons/event.svg"/>
                 </div>
             </div>
+            <div class="usa-card__body">
             <div class="usa-card__footer">
                 <button 
                     onclick="window.location.href='https://outlook.office365.com/owa/calendar/553a60383771471381091ed979a954f6@nist.gov/e72d2ca648dc4c3db7470fb7339674f211929765598025548039/calendar.ics'"
@@ -53,8 +56,9 @@ Additionally, you can configure the calendar in your browser, app, or mobile dev
                     id="events-ics-download">Download</button>
             </div>
         </div>
-    </li>
-</ul>
+    </div>
+    <div class="usa-card tablet:grid-col-1"></div>
+</div>
 
 ## Recurring Events Details
 
