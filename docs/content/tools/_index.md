@@ -48,8 +48,9 @@ Details on acquiring and running the converters:
 
 Valid OSCAL is open-ended in application. Some of the tools described provide validation and conversion, while others do not, presuming that inputs are already valid.
 
-| Name | Provider/Developer | Description | Type |
-|:---|:---|:---|:---|
+| Name | Provider/Developer |  Description | Type |
+|:---:|:---:|:---|:---:|
 | [OSCAL Deep Diff](https://github.com/usnistgov/oscal-deep-diff) | NIST OSCAL Project | A Typescript-based CLI application and library that produces machine readable and human-consumable comparisons of JSON OSCAL artifacts. | open source |
 | [OSCAL Java Library](https://github.com/usnistgov/liboscal-java) | NIST OSCAL Project | A Java-based programming API for reading and writing content conformant to the OSCAL XML, JSON, and YAML based models. | open source |
-| [XSLT Tooling](https://github.com/usnistgov/oscal-tools/tree/master/xslt) | NIST OSCAL Project | A variety of Extensible Stylesheet Language (XSL) Transformations (XSLT), Cascading Style Sheets (CSS), and related utilities for authoring, converting, and publishing OSCAL content in various forms. | open source |
+| [XSLT Tooling](https://github.com/usnistgov/oscal-tools/tree/main/xslt) | NIST OSCAL Project | A variety of Extensible Stylesheet Language (XSL) Transformations (XSLT), Cascading Style Sheets (CSS), and related utilities for authoring, converting, and publishing OSCAL content in various forms. | open source |
+| [OSCAL Java CLI](https://github.com/usnistgov/oscal-cli) | NIST OSCAL Project | An OSCAL Java command-line tool able to validate OSCAL content and metaschema for well formatting, to convert such content between the OSCAL XML, JSON and YAML formats, to resolve OSCAL profiles, and to generateXML and JSON schemas from a Metachema model definition. | open source |
