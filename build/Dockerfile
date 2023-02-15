@@ -8,7 +8,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone &
         apt-utils build-essential git jq libxml2-utils maven nodejs npm python3-pip unzip wget && \
     apt-get clean
 
-FROM golang:1.20.0-bullseye as oscal-hugo-build
+FROM golang:1.20.1-bullseye as oscal-hugo-build
 
 RUN mkdir -p /go/src/github.com/usnistgov/OSCAL/build
 
