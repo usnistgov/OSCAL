@@ -11,9 +11,9 @@ toc:
   enabled: true
 ---
 
-The [OSCAL models](/concepts/layer/) provide standardized formats for exchanging control, control implementation, and control assessment information in XML, JSON, and YAML, in support of interoperable security assessment automation and continuous monitoring. These formats allow this information to be exchanged between tools ensuring interoperability, and for individual tools, to process exchanged data, supporting analytics, user interaction, and security assessment automation where suitable.
+Please see  [Awesome OSCAL](https://github.com/oscal-club/awesome-oscal) for a list of tools maintained by the OSCAL community.
 
-{{% callout note %}} Tools supporting the use of the OSCAL models are instrumental for a broad adoption of OSCAL in support of interoperable security assessment automation.  The community maintains a list of known OSCAL tools in the [Awesome OSCAL](https://github.com/oscal-club/awesome-oscal) repository.{{% /callout %}}
+The [OSCAL models](/concepts/layer/) provide standardized formats for exchanging control, control implementation, and control assessment information in XML, JSON, and YAML, in support of interoperable security assessment automation and continuous monitoring. These formats allow this information to be exchanged between tools ensuring interoperability, and for individual tools, to process exchanged data, supporting analytics, user interaction, and security assessment automation where suitable.
 
 The following types of tools are developed by NIST OSCAL team:
 - commodity tooling for basic operations such as format validation, data conversion between supported formats
@@ -45,6 +45,8 @@ Details on acquiring and running the converters:
 - converting *into* XML - [JSON to XML](https://github.com/usnistgov/OSCAL/tree/main/xml)
  
 ## NIST's OSCAL Application Frameworks, Tools and Libraries
+
+{{% callout note %}} Tools supporting the use of the OSCAL models are instrumental for a broad adoption of OSCAL in support of interoperable security assessment automation.  The community maintains a list of known OSCAL tools in the [Awesome OSCAL](https://github.com/oscal-club/awesome-oscal) repository.{{% /callout %}}
 
 Valid OSCAL is open-ended in application. Some of the tools described provide validation and conversion, while others do not, presuming that inputs are already valid.
 
