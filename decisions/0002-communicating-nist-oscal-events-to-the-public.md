@@ -14,6 +14,8 @@ The NIST OSCAL Team has necessary touchpoints with the community, among them str
 
 The NIST OSCAL Team will use [a public shared calendar from a service account in the Office 365 instance for NIST, as documented below](#service-account-with-published-nist-office-365-calendar). The team staff will add, change, and remove event invitations. Community members will have access to the .ics calendar invitation files in the web version. These .ics files are [iCalendar](https://en.wikipedia.org/wiki/ICalendar) files - a standard that many calendar clients support.
 
+The NIST OSCAL Team will use the shared calendar to send invitations for public events only to [those subscribed to our mailing lists](https://pages.nist.gov/OSCAL/contact/#oscal-mailing-lists). We will not use it to send invitations to named individuals.
+
 ## Consequences
 
 In the past, NIST staff have sent individual calendar invites from their individual accounts' calendars to specific individuals or the oscal-dev@list.nist.gov mailing list at large. Additionally, the team had published individual iCalendar (ICS) files for two of the long-standing public meetings. The latter had not been updated frequently and were out of sync until removed completely with [pull request usnistgov/OSCAL#1614](https://github.com/usnistgov/OSCAL/pull/1614). The former approach, although convenient, presents a few challenges.
