@@ -12,7 +12,7 @@ The NIST OSCAL Team has necessary touchpoints with the community, among them str
 
 ## Decision
 
-The NIST OSCAL Team will use [a public shared calendar from a service account in the Office 365 instance for NIST, as documented below](#service-account-with-published-nist-office-365-calendar). The team staff will add, change, and remove event invitations. Community members will view the web version or [iCalendar](https://en.wikipedia.org/wiki/ICalendar) files that are a standard that many calendar clients support.
+The NIST OSCAL Team will use [a public shared calendar from a service account in the Office 365 instance for NIST, as documented below](#service-account-with-published-nist-office-365-calendar). The team staff will add, change, and remove event invitations. Community members will have access to the .ics calendar invitation files in the web version. These .ics files are [iCalendar](https://en.wikipedia.org/wiki/ICalendar) files - a standard that many calendar clients support.
 
 ## Consequences
 
