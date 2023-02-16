@@ -16,7 +16,7 @@ The NIST OSCAL Team will use [a public shared calendar from a service account in
 
 ## Consequences
 
-In the past, NIST staff have sent individual calendar invites from their individual accounts' calendars to specific individuals or the oscal-dev@list.nist.gov mailing list at large. Additionally, the team had published individual iCalendar (ICS) files for two of the long-standing public meetings. The latter had not been updated frequent and were out of sync until removed completely with [pull request usnistgov/OSCAL#1614](https://github.com/usnistgov/OSCAL/pull/1614). The former approach, although convenient, presents a few challenges.
+In the past, NIST staff have sent individual calendar invites from their individual accounts' calendars to specific individuals or the oscal-dev@list.nist.gov mailing list at large. Additionally, the team had published individual iCalendar (ICS) files for two of the long-standing public meetings. The latter had not been updated frequently and were out of sync until removed completely with [pull request usnistgov/OSCAL#1614](https://github.com/usnistgov/OSCAL/pull/1614). The former approach, although convenient, presents a few challenges.
 
 1. It is difficult to quickly access one or more event invitations after they are sent.
 1. Only one staff member in the team, the event's creator, can manage that event's invitation details, often when multiple staff are involved.
