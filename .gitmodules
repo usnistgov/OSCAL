@@ -5,6 +5,6 @@
 	update = rebase
 [submodule "build/metaschema"]
 	path = build/metaschema
-	url = https://github.com/usnistgov/metaschema.git
+	url = https://github.com/aj-stein-nist/metaschema.git
 	branch = master
 	update = rebase
