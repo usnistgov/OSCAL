@@ -7,8 +7,6 @@ menu:
     weight: 50
 toc:
   enabled: true
-toc:
-  enabled: true
 ---
 
 The [OSCAL models](/concepts/layer/) provide standardized formats for exchanging control, control implementation, and control assessment information in XML, JSON, and YAML, in support of interoperable security assessment automation and continuous monitoring. These formats allow this information to be exchanged between tools ensuring interoperability, and for individual tools, to process exchanged data, supporting analytics, user interaction, and security assessment automation where suitable.
