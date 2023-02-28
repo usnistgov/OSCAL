@@ -27,11 +27,6 @@ We use GitHub as a collaboration platform for the development of the OSCAL model
 
 You can connect with us and other developers working on OSCAL related projects on the [OSCAL Gitter](https://gitter.im/usnistgov-OSCAL/Lobby) or using the [oscal-dev@list.nist.gov mailing list](/contact/#oscal-mailing-lists).
 
-## Community Meetings
+## Community Events and Meetings
 
-The NIST OSCAL team hosts meetings with the OSCAL community on different topics.
-
-- **OSCAL Model Engineering Meeting**: A bi-weekly meeting to discuss OSCAL models, how they are developed, and development efforts by NIST staff and the greater OSCAL community using them. [The meeting page](model-engineering-meeting/) has meeting information as well as slides and notes from past sessions.
-- **OSCAL DEFINE Meeting**: A monthly meeting on the third Thursday of every month to discuss the research and educational pursuits of OSCAL using an iterative and collaborative approach with the community. [The meeting page](define-meeting/) has meeting information as well as slides and notes from past sessions.
-
-We encourage you to attend these meetings as a way to keep up-to-date on and contribute to the development of OSCAL.
+The NIST OSCAL team hosts meetings and other events with the OSCAL community on different topics. For more information, see our [events page](/events).
