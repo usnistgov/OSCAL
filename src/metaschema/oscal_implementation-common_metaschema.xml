@@ -315,7 +315,7 @@
                   <expect level="WARNING" id="port-range-end-specified-with-no-start" target="." test="not(exists(@start)) and exists(@end)">
                         <message>An end point exists, but a start port does not. To define a single port, the start and end should be the same value.</message>
                   </expect>
-                  <expect level="WARNING" id="port-range-end-date-is-before-start-date" target="." test="@start &le; @end">
+                  <expect level="WARNING" id="port-range-end-date-is-before-start-date" target="." test="@start &lt;= @end">
                         <message>The port range specified has an end port that is less than the start port.</message>
                   </expect>
             </constraint>
