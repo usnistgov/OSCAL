@@ -3,6 +3,11 @@ title: "Events"
 heading: NIST OSCAL Community Events Calendar
 aliases:
   - /events/
+menu:
+  primary:
+    name: Events
+    url: /events/
+    weight: 90
 ---
 
 ## Calendar
