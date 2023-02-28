@@ -31,7 +31,7 @@ A serialized output of profile resolution takes the form of an OSCAL catalog. As
 
 ## Invoking the Pipeline
 
-As of now, the profile resolution pipeline **is incompatible with Saxon versions newer then 10.x**. For best results, use Saxon 10, though you may have luck with other XSLT engines conformant to the 3.1 family of XML standards (XSLT/XPath/XDM/XQuery).
+The profile resolver and other utilities in this repo rely on open-source libraries and utilities developed by third parties. To review the software version used by this project, please review [the `build` directory for manifests of software and the specific versions](../../../../build) we recommend for running utilities from this repo, specifically the recommended [version of Saxon XSLT processor defined in the pom.xml manifest](../../../../build/pom.xml).
 
 ### Using Saxon From the Command Line
 
