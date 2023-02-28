@@ -40,8 +40,6 @@ Before you begin:
 - Install the Java runtime using your preferred method.
 - Download a compatible version of [Saxon Java Home Edition](https://www.saxonica.com/download/java.xml) and extract the `saxon-he` jar file.
 
-  _Note: as stated above, Saxon 11 and 12 are currently unsupported. Saxon 10 must be downloaded from [Saxon's archive page](https://www.saxonica.com/products/archive.xml)_
-
 Invoke Saxon with your document and the profile resolution stylesheet as follows:
 
 ```
