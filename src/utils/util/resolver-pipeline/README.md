@@ -33,7 +33,7 @@ A serialized output of profile resolution takes the form of an OSCAL catalog. As
 
 The profile resolver and other utilities in this repo rely on open-source libraries and utilities developed by third parties. To review the software version used by this project, please review [the `build` directory for manifests of software and the specific versions](../../../../build) we recommend for running utilities from this repo, specifically the recommended [version of Saxon XSLT processor defined in the pom.xml manifest](../../../../build/pom.xml).
 
-### Using Saxon From the Command Line
+### Using Saxon Manually From the Command Line
 
 Before you begin:
 
@@ -51,3 +51,16 @@ Saxon allows users to specify additional parameters (such as the ones specified 
 ```bash
 $ java -jar /path/to/saxon-he-10.x.jar -t -s:YOUR_PROFILE_DOCUMENT.xml -xsl:path/to/oscal-profile-RESOLVE.xsl -o:YOUR_RESULT_BASELINE.xml uuid-method=random-xslt hide-source-profile-uri=true
 ```
+
+### Using the `oscal-profile-resolve.sh` Wrapper Script
+
+The [`oscal-profile-resolve.sh`](./oscal-profile-resolve.sh) wrapper script only requires [Maven](https://maven.apache.org/) to be installed.
+It manages external dependencies, and can be invoked from other directories.
+
+The syntax for invoking the wrapper script is as follows:
+
+```bash
+$ ./oscal-profile-resolve.sh YOUR_PROFILE_DOCUMENT.xml YOUR_RESULT_BASELINE.xml [additional arguments]
+```
+
+Additional arguments are passed into Saxon verbatim and should be in the same `name=value` format described [above](#using-saxon-manually-from-the-command-line).
