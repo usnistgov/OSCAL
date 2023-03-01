@@ -13,7 +13,7 @@ To facilitate the OSCAL adoption in ways that allow the adopters to take full ad
 
 To properly understand the examples, interested parties are advised to also review the [OSCAL walkthrough tutorials](https://pages.nist.gov/OSCAL/learn/tutorials).
 
-{{% callout note %}} More OSCAL examples supporting the use of the OSCAL models are developed and maintained by the community in their [OSCAL Club](https://github.com/oscal-club/examples) repository.{{% /callout %}}
+{{% callout note %}} More OSCAL examples supporting the use of the OSCAL models are developed and maintained by the community in the [OSCAL Club examples repository](https://github.com/oscal-club/examples) .{{% /callout %}}
 
 
 ### Validation
