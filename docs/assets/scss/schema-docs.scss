@@ -1,11 +1,12 @@
-
 @mixin header-text($header-fg) {
   @include u-font('heading', xl);
   @include u-text($header-fg, 'normal');
+
   a {
     &:visited {
       @include u-text($header-fg);
     }
+
     &:hover {
       @include u-text('bold');
     }
@@ -14,12 +15,15 @@
 
 @mixin supporting-text {
   @include u-font('body', 'md');
-  @include u-text('base-darker','normal');
+  @include u-text('base-darker', 'normal');
+
   a {
-    @include u-text('primary','normal');
+    @include u-text('primary', 'normal');
+
     &:visited {
       @include u-text('primary');
     }
+
     &:hover {
       @include u-text('bold');
     }
@@ -28,25 +32,29 @@
 
 @mixin model-text {
   @include u-font('mono', 'md');
-  @include u-text('base-darker','normal');
+  @include u-text('base-darker', 'normal');
+
   a {
-    @include u-text('primary','normal');
+    @include u-text('primary', 'normal');
+
     &:visited {
       @include u-text('primary');
     }
+
     &:hover {
       @include u-text('bold');
     }
   }
 }
 
-@mixin doc-index($header-bg,$header-fg) {
+@mixin doc-index($header-bg, $header-fg) {
   @include supporting-text();
+
   section.named-object-group {
     /*@include u-bg('base-lightest');*/
     @include u-margin-bottom(2);
     @include u-padding-bottom('105');
-    @include u-border(1px,'base-light');
+    @include u-border(1px, 'base-light');
     @include u-radius('md');
 
   }
@@ -70,9 +78,9 @@
     @include u-text('bold');
     @include u-padding-x(2px);
     @include u-margin-x(2px);
-    -webkit-box-shadow: 1px 1px 3px 0 rgba(0,0,0,.75);
-    -moz-box-shadow: 1px 1px 3px 0 rgba(0,0,0,.75);
-    box-shadow: 1px 1px 3px 0 rgba(0,0,0,.75);
+    -webkit-box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, .75);
+    -moz-box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, .75);
+    box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, .75);
 
     a {
       @include u-text('normal');
@@ -81,6 +89,7 @@
 
   span.formal-name {
     @include supporting-text();
+
     a {
       @include u-text('bold');
     }
@@ -88,24 +97,27 @@
 }
 
 .xml-index {
-  @include doc-index('green-cool-20','green-cool-80');
+  @include doc-index('green-cool-20', 'green-cool-80');
 }
 
 .json-index {
-  @include doc-index('blue-20','blue-80');
+  @include doc-index('blue-20', 'blue-80');
 }
 
-.xml-outline, .json-outline {
+.xml-outline,
+.json-outline {
   @include model-text();
   hyphens: none;
 
   div.OM-entry p {
     line-height: 1.5;
   }
+
   details.OM-entry {
     .model-container {
       margin-left: 2.5em;
     }
+
     &[open] {
       summary {
         .show-closed {
@@ -113,6 +125,7 @@
         }
       }
     }
+
     &:not([open]) {
       summary {
         .show-closed {
@@ -120,29 +133,55 @@
         }
       }
     }
+
     summary {
       cursor: pointer;
       list-style-position: outside;
       line-height: 1.5;
     }
   }
+
   /*span.OM-cardinality {  }*/
-  .model-container + p {
+  .model-container+p {
     margin-top: 0;
   }
 
-  a, a:visited {
+  a,
+  a:visited {
     text-decoration: none;
   }
 
-  div.OM-choice {
+  div.OM-choices {
+    @include u-margin-left(-2);
     @include u-padding-left(2);
+    background-color: lightgray;
+    width: max-content;
+
+    div.OM-choice {
+      @include u-padding-left(0);
+    }
+
+    // Nested choices alternate color for readability
+    div.OM-choices {
+      background-color: white;
+
+      div.OM-choices {
+        background-color: lightgray;
+
+        // Add nested colors as needed
+      }
+    }
   }
 }
 
-@mixin reference-header($definition-header-bg,$instance-header-bg,$header-fg) {
-  div.definition-header, div.instance-header, div.array-header {
-    .name, p.array-member {
+@mixin reference-header($definition-header-bg, $instance-header-bg, $header-fg) {
+
+  div.definition-header,
+  div.instance-header,
+  div.array-header {
+
+    .name,
+    p.array-member {
       @include header-text($header-fg);
       @include u-font('heading', lg);
       @include u-line-height('heading', 1);
@@ -152,6 +191,7 @@
       align-self: start;
       text-transform: inherit;
     }
+
     p.type {
       @include model-text();
       @include u-line-height('mono', 1);
@@ -159,6 +199,7 @@
       margin: 0;
       align-self: start;
     }
+
     p.occurrence {
       @include model-text();
       @include u-line-height('mono', 1);
@@ -166,6 +207,7 @@
       margin: 0;
       align-self: start;
     }
+
     div.crosslink {
       grid-area: crosslink;
       margin: 0;
@@ -178,6 +220,7 @@
       }
       */
     }
+
     .formal-name {
       @include supporting-text();
       grid-area: formal-name;
@@ -185,19 +228,19 @@
       align-self: center;
     }
   }
-  
+
   div.definition-header {
     @include u-bg($definition-header-bg);
     @include header-text($header-fg);
     @include u-margin-top('105');
-    @include u-border(1px,'base-light');
+    @include u-border(1px, 'base-light');
     @include u-radius('md');
     padding: .5rem;
     display: grid;
     grid-template-columns: 3fr 3fr 2fr;
     grid-template-rows: auto auto;
     grid-gap: .5em;
-    grid-template-areas: 
+    grid-template-areas:
       "name type crosslink"
       "formal-name formal-name crosslink";
   }
@@ -205,44 +248,48 @@
   div.instance-header {
     @include u-bg($instance-header-bg);
     @include header-text($header-fg);
-    @include u-border(1px,'base-light');
+    @include u-border(1px, 'base-light');
     @include u-radius('md');
     padding: .5rem;
     display: grid;
     grid-template-columns: 3fr 3fr 2fr 2fr;
     grid-template-rows: auto auto;
     grid-gap: .5em;
-    grid-template-areas: 
+    grid-template-areas:
       "name type occurance crosslink"
       "formal-name formal-name formal-name crosslink";
   }
+
   div.array-header {
     @include u-bg('gray-10');
     @include header-text($header-fg);
-    @include u-border(1px,'base-light');
+    @include u-border(1px, 'base-light');
     @include u-radius-bottom('md');
     padding: .5rem;
     display: grid;
     grid-template-columns: 3fr 3fr 2fr 2fr;
     grid-template-rows: auto auto;
     grid-gap: .5em;
-    grid-template-areas: 
+    grid-template-areas:
       "name type occurance formal-name";
 
-      .formal-name {
-        align-self: right;
+    .formal-name {
+      align-self: right;
     }
   }
+
   div.body {
     @include u-padding-left('105');
-    @include u-border-left(2px,'base-lightest');
+    @include u-border-left(2px, 'base-lightest');
     @include u-margin-bottom('105');
-    
-    > p {
+
+    >p {
       margin-top: 0.5rem;
     }
+
     details {
       margin-top: 0.5rem;
+
       summary {
         @include u-margin-bottom('05');
       }
@@ -250,30 +297,36 @@
   }
 }
 
-.xml-reference, .xml-definition {
-  @include reference-header('green-cool-20','green-cool-10','green-cool-80');
+.xml-reference,
+.xml-definition {
+  @include reference-header('green-cool-20', 'green-cool-10', 'green-cool-80');
 
   div.crosslink a.usa-button {
     @include u-bg('green-cool-70');
-    @include u-text('white','bold');
+    @include u-text('white', 'bold');
+
     &:visited {
       @include u-text('white');
     }
+
     &:hover {
       @include u-text('bold');
     }
   }
 }
 
-.json-reference, .json-definition {
-  @include reference-header('blue-20','blue-10','blue-80');
+.json-reference,
+.json-definition {
+  @include reference-header('blue-20', 'blue-10', 'blue-80');
 
   div.crosslink a.usa-button {
     @include u-bg('blue-70');
-    @include u-text('white','bold');
+    @include u-text('white', 'bold');
+
     &:visited {
       @include u-text('white');
     }
+
     &:hover {
       @include u-text('bold');
     }
