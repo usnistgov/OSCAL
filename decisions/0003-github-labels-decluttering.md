@@ -25,6 +25,7 @@ The lists of labels that follow will use across OSCAL repositories.
 - developer experience
 - discussion needed
 - epic
+- faq
 - rfc
 - scope: ci/cd
 - scope: content
