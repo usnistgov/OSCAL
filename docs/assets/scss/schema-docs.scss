@@ -154,11 +154,11 @@
   div.OM-choices {
     @include u-margin-left(-2);
     @include u-padding-left(2);
-    background-color: lightgray;
+    background-color: #d9e8f6;
     width: max-content;
 
     div.OM-choice {
-      @include u-padding-left(0);
+      @include u-padding-left(4);
     }
 
     // Nested choices alternate color for readability
@@ -166,8 +166,7 @@
       background-color: white;
 
       div.OM-choices {
-        background-color: lightgray;
-
+        background-color: #d9e8f6;
         // Add nested colors as needed
       }
     }
