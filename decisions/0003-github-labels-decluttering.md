@@ -1,4 +1,4 @@
-# Use of Labels in OSCAL Project(s)
+# 3. Use of Labels in OSCAL Project(s)
 
 Date: 02/17/2023
 
