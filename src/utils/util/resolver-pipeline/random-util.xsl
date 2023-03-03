@@ -30,7 +30,7 @@ v4 UUID
     <!-- Set $germ to a string for reproducible outputs of r:make-uuid.
          Pass in a blind value - and don't save it - for irreproducible outputs. -->
 
-    <xsl:param name="germ" select="current-dateTime() || document-uri(/)"/>
+    <xsl:param name="germ" select="current-dateTime() || base-uri(/)"/>
 
     <!-- for testing random number features   -->
     <xsl:template match="/" name="xsl:initial-template" expand-text="true">

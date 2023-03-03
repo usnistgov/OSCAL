@@ -120,7 +120,7 @@
             </xsl:if>
         </xsl:for-each>
         <!-- Return the version from the source parameter. -->
-        <xsl:value-of select="$source"/>
+        <xsl:sequence select="$source"/>
     </xsl:function>
 
     <!--<xsl:template match="selection" mode="imported-metadata">
