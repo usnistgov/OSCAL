@@ -14,7 +14,7 @@ menu:
 
 The NIST OSCAL Team has a public calendar for the community to keep current with the meetings above and other public events hosted by the team.
 
-You can access the [web version of this calendar by clicking this link](https://outlook.office365.com/calendar/published/553a60383771471381091ed979a954f6@nist.gov/e72d2ca648dc4c3db7470fb7339674f211929765598025548039/calendar.html) or configure your calendar appplication [with this iCalendar (ICS) file](https://outlook.office365.com/owa/calendar/553a60383771471381091ed979a954f6@nist.gov/e72d2ca648dc4c3db7470fb7339674f211929765598025548039/calendar.ics).
+You can access the [web version of this calendar by clicking this link](https://outlook.office365.com/owa/calendar/97cb6b6254524d86aa63c32b74bd1337@nist.gov/494010486be740b3a9bb16964e8992e016522353741654500565/calendar.html) or configure your calendar appplication [with this iCalendar (ICS) file](https://outlook.office365.com/owa/calendar/97cb6b6254524d86aa63c32b74bd1337@nist.gov/494010486be740b3a9bb16964e8992e016522353741654500565/calendar.ics).
 
 </br>
 
@@ -29,7 +29,7 @@ You can access the [web version of this calendar by clicking this link](https://
             </div>
             <div class="usa-card__footer">
                 <button 
-                    onclick="window.location.href='https://outlook.office365.com/owa/calendar/553a60383771471381091ed979a954f6@nist.gov/e72d2ca648dc4c3db7470fb7339674f211929765598025548039/calendar.html'"
+                    onclick="window.location.href='https://outlook.office365.com/owa/calendar/97cb6b6254524d86aa63c32b74bd1337@nist.gov/494010486be740b3a9bb16964e8992e016522353741654500565/calendar.html'"
                     type="button"
                     class="usa-button" 
                     id="events-web-calendar">Open</button>
@@ -46,7 +46,7 @@ You can access the [web version of this calendar by clicking this link](https://
             </div>
             <div class="usa-card__footer">
                 <button 
-                    onclick="window.location.href='https://outlook.office365.com/owa/calendar/553a60383771471381091ed979a954f6@nist.gov/e72d2ca648dc4c3db7470fb7339674f211929765598025548039/calendar.ics'"
+                    onclick="window.location.href='https://outlook.office365.com/owa/calendar/97cb6b6254524d86aa63c32b74bd1337@nist.gov/494010486be740b3a9bb16964e8992e016522353741654500565/calendar.ics'"
                     type="button"
                     class="usa-button" 
                     id="events-ics-download">Download</button>
