@@ -45,6 +45,6 @@ The team can be more involved in issue triage as part of [a backlog refinement p
 
 From a tooling perspective, whereas the newer GitHub Projects service did not have API support for complex operations and GitHub Actions did not readily exist during the migration to the new project board, these conditions are no longer the case.
 
-Therefore issue triage process can be formalized as part of backlog refinment scheduled periodically for some or all team members to be involved for sufficient context. Automation can be updated to have all work requests in issues be track in one location, not four or more.
+Therefore issue triage process can be formalized as part of backlog refinement, scheduled periodically for some or all team members to be involved for sufficient context. Automation can be updated to have all work requests in issues be tracked in one location, not four or more.
 
 This effort will require a spike and some development work, but this approach is low risk in relation to the alternative approaches mentioned above.
