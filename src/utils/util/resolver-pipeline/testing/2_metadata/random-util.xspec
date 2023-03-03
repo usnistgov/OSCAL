@@ -8,7 +8,7 @@
     xslt-version="3.0">
 
     <!-- For repeatable testing, use a fixed germ. Also, XSpec
-        cannot evaluate document-uri(/) in the default parameter
+        cannot evaluate base-uri(/) in the default parameter
         value from the XSLT. -->
     <x:param name="germ">x</x:param>
 

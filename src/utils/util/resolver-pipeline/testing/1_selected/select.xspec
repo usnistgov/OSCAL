@@ -673,7 +673,7 @@
             <x:call function="opr:catalog-identifier">
                 <x:param href="catalog-no-uuid.xml" select="/o:catalog"/>
             </x:call>
-            <x:expect label="Returns document URI of catalog" test="ends-with($x:result,'/catalog-no-uuid.xml')"/>
+            <x:expect label="Returns base URI of catalog" test="ends-with($x:result,'/catalog-no-uuid.xml')"/>
         </x:scenario>
     </x:scenario>
 
