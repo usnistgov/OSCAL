@@ -45,7 +45,7 @@ This will help us enhance OSCAL models to communicate shared responsibility for 
 
 **I'm interested, how do I volunteer?**
 
-Visit the discussion board and comment here](https://github.com/usnistgov/OSCAL/discussions/1695).
+Visit the discussion board and comment [here](https://github.com/usnistgov/OSCAL/discussions/1695).
 
 ## Development Opportunities
 
@@ -72,4 +72,4 @@ The community has asked for more tutorials for core OSCAL functionality.
 
 **I'm interested, how do I volunteer?**
 
-Visit the discussion board and comment here](https://github.com/usnistgov/OSCAL/discussions/1696).
+Visit the discussion board and comment [here](https://github.com/usnistgov/OSCAL/discussions/1696).
