@@ -2,7 +2,7 @@ module github.com/usnistgov/OSCAL/build
 
 go 1.18
 
-require github.com/gohugoio/hugo v0.111.1
+require github.com/gohugoio/hugo v0.111.2
 
 require (
 	cloud.google.com/go v0.101.0 // indirect
