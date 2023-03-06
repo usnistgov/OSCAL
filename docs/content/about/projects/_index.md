@@ -8,10 +8,10 @@ toc:
 
 The OSCAL project is made up of several components, each of which lives in its own repository on GitHub under the [`usnistgov`](https://github.com/usnistgov) organization.
 
-These repositories form a complex patchwork of projects that depend on one-another:
+Where components use code defined in other components, these repositories form a network of dependencies:
 
 {{<mermaid>}}
-graph LR
+graph TD
     subgraph "NIST Dependencies"
         metaschema((Metaschema))
         metaschema-java
@@ -20,7 +20,7 @@ graph LR
         metaschema-java-->|submodules|metaschema
         metaschema-->|submodules|hugo-uswds
     end
-    
+
     subgraph "Core Projects"
         oscal((OSCAL));
         liboscal-java
@@ -29,8 +29,6 @@ graph LR
 
         oscal-cli-.->|depends on|liboscal-java-->|submodules|oscal
         oscal-content-->|submodules|oscal
-        
-        click oscal #OSCAL
     end
     
     subgraph "NIST-Maintained Tools"
@@ -43,9 +41,9 @@ graph LR
     liboscal-java-.->|depends on|metaschema-java
 {{</mermaid>}}
 
-## Core Projects
+## OSCAL Core Projects
 
-The core projects provide the central functionality or documentation of the OSCAL project and are the primary focus of the NIST OSCAL team.
+These projects provide the central functionality and documentation of the OSCAL project and are the primary focus of the NIST OSCAL team.
 
 ### OSCAL
 
@@ -66,7 +64,7 @@ Repository: https://github.com/usnistgov/liboscal-java
 
 ### OSCAL-CLI
 
-OSCAL-CLI provides an easy-to-use CLI based on [`liboscal-java`](#liboscal-java). 
+OSCAL-CLI provides an easy-to-use command-line interface (CLI) based on [`liboscal-java`](#liboscal-java). 
 
 Repository: https://github.com/usnistgov/oscal-cli
 
@@ -76,9 +74,9 @@ The OSCAL content repository provides a library of official NIST-maintained OSCA
 
 Repository: https://github.com/usnistgov/oscal-content
 
-## NIST Dependencies
+## NIST-Maintained OSCAL Dependencies
 
-These NIST projects underpin the OSCAL project, but are governed separately from the OSCAL umbrella.
+These NIST projects underpin the OSCAL project, but are governed separately, outside of the OSCAL Program.
 
 ### Metaschema
 
@@ -98,9 +96,9 @@ Both the OSCAL Project and the [Metaschema](https://pages.nist.gov/metaschema/) 
 
 Repository: https://github.com/usnistgov/hugo-uswds
 
-## NIST-Maintained Tools
+## Other NIST-Maintained OSCAL Tools
 
-These projects are run by the OSCAL team, but may not be the primary focus of the NIST OSCAL team.
+These projects are managed by the OSCAL team, but at times, might be given a lower priority than the core OSCAL projects.
 
 ### OSCAL-Deep-Diff
 
@@ -118,4 +116,4 @@ Repository: https://github.com/usnistgov/oscal-xslt
 
 ### What about projects not on this list?
 
-NIST OSCAL Team staff, or NIST staff more generally, develop software for their own education or experimentation. If you see NIST staff, either on the [`usnistgov` GitHub organization](https://github.com/usnistgov/) or user accounts associated with official NIST work, these are not considered official NIST projects until they are included in the categories above. Individuals may pursue work on them, but they have no official maintenance or support guarantees from this team.
+NIST OSCAL Team staff, or NIST staff more generally, develops software for their own education or experimentation. If you see NIST staff, either on the [`usnistgov` GitHub organization](https://github.com/usnistgov/) or user accounts associated with official NIST work, these are not considered official NIST projects until they are included in the categories above. Individuals may pursue work on them, but they have no official maintenance or support guarantees from this team.
