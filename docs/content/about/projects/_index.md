@@ -12,7 +12,7 @@ Where components use code defined in other components, these repositories form a
 
 {{<mermaid>}}
 graph TD
-    subgraph "NIST Dependencies"
+    subgraph "NIST-Maintained OSCAL Dependencies"
         metaschema((Metaschema))
         metaschema-java
         hugo-uswds
@@ -21,7 +21,7 @@ graph TD
         metaschema-->|submodules|hugo-uswds
     end
 
-    subgraph "Core Projects"
+    subgraph "OSCAL Core Projects"
         oscal((OSCAL));
         liboscal-java
         oscal-cli(oscal-cli)
@@ -31,7 +31,7 @@ graph TD
         oscal-content-->|submodules|oscal
     end
     
-    subgraph "NIST-Maintained Tools"
+    subgraph "Other NIST-Maintained OSCAL Tools"
         oscal-xslt
         oscal-deep-diff(OSCAL-Deep-Diff)
     end
