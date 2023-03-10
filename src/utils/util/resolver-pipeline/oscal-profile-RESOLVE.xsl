@@ -72,7 +72,7 @@
              Each represents a stage in processing.
              The result of each processing step is passed to the next step as its input, until no steps are left. -->
         <xsl:call-template name="alert">
-            <xsl:with-param name="msg" expand-text="yes"> RESOLVING PROFILE { document-uri($source) } </xsl:with-param>
+            <xsl:with-param name="msg" expand-text="yes"> RESOLVING PROFILE { base-uri($source) } </xsl:with-param>
         </xsl:call-template>
         <xsl:iterate select="$transformation-sequence/*">
             <xsl:param name="doc" select="$source" as="document-node()"/>
@@ -109,9 +109,9 @@
         <xsl:variable name="xslt-spec" select="."/>
         <xsl:variable name="runtime-params" as="map(xs:QName,item()*)">
             <xsl:map>
-                <xsl:map-entry key="QName('','profile-origin-uri')" select="document-uri($home)"/>
+                <xsl:map-entry key="QName('','profile-origin-uri')" select="base-uri($home)"/>
                 <xsl:map-entry key="QName('','path-to-source')"     select="$path-to-source"/>
-                <xsl:map-entry key="QName('','uri-stack-in')"       select="($uri-stack, document-uri($home))"/>
+                <xsl:map-entry key="QName('','uri-stack-in')"       select="($uri-stack, base-uri($home))"/>
                 <xsl:apply-templates select="." mode="opr:provide-parameters"/>
             </xsl:map>
         </xsl:variable>

@@ -304,6 +304,21 @@
                         </allowed-values>
                   </constraint>
             </define-flag>
+            <!-- Added Contraints as Warnings -->
+            <constraint>
+                  <expect level="WARNING" id="port-range-start-and-end-not-specified" target="." test="exists(@start) and exists(@end)">
+                        <message>If a protocol is defined, it should include a start and end port range. To define a single port, the start and end should be the same value.</message>
+                  </expect>
+                  <expect level="WARNING" id="port-range-start-specified-with-no-end" target="." test="exists(@start) and not(exists(@end))">
+                        <message>A start port exists, but an end point does not. To define a single port, the start and end should be the same value.</message>
+                  </expect>
+                  <expect level="WARNING" id="port-range-end-specified-with-no-start" target="." test="not(exists(@start)) and exists(@end)">
+                        <message>An end point exists, but a start port does not. To define a single port, the start and end should be the same value.</message>
+                  </expect>
+                  <expect level="WARNING" id="port-range-end-date-is-before-start-date" target="." test="@start &lt;= @end">
+                        <message>The port range specified has an end port that is less than the start port.</message>
+                  </expect>
+            </constraint>
             <remarks>
                   <p>To be validated as a natural number (integer &gt;= 1). A single port uses the same value for start and end. Use multiple 'port-range' entries for non-contiguous ranges.</p>
             </remarks>

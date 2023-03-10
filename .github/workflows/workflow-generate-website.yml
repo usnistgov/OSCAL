@@ -76,7 +76,7 @@ jobs:
     # -------------------------
     # Java JDK 11
     - name: Set up JDK
-      uses: actions/setup-java@1df8dbefe2a8cbc99770194893dd902763bee34b
+      uses: actions/setup-java@3f07048e3d294f56e9b90ac5ea2c6f74e9ad0f98
       with:
         java-version: 11
         distribution: 'temurin'
@@ -104,7 +104,7 @@ jobs:
         retention-days: 5
     # Install Hugo
     - name: Store Hugo Executable in Cache
-      uses: actions/cache@58c146cc91c5b9e778e71775dfe9bf1442ad9a12
+      uses: actions/cache@69d9d449aced6a2ede0bc19182fadc3a0a42d2b0
       with:
         path: /home/runner/go/bin/hugo
         key: ${{ runner.os }}-hugo-${{ hashFiles(format('{0}/go.sum', env.BUILD_PATH)) }}
@@ -141,7 +141,7 @@ jobs:
         retention-days: 5
     - name: Link Checker
       id: linkchecker
-      uses: lycheeverse/lychee-action@4dcb8bee2a0a4531cba1a1f392c54e8375d6dd81
+      uses: lycheeverse/lychee-action@9ace499fe66cee282a29eaa628fdac2c72fa087f
       with:
         args: --exclude-file ./build/config/.lycheeignore --verbose --no-progress --accept 200,206,429 './docs/public/**/*.html' --remap "https://pages.nist.gov/OSCAL/ file://${GITHUB_WORKSPACE}/docs/public/" --exclude-mail
         format: markdown
@@ -153,18 +153,18 @@ jobs:
         name: html-link-report
         path: html-link-report.md
         retention-days: 5
-    - uses: actions/github-script@d556feaca394842dc55e4734bf3bb9f685482fa0
+    - uses: actions/github-script@98814c53be79b1d30f795b907e553d8679345975
       if: steps.linkchecker.outputs.exit_code != 0
       with:
         script: |
           core.setFailed('Link checker detected broken or invalid links, read attached report.')
-    - uses: actions/github-script@d556feaca394842dc55e4734bf3bb9f685482fa0
+    - uses: actions/github-script@98814c53be79b1d30f795b907e553d8679345975
       if: steps.linkchecker.outputs.exit_code != 0 && (github.event.inputs.bad_links_fail_build == 'true' || inputs.bad_links_fail_build == true)
       with:
         script: |
           core.setFailed('Link checker detected broken or invalid links, read attached report.')
     - name: Deploy Website (using access_token)
-      uses: peaceiris/actions-gh-pages@64b46b4226a4a12da2239ba3ea5aa73e3163c75b
+      uses: peaceiris/actions-gh-pages@bd8c6b06eba6b3d25d72b7a1767993c0aeee42e7
       if: github.event_name == 'push' && inputs.commit_resources == true && github.ref_name == 'main'
       with:
         github_token: ${{ secrets.access_token }}
@@ -173,7 +173,7 @@ jobs:
         publish_branch: nist-pages
         commit_message: Deploying website [ci deploy skip]
     - name: Deploy Website (using COMMIT_TOKEN)
-      uses: peaceiris/actions-gh-pages@64b46b4226a4a12da2239ba3ea5aa73e3163c75b
+      uses: peaceiris/actions-gh-pages@bd8c6b06eba6b3d25d72b7a1767993c0aeee42e7
       if: github.event_name == 'workflow_dispatch' && github.event.inputs.commit_resources == 'true' && github.ref_name == 'main'
       with:
         github_token: ${{ secrets.COMMIT_TOKEN }}
