@@ -3,7 +3,7 @@
 <?xml-model href="lib/specml.rnc" type="application/relax-ng-compact-syntax"?>
 
 <!-- Edit this PI for checking up on test bindings -->
-<!--<?specml-testset profile-resolution-specml-working-current.xspec?>-->
+<?specml-testset resolution-testing.xml?>
 <?xml-stylesheet type="text/css" href="lib/specml.css"?>
 <SPECIFICATION xmlns="http://csrc.nist.gov/ns/oscal/specml">
   <head>OSCAL Profile Resolution</head>
@@ -25,7 +25,7 @@
       <p><!-- For purposes of security assessment, an information system is designed and built (implemented) against a baseline of security controls. 
       An OSCAL Profile defines the selection and (where appropriate) amendments or alterations to a control catalog that are needed to establish a baseline.
       By design, OSCAL artifacts in the Implementation layer make reference to a catalog of controls. Profile Resolution allows for computing an effective catalog of controls from an OSCAL Profile.-->
-        Information systems are implemented against a baseline of security controls. An OSCAL Profile defines the selection and potential alterations to a control catalog that are needed to establish a baseline. However, the OSCAL implementation layer depends on having an OSCAL Catalog that represents the baseline of controls to be implemented. Profile Resolution allows for computing an effective catalog based on an OSCAL Profile. For a given OSCAL Profile, the Profile Resolution process needs to result in the same OSCAL Catalog when executed by different tools on different endpoints. The requirements for resolution must therefore be well-defined and deterministic, enabling tool developers and parties exchanging OSCAL Profiles to work from a common understanding. This document defines the normative requirements for an OSCAL Profile Resolver.
+        Information systems are implemented against a baseline of security controls. An OSCAL Profile defines the selection and potential alterations to a control catalog that are needed to establish a baseline. However, the OSCAL implementation layer depends on having an OSCAL Catalog that represents the baseline of controls to be implemented. Profile Resolution allows for computing an effective catalog based on an OSCAL Profile. For a given OSCAL Profile, the Profile Resolution process needs to result in the same OSCAL Catalog when executed by different tools on the same inputs. The requirements for resolution must therefore be well-defined and deterministic, enabling tool developers and parties exchanging OSCAL Profiles to work from a common understanding. This document defines the normative requirements for an OSCAL Profile Resolver.
 </p>
 
       <p>No requirements are placed on implementation-level details, instead, requirements are laid out as what the output of resolution must look like given a certain input.
@@ -188,7 +188,7 @@
   <section id="phases">
     <head>Phases of Profile Processing</head>
     <p>An OSCAL Profile has three major sections, each which correspond to a phase of profile resolution. In order to complete the profile resolution process, each section must be fully parsed and a catalog output created.</p>
-    <p><req level="recommended" id="req-phase-order"><eg>PENDING test design</eg>It is strongly RECOMMENDED
+    <p><req level="recommended" id="req-phase-order">It is strongly RECOMMENDED
         that implementations execute the following steps in the order that they are provided here
         (import, merge, modify).</req> While it is possible to achieve compliance with a
       non-standard approach, the iterative nature of profile resolution lends itself to linear
@@ -225,7 +225,7 @@
     <head>Import Phase</head>
     <p>A profile begins by listing a set of catalogs and/or profiles to be imported. Each is represented by a resolvable resource URI and a directive specifying which controls to import from that resource. These resources may be available as static resources, or they may be produced dynamically on request; such as is the case when a profile is imported. Imports are given in sequence after the metadata:</p>
     <tagging whose="source_profile">
-      <![CDATA[
+      
 profile:
   uuid: ~
   metadata: ~
@@ -233,14 +233,14 @@ profile:
     - href: ${{ catalog URI }}
       include-controls: ${{ list of selected controls }}
     - href: ${{ profile URI }}
-      include-controls: ${{ list of selected controls }} ]]>
+      include-controls: ${{ list of selected controls }} 
     </tagging>
     <p>In an import directive, the reference to the resource to be imported appears on an
       <src>href</src>child object. It takes either of two forms, external or internal:
     </p>
     <p>An external reference appears as an absolute or relative URL:</p>
     <tagging whose="source_profile">
-      <![CDATA[
+      
 profile:
   uuid: ~
   metadata: ~
@@ -250,13 +250,13 @@ profile:
         /master/nist.gov/SP800-53/rev4/yaml/NIST_SP-800-53_rev4_catalog.yaml
       include-controls: ${{ list of selected controls }}
     - href: "../../NIST_SP-800-53_rev5_catalog.yaml"
-      include-controls: ${{ list of selected controls }} ]]>
+      include-controls: ${{ list of selected controls }} 
     </tagging>
     <p>While an internal reference appears as below (see
       <xref rid="internalref" />):
     </p>
     <tagging whose="source_profile">
-      <![CDATA[
+      
 profile:
   uuid: ~
   metadata: ~
@@ -264,7 +264,7 @@ profile:
     - href: #80052rev4
       include-controls: ${{ list of selected controls }}
     - href: #80052rev5
-      include-controls: ${{ list of selected controls }} ]]>
+      include-controls: ${{ list of selected controls }} 
     </tagging> 
     <p>All import directives will contain either
       <src>include-all: ~</src>or
@@ -279,8 +279,7 @@ profile:
       <head>Import href Requirements</head>
       <section id="resolving-uris">
         <head>Import URI Resolution</head>
-        <p><req level="must" id="req-uri-resolve"><eg
-              href="requirement-tests/req-include-all-asis.xml">relative URI</eg>Tools MUST resolve
+        <p><req level="must" id="req-uri-resolve">Tools MUST resolve
             URIs by following <a href="https://datatracker.ietf.org/doc/html/rfc3986#section-5"
               >Section 5 of RFC3986</a>, with the exception of URI Fragments (URIs that start with
             &quot;#&quot;). URI Fragments MUST instead be resolved as defined in <xref
@@ -289,19 +288,15 @@ profile:
       </section>
       <section id="aquiring-resource">
         <head>Import Resource Acquisition</head>
-        <p><req level="must" id="req-uri-aquire"><eg
-              href="requirement-tests/req-import-by-resource.xml">via internal reference to
-              resource/rlink</eg>Tools MUST acquire resources at the resolved URI by following <a
+        <p><req level="must" id="req-uri-aquire">Tools MUST acquire resources at the resolved URI by following <a
               href="https://datatracker.ietf.org/doc/html/rfc3986#section-5">Section 5 of
               RFC3986</a>, with the exception of URI Fragments (URIs that start with &quot;#&quot;).
             URI Fragments MUST instead be acquired as defined in <xref rid="internalref"/>.
         </req></p>
-        <p><req level="must" id="req-uri-base"><eg
-          href="requirement-tests/req-include-all-asis.xml">URI base corresponds to document URI</eg>For the purposes of resolving URIs
+        <p><req level="must" id="req-uri-base">For the purposes of resolving URIs
             using the above specification, the Base URI MUST be considered to be the absolute URI of
             the containing profile.</req></p>
-        <p><req level="must" id="req-uri-error"><eg
-              href="requirement-tests/req-missing-resource.xml">PENDING rebase over latest from galtm missing resource</eg>In the case
+        <p><req level="must" id="req-uri-error">In the case
             that acquiring a resource fails, the tool MUST cease processing and provide an error. In
             order to ensure profile resolution results in the same catalog regardless of which tool
             resolves it, all imports must successfully resolve. While this may cause inconvenience
@@ -311,7 +306,7 @@ profile:
       <section id="internalref">
         <head>Internal References</head>
         <p>URI Fragments in OSCAL represent internal references to other OSCAL objects in the same document. These references follow the pattern of <code>#{{objectID}}</code>. For example, the URI Fragment <code>#param1</code> is referencing the Parameter with unique ID <code>param1</code>.</p>
-        <p><req level="must" id="req-internal"><eg href="requirement-tests/req-import-by-resource.xml"/>In the context of the Import Phase,
+        <p><req level="must" id="req-internal">In the context of the Import Phase,
             internal references will only appear as a reference to a profile or catalog that is in
             the <src>resources</src> section of the source. When tools encounter such a reference,
             they MUST locate the object in <src>resources</src> with the matching UUID value, and
@@ -322,35 +317,30 @@ profile:
             different serialization formats. For deterministic resolution of these backmatter OSCAL
             objects, tools need to adhere to the following requirements: </req></p>
         <ul>
-          <li><p><req level="may" id="req-internal-resolve1"><eg>PENDING test design (support for either/both base64
-                  and rlink)</eg>Tools MAY use any of the <src>rlink</src> or <src>base64</src>
+          <li><p><req level="may" id="req-internal-resolve1">Tools MAY use any of the <src>rlink</src> or <src>base64</src>
                 objects present in the <src>resource</src>.</req> </p> </li>
-          <li><p><req level="may" id="req-internal-resolve2"><eg>PENDING test design (correspondence of base64 and
-                  rlink-nominated objects)</eg>Tools MAY verify that each above objects resolves to
+          <li><p><req level="may" id="req-internal-resolve2">Tools MAY verify that each above objects resolves to
                 the same underlying OSCAL object. If there are OSCAL Model content differences
                 between the resolved objects, the tool SHOULD provide a warning. </req></p> </li>
-          <li><p><req level="must" id="req-internal-resolve3"><eg>PENDING test design (retrieval)</eg>When a
+          <li><p><req level="must" id="req-internal-resolve3">When a
                   <src>rlink</src> is encountered and is to be resolved, it MUST be resolved by
                 using a HTTP request to retrieve a byte stream. </req></p> </li>
-          <li><p><req level="must" id="req-internal-resolve4"><eg>PENDING test design (base64 integrity)</eg>When
+          <li><p><req level="must" id="req-internal-resolve4">When
                 a <src>base64</src> is encountered and is to be resolved, it MUST be considered a
                 Byte Stream.</req>
             </p> </li>
-          <li><p><req level="must" id="req-internal-resolve5"><eg>PENDING test design (base64
-                integrity)</eg>Regardless of its source, the Byte Stream MUST be decoded based on
+          <li><p><req level="must" id="req-internal-resolve5">Regardless of its source, the Byte Stream MUST be decoded based on
                 the algorithm defined in <a href="https://datatracker.ietf.org/doc/html/rfc4648">
                   Section 4 RFC 4648</a>. </req></p> </li>
         </ul>
         
         
         
-        <p><req level="must" id="req-internal-error"><eg
-          href="requirement-tests/req-missing-resource.xml">PENDING rebase over latest from galtm</eg><eg
-            href="requirement-tests/req-broken-import.xml">PENDING rebase over latest from galtm</eg>If the object fetched cannot be found
+        <p><req level="must" id="req-internal-error">If the object fetched cannot be found
             or is not a valid OSCAL object, the tool MUST cease processing and provide an
             error.</req></p>
         <tagging whose="source_profile">
-          <![CDATA[
+          
 profile:
   metadata: ~
   imports:
@@ -367,19 +357,15 @@ profile:
           - rlink:
               href: >-
                 https://github.com/usnistgov/oscal-content/tree
-                /master/nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev5_catalog.xml   ]]>
+                /master/nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev5_catalog.xml   
         </tagging>
       </section>
       <section id="URI-circular">
         <head>Resolving Imports of Profiles</head>
-        <p><req level="must" id="req-circular-resolve"><eg href="requirement-tests/req-chained-all-asis.xml"
-              >PENDING chained profiles</eg>If the resource acquired is an OSCAL Profile, the tool
+        <p><req level="must" id="req-circular-resolve">If the resource acquired is an OSCAL Profile, the tool
             MUST apply this specification to resolve it, then continue processing having imported
             the resulting catalog.</req></p>
-        <p><req level="should" id="req-resolve-profile"><eg
-              href="requirement-tests/req-chained-all-asis.xml">PENDING chained profiles</eg><eg
-              href="requirement-tests/req-chained-deepA.xml">PENDING [bug repair] chained profile
-              merged with controls from its own source catalog</eg>When a profile imports a profile,
+        <p><req level="should" id="req-resolve-profile">When a profile imports a profile,
             the subordinate profile SHOULD be resolved first into a catalog using this
             specification, before it is imported. </req> This presents the possibility of circular
           imports, when a profile is directed to import itself either directly or indirectly.</p>
@@ -387,52 +373,50 @@ profile:
           <term>circular import</term> occurs when a profile imports an already imported profile, which was called at an earlier place in the import hierarchy. For example, if profile A imports profile B, and profile B imports profile A, the second import is circular. (An import at the top can only be circular if a profile tries to import itself.) If A imports B, B imports C and C imports A, C’s import is circular.
         </p>
         <p>Note that an import can only be circular within the context of processing a particular profile. In the last example, C’s import would not be circular if invoked in the context of resolving B by itself.</p>
-        <p><req level="must" id="req-circular-error"><eg href="requirement-tests/req-circular_import.xml"
-              >PENDING circular import detection</eg>If a processor encounters a <term>circular
+        <p><req level="must" id="req-circular-error">If a processor encounters a <term>circular
               import</term> as described above (self-imports are inherently circular), the processor
             MUST cease processing and generate an error. </req></p>
         <mapping>
           <p>A profile identified as <code>home_profile.yaml</code>imports another one identified as
               <code>circular_profile.yaml</code>: </p>
           <tagging whose="source_profile">
-            <![CDATA[
+            
 profile:
   id: "home_profile.yaml"
   metadata: ~
   imports:
     - href: "circular_profile.yaml"
-      include-controls: ${{ list of selected controls }} ]]>
+      include-controls: ${{ list of selected controls }} 
           </tagging>
           <p>In turn this file invokes <code>home_profile.xml</code>: </p>
           <tagging whose="source_profile">
-            <![CDATA[
+            
 profile:
   id: "circular_profile.yaml"
   metadata: ~
   imports:
     - href: "home_profile.yaml"
-      include-controls: ${{ list of selected controls }} ]]>
+      include-controls: ${{ list of selected controls }} 
           </tagging>
           <p>Once detected, this circular import will result in an error and no further processing
             will take place.</p>
           <tagging whose="target_catalog">
-            <![CDATA[
+            
   # Import at href: "circular_profile.yaml" failed.
   # Reason: Error during profile import:
   # Import at href: "home_profile.yaml" failed.
-  # Reason: Circular import ]]>
+  # Reason: Circular import 
           </tagging>
         </mapping>
       </section>
       <section id="URI-multiple">
         <head>Multiple imports</head>
         <p>Each import directive is processed to produce a set of controls. <req
-            id="rq-mulitple-imports"><eg href="requirement-tests/req-chained-deepA.xml">PENDING
-              chained profiles</eg>Note that this occurs even if the same catalog is imported
+            id="rq-mulitple-imports">Note that this occurs even if the same catalog is imported
             multiple times: each distinct import collects controls into a separate
               <int>selection</int></req>: </p>
         <tagging whose="source_profile">
-          <![CDATA[
+          
 profile:
   uuid: ~
   metadata: ~
@@ -446,10 +430,10 @@ profile:
       include-controls:
        - with-ids:
           - ac-3
-          - ac-4 ]]>
+          - ac-4 
         </tagging>
         <tagging whose="inter_catalog">
-          <![CDATA[
+          
 intermediate:
   inclusions:
     - id: ${{uuid of #catalog}}
@@ -459,10 +443,9 @@ intermediate:
     - id: ${{uuid of #catalog}}
       included-controls:
           - ac-3
-          - ac-4 ]]>
+          - ac-4 
         </tagging>
-        <p><req id="rq-multiple-merge"><eg href="requirement-tests/req-chained-deepA.xml">PENDING
-              chained profiles</eg>The control inclusions are combined and collapsed in the next
+        <p><req id="rq-multiple-merge">The control inclusions are combined and collapsed in the next
             phase of processing</req>, <term>merge</term>(see <xref rid="merge-phase"/>) . </p>
         <p>Multiple imports against the same resource are allowed, and would most commonly occur when the profile author is using <xref rid="mapping"/> to create very specific output. 
           Multiple imports may result in outputs with clashing control IDs if mapping or the merge directive is not set correctly.</p>
@@ -490,7 +473,7 @@ intermediate:
           <src>import</src> included controls from a different catalog whose ID values happen to collide. Knowing this, the profile author has remapped those IDs to new values.
         </p>
         <tagging whose="source_profile">
-          <![CDATA[
+          
 profile:
   uuid: ~
   metadata: ~
@@ -510,11 +493,11 @@ profile:
           - from: ac-1
             to: map-ac-1
           - from: ac-2
-            to: map-ac-2]]>
+            to: map-ac-2
         </tagging>
         <p>Using the intermediate approach, an internal data structure resembling the following would result from the above profile:</p>
         <tagging whose="inter_catalog">
-          <![CDATA[
+          
 intermediate:
   metadata: ~
   inclusions:
@@ -525,7 +508,7 @@ intermediate:
     - id: ${{uuid of #catalog2}}
       included-controls:
           - map-ac-1
-          - map-ac-2 ]]>
+          - map-ac-2 
         </tagging>
       </section>
     </section>
@@ -537,43 +520,43 @@ intermediate:
       <section id="include-all">
         <head>include-all</head>
         <p><req level="must" id="req-include-all">
-            <eg href="requirement-tests/req-include-all-asis.xml"/><eg href="requirement-tests/req-include-all-flat.xml"/>When
+            When
             an import provides the <src>include-all</src> directive, ALL controls and groups in the
             referenced document (including nested controls) MUST be included. </req></p>
         <tagging whose="source_profile">include-all: ~</tagging>
       </section>
       <section id="include-by-id">
         <head>include-controls plus with-id</head>
-        <p><req level="must" id="req-include-by-id"><eg href="requirement-tests/req-include-by-id.xml"/>When an import provides the
+        <p><req level="must" id="req-include-by-id">When an import provides the
               <src>include-controls</src> directive, with a <src>with-id</src> child, all controls
             in the referenced document whose <code>id</code> match one of the listed <code>id</code>
             values MUST be included. </req></p>
         <tagging whose="source_profile">
-          <![CDATA[
+          
 include-controls:
   - with-ids:
     - id: ac-1
-    - id: ac-2]]>
+    - id: ac-2
         </tagging>
       </section>
       <section id="include-by-match">
         <head>include-controls plus matching</head>
         <p>Controls may also be included using match patterns against their IDs. This is useful because related controls (either in a hierarchy, or together in a group) frequently have related IDs as well.</p>
-        <p><req level="must" id="req-include-by-match"><eg href="requirement-tests/req-include-by-match.xml"/>When an import provides the
+        <p><req level="must" id="req-include-by-match">When an import provides the
           <src>include-controls</src> directive, with a
           <src>matching</src> child, all controls in the referenced document whose
           <code>id</code> matches one of the listed
           <code>pattern</code> values (Glob matching) MUST be included.
         </req></p>
-        <p><req level="must" id="req-include-by-match-empty"><eg href="requirement-tests/req-include-by-match-empty.xml"/>If a
+        <p><req level="must" id="req-include-by-match-empty">If a
           <code>matching</code> object is provided with no
           <code>pattern</code>, it MUST be treated as matching nothing. While not providing a pattern is technically valid, resolution tool implementers should be aware that it is generally undesirable, and warnings or notices to the user may be appropriate.
         </req></p>
         <tagging whose="source_profile">
-          <![CDATA[
+          
 include-controls:
   - matching:
-    - pattern: "ac*" ]]>
+    - pattern: "ac*" 
         </tagging>
       </section>
       <section id="import-nested">
@@ -586,16 +569,13 @@ include-controls:
         <section id="include-child-controls">
           <head>with-child-controls</head>
           <p>Child controls are, for the most part, treated the same as top level controls: they can be explicitly included using the selection directives above. As a shortcut to manually including all of the desired descendant controls of a given control, OSCAL provides the <code>with-child-controls</code> option. <code>with-child-controls</code> appears as a child object under a given inclusion directive, and defines additional behavior that is to be executed alongside the parent inclusion.</p>
-          <p><req level="must" id="req-with-child-controls-yes"><eg
-                href="requirement-tests/req-include-by-id.xml"/>A <src>with-child-controls:
+          <p><req level="must" id="req-with-child-controls-yes">A <src>with-child-controls:
                 yes</src> directive on an <src>include-controls</src> indicates that <em>all
                 descendant controls</em> of the included control MUST also be included. </req></p>
-          <p><req level="must" id="req-with-child-controls-no"><eg
-                href="requirement-tests/req-with-child-controls-no.xml"/>A <src>with-child-controls:
+          <p><req level="must" id="req-with-child-controls-no">A <src>with-child-controls:
                 no</src> directive on an <src>include-controls</src> indicates that ONLY the
               matching control is included, any descendant children MUST NOT be included. </req></p>
-          <p><req level="must" id="req-with-child-controls-none"><eg
-                href="requirement-tests/req-with-child-controls-none.xml"/>If no
+          <p><req level="must" id="req-with-child-controls-none">If no
                 <src>with-child-controls</src> is provided, the processor MUST consider the
               directive as being equivalent to one having <src>with-child-controls:no</src>.
           </req></p>
@@ -607,21 +587,13 @@ include-controls:
             <src>with-parent-controls</src> applies to parents of the included control, and has the opposite default behavior. In order to maintain the structure of the source catalog, profile resolution includes all parents of an included control by default. If a profile author wants to change this structure, they should use an exclude directive that lists all of the undesired parents. As a shortcut for this,
             <src>with-parent-controls</src> provides the following functionality:
           </p>
-          <p><req level="must" id="req-with-parent-controls-yes"><eg
-                href="requirement-tests/req-with-parent-controls-yes1.xml">PR
-                https://github.com/usnistgov/OSCAL/pull/1207</eg><eg
-                href="requirement-tests/req-with-parent-controls-yes2.xml">PR
-                https://github.com/usnistgov/OSCAL/pull/1207</eg>A <src>with-parent-controls:
+          <p><req level="must" id="req-with-parent-controls-yes">A <src>with-parent-controls:
                 yes</src> directive on an <src>include-controls</src> indicates that <em>all parent
                 controls</em> of the included control MUST also be included.</req></p>
-          <p><req level="must" id="req-with-parent-controls-no"><eg
-                href="requirement-tests/req-with-parent-controls-no1.xml">PENDING PR
-                https://github.com/usnistgov/OSCAL/pull/1207</eg>A <src>with-parent-controls:
+          <p><req level="must" id="req-with-parent-controls-no">A <src>with-parent-controls:
                 no</src> directive on an <src>include-controls</src> indicates that ONLY the
               matching control is included, any parent MUST NOT be included. </req></p>
-          <p><req level="must" id="req-with-parent-controls-none"><eg
-                href="requirement-tests/req-with-parent-controls-none.xml">Neither setting is
-                given</eg>If no <src>with-parent-controls</src> is provided, the processor MUST
+          <p><req level="must" id="req-with-parent-controls-none">If no <src>with-parent-controls</src> is provided, the processor MUST
               consider the directive as being equivalent to one having
                 <src>with-parent-controls:yes</src>. </req></p>
         </section>
@@ -629,14 +601,11 @@ include-controls:
       <section id="exclude-directive">
         <head>exclude-controls</head>
         <p>Exclusions work the same way as inclusions, except with the opposite effect - the indicated control(s) do not appear in the target catalog.</p>
-        <p><req level="must" id="req-exclude"><eg href="requirement-tests/req-include-exclude1.xml"
-              /><eg href="requirement-tests/req-include-exclude2.xml"/><eg
-              href="requirement-tests/req-include-exclude3.xml"/>Any control designated to be both
+        <p><req level="must" id="req-exclude">Any control designated to be both
             included and excluded, MUST be excluded. This holds irrespective of the specificity of
             the selection for inclusion or exclusion.</req> For example, if AC-1 is included by id
             <code>ac-1</code> and excluded by matching <code>ac*</code>, it is excluded. </p>
-        <p><req level="must" id="req-exclude-additional"><eg
-              href="requirement-tests/req-include-exclude4.xml"/>When <src>exclude-controls</src>
+        <p><req level="must" id="req-exclude-additional">When <src>exclude-controls</src>
             has at least one <src>with-ids</src> or <src>matching</src> directive, the processor
             MUST follow the same rules as defined in the relevant sections above for these
             directives, but exclude instead of include any controls. All optional features
@@ -644,8 +613,7 @@ include-controls:
       </section>
       <section id="redundant-calls">
         <head>Redundant Inclusions and Exclusions</head>
-        <p><req level="must" id="req-redundant"><eg
-              href="requirement-tests/req-include-exclude4.xml"/>A given <src>import</src> may have
+        <p><req level="must" id="req-redundant">A given <src>import</src> may have
             any number of inclusion statements and any number of exclusion statements. Their effect
             is cumulative; any control that is included (or excluded) more than once MUST be
             considered to be included (or excluded) only once. In other words, a given control being
@@ -661,8 +629,7 @@ include-controls:
           <src>param</src>that is not directly under a control is referred to as a
           <q>loose</q>param.
         </p>
-        <p><req level="must" id="req-loose-param"><eg href="requirement-tests/req-loose-params1.xml"
-        />All loose params from both imported documents and the profile source MUST be included. These params will be kept in the final output if the document contains any references to them, and discarded otherwise. See
+        <p><req level="must" id="req-loose-param">All loose params from both imported documents and the profile source MUST be included. These params will be kept in the final output if the document contains any references to them, and discarded otherwise. See
           <xref rid="cleanup" />.</req> Since new references can be created during the
           <src>modify</src> phase, tools should be careful not to prune params without fully understanding the final state of the output document.
         </p>
@@ -699,7 +666,7 @@ include-controls:
       <src>merge</src>section, where directives are given to instruct the processor how to combine the set of included objects collected during the Import Phase.
       <src>merge</src>has two parts: a &quot;combine&quot; directive, and a &quot;structuring&quot; directive.
     </p>
-    <p><req level="recommended" id="req-merge-order"><eg>PENDING is this testable?</eg>It is RECOMMENDED that tools apply the
+    <p><req level="recommended" id="req-merge-order">It is RECOMMENDED that tools apply the
         &quot;combine&quot; directive to the intermediate generated by the Import phase first, then
         apply the &quot;structuring&quot; directive.</req></p>
     <p>The following section contains requirements for processing the
@@ -724,27 +691,27 @@ include-controls:
           <p>keep: Keep - controls with the same ID are kept, retaining the clash</p>
         </li>
       </ul>
-      <p><req level="must" id="req-merge-combine"><eg>PENDING specification</eg>Note that "merge:
+      <p><req level="must" id="req-merge-combine">Note that "merge:
           combine" is deprecated, and MUST be considered undefined behavior when
         encountered.</req></p>
       <p>In order to apply the combination method, IDs of each control explicitly included are compared against one another. As IDs are unique across entire OSCAL documents, different imports or any groupings have no bearing on collision. Processing requirements for each method are described below.</p>
       <section id="no-merge-explicit">
         <head>No Combine Directive</head>
         <p><req level="must" id="req-merge-none">
-            <eg href="requirement-tests/keep-everything-twice.xml"/>If no <src>merge</src> directive
+            If no <src>merge</src> directive
             is given in the profile, or if a <src>merge</src> is given without a <src>combine</src>,
             merge conflicts MUST be treated as if <src>method: keep</src> was given. </req> For
           example, a profile with no <src>merge</src> directive: </p>
         <tagging whose="source_profile">
-          <![CDATA[
+          
 profile:
   imports:
     - href: #catalogURI
-      include-all: ~ ]]>
+      include-all: ~ 
         </tagging>
         <p>is the same as</p>
         <tagging whose="source_profile">
-          <![CDATA[
+          
 profile:
   imports:
     - href: #catalogURI
@@ -752,27 +719,27 @@ profile:
   merge:
     combine:
       method: keep
-      flat: ~ ]]>
+      flat: ~ 
         </tagging>
       </section>
       <section id="no-merge-combination-rule">
         <head>
           <q>method:keep</q>
         </head>
-        <p><req level="must" id="req-merge-keep"><eg href="requirement-tests/req-merge-keep1.xml"/><eg href="requirement-tests/req-merge-keep2.xml"/>When a merge is indicated by
+        <p><req level="must" id="req-merge-keep">When a merge is indicated by
           <src>method:keep</src>, or when no merge directive is given, the
           <q>keep</q>combination rule is used. Any control with the same distinctive ID
           <xref rid="id" />MUST NOT not merged. (They are kept.)
         </req></p>
         <tagging whose="source_profile">
-          <![CDATA[
+          
   merge:
     combine:
-      method: keep ]]>
+      method: keep 
         </tagging>
         <p>Under this directive, colliding controls will result in invalid results, as they will both appear in the results with the same ID. Accordingly, this setting may be useful in ensuring integrity of references to controls as given in the profile: if any included control is called only once, clashing controls will not be produced and validation will succeed.</p>
         <tagging whose="source_profile">
-          <![CDATA[
+          
 profile:
   imports:
     - href: #catalog1
@@ -787,42 +754,42 @@ profile:
             id: ac-2 
   merge:
     combine:
-      method: keep]]>
+      method: keep
         </tagging>
         <p>In the intermediate (showing control inclusions):</p>
         <tagging whose="inter_catalog">
-          <![CDATA[
+          
 intermediate:
   inclusions:
     - explicitly-included-controls:
           - ac-1
           - ac-2
           - ac-1
-          - ac-2 ]]>
+          - ac-2 
         </tagging>
         <p>In this case, downstream errors should be expected: the two
           <code>ac-1</code> controls clash with each other, as do the two
           <code>ac-2</code> controls.
         </p>
-        <p><req level="should" id="req-merge-keep-warning"><eg href="requirement-tests/req-merge-keep1.xml"/><eg href="requirement-tests/req-merge-keep2.xml"/>Processors SHOULD provide a warning under the merge:keep directive when duplicate controls are detected.</req> <req level="may" id="req-merge-keep-error"><eg href="requirement-tests/req-merge-keep1.xml"/><eg href="requirement-tests/req-merge-keep2.xml"/>The processor MAY throw an error and cease processing (short-circuiting a certain future error) when duplicate controls are detected under the merge:keep directive.</req></p>
+        <p><req level="should" id="req-merge-keep-warning">Processors SHOULD provide a warning under the merge:keep directive when duplicate controls are detected.</req> <req level="may" id="req-merge-keep-error">The processor MAY throw an error and cease processing (short-circuiting a certain future error) when duplicate controls are detected under the merge:keep directive.</req></p>
       </section>
       <section id="use-first-combination-rule">
         <head>
           <q>method:use-first</q>
         </head>
         <tagging whose="source_profile">
-          <![CDATA[
+          
   merge:
     combine:
-      method: use-first ]]>
+      method: use-first 
         </tagging>
-        <p><req level="must" id="req-merge-use-first"><eg href="requirement-tests/req-merge-usefirst1.xml"/><eg href="requirement-tests/req-merge-usefirst2.xml"/>When the
+        <p><req level="must" id="req-merge-use-first">When the
           &quot;use-first&quot;combination rule is applied, and controls that share a distinctive ID are found, the first control encountered MUST be kept, the rest MUST be discarded.
           &quot;First&quot; MUST be determined by a top-down, depth-first traversal of the source profile&apos;s import hierarchy.
         </req></p>
         <mapping>
           <tagging whose="source_profile">
-            <![CDATA[
+            
 profile:
   imports:
     - href: #catalog1
@@ -837,17 +804,17 @@ profile:
             id: ac-2 
   merge:
     combine:
-      method: use-first]]>
+      method: use-first
           </tagging>
           <p>In the intermediate(showing control inclusions):</p>
           <tagging whose="inter_catalog">
-            <![CDATA[
+            
 intermediate:
   inclusions:
     - explicitly-included-controls:
           - ac-1 (From catalog1)
           - ac-3
-          - ac-2 ]]>
+          - ac-2 
           </tagging>
         </mapping>
       </section>
@@ -863,7 +830,7 @@ intermediate:
       <p>This section describes how a profile may dictate the structure of the target
         <tgt>catalog</tgt>, apart from its
         <tgt>metadata</tgt> or
-        <tgt>back-matter</tgt>. <req level="must" id="req-stucture"><eg>PENDING how do we test this?</eg>Optionally, one of three &quot;structuring&quot; directives can be included as a child of
+        <tgt>back-matter</tgt>. <req level="must" id="req-stucture">Optionally, one of three &quot;structuring&quot; directives can be included as a child of
         <src>merge</src>:
         <src>flat</src>,
         <src>as-is</src>and
@@ -871,22 +838,22 @@ intermediate:
       </p>
       <section id="structure-none">
         <head>No Structuring Directive</head>
-        <p><req level="must" id="req-structure-none"><eg href="requirement-tests/req-include-all-flat.xml"></eg>If no
+        <p><req level="must" id="req-structure-none">If no
           <src>merge</src> directive is given in the profile, or if a
           <src>merge</src> is given without a structuring directive, structuring the output MUST be treated as if the structuring directive
           <src>flat</src> was given. For example, a profile with no
           <src>merge</src> directive:
         </req></p>
         <tagging whose="source_profile">
-          <![CDATA[
+          
 profile:
   imports:
     - href: #catalogURI
-      include-all: ~ ]]>
+      include-all: ~ 
         </tagging>
         <p>is the same as</p>
         <tagging whose="source_profile">
-          <![CDATA[
+          
 profile:
   imports:
     - href: #catalogURI
@@ -894,35 +861,35 @@ profile:
   merge:
     combine:
       method: keep 
-      flat: ~ ]]>
+      flat: ~ 
         </tagging>
       </section>
       <section id="merge-flat">
         <head>&quot;flat&quot;</head>
-        <p><req level="must" id="req-merge-flat"><eg href="requirement-tests/req-include-all-flat.xml"/>Profiles with the &quot;flat&quot; merge directive MUST be resolved as unstructured catalogs, with no grouping or nesting of controls.</req></p>
+        <p><req level="must" id="req-merge-flat">Profiles with the &quot;flat&quot; merge directive MUST be resolved as unstructured catalogs, with no grouping or nesting of controls.</req></p>
         <p><req level="must" id="req-merge-flat-list">Unstructured catalog output MUST be produced by adhering to the following requirements:</req></p> <!-- TODO, ISSUE, REQ TAGGING OF LISTS -->
         <ul>
           <li>
-            <p><req level="must" id="req-merge-flat-list-1"><eg href="requirement-tests/req-include-all-flat.xml"/>All included controls are output to the target as a flat list directly under &quot;catalog&quot;. </req></p>
+            <p><req level="must" id="req-merge-flat-list-1">All included controls are output to the target as a flat list directly under &quot;catalog&quot;. </req></p>
           </li>
           <li>
-            <p><req level="must" id="req-merge-flat-list-2"><eg href="requirement-tests/req-loose-params2.xml"/>Any included &quot;loose params&quot; are output to the target as a flat list directly under &quot;catalog&quot;.</req></p>
+            <p><req level="must" id="req-merge-flat-list-2">Any included &quot;loose params&quot; are output to the target as a flat list directly under &quot;catalog&quot;.</req></p>
           </li>
-          <li><p><req level="must" id="req-merge-flat-list-3"><eg href="requirement-tests/req-include-all-flat.xml"/><eg href="requirement-tests/req-loose-params2.xml"/>Any groups are discarded.</req></p></li>
+          <li><p><req level="must" id="req-merge-flat-list-3">Any groups are discarded.</req></p></li>
         </ul>
         <p>An example of flat structuring is provided below</p>
         <tagging whose="source_catalog">
-          <![CDATA[
+          
 catalog:
   groups:
     - groupA
       - ac-1
       - ac-2
     - groupB
-      - bc-1 ]]>
+      - bc-1 
         </tagging>
         <tagging whose="source_profile">
-          <![CDATA[
+          
 profile:
   imports:
     - href: #catalogURI
@@ -934,15 +901,15 @@ profile:
   merge:
     combine:
       method: keep 
-      flat: ~ ]]>
+      flat: ~ 
         </tagging>
         <tagging whose="inter_catalog">
-          <![CDATA[
+          
 intermediate:
   controls:
     - ac-1
     - ac-2
-    - bc-1 ]]>
+    - bc-1 
         </tagging>
       </section>
       <section id="merge-as-is">
@@ -966,17 +933,17 @@ intermediate:
         </ul>
         <p>Example:</p>
         <tagging whose="source_catalog">
-          <![CDATA[
+          
 catalog:
   groups:
     - groupA
       - ac-1
       - ac-2
     - groupB
-      - bc-1 ]]>
+      - bc-1 
         </tagging>
         <tagging whose="source_profile">
-          <![CDATA[
+          
 profile:
   imports:
     - href: #catalogURI
@@ -988,10 +955,10 @@ profile:
   merge:
     combine:
       method: keep 
-      as-is: ~ ]]>
+      as-is: ~ 
         </tagging>
         <tagging whose="inter_catalog">
-          <![CDATA[
+          
 intermediate: 
 #In this approach, the original hierarchy of the controls under the groups is stored,
 #but is not shown in this example.
@@ -1001,7 +968,7 @@ intermediate:
     - bc-1
   groups:
     - groupA
-    - groupB ]]>
+    - groupB 
         </tagging>
       </section>
       <section id="merge-custom">
@@ -1177,16 +1144,16 @@ intermediate:
               <code>starting</code>
             </p>
             <tagging whose="source_catalog">
-              <![CDATA[ 
+               
 control:
   id: a1
   title: Basic precautions
   props:
     - name: status
-      value: ready ]]>
+      value: ready 
             </tagging>
             <tagging whose="source_profile">
-              <![CDATA[ 
+               
 alter:
   control-id: a1
   add:
@@ -1196,10 +1163,10 @@ alter:
         value: enumerated
     parts:
       - name: caution
-        prose: \\n\\nPending scheduled testing. ]]>
+        prose: \\n\\nPending scheduled testing. 
             </tagging>
             <tagging whose="target_catalog">
-              <![CDATA[ 
+               
 control:
   id: a1
   title: Basic precautions
@@ -1210,7 +1177,7 @@ control:
       value: ready
   parts:
     - name: caution
-      prose: \\n\\nPending scheduled testing. ]]>
+      prose: \\n\\nPending scheduled testing. 
             </tagging>
             <p>Position is
               <code>starting</code>but the new
@@ -1224,16 +1191,16 @@ control:
               <code>ending</code>
             </p>
             <tagging whose="source_catalog">
-              <![CDATA[ 
+               
 control:
   id: a1
   title: Basic precautions
   props:
     - name: status
-      value: ready ]]>
+      value: ready 
             </tagging>
             <tagging whose="source_profile">
-              <![CDATA[ 
+               
 alter:
   control-id: a1
   add:
@@ -1243,10 +1210,10 @@ alter:
         value: enumerated
     parts:
       - name: caution
-        prose: \\n\\nPending scheduled testing. ]]>
+        prose: \\n\\nPending scheduled testing. 
             </tagging>
             <tagging whose="target_catalog">
-              <![CDATA[ 
+               
 control:
   id: a1
   title: Basic precautions
@@ -1257,7 +1224,7 @@ control:
       value: enumerated
   parts:
     - name: caution
-      prose: \\n\\nPending scheduled testing. ]]>
+      prose: \\n\\nPending scheduled testing. 
             </tagging>
             <p>The
               <src>position</src>is
@@ -1296,7 +1263,7 @@ control:
               <code>after</code>
             </p>
             <tagging whose="source_catalog">
-              <![CDATA[ 
+               
 control:
   id: a1
   title: Basic precautions
@@ -1312,7 +1279,7 @@ control:
           prose: Collect recycling for pickup
         - name: task2
           id: a1.b2
-          prose: Sweep surfaces free of dust]]>
+          prose: Sweep surfaces free of dust
             </tagging>
             <p>Note that the
               <src>add</src>directive identifies the object with
@@ -1320,7 +1287,7 @@ control:
               <code>a1.b1</code>as its target.
             </p>
             <tagging whose="source_profile">
-              <![CDATA[ 
+               
 alter:
   control-id: a1
   add:
@@ -1331,10 +1298,10 @@ alter:
         value: allocated
     parts:
       - name: caution
-        prose: Unavailable on weekends ]]>
+        prose: Unavailable on weekends 
             </tagging>
             <tagging whose="target_catalog">
-              <![CDATA[ 
+               
 control:
   id: a1
   title: Basic precautions
@@ -1355,7 +1322,7 @@ control:
           prose: Sweep surfaces free of dust
       props:
         - name: basis
-          value: allocated]]>
+          value: allocated
             </tagging>
             <p>The
               <src>position</src>is
@@ -1388,17 +1355,17 @@ control:
           <src>remove</src>directive inside an
           <src>alter</src> directive identifies an object or set of objects inside a control to be removed. It does this using any of five child objects.
         </p>
-        <p><req level="must" id="req-modify-alter-remove-match"><eg href="requirement-tests/req-modify-alter-remove-match1.xml"/> An object inside the control MUST be removed from the output if and only if it meets all of the criteria given by the child objects of the remove directive.</req> When more than one child appears under the remove directive, an object would need to match all of them, otherwise it is not removed.</p>
+        <p><req level="must" id="req-modify-alter-remove-match"> An object inside the control MUST be removed from the output if and only if it meets all of the criteria given by the child objects of the remove directive.</req> When more than one child appears under the remove directive, an object would need to match all of them, otherwise it is not removed.</p>
         <ul>
           <li>
             <p>
-              <req level="must" id="req-modify-alter-remove-by-id"><eg href="requirement-tests/req-modify-alter-remove-match1.xml"/>The remove directive criteria <src>by-id</src> MUST match an object if and only if its value is identical to the <src>id</src> value of that object.</req> Because
+              <req level="must" id="req-modify-alter-remove-by-id">The remove directive criteria <src>by-id</src> MUST match an object if and only if its value is identical to the <src>id</src> value of that object.</req> Because
               <src>id</src> values are unique, this criteria will result in the remove directive removing only a single object.
             </p>
           </li>
           <li>
             <p>
-              <req level="must" id="req-modify-alter-remove-name-ref"><eg href="requirement-tests/req-modify-alter-remove-match1.xml"/>The remove directive criteria <src>name-ref</src> MUST match an object if and only if its value is identical to the value of that object's <src>name</src> child.</req>
+              <req level="must" id="req-modify-alter-remove-name-ref">The remove directive criteria <src>name-ref</src> MUST match an object if and only if its value is identical to the value of that object's <src>name</src> child.</req>
             </p>
           </li>
           <li>
@@ -1408,7 +1375,7 @@ control:
             <p><req level="must" id="req-modify-alter-remove-class-ref">The remove directive criteria <src>class-ref</src> MUST match an object if and only if its value is identical to the value of that object's <src>class</src> child.</req></p>
           </li>
           <li>
-            <p><req level="must" id="req-modify-alter-remove-item-name"><eg href="requirement-tests/req-modify-alter-remove-match1.xml"/>The remove directive criteria <src>item-name</src> MUST match an object if and only if its value is identical to the value of that object's serialized name.</req> For example,
+            <p><req level="must" id="req-modify-alter-remove-item-name">The remove directive criteria <src>item-name</src> MUST match an object if and only if its value is identical to the value of that object's serialized name.</req> For example,
               <code>remove:item-name:prop</code> has the effect of removing all
               <src>prop</src>objects from inside the control.
             </p>
@@ -1456,10 +1423,10 @@ control:
           <p><req level="must" id="req-meta-version">The value of metadata:version in the target MUST be set with a string that identifies the version of that document.</req> <req level="should" id="req-meta-version-track">The metadata:version SHOULD be used to track updates to this specific output document.</req></p>
         </li>
         <li>
-          <p><req level="must" id="req-meta-oscal-version"><eg>PENDING https://github.com/usnistgov/OSCAL/issues/1313</eg>The value of metadata:oscal-version in the target MUST be set with a string that identifies the version of OSCAL used by this tool to resolve the profile (ex. 1.0.0). This value MUST be determined by compiling the oscal-versions from each imported document and the source profile, and taking the most recent minor version. If this version is more recent than what the resolution tool is using, then the value of oscal-version MUST be the version that the tool used internally.</req> <req level="must" id="req-meta-oscalversion-error">If any of the above OSCAL versions (imported document versions, source profile version, tool version) are of a different major version (the first digit differs), the tool SHOULD provide an error and cease processing.</req></p>
+          <p><req level="must" id="req-meta-oscal-version">The value of metadata:oscal-version in the target MUST be set with a string that identifies the version of OSCAL used by this tool to resolve the profile (ex. 1.0.0). This value MUST be determined by compiling the oscal-versions from each imported document and the source profile, and taking the most recent minor version. If this version is more recent than what the resolution tool is using, then the value of oscal-version MUST be the version that the tool used internally.</req> <req level="must" id="req-meta-oscalversion-error">If any of the above OSCAL versions (imported document versions, source profile version, tool version) are of a different major version (the first digit differs), the tool SHOULD provide an error and cease processing.</req></p>
         </li>
         <li>
-          <p><req level="must" id="req-meta-last-modified"><eg>PENDING develop an external (XPath) test</eg>The value of metadata:last-modified in the target MUST be set with a valid timestamp representing the time the profile resolution completed.</req></p>
+          <p><req level="must" id="req-meta-last-modified">The value of metadata:last-modified in the target MUST be set with a valid timestamp representing the time the profile resolution completed.</req></p>
         </li>
         <li>
           <p><req level="should" id="req-meta-source-profile">A child <src>prop</src> object with <src>name:source-profile</src> MUST be created. The <src>value</src> object of this <src>prop</src> SHOULD be set with a valid URI that points to the profile that resulted in this catalog. </req> 
@@ -1477,30 +1444,30 @@ control:
     </section>
     <section id="cleanup">
       <head>Pruning and Ordering</head>
-      <p><req level="should" id="req-prune"><eg href="requirement-tests/req-modify-alter-remove-match2.xml"/>The processor SHOULD prune the resulting output catalog by removing unused objects.</req></p>
+      <p><req level="should" id="req-prune">The processor SHOULD prune the resulting output catalog by removing unused objects.</req></p>
       <ul>
         <li>
-          <p><req level="must" id="req-prune-keep"><eg href="requirement-tests/req-modify-alter-remove-match2.xml"/>Any object that has a child <src>prop</src> with a <src>name</src> of "keep" and a <src>value</src> of "always" MUST NOT be pruned.</req></p>
+          <p><req level="must" id="req-prune-keep">Any object that has a child <src>prop</src> with a <src>name</src> of "keep" and a <src>value</src> of "always" MUST NOT be pruned.</req></p>
         </li>
         <li>
-          <p><req level="must" id="req-prune-include"><eg>PENDING How to test? isn't this just selection semantics</eg>If an object was explicitly included in the
+          <p><req level="must" id="req-prune-include">If an object was explicitly included in the
             <xref rid="select-phase" />, it MUST NOT be pruned.</req>
           </p>
         </li>
         <li>
-          <p><req level="must" id="req-prune-custom"><eg>PENDING clarification</eg>If an object was referenced in a <src>custom</src> section of the source profile, it MUST NOT be pruned.</req></p>
+          <p><req level="must" id="req-prune-custom">If an object was referenced in a <src>custom</src> section of the source profile, it MUST NOT be pruned.</req></p>
         </li>
         <li>
-          <p><req level="must" id="req-prune-modify"><eg>PENDING clarification</eg>If an object was referenced in the <src>modify</src> section of the source profile, it MUST NOT be pruned. Any objects removed in that section are still removed.</req></p>
+          <p><req level="must" id="req-prune-modify">If an object was referenced in the <src>modify</src> section of the source profile, it MUST NOT be pruned. Any objects removed in that section are still removed.</req></p>
         </li>
         <li>
-          <p><req level="must" id="req-prune-ref"><eg>PENDING clarification</eg>If the object appears in a reference anywhere in the final result catalog, except in other objects that also meet all other pruning criteria, it MUST NOT be removed. A reference to a given object exists if <code>#{distinctiveID}</code> appears anywhere, where <code>{distinctiveID}</code> is the distinctive ID of the object
+          <p><req level="must" id="req-prune-ref">If the object appears in a reference anywhere in the final result catalog, except in other objects that also meet all other pruning criteria, it MUST NOT be removed. A reference to a given object exists if <code>#{distinctiveID}</code> appears anywhere, where <code>{distinctiveID}</code> is the distinctive ID of the object
             <xref rid="id" />.</req>
           </p>
         </li>
       </ul>
       <p>Implementers should note that pruning need not take place after all other steps. As long as all above criteria are respected, pruning can happen at any time, and doing so is a likely performance and memory overhead improvement.</p>
-      <p><req level="must" id="req-reorder"><eg>PENDING how do we test?</eg>Tools MUST reorder the output catalog into canonical order
+      <p><req level="must" id="req-reorder">Tools MUST reorder the output catalog into canonical order
         <xref rid="order" />, except where this specification provides different ordering requirements.</req>
       </p>
     </section>
@@ -1512,17 +1479,17 @@ control:
       <p>Whenever this specification refers to
         &quot;distinctiveness&quot;, it is to be interpreted as is defined in this section with regards to the object in question.
       </p>
-      <p><req level="must" id="req-id-id"><eg>PENDING how do we test? Query outputs for duplicate IDs? Example docs?</eg>For the objects control, param, and group, distinctiveness MUST be determined by the value of the
+      <p><req level="must" id="req-id-id">For the objects control, param, and group, distinctiveness MUST be determined by the value of the
         &quot;id&quot; child object.</req>
       </p>
-      <p><req level="must" id="req-id-uuid"><eg>PENDING how do we test? Query outputs for duplicate UUIDs? Example docs?</eg>For the object resource, distinctiveness MUST be determined by the value of the
+      <p><req level="must" id="req-id-uuid">For the object resource, distinctiveness MUST be determined by the value of the
         &quot;uuid&quot;
         <xref rid="target-back-matter" />.</req>
       </p>
     </section>
     <section id="multiformat">
       <head>Dealing with Multiple Formats</head>
-      <p><req level="should" id="req-multiformat"><eg>PENDING how do we test?</eg>Profile Resolution tools SHOULD be able to handle source profiles, imported catalogs, and imported profiles that are serialized in XML, JSON, or YAML.</req> <req level="must" id="req-multiformat-differ"><eg>PENDING how do we test?</eg>A different serialization format of any given input MUST NOT result in a differing output catalog.</req></p>
+      <p><req level="should" id="req-multiformat">Profile Resolution tools SHOULD be able to handle source profiles, imported catalogs, and imported profiles that are serialized in XML, JSON, or YAML.</req> <req level="must" id="req-multiformat-differ">A different serialization format of any given input MUST NOT result in a differing output catalog.</req></p>
       <p>In order to help bootstrap this format management, the following resources are provided for implementers:</p>
       <ul>
         <li>
@@ -1534,13 +1501,13 @@ control:
       <p>The following sections provide additional requirements and guidance for each format.</p>
       <section id="xmlrequirements">
         <head>Requirements and Guidance for XML Output</head>
-        <p><req level="must" id="req-output-xml"><eg>PENDING how do we test?</eg>The final Catalog output, if using XML, MUST be valid as defined by the XML model documentation for the OSCAL Catalog. See
+        <p><req level="must" id="req-output-xml">The final Catalog output, if using XML, MUST be valid as defined by the XML model documentation for the OSCAL Catalog. See
           <a href="https://pages.nist.gov/OSCAL/reference/latest/complete/xml-definitions/">the complete XML reference</a> for model requirements.</req>
         </p> 
       </section>
       <section id="jsonrequirements">
         <head>Requirements and Guidance for JSON Output</head>
-        <p><req level="must" id="req-output-json"><eg>PENDING how do we test?</eg>The final Catalog output, if using JSON, MUST be valid as defined by the JSON model documentation for the OSCAL Catalog. See the
+        <p><req level="must" id="req-output-json">The final Catalog output, if using JSON, MUST be valid as defined by the JSON model documentation for the OSCAL Catalog. See the
           <a href="https://pages.nist.gov/OSCAL/reference/latest/complete/json-reference/">complete JSON reference</a> for model requirements. </req>
         </p>
         <p>The JSON format, in general use, does not require the preservation of order of fields. As order matters in OSCAL, tools SHOULD adhere to the canonical OSCAL order
@@ -1549,7 +1516,7 @@ control:
       </section>
       <section id="yamlrequirements">
         <head>Requirements and Guidance for YAML Output</head>
-        <p><req level="must" id="req-output-yaml"><eg>PENDING how do we test?</eg>The final Catalog output, if using YAML, MUST be valid as defined by the JSON model documentation for the OSCAL Catalog. </req> YAML is considered a simple variation on the JSON format. Beyond cosmetic differences there are no differences in the information structure between these formats. Therefore, the
+        <p><req level="must" id="req-output-yaml">The final Catalog output, if using YAML, MUST be valid as defined by the JSON model documentation for the OSCAL Catalog. </req> YAML is considered a simple variation on the JSON format. Beyond cosmetic differences there are no differences in the information structure between these formats. Therefore, the
           <a href="https://pages.nist.gov/OSCAL/reference/latest/complete/json-reference/">complete JSON reference</a> provides model requirements.
         </p>
         <p>The YAML format, in general use, does not require the preservation of order of fields. As order matters in OSCAL, tools SHOULD adhere to the canonical OSCAL order
@@ -1562,7 +1529,7 @@ control:
           <term>canonical order</term>. This order is provided by the OSCAL Metaschema files for a given document type (see
           <a href="https://pages.nist.gov/OSCAL/concepts/layer/overview/#modeling-approach">an overview of Metaschema</a>.
         </p>
-        <p><req level="must" id="req-order"><eg>PENDING how do we test this?</eg>When the output format is XML, tools MUST use the OSCAL canonical order as described above. When using the YAML or JSON formats, order conveys no meaning, and is not considered important.</req></p>
+        <p><req level="must" id="req-order">When the output format is XML, tools MUST use the OSCAL canonical order as described above. When using the YAML or JSON formats, order conveys no meaning, and is not considered important.</req></p>
       </section>
       <section id="comments-in-result">
         <head>Comments in result documents</head>

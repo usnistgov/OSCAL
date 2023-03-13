@@ -9,9 +9,13 @@
     <sch:ns uri="http://csrc.nist.gov/ns/oscal/1.0" prefix="o"/>
     
     <sch:let name="test-filenames" value="/processing-instruction('specml-testset')/normalize-space(.)"/>
-    <sch:let name="test-sets" value="document($test-filenames,/)"/>
+    <sch:let name="test-set" value="document($test-filenames,/)"/>
     
-    <sch:let name="known-tests" value="$test-sets/*/x:scenario/processing-instruction('requirement')/normalize-space(.)"/>
+    <sch:let name="known-tests" value="$test-set/*/os:requirement/os:test"/>
+    
+    <sch:let name="spec-filename" value="/processing-instruction('specml-spec')/normalize-space(.)"/>
+    <sch:let name="spec" value="document($spec-filename,/)"/>
+    
     
     <sch:pattern>
         <sch:rule context="os:section">
@@ -24,9 +28,10 @@
     <sch:pattern>
         <sch:rule context="os:req">
             <sch:let name="me" value="."/>
+            <sch:let name="mine" value="$known-tests[parent::*/@id = $me/@id]"/>
             <sch:assert test="count($all-requirements[@id=$me/@id]) eq 1">Requirement id '<sch:value-of select="@id"/>' is not distinct</sch:assert>
-            
-            <sch:report role="warning" test="empty(descendant::os:eg)">No example yet for requirement "<sch:value-of select="."/>"</sch:report>
+            <sch:assert test="exists($mine)">No test is given for requirement "<sch:value-of select="@id"/>"</sch:assert>
+            <sch:report role="warn" test="$mine/@status = 'pending'">Requirement <sch:value-of select="if (count($mine[@status = 'pending']) gt 1) then 'tests are' else 'test is'"/> marked 'pending'</sch:report>
             <!--<sch:let name="paths" value="descendant::os:eg"/>
             <sch:let name="missing-eg" value="$paths[not(doc-available( resolve-uri(.,base-uri($me)) ))]"/>
             <sch:assert test="empty($missing-eg)">No file found for example(s) <sch:value-of select="os:and-sequence($missing-eg)"/></sch:assert>
@@ -35,13 +40,19 @@
             <sch:assert test="empty($not-profile-eg)">Example files(s) not an OSCAL profile: <sch:value-of select="os:and-sequence($not-profile-eg)"/></sch:assert>-->
             </sch:rule>
         
-        <sch:rule context="os:eg">
+        <!--<sch:rule context="os:eg">
             <sch:let name="stub" value="starts-with(.,'PENDING')"/>
             <sch:let name="missing" value="not(doc-available( resolve-uri(@href,base-uri(.)) ))"/>
             <sch:let name="not-profile-eg" value=".[not($missing)]/empty(document(@href,root())/o:profile) "/>
             <sch:report test="$missing and not($stub)">No file found for example(s) <sch:value-of select="@href"/></sch:report>
             <sch:report test="$not-profile-eg and not($stub)">Example <sch:value-of select="@href"/> is not an OSCAL profile</sch:report>
+        </sch:rule>-->
+        
+        <sch:rule context="os:requirement">
+            <sch:assert test="@id = $spec//os:req/@id">Requirement id '<sch:value-of select="@id"/>' is not found in specification <sch:value-of select="$spec-filename"/></sch:assert>
+            <sch:assert role="warn" test="exists(os:test)">Requirement has no testing indicated</sch:assert>
         </sch:rule>
+        
     </sch:pattern>
     
     <xsl:function name="os:or-sequence" as="xs:string">

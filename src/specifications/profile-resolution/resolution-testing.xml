@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="lib/spec-checkup.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="lib/specml.rnc" type="application/relax-ng-compact-syntax"?>
+
+<!-- Edit this PI for checking up on test bindings -->
+<?specml-spec profile-resolution-specml.xml?>
+<TESTSETS xmlns="http://csrc.nist.gov/ns/oscal/specml">
+   <requirement level="recommended" id="req-phase-order">
+      <statement>It is strongly RECOMMENDED that implementations execute the following steps in the order that they are provided here (import, merge, modify).</statement>
+      <test status="pending">PENDING test design</test>
+   </requirement>
+   <requirement level="must" id="req-uri-resolve">
+      <statement>Tools MUST resolve URIs by following Section 5 of RFC3986, with the exception of URI Fragments (URIs that start with "#"). URI Fragments MUST instead be resolved as defined in Internal References.</statement>
+      <test file="requirement-tests/req-include-all-asis.xml">relative URI</test>
+   </requirement>
+   <requirement level="must" id="req-uri-aquire">
+      <statement>Tools MUST acquire resources at the resolved URI by following Section 5 of RFC3986, with the exception of URI Fragments (URIs that start with "#"). URI Fragments MUST instead be acquired as defined in Internal References. </statement>
+      <test file="requirement-tests/req-import-by-resource.xml">via internal reference to resource/rlink</test>
+   </requirement>
+   <requirement level="must" id="req-uri-base">
+      <statement>For the purposes of resolving URIs using the above specification, the Base URI MUST be considered to be the absolute URI of the containing profile.</statement>
+      <test file="requirement-tests/req-include-all-asis.xml">URI base corresponds to document URI</test>
+   </requirement>
+   <requirement level="must" id="req-uri-error">
+      <statement>In the case that acquiring a resource fails, the tool MUST cease processing and provide an error. In order to ensure profile resolution results in the same catalog regardless of which tool resolves it, all imports must successfully resolve. While this may cause inconvenience if resources are frequently not available, it ensures interoperability.</statement>
+      <test file="requirement-tests/req-missing-resource.xml" status="pending">PENDING rebase over latest from galtm missing resource</test>
+   </requirement>
+   <requirement level="must" id="req-internal">
+      <statement>In the context of the Import Phase, internal references will only appear as a reference to a profile or catalog that is in the resources section of the source. When tools encounter such a reference, they MUST locate the object in resources with the matching UUID value, and resolve the resource. By OSCAL model requirements, a given resource can have zero to many rlink objects and zero to one base64 objects; however, it must have at least one of the two present. Tools can assume that any of these each resolves to the same underlying OSCAL object, although potentially in different serialization formats. For deterministic resolution of these backmatter OSCAL objects, tools need to adhere to the following requirements: </statement>
+      <test file="requirement-tests/req-import-by-resource.xml"/>
+   </requirement>
+   <requirement level="may" id="req-internal-resolve1">
+      <statement>Tools MAY use any of the rlink or base64 objects present in the resource.</statement>
+      <test status="pending">PENDING test design (support for either/both base64 and rlink)</test>
+   </requirement>
+   <requirement level="may" id="req-internal-resolve2">
+      <statement>Tools MAY verify that each above objects resolves to the same underlying OSCAL object. If there are OSCAL Model content differences between the resolved objects, the tool SHOULD provide a warning. </statement>
+      <test status="pending">PENDING test design (correspondence of base64 and rlink-nominated objects)</test>
+   </requirement>
+   <requirement level="must" id="req-internal-resolve3">
+      <statement>When a rlink is encountered and is to be resolved, it MUST be resolved by using a HTTP request to retrieve a byte stream. </statement>
+      <test status="pending">PENDING test design (retrieval)</test>
+   </requirement>
+   <requirement level="must" id="req-internal-resolve4">
+      <statement>When a base64 is encountered and is to be resolved, it MUST be considered a Byte Stream.</statement>
+      <test status="pending">PENDING test design (base64 integrity)</test>
+   </requirement>
+   <requirement level="must" id="req-internal-resolve5">
+      <statement>Regardless of its source, the Byte Stream MUST be decoded based on the algorithm defined in  Section 4 RFC 4648. </statement>
+      <test status="pending">PENDING test design (base64 integrity)</test>
+   </requirement>
+   <requirement level="must" id="req-internal-error">
+      <statement>If the object fetched cannot be found or is not a valid OSCAL object, the tool MUST cease processing and provide an error.</statement>
+      <test file="requirement-tests/req-missing-resource.xml" status="pending">PENDING rebase over latest from galtm</test>
+      <test file="requirement-tests/req-broken-import.xml" status="pending">PENDING rebase over latest from galtm</test>
+   </requirement>
+   <requirement level="must" id="req-circular-resolve">
+      <statement>If the resource acquired is an OSCAL Profile, the tool MUST apply this specification to resolve it, then continue processing having imported the resulting catalog.</statement>
+      <test file="requirement-tests/req-chained-all-asis.xml" status="pending">PENDING chained profiles</test>
+   </requirement>
+   <requirement level="should" id="req-resolve-profile">
+      <statement>When a profile imports a profile, the subordinate profile SHOULD be resolved first into a catalog using this specification, before it is imported. </statement>
+      <test file="requirement-tests/req-chained-all-asis.xml" status="pending">PENDING chained profiles</test>
+      <test file="requirement-tests/req-chained-deepA.xml" status="pending">PENDING [bug repair] chained profile merged with controls from its own source catalog</test>
+   </requirement>
+   <requirement level="must" id="req-circular-error">
+      <statement>If a processor encounters a circular import as described above (self-imports are inherently circular), the processor MUST cease processing and generate an error. </statement>
+      <test file="requirement-tests/req-circular_import.xml" status="pending">PENDING circular import detection</test>
+   </requirement>
+   <requirement id="rq-mulitple-imports">
+      <statement>Note that this occurs even if the same catalog is imported multiple times: each distinct import collects controls into a separate selection</statement>
+      <test file="requirement-tests/req-chained-deepA.xml" status="pending">PENDING chained profiles</test>
+   </requirement>
+   <requirement id="rq-multiple-merge">
+      <statement>The control inclusions are combined and collapsed in the next phase of processing</statement>
+      <test file="requirement-tests/req-chained-deepA.xml" status="pending">PENDING chained profiles</test>
+   </requirement>
+   <requirement level="must" id="req-include-all">
+      <statement> When an import provides the include-all directive, ALL controls and groups in the referenced document (including nested controls) MUST be included. </statement>
+      <test file="requirement-tests/req-include-all-asis.xml"/>
+      <test file="requirement-tests/req-include-all-flat.xml"/>
+   </requirement>
+   <requirement level="must" id="req-include-by-id">
+      <statement>When an import provides the include-controls directive, with a with-id child, all controls in the referenced document whose id match one of the listed id values MUST be included. </statement>
+      <test file="requirement-tests/req-include-by-id.xml"/>
+   </requirement>
+   <requirement level="must" id="req-include-by-match">
+      <statement>When an import provides the include-controls directive, with a matching child, all controls in the referenced document whose id matches one of the listed pattern values (Glob matching) MUST be included. </statement>
+      <test file="requirement-tests/req-include-by-match.xml"/>
+   </requirement>
+   <requirement level="must" id="req-include-by-match-empty">
+      <statement>If a matching object is provided with no pattern, it MUST be treated as matching nothing. While not providing a pattern is technically valid, resolution tool implementers should be aware that it is generally undesirable, and warnings or notices to the user may be appropriate. </statement>
+      <test file="requirement-tests/req-include-by-match-empty.xml"/>
+   </requirement>
+   <requirement level="must" id="req-with-child-controls-yes">
+      <statement>A with-child-controls: yes directive on an include-controls indicates that all descendant controls of the included control MUST also be included. </statement>
+      <test file="requirement-tests/req-include-by-id.xml"/>
+   </requirement>
+   <requirement level="must" id="req-with-child-controls-no">
+      <statement>A with-child-controls: no directive on an include-controls indicates that ONLY the matching control is included, any descendant children MUST NOT be included. </statement>
+      <test file="requirement-tests/req-with-child-controls-no.xml"/>
+   </requirement>
+   <requirement level="must" id="req-with-child-controls-none">
+      <statement>If no with-child-controls is provided, the processor MUST consider the directive as being equivalent to one having with-child-controls:no. </statement>
+      <test file="requirement-tests/req-with-child-controls-none.xml"/>
+   </requirement>
+   <requirement level="must" id="req-with-parent-controls-yes">
+      <statement>A with-parent-controls: yes directive on an include-controls indicates that all parent controls of the included control MUST also be included.</statement>
+      <test file="requirement-tests/req-with-parent-controls-yes1.xml">PR https://github.com/usnistgov/OSCAL/pull/1207</test>
+      <test file="requirement-tests/req-with-parent-controls-yes2.xml">PR https://github.com/usnistgov/OSCAL/pull/1207</test>
+   </requirement>
+   <requirement level="must" id="req-with-parent-controls-no">
+      <statement>A with-parent-controls: no directive on an include-controls indicates that ONLY the matching control is included, any parent MUST NOT be included. </statement>
+      <test file="requirement-tests/req-with-parent-controls-no1.xml"
+            status="pending">PENDING PR https://github.com/usnistgov/OSCAL/pull/1207</test>
+   </requirement>
+   <requirement level="must" id="req-with-parent-controls-none">
+      <statement>If no with-parent-controls is provided, the processor MUST consider the directive as being equivalent to one having with-parent-controls:yes. </statement>
+      <test file="requirement-tests/req-with-parent-controls-none.xml">Neither setting is given</test>
+   </requirement>
+   <requirement level="must" id="req-exclude">
+      <statement>Any control designated to be both included and excluded, MUST be excluded. This holds irrespective of the specificity of the selection for inclusion or exclusion.</statement>
+      <test file="requirement-tests/req-include-exclude1.xml"/>
+      <test file="requirement-tests/req-include-exclude2.xml"/>
+      <test file="requirement-tests/req-include-exclude3.xml"/>
+   </requirement>
+   <requirement level="must" id="req-exclude-additional">
+      <statement>When exclude-controls has at least one with-ids or matching directive, the processor MUST follow the same rules as defined in the relevant sections above for these directives, but exclude instead of include any controls. All optional features (with-child-controls, etc.) also apply to exclusion directives. </statement>
+      <test file="requirement-tests/req-include-exclude4.xml"/>
+   </requirement>
+   <requirement level="must" id="req-redundant">
+      <statement>A given import may have any number of inclusion statements and any number of exclusion statements. Their effect is cumulative; any control that is included (or excluded) more than once MUST be considered to be included (or excluded) only once. In other words, a given control being included or excluded more than once has no effect. Exclusion still takes priority over inclusion (see above). </statement>
+      <test file="requirement-tests/req-include-exclude4.xml"/>
+   </requirement>
+   <requirement level="must" id="req-loose-param">
+      <statement>All loose params from both imported documents and the profile source MUST be included. These params will be kept in the final output if the document contains any references to them, and discarded otherwise. See Pruning and Ordering.</statement>
+      <test file="requirement-tests/req-loose-params1.xml"/>
+   </requirement>
+   <requirement level="recommended" id="req-merge-order">
+      <statement>It is RECOMMENDED that tools apply the "combine" directive to the intermediate generated by the Import phase first, then apply the "structuring" directive.</statement>
+      <test status="pending">PENDING is this testable?</test>
+   </requirement>
+   <requirement level="must" id="req-merge-combine">
+      <statement>Note that "merge: combine" is deprecated, and MUST be considered undefined behavior when encountered.</statement>
+      <test status="pending">PENDING specification</test>
+   </requirement>
+   <requirement level="must" id="req-merge-none">
+      <statement> If no merge directive is given in the profile, or if a merge is given without a combine, merge conflicts MUST be treated as if method: keep was given. </statement>
+      <test file="requirement-tests/keep-everything-twice.xml"/>
+   </requirement>
+   <requirement level="must" id="req-merge-keep">
+      <statement>When a merge is indicated by method:keep, or when no merge directive is given, the keepcombination rule is used. Any control with the same distinctive ID Distinct ID of ObjectsMUST NOT not merged. (They are kept.) </statement>
+      <test file="requirement-tests/req-merge-keep1.xml"/>
+      <test file="requirement-tests/req-merge-keep2.xml"/>
+   </requirement>
+   <requirement level="should" id="req-merge-keep-warning">
+      <statement>Processors SHOULD provide a warning under the merge:keep directive when duplicate controls are detected.</statement>
+      <test file="requirement-tests/req-merge-keep1.xml"/>
+      <test file="requirement-tests/req-merge-keep2.xml"/>
+   </requirement>
+   <requirement level="may" id="req-merge-keep-error">
+      <statement>The processor MAY throw an error and cease processing (short-circuiting a certain future error) when duplicate controls are detected under the merge:keep directive.</statement>
+      <test file="requirement-tests/req-merge-keep1.xml"/>
+      <test file="requirement-tests/req-merge-keep2.xml"/>
+   </requirement>
+   <requirement level="must" id="req-merge-use-first">
+      <statement>When the "use-first"combination rule is applied, and controls that share a distinctive ID are found, the first control encountered MUST be kept, the rest MUST be discarded. "First" MUST be determined by a top-down, depth-first traversal of the source profile's import hierarchy. </statement>
+      <test file="requirement-tests/req-merge-usefirst1.xml"/>
+      <test file="requirement-tests/req-merge-usefirst2.xml"/>
+   </requirement>
+   <requirement level="must" id="req-stucture">
+      <statement>Optionally, one of three "structuring" directives can be included as a child of merge: flat, as-isand custom. When one of these appears, it is the selected structuring directive. If more than one appears, processors MUST generate an error and cease processing.</statement>
+      <test status="pending">PENDING how do we test this?</test>
+   </requirement>
+   <requirement level="must" id="req-structure-none">
+      <statement>If no merge directive is given in the profile, or if a merge is given without a structuring directive, structuring the output MUST be treated as if the structuring directive flat was given. For example, a profile with no merge directive: </statement>
+      <test file="requirement-tests/req-include-all-flat.xml"/>
+   </requirement>
+   <requirement level="must" id="req-merge-flat">
+      <statement>Profiles with the "flat" merge directive MUST be resolved as unstructured catalogs, with no grouping or nesting of controls.</statement>
+      <test file="requirement-tests/req-include-all-flat.xml"/>
+   </requirement>
+   <requirement level="must" id="req-merge-flat-list">
+      <statement>Unstructured catalog output MUST be produced by adhering to the following requirements:</statement>
+   </requirement>
+   <requirement level="must" id="req-merge-flat-list-1">
+      <statement>All included controls are output to the target as a flat list directly under "catalog". </statement>
+      <test file="requirement-tests/req-include-all-flat.xml"/>
+   </requirement>
+   <requirement level="must" id="req-merge-flat-list-2">
+      <statement>Any included "loose params" are output to the target as a flat list directly under "catalog".</statement>
+      <test file="requirement-tests/req-loose-params2.xml"/>
+   </requirement>
+   <requirement level="must" id="req-merge-flat-list-3">
+      <statement>Any groups are discarded.</statement>
+      <test file="requirement-tests/req-include-all-flat.xml"/>
+      <test file="requirement-tests/req-loose-params2.xml"/>
+   </requirement>
+   <requirement level="must" id="id-structure-as-is-list">
+      <statement>Processors MUST handle the as-is directive by adhering to the following requirements:</statement>
+   </requirement>
+   <requirement level="must" id="id-structure-as-is-list-1">
+      <statement>All included controls are output to the target, keeping the structure of the groups and nested controls. Any group that holds an included control MUST appear in the output with all of its non-control children intact. If an included control has a parent control that was not included, that control's output location is "up-leveled", or made equal to the non-included parent. This applies recursively until the control is directly under either "catalog" or another included control.</statement>
+   </requirement>
+   <requirement level="must" id="id-structure-as-is-list-2">
+      <statement>Any included "loose params" are output to the target as a flat list directly under "catalog".</statement>
+   </requirement>
+   <requirement level="must" id="req-custom-group">
+      <statement>A groupobject given under custom MUST result in a group with the exact same content (excluding insert-controls) in the target catalog. </statement>
+   </requirement>
+   <requirement level="must" id="req-custom-group-contents">
+      <statement>If the ID of the group matches the ID of a group that has been included during the import phase, all contents inside the group, including title, param, prop and part objects MUST be copied into the target, appearing in the same order as in the source. </statement>
+   </requirement>
+   <requirement level="must" id="req-custom-select">
+      <statement>When processing the control selection of a custom element, the behavior defined in this section MUST be followed to generate the output.</statement>
+   </requirement>
+   <requirement level="must" id="req-custom-select-ignore">
+      <statement>In the case that a control selection matches none of the included controls, it MUST be ignored.</statement>
+   </requirement>
+   <requirement level="should" id="req-custom-select-warning">
+      <statement>In the case that a control selection matches none of the included controls, a warning SHOULD be provided.</statement>
+   </requirement>
+   <requirement level="should" id="req-modify-set-param-warning">
+      <statement>If no such parameter is found, a warning SHOULD be issued.</statement>
+   </requirement>
+   <requirement level="must" id="req-modify-set-param-id-ignore">
+      <statement>If no such parameter is found, processing MUST still continue.</statement>
+   </requirement>
+   <requirement level="must" id="req-modify-set-param-objects1">
+      <statement>For the following objects inside the source: class, depends-on, label, usage, values, select; the object MUST be copied into the target from the source, first removing any existing objects with the same name.</statement>
+   </requirement>
+   <requirement level="must" id="req-modify-set-param-objects2">
+      <statement>For the following objects inside the source: props, links, constraints, guidelines; the contents of the object MUST be added to the contents of the target object of the same name. If no such object exists in the target, it is created.</statement>
+   </requirement>
+   <requirement level="must" id="req-modify-set-param-objects3">
+      <statement>For the following objects inside the source: prop, link; the object MUST be copied into the target from the source, first removing any existing objects with the same distinctive ID. (Distinct ID of Objects).</statement>
+   </requirement>
+   <requirement level="must" id="req-modify-param-multi">
+      <statement>If more than one set-parameter directive is given for the same parameter, all MUST BE applied, in the sequence given in the profile.</statement>
+   </requirement>
+   <requirement level="must" id="req-modify-alter-add-implicit">
+      <statement>An add directive with no by-id child MUST be considered an implicit binding, and will apply to the control as a whole.</statement>
+   </requirement>
+   <requirement level="must" id="req-modify-alter-add-implicit0contents">
+      <statement>The contents of an implicitly bound add directive MUST be added to the control contents in the target, either after its title when position is starting, or at the end if its position is ending, or if no valid position is given.</statement>
+   </requirement>
+   <requirement level="must" id="req-modify-alter-add-implicit-position">
+      <statement>When an add directive is implicitly bound, the position values before and after MUST be treated like starting and ending, respectively.</statement>
+   </requirement>
+   <requirement level="must" id="req-modify-alter-add-implicit-order">
+      <statement>After processing an implicitly bound add directive, the control contents MUST be sorted to appear in the required order: a new prop appears after any prop already in the control, when position is ending, or not given, or before any prop in the control when position is starting.</statement>
+   </requirement>
+   <requirement level="must" id="req-modify-alter-add-explicit">
+      <statement>An add directive with a by-id child MUST be considered an explicit binding, and applies to only a single object inside the control.</statement>
+   </requirement>
+   <requirement level="must" id="req-modify-alter-add-explicit-id">
+      <statement>When an add directive is explicitly bound, the value of the by-id child MUST correspond to the value of an id on an object inside the control, and not the control itself.</statement>
+   </requirement>
+   <requirement level="must" id="req-modify-alter-add-explicit-id-ignore">
+      <statement>If by-id does not correspond to such a value, the add directive MUST be considered inoperative and ignored.</statement>
+   </requirement>
+   <requirement level="may" id="req-modify-alter-add-explicit-id-warning">
+      <statement>An inoperative add directive MAY result in a warning.</statement>
+   </requirement>
+   <requirement level="must" id="req-modify-alter-add-explicit-inside">
+      <statement>When position has a value of startingor ending, the contents of the source MUST be added inside the target, either at the start or end of its contents, respectively.</statement>
+   </requirement>
+   <requirement level="must" id="req-modify-alter-add-explicit-outside">
+      <statement>When position has a value of before or after, the contents of the source MUST be added outside the target, either directly before or after it, respectively.</statement>
+   </requirement>
+   <requirement level="must" id="req-modify-alter-add-nested">
+      <statement>Profile resolution tools MUST be able to correctly handle add directives targetting nested controls. This includes directives that target a child control as well as directives that target a parent control and modify the child. </statement>
+   </requirement>
+   <requirement level="must" id="req-modify-alter-remove-match">
+      <statement> An object inside the control MUST be removed from the output if and only if it meets all of the criteria given by the child objects of the remove directive.</statement>
+      <test file="requirement-tests/req-modify-alter-remove-match1.xml"/>
+   </requirement>
+   <requirement level="must" id="req-modify-alter-remove-by-id">
+      <statement>The remove directive criteria by-id MUST match an object if and only if its value is identical to the id value of that object.</statement>
+      <test file="requirement-tests/req-modify-alter-remove-match1.xml"/>
+   </requirement>
+   <requirement level="must" id="req-modify-alter-remove-name-ref">
+      <statement>The remove directive criteria name-ref MUST match an object if and only if its value is identical to the value of that object's name child.</statement>
+      <test file="requirement-tests/req-modify-alter-remove-match1.xml"/>
+   </requirement>
+   <requirement level="must" id="req-modify-alter-remove-ns-ref">
+      <statement>The remove directive criteria ns-ref MUST match an object if and only if its value is identical to the value of that object's ns child.</statement>
+   </requirement>
+   <requirement level="must" id="req-modify-alter-remove-class-ref">
+      <statement>The remove directive criteria class-ref MUST match an object if and only if its value is identical to the value of that object's class child.</statement>
+   </requirement>
+   <requirement level="must" id="req-modify-alter-remove-item-name">
+      <statement>The remove directive criteria item-name MUST match an object if and only if its value is identical to the value of that object's serialized name.</statement>
+      <test file="requirement-tests/req-modify-alter-remove-match1.xml"/>
+   </requirement>
+   <requirement level="must" id="req-modify-alter-remove-item-name-array">
+      <statement>In serialization formats that use arrays of objects in the OSCAL model, an object's name MUST be referenced as singular form of its containing parent array. </statement>
+   </requirement>
+   <requirement level="must" id="req-backmatter">
+      <statement>The output's backmatter MUST be generated by copying in each resource object from the backmatters of the imported catalogs/profiles in top-to-bottom order, then by copying in each resource object from the backmatter of the source profile itself. These objects MUST be processed in the order they are defined in each respective document.</statement>
+   </requirement>
+   <requirement level="must" id="req-backmatter-dupe">
+      <statement>If a given resource has the same uuid as a resource that has already been added, the previous resource MUST be removed, and the more recent one added, unless superseded by other requirements.</statement>
+   </requirement>
+   <requirement level="must" id="req-backmatter-keep">
+      <statement>A resource with a child prop of name:keep and value:always MUST NOT be replaced by the addition of another resource, unless the new resource also has a child prop of name:keep and value:always.</statement>
+   </requirement>
+   <requirement level="may" id="req-backmatter-prune">
+      <statement>Tools MAY check for pruning conditions Pruning and Ordering as resources are added as long as the final result is the same as if the pruning had taken place at the end of all resource addition.</statement>
+   </requirement>
+   <requirement level="must" id="req-meta-uuid">
+      <statement>The output catalog's metadata MUST have a unique top-level UUID (metadata:uuid). This UUID MAY be generated as seen fit by the tool, as long as it is reasonable to assume it is globally unique. It is RECOMMENDED that tools use a Version 4 UUID as specified in Section 4 of RFC 4122. </statement>
+   </requirement>
+   <requirement level="must" id="req-meta-version">
+      <statement>The value of metadata:version in the target MUST be set with a string that identifies the version of that document.</statement>
+   </requirement>
+   <requirement level="should" id="req-meta-version-track">
+      <statement>The metadata:version SHOULD be used to track updates to this specific output document.</statement>
+   </requirement>
+   <requirement level="must" id="req-meta-oscal-version">
+      <statement>The value of metadata:oscal-version in the target MUST be set with a string that identifies the version of OSCAL used by this tool to resolve the profile (ex. 1.0.0). This value MUST be determined by compiling the oscal-versions from each imported document and the source profile, and taking the most recent minor version. If this version is more recent than what the resolution tool is using, then the value of oscal-version MUST be the version that the tool used internally.</statement>
+      <test status="pending">PENDING https://github.com/usnistgov/OSCAL/issues/1313</test>
+   </requirement>
+   <requirement level="must" id="req-meta-oscalversion-error">
+      <statement>If any of the above OSCAL versions (imported document versions, source profile version, tool version) are of a different major version (the first digit differs), the tool SHOULD provide an error and cease processing.</statement>
+   </requirement>
+   <requirement level="must" id="req-meta-last-modified">
+      <statement>The value of metadata:last-modified in the target MUST be set with a valid timestamp representing the time the profile resolution completed.</statement>
+      <test status="pending">PENDING develop an external (XPath) test</test>
+   </requirement>
+   <requirement level="should" id="req-meta-source-profile">
+      <statement>A child prop object with name:source-profile MUST be created. The value object of this prop SHOULD be set with a valid URI that points to the profile that resulted in this catalog. </statement>
+   </requirement>
+   <requirement level="may" id="req-meta-source-profile-privacy">
+      <statement> If there are privacy or security concerns, the value object of this prop MAY be set to anything, in which case the simple existence of the source-profile property indicates that this is a resolved profile.</statement>
+   </requirement>
+   <requirement level="should" id="req-meta-resolution-tool">
+      <statement>A child prop object with name:resolution-tool SHOULD be created. The value object of this prop in the target SHOULD be set with a string that represents the tool that was used to resolve this catalog.</statement>
+   </requirement>
+   <requirement level="must" id="req-meta-keep">
+      <statement>For any metadata:roles or metadata:parties that exist in the source catalogs, if they have a prop child with name:keep and value:always, they are to be copied as is into the output metadata.</statement>
+   </requirement>
+   <requirement level="should" id="req-prune">
+      <statement>The processor SHOULD prune the resulting output catalog by removing unused objects.</statement>
+      <test file="requirement-tests/req-modify-alter-remove-match2.xml"/>
+   </requirement>
+   <requirement level="must" id="req-prune-keep">
+      <statement>Any object that has a child prop with a name of "keep" and a value of "always" MUST NOT be pruned.</statement>
+      <test file="requirement-tests/req-modify-alter-remove-match2.xml"/>
+   </requirement>
+   <requirement level="must" id="req-prune-include">
+      <statement>If an object was explicitly included in the Including Controls, it MUST NOT be pruned.</statement>
+      <test status="pending">PENDING How to test? isn't this just selection semantics</test>
+   </requirement>
+   <requirement level="must" id="req-prune-custom">
+      <statement>If an object was referenced in a custom section of the source profile, it MUST NOT be pruned.</statement>
+      <test status="pending">PENDING clarification</test>
+   </requirement>
+   <requirement level="must" id="req-prune-modify">
+      <statement>If an object was referenced in the modify section of the source profile, it MUST NOT be pruned. Any objects removed in that section are still removed.</statement>
+      <test status="pending">PENDING clarification</test>
+   </requirement>
+   <requirement level="must" id="req-prune-ref">
+      <statement>If the object appears in a reference anywhere in the final result catalog, except in other objects that also meet all other pruning criteria, it MUST NOT be removed. A reference to a given object exists if #{distinctiveID} appears anywhere, where {distinctiveID} is the distinctive ID of the object Distinct ID of Objects.</statement>
+      <test status="pending">PENDING clarification</test>
+   </requirement>
+   <requirement level="must" id="req-reorder">
+      <statement>Tools MUST reorder the output catalog into canonical order Order of objects in serialization, except where this specification provides different ordering requirements.</statement>
+      <test status="pending">PENDING how do we test?</test>
+   </requirement>
+   <requirement level="must" id="req-id-id">
+      <statement>For the objects control, param, and group, distinctiveness MUST be determined by the value of the "id" child object.</statement>
+      <test status="pending">PENDING how do we test? Query outputs for duplicate IDs? Example docs?</test>
+   </requirement>
+   <requirement level="must" id="req-id-uuid">
+      <statement>For the object resource, distinctiveness MUST be determined by the value of the "uuid" Backmatter Resolution.</statement>
+      <test status="pending">PENDING how do we test? Query outputs for duplicate UUIDs? Example docs?</test>
+   </requirement>
+   <requirement level="should" id="req-multiformat">
+      <statement>Profile Resolution tools SHOULD be able to handle source profiles, imported catalogs, and imported profiles that are serialized in XML, JSON, or YAML.</statement>
+      <test status="pending">PENDING how do we test?</test>
+   </requirement>
+   <requirement level="must" id="req-multiformat-differ">
+      <statement>A different serialization format of any given input MUST NOT result in a differing output catalog.</statement>
+      <test status="pending">PENDING how do we test?</test>
+   </requirement>
+   <requirement level="must" id="req-output-xml">
+      <statement>The final Catalog output, if using XML, MUST be valid as defined by the XML model documentation for the OSCAL Catalog. See the complete XML reference for model requirements.</statement>
+      <test status="pending">PENDING how do we test?</test>
+   </requirement>
+   <requirement level="must" id="req-output-json">
+      <statement>The final Catalog output, if using JSON, MUST be valid as defined by the JSON model documentation for the OSCAL Catalog. See the complete JSON reference for model requirements. </statement>
+      <test status="pending">PENDING how do we test?</test>
+   </requirement>
+   <requirement level="must" id="req-output-yaml">
+      <statement>The final Catalog output, if using YAML, MUST be valid as defined by the JSON model documentation for the OSCAL Catalog. </statement>
+      <test status="pending">PENDING how do we test?</test>
+   </requirement>
+   <requirement level="must" id="req-order">
+      <statement>When the output format is XML, tools MUST use the OSCAL canonical order as described above. When using the YAML or JSON formats, order conveys no meaning, and is not considered important.</statement>
+      <test status="pending">PENDING how do we test this?</test>
+   </requirement>
+</TESTSETS>
