@@ -1,5 +1,26 @@
 # Profile Resolution Specification and Testing
 
+## process notes
+
+- new 'resolution-testing.xml' keeps track of unit tests
+- spec is validated against this test manifest
+- it can also be converted into XSpec or other test drivers
+
+### Test coverage
+
+Finishing the tests by assigning them to Github Issues?
+
+### Validating the tests (source/target)
+
+need a process for this - also Github Issues?
+
+### Revising the spec
+
+- validate test manifest against its spec - any broken links?
+
+
+
+
 ## Providing feedback on this specification
 
 The OSCAL team welcomes feedback on the work in progress in this subdirectory, whether it be questions, points for clarification, critiques or suggestions. A rendered version of the Profile Resolution specification maintained here [appears](https://pages.nist.gov/OSCAL/concepts/processing/profile-resolution/) on the OSCAL web site.
