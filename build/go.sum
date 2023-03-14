@@ -284,8 +284,8 @@ github.com/gobwas/ws v1.0.2/go.mod h1:szmBTxLgaFppYjEmNtny/v3w89xOydFnnZMcgRRu/E
 github.com/godbus/dbus/v5 v5.0.4/go.mod h1:xhWf0FNVPg57R7Z0UbKHbJfkEywrmjJnf7w5xrFpKfA=
 github.com/gohugoio/go-i18n/v2 v2.1.3-0.20210430103248-4c28c89f8013 h1:Nj29Qbkt0bZ/bJl8eccfxQp3NlU/0IW1v9eyYtQ53XQ=
 github.com/gohugoio/go-i18n/v2 v2.1.3-0.20210430103248-4c28c89f8013/go.mod h1:3Ltoo9Banwq0gOtcOwxuHG6omk+AwsQPADyw2vQYOJQ=
-github.com/gohugoio/hugo v0.111.1 h1:JYDKm36n5EaYS2KJyGM0AtP0Vx6DKXZ/E1sFagSj79Y=
-github.com/gohugoio/hugo v0.111.1/go.mod h1:8rmzgQh5cam/ShZq0R+l9E0+qOzPQXc4wxQalDS6fUw=
+github.com/gohugoio/hugo v0.111.3 h1:m98NJv/5ivJLkQ4u3vPYsrAfBTnDIefZPGhnw/7xW80=
+github.com/gohugoio/hugo v0.111.3/go.mod h1:1gb2es3022plbaNiZjhBTdpXN2cepIeqvBnL/NHnKLY=
 github.com/gohugoio/locales v0.14.0 h1:Q0gpsZwfv7ATHMbcTNepFd59H7GoykzWJIxi113XGDc=
 github.com/gohugoio/locales v0.14.0/go.mod h1:ip8cCAv/cnmVLzzXtiTpPwgJ4xhKZranqNqtoIu0b/4=
 github.com/gohugoio/localescompressed v1.0.1 h1:KTYMi8fCWYLswFyJAeOtuk/EkXR/KPTHHNN9OS+RTxo=
@@ -472,8 +472,8 @@ github.com/muesli/smartcrop v0.3.0 h1:JTlSkmxWg/oQ1TcLDoypuirdE8Y/jzNirQeLkxpA6O
 github.com/muesli/smartcrop v0.3.0/go.mod h1:i2fCI/UorTfgEpPPLWiFBv4pye+YAG78RwcQLUkocpI=
 github.com/neurosnap/sentences v1.0.6/go.mod h1:pg1IapvYpWCJJm/Etxeh0+gtMf1rI1STY9S7eUCPbDc=
 github.com/nfnt/resize v0.0.0-20180221191011-83c6a9932646 h1:zYyBkD/k9seD2A7fsi6Oo2LfFZAehjjQMERAvZLEDnQ=
-github.com/niklasfasching/go-org v1.6.5 h1:5YAIqNTdl6lAOb7lD2AyQ1RuFGPVrAKvUexphk8PGbo=
-github.com/niklasfasching/go-org v1.6.5/go.mod h1:ybv0eGDnxylFUfFE+ySaQc734j/L3+/ChKZ/h63a2wM=
+github.com/niklasfasching/go-org v1.6.6 h1:U6+mJ80p3weR4oP+Z+Pb2EVkSbt1MUwweBbUcF1hVqQ=
+github.com/niklasfasching/go-org v1.6.6/go.mod h1:o3pMQpO9n6RNBXz2Oc2DiRkaVwjns0JElyKiG7yXwA4=
 github.com/olekukonko/tablewriter v0.0.5 h1:P2Ga83D34wi1o9J6Wh1mRuqd4mF/x/lgBS7N7AbDhec=
 github.com/olekukonko/tablewriter v0.0.5/go.mod h1:hPp6KlRPjbx+hW8ykQs1w3UBbZlj6HuIJcUGPhkA7kY=
 github.com/pelletier/go-toml/v2 v2.0.6 h1:nrzqCb7j9cDFj2coyLNLaZuJTLjWjlaz6nvTvIwycIU=
