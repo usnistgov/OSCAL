@@ -2,7 +2,7 @@ module github.com/usnistgov/OSCAL/build
 
 go 1.18
 
-require github.com/gohugoio/hugo v0.111.1
+require github.com/gohugoio/hugo v0.111.3
 
 require (
 	cloud.google.com/go v0.101.0 // indirect
@@ -88,7 +88,7 @@ require (
 	github.com/mitchellh/mapstructure v1.5.0 // indirect
 	github.com/mohae/deepcopy v0.0.0-20170929034955-c48cc78d4826 // indirect
 	github.com/muesli/smartcrop v0.3.0 // indirect
-	github.com/niklasfasching/go-org v1.6.5 // indirect
+	github.com/niklasfasching/go-org v1.6.6 // indirect
 	github.com/olekukonko/tablewriter v0.0.5 // indirect
 	github.com/pelletier/go-toml/v2 v2.0.6 // indirect
 	github.com/rogpeppe/go-internal v1.9.0 // indirect
