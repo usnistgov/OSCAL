@@ -751,7 +751,7 @@ intermediate:
         </tagging>
         <p><req level="must" id="req-merge-use-first">When the
           &quot;use-first&quot;combination rule is applied, and controls that share a distinctive ID are found, the first control encountered MUST be kept, the rest MUST be discarded.
-          &quot;First&quot; MUST be determined by a top-down, depth-first traversal of the source profile&apos;s in the order they occur within the import hierarchy of the docuent.
+          &quot;First&quot; MUST be determined by a top-down, depth-first traversal of the source profile&apos;s in the order they occur within the import hierarchy of the document.
         </req></p>
         <mapping>
           <tagging whose="source_profile">
@@ -1383,7 +1383,7 @@ control:
       <p>The following requirements MUST be followed with regards to the Metadata section of the output catalog:</p>
       <ul>
         <li>
-          <p><req level="must" id="req-meta-uuid">The output catalog's metadata MUST have a unique top-level UUID. This UUID MAY be generated as seen fit by the tool, as long as it is reasonable to assume it is globally unique. It is RECOMMENDED that tools use a Version 4 UUID as specified in <a href="https://datatracker.ietf.org/doc/html/rfc4122">Section 4 of RFC 4122</a>.
+          <p><req level="must" id="req-meta-uuid">The output catalog MUST have a unique top-level UUID. This UUID MAY be generated as seen fit by the tool, as long as it is reasonable to assume it is globally unique. It is RECOMMENDED that tools use a Version 4 UUID as specified in <a href="https://datatracker.ietf.org/doc/html/rfc4122">Section 4 of RFC 4122</a>.
           </req></p>
         </li>
         <li>
