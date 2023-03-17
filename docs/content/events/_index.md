@@ -14,7 +14,7 @@ menu:
 
 The NIST OSCAL Team has a public calendar for the community to keep current with the meetings above and other public events hosted by the team.
 
-You can access the [web version of this calendar by clicking this link](https://outlook.office365.com/owa/calendar/97cb6b6254524d86aa63c32b74bd1337@nist.gov/494010486be740b3a9bb16964e8992e016522353741654500565/calendar.html) or configure your calendar appplication [with this iCalendar (ICS) file](https://outlook.office365.com/owa/calendar/97cb6b6254524d86aa63c32b74bd1337@nist.gov/494010486be740b3a9bb16964e8992e016522353741654500565/calendar.ics).
+You can access the [web version of this calendar by clicking this link](https://outlook.office365.com/owa/calendar/97cb6b6254524d86aa63c32b74bd1337@nist.gov/494010486be740b3a9bb16964e8992e016522353741654500565/calendar.html) or configure your calendar application [with this iCalendar (ICS) file](https://outlook.office365.com/owa/calendar/97cb6b6254524d86aa63c32b74bd1337@nist.gov/494010486be740b3a9bb16964e8992e016522353741654500565/calendar.ics).
 
 </br>
 
@@ -59,8 +59,8 @@ You can access the [web version of this calendar by clicking this link](https://
 
 The NIST OSCAL team hosts meetings and other events with the OSCAL community on different topics.
 
-- **OSCAL Model Engineering Meeting**: A bi-weekly meeting to discuss OSCAL models, how they are developed, and development efforts by NIST staff and the greater OSCAL community using them. [The meeting page](model-engineering-meeting/) has meeting information as well as slides and notes from past sessions.
-- **OSCAL DEFINE Meeting**: A monthly meeting on the third Thursday of every month to discuss the research and educational pursuits of OSCAL using an iterative and collaborative approach with the community. [The meeting page](define-meeting/) has meeting information as well as slides and notes from past sessions.
+- **OSCAL DEFINE Meeting**: A monthly meeting on the third Thursday of every month to discuss the research and educational pursuits of OSCAL using an iterative and collaborative approach with the community. [The meeting page](../contribute/define-meeting/) has meeting information as well as slides and notes from past sessions.
+- **OSCAL Model Engineering Meeting**: A bi-weekly meeting to discuss OSCAL models, how they are developed, and development efforts by NIST staff and the greater OSCAL community using them. [The meeting page](../contribute/model-engineering-meeting/) has meeting information as well as slides and notes from past sessions.
 
 We encourage you to attend these meetings as a way to keep up-to-date on and contribute to the development of OSCAL.
 
