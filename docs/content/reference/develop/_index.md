@@ -12,7 +12,7 @@ sidenav:
 oscal:
     type: "branch"
     remote: "Compton-NIST/OSCAL"
-    branch: "feature-track-429-errors"
+    branch: "feature-ci-diagrams-issue-1678"
     revision: "develop"
     version: "develop"
 ---
