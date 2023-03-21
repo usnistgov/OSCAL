@@ -31,7 +31,7 @@ jobs:
         uses: Compton-NIST/Inspector@v1
         with:
           artifact_name: docs_ci
-          output_path: docs_ci
+          output_path: build/ci-cd
           file_prefix: OSCAL
       - name: Make Overview the README.md for the directory.
         run: |
