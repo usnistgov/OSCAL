@@ -72,6 +72,8 @@ jobs:
         submodules: recursive
     - name: "***** Monitor Workflow Status *****"
       run: ${{ env.WORKFLOW_MONITORING_COMMAND }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # TODO: Remove
     - name: Set env
       run: |
         echo "SAXON_HOME=${JAVA_CLASSPATH}" >> $GITHUB_ENV
