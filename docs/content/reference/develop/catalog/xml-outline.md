@@ -10,7 +10,7 @@ sidenav:
 
 ---
 
-The following outline is a representation of the [XML format](https://github.com/usnistgov/OSCAL/blob/feature-429-errors-issue-1698/xml/schema/oscal_catalog_schema.xsd) for this [model](/concepts/layer/control/catalog/). For each element or attribute, the name links to the corresponding entry in the [XML Format Reference](../xml-reference/). The cardinality and data type are also provided for each element or attribute where appropriate.
+The following outline is a representation of the [XML format](https://github.com/usnistgov/OSCAL/blob/feature-track-429-errors/xml/schema/oscal_catalog_schema.xsd) for this [model](/concepts/layer/control/catalog/). For each element or attribute, the name links to the corresponding entry in the [XML Format Reference](../xml-reference/). The cardinality and data type are also provided for each element or attribute where appropriate.
 
 <!-- DO NOT REMOVE. Generated text below -->{{< rawhtml >}}
 <div xmlns="http://www.w3.org/1999/xhtml" class="xml-outline">
