@@ -10,7 +10,7 @@ sidenav:
 
 ---
 
-The following outline is a representation of the [JSON format](https://github.com/usnistgov/OSCAL/blob/feature-track-429-errors/json/schema/oscal_assessment-results_schema.json) for this [model](/concepts/layer/assessment/assessment-results/). For each property, the name links to the corresponding entry in the [JSON Format Reference](../json-reference/). The cardinality and data type are also provided for each property where appropriate.
+The following outline is a representation of the [JSON format](https://github.com/usnistgov/OSCAL/blob/feature-429-errors-issue-1698/json/schema/oscal_assessment-results_schema.json) for this [model](/concepts/layer/assessment/assessment-results/). For each property, the name links to the corresponding entry in the [JSON Format Reference](../json-reference/). The cardinality and data type are also provided for each property where appropriate.
 
 <!-- DO NOT REMOVE. Generated text below -->
 {{< rawhtml >}}

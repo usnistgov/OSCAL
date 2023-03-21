@@ -11,7 +11,7 @@ sidenav:
 ---
 
 <p><span class="usa-tag">Release Version</span> Latest Development Snapshot</p>
-<p><span class="usa-tag">Github</span> <a href="https://github.com/usnistgov/OSCAL">usnistgov/OSCAL</a> <span class="usa-tag">Branch</span> <a href="https://github.com/usnistgov/OSCAL/tree/feature-track-429-errors">feature-track-429-errors</a></p>
+<p><span class="usa-tag">Github</span> <a href="https://github.com/usnistgov/OSCAL">usnistgov/OSCAL</a> <span class="usa-tag">Branch</span> <a href="https://github.com/usnistgov/OSCAL/tree/feature-429-errors-issue-1698">feature-429-errors-issue-1698</a></p>
 
 This reference combines the information items used in all the OSCAL models into a single, comprehensive view. The following reference documentation is available.
 
