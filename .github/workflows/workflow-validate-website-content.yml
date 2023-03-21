@@ -18,6 +18,8 @@ on:
         required: false
         default: false
         type: boolean
+env:
+  WORKFLOW_MONITORING_COMMAND: curl -s -I https://api.github.com/users/${{ github.actor }} | grep -E "x-ratelimit-remaining|x-ratelimit-limit|x-ratelimit-used]"
 jobs:
   schedule-validate-website-links:
     runs-on: ubuntu-20.04
@@ -26,6 +28,8 @@ jobs:
       uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
       with:
         fetch-depth: 0 # this ensures that the tag and commit history are available
+    - name: "***** Monitor Workflow Status *****"
+      run: ${{ env.WORKFLOW_MONITORING_COMMAND }}
     - name: Checkout git ref of published website content
       uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
       with:
@@ -48,3 +52,5 @@ jobs:
           bug
           Scope: Documentation
           Scope: Website          
+    - name: "***** Monitor Workflow Status *****"
+      run: ${{ env.WORKFLOW_MONITORING_COMMAND }}
