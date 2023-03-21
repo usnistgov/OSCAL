@@ -10,7 +10,7 @@ toc:
   headingselectors: "h1.toc1"
 ---
 
-The following is an index of each JSON property used in the [JSON format](https://github.com/usnistgov/OSCAL/blob/feature-ci-diagrams-issue-1678/json/schema/oscal_component-definition_schema.json) for this [model](/concepts/layer/implementation/component-definition/). Each entry in the index lists all uses of the given property in the format, which is linked to the corresponding entry in the [JSON Format Reference](../json-reference/). Each entry also lists the formal name for the definition which is linked to the corresponding JSON definition in the [JSON Format Metaschema Reference](../json-definitions/).
+The following is an index of each JSON property used in the [JSON format](https://github.com/usnistgov/OSCAL/blob/feature-track-429-errors/json/schema/oscal_component-definition_schema.json) for this [model](/concepts/layer/implementation/component-definition/). Each entry in the index lists all uses of the given property in the format, which is linked to the corresponding entry in the [JSON Format Reference](../json-reference/). Each entry also lists the formal name for the definition which is linked to the corresponding JSON definition in the [JSON Format Metaschema Reference](../json-definitions/).
 
 <!-- DO NOT REMOVE. Generated text below -->
 {{< rawhtml >}}
