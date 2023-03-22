@@ -28,7 +28,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Generate CI Documentation
-        uses: Compton-NIST/Inspector@e5536334e7ad3a8e01f6586196da6a33bef9fec8
+        uses: Compton-NIST/Inspector@a8ed2955bea76012de6ddc6672c172abe34c46db
         with:
           artifact_name: docs_ci
           output_path: docs_ci
