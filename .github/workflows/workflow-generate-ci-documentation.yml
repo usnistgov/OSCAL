@@ -1,5 +1,11 @@
 name: Generate CI Documentation
+
 on:
+  push:
+    branches:
+      - "feature-*"
+    paths:
+      - .github/workflows/**
   workflow_call:
     inputs:
       commit_resources:
@@ -23,15 +29,16 @@ on:
         required: true
         default: false
         type: boolean
+
 jobs:
   update_ci_documentation:
     runs-on: ubuntu-20.04
     steps:
       - name: Generate CI Documentation
-        uses: Compton-NIST/Inspector@a8ed2955bea76012de6ddc6672c172abe34c46db
+        uses: Compton-NIST/Inspector@v1.2
         with:
           artifact_name: docs_ci
-          output_path: docs_ci
+          output_path: build/ci-cd/docs
           file_prefix: OSCAL
           markdown_name: README.md
       - name: Commit Documentation Result (Documents and Diagrams)
@@ -55,7 +62,6 @@ jobs:
       - name: Check out the repository
         uses: actions/checkout@v3
       - name: Create Pull Request with Updates
-        run: |
-          gh pr create -B main -H auto-ci-docs-update --title 'Update CI Documentation and Diagrams' --body 'Automated update from workflow-generate-ci-documentation workflow.'
+        run: gh pr create -B main -H auto-ci-docs-update --title 'Update CI Documentation and Diagrams' --body "Automated update from workflow-generate-ci-documentation workflow, due to workflow file changes."
         env:
           GITHUB_TOKEN: ${{ secrets.COMMIT_TOKEN }}
