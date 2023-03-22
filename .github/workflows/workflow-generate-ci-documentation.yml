@@ -28,15 +28,12 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Generate CI Documentation
-        uses: Compton-NIST/Inspector@a5e3872313458aac125681c7f4d3f2ff2ef6528e
+        uses: Compton-NIST/Inspector@e5536334e7ad3a8e01f6586196da6a33bef9fec8
         with:
           artifact_name: docs_ci
-          output_path: build/ci-cd
+          output_path: docs_ci
           file_prefix: OSCAL
-      - name: Make Overview the README.md for the directory.
-        run: |
-          cp docs_ci/OSCAL.workflows.md docs_ci/README.md
-          rm -f docs_ci/OSCAL.workflows.md
+          markdown_name: README.md
       - name: Commit Documentation Result (Documents and Diagrams)
         if: github.event.inputs.commit_resources == 'true' || inputs.commit_resources == true
         uses: stefanzweifel/git-auto-commit-action@3ea6ae190baf489ba007f7c92608f33ce20ef04a
