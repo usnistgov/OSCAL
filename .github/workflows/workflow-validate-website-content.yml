@@ -23,11 +23,11 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
     - name: Checkout Latest
-      uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c
+      uses: actions/checkout@8f4b7f84864484a7bf31766abe9204da3cbe65b3
       with:
         fetch-depth: 0 # this ensures that the tag and commit history are available
     - name: Checkout git ref of published website content
-      uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c
+      uses: actions/checkout@8f4b7f84864484a7bf31766abe9204da3cbe65b3
       with:
         ref: ${{ inputs.site_git_ref }}
         path: ${{ inputs.site_git_ref_path }}

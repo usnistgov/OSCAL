@@ -36,7 +36,7 @@ jobs:
     # use this for builds triggered from the UI on protected branches
     - name: Checkout Latest (using COMMIT_TOKEN)
       if: github.event_name == 'workflow_dispatch' && github.event.inputs.commit_resources == 'true'
-      uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c
+      uses: actions/checkout@8f4b7f84864484a7bf31766abe9204da3cbe65b3
       with:
         path: ${{ env.CHECKOUT_PATH }}
         token: ${{ secrets.COMMIT_TOKEN }}
@@ -45,7 +45,7 @@ jobs:
     # use this for builds triggered from other workflows on protected branches
     - name: Checkout Latest (using access_token)
       if: github.event_name == 'push' && inputs.commit_resources == true
-      uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c
+      uses: actions/checkout@8f4b7f84864484a7bf31766abe9204da3cbe65b3
       with:
         path: ${{ env.CHECKOUT_PATH }}
         token: ${{ secrets.access_token }}
@@ -54,7 +54,7 @@ jobs:
     # use this for overything else (i.e., pull requests) where publication is not needed
     - name: Checkout Latest
       if: steps.checkout_latest_workflow.conclusion == 'skipped' && steps.checkout_latest_push.conclusion == 'skipped'
-      uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c
+      uses: actions/checkout@8f4b7f84864484a7bf31766abe9204da3cbe65b3
       with:
         path: ${{ env.CHECKOUT_PATH }}
         submodules: recursive

@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
     # use this for pulls where checkout is anonymous
-    - uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c
+    - uses: actions/checkout@8f4b7f84864484a7bf31766abe9204da3cbe65b3
       with:
         submodules: recursive
     # Setup runtime environment
