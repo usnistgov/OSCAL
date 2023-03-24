@@ -11,8 +11,8 @@ sidenav:
   debug: false
 oscal:
     type: "branch"
-    remote: "usnistgov/OSCAL"
-    branch: "develop"
+    remote: "Compton-NIST/OSCAL"
+    branch: "feature-ci-diagrams-issue-1678"
     revision: "develop"
     version: "develop"
 ---

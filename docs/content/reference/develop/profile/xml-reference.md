@@ -17,15 +17,9 @@ The following is the XML format reference for this [model](/concepts/layer/contr
 {{< rawhtml >}}
 <div xmlns="http://www.w3.org/1999/xhtml" class="xml-reference">
    <p><span class="usa-tag">XML namespace</span> <code>http://csrc.nist.gov/ns/oscal/1.0</code></p>
-   <div class="remarks">In OSCAL a profile represents a set of selected controls from one or more control
-      catalogs. Such a set of controls can be referenced by an OSCAL system security plan
-      (SSP) to establish a control baseline. This effective set of controls is produced
-      from an OSCAL profile using a deterministic, predictable process called profile resolution.A
-      profile references one or more OSCAL catalogs or profiles to import controls for control
-      selection and tailoring. A profile can also describe how a resulting catalog is structured.
-      When the profile is resolved, these selections and modifications are processed to
-      produce a resulting OSCAL catalog.OSCAL profiles have uses beyond establishing control
-      baselines, such as documentation generation or as reference tables for validations.</div>
+   <div class="remarks">A profile designates a selection and configuration of controls from one or more catalogs,
+      along with a series of operations over them. The topmost element in the OSCAL profile
+      XML schema is profile.</div>
    <div class="model-entry definition assembly">
       <div class="definition-header">
          <h1 id="/profile" class="toc1 name">profile</h1>
@@ -34,7 +28,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
          <p class="formal-name">Profile</p>
       </div>
       <div class="body">
-         <p class="description"><span class="usa-tag">Description</span> Each OSCAL profile is defined by a <code>profile</code> element.</p>
+         <p class="description"><span class="usa-tag">Description</span> Each OSCAL profile is defined by a Profile element</p>
          <div class="remarks-group usa-prose">
             <details open="open">
                <summary class="subhead">Remarks</summary>
@@ -45,6 +39,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                      application, and even adjust the representation of controls as given in and by a catalog.
                      They may also serve as sources for further modification in and by other profiles,
                      that import them.</p>
+                  <p>See the <a href="/concepts/identifier-use/">Concepts - Identifier Use</a> page for additional information regarding this identifier's uniqueness and scope.</p>
                </div>
             </details>
          </div>
@@ -59,7 +54,9 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                   <p class="formal-name">Profile Universally Unique Identifier</p>
                </div>
                <div class="body">
-                  <p class="description"><span class="usa-tag">Description</span> Provides a globally unique means to identify a given profile instance.</p>
+                  <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this profile elsewhere in <a href="/concepts/identifier-use/#profile-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>profile</code> can be used to reference the data item locally or globally (e.g., in an imported
+                     OSCAL instance).This identifier should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same profile across revisions
+                     of the document.</p>
                </div>
             </div>
          </details>
@@ -71,34 +68,12 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                   <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-profile/profile/metadata">(global definition)</a></p>
                   <p class="occurrence">[1]</p>
                   <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata">Switch to JSON</a></div>
-                  <p class="formal-name">Document Metadata</p>
+                  <p class="formal-name">Publication metadata</p>
                </div>
                <div class="body">
-                  <p class="description"><span class="usa-tag">Description</span> Provides information about the containing document, and defines concepts that are
-                     shared across the document.</p>
-                  <div class="remarks-group usa-prose">
-                     <details open="open">
-                        <summary class="subhead">Remarks</summary>
-                        <div class="remarks">
-                           <p>All OSCAL documents use the same metadata structure, that provides a consistent way
-                              of expressing OSCAL document metadata across all OSCAL models. The metadata section
-                              also includes declarations of individual objects (i.e., roles, location, parties)
-                              that may be referenced within and across linked OSCAL documents.</p>
-                           <p>The metadata in an OSCAL document has few required fields, representing only the bare
-                              minimum data needed to differentiate one instance from another. Tools and users creating
-                              OSCAL documents may choose to use any of the optional fields, as well as extension
-                              mechanisms (e.g., properties, links) to go beyond this minimum to suit their use cases.</p>
-                           <p>A publisher of OSCAL content can use the <code>published</code>, <code>last-modified</code>, and <code>version</code> fields to establish information about an individual in a sequence of successive revisions
-                              of a given OSCAL-based publication. The metadata for a previous revision can be represented
-                              as a <code>revision</code> within this object. Links may also be provided using the <code>predecessor-version</code> and <code>successor-version</code> link relations to provide for direct access to the related resource. These relations
-                              can be provided as a link child of this object or as <code>link</code> within a given <code>revision</code>.</p>
-                           <p>A <code>responsible-party</code> entry in this context refers to roles and parties that have responsibility relative
-                              to the production, review, publication, and use of the containing document.</p>
-                        </div>
-                     </details>
-                  </div>
+                  <p class="description"><span class="usa-tag">Description</span> Provides information about the publication and availability of the containing document.</p>
                   <details class="constraints" open="open">
-                     <summary>Constraints (14)</summary>
+                     <summary>Constraints (13)</summary>
                      <div class="constraint">
                         <p><span class="usa-tag">index</span>  for <code class="path">role</code> an index <code>index-metadata-role-ids</code> shall list values returned by targets <code>role</code> using keys constructed of key field(s) <code>@id</code></p>
                      </div>
@@ -134,17 +109,15 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                         <p>The value <b>may be locally defined</b>, or one of the following:</p>
                         <ul>
                            
-                           <li><strong>creator</strong>: Indicates the person or organization that created this content.</li>
+                           <li><strong>creator</strong>: Indicates the organization that created this content.</li>
                            
-                           <li><strong>prepared-by</strong>: Indicates the person or organization that prepared this content.</li>
+                           <li><strong>prepared-by</strong>: Indicates the organization that prepared this content.</li>
                            
-                           <li><strong>prepared-for</strong>: Indicates the person or organization for which this content was created.</li>
+                           <li><strong>prepared-for</strong>: Indicates the organization for which this content was created.</li>
                            
-                           <li><strong>content-approver</strong>: Indicates the person or organization responsible for all content represented in
-                              the "document".</li>
+                           <li><strong>content-approver</strong>: Indicates the organization responsible for all content represented in the "document".</li>
                            
-                           <li><strong>contact</strong>: Indicates the person or organization to contact for questions or support related
-                              to this content.</li>
+                           <li><strong>contact</strong>: Indicates the organization to contact for questions or support related to this content.</li>
                            </ul>
                      </div>
                      <div class="constraint">
@@ -161,11 +134,10 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                         <p>The value <b>may be locally defined</b>, or one of the following:</p>
                         <ul>
                            
-                           <li><strong>canonical</strong>: The link identifies the authoritative location for this resource. Defined by RFC
-                              6596.</li>
+                           <li><strong>canonical</strong>: The link identifies the authoritative location for this file. Defined by RFC 6596.</li>
                            
-                           <li><strong>alternate</strong>: The link identifies an alternative location or format for this resource. Defined
-                              by the HTML Living Standard</li>
+                           <li><strong>alternate</strong>: The link identifies an alternative location or format for this file. Defined by
+                              the HTML Living Standard</li>
                            
                            <li><strong>latest-version</strong>: This link identifies a resource containing the latest version in the version history.
                               Defined by RFC 5829.</li>
@@ -177,12 +149,9 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               history. Defined by RFC 5829.</li>
                            </ul>
                      </div>
-                     <div class="constraint">
-                        <p><span class="usa-tag">is unique</span>  for <code class="path">document-id</code>: any target value must be unique (i.e., occur only once)</p>
-                     </div>
                   </details>
                   <details class="properties elements" open="open">
-                     <summary>Elements (15)</summary>
+                     <summary>Elements (14)</summary>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
                            <h3 id="/profile/metadata/title" class="toc3 name">title</h3>
@@ -204,16 +173,20 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                            <p class="formal-name">Publication Timestamp</p>
                         </div>
                         <div class="body">
-                           <p class="description"><span class="usa-tag">Description</span> The date and time the document was last made available.</p>
+                           <p class="description"><span class="usa-tag">Description</span> The date and time the document was published. The date-time value must be formatted
+                              according to <a href="https://tools.ietf.org/html/rfc3339">RFC 3339</a> with full time and time zone included.</p>
                            <div class="remarks-group usa-prose">
                               <details open="open">
                                  <summary class="subhead">Remarks</summary>
                                  <div class="remarks">
-                                    <p>Typically, this date value will be machine-generated at the time the containing document
-                                       is published.</p>
-                                    <p>In some cases, an OSCAL document may be derived from some source material provided
-                                       in a different format. In such a case, the <code>published</code> value should indicate when the OSCAL document instance was last published, not the
-                                       source material.</p>
+                                    <p>This value represents the point in time when the OSCAL document was published. Typically,
+                                       this date value will be machine generated at the time the containing document is published.</p>
+                                    <p>In some cases, an OSCAL document may be derived from some source material in a different
+                                       format. In such a case, the <code>published</code> value should indicate when the OSCAL document was published, not the source material.
+                                       Where necessary, the publication date of the original source material can be captured
+                                       as a named property or custom metadata construct.</p>
+                                    <p>A publisher of OSCAL content can use this data point along with its siblings <code>last-modified</code> and <code>version</code> to establish a sequence of successive revisions of a given OSCAL-based publication.
+                                       The metadata for previous revisions can be represented as a <code>revision</code> in this object.</p>
                                  </div>
                               </details>
                            </div>
@@ -228,25 +201,20 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                            <p class="formal-name">Last Modified Timestamp</p>
                         </div>
                         <div class="body">
-                           <p class="description"><span class="usa-tag">Description</span> The date and time the document was last stored for later retrieval.</p>
+                           <p class="description"><span class="usa-tag">Description</span> The date and time the document was last modified. The date-time value must be formatted
+                              according to <a href="https://tools.ietf.org/html/rfc3339">RFC 3339</a> with full time and time zone included.</p>
                            <div class="remarks-group usa-prose">
                               <details open="open">
                                  <summary class="subhead">Remarks</summary>
                                  <div class="remarks">
                                     <p>This value represents the point in time when the OSCAL document was last updated,
                                        or at the point of creation the creation date. Typically, this date value will be
-                                       machine generated at time of creation or modification. Ideally, this field will be
-                                       managed by the editing tool or service used to make modifications when storing the
-                                       modified document.</p>
-                                    <p>The intent of the last modified timestamp is to distinguish between significant change
-                                       milestones when the document may be accessed by multiple entities. This allows a given
-                                       entity to differentiate between mutiple document states at specific points in time.
-                                       It is possible to make multiple modifications to the document without storing these
-                                       changes. In such a case, the last modified timestamp might not be updated until the
-                                       document is finally stored.</p>
+                                       machine generated at time of creation or modification.</p>
                                     <p>In some cases, an OSCAL document may be derived from some source material in a different
-                                       format. In such a case, the <code>last-modified</code> value should indicate the last modification time of the OSCAL document instance,
-                                       not the source material.</p>
+                                       format. In such a case, the <code>last-modified</code> value should indicate the modification time of the OSCAL document, not the source
+                                       material.</p>
+                                    <p>A publisher of OSCAL content can use this data point along with its siblings <code>published</code> and <code>version</code> to establish a sequence of successive revisions of a given OSCAL-based publication.
+                                       The metadata for previous revisions can be represented as a <code>revision</code> in this object.</p>
                                  </div>
                               </details>
                            </div>
@@ -261,18 +229,19 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                            <p class="formal-name">Document Version</p>
                         </div>
                         <div class="body">
-                           <p class="description"><span class="usa-tag">Description</span> Used to distinguish a specific revision of an OSCAL document from other previous
-                              and future versions.</p>
+                           <p class="description"><span class="usa-tag">Description</span> A string used to distinguish the current version of the document from other previous
+                              (and future) versions.</p>
                            <div class="remarks-group usa-prose">
                               <details open="open">
                                  <summary class="subhead">Remarks</summary>
                                  <div class="remarks">
-                                    <p>A version may be a release number, sequence number, date, or other identifier sufficient
-                                       to distinguish between different document revisions.</p>
-                                    <p>While not required, it is recommended that OSCAL content authors use <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a> as the version format. This allows for the easy identification of a version tree
-                                       consisting of major, minor, and patch numbers.</p>
-                                    <p>A version is typically set by the document owner or by the tool used to maintain the
-                                       content.</p>
+                                    <p>A version string may be a release number, sequence number, date, or other identifier
+                                       suffcient to distinguish between different document versions. This version is typically
+                                       set by the document owner or by the tool used to maintain the content.</p>
+                                    <p>While not required, it is recommended that OSCAL content authors use <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a> as a format for version strings. This allows for the easy identification of a version
+                                       tree consisting of major, minor, and patch numbers.</p>
+                                    <p>A publisher of OSCAL content can use this data point along with its siblings <code>published</code> and <code>last-modified</code> to establish a sequence of successive revisions of a given OSCAL-based publication.
+                                       The metadata for previous revisions can be represented as a <code>revision</code> in this object.</p>
                                  </div>
                               </details>
                            </div>
@@ -284,20 +253,17 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                            <p class="type" id="/profile/metadata/oscal-version/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                            <p class="occurrence">[1]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/oscal-version">Switch to JSON</a></div>
-                           <p class="formal-name">OSCAL Version</p>
+                           <p class="formal-name">OSCAL version</p>
                         </div>
                         <div class="body">
-                           <p class="description"><span class="usa-tag">Description</span> The OSCAL model version the document was authored against and will conform to as
-                              valid.</p>
+                           <p class="description"><span class="usa-tag">Description</span> The OSCAL model version the document was authored against.</p>
                            <div class="remarks-group usa-prose">
                               <details open="open">
                                  <summary class="subhead">Remarks</summary>
                                  <div class="remarks">
-                                    <p>Indicates the version of the OSCAL model to which the document conforms, for example
-                                       <q>1.1.0</q> or <q>1.0.0-milestone1</q>. That can be used as a hint for a tool indicating which version of the OSCAL XML
+                                    <p>Indicates the version of the OSCAL model to which this data set conforms, for example
+                                       <q>1.1.0</q> or <q>1.0.0-M1</q>. That can be used as a hint by a tool to indicate which version of the OSCAL XML
                                        or JSON schema to use for validation.</p>
-                                    <p>The OSCAL version serves a different purpose from the document version and is used
-                                       to represent a different concept. If both have the same value, this is coincidental.</p>
                                  </div>
                               </details>
                            </div>
@@ -322,14 +288,15 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <p class="formal-name">Revision History Entry</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> An entry in a sequential list of revisions to the containing document, expected to
-                                       be in reverse chronological order (i.e. latest first).</p>
+                                    <p class="description"><span class="usa-tag">Description</span> An entry in a sequential list of revisions to the containing document in reverse
+                                       chronological order (i.e., most recent previous revision first).</p>
                                     <div class="remarks-group usa-prose">
                                        <details open="open">
                                           <summary class="subhead">Remarks</summary>
                                           <div class="remarks">
-                                             <p>While <code>published</code>, <code>last-modified</code>, and <code>oscal-version</code> are not required, values for these entries should be provided if the information
-                                                is known. A <code>link</code> with a <code>rel</code> of <q>source</q> should be provided if the information is known.</p>
+                                             <p>While <code>published</code>, <code>last-modified</code>, <code>oscal-version</code>, and <code>version</code> are not required, values for these entries should be provided if the information
+                                                is known. For a revision entry to be considered valid, at least one of the following
+                                                items must be provided: <code>published</code>, <code>last-modified</code>, <code>version</code>, or a <code>link</code> with a <code>rel</code> of <q>source</q>.</p>
                                           </div>
                                        </details>
                                     </div>
@@ -340,20 +307,16 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                           <p>The value <b>may be locally defined</b>, or one of the following:</p>
                                           <ul>
                                              
-                                             <li><strong>canonical</strong>: The link identifies the authoritative location for this resource. Defined by RFC
-                                                6596.</li>
+                                             <li><strong>canonical</strong>: The link identifies the authoritative location for this file. Defined by RFC 6596.</li>
                                              
-                                             <li><strong>alternate</strong>: The link identifies an alternative location or format for this resource. Defined
-                                                by the HTML Living Standard</li>
+                                             <li><strong>alternate</strong>: The link identifies an alternative location or format for this file. Defined by
+                                                the HTML Living Standard</li>
                                              
                                              <li><strong>predecessor-version</strong>: This link identifies a resource containing the predecessor version in the version
                                                 history. Defined by  RFC 5829.</li>
                                              
                                              <li><strong>successor-version</strong>: This link identifies a resource containing the predecessor version in the version
                                                 history. Defined by RFC 5829.</li>
-                                             
-                                             <li><strong>version-history</strong>: This link identifies a resource containing the version history of this document.
-                                                Defined by RFC 5829.</li>
                                              </ul>
                                        </div>
                                     </details>
@@ -381,16 +344,20 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              <p class="formal-name">Publication Timestamp</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> The date and time the document was last made available.</p>
+                                             <p class="description"><span class="usa-tag">Description</span> The date and time the document was published. The date-time value must be formatted
+                                                according to <a href="https://tools.ietf.org/html/rfc3339">RFC 3339</a> with full time and time zone included.</p>
                                              <div class="remarks-group usa-prose">
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
                                                    <div class="remarks">
-                                                      <p>Typically, this date value will be machine-generated at the time the containing document
-                                                         is published.</p>
-                                                      <p>In some cases, an OSCAL document may be derived from some source material provided
-                                                         in a different format. In such a case, the <code>published</code> value should indicate when the OSCAL document instance was last published, not the
-                                                         source material.</p>
+                                                      <p>This value represents the point in time when the OSCAL document was published. Typically,
+                                                         this date value will be machine generated at the time the containing document is published.</p>
+                                                      <p>In some cases, an OSCAL document may be derived from some source material in a different
+                                                         format. In such a case, the <code>published</code> value should indicate when the OSCAL document was published, not the source material.
+                                                         Where necessary, the publication date of the original source material can be captured
+                                                         as a named property or custom metadata construct.</p>
+                                                      <p>A publisher of OSCAL content can use this data point along with its siblings <code>last-modified</code> and <code>version</code> to establish a sequence of successive revisions of a given OSCAL-based publication.
+                                                         The metadata for previous revisions can be represented as a <code>revision</code> in this object.</p>
                                                    </div>
                                                 </details>
                                              </div>
@@ -405,25 +372,20 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              <p class="formal-name">Last Modified Timestamp</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> The date and time the document was last stored for later retrieval.</p>
+                                             <p class="description"><span class="usa-tag">Description</span> The date and time the document was last modified. The date-time value must be formatted
+                                                according to <a href="https://tools.ietf.org/html/rfc3339">RFC 3339</a> with full time and time zone included.</p>
                                              <div class="remarks-group usa-prose">
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
                                                    <div class="remarks">
                                                       <p>This value represents the point in time when the OSCAL document was last updated,
                                                          or at the point of creation the creation date. Typically, this date value will be
-                                                         machine generated at time of creation or modification. Ideally, this field will be
-                                                         managed by the editing tool or service used to make modifications when storing the
-                                                         modified document.</p>
-                                                      <p>The intent of the last modified timestamp is to distinguish between significant change
-                                                         milestones when the document may be accessed by multiple entities. This allows a given
-                                                         entity to differentiate between mutiple document states at specific points in time.
-                                                         It is possible to make multiple modifications to the document without storing these
-                                                         changes. In such a case, the last modified timestamp might not be updated until the
-                                                         document is finally stored.</p>
+                                                         machine generated at time of creation or modification.</p>
                                                       <p>In some cases, an OSCAL document may be derived from some source material in a different
-                                                         format. In such a case, the <code>last-modified</code> value should indicate the last modification time of the OSCAL document instance,
-                                                         not the source material.</p>
+                                                         format. In such a case, the <code>last-modified</code> value should indicate the modification time of the OSCAL document, not the source
+                                                         material.</p>
+                                                      <p>A publisher of OSCAL content can use this data point along with its siblings <code>published</code> and <code>version</code> to establish a sequence of successive revisions of a given OSCAL-based publication.
+                                                         The metadata for previous revisions can be represented as a <code>revision</code> in this object.</p>
                                                    </div>
                                                 </details>
                                              </div>
@@ -438,18 +400,19 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              <p class="formal-name">Document Version</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> Used to distinguish a specific revision of an OSCAL document from other previous
-                                                and future versions.</p>
+                                             <p class="description"><span class="usa-tag">Description</span> A string used to distinguish the current version of the document from other previous
+                                                (and future) versions.</p>
                                              <div class="remarks-group usa-prose">
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
                                                    <div class="remarks">
-                                                      <p>A version may be a release number, sequence number, date, or other identifier sufficient
-                                                         to distinguish between different document revisions.</p>
-                                                      <p>While not required, it is recommended that OSCAL content authors use <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a> as the version format. This allows for the easy identification of a version tree
-                                                         consisting of major, minor, and patch numbers.</p>
-                                                      <p>A version is typically set by the document owner or by the tool used to maintain the
-                                                         content.</p>
+                                                      <p>A version string may be a release number, sequence number, date, or other identifier
+                                                         suffcient to distinguish between different document versions. This version is typically
+                                                         set by the document owner or by the tool used to maintain the content.</p>
+                                                      <p>While not required, it is recommended that OSCAL content authors use <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a> as a format for version strings. This allows for the easy identification of a version
+                                                         tree consisting of major, minor, and patch numbers.</p>
+                                                      <p>A publisher of OSCAL content can use this data point along with its siblings <code>published</code> and <code>last-modified</code> to establish a sequence of successive revisions of a given OSCAL-based publication.
+                                                         The metadata for previous revisions can be represented as a <code>revision</code> in this object.</p>
                                                    </div>
                                                 </details>
                                              </div>
@@ -461,20 +424,17 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              <p class="type" id="/profile/metadata/revisions/revision/oscal-version/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/revisions/oscal-version">Switch to JSON</a></div>
-                                             <p class="formal-name">OSCAL Version</p>
+                                             <p class="formal-name">OSCAL version</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> The OSCAL model version the document was authored against and will conform to as
-                                                valid.</p>
+                                             <p class="description"><span class="usa-tag">Description</span> The OSCAL model version the document was authored against.</p>
                                              <div class="remarks-group usa-prose">
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
                                                    <div class="remarks">
-                                                      <p>Indicates the version of the OSCAL model to which the document conforms, for example
-                                                         <q>1.1.0</q> or <q>1.0.0-milestone1</q>. That can be used as a hint for a tool indicating which version of the OSCAL XML
+                                                      <p>Indicates the version of the OSCAL model to which this data set conforms, for example
+                                                         <q>1.1.0</q> or <q>1.0.0-M1</q>. That can be used as a hint by a tool to indicate which version of the OSCAL XML
                                                          or JSON schema to use for validation.</p>
-                                                      <p>The OSCAL version serves a different purpose from the document version and is used
-                                                         to represent a different concept. If both have the same value, this is coincidental.</p>
                                                    </div>
                                                 </details>
                                              </div>
@@ -483,14 +443,15 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/profile/metadata/revisions/revision/prop" class="toc5 name">prop</h5>
-                                             <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/metadata/revisions/revision/prop">(global definition)</a></p>
+                                             <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/revision/prop">(global definition)</a></p>
                                              <p class="occurrence">[0 to ∞]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/revisions/props">Switch to JSON</a></div>
                                              <p class="formal-name">Property</p>
                                           </div>
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> An attribute, characteristic, or quality of the containing object expressed as a
-                                                namespace qualified name/value pair.</p>
+                                                namespace qualified name/value pair. The value of a property is a simple scalar value,
+                                                which may be expressed as a list of values.</p>
                                              <div class="remarks-group usa-prose">
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
@@ -508,21 +469,8 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                    </div>
                                                 </details>
                                              </div>
-                                             <details class="constraints" open="open">
-                                                <summary>Constraint (1)</summary>
-                                                <div class="constraint">
-                                                   <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
-                                                   <p>The value <b>must</b> be one of the following:</p>
-                                                   <ul>
-                                                      
-                                                      <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                         An optional class can be used to define the specific marking system used for the associated
-                                                         value.</li>
-                                                      </ul>
-                                                </div>
-                                             </details>
                                              <details class="properties attributes" open="open">
-                                                <summary>Attributes (6)</summary>
+                                                <summary>Attributes (5)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/profile/metadata/revisions/revision/prop/@name" class="toc6 name">name</h6>
@@ -532,8 +480,21 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                       <p class="formal-name">Property Name</p>
                                                    </div>
                                                    <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
-                                                         characteristic, or quality of the property's containing object.</p>
+                                                      <p class="description"><span class="usa-tag">Description</span> A textual label that uniquely identifies a specific attribute, characteristic, or
+                                                         quality of the property's containing object.</p>
+                                                      <details class="constraints" open="open">
+                                                         <summary>Constraint (1)</summary>
+                                                         <div class="constraint">
+                                                            <p><span class="usa-tag">allowed value</span></p>
+                                                            <p>The value <b>may be locally defined</b>, or the following:</p>
+                                                            <ul>
+                                                               
+                                                               <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                                  An optional class can be used to define the specific marking system used for the associated
+                                                                  value.</li>
+                                                               </ul>
+                                                         </div>
+                                                      </details>
                                                    </div>
                                                 </div>
                                                 <div class="model-entry definition assembly">
@@ -545,7 +506,8 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                       <p class="formal-name">Property Universally Unique Identifier</p>
                                                    </div>
                                                    <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> A unique identifier for a property.</p>
+                                                      <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined property elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                                                         of the document.</p>
                                                    </div>
                                                 </div>
                                                 <div class="model-entry definition assembly">
@@ -563,7 +525,11 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                          <details open="open">
                                                             <summary class="subhead">Remarks</summary>
                                                             <div class="remarks">
-                                                               <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                               <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
+                                                                  names and associated values used in a property. This allows the semantics associated
+                                                                  with a given name/value pair to be defined on an organization-by-organization basis.</p>
+                                                               <p>An organization MUST use a URI that they have control over. e.g., a domain registered
+                                                                  to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                                <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                             </div>
                                                          </details>
@@ -591,36 +557,14 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                       <p class="formal-name">Property Class</p>
                                                    </div>
                                                    <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> A textual label that provides a sub-type or characterization of the property's <code>name</code>.</p>
+                                                      <p class="description"><span class="usa-tag">Description</span> A textual label that provides a sub-type or characterization of the property's <code>name</code>. This can be used to further distinguish or discriminate between the semantics of
+                                                         multiple properties of the same object with the same <code>name</code> and <code>ns</code>. </p>
                                                       <div class="remarks-group usa-prose">
                                                          <details open="open">
                                                             <summary class="subhead">Remarks</summary>
                                                             <div class="remarks">
-                                                               <p>This can be used to further distinguish or discriminate between the semantics of multiple
-                                                                  properties of the same object with the same <code>name</code> and <code>ns</code>, or to group properties into categories.</p>
                                                                <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                                  a specific <code>class</code> value. It is available for grouping, but unlike <code>group</code> is not expected specifically to designate any group membership as such.</p>
-                                                            </div>
-                                                         </details>
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                                <div class="model-entry definition assembly">
-                                                   <div class="instance-header">
-                                                      <h6 id="/profile/metadata/revisions/revision/prop/@group" class="toc6 name">group</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                                                      <p class="occurrence">[0 or 1]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/revisions/props/group">Switch to JSON</a></div>
-                                                      <p class="formal-name">Property Group</p>
-                                                   </div>
-                                                   <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
-                                                      <div class="remarks-group usa-prose">
-                                                         <details open="open">
-                                                            <summary class="subhead">Remarks</summary>
-                                                            <div class="remarks">
-                                                               <p>Different sets of properties may relate to separate contexts. Declare a group on a
-                                                                  property to associate it with one or more other properties in a given context.</p>
+                                                                  a specific <code>class</code> value.</p>
                                                             </div>
                                                          </details>
                                                       </div>
@@ -638,16 +582,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                       <p class="formal-name">Remarks</p>
                                                    </div>
                                                    <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> Additional commentary about the containing object.</p>
-                                                      <div class="remarks-group usa-prose">
-                                                         <details open="open">
-                                                            <summary class="subhead">Remarks</summary>
-                                                            <div class="remarks">
-                                                               <p>The <code>remarks</code> field SHOULD not be used to store arbitrary data. Instead, a <code>prop</code> or <code>link</code> should be used to annotate or reference any additional data not formally supported
-                                                                  by OSCAL.</p>
-                                                            </div>
-                                                         </details>
-                                                      </div>
+                                                      <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
                                                       <details class="properties elements" open="open">
                                                          <summary>Element (0+)</summary>
                                                          <div class="model-entry definition field">
@@ -669,14 +604,13 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/profile/metadata/revisions/revision/link" class="toc5 name">link</h5>
-                                             <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/metadata/revisions/revision/link">(global definition)</a></p>
+                                             <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/revision/link">(global definition)</a></p>
                                              <p class="occurrence">[0 to ∞]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/revisions/links">Switch to JSON</a></div>
                                              <p class="formal-name">Link</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> A reference to a local or remote resource, that has a specific relation to the containing
-                                                object.</p>
+                                             <p class="description"><span class="usa-tag">Description</span> A reference to a local or remote resource</p>
                                              <div class="remarks-group usa-prose">
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
@@ -688,7 +622,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 </details>
                                              </div>
                                              <details class="constraints" open="open">
-                                                <summary>Constraints (4)</summary>
+                                                <summary>Constraints (3)</summary>
                                                 <div class="constraint">
                                                    <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                                 </div>
@@ -698,12 +632,9 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 <div class="constraint">
                                                    <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                                 </div>
-                                                <div class="constraint">
-                                                   <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
-                                                </div>
                                              </details>
                                              <details class="properties attributes" open="open">
-                                                <summary>Attributes (4)</summary>
+                                                <summary>Attributes (3)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/profile/metadata/revisions/revision/link/@href" class="toc6 name">href</h6>
@@ -718,17 +649,13 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                          <details open="open">
                                                             <summary class="subhead">Remarks</summary>
                                                             <div class="remarks">
-                                                               <p>This value may be one of:</p>
-                                                               <ol>
-                                                                  
-                                                                  <li>an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
-                                                                  
-                                                                  <li>a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
-                                                                     document, or</li>
-                                                                  
-                                                                  <li>a bare URI fragment (i.e., `#uuid`) pointing to an OSCAL object by the objects identifier
-                                                                     (e.g., id, uuid) in this or an imported document (see <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>). The specific object type will differ based on the link relationship type.</li>
-                                                                  </ol>
+                                                               <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
+                                                                  that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
+                                                               <p>If a local reference using a fragment is used, this will be indicated by a fragment
+                                                                  "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
+                                                               <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
+                                                                  resource. A relative URI will be resolved relative to the location of the document
+                                                                  containing the link.</p>
                                                             </div>
                                                          </details>
                                                       </div>
@@ -740,11 +667,11 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                       <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/revisions/links/rel">Switch to JSON</a></div>
-                                                      <p class="formal-name">Link Relation Type</p>
+                                                      <p class="formal-name">Relation</p>
                                                    </div>
                                                    <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> Describes the type of relationship provided by the link's hypertext reference. This
-                                                         can be an indicator of the link's purpose.</p>
+                                                      <p class="description"><span class="usa-tag">Description</span> Describes the type of relationship provided by the link. This can be an indicator
+                                                         of the link's purpose.</p>
                                                       <details class="constraints" open="open">
                                                          <summary>Constraint (1)</summary>
                                                          <div class="constraint">
@@ -752,8 +679,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                             <p>The value <b>may be locally defined</b>, or the following:</p>
                                                             <ul>
                                                                
-                                                               <li><strong>reference</strong>: A generalized reference to a network resource (relative or absolute) or to a back-matter
-                                                                  resource by UUID expressed as a bare URI fragment.</li>
+                                                               <li><strong>reference</strong>: Reference</li>
                                                                </ul>
                                                          </div>
                                                       </details>
@@ -768,19 +694,15 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                       <p class="formal-name">Media Type</p>
                                                    </div>
                                                    <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> A label that indicates the nature of a resource, as a data serialization or format.</p>
+                                                      <p class="description"><span class="usa-tag">Description</span> Specifies a media type as defined by the Internet Assigned Numbers Authority (IANA)
+                                                         <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">Media Types Registry</a>. </p>
                                                       <div class="remarks-group usa-prose">
                                                          <details open="open">
                                                             <summary class="subhead">Remarks</summary>
                                                             <div class="remarks">
-                                                               <p> The Internet Assigned Numbers Authority (IANA) <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">Media Types Registry</a> defines a standardized set of media types, which may be used here.</p>
-                                                               <p>The <code>application/oscal+xml</code>, <code>application/oscal+json</code> or <code>application/oscal+yaml</code> media types SHOULD be used when referencing OSCAL XML, JSON, or YAML resources respectively.</p>
-                                                               <p>**Note: There is no official media type for YAML at this time.** OSCAL documents should
-                                                                  specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name
+                                                               <p>The IANA Media Types Registry should be used, but currently there is no official media
+                                                                  type for YAML. OSCAL documents should specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name
                                                                   suffix, per <a href="https://www.rfc-editor.org/rfc/rfc6838.html#section-4.2.8">RFC 6838 Section 4.2.8</a>.</p>
-                                                               <p>Some earlier OSCAL content incorporated the model into the media type. For example:
-                                                                  <code>application/oscal.catalog+xml</code>. This practice SHOULD be avoided, since the OSCAL model can be detected by parsing
-                                                                  the initial content of the referenced resource.</p>
                                                             </div>
                                                             <div class="remarks">
                                                                <p>The <code>media-type</code> provides a hint about the content model of the referenced resource. A valid entry
@@ -788,18 +710,6 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                             </div>
                                                          </details>
                                                       </div>
-                                                   </div>
-                                                </div>
-                                                <div class="model-entry definition assembly">
-                                                   <div class="instance-header">
-                                                      <h6 id="/profile/metadata/revisions/revision/link/@resource-fragment" class="toc6 name">resource-fragment</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#string">string</a></p>
-                                                      <p class="occurrence">[0 or 1]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/revisions/links/resource-fragment">Switch to JSON</a></div>
-                                                      <p class="formal-name">Resource Fragment</p>
-                                                   </div>
-                                                   <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                                    </div>
                                                 </div>
                                              </details>
@@ -830,16 +740,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              <p class="formal-name">Remarks</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> Additional commentary about the containing object.</p>
-                                             <div class="remarks-group usa-prose">
-                                                <details open="open">
-                                                   <summary class="subhead">Remarks</summary>
-                                                   <div class="remarks">
-                                                      <p>The <code>remarks</code> field SHOULD not be used to store arbitrary data. Instead, a <code>prop</code> or <code>link</code> should be used to annotate or reference any additional data not formally supported
-                                                         by OSCAL.</p>
-                                                   </div>
-                                                </details>
-                                             </div>
+                                             <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
                                              <details class="properties elements" open="open">
                                                 <summary>Element (0+)</summary>
                                                 <div class="model-entry definition field">
@@ -870,21 +771,19 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                            <p class="formal-name">Document Identifier</p>
                         </div>
                         <div class="body">
-                           <p class="description"><span class="usa-tag">Description</span> A document identifier qualified by an identifier <code>scheme</code>.</p>
+                           <p class="description"><span class="usa-tag">Description</span> A document identifier qualified by an identifier <code>scheme</code>. A document identifier provides a <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with a <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that is used for a group of documents that are to be treated as different versions
+                              of the same document. If this element does not appear, or if the value of this element
+                              is empty, the value of "document-id" is equal to the value of the "uuid" flag of the
+                              top-level root element.</p>
                            <div class="remarks-group usa-prose">
                               <details open="open">
                                  <summary class="subhead">Remarks</summary>
                                  <div class="remarks">
-                                    <p>A document identifier provides a <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with a <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that is used for a group of documents that are to be treated as different versions,
-                                       representations or digital surrogates of the same document.</p>
-                                    <p>A document identifier provides an additional data point for identifying a document
-                                       that can be assigned by a publisher or organization for purposes in a wider system,
-                                       such as a digital object identifier (DOI) or a local content management system identifier.</p>
-                                    <p>Use of a document identifier allows for document creators to associate sets of documents
-                                       that are related in some way by the same <code>document-id</code>.</p>
-                                    <p>An OSCAL document always has an implicit document identifier provided by the document's
-                                       UUID, defined by the <code>uuid</code> on the top-level object. Having a default UUID-based identifier ensures all documents
-                                       can be minimally identified when other document identifiers are not provided.</p>
+                                    <p>This element is optional, but it will always have a valid value, as if it is missing
+                                       the value of "document-id" is assumed to be equal to the UUID of the root. This requirement
+                                       allows for document creators to retroactively link an update to the original version,
+                                       by providing a document-id on the new document that is equal to the uuid of the original
+                                       document.</p>
                                  </div>
                               </details>
                            </div>
@@ -900,15 +799,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> Qualifies the kind of document identifier using a URI. If the scheme is not provided
-                                       the value of the element will be interpreted as a string of characters.</p>
-                                    <div class="remarks-group usa-prose">
-                                       <details open="open">
-                                          <summary class="subhead">Remarks</summary>
-                                          <div class="remarks">
-                                             <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
-                                          </div>
-                                       </details>
-                                    </div>
+                                       the value of the element will be interpreted as a string of characters. </p>
                                     <details class="constraints" open="open">
                                        <summary>Constraint (1)</summary>
                                        <div class="constraint">
@@ -936,7 +827,8 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                         </div>
                         <div class="body">
                            <p class="description"><span class="usa-tag">Description</span> An attribute, characteristic, or quality of the containing object expressed as a
-                              namespace qualified name/value pair.</p>
+                              namespace qualified name/value pair. The value of a property is a simple scalar value,
+                              which may be expressed as a list of values.</p>
                            <div class="remarks-group usa-prose">
                               <details open="open">
                                  <summary class="subhead">Remarks</summary>
@@ -954,21 +846,8 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                  </div>
                               </details>
                            </div>
-                           <details class="constraints" open="open">
-                              <summary>Constraint (1)</summary>
-                              <div class="constraint">
-                                 <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
-                                 <p>The value <b>must</b> be one of the following:</p>
-                                 <ul>
-                                    
-                                    <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                       An optional class can be used to define the specific marking system used for the associated
-                                       value.</li>
-                                    </ul>
-                              </div>
-                           </details>
                            <details class="properties attributes" open="open">
-                              <summary>Attributes (6)</summary>
+                              <summary>Attributes (5)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/profile/metadata/prop/@name" class="toc4 name">name</h4>
@@ -978,8 +857,21 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <p class="formal-name">Property Name</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
-                                       characteristic, or quality of the property's containing object.</p>
+                                    <p class="description"><span class="usa-tag">Description</span> A textual label that uniquely identifies a specific attribute, characteristic, or
+                                       quality of the property's containing object.</p>
+                                    <details class="constraints" open="open">
+                                       <summary>Constraint (1)</summary>
+                                       <div class="constraint">
+                                          <p><span class="usa-tag">allowed value</span></p>
+                                          <p>The value <b>may be locally defined</b>, or the following:</p>
+                                          <ul>
+                                             
+                                             <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                An optional class can be used to define the specific marking system used for the associated
+                                                value.</li>
+                                             </ul>
+                                       </div>
+                                    </details>
                                  </div>
                               </div>
                               <div class="model-entry definition assembly">
@@ -991,7 +883,8 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <p class="formal-name">Property Universally Unique Identifier</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> A unique identifier for a property.</p>
+                                    <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined property elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                                       of the document.</p>
                                  </div>
                               </div>
                               <div class="model-entry definition assembly">
@@ -1009,7 +902,11 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <details open="open">
                                           <summary class="subhead">Remarks</summary>
                                           <div class="remarks">
-                                             <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                             <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
+                                                names and associated values used in a property. This allows the semantics associated
+                                                with a given name/value pair to be defined on an organization-by-organization basis.</p>
+                                             <p>An organization MUST use a URI that they have control over. e.g., a domain registered
+                                                to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                              <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                           </div>
                                        </details>
@@ -1037,36 +934,14 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <p class="formal-name">Property Class</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> A textual label that provides a sub-type or characterization of the property's <code>name</code>.</p>
+                                    <p class="description"><span class="usa-tag">Description</span> A textual label that provides a sub-type or characterization of the property's <code>name</code>. This can be used to further distinguish or discriminate between the semantics of
+                                       multiple properties of the same object with the same <code>name</code> and <code>ns</code>. </p>
                                     <div class="remarks-group usa-prose">
                                        <details open="open">
                                           <summary class="subhead">Remarks</summary>
                                           <div class="remarks">
-                                             <p>This can be used to further distinguish or discriminate between the semantics of multiple
-                                                properties of the same object with the same <code>name</code> and <code>ns</code>, or to group properties into categories.</p>
                                              <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                a specific <code>class</code> value. It is available for grouping, but unlike <code>group</code> is not expected specifically to designate any group membership as such.</p>
-                                          </div>
-                                       </details>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="model-entry definition assembly">
-                                 <div class="instance-header">
-                                    <h4 id="/profile/metadata/prop/@group" class="toc4 name">group</h4>
-                                    <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                                    <p class="occurrence">[0 or 1]</p>
-                                    <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/props/group">Switch to JSON</a></div>
-                                    <p class="formal-name">Property Group</p>
-                                 </div>
-                                 <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
-                                    <div class="remarks-group usa-prose">
-                                       <details open="open">
-                                          <summary class="subhead">Remarks</summary>
-                                          <div class="remarks">
-                                             <p>Different sets of properties may relate to separate contexts. Declare a group on a
-                                                property to associate it with one or more other properties in a given context.</p>
+                                                a specific <code>class</code> value.</p>
                                           </div>
                                        </details>
                                     </div>
@@ -1084,16 +959,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <p class="formal-name">Remarks</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> Additional commentary about the containing object.</p>
-                                    <div class="remarks-group usa-prose">
-                                       <details open="open">
-                                          <summary class="subhead">Remarks</summary>
-                                          <div class="remarks">
-                                             <p>The <code>remarks</code> field SHOULD not be used to store arbitrary data. Instead, a <code>prop</code> or <code>link</code> should be used to annotate or reference any additional data not formally supported
-                                                by OSCAL.</p>
-                                          </div>
-                                       </details>
-                                    </div>
+                                    <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
                                     <details class="properties elements" open="open">
                                        <summary>Element (0+)</summary>
                                        <div class="model-entry definition field">
@@ -1121,8 +987,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                            <p class="formal-name">Link</p>
                         </div>
                         <div class="body">
-                           <p class="description"><span class="usa-tag">Description</span> A reference to a local or remote resource, that has a specific relation to the containing
-                              object.</p>
+                           <p class="description"><span class="usa-tag">Description</span> A reference to a local or remote resource</p>
                            <div class="remarks-group usa-prose">
                               <details open="open">
                                  <summary class="subhead">Remarks</summary>
@@ -1134,7 +999,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </details>
                            </div>
                            <details class="constraints" open="open">
-                              <summary>Constraints (4)</summary>
+                              <summary>Constraints (3)</summary>
                               <div class="constraint">
                                  <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                               </div>
@@ -1144,12 +1009,9 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               <div class="constraint">
                                  <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                               </div>
-                              <div class="constraint">
-                                 <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
-                              </div>
                            </details>
                            <details class="properties attributes" open="open">
-                              <summary>Attributes (4)</summary>
+                              <summary>Attributes (3)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/profile/metadata/link/@href" class="toc4 name">href</h4>
@@ -1164,17 +1026,13 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <details open="open">
                                           <summary class="subhead">Remarks</summary>
                                           <div class="remarks">
-                                             <p>This value may be one of:</p>
-                                             <ol>
-                                                
-                                                <li>an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
-                                                
-                                                <li>a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
-                                                   document, or</li>
-                                                
-                                                <li>a bare URI fragment (i.e., `#uuid`) pointing to an OSCAL object by the objects identifier
-                                                   (e.g., id, uuid) in this or an imported document (see <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>). The specific object type will differ based on the link relationship type.</li>
-                                                </ol>
+                                             <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
+                                                that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
+                                             <p>If a local reference using a fragment is used, this will be indicated by a fragment
+                                                "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
+                                             <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
+                                                resource. A relative URI will be resolved relative to the location of the document
+                                                containing the link.</p>
                                           </div>
                                        </details>
                                     </div>
@@ -1186,11 +1044,11 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/links/rel">Switch to JSON</a></div>
-                                    <p class="formal-name">Link Relation Type</p>
+                                    <p class="formal-name">Relation</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> Describes the type of relationship provided by the link's hypertext reference. This
-                                       can be an indicator of the link's purpose.</p>
+                                    <p class="description"><span class="usa-tag">Description</span> Describes the type of relationship provided by the link. This can be an indicator
+                                       of the link's purpose.</p>
                                     <details class="constraints" open="open">
                                        <summary>Constraint (1)</summary>
                                        <div class="constraint">
@@ -1198,8 +1056,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                           <p>The value <b>may be locally defined</b>, or the following:</p>
                                           <ul>
                                              
-                                             <li><strong>reference</strong>: A generalized reference to a network resource (relative or absolute) or to a back-matter
-                                                resource by UUID expressed as a bare URI fragment.</li>
+                                             <li><strong>reference</strong>: Reference</li>
                                              </ul>
                                        </div>
                                     </details>
@@ -1214,19 +1071,15 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <p class="formal-name">Media Type</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> A label that indicates the nature of a resource, as a data serialization or format.</p>
+                                    <p class="description"><span class="usa-tag">Description</span> Specifies a media type as defined by the Internet Assigned Numbers Authority (IANA)
+                                       <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">Media Types Registry</a>. </p>
                                     <div class="remarks-group usa-prose">
                                        <details open="open">
                                           <summary class="subhead">Remarks</summary>
                                           <div class="remarks">
-                                             <p> The Internet Assigned Numbers Authority (IANA) <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">Media Types Registry</a> defines a standardized set of media types, which may be used here.</p>
-                                             <p>The <code>application/oscal+xml</code>, <code>application/oscal+json</code> or <code>application/oscal+yaml</code> media types SHOULD be used when referencing OSCAL XML, JSON, or YAML resources respectively.</p>
-                                             <p>**Note: There is no official media type for YAML at this time.** OSCAL documents should
-                                                specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name
+                                             <p>The IANA Media Types Registry should be used, but currently there is no official media
+                                                type for YAML. OSCAL documents should specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name
                                                 suffix, per <a href="https://www.rfc-editor.org/rfc/rfc6838.html#section-4.2.8">RFC 6838 Section 4.2.8</a>.</p>
-                                             <p>Some earlier OSCAL content incorporated the model into the media type. For example:
-                                                <code>application/oscal.catalog+xml</code>. This practice SHOULD be avoided, since the OSCAL model can be detected by parsing
-                                                the initial content of the referenced resource.</p>
                                           </div>
                                           <div class="remarks">
                                              <p>The <code>media-type</code> provides a hint about the content model of the referenced resource. A valid entry
@@ -1234,18 +1087,6 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                           </div>
                                        </details>
                                     </div>
-                                 </div>
-                              </div>
-                              <div class="model-entry definition assembly">
-                                 <div class="instance-header">
-                                    <h4 id="/profile/metadata/link/@resource-fragment" class="toc4 name">resource-fragment</h4>
-                                    <p class="type"><a href="/reference/datatypes/#string">string</a></p>
-                                    <p class="occurrence">[0 or 1]</p>
-                                    <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/links/resource-fragment">Switch to JSON</a></div>
-                                    <p class="formal-name">Resource Fragment</p>
-                                 </div>
-                                 <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                  </div>
                               </div>
                            </details>
@@ -1270,13 +1111,13 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
                            <h3 id="/profile/metadata/role" class="toc3 name">role</h3>
-                           <p class="type">element<br /></p>
+                           <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/metadata/role">(global definition)</a></p>
                            <p class="occurrence">[0 to ∞]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/roles">Switch to JSON</a></div>
                            <p class="formal-name">Role</p>
                         </div>
                         <div class="body">
-                           <p class="description"><span class="usa-tag">Description</span> Defines a function, which might be assigned to a party in a specific situation.</p>
+                           <p class="description"><span class="usa-tag">Description</span> Defines a function assumed or expected to be assumed by a party in a specific situation.</p>
                            <div class="remarks-group usa-prose">
                               <details open="open">
                                  <summary class="subhead">Remarks</summary>
@@ -1302,7 +1143,10 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <p class="formal-name">Role Identifier</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> A unique identifier for the role.</p>
+                                    <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a>, <a href="/concepts/identifier-use/#locally-unique">locally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined role elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. When referenced from another OSCAL instance, the locally defined <em>ID</em> of the <code>Role</code> from the imported OSCAL instance must be referenced in the context of the containing
+                                       resource (e.g., import, import-component-definition, import-profile, import-ssp or
+                                       import-ap). This ID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                                       of the document.</p>
                                  </div>
                               </div>
                            </details>
@@ -1360,14 +1204,15 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/profile/metadata/role/prop" class="toc4 name">prop</h4>
-                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/metadata/role/prop">(global definition)</a></p>
+                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/role/prop">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/roles/props">Switch to JSON</a></div>
                                     <p class="formal-name">Property</p>
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> An attribute, characteristic, or quality of the containing object expressed as a
-                                       namespace qualified name/value pair.</p>
+                                       namespace qualified name/value pair. The value of a property is a simple scalar value,
+                                       which may be expressed as a list of values.</p>
                                     <div class="remarks-group usa-prose">
                                        <details open="open">
                                           <summary class="subhead">Remarks</summary>
@@ -1385,21 +1230,8 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                           </div>
                                        </details>
                                     </div>
-                                    <details class="constraints" open="open">
-                                       <summary>Constraint (1)</summary>
-                                       <div class="constraint">
-                                          <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
-                                          <p>The value <b>must</b> be one of the following:</p>
-                                          <ul>
-                                             
-                                             <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                An optional class can be used to define the specific marking system used for the associated
-                                                value.</li>
-                                             </ul>
-                                       </div>
-                                    </details>
                                     <details class="properties attributes" open="open">
-                                       <summary>Attributes (6)</summary>
+                                       <summary>Attributes (5)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/profile/metadata/role/prop/@name" class="toc5 name">name</h5>
@@ -1409,8 +1241,21 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              <p class="formal-name">Property Name</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
-                                                characteristic, or quality of the property's containing object.</p>
+                                             <p class="description"><span class="usa-tag">Description</span> A textual label that uniquely identifies a specific attribute, characteristic, or
+                                                quality of the property's containing object.</p>
+                                             <details class="constraints" open="open">
+                                                <summary>Constraint (1)</summary>
+                                                <div class="constraint">
+                                                   <p><span class="usa-tag">allowed value</span></p>
+                                                   <p>The value <b>may be locally defined</b>, or the following:</p>
+                                                   <ul>
+                                                      
+                                                      <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                         An optional class can be used to define the specific marking system used for the associated
+                                                         value.</li>
+                                                      </ul>
+                                                </div>
+                                             </details>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -1422,7 +1267,8 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              <p class="formal-name">Property Universally Unique Identifier</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> A unique identifier for a property.</p>
+                                             <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined property elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                                                of the document.</p>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -1440,7 +1286,11 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
                                                    <div class="remarks">
-                                                      <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                      <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
+                                                         names and associated values used in a property. This allows the semantics associated
+                                                         with a given name/value pair to be defined on an organization-by-organization basis.</p>
+                                                      <p>An organization MUST use a URI that they have control over. e.g., a domain registered
+                                                         to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                       <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                    </div>
                                                 </details>
@@ -1468,36 +1318,14 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              <p class="formal-name">Property Class</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> A textual label that provides a sub-type or characterization of the property's <code>name</code>.</p>
+                                             <p class="description"><span class="usa-tag">Description</span> A textual label that provides a sub-type or characterization of the property's <code>name</code>. This can be used to further distinguish or discriminate between the semantics of
+                                                multiple properties of the same object with the same <code>name</code> and <code>ns</code>. </p>
                                              <div class="remarks-group usa-prose">
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
                                                    <div class="remarks">
-                                                      <p>This can be used to further distinguish or discriminate between the semantics of multiple
-                                                         properties of the same object with the same <code>name</code> and <code>ns</code>, or to group properties into categories.</p>
                                                       <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                         a specific <code>class</code> value. It is available for grouping, but unlike <code>group</code> is not expected specifically to designate any group membership as such.</p>
-                                                   </div>
-                                                </details>
-                                             </div>
-                                          </div>
-                                       </div>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h5 id="/profile/metadata/role/prop/@group" class="toc5 name">group</h5>
-                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                                             <p class="occurrence">[0 or 1]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/roles/props/group">Switch to JSON</a></div>
-                                             <p class="formal-name">Property Group</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
-                                             <div class="remarks-group usa-prose">
-                                                <details open="open">
-                                                   <summary class="subhead">Remarks</summary>
-                                                   <div class="remarks">
-                                                      <p>Different sets of properties may relate to separate contexts. Declare a group on a
-                                                         property to associate it with one or more other properties in a given context.</p>
+                                                         a specific <code>class</code> value.</p>
                                                    </div>
                                                 </details>
                                              </div>
@@ -1515,16 +1343,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              <p class="formal-name">Remarks</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> Additional commentary about the containing object.</p>
-                                             <div class="remarks-group usa-prose">
-                                                <details open="open">
-                                                   <summary class="subhead">Remarks</summary>
-                                                   <div class="remarks">
-                                                      <p>The <code>remarks</code> field SHOULD not be used to store arbitrary data. Instead, a <code>prop</code> or <code>link</code> should be used to annotate or reference any additional data not formally supported
-                                                         by OSCAL.</p>
-                                                   </div>
-                                                </details>
-                                             </div>
+                                             <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
                                              <details class="properties elements" open="open">
                                                 <summary>Element (0+)</summary>
                                                 <div class="model-entry definition field">
@@ -1546,14 +1365,13 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/profile/metadata/role/link" class="toc4 name">link</h4>
-                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/metadata/role/link">(global definition)</a></p>
+                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/role/link">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/roles/links">Switch to JSON</a></div>
                                     <p class="formal-name">Link</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> A reference to a local or remote resource, that has a specific relation to the containing
-                                       object.</p>
+                                    <p class="description"><span class="usa-tag">Description</span> A reference to a local or remote resource</p>
                                     <div class="remarks-group usa-prose">
                                        <details open="open">
                                           <summary class="subhead">Remarks</summary>
@@ -1565,7 +1383,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </details>
                                     </div>
                                     <details class="constraints" open="open">
-                                       <summary>Constraints (4)</summary>
+                                       <summary>Constraints (3)</summary>
                                        <div class="constraint">
                                           <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                        </div>
@@ -1575,12 +1393,9 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <div class="constraint">
                                           <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                        </div>
-                                       <div class="constraint">
-                                          <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
-                                       </div>
                                     </details>
                                     <details class="properties attributes" open="open">
-                                       <summary>Attributes (4)</summary>
+                                       <summary>Attributes (3)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/profile/metadata/role/link/@href" class="toc5 name">href</h5>
@@ -1595,17 +1410,13 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
                                                    <div class="remarks">
-                                                      <p>This value may be one of:</p>
-                                                      <ol>
-                                                         
-                                                         <li>an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
-                                                         
-                                                         <li>a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
-                                                            document, or</li>
-                                                         
-                                                         <li>a bare URI fragment (i.e., `#uuid`) pointing to an OSCAL object by the objects identifier
-                                                            (e.g., id, uuid) in this or an imported document (see <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>). The specific object type will differ based on the link relationship type.</li>
-                                                         </ol>
+                                                      <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
+                                                         that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
+                                                      <p>If a local reference using a fragment is used, this will be indicated by a fragment
+                                                         "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
+                                                      <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
+                                                         resource. A relative URI will be resolved relative to the location of the document
+                                                         containing the link.</p>
                                                    </div>
                                                 </details>
                                              </div>
@@ -1617,11 +1428,11 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/roles/links/rel">Switch to JSON</a></div>
-                                             <p class="formal-name">Link Relation Type</p>
+                                             <p class="formal-name">Relation</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> Describes the type of relationship provided by the link's hypertext reference. This
-                                                can be an indicator of the link's purpose.</p>
+                                             <p class="description"><span class="usa-tag">Description</span> Describes the type of relationship provided by the link. This can be an indicator
+                                                of the link's purpose.</p>
                                              <details class="constraints" open="open">
                                                 <summary>Constraint (1)</summary>
                                                 <div class="constraint">
@@ -1629,8 +1440,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                    <p>The value <b>may be locally defined</b>, or the following:</p>
                                                    <ul>
                                                       
-                                                      <li><strong>reference</strong>: A generalized reference to a network resource (relative or absolute) or to a back-matter
-                                                         resource by UUID expressed as a bare URI fragment.</li>
+                                                      <li><strong>reference</strong>: Reference</li>
                                                       </ul>
                                                 </div>
                                              </details>
@@ -1645,19 +1455,15 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              <p class="formal-name">Media Type</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> A label that indicates the nature of a resource, as a data serialization or format.</p>
+                                             <p class="description"><span class="usa-tag">Description</span> Specifies a media type as defined by the Internet Assigned Numbers Authority (IANA)
+                                                <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">Media Types Registry</a>. </p>
                                              <div class="remarks-group usa-prose">
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
                                                    <div class="remarks">
-                                                      <p> The Internet Assigned Numbers Authority (IANA) <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">Media Types Registry</a> defines a standardized set of media types, which may be used here.</p>
-                                                      <p>The <code>application/oscal+xml</code>, <code>application/oscal+json</code> or <code>application/oscal+yaml</code> media types SHOULD be used when referencing OSCAL XML, JSON, or YAML resources respectively.</p>
-                                                      <p>**Note: There is no official media type for YAML at this time.** OSCAL documents should
-                                                         specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name
+                                                      <p>The IANA Media Types Registry should be used, but currently there is no official media
+                                                         type for YAML. OSCAL documents should specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name
                                                          suffix, per <a href="https://www.rfc-editor.org/rfc/rfc6838.html#section-4.2.8">RFC 6838 Section 4.2.8</a>.</p>
-                                                      <p>Some earlier OSCAL content incorporated the model into the media type. For example:
-                                                         <code>application/oscal.catalog+xml</code>. This practice SHOULD be avoided, since the OSCAL model can be detected by parsing
-                                                         the initial content of the referenced resource.</p>
                                                    </div>
                                                    <div class="remarks">
                                                       <p>The <code>media-type</code> provides a hint about the content model of the referenced resource. A valid entry
@@ -1665,18 +1471,6 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                    </div>
                                                 </details>
                                              </div>
-                                          </div>
-                                       </div>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h5 id="/profile/metadata/role/link/@resource-fragment" class="toc5 name">resource-fragment</h5>
-                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
-                                             <p class="occurrence">[0 or 1]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/roles/links/resource-fragment">Switch to JSON</a></div>
-                                             <p class="formal-name">Resource Fragment</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                           </div>
                                        </div>
                                     </details>
@@ -1707,16 +1501,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <p class="formal-name">Remarks</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> Additional commentary about the containing object.</p>
-                                    <div class="remarks-group usa-prose">
-                                       <details open="open">
-                                          <summary class="subhead">Remarks</summary>
-                                          <div class="remarks">
-                                             <p>The <code>remarks</code> field SHOULD not be used to store arbitrary data. Instead, a <code>prop</code> or <code>link</code> should be used to annotate or reference any additional data not formally supported
-                                                by OSCAL.</p>
-                                          </div>
-                                       </details>
-                                    </div>
+                                    <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
                                     <details class="properties elements" open="open">
                                        <summary>Element (0+)</summary>
                                        <div class="model-entry definition field">
@@ -1738,36 +1523,26 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
                            <h3 id="/profile/metadata/location" class="toc3 name">location</h3>
-                           <p class="type">element<br /></p>
+                           <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/metadata/location">(global definition)</a></p>
                            <p class="occurrence">[0 to ∞]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/locations">Switch to JSON</a></div>
                            <p class="formal-name">Location</p>
                         </div>
                         <div class="body">
-                           <p class="description"><span class="usa-tag">Description</span> A physical point of presence, which may be associated with people, organizations,
-                              or other concepts within the current or linked OSCAL document.</p>
-                           <div class="remarks-group usa-prose">
-                              <details open="open">
-                                 <summary class="subhead">Remarks</summary>
-                                 <div class="remarks">
-                                    <p>An address might be sensitive in nature. In such cases a title, mailing address, email-address,
-                                       and/or phone number may be used instead.</p>
-                                 </div>
-                              </details>
-                           </div>
+                           <p class="description"><span class="usa-tag">Description</span> A location, with associated metadata that can be referenced.</p>
                            <details class="constraints" open="open">
-                              <summary>Constraints (5)</summary>
+                              <summary>Constraints (3)</summary>
                               <div class="constraint">
-                                 <p><span class="usa-tag">allowed value</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
-                                 <p>The value <b>must</b> be one of the following:</p>
+                                 <p><span class="usa-tag">allowed value</span>  for <code class="path">prop/@name</code></p>
+                                 <p>The value <b>may be locally defined</b>, or the following:</p>
                                  <ul>
                                     
                                     <li><strong>type</strong>: Characterizes the kind of location.</li>
                                     </ul>
                               </div>
                               <div class="constraint">
-                                 <p><span class="usa-tag">allowed value</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='type']/@value</code></p>
-                                 <p>The value <b>must</b> be one of the following:</p>
+                                 <p><span class="usa-tag">allowed value</span>  for <code class="path">prop[@name='type']/@value</code></p>
+                                 <p>The value <b>may be locally defined</b>, or the following:</p>
                                  <ul>
                                     
                                     <li><strong>data-center</strong>: A location that contains computing assets. A class can be used to indicate the sub-type
@@ -1775,20 +1550,14 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     </ul>
                               </div>
                               <div class="constraint">
-                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='type' and @value='data-center']/@class</code></p>
-                                 <p>The value <b>must</b> be one of the following:</p>
+                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[@name='type' and @value='data-center']/@class</code></p>
+                                 <p>The value <b>may be locally defined</b>, or one of the following:</p>
                                  <ul>
                                     
                                     <li><strong>primary</strong>: The location is a data-center used for normal operations.</li>
                                     
                                     <li><strong>alternate</strong>: The location is a data-center used for fail-over or backup operations.</li>
                                     </ul>
-                              </div>
-                              <div class="constraint">
-                                 <p><span class="usa-tag">has cardinality</span>  for <code class="path">address</code> the cardinality of  <code>address</code> is constrained: <b>1</b>; maximum <b>unbounded</b>.</p>
-                              </div>
-                              <div class="constraint">
-                                 <p><span class="usa-tag">has cardinality</span>  for <code class="path">title|address|email-address|telephone-number</code> the cardinality of  <code>title|address|email-address|telephone-number</code> is constrained: <b>1</b>; maximum <b>unbounded</b>.</p>
                               </div>
                            </details>
                            <details class="properties attributes" open="open">
@@ -1802,7 +1571,9 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <p class="formal-name">Location Universally Unique Identifier</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> A unique ID for the location, for reference.</p>
+                                    <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined location elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>location</code> can be used to reference the data item locally or globally (e.g., from an importing
+                                       OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                                       of the document.</p>
                                  </div>
                               </div>
                            </details>
@@ -1824,7 +1595,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                  <div class="instance-header">
                                     <h4 id="/profile/metadata/location/address" class="toc4 name">address</h4>
                                     <p class="type">element<br /></p>
-                                    <p class="occurrence">[0 or 1]</p>
+                                    <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/locations/address">Switch to JSON</a></div>
                                     <p class="formal-name">Address</p>
                                  </div>
@@ -1834,8 +1605,8 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <details open="open">
                                           <summary class="subhead">Remarks</summary>
                                           <div class="remarks">
-                                             <p>The physical address of the location, which will provided for physical locations.
-                                                Virtual locations can omit this data item.</p>
+                                             <p>Typically, the physical address of the location will be used here. If this information
+                                                is sensitive, then a mailing address can be used instead.</p>
                                           </div>
                                        </details>
                                     </div>
@@ -1902,7 +1673,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              <p class="formal-name">State</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> State, province or analogous geographical region for a mailing address.</p>
+                                             <p class="description"><span class="usa-tag">Description</span> State, province or analogous geographical region for mailing address</p>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -1914,7 +1685,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              <p class="formal-name">Postal Code</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> Postal or ZIP code for mailing address.</p>
+                                             <p class="description"><span class="usa-tag">Description</span> Postal or ZIP code for mailing address</p>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -1947,12 +1718,12 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <p class="formal-name">Email Address</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> An email address as defined by <a href="https://tools.ietf.org/html/rfc5322#section-3.4.1">RFC 5322 Section 3.4.1</a>.</p>
+                                    <p class="description"><span class="usa-tag">Description</span> An email address as defined by <a href="https://tools.ietf.org/html/rfc5322#section-3.4.1">RFC 5322 Section 3.4.1</a>. </p>
                                     <div class="remarks-group usa-prose">
                                        <details open="open">
                                           <summary class="subhead">Remarks</summary>
                                           <div class="remarks">
-                                             <p>A contact email associated with the location.</p>
+                                             <p>This is a contact email associated with the location.</p>
                                           </div>
                                        </details>
                                     </div>
@@ -1967,7 +1738,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <p class="formal-name">Telephone Number</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> A telephone service number as defined by <a href="https://www.itu.int/rec/T-REC-E.164-201011-I/en">ITU-T E.164</a>.</p>
+                                    <p class="description"><span class="usa-tag">Description</span> Contact number by telephone.</p>
                                     <div class="remarks-group usa-prose">
                                        <details open="open">
                                           <summary class="subhead">Remarks</summary>
@@ -1976,12 +1747,6 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                           </div>
                                        </details>
                                     </div>
-                                    <details class="constraints" open="open">
-                                       <summary>Constraint (1)</summary>
-                                       <div class="constraint">
-                                          <p><span class="usa-tag">matches</span>: a target (value) must match the regular expression '^[0-9]{3}[0-9]{1,12}$'.</p>
-                                       </div>
-                                    </details>
                                     <details class="properties attributes" open="open">
                                        <summary>Attribute (1)</summary>
                                        <div class="model-entry definition field">
@@ -2023,29 +1788,22 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <p class="formal-name">Location URL</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> The uniform resource locator (URL) for a web site or other resource associated with
-                                       the location.</p>
-                                    <div class="remarks-group usa-prose">
-                                       <details open="open">
-                                          <summary class="subhead">Remarks</summary>
-                                          <div class="remarks">
-                                             <p>This data field is deprecated in favor of using a link with an appropriate relationship.</p>
-                                          </div>
-                                       </details>
-                                    </div>
+                                    <p class="description"><span class="usa-tag">Description</span> The uniform resource locator (URL) for a web site or Internet presence associated
+                                       with the location.</p>
                                  </div>
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/profile/metadata/location/prop" class="toc4 name">prop</h4>
-                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/metadata/location/prop">(global definition)</a></p>
+                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/location/prop">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/locations/props">Switch to JSON</a></div>
                                     <p class="formal-name">Property</p>
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> An attribute, characteristic, or quality of the containing object expressed as a
-                                       namespace qualified name/value pair.</p>
+                                       namespace qualified name/value pair. The value of a property is a simple scalar value,
+                                       which may be expressed as a list of values.</p>
                                     <div class="remarks-group usa-prose">
                                        <details open="open">
                                           <summary class="subhead">Remarks</summary>
@@ -2063,21 +1821,8 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                           </div>
                                        </details>
                                     </div>
-                                    <details class="constraints" open="open">
-                                       <summary>Constraint (1)</summary>
-                                       <div class="constraint">
-                                          <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
-                                          <p>The value <b>must</b> be one of the following:</p>
-                                          <ul>
-                                             
-                                             <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                An optional class can be used to define the specific marking system used for the associated
-                                                value.</li>
-                                             </ul>
-                                       </div>
-                                    </details>
                                     <details class="properties attributes" open="open">
-                                       <summary>Attributes (6)</summary>
+                                       <summary>Attributes (5)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/profile/metadata/location/prop/@name" class="toc5 name">name</h5>
@@ -2087,8 +1832,21 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              <p class="formal-name">Property Name</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
-                                                characteristic, or quality of the property's containing object.</p>
+                                             <p class="description"><span class="usa-tag">Description</span> A textual label that uniquely identifies a specific attribute, characteristic, or
+                                                quality of the property's containing object.</p>
+                                             <details class="constraints" open="open">
+                                                <summary>Constraint (1)</summary>
+                                                <div class="constraint">
+                                                   <p><span class="usa-tag">allowed value</span></p>
+                                                   <p>The value <b>may be locally defined</b>, or the following:</p>
+                                                   <ul>
+                                                      
+                                                      <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                         An optional class can be used to define the specific marking system used for the associated
+                                                         value.</li>
+                                                      </ul>
+                                                </div>
+                                             </details>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -2100,7 +1858,8 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              <p class="formal-name">Property Universally Unique Identifier</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> A unique identifier for a property.</p>
+                                             <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined property elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                                                of the document.</p>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -2118,7 +1877,11 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
                                                    <div class="remarks">
-                                                      <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                      <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
+                                                         names and associated values used in a property. This allows the semantics associated
+                                                         with a given name/value pair to be defined on an organization-by-organization basis.</p>
+                                                      <p>An organization MUST use a URI that they have control over. e.g., a domain registered
+                                                         to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                       <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                    </div>
                                                 </details>
@@ -2146,36 +1909,14 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              <p class="formal-name">Property Class</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> A textual label that provides a sub-type or characterization of the property's <code>name</code>.</p>
+                                             <p class="description"><span class="usa-tag">Description</span> A textual label that provides a sub-type or characterization of the property's <code>name</code>. This can be used to further distinguish or discriminate between the semantics of
+                                                multiple properties of the same object with the same <code>name</code> and <code>ns</code>. </p>
                                              <div class="remarks-group usa-prose">
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
                                                    <div class="remarks">
-                                                      <p>This can be used to further distinguish or discriminate between the semantics of multiple
-                                                         properties of the same object with the same <code>name</code> and <code>ns</code>, or to group properties into categories.</p>
                                                       <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                         a specific <code>class</code> value. It is available for grouping, but unlike <code>group</code> is not expected specifically to designate any group membership as such.</p>
-                                                   </div>
-                                                </details>
-                                             </div>
-                                          </div>
-                                       </div>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h5 id="/profile/metadata/location/prop/@group" class="toc5 name">group</h5>
-                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                                             <p class="occurrence">[0 or 1]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/locations/props/group">Switch to JSON</a></div>
-                                             <p class="formal-name">Property Group</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
-                                             <div class="remarks-group usa-prose">
-                                                <details open="open">
-                                                   <summary class="subhead">Remarks</summary>
-                                                   <div class="remarks">
-                                                      <p>Different sets of properties may relate to separate contexts. Declare a group on a
-                                                         property to associate it with one or more other properties in a given context.</p>
+                                                         a specific <code>class</code> value.</p>
                                                    </div>
                                                 </details>
                                              </div>
@@ -2193,16 +1934,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              <p class="formal-name">Remarks</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> Additional commentary about the containing object.</p>
-                                             <div class="remarks-group usa-prose">
-                                                <details open="open">
-                                                   <summary class="subhead">Remarks</summary>
-                                                   <div class="remarks">
-                                                      <p>The <code>remarks</code> field SHOULD not be used to store arbitrary data. Instead, a <code>prop</code> or <code>link</code> should be used to annotate or reference any additional data not formally supported
-                                                         by OSCAL.</p>
-                                                   </div>
-                                                </details>
-                                             </div>
+                                             <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
                                              <details class="properties elements" open="open">
                                                 <summary>Element (0+)</summary>
                                                 <div class="model-entry definition field">
@@ -2224,14 +1956,13 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/profile/metadata/location/link" class="toc4 name">link</h4>
-                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/metadata/location/link">(global definition)</a></p>
+                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/location/link">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/locations/links">Switch to JSON</a></div>
                                     <p class="formal-name">Link</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> A reference to a local or remote resource, that has a specific relation to the containing
-                                       object.</p>
+                                    <p class="description"><span class="usa-tag">Description</span> A reference to a local or remote resource</p>
                                     <div class="remarks-group usa-prose">
                                        <details open="open">
                                           <summary class="subhead">Remarks</summary>
@@ -2243,7 +1974,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </details>
                                     </div>
                                     <details class="constraints" open="open">
-                                       <summary>Constraints (4)</summary>
+                                       <summary>Constraints (3)</summary>
                                        <div class="constraint">
                                           <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                        </div>
@@ -2253,12 +1984,9 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <div class="constraint">
                                           <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                        </div>
-                                       <div class="constraint">
-                                          <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
-                                       </div>
                                     </details>
                                     <details class="properties attributes" open="open">
-                                       <summary>Attributes (4)</summary>
+                                       <summary>Attributes (3)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/profile/metadata/location/link/@href" class="toc5 name">href</h5>
@@ -2273,17 +2001,13 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
                                                    <div class="remarks">
-                                                      <p>This value may be one of:</p>
-                                                      <ol>
-                                                         
-                                                         <li>an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
-                                                         
-                                                         <li>a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
-                                                            document, or</li>
-                                                         
-                                                         <li>a bare URI fragment (i.e., `#uuid`) pointing to an OSCAL object by the objects identifier
-                                                            (e.g., id, uuid) in this or an imported document (see <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>). The specific object type will differ based on the link relationship type.</li>
-                                                         </ol>
+                                                      <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
+                                                         that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
+                                                      <p>If a local reference using a fragment is used, this will be indicated by a fragment
+                                                         "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
+                                                      <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
+                                                         resource. A relative URI will be resolved relative to the location of the document
+                                                         containing the link.</p>
                                                    </div>
                                                 </details>
                                              </div>
@@ -2295,11 +2019,11 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/locations/links/rel">Switch to JSON</a></div>
-                                             <p class="formal-name">Link Relation Type</p>
+                                             <p class="formal-name">Relation</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> Describes the type of relationship provided by the link's hypertext reference. This
-                                                can be an indicator of the link's purpose.</p>
+                                             <p class="description"><span class="usa-tag">Description</span> Describes the type of relationship provided by the link. This can be an indicator
+                                                of the link's purpose.</p>
                                              <details class="constraints" open="open">
                                                 <summary>Constraint (1)</summary>
                                                 <div class="constraint">
@@ -2307,8 +2031,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                    <p>The value <b>may be locally defined</b>, or the following:</p>
                                                    <ul>
                                                       
-                                                      <li><strong>reference</strong>: A generalized reference to a network resource (relative or absolute) or to a back-matter
-                                                         resource by UUID expressed as a bare URI fragment.</li>
+                                                      <li><strong>reference</strong>: Reference</li>
                                                       </ul>
                                                 </div>
                                              </details>
@@ -2323,19 +2046,15 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              <p class="formal-name">Media Type</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> A label that indicates the nature of a resource, as a data serialization or format.</p>
+                                             <p class="description"><span class="usa-tag">Description</span> Specifies a media type as defined by the Internet Assigned Numbers Authority (IANA)
+                                                <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">Media Types Registry</a>. </p>
                                              <div class="remarks-group usa-prose">
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
                                                    <div class="remarks">
-                                                      <p> The Internet Assigned Numbers Authority (IANA) <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">Media Types Registry</a> defines a standardized set of media types, which may be used here.</p>
-                                                      <p>The <code>application/oscal+xml</code>, <code>application/oscal+json</code> or <code>application/oscal+yaml</code> media types SHOULD be used when referencing OSCAL XML, JSON, or YAML resources respectively.</p>
-                                                      <p>**Note: There is no official media type for YAML at this time.** OSCAL documents should
-                                                         specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name
+                                                      <p>The IANA Media Types Registry should be used, but currently there is no official media
+                                                         type for YAML. OSCAL documents should specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name
                                                          suffix, per <a href="https://www.rfc-editor.org/rfc/rfc6838.html#section-4.2.8">RFC 6838 Section 4.2.8</a>.</p>
-                                                      <p>Some earlier OSCAL content incorporated the model into the media type. For example:
-                                                         <code>application/oscal.catalog+xml</code>. This practice SHOULD be avoided, since the OSCAL model can be detected by parsing
-                                                         the initial content of the referenced resource.</p>
                                                    </div>
                                                    <div class="remarks">
                                                       <p>The <code>media-type</code> provides a hint about the content model of the referenced resource. A valid entry
@@ -2343,18 +2062,6 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                    </div>
                                                 </details>
                                              </div>
-                                          </div>
-                                       </div>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h5 id="/profile/metadata/location/link/@resource-fragment" class="toc5 name">resource-fragment</h5>
-                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
-                                             <p class="occurrence">[0 or 1]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/locations/links/resource-fragment">Switch to JSON</a></div>
-                                             <p class="formal-name">Resource Fragment</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                           </div>
                                        </div>
                                     </details>
@@ -2385,16 +2092,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <p class="formal-name">Remarks</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> Additional commentary about the containing object.</p>
-                                    <div class="remarks-group usa-prose">
-                                       <details open="open">
-                                          <summary class="subhead">Remarks</summary>
-                                          <div class="remarks">
-                                             <p>The <code>remarks</code> field SHOULD not be used to store arbitrary data. Instead, a <code>prop</code> or <code>link</code> should be used to annotate or reference any additional data not formally supported
-                                                by OSCAL.</p>
-                                          </div>
-                                       </details>
-                                    </div>
+                                    <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
                                     <details class="properties elements" open="open">
                                        <summary>Element (0+)</summary>
                                        <div class="model-entry definition field">
@@ -2416,28 +2114,17 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
                            <h3 id="/profile/metadata/party" class="toc3 name">party</h3>
-                           <p class="type">element<br /></p>
+                           <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/metadata/party">(global definition)</a></p>
                            <p class="occurrence">[0 to ∞]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/parties">Switch to JSON</a></div>
-                           <p class="formal-name">Party</p>
+                           <p class="formal-name">Party (organization or person)</p>
                         </div>
                         <div class="body">
-                           <p class="description"><span class="usa-tag">Description</span> An organization or person, which may be associated with roles or other concepts within
-                              the current or linked OSCAL document.</p>
-                           <div class="remarks-group usa-prose">
-                              <details open="open">
-                                 <summary class="subhead">Remarks</summary>
-                                 <div class="remarks">
-                                    <p>A party can be optionally associated with either an address or a location. While providing
-                                       a meaningful location for a party is desired, there are some cases where it might
-                                       not be possible to provide an exact location or even any location.</p>
-                                 </div>
-                              </details>
-                           </div>
+                           <p class="description"><span class="usa-tag">Description</span> A responsible entity which is either a person or an organization.</p>
                            <details class="constraints" open="open">
                               <summary>Constraint (1)</summary>
                               <div class="constraint">
-                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop/@name</code></p>
                                  <p>The value <b>must</b> be one of the following:</p>
                                  <ul>
                                     
@@ -2460,7 +2147,9 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <p class="formal-name">Party Universally Unique Identifier</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> A unique identifier for the party.</p>
+                                    <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined party elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>party</code> can be used to reference the data item locally or globally (e.g., from an importing
+                                       OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                                       of the document.</p>
                                  </div>
                               </div>
                               <div class="model-entry definition assembly">
@@ -2480,9 +2169,9 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                           <p>The value <b>must</b> be one of the following:</p>
                                           <ul>
                                              
-                                             <li><strong>person</strong>: A human being regarded as an individual.</li>
+                                             <li><strong>person</strong>: An individual.</li>
                                              
-                                             <li><strong>organization</strong>: An organized group of one or more person individuals with a specific purpose.</li>
+                                             <li><strong>organization</strong>: A group of individuals formed for a specific purpose.</li>
                                              </ul>
                                        </div>
                                     </details>
@@ -2526,7 +2215,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> An identifier for a person or organization using a designated scheme. e.g. an Open
-                                       Researcher and Contributor ID (ORCID).</p>
+                                       Researcher and Contributor ID (ORCID)</p>
                                     <details class="properties attributes" open="open">
                                        <summary>Attribute (1)</summary>
                                        <div class="model-entry definition assembly">
@@ -2539,14 +2228,6 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                           </div>
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> Indicates the type of external identifier.</p>
-                                             <div class="remarks-group usa-prose">
-                                                <details open="open">
-                                                   <summary class="subhead">Remarks</summary>
-                                                   <div class="remarks">
-                                                      <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
-                                                   </div>
-                                                </details>
-                                             </div>
                                              <details class="constraints" open="open">
                                                 <summary>Constraint (1)</summary>
                                                 <div class="constraint">
@@ -2566,14 +2247,15 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/profile/metadata/party/prop" class="toc4 name">prop</h4>
-                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/metadata/party/prop">(global definition)</a></p>
+                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/party/prop">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/parties/props">Switch to JSON</a></div>
                                     <p class="formal-name">Property</p>
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> An attribute, characteristic, or quality of the containing object expressed as a
-                                       namespace qualified name/value pair.</p>
+                                       namespace qualified name/value pair. The value of a property is a simple scalar value,
+                                       which may be expressed as a list of values.</p>
                                     <div class="remarks-group usa-prose">
                                        <details open="open">
                                           <summary class="subhead">Remarks</summary>
@@ -2591,21 +2273,8 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                           </div>
                                        </details>
                                     </div>
-                                    <details class="constraints" open="open">
-                                       <summary>Constraint (1)</summary>
-                                       <div class="constraint">
-                                          <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
-                                          <p>The value <b>must</b> be one of the following:</p>
-                                          <ul>
-                                             
-                                             <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                An optional class can be used to define the specific marking system used for the associated
-                                                value.</li>
-                                             </ul>
-                                       </div>
-                                    </details>
                                     <details class="properties attributes" open="open">
-                                       <summary>Attributes (6)</summary>
+                                       <summary>Attributes (5)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/profile/metadata/party/prop/@name" class="toc5 name">name</h5>
@@ -2615,8 +2284,21 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              <p class="formal-name">Property Name</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
-                                                characteristic, or quality of the property's containing object.</p>
+                                             <p class="description"><span class="usa-tag">Description</span> A textual label that uniquely identifies a specific attribute, characteristic, or
+                                                quality of the property's containing object.</p>
+                                             <details class="constraints" open="open">
+                                                <summary>Constraint (1)</summary>
+                                                <div class="constraint">
+                                                   <p><span class="usa-tag">allowed value</span></p>
+                                                   <p>The value <b>may be locally defined</b>, or the following:</p>
+                                                   <ul>
+                                                      
+                                                      <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                         An optional class can be used to define the specific marking system used for the associated
+                                                         value.</li>
+                                                      </ul>
+                                                </div>
+                                             </details>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -2628,7 +2310,8 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              <p class="formal-name">Property Universally Unique Identifier</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> A unique identifier for a property.</p>
+                                             <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined property elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                                                of the document.</p>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -2646,7 +2329,11 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
                                                    <div class="remarks">
-                                                      <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                      <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
+                                                         names and associated values used in a property. This allows the semantics associated
+                                                         with a given name/value pair to be defined on an organization-by-organization basis.</p>
+                                                      <p>An organization MUST use a URI that they have control over. e.g., a domain registered
+                                                         to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                       <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                    </div>
                                                 </details>
@@ -2674,36 +2361,14 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              <p class="formal-name">Property Class</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> A textual label that provides a sub-type or characterization of the property's <code>name</code>.</p>
+                                             <p class="description"><span class="usa-tag">Description</span> A textual label that provides a sub-type or characterization of the property's <code>name</code>. This can be used to further distinguish or discriminate between the semantics of
+                                                multiple properties of the same object with the same <code>name</code> and <code>ns</code>. </p>
                                              <div class="remarks-group usa-prose">
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
                                                    <div class="remarks">
-                                                      <p>This can be used to further distinguish or discriminate between the semantics of multiple
-                                                         properties of the same object with the same <code>name</code> and <code>ns</code>, or to group properties into categories.</p>
                                                       <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                         a specific <code>class</code> value. It is available for grouping, but unlike <code>group</code> is not expected specifically to designate any group membership as such.</p>
-                                                   </div>
-                                                </details>
-                                             </div>
-                                          </div>
-                                       </div>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h5 id="/profile/metadata/party/prop/@group" class="toc5 name">group</h5>
-                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                                             <p class="occurrence">[0 or 1]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/parties/props/group">Switch to JSON</a></div>
-                                             <p class="formal-name">Property Group</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
-                                             <div class="remarks-group usa-prose">
-                                                <details open="open">
-                                                   <summary class="subhead">Remarks</summary>
-                                                   <div class="remarks">
-                                                      <p>Different sets of properties may relate to separate contexts. Declare a group on a
-                                                         property to associate it with one or more other properties in a given context.</p>
+                                                         a specific <code>class</code> value.</p>
                                                    </div>
                                                 </details>
                                              </div>
@@ -2721,16 +2386,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              <p class="formal-name">Remarks</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> Additional commentary about the containing object.</p>
-                                             <div class="remarks-group usa-prose">
-                                                <details open="open">
-                                                   <summary class="subhead">Remarks</summary>
-                                                   <div class="remarks">
-                                                      <p>The <code>remarks</code> field SHOULD not be used to store arbitrary data. Instead, a <code>prop</code> or <code>link</code> should be used to annotate or reference any additional data not formally supported
-                                                         by OSCAL.</p>
-                                                   </div>
-                                                </details>
-                                             </div>
+                                             <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
                                              <details class="properties elements" open="open">
                                                 <summary>Element (0+)</summary>
                                                 <div class="model-entry definition field">
@@ -2752,14 +2408,13 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/profile/metadata/party/link" class="toc4 name">link</h4>
-                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/metadata/party/link">(global definition)</a></p>
+                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/party/link">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/parties/links">Switch to JSON</a></div>
                                     <p class="formal-name">Link</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> A reference to a local or remote resource, that has a specific relation to the containing
-                                       object.</p>
+                                    <p class="description"><span class="usa-tag">Description</span> A reference to a local or remote resource</p>
                                     <div class="remarks-group usa-prose">
                                        <details open="open">
                                           <summary class="subhead">Remarks</summary>
@@ -2771,7 +2426,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </details>
                                     </div>
                                     <details class="constraints" open="open">
-                                       <summary>Constraints (4)</summary>
+                                       <summary>Constraints (3)</summary>
                                        <div class="constraint">
                                           <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                        </div>
@@ -2781,12 +2436,9 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <div class="constraint">
                                           <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                        </div>
-                                       <div class="constraint">
-                                          <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
-                                       </div>
                                     </details>
                                     <details class="properties attributes" open="open">
-                                       <summary>Attributes (4)</summary>
+                                       <summary>Attributes (3)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/profile/metadata/party/link/@href" class="toc5 name">href</h5>
@@ -2801,17 +2453,13 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
                                                    <div class="remarks">
-                                                      <p>This value may be one of:</p>
-                                                      <ol>
-                                                         
-                                                         <li>an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
-                                                         
-                                                         <li>a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
-                                                            document, or</li>
-                                                         
-                                                         <li>a bare URI fragment (i.e., `#uuid`) pointing to an OSCAL object by the objects identifier
-                                                            (e.g., id, uuid) in this or an imported document (see <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>). The specific object type will differ based on the link relationship type.</li>
-                                                         </ol>
+                                                      <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
+                                                         that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
+                                                      <p>If a local reference using a fragment is used, this will be indicated by a fragment
+                                                         "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
+                                                      <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
+                                                         resource. A relative URI will be resolved relative to the location of the document
+                                                         containing the link.</p>
                                                    </div>
                                                 </details>
                                              </div>
@@ -2823,11 +2471,11 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/parties/links/rel">Switch to JSON</a></div>
-                                             <p class="formal-name">Link Relation Type</p>
+                                             <p class="formal-name">Relation</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> Describes the type of relationship provided by the link's hypertext reference. This
-                                                can be an indicator of the link's purpose.</p>
+                                             <p class="description"><span class="usa-tag">Description</span> Describes the type of relationship provided by the link. This can be an indicator
+                                                of the link's purpose.</p>
                                              <details class="constraints" open="open">
                                                 <summary>Constraint (1)</summary>
                                                 <div class="constraint">
@@ -2835,8 +2483,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                    <p>The value <b>may be locally defined</b>, or the following:</p>
                                                    <ul>
                                                       
-                                                      <li><strong>reference</strong>: A generalized reference to a network resource (relative or absolute) or to a back-matter
-                                                         resource by UUID expressed as a bare URI fragment.</li>
+                                                      <li><strong>reference</strong>: Reference</li>
                                                       </ul>
                                                 </div>
                                              </details>
@@ -2851,19 +2498,15 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              <p class="formal-name">Media Type</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> A label that indicates the nature of a resource, as a data serialization or format.</p>
+                                             <p class="description"><span class="usa-tag">Description</span> Specifies a media type as defined by the Internet Assigned Numbers Authority (IANA)
+                                                <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">Media Types Registry</a>. </p>
                                              <div class="remarks-group usa-prose">
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
                                                    <div class="remarks">
-                                                      <p> The Internet Assigned Numbers Authority (IANA) <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">Media Types Registry</a> defines a standardized set of media types, which may be used here.</p>
-                                                      <p>The <code>application/oscal+xml</code>, <code>application/oscal+json</code> or <code>application/oscal+yaml</code> media types SHOULD be used when referencing OSCAL XML, JSON, or YAML resources respectively.</p>
-                                                      <p>**Note: There is no official media type for YAML at this time.** OSCAL documents should
-                                                         specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name
+                                                      <p>The IANA Media Types Registry should be used, but currently there is no official media
+                                                         type for YAML. OSCAL documents should specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name
                                                          suffix, per <a href="https://www.rfc-editor.org/rfc/rfc6838.html#section-4.2.8">RFC 6838 Section 4.2.8</a>.</p>
-                                                      <p>Some earlier OSCAL content incorporated the model into the media type. For example:
-                                                         <code>application/oscal.catalog+xml</code>. This practice SHOULD be avoided, since the OSCAL model can be detected by parsing
-                                                         the initial content of the referenced resource.</p>
                                                    </div>
                                                    <div class="remarks">
                                                       <p>The <code>media-type</code> provides a hint about the content model of the referenced resource. A valid entry
@@ -2871,18 +2514,6 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                    </div>
                                                 </details>
                                              </div>
-                                          </div>
-                                       </div>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h5 id="/profile/metadata/party/link/@resource-fragment" class="toc5 name">resource-fragment</h5>
-                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
-                                             <p class="occurrence">[0 or 1]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/parties/links/resource-fragment">Switch to JSON</a></div>
-                                             <p class="formal-name">Resource Fragment</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                           </div>
                                        </div>
                                     </details>
@@ -2913,7 +2544,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <p class="formal-name">Email Address</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> An email address as defined by <a href="https://tools.ietf.org/html/rfc5322#section-3.4.1">RFC 5322 Section 3.4.1</a>.</p>
+                                    <p class="description"><span class="usa-tag">Description</span> An email address as defined by <a href="https://tools.ietf.org/html/rfc5322#section-3.4.1">RFC 5322 Section 3.4.1</a>. </p>
                                     <div class="remarks-group usa-prose">
                                        <details open="open">
                                           <summary class="subhead">Remarks</summary>
@@ -2933,7 +2564,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <p class="formal-name">Telephone Number</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> A telephone service number as defined by <a href="https://www.itu.int/rec/T-REC-E.164-201011-I/en">ITU-T E.164</a>.</p>
+                                    <p class="description"><span class="usa-tag">Description</span> Contact number by telephone.</p>
                                     <div class="remarks-group usa-prose">
                                        <details open="open">
                                           <summary class="subhead">Remarks</summary>
@@ -2942,12 +2573,6 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                           </div>
                                        </details>
                                     </div>
-                                    <details class="constraints" open="open">
-                                       <summary>Constraint (1)</summary>
-                                       <div class="constraint">
-                                          <p><span class="usa-tag">matches</span>: a target (value) must match the regular expression '^[0-9]{3}[0-9]{1,12}$'.</p>
-                                       </div>
-                                    </details>
                                     <details class="properties attributes" open="open">
                                        <summary>Attribute (1)</summary>
                                        <div class="model-entry definition field">
@@ -3055,7 +2680,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 <p class="formal-name">State</p>
                                              </div>
                                              <div class="body">
-                                                <p class="description"><span class="usa-tag">Description</span> State, province or analogous geographical region for a mailing address.</p>
+                                                <p class="description"><span class="usa-tag">Description</span> State, province or analogous geographical region for mailing address</p>
                                              </div>
                                           </div>
                                           <div class="model-entry definition assembly">
@@ -3067,7 +2692,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 <p class="formal-name">Postal Code</p>
                                              </div>
                                              <div class="body">
-                                                <p class="description"><span class="usa-tag">Description</span> Postal or ZIP code for mailing address.</p>
+                                                <p class="description"><span class="usa-tag">Description</span> Postal or ZIP code for mailing address</p>
                                              </div>
                                           </div>
                                           <div class="model-entry definition assembly">
@@ -3097,10 +2722,19 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <p class="type" id="/profile/metadata/party/location-uuid/_VALUE"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                        <p class="occurrence">[0 to ∞]</p>
                                        <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/parties/location-uuids">Switch to JSON</a></div>
-                                       <p class="formal-name">Location Universally Unique Identifier Reference</p>
+                                       <p class="formal-name">Location Reference</p>
                                     </div>
                                     <div class="body">
-                                       <p class="description"><span class="usa-tag">Description</span> Reference to a location by UUID.</p>
+                                       <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a <code>location</code> defined in the <code>metadata</code> section of this or another OSCAL instance. The <em>UUID</em> of the <code>location</code> in the source OSCAL instance is sufficient to reference the data item locally or
+                                          globally (e.g., in an imported OSCAL instance). </p>
+                                       <div class="remarks-group usa-prose">
+                                          <details open="open">
+                                             <summary class="subhead">Remarks</summary>
+                                             <div class="remarks">
+                                                <p>See the <a href="/concepts/identifier-use/#scope">Concepts - Identifier Use</a> page for additional information about the referenced identifier's scope.</p>
+                                             </div>
+                                          </details>
+                                       </div>
                                        <details class="constraints" open="open">
                                           <summary>Constraint (1)</summary>
                                           <div class="constraint">
@@ -3119,13 +2753,12 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <p class="formal-name">Organizational Affiliation</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> A reference to another <code>party</code> by UUID, typically an organization, that this subject is associated with.</p>
+                                    <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to another <code>party</code> (<code>person</code> or <code>organization</code>) that this subject is associated with. The <em>UUID</em> of the <code>party</code> in the source OSCAL instance is sufficient to reference the data item locally or
+                                       globally (e.g., in an imported OSCAL instance). </p>
                                     <div class="remarks-group usa-prose">
                                        <details open="open">
                                           <summary class="subhead">Remarks</summary>
                                           <div class="remarks">
-                                             <p>Since the reference target of an organizational affiliation must be another <code>party</code> (whether further qualified as person or organization) as inidcated by its <code>uuid</code>. As a <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier with uniqueness across document and trans-document scope, this <code>uuid</code> value is sufficient to reference the data item locally or globally across related
-                                                documents, e.g., in an imported OSCAL instance. </p>
                                              <p>Parties of both the <code>person</code> or <code>organization</code> type can be associated with an organization using the <code>member-of-organization</code>.</p>
                                           </div>
                                        </details>
@@ -3147,16 +2780,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <p class="formal-name">Remarks</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> Additional commentary about the containing object.</p>
-                                    <div class="remarks-group usa-prose">
-                                       <details open="open">
-                                          <summary class="subhead">Remarks</summary>
-                                          <div class="remarks">
-                                             <p>The <code>remarks</code> field SHOULD not be used to store arbitrary data. Instead, a <code>prop</code> or <code>link</code> should be used to annotate or reference any additional data not formally supported
-                                                by OSCAL.</p>
-                                          </div>
-                                       </details>
-                                    </div>
+                                    <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
                                     <details class="properties elements" open="open">
                                        <summary>Element (0+)</summary>
                                        <div class="model-entry definition field">
@@ -3184,22 +2808,15 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                            <p class="formal-name">Responsible Party</p>
                         </div>
                         <div class="body">
-                           <p class="description"><span class="usa-tag">Description</span> A reference to a set of persons and/or organizations that have responsibility for
-                              performing the referenced role in the context of the containing object.</p>
-                           <div class="remarks-group usa-prose">
-                              <details open="open">
-                                 <summary class="subhead">Remarks</summary>
-                                 <div class="remarks">
-                                    <p>A <code>responsible-party</code> requires one or more <code>party-uuid</code> references creating a strong relationship arc between the referenced <code>role-id</code> and the reference parties. This differs in semantics from <code>responsible-role</code> which doesn't require that a <code>party-uuid</code> is referenced.</p>
-                                    <p>The scope of use of this object determines if the responsibility has been performed
-                                       or will be performed in the future. The containing object will describe the intent.</p>
-                                 </div>
-                              </details>
-                           </div>
+                           <p class="description"><span class="usa-tag">Description</span> A reference to a set of organizations or persons that have responsibility for performing
+                              a referenced role in the context of the containing object.</p>
                            <details class="constraints" open="open">
-                              <summary>Constraint (1)</summary>
+                              <summary>Constraints (2)</summary>
                               <div class="constraint">
                                  <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-role-id</code> using a key constructed of key field(s) <code>@role-id</code></p>
+                              </div>
+                              <div class="constraint">
+                                 <p><span class="usa-tag">index has key</span>  for <code class="path">party-uuid</code>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>.</code></p>
                               </div>
                            </details>
                            <details class="properties attributes" open="open">
@@ -3213,7 +2830,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <p class="formal-name">Responsible Role</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> A reference to a <code>role</code> performed by a <code>party</code>.</p>
+                                    <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a> identifier reference to <code>roles</code> served by the user.</p>
                                  </div>
                               </div>
                            </details>
@@ -3225,10 +2842,22 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <p class="type" id="/profile/metadata/responsible-party/party-uuid/_VALUE"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                     <p class="occurrence">[1 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/responsible-parties/party-uuids">Switch to JSON</a></div>
-                                    <p class="formal-name">Party Universally Unique Identifier Reference</p>
+                                    <p class="formal-name">Party Reference</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> Reference to a party by UUID.</p>
+                                    <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to another <code>party</code> defined in <code>metadata</code>. The <em>UUID</em> of the <code>party</code> in the source OSCAL instance is sufficient to reference the data item locally or
+                                       globally (e.g., in an imported OSCAL instance). </p>
+                                    <div class="remarks-group usa-prose">
+                                       <details open="open">
+                                          <summary class="subhead">Remarks</summary>
+                                          <div class="remarks">
+                                             <p>See the <a href="/concepts/identifier-use/#scope">Concepts - Identifier Use</a> page for additional information about the referenced identifier's scope.</p>
+                                          </div>
+                                          <div class="remarks">
+                                             <p>Specifies one or more parties that are responsible for performing the associated <code>role</code>. </p>
+                                          </div>
+                                       </details>
+                                    </div>
                                     <details class="constraints" open="open">
                                        <summary>Constraint (1)</summary>
                                        <div class="constraint">
@@ -3247,7 +2876,8 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> An attribute, characteristic, or quality of the containing object expressed as a
-                                       namespace qualified name/value pair.</p>
+                                       namespace qualified name/value pair. The value of a property is a simple scalar value,
+                                       which may be expressed as a list of values.</p>
                                     <div class="remarks-group usa-prose">
                                        <details open="open">
                                           <summary class="subhead">Remarks</summary>
@@ -3265,21 +2895,8 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                           </div>
                                        </details>
                                     </div>
-                                    <details class="constraints" open="open">
-                                       <summary>Constraint (1)</summary>
-                                       <div class="constraint">
-                                          <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
-                                          <p>The value <b>must</b> be one of the following:</p>
-                                          <ul>
-                                             
-                                             <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                An optional class can be used to define the specific marking system used for the associated
-                                                value.</li>
-                                             </ul>
-                                       </div>
-                                    </details>
                                     <details class="properties attributes" open="open">
-                                       <summary>Attributes (6)</summary>
+                                       <summary>Attributes (5)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/profile/metadata/responsible-party/prop/@name" class="toc5 name">name</h5>
@@ -3289,8 +2906,21 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              <p class="formal-name">Property Name</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
-                                                characteristic, or quality of the property's containing object.</p>
+                                             <p class="description"><span class="usa-tag">Description</span> A textual label that uniquely identifies a specific attribute, characteristic, or
+                                                quality of the property's containing object.</p>
+                                             <details class="constraints" open="open">
+                                                <summary>Constraint (1)</summary>
+                                                <div class="constraint">
+                                                   <p><span class="usa-tag">allowed value</span></p>
+                                                   <p>The value <b>may be locally defined</b>, or the following:</p>
+                                                   <ul>
+                                                      
+                                                      <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                         An optional class can be used to define the specific marking system used for the associated
+                                                         value.</li>
+                                                      </ul>
+                                                </div>
+                                             </details>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -3302,7 +2932,8 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              <p class="formal-name">Property Universally Unique Identifier</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> A unique identifier for a property.</p>
+                                             <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined property elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                                                of the document.</p>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -3320,7 +2951,11 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
                                                    <div class="remarks">
-                                                      <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                      <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
+                                                         names and associated values used in a property. This allows the semantics associated
+                                                         with a given name/value pair to be defined on an organization-by-organization basis.</p>
+                                                      <p>An organization MUST use a URI that they have control over. e.g., a domain registered
+                                                         to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                       <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                    </div>
                                                 </details>
@@ -3348,36 +2983,14 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              <p class="formal-name">Property Class</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> A textual label that provides a sub-type or characterization of the property's <code>name</code>.</p>
+                                             <p class="description"><span class="usa-tag">Description</span> A textual label that provides a sub-type or characterization of the property's <code>name</code>. This can be used to further distinguish or discriminate between the semantics of
+                                                multiple properties of the same object with the same <code>name</code> and <code>ns</code>. </p>
                                              <div class="remarks-group usa-prose">
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
                                                    <div class="remarks">
-                                                      <p>This can be used to further distinguish or discriminate between the semantics of multiple
-                                                         properties of the same object with the same <code>name</code> and <code>ns</code>, or to group properties into categories.</p>
                                                       <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                         a specific <code>class</code> value. It is available for grouping, but unlike <code>group</code> is not expected specifically to designate any group membership as such.</p>
-                                                   </div>
-                                                </details>
-                                             </div>
-                                          </div>
-                                       </div>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h5 id="/profile/metadata/responsible-party/prop/@group" class="toc5 name">group</h5>
-                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                                             <p class="occurrence">[0 or 1]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/responsible-parties/props/group">Switch to JSON</a></div>
-                                             <p class="formal-name">Property Group</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
-                                             <div class="remarks-group usa-prose">
-                                                <details open="open">
-                                                   <summary class="subhead">Remarks</summary>
-                                                   <div class="remarks">
-                                                      <p>Different sets of properties may relate to separate contexts. Declare a group on a
-                                                         property to associate it with one or more other properties in a given context.</p>
+                                                         a specific <code>class</code> value.</p>
                                                    </div>
                                                 </details>
                                              </div>
@@ -3395,16 +3008,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              <p class="formal-name">Remarks</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> Additional commentary about the containing object.</p>
-                                             <div class="remarks-group usa-prose">
-                                                <details open="open">
-                                                   <summary class="subhead">Remarks</summary>
-                                                   <div class="remarks">
-                                                      <p>The <code>remarks</code> field SHOULD not be used to store arbitrary data. Instead, a <code>prop</code> or <code>link</code> should be used to annotate or reference any additional data not formally supported
-                                                         by OSCAL.</p>
-                                                   </div>
-                                                </details>
-                                             </div>
+                                             <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
                                              <details class="properties elements" open="open">
                                                 <summary>Element (0+)</summary>
                                                 <div class="model-entry definition field">
@@ -3432,8 +3036,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <p class="formal-name">Link</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> A reference to a local or remote resource, that has a specific relation to the containing
-                                       object.</p>
+                                    <p class="description"><span class="usa-tag">Description</span> A reference to a local or remote resource</p>
                                     <div class="remarks-group usa-prose">
                                        <details open="open">
                                           <summary class="subhead">Remarks</summary>
@@ -3445,7 +3048,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </details>
                                     </div>
                                     <details class="constraints" open="open">
-                                       <summary>Constraints (4)</summary>
+                                       <summary>Constraints (3)</summary>
                                        <div class="constraint">
                                           <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                        </div>
@@ -3455,12 +3058,9 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <div class="constraint">
                                           <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                        </div>
-                                       <div class="constraint">
-                                          <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
-                                       </div>
                                     </details>
                                     <details class="properties attributes" open="open">
-                                       <summary>Attributes (4)</summary>
+                                       <summary>Attributes (3)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/profile/metadata/responsible-party/link/@href" class="toc5 name">href</h5>
@@ -3475,17 +3075,13 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
                                                    <div class="remarks">
-                                                      <p>This value may be one of:</p>
-                                                      <ol>
-                                                         
-                                                         <li>an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
-                                                         
-                                                         <li>a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
-                                                            document, or</li>
-                                                         
-                                                         <li>a bare URI fragment (i.e., `#uuid`) pointing to an OSCAL object by the objects identifier
-                                                            (e.g., id, uuid) in this or an imported document (see <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>). The specific object type will differ based on the link relationship type.</li>
-                                                         </ol>
+                                                      <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
+                                                         that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
+                                                      <p>If a local reference using a fragment is used, this will be indicated by a fragment
+                                                         "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
+                                                      <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
+                                                         resource. A relative URI will be resolved relative to the location of the document
+                                                         containing the link.</p>
                                                    </div>
                                                 </details>
                                              </div>
@@ -3497,11 +3093,11 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/responsible-parties/links/rel">Switch to JSON</a></div>
-                                             <p class="formal-name">Link Relation Type</p>
+                                             <p class="formal-name">Relation</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> Describes the type of relationship provided by the link's hypertext reference. This
-                                                can be an indicator of the link's purpose.</p>
+                                             <p class="description"><span class="usa-tag">Description</span> Describes the type of relationship provided by the link. This can be an indicator
+                                                of the link's purpose.</p>
                                              <details class="constraints" open="open">
                                                 <summary>Constraint (1)</summary>
                                                 <div class="constraint">
@@ -3509,8 +3105,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                    <p>The value <b>may be locally defined</b>, or the following:</p>
                                                    <ul>
                                                       
-                                                      <li><strong>reference</strong>: A generalized reference to a network resource (relative or absolute) or to a back-matter
-                                                         resource by UUID expressed as a bare URI fragment.</li>
+                                                      <li><strong>reference</strong>: Reference</li>
                                                       </ul>
                                                 </div>
                                              </details>
@@ -3525,19 +3120,15 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              <p class="formal-name">Media Type</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> A label that indicates the nature of a resource, as a data serialization or format.</p>
+                                             <p class="description"><span class="usa-tag">Description</span> Specifies a media type as defined by the Internet Assigned Numbers Authority (IANA)
+                                                <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">Media Types Registry</a>. </p>
                                              <div class="remarks-group usa-prose">
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
                                                    <div class="remarks">
-                                                      <p> The Internet Assigned Numbers Authority (IANA) <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">Media Types Registry</a> defines a standardized set of media types, which may be used here.</p>
-                                                      <p>The <code>application/oscal+xml</code>, <code>application/oscal+json</code> or <code>application/oscal+yaml</code> media types SHOULD be used when referencing OSCAL XML, JSON, or YAML resources respectively.</p>
-                                                      <p>**Note: There is no official media type for YAML at this time.** OSCAL documents should
-                                                         specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name
+                                                      <p>The IANA Media Types Registry should be used, but currently there is no official media
+                                                         type for YAML. OSCAL documents should specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name
                                                          suffix, per <a href="https://www.rfc-editor.org/rfc/rfc6838.html#section-4.2.8">RFC 6838 Section 4.2.8</a>.</p>
-                                                      <p>Some earlier OSCAL content incorporated the model into the media type. For example:
-                                                         <code>application/oscal.catalog+xml</code>. This practice SHOULD be avoided, since the OSCAL model can be detected by parsing
-                                                         the initial content of the referenced resource.</p>
                                                    </div>
                                                    <div class="remarks">
                                                       <p>The <code>media-type</code> provides a hint about the content model of the referenced resource. A valid entry
@@ -3545,18 +3136,6 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                    </div>
                                                 </details>
                                              </div>
-                                          </div>
-                                       </div>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h5 id="/profile/metadata/responsible-party/link/@resource-fragment" class="toc5 name">resource-fragment</h5>
-                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
-                                             <p class="occurrence">[0 or 1]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/responsible-parties/links/resource-fragment">Switch to JSON</a></div>
-                                             <p class="formal-name">Resource Fragment</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                           </div>
                                        </div>
                                     </details>
@@ -3587,942 +3166,12 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <p class="formal-name">Remarks</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> Additional commentary about the containing object.</p>
-                                    <div class="remarks-group usa-prose">
-                                       <details open="open">
-                                          <summary class="subhead">Remarks</summary>
-                                          <div class="remarks">
-                                             <p>The <code>remarks</code> field SHOULD not be used to store arbitrary data. Instead, a <code>prop</code> or <code>link</code> should be used to annotate or reference any additional data not formally supported
-                                                by OSCAL.</p>
-                                          </div>
-                                       </details>
-                                    </div>
+                                    <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
                                     <details class="properties elements" open="open">
                                        <summary>Element (0+)</summary>
                                        <div class="model-entry definition field">
                                           <div class="instance-header">
                                              <h4 id="/profile/metadata/responsible-party/remarks/_VALUE" class="toc4 name">(unwrapped)</h4>
-                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                             <p class="occurrence">[0 to ∞]</p>
-                                          </div>
-                                          <div class="body">
-                                             <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
-                                          </div>
-                                       </div>
-                                    </details>
-                                 </div>
-                              </div>
-                           </details>
-                        </div>
-                     </div>
-                     <div class="model-entry definition assembly">
-                        <div class="instance-header">
-                           <h3 id="/profile/metadata/action" class="toc3 name">action</h3>
-                           <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/metadata/action">(global definition)</a></p>
-                           <p class="occurrence">[0 to ∞]</p>
-                           <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/actions">Switch to JSON</a></div>
-                           <p class="formal-name">Action</p>
-                        </div>
-                        <div class="body">
-                           <p class="description"><span class="usa-tag">Description</span> An action applied by a role within a given party to the content.</p>
-                           <details class="constraints" open="open">
-                              <summary>Constraints (4)</summary>
-                              <div class="constraint">
-                                 <p><span class="usa-tag">index has key</span>  for <code class="path">responsible-party</code>this value must correspond to a listing in the index <code>index-metadata-role-id</code> using a key constructed of key field(s) <code>@role-id</code></p>
-                              </div>
-                              <div class="constraint">
-                                 <p><span class="usa-tag">index has key</span>  for <code class="path">responsible-party</code>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>party-uuid</code></p>
-                              </div>
-                              <div class="constraint">
-                                 <p><span class="usa-tag">allowed value</span>  for <code class="path">./system/@value</code></p>
-                                 <p>The value <b>may be locally defined</b>, or the following:</p>
-                                 <ul>
-                                    
-                                    <li><strong>http://csrc.nist.gov/ns/oscal</strong>: This value identifies action types defined in the NIST OSCAL namespace.</li>
-                                    </ul>
-                              </div>
-                              <div class="constraint">
-                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">./type[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@value</code></p>
-                                 <p>The value <b>must</b> be one of the following:</p>
-                                 <ul>
-                                    
-                                    <li><strong>approval</strong>: An approval of a document instance's content.</li>
-                                    
-                                    <li><strong>request-changes</strong>: A request from the responisble party or parties to change the content.</li>
-                                    </ul>
-                              </div>
-                           </details>
-                           <details class="properties attributes" open="open">
-                              <summary>Attributes (4)</summary>
-                              <div class="model-entry definition assembly">
-                                 <div class="instance-header">
-                                    <h4 id="/profile/metadata/action/@uuid" class="toc4 name">uuid</h4>
-                                    <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
-                                    <p class="occurrence">[1]</p>
-                                    <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/actions/uuid">Switch to JSON</a></div>
-                                    <p class="formal-name">Action Universally Unique Identifier</p>
-                                 </div>
-                                 <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> A unique identifier that can be used to reference this defined action elsewhere in
-                                       an OSCAL document. A UUID should be consistently used for a given location across
-                                       revisions of the document.</p>
-                                 </div>
-                              </div>
-                              <div class="model-entry definition assembly">
-                                 <div class="instance-header">
-                                    <h4 id="/profile/metadata/action/@date" class="toc4 name">date</h4>
-                                    <p class="type"><a href="/reference/datatypes/#datetime-with-timezone">dateTime-with-timezone</a></p>
-                                    <p class="occurrence">[0 or 1]</p>
-                                    <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/actions/date">Switch to JSON</a></div>
-                                    <p class="formal-name">Action Occurrence Date</p>
-                                 </div>
-                                 <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> The date and time when the action occurred.</p>
-                                 </div>
-                              </div>
-                              <div class="model-entry definition assembly">
-                                 <div class="instance-header">
-                                    <h4 id="/profile/metadata/action/@type" class="toc4 name">type</h4>
-                                    <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                                    <p class="occurrence">[1]</p>
-                                    <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/actions/type">Switch to JSON</a></div>
-                                    <p class="formal-name">Action Type</p>
-                                 </div>
-                                 <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> The type of action documented by the assembly, such as an approval.</p>
-                                 </div>
-                              </div>
-                              <div class="model-entry definition assembly">
-                                 <div class="instance-header">
-                                    <h4 id="/profile/metadata/action/@system" class="toc4 name">system</h4>
-                                    <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
-                                    <p class="occurrence">[1]</p>
-                                    <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/actions/system">Switch to JSON</a></div>
-                                    <p class="formal-name">Action Type System</p>
-                                 </div>
-                                 <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> Specifies the action type system used.</p>
-                                    <div class="remarks-group usa-prose">
-                                       <details open="open">
-                                          <summary class="subhead">Remarks</summary>
-                                          <div class="remarks">
-                                             <p>Provides a means to segment the value space for the <code>type</code>, so that different organizations and individuals can assert control over the allowed
-                                                <code>action</code>'s <code>type</code>. This allows the semantics associated with a given <code>type</code> to be defined on an organization-by-organization basis.</p>
-                                             <p>An organization MUST use a URI that they have control over. e.g., a domain registered
-                                                to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                                          </div>
-                                       </details>
-                                    </div>
-                                 </div>
-                              </div>
-                           </details>
-                           <details class="properties elements" open="open">
-                              <summary>Elements (4)</summary>
-                              <div class="model-entry definition assembly">
-                                 <div class="instance-header">
-                                    <h4 id="/profile/metadata/action/prop" class="toc4 name">prop</h4>
-                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/action/prop">(global definition)</a></p>
-                                    <p class="occurrence">[0 to ∞]</p>
-                                    <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/actions/props">Switch to JSON</a></div>
-                                    <p class="formal-name">Property</p>
-                                 </div>
-                                 <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> An attribute, characteristic, or quality of the containing object expressed as a
-                                       namespace qualified name/value pair.</p>
-                                    <div class="remarks-group usa-prose">
-                                       <details open="open">
-                                          <summary class="subhead">Remarks</summary>
-                                          <div class="remarks">
-                                             <p>Properties permit the deployment and management of arbitrary controlled values, within
-                                                OSCAL objects. A property can be included for any purpose useful to an application
-                                                or implementation. Typically, properties will be used to sort, filter, select, order,
-                                                and arrange OSCAL content objects, to relate OSCAL objects to one another, or to associate
-                                                an OSCAL object to class hierarchies, taxonomies, or external authorities. Thus, the
-                                                lexical composition of properties may be constrained by external processes to ensure
-                                                consistency.</p>
-                                             <p>Property allows for associated remarks that describe why the specific property value
-                                                was applied to the containing object, or the significance of the value in the context
-                                                of the containing object.</p>
-                                          </div>
-                                       </details>
-                                    </div>
-                                    <details class="constraints" open="open">
-                                       <summary>Constraint (1)</summary>
-                                       <div class="constraint">
-                                          <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
-                                          <p>The value <b>must</b> be one of the following:</p>
-                                          <ul>
-                                             
-                                             <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                An optional class can be used to define the specific marking system used for the associated
-                                                value.</li>
-                                             </ul>
-                                       </div>
-                                    </details>
-                                    <details class="properties attributes" open="open">
-                                       <summary>Attributes (6)</summary>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h5 id="/profile/metadata/action/prop/@name" class="toc5 name">name</h5>
-                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                                             <p class="occurrence">[1]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/actions/props/name">Switch to JSON</a></div>
-                                             <p class="formal-name">Property Name</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
-                                                characteristic, or quality of the property's containing object.</p>
-                                          </div>
-                                       </div>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h5 id="/profile/metadata/action/prop/@uuid" class="toc5 name">uuid</h5>
-                                             <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
-                                             <p class="occurrence">[0 or 1]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/actions/props/uuid">Switch to JSON</a></div>
-                                             <p class="formal-name">Property Universally Unique Identifier</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> A unique identifier for a property.</p>
-                                          </div>
-                                       </div>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h5 id="/profile/metadata/action/prop/@ns" class="toc5 name">ns</h5>
-                                             <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
-                                             <p class="occurrence">[0 or 1]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/actions/props/ns">Switch to JSON</a></div>
-                                             <p class="formal-name">Property Namespace</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> A namespace qualifying the property's name. This allows different organizations to
-                                                associate distinct semantics with the same name.</p>
-                                             <div class="remarks-group usa-prose">
-                                                <details open="open">
-                                                   <summary class="subhead">Remarks</summary>
-                                                   <div class="remarks">
-                                                      <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
-                                                      <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                                   </div>
-                                                </details>
-                                             </div>
-                                          </div>
-                                       </div>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h5 id="/profile/metadata/action/prop/@value" class="toc5 name">value</h5>
-                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
-                                             <p class="occurrence">[1]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/actions/props/value">Switch to JSON</a></div>
-                                             <p class="formal-name">Property Value</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> Indicates the value of the attribute, characteristic, or quality.</p>
-                                          </div>
-                                       </div>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h5 id="/profile/metadata/action/prop/@class" class="toc5 name">class</h5>
-                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                                             <p class="occurrence">[0 or 1]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/actions/props/class">Switch to JSON</a></div>
-                                             <p class="formal-name">Property Class</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> A textual label that provides a sub-type or characterization of the property's <code>name</code>.</p>
-                                             <div class="remarks-group usa-prose">
-                                                <details open="open">
-                                                   <summary class="subhead">Remarks</summary>
-                                                   <div class="remarks">
-                                                      <p>This can be used to further distinguish or discriminate between the semantics of multiple
-                                                         properties of the same object with the same <code>name</code> and <code>ns</code>, or to group properties into categories.</p>
-                                                      <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                         a specific <code>class</code> value. It is available for grouping, but unlike <code>group</code> is not expected specifically to designate any group membership as such.</p>
-                                                   </div>
-                                                </details>
-                                             </div>
-                                          </div>
-                                       </div>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h5 id="/profile/metadata/action/prop/@group" class="toc5 name">group</h5>
-                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                                             <p class="occurrence">[0 or 1]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/actions/props/group">Switch to JSON</a></div>
-                                             <p class="formal-name">Property Group</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
-                                             <div class="remarks-group usa-prose">
-                                                <details open="open">
-                                                   <summary class="subhead">Remarks</summary>
-                                                   <div class="remarks">
-                                                      <p>Different sets of properties may relate to separate contexts. Declare a group on a
-                                                         property to associate it with one or more other properties in a given context.</p>
-                                                   </div>
-                                                </details>
-                                             </div>
-                                          </div>
-                                       </div>
-                                    </details>
-                                    <details class="properties elements" open="open">
-                                       <summary>Element (1)</summary>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h5 id="/profile/metadata/action/prop/remarks" class="toc5 name">remarks</h5>
-                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                             <p class="occurrence">[0 or 1]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/actions/props/remarks">Switch to JSON</a></div>
-                                             <p class="formal-name">Remarks</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> Additional commentary about the containing object.</p>
-                                             <div class="remarks-group usa-prose">
-                                                <details open="open">
-                                                   <summary class="subhead">Remarks</summary>
-                                                   <div class="remarks">
-                                                      <p>The <code>remarks</code> field SHOULD not be used to store arbitrary data. Instead, a <code>prop</code> or <code>link</code> should be used to annotate or reference any additional data not formally supported
-                                                         by OSCAL.</p>
-                                                   </div>
-                                                </details>
-                                             </div>
-                                             <details class="properties elements" open="open">
-                                                <summary>Element (0+)</summary>
-                                                <div class="model-entry definition field">
-                                                   <div class="instance-header">
-                                                      <h5 id="/profile/metadata/action/prop/remarks/_VALUE" class="toc5 name">(unwrapped)</h5>
-                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                                      <p class="occurrence">[0 to ∞]</p>
-                                                   </div>
-                                                   <div class="body">
-                                                      <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
-                                                   </div>
-                                                </div>
-                                             </details>
-                                          </div>
-                                       </div>
-                                    </details>
-                                 </div>
-                              </div>
-                              <div class="model-entry definition assembly">
-                                 <div class="instance-header">
-                                    <h4 id="/profile/metadata/action/link" class="toc4 name">link</h4>
-                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/action/link">(global definition)</a></p>
-                                    <p class="occurrence">[0 to ∞]</p>
-                                    <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/actions/links">Switch to JSON</a></div>
-                                    <p class="formal-name">Link</p>
-                                 </div>
-                                 <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> A reference to a local or remote resource, that has a specific relation to the containing
-                                       object.</p>
-                                    <div class="remarks-group usa-prose">
-                                       <details open="open">
-                                          <summary class="subhead">Remarks</summary>
-                                          <div class="remarks">
-                                             <p>To provide a cryptographic hash for a remote target resource, a local reference to
-                                                a back matter <code>resource</code> is needed. The resource allows one or more hash values to be provided using the <code>rlink/hash</code> object.</p>
-                                             <p>The OSCAL <code>link</code> is a roughly based on the HTML <a href="https://www.w3.org/TR/html401/struct/links.html#edef-LINK">link element</a>. </p>
-                                          </div>
-                                       </details>
-                                    </div>
-                                    <details class="constraints" open="open">
-                                       <summary>Constraints (4)</summary>
-                                       <div class="constraint">
-                                          <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
-                                       </div>
-                                       <div class="constraint">
-                                          <p><span class="usa-tag">index has key</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]</code>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
-                                       </div>
-                                       <div class="constraint">
-                                          <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
-                                       </div>
-                                       <div class="constraint">
-                                          <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
-                                       </div>
-                                    </details>
-                                    <details class="properties attributes" open="open">
-                                       <summary>Attributes (4)</summary>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h5 id="/profile/metadata/action/link/@href" class="toc5 name">href</h5>
-                                             <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
-                                             <p class="occurrence">[1]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/actions/links/href">Switch to JSON</a></div>
-                                             <p class="formal-name">Hypertext Reference</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> A resolvable URL reference to a resource.</p>
-                                             <div class="remarks-group usa-prose">
-                                                <details open="open">
-                                                   <summary class="subhead">Remarks</summary>
-                                                   <div class="remarks">
-                                                      <p>This value may be one of:</p>
-                                                      <ol>
-                                                         
-                                                         <li>an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
-                                                         
-                                                         <li>a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
-                                                            document, or</li>
-                                                         
-                                                         <li>a bare URI fragment (i.e., `#uuid`) pointing to an OSCAL object by the objects identifier
-                                                            (e.g., id, uuid) in this or an imported document (see <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>). The specific object type will differ based on the link relationship type.</li>
-                                                         </ol>
-                                                   </div>
-                                                </details>
-                                             </div>
-                                          </div>
-                                       </div>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h5 id="/profile/metadata/action/link/@rel" class="toc5 name">rel</h5>
-                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                                             <p class="occurrence">[0 or 1]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/actions/links/rel">Switch to JSON</a></div>
-                                             <p class="formal-name">Link Relation Type</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> Describes the type of relationship provided by the link's hypertext reference. This
-                                                can be an indicator of the link's purpose.</p>
-                                             <details class="constraints" open="open">
-                                                <summary>Constraint (1)</summary>
-                                                <div class="constraint">
-                                                   <p><span class="usa-tag">allowed value</span></p>
-                                                   <p>The value <b>may be locally defined</b>, or the following:</p>
-                                                   <ul>
-                                                      
-                                                      <li><strong>reference</strong>: A generalized reference to a network resource (relative or absolute) or to a back-matter
-                                                         resource by UUID expressed as a bare URI fragment.</li>
-                                                      </ul>
-                                                </div>
-                                             </details>
-                                          </div>
-                                       </div>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h5 id="/profile/metadata/action/link/@media-type" class="toc5 name">media-type</h5>
-                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
-                                             <p class="occurrence">[0 or 1]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/actions/links/media-type">Switch to JSON</a></div>
-                                             <p class="formal-name">Media Type</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> A label that indicates the nature of a resource, as a data serialization or format.</p>
-                                             <div class="remarks-group usa-prose">
-                                                <details open="open">
-                                                   <summary class="subhead">Remarks</summary>
-                                                   <div class="remarks">
-                                                      <p> The Internet Assigned Numbers Authority (IANA) <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">Media Types Registry</a> defines a standardized set of media types, which may be used here.</p>
-                                                      <p>The <code>application/oscal+xml</code>, <code>application/oscal+json</code> or <code>application/oscal+yaml</code> media types SHOULD be used when referencing OSCAL XML, JSON, or YAML resources respectively.</p>
-                                                      <p>**Note: There is no official media type for YAML at this time.** OSCAL documents should
-                                                         specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name
-                                                         suffix, per <a href="https://www.rfc-editor.org/rfc/rfc6838.html#section-4.2.8">RFC 6838 Section 4.2.8</a>.</p>
-                                                      <p>Some earlier OSCAL content incorporated the model into the media type. For example:
-                                                         <code>application/oscal.catalog+xml</code>. This practice SHOULD be avoided, since the OSCAL model can be detected by parsing
-                                                         the initial content of the referenced resource.</p>
-                                                   </div>
-                                                   <div class="remarks">
-                                                      <p>The <code>media-type</code> provides a hint about the content model of the referenced resource. A valid entry
-                                                         from the <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">IANA Media Types registry</a> SHOULD be used.</p>
-                                                   </div>
-                                                </details>
-                                             </div>
-                                          </div>
-                                       </div>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h5 id="/profile/metadata/action/link/@resource-fragment" class="toc5 name">resource-fragment</h5>
-                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
-                                             <p class="occurrence">[0 or 1]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/actions/links/resource-fragment">Switch to JSON</a></div>
-                                             <p class="formal-name">Resource Fragment</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
-                                          </div>
-                                       </div>
-                                    </details>
-                                    <details class="properties elements" open="open">
-                                       <summary>Element (1)</summary>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h5 id="/profile/metadata/action/link/text" class="toc5 name">text</h5>
-                                             <p class="type" id="/profile/metadata/action/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
-                                             <p class="occurrence">[0 or 1]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/actions/links/text">Switch to JSON</a></div>
-                                             <p class="formal-name">Link Text</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> A textual label to associate with the link, which may be used for presentation in
-                                                a tool.</p>
-                                          </div>
-                                       </div>
-                                    </details>
-                                 </div>
-                              </div>
-                              <div class="model-entry definition assembly">
-                                 <div class="instance-header">
-                                    <h4 id="/profile/metadata/action/responsible-party" class="toc4 name">responsible-party</h4>
-                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/action/responsible-party">(global definition)</a></p>
-                                    <p class="occurrence">[0 to ∞]</p>
-                                    <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/actions/responsible-parties">Switch to JSON</a></div>
-                                    <p class="formal-name">Responsible Party</p>
-                                 </div>
-                                 <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> A reference to a set of persons and/or organizations that have responsibility for
-                                       performing the referenced role in the context of the containing object.</p>
-                                    <div class="remarks-group usa-prose">
-                                       <details open="open">
-                                          <summary class="subhead">Remarks</summary>
-                                          <div class="remarks">
-                                             <p>A <code>responsible-party</code> requires one or more <code>party-uuid</code> references creating a strong relationship arc between the referenced <code>role-id</code> and the reference parties. This differs in semantics from <code>responsible-role</code> which doesn't require that a <code>party-uuid</code> is referenced.</p>
-                                             <p>The scope of use of this object determines if the responsibility has been performed
-                                                or will be performed in the future. The containing object will describe the intent.</p>
-                                          </div>
-                                       </details>
-                                    </div>
-                                    <details class="constraints" open="open">
-                                       <summary>Constraint (1)</summary>
-                                       <div class="constraint">
-                                          <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-role-id</code> using a key constructed of key field(s) <code>@role-id</code></p>
-                                       </div>
-                                    </details>
-                                    <details class="properties attributes" open="open">
-                                       <summary>Attribute (1)</summary>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h5 id="/profile/metadata/action/responsible-party/@role-id" class="toc5 name">role-id</h5>
-                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                                             <p class="occurrence">[1]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/actions/responsible-parties/role-id">Switch to JSON</a></div>
-                                             <p class="formal-name">Responsible Role</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> A reference to a <code>role</code> performed by a <code>party</code>.</p>
-                                          </div>
-                                       </div>
-                                    </details>
-                                    <details class="properties elements" open="open">
-                                       <summary>Elements (4)</summary>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h5 id="/profile/metadata/action/responsible-party/party-uuid" class="toc5 name">party-uuid</h5>
-                                             <p class="type" id="/profile/metadata/action/responsible-party/party-uuid/_VALUE"><a href="/reference/datatypes/#uuid">uuid</a></p>
-                                             <p class="occurrence">[1 to ∞]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/actions/responsible-parties/party-uuids">Switch to JSON</a></div>
-                                             <p class="formal-name">Party Universally Unique Identifier Reference</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> Reference to a party by UUID.</p>
-                                             <details class="constraints" open="open">
-                                                <summary>Constraint (1)</summary>
-                                                <div class="constraint">
-                                                   <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>.</code></p>
-                                                </div>
-                                             </details>
-                                          </div>
-                                       </div>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h5 id="/profile/metadata/action/responsible-party/prop" class="toc5 name">prop</h5>
-                                             <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/responsible-party/prop">(global definition)</a></p>
-                                             <p class="occurrence">[0 to ∞]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/actions/responsible-parties/props">Switch to JSON</a></div>
-                                             <p class="formal-name">Property</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> An attribute, characteristic, or quality of the containing object expressed as a
-                                                namespace qualified name/value pair.</p>
-                                             <div class="remarks-group usa-prose">
-                                                <details open="open">
-                                                   <summary class="subhead">Remarks</summary>
-                                                   <div class="remarks">
-                                                      <p>Properties permit the deployment and management of arbitrary controlled values, within
-                                                         OSCAL objects. A property can be included for any purpose useful to an application
-                                                         or implementation. Typically, properties will be used to sort, filter, select, order,
-                                                         and arrange OSCAL content objects, to relate OSCAL objects to one another, or to associate
-                                                         an OSCAL object to class hierarchies, taxonomies, or external authorities. Thus, the
-                                                         lexical composition of properties may be constrained by external processes to ensure
-                                                         consistency.</p>
-                                                      <p>Property allows for associated remarks that describe why the specific property value
-                                                         was applied to the containing object, or the significance of the value in the context
-                                                         of the containing object.</p>
-                                                   </div>
-                                                </details>
-                                             </div>
-                                             <details class="constraints" open="open">
-                                                <summary>Constraint (1)</summary>
-                                                <div class="constraint">
-                                                   <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
-                                                   <p>The value <b>must</b> be one of the following:</p>
-                                                   <ul>
-                                                      
-                                                      <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                         An optional class can be used to define the specific marking system used for the associated
-                                                         value.</li>
-                                                      </ul>
-                                                </div>
-                                             </details>
-                                             <details class="properties attributes" open="open">
-                                                <summary>Attributes (6)</summary>
-                                                <div class="model-entry definition assembly">
-                                                   <div class="instance-header">
-                                                      <h6 id="/profile/metadata/action/responsible-party/prop/@name" class="toc6 name">name</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                                                      <p class="occurrence">[1]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/actions/responsible-parties/props/name">Switch to JSON</a></div>
-                                                      <p class="formal-name">Property Name</p>
-                                                   </div>
-                                                   <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
-                                                         characteristic, or quality of the property's containing object.</p>
-                                                   </div>
-                                                </div>
-                                                <div class="model-entry definition assembly">
-                                                   <div class="instance-header">
-                                                      <h6 id="/profile/metadata/action/responsible-party/prop/@uuid" class="toc6 name">uuid</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
-                                                      <p class="occurrence">[0 or 1]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/actions/responsible-parties/props/uuid">Switch to JSON</a></div>
-                                                      <p class="formal-name">Property Universally Unique Identifier</p>
-                                                   </div>
-                                                   <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> A unique identifier for a property.</p>
-                                                   </div>
-                                                </div>
-                                                <div class="model-entry definition assembly">
-                                                   <div class="instance-header">
-                                                      <h6 id="/profile/metadata/action/responsible-party/prop/@ns" class="toc6 name">ns</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
-                                                      <p class="occurrence">[0 or 1]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/actions/responsible-parties/props/ns">Switch to JSON</a></div>
-                                                      <p class="formal-name">Property Namespace</p>
-                                                   </div>
-                                                   <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> A namespace qualifying the property's name. This allows different organizations to
-                                                         associate distinct semantics with the same name.</p>
-                                                      <div class="remarks-group usa-prose">
-                                                         <details open="open">
-                                                            <summary class="subhead">Remarks</summary>
-                                                            <div class="remarks">
-                                                               <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
-                                                               <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                                            </div>
-                                                         </details>
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                                <div class="model-entry definition assembly">
-                                                   <div class="instance-header">
-                                                      <h6 id="/profile/metadata/action/responsible-party/prop/@value" class="toc6 name">value</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#string">string</a></p>
-                                                      <p class="occurrence">[1]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/actions/responsible-parties/props/value">Switch to JSON</a></div>
-                                                      <p class="formal-name">Property Value</p>
-                                                   </div>
-                                                   <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> Indicates the value of the attribute, characteristic, or quality.</p>
-                                                   </div>
-                                                </div>
-                                                <div class="model-entry definition assembly">
-                                                   <div class="instance-header">
-                                                      <h6 id="/profile/metadata/action/responsible-party/prop/@class" class="toc6 name">class</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                                                      <p class="occurrence">[0 or 1]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/actions/responsible-parties/props/class">Switch to JSON</a></div>
-                                                      <p class="formal-name">Property Class</p>
-                                                   </div>
-                                                   <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> A textual label that provides a sub-type or characterization of the property's <code>name</code>.</p>
-                                                      <div class="remarks-group usa-prose">
-                                                         <details open="open">
-                                                            <summary class="subhead">Remarks</summary>
-                                                            <div class="remarks">
-                                                               <p>This can be used to further distinguish or discriminate between the semantics of multiple
-                                                                  properties of the same object with the same <code>name</code> and <code>ns</code>, or to group properties into categories.</p>
-                                                               <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                                  a specific <code>class</code> value. It is available for grouping, but unlike <code>group</code> is not expected specifically to designate any group membership as such.</p>
-                                                            </div>
-                                                         </details>
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                                <div class="model-entry definition assembly">
-                                                   <div class="instance-header">
-                                                      <h6 id="/profile/metadata/action/responsible-party/prop/@group" class="toc6 name">group</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                                                      <p class="occurrence">[0 or 1]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/actions/responsible-parties/props/group">Switch to JSON</a></div>
-                                                      <p class="formal-name">Property Group</p>
-                                                   </div>
-                                                   <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
-                                                      <div class="remarks-group usa-prose">
-                                                         <details open="open">
-                                                            <summary class="subhead">Remarks</summary>
-                                                            <div class="remarks">
-                                                               <p>Different sets of properties may relate to separate contexts. Declare a group on a
-                                                                  property to associate it with one or more other properties in a given context.</p>
-                                                            </div>
-                                                         </details>
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                             </details>
-                                             <details class="properties elements" open="open">
-                                                <summary>Element (1)</summary>
-                                                <div class="model-entry definition assembly">
-                                                   <div class="instance-header">
-                                                      <h6 id="/profile/metadata/action/responsible-party/prop/remarks" class="toc6 name">remarks</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                                      <p class="occurrence">[0 or 1]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/actions/responsible-parties/props/remarks">Switch to JSON</a></div>
-                                                      <p class="formal-name">Remarks</p>
-                                                   </div>
-                                                   <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> Additional commentary about the containing object.</p>
-                                                      <div class="remarks-group usa-prose">
-                                                         <details open="open">
-                                                            <summary class="subhead">Remarks</summary>
-                                                            <div class="remarks">
-                                                               <p>The <code>remarks</code> field SHOULD not be used to store arbitrary data. Instead, a <code>prop</code> or <code>link</code> should be used to annotate or reference any additional data not formally supported
-                                                                  by OSCAL.</p>
-                                                            </div>
-                                                         </details>
-                                                      </div>
-                                                      <details class="properties elements" open="open">
-                                                         <summary>Element (0+)</summary>
-                                                         <div class="model-entry definition field">
-                                                            <div class="instance-header">
-                                                               <h6 id="/profile/metadata/action/responsible-party/prop/remarks/_VALUE" class="toc6 name">(unwrapped)</h6>
-                                                               <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                                               <p class="occurrence">[0 to ∞]</p>
-                                                            </div>
-                                                            <div class="body">
-                                                               <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
-                                                            </div>
-                                                         </div>
-                                                      </details>
-                                                   </div>
-                                                </div>
-                                             </details>
-                                          </div>
-                                       </div>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h5 id="/profile/metadata/action/responsible-party/link" class="toc5 name">link</h5>
-                                             <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/responsible-party/link">(global definition)</a></p>
-                                             <p class="occurrence">[0 to ∞]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/actions/responsible-parties/links">Switch to JSON</a></div>
-                                             <p class="formal-name">Link</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> A reference to a local or remote resource, that has a specific relation to the containing
-                                                object.</p>
-                                             <div class="remarks-group usa-prose">
-                                                <details open="open">
-                                                   <summary class="subhead">Remarks</summary>
-                                                   <div class="remarks">
-                                                      <p>To provide a cryptographic hash for a remote target resource, a local reference to
-                                                         a back matter <code>resource</code> is needed. The resource allows one or more hash values to be provided using the <code>rlink/hash</code> object.</p>
-                                                      <p>The OSCAL <code>link</code> is a roughly based on the HTML <a href="https://www.w3.org/TR/html401/struct/links.html#edef-LINK">link element</a>. </p>
-                                                   </div>
-                                                </details>
-                                             </div>
-                                             <details class="constraints" open="open">
-                                                <summary>Constraints (4)</summary>
-                                                <div class="constraint">
-                                                   <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
-                                                </div>
-                                                <div class="constraint">
-                                                   <p><span class="usa-tag">index has key</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]</code>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
-                                                </div>
-                                                <div class="constraint">
-                                                   <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
-                                                </div>
-                                                <div class="constraint">
-                                                   <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
-                                                </div>
-                                             </details>
-                                             <details class="properties attributes" open="open">
-                                                <summary>Attributes (4)</summary>
-                                                <div class="model-entry definition assembly">
-                                                   <div class="instance-header">
-                                                      <h6 id="/profile/metadata/action/responsible-party/link/@href" class="toc6 name">href</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
-                                                      <p class="occurrence">[1]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/actions/responsible-parties/links/href">Switch to JSON</a></div>
-                                                      <p class="formal-name">Hypertext Reference</p>
-                                                   </div>
-                                                   <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> A resolvable URL reference to a resource.</p>
-                                                      <div class="remarks-group usa-prose">
-                                                         <details open="open">
-                                                            <summary class="subhead">Remarks</summary>
-                                                            <div class="remarks">
-                                                               <p>This value may be one of:</p>
-                                                               <ol>
-                                                                  
-                                                                  <li>an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
-                                                                  
-                                                                  <li>a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
-                                                                     document, or</li>
-                                                                  
-                                                                  <li>a bare URI fragment (i.e., `#uuid`) pointing to an OSCAL object by the objects identifier
-                                                                     (e.g., id, uuid) in this or an imported document (see <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>). The specific object type will differ based on the link relationship type.</li>
-                                                                  </ol>
-                                                            </div>
-                                                         </details>
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                                <div class="model-entry definition assembly">
-                                                   <div class="instance-header">
-                                                      <h6 id="/profile/metadata/action/responsible-party/link/@rel" class="toc6 name">rel</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                                                      <p class="occurrence">[0 or 1]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/actions/responsible-parties/links/rel">Switch to JSON</a></div>
-                                                      <p class="formal-name">Link Relation Type</p>
-                                                   </div>
-                                                   <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> Describes the type of relationship provided by the link's hypertext reference. This
-                                                         can be an indicator of the link's purpose.</p>
-                                                      <details class="constraints" open="open">
-                                                         <summary>Constraint (1)</summary>
-                                                         <div class="constraint">
-                                                            <p><span class="usa-tag">allowed value</span></p>
-                                                            <p>The value <b>may be locally defined</b>, or the following:</p>
-                                                            <ul>
-                                                               
-                                                               <li><strong>reference</strong>: A generalized reference to a network resource (relative or absolute) or to a back-matter
-                                                                  resource by UUID expressed as a bare URI fragment.</li>
-                                                               </ul>
-                                                         </div>
-                                                      </details>
-                                                   </div>
-                                                </div>
-                                                <div class="model-entry definition assembly">
-                                                   <div class="instance-header">
-                                                      <h6 id="/profile/metadata/action/responsible-party/link/@media-type" class="toc6 name">media-type</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#string">string</a></p>
-                                                      <p class="occurrence">[0 or 1]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/actions/responsible-parties/links/media-type">Switch to JSON</a></div>
-                                                      <p class="formal-name">Media Type</p>
-                                                   </div>
-                                                   <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> A label that indicates the nature of a resource, as a data serialization or format.</p>
-                                                      <div class="remarks-group usa-prose">
-                                                         <details open="open">
-                                                            <summary class="subhead">Remarks</summary>
-                                                            <div class="remarks">
-                                                               <p> The Internet Assigned Numbers Authority (IANA) <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">Media Types Registry</a> defines a standardized set of media types, which may be used here.</p>
-                                                               <p>The <code>application/oscal+xml</code>, <code>application/oscal+json</code> or <code>application/oscal+yaml</code> media types SHOULD be used when referencing OSCAL XML, JSON, or YAML resources respectively.</p>
-                                                               <p>**Note: There is no official media type for YAML at this time.** OSCAL documents should
-                                                                  specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name
-                                                                  suffix, per <a href="https://www.rfc-editor.org/rfc/rfc6838.html#section-4.2.8">RFC 6838 Section 4.2.8</a>.</p>
-                                                               <p>Some earlier OSCAL content incorporated the model into the media type. For example:
-                                                                  <code>application/oscal.catalog+xml</code>. This practice SHOULD be avoided, since the OSCAL model can be detected by parsing
-                                                                  the initial content of the referenced resource.</p>
-                                                            </div>
-                                                            <div class="remarks">
-                                                               <p>The <code>media-type</code> provides a hint about the content model of the referenced resource. A valid entry
-                                                                  from the <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">IANA Media Types registry</a> SHOULD be used.</p>
-                                                            </div>
-                                                         </details>
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                                <div class="model-entry definition assembly">
-                                                   <div class="instance-header">
-                                                      <h6 id="/profile/metadata/action/responsible-party/link/@resource-fragment" class="toc6 name">resource-fragment</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#string">string</a></p>
-                                                      <p class="occurrence">[0 or 1]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/actions/responsible-parties/links/resource-fragment">Switch to JSON</a></div>
-                                                      <p class="formal-name">Resource Fragment</p>
-                                                   </div>
-                                                   <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
-                                                   </div>
-                                                </div>
-                                             </details>
-                                             <details class="properties elements" open="open">
-                                                <summary>Element (1)</summary>
-                                                <div class="model-entry definition assembly">
-                                                   <div class="instance-header">
-                                                      <h6 id="/profile/metadata/action/responsible-party/link/text" class="toc6 name">text</h6>
-                                                      <p class="type" id="/profile/metadata/action/responsible-party/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
-                                                      <p class="occurrence">[0 or 1]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/actions/responsible-parties/links/text">Switch to JSON</a></div>
-                                                      <p class="formal-name">Link Text</p>
-                                                   </div>
-                                                   <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> A textual label to associate with the link, which may be used for presentation in
-                                                         a tool.</p>
-                                                   </div>
-                                                </div>
-                                             </details>
-                                          </div>
-                                       </div>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h5 id="/profile/metadata/action/responsible-party/remarks" class="toc5 name">remarks</h5>
-                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                             <p class="occurrence">[0 or 1]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/actions/responsible-parties/remarks">Switch to JSON</a></div>
-                                             <p class="formal-name">Remarks</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> Additional commentary about the containing object.</p>
-                                             <div class="remarks-group usa-prose">
-                                                <details open="open">
-                                                   <summary class="subhead">Remarks</summary>
-                                                   <div class="remarks">
-                                                      <p>The <code>remarks</code> field SHOULD not be used to store arbitrary data. Instead, a <code>prop</code> or <code>link</code> should be used to annotate or reference any additional data not formally supported
-                                                         by OSCAL.</p>
-                                                   </div>
-                                                </details>
-                                             </div>
-                                             <details class="properties elements" open="open">
-                                                <summary>Element (0+)</summary>
-                                                <div class="model-entry definition field">
-                                                   <div class="instance-header">
-                                                      <h5 id="/profile/metadata/action/responsible-party/remarks/_VALUE" class="toc5 name">(unwrapped)</h5>
-                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                                      <p class="occurrence">[0 to ∞]</p>
-                                                   </div>
-                                                   <div class="body">
-                                                      <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
-                                                   </div>
-                                                </div>
-                                             </details>
-                                          </div>
-                                       </div>
-                                    </details>
-                                 </div>
-                              </div>
-                              <div class="model-entry definition assembly">
-                                 <div class="instance-header">
-                                    <h4 id="/profile/metadata/action/remarks" class="toc4 name">remarks</h4>
-                                    <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                    <p class="occurrence">[0 or 1]</p>
-                                    <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/actions/remarks">Switch to JSON</a></div>
-                                    <p class="formal-name">Remarks</p>
-                                 </div>
-                                 <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> Additional commentary about the containing object.</p>
-                                    <div class="remarks-group usa-prose">
-                                       <details open="open">
-                                          <summary class="subhead">Remarks</summary>
-                                          <div class="remarks">
-                                             <p>The <code>remarks</code> field SHOULD not be used to store arbitrary data. Instead, a <code>prop</code> or <code>link</code> should be used to annotate or reference any additional data not formally supported
-                                                by OSCAL.</p>
-                                          </div>
-                                       </details>
-                                    </div>
-                                    <details class="properties elements" open="open">
-                                       <summary>Element (0+)</summary>
-                                       <div class="model-entry definition field">
-                                          <div class="instance-header">
-                                             <h4 id="/profile/metadata/action/remarks/_VALUE" class="toc4 name">(unwrapped)</h4>
                                              <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                              <p class="occurrence">[0 to ∞]</p>
                                           </div>
@@ -4545,16 +3194,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                            <p class="formal-name">Remarks</p>
                         </div>
                         <div class="body">
-                           <p class="description"><span class="usa-tag">Description</span> Additional commentary about the containing object.</p>
-                           <div class="remarks-group usa-prose">
-                              <details open="open">
-                                 <summary class="subhead">Remarks</summary>
-                                 <div class="remarks">
-                                    <p>The <code>remarks</code> field SHOULD not be used to store arbitrary data. Instead, a <code>prop</code> or <code>link</code> should be used to annotate or reference any additional data not formally supported
-                                       by OSCAL.</p>
-                                 </div>
-                              </details>
-                           </div>
+                           <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
                            <details class="properties elements" open="open">
                               <summary>Element (0+)</summary>
                               <div class="model-entry definition field">
@@ -4579,15 +3219,18 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                   <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-profile/profile/import">(global definition)</a></p>
                   <p class="occurrence">[1 to ∞]</p>
                   <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/imports">Switch to JSON</a></div>
-                  <p class="formal-name">Import Resource</p>
+                  <p class="formal-name">Import resource</p>
                </div>
                <div class="body">
-                  <p class="description"><span class="usa-tag">Description</span> Designates a referenced source catalog or profile that provides a source of control
-                     information for use in creating a new overlay or baseline.</p>
+                  <p class="description"><span class="usa-tag">Description</span> The <code>import</code> designates a catalog or profile to be included (referenced and potentially modified)
+                     by this profile. The import also identifies which controls to select using the <code>include-all</code>, <code>include-controls</code>, and <code>exclude-controls</code> directives.</p>
                   <div class="remarks-group usa-prose">
                      <details open="open">
                         <summary class="subhead">Remarks</summary>
                         <div class="remarks">
+                           <p>A profile must be based on an existing OSCAL catalog or another OSCAL profile. An
+                              <code>import</code> indicates such a source whose controls are to be included (referenced and modified)
+                              in a profile. This source will either be a catalog whose controls are given (<q>by value</q>), or a profile with its own control imports.</p>
                            <p>The contents of the <code>import</code> element indicate which controls from the source will be included. Controls from the
                               source catalog or profile may be either selected, using the <code>include-all</code> or <code>include-controls</code> directives, or de-selected (using an <code>exclude-controls</code> directive).</p>
                         </div>
@@ -4609,16 +3252,13 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               <details open="open">
                                  <summary class="subhead">Remarks</summary>
                                  <div class="remarks">
-                                    <p>This value may be one of:</p>
-                                    <ol>
-                                       
-                                       <li>an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
-                                       
-                                       <li>a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
-                                          document, or</li>
-                                       
-                                       <li>a bare URI fragment (i.e., `#uuid`) pointing to a <code>back-matter</code> resource in this or an imported document (see <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>).</li>
-                                       </ol>
+                                    <p>The value of the <code>href</code> can be an internet resource, or an internal reference using a fragment e.g. #fragment
+                                       that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
+                                    <p>If a local reference using a fragment is used, this will be indicated by a fragment
+                                       "#" followed by an identifier which references the <code>uuid</code> value of a <code>resource</code> in the document's <code>back-matter</code>.</p>
+                                    <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URL pointing to the location of the referenced
+                                       resource. A relative URL will be resolved relative to the location of the document
+                                       containing the link.</p>
                                  </div>
                               </details>
                            </div>
@@ -4658,10 +3298,10 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               <p class="type">element<br /></p>
                               <p class="occurrence">[1 to ∞]</p>
                               <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/imports/include-controls">Switch to JSON</a></div>
-                              <p class="formal-name">Select Control</p>
+                              <p class="formal-name">Call</p>
                            </div>
                            <div class="body">
-                              <p class="description"><span class="usa-tag">Description</span> Select a control or controls from an imported control set.</p>
+                              <p class="description"><span class="usa-tag">Description</span> Call a control by its ID</p>
                               <div class="remarks-group usa-prose">
                                  <details open="open">
                                     <summary class="subhead">Remarks</summary>
@@ -4685,7 +3325,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                        <p class="occurrence">[0 or 1]</p>
                                        <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/imports/include-controls/with-child-controls">Switch to JSON</a></div>
-                                       <p class="formal-name">Include Contained Controls with Control</p>
+                                       <p class="formal-name">Include contained controls with control</p>
                                     </div>
                                     <div class="body">
                                        <p class="description"><span class="usa-tag">Description</span> When a control is included, whether its child (dependent) controls are also included.</p>
@@ -4716,7 +3356,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <p class="formal-name">Match Controls by Identifier</p>
                                     </div>
                                     <div class="body">
-                                       <p class="description"><span class="usa-tag">Description</span> Selecting a control by its ID given as a literal.</p>
+                                       <p class="description"><span class="usa-tag">Description</span> </p>
                                     </div>
                                  </div>
                                  <div class="model-entry definition assembly">
@@ -4728,7 +3368,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <p class="formal-name">Match Controls by Pattern</p>
                                     </div>
                                     <div class="body">
-                                       <p class="description"><span class="usa-tag">Description</span> Selecting a set of controls by matching their IDs with a wildcard pattern.</p>
+                                       <p class="description"><span class="usa-tag">Description</span> Select controls by (regular expression) match on ID</p>
                                        <details class="properties attributes" open="open">
                                           <summary>Attribute (1)</summary>
                                           <div class="model-entry definition assembly">
@@ -4756,10 +3396,10 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                            <p class="type">element<br /></p>
                            <p class="occurrence">[0 to ∞]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/imports/exclude-controls">Switch to JSON</a></div>
-                           <p class="formal-name">Select Control</p>
+                           <p class="formal-name">Call</p>
                         </div>
                         <div class="body">
-                           <p class="description"><span class="usa-tag">Description</span> Select a control or controls from an imported control set.</p>
+                           <p class="description"><span class="usa-tag">Description</span> Call a control by its ID</p>
                            <div class="remarks-group usa-prose">
                               <details open="open">
                                  <summary class="subhead">Remarks</summary>
@@ -4783,7 +3423,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/imports/exclude-controls/with-child-controls">Switch to JSON</a></div>
-                                    <p class="formal-name">Include Contained Controls with Control</p>
+                                    <p class="formal-name">Include contained controls with control</p>
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> When a control is included, whether its child (dependent) controls are also included.</p>
@@ -4814,7 +3454,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <p class="formal-name">Match Controls by Identifier</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> Selecting a control by its ID given as a literal.</p>
+                                    <p class="description"><span class="usa-tag">Description</span> </p>
                                  </div>
                               </div>
                               <div class="model-entry definition assembly">
@@ -4826,7 +3466,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <p class="formal-name">Match Controls by Pattern</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> Selecting a set of controls by matching their IDs with a wildcard pattern.</p>
+                                    <p class="description"><span class="usa-tag">Description</span> Select controls by (regular expression) match on ID</p>
                                     <details class="properties attributes" open="open">
                                        <summary>Attribute (1)</summary>
                                        <div class="model-entry definition assembly">
@@ -4856,11 +3496,21 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                   <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-profile/profile/merge">(global definition)</a></p>
                   <p class="occurrence">[0 or 1]</p>
                   <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/merge">Switch to JSON</a></div>
-                  <p class="formal-name">Merge Controls</p>
+                  <p class="formal-name">Merge controls</p>
                </div>
                <div class="body">
-                  <p class="description"><span class="usa-tag">Description</span> Provides structuring directives that instruct how controls are organized after profile
-                     resolution.</p>
+                  <p class="description"><span class="usa-tag">Description</span> A Merge element provides structuring directives that drive how controls are organized
+                     after resolution.</p>
+                  <div class="remarks-group usa-prose">
+                     <details open="open">
+                        <summary class="subhead">Remarks</summary>
+                        <div class="remarks">
+                           <p>The contents of the <code>merge</code> element may be used to <q>reorder</q> or <q>restructure</q> controls by indicating an order and/or structure in resolution.</p>
+                           <p>Implicitly, a <code>merge</code> element is also a filter: controls that are included in a profile, but not included
+                              (implicitly or explicitly) in the scope of a <code>merge</code> element, will not be merged into (will be dropped) in the resulting resolution.</p>
+                        </div>
+                     </details>
+                  </div>
                   <details class="properties elements" open="open">
                      <summary>Elements (4)</summary>
                      <div class="model-entry definition assembly">
@@ -4869,11 +3519,25 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                            <p class="type"><a href="/reference/datatypes/#empty">empty</a></p>
                            <p class="occurrence">[0 or 1]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/merge/combine">Switch to JSON</a></div>
-                           <p class="formal-name">Combination Rule</p>
+                           <p class="formal-name">Combination rule</p>
                         </div>
                         <div class="body">
-                           <p class="description"><span class="usa-tag">Description</span> A Combine element defines how to resolve duplicate instances of the same control
-                              (e.g., controls with the same ID).</p>
+                           <p class="description"><span class="usa-tag">Description</span> A Combine element defines how to combine multiple (competing) versions of the same
+                              control.</p>
+                           <div class="remarks-group usa-prose">
+                              <details open="open">
+                                 <summary class="subhead">Remarks</summary>
+                                 <div class="remarks">
+                                    <p>Whenever combining controls from multiple (import) pathways, an issue arises of what
+                                       to do with clashing invocations (multiple competing versions of a control). </p>
+                                    <p>This setting permits a profile designer to apply a rule for the resolution of such
+                                       cases. In a well-designed profile (e.g. one that uses mapping), such collisions would
+                                       ordinarily be avoided, but this setting can be useful for defining what to do when
+                                       it occurs.</p>
+                                    <p>If no <code>combine</code> element appears, it is considered equivalent to providing a <code>combine</code> element with a <code>method</code> of value <q>keep</q>. </p>
+                                 </div>
+                              </details>
+                           </div>
                            <details class="properties attributes" open="open">
                               <summary>Attribute (1)</summary>
                               <div class="model-entry definition assembly">
@@ -4882,10 +3546,10 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/merge/combine/method">Switch to JSON</a></div>
-                                    <p class="formal-name">Combination Method</p>
+                                    <p class="formal-name">Combination method</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> Declare how clashing controls should be handled.</p>
+                                    <p class="description"><span class="usa-tag">Description</span> How clashing controls should be handled</p>
                                     <details class="constraints" open="open">
                                        <summary>Constraint (1)</summary>
                                        <div class="constraint">
@@ -4896,9 +3560,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              <li><strong>use-first</strong>: Use the first definition - the first control with a given ID is used; subsequent
                                                 ones are discarded</li>
                                              
-                                             <li><strong>merge</strong>: **(deprecated)** **(unspecified)**
-                                                Merge - controls with the same ID are
-                                                combined</li>
+                                             <li><strong>merge</strong>: **(deprecated)** **(unspecified)** Merge - controls with the same ID are combined</li>
                                              
                                              <li><strong>keep</strong>: Keep - controls with the same ID are kept, retaining the clash</li>
                                              </ul>
@@ -4917,10 +3579,10 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               <p class="type"><a href="/reference/datatypes/#empty">empty</a></p>
                               <p class="occurrence">[1]</p>
                               <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/merge/flat">Switch to JSON</a></div>
-                              <p class="formal-name">Flat Without Grouping</p>
+                              <p class="formal-name">Flat</p>
                            </div>
                            <div class="body">
-                              <p class="description"><span class="usa-tag">Description</span> Directs that controls appear without any grouping structure.</p>
+                              <p class="description"><span class="usa-tag">Description</span> Use the flat structuring method.</p>
                            </div>
                         </div>
                         <div class="model-entry definition assembly">
@@ -4929,30 +3591,32 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               <p class="type" id="/profile/merge/as-is/_VALUE"><a href="/reference/datatypes/#boolean">boolean</a></p>
                               <p class="occurrence">[1]</p>
                               <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/merge/as-is">Switch to JSON</a></div>
-                              <p class="formal-name">Group As-Is</p>
+                              <p class="formal-name">As-Is Structuring Directive</p>
                            </div>
                            <div class="body">
-                              <p class="description"><span class="usa-tag">Description</span> Indicates that the controls selected should retain their original grouping as defined
-                                 in the import source.</p>
+                              <p class="description"><span class="usa-tag">Description</span> An As-is element indicates that the controls should be structured in resolution as
+                                 they are structured in their source catalogs. It does not contain any elements or
+                                 attributes.</p>
                            </div>
                         </div>
                         <div class="model-entry definition assembly">
                            <div class="instance-header">
                               <h3 id="/profile/merge/custom" class="toc3 name">custom</h3>
                               <p class="type">element<br /></p>
-                              <p class="occurrence">[1]</p>
+                              <p class="occurrence">[0 or 1]</p>
                               <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/merge/custom">Switch to JSON</a></div>
-                              <p class="formal-name">Custom Grouping</p>
+                              <p class="formal-name">Custom grouping</p>
                            </div>
                            <div class="body">
-                              <p class="description"><span class="usa-tag">Description</span> Provides an alternate grouping structure that selected controls will be placed in.</p>
+                              <p class="description"><span class="usa-tag">Description</span> A Custom element frames a structure for embedding represented controls in resolution.</p>
                               <div class="remarks-group usa-prose">
                                  <details open="open">
                                     <summary class="subhead">Remarks</summary>
                                     <div class="remarks">
                                        <p>The <code>custom</code> element represents a custom arrangement or organization of controls in the resolution
-                                          of a catalog. This structuring directive gives the profile author the ability to define
-                                          an entirely different organization of controls as compared to their source catalog(s).</p>
+                                          of a catalog.</p>
+                                       <p>While the <code>as-is</code> element provides for a restitution of a control set's organization (in one or more
+                                          source catalogs), this element permits the definition of an entirely different structure.</p>
                                     </div>
                                  </details>
                               </div>
@@ -4964,10 +3628,10 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-profile/merge/custom/group">(global definition)</a></p>
                                        <p class="occurrence">[0 to ∞]</p>
                                        <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/merge/custom/groups">Switch to JSON</a></div>
-                                       <p class="formal-name">Control Group</p>
+                                       <p class="formal-name">Control group</p>
                                     </div>
                                     <div class="body">
-                                       <p class="description"><span class="usa-tag">Description</span> A group of (selected) controls or of groups of controls.</p>
+                                       <p class="description"><span class="usa-tag">Description</span> A group of (selected) controls or of groups of controls</p>
                                        <div class="remarks-group usa-prose">
                                           <details open="open">
                                              <summary class="subhead">Remarks</summary>
@@ -4987,16 +3651,10 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 <p class="formal-name">Group Identifier</p>
                                              </div>
                                              <div class="body">
-                                                <p class="description"><span class="usa-tag">Description</span> Identifies the group.</p>
-                                                <div class="remarks-group usa-prose">
-                                                   <details open="open">
-                                                      <summary class="subhead">Remarks</summary>
-                                                      <div class="remarks">
-                                                         <p>This optional data element is available to support hyperlinking to formal groups or
-                                                            families as defined in control catalogs, among other operations.</p>
-                                                      </div>
-                                                   </details>
-                                                </div>
+                                                <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a>, <a href="/concepts/identifier-use/#locally-unique">locally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined group elsewhere in <a href="/concepts/identifier-use/#profile-identifiers">this or other OSCAL instances</a>. When referenced from another OSCAL instance, this identifier must be referenced
+                                                   in the context of the containing resource (e.g., import-profile). This id should be
+                                                   assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same group across revisions
+                                                   of the document.</p>
                                              </div>
                                           </div>
                                           <div class="model-entry definition assembly">
@@ -5034,7 +3692,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 <p class="formal-name">Group Title</p>
                                              </div>
                                              <div class="body">
-                                                <p class="description"><span class="usa-tag">Description</span> A name to be given to the group for use in display.</p>
+                                                <p class="description"><span class="usa-tag">Description</span> A name given to the group, which may be used by a tool for display and navigation.</p>
                                              </div>
                                           </div>
                                           <div class="model-entry definition assembly">
@@ -5087,9 +3745,8 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                       <p>The value <b>must</b> be one of the following:</p>
                                                       <ul>
                                                          
-                                                         <li><strong>aggregates</strong>: The parent parameter provides an
-                                                            aggregation of two or more other parameters, each described
-                                                            by this property.</li>
+                                                         <li><strong>aggregates</strong>: The parent parameter provides an aggregation of 2 or more other parameters, each
+                                                            described by this property.</li>
                                                          </ul>
                                                    </div>
                                                 </details>
@@ -5104,7 +3761,10 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                          <p class="formal-name">Parameter Identifier</p>
                                                       </div>
                                                       <div class="body">
-                                                         <p class="description"><span class="usa-tag">Description</span> A unique identifier for the parameter.</p>
+                                                         <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a>, <a href="/concepts/identifier-use/#locally-unique">locally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined parameter elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. When referenced from another OSCAL instance, this identifier must be referenced
+                                                            in the context of the containing resource (e.g., import-profile). This id should be
+                                                            assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                                                            of the document.</p>
                                                       </div>
                                                    </div>
                                                    <div class="model-entry definition assembly">
@@ -5116,8 +3776,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                          <p class="formal-name">Parameter Class</p>
                                                       </div>
                                                       <div class="body">
-                                                         <p class="description"><span class="usa-tag">Description</span> A textual label that provides a characterization of the type, purpose, use or scope
-                                                            of the parameter.</p>
+                                                         <p class="description"><span class="usa-tag">Description</span> A textual label that provides a characterization of the parameter.</p>
                                                          <div class="remarks-group usa-prose">
                                                             <details open="open">
                                                                <summary class="subhead">Remarks</summary>
@@ -5138,8 +3797,8 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                          <p class="formal-name">Depends on</p>
                                                       </div>
                                                       <div class="body">
-                                                         <p class="description"><span class="usa-tag">Description</span> <strong>(deprecated)</strong> Another parameter invoking this one. This construct has been deprecated and should
-                                                            not be used.</p>
+                                                         <p class="description"><span class="usa-tag">Description</span> **(deprecated)** Another parameter invoking this one. This construct has been deprecated
+                                                            and should not be used.</p>
                                                       </div>
                                                    </div>
                                                 </details>
@@ -5148,14 +3807,15 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                    <div class="model-entry definition assembly">
                                                       <div class="instance-header">
                                                          <h6 id="/profile/merge/custom/group/param/prop" class="toc6 name">prop</h6>
-                                                         <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-control-common/parameter/prop">(global definition)</a></p>
+                                                         <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/parameter/prop">(global definition)</a></p>
                                                          <p class="occurrence">[0 to ∞]</p>
                                                          <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/merge/custom/groups/params/props">Switch to JSON</a></div>
                                                          <p class="formal-name">Property</p>
                                                       </div>
                                                       <div class="body">
                                                          <p class="description"><span class="usa-tag">Description</span> An attribute, characteristic, or quality of the containing object expressed as a
-                                                            namespace qualified name/value pair.</p>
+                                                            namespace qualified name/value pair. The value of a property is a simple scalar value,
+                                                            which may be expressed as a list of values.</p>
                                                          <div class="remarks-group usa-prose">
                                                             <details open="open">
                                                                <summary class="subhead">Remarks</summary>
@@ -5173,21 +3833,8 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                                </div>
                                                             </details>
                                                          </div>
-                                                         <details class="constraints" open="open">
-                                                            <summary>Constraint (1)</summary>
-                                                            <div class="constraint">
-                                                               <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
-                                                               <p>The value <b>must</b> be one of the following:</p>
-                                                               <ul>
-                                                                  
-                                                                  <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                                     An optional class can be used to define the specific marking system used for the associated
-                                                                     value.</li>
-                                                                  </ul>
-                                                            </div>
-                                                         </details>
                                                          <details class="properties attributes" open="open">
-                                                            <summary>Attributes (6)</summary>
+                                                            <summary>Attributes (5)</summary>
                                                             <div class="model-entry definition assembly">
                                                                <div class="instance-header">
                                                                   <p id="/profile/merge/custom/group/param/prop/@name" class="toc7 name">name</p>
@@ -5197,8 +3844,21 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                                   <p class="formal-name">Property Name</p>
                                                                </div>
                                                                <div class="body">
-                                                                  <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
-                                                                     characteristic, or quality of the property's containing object.</p>
+                                                                  <p class="description"><span class="usa-tag">Description</span> A textual label that uniquely identifies a specific attribute, characteristic, or
+                                                                     quality of the property's containing object.</p>
+                                                                  <details class="constraints" open="open">
+                                                                     <summary>Constraint (1)</summary>
+                                                                     <div class="constraint">
+                                                                        <p><span class="usa-tag">allowed value</span></p>
+                                                                        <p>The value <b>may be locally defined</b>, or the following:</p>
+                                                                        <ul>
+                                                                           
+                                                                           <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                                              An optional class can be used to define the specific marking system used for the associated
+                                                                              value.</li>
+                                                                           </ul>
+                                                                     </div>
+                                                                  </details>
                                                                </div>
                                                             </div>
                                                             <div class="model-entry definition assembly">
@@ -5210,7 +3870,8 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                                   <p class="formal-name">Property Universally Unique Identifier</p>
                                                                </div>
                                                                <div class="body">
-                                                                  <p class="description"><span class="usa-tag">Description</span> A unique identifier for a property.</p>
+                                                                  <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined property elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                                                                     of the document.</p>
                                                                </div>
                                                             </div>
                                                             <div class="model-entry definition assembly">
@@ -5228,7 +3889,11 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                                      <details open="open">
                                                                         <summary class="subhead">Remarks</summary>
                                                                         <div class="remarks">
-                                                                           <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                                           <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
+                                                                              names and associated values used in a property. This allows the semantics associated
+                                                                              with a given name/value pair to be defined on an organization-by-organization basis.</p>
+                                                                           <p>An organization MUST use a URI that they have control over. e.g., a domain registered
+                                                                              to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                                            <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                                         </div>
                                                                      </details>
@@ -5256,36 +3921,14 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                                   <p class="formal-name">Property Class</p>
                                                                </div>
                                                                <div class="body">
-                                                                  <p class="description"><span class="usa-tag">Description</span> A textual label that provides a sub-type or characterization of the property's <code>name</code>.</p>
+                                                                  <p class="description"><span class="usa-tag">Description</span> A textual label that provides a sub-type or characterization of the property's <code>name</code>. This can be used to further distinguish or discriminate between the semantics of
+                                                                     multiple properties of the same object with the same <code>name</code> and <code>ns</code>. </p>
                                                                   <div class="remarks-group usa-prose">
                                                                      <details open="open">
                                                                         <summary class="subhead">Remarks</summary>
                                                                         <div class="remarks">
-                                                                           <p>This can be used to further distinguish or discriminate between the semantics of multiple
-                                                                              properties of the same object with the same <code>name</code> and <code>ns</code>, or to group properties into categories.</p>
                                                                            <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                                              a specific <code>class</code> value. It is available for grouping, but unlike <code>group</code> is not expected specifically to designate any group membership as such.</p>
-                                                                        </div>
-                                                                     </details>
-                                                                  </div>
-                                                               </div>
-                                                            </div>
-                                                            <div class="model-entry definition assembly">
-                                                               <div class="instance-header">
-                                                                  <p id="/profile/merge/custom/group/param/prop/@group" class="toc7 name">group</p>
-                                                                  <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                                                                  <p class="occurrence">[0 or 1]</p>
-                                                                  <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/merge/custom/groups/params/props/group">Switch to JSON</a></div>
-                                                                  <p class="formal-name">Property Group</p>
-                                                               </div>
-                                                               <div class="body">
-                                                                  <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
-                                                                  <div class="remarks-group usa-prose">
-                                                                     <details open="open">
-                                                                        <summary class="subhead">Remarks</summary>
-                                                                        <div class="remarks">
-                                                                           <p>Different sets of properties may relate to separate contexts. Declare a group on a
-                                                                              property to associate it with one or more other properties in a given context.</p>
+                                                                              a specific <code>class</code> value.</p>
                                                                         </div>
                                                                      </details>
                                                                   </div>
@@ -5303,16 +3946,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                                   <p class="formal-name">Remarks</p>
                                                                </div>
                                                                <div class="body">
-                                                                  <p class="description"><span class="usa-tag">Description</span> Additional commentary about the containing object.</p>
-                                                                  <div class="remarks-group usa-prose">
-                                                                     <details open="open">
-                                                                        <summary class="subhead">Remarks</summary>
-                                                                        <div class="remarks">
-                                                                           <p>The <code>remarks</code> field SHOULD not be used to store arbitrary data. Instead, a <code>prop</code> or <code>link</code> should be used to annotate or reference any additional data not formally supported
-                                                                              by OSCAL.</p>
-                                                                        </div>
-                                                                     </details>
-                                                                  </div>
+                                                                  <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
                                                                   <details class="properties elements" open="open">
                                                                      <summary>Element (0+)</summary>
                                                                      <div class="model-entry definition field">
@@ -5334,14 +3968,13 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                    <div class="model-entry definition assembly">
                                                       <div class="instance-header">
                                                          <h6 id="/profile/merge/custom/group/param/link" class="toc6 name">link</h6>
-                                                         <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-control-common/parameter/link">(global definition)</a></p>
+                                                         <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/parameter/link">(global definition)</a></p>
                                                          <p class="occurrence">[0 to ∞]</p>
                                                          <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/merge/custom/groups/params/links">Switch to JSON</a></div>
                                                          <p class="formal-name">Link</p>
                                                       </div>
                                                       <div class="body">
-                                                         <p class="description"><span class="usa-tag">Description</span> A reference to a local or remote resource, that has a specific relation to the containing
-                                                            object.</p>
+                                                         <p class="description"><span class="usa-tag">Description</span> A reference to a local or remote resource</p>
                                                          <div class="remarks-group usa-prose">
                                                             <details open="open">
                                                                <summary class="subhead">Remarks</summary>
@@ -5353,7 +3986,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                             </details>
                                                          </div>
                                                          <details class="constraints" open="open">
-                                                            <summary>Constraints (4)</summary>
+                                                            <summary>Constraints (3)</summary>
                                                             <div class="constraint">
                                                                <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                                             </div>
@@ -5363,12 +3996,9 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                             <div class="constraint">
                                                                <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                                             </div>
-                                                            <div class="constraint">
-                                                               <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
-                                                            </div>
                                                          </details>
                                                          <details class="properties attributes" open="open">
-                                                            <summary>Attributes (4)</summary>
+                                                            <summary>Attributes (3)</summary>
                                                             <div class="model-entry definition assembly">
                                                                <div class="instance-header">
                                                                   <p id="/profile/merge/custom/group/param/link/@href" class="toc7 name">href</p>
@@ -5383,17 +4013,13 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                                      <details open="open">
                                                                         <summary class="subhead">Remarks</summary>
                                                                         <div class="remarks">
-                                                                           <p>This value may be one of:</p>
-                                                                           <ol>
-                                                                              
-                                                                              <li>an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
-                                                                              
-                                                                              <li>a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
-                                                                                 document, or</li>
-                                                                              
-                                                                              <li>a bare URI fragment (i.e., `#uuid`) pointing to an OSCAL object by the objects identifier
-                                                                                 (e.g., id, uuid) in this or an imported document (see <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>). The specific object type will differ based on the link relationship type.</li>
-                                                                              </ol>
+                                                                           <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
+                                                                              that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
+                                                                           <p>If a local reference using a fragment is used, this will be indicated by a fragment
+                                                                              "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
+                                                                           <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
+                                                                              resource. A relative URI will be resolved relative to the location of the document
+                                                                              containing the link.</p>
                                                                         </div>
                                                                      </details>
                                                                   </div>
@@ -5405,11 +4031,11 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                                   <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                                   <p class="occurrence">[0 or 1]</p>
                                                                   <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/merge/custom/groups/params/links/rel">Switch to JSON</a></div>
-                                                                  <p class="formal-name">Link Relation Type</p>
+                                                                  <p class="formal-name">Relation</p>
                                                                </div>
                                                                <div class="body">
-                                                                  <p class="description"><span class="usa-tag">Description</span> Describes the type of relationship provided by the link's hypertext reference. This
-                                                                     can be an indicator of the link's purpose.</p>
+                                                                  <p class="description"><span class="usa-tag">Description</span> Describes the type of relationship provided by the link. This can be an indicator
+                                                                     of the link's purpose.</p>
                                                                   <details class="constraints" open="open">
                                                                      <summary>Constraint (1)</summary>
                                                                      <div class="constraint">
@@ -5417,8 +4043,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                                         <p>The value <b>may be locally defined</b>, or the following:</p>
                                                                         <ul>
                                                                            
-                                                                           <li><strong>reference</strong>: A generalized reference to a network resource (relative or absolute) or to a back-matter
-                                                                              resource by UUID expressed as a bare URI fragment.</li>
+                                                                           <li><strong>reference</strong>: Reference</li>
                                                                            </ul>
                                                                      </div>
                                                                   </details>
@@ -5433,19 +4058,15 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                                   <p class="formal-name">Media Type</p>
                                                                </div>
                                                                <div class="body">
-                                                                  <p class="description"><span class="usa-tag">Description</span> A label that indicates the nature of a resource, as a data serialization or format.</p>
+                                                                  <p class="description"><span class="usa-tag">Description</span> Specifies a media type as defined by the Internet Assigned Numbers Authority (IANA)
+                                                                     <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">Media Types Registry</a>. </p>
                                                                   <div class="remarks-group usa-prose">
                                                                      <details open="open">
                                                                         <summary class="subhead">Remarks</summary>
                                                                         <div class="remarks">
-                                                                           <p> The Internet Assigned Numbers Authority (IANA) <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">Media Types Registry</a> defines a standardized set of media types, which may be used here.</p>
-                                                                           <p>The <code>application/oscal+xml</code>, <code>application/oscal+json</code> or <code>application/oscal+yaml</code> media types SHOULD be used when referencing OSCAL XML, JSON, or YAML resources respectively.</p>
-                                                                           <p>**Note: There is no official media type for YAML at this time.** OSCAL documents should
-                                                                              specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name
+                                                                           <p>The IANA Media Types Registry should be used, but currently there is no official media
+                                                                              type for YAML. OSCAL documents should specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name
                                                                               suffix, per <a href="https://www.rfc-editor.org/rfc/rfc6838.html#section-4.2.8">RFC 6838 Section 4.2.8</a>.</p>
-                                                                           <p>Some earlier OSCAL content incorporated the model into the media type. For example:
-                                                                              <code>application/oscal.catalog+xml</code>. This practice SHOULD be avoided, since the OSCAL model can be detected by parsing
-                                                                              the initial content of the referenced resource.</p>
                                                                         </div>
                                                                         <div class="remarks">
                                                                            <p>The <code>media-type</code> provides a hint about the content model of the referenced resource. A valid entry
@@ -5453,18 +4074,6 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                                         </div>
                                                                      </details>
                                                                   </div>
-                                                               </div>
-                                                            </div>
-                                                            <div class="model-entry definition assembly">
-                                                               <div class="instance-header">
-                                                                  <p id="/profile/merge/custom/group/param/link/@resource-fragment" class="toc7 name">resource-fragment</p>
-                                                                  <p class="type"><a href="/reference/datatypes/#string">string</a></p>
-                                                                  <p class="occurrence">[0 or 1]</p>
-                                                                  <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/merge/custom/groups/params/links/resource-fragment">Switch to JSON</a></div>
-                                                                  <p class="formal-name">Resource Fragment</p>
-                                                               </div>
-                                                               <div class="body">
-                                                                  <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                                                </div>
                                                             </div>
                                                          </details>
@@ -5501,10 +4110,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                             <details open="open">
                                                                <summary class="subhead">Remarks</summary>
                                                                <div class="remarks">
-                                                                  <p>The label value is intended use when rendering a parameter in generated documentation
-                                                                     or a user interface when a parameter is referenced. Note that labels are not required
-                                                                     to be distinctive, which means that parameters within the same control may have the
-                                                                     same label.</p>
+                                                                  <p>The label value should be suitable for inline display in a rendered catalog.</p>
                                                                </div>
                                                             </details>
                                                          </div>
@@ -5519,7 +4125,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                          <p class="formal-name">Parameter Usage Description</p>
                                                       </div>
                                                       <div class="body">
-                                                         <p class="description"><span class="usa-tag">Description</span> Describes the purpose and use of a parameter.</p>
+                                                         <p class="description"><span class="usa-tag">Description</span> Describes the purpose and use of a parameter</p>
                                                          <details class="properties elements" open="open">
                                                             <summary>Element (0+)</summary>
                                                             <div class="model-entry definition assembly">
@@ -5538,13 +4144,13 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                    <div class="model-entry definition assembly">
                                                       <div class="instance-header">
                                                          <h6 id="/profile/merge/custom/group/param/constraint" class="toc6 name">constraint</h6>
-                                                         <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-control-common/parameter/constraint">(global definition)</a></p>
+                                                         <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/parameter/constraint">(global definition)</a></p>
                                                          <p class="occurrence">[0 to ∞]</p>
                                                          <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/merge/custom/groups/params/constraints">Switch to JSON</a></div>
                                                          <p class="formal-name">Constraint</p>
                                                       </div>
                                                       <div class="body">
-                                                         <p class="description"><span class="usa-tag">Description</span> A formal or informal expression of a constraint or test.</p>
+                                                         <p class="description"><span class="usa-tag">Description</span> A formal or informal expression of a constraint or test</p>
                                                          <details class="properties elements" open="open">
                                                             <summary>Elements (2)</summary>
                                                             <div class="model-entry definition assembly">
@@ -5593,7 +4199,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                                            <p class="formal-name">Constraint test</p>
                                                                         </div>
                                                                         <div class="body">
-                                                                           <p class="description"><span class="usa-tag">Description</span> A formal (executable) expression of a constraint.</p>
+                                                                           <p class="description"><span class="usa-tag">Description</span> A formal (executable) expression of a constraint</p>
                                                                         </div>
                                                                      </div>
                                                                      <div class="model-entry definition assembly">
@@ -5605,16 +4211,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                                            <p class="formal-name">Remarks</p>
                                                                         </div>
                                                                         <div class="body">
-                                                                           <p class="description"><span class="usa-tag">Description</span> Additional commentary about the containing object.</p>
-                                                                           <div class="remarks-group usa-prose">
-                                                                              <details open="open">
-                                                                                 <summary class="subhead">Remarks</summary>
-                                                                                 <div class="remarks">
-                                                                                    <p>The <code>remarks</code> field SHOULD not be used to store arbitrary data. Instead, a <code>prop</code> or <code>link</code> should be used to annotate or reference any additional data not formally supported
-                                                                                       by OSCAL.</p>
-                                                                                 </div>
-                                                                              </details>
-                                                                           </div>
+                                                                           <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
                                                                            <details class="properties elements" open="open">
                                                                               <summary>Element (0+)</summary>
                                                                               <div class="model-entry definition field">
@@ -5639,7 +4236,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                    <div class="model-entry definition assembly">
                                                       <div class="instance-header">
                                                          <h6 id="/profile/merge/custom/group/param/guideline" class="toc6 name">guideline</h6>
-                                                         <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-control-common/parameter/guideline">(global definition)</a></p>
+                                                         <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/parameter/guideline">(global definition)</a></p>
                                                          <p class="occurrence">[0 to ∞]</p>
                                                          <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/merge/custom/groups/params/guidelines">Switch to JSON</a></div>
                                                          <p class="formal-name">Guideline</p>
@@ -5677,7 +4274,8 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                                <details open="open">
                                                                   <summary class="subhead">Remarks</summary>
                                                                   <div class="remarks">
-                                                                     <p>A set of values provided in a catalog can be redefined in OSCAL's <code>profile</code> or <code>system-security-plan</code> models.</p>
+                                                                     <p>A set of values provided in a catalog can be redefined at any higher layer of OSCAL
+                                                                        (e.g., Profile).</p>
                                                                   </div>
                                                                </details>
                                                             </div>
@@ -5686,13 +4284,13 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                       <div class="model-entry definition assembly">
                                                          <div class="instance-header">
                                                             <h6 id="/profile/merge/custom/group/param/select" class="toc6 name">select</h6>
-                                                            <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-control-common/parameter/select">(global definition)</a></p>
+                                                            <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/parameter/select">(global definition)</a></p>
                                                             <p class="occurrence">[0 or 1]</p>
                                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/merge/custom/groups/params/select">Switch to JSON</a></div>
                                                             <p class="formal-name">Selection</p>
                                                          </div>
                                                          <div class="body">
-                                                            <p class="description"><span class="usa-tag">Description</span> Presenting a choice among alternatives.</p>
+                                                            <p class="description"><span class="usa-tag">Description</span> Presenting a choice among alternatives</p>
                                                             <div class="remarks-group usa-prose">
                                                                <details open="open">
                                                                   <summary class="subhead">Remarks</summary>
@@ -5700,16 +4298,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                                      <p>A set of parameter value choices, that may be picked from to set the parameter value.</p>
                                                                   </div>
                                                                   <div class="remarks">
-                                                                     <p>The OSCAL parameter <code>value</code> construct can be used to prescribe a specific parameter value in a catalog or profile.
-                                                                        In cases where a prescriptive value is not possible in a catalog or profile, it may
-                                                                        be possible to constrain the set of possible values to a few options. Use of <code>select</code> in a parameter instead of <code>value</code> is a way of defining value options that <strong>may</strong> be set.</p>
-                                                                     <p>A set of allowed parameter values expressed as a set of options which may be selected.
-                                                                        These options constrain the permissible values that may be selected for the containing
-                                                                        parameter. When the value assignment is made, such as in an OSCAL profile or system
-                                                                        security plan, the actual selected value can be examined to determine if it matches
-                                                                        one of the permissible choices for the parameter value.</p>
-                                                                     <p>When the value of <code>how-many</code> is set to "one-or-more", multiple values may be assigned reflecting more than one
-                                                                        choice.</p>
+                                                                     <p>A set of parameter value choices, that may be picked from to set the parameter value.</p>
                                                                   </div>
                                                                </details>
                                                             </div>
@@ -5753,7 +4342,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                                      <p class="formal-name">Choice</p>
                                                                   </div>
                                                                   <div class="body">
-                                                                     <p class="description"><span class="usa-tag">Description</span> A value selection among several such options.</p>
+                                                                     <p class="description"><span class="usa-tag">Description</span> A value selection among several such options</p>
                                                                   </div>
                                                                </div>
                                                             </details>
@@ -5769,16 +4358,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                          <p class="formal-name">Remarks</p>
                                                       </div>
                                                       <div class="body">
-                                                         <p class="description"><span class="usa-tag">Description</span> Additional commentary about the containing object.</p>
-                                                         <div class="remarks-group usa-prose">
-                                                            <details open="open">
-                                                               <summary class="subhead">Remarks</summary>
-                                                               <div class="remarks">
-                                                                  <p>The <code>remarks</code> field SHOULD not be used to store arbitrary data. Instead, a <code>prop</code> or <code>link</code> should be used to annotate or reference any additional data not formally supported
-                                                                     by OSCAL.</p>
-                                                               </div>
-                                                            </details>
-                                                         </div>
+                                                         <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
                                                          <details class="properties elements" open="open">
                                                             <summary>Element (0+)</summary>
                                                             <div class="model-entry definition field">
@@ -5807,7 +4387,8 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              </div>
                                              <div class="body">
                                                 <p class="description"><span class="usa-tag">Description</span> An attribute, characteristic, or quality of the containing object expressed as a
-                                                   namespace qualified name/value pair.</p>
+                                                   namespace qualified name/value pair. The value of a property is a simple scalar value,
+                                                   which may be expressed as a list of values.</p>
                                                 <div class="remarks-group usa-prose">
                                                    <details open="open">
                                                       <summary class="subhead">Remarks</summary>
@@ -5825,21 +4406,8 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                       </div>
                                                    </details>
                                                 </div>
-                                                <details class="constraints" open="open">
-                                                   <summary>Constraint (1)</summary>
-                                                   <div class="constraint">
-                                                      <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
-                                                      <p>The value <b>must</b> be one of the following:</p>
-                                                      <ul>
-                                                         
-                                                         <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                            An optional class can be used to define the specific marking system used for the associated
-                                                            value.</li>
-                                                         </ul>
-                                                   </div>
-                                                </details>
                                                 <details class="properties attributes" open="open">
-                                                   <summary>Attributes (6)</summary>
+                                                   <summary>Attributes (5)</summary>
                                                    <div class="model-entry definition assembly">
                                                       <div class="instance-header">
                                                          <h6 id="/profile/merge/custom/group/prop/@name" class="toc6 name">name</h6>
@@ -5849,8 +4417,21 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                          <p class="formal-name">Property Name</p>
                                                       </div>
                                                       <div class="body">
-                                                         <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
-                                                            characteristic, or quality of the property's containing object.</p>
+                                                         <p class="description"><span class="usa-tag">Description</span> A textual label that uniquely identifies a specific attribute, characteristic, or
+                                                            quality of the property's containing object.</p>
+                                                         <details class="constraints" open="open">
+                                                            <summary>Constraint (1)</summary>
+                                                            <div class="constraint">
+                                                               <p><span class="usa-tag">allowed value</span></p>
+                                                               <p>The value <b>may be locally defined</b>, or the following:</p>
+                                                               <ul>
+                                                                  
+                                                                  <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                                     An optional class can be used to define the specific marking system used for the associated
+                                                                     value.</li>
+                                                                  </ul>
+                                                            </div>
+                                                         </details>
                                                       </div>
                                                    </div>
                                                    <div class="model-entry definition assembly">
@@ -5862,7 +4443,8 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                          <p class="formal-name">Property Universally Unique Identifier</p>
                                                       </div>
                                                       <div class="body">
-                                                         <p class="description"><span class="usa-tag">Description</span> A unique identifier for a property.</p>
+                                                         <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined property elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                                                            of the document.</p>
                                                       </div>
                                                    </div>
                                                    <div class="model-entry definition assembly">
@@ -5880,7 +4462,11 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                             <details open="open">
                                                                <summary class="subhead">Remarks</summary>
                                                                <div class="remarks">
-                                                                  <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                                  <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
+                                                                     names and associated values used in a property. This allows the semantics associated
+                                                                     with a given name/value pair to be defined on an organization-by-organization basis.</p>
+                                                                  <p>An organization MUST use a URI that they have control over. e.g., a domain registered
+                                                                     to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                                   <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                                </div>
                                                             </details>
@@ -5908,36 +4494,14 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                          <p class="formal-name">Property Class</p>
                                                       </div>
                                                       <div class="body">
-                                                         <p class="description"><span class="usa-tag">Description</span> A textual label that provides a sub-type or characterization of the property's <code>name</code>.</p>
+                                                         <p class="description"><span class="usa-tag">Description</span> A textual label that provides a sub-type or characterization of the property's <code>name</code>. This can be used to further distinguish or discriminate between the semantics of
+                                                            multiple properties of the same object with the same <code>name</code> and <code>ns</code>. </p>
                                                          <div class="remarks-group usa-prose">
                                                             <details open="open">
                                                                <summary class="subhead">Remarks</summary>
                                                                <div class="remarks">
-                                                                  <p>This can be used to further distinguish or discriminate between the semantics of multiple
-                                                                     properties of the same object with the same <code>name</code> and <code>ns</code>, or to group properties into categories.</p>
                                                                   <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                                     a specific <code>class</code> value. It is available for grouping, but unlike <code>group</code> is not expected specifically to designate any group membership as such.</p>
-                                                               </div>
-                                                            </details>
-                                                         </div>
-                                                      </div>
-                                                   </div>
-                                                   <div class="model-entry definition assembly">
-                                                      <div class="instance-header">
-                                                         <h6 id="/profile/merge/custom/group/prop/@group" class="toc6 name">group</h6>
-                                                         <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                                                         <p class="occurrence">[0 or 1]</p>
-                                                         <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/merge/custom/groups/props/group">Switch to JSON</a></div>
-                                                         <p class="formal-name">Property Group</p>
-                                                      </div>
-                                                      <div class="body">
-                                                         <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
-                                                         <div class="remarks-group usa-prose">
-                                                            <details open="open">
-                                                               <summary class="subhead">Remarks</summary>
-                                                               <div class="remarks">
-                                                                  <p>Different sets of properties may relate to separate contexts. Declare a group on a
-                                                                     property to associate it with one or more other properties in a given context.</p>
+                                                                     a specific <code>class</code> value.</p>
                                                                </div>
                                                             </details>
                                                          </div>
@@ -5955,16 +4519,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                          <p class="formal-name">Remarks</p>
                                                       </div>
                                                       <div class="body">
-                                                         <p class="description"><span class="usa-tag">Description</span> Additional commentary about the containing object.</p>
-                                                         <div class="remarks-group usa-prose">
-                                                            <details open="open">
-                                                               <summary class="subhead">Remarks</summary>
-                                                               <div class="remarks">
-                                                                  <p>The <code>remarks</code> field SHOULD not be used to store arbitrary data. Instead, a <code>prop</code> or <code>link</code> should be used to annotate or reference any additional data not formally supported
-                                                                     by OSCAL.</p>
-                                                               </div>
-                                                            </details>
-                                                         </div>
+                                                         <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
                                                          <details class="properties elements" open="open">
                                                             <summary>Element (0+)</summary>
                                                             <div class="model-entry definition field">
@@ -5992,8 +4547,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 <p class="formal-name">Link</p>
                                              </div>
                                              <div class="body">
-                                                <p class="description"><span class="usa-tag">Description</span> A reference to a local or remote resource, that has a specific relation to the containing
-                                                   object.</p>
+                                                <p class="description"><span class="usa-tag">Description</span> A reference to a local or remote resource</p>
                                                 <div class="remarks-group usa-prose">
                                                    <details open="open">
                                                       <summary class="subhead">Remarks</summary>
@@ -6005,7 +4559,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                    </details>
                                                 </div>
                                                 <details class="constraints" open="open">
-                                                   <summary>Constraints (4)</summary>
+                                                   <summary>Constraints (3)</summary>
                                                    <div class="constraint">
                                                       <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                                    </div>
@@ -6015,12 +4569,9 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                    <div class="constraint">
                                                       <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                                    </div>
-                                                   <div class="constraint">
-                                                      <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
-                                                   </div>
                                                 </details>
                                                 <details class="properties attributes" open="open">
-                                                   <summary>Attributes (4)</summary>
+                                                   <summary>Attributes (3)</summary>
                                                    <div class="model-entry definition assembly">
                                                       <div class="instance-header">
                                                          <h6 id="/profile/merge/custom/group/link/@href" class="toc6 name">href</h6>
@@ -6035,17 +4586,13 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                             <details open="open">
                                                                <summary class="subhead">Remarks</summary>
                                                                <div class="remarks">
-                                                                  <p>This value may be one of:</p>
-                                                                  <ol>
-                                                                     
-                                                                     <li>an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
-                                                                     
-                                                                     <li>a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
-                                                                        document, or</li>
-                                                                     
-                                                                     <li>a bare URI fragment (i.e., `#uuid`) pointing to an OSCAL object by the objects identifier
-                                                                        (e.g., id, uuid) in this or an imported document (see <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>). The specific object type will differ based on the link relationship type.</li>
-                                                                     </ol>
+                                                                  <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
+                                                                     that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
+                                                                  <p>If a local reference using a fragment is used, this will be indicated by a fragment
+                                                                     "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
+                                                                  <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
+                                                                     resource. A relative URI will be resolved relative to the location of the document
+                                                                     containing the link.</p>
                                                                </div>
                                                             </details>
                                                          </div>
@@ -6057,11 +4604,11 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                          <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                          <p class="occurrence">[0 or 1]</p>
                                                          <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/merge/custom/groups/links/rel">Switch to JSON</a></div>
-                                                         <p class="formal-name">Link Relation Type</p>
+                                                         <p class="formal-name">Relation</p>
                                                       </div>
                                                       <div class="body">
-                                                         <p class="description"><span class="usa-tag">Description</span> Describes the type of relationship provided by the link's hypertext reference. This
-                                                            can be an indicator of the link's purpose.</p>
+                                                         <p class="description"><span class="usa-tag">Description</span> Describes the type of relationship provided by the link. This can be an indicator
+                                                            of the link's purpose.</p>
                                                          <details class="constraints" open="open">
                                                             <summary>Constraint (1)</summary>
                                                             <div class="constraint">
@@ -6069,8 +4616,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                                <p>The value <b>may be locally defined</b>, or the following:</p>
                                                                <ul>
                                                                   
-                                                                  <li><strong>reference</strong>: A generalized reference to a network resource (relative or absolute) or to a back-matter
-                                                                     resource by UUID expressed as a bare URI fragment.</li>
+                                                                  <li><strong>reference</strong>: Reference</li>
                                                                   </ul>
                                                             </div>
                                                          </details>
@@ -6085,19 +4631,15 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                          <p class="formal-name">Media Type</p>
                                                       </div>
                                                       <div class="body">
-                                                         <p class="description"><span class="usa-tag">Description</span> A label that indicates the nature of a resource, as a data serialization or format.</p>
+                                                         <p class="description"><span class="usa-tag">Description</span> Specifies a media type as defined by the Internet Assigned Numbers Authority (IANA)
+                                                            <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">Media Types Registry</a>. </p>
                                                          <div class="remarks-group usa-prose">
                                                             <details open="open">
                                                                <summary class="subhead">Remarks</summary>
                                                                <div class="remarks">
-                                                                  <p> The Internet Assigned Numbers Authority (IANA) <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">Media Types Registry</a> defines a standardized set of media types, which may be used here.</p>
-                                                                  <p>The <code>application/oscal+xml</code>, <code>application/oscal+json</code> or <code>application/oscal+yaml</code> media types SHOULD be used when referencing OSCAL XML, JSON, or YAML resources respectively.</p>
-                                                                  <p>**Note: There is no official media type for YAML at this time.** OSCAL documents should
-                                                                     specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name
+                                                                  <p>The IANA Media Types Registry should be used, but currently there is no official media
+                                                                     type for YAML. OSCAL documents should specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name
                                                                      suffix, per <a href="https://www.rfc-editor.org/rfc/rfc6838.html#section-4.2.8">RFC 6838 Section 4.2.8</a>.</p>
-                                                                  <p>Some earlier OSCAL content incorporated the model into the media type. For example:
-                                                                     <code>application/oscal.catalog+xml</code>. This practice SHOULD be avoided, since the OSCAL model can be detected by parsing
-                                                                     the initial content of the referenced resource.</p>
                                                                </div>
                                                                <div class="remarks">
                                                                   <p>The <code>media-type</code> provides a hint about the content model of the referenced resource. A valid entry
@@ -6105,18 +4647,6 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                                </div>
                                                             </details>
                                                          </div>
-                                                      </div>
-                                                   </div>
-                                                   <div class="model-entry definition assembly">
-                                                      <div class="instance-header">
-                                                         <h6 id="/profile/merge/custom/group/link/@resource-fragment" class="toc6 name">resource-fragment</h6>
-                                                         <p class="type"><a href="/reference/datatypes/#string">string</a></p>
-                                                         <p class="occurrence">[0 or 1]</p>
-                                                         <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/merge/custom/groups/links/resource-fragment">Switch to JSON</a></div>
-                                                         <p class="formal-name">Resource Fragment</p>
-                                                      </div>
-                                                      <div class="body">
-                                                         <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                                       </div>
                                                    </div>
                                                 </details>
@@ -6147,8 +4677,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 <p class="formal-name">Part</p>
                                              </div>
                                              <div class="body">
-                                                <p class="description"><span class="usa-tag">Description</span> An annotated, markup-based textual element of a control's or catalog group's definition,
-                                                   or a child of another part.</p>
+                                                <p class="description"><span class="usa-tag">Description</span> A partition of a control's definition or a child of another part.</p>
                                                 <div class="remarks-group usa-prose">
                                                    <details open="open">
                                                       <summary class="subhead">Remarks</summary>
@@ -6156,17 +4685,9 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                          <p>A <code>part</code> provides for logical partitioning of prose, and can be thought of as a grouping structure
                                                             (e.g., section). A <code>part</code> can have child parts allowing for arbitrary nesting of prose content (e.g., statement
                                                             hierarchy). A <code>part</code> can contain <code>prop</code> objects that allow for enriching prose text with structured name/value information.</p>
-                                                         <p>A <code>part</code> can be assigned an optional <code>id</code>, which allows references to this part from within a catalog, or within an instance
-                                                            of another OSCAL model that has a need to reference the part. Examples of where part
-                                                            referencing is used in OSCAL include:</p>
-                                                         <ul>
-                                                            
-                                                            <li>Referencing a part by id to tailor (make modifications to) a control statement in
-                                                               a profile.</li>
-                                                            
-                                                            <li>Referencing a control statement represented by a part in a system security plan implemented-requirement
-                                                               where a statement-level response is desired.</li>
-                                                            </ul>
+                                                         <p>A <code>part</code> can be assigned an optional <code>id</code>, which allows for internal and external references to the textual concept contained
+                                                            within a <code>part</code>. A <code>id</code> provides a means for an OSCAL profile, or a higher layer OSCAL model to reference
+                                                            a specific part within a <code>catalog</code>. For example, an <code>id</code> can be used to reference or to make modifications to a control statement in a profile.</p>
                                                          <p>Use of <code>part</code> and <code>prop</code> provides for a wide degree of extensibility within the OSCAL catalog model. The optional
                                                             <code>ns</code> provides a means to qualify a part's <code>name</code>, allowing for organization-specific vocabularies to be defined with clear semantics.
                                                             Any organization that extends OSCAL in this way should consistently assign a <code>ns</code> value that represents the organization, making a given namespace qualified <code>name</code> unique to that organization. This allows the combination of <code>ns</code> and <code>name</code> to always be unique and unambiguous, even when mixed with extensions from other organizations.
@@ -6211,17 +4732,10 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                          <p class="formal-name">Part Identifier</p>
                                                       </div>
                                                       <div class="body">
-                                                         <p class="description"><span class="usa-tag">Description</span> A unique identifier for the part.</p>
-                                                         <div class="remarks-group usa-prose">
-                                                            <details open="open">
-                                                               <summary class="subhead">Remarks</summary>
-                                                               <div class="remarks">
-                                                                  <p>While a part is not required to have an id, it is often desirable for an identifier
-                                                                     to be provided, which allows the part to be referenced elsewhere in OSCAL document
-                                                                     instances. For this reason, it is RECOMMENDED to provide a part identifier.</p>
-                                                               </div>
-                                                            </details>
-                                                         </div>
+                                                         <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a>, <a href="/concepts/identifier-use/#locally-unique">locally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined part elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. When referenced from another OSCAL instance, this identifier must be referenced
+                                                            in the context of the containing resource (e.g., import-profile). This id should be
+                                                            assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                                                            of the document.</p>
                                                       </div>
                                                    </div>
                                                    <div class="model-entry definition assembly">
@@ -6233,8 +4747,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                          <p class="formal-name">Part Name</p>
                                                       </div>
                                                       <div class="body">
-                                                         <p class="description"><span class="usa-tag">Description</span> A textual label that uniquely identifies the part's semantic type, which exists in
-                                                            a value space qualified by the <code>ns</code>.</p>
+                                                         <p class="description"><span class="usa-tag">Description</span> A textual label that uniquely identifies the part's semantic type.</p>
                                                       </div>
                                                    </div>
                                                    <div class="model-entry definition assembly">
@@ -6246,13 +4759,17 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                          <p class="formal-name">Part Namespace</p>
                                                       </div>
                                                       <div class="body">
-                                                         <p class="description"><span class="usa-tag">Description</span> An optional namespace qualifying the part's <code>name</code>. This allows different organizations to associate distinct semantics with the same
-                                                            name.</p>
+                                                         <p class="description"><span class="usa-tag">Description</span> A namespace qualifying the part's name. This allows different organizations to associate
+                                                            distinct semantics with the same name.</p>
                                                          <div class="remarks-group usa-prose">
                                                             <details open="open">
                                                                <summary class="subhead">Remarks</summary>
                                                                <div class="remarks">
-                                                                  <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                                  <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
+                                                                     names and associated text used in a part. This allows the semantics associated with
+                                                                     a given name to be defined on an organization-by-organization basis.</p>
+                                                                  <p>An organization MUST use a URI that they have control over. e.g., a domain registered
+                                                                     to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                                   <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                                </div>
                                                             </details>
@@ -6268,13 +4785,12 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                          <p class="formal-name">Part Class</p>
                                                       </div>
                                                       <div class="body">
-                                                         <p class="description"><span class="usa-tag">Description</span> An optional textual providing a sub-type or characterization of the part's <code>name</code>, or a category to which the part belongs.</p>
+                                                         <p class="description"><span class="usa-tag">Description</span> A textual label that provides a sub-type or characterization of the part's <code>name</code>. This can be used to further distinguish or discriminate between the semantics of
+                                                            multiple parts of the same control with the same <code>name</code> and <code>ns</code>. </p>
                                                          <div class="remarks-group usa-prose">
                                                             <details open="open">
                                                                <summary class="subhead">Remarks</summary>
                                                                <div class="remarks">
-                                                                  <p>One use of this flag is to distinguish or discriminate between the semantics of multiple
-                                                                     parts of the same control with the same <code>name</code> and <code>ns</code> (since even within a given namespace it can be useful to overload a name).</p>
                                                                   <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                      a specific <code>class</code> value.</p>
                                                                   <p>A <code>class</code> can also be used in an OSCAL profile as a means to target an alteration to control
@@ -6296,20 +4812,21 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                          <p class="formal-name">Part Title</p>
                                                       </div>
                                                       <div class="body">
-                                                         <p class="description"><span class="usa-tag">Description</span> An optional name given to the part, which may be used by a tool for display and navigation.</p>
+                                                         <p class="description"><span class="usa-tag">Description</span> A name given to the part, which may be used by a tool for display and navigation.</p>
                                                       </div>
                                                    </div>
                                                    <div class="model-entry definition assembly">
                                                       <div class="instance-header">
                                                          <h6 id="/profile/merge/custom/group/part/prop" class="toc6 name">prop</h6>
-                                                         <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-control-common/part/prop">(global definition)</a></p>
+                                                         <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/part/prop">(global definition)</a></p>
                                                          <p class="occurrence">[0 to ∞]</p>
                                                          <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/merge/custom/groups/parts/props">Switch to JSON</a></div>
                                                          <p class="formal-name">Property</p>
                                                       </div>
                                                       <div class="body">
                                                          <p class="description"><span class="usa-tag">Description</span> An attribute, characteristic, or quality of the containing object expressed as a
-                                                            namespace qualified name/value pair.</p>
+                                                            namespace qualified name/value pair. The value of a property is a simple scalar value,
+                                                            which may be expressed as a list of values.</p>
                                                          <div class="remarks-group usa-prose">
                                                             <details open="open">
                                                                <summary class="subhead">Remarks</summary>
@@ -6327,21 +4844,8 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                                </div>
                                                             </details>
                                                          </div>
-                                                         <details class="constraints" open="open">
-                                                            <summary>Constraint (1)</summary>
-                                                            <div class="constraint">
-                                                               <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
-                                                               <p>The value <b>must</b> be one of the following:</p>
-                                                               <ul>
-                                                                  
-                                                                  <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                                     An optional class can be used to define the specific marking system used for the associated
-                                                                     value.</li>
-                                                                  </ul>
-                                                            </div>
-                                                         </details>
                                                          <details class="properties attributes" open="open">
-                                                            <summary>Attributes (6)</summary>
+                                                            <summary>Attributes (5)</summary>
                                                             <div class="model-entry definition assembly">
                                                                <div class="instance-header">
                                                                   <p id="/profile/merge/custom/group/part/prop/@name" class="toc7 name">name</p>
@@ -6351,8 +4855,21 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                                   <p class="formal-name">Property Name</p>
                                                                </div>
                                                                <div class="body">
-                                                                  <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
-                                                                     characteristic, or quality of the property's containing object.</p>
+                                                                  <p class="description"><span class="usa-tag">Description</span> A textual label that uniquely identifies a specific attribute, characteristic, or
+                                                                     quality of the property's containing object.</p>
+                                                                  <details class="constraints" open="open">
+                                                                     <summary>Constraint (1)</summary>
+                                                                     <div class="constraint">
+                                                                        <p><span class="usa-tag">allowed value</span></p>
+                                                                        <p>The value <b>may be locally defined</b>, or the following:</p>
+                                                                        <ul>
+                                                                           
+                                                                           <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                                              An optional class can be used to define the specific marking system used for the associated
+                                                                              value.</li>
+                                                                           </ul>
+                                                                     </div>
+                                                                  </details>
                                                                </div>
                                                             </div>
                                                             <div class="model-entry definition assembly">
@@ -6364,7 +4881,8 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                                   <p class="formal-name">Property Universally Unique Identifier</p>
                                                                </div>
                                                                <div class="body">
-                                                                  <p class="description"><span class="usa-tag">Description</span> A unique identifier for a property.</p>
+                                                                  <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined property elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                                                                     of the document.</p>
                                                                </div>
                                                             </div>
                                                             <div class="model-entry definition assembly">
@@ -6382,7 +4900,11 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                                      <details open="open">
                                                                         <summary class="subhead">Remarks</summary>
                                                                         <div class="remarks">
-                                                                           <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                                           <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
+                                                                              names and associated values used in a property. This allows the semantics associated
+                                                                              with a given name/value pair to be defined on an organization-by-organization basis.</p>
+                                                                           <p>An organization MUST use a URI that they have control over. e.g., a domain registered
+                                                                              to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                                            <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                                         </div>
                                                                      </details>
@@ -6410,36 +4932,14 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                                   <p class="formal-name">Property Class</p>
                                                                </div>
                                                                <div class="body">
-                                                                  <p class="description"><span class="usa-tag">Description</span> A textual label that provides a sub-type or characterization of the property's <code>name</code>.</p>
+                                                                  <p class="description"><span class="usa-tag">Description</span> A textual label that provides a sub-type or characterization of the property's <code>name</code>. This can be used to further distinguish or discriminate between the semantics of
+                                                                     multiple properties of the same object with the same <code>name</code> and <code>ns</code>. </p>
                                                                   <div class="remarks-group usa-prose">
                                                                      <details open="open">
                                                                         <summary class="subhead">Remarks</summary>
                                                                         <div class="remarks">
-                                                                           <p>This can be used to further distinguish or discriminate between the semantics of multiple
-                                                                              properties of the same object with the same <code>name</code> and <code>ns</code>, or to group properties into categories.</p>
                                                                            <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                                              a specific <code>class</code> value. It is available for grouping, but unlike <code>group</code> is not expected specifically to designate any group membership as such.</p>
-                                                                        </div>
-                                                                     </details>
-                                                                  </div>
-                                                               </div>
-                                                            </div>
-                                                            <div class="model-entry definition assembly">
-                                                               <div class="instance-header">
-                                                                  <p id="/profile/merge/custom/group/part/prop/@group" class="toc7 name">group</p>
-                                                                  <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                                                                  <p class="occurrence">[0 or 1]</p>
-                                                                  <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/merge/custom/groups/parts/props/group">Switch to JSON</a></div>
-                                                                  <p class="formal-name">Property Group</p>
-                                                               </div>
-                                                               <div class="body">
-                                                                  <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
-                                                                  <div class="remarks-group usa-prose">
-                                                                     <details open="open">
-                                                                        <summary class="subhead">Remarks</summary>
-                                                                        <div class="remarks">
-                                                                           <p>Different sets of properties may relate to separate contexts. Declare a group on a
-                                                                              property to associate it with one or more other properties in a given context.</p>
+                                                                              a specific <code>class</code> value.</p>
                                                                         </div>
                                                                      </details>
                                                                   </div>
@@ -6457,16 +4957,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                                   <p class="formal-name">Remarks</p>
                                                                </div>
                                                                <div class="body">
-                                                                  <p class="description"><span class="usa-tag">Description</span> Additional commentary about the containing object.</p>
-                                                                  <div class="remarks-group usa-prose">
-                                                                     <details open="open">
-                                                                        <summary class="subhead">Remarks</summary>
-                                                                        <div class="remarks">
-                                                                           <p>The <code>remarks</code> field SHOULD not be used to store arbitrary data. Instead, a <code>prop</code> or <code>link</code> should be used to annotate or reference any additional data not formally supported
-                                                                              by OSCAL.</p>
-                                                                        </div>
-                                                                     </details>
-                                                                  </div>
+                                                                  <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
                                                                   <details class="properties elements" open="open">
                                                                      <summary>Element (0+)</summary>
                                                                      <div class="model-entry definition field">
@@ -6498,14 +4989,13 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                    <div class="model-entry definition assembly">
                                                       <div class="instance-header">
                                                          <h6 id="/profile/merge/custom/group/part/part" class="toc6 name">part</h6>
-                                                         <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-control-common/part/part">(global definition)</a></p>
+                                                         <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/part/part">(global definition)</a></p>
                                                          <p class="occurrence">[0 to ∞]</p>
                                                          <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/merge/custom/groups/parts/parts">Switch to JSON</a></div>
                                                          <p class="formal-name">Part</p>
                                                       </div>
                                                       <div class="body">
-                                                         <p class="description"><span class="usa-tag">Description</span> An annotated, markup-based textual element of a control's or catalog group's definition,
-                                                            or a child of another part.</p>
+                                                         <p class="description"><span class="usa-tag">Description</span> A partition of a control's definition or a child of another part.</p>
                                                          <div class="remarks-group usa-prose">
                                                             <details open="open">
                                                                <summary class="subhead">Remarks</summary>
@@ -6513,17 +5003,9 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                                   <p>A <code>part</code> provides for logical partitioning of prose, and can be thought of as a grouping structure
                                                                      (e.g., section). A <code>part</code> can have child parts allowing for arbitrary nesting of prose content (e.g., statement
                                                                      hierarchy). A <code>part</code> can contain <code>prop</code> objects that allow for enriching prose text with structured name/value information.</p>
-                                                                  <p>A <code>part</code> can be assigned an optional <code>id</code>, which allows references to this part from within a catalog, or within an instance
-                                                                     of another OSCAL model that has a need to reference the part. Examples of where part
-                                                                     referencing is used in OSCAL include:</p>
-                                                                  <ul>
-                                                                     
-                                                                     <li>Referencing a part by id to tailor (make modifications to) a control statement in
-                                                                        a profile.</li>
-                                                                     
-                                                                     <li>Referencing a control statement represented by a part in a system security plan implemented-requirement
-                                                                        where a statement-level response is desired.</li>
-                                                                     </ul>
+                                                                  <p>A <code>part</code> can be assigned an optional <code>id</code>, which allows for internal and external references to the textual concept contained
+                                                                     within a <code>part</code>. A <code>id</code> provides a means for an OSCAL profile, or a higher layer OSCAL model to reference
+                                                                     a specific part within a <code>catalog</code>. For example, an <code>id</code> can be used to reference or to make modifications to a control statement in a profile.</p>
                                                                   <p>Use of <code>part</code> and <code>prop</code> provides for a wide degree of extensibility within the OSCAL catalog model. The optional
                                                                      <code>ns</code> provides a means to qualify a part's <code>name</code>, allowing for organization-specific vocabularies to be defined with clear semantics.
                                                                      Any organization that extends OSCAL in this way should consistently assign a <code>ns</code> value that represents the organization, making a given namespace qualified <code>name</code> unique to that organization. This allows the combination of <code>ns</code> and <code>name</code> to always be unique and unambiguous, even when mixed with extensions from other organizations.
@@ -6562,14 +5044,13 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                    <div class="model-entry definition assembly">
                                                       <div class="instance-header">
                                                          <h6 id="/profile/merge/custom/group/part/link" class="toc6 name">link</h6>
-                                                         <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-control-common/part/link">(global definition)</a></p>
+                                                         <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/part/link">(global definition)</a></p>
                                                          <p class="occurrence">[0 to ∞]</p>
                                                          <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/merge/custom/groups/parts/links">Switch to JSON</a></div>
                                                          <p class="formal-name">Link</p>
                                                       </div>
                                                       <div class="body">
-                                                         <p class="description"><span class="usa-tag">Description</span> A reference to a local or remote resource, that has a specific relation to the containing
-                                                            object.</p>
+                                                         <p class="description"><span class="usa-tag">Description</span> A reference to a local or remote resource</p>
                                                          <div class="remarks-group usa-prose">
                                                             <details open="open">
                                                                <summary class="subhead">Remarks</summary>
@@ -6581,7 +5062,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                             </details>
                                                          </div>
                                                          <details class="constraints" open="open">
-                                                            <summary>Constraints (4)</summary>
+                                                            <summary>Constraints (3)</summary>
                                                             <div class="constraint">
                                                                <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                                             </div>
@@ -6591,12 +5072,9 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                             <div class="constraint">
                                                                <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                                             </div>
-                                                            <div class="constraint">
-                                                               <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
-                                                            </div>
                                                          </details>
                                                          <details class="properties attributes" open="open">
-                                                            <summary>Attributes (4)</summary>
+                                                            <summary>Attributes (3)</summary>
                                                             <div class="model-entry definition assembly">
                                                                <div class="instance-header">
                                                                   <p id="/profile/merge/custom/group/part/link/@href" class="toc7 name">href</p>
@@ -6611,17 +5089,13 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                                      <details open="open">
                                                                         <summary class="subhead">Remarks</summary>
                                                                         <div class="remarks">
-                                                                           <p>This value may be one of:</p>
-                                                                           <ol>
-                                                                              
-                                                                              <li>an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
-                                                                              
-                                                                              <li>a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
-                                                                                 document, or</li>
-                                                                              
-                                                                              <li>a bare URI fragment (i.e., `#uuid`) pointing to an OSCAL object by the objects identifier
-                                                                                 (e.g., id, uuid) in this or an imported document (see <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>). The specific object type will differ based on the link relationship type.</li>
-                                                                              </ol>
+                                                                           <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
+                                                                              that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
+                                                                           <p>If a local reference using a fragment is used, this will be indicated by a fragment
+                                                                              "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
+                                                                           <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
+                                                                              resource. A relative URI will be resolved relative to the location of the document
+                                                                              containing the link.</p>
                                                                         </div>
                                                                      </details>
                                                                   </div>
@@ -6633,11 +5107,11 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                                   <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                                   <p class="occurrence">[0 or 1]</p>
                                                                   <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/merge/custom/groups/parts/links/rel">Switch to JSON</a></div>
-                                                                  <p class="formal-name">Link Relation Type</p>
+                                                                  <p class="formal-name">Relation</p>
                                                                </div>
                                                                <div class="body">
-                                                                  <p class="description"><span class="usa-tag">Description</span> Describes the type of relationship provided by the link's hypertext reference. This
-                                                                     can be an indicator of the link's purpose.</p>
+                                                                  <p class="description"><span class="usa-tag">Description</span> Describes the type of relationship provided by the link. This can be an indicator
+                                                                     of the link's purpose.</p>
                                                                   <details class="constraints" open="open">
                                                                      <summary>Constraint (1)</summary>
                                                                      <div class="constraint">
@@ -6645,8 +5119,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                                         <p>The value <b>may be locally defined</b>, or the following:</p>
                                                                         <ul>
                                                                            
-                                                                           <li><strong>reference</strong>: A generalized reference to a network resource (relative or absolute) or to a back-matter
-                                                                              resource by UUID expressed as a bare URI fragment.</li>
+                                                                           <li><strong>reference</strong>: Reference</li>
                                                                            </ul>
                                                                      </div>
                                                                   </details>
@@ -6661,19 +5134,15 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                                   <p class="formal-name">Media Type</p>
                                                                </div>
                                                                <div class="body">
-                                                                  <p class="description"><span class="usa-tag">Description</span> A label that indicates the nature of a resource, as a data serialization or format.</p>
+                                                                  <p class="description"><span class="usa-tag">Description</span> Specifies a media type as defined by the Internet Assigned Numbers Authority (IANA)
+                                                                     <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">Media Types Registry</a>. </p>
                                                                   <div class="remarks-group usa-prose">
                                                                      <details open="open">
                                                                         <summary class="subhead">Remarks</summary>
                                                                         <div class="remarks">
-                                                                           <p> The Internet Assigned Numbers Authority (IANA) <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">Media Types Registry</a> defines a standardized set of media types, which may be used here.</p>
-                                                                           <p>The <code>application/oscal+xml</code>, <code>application/oscal+json</code> or <code>application/oscal+yaml</code> media types SHOULD be used when referencing OSCAL XML, JSON, or YAML resources respectively.</p>
-                                                                           <p>**Note: There is no official media type for YAML at this time.** OSCAL documents should
-                                                                              specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name
+                                                                           <p>The IANA Media Types Registry should be used, but currently there is no official media
+                                                                              type for YAML. OSCAL documents should specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name
                                                                               suffix, per <a href="https://www.rfc-editor.org/rfc/rfc6838.html#section-4.2.8">RFC 6838 Section 4.2.8</a>.</p>
-                                                                           <p>Some earlier OSCAL content incorporated the model into the media type. For example:
-                                                                              <code>application/oscal.catalog+xml</code>. This practice SHOULD be avoided, since the OSCAL model can be detected by parsing
-                                                                              the initial content of the referenced resource.</p>
                                                                         </div>
                                                                         <div class="remarks">
                                                                            <p>The <code>media-type</code> provides a hint about the content model of the referenced resource. A valid entry
@@ -6681,18 +5150,6 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                                         </div>
                                                                      </details>
                                                                   </div>
-                                                               </div>
-                                                            </div>
-                                                            <div class="model-entry definition assembly">
-                                                               <div class="instance-header">
-                                                                  <p id="/profile/merge/custom/group/part/link/@resource-fragment" class="toc7 name">resource-fragment</p>
-                                                                  <p class="type"><a href="/reference/datatypes/#string">string</a></p>
-                                                                  <p class="occurrence">[0 or 1]</p>
-                                                                  <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/merge/custom/groups/parts/links/resource-fragment">Switch to JSON</a></div>
-                                                                  <p class="formal-name">Resource Fragment</p>
-                                                               </div>
-                                                               <div class="body">
-                                                                  <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                                                </div>
                                                             </div>
                                                          </details>
@@ -6725,10 +5182,10 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-profile/group/group">(global definition)</a></p>
                                                    <p class="occurrence">[0 to ∞]</p>
                                                    <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/merge/custom/groups/groups">Switch to JSON</a></div>
-                                                   <p class="formal-name">Control Group</p>
+                                                   <p class="formal-name">Control group</p>
                                                 </div>
                                                 <div class="body">
-                                                   <p class="description"><span class="usa-tag">Description</span> A group of (selected) controls or of groups of controls.</p>
+                                                   <p class="description"><span class="usa-tag">Description</span> A group of (selected) controls or of groups of controls</p>
                                                    <div class="remarks-group usa-prose">
                                                       <details open="open">
                                                          <summary class="subhead">Remarks</summary>
@@ -6745,7 +5202,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-profile/group/insert-controls">(global definition)</a></p>
                                                    <p class="occurrence">[0 to ∞]</p>
                                                    <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/merge/custom/groups/insert-controls">Switch to JSON</a></div>
-                                                   <p class="formal-name">Select Controls</p>
+                                                   <p class="formal-name">Select controls</p>
                                                 </div>
                                                 <div class="body">
                                                    <p class="description"><span class="usa-tag">Description</span> Specifies which controls to use in the containing context.</p>
@@ -6819,10 +5276,10 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                                <p class="type">element<br /></p>
                                                                <p class="occurrence">[1 to ∞]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/merge/custom/groups/insert-controls/include-controls">Switch to JSON</a></div>
-                                                               <p class="formal-name">Select Control</p>
+                                                               <p class="formal-name">Call</p>
                                                             </div>
                                                             <div class="body">
-                                                               <p class="description"><span class="usa-tag">Description</span> Select a control or controls from an imported control set.</p>
+                                                               <p class="description"><span class="usa-tag">Description</span> Call a control by its ID</p>
                                                                <div class="remarks-group usa-prose">
                                                                   <details open="open">
                                                                      <summary class="subhead">Remarks</summary>
@@ -6842,7 +5299,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                                         <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                                         <p class="occurrence">[0 or 1]</p>
                                                                         <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/merge/custom/groups/insert-controls/include-controls/with-child-controls">Switch to JSON</a></div>
-                                                                        <p class="formal-name">Include Contained Controls with Control</p>
+                                                                        <p class="formal-name">Include contained controls with control</p>
                                                                      </div>
                                                                      <div class="body">
                                                                         <p class="description"><span class="usa-tag">Description</span> When a control is included, whether its child (dependent) controls are also included.</p>
@@ -6873,7 +5330,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                                         <p class="formal-name">Match Controls by Identifier</p>
                                                                      </div>
                                                                      <div class="body">
-                                                                        <p class="description"><span class="usa-tag">Description</span> Selecting a control by its ID given as a literal.</p>
+                                                                        <p class="description"><span class="usa-tag">Description</span> </p>
                                                                      </div>
                                                                   </div>
                                                                   <div class="model-entry definition assembly">
@@ -6885,7 +5342,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                                         <p class="formal-name">Match Controls by Pattern</p>
                                                                      </div>
                                                                      <div class="body">
-                                                                        <p class="description"><span class="usa-tag">Description</span> Selecting a set of controls by matching their IDs with a wildcard pattern.</p>
+                                                                        <p class="description"><span class="usa-tag">Description</span> Select controls by (regular expression) match on ID</p>
                                                                         <details class="properties attributes" open="open">
                                                                            <summary>Attribute (1)</summary>
                                                                            <div class="model-entry definition assembly">
@@ -6913,10 +5370,10 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                             <p class="type">element<br /></p>
                                                             <p class="occurrence">[0 to ∞]</p>
                                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/merge/custom/groups/insert-controls/exclude-controls">Switch to JSON</a></div>
-                                                            <p class="formal-name">Select Control</p>
+                                                            <p class="formal-name">Call</p>
                                                          </div>
                                                          <div class="body">
-                                                            <p class="description"><span class="usa-tag">Description</span> Select a control or controls from an imported control set.</p>
+                                                            <p class="description"><span class="usa-tag">Description</span> Call a control by its ID</p>
                                                             <div class="remarks-group usa-prose">
                                                                <details open="open">
                                                                   <summary class="subhead">Remarks</summary>
@@ -6939,7 +5396,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                                      <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                                      <p class="occurrence">[0 or 1]</p>
                                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/merge/custom/groups/insert-controls/exclude-controls/with-child-controls">Switch to JSON</a></div>
-                                                                     <p class="formal-name">Include Contained Controls with Control</p>
+                                                                     <p class="formal-name">Include contained controls with control</p>
                                                                   </div>
                                                                   <div class="body">
                                                                      <p class="description"><span class="usa-tag">Description</span> When a control is included, whether its child (dependent) controls are also included.</p>
@@ -6970,7 +5427,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                                      <p class="formal-name">Match Controls by Identifier</p>
                                                                   </div>
                                                                   <div class="body">
-                                                                     <p class="description"><span class="usa-tag">Description</span> Selecting a control by its ID given as a literal.</p>
+                                                                     <p class="description"><span class="usa-tag">Description</span> </p>
                                                                   </div>
                                                                </div>
                                                                <div class="model-entry definition assembly">
@@ -6982,7 +5439,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                                      <p class="formal-name">Match Controls by Pattern</p>
                                                                   </div>
                                                                   <div class="body">
-                                                                     <p class="description"><span class="usa-tag">Description</span> Selecting a set of controls by matching their IDs with a wildcard pattern.</p>
+                                                                     <p class="description"><span class="usa-tag">Description</span> Select controls by (regular expression) match on ID</p>
                                                                      <details class="properties attributes" open="open">
                                                                         <summary>Attribute (1)</summary>
                                                                         <div class="model-entry definition assembly">
@@ -7016,7 +5473,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-profile/merge/custom/insert-controls">(global definition)</a></p>
                                        <p class="occurrence">[0 to ∞]</p>
                                        <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/merge/custom/insert-controls">Switch to JSON</a></div>
-                                       <p class="formal-name">Select Controls</p>
+                                       <p class="formal-name">Select controls</p>
                                     </div>
                                     <div class="body">
                                        <p class="description"><span class="usa-tag">Description</span> Specifies which controls to use in the containing context.</p>
@@ -7090,10 +5547,10 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                    <p class="type">element<br /></p>
                                                    <p class="occurrence">[1 to ∞]</p>
                                                    <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/merge/custom/insert-controls/include-controls">Switch to JSON</a></div>
-                                                   <p class="formal-name">Select Control</p>
+                                                   <p class="formal-name">Call</p>
                                                 </div>
                                                 <div class="body">
-                                                   <p class="description"><span class="usa-tag">Description</span> Select a control or controls from an imported control set.</p>
+                                                   <p class="description"><span class="usa-tag">Description</span> Call a control by its ID</p>
                                                    <div class="remarks-group usa-prose">
                                                       <details open="open">
                                                          <summary class="subhead">Remarks</summary>
@@ -7113,7 +5570,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                             <p class="occurrence">[0 or 1]</p>
                                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/merge/custom/insert-controls/include-controls/with-child-controls">Switch to JSON</a></div>
-                                                            <p class="formal-name">Include Contained Controls with Control</p>
+                                                            <p class="formal-name">Include contained controls with control</p>
                                                          </div>
                                                          <div class="body">
                                                             <p class="description"><span class="usa-tag">Description</span> When a control is included, whether its child (dependent) controls are also included.</p>
@@ -7144,7 +5601,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                             <p class="formal-name">Match Controls by Identifier</p>
                                                          </div>
                                                          <div class="body">
-                                                            <p class="description"><span class="usa-tag">Description</span> Selecting a control by its ID given as a literal.</p>
+                                                            <p class="description"><span class="usa-tag">Description</span> </p>
                                                          </div>
                                                       </div>
                                                       <div class="model-entry definition assembly">
@@ -7156,7 +5613,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                             <p class="formal-name">Match Controls by Pattern</p>
                                                          </div>
                                                          <div class="body">
-                                                            <p class="description"><span class="usa-tag">Description</span> Selecting a set of controls by matching their IDs with a wildcard pattern.</p>
+                                                            <p class="description"><span class="usa-tag">Description</span> Select controls by (regular expression) match on ID</p>
                                                             <details class="properties attributes" open="open">
                                                                <summary>Attribute (1)</summary>
                                                                <div class="model-entry definition assembly">
@@ -7184,10 +5641,10 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 <p class="type">element<br /></p>
                                                 <p class="occurrence">[0 to ∞]</p>
                                                 <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/merge/custom/insert-controls/exclude-controls">Switch to JSON</a></div>
-                                                <p class="formal-name">Select Control</p>
+                                                <p class="formal-name">Call</p>
                                              </div>
                                              <div class="body">
-                                                <p class="description"><span class="usa-tag">Description</span> Select a control or controls from an imported control set.</p>
+                                                <p class="description"><span class="usa-tag">Description</span> Call a control by its ID</p>
                                                 <div class="remarks-group usa-prose">
                                                    <details open="open">
                                                       <summary class="subhead">Remarks</summary>
@@ -7210,7 +5667,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                          <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                          <p class="occurrence">[0 or 1]</p>
                                                          <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/merge/custom/insert-controls/exclude-controls/with-child-controls">Switch to JSON</a></div>
-                                                         <p class="formal-name">Include Contained Controls with Control</p>
+                                                         <p class="formal-name">Include contained controls with control</p>
                                                       </div>
                                                       <div class="body">
                                                          <p class="description"><span class="usa-tag">Description</span> When a control is included, whether its child (dependent) controls are also included.</p>
@@ -7241,7 +5698,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                          <p class="formal-name">Match Controls by Identifier</p>
                                                       </div>
                                                       <div class="body">
-                                                         <p class="description"><span class="usa-tag">Description</span> Selecting a control by its ID given as a literal.</p>
+                                                         <p class="description"><span class="usa-tag">Description</span> </p>
                                                       </div>
                                                    </div>
                                                    <div class="model-entry definition assembly">
@@ -7253,7 +5710,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                          <p class="formal-name">Match Controls by Pattern</p>
                                                       </div>
                                                       <div class="body">
-                                                         <p class="description"><span class="usa-tag">Description</span> Selecting a set of controls by matching their IDs with a wildcard pattern.</p>
+                                                         <p class="description"><span class="usa-tag">Description</span> Select controls by (regular expression) match on ID</p>
                                                          <details class="properties attributes" open="open">
                                                             <summary>Attribute (1)</summary>
                                                             <div class="model-entry definition assembly">
@@ -7290,10 +5747,10 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                   <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-profile/profile/modify">(global definition)</a></p>
                   <p class="occurrence">[0 or 1]</p>
                   <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify">Switch to JSON</a></div>
-                  <p class="formal-name">Modify Controls</p>
+                  <p class="formal-name">Modify controls</p>
                </div>
                <div class="body">
-                  <p class="description"><span class="usa-tag">Description</span> Set parameters or amend controls in resolution.</p>
+                  <p class="description"><span class="usa-tag">Description</span> Set parameters or amend controls in resolution</p>
                   <details class="constraints" open="open">
                      <summary>Constraint (1)</summary>
                      <div class="constraint">
@@ -7311,7 +5768,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                            <p class="formal-name">Parameter Setting</p>
                         </div>
                         <div class="body">
-                           <p class="description"><span class="usa-tag">Description</span> A parameter setting, to be propagated to points of insertion.</p>
+                           <p class="description"><span class="usa-tag">Description</span> A parameter setting, to be propagated to points of insertion</p>
                            <details class="properties attributes" open="open">
                               <summary>Attributes (3)</summary>
                               <div class="model-entry definition assembly">
@@ -7323,7 +5780,10 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <p class="formal-name">Parameter ID</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> An identifier for the parameter.</p>
+                                    <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a>, <a href="/concepts/identifier-use/#locally-unique">locally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined parameter elsewhere in <a href="/concepts/identifier-use/#profile-identifiers">this or other OSCAL instances</a>. When referenced from another OSCAL instance, this identifier must be referenced
+                                       in the context of the containing resource (e.g., import-profile). This id should be
+                                       assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                                       of the document.</p>
                                  </div>
                               </div>
                               <div class="model-entry definition assembly">
@@ -7353,7 +5813,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/set-parameters/depends-on">Switch to JSON</a></div>
-                                    <p class="formal-name">Depends On</p>
+                                    <p class="formal-name">Depends on</p>
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> **(deprecated)** Another parameter invoking this one. This construct has been deprecated
@@ -7373,7 +5833,8 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> An attribute, characteristic, or quality of the containing object expressed as a
-                                       namespace qualified name/value pair.</p>
+                                       namespace qualified name/value pair. The value of a property is a simple scalar value,
+                                       which may be expressed as a list of values.</p>
                                     <div class="remarks-group usa-prose">
                                        <details open="open">
                                           <summary class="subhead">Remarks</summary>
@@ -7391,21 +5852,8 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                           </div>
                                        </details>
                                     </div>
-                                    <details class="constraints" open="open">
-                                       <summary>Constraint (1)</summary>
-                                       <div class="constraint">
-                                          <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
-                                          <p>The value <b>must</b> be one of the following:</p>
-                                          <ul>
-                                             
-                                             <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                An optional class can be used to define the specific marking system used for the associated
-                                                value.</li>
-                                             </ul>
-                                       </div>
-                                    </details>
                                     <details class="properties attributes" open="open">
-                                       <summary>Attributes (6)</summary>
+                                       <summary>Attributes (5)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/profile/modify/set-parameter/prop/@name" class="toc5 name">name</h5>
@@ -7415,8 +5863,21 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              <p class="formal-name">Property Name</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
-                                                characteristic, or quality of the property's containing object.</p>
+                                             <p class="description"><span class="usa-tag">Description</span> A textual label that uniquely identifies a specific attribute, characteristic, or
+                                                quality of the property's containing object.</p>
+                                             <details class="constraints" open="open">
+                                                <summary>Constraint (1)</summary>
+                                                <div class="constraint">
+                                                   <p><span class="usa-tag">allowed value</span></p>
+                                                   <p>The value <b>may be locally defined</b>, or the following:</p>
+                                                   <ul>
+                                                      
+                                                      <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                         An optional class can be used to define the specific marking system used for the associated
+                                                         value.</li>
+                                                      </ul>
+                                                </div>
+                                             </details>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -7428,7 +5889,8 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              <p class="formal-name">Property Universally Unique Identifier</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> A unique identifier for a property.</p>
+                                             <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined property elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                                                of the document.</p>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -7446,7 +5908,11 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
                                                    <div class="remarks">
-                                                      <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                      <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
+                                                         names and associated values used in a property. This allows the semantics associated
+                                                         with a given name/value pair to be defined on an organization-by-organization basis.</p>
+                                                      <p>An organization MUST use a URI that they have control over. e.g., a domain registered
+                                                         to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                       <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                    </div>
                                                 </details>
@@ -7474,36 +5940,14 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              <p class="formal-name">Property Class</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> A textual label that provides a sub-type or characterization of the property's <code>name</code>.</p>
+                                             <p class="description"><span class="usa-tag">Description</span> A textual label that provides a sub-type or characterization of the property's <code>name</code>. This can be used to further distinguish or discriminate between the semantics of
+                                                multiple properties of the same object with the same <code>name</code> and <code>ns</code>. </p>
                                              <div class="remarks-group usa-prose">
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
                                                    <div class="remarks">
-                                                      <p>This can be used to further distinguish or discriminate between the semantics of multiple
-                                                         properties of the same object with the same <code>name</code> and <code>ns</code>, or to group properties into categories.</p>
                                                       <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                         a specific <code>class</code> value. It is available for grouping, but unlike <code>group</code> is not expected specifically to designate any group membership as such.</p>
-                                                   </div>
-                                                </details>
-                                             </div>
-                                          </div>
-                                       </div>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h5 id="/profile/modify/set-parameter/prop/@group" class="toc5 name">group</h5>
-                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                                             <p class="occurrence">[0 or 1]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/set-parameters/props/group">Switch to JSON</a></div>
-                                             <p class="formal-name">Property Group</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
-                                             <div class="remarks-group usa-prose">
-                                                <details open="open">
-                                                   <summary class="subhead">Remarks</summary>
-                                                   <div class="remarks">
-                                                      <p>Different sets of properties may relate to separate contexts. Declare a group on a
-                                                         property to associate it with one or more other properties in a given context.</p>
+                                                         a specific <code>class</code> value.</p>
                                                    </div>
                                                 </details>
                                              </div>
@@ -7521,16 +5965,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              <p class="formal-name">Remarks</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> Additional commentary about the containing object.</p>
-                                             <div class="remarks-group usa-prose">
-                                                <details open="open">
-                                                   <summary class="subhead">Remarks</summary>
-                                                   <div class="remarks">
-                                                      <p>The <code>remarks</code> field SHOULD not be used to store arbitrary data. Instead, a <code>prop</code> or <code>link</code> should be used to annotate or reference any additional data not formally supported
-                                                         by OSCAL.</p>
-                                                   </div>
-                                                </details>
-                                             </div>
+                                             <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
                                              <details class="properties elements" open="open">
                                                 <summary>Element (0+)</summary>
                                                 <div class="model-entry definition field">
@@ -7558,8 +5993,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <p class="formal-name">Link</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> A reference to a local or remote resource, that has a specific relation to the containing
-                                       object.</p>
+                                    <p class="description"><span class="usa-tag">Description</span> A reference to a local or remote resource</p>
                                     <div class="remarks-group usa-prose">
                                        <details open="open">
                                           <summary class="subhead">Remarks</summary>
@@ -7571,7 +6005,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </details>
                                     </div>
                                     <details class="constraints" open="open">
-                                       <summary>Constraints (4)</summary>
+                                       <summary>Constraints (3)</summary>
                                        <div class="constraint">
                                           <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                        </div>
@@ -7581,12 +6015,9 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <div class="constraint">
                                           <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                        </div>
-                                       <div class="constraint">
-                                          <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
-                                       </div>
                                     </details>
                                     <details class="properties attributes" open="open">
-                                       <summary>Attributes (4)</summary>
+                                       <summary>Attributes (3)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/profile/modify/set-parameter/link/@href" class="toc5 name">href</h5>
@@ -7601,17 +6032,13 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
                                                    <div class="remarks">
-                                                      <p>This value may be one of:</p>
-                                                      <ol>
-                                                         
-                                                         <li>an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
-                                                         
-                                                         <li>a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
-                                                            document, or</li>
-                                                         
-                                                         <li>a bare URI fragment (i.e., `#uuid`) pointing to an OSCAL object by the objects identifier
-                                                            (e.g., id, uuid) in this or an imported document (see <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>). The specific object type will differ based on the link relationship type.</li>
-                                                         </ol>
+                                                      <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
+                                                         that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
+                                                      <p>If a local reference using a fragment is used, this will be indicated by a fragment
+                                                         "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
+                                                      <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
+                                                         resource. A relative URI will be resolved relative to the location of the document
+                                                         containing the link.</p>
                                                    </div>
                                                 </details>
                                              </div>
@@ -7623,11 +6050,11 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/set-parameters/links/rel">Switch to JSON</a></div>
-                                             <p class="formal-name">Link Relation Type</p>
+                                             <p class="formal-name">Relation</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> Describes the type of relationship provided by the link's hypertext reference. This
-                                                can be an indicator of the link's purpose.</p>
+                                             <p class="description"><span class="usa-tag">Description</span> Describes the type of relationship provided by the link. This can be an indicator
+                                                of the link's purpose.</p>
                                              <details class="constraints" open="open">
                                                 <summary>Constraint (1)</summary>
                                                 <div class="constraint">
@@ -7635,8 +6062,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                    <p>The value <b>may be locally defined</b>, or the following:</p>
                                                    <ul>
                                                       
-                                                      <li><strong>reference</strong>: A generalized reference to a network resource (relative or absolute) or to a back-matter
-                                                         resource by UUID expressed as a bare URI fragment.</li>
+                                                      <li><strong>reference</strong>: Reference</li>
                                                       </ul>
                                                 </div>
                                              </details>
@@ -7651,19 +6077,15 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              <p class="formal-name">Media Type</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> A label that indicates the nature of a resource, as a data serialization or format.</p>
+                                             <p class="description"><span class="usa-tag">Description</span> Specifies a media type as defined by the Internet Assigned Numbers Authority (IANA)
+                                                <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">Media Types Registry</a>. </p>
                                              <div class="remarks-group usa-prose">
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
                                                    <div class="remarks">
-                                                      <p> The Internet Assigned Numbers Authority (IANA) <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">Media Types Registry</a> defines a standardized set of media types, which may be used here.</p>
-                                                      <p>The <code>application/oscal+xml</code>, <code>application/oscal+json</code> or <code>application/oscal+yaml</code> media types SHOULD be used when referencing OSCAL XML, JSON, or YAML resources respectively.</p>
-                                                      <p>**Note: There is no official media type for YAML at this time.** OSCAL documents should
-                                                         specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name
+                                                      <p>The IANA Media Types Registry should be used, but currently there is no official media
+                                                         type for YAML. OSCAL documents should specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name
                                                          suffix, per <a href="https://www.rfc-editor.org/rfc/rfc6838.html#section-4.2.8">RFC 6838 Section 4.2.8</a>.</p>
-                                                      <p>Some earlier OSCAL content incorporated the model into the media type. For example:
-                                                         <code>application/oscal.catalog+xml</code>. This practice SHOULD be avoided, since the OSCAL model can be detected by parsing
-                                                         the initial content of the referenced resource.</p>
                                                    </div>
                                                    <div class="remarks">
                                                       <p>The <code>media-type</code> provides a hint about the content model of the referenced resource. A valid entry
@@ -7671,18 +6093,6 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                    </div>
                                                 </details>
                                              </div>
-                                          </div>
-                                       </div>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h5 id="/profile/modify/set-parameter/link/@resource-fragment" class="toc5 name">resource-fragment</h5>
-                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
-                                             <p class="occurrence">[0 or 1]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/set-parameters/links/resource-fragment">Switch to JSON</a></div>
-                                             <p class="formal-name">Resource Fragment</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                           </div>
                                        </div>
                                     </details>
@@ -7734,7 +6144,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <p class="formal-name">Parameter Usage Description</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> Describes the purpose and use of a parameter.</p>
+                                    <p class="description"><span class="usa-tag">Description</span> Describes the purpose and use of a parameter</p>
                                     <details class="properties elements" open="open">
                                        <summary>Element (0+)</summary>
                                        <div class="model-entry definition assembly">
@@ -7759,7 +6169,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <p class="formal-name">Constraint</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> A formal or informal expression of a constraint or test.</p>
+                                    <p class="description"><span class="usa-tag">Description</span> A formal or informal expression of a constraint or test</p>
                                     <details class="properties elements" open="open">
                                        <summary>Elements (2)</summary>
                                        <div class="model-entry definition assembly">
@@ -7808,7 +6218,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                       <p class="formal-name">Constraint test</p>
                                                    </div>
                                                    <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> A formal (executable) expression of a constraint.</p>
+                                                      <p class="description"><span class="usa-tag">Description</span> A formal (executable) expression of a constraint</p>
                                                    </div>
                                                 </div>
                                                 <div class="model-entry definition assembly">
@@ -7820,16 +6230,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                       <p class="formal-name">Remarks</p>
                                                    </div>
                                                    <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> Additional commentary about the containing object.</p>
-                                                      <div class="remarks-group usa-prose">
-                                                         <details open="open">
-                                                            <summary class="subhead">Remarks</summary>
-                                                            <div class="remarks">
-                                                               <p>The <code>remarks</code> field SHOULD not be used to store arbitrary data. Instead, a <code>prop</code> or <code>link</code> should be used to annotate or reference any additional data not formally supported
-                                                                  by OSCAL.</p>
-                                                            </div>
-                                                         </details>
-                                                      </div>
+                                                      <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
                                                       <details class="properties elements" open="open">
                                                          <summary>Element (0+)</summary>
                                                          <div class="model-entry definition field">
@@ -7907,7 +6308,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <p class="formal-name">Selection</p>
                                     </div>
                                     <div class="body">
-                                       <p class="description"><span class="usa-tag">Description</span> Presenting a choice among alternatives.</p>
+                                       <p class="description"><span class="usa-tag">Description</span> Presenting a choice among alternatives</p>
                                        <div class="remarks-group usa-prose">
                                           <details open="open">
                                              <summary class="subhead">Remarks</summary>
@@ -7956,7 +6357,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 <p class="formal-name">Choice</p>
                                              </div>
                                              <div class="body">
-                                                <p class="description"><span class="usa-tag">Description</span> A value selection among several such options.</p>
+                                                <p class="description"><span class="usa-tag">Description</span> A value selection among several such options</p>
                                              </div>
                                           </div>
                                        </details>
@@ -7969,13 +6370,14 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
                            <h3 id="/profile/modify/alter" class="toc3 name">alter</h3>
-                           <p class="type">element<br /></p>
+                           <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-profile/modify/alter">(global definition)</a></p>
                            <p class="occurrence">[0 to ∞]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters">Switch to JSON</a></div>
                            <p class="formal-name">Alteration</p>
                         </div>
                         <div class="body">
-                           <p class="description"><span class="usa-tag">Description</span> Specifies changes to be made to an included control when a profile is resolved.</p>
+                           <p class="description"><span class="usa-tag">Description</span> An Alter element specifies changes to be made to an included control when a profile
+                              is resolved.</p>
                            <div class="remarks-group usa-prose">
                               <details open="open">
                                  <summary class="subhead">Remarks</summary>
@@ -8000,7 +6402,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <p class="formal-name">Control Identifier Reference</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> A reference to a control with a corresponding <code>id</code> value. When referencing an externally defined <code>control</code>, the <code>Control Identifier Reference</code> must be used in the context of the external / imported OSCAL instance (e.g., uri-reference).</p>
+                                    <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a> identifier reference to a control with a corresponding <code>id</code> value. When referencing an externally defined <code>control</code>, the <code>Control Identifier Reference</code> must be used in the context of the external / imported OSCAL instance (e.g., uri-reference).</p>
                                  </div>
                               </div>
                            </details>
@@ -8021,7 +6423,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <details open="open">
                                           <summary class="subhead">Remarks</summary>
                                           <div class="remarks">
-                                             <p>Use <code>by-name</code>, <code>by-class</code>, <code>by-id</code> or <code>by-item-name</code> to indicate class tokens or ID reference, or the formal name, of the component to
+                                             <p>Use <code>name-ref</code>, <code>class-ref</code>, <code>id-ref</code> or <code>generic-identifier</code> to indicate class tokens or ID reference, or the formal name, of the component to
                                                 be removed or erased from a control, when a catalog is resolved. The control affected
                                                 is indicated by the pointer on the removal's parent (containing) <code>alter</code> element.</p>
                                              <p>To change an element, use <code>remove</code> to remove the element, then <code>add</code> to add it back again with changes.</p>
@@ -8039,7 +6441,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              <p class="formal-name">Reference by (assigned) name</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> Identify items remove by matching their assigned name.</p>
+                                             <p class="description"><span class="usa-tag">Description</span> Identify items to remove by matching their assigned name</p>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -8075,29 +6477,8 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              <p class="formal-name">Item Name Reference</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> Identify items to remove by the name of the item's information object name, e.g.
-                                                <code>title</code> or <code>prop</code>.</p>
-                                             <details class="constraints" open="open">
-                                                <summary>Constraint (1)</summary>
-                                                <div class="constraint">
-                                                   <p><span class="usa-tag">allowed values</span></p>
-                                                   <p>The value <b>must</b> be one of the following:</p>
-                                                   <ul>
-                                                      
-                                                      <li><strong>param</strong>: A descendant parameter and all of its descendants.</li>
-                                                      
-                                                      <li><strong>prop</strong>: A descendant property and all of its descendants.</li>
-                                                      
-                                                      <li><strong>link</strong>: A descendant link and all of its descendants.</li>
-                                                      
-                                                      <li><strong>part</strong>: A descendant parameter and all of its descendants.</li>
-                                                      
-                                                      <li><strong>mapping</strong>: A descendant mapping and all of its descendants.</li>
-                                                      
-                                                      <li><strong>map</strong>: A descendant mapping entry (map) and all of its descendants.</li>
-                                                      </ul>
-                                                </div>
-                                             </details>
+                                             <p class="description"><span class="usa-tag">Description</span> Identify items to remove by the name of the item's information element name, e.g.
+                                                <code>title</code> or <code>prop</code></p>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -8118,20 +6499,20 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/profile/modify/alter/add" class="toc4 name">add</h4>
-                                    <p class="type">element<br /></p>
+                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-profile/alter/add">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds">Switch to JSON</a></div>
                                     <p class="formal-name">Addition</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> Specifies contents to be added into controls, in resolution.</p>
+                                    <p class="description"><span class="usa-tag">Description</span> Specifies contents to be added into controls, in resolution</p>
                                     <div class="remarks-group usa-prose">
                                        <details open="open">
                                           <summary class="subhead">Remarks</summary>
                                           <div class="remarks">
-                                             <p>When no <code>by-id</code> is given, the addition is inserted into the control targeted by the alteration at
-                                                the start or end as indicated by <code>position</code>. Only <code>position</code> values of "starting" or "ending" are permitted when there is no <code>by-id</code>.</p>
-                                             <p><code>by-id</code>, when given, should indicate, by its ID, an element inside the control to serve as
+                                             <p>When no <code>id-ref</code> is given, the addition is inserted into the control targeted by the alteration at
+                                                the start or end as indicated by <code>position</code>. Only <code>position</code> values of "starting" or "ending" are permitted when there is no <code>id-ref</code>.</p>
+                                             <p><code>id-ref</code>, when given, should indicate, by its ID, an element inside the control to serve as
                                                 the anchor point for the addition. In this case, <code>position</code> value may be any of the permitted values.</p>
                                           </div>
                                        </details>
@@ -8139,8 +6520,8 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <details class="constraints" open="open">
                                        <summary>Constraint (1)</summary>
                                        <div class="constraint">
-                                          <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
-                                          <p>The value <b>must</b> be one of the following:</p>
+                                          <p><span class="usa-tag">allowed values</span>  for <code class="path">prop/@name</code></p>
+                                          <p>The value <b>may be locally defined</b>, or one of the following:</p>
                                           <ul>
                                              
                                              <li><strong>label</strong>: A human-readable label for the parent context, which may be rendered in place of
@@ -8166,7 +6547,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                           </div>
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> Where to add the new content with respect to the targeted element (beside it or inside
-                                                it).</p>
+                                                it)</p>
                                              <details class="constraints" open="open">
                                                 <summary>Constraint (1)</summary>
                                                 <div class="constraint">
@@ -8174,13 +6555,13 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                    <p>The value <b>must</b> be one of the following:</p>
                                                    <ul>
                                                       
-                                                      <li><strong>before</strong>: Preceding the by-id target</li>
+                                                      <li><strong>before</strong>: Preceding the id-ref target</li>
                                                       
-                                                      <li><strong>after</strong>: Following the by-id target</li>
+                                                      <li><strong>after</strong>: Following the id-ref target</li>
                                                       
-                                                      <li><strong>starting</strong>: Inside the control or by-id target, at the start</li>
+                                                      <li><strong>starting</strong>: Inside the control or id-ref target, at the start</li>
                                                       
-                                                      <li><strong>ending</strong>: Inside the control or by-id target, at the end</li>
+                                                      <li><strong>ending</strong>: Inside the control or id-ref target, at the end</li>
                                                       </ul>
                                                 </div>
                                              </details>
@@ -8216,7 +6597,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/profile/modify/alter/add/param" class="toc5 name">param</h5>
-                                             <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-profile/modify/alter/add/param">(global definition)</a></p>
+                                             <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-profile/add/param">(global definition)</a></p>
                                              <p class="occurrence">[0 to ∞]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/params">Switch to JSON</a></div>
                                              <p class="formal-name">Parameter</p>
@@ -8263,9 +6644,8 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                    <p>The value <b>must</b> be one of the following:</p>
                                                    <ul>
                                                       
-                                                      <li><strong>aggregates</strong>: The parent parameter provides an
-                                                         aggregation of two or more other parameters, each described
-                                                         by this property.</li>
+                                                      <li><strong>aggregates</strong>: The parent parameter provides an aggregation of 2 or more other parameters, each
+                                                         described by this property.</li>
                                                       </ul>
                                                 </div>
                                              </details>
@@ -8280,7 +6660,10 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                       <p class="formal-name">Parameter Identifier</p>
                                                    </div>
                                                    <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> A unique identifier for the parameter.</p>
+                                                      <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a>, <a href="/concepts/identifier-use/#locally-unique">locally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined parameter elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. When referenced from another OSCAL instance, this identifier must be referenced
+                                                         in the context of the containing resource (e.g., import-profile). This id should be
+                                                         assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                                                         of the document.</p>
                                                    </div>
                                                 </div>
                                                 <div class="model-entry definition assembly">
@@ -8292,8 +6675,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                       <p class="formal-name">Parameter Class</p>
                                                    </div>
                                                    <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> A textual label that provides a characterization of the type, purpose, use or scope
-                                                         of the parameter.</p>
+                                                      <p class="description"><span class="usa-tag">Description</span> A textual label that provides a characterization of the parameter.</p>
                                                       <div class="remarks-group usa-prose">
                                                          <details open="open">
                                                             <summary class="subhead">Remarks</summary>
@@ -8314,8 +6696,8 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                       <p class="formal-name">Depends on</p>
                                                    </div>
                                                    <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> <strong>(deprecated)</strong> Another parameter invoking this one. This construct has been deprecated and should
-                                                         not be used.</p>
+                                                      <p class="description"><span class="usa-tag">Description</span> **(deprecated)** Another parameter invoking this one. This construct has been deprecated
+                                                         and should not be used.</p>
                                                    </div>
                                                 </div>
                                              </details>
@@ -8324,14 +6706,15 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/profile/modify/alter/add/param/prop" class="toc6 name">prop</h6>
-                                                      <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-control-common/parameter/prop">(global definition)</a></p>
+                                                      <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/parameter/prop">(global definition)</a></p>
                                                       <p class="occurrence">[0 to ∞]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/params/props">Switch to JSON</a></div>
                                                       <p class="formal-name">Property</p>
                                                    </div>
                                                    <div class="body">
                                                       <p class="description"><span class="usa-tag">Description</span> An attribute, characteristic, or quality of the containing object expressed as a
-                                                         namespace qualified name/value pair.</p>
+                                                         namespace qualified name/value pair. The value of a property is a simple scalar value,
+                                                         which may be expressed as a list of values.</p>
                                                       <div class="remarks-group usa-prose">
                                                          <details open="open">
                                                             <summary class="subhead">Remarks</summary>
@@ -8349,21 +6732,8 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                             </div>
                                                          </details>
                                                       </div>
-                                                      <details class="constraints" open="open">
-                                                         <summary>Constraint (1)</summary>
-                                                         <div class="constraint">
-                                                            <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
-                                                            <p>The value <b>must</b> be one of the following:</p>
-                                                            <ul>
-                                                               
-                                                               <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                                  An optional class can be used to define the specific marking system used for the associated
-                                                                  value.</li>
-                                                               </ul>
-                                                         </div>
-                                                      </details>
                                                       <details class="properties attributes" open="open">
-                                                         <summary>Attributes (6)</summary>
+                                                         <summary>Attributes (5)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
                                                                <p id="/profile/modify/alter/add/param/prop/@name" class="toc7 name">name</p>
@@ -8373,8 +6743,21 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                                <p class="formal-name">Property Name</p>
                                                             </div>
                                                             <div class="body">
-                                                               <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
-                                                                  characteristic, or quality of the property's containing object.</p>
+                                                               <p class="description"><span class="usa-tag">Description</span> A textual label that uniquely identifies a specific attribute, characteristic, or
+                                                                  quality of the property's containing object.</p>
+                                                               <details class="constraints" open="open">
+                                                                  <summary>Constraint (1)</summary>
+                                                                  <div class="constraint">
+                                                                     <p><span class="usa-tag">allowed value</span></p>
+                                                                     <p>The value <b>may be locally defined</b>, or the following:</p>
+                                                                     <ul>
+                                                                        
+                                                                        <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                                           An optional class can be used to define the specific marking system used for the associated
+                                                                           value.</li>
+                                                                        </ul>
+                                                                  </div>
+                                                               </details>
                                                             </div>
                                                          </div>
                                                          <div class="model-entry definition assembly">
@@ -8386,7 +6769,8 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                                <p class="formal-name">Property Universally Unique Identifier</p>
                                                             </div>
                                                             <div class="body">
-                                                               <p class="description"><span class="usa-tag">Description</span> A unique identifier for a property.</p>
+                                                               <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined property elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                                                                  of the document.</p>
                                                             </div>
                                                          </div>
                                                          <div class="model-entry definition assembly">
@@ -8404,7 +6788,11 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                                   <details open="open">
                                                                      <summary class="subhead">Remarks</summary>
                                                                      <div class="remarks">
-                                                                        <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                                        <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
+                                                                           names and associated values used in a property. This allows the semantics associated
+                                                                           with a given name/value pair to be defined on an organization-by-organization basis.</p>
+                                                                        <p>An organization MUST use a URI that they have control over. e.g., a domain registered
+                                                                           to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                                         <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                                      </div>
                                                                   </details>
@@ -8432,36 +6820,14 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                                <p class="formal-name">Property Class</p>
                                                             </div>
                                                             <div class="body">
-                                                               <p class="description"><span class="usa-tag">Description</span> A textual label that provides a sub-type or characterization of the property's <code>name</code>.</p>
+                                                               <p class="description"><span class="usa-tag">Description</span> A textual label that provides a sub-type or characterization of the property's <code>name</code>. This can be used to further distinguish or discriminate between the semantics of
+                                                                  multiple properties of the same object with the same <code>name</code> and <code>ns</code>. </p>
                                                                <div class="remarks-group usa-prose">
                                                                   <details open="open">
                                                                      <summary class="subhead">Remarks</summary>
                                                                      <div class="remarks">
-                                                                        <p>This can be used to further distinguish or discriminate between the semantics of multiple
-                                                                           properties of the same object with the same <code>name</code> and <code>ns</code>, or to group properties into categories.</p>
                                                                         <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                                           a specific <code>class</code> value. It is available for grouping, but unlike <code>group</code> is not expected specifically to designate any group membership as such.</p>
-                                                                     </div>
-                                                                  </details>
-                                                               </div>
-                                                            </div>
-                                                         </div>
-                                                         <div class="model-entry definition assembly">
-                                                            <div class="instance-header">
-                                                               <p id="/profile/modify/alter/add/param/prop/@group" class="toc7 name">group</p>
-                                                               <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                                                               <p class="occurrence">[0 or 1]</p>
-                                                               <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/params/props/group">Switch to JSON</a></div>
-                                                               <p class="formal-name">Property Group</p>
-                                                            </div>
-                                                            <div class="body">
-                                                               <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
-                                                               <div class="remarks-group usa-prose">
-                                                                  <details open="open">
-                                                                     <summary class="subhead">Remarks</summary>
-                                                                     <div class="remarks">
-                                                                        <p>Different sets of properties may relate to separate contexts. Declare a group on a
-                                                                           property to associate it with one or more other properties in a given context.</p>
+                                                                           a specific <code>class</code> value.</p>
                                                                      </div>
                                                                   </details>
                                                                </div>
@@ -8479,16 +6845,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                                <p class="formal-name">Remarks</p>
                                                             </div>
                                                             <div class="body">
-                                                               <p class="description"><span class="usa-tag">Description</span> Additional commentary about the containing object.</p>
-                                                               <div class="remarks-group usa-prose">
-                                                                  <details open="open">
-                                                                     <summary class="subhead">Remarks</summary>
-                                                                     <div class="remarks">
-                                                                        <p>The <code>remarks</code> field SHOULD not be used to store arbitrary data. Instead, a <code>prop</code> or <code>link</code> should be used to annotate or reference any additional data not formally supported
-                                                                           by OSCAL.</p>
-                                                                     </div>
-                                                                  </details>
-                                                               </div>
+                                                               <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
                                                                <details class="properties elements" open="open">
                                                                   <summary>Element (0+)</summary>
                                                                   <div class="model-entry definition field">
@@ -8510,14 +6867,13 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/profile/modify/alter/add/param/link" class="toc6 name">link</h6>
-                                                      <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-control-common/parameter/link">(global definition)</a></p>
+                                                      <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/parameter/link">(global definition)</a></p>
                                                       <p class="occurrence">[0 to ∞]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/params/links">Switch to JSON</a></div>
                                                       <p class="formal-name">Link</p>
                                                    </div>
                                                    <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> A reference to a local or remote resource, that has a specific relation to the containing
-                                                         object.</p>
+                                                      <p class="description"><span class="usa-tag">Description</span> A reference to a local or remote resource</p>
                                                       <div class="remarks-group usa-prose">
                                                          <details open="open">
                                                             <summary class="subhead">Remarks</summary>
@@ -8529,7 +6885,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                          </details>
                                                       </div>
                                                       <details class="constraints" open="open">
-                                                         <summary>Constraints (4)</summary>
+                                                         <summary>Constraints (3)</summary>
                                                          <div class="constraint">
                                                             <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                                          </div>
@@ -8539,12 +6895,9 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                          <div class="constraint">
                                                             <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                                          </div>
-                                                         <div class="constraint">
-                                                            <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
-                                                         </div>
                                                       </details>
                                                       <details class="properties attributes" open="open">
-                                                         <summary>Attributes (4)</summary>
+                                                         <summary>Attributes (3)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
                                                                <p id="/profile/modify/alter/add/param/link/@href" class="toc7 name">href</p>
@@ -8559,17 +6912,13 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                                   <details open="open">
                                                                      <summary class="subhead">Remarks</summary>
                                                                      <div class="remarks">
-                                                                        <p>This value may be one of:</p>
-                                                                        <ol>
-                                                                           
-                                                                           <li>an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
-                                                                           
-                                                                           <li>a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
-                                                                              document, or</li>
-                                                                           
-                                                                           <li>a bare URI fragment (i.e., `#uuid`) pointing to an OSCAL object by the objects identifier
-                                                                              (e.g., id, uuid) in this or an imported document (see <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>). The specific object type will differ based on the link relationship type.</li>
-                                                                           </ol>
+                                                                        <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
+                                                                           that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
+                                                                        <p>If a local reference using a fragment is used, this will be indicated by a fragment
+                                                                           "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
+                                                                        <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
+                                                                           resource. A relative URI will be resolved relative to the location of the document
+                                                                           containing the link.</p>
                                                                      </div>
                                                                   </details>
                                                                </div>
@@ -8581,11 +6930,11 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                                <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                                <p class="occurrence">[0 or 1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/params/links/rel">Switch to JSON</a></div>
-                                                               <p class="formal-name">Link Relation Type</p>
+                                                               <p class="formal-name">Relation</p>
                                                             </div>
                                                             <div class="body">
-                                                               <p class="description"><span class="usa-tag">Description</span> Describes the type of relationship provided by the link's hypertext reference. This
-                                                                  can be an indicator of the link's purpose.</p>
+                                                               <p class="description"><span class="usa-tag">Description</span> Describes the type of relationship provided by the link. This can be an indicator
+                                                                  of the link's purpose.</p>
                                                                <details class="constraints" open="open">
                                                                   <summary>Constraint (1)</summary>
                                                                   <div class="constraint">
@@ -8593,8 +6942,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                                      <p>The value <b>may be locally defined</b>, or the following:</p>
                                                                      <ul>
                                                                         
-                                                                        <li><strong>reference</strong>: A generalized reference to a network resource (relative or absolute) or to a back-matter
-                                                                           resource by UUID expressed as a bare URI fragment.</li>
+                                                                        <li><strong>reference</strong>: Reference</li>
                                                                         </ul>
                                                                   </div>
                                                                </details>
@@ -8609,19 +6957,15 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                                <p class="formal-name">Media Type</p>
                                                             </div>
                                                             <div class="body">
-                                                               <p class="description"><span class="usa-tag">Description</span> A label that indicates the nature of a resource, as a data serialization or format.</p>
+                                                               <p class="description"><span class="usa-tag">Description</span> Specifies a media type as defined by the Internet Assigned Numbers Authority (IANA)
+                                                                  <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">Media Types Registry</a>. </p>
                                                                <div class="remarks-group usa-prose">
                                                                   <details open="open">
                                                                      <summary class="subhead">Remarks</summary>
                                                                      <div class="remarks">
-                                                                        <p> The Internet Assigned Numbers Authority (IANA) <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">Media Types Registry</a> defines a standardized set of media types, which may be used here.</p>
-                                                                        <p>The <code>application/oscal+xml</code>, <code>application/oscal+json</code> or <code>application/oscal+yaml</code> media types SHOULD be used when referencing OSCAL XML, JSON, or YAML resources respectively.</p>
-                                                                        <p>**Note: There is no official media type for YAML at this time.** OSCAL documents should
-                                                                           specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name
+                                                                        <p>The IANA Media Types Registry should be used, but currently there is no official media
+                                                                           type for YAML. OSCAL documents should specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name
                                                                            suffix, per <a href="https://www.rfc-editor.org/rfc/rfc6838.html#section-4.2.8">RFC 6838 Section 4.2.8</a>.</p>
-                                                                        <p>Some earlier OSCAL content incorporated the model into the media type. For example:
-                                                                           <code>application/oscal.catalog+xml</code>. This practice SHOULD be avoided, since the OSCAL model can be detected by parsing
-                                                                           the initial content of the referenced resource.</p>
                                                                      </div>
                                                                      <div class="remarks">
                                                                         <p>The <code>media-type</code> provides a hint about the content model of the referenced resource. A valid entry
@@ -8629,18 +6973,6 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                                      </div>
                                                                   </details>
                                                                </div>
-                                                            </div>
-                                                         </div>
-                                                         <div class="model-entry definition assembly">
-                                                            <div class="instance-header">
-                                                               <p id="/profile/modify/alter/add/param/link/@resource-fragment" class="toc7 name">resource-fragment</p>
-                                                               <p class="type"><a href="/reference/datatypes/#string">string</a></p>
-                                                               <p class="occurrence">[0 or 1]</p>
-                                                               <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/params/links/resource-fragment">Switch to JSON</a></div>
-                                                               <p class="formal-name">Resource Fragment</p>
-                                                            </div>
-                                                            <div class="body">
-                                                               <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                                             </div>
                                                          </div>
                                                       </details>
@@ -8677,10 +7009,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                          <details open="open">
                                                             <summary class="subhead">Remarks</summary>
                                                             <div class="remarks">
-                                                               <p>The label value is intended use when rendering a parameter in generated documentation
-                                                                  or a user interface when a parameter is referenced. Note that labels are not required
-                                                                  to be distinctive, which means that parameters within the same control may have the
-                                                                  same label.</p>
+                                                               <p>The label value should be suitable for inline display in a rendered catalog.</p>
                                                             </div>
                                                          </details>
                                                       </div>
@@ -8695,7 +7024,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                       <p class="formal-name">Parameter Usage Description</p>
                                                    </div>
                                                    <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> Describes the purpose and use of a parameter.</p>
+                                                      <p class="description"><span class="usa-tag">Description</span> Describes the purpose and use of a parameter</p>
                                                       <details class="properties elements" open="open">
                                                          <summary>Element (0+)</summary>
                                                          <div class="model-entry definition assembly">
@@ -8714,13 +7043,13 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/profile/modify/alter/add/param/constraint" class="toc6 name">constraint</h6>
-                                                      <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-control-common/parameter/constraint">(global definition)</a></p>
+                                                      <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/parameter/constraint">(global definition)</a></p>
                                                       <p class="occurrence">[0 to ∞]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/params/constraints">Switch to JSON</a></div>
                                                       <p class="formal-name">Constraint</p>
                                                    </div>
                                                    <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> A formal or informal expression of a constraint or test.</p>
+                                                      <p class="description"><span class="usa-tag">Description</span> A formal or informal expression of a constraint or test</p>
                                                       <details class="properties elements" open="open">
                                                          <summary>Elements (2)</summary>
                                                          <div class="model-entry definition assembly">
@@ -8769,7 +7098,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                                         <p class="formal-name">Constraint test</p>
                                                                      </div>
                                                                      <div class="body">
-                                                                        <p class="description"><span class="usa-tag">Description</span> A formal (executable) expression of a constraint.</p>
+                                                                        <p class="description"><span class="usa-tag">Description</span> A formal (executable) expression of a constraint</p>
                                                                      </div>
                                                                   </div>
                                                                   <div class="model-entry definition assembly">
@@ -8781,16 +7110,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                                         <p class="formal-name">Remarks</p>
                                                                      </div>
                                                                      <div class="body">
-                                                                        <p class="description"><span class="usa-tag">Description</span> Additional commentary about the containing object.</p>
-                                                                        <div class="remarks-group usa-prose">
-                                                                           <details open="open">
-                                                                              <summary class="subhead">Remarks</summary>
-                                                                              <div class="remarks">
-                                                                                 <p>The <code>remarks</code> field SHOULD not be used to store arbitrary data. Instead, a <code>prop</code> or <code>link</code> should be used to annotate or reference any additional data not formally supported
-                                                                                    by OSCAL.</p>
-                                                                              </div>
-                                                                           </details>
-                                                                        </div>
+                                                                        <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
                                                                         <details class="properties elements" open="open">
                                                                            <summary>Element (0+)</summary>
                                                                            <div class="model-entry definition field">
@@ -8815,7 +7135,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/profile/modify/alter/add/param/guideline" class="toc6 name">guideline</h6>
-                                                      <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-control-common/parameter/guideline">(global definition)</a></p>
+                                                      <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/parameter/guideline">(global definition)</a></p>
                                                       <p class="occurrence">[0 to ∞]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/params/guidelines">Switch to JSON</a></div>
                                                       <p class="formal-name">Guideline</p>
@@ -8853,7 +7173,8 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                             <details open="open">
                                                                <summary class="subhead">Remarks</summary>
                                                                <div class="remarks">
-                                                                  <p>A set of values provided in a catalog can be redefined in OSCAL's <code>profile</code> or <code>system-security-plan</code> models.</p>
+                                                                  <p>A set of values provided in a catalog can be redefined at any higher layer of OSCAL
+                                                                     (e.g., Profile).</p>
                                                                </div>
                                                             </details>
                                                          </div>
@@ -8862,13 +7183,13 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                    <div class="model-entry definition assembly">
                                                       <div class="instance-header">
                                                          <h6 id="/profile/modify/alter/add/param/select" class="toc6 name">select</h6>
-                                                         <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-control-common/parameter/select">(global definition)</a></p>
+                                                         <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/parameter/select">(global definition)</a></p>
                                                          <p class="occurrence">[0 or 1]</p>
                                                          <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/params/select">Switch to JSON</a></div>
                                                          <p class="formal-name">Selection</p>
                                                       </div>
                                                       <div class="body">
-                                                         <p class="description"><span class="usa-tag">Description</span> Presenting a choice among alternatives.</p>
+                                                         <p class="description"><span class="usa-tag">Description</span> Presenting a choice among alternatives</p>
                                                          <div class="remarks-group usa-prose">
                                                             <details open="open">
                                                                <summary class="subhead">Remarks</summary>
@@ -8876,16 +7197,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                                   <p>A set of parameter value choices, that may be picked from to set the parameter value.</p>
                                                                </div>
                                                                <div class="remarks">
-                                                                  <p>The OSCAL parameter <code>value</code> construct can be used to prescribe a specific parameter value in a catalog or profile.
-                                                                     In cases where a prescriptive value is not possible in a catalog or profile, it may
-                                                                     be possible to constrain the set of possible values to a few options. Use of <code>select</code> in a parameter instead of <code>value</code> is a way of defining value options that <strong>may</strong> be set.</p>
-                                                                  <p>A set of allowed parameter values expressed as a set of options which may be selected.
-                                                                     These options constrain the permissible values that may be selected for the containing
-                                                                     parameter. When the value assignment is made, such as in an OSCAL profile or system
-                                                                     security plan, the actual selected value can be examined to determine if it matches
-                                                                     one of the permissible choices for the parameter value.</p>
-                                                                  <p>When the value of <code>how-many</code> is set to "one-or-more", multiple values may be assigned reflecting more than one
-                                                                     choice.</p>
+                                                                  <p>A set of parameter value choices, that may be picked from to set the parameter value.</p>
                                                                </div>
                                                             </details>
                                                          </div>
@@ -8929,7 +7241,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                                   <p class="formal-name">Choice</p>
                                                                </div>
                                                                <div class="body">
-                                                                  <p class="description"><span class="usa-tag">Description</span> A value selection among several such options.</p>
+                                                                  <p class="description"><span class="usa-tag">Description</span> A value selection among several such options</p>
                                                                </div>
                                                             </div>
                                                          </details>
@@ -8945,16 +7257,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                       <p class="formal-name">Remarks</p>
                                                    </div>
                                                    <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> Additional commentary about the containing object.</p>
-                                                      <div class="remarks-group usa-prose">
-                                                         <details open="open">
-                                                            <summary class="subhead">Remarks</summary>
-                                                            <div class="remarks">
-                                                               <p>The <code>remarks</code> field SHOULD not be used to store arbitrary data. Instead, a <code>prop</code> or <code>link</code> should be used to annotate or reference any additional data not formally supported
-                                                                  by OSCAL.</p>
-                                                            </div>
-                                                         </details>
-                                                      </div>
+                                                      <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
                                                       <details class="properties elements" open="open">
                                                          <summary>Element (0+)</summary>
                                                          <div class="model-entry definition field">
@@ -8976,14 +7279,15 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/profile/modify/alter/add/prop" class="toc5 name">prop</h5>
-                                             <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-profile/modify/alter/add/prop">(global definition)</a></p>
+                                             <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-profile/add/prop">(global definition)</a></p>
                                              <p class="occurrence">[0 to ∞]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/props">Switch to JSON</a></div>
                                              <p class="formal-name">Property</p>
                                           </div>
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> An attribute, characteristic, or quality of the containing object expressed as a
-                                                namespace qualified name/value pair.</p>
+                                                namespace qualified name/value pair. The value of a property is a simple scalar value,
+                                                which may be expressed as a list of values.</p>
                                              <div class="remarks-group usa-prose">
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
@@ -9001,21 +7305,8 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                    </div>
                                                 </details>
                                              </div>
-                                             <details class="constraints" open="open">
-                                                <summary>Constraint (1)</summary>
-                                                <div class="constraint">
-                                                   <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
-                                                   <p>The value <b>must</b> be one of the following:</p>
-                                                   <ul>
-                                                      
-                                                      <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                         An optional class can be used to define the specific marking system used for the associated
-                                                         value.</li>
-                                                      </ul>
-                                                </div>
-                                             </details>
                                              <details class="properties attributes" open="open">
-                                                <summary>Attributes (6)</summary>
+                                                <summary>Attributes (5)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/profile/modify/alter/add/prop/@name" class="toc6 name">name</h6>
@@ -9025,8 +7316,21 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                       <p class="formal-name">Property Name</p>
                                                    </div>
                                                    <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
-                                                         characteristic, or quality of the property's containing object.</p>
+                                                      <p class="description"><span class="usa-tag">Description</span> A textual label that uniquely identifies a specific attribute, characteristic, or
+                                                         quality of the property's containing object.</p>
+                                                      <details class="constraints" open="open">
+                                                         <summary>Constraint (1)</summary>
+                                                         <div class="constraint">
+                                                            <p><span class="usa-tag">allowed value</span></p>
+                                                            <p>The value <b>may be locally defined</b>, or the following:</p>
+                                                            <ul>
+                                                               
+                                                               <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                                  An optional class can be used to define the specific marking system used for the associated
+                                                                  value.</li>
+                                                               </ul>
+                                                         </div>
+                                                      </details>
                                                    </div>
                                                 </div>
                                                 <div class="model-entry definition assembly">
@@ -9038,7 +7342,8 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                       <p class="formal-name">Property Universally Unique Identifier</p>
                                                    </div>
                                                    <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> A unique identifier for a property.</p>
+                                                      <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined property elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                                                         of the document.</p>
                                                    </div>
                                                 </div>
                                                 <div class="model-entry definition assembly">
@@ -9056,7 +7361,11 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                          <details open="open">
                                                             <summary class="subhead">Remarks</summary>
                                                             <div class="remarks">
-                                                               <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                               <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
+                                                                  names and associated values used in a property. This allows the semantics associated
+                                                                  with a given name/value pair to be defined on an organization-by-organization basis.</p>
+                                                               <p>An organization MUST use a URI that they have control over. e.g., a domain registered
+                                                                  to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                                <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                             </div>
                                                          </details>
@@ -9084,36 +7393,14 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                       <p class="formal-name">Property Class</p>
                                                    </div>
                                                    <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> A textual label that provides a sub-type or characterization of the property's <code>name</code>.</p>
+                                                      <p class="description"><span class="usa-tag">Description</span> A textual label that provides a sub-type or characterization of the property's <code>name</code>. This can be used to further distinguish or discriminate between the semantics of
+                                                         multiple properties of the same object with the same <code>name</code> and <code>ns</code>. </p>
                                                       <div class="remarks-group usa-prose">
                                                          <details open="open">
                                                             <summary class="subhead">Remarks</summary>
                                                             <div class="remarks">
-                                                               <p>This can be used to further distinguish or discriminate between the semantics of multiple
-                                                                  properties of the same object with the same <code>name</code> and <code>ns</code>, or to group properties into categories.</p>
                                                                <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                                  a specific <code>class</code> value. It is available for grouping, but unlike <code>group</code> is not expected specifically to designate any group membership as such.</p>
-                                                            </div>
-                                                         </details>
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                                <div class="model-entry definition assembly">
-                                                   <div class="instance-header">
-                                                      <h6 id="/profile/modify/alter/add/prop/@group" class="toc6 name">group</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                                                      <p class="occurrence">[0 or 1]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/props/group">Switch to JSON</a></div>
-                                                      <p class="formal-name">Property Group</p>
-                                                   </div>
-                                                   <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
-                                                      <div class="remarks-group usa-prose">
-                                                         <details open="open">
-                                                            <summary class="subhead">Remarks</summary>
-                                                            <div class="remarks">
-                                                               <p>Different sets of properties may relate to separate contexts. Declare a group on a
-                                                                  property to associate it with one or more other properties in a given context.</p>
+                                                                  a specific <code>class</code> value.</p>
                                                             </div>
                                                          </details>
                                                       </div>
@@ -9131,16 +7418,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                       <p class="formal-name">Remarks</p>
                                                    </div>
                                                    <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> Additional commentary about the containing object.</p>
-                                                      <div class="remarks-group usa-prose">
-                                                         <details open="open">
-                                                            <summary class="subhead">Remarks</summary>
-                                                            <div class="remarks">
-                                                               <p>The <code>remarks</code> field SHOULD not be used to store arbitrary data. Instead, a <code>prop</code> or <code>link</code> should be used to annotate or reference any additional data not formally supported
-                                                                  by OSCAL.</p>
-                                                            </div>
-                                                         </details>
-                                                      </div>
+                                                      <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
                                                       <details class="properties elements" open="open">
                                                          <summary>Element (0+)</summary>
                                                          <div class="model-entry definition field">
@@ -9162,14 +7440,13 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/profile/modify/alter/add/link" class="toc5 name">link</h5>
-                                             <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-profile/modify/alter/add/link">(global definition)</a></p>
+                                             <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-profile/add/link">(global definition)</a></p>
                                              <p class="occurrence">[0 to ∞]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/links">Switch to JSON</a></div>
                                              <p class="formal-name">Link</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> A reference to a local or remote resource, that has a specific relation to the containing
-                                                object.</p>
+                                             <p class="description"><span class="usa-tag">Description</span> A reference to a local or remote resource</p>
                                              <div class="remarks-group usa-prose">
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
@@ -9181,7 +7458,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 </details>
                                              </div>
                                              <details class="constraints" open="open">
-                                                <summary>Constraints (4)</summary>
+                                                <summary>Constraints (3)</summary>
                                                 <div class="constraint">
                                                    <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                                 </div>
@@ -9191,12 +7468,9 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 <div class="constraint">
                                                    <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                                 </div>
-                                                <div class="constraint">
-                                                   <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
-                                                </div>
                                              </details>
                                              <details class="properties attributes" open="open">
-                                                <summary>Attributes (4)</summary>
+                                                <summary>Attributes (3)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/profile/modify/alter/add/link/@href" class="toc6 name">href</h6>
@@ -9211,17 +7485,13 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                          <details open="open">
                                                             <summary class="subhead">Remarks</summary>
                                                             <div class="remarks">
-                                                               <p>This value may be one of:</p>
-                                                               <ol>
-                                                                  
-                                                                  <li>an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
-                                                                  
-                                                                  <li>a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
-                                                                     document, or</li>
-                                                                  
-                                                                  <li>a bare URI fragment (i.e., `#uuid`) pointing to an OSCAL object by the objects identifier
-                                                                     (e.g., id, uuid) in this or an imported document (see <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>). The specific object type will differ based on the link relationship type.</li>
-                                                                  </ol>
+                                                               <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
+                                                                  that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
+                                                               <p>If a local reference using a fragment is used, this will be indicated by a fragment
+                                                                  "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
+                                                               <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
+                                                                  resource. A relative URI will be resolved relative to the location of the document
+                                                                  containing the link.</p>
                                                             </div>
                                                          </details>
                                                       </div>
@@ -9233,11 +7503,11 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                       <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/links/rel">Switch to JSON</a></div>
-                                                      <p class="formal-name">Link Relation Type</p>
+                                                      <p class="formal-name">Relation</p>
                                                    </div>
                                                    <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> Describes the type of relationship provided by the link's hypertext reference. This
-                                                         can be an indicator of the link's purpose.</p>
+                                                      <p class="description"><span class="usa-tag">Description</span> Describes the type of relationship provided by the link. This can be an indicator
+                                                         of the link's purpose.</p>
                                                       <details class="constraints" open="open">
                                                          <summary>Constraint (1)</summary>
                                                          <div class="constraint">
@@ -9245,8 +7515,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                             <p>The value <b>may be locally defined</b>, or the following:</p>
                                                             <ul>
                                                                
-                                                               <li><strong>reference</strong>: A generalized reference to a network resource (relative or absolute) or to a back-matter
-                                                                  resource by UUID expressed as a bare URI fragment.</li>
+                                                               <li><strong>reference</strong>: Reference</li>
                                                                </ul>
                                                          </div>
                                                       </details>
@@ -9261,19 +7530,15 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                       <p class="formal-name">Media Type</p>
                                                    </div>
                                                    <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> A label that indicates the nature of a resource, as a data serialization or format.</p>
+                                                      <p class="description"><span class="usa-tag">Description</span> Specifies a media type as defined by the Internet Assigned Numbers Authority (IANA)
+                                                         <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">Media Types Registry</a>. </p>
                                                       <div class="remarks-group usa-prose">
                                                          <details open="open">
                                                             <summary class="subhead">Remarks</summary>
                                                             <div class="remarks">
-                                                               <p> The Internet Assigned Numbers Authority (IANA) <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">Media Types Registry</a> defines a standardized set of media types, which may be used here.</p>
-                                                               <p>The <code>application/oscal+xml</code>, <code>application/oscal+json</code> or <code>application/oscal+yaml</code> media types SHOULD be used when referencing OSCAL XML, JSON, or YAML resources respectively.</p>
-                                                               <p>**Note: There is no official media type for YAML at this time.** OSCAL documents should
-                                                                  specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name
+                                                               <p>The IANA Media Types Registry should be used, but currently there is no official media
+                                                                  type for YAML. OSCAL documents should specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name
                                                                   suffix, per <a href="https://www.rfc-editor.org/rfc/rfc6838.html#section-4.2.8">RFC 6838 Section 4.2.8</a>.</p>
-                                                               <p>Some earlier OSCAL content incorporated the model into the media type. For example:
-                                                                  <code>application/oscal.catalog+xml</code>. This practice SHOULD be avoided, since the OSCAL model can be detected by parsing
-                                                                  the initial content of the referenced resource.</p>
                                                             </div>
                                                             <div class="remarks">
                                                                <p>The <code>media-type</code> provides a hint about the content model of the referenced resource. A valid entry
@@ -9281,18 +7546,6 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                             </div>
                                                          </details>
                                                       </div>
-                                                   </div>
-                                                </div>
-                                                <div class="model-entry definition assembly">
-                                                   <div class="instance-header">
-                                                      <h6 id="/profile/modify/alter/add/link/@resource-fragment" class="toc6 name">resource-fragment</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#string">string</a></p>
-                                                      <p class="occurrence">[0 or 1]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/links/resource-fragment">Switch to JSON</a></div>
-                                                      <p class="formal-name">Resource Fragment</p>
-                                                   </div>
-                                                   <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                                    </div>
                                                 </div>
                                              </details>
@@ -9317,14 +7570,13 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/profile/modify/alter/add/part" class="toc5 name">part</h5>
-                                             <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-profile/modify/alter/add/part">(global definition)</a></p>
+                                             <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-profile/add/part">(global definition)</a></p>
                                              <p class="occurrence">[0 to ∞]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/parts">Switch to JSON</a></div>
                                              <p class="formal-name">Part</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> An annotated, markup-based textual element of a control's or catalog group's definition,
-                                                or a child of another part.</p>
+                                             <p class="description"><span class="usa-tag">Description</span> A partition of a control's definition or a child of another part.</p>
                                              <div class="remarks-group usa-prose">
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
@@ -9332,17 +7584,9 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                       <p>A <code>part</code> provides for logical partitioning of prose, and can be thought of as a grouping structure
                                                          (e.g., section). A <code>part</code> can have child parts allowing for arbitrary nesting of prose content (e.g., statement
                                                          hierarchy). A <code>part</code> can contain <code>prop</code> objects that allow for enriching prose text with structured name/value information.</p>
-                                                      <p>A <code>part</code> can be assigned an optional <code>id</code>, which allows references to this part from within a catalog, or within an instance
-                                                         of another OSCAL model that has a need to reference the part. Examples of where part
-                                                         referencing is used in OSCAL include:</p>
-                                                      <ul>
-                                                         
-                                                         <li>Referencing a part by id to tailor (make modifications to) a control statement in
-                                                            a profile.</li>
-                                                         
-                                                         <li>Referencing a control statement represented by a part in a system security plan implemented-requirement
-                                                            where a statement-level response is desired.</li>
-                                                         </ul>
+                                                      <p>A <code>part</code> can be assigned an optional <code>id</code>, which allows for internal and external references to the textual concept contained
+                                                         within a <code>part</code>. A <code>id</code> provides a means for an OSCAL profile, or a higher layer OSCAL model to reference
+                                                         a specific part within a <code>catalog</code>. For example, an <code>id</code> can be used to reference or to make modifications to a control statement in a profile.</p>
                                                       <p>Use of <code>part</code> and <code>prop</code> provides for a wide degree of extensibility within the OSCAL catalog model. The optional
                                                          <code>ns</code> provides a means to qualify a part's <code>name</code>, allowing for organization-specific vocabularies to be defined with clear semantics.
                                                          Any organization that extends OSCAL in this way should consistently assign a <code>ns</code> value that represents the organization, making a given namespace qualified <code>name</code> unique to that organization. This allows the combination of <code>ns</code> and <code>name</code> to always be unique and unambiguous, even when mixed with extensions from other organizations.
@@ -9387,17 +7631,10 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                       <p class="formal-name">Part Identifier</p>
                                                    </div>
                                                    <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> A unique identifier for the part.</p>
-                                                      <div class="remarks-group usa-prose">
-                                                         <details open="open">
-                                                            <summary class="subhead">Remarks</summary>
-                                                            <div class="remarks">
-                                                               <p>While a part is not required to have an id, it is often desirable for an identifier
-                                                                  to be provided, which allows the part to be referenced elsewhere in OSCAL document
-                                                                  instances. For this reason, it is RECOMMENDED to provide a part identifier.</p>
-                                                            </div>
-                                                         </details>
-                                                      </div>
+                                                      <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a>, <a href="/concepts/identifier-use/#locally-unique">locally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined part elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. When referenced from another OSCAL instance, this identifier must be referenced
+                                                         in the context of the containing resource (e.g., import-profile). This id should be
+                                                         assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                                                         of the document.</p>
                                                    </div>
                                                 </div>
                                                 <div class="model-entry definition assembly">
@@ -9409,8 +7646,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                       <p class="formal-name">Part Name</p>
                                                    </div>
                                                    <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> A textual label that uniquely identifies the part's semantic type, which exists in
-                                                         a value space qualified by the <code>ns</code>.</p>
+                                                      <p class="description"><span class="usa-tag">Description</span> A textual label that uniquely identifies the part's semantic type.</p>
                                                    </div>
                                                 </div>
                                                 <div class="model-entry definition assembly">
@@ -9422,13 +7658,17 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                       <p class="formal-name">Part Namespace</p>
                                                    </div>
                                                    <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> An optional namespace qualifying the part's <code>name</code>. This allows different organizations to associate distinct semantics with the same
-                                                         name.</p>
+                                                      <p class="description"><span class="usa-tag">Description</span> A namespace qualifying the part's name. This allows different organizations to associate
+                                                         distinct semantics with the same name.</p>
                                                       <div class="remarks-group usa-prose">
                                                          <details open="open">
                                                             <summary class="subhead">Remarks</summary>
                                                             <div class="remarks">
-                                                               <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                               <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
+                                                                  names and associated text used in a part. This allows the semantics associated with
+                                                                  a given name to be defined on an organization-by-organization basis.</p>
+                                                               <p>An organization MUST use a URI that they have control over. e.g., a domain registered
+                                                                  to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                                <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                             </div>
                                                          </details>
@@ -9444,13 +7684,12 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                       <p class="formal-name">Part Class</p>
                                                    </div>
                                                    <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> An optional textual providing a sub-type or characterization of the part's <code>name</code>, or a category to which the part belongs.</p>
+                                                      <p class="description"><span class="usa-tag">Description</span> A textual label that provides a sub-type or characterization of the part's <code>name</code>. This can be used to further distinguish or discriminate between the semantics of
+                                                         multiple parts of the same control with the same <code>name</code> and <code>ns</code>. </p>
                                                       <div class="remarks-group usa-prose">
                                                          <details open="open">
                                                             <summary class="subhead">Remarks</summary>
                                                             <div class="remarks">
-                                                               <p>One use of this flag is to distinguish or discriminate between the semantics of multiple
-                                                                  parts of the same control with the same <code>name</code> and <code>ns</code> (since even within a given namespace it can be useful to overload a name).</p>
                                                                <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                   a specific <code>class</code> value.</p>
                                                                <p>A <code>class</code> can also be used in an OSCAL profile as a means to target an alteration to control
@@ -9472,20 +7711,21 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                       <p class="formal-name">Part Title</p>
                                                    </div>
                                                    <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> An optional name given to the part, which may be used by a tool for display and navigation.</p>
+                                                      <p class="description"><span class="usa-tag">Description</span> A name given to the part, which may be used by a tool for display and navigation.</p>
                                                    </div>
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/profile/modify/alter/add/part/prop" class="toc6 name">prop</h6>
-                                                      <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-control-common/part/prop">(global definition)</a></p>
+                                                      <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/part/prop">(global definition)</a></p>
                                                       <p class="occurrence">[0 to ∞]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/parts/props">Switch to JSON</a></div>
                                                       <p class="formal-name">Property</p>
                                                    </div>
                                                    <div class="body">
                                                       <p class="description"><span class="usa-tag">Description</span> An attribute, characteristic, or quality of the containing object expressed as a
-                                                         namespace qualified name/value pair.</p>
+                                                         namespace qualified name/value pair. The value of a property is a simple scalar value,
+                                                         which may be expressed as a list of values.</p>
                                                       <div class="remarks-group usa-prose">
                                                          <details open="open">
                                                             <summary class="subhead">Remarks</summary>
@@ -9503,21 +7743,8 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                             </div>
                                                          </details>
                                                       </div>
-                                                      <details class="constraints" open="open">
-                                                         <summary>Constraint (1)</summary>
-                                                         <div class="constraint">
-                                                            <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
-                                                            <p>The value <b>must</b> be one of the following:</p>
-                                                            <ul>
-                                                               
-                                                               <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                                  An optional class can be used to define the specific marking system used for the associated
-                                                                  value.</li>
-                                                               </ul>
-                                                         </div>
-                                                      </details>
                                                       <details class="properties attributes" open="open">
-                                                         <summary>Attributes (6)</summary>
+                                                         <summary>Attributes (5)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
                                                                <p id="/profile/modify/alter/add/part/prop/@name" class="toc7 name">name</p>
@@ -9527,8 +7754,21 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                                <p class="formal-name">Property Name</p>
                                                             </div>
                                                             <div class="body">
-                                                               <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
-                                                                  characteristic, or quality of the property's containing object.</p>
+                                                               <p class="description"><span class="usa-tag">Description</span> A textual label that uniquely identifies a specific attribute, characteristic, or
+                                                                  quality of the property's containing object.</p>
+                                                               <details class="constraints" open="open">
+                                                                  <summary>Constraint (1)</summary>
+                                                                  <div class="constraint">
+                                                                     <p><span class="usa-tag">allowed value</span></p>
+                                                                     <p>The value <b>may be locally defined</b>, or the following:</p>
+                                                                     <ul>
+                                                                        
+                                                                        <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                                           An optional class can be used to define the specific marking system used for the associated
+                                                                           value.</li>
+                                                                        </ul>
+                                                                  </div>
+                                                               </details>
                                                             </div>
                                                          </div>
                                                          <div class="model-entry definition assembly">
@@ -9540,7 +7780,8 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                                <p class="formal-name">Property Universally Unique Identifier</p>
                                                             </div>
                                                             <div class="body">
-                                                               <p class="description"><span class="usa-tag">Description</span> A unique identifier for a property.</p>
+                                                               <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined property elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                                                                  of the document.</p>
                                                             </div>
                                                          </div>
                                                          <div class="model-entry definition assembly">
@@ -9558,7 +7799,11 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                                   <details open="open">
                                                                      <summary class="subhead">Remarks</summary>
                                                                      <div class="remarks">
-                                                                        <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                                        <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
+                                                                           names and associated values used in a property. This allows the semantics associated
+                                                                           with a given name/value pair to be defined on an organization-by-organization basis.</p>
+                                                                        <p>An organization MUST use a URI that they have control over. e.g., a domain registered
+                                                                           to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                                         <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                                      </div>
                                                                   </details>
@@ -9586,36 +7831,14 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                                <p class="formal-name">Property Class</p>
                                                             </div>
                                                             <div class="body">
-                                                               <p class="description"><span class="usa-tag">Description</span> A textual label that provides a sub-type or characterization of the property's <code>name</code>.</p>
+                                                               <p class="description"><span class="usa-tag">Description</span> A textual label that provides a sub-type or characterization of the property's <code>name</code>. This can be used to further distinguish or discriminate between the semantics of
+                                                                  multiple properties of the same object with the same <code>name</code> and <code>ns</code>. </p>
                                                                <div class="remarks-group usa-prose">
                                                                   <details open="open">
                                                                      <summary class="subhead">Remarks</summary>
                                                                      <div class="remarks">
-                                                                        <p>This can be used to further distinguish or discriminate between the semantics of multiple
-                                                                           properties of the same object with the same <code>name</code> and <code>ns</code>, or to group properties into categories.</p>
                                                                         <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                                           a specific <code>class</code> value. It is available for grouping, but unlike <code>group</code> is not expected specifically to designate any group membership as such.</p>
-                                                                     </div>
-                                                                  </details>
-                                                               </div>
-                                                            </div>
-                                                         </div>
-                                                         <div class="model-entry definition assembly">
-                                                            <div class="instance-header">
-                                                               <p id="/profile/modify/alter/add/part/prop/@group" class="toc7 name">group</p>
-                                                               <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                                                               <p class="occurrence">[0 or 1]</p>
-                                                               <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/parts/props/group">Switch to JSON</a></div>
-                                                               <p class="formal-name">Property Group</p>
-                                                            </div>
-                                                            <div class="body">
-                                                               <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
-                                                               <div class="remarks-group usa-prose">
-                                                                  <details open="open">
-                                                                     <summary class="subhead">Remarks</summary>
-                                                                     <div class="remarks">
-                                                                        <p>Different sets of properties may relate to separate contexts. Declare a group on a
-                                                                           property to associate it with one or more other properties in a given context.</p>
+                                                                           a specific <code>class</code> value.</p>
                                                                      </div>
                                                                   </details>
                                                                </div>
@@ -9633,16 +7856,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                                <p class="formal-name">Remarks</p>
                                                             </div>
                                                             <div class="body">
-                                                               <p class="description"><span class="usa-tag">Description</span> Additional commentary about the containing object.</p>
-                                                               <div class="remarks-group usa-prose">
-                                                                  <details open="open">
-                                                                     <summary class="subhead">Remarks</summary>
-                                                                     <div class="remarks">
-                                                                        <p>The <code>remarks</code> field SHOULD not be used to store arbitrary data. Instead, a <code>prop</code> or <code>link</code> should be used to annotate or reference any additional data not formally supported
-                                                                           by OSCAL.</p>
-                                                                     </div>
-                                                                  </details>
-                                                               </div>
+                                                               <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
                                                                <details class="properties elements" open="open">
                                                                   <summary>Element (0+)</summary>
                                                                   <div class="model-entry definition field">
@@ -9674,14 +7888,13 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/profile/modify/alter/add/part/part" class="toc6 name">part</h6>
-                                                      <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-control-common/part/part">(global definition)</a></p>
+                                                      <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/part/part">(global definition)</a></p>
                                                       <p class="occurrence">[0 to ∞]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/parts/parts">Switch to JSON</a></div>
                                                       <p class="formal-name">Part</p>
                                                    </div>
                                                    <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> An annotated, markup-based textual element of a control's or catalog group's definition,
-                                                         or a child of another part.</p>
+                                                      <p class="description"><span class="usa-tag">Description</span> A partition of a control's definition or a child of another part.</p>
                                                       <div class="remarks-group usa-prose">
                                                          <details open="open">
                                                             <summary class="subhead">Remarks</summary>
@@ -9689,17 +7902,9 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                                <p>A <code>part</code> provides for logical partitioning of prose, and can be thought of as a grouping structure
                                                                   (e.g., section). A <code>part</code> can have child parts allowing for arbitrary nesting of prose content (e.g., statement
                                                                   hierarchy). A <code>part</code> can contain <code>prop</code> objects that allow for enriching prose text with structured name/value information.</p>
-                                                               <p>A <code>part</code> can be assigned an optional <code>id</code>, which allows references to this part from within a catalog, or within an instance
-                                                                  of another OSCAL model that has a need to reference the part. Examples of where part
-                                                                  referencing is used in OSCAL include:</p>
-                                                               <ul>
-                                                                  
-                                                                  <li>Referencing a part by id to tailor (make modifications to) a control statement in
-                                                                     a profile.</li>
-                                                                  
-                                                                  <li>Referencing a control statement represented by a part in a system security plan implemented-requirement
-                                                                     where a statement-level response is desired.</li>
-                                                                  </ul>
+                                                               <p>A <code>part</code> can be assigned an optional <code>id</code>, which allows for internal and external references to the textual concept contained
+                                                                  within a <code>part</code>. A <code>id</code> provides a means for an OSCAL profile, or a higher layer OSCAL model to reference
+                                                                  a specific part within a <code>catalog</code>. For example, an <code>id</code> can be used to reference or to make modifications to a control statement in a profile.</p>
                                                                <p>Use of <code>part</code> and <code>prop</code> provides for a wide degree of extensibility within the OSCAL catalog model. The optional
                                                                   <code>ns</code> provides a means to qualify a part's <code>name</code>, allowing for organization-specific vocabularies to be defined with clear semantics.
                                                                   Any organization that extends OSCAL in this way should consistently assign a <code>ns</code> value that represents the organization, making a given namespace qualified <code>name</code> unique to that organization. This allows the combination of <code>ns</code> and <code>name</code> to always be unique and unambiguous, even when mixed with extensions from other organizations.
@@ -9738,14 +7943,13 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/profile/modify/alter/add/part/link" class="toc6 name">link</h6>
-                                                      <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-control-common/part/link">(global definition)</a></p>
+                                                      <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/part/link">(global definition)</a></p>
                                                       <p class="occurrence">[0 to ∞]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/parts/links">Switch to JSON</a></div>
                                                       <p class="formal-name">Link</p>
                                                    </div>
                                                    <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> A reference to a local or remote resource, that has a specific relation to the containing
-                                                         object.</p>
+                                                      <p class="description"><span class="usa-tag">Description</span> A reference to a local or remote resource</p>
                                                       <div class="remarks-group usa-prose">
                                                          <details open="open">
                                                             <summary class="subhead">Remarks</summary>
@@ -9757,7 +7961,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                          </details>
                                                       </div>
                                                       <details class="constraints" open="open">
-                                                         <summary>Constraints (4)</summary>
+                                                         <summary>Constraints (3)</summary>
                                                          <div class="constraint">
                                                             <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                                          </div>
@@ -9767,12 +7971,9 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                          <div class="constraint">
                                                             <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                                          </div>
-                                                         <div class="constraint">
-                                                            <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
-                                                         </div>
                                                       </details>
                                                       <details class="properties attributes" open="open">
-                                                         <summary>Attributes (4)</summary>
+                                                         <summary>Attributes (3)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
                                                                <p id="/profile/modify/alter/add/part/link/@href" class="toc7 name">href</p>
@@ -9787,17 +7988,13 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                                   <details open="open">
                                                                      <summary class="subhead">Remarks</summary>
                                                                      <div class="remarks">
-                                                                        <p>This value may be one of:</p>
-                                                                        <ol>
-                                                                           
-                                                                           <li>an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
-                                                                           
-                                                                           <li>a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
-                                                                              document, or</li>
-                                                                           
-                                                                           <li>a bare URI fragment (i.e., `#uuid`) pointing to an OSCAL object by the objects identifier
-                                                                              (e.g., id, uuid) in this or an imported document (see <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>). The specific object type will differ based on the link relationship type.</li>
-                                                                           </ol>
+                                                                        <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
+                                                                           that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
+                                                                        <p>If a local reference using a fragment is used, this will be indicated by a fragment
+                                                                           "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
+                                                                        <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
+                                                                           resource. A relative URI will be resolved relative to the location of the document
+                                                                           containing the link.</p>
                                                                      </div>
                                                                   </details>
                                                                </div>
@@ -9809,11 +8006,11 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                                <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                                <p class="occurrence">[0 or 1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/parts/links/rel">Switch to JSON</a></div>
-                                                               <p class="formal-name">Link Relation Type</p>
+                                                               <p class="formal-name">Relation</p>
                                                             </div>
                                                             <div class="body">
-                                                               <p class="description"><span class="usa-tag">Description</span> Describes the type of relationship provided by the link's hypertext reference. This
-                                                                  can be an indicator of the link's purpose.</p>
+                                                               <p class="description"><span class="usa-tag">Description</span> Describes the type of relationship provided by the link. This can be an indicator
+                                                                  of the link's purpose.</p>
                                                                <details class="constraints" open="open">
                                                                   <summary>Constraint (1)</summary>
                                                                   <div class="constraint">
@@ -9821,8 +8018,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                                      <p>The value <b>may be locally defined</b>, or the following:</p>
                                                                      <ul>
                                                                         
-                                                                        <li><strong>reference</strong>: A generalized reference to a network resource (relative or absolute) or to a back-matter
-                                                                           resource by UUID expressed as a bare URI fragment.</li>
+                                                                        <li><strong>reference</strong>: Reference</li>
                                                                         </ul>
                                                                   </div>
                                                                </details>
@@ -9837,19 +8033,15 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                                <p class="formal-name">Media Type</p>
                                                             </div>
                                                             <div class="body">
-                                                               <p class="description"><span class="usa-tag">Description</span> A label that indicates the nature of a resource, as a data serialization or format.</p>
+                                                               <p class="description"><span class="usa-tag">Description</span> Specifies a media type as defined by the Internet Assigned Numbers Authority (IANA)
+                                                                  <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">Media Types Registry</a>. </p>
                                                                <div class="remarks-group usa-prose">
                                                                   <details open="open">
                                                                      <summary class="subhead">Remarks</summary>
                                                                      <div class="remarks">
-                                                                        <p> The Internet Assigned Numbers Authority (IANA) <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">Media Types Registry</a> defines a standardized set of media types, which may be used here.</p>
-                                                                        <p>The <code>application/oscal+xml</code>, <code>application/oscal+json</code> or <code>application/oscal+yaml</code> media types SHOULD be used when referencing OSCAL XML, JSON, or YAML resources respectively.</p>
-                                                                        <p>**Note: There is no official media type for YAML at this time.** OSCAL documents should
-                                                                           specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name
+                                                                        <p>The IANA Media Types Registry should be used, but currently there is no official media
+                                                                           type for YAML. OSCAL documents should specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name
                                                                            suffix, per <a href="https://www.rfc-editor.org/rfc/rfc6838.html#section-4.2.8">RFC 6838 Section 4.2.8</a>.</p>
-                                                                        <p>Some earlier OSCAL content incorporated the model into the media type. For example:
-                                                                           <code>application/oscal.catalog+xml</code>. This practice SHOULD be avoided, since the OSCAL model can be detected by parsing
-                                                                           the initial content of the referenced resource.</p>
                                                                      </div>
                                                                      <div class="remarks">
                                                                         <p>The <code>media-type</code> provides a hint about the content model of the referenced resource. A valid entry
@@ -9857,18 +8049,6 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                                      </div>
                                                                   </details>
                                                                </div>
-                                                            </div>
-                                                         </div>
-                                                         <div class="model-entry definition assembly">
-                                                            <div class="instance-header">
-                                                               <p id="/profile/modify/alter/add/part/link/@resource-fragment" class="toc7 name">resource-fragment</p>
-                                                               <p class="type"><a href="/reference/datatypes/#string">string</a></p>
-                                                               <p class="occurrence">[0 or 1]</p>
-                                                               <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/parts/links/resource-fragment">Switch to JSON</a></div>
-                                                               <p class="formal-name">Resource Fragment</p>
-                                                            </div>
-                                                            <div class="body">
-                                                               <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                                             </div>
                                                          </div>
                                                       </details>
@@ -9911,13 +8091,14 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                   <p class="formal-name">Back matter</p>
                </div>
                <div class="body">
-                  <p class="description"><span class="usa-tag">Description</span> A collection of resources that may be referenced from within the OSCAL document instance.</p>
+                  <p class="description"><span class="usa-tag">Description</span> A collection of resources, which may be included directly or by reference.</p>
                   <div class="remarks-group usa-prose">
                      <details open="open">
                         <summary class="subhead">Remarks</summary>
                         <div class="remarks">
-                           <p>Provides a collection of identified <code>resource</code> objects that can be referenced by a <code>link</code> with a <code>rel</code> value of "reference" and an <code>href</code> value that is a fragment "#" followed by a reference to a reference's <code>uuid</code>. Other specialized link "rel" values also use this pattern when indicated in that
-                              context of use.</p>
+                           <p>Provides a collection of identified <code>resource</code> objects that can be referenced by a <code>link</code> with a <code>rel</code> value of "reference" and an <code>href</code> value that is a fragment "#" followed by a reference to a reference identifier. Other
+                              specialized link "rel" values also use this pattern when indicated in that context
+                              of use.</p>
                         </div>
                      </details>
                   </div>
@@ -9938,17 +8119,16 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                            <p class="formal-name">Resource</p>
                         </div>
                         <div class="body">
-                           <p class="description"><span class="usa-tag">Description</span> A resource associated with content in the containing document instance. A resource
-                              may be directly included in the document using base64 encoding or may point to one
-                              or more equivalent internet resources.</p>
+                           <p class="description"><span class="usa-tag">Description</span> A resource associated with content in the containing document. A resource may be
+                              directly included in the document base64 encoded or may point to one or more equivalent
+                              internet resources.</p>
                            <div class="remarks-group usa-prose">
                               <details open="open">
                                  <summary class="subhead">Remarks</summary>
                                  <div class="remarks">
                                     <p>A resource can be used in two ways. 1) it may point to an specific retrievable network
                                        resource using a <code>rlink</code>, or 2) it may be included as an attachment using a <code>base64</code>. A resource may contain multiple <code>rlink</code> and <code>base64</code> entries that represent alternative download locations (rlink) and attachments (base64)
-                                       for the same resource.</p>
-                                    <p>Both rlink and base64 allow for a <code>media-type</code> to be specified, which is used to distinguish between different representations of
+                                       for the same resource. Both rlink and base64 allow for a <code>media-type</code> to be specified, which is used to distinguish between different representations of
                                        the same resource (e.g., Microsoft Word, PDF). When multiple <code>rlink</code> and <code>base64</code> items are included for a given resource, all items must contain equivalent information.
                                        This allows the document consumer to choose a preferred item to process based on a
                                        the selected item's <code>media-type</code>. This is extremely important when the items represent OSCAL content that is represented
@@ -9961,12 +8141,11 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                            <details class="constraints" open="open">
                               <summary>Constraints (6)</summary>
                               <div class="constraint">
-                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop/@name</code></p>
                                  <p>The value <b>must</b> be one of the following:</p>
                                  <ul>
                                     
-                                    <li><strong>type</strong>: Identifies the type of resource represented. The most specific appropriate type
-                                       value SHOULD be used.</li>
+                                    <li><strong>type</strong>: Identifies the type of resource represented.</li>
                                     
                                     <li><strong>version</strong>: For resources representing a published document, this represents the version number
                                        of that document.</li>
@@ -9976,12 +8155,11 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     </ul>
                               </div>
                               <div class="constraint">
-                                 <p><span class="usa-tag">matches</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='published']/@value</code>: the target value must match the lexical form of the 'dateTime-with-timezone' data
-                                    type.</p>
+                                 <p><span class="usa-tag">matches</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='published']/@value</code>: the target value must match the lexical form of the 'dateTime' data type.</p>
                               </div>
                               <div class="constraint">
-                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='type']/@value</code></p>
-                                 <p>The value <b>must</b> be one of the following:</p>
+                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[@name='type']/@value</code></p>
+                                 <p>The value <b>may be locally defined</b>, or one of the following:</p>
                                  <ul>
                                     
                                     
@@ -10022,7 +8200,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     
                                     <li><strong>artifact</strong>: Indicates the resource represents an artifact, such as may be reviewed by an assessor.</li>
                                     
-                                    <li><strong>evidence</strong>: Indicates the resource represents evidence, such as to support an assessment finding.</li>
+                                    <li><strong>evidence</strong>: Indicates the resource represents evidence, such as to support an assessment findiing.</li>
                                     
                                     <li><strong>tool-output</strong>: Indicates the resource represents output from a tool.</li>
                                     
@@ -10060,7 +8238,8 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <p class="formal-name">Resource Universally Unique Identifier</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> A unique identifier for a resource.</p>
+                                    <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined resource elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                                       of the document.</p>
                                  </div>
                               </div>
                            </details>
@@ -10075,8 +8254,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <p class="formal-name">Resource Title</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> An optional name given to the resource, which may be used by a tool for display and
-                                       navigation.</p>
+                                    <p class="description"><span class="usa-tag">Description</span> A name given to the resource, which may be used by a tool for display and navigation.</p>
                                  </div>
                               </div>
                               <div class="model-entry definition assembly">
@@ -10088,7 +8266,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <p class="formal-name">Resource Description</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> An optional short summary of the resource used to indicate the purpose of the resource.</p>
+                                    <p class="description"><span class="usa-tag">Description</span> A short summary of the resource used to indicate the purpose of the resource.</p>
                                     <details class="properties elements" open="open">
                                        <summary>Element (0+)</summary>
                                        <div class="model-entry definition assembly">
@@ -10114,7 +8292,8 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> An attribute, characteristic, or quality of the containing object expressed as a
-                                       namespace qualified name/value pair.</p>
+                                       namespace qualified name/value pair. The value of a property is a simple scalar value,
+                                       which may be expressed as a list of values.</p>
                                     <div class="remarks-group usa-prose">
                                        <details open="open">
                                           <summary class="subhead">Remarks</summary>
@@ -10132,21 +8311,8 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                           </div>
                                        </details>
                                     </div>
-                                    <details class="constraints" open="open">
-                                       <summary>Constraint (1)</summary>
-                                       <div class="constraint">
-                                          <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
-                                          <p>The value <b>must</b> be one of the following:</p>
-                                          <ul>
-                                             
-                                             <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                An optional class can be used to define the specific marking system used for the associated
-                                                value.</li>
-                                             </ul>
-                                       </div>
-                                    </details>
                                     <details class="properties attributes" open="open">
-                                       <summary>Attributes (6)</summary>
+                                       <summary>Attributes (5)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/profile/back-matter/resource/prop/@name" class="toc5 name">name</h5>
@@ -10156,8 +8322,21 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              <p class="formal-name">Property Name</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
-                                                characteristic, or quality of the property's containing object.</p>
+                                             <p class="description"><span class="usa-tag">Description</span> A textual label that uniquely identifies a specific attribute, characteristic, or
+                                                quality of the property's containing object.</p>
+                                             <details class="constraints" open="open">
+                                                <summary>Constraint (1)</summary>
+                                                <div class="constraint">
+                                                   <p><span class="usa-tag">allowed value</span></p>
+                                                   <p>The value <b>may be locally defined</b>, or the following:</p>
+                                                   <ul>
+                                                      
+                                                      <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                         An optional class can be used to define the specific marking system used for the associated
+                                                         value.</li>
+                                                      </ul>
+                                                </div>
+                                             </details>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -10169,7 +8348,8 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              <p class="formal-name">Property Universally Unique Identifier</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> A unique identifier for a property.</p>
+                                             <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined property elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                                                of the document.</p>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -10187,7 +8367,11 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
                                                    <div class="remarks">
-                                                      <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                      <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
+                                                         names and associated values used in a property. This allows the semantics associated
+                                                         with a given name/value pair to be defined on an organization-by-organization basis.</p>
+                                                      <p>An organization MUST use a URI that they have control over. e.g., a domain registered
+                                                         to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                       <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                    </div>
                                                 </details>
@@ -10215,36 +8399,14 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              <p class="formal-name">Property Class</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> A textual label that provides a sub-type or characterization of the property's <code>name</code>.</p>
+                                             <p class="description"><span class="usa-tag">Description</span> A textual label that provides a sub-type or characterization of the property's <code>name</code>. This can be used to further distinguish or discriminate between the semantics of
+                                                multiple properties of the same object with the same <code>name</code> and <code>ns</code>. </p>
                                              <div class="remarks-group usa-prose">
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
                                                    <div class="remarks">
-                                                      <p>This can be used to further distinguish or discriminate between the semantics of multiple
-                                                         properties of the same object with the same <code>name</code> and <code>ns</code>, or to group properties into categories.</p>
                                                       <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                         a specific <code>class</code> value. It is available for grouping, but unlike <code>group</code> is not expected specifically to designate any group membership as such.</p>
-                                                   </div>
-                                                </details>
-                                             </div>
-                                          </div>
-                                       </div>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h5 id="/profile/back-matter/resource/prop/@group" class="toc5 name">group</h5>
-                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                                             <p class="occurrence">[0 or 1]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/back-matter/resources/props/group">Switch to JSON</a></div>
-                                             <p class="formal-name">Property Group</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
-                                             <div class="remarks-group usa-prose">
-                                                <details open="open">
-                                                   <summary class="subhead">Remarks</summary>
-                                                   <div class="remarks">
-                                                      <p>Different sets of properties may relate to separate contexts. Declare a group on a
-                                                         property to associate it with one or more other properties in a given context.</p>
+                                                         a specific <code>class</code> value.</p>
                                                    </div>
                                                 </details>
                                              </div>
@@ -10262,16 +8424,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              <p class="formal-name">Remarks</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> Additional commentary about the containing object.</p>
-                                             <div class="remarks-group usa-prose">
-                                                <details open="open">
-                                                   <summary class="subhead">Remarks</summary>
-                                                   <div class="remarks">
-                                                      <p>The <code>remarks</code> field SHOULD not be used to store arbitrary data. Instead, a <code>prop</code> or <code>link</code> should be used to annotate or reference any additional data not formally supported
-                                                         by OSCAL.</p>
-                                                   </div>
-                                                </details>
-                                             </div>
+                                             <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
                                              <details class="properties elements" open="open">
                                                 <summary>Element (0+)</summary>
                                                 <div class="model-entry definition field">
@@ -10299,21 +8452,19 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <p class="formal-name">Document Identifier</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> A document identifier qualified by an identifier <code>scheme</code>.</p>
+                                    <p class="description"><span class="usa-tag">Description</span> A document identifier qualified by an identifier <code>scheme</code>. A document identifier provides a <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with a <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that is used for a group of documents that are to be treated as different versions
+                                       of the same document. If this element does not appear, or if the value of this element
+                                       is empty, the value of "document-id" is equal to the value of the "uuid" flag of the
+                                       top-level root element.</p>
                                     <div class="remarks-group usa-prose">
                                        <details open="open">
                                           <summary class="subhead">Remarks</summary>
                                           <div class="remarks">
-                                             <p>A document identifier provides a <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with a <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that is used for a group of documents that are to be treated as different versions,
-                                                representations or digital surrogates of the same document.</p>
-                                             <p>A document identifier provides an additional data point for identifying a document
-                                                that can be assigned by a publisher or organization for purposes in a wider system,
-                                                such as a digital object identifier (DOI) or a local content management system identifier.</p>
-                                             <p>Use of a document identifier allows for document creators to associate sets of documents
-                                                that are related in some way by the same <code>document-id</code>.</p>
-                                             <p>An OSCAL document always has an implicit document identifier provided by the document's
-                                                UUID, defined by the <code>uuid</code> on the top-level object. Having a default UUID-based identifier ensures all documents
-                                                can be minimally identified when other document identifiers are not provided.</p>
+                                             <p>This element is optional, but it will always have a valid value, as if it is missing
+                                                the value of "document-id" is assumed to be equal to the UUID of the root. This requirement
+                                                allows for document creators to retroactively link an update to the original version,
+                                                by providing a document-id on the new document that is equal to the uuid of the original
+                                                document.</p>
                                           </div>
                                        </details>
                                     </div>
@@ -10329,15 +8480,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                           </div>
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> Qualifies the kind of document identifier using a URI. If the scheme is not provided
-                                                the value of the element will be interpreted as a string of characters.</p>
-                                             <div class="remarks-group usa-prose">
-                                                <details open="open">
-                                                   <summary class="subhead">Remarks</summary>
-                                                   <div class="remarks">
-                                                      <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
-                                                   </div>
-                                                </details>
-                                             </div>
+                                                the value of the element will be interpreted as a string of characters. </p>
                                              <details class="constraints" open="open">
                                                 <summary>Constraint (1)</summary>
                                                 <div class="constraint">
@@ -10364,7 +8507,17 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <p class="formal-name">Citation</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> An optional citation consisting of end note text using structured markup.</p>
+                                    <p class="description"><span class="usa-tag">Description</span> A citation consisting of end note text and optional structured bibliographic data.</p>
+                                    <div class="remarks-group usa-prose">
+                                       <details open="open">
+                                          <summary class="subhead">Remarks</summary>
+                                          <div class="remarks">
+                                             <p>The <code>text</code> is used to define the endnote text, without any required bibliographic structure.
+                                                If structured bibliographic data is needed, then the <code>biblio</code> can be used for this purpose.</p>
+                                             <p>A <code>biblio</code> can be used to capture a structured bibliographical citation in an appropriate format.</p>
+                                          </div>
+                                       </details>
+                                    </div>
                                     <details class="properties elements" open="open">
                                        <summary>Elements (3)</summary>
                                        <div class="model-entry definition assembly">
@@ -10389,7 +8542,8 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                           </div>
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> An attribute, characteristic, or quality of the containing object expressed as a
-                                                namespace qualified name/value pair.</p>
+                                                namespace qualified name/value pair. The value of a property is a simple scalar value,
+                                                which may be expressed as a list of values.</p>
                                              <div class="remarks-group usa-prose">
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
@@ -10407,21 +8561,8 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                    </div>
                                                 </details>
                                              </div>
-                                             <details class="constraints" open="open">
-                                                <summary>Constraint (1)</summary>
-                                                <div class="constraint">
-                                                   <p><span class="usa-tag">allowed value</span>  for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
-                                                   <p>The value <b>must</b> be one of the following:</p>
-                                                   <ul>
-                                                      
-                                                      <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                         An optional class can be used to define the specific marking system used for the associated
-                                                         value.</li>
-                                                      </ul>
-                                                </div>
-                                             </details>
                                              <details class="properties attributes" open="open">
-                                                <summary>Attributes (6)</summary>
+                                                <summary>Attributes (5)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/profile/back-matter/resource/citation/prop/@name" class="toc6 name">name</h6>
@@ -10431,8 +8572,21 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                       <p class="formal-name">Property Name</p>
                                                    </div>
                                                    <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> A textual label, within a namespace, that uniquely identifies a specific attribute,
-                                                         characteristic, or quality of the property's containing object.</p>
+                                                      <p class="description"><span class="usa-tag">Description</span> A textual label that uniquely identifies a specific attribute, characteristic, or
+                                                         quality of the property's containing object.</p>
+                                                      <details class="constraints" open="open">
+                                                         <summary>Constraint (1)</summary>
+                                                         <div class="constraint">
+                                                            <p><span class="usa-tag">allowed value</span></p>
+                                                            <p>The value <b>may be locally defined</b>, or the following:</p>
+                                                            <ul>
+                                                               
+                                                               <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                                  An optional class can be used to define the specific marking system used for the associated
+                                                                  value.</li>
+                                                               </ul>
+                                                         </div>
+                                                      </details>
                                                    </div>
                                                 </div>
                                                 <div class="model-entry definition assembly">
@@ -10444,7 +8598,8 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                       <p class="formal-name">Property Universally Unique Identifier</p>
                                                    </div>
                                                    <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> A unique identifier for a property.</p>
+                                                      <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined property elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                                                         of the document.</p>
                                                    </div>
                                                 </div>
                                                 <div class="model-entry definition assembly">
@@ -10462,7 +8617,11 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                          <details open="open">
                                                             <summary class="subhead">Remarks</summary>
                                                             <div class="remarks">
-                                                               <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                                                               <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
+                                                                  names and associated values used in a property. This allows the semantics associated
+                                                                  with a given name/value pair to be defined on an organization-by-organization basis.</p>
+                                                               <p>An organization MUST use a URI that they have control over. e.g., a domain registered
+                                                                  to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                                <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                             </div>
                                                          </details>
@@ -10490,36 +8649,14 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                       <p class="formal-name">Property Class</p>
                                                    </div>
                                                    <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> A textual label that provides a sub-type or characterization of the property's <code>name</code>.</p>
+                                                      <p class="description"><span class="usa-tag">Description</span> A textual label that provides a sub-type or characterization of the property's <code>name</code>. This can be used to further distinguish or discriminate between the semantics of
+                                                         multiple properties of the same object with the same <code>name</code> and <code>ns</code>. </p>
                                                       <div class="remarks-group usa-prose">
                                                          <details open="open">
                                                             <summary class="subhead">Remarks</summary>
                                                             <div class="remarks">
-                                                               <p>This can be used to further distinguish or discriminate between the semantics of multiple
-                                                                  properties of the same object with the same <code>name</code> and <code>ns</code>, or to group properties into categories.</p>
                                                                <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                                  a specific <code>class</code> value. It is available for grouping, but unlike <code>group</code> is not expected specifically to designate any group membership as such.</p>
-                                                            </div>
-                                                         </details>
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                                <div class="model-entry definition assembly">
-                                                   <div class="instance-header">
-                                                      <h6 id="/profile/back-matter/resource/citation/prop/@group" class="toc6 name">group</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                                                      <p class="occurrence">[0 or 1]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/back-matter/resources/citation/props/group">Switch to JSON</a></div>
-                                                      <p class="formal-name">Property Group</p>
-                                                   </div>
-                                                   <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> An identifier for relating distinct sets of properties.</p>
-                                                      <div class="remarks-group usa-prose">
-                                                         <details open="open">
-                                                            <summary class="subhead">Remarks</summary>
-                                                            <div class="remarks">
-                                                               <p>Different sets of properties may relate to separate contexts. Declare a group on a
-                                                                  property to associate it with one or more other properties in a given context.</p>
+                                                                  a specific <code>class</code> value.</p>
                                                             </div>
                                                          </details>
                                                       </div>
@@ -10537,16 +8674,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                       <p class="formal-name">Remarks</p>
                                                    </div>
                                                    <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> Additional commentary about the containing object.</p>
-                                                      <div class="remarks-group usa-prose">
-                                                         <details open="open">
-                                                            <summary class="subhead">Remarks</summary>
-                                                            <div class="remarks">
-                                                               <p>The <code>remarks</code> field SHOULD not be used to store arbitrary data. Instead, a <code>prop</code> or <code>link</code> should be used to annotate or reference any additional data not formally supported
-                                                                  by OSCAL.</p>
-                                                            </div>
-                                                         </details>
-                                                      </div>
+                                                      <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
                                                       <details class="properties elements" open="open">
                                                          <summary>Element (0+)</summary>
                                                          <div class="model-entry definition field">
@@ -10574,8 +8702,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              <p class="formal-name">Link</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> A reference to a local or remote resource, that has a specific relation to the containing
-                                                object.</p>
+                                             <p class="description"><span class="usa-tag">Description</span> A reference to a local or remote resource</p>
                                              <div class="remarks-group usa-prose">
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
@@ -10587,7 +8714,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 </details>
                                              </div>
                                              <details class="constraints" open="open">
-                                                <summary>Constraints (4)</summary>
+                                                <summary>Constraints (3)</summary>
                                                 <div class="constraint">
                                                    <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                                 </div>
@@ -10597,12 +8724,9 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 <div class="constraint">
                                                    <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                                 </div>
-                                                <div class="constraint">
-                                                   <p><span class="usa-tag">matches</span>  for <code class="path">@resource-fragment</code>: a target (value) must match the regular expression '(?:[0-9a-zA-Z-._~/?!$&amp;'()*+,;=:@]|%[0-9A-F][0-9A-F])+'.</p>
-                                                </div>
                                              </details>
                                              <details class="properties attributes" open="open">
-                                                <summary>Attributes (4)</summary>
+                                                <summary>Attributes (3)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/profile/back-matter/resource/citation/link/@href" class="toc6 name">href</h6>
@@ -10617,17 +8741,13 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                          <details open="open">
                                                             <summary class="subhead">Remarks</summary>
                                                             <div class="remarks">
-                                                               <p>This value may be one of:</p>
-                                                               <ol>
-                                                                  
-                                                                  <li>an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
-                                                                  
-                                                                  <li>a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
-                                                                     document, or</li>
-                                                                  
-                                                                  <li>a bare URI fragment (i.e., `#uuid`) pointing to an OSCAL object by the objects identifier
-                                                                     (e.g., id, uuid) in this or an imported document (see <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>). The specific object type will differ based on the link relationship type.</li>
-                                                                  </ol>
+                                                               <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
+                                                                  that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
+                                                               <p>If a local reference using a fragment is used, this will be indicated by a fragment
+                                                                  "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
+                                                               <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
+                                                                  resource. A relative URI will be resolved relative to the location of the document
+                                                                  containing the link.</p>
                                                             </div>
                                                          </details>
                                                       </div>
@@ -10639,11 +8759,11 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                       <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/back-matter/resources/citation/links/rel">Switch to JSON</a></div>
-                                                      <p class="formal-name">Link Relation Type</p>
+                                                      <p class="formal-name">Relation</p>
                                                    </div>
                                                    <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> Describes the type of relationship provided by the link's hypertext reference. This
-                                                         can be an indicator of the link's purpose.</p>
+                                                      <p class="description"><span class="usa-tag">Description</span> Describes the type of relationship provided by the link. This can be an indicator
+                                                         of the link's purpose.</p>
                                                       <details class="constraints" open="open">
                                                          <summary>Constraint (1)</summary>
                                                          <div class="constraint">
@@ -10651,8 +8771,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                             <p>The value <b>may be locally defined</b>, or the following:</p>
                                                             <ul>
                                                                
-                                                               <li><strong>reference</strong>: A generalized reference to a network resource (relative or absolute) or to a back-matter
-                                                                  resource by UUID expressed as a bare URI fragment.</li>
+                                                               <li><strong>reference</strong>: Reference</li>
                                                                </ul>
                                                          </div>
                                                       </details>
@@ -10667,19 +8786,15 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                       <p class="formal-name">Media Type</p>
                                                    </div>
                                                    <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> A label that indicates the nature of a resource, as a data serialization or format.</p>
+                                                      <p class="description"><span class="usa-tag">Description</span> Specifies a media type as defined by the Internet Assigned Numbers Authority (IANA)
+                                                         <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">Media Types Registry</a>. </p>
                                                       <div class="remarks-group usa-prose">
                                                          <details open="open">
                                                             <summary class="subhead">Remarks</summary>
                                                             <div class="remarks">
-                                                               <p> The Internet Assigned Numbers Authority (IANA) <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">Media Types Registry</a> defines a standardized set of media types, which may be used here.</p>
-                                                               <p>The <code>application/oscal+xml</code>, <code>application/oscal+json</code> or <code>application/oscal+yaml</code> media types SHOULD be used when referencing OSCAL XML, JSON, or YAML resources respectively.</p>
-                                                               <p>**Note: There is no official media type for YAML at this time.** OSCAL documents should
-                                                                  specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name
+                                                               <p>The IANA Media Types Registry should be used, but currently there is no official media
+                                                                  type for YAML. OSCAL documents should specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name
                                                                   suffix, per <a href="https://www.rfc-editor.org/rfc/rfc6838.html#section-4.2.8">RFC 6838 Section 4.2.8</a>.</p>
-                                                               <p>Some earlier OSCAL content incorporated the model into the media type. For example:
-                                                                  <code>application/oscal.catalog+xml</code>. This practice SHOULD be avoided, since the OSCAL model can be detected by parsing
-                                                                  the initial content of the referenced resource.</p>
                                                             </div>
                                                             <div class="remarks">
                                                                <p>The <code>media-type</code> provides a hint about the content model of the referenced resource. A valid entry
@@ -10687,18 +8802,6 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                             </div>
                                                          </details>
                                                       </div>
-                                                   </div>
-                                                </div>
-                                                <div class="model-entry definition assembly">
-                                                   <div class="instance-header">
-                                                      <h6 id="/profile/back-matter/resource/citation/link/@resource-fragment" class="toc6 name">resource-fragment</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#string">string</a></p>
-                                                      <p class="occurrence">[0 or 1]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/back-matter/resources/citation/links/resource-fragment">Switch to JSON</a></div>
-                                                      <p class="formal-name">Resource Fragment</p>
-                                                   </div>
-                                                   <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> In case where the <code>href</code> points to a <code>back-matter/resource</code>, this value will indicate the URI <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5">fragment</a> to append to any <code>rlink</code> associated with the resource. This value MUST be <a href="https://www.rfc-editor.org/rfc/rfc3986#section-2.1">URI encoded</a>.</p>
                                                    </div>
                                                 </div>
                                              </details>
@@ -10732,15 +8835,15 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <p class="formal-name">Resource link</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> A URL-based pointer to an external resource with an optional hash for verification
-                                       and change detection.</p>
+                                    <p class="description"><span class="usa-tag">Description</span> A pointer to an external resource with an optional hash for verification and change
+                                       detection.</p>
                                     <div class="remarks-group usa-prose">
                                        <details open="open">
                                           <summary class="subhead">Remarks</summary>
                                           <div class="remarks">
-                                             <p>Multiple <code>rlink</code> objects can be included for a resource. In such a case, all provided <code>rlink</code> items are intended to be equivalent in content, but may differ in structure or format.</p>
-                                             <p>A <code>media-type</code> is used to identify the format of a given rlink, and can be used to differentiate
-                                                items in a collection of rlinks. The <code>media-type</code> provides a hint to the OSCAL document consumer about the structure of the resource
+                                             <p>This construct is different from <code>link</code>, which makes no provision for a hash or formal title.</p>
+                                             <p>Multiple <code>rlink</code> can be included for a resource. In such a case, all provided <code>rlink</code> items are intended to be equivalent in content, but may differ in structure. A <code>media-type</code> is used to identify the format of a given rlink, and can be used to differentiate
+                                                a items in a collection of rlinks. The <code>media-type</code> also provides a hint to the OSCAL document consumer about the structure of the resource
                                                 referenced by the <code>rlink</code>. </p>
                                           </div>
                                        </details>
@@ -10756,22 +8859,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              <p class="formal-name">Hypertext Reference</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> A resolvable URL pointing to the referenced resource.</p>
-                                             <div class="remarks-group usa-prose">
-                                                <details open="open">
-                                                   <summary class="subhead">Remarks</summary>
-                                                   <div class="remarks">
-                                                      <p>This value may be either:</p>
-                                                      <ol>
-                                                         
-                                                         <li>an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
-                                                         
-                                                         <li>a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing
-                                                            document, or</li>
-                                                         </ol>
-                                                   </div>
-                                                </details>
-                                             </div>
+                                             <p class="description"><span class="usa-tag">Description</span> A resolvable URI reference to a resource.</p>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -10783,19 +8871,15 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              <p class="formal-name">Media Type</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> A label that indicates the nature of a resource, as a data serialization or format.</p>
+                                             <p class="description"><span class="usa-tag">Description</span> Specifies a media type as defined by the Internet Assigned Numbers Authority (IANA)
+                                                <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">Media Types Registry</a>. </p>
                                              <div class="remarks-group usa-prose">
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
                                                    <div class="remarks">
-                                                      <p> The Internet Assigned Numbers Authority (IANA) <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">Media Types Registry</a> defines a standardized set of media types, which may be used here.</p>
-                                                      <p>The <code>application/oscal+xml</code>, <code>application/oscal+json</code> or <code>application/oscal+yaml</code> media types SHOULD be used when referencing OSCAL XML, JSON, or YAML resources respectively.</p>
-                                                      <p>**Note: There is no official media type for YAML at this time.** OSCAL documents should
-                                                         specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name
+                                                      <p>The IANA Media Types Registry should be used, but currently there is no official media
+                                                         type for YAML. OSCAL documents should specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name
                                                          suffix, per <a href="https://www.rfc-editor.org/rfc/rfc6838.html#section-4.2.8">RFC 6838 Section 4.2.8</a>.</p>
-                                                      <p>Some earlier OSCAL content incorporated the model into the media type. For example:
-                                                         <code>application/oscal.catalog+xml</code>. This practice SHOULD be avoided, since the OSCAL model can be detected by parsing
-                                                         the initial content of the referenced resource.</p>
                                                    </div>
                                                 </details>
                                              </div>
@@ -10819,26 +8903,14 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
                                                    <div class="remarks">
-                                                      <p>The <code>hash</code> value can be used to confirm that the resource referenced by the <code>href</code> is the same resources that was hashed by retrieving the resource, calculating a hash,
-                                                         and comparing the result to this value.</p>
+                                                      <p>A hash value can be used to authenticate that a referenced resource is the same resources
+                                                         as was pointed to by the author of the reference.</p>
+                                                   </div>
+                                                   <div class="remarks">
+                                                      <p>When appearing as part of a <code>resource/rlink</code>, the hash applies to the resource referenced by the <code>href</code>. </p>
                                                    </div>
                                                 </details>
                                              </div>
-                                             <details class="constraints" open="open">
-                                                <summary>Constraints (4)</summary>
-                                                <div class="constraint">
-                                                   <p><span class="usa-tag">matches</span>  for <code class="path">.[@algorithm=('SHA-224','SHA3-224')]</code>: a target (value) must match the regular expression '^[0-9a-fA-F]{28}$'.</p>
-                                                </div>
-                                                <div class="constraint">
-                                                   <p><span class="usa-tag">matches</span>  for <code class="path">.[@algorithm=('SHA-256','SHA3-256')]</code>: a target (value) must match the regular expression '^[0-9a-fA-F]{32}$'.</p>
-                                                </div>
-                                                <div class="constraint">
-                                                   <p><span class="usa-tag">matches</span>  for <code class="path">.[@algorithm=('SHA-384','SHA3-384')]</code>: a target (value) must match the regular expression '^[0-9a-fA-F]{48}$'.</p>
-                                                </div>
-                                                <div class="constraint">
-                                                   <p><span class="usa-tag">matches</span>  for <code class="path">.[@algorithm=('SHA-512','SHA3-512')]</code>: a target (value) must match the regular expression '^[0-9a-fA-F]{64}$'.</p>
-                                                </div>
-                                             </details>
                                              <details class="properties attributes" open="open">
                                                 <summary>Attribute (1)</summary>
                                                 <div class="model-entry definition field">
@@ -10850,12 +8922,12 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                       <p class="formal-name">Hash algorithm</p>
                                                    </div>
                                                    <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> The digest method by which a hash is derived.</p>
+                                                      <p class="description"><span class="usa-tag">Description</span> Method by which a hash is derived</p>
                                                       <div class="remarks-group usa-prose">
                                                          <details open="open">
                                                             <summary class="subhead">Remarks</summary>
                                                             <div class="remarks">
-                                                               <p>Any other value used MUST be a value defined in the W3C <a href="https://www.w3.org/TR/xmlsec-algorithms/#digest-method-uris">XML Security Algorithm Cross-Reference</a> Digest Methods (W3C, April 2013) or <a href="https://tools.ietf.org/html/rfc6931#section-2.1.5">RFC 6931 Section 2.1.5</a> New SHA Functions.</p>
+                                                               <p>Any other value used MUST be a value defined in the W3C <a href="http://www.w3.org/TR/xmlsec-algorithms/#digest-method">XML Security Algorithm Cross-Reference</a> Digest Methods (W3C, April 2013) or <a href="https://tools.ietf.org/html/rfc6931#section-2.1.5">RFC 6931 Section 2.1.5</a> New SHA Functions.</p>
                                                             </div>
                                                          </details>
                                                       </div>
@@ -10909,13 +8981,13 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <p class="formal-name">Base64</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> A resource encoded using the Base64 alphabet defined by <a href="https://www.rfc-editor.org/rfc/rfc2045.html">RFC 2045</a>.</p>
+                                    <p class="description"><span class="usa-tag">Description</span> The Base64 alphabet in RFC 2045 - aligned with XSD.</p>
                                     <details class="properties attributes" open="open">
                                        <summary>Attributes (2)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/profile/back-matter/resource/base64/@filename" class="toc5 name">filename</h5>
-                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/back-matter/resources/base64/filename">Switch to JSON</a></div>
                                              <p class="formal-name">File Name</p>
@@ -10933,19 +9005,15 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              <p class="formal-name">Media Type</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> A label that indicates the nature of a resource, as a data serialization or format.</p>
+                                             <p class="description"><span class="usa-tag">Description</span> Specifies a media type as defined by the Internet Assigned Numbers Authority (IANA)
+                                                <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">Media Types Registry</a>. </p>
                                              <div class="remarks-group usa-prose">
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
                                                    <div class="remarks">
-                                                      <p> The Internet Assigned Numbers Authority (IANA) <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">Media Types Registry</a> defines a standardized set of media types, which may be used here.</p>
-                                                      <p>The <code>application/oscal+xml</code>, <code>application/oscal+json</code> or <code>application/oscal+yaml</code> media types SHOULD be used when referencing OSCAL XML, JSON, or YAML resources respectively.</p>
-                                                      <p>**Note: There is no official media type for YAML at this time.** OSCAL documents should
-                                                         specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name
+                                                      <p>The IANA Media Types Registry should be used, but currently there is no official media
+                                                         type for YAML. OSCAL documents should specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name
                                                          suffix, per <a href="https://www.rfc-editor.org/rfc/rfc6838.html#section-4.2.8">RFC 6838 Section 4.2.8</a>.</p>
-                                                      <p>Some earlier OSCAL content incorporated the model into the media type. For example:
-                                                         <code>application/oscal.catalog+xml</code>. This practice SHOULD be avoided, since the OSCAL model can be detected by parsing
-                                                         the initial content of the referenced resource.</p>
                                                    </div>
                                                 </details>
                                              </div>
@@ -10963,16 +9031,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <p class="formal-name">Remarks</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> Additional commentary about the containing object.</p>
-                                    <div class="remarks-group usa-prose">
-                                       <details open="open">
-                                          <summary class="subhead">Remarks</summary>
-                                          <div class="remarks">
-                                             <p>The <code>remarks</code> field SHOULD not be used to store arbitrary data. Instead, a <code>prop</code> or <code>link</code> should be used to annotate or reference any additional data not formally supported
-                                                by OSCAL.</p>
-                                          </div>
-                                       </details>
-                                    </div>
+                                    <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
                                     <details class="properties elements" open="open">
                                        <summary>Element (0+)</summary>
                                        <div class="model-entry definition field">

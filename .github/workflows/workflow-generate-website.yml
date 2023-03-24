@@ -37,6 +37,8 @@ on:
         required: false
         default: false
         type: boolean
+env:
+  WORKFLOW_MONITORING_COMMAND: curl -s -I https://api.github.com/users/${{ github.actor }} | grep -E "x-ratelimit-remaining|x-ratelimit-limit|x-ratelimit-used]"
 jobs:
   build-and-push-website:
     name: Build and Push Website
@@ -68,6 +70,10 @@ jobs:
       uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
       with:
         submodules: recursive
+    - name: "***** Monitor Workflow Status *****"
+      run: ${{ env.WORKFLOW_MONITORING_COMMAND }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # TODO: Remove
     - name: Set env
       run: |
         echo "SAXON_HOME=${JAVA_CLASSPATH}" >> $GITHUB_ENV
@@ -158,6 +164,8 @@ jobs:
       with:
         script: |
           core.setFailed('Link checker detected broken or invalid links, read attached report.')
+    - name: "***** Monitor Workflow Status *****"
+      run: ${{ env.WORKFLOW_MONITORING_COMMAND }}
     - name: Deploy Website (using access_token)
       uses: peaceiris/actions-gh-pages@068dc23d9710f1ba62e86896f84735d869951305
       if: github.event_name == 'push' && inputs.commit_resources == true && github.ref_name == 'main'
@@ -167,6 +175,8 @@ jobs:
         publish_dir: ./docs/public
         publish_branch: nist-pages
         commit_message: Deploying website [ci deploy skip]
+    - name: "***** Monitor Workflow Status *****"
+      run: ${{ env.WORKFLOW_MONITORING_COMMAND }}
     - name: Deploy Website (using COMMIT_TOKEN)
       uses: peaceiris/actions-gh-pages@068dc23d9710f1ba62e86896f84735d869951305
       if: github.event_name == 'workflow_dispatch' && github.event.inputs.commit_resources == 'true' && github.ref_name == 'main'
@@ -179,3 +189,5 @@ jobs:
         commit_user_email: oscal@nist.gov
         commit_author: OSCAL GitHub Actions Bot <oscal@nist.gov>
         commit_message: Deploying website [ci deploy skip]
+    - name: "***** Monitor Workflow Status *****"
+      run: ${{ env.WORKFLOW_MONITORING_COMMAND }}
