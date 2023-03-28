@@ -81,13 +81,24 @@
                                     <p>Identifies that all controls are to be included from the imported catalog or profile.</p>
                               </remarks>
                         </assembly>
-                        <assembly ref="select-control-by-id" min-occurs="1" max-occurs="unbounded">
-                              <use-name>include-controls</use-name>
-                              <group-as name="include-controls" in-json="ARRAY"/>
+                        <define-assembly name="include-controls">
+                              <formal-name>Select Control</formal-name>
+                              <description>Select a control or controls from an imported control set.</description>
+                              <flag ref="with-child-controls"/>
+                              <flag ref="with-parent-controls"/>
+                              <model>
+                                    <field ref="with-id" max-occurs="unbounded">
+                                          <group-as name="with-ids" in-json="ARRAY"/>
+                                    </field>
+                                    <assembly ref="matching" max-occurs="unbounded">
+                                          <group-as name="matching" in-json="ARRAY"/>
+                                    </assembly>
+                              </model>
                               <remarks>
-                                    <p>Identifies a subset of controls to import from the referenced catalog or profile by control identifier or match pattern.</p>
+                                    <p>If <code>with-child-controls</code> is <q>yes</q> on the call to a control, no sibling <code>call</code>elements need to be used to call any controls appearing within it. This flag provides a way to include controls with all their dependent controls (enhancements) without having to call them individually.</p>
+                                    <p>If <code>with-parent-controls</code> is <q>yes</q> on the call to a control, no sibling <code>call</code>elements need to be used to include any parent controls. This flag provides a way to include controls with all their ancestor controls (enhancements) without having to call them individually.</p>
                               </remarks>
-                        </assembly>
+                        </define-assembly>
                   </choice>
                   <assembly ref="select-control-by-id" max-occurs="unbounded">
                         <use-name>exclude-controls</use-name>
@@ -444,18 +455,12 @@
             <description>Select a control or controls from an imported control set.</description>
             <flag ref="with-child-controls"/>
             <model>
-                  <define-field name="with-id" as-type="token" max-occurs="unbounded">
-                        <formal-name>Match Controls by Identifier</formal-name>
-                        <description>Selecting a control by its ID given as a literal.</description>
+                  <field ref="with-id" max-occurs="unbounded">
                         <group-as name="with-ids" in-json="ARRAY"/>
-                  </define-field>
-                  <define-assembly name="matching" max-occurs="unbounded">
-                        <formal-name>Match Controls by Pattern</formal-name>
-                        <description>Selecting a set of controls by matching their IDs with a
-                              wildcard pattern.</description>
+                  </field>
+                  <assembly ref="matching" max-occurs="unbounded">
                         <group-as name="matching" in-json="ARRAY"/>
-                        <flag ref="pattern"/>
-                  </define-assembly>
+                  </assembly>
             </model>
             <remarks>
                   <p>If <code>with-child-controls</code> is <q>yes</q> on the call to a control, no sibling <code>call</code>elements need to be used to call any controls appearing within it. Since generally, this is how control enhancements are represented (as controls within controls), this provides a way to include controls with all their dependent controls (enhancements) without having to call them individually.</p>
@@ -471,8 +476,27 @@
                   </allowed-values>
             </constraint>
       </define-flag>
+      <define-flag as-type="token" name="with-parent-controls">
+            <formal-name>Include Parent Controls with Control</formal-name>
+            <description>When a control is included, whether its parent (ancestor) controls are also included.</description>
+            <constraint>
+                  <allowed-values>
+                        <enum value="yes">Include parent controls with an included control.</enum>
+                        <enum value="no">When importing a control, only include parent controls that are also explicitly called.</enum>
+                  </allowed-values>
+            </constraint>
+      </define-flag>
       <define-flag as-type="string" name="pattern">
             <formal-name>Pattern</formal-name>
             <description>A <a href="https://en.wikipedia.org/wiki/Glob_(programming)">glob expression</a> matching the IDs of one or more controls to be selected.</description>
       </define-flag>
+      <define-field name="with-id" as-type="token">
+            <formal-name>Match Controls by Identifier</formal-name>
+            <description>Selecting a control by its ID given as a literal.</description>
+      </define-field>
+      <define-assembly name="matching">
+            <formal-name>Match Controls by Pattern</formal-name>
+            <description>Selecting a set of controls by matching their IDs with a wildcard pattern.</description>
+            <flag ref="pattern"/>
+      </define-assembly>
 </METASCHEMA>
