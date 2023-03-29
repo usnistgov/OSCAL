@@ -110,6 +110,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                              <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/metadata/revisions/links/media-type">media-type</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
                                           </div>
                                           <div class="OM-entry">
+                                             <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/metadata/revisions/links/resource-fragment">resource-fragment</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                          </div>
+                                          <div class="OM-entry">
                                              <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/metadata/revisions/links/text">text</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span><span class="OM-lit">,</span></p>
                                           </div>
                                        </div>
@@ -194,6 +197,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                  <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/metadata/links/media-type">media-type</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
                               </div>
                               <div class="OM-entry">
+                                 <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/metadata/links/resource-fragment">resource-fragment</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                              </div>
+                              <div class="OM-entry">
                                  <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/metadata/links/text">text</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span><span class="OM-lit">,</span></p>
                               </div>
                            </div>
@@ -269,6 +275,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                              <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/metadata/roles/links/media-type">media-type</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
                                           </div>
                                           <div class="OM-entry">
+                                             <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/metadata/roles/links/resource-fragment">resource-fragment</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                          </div>
+                                          <div class="OM-entry">
                                              <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/metadata/roles/links/text">text</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span><span class="OM-lit">,</span></p>
                                           </div>
                                        </div>
@@ -299,7 +308,7 @@ The following outline is a representation of the [JSON format](https://github.co
                                  <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/metadata/locations/title">title</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span><span class="OM-lit">,</span></p>
                               </div>
                               <details class="OM-entry">
-                                 <summary><a class="OM-name" href="../json-reference/#/profile/metadata/locations/address">address</a> <span class="OM-cardinality">[1]</span>: <span class="OM-lit">{<span class="show-closed"> … }, </span></span></summary>
+                                 <summary><a class="OM-name" href="../json-reference/#/profile/metadata/locations/address">address</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit">{<span class="show-closed"> … }, </span></span></summary>
                                  <div class="model-container object">
                                     <div class="OM-entry">
                                        <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/metadata/locations/address/type">type</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
@@ -413,6 +422,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                              <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/metadata/locations/links/media-type">media-type</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
                                           </div>
                                           <div class="OM-entry">
+                                             <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/metadata/locations/links/resource-fragment">resource-fragment</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                          </div>
+                                          <div class="OM-entry">
                                              <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/metadata/locations/links/text">text</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span><span class="OM-lit">,</span></p>
                                           </div>
                                        </div>
@@ -513,6 +525,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                           </div>
                                           <div class="OM-entry">
                                              <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/metadata/parties/links/media-type">media-type</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                          </div>
+                                          <div class="OM-entry">
+                                             <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/metadata/parties/links/resource-fragment">resource-fragment</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
                                           </div>
                                           <div class="OM-entry">
                                              <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/metadata/parties/links/text">text</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span><span class="OM-lit">,</span></p>
@@ -687,6 +702,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                              <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/metadata/responsible-parties/links/media-type">media-type</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
                                           </div>
                                           <div class="OM-entry">
+                                             <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/metadata/responsible-parties/links/resource-fragment">resource-fragment</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                          </div>
+                                          <div class="OM-entry">
                                              <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/metadata/responsible-parties/links/text">text</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span><span class="OM-lit">,</span></p>
                                           </div>
                                        </div>
@@ -697,6 +715,180 @@ The following outline is a representation of the [JSON format](https://github.co
                               </details>
                               <div class="OM-entry">
                                  <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/metadata/responsible-parties/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
+                              </div>
+                           </div>
+                           <p><span class="OM-lit"> }</span></p>
+                        </div>
+                     </div>
+                     <p><span class="OM-lit">], </span></p>
+                  </details>
+                  <details class="OM-entry">
+                     <summary><span class="sq"><a class="OM-name" href="../json-reference/#/profile/metadata/actions">actions</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                     <div class="model-container array">
+                        <div class="OM-entry">
+                           <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/profile/metadata/actions">action</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                           <div class="model-container object">
+                              <div class="OM-entry">
+                                 <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/metadata/actions/uuid">uuid</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="OM-lit">,</span></p>
+                              </div>
+                              <div class="OM-entry">
+                                 <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/metadata/actions/date">date</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#datetime-with-timezone">dateTime-with-timezone</a></span><span class="OM-lit">,</span></p>
+                              </div>
+                              <div class="OM-entry">
+                                 <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/metadata/actions/type">type</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                              </div>
+                              <div class="OM-entry">
+                                 <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/metadata/actions/system">system</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uri">uri</a></span><span class="OM-lit">,</span></p>
+                              </div>
+                              <details class="OM-entry">
+                                 <summary><span class="sq"><a class="OM-name" href="../json-reference/#/profile/metadata/actions/props">props</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                 <div class="model-container array">
+                                    <div class="OM-entry">
+                                       <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/profile/metadata/actions/props">prop</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                       <div class="model-container object">
+                                          <div class="OM-entry">
+                                             <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/metadata/actions/props/name">name</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                          </div>
+                                          <div class="OM-entry">
+                                             <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/metadata/actions/props/uuid">uuid</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="OM-lit">,</span></p>
+                                          </div>
+                                          <div class="OM-entry">
+                                             <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/metadata/actions/props/ns">ns</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uri">uri</a></span><span class="OM-lit">,</span></p>
+                                          </div>
+                                          <div class="OM-entry">
+                                             <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/metadata/actions/props/value">value</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                          </div>
+                                          <div class="OM-entry">
+                                             <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/metadata/actions/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                          </div>
+                                          <div class="OM-entry">
+                                             <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/metadata/actions/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                          </div>
+                                          <div class="OM-entry">
+                                             <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/metadata/actions/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
+                                          </div>
+                                       </div>
+                                       <p><span class="OM-lit"> }</span></p>
+                                    </div>
+                                 </div>
+                                 <p><span class="OM-lit">], </span></p>
+                              </details>
+                              <details class="OM-entry">
+                                 <summary><span class="sq"><a class="OM-name" href="../json-reference/#/profile/metadata/actions/links">links</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                 <div class="model-container array">
+                                    <div class="OM-entry">
+                                       <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/profile/metadata/actions/links">link</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                       <div class="model-container object">
+                                          <div class="OM-entry">
+                                             <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/metadata/actions/links/href">href</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uri-reference">uri-reference</a></span><span class="OM-lit">,</span></p>
+                                          </div>
+                                          <div class="OM-entry">
+                                             <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/metadata/actions/links/rel">rel</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                          </div>
+                                          <div class="OM-entry">
+                                             <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/metadata/actions/links/media-type">media-type</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                          </div>
+                                          <div class="OM-entry">
+                                             <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/metadata/actions/links/resource-fragment">resource-fragment</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                          </div>
+                                          <div class="OM-entry">
+                                             <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/metadata/actions/links/text">text</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span><span class="OM-lit">,</span></p>
+                                          </div>
+                                       </div>
+                                       <p><span class="OM-lit"> }</span></p>
+                                    </div>
+                                 </div>
+                                 <p><span class="OM-lit">], </span></p>
+                              </details>
+                              <details class="OM-entry">
+                                 <summary><span class="sq"><a class="OM-name" href="../json-reference/#/profile/metadata/actions/responsible-parties">responsible-parties</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                 <div class="model-container array">
+                                    <div class="OM-entry">
+                                       <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/profile/metadata/actions/responsible-parties">responsible-party</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                       <div class="model-container object">
+                                          <div class="OM-entry">
+                                             <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/metadata/actions/responsible-parties/role-id">role-id</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                          </div>
+                                          <details class="OM-entry">
+                                             <summary><span class="sq"><a class="OM-name" href="../json-reference/#/profile/metadata/actions/responsible-parties/party-uuids">party-uuids</a> <span class="OM-cardinality">[1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                             <div class="model-container array">
+                                                <div class="OM-entry">
+                                                   <p class="OM-line"><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/profile/metadata/actions/responsible-parties/party-uuids">party-uuid</a> strings</span> <span class="OM-cardinality">[1 to ∞]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span></p>
+                                                </div>
+                                             </div>
+                                             <p><span class="OM-lit">], </span></p>
+                                          </details>
+                                          <details class="OM-entry">
+                                             <summary><span class="sq"><a class="OM-name" href="../json-reference/#/profile/metadata/actions/responsible-parties/props">props</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                             <div class="model-container array">
+                                                <div class="OM-entry">
+                                                   <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/profile/metadata/actions/responsible-parties/props">prop</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                                   <div class="model-container object">
+                                                      <div class="OM-entry">
+                                                         <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/metadata/actions/responsible-parties/props/name">name</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                      </div>
+                                                      <div class="OM-entry">
+                                                         <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/metadata/actions/responsible-parties/props/uuid">uuid</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="OM-lit">,</span></p>
+                                                      </div>
+                                                      <div class="OM-entry">
+                                                         <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/metadata/actions/responsible-parties/props/ns">ns</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uri">uri</a></span><span class="OM-lit">,</span></p>
+                                                      </div>
+                                                      <div class="OM-entry">
+                                                         <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/metadata/actions/responsible-parties/props/value">value</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                                      </div>
+                                                      <div class="OM-entry">
+                                                         <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/metadata/actions/responsible-parties/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                      </div>
+                                                      <div class="OM-entry">
+                                                         <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/metadata/actions/responsible-parties/props/group">group</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                      </div>
+                                                      <div class="OM-entry">
+                                                         <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/metadata/actions/responsible-parties/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
+                                                      </div>
+                                                   </div>
+                                                   <p><span class="OM-lit"> }</span></p>
+                                                </div>
+                                             </div>
+                                             <p><span class="OM-lit">], </span></p>
+                                          </details>
+                                          <details class="OM-entry">
+                                             <summary><span class="sq"><a class="OM-name" href="../json-reference/#/profile/metadata/actions/responsible-parties/links">links</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                             <div class="model-container array">
+                                                <div class="OM-entry">
+                                                   <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/profile/metadata/actions/responsible-parties/links">link</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                                   <div class="model-container object">
+                                                      <div class="OM-entry">
+                                                         <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/metadata/actions/responsible-parties/links/href">href</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uri-reference">uri-reference</a></span><span class="OM-lit">,</span></p>
+                                                      </div>
+                                                      <div class="OM-entry">
+                                                         <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/metadata/actions/responsible-parties/links/rel">rel</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                      </div>
+                                                      <div class="OM-entry">
+                                                         <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/metadata/actions/responsible-parties/links/media-type">media-type</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                                      </div>
+                                                      <div class="OM-entry">
+                                                         <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/metadata/actions/responsible-parties/links/resource-fragment">resource-fragment</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                                      </div>
+                                                      <div class="OM-entry">
+                                                         <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/metadata/actions/responsible-parties/links/text">text</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span><span class="OM-lit">,</span></p>
+                                                      </div>
+                                                   </div>
+                                                   <p><span class="OM-lit"> }</span></p>
+                                                </div>
+                                             </div>
+                                             <p><span class="OM-lit">], </span></p>
+                                          </details>
+                                          <div class="OM-entry">
+                                             <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/metadata/actions/responsible-parties/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
+                                          </div>
+                                       </div>
+                                       <p><span class="OM-lit"> }</span></p>
+                                    </div>
+                                 </div>
+                                 <p><span class="OM-lit">], </span></p>
+                              </details>
+                              <div class="OM-entry">
+                                 <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/metadata/actions/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
                               </div>
                            </div>
                            <p><span class="OM-lit"> }</span></p>
@@ -922,6 +1114,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                                                      <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/merge/custom/groups/params/links/media-type">media-type</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
                                                                   </div>
                                                                   <div class="OM-entry">
+                                                                     <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/merge/custom/groups/params/links/resource-fragment">resource-fragment</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                                                  </div>
+                                                                  <div class="OM-entry">
                                                                      <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/merge/custom/groups/params/links/text">text</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span><span class="OM-lit">,</span></p>
                                                                   </div>
                                                                </div>
@@ -1076,6 +1271,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                                          <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/merge/custom/groups/links/media-type">media-type</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
                                                       </div>
                                                       <div class="OM-entry">
+                                                         <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/merge/custom/groups/links/resource-fragment">resource-fragment</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                                      </div>
+                                                      <div class="OM-entry">
                                                          <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/merge/custom/groups/links/text">text</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span><span class="OM-lit">,</span></p>
                                                       </div>
                                                    </div>
@@ -1165,6 +1363,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                                                   </div>
                                                                   <div class="OM-entry">
                                                                      <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/merge/custom/groups/parts/links/media-type">media-type</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                                                  </div>
+                                                                  <div class="OM-entry">
+                                                                     <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/merge/custom/groups/parts/links/resource-fragment">resource-fragment</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
                                                                   </div>
                                                                   <div class="OM-entry">
                                                                      <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/merge/custom/groups/parts/links/text">text</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span><span class="OM-lit">,</span></p>
@@ -1487,6 +1688,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                              <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/modify/set-parameters/links/media-type">media-type</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
                                           </div>
                                           <div class="OM-entry">
+                                             <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/modify/set-parameters/links/resource-fragment">resource-fragment</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                          </div>
+                                          <div class="OM-entry">
                                              <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/modify/set-parameters/links/text">text</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span><span class="OM-lit">,</span></p>
                                           </div>
                                        </div>
@@ -1704,6 +1908,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                                                      <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/modify/alters/adds/params/links/media-type">media-type</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
                                                                   </div>
                                                                   <div class="OM-entry">
+                                                                     <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/modify/alters/adds/params/links/resource-fragment">resource-fragment</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                                                  </div>
+                                                                  <div class="OM-entry">
                                                                      <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/modify/alters/adds/params/links/text">text</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span><span class="OM-lit">,</span></p>
                                                                   </div>
                                                                </div>
@@ -1858,6 +2065,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                                          <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/modify/alters/adds/links/media-type">media-type</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
                                                       </div>
                                                       <div class="OM-entry">
+                                                         <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/modify/alters/adds/links/resource-fragment">resource-fragment</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                                      </div>
+                                                      <div class="OM-entry">
                                                          <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/modify/alters/adds/links/text">text</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span><span class="OM-lit">,</span></p>
                                                       </div>
                                                    </div>
@@ -1947,6 +2157,9 @@ The following outline is a representation of the [JSON format](https://github.co
                                                                   </div>
                                                                   <div class="OM-entry">
                                                                      <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/modify/alters/adds/parts/links/media-type">media-type</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                                                  </div>
+                                                                  <div class="OM-entry">
+                                                                     <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/modify/alters/adds/parts/links/resource-fragment">resource-fragment</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
                                                                   </div>
                                                                   <div class="OM-entry">
                                                                      <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/modify/alters/adds/parts/links/text">text</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span><span class="OM-lit">,</span></p>
@@ -2087,7 +2300,7 @@ The following outline is a representation of the [JSON format](https://github.co
                                        <p><span class="OM-lit">], </span></p>
                                     </details>
                                     <details class="OM-entry">
-                                       <summary><span class="sq"><a class="OM-name" href="../json-reference/#/profile/back-matter/resources/citation/links">links</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                       <summary><span class="sq"><a class="OM-name" href="../json-reference/#/profile/back-matter/resources/citation/links">links</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ]</span></span></span></summary>
                                        <div class="model-container array">
                                           <div class="OM-entry">
                                              <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/profile/back-matter/resources/citation/links">link</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
@@ -2102,13 +2315,16 @@ The following outline is a representation of the [JSON format](https://github.co
                                                    <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/back-matter/resources/citation/links/media-type">media-type</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
                                                 </div>
                                                 <div class="OM-entry">
+                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/back-matter/resources/citation/links/resource-fragment">resource-fragment</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                                </div>
+                                                <div class="OM-entry">
                                                    <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/back-matter/resources/citation/links/text">text</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span><span class="OM-lit">,</span></p>
                                                 </div>
                                              </div>
                                              <p><span class="OM-lit"> }</span></p>
                                           </div>
                                        </div>
-                                       <p><span class="OM-lit">], </span></p>
+                                       <p><span class="OM-lit">]</span></p>
                                     </details>
                                  </div>
                                  <p><span class="OM-lit"> }, </span></p>
@@ -2153,7 +2369,7 @@ The following outline is a representation of the [JSON format](https://github.co
                                  <summary><a class="OM-name" href="../json-reference/#/profile/back-matter/resources/base64">base64</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit">{<span class="show-closed"> … }, </span></span></summary>
                                  <div class="model-container object">
                                     <div class="OM-entry">
-                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/back-matter/resources/base64/filename">filename</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uri-reference">uri-reference</a></span><span class="OM-lit">,</span></p>
+                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/back-matter/resources/base64/filename">filename</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
                                     </div>
                                     <div class="OM-entry">
                                        <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/back-matter/resources/base64/media-type">media-type</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>

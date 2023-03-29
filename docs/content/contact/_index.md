@@ -5,7 +5,7 @@ menu:
   primary:
     name: Contact Us
     url: /contact/
-    weight: 95
+    weight: 100
   secondary:
     name: Contact Us
     url: /contact/
