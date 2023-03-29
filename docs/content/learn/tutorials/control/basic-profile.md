@@ -1,12 +1,13 @@
 ---
-title: Creating a Baseline
+title: Creating a Profile
 description: A tutorial on creating a Baseline using an OSCAL Profile.
-weight: 5
+weight: 20
 suppresstopiclist: true
 toc:
   enabled: true
 aliases:
   - /tutorials/profile/
+  - /learn/tutorials/profile/
 ---
 
 This tutorial covers creating a basic baseline using an OSCAL profile. Before reading this tutorial you should:
