@@ -2130,10 +2130,48 @@
                          type="oscal-control-common-include-all-ASSEMBLY"
                          minOccurs="1"
                          maxOccurs="1"/>
-            <xs:element name="include-controls"
-                         type="oscal-profile-select-control-by-id-ASSEMBLY"
-                         minOccurs="1"
-                         maxOccurs="unbounded"/>
+            <xs:element name="include-controls" minOccurs="1" maxOccurs="unbounded">
+               <xs:complexType>
+                  <xs:annotation>
+                     <xs:appinfo>
+                        <m:formal-name>Select Control</m:formal-name>
+                        <m:description>Select a control or controls from an imported control set.</m:description>
+                     </xs:appinfo>
+                     <xs:documentation>
+                        <b>Select Control</b>: Select a control or controls from an imported control set.</xs:documentation>
+                  </xs:annotation>
+                  <xs:sequence>
+                     <xs:element name="with-id"
+                                  type="oscal-profile-with-id-FIELD"
+                                  minOccurs="0"
+                                  maxOccurs="unbounded"/>
+                     <xs:element name="matching"
+                                  type="oscal-profile-matching-ASSEMBLY"
+                                  minOccurs="0"
+                                  maxOccurs="unbounded"/>
+                  </xs:sequence>
+                  <xs:attribute name="with-child-controls" type="TokenDatatype">
+                     <xs:annotation>
+                        <xs:appinfo>
+                           <m:formal-name>Include Contained Controls with Control</m:formal-name>
+                           <m:description>When a control is included, whether its child (dependent) controls are also included.</m:description>
+                        </xs:appinfo>
+                        <xs:documentation>
+                           <b>Include Contained Controls with Control</b>: When a control is included, whether its child (dependent) controls are also included.</xs:documentation>
+                     </xs:annotation>
+                  </xs:attribute>
+                  <xs:attribute name="with-parent-controls" type="TokenDatatype">
+                     <xs:annotation>
+                        <xs:appinfo>
+                           <m:formal-name>Include Parent Controls with Control</m:formal-name>
+                           <m:description>When a control is included, whether its parent (ancestor) controls are also included.</m:description>
+                        </xs:appinfo>
+                        <xs:documentation>
+                           <b>Include Parent Controls with Control</b>: When a control is included, whether its parent (ancestor) controls are also included.</xs:documentation>
+                     </xs:annotation>
+                  </xs:attribute>
+               </xs:complexType>
+            </xs:element>
          </xs:choice>
          <xs:element name="exclude-controls"
                       type="oscal-profile-select-control-by-id-ASSEMBLY"
@@ -2616,41 +2654,14 @@
             <b>Select Control</b>: Select a control or controls from an imported control set.</xs:documentation>
       </xs:annotation>
       <xs:sequence>
-         <xs:element name="with-id" minOccurs="0" maxOccurs="unbounded">
-            <xs:simpleType>
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Match Controls by Identifier</m:formal-name>
-                     <m:description>Selecting a control by its ID given as a literal.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Match Controls by Identifier</b>: Selecting a control by its ID given as a literal.</xs:documentation>
-               </xs:annotation>
-               <xs:restriction base="TokenDatatype"/>
-            </xs:simpleType>
-         </xs:element>
-         <xs:element name="matching" minOccurs="0" maxOccurs="unbounded">
-            <xs:complexType>
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Match Controls by Pattern</m:formal-name>
-                     <m:description>Selecting a set of controls by matching their IDs with a wildcard pattern.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Match Controls by Pattern</b>: Selecting a set of controls by matching their IDs with a wildcard pattern.</xs:documentation>
-               </xs:annotation>
-               <xs:attribute name="pattern" type="StringDatatype">
-                  <xs:annotation>
-                     <xs:appinfo>
-                        <m:formal-name>Pattern</m:formal-name>
-                        <m:description>A <a href="https://en.wikipedia.org/wiki/Glob_(programming)">glob expression</a> matching the IDs of one or more controls to be selected.</m:description>
-                     </xs:appinfo>
-                     <xs:documentation>
-                        <b>Pattern</b>: A glob expression matching the IDs of one or more controls to be selected.</xs:documentation>
-                  </xs:annotation>
-               </xs:attribute>
-            </xs:complexType>
-         </xs:element>
+         <xs:element name="with-id"
+                      type="oscal-profile-with-id-FIELD"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
+         <xs:element name="matching"
+                      type="oscal-profile-matching-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
       </xs:sequence>
       <xs:attribute name="with-child-controls" type="TokenDatatype">
          <xs:annotation>
@@ -2660,6 +2671,37 @@
             </xs:appinfo>
             <xs:documentation>
                <b>Include Contained Controls with Control</b>: When a control is included, whether its child (dependent) controls are also included.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+   </xs:complexType>
+   <xs:simpleType name="oscal-profile-with-id-FIELD">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Match Controls by Identifier</m:formal-name>
+            <m:description>Selecting a control by its ID given as a literal.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Match Controls by Identifier</b>: Selecting a control by its ID given as a literal.</xs:documentation>
+      </xs:annotation>
+      <xs:restriction base="TokenDatatype"/>
+   </xs:simpleType>
+   <xs:complexType name="oscal-profile-matching-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Match Controls by Pattern</m:formal-name>
+            <m:description>Selecting a set of controls by matching their IDs with a wildcard pattern.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Match Controls by Pattern</b>: Selecting a set of controls by matching their IDs with a wildcard pattern.</xs:documentation>
+      </xs:annotation>
+      <xs:attribute name="pattern" type="StringDatatype">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Pattern</m:formal-name>
+               <m:description>A <a href="https://en.wikipedia.org/wiki/Glob_(programming)">glob expression</a> matching the IDs of one or more controls to be selected.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Pattern</b>: A glob expression matching the IDs of one or more controls to be selected.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>

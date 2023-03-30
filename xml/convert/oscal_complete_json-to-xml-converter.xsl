@@ -464,6 +464,13 @@
          </xsl:if>
       </assembly>
    </xsl:template>
+   <xsl:template match="j:array[@key='matching']/j:map">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="matching" -->
+      <assembly as-type="empty" name="matching" gi="matching">
+         <xsl:apply-templates select="*[@key='pattern']"/>
+      </assembly>
+   </xsl:template>
    <xsl:template match="j:map[@key='merge']">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="merge" -->
@@ -1418,6 +1425,24 @@
          <xsl:apply-templates mode="keep-value-property"/>
       </value>
    </xsl:template>
+   <xsl:template match="j:array[@key='with-ids']/j:string">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="with-id" -->
+      <field collapsible="no"
+              as-type="token"
+              name="with-id"
+              gi="with-id"
+              in-json="SCALAR">
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:array[@key='with-ids']/j:string"
+                  mode="get-value-property"
+                  priority="8">
+      <value as-type="token" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
    <xsl:template match="(j:array[@key='system-ids']/j:map | j:map[@key='system-id'])">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="system-id" -->
@@ -2184,7 +2209,7 @@
    <xsl:template match="j:array[@key='imports']/j:map/j:string[@key='href']"
                   mode="keep-value-property"
                   priority="5"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:map[@key='profile']/j:array[@key='imports']/j:map/j:array[@key='include-controls']/j:map/j:string[@key='with-child-controls'] | j:map[@key='profile']/j:array[@key='imports']/j:map/j:array[@key='exclude-controls']/j:map/j:string[@key='with-child-controls'] | j:map[@key='profile']/j:map[@key='merge']/j:map[@key='custom']//j:array[@key='groups']/j:map/j:array[@key='insert-controls']/j:map/j:array[@key='include-controls']/j:map/j:string[@key='with-child-controls'] | j:map[@key='profile']/j:map[@key='merge']/j:map[@key='custom']//j:array[@key='groups']/j:map/j:array[@key='insert-controls']/j:map/j:array[@key='exclude-controls']/j:map/j:string[@key='with-child-controls'] | j:map[@key='profile']/j:map[@key='merge']/j:map[@key='custom']/j:array[@key='insert-controls']/j:map/j:array[@key='include-controls']/j:map/j:string[@key='with-child-controls'] | j:map[@key='profile']/j:map[@key='merge']/j:map[@key='custom']/j:array[@key='insert-controls']/j:map/j:array[@key='exclude-controls']/j:map/j:string[@key='with-child-controls']"><!-- XML match="profile/import/include-controls/@with-child-controls | profile/import/exclude-controls/@with-child-controls | profile/merge/custom//group/insert-controls/include-controls/@with-child-controls | profile/merge/custom//group/insert-controls/exclude-controls/@with-child-controls | profile/merge/custom/insert-controls/include-controls/@with-child-controls | profile/merge/custom/insert-controls/exclude-controls/@with-child-controls" -->
+   <xsl:template match="j:map[@key='profile']/j:array[@key='imports']/j:map/j:map[@key='include-controls']/j:string[@key='with-child-controls']"><!-- XML match="profile/import/include-controls/@with-child-controls" -->
       <flag in-json="string"
              as-type="token"
              name="with-child-controls"
@@ -2193,10 +2218,22 @@
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="j:map[@key='profile']/j:array[@key='imports']/j:map/j:array[@key='include-controls']/j:map/j:string[@key='with-child-controls'] | j:map[@key='profile']/j:array[@key='imports']/j:map/j:array[@key='exclude-controls']/j:map/j:string[@key='with-child-controls'] | j:map[@key='profile']/j:map[@key='merge']/j:map[@key='custom']//j:array[@key='groups']/j:map/j:array[@key='insert-controls']/j:map/j:array[@key='include-controls']/j:map/j:string[@key='with-child-controls'] | j:map[@key='profile']/j:map[@key='merge']/j:map[@key='custom']//j:array[@key='groups']/j:map/j:array[@key='insert-controls']/j:map/j:array[@key='exclude-controls']/j:map/j:string[@key='with-child-controls'] | j:map[@key='profile']/j:map[@key='merge']/j:map[@key='custom']/j:array[@key='insert-controls']/j:map/j:array[@key='include-controls']/j:map/j:string[@key='with-child-controls'] | j:map[@key='profile']/j:map[@key='merge']/j:map[@key='custom']/j:array[@key='insert-controls']/j:map/j:array[@key='exclude-controls']/j:map/j:string[@key='with-child-controls']"
+   <xsl:template match="j:map[@key='profile']/j:array[@key='imports']/j:map/j:map[@key='include-controls']/j:string[@key='with-child-controls']"
                   mode="keep-value-property"
-                  priority="8"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:map[@key='profile']/j:array[@key='imports']/j:map/j:array[@key='include-controls']/j:map/j:array[@key='matching']/j:map/j:string[@key='pattern'] | j:map[@key='profile']/j:array[@key='imports']/j:map/j:array[@key='exclude-controls']/j:map/j:array[@key='matching']/j:map/j:string[@key='pattern'] | j:map[@key='profile']/j:map[@key='merge']/j:map[@key='custom']//j:array[@key='groups']/j:map/j:array[@key='insert-controls']/j:map/j:array[@key='include-controls']/j:map/j:array[@key='matching']/j:map/j:string[@key='pattern'] | j:map[@key='profile']/j:map[@key='merge']/j:map[@key='custom']//j:array[@key='groups']/j:map/j:array[@key='insert-controls']/j:map/j:array[@key='exclude-controls']/j:map/j:array[@key='matching']/j:map/j:string[@key='pattern'] | j:map[@key='profile']/j:map[@key='merge']/j:map[@key='custom']/j:array[@key='insert-controls']/j:map/j:array[@key='include-controls']/j:map/j:array[@key='matching']/j:map/j:string[@key='pattern'] | j:map[@key='profile']/j:map[@key='merge']/j:map[@key='custom']/j:array[@key='insert-controls']/j:map/j:array[@key='exclude-controls']/j:map/j:array[@key='matching']/j:map/j:string[@key='pattern']"><!-- XML match="profile/import/include-controls/matching/@pattern | profile/import/exclude-controls/matching/@pattern | profile/merge/custom//group/insert-controls/include-controls/matching/@pattern | profile/merge/custom//group/insert-controls/exclude-controls/matching/@pattern | profile/merge/custom/insert-controls/include-controls/matching/@pattern | profile/merge/custom/insert-controls/exclude-controls/matching/@pattern" -->
+                  priority="7"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:map[@key='profile']/j:array[@key='imports']/j:map/j:map[@key='include-controls']/j:string[@key='with-parent-controls']"><!-- XML match="profile/import/include-controls/@with-parent-controls" -->
+      <flag in-json="string"
+             as-type="token"
+             name="with-parent-controls"
+             key="with-parent-controls"
+             gi="with-parent-controls">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:map[@key='profile']/j:array[@key='imports']/j:map/j:map[@key='include-controls']/j:string[@key='with-parent-controls']"
+                  mode="keep-value-property"
+                  priority="7"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='matching']/j:map/j:string[@key='pattern']"><!-- XML match="matching/@pattern" -->
       <flag in-json="string"
              as-type="string"
              name="pattern"
@@ -2205,9 +2242,21 @@
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="j:map[@key='profile']/j:array[@key='imports']/j:map/j:array[@key='include-controls']/j:map/j:array[@key='matching']/j:map/j:string[@key='pattern'] | j:map[@key='profile']/j:array[@key='imports']/j:map/j:array[@key='exclude-controls']/j:map/j:array[@key='matching']/j:map/j:string[@key='pattern'] | j:map[@key='profile']/j:map[@key='merge']/j:map[@key='custom']//j:array[@key='groups']/j:map/j:array[@key='insert-controls']/j:map/j:array[@key='include-controls']/j:map/j:array[@key='matching']/j:map/j:string[@key='pattern'] | j:map[@key='profile']/j:map[@key='merge']/j:map[@key='custom']//j:array[@key='groups']/j:map/j:array[@key='insert-controls']/j:map/j:array[@key='exclude-controls']/j:map/j:array[@key='matching']/j:map/j:string[@key='pattern'] | j:map[@key='profile']/j:map[@key='merge']/j:map[@key='custom']/j:array[@key='insert-controls']/j:map/j:array[@key='include-controls']/j:map/j:array[@key='matching']/j:map/j:string[@key='pattern'] | j:map[@key='profile']/j:map[@key='merge']/j:map[@key='custom']/j:array[@key='insert-controls']/j:map/j:array[@key='exclude-controls']/j:map/j:array[@key='matching']/j:map/j:string[@key='pattern']"
+   <xsl:template match="j:array[@key='matching']/j:map/j:string[@key='pattern']"
                   mode="keep-value-property"
-                  priority="10"><!-- Not keeping the flag here. --></xsl:template>
+                  priority="9"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:map[@key='profile']/j:array[@key='imports']/j:map/j:array[@key='exclude-controls']/j:map/j:string[@key='with-child-controls'] | j:map[@key='profile']/j:map[@key='merge']/j:map[@key='custom']//j:array[@key='groups']/j:map/j:array[@key='insert-controls']/j:map/j:array[@key='include-controls']/j:map/j:string[@key='with-child-controls'] | j:map[@key='profile']/j:map[@key='merge']/j:map[@key='custom']//j:array[@key='groups']/j:map/j:array[@key='insert-controls']/j:map/j:array[@key='exclude-controls']/j:map/j:string[@key='with-child-controls'] | j:map[@key='profile']/j:map[@key='merge']/j:map[@key='custom']/j:array[@key='insert-controls']/j:map/j:array[@key='include-controls']/j:map/j:string[@key='with-child-controls'] | j:map[@key='profile']/j:map[@key='merge']/j:map[@key='custom']/j:array[@key='insert-controls']/j:map/j:array[@key='exclude-controls']/j:map/j:string[@key='with-child-controls']"><!-- XML match="profile/import/exclude-controls/@with-child-controls | profile/merge/custom//group/insert-controls/include-controls/@with-child-controls | profile/merge/custom//group/insert-controls/exclude-controls/@with-child-controls | profile/merge/custom/insert-controls/include-controls/@with-child-controls | profile/merge/custom/insert-controls/exclude-controls/@with-child-controls" -->
+      <flag in-json="string"
+             as-type="token"
+             name="with-child-controls"
+             key="with-child-controls"
+             gi="with-child-controls">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:map[@key='profile']/j:array[@key='imports']/j:map/j:array[@key='exclude-controls']/j:map/j:string[@key='with-child-controls'] | j:map[@key='profile']/j:map[@key='merge']/j:map[@key='custom']//j:array[@key='groups']/j:map/j:array[@key='insert-controls']/j:map/j:array[@key='include-controls']/j:map/j:string[@key='with-child-controls'] | j:map[@key='profile']/j:map[@key='merge']/j:map[@key='custom']//j:array[@key='groups']/j:map/j:array[@key='insert-controls']/j:map/j:array[@key='exclude-controls']/j:map/j:string[@key='with-child-controls'] | j:map[@key='profile']/j:map[@key='merge']/j:map[@key='custom']/j:array[@key='insert-controls']/j:map/j:array[@key='include-controls']/j:map/j:string[@key='with-child-controls'] | j:map[@key='profile']/j:map[@key='merge']/j:map[@key='custom']/j:array[@key='insert-controls']/j:map/j:array[@key='exclude-controls']/j:map/j:string[@key='with-child-controls']"
+                  mode="keep-value-property"
+                  priority="7"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:map[@key='profile']/j:map[@key='merge']/j:map[@key='combine']/j:string[@key='method']"
                   priority="5"><!-- XML match="profile/merge/combine/@method" -->
       <flag in-json="string"
@@ -8734,41 +8783,20 @@
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='profile']/j:array[@key='imports']/j:map/j:array[@key='include-controls']/j:map"
-                  priority="7">
+   <xsl:template match="j:map[@key='profile']/j:array[@key='imports']/j:map/j:map[@key='include-controls']"
+                  priority="6">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/import/include-controls" -->
-      <assembly name="select-control-by-id" gi="include-controls">
+      <assembly name="include-controls"
+                 key="include-controls"
+                 gi="include-controls">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">include-controls</xsl:attribute>
+         </xsl:if>
          <xsl:apply-templates select="*[@key='with-child-controls']"/>
+         <xsl:apply-templates select="*[@key='with-parent-controls']"/>
          <xsl:apply-templates select="*[@key='with-ids']"/>
          <xsl:apply-templates select="*[@key='matching']"/>
-      </assembly>
-   </xsl:template>
-   <xsl:template match="j:map[@key='profile']/j:array[@key='imports']/j:map/j:array[@key='include-controls']/j:map/j:array[@key='with-ids']/j:string"
-                  priority="9">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="profile/import/include-controls/with-id" -->
-      <field collapsible="no"
-              as-type="token"
-              name="with-id"
-              gi="with-id"
-              in-json="SCALAR">
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
-   </xsl:template>
-   <xsl:template match="j:map[@key='profile']/j:array[@key='imports']/j:map/j:array[@key='include-controls']/j:map/j:array[@key='with-ids']/j:string"
-                  mode="get-value-property"
-                  priority="9">
-      <value as-type="token" in-json="string">
-         <xsl:value-of select="."/>
-      </value>
-   </xsl:template>
-   <xsl:template match="j:map[@key='profile']/j:array[@key='imports']/j:map/j:array[@key='include-controls']/j:map/j:array[@key='matching']/j:map"
-                  priority="9">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="profile/import/include-controls/matching" -->
-      <assembly as-type="empty" name="matching" gi="matching">
-         <xsl:apply-templates select="*[@key='pattern']"/>
       </assembly>
    </xsl:template>
    <xsl:template match="j:map[@key='profile']/j:array[@key='imports']/j:map/j:array[@key='exclude-controls']/j:map"
@@ -8779,33 +8807,6 @@
          <xsl:apply-templates select="*[@key='with-child-controls']"/>
          <xsl:apply-templates select="*[@key='with-ids']"/>
          <xsl:apply-templates select="*[@key='matching']"/>
-      </assembly>
-   </xsl:template>
-   <xsl:template match="j:map[@key='profile']/j:array[@key='imports']/j:map/j:array[@key='exclude-controls']/j:map/j:array[@key='with-ids']/j:string"
-                  priority="8">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="profile/import/exclude-controls/with-id" -->
-      <field collapsible="no"
-              as-type="token"
-              name="with-id"
-              gi="with-id"
-              in-json="SCALAR">
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
-   </xsl:template>
-   <xsl:template match="j:map[@key='profile']/j:array[@key='imports']/j:map/j:array[@key='exclude-controls']/j:map/j:array[@key='with-ids']/j:string"
-                  mode="get-value-property"
-                  priority="8">
-      <value as-type="token" in-json="string">
-         <xsl:value-of select="."/>
-      </value>
-   </xsl:template>
-   <xsl:template match="j:map[@key='profile']/j:array[@key='imports']/j:map/j:array[@key='exclude-controls']/j:map/j:array[@key='matching']/j:map"
-                  priority="8">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="profile/import/exclude-controls/matching" -->
-      <assembly as-type="empty" name="matching" gi="matching">
-         <xsl:apply-templates select="*[@key='pattern']"/>
       </assembly>
    </xsl:template>
    <xsl:template match="j:map[@key='profile']/j:map[@key='merge']/j:map[@key='combine']"
@@ -9159,33 +9160,6 @@
          <xsl:apply-templates select="*[@key='matching']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:map[@key='profile']/j:map[@key='merge']/j:map[@key='custom']//j:array[@key='groups']/j:map/j:array[@key='insert-controls']/j:map/j:array[@key='include-controls']/j:map/j:array[@key='with-ids']/j:string"
-                  priority="15">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="profile/merge/custom//group/insert-controls/include-controls/with-id" -->
-      <field collapsible="no"
-              as-type="token"
-              name="with-id"
-              gi="with-id"
-              in-json="SCALAR">
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
-   </xsl:template>
-   <xsl:template match="j:map[@key='profile']/j:map[@key='merge']/j:map[@key='custom']//j:array[@key='groups']/j:map/j:array[@key='insert-controls']/j:map/j:array[@key='include-controls']/j:map/j:array[@key='with-ids']/j:string"
-                  mode="get-value-property"
-                  priority="15">
-      <value as-type="token" in-json="string">
-         <xsl:value-of select="."/>
-      </value>
-   </xsl:template>
-   <xsl:template match="j:map[@key='profile']/j:map[@key='merge']/j:map[@key='custom']//j:array[@key='groups']/j:map/j:array[@key='insert-controls']/j:map/j:array[@key='include-controls']/j:map/j:array[@key='matching']/j:map"
-                  priority="15">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="profile/merge/custom//group/insert-controls/include-controls/matching" -->
-      <assembly as-type="empty" name="matching" gi="matching">
-         <xsl:apply-templates select="*[@key='pattern']"/>
-      </assembly>
-   </xsl:template>
    <xsl:template match="j:map[@key='profile']/j:map[@key='merge']/j:map[@key='custom']//j:array[@key='groups']/j:map/j:array[@key='insert-controls']/j:map/j:array[@key='exclude-controls']/j:map"
                   priority="12">
       <xsl:param name="with-key" select="true()"/>
@@ -9194,33 +9168,6 @@
          <xsl:apply-templates select="*[@key='with-child-controls']"/>
          <xsl:apply-templates select="*[@key='with-ids']"/>
          <xsl:apply-templates select="*[@key='matching']"/>
-      </assembly>
-   </xsl:template>
-   <xsl:template match="j:map[@key='profile']/j:map[@key='merge']/j:map[@key='custom']//j:array[@key='groups']/j:map/j:array[@key='insert-controls']/j:map/j:array[@key='exclude-controls']/j:map/j:array[@key='with-ids']/j:string"
-                  priority="14">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="profile/merge/custom//group/insert-controls/exclude-controls/with-id" -->
-      <field collapsible="no"
-              as-type="token"
-              name="with-id"
-              gi="with-id"
-              in-json="SCALAR">
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
-   </xsl:template>
-   <xsl:template match="j:map[@key='profile']/j:map[@key='merge']/j:map[@key='custom']//j:array[@key='groups']/j:map/j:array[@key='insert-controls']/j:map/j:array[@key='exclude-controls']/j:map/j:array[@key='with-ids']/j:string"
-                  mode="get-value-property"
-                  priority="14">
-      <value as-type="token" in-json="string">
-         <xsl:value-of select="."/>
-      </value>
-   </xsl:template>
-   <xsl:template match="j:map[@key='profile']/j:map[@key='merge']/j:map[@key='custom']//j:array[@key='groups']/j:map/j:array[@key='insert-controls']/j:map/j:array[@key='exclude-controls']/j:map/j:array[@key='matching']/j:map"
-                  priority="14">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="profile/merge/custom//group/insert-controls/exclude-controls/matching" -->
-      <assembly as-type="empty" name="matching" gi="matching">
-         <xsl:apply-templates select="*[@key='pattern']"/>
       </assembly>
    </xsl:template>
    <xsl:template match="j:map[@key='profile']/j:map[@key='merge']/j:map[@key='custom']/j:array[@key='insert-controls']/j:map/j:array[@key='include-controls']/j:map"
@@ -9233,33 +9180,6 @@
          <xsl:apply-templates select="*[@key='matching']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:map[@key='profile']/j:map[@key='merge']/j:map[@key='custom']/j:array[@key='insert-controls']/j:map/j:array[@key='include-controls']/j:map/j:array[@key='with-ids']/j:string"
-                  priority="12">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="profile/merge/custom/insert-controls/include-controls/with-id" -->
-      <field collapsible="no"
-              as-type="token"
-              name="with-id"
-              gi="with-id"
-              in-json="SCALAR">
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
-   </xsl:template>
-   <xsl:template match="j:map[@key='profile']/j:map[@key='merge']/j:map[@key='custom']/j:array[@key='insert-controls']/j:map/j:array[@key='include-controls']/j:map/j:array[@key='with-ids']/j:string"
-                  mode="get-value-property"
-                  priority="12">
-      <value as-type="token" in-json="string">
-         <xsl:value-of select="."/>
-      </value>
-   </xsl:template>
-   <xsl:template match="j:map[@key='profile']/j:map[@key='merge']/j:map[@key='custom']/j:array[@key='insert-controls']/j:map/j:array[@key='include-controls']/j:map/j:array[@key='matching']/j:map"
-                  priority="12">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="profile/merge/custom/insert-controls/include-controls/matching" -->
-      <assembly as-type="empty" name="matching" gi="matching">
-         <xsl:apply-templates select="*[@key='pattern']"/>
-      </assembly>
-   </xsl:template>
    <xsl:template match="j:map[@key='profile']/j:map[@key='merge']/j:map[@key='custom']/j:array[@key='insert-controls']/j:map/j:array[@key='exclude-controls']/j:map"
                   priority="9">
       <xsl:param name="with-key" select="true()"/>
@@ -9268,33 +9188,6 @@
          <xsl:apply-templates select="*[@key='with-child-controls']"/>
          <xsl:apply-templates select="*[@key='with-ids']"/>
          <xsl:apply-templates select="*[@key='matching']"/>
-      </assembly>
-   </xsl:template>
-   <xsl:template match="j:map[@key='profile']/j:map[@key='merge']/j:map[@key='custom']/j:array[@key='insert-controls']/j:map/j:array[@key='exclude-controls']/j:map/j:array[@key='with-ids']/j:string"
-                  priority="11">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="profile/merge/custom/insert-controls/exclude-controls/with-id" -->
-      <field collapsible="no"
-              as-type="token"
-              name="with-id"
-              gi="with-id"
-              in-json="SCALAR">
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
-   </xsl:template>
-   <xsl:template match="j:map[@key='profile']/j:map[@key='merge']/j:map[@key='custom']/j:array[@key='insert-controls']/j:map/j:array[@key='exclude-controls']/j:map/j:array[@key='with-ids']/j:string"
-                  mode="get-value-property"
-                  priority="11">
-      <value as-type="token" in-json="string">
-         <xsl:value-of select="."/>
-      </value>
-   </xsl:template>
-   <xsl:template match="j:map[@key='profile']/j:map[@key='merge']/j:map[@key='custom']/j:array[@key='insert-controls']/j:map/j:array[@key='exclude-controls']/j:map/j:array[@key='matching']/j:map"
-                  priority="11">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="profile/merge/custom/insert-controls/exclude-controls/matching" -->
-      <assembly as-type="empty" name="matching" gi="matching">
-         <xsl:apply-templates select="*[@key='pattern']"/>
       </assembly>
    </xsl:template>
    <xsl:template match="j:map[@key='profile']/j:map[@key='modify']/j:array[@key='set-parameters']/j:map"
