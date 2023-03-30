@@ -8925,7 +8925,7 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="definition-link"><a href="#/assembly/oscal-control-common/include-all">See definition</a></p>
                   </div>
                </div>
-               <div class="model-entry definition assembly">
+               <div class="model-entry definition define-assembly">
                   <div class="instance-header">
                      <h2 id="/assembly/oscal-profile/import/include-controls" class="toc2 name">include-controls</h2>
                      <p class="type">assembly<br class="br" /> </p>
@@ -8934,23 +8934,79 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="formal-name">Select Control</p>
                   </div>
                   <div class="body">
-                     <p><span class="usa-tag">use name</span> <code class="name">include-controls</code></p>
+                     <p class="description"><span class="usa-tag">description</span> Select a control or controls from an imported control set.</p>
                      <div class="remarks-group usa-prose">
                         <details open="open">
                            <summary class="subhead">Remarks</summary>
                            <div class="remarks">
-                              <p>If <code>with-child-controls</code> is <q>yes</q> on the call to a control, no sibling <code>call</code>elements need to be used to call any controls appearing within it. Since generally,
-                                 this is how control enhancements are represented (as controls within controls), this
-                                 provides a way to include controls with all their dependent controls (enhancements)
-                                 without having to call them individually.</p>
-                           </div>
-                           <div class="remarks">
-                              <p>Identifies a subset of controls to import from the referenced catalog or profile by
-                                 control identifier or match pattern.</p>
+                              <p>If <code>with-child-controls</code> is <q>yes</q> on the call to a control, any controls appearing within it (child controls) will
+                                 be selected, with no additional <code>call</code> directives required. This flag provides a way to include controls with all their
+                                 dependent controls (enhancements) without having to call them individually.</p>
+                              <p>If with-parent-controls is "yes" on the call to a control, it will not be selected
+                                 and removed from (shown without) a parent control, but instead will be copied with
+                                 its parent in the source. This flag provides a way to include controls with all their
+                                 ancestor controls (enhancements) without having to call them individually.</p>
                            </div>
                         </details>
                      </div>
-                     <p class="definition-link"><a href="#/assembly/oscal-profile/select-control-by-id">See definition</a></p>
+                     <details open="open">
+                        <summary>Attributes (2):</summary>
+                        <div class="model assembly-model">
+                           <div class="model-entry definition flag">
+                              <div class="instance-header">
+                                 <h3 id="/assembly/oscal-profile/import/include-controls/with-child-controls" class="toc3 name">with-child-controls</h3>
+                                 <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                 <p class="occurrence">[0 or 1]</p>
+                                 <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-profile/import/include-controls/with-child-controls">Switch to JSON</a></div>
+                                 <p class="formal-name">Include Contained Controls with Control</p>
+                              </div>
+                              <div class="body">
+                                 <p class="definition-link"><a href="#/flag/oscal-profile/with-child-controls">See definition</a></p>
+                              </div>
+                           </div>
+                           <div class="model-entry definition flag">
+                              <div class="instance-header">
+                                 <h3 id="/assembly/oscal-profile/import/include-controls/with-parent-controls" class="toc3 name">with-parent-controls</h3>
+                                 <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                 <p class="occurrence">[0 or 1]</p>
+                                 <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-profile/import/include-controls/with-parent-controls">Switch to JSON</a></div>
+                                 <p class="formal-name">Include Parent Controls with Control</p>
+                              </div>
+                              <div class="body">
+                                 <p class="definition-link"><a href="#/flag/oscal-profile/with-parent-controls">See definition</a></p>
+                              </div>
+                           </div>
+                        </div>
+                     </details>
+                     <details open="open">
+                        <summary>Elements (2):</summary>
+                        <div class="model assembly-model">
+                           <div class="model-entry definition field">
+                              <div class="instance-header">
+                                 <h3 id="/assembly/oscal-profile/import/include-controls/with-id" class="toc3 name">with-id</h3>
+                                 <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                 <p class="occurrence">[0 to ∞]</p>
+                                 <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-profile/import/include-controls/with-ids">Switch to JSON</a></div>
+                                 <p class="formal-name">Match Controls by Identifier</p>
+                              </div>
+                              <div class="body">
+                                 <p class="definition-link"><a href="#/field/oscal-profile/with-id">See definition</a></p>
+                              </div>
+                           </div>
+                           <div class="model-entry definition assembly">
+                              <div class="instance-header">
+                                 <h3 id="/assembly/oscal-profile/import/include-controls/matching" class="toc3 name">matching</h3>
+                                 <p class="type">assembly<br class="br" /> </p>
+                                 <p class="occurrence">[0 to ∞]</p>
+                                 <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-profile/import/include-controls/matching">Switch to JSON</a></div>
+                                 <p class="formal-name">Match Controls by Pattern</p>
+                              </div>
+                              <div class="body">
+                                 <p class="definition-link"><a href="#/assembly/oscal-profile/matching">See definition</a></p>
+                              </div>
+                           </div>
+                        </div>
+                     </details>
                   </div>
                </div>
                <div class="model-entry definition assembly">
@@ -11349,6 +11405,34 @@ The following is a reference for the XML element and attribute types derived fro
                         </details>
                      </div>
                      <p class="definition-link"><a href="#/field/oscal-metadata/remarks">See definition</a></p>
+                  </div>
+               </div>
+            </div>
+         </details>
+      </div>
+   </div>
+   <div class="model-entry definition define-assembly">
+      <div class="definition-header">
+         <h1 id="/assembly/oscal-profile/matching" class="toc1 name">matching</h1>
+         <p class="type">assembly<br class="br" /> </p>
+         <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-profile/matching">Switch to JSON</a></div>
+         <p class="formal-name">Match Controls by Pattern</p>
+      </div>
+      <div class="body">
+         <p class="description"><span class="usa-tag">description</span> Selecting a set of controls by matching their IDs with a wildcard pattern.</p>
+         <details open="open">
+            <summary>Attribute (1):</summary>
+            <div class="model assembly-model">
+               <div class="model-entry definition flag">
+                  <div class="instance-header">
+                     <h2 id="/assembly/oscal-profile/matching/pattern" class="toc2 name">pattern</h2>
+                     <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                     <p class="occurrence">[0 or 1]</p>
+                     <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-profile/matching/pattern">Switch to JSON</a></div>
+                     <p class="formal-name">Pattern</p>
+                  </div>
+                  <div class="body">
+                     <p class="definition-link"><a href="#/flag/oscal-profile/pattern">See definition</a></p>
                   </div>
                </div>
             </div>
@@ -19344,7 +19428,7 @@ The following is a reference for the XML element and attribute types derived fro
          <details open="open">
             <summary>Elements (2):</summary>
             <div class="model assembly-model">
-               <div class="model-entry definition define-field">
+               <div class="model-entry definition field">
                   <div class="instance-header">
                      <h2 id="/assembly/oscal-profile/select-control-by-id/with-id" class="toc2 name">with-id</h2>
                      <p class="type"><a href="/reference/datatypes/#token">token</a></p>
@@ -19353,10 +19437,10 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="formal-name">Match Controls by Identifier</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> Selecting a control by its ID given as a literal.</p>
+                     <p class="definition-link"><a href="#/field/oscal-profile/with-id">See definition</a></p>
                   </div>
                </div>
-               <div class="model-entry definition define-assembly">
+               <div class="model-entry definition assembly">
                   <div class="instance-header">
                      <h2 id="/assembly/oscal-profile/select-control-by-id/matching" class="toc2 name">matching</h2>
                      <p class="type">assembly<br class="br" /> </p>
@@ -19365,24 +19449,7 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="formal-name">Match Controls by Pattern</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> Selecting a set of controls by matching their IDs with a wildcard pattern.</p>
-                     <details open="open">
-                        <summary>Attribute (1):</summary>
-                        <div class="model assembly-model">
-                           <div class="model-entry definition flag">
-                              <div class="instance-header">
-                                 <h3 id="/assembly/oscal-profile/select-control-by-id/matching/pattern" class="toc3 name">pattern</h3>
-                                 <p class="type"><a href="/reference/datatypes/#string">string</a></p>
-                                 <p class="occurrence">[0 or 1]</p>
-                                 <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-profile/select-control-by-id/matching/pattern">Switch to JSON</a></div>
-                                 <p class="formal-name">Pattern</p>
-                              </div>
-                              <div class="body">
-                                 <p class="definition-link"><a href="#/flag/oscal-profile/pattern">See definition</a></p>
-                              </div>
-                           </div>
-                        </div>
-                     </details>
+                     <p class="definition-link"><a href="#/assembly/oscal-profile/matching">See definition</a></p>
                   </div>
                </div>
             </div>
@@ -23454,6 +23521,43 @@ The following is a reference for the XML element and attribute types derived fro
                   <li><strong>yes</strong>: Include child controls with an included control.</li>
                   
                   <li><strong>no</strong>: When importing a control, only include child controls that are also explicitly called.</li>
+                  </ul>
+            </div>
+            </details>
+      </div>
+   </div>
+   <div class="model-entry definition define-field">
+      <div class="definition-header">
+         <h1 id="/field/oscal-profile/with-id" class="toc1 name">with-id</h1>
+         <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+         <div class="crosslink"><a class="usa-button" href="../json-definitions/#/field/oscal-profile/with-id">Switch to JSON</a></div>
+         <p class="formal-name">Match Controls by Identifier</p>
+      </div>
+      <div class="body">
+         <p class="description"><span class="usa-tag">description</span> Selecting a control by its ID given as a literal.</p>
+      </div>
+   </div>
+   <div class="model-entry definition define-flag">
+      <div class="definition-header">
+         <h1 id="/flag/oscal-profile/with-parent-controls" class="toc1 name">with-parent-controls</h1>
+         <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+         <div class="crosslink"><a class="usa-button" href="../json-definitions/#/flag/oscal-profile/with-parent-controls">Switch to JSON</a></div>
+         <p class="formal-name">Include Parent Controls with Control</p>
+      </div>
+      <div class="body">
+         <p class="description"><span class="usa-tag">description</span> When a control is included, whether its parent (ancestor) controls are also included.</p>
+         <details>
+            <summary>Constraint (1)</summary>
+            
+            <div class="constraint">
+               <p><span class="usa-tag">allowed values</span></p>
+               <p>The value <b>must</b> be one of the following:</p>
+               <ul>
+                  
+                  <li><strong>yes</strong>: Include parent controls with an included control.</li>
+                  
+                  <li><strong>no</strong>: When importing a control, only include parent controls that are also explicitly
+                     called.</li>
                   </ul>
             </div>
             </details>

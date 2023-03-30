@@ -4565,14 +4565,9 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                         <div class="model-entry definition assembly">
                            <div class="instance-header">
                               <h3 id="/profile/imports/include-controls" class="toc3 name">include-controls</h3>
-                              <p class="type">array<br /></p>
-                              <p class="occurrence">[1]</p>
-                              <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/import/include-controls">Switch to XML</a></div>
-                           </div>
-                           <div class="array-header">
-                              <p class="array-member">(array member)</p>
                               <p class="type">object<br /></p>
                               <p class="occurrence">[1 to ∞]</p>
+                              <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/import/include-controls">Switch to XML</a></div>
                               <p class="formal-name">Select Control</p>
                            </div>
                            <div class="body">
@@ -4581,19 +4576,18 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                  <details open="open">
                                     <summary class="subhead">Remarks</summary>
                                     <div class="remarks">
-                                       <p>If <code>with-child-controls</code> is <q>yes</q> on the call to a control, no sibling <code>call</code>elements need to be used to call any controls appearing within it. Since generally,
-                                          this is how control enhancements are represented (as controls within controls), this
-                                          provides a way to include controls with all their dependent controls (enhancements)
-                                          without having to call them individually.</p>
-                                    </div>
-                                    <div class="remarks">
-                                       <p>Identifies a subset of controls to import from the referenced catalog or profile by
-                                          control identifier or match pattern.</p>
+                                       <p>If <code>with-child-controls</code> is <q>yes</q> on the call to a control, any controls appearing within it (child controls) will
+                                          be selected, with no additional <code>call</code> directives required. This flag provides a way to include controls with all their
+                                          dependent controls (enhancements) without having to call them individually.</p>
+                                       <p>If with-parent-controls is "yes" on the call to a control, it will not be selected
+                                          and removed from (shown without) a parent control, but instead will be copied with
+                                          its parent in the source. This flag provides a way to include controls with all their
+                                          ancestor controls (enhancements) without having to call them individually.</p>
                                     </div>
                                  </details>
                               </div>
                               <details class="properties" open="open">
-                                 <summary>Properties (3)</summary>
+                                 <summary>Properties (4)</summary>
                                  <div class="model-entry definition assembly">
                                     <div class="instance-header">
                                        <h4 id="/profile/imports/include-controls/with-child-controls" class="toc4 name">with-child-controls</h4>
@@ -4614,6 +4608,32 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                 <li><strong>yes</strong>: Include child controls with an included control.</li>
                                                 
                                                 <li><strong>no</strong>: When importing a control, only include child controls that are also explicitly called.</li>
+                                                </ul>
+                                          </div>
+                                       </details>
+                                    </div>
+                                 </div>
+                                 <div class="model-entry definition assembly">
+                                    <div class="instance-header">
+                                       <h4 id="/profile/imports/include-controls/with-parent-controls" class="toc4 name">with-parent-controls</h4>
+                                       <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                       <p class="occurrence">[0 or 1]</p>
+                                       <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/import/include-controls/@with-parent-controls">Switch to XML</a></div>
+                                       <p class="formal-name">Include Parent Controls with Control</p>
+                                    </div>
+                                    <div class="body">
+                                       <p class="description"><span class="usa-tag">Description</span> When a control is included, whether its parent (ancestor) controls are also included.</p>
+                                       <details class="constraints" open="open">
+                                          <summary>Constraint (1)</summary>
+                                          <div class="constraint">
+                                             <p><span class="usa-tag">allowed values</span></p>
+                                             <p>The value <b>must</b> be one of the following:</p>
+                                             <ul>
+                                                
+                                                <li><strong>yes</strong>: Include parent controls with an included control.</li>
+                                                
+                                                <li><strong>no</strong>: When importing a control, only include parent controls that are also explicitly
+                                                   called.</li>
                                                 </ul>
                                           </div>
                                        </details>

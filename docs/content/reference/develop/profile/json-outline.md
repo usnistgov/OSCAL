@@ -921,43 +921,40 @@ The following outline is a representation of the [JSON format](https://github.co
                            </div>
                            <div class="OM-choice">
                               <details class="OM-entry">
-                                 <summary><span class="sq"><a class="OM-name" href="../json-reference/#/profile/imports/include-controls">include-controls</a> <span class="OM-cardinality">[1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ]</span></span></span></summary>
-                                 <div class="model-container array">
+                                 <summary><a class="OM-name" href="../json-reference/#/profile/imports/include-controls">include-controls</a> <span class="OM-cardinality">[1 to ∞]</span>: <span class="OM-lit">{<span class="show-closed"> … }</span></span></summary>
+                                 <div class="model-container object">
                                     <div class="OM-entry">
-                                       <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/profile/imports/include-controls">include-controls</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
-                                       <div class="model-container object">
-                                          <div class="OM-entry">
-                                             <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/imports/include-controls/with-child-controls">with-child-controls</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
-                                          </div>
-                                          <details class="OM-entry">
-                                             <summary><span class="sq"><a class="OM-name" href="../json-reference/#/profile/imports/include-controls/with-ids">with-ids</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
-                                             <div class="model-container array">
-                                                <div class="OM-entry">
-                                                   <p class="OM-line"><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/profile/imports/include-controls/with-ids">with-id</a> strings</span> <span class="OM-cardinality">[0 to ∞]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span></p>
-                                                </div>
-                                             </div>
-                                             <p><span class="OM-lit">], </span></p>
-                                          </details>
-                                          <details class="OM-entry">
-                                             <summary><span class="sq"><a class="OM-name" href="../json-reference/#/profile/imports/include-controls/matching">matching</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
-                                             <div class="model-container array">
-                                                <div class="OM-entry">
-                                                   <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/profile/imports/include-controls/matching">matching</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
-                                                   <div class="model-container object">
-                                                      <div class="OM-entry">
-                                                         <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/imports/include-controls/matching/pattern">pattern</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span></p>
-                                                      </div>
-                                                   </div>
-                                                   <p><span class="OM-lit"> }</span></p>
-                                                </div>
-                                             </div>
-                                             <p><span class="OM-lit">], </span></p>
-                                          </details>
-                                       </div>
-                                       <p><span class="OM-lit"> }</span></p>
+                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/imports/include-controls/with-child-controls">with-child-controls</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
                                     </div>
+                                    <div class="OM-entry">
+                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/imports/include-controls/with-parent-controls">with-parent-controls</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                    </div>
+                                    <details class="OM-entry">
+                                       <summary><span class="sq"><a class="OM-name" href="../json-reference/#/profile/imports/include-controls/with-ids">with-ids</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                       <div class="model-container array">
+                                          <div class="OM-entry">
+                                             <p class="OM-line"><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/profile/imports/include-controls/with-ids">with-id</a> strings</span> <span class="OM-cardinality">[0 to ∞]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span></p>
+                                          </div>
+                                       </div>
+                                       <p><span class="OM-lit">], </span></p>
+                                    </details>
+                                    <details class="OM-entry">
+                                       <summary><span class="sq"><a class="OM-name" href="../json-reference/#/profile/imports/include-controls/matching">matching</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                       <div class="model-container array">
+                                          <div class="OM-entry">
+                                             <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/profile/imports/include-controls/matching">matching</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                             <div class="model-container object">
+                                                <div class="OM-entry">
+                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/imports/include-controls/matching/pattern">pattern</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span></p>
+                                                </div>
+                                             </div>
+                                             <p><span class="OM-lit"> }</span></p>
+                                          </div>
+                                       </div>
+                                       <p><span class="OM-lit">], </span></p>
+                                    </details>
                                  </div>
-                                 <p><span class="OM-lit">]</span></p>
+                                 <p><span class="OM-lit"> }</span></p>
                               </details>
                            </div>
                         </div>
