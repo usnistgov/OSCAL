@@ -532,7 +532,7 @@ include-controls:
         </p>
         <section id="include-child-controls">
           <head>with-child-controls</head>
-          <p>Child controls can be explicitly included using the selection directives above or include all of the descendant controls of a given control, with the <code>with-child-controls</code> flag. <code>with-child-controls</code> appears as a child object under a given inclusion directive and defines the behaviors listed below.</p>
+          <p>When a control is selected, any child controls can be included by means the <code>with-child-controls</code> flag. This provides an alternative to selecting child or descendant controls explicitly by <code>id</code> or match. <code>with-child-controls</code> appears as a child object under a given inclusion directive and defines behaviors listed below.</p>
           <p><req level="must" id="req-with-child-controls-yes">A
             <src>with-child-controls: yes</src> directive on an
             <src>include-controls</src> indicates that
@@ -549,7 +549,7 @@ include-controls:
         </section>
         <section id="include-parent-controls">
           <head>with-parent-controls</head>
-          <p>The the optional <src>with-parent-controls</src> flag defines behavior applicable to parents or ancestors (a parent's parent etc) of the included control, in cases of nested controls. <src>with-parent-controls</src> appears as a child object under a given inclusion directive and defines the behaviors listed below. Its semantics assume that nesting of controls indicates logical dependencies in catalogs must persist unless a profile specifically indicates otherwise.</p>
+          <p>The the optional <src>with-parent-controls</src> flag defines behavior applicable to parents or ancestors (a parent's parent etc.) of the included control, in cases of nested controls. <src>with-parent-controls</src> appears as a child object under a given inclusion directive and defines the behaviors listed below. Its semantics assume that nesting of controls indicates logical dependencies in catalogs, which should be retained unless a profile specifically indicates otherwise.</p>
           <p><req level="must" id="req-with-parent-controls-yes">A
             <src>with-parent-controls: yes</src> directive on an
             <src>include-controls</src> indicates that
