@@ -81,7 +81,7 @@
                                     <p>Identifies that all controls are to be included from the imported catalog or profile.</p>
                               </remarks>
                         </assembly>
-                        <define-assembly name="include-controls">
+                        <define-assembly name="include-controls" min-occurs="1" max-occurs="unbounded">
                               <formal-name>Select Control</formal-name>
                               <description>Select a control or controls from an imported control set.</description>
                               <flag ref="with-child-controls"/>
@@ -95,8 +95,8 @@
                                     </assembly>
                               </model>
                               <remarks>
-                                    <p>If <code>with-child-controls</code> is <q>yes</q> on the call to a control, no sibling <code>call</code>elements need to be used to call any controls appearing within it. This flag provides a way to include controls with all their dependent controls (enhancements) without having to call them individually.</p>
-                                    <p>If <code>with-parent-controls</code> is <q>yes</q> on the call to a control, no sibling <code>call</code>elements need to be used to include any parent controls. This flag provides a way to include controls with all their ancestor controls (enhancements) without having to call them individually.</p>
+                                    <p>If <code>with-child-controls</code> is <q>yes</q> on the call to a control, any controls appearing within it (child controls) will be selected, with no additional <code>call</code> directives required. This flag provides a way to include controls with all their dependent controls (enhancements) without having to call them individually.</p>
+                                   <p>If with-parent-controls is "yes" on the call to a control, it will not be selected and removed from (shown without) a parent control, but instead will be copied with its parent in the source. This flag provides a way to include controls with all their ancestor controls (enhancements) without having to call them individually.</p>
                               </remarks>
                         </define-assembly>
                   </choice>
