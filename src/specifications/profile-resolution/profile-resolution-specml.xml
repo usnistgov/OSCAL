@@ -549,7 +549,7 @@ include-controls:
         </section>
         <section id="include-parent-controls">
           <head>with-parent-controls</head>
-          <p>The the optional <src>with-parent-controls</src> flag applies to parents of the included control. If a profile author wants to change this structure, they should use an exclude directive that lists all of the undesired parents. <src>with-parent-controls</src> appears as a child object under a given inclusion directive and defines the behaviors listed below.</p>
+          <p>The the optional <src>with-parent-controls</src> flag defines behavior applicable to parents or ancestors (a parent's parent etc) of the included control, in cases of nested controls. <src>with-parent-controls</src> appears as a child object under a given inclusion directive and defines the behaviors listed below. Its semantics assume that nesting of controls indicates logical dependencies in catalogs must persist unless a profile specifically indicates otherwise.</p>
           <p><req level="must" id="req-with-parent-controls-yes">A
             <src>with-parent-controls: yes</src> directive on an
             <src>include-controls</src> indicates that
