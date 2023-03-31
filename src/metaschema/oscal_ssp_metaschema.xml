@@ -729,9 +729,6 @@
         <enum value="customer-provided">The control must be implemented by the customer.</enum>
         <enum value="inherited">This control is inherited from an underlying system.</enum>
       </allowed-values>
-      <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
-        <enum value="leveraged-authorization">Indicates all or some portion of this control is inherited from an underlying authorized system.</enum>
-      </allowed-values>
       <allowed-values target="responsible-role/@role-id" allow-other="yes">
             &allowed-values-responsible-roles-operations;
       </allowed-values>
