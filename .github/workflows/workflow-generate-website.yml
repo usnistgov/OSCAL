@@ -45,7 +45,18 @@ jobs:
       JAVA_CLASSPATH: ${{ github.workspace}}/lib
       BUILD_PATH: ./build
       CICD_PATH: ./build/ci-cd
+      WORKFLOW_MONITORING_COMMAND_NOA: "echo 'NO TOKEN';curl -s -I  https://api.github.com/users/${{ github.actor }} | grep -E \"x-ratelimit-remaining|x-ratelimit-limit|x-ratelimit-used|^HTTP\""
+      WORKFLOW_MONITORING_COMMAND_GHT: "echo 'GITHUB TOKEN';curl -s -I -H \"Authorization: token ${{ secrets.GITHUB_TOKEN }}\" -H \"Accept: application/vnd.github+json\" https://api.github.com/users/${{ github.actor }} | grep -E \"x-ratelimit-remaining|x-ratelimit-limit|x-ratelimit-used|^HTTP\""
+      WORKFLOW_MONITORING_COMMAND_ACT: "echo 'ACCESS TOKEN';curl -s -I -H \"Authorization: token ${{ secrets.access_token }}\" -H \"Accept: application/vnd.github+json\" https://api.github.com/users/${{ github.actor }} | grep -E \"x-ratelimit-remaining|x-ratelimit-limit|x-ratelimit-used|^HTTP\""
+      WORKFLOW_MONITORING_COMMAND_CMT: "echo 'COMMIT TOKEN';curl -s -I -H \"Authorization: token ${{ secrets.COMMIT_TOKEN }}\" -H \"Accept: application/vnd.github+json\" https://api.github.com/users/${{ github.actor }} | grep -E \"x-ratelimit-remaining|x-ratelimit-limit|x-ratelimit-used|^HTTP\""
     steps:
+    - name: Monitor Workflow Rate Limits
+      run: |
+        ${{ env.WORKFLOW_MONITORING_COMMAND_NOA }}
+        ${{ env.WORKFLOW_MONITORING_COMMAND_GHT }}
+        ${{ env.WORKFLOW_MONITORING_COMMAND_ACT }}
+        ${{ env.WORKFLOW_MONITORING_COMMAND_CMT }}
+      id: monitor_rate_limits_before
     # use this for builds triggered from the UI on protected branches
     - name: Checkout Latest (using COMMIT_TOKEN)
       if: github.event_name == 'workflow_dispatch' && github.event.inputs.commit_resources == 'true'
@@ -154,3 +165,10 @@ jobs:
         user_name: OSCAL GitHub Actions Bot
         user_email: oscal@nist.gov
         commit_message: Deploying website [ci deploy skip]
+    - name: Monitor Workflow Rate Limits
+      run: |
+        ${{ env.WORKFLOW_MONITORING_COMMAND_NOA }}
+        ${{ env.WORKFLOW_MONITORING_COMMAND_GHT }}
+        ${{ env.WORKFLOW_MONITORING_COMMAND_ACT }}
+        ${{ env.WORKFLOW_MONITORING_COMMAND_CMT }}
+      id: monitor_rate_limits_after
