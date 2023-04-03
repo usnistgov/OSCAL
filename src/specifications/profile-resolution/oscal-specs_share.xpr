@@ -1685,6 +1685,26 @@
                         <scenarioAssociation-array>
                             <scenarioAssociation>
                                 <field name="url">
+                                    <String>requirement-tests/req-with-parent-controls-no1.xml</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>OSCAL Profile schema (current local copy)</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>Validation_scenario</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioStorageLocations">
+                                    <list>
+                                        <Byte>2</Byte>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
                                     <String>../../../../../NIST/OSCAL-working/FedRAMP/profilesJuly2022/output-actual/ars-5.0-low-profile_RESOLVED.xml</String>
                                 </field>
                                 <field name="scenarioIds">
