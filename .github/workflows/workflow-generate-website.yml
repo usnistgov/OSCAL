@@ -45,7 +45,18 @@ jobs:
       JAVA_CLASSPATH: ${{ github.workspace}}/lib
       BUILD_PATH: ./build
       CICD_PATH: ./build/ci-cd
+      WORKFLOW_MONITORING_COMMAND_NOA: "echo 'NO TOKEN';curl -s -I  https://api.github.com/users/${{ github.actor }} | grep -E \"x-ratelimit-remaining|x-ratelimit-limit|x-ratelimit-used|^HTTP\""
+      WORKFLOW_MONITORING_COMMAND_GHT: "echo 'GITHUB TOKEN';curl -s -I -H \"Authorization: token ${{ secrets.GITHUB_TOKEN }}\" -H \"Accept: application/vnd.github+json\" https://api.github.com/users/${{ github.actor }} | grep -E \"x-ratelimit-remaining|x-ratelimit-limit|x-ratelimit-used|^HTTP\""
+      WORKFLOW_MONITORING_COMMAND_ACT: "echo 'ACCESS TOKEN';curl -s -I -H \"Authorization: token ${{ secrets.access_token }}\" -H \"Accept: application/vnd.github+json\" https://api.github.com/users/${{ github.actor }} | grep -E \"x-ratelimit-remaining|x-ratelimit-limit|x-ratelimit-used|^HTTP\""
+      WORKFLOW_MONITORING_COMMAND_CMT: "echo 'COMMIT TOKEN';curl -s -I -H \"Authorization: token ${{ secrets.COMMIT_TOKEN }}\" -H \"Accept: application/vnd.github+json\" https://api.github.com/users/${{ github.actor }} | grep -E \"x-ratelimit-remaining|x-ratelimit-limit|x-ratelimit-used|^HTTP\""
     steps:
+    - name: Monitor Workflow Rate Limits
+      run: |
+        ${{ env.WORKFLOW_MONITORING_COMMAND_NOA }}
+        ${{ env.WORKFLOW_MONITORING_COMMAND_GHT }}
+        ${{ env.WORKFLOW_MONITORING_COMMAND_ACT }}
+        ${{ env.WORKFLOW_MONITORING_COMMAND_CMT }}
+      id: monitor_rate_limits_before
     # use this for builds triggered from the UI on protected branches
     - name: Checkout Latest (using COMMIT_TOKEN)
       if: github.event_name == 'workflow_dispatch' && github.event.inputs.commit_resources == 'true'
@@ -134,35 +145,11 @@ jobs:
         path: |
           ${{ runner.temp }}/metaschema-website.zip
         retention-days: 5
-    - name: Link Checker
-      id: linkchecker
-      uses: lycheeverse/lychee-action@76ab977fedbeaeb32029313724a2e56a8a393548
-      with:
-        args: --exclude-file ./build/config/.lycheeignore --verbose --no-progress './docs/public/**/*.html' --accept 200,206,429
-        format: markdown
-        output: html-link-report.md
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    - uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8
-      with:
-        name: html-link-report
-        path: html-link-report.md
-        retention-days: 5
-    - uses: actions/github-script@7a5c598405937d486b0331594b5da2b14db670da
-      if: steps.linkchecker.outputs.exit_code != 0
-      with:
-        script: |
-          core.setFailed('Link checker detected broken or invalid links, read attached report.')
-    - uses: actions/github-script@7a5c598405937d486b0331594b5da2b14db670da
-      if: steps.linkchecker.outputs.exit_code != 0 && (github.event.inputs.bad_links_fail_build == 'true' || inputs.bad_links_fail_build == true)
-      with:
-        script: |
-          core.setFailed('Link checker detected broken or invalid links, read attached report.')
     - name: Deploy Website (using access_token)
       uses: peaceiris/actions-gh-pages@068dc23d9710f1ba62e86896f84735d869951305
       if: github.event_name == 'push' && inputs.commit_resources == true && github.ref_name == 'main'
       with:
-        github_token: ${{ secrets.access_token }}
+        personal_token: ${{ secrets.access_token }}
         enable_jekyll: false
         publish_dir: ./docs/public
         publish_branch: nist-pages
@@ -171,11 +158,17 @@ jobs:
       uses: peaceiris/actions-gh-pages@068dc23d9710f1ba62e86896f84735d869951305
       if: github.event_name == 'workflow_dispatch' && github.event.inputs.commit_resources == 'true' && github.ref_name == 'main'
       with:
-        github_token: ${{ secrets.COMMIT_TOKEN }}
+        personal_token: ${{ secrets.COMMIT_TOKEN }}
         enable_jekyll: false
         publish_dir: ./docs/public
         publish_branch: nist-pages
-        commit_user_name: OSCAL GitHub Actions Bot
-        commit_user_email: oscal@nist.gov
-        commit_author: OSCAL GitHub Actions Bot <oscal@nist.gov>
+        user_name: OSCAL GitHub Actions Bot
+        user_email: oscal@nist.gov
         commit_message: Deploying website [ci deploy skip]
+    - name: Monitor Workflow Rate Limits
+      run: |
+        ${{ env.WORKFLOW_MONITORING_COMMAND_NOA }}
+        ${{ env.WORKFLOW_MONITORING_COMMAND_GHT }}
+        ${{ env.WORKFLOW_MONITORING_COMMAND_ACT }}
+        ${{ env.WORKFLOW_MONITORING_COMMAND_CMT }}
+      id: monitor_rate_limits_after
