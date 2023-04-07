@@ -46,7 +46,7 @@ COPY --from=oscal-hugo-build /go/bin/hugo /usr/local/bin
 ENV SAXON_HOME=/opt/oscal
 ENV CALABASH_HOME=${SAXON_HOME}
 ENV SAXON_CP="/opt/oscal/*"
-ENV PATH=/opt/oscal/node_modules/.bin:${PATH}
+ENV PATH=/oscal/build/metaschema/support/xspec/bin:/opt/oscal/node_modules/.bin:${PATH}
 
 RUN git config --global --add safe.directory /oscal
 
