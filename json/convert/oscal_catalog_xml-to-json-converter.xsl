@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel"
-                xmlns:m="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
-                xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                version="3.0"
-                exclude-result-prefixes="#all"
-                xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                 xmlns:m="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
+                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                 version="3.0"
+                 exclude-result-prefixes="#all"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
 <!-- XML to JSON conversion: pipeline -->
 <!-- Supports either of two interfaces:
       simply handle the XML as source (easier), producing the JSON as output, or
@@ -31,7 +31,7 @@
          <xsl:choose><!-- evaluating $file as URI relative to nominal source directory -->
             <xsl:when test="exists($file)">
                <xsl:try xmlns:err="http://www.w3.org/2005/xqt-errors"
-                        select="$file ! document(.,$source-xml)">
+                         select="$file ! document(.,$source-xml)">
                   <xsl:catch expand-text="true">
                      <nm:ERROR xmlns:nm="http://csrc.nist.gov/ns/metaschema" code="{ $err:code }">{ $err:description }</nm:ERROR>
                   </xsl:catch>
@@ -60,7 +60,7 @@
                   </xsl:when>
                   <xsl:otherwise>
                      <xsl:try xmlns:err="http://www.w3.org/2005/xqt-errors"
-                              select="xml-to-json($new-json-xml, $write-options)">
+                               select="xml-to-json($new-json-xml, $write-options)">
                         <xsl:catch expand-text="true">
                            <nm:ERROR xmlns:nm="http://csrc.nist.gov/ns/metaschema" code="{ $err:code }">{ $err:description }</nm:ERROR>
                         </xsl:catch>
@@ -81,7 +81,7 @@
    <!-- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ -->
    <!-- METASCHEMA:  in namespace "http://csrc.nist.gov/ns/oscal/1.0"-->
    <xsl:template match="catalog"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <assembly name="catalog" key="catalog" gi="catalog">
          <xsl:if test="$with-key">
@@ -117,7 +117,7 @@
       </assembly>
    </xsl:template>
    <xsl:template match="metadata"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <assembly name="metadata" key="metadata" gi="metadata">
          <xsl:if test="$with-key">
@@ -182,7 +182,7 @@
       </assembly>
    </xsl:template>
    <xsl:template match="prop"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <assembly name="property" gi="prop">
          <xsl:apply-templates select="@name"/>
@@ -194,7 +194,7 @@
       </assembly>
    </xsl:template>
    <xsl:template match="link"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <assembly name="link" gi="link">
          <xsl:apply-templates select="@href"/>
@@ -204,7 +204,7 @@
       </assembly>
    </xsl:template>
    <xsl:template match="role"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <assembly name="role" gi="role">
          <xsl:apply-templates select="@id"/>
@@ -229,7 +229,7 @@
       </assembly>
    </xsl:template>
    <xsl:template match="location"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <assembly name="location" gi="location">
          <xsl:apply-templates select="@uuid"/>
@@ -274,7 +274,7 @@
       </assembly>
    </xsl:template>
    <xsl:template match="party"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <assembly name="party" gi="party">
          <xsl:apply-templates select="@uuid"/>
@@ -341,7 +341,7 @@
       </assembly>
    </xsl:template>
    <xsl:template match="responsible-party"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <assembly name="responsible-party" gi="responsible-party">
          <xsl:apply-templates select="@role-id"/>
@@ -370,7 +370,7 @@
       </assembly>
    </xsl:template>
    <xsl:template match="param"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <assembly name="parameter" gi="param">
          <xsl:apply-templates select="@id"/>
@@ -418,7 +418,7 @@
       </assembly>
    </xsl:template>
    <xsl:template match="constraint"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <assembly name="parameter-constraint" gi="constraint">
          <xsl:apply-templates select="description"/>
@@ -432,21 +432,21 @@
       </assembly>
    </xsl:template>
    <xsl:template match="guideline"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <assembly name="parameter-guideline" gi="guideline">
          <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
-                             group-by="true()">
+                              group-by="true()">
             <field in-json="SCALAR"
-                   in-xml="UNWRAPPED"
-                   collapsible="no"
-                   as-type="markup-multiline"
-                   name="prose"
-                   key="prose">
+                    in-xml="UNWRAPPED"
+                    collapsible="no"
+                    as-type="markup-multiline"
+                    name="prose"
+                    key="prose">
                <value in-json="string"
-                      as-type="markup-multiline"
-                      _metaschema-xml-id="/assembly/oscal-catalog-common/parameter-guideline/prose/PROSE"
-                      _metaschema-json-id="/assembly/oscal-catalog-common/parameter-guideline/prose/PROSE">
+                       as-type="markup-multiline"
+                       _metaschema-xml-id="/assembly/oscal-catalog-common/parameter-guideline/prose/PROSE"
+                       _metaschema-json-id="/assembly/oscal-catalog-common/parameter-guideline/prose/PROSE">
                   <xsl:apply-templates select="current-group()" mode="cast-prose"/>
                </value>
             </field>
@@ -454,7 +454,7 @@
       </assembly>
    </xsl:template>
    <xsl:template match="select"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <assembly name="parameter-selection" key="select" gi="select">
          <xsl:if test="$with-key">
@@ -471,7 +471,7 @@
       </assembly>
    </xsl:template>
    <xsl:template match="control"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <assembly name="control" gi="control">
          <xsl:apply-templates select="@id"/>
@@ -515,7 +515,7 @@
       </assembly>
    </xsl:template>
    <xsl:template match="part"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <assembly name="part" gi="part">
          <xsl:apply-templates select="@id"/>
@@ -531,17 +531,17 @@
             </group>
          </xsl:for-each-group>
          <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
-                             group-by="true()">
+                              group-by="true()">
             <field in-json="SCALAR"
-                   in-xml="UNWRAPPED"
-                   collapsible="no"
-                   as-type="markup-multiline"
-                   name="prose"
-                   key="prose">
+                    in-xml="UNWRAPPED"
+                    collapsible="no"
+                    as-type="markup-multiline"
+                    name="prose"
+                    key="prose">
                <value in-json="string"
-                      as-type="markup-multiline"
-                      _metaschema-xml-id="/assembly/oscal-catalog-common/part/prose/PROSE"
-                      _metaschema-json-id="/assembly/oscal-catalog-common/part/prose/PROSE">
+                       as-type="markup-multiline"
+                       _metaschema-xml-id="/assembly/oscal-catalog-common/part/prose/PROSE"
+                       _metaschema-json-id="/assembly/oscal-catalog-common/part/prose/PROSE">
                   <xsl:apply-templates select="current-group()" mode="cast-prose"/>
                </value>
             </field>
@@ -563,7 +563,7 @@
       </assembly>
    </xsl:template>
    <xsl:template match="group"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <assembly name="group" gi="group">
          <xsl:apply-templates select="@id"/>
@@ -614,7 +614,7 @@
       </assembly>
    </xsl:template>
    <xsl:template match="back-matter"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <assembly name="back-matter" key="back-matter" gi="back-matter">
          <xsl:if test="$with-key">
@@ -630,67 +630,67 @@
       </assembly>
    </xsl:template>
    <xsl:template match="remarks"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field in-xml="WITH_WRAPPER"
-             collapsible="no"
-             as-type="markup-multiline"
-             name="remarks"
-             key="remarks"
-             gi="remarks"
-             in-json="SCALAR">
+              collapsible="no"
+              as-type="markup-multiline"
+              name="remarks"
+              key="remarks"
+              gi="remarks"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">remarks</xsl:attribute>
          </xsl:if>
          <value as-type="markup-multiline" in-json="string">
             <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
-                                group-by="true()">
+                                 group-by="true()">
                <xsl:apply-templates select="current-group()" mode="cast-prose"/>
             </xsl:for-each-group>
          </value>
       </field>
    </xsl:template>
    <xsl:template match="location-uuid"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="uuid"
-             name="location-uuid"
-             gi="location-uuid"
-             in-json="SCALAR">
+              as-type="uuid"
+              name="location-uuid"
+              gi="location-uuid"
+              in-json="SCALAR">
          <value as-type="uuid" in-json="string">
             <xsl:value-of select="."/>
          </value>
       </field>
    </xsl:template>
    <xsl:template match="party-uuid"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="uuid"
-             name="party-uuid"
-             gi="party-uuid"
-             in-json="SCALAR">
+              as-type="uuid"
+              name="party-uuid"
+              gi="party-uuid"
+              in-json="SCALAR">
          <value as-type="uuid" in-json="string">
             <xsl:value-of select="."/>
          </value>
       </field>
    </xsl:template>
    <xsl:template match="value"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="string"
-             name="parameter-value"
-             gi="value"
-             in-json="SCALAR">
+              as-type="string"
+              name="parameter-value"
+              gi="value"
+              in-json="SCALAR">
          <value as-type="string" in-json="string">
             <xsl:value-of select="."/>
          </value>
       </field>
    </xsl:template>
    <xsl:template match="hash"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no" as-type="string" name="hash" gi="hash">
          <xsl:apply-templates select="@algorithm"/>
@@ -700,380 +700,380 @@
       </field>
    </xsl:template>
    <xsl:template match="catalog/@uuid"
-                 priority="1"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="1"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
-            as-type="uuid"
-            name="uuid"
-            key="uuid"
-            gi="uuid">
+             as-type="uuid"
+             name="uuid"
+             key="uuid"
+             gi="uuid">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="prop/@name"
-                 priority="1"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="1"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
-            as-type="token"
-            name="name"
-            key="name"
-            gi="name">
+             as-type="token"
+             name="name"
+             key="name"
+             gi="name">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="prop/@uuid"
-                 priority="1"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="1"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
-            as-type="uuid"
-            name="uuid"
-            key="uuid"
-            gi="uuid">
+             as-type="uuid"
+             name="uuid"
+             key="uuid"
+             gi="uuid">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="prop/@ns"
-                 priority="1"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="1"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string" as-type="uri" name="ns" key="ns" gi="ns">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="prop/@value"
-                 priority="1"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="1"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
-            as-type="string"
-            name="value"
-            key="value"
-            gi="value">
+             as-type="string"
+             name="value"
+             key="value"
+             gi="value">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="prop/@class"
-                 priority="1"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="1"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
-            as-type="token"
-            name="class"
-            key="class"
-            gi="class">
+             as-type="token"
+             name="class"
+             key="class"
+             gi="class">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="link/@href"
-                 priority="1"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="1"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
-            as-type="uri-reference"
-            name="href"
-            key="href"
-            gi="href">
+             as-type="uri-reference"
+             name="href"
+             key="href"
+             gi="href">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="link/@rel"
-                 priority="1"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="1"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
-            as-type="token"
-            name="rel"
-            key="rel"
-            gi="rel">
+             as-type="token"
+             name="rel"
+             key="rel"
+             gi="rel">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="link/@media-type"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
-            as-type="string"
-            name="media-type"
-            key="media-type"
-            gi="media-type">
+             as-type="string"
+             name="media-type"
+             key="media-type"
+             gi="media-type">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="catalog/metadata/document-id/@scheme | catalog/back-matter/resource/document-id/@scheme"
-                 priority="6"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="6"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
-            as-type="uri"
-            name="scheme"
-            key="scheme"
-            gi="scheme">
+             as-type="uri"
+             name="scheme"
+             key="scheme"
+             gi="scheme">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="role/@id"
-                 priority="1"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="1"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string" as-type="token" name="id" key="id" gi="id">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="location/@uuid"
-                 priority="1"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="1"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
-            as-type="uuid"
-            name="uuid"
-            key="uuid"
-            gi="uuid">
+             as-type="uuid"
+             name="uuid"
+             key="uuid"
+             gi="uuid">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="catalog/metadata/location/address/@type | catalog/metadata/party/address/@type"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
-            as-type="token"
-            name="location-type"
-            key="type"
-            gi="type">
+             as-type="token"
+             name="location-type"
+             key="type"
+             gi="type">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="catalog/metadata/location/telephone-number/@type | catalog/metadata/party/telephone-number/@type"
-                 priority="8"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="8"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
-            as-type="string"
-            name="type"
-            key="type"
-            gi="type">
+             as-type="string"
+             name="type"
+             key="type"
+             gi="type">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="party/@uuid"
-                 priority="1"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="1"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
-            as-type="uuid"
-            name="uuid"
-            key="uuid"
-            gi="uuid">
+             as-type="uuid"
+             name="uuid"
+             key="uuid"
+             gi="uuid">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="party/@type"
-                 priority="1"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="1"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
-            as-type="string"
-            name="type"
-            key="type"
-            gi="type">
+             as-type="string"
+             name="type"
+             key="type"
+             gi="type">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="catalog/metadata/party/external-id/@scheme"
-                 priority="8"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="8"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
-            as-type="uri"
-            name="scheme"
-            key="scheme"
-            gi="scheme">
+             as-type="uri"
+             name="scheme"
+             key="scheme"
+             gi="scheme">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="responsible-party/@role-id"
-                 priority="1"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="1"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
-            as-type="token"
-            name="role-id"
-            key="role-id"
-            gi="role-id">
+             as-type="token"
+             name="role-id"
+             key="role-id"
+             gi="role-id">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="param/@id"
-                 priority="1"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="1"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string" as-type="token" name="id" key="id" gi="id">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="param/@class"
-                 priority="1"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="1"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
-            as-type="token"
-            name="class"
-            key="class"
-            gi="class">
+             as-type="token"
+             name="class"
+             key="class"
+             gi="class">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="param/@depends-on"
-                 priority="1"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="1"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
-            as-type="token"
-            name="depends-on"
-            key="depends-on"
-            deprecated="1.0.1"
-            gi="depends-on">
+             as-type="token"
+             name="depends-on"
+             key="depends-on"
+             deprecated="1.0.1"
+             gi="depends-on">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="select/@how-many"
-                 priority="1"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="1"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
-            as-type="token"
-            name="how-many"
-            key="how-many"
-            gi="how-many">
+             as-type="token"
+             name="how-many"
+             key="how-many"
+             gi="how-many">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="control/@id"
-                 priority="1"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="1"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string" as-type="token" name="id" key="id" gi="id">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="control/@class"
-                 priority="1"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="1"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
-            as-type="token"
-            name="class"
-            key="class"
-            gi="class">
+             as-type="token"
+             name="class"
+             key="class"
+             gi="class">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="part/@id"
-                 priority="1"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="1"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string" as-type="token" name="id" key="id" gi="id">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="part/@name"
-                 priority="1"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="1"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
-            as-type="token"
-            name="name"
-            key="name"
-            gi="name">
+             as-type="token"
+             name="name"
+             key="name"
+             gi="name">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="part/@ns"
-                 priority="1"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="1"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string" as-type="uri" name="ns" key="ns" gi="ns">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="part/@class"
-                 priority="1"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="1"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
-            as-type="token"
-            name="class"
-            key="class"
-            gi="class">
+             as-type="token"
+             name="class"
+             key="class"
+             gi="class">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="group/@id"
-                 priority="1"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="1"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string" as-type="token" name="id" key="id" gi="id">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="group/@class"
-                 priority="1"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="1"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
-            as-type="token"
-            name="class"
-            key="class"
-            gi="class">
+             as-type="token"
+             name="class"
+             key="class"
+             gi="class">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="catalog/back-matter/resource/@uuid"
-                 priority="6"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="6"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
-            as-type="uuid"
-            name="uuid"
-            key="uuid"
-            gi="uuid">
+             as-type="uuid"
+             name="uuid"
+             key="uuid"
+             gi="uuid">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="catalog/back-matter/resource/rlink/@href"
-                 priority="8"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="8"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
-            as-type="uri-reference"
-            name="href"
-            key="href"
-            gi="href">
+             as-type="uri-reference"
+             name="href"
+             key="href"
+             gi="href">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="catalog/back-matter/resource/rlink/@media-type"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
-            as-type="string"
-            name="media-type"
-            key="media-type"
-            gi="media-type">
+             as-type="string"
+             name="media-type"
+             key="media-type"
+             gi="media-type">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="hash/@algorithm"
-                 priority="3"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="3"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
-            as-type="string"
-            name="algorithm"
-            key="algorithm"
-            gi="algorithm">
+             as-type="string"
+             name="algorithm"
+             key="algorithm"
+             gi="algorithm">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="catalog/back-matter/resource/base64/@filename"
-                 priority="7"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="7"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
-            as-type="uri-reference"
-            name="filename"
-            key="filename"
-            gi="filename">
+             as-type="uri-reference"
+             name="filename"
+             key="filename"
+             gi="filename">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="catalog/back-matter/resource/base64/@media-type"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
-            as-type="string"
-            name="media-type"
-            key="media-type"
-            gi="media-type">
+             as-type="string"
+             name="media-type"
+             key="media-type"
+             gi="media-type">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="catalog/metadata/title"
-                 priority="4"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="4"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="markup-line"
-             name="title"
-             key="title"
-             gi="title"
-             in-json="SCALAR">
+              as-type="markup-line"
+              name="title"
+              key="title"
+              gi="title"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
@@ -1083,15 +1083,15 @@
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/published"
-                 priority="4"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="4"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="dateTime-with-timezone"
-             name="published"
-             key="published"
-             gi="published"
-             in-json="SCALAR">
+              as-type="dateTime-with-timezone"
+              name="published"
+              key="published"
+              gi="published"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">published</xsl:attribute>
          </xsl:if>
@@ -1101,15 +1101,15 @@
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/last-modified"
-                 priority="4"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="4"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="dateTime-with-timezone"
-             name="last-modified"
-             key="last-modified"
-             gi="last-modified"
-             in-json="SCALAR">
+              as-type="dateTime-with-timezone"
+              name="last-modified"
+              key="last-modified"
+              gi="last-modified"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">last-modified</xsl:attribute>
          </xsl:if>
@@ -1119,15 +1119,15 @@
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/version"
-                 priority="4"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="4"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="string"
-             name="version"
-             key="version"
-             gi="version"
-             in-json="SCALAR">
+              as-type="string"
+              name="version"
+              key="version"
+              gi="version"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">version</xsl:attribute>
          </xsl:if>
@@ -1137,15 +1137,15 @@
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/oscal-version"
-                 priority="4"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="4"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="string"
-             name="oscal-version"
-             key="oscal-version"
-             gi="oscal-version"
-             in-json="SCALAR">
+              as-type="string"
+              name="oscal-version"
+              key="oscal-version"
+              gi="oscal-version"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">oscal-version</xsl:attribute>
          </xsl:if>
@@ -1155,8 +1155,8 @@
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/revisions/revision"
-                 priority="5"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="5"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <assembly name="revision" gi="revision">
          <xsl:apply-templates select="title"/>
@@ -1182,14 +1182,14 @@
       </assembly>
    </xsl:template>
    <xsl:template match="catalog/metadata/revisions"
-                 priority="4"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="4"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <group in-xml="SHOWN"
-             gi="revisions"
-             group-json="ARRAY"
-             name="revision"
-             key="revisions">
+              gi="revisions"
+              group-json="ARRAY"
+              name="revision"
+              key="revisions">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">revisions</xsl:attribute>
          </xsl:if>
@@ -1197,15 +1197,15 @@
       </group>
    </xsl:template>
    <xsl:template match="catalog/metadata/revisions/revision/title"
-                 priority="6"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="6"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="markup-line"
-             name="title"
-             key="title"
-             gi="title"
-             in-json="SCALAR">
+              as-type="markup-line"
+              name="title"
+              key="title"
+              gi="title"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
@@ -1215,15 +1215,15 @@
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/revisions/revision/published"
-                 priority="6"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="6"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="dateTime-with-timezone"
-             name="published"
-             key="published"
-             gi="published"
-             in-json="SCALAR">
+              as-type="dateTime-with-timezone"
+              name="published"
+              key="published"
+              gi="published"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">published</xsl:attribute>
          </xsl:if>
@@ -1233,15 +1233,15 @@
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/revisions/revision/last-modified"
-                 priority="6"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="6"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="dateTime-with-timezone"
-             name="last-modified"
-             key="last-modified"
-             gi="last-modified"
-             in-json="SCALAR">
+              as-type="dateTime-with-timezone"
+              name="last-modified"
+              key="last-modified"
+              gi="last-modified"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">last-modified</xsl:attribute>
          </xsl:if>
@@ -1251,15 +1251,15 @@
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/revisions/revision/version"
-                 priority="6"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="6"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="string"
-             name="version"
-             key="version"
-             gi="version"
-             in-json="SCALAR">
+              as-type="string"
+              name="version"
+              key="version"
+              gi="version"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">version</xsl:attribute>
          </xsl:if>
@@ -1269,15 +1269,15 @@
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/revisions/revision/oscal-version"
-                 priority="6"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="6"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="string"
-             name="oscal-version"
-             key="oscal-version"
-             gi="oscal-version"
-             in-json="SCALAR">
+              as-type="string"
+              name="oscal-version"
+              key="oscal-version"
+              gi="oscal-version"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">oscal-version</xsl:attribute>
          </xsl:if>
@@ -1287,15 +1287,15 @@
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/revisions/revision/link/text"
-                 priority="8"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="8"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="markup-line"
-             name="text"
-             key="text"
-             gi="text"
-             in-json="SCALAR">
+              as-type="markup-line"
+              name="text"
+              key="text"
+              gi="text"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
@@ -1305,13 +1305,13 @@
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/document-id"
-                 priority="5"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="5"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="string"
-             name="document-id"
-             gi="document-id">
+              as-type="string"
+              name="document-id"
+              gi="document-id">
          <xsl:apply-templates select="@scheme"/>
          <value as-type="string" key="identifier" in-json="string">
             <xsl:value-of select="."/>
@@ -1319,15 +1319,15 @@
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/link/text"
-                 priority="6"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="6"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="markup-line"
-             name="text"
-             key="text"
-             gi="text"
-             in-json="SCALAR">
+              as-type="markup-line"
+              name="text"
+              key="text"
+              gi="text"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
@@ -1337,15 +1337,15 @@
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/role/title"
-                 priority="6"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="6"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="markup-line"
-             name="title"
-             key="title"
-             gi="title"
-             in-json="SCALAR">
+              as-type="markup-line"
+              name="title"
+              key="title"
+              gi="title"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
@@ -1355,15 +1355,15 @@
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/role/short-name"
-                 priority="6"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="6"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="string"
-             name="short-name"
-             key="short-name"
-             gi="short-name"
-             in-json="SCALAR">
+              as-type="string"
+              name="short-name"
+              key="short-name"
+              gi="short-name"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">short-name</xsl:attribute>
          </xsl:if>
@@ -1373,37 +1373,37 @@
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/role/description"
-                 priority="6"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="6"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field in-xml="WITH_WRAPPER"
-             collapsible="no"
-             as-type="markup-multiline"
-             name="description"
-             key="description"
-             gi="description"
-             in-json="SCALAR">
+              collapsible="no"
+              as-type="markup-multiline"
+              name="description"
+              key="description"
+              gi="description"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
          <value as-type="markup-multiline" in-json="string">
             <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
-                                group-by="true()">
+                                 group-by="true()">
                <xsl:apply-templates select="current-group()" mode="cast-prose"/>
             </xsl:for-each-group>
          </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/role/link/text"
-                 priority="8"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="8"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="markup-line"
-             name="text"
-             key="text"
-             gi="text"
-             in-json="SCALAR">
+              as-type="markup-line"
+              name="text"
+              key="text"
+              gi="text"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
@@ -1413,15 +1413,15 @@
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/location/title"
-                 priority="6"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="6"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="markup-line"
-             name="title"
-             key="title"
-             gi="title"
-             in-json="SCALAR">
+              as-type="markup-line"
+              name="title"
+              key="title"
+              gi="title"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
@@ -1431,8 +1431,8 @@
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/location/address"
-                 priority="6"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="6"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <assembly name="address" key="address" gi="address">
          <xsl:if test="$with-key">
@@ -1453,29 +1453,29 @@
       </assembly>
    </xsl:template>
    <xsl:template match="catalog/metadata/location/address/addr-line"
-                 priority="8"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="8"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="string"
-             name="addr-line"
-             gi="addr-line"
-             in-json="SCALAR">
+              as-type="string"
+              name="addr-line"
+              gi="addr-line"
+              in-json="SCALAR">
          <value as-type="string" in-json="string">
             <xsl:value-of select="."/>
          </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/location/address/city"
-                 priority="7"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="7"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="string"
-             name="city"
-             key="city"
-             gi="city"
-             in-json="SCALAR">
+              as-type="string"
+              name="city"
+              key="city"
+              gi="city"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">city</xsl:attribute>
          </xsl:if>
@@ -1485,15 +1485,15 @@
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/location/address/state"
-                 priority="7"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="7"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="string"
-             name="state"
-             key="state"
-             gi="state"
-             in-json="SCALAR">
+              as-type="string"
+              name="state"
+              key="state"
+              gi="state"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">state</xsl:attribute>
          </xsl:if>
@@ -1503,15 +1503,15 @@
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/location/address/postal-code"
-                 priority="7"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="7"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="string"
-             name="postal-code"
-             key="postal-code"
-             gi="postal-code"
-             in-json="SCALAR">
+              as-type="string"
+              name="postal-code"
+              key="postal-code"
+              gi="postal-code"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">postal-code</xsl:attribute>
          </xsl:if>
@@ -1521,15 +1521,15 @@
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/location/address/country"
-                 priority="7"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="7"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="string"
-             name="country"
-             key="country"
-             gi="country"
-             in-json="SCALAR">
+              as-type="string"
+              name="country"
+              key="country"
+              gi="country"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">country</xsl:attribute>
          </xsl:if>
@@ -1539,27 +1539,27 @@
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/location/email-address"
-                 priority="7"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="7"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="email"
-             name="email-address"
-             gi="email-address"
-             in-json="SCALAR">
+              as-type="email"
+              name="email-address"
+              gi="email-address"
+              in-json="SCALAR">
          <value as-type="email" in-json="string">
             <xsl:value-of select="."/>
          </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/location/telephone-number"
-                 priority="7"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="7"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="string"
-             name="telephone-number"
-             gi="telephone-number">
+              as-type="string"
+              name="telephone-number"
+              gi="telephone-number">
          <xsl:apply-templates select="@type"/>
          <value as-type="string" key="number" in-json="string">
             <xsl:value-of select="."/>
@@ -1567,29 +1567,29 @@
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/location/url"
-                 priority="7"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="7"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="uri"
-             name="url"
-             gi="url"
-             in-json="SCALAR">
+              as-type="uri"
+              name="url"
+              gi="url"
+              in-json="SCALAR">
          <value as-type="uri" in-json="string">
             <xsl:value-of select="."/>
          </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/location/link/text"
-                 priority="8"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="8"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="markup-line"
-             name="text"
-             key="text"
-             gi="text"
-             in-json="SCALAR">
+              as-type="markup-line"
+              name="text"
+              key="text"
+              gi="text"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
@@ -1599,15 +1599,15 @@
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/party/name"
-                 priority="6"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="6"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="string"
-             name="name"
-             key="name"
-             gi="name"
-             in-json="SCALAR">
+              as-type="string"
+              name="name"
+              key="name"
+              gi="name"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">name</xsl:attribute>
          </xsl:if>
@@ -1617,15 +1617,15 @@
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/party/short-name"
-                 priority="6"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="6"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="string"
-             name="short-name"
-             key="short-name"
-             gi="short-name"
-             in-json="SCALAR">
+              as-type="string"
+              name="short-name"
+              key="short-name"
+              gi="short-name"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">short-name</xsl:attribute>
          </xsl:if>
@@ -1635,13 +1635,13 @@
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/party/external-id"
-                 priority="7"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="7"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="string"
-             name="external-id"
-             gi="external-id">
+              as-type="string"
+              name="external-id"
+              gi="external-id">
          <xsl:apply-templates select="@scheme"/>
          <value as-type="string" key="id" in-json="string">
             <xsl:value-of select="."/>
@@ -1649,15 +1649,15 @@
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/party/link/text"
-                 priority="8"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="8"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="markup-line"
-             name="text"
-             key="text"
-             gi="text"
-             in-json="SCALAR">
+              as-type="markup-line"
+              name="text"
+              key="text"
+              gi="text"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
@@ -1667,27 +1667,27 @@
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/party/email-address"
-                 priority="7"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="7"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="email"
-             name="email-address"
-             gi="email-address"
-             in-json="SCALAR">
+              as-type="email"
+              name="email-address"
+              gi="email-address"
+              in-json="SCALAR">
          <value as-type="email" in-json="string">
             <xsl:value-of select="."/>
          </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/party/telephone-number"
-                 priority="7"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="7"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="string"
-             name="telephone-number"
-             gi="telephone-number">
+              as-type="string"
+              name="telephone-number"
+              gi="telephone-number">
          <xsl:apply-templates select="@type"/>
          <value as-type="string" key="number" in-json="string">
             <xsl:value-of select="."/>
@@ -1695,8 +1695,8 @@
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/party/address"
-                 priority="8"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="8"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <assembly name="address" gi="address">
          <xsl:apply-templates select="@type"/>
@@ -1714,29 +1714,29 @@
       </assembly>
    </xsl:template>
    <xsl:template match="catalog/metadata/party/address/addr-line"
-                 priority="10"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="10"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="string"
-             name="addr-line"
-             gi="addr-line"
-             in-json="SCALAR">
+              as-type="string"
+              name="addr-line"
+              gi="addr-line"
+              in-json="SCALAR">
          <value as-type="string" in-json="string">
             <xsl:value-of select="."/>
          </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/party/address/city"
-                 priority="9"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="9"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="string"
-             name="city"
-             key="city"
-             gi="city"
-             in-json="SCALAR">
+              as-type="string"
+              name="city"
+              key="city"
+              gi="city"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">city</xsl:attribute>
          </xsl:if>
@@ -1746,15 +1746,15 @@
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/party/address/state"
-                 priority="9"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="9"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="string"
-             name="state"
-             key="state"
-             gi="state"
-             in-json="SCALAR">
+              as-type="string"
+              name="state"
+              key="state"
+              gi="state"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">state</xsl:attribute>
          </xsl:if>
@@ -1764,15 +1764,15 @@
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/party/address/postal-code"
-                 priority="9"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="9"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="string"
-             name="postal-code"
-             key="postal-code"
-             gi="postal-code"
-             in-json="SCALAR">
+              as-type="string"
+              name="postal-code"
+              key="postal-code"
+              gi="postal-code"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">postal-code</xsl:attribute>
          </xsl:if>
@@ -1782,15 +1782,15 @@
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/party/address/country"
-                 priority="9"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="9"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="string"
-             name="country"
-             key="country"
-             gi="country"
-             in-json="SCALAR">
+              as-type="string"
+              name="country"
+              key="country"
+              gi="country"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">country</xsl:attribute>
          </xsl:if>
@@ -1800,29 +1800,29 @@
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/party/member-of-organization"
-                 priority="7"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="7"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="uuid"
-             name="member-of-organization"
-             gi="member-of-organization"
-             in-json="SCALAR">
+              as-type="uuid"
+              name="member-of-organization"
+              gi="member-of-organization"
+              in-json="SCALAR">
          <value as-type="uuid" in-json="string">
             <xsl:value-of select="."/>
          </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/responsible-party/link/text"
-                 priority="8"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="8"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="markup-line"
-             name="text"
-             key="text"
-             gi="text"
-             in-json="SCALAR">
+              as-type="markup-line"
+              name="text"
+              key="text"
+              gi="text"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
@@ -1832,15 +1832,15 @@
       </field>
    </xsl:template>
    <xsl:template match="catalog/param/link/text"
-                 priority="7"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="7"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="markup-line"
-             name="text"
-             key="text"
-             gi="text"
-             in-json="SCALAR">
+              as-type="markup-line"
+              name="text"
+              key="text"
+              gi="text"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
@@ -1850,15 +1850,15 @@
       </field>
    </xsl:template>
    <xsl:template match="catalog/param/label"
-                 priority="5"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="5"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="markup-line"
-             name="label"
-             key="label"
-             gi="label"
-             in-json="SCALAR">
+              as-type="markup-line"
+              name="label"
+              key="label"
+              gi="label"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">label</xsl:attribute>
          </xsl:if>
@@ -1868,52 +1868,52 @@
       </field>
    </xsl:template>
    <xsl:template match="catalog/param/usage"
-                 priority="5"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="5"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field in-xml="WITH_WRAPPER"
-             collapsible="no"
-             as-type="markup-multiline"
-             name="usage"
-             key="usage"
-             gi="usage"
-             in-json="SCALAR">
+              collapsible="no"
+              as-type="markup-multiline"
+              name="usage"
+              key="usage"
+              gi="usage"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">usage</xsl:attribute>
          </xsl:if>
          <value as-type="markup-multiline" in-json="string">
             <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
-                                group-by="true()">
+                                 group-by="true()">
                <xsl:apply-templates select="current-group()" mode="cast-prose"/>
             </xsl:for-each-group>
          </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog/param/constraint/description"
-                 priority="7"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="7"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field in-xml="WITH_WRAPPER"
-             collapsible="no"
-             as-type="markup-multiline"
-             name="description"
-             key="description"
-             gi="description"
-             in-json="SCALAR">
+              collapsible="no"
+              as-type="markup-multiline"
+              name="description"
+              key="description"
+              gi="description"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
          <value as-type="markup-multiline" in-json="string">
             <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
-                                group-by="true()">
+                                 group-by="true()">
                <xsl:apply-templates select="current-group()" mode="cast-prose"/>
             </xsl:for-each-group>
          </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog/param/constraint/test"
-                 priority="8"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="8"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <assembly name="test" gi="test">
          <xsl:apply-templates select="expression"/>
@@ -1921,15 +1921,15 @@
       </assembly>
    </xsl:template>
    <xsl:template match="catalog/param/constraint/test/expression"
-                 priority="9"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="9"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="string"
-             name="expression"
-             key="expression"
-             gi="expression"
-             in-json="SCALAR">
+              as-type="string"
+              name="expression"
+              key="expression"
+              gi="expression"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">expression</xsl:attribute>
          </xsl:if>
@@ -1939,29 +1939,29 @@
       </field>
    </xsl:template>
    <xsl:template match="catalog/param/select/choice"
-                 priority="8"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="8"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="markup-line"
-             name="parameter-choice"
-             gi="choice"
-             in-json="SCALAR">
+              as-type="markup-line"
+              name="parameter-choice"
+              gi="choice"
+              in-json="SCALAR">
          <value as-type="markup-line" in-json="string">
             <xsl:apply-templates mode="cast-prose"/>
          </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog//control/title"
-                 priority="5"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="5"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="markup-line"
-             name="title"
-             key="title"
-             gi="title"
-             in-json="SCALAR">
+              as-type="markup-line"
+              name="title"
+              key="title"
+              gi="title"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
@@ -1971,15 +1971,15 @@
       </field>
    </xsl:template>
    <xsl:template match="catalog//control/param/link/text"
-                 priority="9"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="9"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="markup-line"
-             name="text"
-             key="text"
-             gi="text"
-             in-json="SCALAR">
+              as-type="markup-line"
+              name="text"
+              key="text"
+              gi="text"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
@@ -1989,15 +1989,15 @@
       </field>
    </xsl:template>
    <xsl:template match="catalog//control/param/label"
-                 priority="7"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="7"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="markup-line"
-             name="label"
-             key="label"
-             gi="label"
-             in-json="SCALAR">
+              as-type="markup-line"
+              name="label"
+              key="label"
+              gi="label"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">label</xsl:attribute>
          </xsl:if>
@@ -2007,52 +2007,52 @@
       </field>
    </xsl:template>
    <xsl:template match="catalog//control/param/usage"
-                 priority="7"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="7"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field in-xml="WITH_WRAPPER"
-             collapsible="no"
-             as-type="markup-multiline"
-             name="usage"
-             key="usage"
-             gi="usage"
-             in-json="SCALAR">
+              collapsible="no"
+              as-type="markup-multiline"
+              name="usage"
+              key="usage"
+              gi="usage"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">usage</xsl:attribute>
          </xsl:if>
          <value as-type="markup-multiline" in-json="string">
             <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
-                                group-by="true()">
+                                 group-by="true()">
                <xsl:apply-templates select="current-group()" mode="cast-prose"/>
             </xsl:for-each-group>
          </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog//control/param/constraint/description"
-                 priority="9"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="9"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field in-xml="WITH_WRAPPER"
-             collapsible="no"
-             as-type="markup-multiline"
-             name="description"
-             key="description"
-             gi="description"
-             in-json="SCALAR">
+              collapsible="no"
+              as-type="markup-multiline"
+              name="description"
+              key="description"
+              gi="description"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
          <value as-type="markup-multiline" in-json="string">
             <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
-                                group-by="true()">
+                                 group-by="true()">
                <xsl:apply-templates select="current-group()" mode="cast-prose"/>
             </xsl:for-each-group>
          </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog//control/param/constraint/test"
-                 priority="10"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="10"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <assembly name="test" gi="test">
          <xsl:apply-templates select="expression"/>
@@ -2060,15 +2060,15 @@
       </assembly>
    </xsl:template>
    <xsl:template match="catalog//control/param/constraint/test/expression"
-                 priority="11"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="11"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="string"
-             name="expression"
-             key="expression"
-             gi="expression"
-             in-json="SCALAR">
+              as-type="string"
+              name="expression"
+              key="expression"
+              gi="expression"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">expression</xsl:attribute>
          </xsl:if>
@@ -2078,29 +2078,29 @@
       </field>
    </xsl:template>
    <xsl:template match="catalog//control/param/select/choice"
-                 priority="10"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="10"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="markup-line"
-             name="parameter-choice"
-             gi="choice"
-             in-json="SCALAR">
+              as-type="markup-line"
+              name="parameter-choice"
+              gi="choice"
+              in-json="SCALAR">
          <value as-type="markup-line" in-json="string">
             <xsl:apply-templates mode="cast-prose"/>
          </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog//control/link/text"
-                 priority="7"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="7"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="markup-line"
-             name="text"
-             key="text"
-             gi="text"
-             in-json="SCALAR">
+              as-type="markup-line"
+              name="text"
+              key="text"
+              gi="text"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
@@ -2110,15 +2110,15 @@
       </field>
    </xsl:template>
    <xsl:template match="catalog//control//part/title"
-                 priority="7"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="7"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="markup-line"
-             name="title"
-             key="title"
-             gi="title"
-             in-json="SCALAR">
+              as-type="markup-line"
+              name="title"
+              key="title"
+              gi="title"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
@@ -2128,15 +2128,15 @@
       </field>
    </xsl:template>
    <xsl:template match="catalog//control//part/link/text"
-                 priority="9"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="9"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="markup-line"
-             name="text"
-             key="text"
-             gi="text"
-             in-json="SCALAR">
+              as-type="markup-line"
+              name="text"
+              key="text"
+              gi="text"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
@@ -2146,15 +2146,15 @@
       </field>
    </xsl:template>
    <xsl:template match="catalog//group/title"
-                 priority="5"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="5"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="markup-line"
-             name="title"
-             key="title"
-             gi="title"
-             in-json="SCALAR">
+              as-type="markup-line"
+              name="title"
+              key="title"
+              gi="title"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
@@ -2164,15 +2164,15 @@
       </field>
    </xsl:template>
    <xsl:template match="catalog//group/param/link/text"
-                 priority="9"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="9"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="markup-line"
-             name="text"
-             key="text"
-             gi="text"
-             in-json="SCALAR">
+              as-type="markup-line"
+              name="text"
+              key="text"
+              gi="text"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
@@ -2182,15 +2182,15 @@
       </field>
    </xsl:template>
    <xsl:template match="catalog//group/param/label"
-                 priority="7"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="7"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="markup-line"
-             name="label"
-             key="label"
-             gi="label"
-             in-json="SCALAR">
+              as-type="markup-line"
+              name="label"
+              key="label"
+              gi="label"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">label</xsl:attribute>
          </xsl:if>
@@ -2200,52 +2200,52 @@
       </field>
    </xsl:template>
    <xsl:template match="catalog//group/param/usage"
-                 priority="7"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="7"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field in-xml="WITH_WRAPPER"
-             collapsible="no"
-             as-type="markup-multiline"
-             name="usage"
-             key="usage"
-             gi="usage"
-             in-json="SCALAR">
+              collapsible="no"
+              as-type="markup-multiline"
+              name="usage"
+              key="usage"
+              gi="usage"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">usage</xsl:attribute>
          </xsl:if>
          <value as-type="markup-multiline" in-json="string">
             <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
-                                group-by="true()">
+                                 group-by="true()">
                <xsl:apply-templates select="current-group()" mode="cast-prose"/>
             </xsl:for-each-group>
          </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog//group/param/constraint/description"
-                 priority="9"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="9"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field in-xml="WITH_WRAPPER"
-             collapsible="no"
-             as-type="markup-multiline"
-             name="description"
-             key="description"
-             gi="description"
-             in-json="SCALAR">
+              collapsible="no"
+              as-type="markup-multiline"
+              name="description"
+              key="description"
+              gi="description"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
          <value as-type="markup-multiline" in-json="string">
             <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
-                                group-by="true()">
+                                 group-by="true()">
                <xsl:apply-templates select="current-group()" mode="cast-prose"/>
             </xsl:for-each-group>
          </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog//group/param/constraint/test"
-                 priority="10"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="10"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <assembly name="test" gi="test">
          <xsl:apply-templates select="expression"/>
@@ -2253,15 +2253,15 @@
       </assembly>
    </xsl:template>
    <xsl:template match="catalog//group/param/constraint/test/expression"
-                 priority="11"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="11"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="string"
-             name="expression"
-             key="expression"
-             gi="expression"
-             in-json="SCALAR">
+              as-type="string"
+              name="expression"
+              key="expression"
+              gi="expression"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">expression</xsl:attribute>
          </xsl:if>
@@ -2271,29 +2271,29 @@
       </field>
    </xsl:template>
    <xsl:template match="catalog//group/param/select/choice"
-                 priority="10"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="10"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="markup-line"
-             name="parameter-choice"
-             gi="choice"
-             in-json="SCALAR">
+              as-type="markup-line"
+              name="parameter-choice"
+              gi="choice"
+              in-json="SCALAR">
          <value as-type="markup-line" in-json="string">
             <xsl:apply-templates mode="cast-prose"/>
          </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog//group/link/text"
-                 priority="7"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="7"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="markup-line"
-             name="text"
-             key="text"
-             gi="text"
-             in-json="SCALAR">
+              as-type="markup-line"
+              name="text"
+              key="text"
+              gi="text"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
@@ -2303,15 +2303,15 @@
       </field>
    </xsl:template>
    <xsl:template match="catalog//group//part/title"
-                 priority="7"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="7"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="markup-line"
-             name="title"
-             key="title"
-             gi="title"
-             in-json="SCALAR">
+              as-type="markup-line"
+              name="title"
+              key="title"
+              gi="title"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
@@ -2321,15 +2321,15 @@
       </field>
    </xsl:template>
    <xsl:template match="catalog//group//part/link/text"
-                 priority="9"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="9"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="markup-line"
-             name="text"
-             key="text"
-             gi="text"
-             in-json="SCALAR">
+              as-type="markup-line"
+              name="text"
+              key="text"
+              gi="text"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
@@ -2339,15 +2339,15 @@
       </field>
    </xsl:template>
    <xsl:template match="catalog//group//control/title"
-                 priority="8"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="8"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="markup-line"
-             name="title"
-             key="title"
-             gi="title"
-             in-json="SCALAR">
+              as-type="markup-line"
+              name="title"
+              key="title"
+              gi="title"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
@@ -2357,15 +2357,15 @@
       </field>
    </xsl:template>
    <xsl:template match="catalog//group//control/param/link/text"
-                 priority="12"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="12"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="markup-line"
-             name="text"
-             key="text"
-             gi="text"
-             in-json="SCALAR">
+              as-type="markup-line"
+              name="text"
+              key="text"
+              gi="text"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
@@ -2375,15 +2375,15 @@
       </field>
    </xsl:template>
    <xsl:template match="catalog//group//control/param/label"
-                 priority="10"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="10"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="markup-line"
-             name="label"
-             key="label"
-             gi="label"
-             in-json="SCALAR">
+              as-type="markup-line"
+              name="label"
+              key="label"
+              gi="label"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">label</xsl:attribute>
          </xsl:if>
@@ -2393,52 +2393,52 @@
       </field>
    </xsl:template>
    <xsl:template match="catalog//group//control/param/usage"
-                 priority="10"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="10"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field in-xml="WITH_WRAPPER"
-             collapsible="no"
-             as-type="markup-multiline"
-             name="usage"
-             key="usage"
-             gi="usage"
-             in-json="SCALAR">
+              collapsible="no"
+              as-type="markup-multiline"
+              name="usage"
+              key="usage"
+              gi="usage"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">usage</xsl:attribute>
          </xsl:if>
          <value as-type="markup-multiline" in-json="string">
             <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
-                                group-by="true()">
+                                 group-by="true()">
                <xsl:apply-templates select="current-group()" mode="cast-prose"/>
             </xsl:for-each-group>
          </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog//group//control/param/constraint/description"
-                 priority="12"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="12"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field in-xml="WITH_WRAPPER"
-             collapsible="no"
-             as-type="markup-multiline"
-             name="description"
-             key="description"
-             gi="description"
-             in-json="SCALAR">
+              collapsible="no"
+              as-type="markup-multiline"
+              name="description"
+              key="description"
+              gi="description"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
          <value as-type="markup-multiline" in-json="string">
             <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
-                                group-by="true()">
+                                 group-by="true()">
                <xsl:apply-templates select="current-group()" mode="cast-prose"/>
             </xsl:for-each-group>
          </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog//group//control/param/constraint/test"
-                 priority="13"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="13"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <assembly name="test" gi="test">
          <xsl:apply-templates select="expression"/>
@@ -2446,15 +2446,15 @@
       </assembly>
    </xsl:template>
    <xsl:template match="catalog//group//control/param/constraint/test/expression"
-                 priority="14"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="14"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="string"
-             name="expression"
-             key="expression"
-             gi="expression"
-             in-json="SCALAR">
+              as-type="string"
+              name="expression"
+              key="expression"
+              gi="expression"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">expression</xsl:attribute>
          </xsl:if>
@@ -2464,29 +2464,29 @@
       </field>
    </xsl:template>
    <xsl:template match="catalog//group//control/param/select/choice"
-                 priority="13"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="13"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="markup-line"
-             name="parameter-choice"
-             gi="choice"
-             in-json="SCALAR">
+              as-type="markup-line"
+              name="parameter-choice"
+              gi="choice"
+              in-json="SCALAR">
          <value as-type="markup-line" in-json="string">
             <xsl:apply-templates mode="cast-prose"/>
          </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog//group//control/link/text"
-                 priority="10"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="10"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="markup-line"
-             name="text"
-             key="text"
-             gi="text"
-             in-json="SCALAR">
+              as-type="markup-line"
+              name="text"
+              key="text"
+              gi="text"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
@@ -2496,15 +2496,15 @@
       </field>
    </xsl:template>
    <xsl:template match="catalog//group//control//part/title"
-                 priority="10"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="10"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="markup-line"
-             name="title"
-             key="title"
-             gi="title"
-             in-json="SCALAR">
+              as-type="markup-line"
+              name="title"
+              key="title"
+              gi="title"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
@@ -2514,15 +2514,15 @@
       </field>
    </xsl:template>
    <xsl:template match="catalog//group//control//part/link/text"
-                 priority="12"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="12"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="markup-line"
-             name="text"
-             key="text"
-             gi="text"
-             in-json="SCALAR">
+              as-type="markup-line"
+              name="text"
+              key="text"
+              gi="text"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
@@ -2532,8 +2532,8 @@
       </field>
    </xsl:template>
    <xsl:template match="catalog/back-matter/resource"
-                 priority="5"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="5"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <assembly name="resource" gi="resource">
          <xsl:apply-templates select="@uuid"/>
@@ -2566,15 +2566,15 @@
       </assembly>
    </xsl:template>
    <xsl:template match="catalog/back-matter/resource/title"
-                 priority="6"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="6"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="markup-line"
-             name="title"
-             key="title"
-             gi="title"
-             in-json="SCALAR">
+              as-type="markup-line"
+              name="title"
+              key="title"
+              gi="title"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
@@ -2584,35 +2584,35 @@
       </field>
    </xsl:template>
    <xsl:template match="catalog/back-matter/resource/description"
-                 priority="6"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="6"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field in-xml="WITH_WRAPPER"
-             collapsible="no"
-             as-type="markup-multiline"
-             name="description"
-             key="description"
-             gi="description"
-             in-json="SCALAR">
+              collapsible="no"
+              as-type="markup-multiline"
+              name="description"
+              key="description"
+              gi="description"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
          <value as-type="markup-multiline" in-json="string">
             <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
-                                group-by="true()">
+                                 group-by="true()">
                <xsl:apply-templates select="current-group()" mode="cast-prose"/>
             </xsl:for-each-group>
          </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog/back-matter/resource/document-id"
-                 priority="7"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="7"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="string"
-             name="document-id"
-             gi="document-id">
+              as-type="string"
+              name="document-id"
+              gi="document-id">
          <xsl:apply-templates select="@scheme"/>
          <value as-type="string" key="identifier" in-json="string">
             <xsl:value-of select="."/>
@@ -2620,8 +2620,8 @@
       </field>
    </xsl:template>
    <xsl:template match="catalog/back-matter/resource/citation"
-                 priority="6"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="6"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <assembly name="citation" key="citation" gi="citation">
          <xsl:if test="$with-key">
@@ -2645,15 +2645,15 @@
       </assembly>
    </xsl:template>
    <xsl:template match="catalog/back-matter/resource/citation/text"
-                 priority="7"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="7"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="markup-line"
-             name="text"
-             key="text"
-             gi="text"
-             in-json="SCALAR">
+              as-type="markup-line"
+              name="text"
+              key="text"
+              gi="text"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
@@ -2663,15 +2663,15 @@
       </field>
    </xsl:template>
    <xsl:template match="catalog/back-matter/resource/citation/link/text"
-                 priority="9"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="9"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="markup-line"
-             name="text"
-             key="text"
-             gi="text"
-             in-json="SCALAR">
+              as-type="markup-line"
+              name="text"
+              key="text"
+              gi="text"
+              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
@@ -2681,8 +2681,8 @@
       </field>
    </xsl:template>
    <xsl:template match="catalog/back-matter/resource/rlink"
-                 priority="7"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="7"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <assembly name="rlink" gi="rlink">
          <xsl:apply-templates select="@href"/>
@@ -2697,14 +2697,14 @@
       </assembly>
    </xsl:template>
    <xsl:template match="catalog/back-matter/resource/base64"
-                 priority="6"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  priority="6"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
-             as-type="base64Binary"
-             name="base64"
-             key="base64"
-             gi="base64">
+              as-type="base64Binary"
+              name="base64"
+              key="base64"
+              gi="base64">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">base64</xsl:attribute>
          </xsl:if>
@@ -2716,10 +2716,10 @@
       </field>
    </xsl:template>
    <xsl:template match="*"
-                 mode="cast-prose"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+                  mode="cast-prose"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:element name="{ local-name() }"
-                   namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
+                    namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
          <xsl:copy-of select="@*"/>
          <xsl:apply-templates mode="#current"/>
       </xsl:element>
@@ -2727,49 +2727,43 @@
    <!-- XML to JSON conversion: Supermodel serialization as JSON
         including markdown production -->
    <xsl:variable xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 name="ns"
-                 select="/*/@namespace"/>
+                  name="ns"
+                  select="/*/@namespace"/>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 match="group"
-                 mode="write-json"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
+                  match="group"
+                  mode="write-json"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
       <array>
          <xsl:copy-of select="@key"/>
          <xsl:apply-templates mode="#current"/>
       </array>
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 match="group[@in-json='BY_KEY']"
-                 mode="write-json"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
+                  match="group[@in-json='BY_KEY']"
+                  mode="write-json"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
       <map>
          <xsl:copy-of select="@key"/>
          <xsl:apply-templates mode="#current"/>
       </map>
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 match="flag[@key=../@json-key-flag]"
-                 mode="write-json"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel"/>
+                  match="flag[@key=../@json-key-flag]"
+                  mode="write-json"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel"/>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 match="group[@in-json='SINGLETON_OR_ARRAY'][count(*)=1]"
-                 mode="write-json"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
+                  match="group[@in-json='SINGLETON_OR_ARRAY'][count(*)=1]"
+                  mode="write-json"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
       <xsl:apply-templates mode="write-json">
          <xsl:with-param name="group-key" select="@key"/>
       </xsl:apply-templates>
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 priority="2"
-                 match="group/assembly | group/field"
-                 mode="write-json"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
+                  priority="2"
+                  match="group/assembly | group/field"
+                  mode="write-json"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
         <!-- $group-key is only provided when group/@in-json="SINGLETON_OR_ASSEMBLY" and there is one member of the group -->
       <xsl:param name="group-key" select="()"/>
       <!--@json-key-flag is only available when group/@in-json="BY_KEY"-->
@@ -2787,11 +2781,10 @@
       </map>
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 priority="3"
-                 match="group/field[@in-json='SCALAR']"
-                 mode="write-json"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
+                  priority="3"
+                  match="group/field[@in-json='SCALAR']"
+                  mode="write-json"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
       <xsl:param name="group-key" select="()"/>
       <xsl:variable name="json-key-flag-name" select="@json-key-flag"/>
       <!-- with no flags, this field has only its value -->
@@ -2800,37 +2793,33 @@
       </xsl:apply-templates>
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 match="/assembly"
-                 mode="write-json"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
+                  match="/assembly"
+                  mode="write-json"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
       <map>
          <xsl:next-match/>
       </map>
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 match="assembly"
-                 mode="write-json"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
+                  match="assembly"
+                  mode="write-json"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
       <map key="{@key}">
          <xsl:apply-templates mode="#current"/>
       </map>
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 match="field"
-                 mode="write-json"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
+                  match="field"
+                  mode="write-json"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
       <map key="{@key}">
          <xsl:apply-templates mode="#current"/>
       </map>
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 match="field[@in-json='SCALAR']"
-                 mode="write-json"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
+                  match="field[@in-json='SCALAR']"
+                  mode="write-json"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
       <xsl:apply-templates mode="#current"/>
       <!--
         <!-\- when there are no flags, the field is a string whose value is the value -\->
@@ -2840,27 +2829,24 @@
         </string> -->
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 match="flag[@key=../value/@key-flag]"
-                 mode="write-json"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel"/>
+                  match="flag[@key=../value/@key-flag]"
+                  mode="write-json"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel"/>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 match="flag"
-                 mode="write-json"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
+                  match="flag"
+                  mode="write-json"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
       <xsl:element name="{(@in-json[matches(.,'\S')],'string')[1]}"
-                   namespace="http://www.w3.org/2005/xpath-functions">
+                    namespace="http://www.w3.org/2005/xpath-functions">
          <xsl:copy-of select="@key"/>
          <xsl:apply-templates mode="#current"/>
       </xsl:element>
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 priority="2"
-                 match="field[exists(@json-key-flag)]/value"
-                 mode="write-json"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
+                  priority="2"
+                  match="field[exists(@json-key-flag)]/value"
+                  mode="write-json"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
       <xsl:variable name="key-flag-name" select="../@json-key-flag"/>
       <xsl:element name="{@in-json}" namespace="http://www.w3.org/2005/xpath-functions">
          <xsl:attribute name="key" select="../flag[@key = $key-flag-name]"/>
@@ -2868,70 +2854,64 @@
       </xsl:element>
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 match="value"
-                 mode="write-json"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
+                  match="value"
+                  mode="write-json"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
       <xsl:variable name="key-flag-name" select="@key-flag"/>
       <xsl:element name="{(@in-json[matches(.,'\S')],'string')[1]}"
-                   namespace="http://www.w3.org/2005/xpath-functions">
-         <xsl:copy-of select="((../flag[@key=$key-flag-name],parent::field[@in-json = 'SCALAR'])/@key, @key)[1]"/>
+                    namespace="http://www.w3.org/2005/xpath-functions">
+            <!-- emit a key only if needed -->
+         <xsl:copy-of select="((../flag[@key = $key-flag-name], parent::field[@in-json = 'SCALAR'])/@key, @key)[1]"/>
          <!-- overriding the key           -->
          <xsl:if test="exists(@key-flag)">
             <xsl:attribute name="key">
-               <xsl:apply-templates select="../flag[@name=$key-flag-name]" mode="cast-data"/>
+               <xsl:apply-templates select="../flag[@name = $key-flag-name]" mode="cast-data"/>
             </xsl:attribute>
          </xsl:if>
          <xsl:apply-templates select="." mode="cast-data"/>
       </xsl:element>
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 match="*"
-                 mode="cast-data"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
+                  match="*"
+                  mode="cast-data"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
       <xsl:value-of select="."/>
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 match="value[@as-type='markup-line']"
-                 mode="cast-data"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
+                  match="value[@as-type='markup-line']"
+                  mode="cast-data"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
       <xsl:apply-templates mode="md"/>
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 match="value[@as-type='markup-multiline']"
-                 mode="cast-data"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
+                  match="value[@as-type='markup-multiline']"
+                  mode="cast-data"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
       <xsl:variable name="lines" as="node()*">
          <xsl:apply-templates select="*" mode="md"/>
       </xsl:variable>
       <xsl:value-of select="$lines/self::* =&gt; string-join('&#xA;')"/>
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 name="conditional-lf"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
+                  name="conditional-lf"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
       <xsl:if test="exists(preceding-sibling::*)">
          <string/>
       </xsl:if>
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 mode="md"
-                 match="text()[empty(ancestor::pre)]"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
+                  mode="md"
+                  match="text()[empty(ancestor::pre)]"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
       <xsl:variable name="escaped">
          <xsl:value-of select="replace(., '([`~\^\*&#34;])', '\\$1')"/>
       </xsl:variable>
       <xsl:value-of select="replace($escaped,'\s+',' ')"/>
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 mode="md"
-                 match="text()"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
+                  mode="md"
+                  match="text()"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
         <!-- Escapes go here       -->
         <!-- prefixes ` ~ ^ * with char E0000 from Unicode PUA -->
         <!--<xsl:value-of select="replace(., '([`~\^\*''&quot;])', '&#xE0000;$1')"/>-->
@@ -2940,20 +2920,18 @@
       <!--<xsl:value-of select="."/>-->
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 mode="md"
-                 match="p"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
+                  mode="md"
+                  match="p"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
       <xsl:call-template name="conditional-lf"/>
       <string>
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 mode="md"
-                 match="h1 | h2 | h3 | h4 | h5 | h6"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
+                  mode="md"
+                  match="h1 | h2 | h3 | h4 | h5 | h6"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
       <xsl:call-template name="conditional-lf"/>
       <string>
          <xsl:apply-templates select="." mode="mark"/>
@@ -2961,48 +2939,40 @@
       </string>
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 mode="mark"
-                 match="h1"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel"># </xsl:template>
+                  mode="mark"
+                  match="h1"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel"># </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 mode="mark"
-                 match="h2"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">## </xsl:template>
+                  mode="mark"
+                  match="h2"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">## </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 mode="mark"
-                 match="h3"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">### </xsl:template>
+                  mode="mark"
+                  match="h3"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">### </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 mode="mark"
-                 match="h4"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">#### </xsl:template>
+                  mode="mark"
+                  match="h4"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">#### </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 mode="mark"
-                 match="h5"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">##### </xsl:template>
+                  mode="mark"
+                  match="h5"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">##### </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 mode="mark"
-                 match="h6"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">###### </xsl:template>
+                  mode="mark"
+                  match="h6"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">###### </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 mode="md"
-                 match="table"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
+                  mode="md"
+                  match="table"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
       <xsl:call-template name="conditional-lf"/>
       <xsl:apply-templates select="*" mode="md"/>
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 mode="md"
-                 match="tr"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
+                  mode="md"
+                  match="tr"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
       <string>
          <xsl:apply-templates select="*" mode="md"/>
       </string>
@@ -3016,21 +2986,19 @@
       </xsl:if>
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 mode="md"
-                 match="th | td"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
+                  mode="md"
+                  match="th | td"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
       <xsl:if test="empty(preceding-sibling::*)">|</xsl:if>
       <xsl:text> </xsl:text>
       <xsl:apply-templates mode="md"/>
       <xsl:text> |</xsl:text>
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 mode="md"
-                 priority="1"
-                 match="pre"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
+                  mode="md"
+                  priority="1"
+                  match="pre"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
       <xsl:call-template name="conditional-lf"/>
       <string>```</string>
       <string>
@@ -3039,27 +3007,24 @@
       <string>```</string>
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 mode="md"
-                 priority="1"
-                 match="ul | ol"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
+                  mode="md"
+                  priority="1"
+                  match="ul | ol"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
       <xsl:call-template name="conditional-lf"/>
       <xsl:apply-templates mode="md"/>
       <string/>
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 mode="md"
-                 match="ul//ul | ol//ol | ol//ul | ul//ol"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
+                  mode="md"
+                  match="ul//ul | ol//ol | ol//ul | ul//ol"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
       <xsl:apply-templates mode="md"/>
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 mode="md"
-                 match="li"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
+                  mode="md"
+                  match="li"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
       <string>
          <xsl:for-each select="(../ancestor::ul | ../ancestor::ol)">
             <xsl:text>  </xsl:text>
@@ -3069,10 +3034,9 @@
       </string>
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 mode="md"
-                 match="ol/li"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
+                  mode="md"
+                  match="ol/li"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
       <string>
          <xsl:for-each select="(../ancestor::ul | ../ancestor::ol)">
             <xsl:text xml:space="preserve">  </xsl:text>
@@ -3082,55 +3046,49 @@
       </string>
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 mode="md"
-                 match="code | span[contains(@class, 'code')]"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
+                  mode="md"
+                  match="code | span[contains(@class, 'code')]"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
       <xsl:text>`</xsl:text>
       <xsl:apply-templates mode="md"/>
       <xsl:text>`</xsl:text>
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 mode="md"
-                 match="em | i"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
+                  mode="md"
+                  match="em | i"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
       <xsl:text>*</xsl:text>
       <xsl:apply-templates mode="md"/>
       <xsl:text>*</xsl:text>
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 mode="md"
-                 match="strong | b"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
+                  mode="md"
+                  match="strong | b"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
       <xsl:text>**</xsl:text>
       <xsl:apply-templates mode="md"/>
       <xsl:text>**</xsl:text>
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 mode="md"
-                 match="q"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
+                  mode="md"
+                  match="q"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
       <xsl:text>"</xsl:text>
       <xsl:apply-templates mode="md"/>
       <xsl:text>"</xsl:text>
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 mode="md"
-                 match="insert"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
+                  mode="md"
+                  match="insert"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
       <xsl:text>{{ insert: </xsl:text>
       <xsl:value-of select="@type, @id-ref" separator=", "/>
       <xsl:text> }}</xsl:text>
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 mode="md"
-                 match="a"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
+                  mode="md"
+                  match="a"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
       <xsl:text>[</xsl:text>
       <xsl:value-of select="."/>
       <xsl:text>]</xsl:text>
@@ -3139,10 +3097,9 @@
       <xsl:text>)</xsl:text>
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 mode="md"
-                 match="img"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
+                  mode="md"
+                  match="img"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
       <xsl:text>![</xsl:text>
       <xsl:value-of select="(@alt,@src)[1]"/>
       <xsl:text>]</xsl:text>
