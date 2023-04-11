@@ -23,44 +23,74 @@
      <xsl:apply-templates/>
    </xsl:template>
 
+   <xsl:template mode="head-ID" match="o:section/o:head">
+      <xsl:attribute name="id">
+         <xsl:text>sec-</xsl:text>
+         <xsl:number level="multiple" count="o:section" format="1_1"/>
+         <xsl:text>-head</xsl:text>
+      </xsl:attribute>
+   </xsl:template>
+   
+   <xsl:template mode="head-ID" match="o:div/o:head">
+      <xsl:attribute name="id">
+         <xsl:text>div-</xsl:text>
+         <xsl:number level="any" count="o:div" format="1"/>
+         <xsl:text>-head</xsl:text>
+      </xsl:attribute>
+   </xsl:template>
+   
+   <xsl:template mode="head-ID" match="o:head" priority="0.1">
+      <xsl:attribute name="id">
+         <xsl:text>head-</xsl:text>
+         <xsl:value-of select="generate-id()"/>
+      </xsl:attribute>
+   </xsl:template>
+   
    <xsl:template match="o:head">
-      <h1 id="{generate-id()}-head">
+      <h1>
+         <xsl:apply-templates select="." mode="head-ID"/>
          <xsl:apply-templates select="." mode="header-text"/>
       </h1>
    </xsl:template>
 
    <xsl:template priority="1" match="o:section/o:head">
-      <h2 id="{generate-id()}-head">
+      <h2>
+         <xsl:apply-templates select="." mode="head-ID"/>
          <xsl:apply-templates select="." mode="header-text"/>
       </h2>
    </xsl:template>
 
    <xsl:template priority="2" match="o:section/o:section/o:head">
-      <h3 id="{generate-id()}-head">
+      <h3>
+         <xsl:apply-templates select="." mode="head-ID"/>
          <xsl:apply-templates select="." mode="header-text"/>
       </h3>
    </xsl:template>
 
    <xsl:template priority="2" match="o:div/o:head">
-      <h3 class="divhead" id="{generate-id()}-head">
+      <h3>
+         <xsl:apply-templates select="." mode="head-ID"/>
          <xsl:apply-templates select="." mode="header-text"/>
       </h3>
    </xsl:template>
 
    <xsl:template priority="3" match="o:section/o:section/o:section/o:head">
-      <h4 id="{generate-id()}-head">
+      <h4>
+         <xsl:apply-templates select="." mode="head-ID"/>
          <xsl:apply-templates select="." mode="header-text"/>
       </h4>
    </xsl:template>
 
    <xsl:template priority="4" match="o:section/o:section/o:section/o:section/o:head">
-      <h5 id="{generate-id()}-head">
+      <h5>
+         <xsl:apply-templates select="." mode="head-ID"/>
          <xsl:apply-templates select="." mode="header-text"/>
       </h5>
    </xsl:template>
 
    <xsl:template priority="5" match="o:section/o:section/o:section/o:section/o:section/o:head">
-      <h6 id="{generate-id()}-head">
+      <h6>
+         <xsl:apply-templates select="." mode="head-ID"/>
          <xsl:apply-templates select="." mode="header-text"/>
       </h6>
    </xsl:template>
@@ -100,13 +130,7 @@
          <xsl:apply-templates/>
       </code>
    </xsl:template>
-   
-   <xsl:template match="o:int">
-      <code class="int">
-         <xsl:apply-templates/>
-      </code>
-   </xsl:template>
-   
+
    <xsl:template match="o:ul">
       <ul>
          <xsl:apply-templates/>
@@ -149,21 +173,7 @@
          <xsl:apply-templates/>
       </em>
    </xsl:template>
-   
-   <xsl:template match="o:req">
-      <span class="{local-name()} {@level}">
-         <xsl:copy-of select="@id"/>
-         <xsl:apply-templates select="." mode="reqlabel"/>
-         <xsl:apply-templates/>
-      </span>
-   </xsl:template>
-   
-   <xsl:template match="o:req" mode="reqlabel">
-      <span class="reqlabel">
-         <xsl:value-of select="@id"/>
-      </span>
-   </xsl:template>
-   
+
    <xsl:template match="o:xpath">
       <b class="{local-name()}">
          <xsl:apply-templates/>
