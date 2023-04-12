@@ -1,23 +1,28 @@
 {{ if not .Site.IsServer }}
 <script type="text/javascript" src="https://pages.nist.gov/leaveNotice/js/jquery.leaveNotice-nist.min.js"></script>
 <script>
-$(document).ready(function () {
-  $('a[href*="//"]{{ if .Site.IsServer }}:not([href*="http://localhost:1313/"]){{ end }}:not([href*="pages.nist.gov"]):not([href*="www.nist.gov"]):not([href^="#"]):not([href^="/"])').addClass('usa-link usa-link--external');
-  $('a.usa-link--external').leaveNotice();
-});
+  $(document).ready(function () {
+    $('a[href*="//"]{{ if .Site.IsServer }}:not([href*="http://localhost:1313/"]){{ end }}:not([href*="pages.nist.gov"]):not([href*="www.nist.gov"]):not([href^="#"]):not([href^="/"])').addClass('usa-link usa-link--external');
+    $('a.usa-link--external').leaveNotice();
+  });
 </script>
 {{ end }}
 
+
+
 {{ $generateAnchors := true }}
-{{- if isset .Page.Params "generateanchors" -}}
-  {{ $generateAnchors = .Page.Params.generateanchors }}
-{{- end -}}
-{{ if $generateAnchors -}}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.3.0/anchor.min.js" integrity="sha512-G2OGlm41XXw+fcgDcRPjVYEn7qCY6qiKWNqDGT37SnKh0qtRXTuKZ5/UQR0kDN0PZRNWcGExd3lAeqEH0I36bQ==" crossorigin="anonymous"></script>
+{{ if (ne .Page.Params.generateanchors nil) }}
+{{ $generateAnchors = .Page.Params.generateanchors }}
+<!-- !!! generateAnchors set to value of generateanchors !!! -->
+{{ end }}
+{{ if $generateAnchors }}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.3.0/anchor.min.js"
+  integrity="sha512-G2OGlm41XXw+fcgDcRPjVYEn7qCY6qiKWNqDGT37SnKh0qtRXTuKZ5/UQR0kDN0PZRNWcGExd3lAeqEH0I36bQ=="
+  crossorigin="anonymous"></script>
 <script>
   anchors.options = {
     placement: 'left'
   };
   anchors.add();
 </script>
-{{- end }}
+{{ end }}
