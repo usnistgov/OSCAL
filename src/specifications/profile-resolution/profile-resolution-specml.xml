@@ -532,7 +532,7 @@ include-controls:
         </p>
         <section id="include-child-controls">
           <head>with-child-controls</head>
-          <p>Child controls are, for the most part, treated the same as top level controls: they can be explicitly included using the selection directives above. As a shortcut to manually including all of the desired descendant controls of a given control, OSCAL provides the <code>with-child-controls</code> option. <code>with-child-controls</code> appears as a child object under a given inclusion directive, and defines additional behavior that is to be executed alongside the parent inclusion.</p>
+          <p>When a control is selected, any child controls can be included by means the <code>with-child-controls</code> flag. This provides an alternative to selecting child or descendant controls explicitly by <code>id</code> or match. <code>with-child-controls</code> appears as a child object under a given inclusion directive and defines behaviors listed below.</p>
           <p><req level="must" id="req-with-child-controls-yes">A
             <src>with-child-controls: yes</src> directive on an
             <src>include-controls</src> indicates that
@@ -549,11 +549,7 @@ include-controls:
         </section>
         <section id="include-parent-controls">
           <head>with-parent-controls</head>
-          <p>Although similar to the above
-            <src>with-child-controls</src>, the optional
-            <src>with-parent-controls</src> applies to parents of the included control, and has the opposite default behavior. In order to maintain the structure of the source catalog, profile resolution includes all parents of an included control by default. If a profile author wants to change this structure, they should use an exclude directive that lists all of the undesired parents. As a shortcut for this,
-            <src>with-parent-controls</src> provides the following functionality:
-          </p>
+          <p>The the optional <src>with-parent-controls</src> flag defines behavior applicable to parents or ancestors (a parent's parent etc.) of the included control, in cases of nested controls. <src>with-parent-controls</src> appears as a child object under a given inclusion directive and defines the behaviors listed below. Its semantics assume that nesting of controls indicates logical dependencies in catalogs, which should be retained unless a profile specifically indicates otherwise.</p>
           <p><req level="must" id="req-with-parent-controls-yes">A
             <src>with-parent-controls: yes</src> directive on an
             <src>include-controls</src> indicates that

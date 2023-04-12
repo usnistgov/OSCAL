@@ -44,11 +44,83 @@
       "$ref" : "#/definitions/URIReferenceDatatype" },
      "include-all" : 
      { "$ref" : "#assembly_oscal-control-common_include-all" },
-     "include-controls" : 
-     { "type" : "array",
-      "minItems" : 1,
-      "items" : 
-      { "$ref" : "#assembly_oscal-profile_select-control-by-id" } },
+     "" : 
+     { "anyOf" : 
+      [ 
+       { "title" : "Select Control",
+        "description" : "Select a control or controls from an imported control set.",
+        "type" : "object",
+        "properties" : 
+        { "with-child-controls" : 
+         { "title" : "Include Contained Controls with Control",
+          "description" : "When a control is included, whether its child (dependent) controls are also included.",
+          "allOf" : 
+          [ 
+           { "$ref" : "#/definitions/TokenDatatype" },
+           
+           { "enum" : 
+            [ "yes",
+             "no" ] } ] },
+         "with-parent-controls" : 
+         { "title" : "Include Parent Controls with Control",
+          "description" : "When a control is included, whether its parent (ancestor) controls are also included.",
+          "allOf" : 
+          [ 
+           { "$ref" : "#/definitions/TokenDatatype" },
+           
+           { "enum" : 
+            [ "yes",
+             "no" ] } ] },
+         "with-ids" : 
+         { "type" : "array",
+          "minItems" : 1,
+          "items" : 
+          { "$ref" : "#field_oscal-profile_with-id" } },
+         "matching" : 
+         { "type" : "array",
+          "minItems" : 1,
+          "items" : 
+          { "$ref" : "#assembly_oscal-profile_matching" } } },
+        "additionalProperties" : false },
+       
+       { "type" : "array",
+        "minItems" : 1,
+        "items" : 
+        { "title" : "Select Control",
+         "description" : "Select a control or controls from an imported control set.",
+         "type" : "object",
+         "properties" : 
+         { "with-child-controls" : 
+          { "title" : "Include Contained Controls with Control",
+           "description" : "When a control is included, whether its child (dependent) controls are also included.",
+           "allOf" : 
+           [ 
+            { "$ref" : "#/definitions/TokenDatatype" },
+            
+            { "enum" : 
+             [ "yes",
+              "no" ] } ] },
+          "with-parent-controls" : 
+          { "title" : "Include Parent Controls with Control",
+           "description" : "When a control is included, whether its parent (ancestor) controls are also included.",
+           "allOf" : 
+           [ 
+            { "$ref" : "#/definitions/TokenDatatype" },
+            
+            { "enum" : 
+             [ "yes",
+              "no" ] } ] },
+          "with-ids" : 
+          { "type" : "array",
+           "minItems" : 1,
+           "items" : 
+           { "$ref" : "#field_oscal-profile_with-id" } },
+          "matching" : 
+          { "type" : "array",
+           "minItems" : 1,
+           "items" : 
+           { "$ref" : "#assembly_oscal-profile_matching" } } },
+         "additionalProperties" : false } } ] },
      "exclude-controls" : 
      { "type" : "array",
       "minItems" : 1,
@@ -375,22 +447,28 @@
      { "type" : "array",
       "minItems" : 1,
       "items" : 
-      { "title" : "Match Controls by Identifier",
-       "description" : "Selecting a control by its ID given as a literal.",
-       "$ref" : "#/definitions/TokenDatatype" } },
+      { "$ref" : "#field_oscal-profile_with-id" } },
      "matching" : 
      { "type" : "array",
       "minItems" : 1,
       "items" : 
-      { "title" : "Match Controls by Pattern",
-       "description" : "Selecting a set of controls by matching their IDs with a wildcard pattern.",
-       "type" : "object",
-       "properties" : 
-       { "pattern" : 
-        { "title" : "Pattern",
-         "description" : "A glob expression matching the IDs of one or more controls to be selected.",
-         "$ref" : "#/definitions/StringDatatype" } },
-       "additionalProperties" : false } } },
+      { "$ref" : "#assembly_oscal-profile_matching" } } },
+    "additionalProperties" : false },
+   "oscal-profile-oscal-profile:with-id" : 
+   { "title" : "Match Controls by Identifier",
+    "description" : "Selecting a control by its ID given as a literal.",
+    "$id" : "#field_oscal-profile_with-id",
+    "$ref" : "#/definitions/TokenDatatype" },
+   "oscal-profile-oscal-profile:matching" : 
+   { "title" : "Match Controls by Pattern",
+    "description" : "Selecting a set of controls by matching their IDs with a wildcard pattern.",
+    "$id" : "#assembly_oscal-profile_matching",
+    "type" : "object",
+    "properties" : 
+    { "pattern" : 
+     { "title" : "Pattern",
+      "description" : "A glob expression matching the IDs of one or more controls to be selected.",
+      "$ref" : "#/definitions/StringDatatype" } },
     "additionalProperties" : false },
    "oscal-profile-oscal-metadata:metadata" : 
    { "title" : "Document Metadata",
