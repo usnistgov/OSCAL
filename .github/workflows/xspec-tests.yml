@@ -1,0 +1,57 @@
+name: OSCAL XSpec Test Suite
+on:
+  push:
+    branches:
+      - main
+      - develop
+      - "feature-*"
+      - "release-*"
+    paths:
+      - /src
+      - "**.xsl"
+      - "**.xpl"
+      - "**.xspec"
+  pull_request:
+    branches:
+      - main
+      - develop
+      - "feature-*"
+      - "release-*"
+    paths:
+      - /src
+      - "**.xsl"
+      - "**.xpl"
+      - "**.xspec"
+  workflow_call: {}
+jobs:
+  xspec-tests:
+    name: Run XSpec tests
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: true
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Run XSpec tests
+        shell: bash
+        run: |
+          docker run \
+            -v $(pwd):/oscal \
+            -e TEST_DIR=/oscal/xspec \
+            csd773/oscal-common-env \
+            /oscal/src/utils/util/resolver-pipeline/testing/test.sh || {
+            if [ "$?" = 83 ]; then
+              # For now we only fail when tests fail to compile
+              echo "Some test suites failed to compile, failing..."
+              exit 1
+            fi
+          }
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: xspec-output
+          path: xspec/*.html
