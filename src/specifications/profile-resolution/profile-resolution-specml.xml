@@ -614,7 +614,7 @@ include-controls:
         <p>In order to ensure that implementers have as much flexibility as possible, requirements in this section have purposefully been kept minimal. Below are some common issues for implementers to be aware of:  </p>
         <ul> <!-- TODO: Add more of these pitfall tips? -->
           <li><p>The ordering and hierarchical organization of included controls as they were present in the original catalog may be used later in the resolution process. 
-            Specifically, if the profile is using the "as-is" structuring directive, the ordering and organziation of the output should match the source catalog as closely as possible. 
+            Specifically, if the profile is using the "as-is" structuring directive, the ordering and organization of the output should match the source catalog as closely as possible. 
             Implementations may want to track this information, or look ahead to see what structuring mode is being used. Note that "as-is" also requires implementations to replicate any use of the <src>group</src> element.</p>
           </li>
         </ul>
