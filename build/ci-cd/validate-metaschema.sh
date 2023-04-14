@@ -98,7 +98,7 @@ fi
 metaschema_toolchain="${OSCALDIR}/build/metaschema/toolchains/xslt-M4"
 schematron="${metaschema_toolchain}/validate/metaschema-composition-check.sch"
 compiled_schematron="${metaschema_toolchain}/validate/metaschema-composition-check-compiled.xsl"
-metaschema_xsd="${metaschema_toolchain}/validate/metaschema.xsd"
+metaschema_xsd="${OSCALDIR}/build/metaschema/schema/xml/metaschema.xsd"
 
 build_schematron "$schematron" "$compiled_schematron"
 cmd_exitcode=$?
