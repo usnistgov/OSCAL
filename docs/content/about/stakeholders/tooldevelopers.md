@@ -1,5 +1,4 @@
 ---
-title:
 title: For Tool Developers
 heading: How can tool developers get involved?
 description: How can tool developers get involved?

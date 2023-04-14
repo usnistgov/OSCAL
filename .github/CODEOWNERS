@@ -1,12 +1,12 @@
 # directory specific owners
 /.github/               @usnistgov/itl-oscal-maintainers
 /build/                 @usnistgov/itl-oscal-maintainers
-/content/               @david-waltermire-nist
-/docs/                  @david-waltermire-nist
-/docs/content           @david-waltermire-nist @iMichaela
+/content/               @aj-stein-nist
+/docs/                  @aj-stein-nist
+/docs/content           @aj-stein-nist @iMichaela
 /json/                  
 /xml/                   
 /src/                   @usnistgov/itl-oscal-maintainers
-/src/metaschema         @david-waltermire-nist
-/src/specifications/profile-resolution  @stephenbanghart
+/src/metaschema         @aj-stein-nist
+/src/specifications/profile-resolution  @david-waltermire-nist @wendellpiez
 /src/utils              @wendellpiez
