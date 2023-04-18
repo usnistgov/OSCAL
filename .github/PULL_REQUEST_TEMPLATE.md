@@ -13,6 +13,8 @@
 
 By submitting a pull request, you are agreeing to provide this contribution under the [CC0 1.0 Universal public domain](https://creativecommons.org/publicdomain/zero/1.0/) dedication.
 
+(For reviewers: [The wiki has guidance](https://github.com/usnistgov/OSCAL/wiki/Issue-Review) on code review and overall issue review for completeness.)
+
 ### Changes to Core Features:
 
 - [ ] Have you added an explanation of what your changes do and why you'd like us to include them?

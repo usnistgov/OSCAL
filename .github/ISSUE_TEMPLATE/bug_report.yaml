@@ -68,7 +68,10 @@ body:
     id: bug-comments
     attributes:
       label: Other comments
-      description: Add any other context about the problem here
+      description: |
+        Add any other context about the problem here
+
+        (For reviewers: [The wiki has guidance](https://github.com/usnistgov/OSCAL/wiki/Issue-Review) on code review and overall issue review for completeness.)
     validations:
       required: false
   - type: textarea
@@ -76,3 +79,4 @@ body:
     attributes:
       label: Revisions
       description: If you are creating the issue, this field is not required. When working on the issue, this field is for assigned developers to flag any important changes made to the description, goals, or acceptance criteria needed to complete the work.
+
