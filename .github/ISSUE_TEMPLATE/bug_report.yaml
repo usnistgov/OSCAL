@@ -71,3 +71,8 @@ body:
       description: Add any other context about the problem here
     validations:
       required: false
+  - type: textarea
+    id: revisions
+    attributes:
+      label: Revisions
+      description: If you are creating the issue, this field is not required. When working on the issue, this field is for assigned developers to flag any important changes made to the description, goals, or acceptance criteria needed to complete the work.
