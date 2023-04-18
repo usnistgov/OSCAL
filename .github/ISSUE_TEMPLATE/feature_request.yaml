@@ -32,6 +32,12 @@ body:
         - [ ] All [OSCAL website](https://pages.nist.gov/OSCAL) and readme documentation affected by the changes in this issue have been updated. Changes to the OSCAL website can be made in the docs/content directory of your branch.
         - [ ] A Pull Request (PR) is submitted that fully addresses the goals of this User Story. This issue is referenced in the PR.
         - [ ] The CI-CD build process runs without any reported errors on the PR. This can be confirmed by reviewing that all checks have passed in the PR.
+
+        (For reviewers: [The wiki has guidance](https://github.com/usnistgov/OSCAL/wiki/Issue-Review) on code review and overall issue review for completeness.)
     validations:
       required: true
-    
+  - type: textarea
+    id: revisions
+    attributes:
+      label: Revisions
+      description: If you are creating the issue, this field is not required. When working on the issue, this field is for assigned developers to flag any important changes made to the description, goals, or acceptance criteria needed to complete the work.
