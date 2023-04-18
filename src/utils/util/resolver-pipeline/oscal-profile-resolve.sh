@@ -23,7 +23,7 @@ TARGET_PROFILE=$1
 [[ -z "${2-}" ]] && { echo "Error: OUTPUT_BASELINE not specified"; usage; exit 1; }
 OUTPUT_BASELINE=$2
 
-ADDITIONAL_ARGS=$(shift 2; echo $@)
+ADDITIONAL_ARGS=$(shift 2; echo ${*// /\\ })
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)"
 OSCAL_DIR="${SCRIPT_DIR}/../../../.."
@@ -34,4 +34,4 @@ mvn \
     -f $POM_FILE \
     exec:java \
     -Dexec.mainClass="net.sf.saxon.Transform" \
-    -Dexec.args="-t -s:$TARGET_PROFILE -xsl:$ENTRY_STYLESHEET -o:$OUTPUT_BASELINE $ADDITIONAL_ARGS"
+    -Dexec.args="-t -s:\"$TARGET_PROFILE\" -xsl:\"$ENTRY_STYLESHEET\" -o:\"$OUTPUT_BASELINE\" $ADDITIONAL_ARGS"
