@@ -5285,11 +5285,9 @@
    <!-- XML to JSON conversion: Supermodel serialization as JSON
         including markdown production -->
    <xsl:variable xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  name="ns"
                  select="/*/@namespace"/>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  match="group"
                  mode="write-json"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
@@ -5299,7 +5297,6 @@
       </array>
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  match="group[@in-json='BY_KEY']"
                  mode="write-json"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
@@ -5309,12 +5306,10 @@
       </map>
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  match="flag[@key=../@json-key-flag]"
                  mode="write-json"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel"/>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  match="group[@in-json='SINGLETON_OR_ARRAY'][count(*)=1]"
                  mode="write-json"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
@@ -5323,7 +5318,6 @@
       </xsl:apply-templates>
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  priority="2"
                  match="group/assembly | group/field"
                  mode="write-json"
@@ -5345,7 +5339,6 @@
       </map>
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  priority="3"
                  match="group/field[@in-json='SCALAR']"
                  mode="write-json"
@@ -5358,7 +5351,6 @@
       </xsl:apply-templates>
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  match="/assembly"
                  mode="write-json"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
@@ -5367,7 +5359,6 @@
       </map>
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  match="assembly"
                  mode="write-json"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
@@ -5376,7 +5367,6 @@
       </map>
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  match="field"
                  mode="write-json"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
@@ -5385,7 +5375,6 @@
       </map>
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  match="field[@in-json='SCALAR']"
                  mode="write-json"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
@@ -5398,12 +5387,10 @@
         </string> -->
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  match="flag[@key=../value/@key-flag]"
                  mode="write-json"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel"/>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  match="flag"
                  mode="write-json"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
@@ -5414,7 +5401,6 @@
       </xsl:element>
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  priority="2"
                  match="field[exists(@json-key-flag)]/value"
                  mode="write-json"
@@ -5426,39 +5412,36 @@
       </xsl:element>
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  match="value"
                  mode="write-json"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
       <xsl:variable name="key-flag-name" select="@key-flag"/>
       <xsl:element name="{(@in-json[matches(.,'\S')],'string')[1]}"
                    namespace="http://www.w3.org/2005/xpath-functions">
-         <xsl:copy-of select="((../flag[@key=$key-flag-name],parent::field[@in-json = 'SCALAR'])/@key, @key)[1]"/>
+            <!-- emit a key only if needed -->
+         <xsl:copy-of select="((../flag[@key = $key-flag-name], parent::field[@in-json = 'SCALAR'])/@key, @key)[1]"/>
          <!-- overriding the key           -->
          <xsl:if test="exists(@key-flag)">
             <xsl:attribute name="key">
-               <xsl:apply-templates select="../flag[@name=$key-flag-name]" mode="cast-data"/>
+               <xsl:apply-templates select="../flag[@name = $key-flag-name]" mode="cast-data"/>
             </xsl:attribute>
          </xsl:if>
          <xsl:apply-templates select="." mode="cast-data"/>
       </xsl:element>
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  match="*"
                  mode="cast-data"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
       <xsl:value-of select="."/>
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  match="value[@as-type='markup-line']"
                  mode="cast-data"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
       <xsl:apply-templates mode="md"/>
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  match="value[@as-type='markup-multiline']"
                  mode="cast-data"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
@@ -5468,7 +5451,6 @@
       <xsl:value-of select="$lines/self::* =&gt; string-join('&#xA;')"/>
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  name="conditional-lf"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
       <xsl:if test="exists(preceding-sibling::*)">
@@ -5476,7 +5458,6 @@
       </xsl:if>
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  mode="md"
                  match="text()[empty(ancestor::pre)]"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
@@ -5486,7 +5467,6 @@
       <xsl:value-of select="replace($escaped,'\s+',' ')"/>
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  mode="md"
                  match="text()"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
@@ -5498,7 +5478,6 @@
       <!--<xsl:value-of select="."/>-->
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  mode="md"
                  match="p"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
@@ -5508,7 +5487,6 @@
       </string>
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  mode="md"
                  match="h1 | h2 | h3 | h4 | h5 | h6"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
@@ -5519,37 +5497,30 @@
       </string>
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  mode="mark"
                  match="h1"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel"># </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  mode="mark"
                  match="h2"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">## </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  mode="mark"
                  match="h3"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">### </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  mode="mark"
                  match="h4"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">#### </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  mode="mark"
                  match="h5"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">##### </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  mode="mark"
                  match="h6"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">###### </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  mode="md"
                  match="table"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
@@ -5557,7 +5528,6 @@
       <xsl:apply-templates select="*" mode="md"/>
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  mode="md"
                  match="tr"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
@@ -5574,7 +5544,6 @@
       </xsl:if>
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  mode="md"
                  match="th | td"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
@@ -5584,7 +5553,6 @@
       <xsl:text> |</xsl:text>
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  mode="md"
                  priority="1"
                  match="pre"
@@ -5597,7 +5565,6 @@
       <string>```</string>
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  mode="md"
                  priority="1"
                  match="ul | ol"
@@ -5607,14 +5574,12 @@
       <string/>
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  mode="md"
                  match="ul//ul | ol//ol | ol//ul | ul//ol"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
       <xsl:apply-templates mode="md"/>
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  mode="md"
                  match="li"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
@@ -5627,7 +5592,6 @@
       </string>
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  mode="md"
                  match="ol/li"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
@@ -5640,7 +5604,6 @@
       </string>
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  mode="md"
                  match="code | span[contains(@class, 'code')]"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
@@ -5649,7 +5612,6 @@
       <xsl:text>`</xsl:text>
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  mode="md"
                  match="em | i"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
@@ -5658,7 +5620,6 @@
       <xsl:text>*</xsl:text>
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  mode="md"
                  match="strong | b"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
@@ -5667,7 +5628,6 @@
       <xsl:text>**</xsl:text>
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  mode="md"
                  match="q"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
@@ -5676,7 +5636,6 @@
       <xsl:text>"</xsl:text>
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  mode="md"
                  match="insert"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
@@ -5685,7 +5644,6 @@
       <xsl:text> }}</xsl:text>
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  mode="md"
                  match="a"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
@@ -5697,7 +5655,6 @@
       <xsl:text>)</xsl:text>
    </xsl:template>
    <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
-                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  mode="md"
                  match="img"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
