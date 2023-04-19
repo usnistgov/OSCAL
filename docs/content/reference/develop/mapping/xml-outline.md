@@ -258,8 +258,6 @@ The following outline is a representation of the [XML format](https://github.com
                               <details class="OM-entry">
                                  <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/mapping-collection/metadata/location/address/country">country</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="nobr">&lt;/country&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 or 1]</span></span></summary>
                                  <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span> value</p>
-                                 
-                                 
                                  <p class="close-tag nobr">&lt;/country&gt;</p>
                               </details>
                            </div>
@@ -273,10 +271,6 @@ The following outline is a representation of the [XML format](https://github.com
                         <details class="OM-entry">
                            <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/mapping-collection/metadata/location/telephone-number">telephone-number</a></span> <span class="nobr" id="/mapping-collection/metadata/location/telephone-number/@type"><a class="OM-name" href="../xml-reference/#/mapping-collection/metadata/location/telephone-number/@type">type</a>="<span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span>"</span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="nobr">&lt;/telephone-number&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
                            <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span> value</p>
-                           
-                           
-                           
-                           
                            <p class="close-tag nobr">&lt;/telephone-number&gt;</p>
                         </details>
                         <details class="OM-entry">
@@ -377,10 +371,6 @@ The following outline is a representation of the [XML format](https://github.com
                         <details class="OM-entry">
                            <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/mapping-collection/metadata/party/telephone-number">telephone-number</a></span> <span class="nobr" id="/mapping-collection/metadata/party/telephone-number/@type"><a class="OM-name" href="../xml-reference/#/mapping-collection/metadata/party/telephone-number/@type">type</a>="<span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span>"</span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="nobr">&lt;/telephone-number&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
                            <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span> value</p>
-                           
-                           
-                           
-                           
                            <p class="close-tag nobr">&lt;/telephone-number&gt;</p>
                         </details>
                         <div class="OM-choices">
@@ -412,8 +402,6 @@ The following outline is a representation of the [XML format](https://github.com
                                     <details class="OM-entry">
                                        <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/mapping-collection/metadata/party/address/country">country</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="nobr">&lt;/country&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 or 1]</span></span></summary>
                                        <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span> value</p>
-                                       
-                                       
                                        <p class="close-tag nobr">&lt;/country&gt;</p>
                                     </details>
                                  </div>
@@ -424,11 +412,6 @@ The following outline is a representation of the [XML format](https://github.com
                               <details class="OM-entry">
                                  <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/mapping-collection/metadata/party/location-uuid">location-uuid</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="nobr">&lt;/location-uuid&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
                                  <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span> value</p>
-                                 
-                                 
-                                 
-                                 
-                                 
                                  <p class="close-tag nobr">&lt;/location-uuid&gt;</p>
                               </details>
                            </div>
@@ -436,11 +419,6 @@ The following outline is a representation of the [XML format](https://github.com
                         <details class="OM-entry">
                            <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/mapping-collection/metadata/party/member-of-organization">member-of-organization</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="nobr">&lt;/member-of-organization&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
                            <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span> value</p>
-                           
-                           
-                           
-                           
-                           
                            <p class="close-tag nobr">&lt;/member-of-organization&gt;</p>
                         </details>
                         <details class="OM-entry">
@@ -460,11 +438,6 @@ The following outline is a representation of the [XML format](https://github.com
                         <details class="OM-entry">
                            <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/mapping-collection/metadata/responsible-party/party-uuid">party-uuid</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="nobr">&lt;/party-uuid&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[1 to ∞]</span></span></summary>
                            <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span> value</p>
-                           
-                           
-                           
-                           
-                           
                            <p class="close-tag nobr">&lt;/party-uuid&gt;</p>
                         </details>
                         <details class="OM-entry">
@@ -543,11 +516,6 @@ The following outline is a representation of the [XML format](https://github.com
                               <details class="OM-entry">
                                  <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/mapping-collection/metadata/action/responsible-party/party-uuid">party-uuid</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="nobr">&lt;/party-uuid&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[1 to ∞]</span></span></summary>
                                  <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span> value</p>
-                                 
-                                 
-                                 
-                                 
-                                 
                                  <p class="close-tag nobr">&lt;/party-uuid&gt;</p>
                               </details>
                               <details class="OM-entry">
@@ -732,29 +700,6 @@ The following outline is a representation of the [XML format](https://github.com
                         <details class="OM-entry">
                            <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/mapping-collection/mapping/map/relationship">relationship</a></span> <span class="nobr" id="/mapping-collection/mapping/map/relationship/@ns"><a class="OM-name" href="../xml-reference/#/mapping-collection/mapping/map/relationship/@ns">ns</a>="<span class="OM-datatype"><a href="/reference/datatypes/#uri">uri</a></span>"</span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="nobr">&lt;/relationship&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[1]</span></span></summary>
                            <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span> value</p>
-                           
-                           The effective requirements of the source is equivalent in semantic meaning to the
-                           effective requirements of the target. The words may differ, but both mapped sets convey
-                           similar information with the same effective meaning. This relationship may be reversed,
-                           since `A equivalent-to B` also means that `B equivalent-to A`.
-                           The actual requirements of the source are the same as the actual requirements target.
-                           Differences in capitalization, spelling, and grammar can be ignored, if these differences
-                           do not change the meaning. This relationship may be reversed, since `A equal-to B`
-                           also means that `B equal-to A`.
-                           The effective requirements of the source is a semantic subset of the effective requirements
-                           of the target. This relationship may be reversed as a `superset-of`, since `A subset-of
-                           B` also means that `B superset-of A`.
-                           The effective requirements of the source is a semantic superset of the effective requirements
-                           of the target. This relationship may be reversed as a `subset-of`, since `A superset-of
-                           B` also means that `B subset-of A`.
-                           The effective requirements of the source and target have some semantic equivalence,
-                           but not all effective requirements from each are contained within the other. This
-                           relationship may be reversed, since `A intersects-with B` also means that `B intersects-with
-                           A`. A lower granularity mapping, such as a statement level mapping using 'equivalent-to',
-                           'subset-of', and/or 'superset-of', may provide a more functional mapping that allows
-                           for more inference than using this relationship type.
-                           
-                           
                            <p class="close-tag nobr">&lt;/relationship&gt;</p>
                         </details>
                         <details class="OM-entry">
@@ -944,11 +889,6 @@ The following outline is a representation of the [XML format](https://github.com
                               <details class="OM-entry">
                                  <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/mapping-collection/back-matter/resource/rlink/hash">hash</a></span> <span class="nobr" id="/mapping-collection/back-matter/resource/rlink/hash/@algorithm"><a class="OM-name" href="../xml-reference/#/mapping-collection/back-matter/resource/rlink/hash/@algorithm">algorithm</a>="<span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span>"</span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="nobr">&lt;/hash&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
                                  <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span> value</p>
-                                 
-                                 
-                                 
-                                 
-                                 
                                  <p class="close-tag nobr">&lt;/hash&gt;</p>
                               </details>
                            </div>

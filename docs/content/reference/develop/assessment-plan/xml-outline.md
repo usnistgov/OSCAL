@@ -258,8 +258,6 @@ The following outline is a representation of the [XML format](https://github.com
                               <details class="OM-entry">
                                  <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/assessment-plan/metadata/location/address/country">country</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="nobr">&lt;/country&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 or 1]</span></span></summary>
                                  <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span> value</p>
-                                 
-                                 
                                  <p class="close-tag nobr">&lt;/country&gt;</p>
                               </details>
                            </div>
@@ -273,10 +271,6 @@ The following outline is a representation of the [XML format](https://github.com
                         <details class="OM-entry">
                            <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/assessment-plan/metadata/location/telephone-number">telephone-number</a></span> <span class="nobr" id="/assessment-plan/metadata/location/telephone-number/@type"><a class="OM-name" href="../xml-reference/#/assessment-plan/metadata/location/telephone-number/@type">type</a>="<span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span>"</span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="nobr">&lt;/telephone-number&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
                            <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span> value</p>
-                           
-                           
-                           
-                           
                            <p class="close-tag nobr">&lt;/telephone-number&gt;</p>
                         </details>
                         <details class="OM-entry">
@@ -377,10 +371,6 @@ The following outline is a representation of the [XML format](https://github.com
                         <details class="OM-entry">
                            <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/assessment-plan/metadata/party/telephone-number">telephone-number</a></span> <span class="nobr" id="/assessment-plan/metadata/party/telephone-number/@type"><a class="OM-name" href="../xml-reference/#/assessment-plan/metadata/party/telephone-number/@type">type</a>="<span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span>"</span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="nobr">&lt;/telephone-number&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
                            <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span> value</p>
-                           
-                           
-                           
-                           
                            <p class="close-tag nobr">&lt;/telephone-number&gt;</p>
                         </details>
                         <div class="OM-choices">
@@ -412,8 +402,6 @@ The following outline is a representation of the [XML format](https://github.com
                                     <details class="OM-entry">
                                        <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/assessment-plan/metadata/party/address/country">country</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="nobr">&lt;/country&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 or 1]</span></span></summary>
                                        <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span> value</p>
-                                       
-                                       
                                        <p class="close-tag nobr">&lt;/country&gt;</p>
                                     </details>
                                  </div>
@@ -424,11 +412,6 @@ The following outline is a representation of the [XML format](https://github.com
                               <details class="OM-entry">
                                  <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/assessment-plan/metadata/party/location-uuid">location-uuid</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="nobr">&lt;/location-uuid&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
                                  <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span> value</p>
-                                 
-                                 
-                                 
-                                 
-                                 
                                  <p class="close-tag nobr">&lt;/location-uuid&gt;</p>
                               </details>
                            </div>
@@ -436,11 +419,6 @@ The following outline is a representation of the [XML format](https://github.com
                         <details class="OM-entry">
                            <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/assessment-plan/metadata/party/member-of-organization">member-of-organization</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="nobr">&lt;/member-of-organization&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
                            <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span> value</p>
-                           
-                           
-                           
-                           
-                           
                            <p class="close-tag nobr">&lt;/member-of-organization&gt;</p>
                         </details>
                         <details class="OM-entry">
@@ -460,11 +438,6 @@ The following outline is a representation of the [XML format](https://github.com
                         <details class="OM-entry">
                            <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/assessment-plan/metadata/responsible-party/party-uuid">party-uuid</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="nobr">&lt;/party-uuid&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[1 to ∞]</span></span></summary>
                            <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span> value</p>
-                           
-                           
-                           
-                           
-                           
                            <p class="close-tag nobr">&lt;/party-uuid&gt;</p>
                         </details>
                         <details class="OM-entry">
@@ -543,11 +516,6 @@ The following outline is a representation of the [XML format](https://github.com
                               <details class="OM-entry">
                                  <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/assessment-plan/metadata/action/responsible-party/party-uuid">party-uuid</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="nobr">&lt;/party-uuid&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[1 to ∞]</span></span></summary>
                                  <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span> value</p>
-                                 
-                                 
-                                 
-                                 
-                                 
                                  <p class="close-tag nobr">&lt;/party-uuid&gt;</p>
                               </details>
                               <details class="OM-entry">
@@ -731,11 +699,6 @@ The following outline is a representation of the [XML format](https://github.com
                               <details class="OM-entry">
                                  <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/assessment-plan/local-definitions/component/responsible-role/party-uuid">party-uuid</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="nobr">&lt;/party-uuid&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
                                  <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span> value</p>
-                                 
-                                 
-                                 
-                                 
-                                 
                                  <p class="close-tag nobr">&lt;/party-uuid&gt;</p>
                               </details>
                               <details class="OM-entry">
@@ -823,11 +786,6 @@ The following outline is a representation of the [XML format](https://github.com
                               <details class="OM-entry">
                                  <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/assessment-plan/local-definitions/inventory-item/responsible-party/party-uuid">party-uuid</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="nobr">&lt;/party-uuid&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[1 to ∞]</span></span></summary>
                                  <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span> value</p>
-                                 
-                                 
-                                 
-                                 
-                                 
                                  <p class="close-tag nobr">&lt;/party-uuid&gt;</p>
                               </details>
                               <details class="OM-entry">
@@ -906,11 +864,6 @@ The following outline is a representation of the [XML format](https://github.com
                                     <details class="OM-entry">
                                        <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/assessment-plan/local-definitions/inventory-item/implemented-component/responsible-party/party-uuid">party-uuid</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="nobr">&lt;/party-uuid&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[1 to ∞]</span></span></summary>
                                        <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span> value</p>
-                                       
-                                       
-                                       
-                                       
-                                       
                                        <p class="close-tag nobr">&lt;/party-uuid&gt;</p>
                                     </details>
                                     <details class="OM-entry">
@@ -1029,11 +982,6 @@ The following outline is a representation of the [XML format](https://github.com
                         <details class="OM-entry">
                            <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/assessment-plan/local-definitions/user/role-id">role-id</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="nobr">&lt;/role-id&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
                            <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span> value</p>
-                           
-                           
-                           
-                           
-                           
                            <p class="close-tag nobr">&lt;/role-id&gt;</p>
                         </details>
                         <details class="OM-entry">
@@ -1141,10 +1089,9 @@ The following outline is a representation of the [XML format](https://github.com
                               <div class="OM-entry">
                                  <p class="OM-line">&lt;p&gt; <span class="OM-lit OM-gloss">or other elements defined as <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span></span> <span class="OM-cardinality">[0 to ∞]</span></p>
                               </div>
-                              <details class="OM-entry">
-                                 <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/assessment-plan/local-definitions/objectives-and-methods/part/part">part</a></span>&gt;<span class="show-closed"><span class="OM-lit OM-gloss"> (recursive: model like parent <span class="OM-ref">part</span>) </span><span class="nobr">&lt;/part&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
-                                 <p class="OM-map-name">[Empty]</p>
-                              </details>
+                              <div class="OM-entry">
+                                 <p class="OM-line"><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/assessment-plan/local-definitions/objectives-and-methods/part/part">part</a></span>&gt;<span class="show-closed"><span class="OM-lit OM-gloss"> (recursive: model like parent <span class="OM-ref">part</span>) </span><span class="nobr">&lt;/part&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></p>
+                              </div>
                               <details class="OM-entry">
                                  <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/assessment-plan/local-definitions/objectives-and-methods/part/link">link</a></span> <span class="nobr" id="/assessment-plan/local-definitions/objectives-and-methods/part/link/@href"><a class="OM-name" href="../xml-reference/#/assessment-plan/local-definitions/objectives-and-methods/part/link/@href">href</a>="<span class="OM-datatype"><a href="/reference/datatypes/#uri-reference">uri-reference</a></span>"</span> <span class="nobr" id="/assessment-plan/local-definitions/objectives-and-methods/part/link/@rel"><a class="OM-name" href="../xml-reference/#/assessment-plan/local-definitions/objectives-and-methods/part/link/@rel">rel</a>="<span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span>"</span> <span class="nobr" id="/assessment-plan/local-definitions/objectives-and-methods/part/link/@media-type"><a class="OM-name" href="../xml-reference/#/assessment-plan/local-definitions/objectives-and-methods/part/link/@media-type">media-type</a>="<span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span>"</span> <span class="nobr" id="/assessment-plan/local-definitions/objectives-and-methods/part/link/@resource-fragment"><a class="OM-name" href="../xml-reference/#/assessment-plan/local-definitions/objectives-and-methods/part/link/@resource-fragment">resource-fragment</a>="<span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span>"</span>&gt;<span class="show-closed"> … <span class="nobr">&lt;/link&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
                                  <div class="model-container">
@@ -1503,11 +1450,6 @@ The following outline is a representation of the [XML format](https://github.com
                                     <details class="OM-entry">
                                        <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/assessment-plan/local-definitions/activity/step/responsible-role/party-uuid">party-uuid</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="nobr">&lt;/party-uuid&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
                                        <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span> value</p>
-                                       
-                                       
-                                       
-                                       
-                                       
                                        <p class="close-tag nobr">&lt;/party-uuid&gt;</p>
                                     </details>
                                     <details class="OM-entry">
@@ -1768,11 +1710,6 @@ The following outline is a representation of the [XML format](https://github.com
                               <details class="OM-entry">
                                  <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/assessment-plan/local-definitions/activity/responsible-role/party-uuid">party-uuid</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="nobr">&lt;/party-uuid&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
                                  <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span> value</p>
-                                 
-                                 
-                                 
-                                 
-                                 
                                  <p class="close-tag nobr">&lt;/party-uuid&gt;</p>
                               </details>
                               <details class="OM-entry">
@@ -1839,10 +1776,9 @@ The following outline is a representation of the [XML format](https://github.com
                         <div class="OM-entry">
                            <p class="OM-line">&lt;p&gt; <span class="OM-lit OM-gloss">or other elements defined as <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span></span> <span class="OM-cardinality">[0 to ∞]</span></p>
                         </div>
-                        <details class="OM-entry">
-                           <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/assessment-plan/terms-and-conditions/part/part">part</a></span>&gt;<span class="show-closed"><span class="OM-lit OM-gloss"> (recursive: model like parent <span class="OM-ref">part</span>) </span><span class="nobr">&lt;/part&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
-                           <p class="OM-map-name">[Empty]</p>
-                        </details>
+                        <div class="OM-entry">
+                           <p class="OM-line"><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/assessment-plan/terms-and-conditions/part/part">part</a></span>&gt;<span class="show-closed"><span class="OM-lit OM-gloss"> (recursive: model like parent <span class="OM-ref">part</span>) </span><span class="nobr">&lt;/part&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></p>
+                        </div>
                         <details class="OM-entry">
                            <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/assessment-plan/terms-and-conditions/part/link">link</a></span> <span class="nobr" id="/assessment-plan/terms-and-conditions/part/link/@href"><a class="OM-name" href="../xml-reference/#/assessment-plan/terms-and-conditions/part/link/@href">href</a>="<span class="OM-datatype"><a href="/reference/datatypes/#uri-reference">uri-reference</a></span>"</span> <span class="nobr" id="/assessment-plan/terms-and-conditions/part/link/@rel"><a class="OM-name" href="../xml-reference/#/assessment-plan/terms-and-conditions/part/link/@rel">rel</a>="<span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span>"</span> <span class="nobr" id="/assessment-plan/terms-and-conditions/part/link/@media-type"><a class="OM-name" href="../xml-reference/#/assessment-plan/terms-and-conditions/part/link/@media-type">media-type</a>="<span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span>"</span> <span class="nobr" id="/assessment-plan/terms-and-conditions/part/link/@resource-fragment"><a class="OM-name" href="../xml-reference/#/assessment-plan/terms-and-conditions/part/link/@resource-fragment">resource-fragment</a>="<span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span>"</span>&gt;<span class="show-closed"> … <span class="nobr">&lt;/link&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
                            <div class="model-container">
@@ -2316,11 +2252,6 @@ The following outline is a representation of the [XML format](https://github.com
                               <details class="OM-entry">
                                  <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/assessment-plan/assessment-assets/component/responsible-role/party-uuid">party-uuid</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="nobr">&lt;/party-uuid&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
                                  <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span> value</p>
-                                 
-                                 
-                                 
-                                 
-                                 
                                  <p class="close-tag nobr">&lt;/party-uuid&gt;</p>
                               </details>
                               <details class="OM-entry">
@@ -2439,11 +2370,6 @@ The following outline is a representation of the [XML format](https://github.com
                                     <details class="OM-entry">
                                        <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/assessment-plan/assessment-assets/assessment-platform/uses-component/responsible-party/party-uuid">party-uuid</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="nobr">&lt;/party-uuid&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[1 to ∞]</span></span></summary>
                                        <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span> value</p>
-                                       
-                                       
-                                       
-                                       
-                                       
                                        <p class="close-tag nobr">&lt;/party-uuid&gt;</p>
                                     </details>
                                     <details class="OM-entry">
@@ -2597,10 +2523,9 @@ The following outline is a representation of the [XML format](https://github.com
                      </div>
                      <p class="close-tag nobr">&lt;/dependency&gt;</p>
                   </details>
-                  <details class="OM-entry">
-                     <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/assessment-plan/task/task">task</a></span>&gt;<span class="show-closed"><span class="OM-lit OM-gloss"> (recursive: model like parent <span class="OM-ref">task</span>) </span><span class="nobr">&lt;/task&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
-                     <p class="OM-map-name">[Empty]</p>
-                  </details>
+                  <div class="OM-entry">
+                     <p class="OM-line"><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/assessment-plan/task/task">task</a></span>&gt;<span class="show-closed"><span class="OM-lit OM-gloss"> (recursive: model like parent <span class="OM-ref">task</span>) </span><span class="nobr">&lt;/task&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></p>
+                  </div>
                   <details class="OM-entry">
                      <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/assessment-plan/task/associated-activity">associated-activity</a></span> <span class="nobr" id="/assessment-plan/task/associated-activity/@activity-uuid"><a class="OM-name" href="../xml-reference/#/assessment-plan/task/associated-activity/@activity-uuid">activity-uuid</a>="<span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span>"</span>&gt;<span class="show-closed"> … <span class="nobr">&lt;/associated-activity&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
                      <div class="model-container">
@@ -2666,11 +2591,6 @@ The following outline is a representation of the [XML format](https://github.com
                               <details class="OM-entry">
                                  <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/assessment-plan/task/associated-activity/responsible-role/party-uuid">party-uuid</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="nobr">&lt;/party-uuid&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
                                  <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span> value</p>
-                                 
-                                 
-                                 
-                                 
-                                 
                                  <p class="close-tag nobr">&lt;/party-uuid&gt;</p>
                               </details>
                               <details class="OM-entry">
@@ -3019,11 +2939,6 @@ The following outline is a representation of the [XML format](https://github.com
                         <details class="OM-entry">
                            <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/assessment-plan/task/responsible-role/party-uuid">party-uuid</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="nobr">&lt;/party-uuid&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
                            <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span> value</p>
-                           
-                           
-                           
-                           
-                           
                            <p class="close-tag nobr">&lt;/party-uuid&gt;</p>
                         </details>
                         <details class="OM-entry">
@@ -3137,11 +3052,6 @@ The following outline is a representation of the [XML format](https://github.com
                               <details class="OM-entry">
                                  <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/assessment-plan/back-matter/resource/rlink/hash">hash</a></span> <span class="nobr" id="/assessment-plan/back-matter/resource/rlink/hash/@algorithm"><a class="OM-name" href="../xml-reference/#/assessment-plan/back-matter/resource/rlink/hash/@algorithm">algorithm</a>="<span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span>"</span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="nobr">&lt;/hash&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
                                  <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span> value</p>
-                                 
-                                 
-                                 
-                                 
-                                 
                                  <p class="close-tag nobr">&lt;/hash&gt;</p>
                               </details>
                            </div>
