@@ -33,7 +33,7 @@ jobs:
         path: ${{ inputs.site_git_ref_path }}
     - name: Check website HTML content links
       id: linkchecker
-      uses: lycheeverse/lychee-action@9ace499fe66cee282a29eaa628fdac2c72fa087f
+      uses: lycheeverse/lychee-action@97189f2c0a3c8b0cb0e704fd4e878af6e5e2b2c5
       with:
         args: --exclude-file ./build/config/.lycheeignore --verbose --no-progress --accept 200,206,429 "./${INPUT_SITE_GIT_REF}/**/*.html" --remap "https://pages.nist.gov/OSCAL/ file://${GITHUB_WORKSPACE}/${INPUT_SITE_GIT_REF}/" --exclude-mail
       env:

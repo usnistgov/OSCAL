@@ -141,7 +141,7 @@ jobs:
         retention-days: 5
     - name: Link Checker
       id: linkchecker
-      uses: lycheeverse/lychee-action@9ace499fe66cee282a29eaa628fdac2c72fa087f
+      uses: lycheeverse/lychee-action@97189f2c0a3c8b0cb0e704fd4e878af6e5e2b2c5
       with:
         args: --exclude-file ./build/config/.lycheeignore --verbose --no-progress --accept 200,206,429 './docs/public/**/*.html' --remap "https://pages.nist.gov/OSCAL/ file://${GITHUB_WORKSPACE}/docs/public/" --exclude-mail
         format: markdown
