@@ -36,14 +36,20 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Pull the correct image
+        shell: bash
+        # Produces a tagged image oscal-common-env:selected
+        run: ./build/pull-oscal-env-dockerfile.sh
       - name: Run XSpec tests
         shell: bash
         run: |
+          set -o pipefail # propagate return code
           docker run \
             -v $(pwd):/oscal \
             -e TEST_DIR=/oscal/xspec \
-            csd773/oscal-common-env \
-            /oscal/src/utils/util/resolver-pipeline/testing/test.sh || {
+            oscal-common-env:selected \
+            /oscal/src/utils/util/resolver-pipeline/testing/test.sh \
+            | tee summary.csv || {
             if [ "$?" = 83 ]; then
               # For now we only fail when tests fail to compile
               echo "Some test suites failed to compile, failing..."
@@ -54,4 +60,6 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: xspec-output
-          path: xspec/*.html
+          path: |
+            xspec/*.html
+            summary.csv
