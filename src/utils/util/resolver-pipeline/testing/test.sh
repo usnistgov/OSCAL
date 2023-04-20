@@ -27,7 +27,7 @@ XSPEC_COMMAND="${XSPEC_COMMAND:-xspec.sh}"
 export TEST_DIR="${TEST_DIR:-${SCRIPT_DIR}/xspec}"
 
 # All .xspec files in the "testing" directory
-TEST_SUITES="$(find ${SCRIPT_DIR} -type f -name "*.xspec")"
+TEST_SUITES=$(find "${SCRIPT_DIR}" -type f -name "*.xspec")
 
 # Setup an "alias" fd for use in subshells,
 #    which is used to capture the STDERR of the XSpec output
@@ -49,18 +49,18 @@ for TEST_SUITE in ${TEST_SUITES}; do
     # Then, if the suite failed, check "stderr_output" for compilation failures
     #   setting "SUITES_FAILURE" and "SUITES_COMPILATION_FAILURE" as appropriate
 
-    printf "\n=== Testing Suite ${TEST_SUITE} ===\n" 1>&2
+    printf "\n=== Testing Suite %s ===\n" "${TEST_SUITE}" 1>&2
 
     suite_passed=true
     stderr_output=$(${XSPEC_COMMAND} -e "${TEST_SUITE}" 2>&1 | tee /dev/fd/6) || suite_passed=false
 
     if [ "$suite_passed" = true ]; then
-        printf "${TEST_SUITE},passed\n"
+        printf "%s,passed\n" "${TEST_SUITE}"
     elif [[ $stderr_output == *"*** Error compiling the test suite"* ]]; then
-        printf "${TEST_SUITE},compile_failed\n"
+        printf "%s,compile_failed\n" "${TEST_SUITE}"
         SUITES_COMPILATION_FAILURE=true
     else
-        printf "${TEST_SUITE},failed\n"
+        printf "%s,failed\n" "${TEST_SUITE}"
         SUITES_FAILURE=true
     fi
 done
