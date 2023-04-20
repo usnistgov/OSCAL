@@ -52,7 +52,7 @@ for TEST_SUITE in ${TEST_SUITES}; do
     printf "\n=== Testing Suite ${TEST_SUITE} ===\n" 1>&2
 
     suite_passed=true
-    stderr_output=$(${XSPEC_COMMAND} -e $TEST_SUITE 2>&1 | tee /dev/fd/6) || suite_passed=false
+    stderr_output=$(${XSPEC_COMMAND} -e "${TEST_SUITE}" 2>&1 | tee /dev/fd/6) || suite_passed=false
 
     if [ "$suite_passed" = true ]; then
         printf "${TEST_SUITE},passed\n"
