@@ -8779,22 +8779,12 @@
    </xs:complexType>
    <xs:simpleType name="Base64Datatype">
       <xs:restriction base="xs:base64Binary">
-         <xs:pattern value="\S(.*\S)?">
-            <xs:annotation>
-               <xs:documentation>A trimmed string, at least one character with no
-						leading or trailing whitespace.</xs:documentation>
-            </xs:annotation>
-         </xs:pattern>
+         <xs:pattern value="[0-9A-Za-z+/]+={0,2}"/>
       </xs:restriction>
    </xs:simpleType>
    <xs:simpleType name="BooleanDatatype">
       <xs:restriction base="xs:boolean">
-         <xs:pattern value="\S(.*\S)?">
-            <xs:annotation>
-               <xs:documentation>A trimmed string, at least one character with no
-						leading or trailing whitespace.</xs:documentation>
-            </xs:annotation>
-         </xs:pattern>
+         <xs:pattern value="true|1|false|0"/>
       </xs:restriction>
    </xs:simpleType>
    <xs:simpleType name="DateDatatype">
@@ -8820,7 +8810,7 @@
          <xs:documentation>An email address</xs:documentation>
       </xs:annotation>
       <xs:restriction base="StringDatatype">
-         <xs:pattern value="\S.*@.*\S">
+         <xs:pattern value=".+@.+">
             <xs:annotation>
                <xs:documentation>Need a better pattern.</xs:documentation>
             </xs:annotation>

@@ -9395,14 +9395,12 @@
       <xsl:element name="{(@in-json[matches(.,'\S')],'string')[1]}"
                     namespace="http://www.w3.org/2005/xpath-functions">
             <!-- emit a key only if needed -->
-         <xsl:if test="exists(parent::field/child::flag) or exists(parent::field/parent::assembly) or count(parent::field/parent::group[@in-json='SINGLETON_OR_ARRAY']/child::*) eq 1">
-            <xsl:copy-of select="((../flag[@key = $key-flag-name], parent::field[@in-json = 'SCALAR'])/@key, @key)[1]"/>
-            <!-- overriding the key           -->
-            <xsl:if test="exists(@key-flag)">
-               <xsl:attribute name="key">
-                  <xsl:apply-templates select="../flag[@name = $key-flag-name]" mode="cast-data"/>
-               </xsl:attribute>
-            </xsl:if>
+         <xsl:copy-of select="((../flag[@key = $key-flag-name], parent::field[@in-json = 'SCALAR'])/@key, @key)[1]"/>
+         <!-- overriding the key           -->
+         <xsl:if test="exists(@key-flag)">
+            <xsl:attribute name="key">
+               <xsl:apply-templates select="../flag[@name = $key-flag-name]" mode="cast-data"/>
+            </xsl:attribute>
          </xsl:if>
          <xsl:apply-templates select="." mode="cast-data"/>
       </xsl:element>
