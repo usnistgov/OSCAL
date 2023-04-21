@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../example-checkup.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-stylesheet type="text/css" href="../../../../../../src/utils/util/author/CSS/oscal-author.css" title="Authoring" alternate="no"?>
+<!-- Modified by conversion XSLT 2021-04-05T11:12:31.775-04:00 - RC2 OSCAL becomes RC3 OSCAL -->
+<catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+         uuid="160a974c-2aaf-45cd-b504-44bb86bebada">
+   <metadata>
+      <title>XYZ Tiny Catalog</title>
+      <last-modified>2020-05-30T14:51:42.355-04:00</last-modified>
+      <version>1.0</version>
+      <oscal-version>1.0.0</oscal-version>
+   </metadata>
+   <group>
+      <title>Group X of XYZ</title>
+      <control id="x1">
+         <title>Control X1</title>
+      </control>
+      <control id="x2">
+         <title>Control X2</title>
+      </control>
+      <control id="x3">
+         <title>Control X3</title>
+      </control>
+   </group>
+   <group>
+      <title>Group Y of XYZ</title>
+      <control id="y1">
+         <title>Control Y1</title>
+      </control>
+      <control id="y2">
+         <title>Control Y2</title>
+      </control>
+      <control id="y3">
+         <title>Control Y3</title>
+      </control>
+   </group>
+   <group>
+      <title>Group Z of XYZ</title>
+      <control id="z1">
+         <title>Control Z1</title>
+      </control>
+      <control id="z2">
+         <title>Control Z2</title>
+      </control>
+      <control id="z3">
+         <title>Control Z3</title>
+         <control id="z3.a">
+            <title>Control Z3-A</title>
+            <control id="z3.a-1">
+               <title>Control Z3-A-1</title>
+            </control>
+         </control>
+      </control>
+   </group>
+</catalog>

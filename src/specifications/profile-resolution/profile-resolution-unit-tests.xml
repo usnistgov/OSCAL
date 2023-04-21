@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<test-suite xmlns="http://csrc.nist.gov/ns/metaschema/test-suite/1.0"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://csrc.nist.gov/ns/metaschema/test-suite/1.0 unit-tests.xsd">
+   <test-collection name="Import Phase" location="requirement-tests/">
+      <test-scenario name="req-include-all-asis">
+         <example-description>relative URI</example-description>
+         <addresses-requirement requirement-id="req-uri-resolve">Tools MUST resolve
+            URIs by following Section 5 of RFC3986, with the exception of URI Fragments (URIs that start with
+            "#"). URI Fragments MUST instead be resolved as defined in [Section internalref].</addresses-requirement>
+         <addresses-requirement requirement-id="req-uri-base">For the purposes of resolving URIs
+            using the above specification, the Base URI MUST be considered to be the absolute URI of
+            the containing profile.</addresses-requirement>
+         <addresses-requirement requirement-id="req-include-all">
+            When
+            an import provides the include-all directive, ALL controls and groups in the
+            referenced document (including nested controls) MUST be included. </addresses-requirement>
+         <resolve-profile>
+            <profile-source source-format="XML" location="req-include-all-asis.xml"/>
+         </resolve-profile>
+         <expected-resolution source-format="XML" location="output-expected/req-include-all-asis.xml"/>
+      </test-scenario>
+      <test-scenario name="req-import-by-resource">
+         <example-description>via internal reference to
+              resource/rlink</example-description>
+         <addresses-requirement requirement-id="req-uri-aquire">Tools MUST acquire resources at the resolved URI by following Section 5 of
+              RFC3986, with the exception of URI Fragments (URIs that start with "#").
+            URI Fragments MUST instead be acquired as defined in [Section internalref].
+        </addresses-requirement>
+         <addresses-requirement requirement-id="req-internal">In the context of the Import Phase,
+            internal references will only appear as a reference to a profile or catalog that is in
+            the resources section of the source. When tools encounter such a reference,
+            they MUST locate the object in resources with the matching UUID value, and
+            resolve the resource. By OSCAL model requirements, a given resource can have
+            zero to many rlink objects and zero to one base64 objects;
+            however, it must have at least one of the two present. Tools can assume that any of
+            these each resolves to the same underlying OSCAL object, although potentially in
+            different serialization formats. For deterministic resolution of these backmatter OSCAL
+            objects, tools need to adhere to the following requirements: </addresses-requirement>
+         <resolve-profile>
+            <profile-source source-format="XML" location="req-import-by-resource.xml"/>
+         </resolve-profile>
+         <expected-resolution source-format="XML"
+                              location="output-expected/req-import-by-resource.xml"/>
+      </test-scenario>
+      <test-scenario name="req-missing-resource">
+         <example-description>PENDING rebase over latest from galtm missing resource</example-description>
+         <addresses-requirement requirement-id="req-uri-error">In the case
+            that acquiring a resource fails, the tool MUST cease processing and provide an error. In
+            order to ensure profile resolution results in the same catalog regardless of which tool
+            resolves it, all imports must successfully resolve. While this may cause inconvenience
+            if resources are frequently not available, it ensures interoperability.</addresses-requirement>
+         <addresses-requirement requirement-id="req-internal-error">If the object fetched cannot be found
+            or is not a valid OSCAL object, the tool MUST cease processing and provide an
+            error.</addresses-requirement>
+         <resolve-profile>
+            <profile-source source-format="XML" location="req-missing-resource.xml"/>
+         </resolve-profile>
+         <expected-resolution source-format="XML" location="output-expected/req-missing-resource.xml"/>
+      </test-scenario>
+      <test-scenario name="req-broken-import">
+         <example-description>PENDING rebase over latest from galtm</example-description>
+         <addresses-requirement requirement-id="req-internal-error">If the object fetched cannot be found
+            or is not a valid OSCAL object, the tool MUST cease processing and provide an
+            error.</addresses-requirement>
+         <resolve-profile>
+            <profile-source source-format="XML" location="req-broken-import.xml"/>
+         </resolve-profile>
+         <expected-resolution source-format="XML" location="output-expected/req-broken-import.xml"/>
+      </test-scenario>
+      <test-scenario name="req-chained-all-asis">
+         <example-description>PENDING chained profiles</example-description>
+         <addresses-requirement requirement-id="req-circular-resolve">If the resource acquired is an OSCAL Profile, the tool
+            MUST apply this specification to resolve it, then continue processing having imported
+            the resulting catalog.</addresses-requirement>
+         <addresses-requirement requirement-id="req-resolve-profile">When a profile imports a profile,
+            the subordinate profile SHOULD be resolved first into a catalog using this
+            specification, before it is imported. </addresses-requirement>
+         <resolve-profile>
+            <profile-source source-format="XML" location="req-chained-all-asis.xml"/>
+         </resolve-profile>
+         <expected-resolution source-format="XML" location="output-expected/req-chained-all-asis.xml"/>
+      </test-scenario>
+      <test-scenario name="req-chained-deepA">
+         <example-description>PENDING [bug repair] chained profile
+              merged with controls from its own source catalog</example-description>
+         <addresses-requirement requirement-id="req-resolve-profile">When a profile imports a profile,
+            the subordinate profile SHOULD be resolved first into a catalog using this
+            specification, before it is imported. </addresses-requirement>
+         <addresses-requirement requirement-id="rq-mulitple-imports">Note that this occurs even if the same catalog is imported
+            multiple times: each distinct import collects controls into a separate
+              selection</addresses-requirement>
+         <addresses-requirement requirement-id="rq-multiple-merge">The control inclusions are combined and collapsed in the next
+            phase of processing</addresses-requirement>
+         <resolve-profile>
+            <profile-source source-format="XML" location="req-chained-deepA.xml"/>
+         </resolve-profile>
+         <expected-resolution source-format="XML" location="output-expected/req-chained-deepA.xml"/>
+      </test-scenario>
+      <test-scenario name="req-circular_import">
+         <example-description>PENDING circular import detection</example-description>
+         <addresses-requirement requirement-id="req-circular-error">If a processor encounters a circular
+              import as described above (self-imports are inherently circular), the processor
+            MUST cease processing and generate an error. </addresses-requirement>
+         <resolve-profile>
+            <profile-source source-format="XML" location="req-circular_import.xml"/>
+         </resolve-profile>
+         <expected-resolution source-format="XML" location="output-expected/req-circular_import.xml"/>
+      </test-scenario>
+      <test-scenario name="req-include-all-flat">
+         <addresses-requirement requirement-id="req-include-all">
+            When
+            an import provides the include-all directive, ALL controls and groups in the
+            referenced document (including nested controls) MUST be included. </addresses-requirement>
+         <resolve-profile>
+            <profile-source source-format="XML" location="req-include-all-flat.xml"/>
+         </resolve-profile>
+         <expected-resolution source-format="XML" location="output-expected/req-include-all-flat.xml"/>
+      </test-scenario>
+      <test-scenario name="req-include-by-id">
+         <addresses-requirement requirement-id="req-include-by-id">When an import provides the
+              include-controls directive, with a with-id child, all controls
+            in the referenced document whose id match one of the listed id
+            values MUST be included. </addresses-requirement>
+         <addresses-requirement requirement-id="req-with-child-controls-yes">A with-child-controls:
+                yes directive on an include-controls indicates that all
+                descendant controls of the included control MUST also be included. </addresses-requirement>
+         <resolve-profile>
+            <profile-source source-format="XML" location="req-include-by-id.xml"/>
+         </resolve-profile>
+         <expected-resolution source-format="XML" location="output-expected/req-include-by-id.xml"/>
+      </test-scenario>
+      <test-scenario name="req-include-by-match">
+         <addresses-requirement requirement-id="req-include-by-match">When an import provides the
+          include-controls directive, with a
+          matching child, all controls in the referenced document whose
+          id matches one of the listed
+          pattern values (Glob matching) MUST be included.
+        </addresses-requirement>
+         <resolve-profile>
+            <profile-source source-format="XML" location="req-include-by-match.xml"/>
+         </resolve-profile>
+         <expected-resolution source-format="XML" location="output-expected/req-include-by-match.xml"/>
+      </test-scenario>
+      <test-scenario name="req-include-by-match-empty">
+         <addresses-requirement requirement-id="req-include-by-match-empty">If a
+          matching object is provided with no
+          pattern, it MUST be treated as matching nothing. While not providing a pattern is technically valid, resolution tool implementers should be aware that it is generally undesirable, and warnings or notices to the user may be appropriate.
+        </addresses-requirement>
+         <resolve-profile>
+            <profile-source source-format="XML" location="req-include-by-match-empty.xml"/>
+         </resolve-profile>
+         <expected-resolution source-format="XML"
+                              location="output-expected/req-include-by-match-empty.xml"/>
+      </test-scenario>
+      <test-scenario name="req-with-child-controls-no">
+         <addresses-requirement requirement-id="req-with-child-controls-no">A with-child-controls:
+                no directive on an include-controls indicates that ONLY the
+              matching control is included, any descendant children MUST NOT be included. </addresses-requirement>
+         <resolve-profile>
+            <profile-source source-format="XML" location="req-with-child-controls-no.xml"/>
+         </resolve-profile>
+         <expected-resolution source-format="XML"
+                              location="output-expected/req-with-child-controls-no.xml"/>
+      </test-scenario>
+      <test-scenario name="req-with-child-controls-none">
+         <addresses-requirement requirement-id="req-with-child-controls-none">If no
+                with-child-controls is provided, the processor MUST consider the
+              directive as being equivalent to one having with-child-controls:no.
+          </addresses-requirement>
+         <resolve-profile>
+            <profile-source source-format="XML" location="req-with-child-controls-none.xml"/>
+         </resolve-profile>
+         <expected-resolution source-format="XML"
+                              location="output-expected/req-with-child-controls-none.xml"/>
+      </test-scenario>
+      <test-scenario name="req-with-parent-controls-yes1">
+         <example-description>PR
+                https://github.com/usnistgov/OSCAL/pull/1207</example-description>
+         <addresses-requirement requirement-id="req-with-parent-controls-yes">A with-parent-controls:
+                yes directive on an include-controls indicates that all parent
+                controls of the included control MUST also be included.</addresses-requirement>
+         <resolve-profile>
+            <profile-source source-format="XML" location="req-with-parent-controls-yes1.xml"/>
+         </resolve-profile>
+         <expected-resolution source-format="XML"
+                              location="output-expected/req-with-parent-controls-yes1.xml"/>
+      </test-scenario>
+      <test-scenario name="req-with-parent-controls-yes2">
+         <example-description>PR
+                https://github.com/usnistgov/OSCAL/pull/1207</example-description>
+         <addresses-requirement requirement-id="req-with-parent-controls-yes">A with-parent-controls:
+                yes directive on an include-controls indicates that all parent
+                controls of the included control MUST also be included.</addresses-requirement>
+         <resolve-profile>
+            <profile-source source-format="XML" location="req-with-parent-controls-yes2.xml"/>
+         </resolve-profile>
+         <expected-resolution source-format="XML"
+                              location="output-expected/req-with-parent-controls-yes2.xml"/>
+      </test-scenario>
+      <test-scenario name="req-with-parent-controls-no1">
+         <example-description>PENDING PR
+                https://github.com/usnistgov/OSCAL/pull/1207</example-description>
+         <addresses-requirement requirement-id="req-with-parent-controls-no">A with-parent-controls:
+                no directive on an include-controls indicates that ONLY the
+              matching control is included, any parent MUST NOT be included. </addresses-requirement>
+         <resolve-profile>
+            <profile-source source-format="XML" location="req-with-parent-controls-no1.xml"/>
+         </resolve-profile>
+         <expected-resolution source-format="XML"
+                              location="output-expected/req-with-parent-controls-no1.xml"/>
+      </test-scenario>
+      <test-scenario name="req-with-parent-controls-none">
+         <example-description>Neither setting is
+                given</example-description>
+         <addresses-requirement requirement-id="req-with-parent-controls-none">If no with-parent-controls is provided, the processor MUST
+              consider the directive as being equivalent to one having
+                with-parent-controls:yes. </addresses-requirement>
+         <resolve-profile>
+            <profile-source source-format="XML" location="req-with-parent-controls-none.xml"/>
+         </resolve-profile>
+         <expected-resolution source-format="XML"
+                              location="output-expected/req-with-parent-controls-none.xml"/>
+      </test-scenario>
+      <test-scenario name="req-include-exclude1">
+         <addresses-requirement requirement-id="req-exclude">Any control designated to be both
+            included and excluded, MUST be excluded. This holds irrespective of the specificity of
+            the selection for inclusion or exclusion.</addresses-requirement>
+         <resolve-profile>
+            <profile-source source-format="XML" location="req-include-exclude1.xml"/>
+         </resolve-profile>
+         <expected-resolution source-format="XML" location="output-expected/req-include-exclude1.xml"/>
+      </test-scenario>
+      <test-scenario name="req-include-exclude2">
+         <addresses-requirement requirement-id="req-exclude">Any control designated to be both
+            included and excluded, MUST be excluded. This holds irrespective of the specificity of
+            the selection for inclusion or exclusion.</addresses-requirement>
+         <resolve-profile>
+            <profile-source source-format="XML" location="req-include-exclude2.xml"/>
+         </resolve-profile>
+         <expected-resolution source-format="XML" location="output-expected/req-include-exclude2.xml"/>
+      </test-scenario>
+      <test-scenario name="req-include-exclude3">
+         <addresses-requirement requirement-id="req-exclude">Any control designated to be both
+            included and excluded, MUST be excluded. This holds irrespective of the specificity of
+            the selection for inclusion or exclusion.</addresses-requirement>
+         <resolve-profile>
+            <profile-source source-format="XML" location="req-include-exclude3.xml"/>
+         </resolve-profile>
+         <expected-resolution source-format="XML" location="output-expected/req-include-exclude3.xml"/>
+      </test-scenario>
+      <test-scenario name="req-include-exclude4">
+         <addresses-requirement requirement-id="req-exclude-additional">When exclude-controls
+            has at least one with-ids or matching directive, the processor
+            MUST follow the same rules as defined in the relevant sections above for these
+            directives, but exclude instead of include any controls. All optional features
+              (with-child-controls, etc.) also apply to exclusion directives. </addresses-requirement>
+         <addresses-requirement requirement-id="req-redundant">A given import may have
+            any number of inclusion statements and any number of exclusion statements. Their effect
+            is cumulative; any control that is included (or excluded) more than once MUST be
+            considered to be included (or excluded) only once. In other words, a given control being
+            included or excluded more than once has no effect. Exclusion still takes priority over
+            inclusion (see above). </addresses-requirement>
+         <resolve-profile>
+            <profile-source source-format="XML" location="req-include-exclude4.xml"/>
+         </resolve-profile>
+         <expected-resolution source-format="XML" location="output-expected/req-include-exclude4.xml"/>
+      </test-scenario>
+   </test-collection>
+   <test-collection name="Merge Phase" location="requirement-tests/">
+      <test-scenario name="keep-everything-twice">
+         <addresses-requirement requirement-id="req-merge-none">
+            If no merge directive
+            is given in the profile, or if a merge is given without a combine,
+            merge conflicts MUST be treated as if method: keep was given. </addresses-requirement>
+         <resolve-profile>
+            <profile-source source-format="XML" location="keep-everything-twice.xml"/>
+         </resolve-profile>
+         <expected-resolution source-format="XML"
+                              location="output-expected/keep-everything-twice.xml"/>
+      </test-scenario>
+      <test-scenario name="req-include-all-flat">
+         <addresses-requirement requirement-id="req-structure-none">If no
+          merge directive is given in the profile, or if a
+          merge is given without a structuring directive, structuring the output MUST be treated as if the structuring directive
+          flat was given. For example, a profile with no
+          merge directive:
+        </addresses-requirement>
+         <resolve-profile>
+            <profile-source source-format="XML" location="req-include-all-flat.xml"/>
+         </resolve-profile>
+         <expected-resolution source-format="XML" location="output-expected/req-include-all-flat.xml"/>
+      </test-scenario>
+   </test-collection>
+</test-suite>

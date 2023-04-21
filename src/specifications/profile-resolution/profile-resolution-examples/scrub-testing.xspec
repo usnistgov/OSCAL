@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    xmlns:opr="http://csrc.nist.gov/ns/oscal/profile-resolution"
+    stylesheet="../../../utils/util/resolver-pipeline/oscal-profile-test-helper.xsl"
+       xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+       run-as="external">
+    
+    <!-- Turns out this won't test in XSpec due to its handling of ws-only text nodes -->
+    <x:scenario label="scrub-ws" >
+        <x:context mode="scrubbing">
+            <control id="a1">
+                <title>Control A1</title>
+                <param id="param-a1.a">
+                    <label>a1.a parameter</label>
+                    <value>a1.a value</value>
+                </param>
+                <prop name="place" value="1st"/>
+                <part id="a1-stmt" name="statement">
+                    <p>A1 aaaaa aaaaaaaaaa</p>
+                    <p xml:space="preserve">Parameter A.a is set: <insert type="param" id-ref="param-A.a"/>
+                    </p>
+                    <p xml:space="preserve">Parameter a1.a is set: <insert type="param" id-ref="param-a1.a"/>
+                      </p>
+                </part>
+            </control>
+        </x:context>
+        <x:expect label="whitespace normalized">
+            <control id="a1">
+                <title>Control A1</title>
+                <param id="param-a1.a">
+                    <label>a1.a parameter</label>
+                    <value>a1.a value</value>
+                </param>
+                <prop name="place" value="1st"/>
+                <part id="a1-stmt" name="statement">
+                    <p>A1 aaaaa aaaaaaaaaa</p>
+                    <p xml:space="preserve">Parameter A.a is set: <insert type="param" id-ref="param-A.a"/></p>
+                    <p xml:space="preserve">Parameter a1.a is set: <insert type="param" id-ref="param-a1.a"/></p>
+                </part>
+            </control>
+        </x:expect>
+    </x:scenario>
+</x:description>
