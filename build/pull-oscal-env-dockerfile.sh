@@ -26,7 +26,8 @@ OUTPUT_IMAGE="oscal-common-env"
 OUTPUT_TAG="selected"
 OUTPUT_REF="${OUTPUT_IMAGE}:${OUTPUT_TAG}"
 
-for REF in "${SOURCE_IMAGE}:${TAGS[@]}"; do
+for TAG in "${TAGS[@]}"; do
+    REF="${SOURCE_IMAGE}:${TAG}"
     docker pull "${REF}" && {
         docker tag "${REF}" "${OUTPUT_REF}"
         echo "Successsfully pulled ${REF} and retagged it as ${OUTPUT_REF}"
