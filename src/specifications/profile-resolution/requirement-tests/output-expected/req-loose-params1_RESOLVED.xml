@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+         uuid="00000000-0000-4000-B000-000000000000">
+   <metadata>
+      <title>Test Profile</title>
+      <last-modified>2022-06-13T13:51:15.3863601-04:00</last-modified>
+      <version>1.0</version>
+      <oscal-version>TODO: Not implemented yet</oscal-version>
+      <prop name="resolution-tool"
+            value="OSCAL Profile Resolver XSLT Pipeline OPRXP"/>
+      <link href="requirement-tests/req-loose-params1.xml"
+            rel="source-profile"/>
+   </metadata>
+   <param id="floatA">
+      <label>floating param</label>
+      <guideline><p>When referenced from anywhere, this should float through.</p></guideline>
+   </param>
+   <param id="c2p">
+      <label>param floating in C2</label>
+      <guideline><p>If Control C2 is missing, should be floating free.</p></guideline>
+   </param>
+   <group id="GRP">
+      <title>Group of Controls</title>
+      <control id="c3">
+         <title>Control C3</title>
+         <prop name="label" value="ninth"/>
+         <part name="statement" id="c3-stmt">
+            <p>C3 ccccc cccccccccccccc.</p>
+         </part>
+         <control id="c3.a">
+            <title>Control C3-A</title>
+            <prop name="label" value="tenth"/>
+            <part name="statement" id="c3-stmt">
+               <p>C3 A ccccc cccccccccccccc.</p>
+            </part>
+            <control id="c3.a-1">
+               <title>Control C3-A-1</title>
+               <prop name="label" value="eleventh"/>
+               <part name="statement" id="c3-stmt">
+                  <p>Making reference to a parameter in another control, like this: <insert type="param" id-ref="c2p"/>.</p>
+               </part>
+            </control>
+         </control>
+      </control>
+      <control id="c1">
+         <title>Control C1</title>
+         <prop name="label" value="seventh"/>
+         <part name="statement" id="c1-stmt">
+            <p>C1 ccccc ccc ccccccccccccccccc. <insert type="param" id-ref="floatA"/>
+            </p>
+         </part>
+      </control>
+   </group>
+</catalog>

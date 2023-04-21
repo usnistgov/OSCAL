@@ -27,4 +27,45 @@
         <x:expect label="Full test - fully resolved" select="opr:scrub(.)"
             href="output-expected/full-test_profile_RESOLVED.xml"/>
     </x:scenario>
+    
+    <x:scenario label="scrub-ws" >
+        <x:variable name="opr:controlx">
+            <control id="a1"   xmlns="http://csrc.nist.gov/ns/oscal/1.0">
+                <title>Control A1</title>
+                <param id="param-a1.a">
+                    <label>a1.a parameter</label>
+                    <value>a1.a value</value>
+                </param>
+                <prop name="place" value="1st"/>
+                <part id="a1-stmt" name="statement">
+                    <p>A1 aaaaa aaaaaaaaaa</p>
+                    <p>Parameter A.a is set: 
+                        <insert type="param" id-ref="param-A.a"/>
+                    </p>
+                    <p>Parameter a1.a is set: 
+                        <insert type="param" id-ref="param-a1.a"/>
+                    </p>
+                </part>
+            </control>
+        </x:variable>
+        <x:call function="opr:scrub">
+            <x:param select="$opr:controlx"/>
+        </x:call>
+        <x:expect label="whitespace normalized">
+            <control id="a1">
+                <title>Control A1</title>
+                <param id="param-a1.a">
+                    <label>a1.a parameter</label>
+                    <value>a1.a value</value>
+                </param>
+                <prop name="place" value="1st"/>
+                <part id="a1-stmt" name="statement">
+                    <p>A1 aaaaa aaaaaaaaaa</p>
+                    <p>Parameter A.a is set: 
+                        <insert type="param" id-ref="param-A.a"/></p>
+                    <p>Parameter a1.a is set: <insert type="param" id-ref="param-a1.a"/></p>
+                </part>
+            </control>
+        </x:expect>
+    </x:scenario>
 </x:description>

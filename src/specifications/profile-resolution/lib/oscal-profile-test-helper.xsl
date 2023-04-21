@@ -33,12 +33,12 @@
         
         
     -->
-    <xsl:template match="/">
+    <!--<xsl:template match="/">
         <xsl:param name="source" select="." as="document-node()"/>
         <xsl:document>
           <xsl:apply-templates select="$source" mode="scrubbing"/>
         </xsl:document>
-    </xsl:template>
+    </xsl:template>-->
 
     <xsl:function name="opr:scrub" as="document-node()">
         <xsl:param name="n" as="node()"/>

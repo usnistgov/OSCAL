@@ -24,10 +24,16 @@
                 <xsl:call-template name="css"/>
             </head>
             <body>
-            <aside class="toc">
-                <h3>{ child::head } Specification</h3>
-                <xsl:call-template name="toc"/>
-            </aside>
+                <aside class="navpanel">
+                <nav class="toc">
+                    <h3>{ child::head } Specification</h3>
+                    <xsl:call-template name="toc"/>
+                </nav>
+                <div class="rqrmts">
+                    <h3>Requirements</h3>
+                    <xsl:call-template name="requirements"/>
+                </div>
+                </aside>
                 <main>
                     <xsl:apply-templates/>
                 </main>
@@ -43,14 +49,25 @@ body {{ line-height: 140%; font-family: "Cambria", serif }}
 
 * {{ box-sizing: border-box }}
 
-aside.toc {{ position: fixed; overflow-y: scroll; max-width: 36%; top: 1em; bottom: 0px; font-family: { $display-font } }}
+aside.navpanel {{ position: fixed; overflow-y: scroll; max-width: 36%; top: 1em; bottom: 0px; font-family: { $display-font } }}
+
+aside.navpanel div.rqrmts * {{ margin: 0em }}
+
+.req {{ background-color: pink; padding: 0.2em; font-size: 110%; margin-top: 0.2em !important }}
+div.rqrmts .req {{ font-size: 90%; border-top: thin solid red; border-bottom: thin solid red }}
+.req.should {{ background-color: peachpuff; border-top: thin solid orange; border-bottom: thin solid orange }}
+.req.may {{ background-color: cornsilk; border-top: thin solid gold; border-bottom: thin solid gold }}
+.req.recommended {{ background-color: mintcream; border-top: thin solid blue; border-bottom: thin solid blue }}
+
+span.reqlabel {{ background-color: mintcream; color: forestgreen; margin-right: 0.4em; padding: 0.1em; border: thin solid green }} 
+
 .toc ul   {{ list-style: none; padding-left: 1em }}
 
 main      {{ margin-left: 40%; max-width: 48em }}
 
 details {{ margin-top: 1.5em }}
 
-details details {{ margin-left: 2em; border-left: thin solid black; padding-left: 1em }}
+details details {{ border-left: thin solid black; padding-left: 1em }}
 
 summary > * {{ display: inline }}
 
@@ -69,6 +86,8 @@ a {{ color: inherit }}
 a.linked {{ color: inherit }}
 .toc a {{ text-decoration: none }}
 
+span.req {{ color: royalblue }}
+span.req:hover {{ background-color: beige }}
 
 .example {{ padding: 0.5em; border: thin dotted black; margin-top: 1em  }}
 .example > *:first-child {{ margin-top: 0em }}
@@ -85,7 +104,52 @@ a.linked {{ color: inherit }}
         </style>
     </xsl:template>
 
+    <xsl:template name="requirements">
+        <xsl:apply-templates mode="requirements" select="section"/>
+    </xsl:template>
 
+    <!-- In this mode we want no text by default   -->
+    <xsl:template match="*" mode="requirements">
+        <xsl:apply-templates select="*" mode="#current"/>
+    </xsl:template>
+    
+    <xsl:template match="section" mode="requirements">
+        <xsl:apply-templates select="head | p | ul | section" mode="#current"/>
+    </xsl:template>
+    
+    <xsl:template match="head" mode="requirements">
+        <h5>
+            <!--mode toc provides number and link-->
+            <xsl:apply-templates select="." mode="toc"/>
+        </h5>
+    </xsl:template>
+    
+    <xsl:template match="p" mode="requirements">
+        <xsl:apply-templates select=".//req" mode="#current"/>
+    </xsl:template>
+    
+    <!-- overriding imported template to provide link to index  -->
+    <xsl:template match="req">
+        <span class="{local-name()} {@level}">
+            <xsl:copy-of select="@id"/>
+            <a href="#ix-{@id}">
+              <xsl:apply-templates select="." mode="reqlabel"/>
+            </a>
+            <xsl:apply-templates/>
+        </span>
+    </xsl:template>
+    
+    <xsl:template match="req" mode="requirements">
+        <p class="req { @level }" id="ix-{@id}">
+            <a href="#{@id}">
+                <xsl:apply-templates select="." mode="reqlabel"/>
+            </a>
+            <xsl:text> </xsl:text>
+            <xsl:apply-templates/>
+            
+        </p>
+    </xsl:template>
+    
     <xsl:template name="toc">
         <ul>
             <xsl:apply-templates mode="toc" select="section"/>
@@ -111,10 +175,14 @@ a.linked {{ color: inherit }}
         </li>
     </xsl:template>
 
-    <xsl:template match="head" mode="header-text">
+    <xsl:template match="section" mode="secno">
         <span class="secnum">
           <xsl:number level="multiple" count="section" format="1.1"/>
         </span>
+    </xsl:template>
+    
+    <xsl:template match="head" mode="header-text">
+        <xsl:apply-templates select="parent::section" mode="secno"/>
         <xsl:text> </xsl:text>
         <xsl:apply-templates/>
     </xsl:template>
@@ -150,7 +218,6 @@ a.linked {{ color: inherit }}
     <xsl:template match="tagging[@whose='source_profile']" mode="tagging-label">
         <h4 class="label">Source (profile):</h4>
     </xsl:template>
-    
     
     <xsl:template match="tagging[@whose='inter_catalog']" mode="tagging-label">
         <h4 class="label">Intermediate (catalog):</h4>

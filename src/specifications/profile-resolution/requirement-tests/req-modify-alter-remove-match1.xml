@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../example-checkup.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+         uuid="b636f129-d980-41c8-95e3-d3649a1fd546">
+   <metadata>
+      <title>Test Profile</title>
+      <last-modified>2022-02-15T13:33:09.325121-05:00</last-modified>
+      <version>1.0</version>
+      <oscal-version>1.0.0</oscal-version>
+   </metadata>
+   <import href="catalogs/abc-mixed-up_catalog.xml">
+      <include-all/>
+      <exclude-controls>
+         <matching pattern="b*"/>
+      </exclude-controls>
+   </import>
+   <modify>
+      <alter control-id="a1">
+         <remove by-name="label"/><!-- removes a prop -->
+      </alter>
+      <alter control-id="a2">
+         <remove by-item-name="part"/><!-- removes a part -->
+      </alter>
+      <alter control-id="a3"><!-- leaves a param -->
+         <remove by-item-name="prop"/><!-- removes a part -->
+         <remove by-item-name="part"/><!-- removes a part -->
+      </alter>
+      <alter control-id="c3.a">
+         <remove by-name="label" by-item-name="part"/><!-- should be a no-op -->
+      </alter>
+      <alter control-id="c2">
+         <remove by-id="c2-stmt"/><!-- removed a part -->
+         <remove by-id="c3-stmt"/><!-- should be a no-op -->
+      </alter>
+   </modify>
+</profile>
