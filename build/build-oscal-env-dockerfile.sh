@@ -15,6 +15,12 @@ TAG="${1:-$BRANCH_SANITIZED}"
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)"
 
 docker build \
+    --label "branch=${BRANCH}" \
+    --label "commit_sha=$(git rev-parse HEAD)" \
+    --label "dirty=$(git diff --quiet && echo 'false' || echo 'true')" \
+    --label "maintainer=oscal@nist.gov" \
+    --label "author=$(git config user.email)" \
+    --platform linux/amd64 \
     -f "$SCRIPT_DIR/Dockerfile" \
     -t "$IMAGE:$TAG" \
     "$SCRIPT_DIR"
