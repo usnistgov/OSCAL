@@ -12,7 +12,7 @@ sidenav:
 oscal:
     type: "branch"
     remote: "usnistgov/OSCAL"
-    branch: "feature-profile-resolution-unittestingA"
+    branch: "develop"
     revision: "develop"
     version: "develop"
 ---

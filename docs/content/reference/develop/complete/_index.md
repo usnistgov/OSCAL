@@ -11,7 +11,7 @@ sidenav:
 ---
 
 <p><span class="usa-tag">Release Version</span> Latest Development Snapshot</p>
-<p><span class="usa-tag">Github</span> <a href="https://github.com/usnistgov/OSCAL">usnistgov/OSCAL</a> <span class="usa-tag">Branch</span> <a href="https://github.com/usnistgov/OSCAL/tree/feature-profile-resolution-unittestingA">feature-profile-resolution-unittestingA</a></p>
+<p><span class="usa-tag">Github</span> <a href="https://github.com/usnistgov/OSCAL">usnistgov/OSCAL</a> <span class="usa-tag">Branch</span> <a href="https://github.com/usnistgov/OSCAL/tree/develop">develop</a></p>
 
 This reference combines the information items used in all the OSCAL models into a single, comprehensive view. The following reference documentation is available.
 
