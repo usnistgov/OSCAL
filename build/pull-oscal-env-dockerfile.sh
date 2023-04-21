@@ -7,8 +7,9 @@
 
 set -Eeuo pipefail
 
-if [ "${GITHUB_REF-}" ]; then
-    BRANCH=${GITHUB_REF#refs/heads/}
+# Allow the user to override the "branch" name (note that this still sanitizes the input)
+if [ "${1-}" ]; then
+    BRANCH=${1}
 else
     BRANCH=$(git branch --show-current)
 fi

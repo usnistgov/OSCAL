@@ -39,7 +39,7 @@ jobs:
       - name: Pull the correct image
         shell: bash
         # Produces a tagged image oscal-common-env:selected
-        run: ./build/pull-oscal-env-dockerfile.sh
+        run: ./build/pull-oscal-env-dockerfile.sh "${{ github.head_ref || github.ref_name }}"
       - name: Run XSpec tests
         shell: bash
         run: |
