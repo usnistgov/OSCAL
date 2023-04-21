@@ -4,7 +4,11 @@ datatypes dtd="http://relaxng.org/ns/compatibility/datatypes/1.0"
 
 # Lightweight syntax sugar over tiny HTML subset
 
-start        = element SPECIFICATION { head.elem?, misc, section.elem+ }
+start        = spec.elem | tests.elem
+
+spec.elem    = element SPECIFICATION { head.elem?, misc, section.elem+ }
+
+tests.elem    = element TESTSETS { requirement.elem* }
 
 head.elem    = element head { inline-mixed }
 
@@ -24,16 +28,13 @@ tagging.elem = element tagging { attribute whose { text }, (text | hi | revisit)
 
 cf.elem = element cf { attribute file { text }?, empty }
 
-mapping.elem = element mapping {
-                attribute unit-test { text }?,
-                    head.elem?, (blocks*, tagging.elem)*, blocks* }
+mapping.elem = element mapping { head.elem?, (blocks*, tagging.elem)*, blocks* }
 
 section.elem = element section { attribute id { xsd:ID }?, head.elem, misc, section.elem* }
 
-inline-mixed = (text | a | code | term | revisit | propose | em | strong | q | src | tgt | xpath | xref | int | inter | req )*
+inline-mixed = (text | a | code | term | revisit | propose | em | strong | q | src | tgt | xpath | xref | int | req)*
 
 req = element req { attribute id { xsd:ID }?, attribute level { text }?, inline-mixed }
-inter = element inter { text }
 a       = element a       { attribute href { text }, text }
 code    = element code    { text }
 term    = element term    { text }
@@ -49,3 +50,7 @@ xref    = element xref    { attribute rid { dtd:IDREF }, empty }
 int     = element int     { text }
 # hi combines em and strong inside tagging
 hi      = element hi      { text }
+
+requirement.elem = element requirement { attribute level { 'may' | 'should' | 'must' | 'recommended' }?, attribute id { xsd:ID }?, element statement { text }?, test.elem* }
+
+test.elem = element test { attribute status { text }?, attribute file { xsd:anyURI }?, text }

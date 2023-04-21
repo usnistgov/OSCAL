@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../example-checkup.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+         uuid="0a281290-eb91-423f-9430-576e8099cae4">
+    <metadata>
+        <title>Test Profile</title>
+        <last-modified>2022-04-18T15:14:17.679398100-04:00</last-modified>
+        <version>1.0</version>
+        <oscal-version>1.0.0</oscal-version>
+    </metadata>
+    <!-- Points to a profile, which must be resolved to produce the catalog   -->
+    <import href="req-include-all-asis.xml">
+        <include-controls with-child-controls="yes">
+            <with-id>a1</with-id>
+            <with-id>b1</with-id>
+            <with-id>c1</with-id>
+            <with-id>c3</with-id>
+        </include-controls>
+    </import>
+    <import href="catalogs/abc-mixed-up_catalog.xml">
+        <include-controls with-child-controls="yes">
+            <with-id>a3</with-id>
+            <with-id>b3</with-id>
+        </include-controls>
+    </import>
+    <merge>
+        <as-is>true</as-is>
+    </merge>
+</profile>
