@@ -10,10 +10,11 @@ aliases:
   - /learn/tutorials/profile/
 ---
 
-This tutorial covers creating a basic baseline using an OSCAL profile. Before reading this tutorial you should:
+This tutorial covers creating and modifying a subset of controls from a catalog in OSCAL by using the OSCAL profile model. Such subset is often refer to as basic baseline. 
 
+Before reading this tutorial you should:
 - Have some familiarity with the [XML](https://www.w3.org/standards/xml/core), [JSON](https://www.json.org/), or [YAML](https://yaml.org/spec/) formats.
-- Read the OSCAL control layer [overview](/concepts/layer/control/).
+- Review the OSCAL control layer [overview](/concepts/layer/control/).
 - Review the OSCAL [catalog](/concepts/layer/control/catalog/) and [profile](/concepts/layer/control/profile/) model overview pages.
 - Review the tutorial on [Creating a Control Catalog](/learn/tutorials/catalog/).
 
@@ -129,46 +130,66 @@ They are:
 
 As this is a basic tutorial, and many baselines are simply a subset of controls pulled from a larger catalog, we will be focusing mainly on the "Import" section, which covers many of the core use cases of OSCAL Profiles. 
 
-## Import Section **TODO**
+## Import Section
 
-"Import" is the first major section of an OSCAL Profile. In this section, the source catalog(s) are identified, and the subset of controls to be extracted are defined.
+The first major part of an OSCAL Profile is the "Import" section. In this section, the source catalog(s) are identified, and the subset of controls to be extracted are defined.
 There will be one "Import" object per catalog referenced, so in the simple case of building a baseline from a single catalog, there will be a single "import" object. Lets look at a basic example.
 
 For the rest of this tutorial, we'll be using the catalog we [created during the last tutorial](https://pages.nist.gov/OSCAL/learn/tutorials/control/basic-catalog/#the-final-catalog).
 
 {{< tabs XML JSON YAML >}}
 {{% tab %}}
+
 ```xml {linenos=table}
-<import href="https://raw.githubusercontent.com/usnistgov/oscal-content/main/examples/catalog/xml/basic-catalog.xml">
+<import href="https://raw.githubusercontent.com/usnistgov/oscal-content/main/examples/catalog/json/basic-catalog.json">
     <include-controls>
-        <with-id>s1.1.1</with-id>
+      <matching pattern="s1.1.*"/>
     </include-controls>
-</import>
+    <include-controls>
+      <with-id>s2.1.2</with-id>
+    </include-controls>
+  </import>
 ```
 
 Here we can see the `<import>` element inside an example OSCAL Profile.
 
 {{% /tab %}}
 {{% tab %}}
+
 ```json {linenos=table}
-{
-    "imports": [
-        {"href": "https://raw.githubusercontent.com/usnistgov/oscal-content/main/examples/catalog/xml/basic-catalog.xml",
-         "include-controls": {
-            "with-ids": ["s1.1.1"],
-            }
-    ]
-}
+"imports": [
+      {
+        "href": "https://raw.githubusercontent.com/usnistgov/oscal-content/main/examples/catalog/json/basic-catalog.json",
+        "include-controls": [
+          {
+            "matching": [
+              {
+                "pattern": "s1.1.*"
+              }
+            ]
+          },
+          {
+            "with-ids": [
+              "s2.1.2"
+            ]
+          }
+        ]
+      }
+    ],
 ```
 
 Here we can see the `import` object inside an example OSCAL Profile.
 {{% /tab %}}
 {{% tab %}}
+
 ```yaml {linenos=table}
-imports:
-    - href: https://raw.githubusercontent.com/usnistgov/oscal-content/main/examples/catalog/xml/basic-catalog.xml
+ imports:
+    - href: https://raw.githubusercontent.com/usnistgov/oscal-content/main/examples/catalog/json/basic-catalog.json
       include-controls:
-        - with-id: s1.1.1
+        - matching:
+            - pattern: s1.1.*
+        - with-ids:
+            - s2.1.2
 ```
 
 Here we can see the `import` object inside an example OSCAL Profile.
@@ -179,335 +200,184 @@ Notice that for all 3 examples, we import a catalog defined in XML. The profile 
 
 Now that we've seen a basic example, lets take a quick walkthrough of some of the basic functions of this section and how to use them.
 
-### Including Controls from a Catalog **TODO**
+### Including Controls from a Catalog
+
+Each `import` object contains directives on which catalog will be included and present in the outcome.
+
+Controls can be included based on pattern matching:
 
 {{< tabs XML JSON YAML >}}
 {{% tab %}}
 
-The first step to create an import is to provide a valid `@href` attribute that provides a resolvable link to an OSCAL catalog. This can an absolute path, such as a file on a website, or a relative path, such as a local filesystem path. Either way, this link points to the OSCAL Catalog that we are going to be selecting controls from.
+```xml {linenos=table}
+<import href="https://raw.githubusercontent.com/usnistgov/oscal-content/main/examples/catalog/json/basic-catalog.json">
+    <include-controls>
+      <matching pattern="s1.1.*"/>
+    </include-controls>
+</import>
+```
 
-If we stop here, that is, we leave the `<import>` element empty, the default behavior is to include all the controls in the linked catalog (the same as if we had used `<include-all>`, see below).
+{{% /tab %}}
+{{% tab %}}
+```json {linenos=table}
+"imports": [
+      {
+        "href": "https://raw.githubusercontent.com/usnistgov/oscal-content/main/examples/catalog/json/basic-catalog.json",
+        "include-controls": [
+          {
+            "matching": [
+              {
+                "pattern": "s1.1.*"
+              }
+            ]
+          },
+```
 
-But we presumably want a more fine-tuned selection of controls, so we will need to use the child element `<include-controls>`. Inside of this element we can use any number and any combination of the following two child elements:
+{{% /tab %}}
+{{% tab %}}
+```yaml {linenos=table}
+  imports:
+    - href: https://raw.githubusercontent.com/usnistgov/oscal-content/main/examples/catalog/json/basic-catalog.json
+      include-controls:
+        - matching:
+            - pattern: s1.1.*
+```
 
-- `<with-id>`: Provides a single ID value to be included from the linked source catalog.
-- `<matching>`: Provides a string-matching pattern that includes any control it matches.
+{{% /tab %}}
+{{< /tabs >}}
 
-Lets look at a quick example of these methods of inclusions:
+Controls can also be included based on id matching:
+
+{{< tabs XML JSON YAML >}}
+{{% tab %}}
 
 ```xml {linenos=table}
-<?xml version="1.0" encoding="UTF-8"?>
-<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-    uuid="bad4b7fe-4c0a-4aaa-94de-1468d7dab38f">
-    <metadata/>
-    <import href="NIST_SP-800-53_rev5_catalog.xml">
-        <include-controls>
-            <with-id>ac-1</with-id>
-            <with-id>ac-2</with-id>
-            <matching>
-                <pattern>ac-3*</pattern>
-            </matching>
-        </include-controls>
-    </import>
-</profile>
+<import href="https://raw.githubusercontent.com/usnistgov/oscal-content/main/examples/catalog/json/basic-catalog.json">
+    <include-controls>
+      <with-id>s2.1.2</with-id>
+    </include-controls>
+</import>
 ```
-
-In this example, controls with the IDs of `ac-1` and `ac-2` will be included in the baseline due to our two `<with-id>` elements. Furthermore, any control whose ID starts with `ac-3` will be included by the `<matching>` element, such as `ac-3`, `ac-3.1`, and `ac-3.2`.
 
 {{% /tab %}}
 {{% tab %}}
-
-The first step to create an import is to provide a valid `href` value that provides a resolvable link to an OSCAL catalog. This can an absolute path, such as a file on a website, or a relative path, such as a local filesystem path. Either way, this link points to the OSCAL Catalog that we are going to be selecting controls from.
-
-If we stop here, that is, we leave the `import` object empty, the default behavior is to include all the controls in the linked catalog (the same as if we had used `include-all`, see below).
-
-But we presumably want a more fine-tuned selection of controls, so we will need to use the child object `include-controls`. Inside of this object we can use any number and any combination of the following two child objects:
-
-- `with-ids`: Provides a list of single ID values to be included from the linked source catalog.
-- `matching`: Provides a string-matching pattern that includes any control it matches.
-
-Lets look at a quick example of these methods of inclusions:
-
 ```json {linenos=table}
-"profile": {
-    "metadata": {},
-    "imports": [
-        {"href": "NIST_SP-800-53_rev5_catalog.xml",
-         "include-controls": {
-            "with-ids": ["ac-1","ac-2"],
-            "matching":"ac-3*"
-            }
-    ]
-}
+ "imports": [
+      {
+        "href": "https://raw.githubusercontent.com/usnistgov/oscal-content/main/examples/catalog/json/basic-catalog.json",
+        "include-controls": [
+          {
+            "with-ids": [
+              "s2.1.2"
+            ]
+          }
+        ]
+      }
+    ],
+
 ```
 
-In this example, controls with the IDs of `ac-1` and `ac-2` will be included in the baseline due the two values inside `with-ids`. Furthermore, any control whose ID starts with `ac-3` will be included by the `matching` object, such as `ac-3`, `ac-3.1`, and `ac-3.2`.
 
 {{% /tab %}}
 {{% tab %}}
-
-The first step to create an import is to provide a valid `href` value that provides a resolvable link to an OSCAL catalog. This can an absolute path, such as a file on a website, or a relative path, such as a local filesystem path. Either way, this link points to the OSCAL Catalog that we are going to be selecting controls from.
-
-If we stop here, that is, we leave the `import` object empty, the default behavior is to include all the controls in the linked catalog (the same as if we had used `include-all`, see below).
-
-But we presumably want a more fine-tuned selection of controls, so we will need to use the child object `include-controls`. Inside of this object we can use any number and any combination of the following two child objects:
-
-- `with-ids`: Provides a list of single ID values to be included from the linked source catalog.
-- `matching`: Provides a string-matching pattern that includes any control it matches.
-
-Lets look at a quick example of these methods of inclusions:
-
 ```yaml {linenos=table}
-profile:
-  metadata: ~
-  imports:
-    - href: NIST_SP-800-53_rev5_catalog.xml
+imports:
+    - href: https://raw.githubusercontent.com/usnistgov/oscal-content/main/examples/catalog/json/basic-catalog.json
       include-controls:
         - with-ids:
-          - ac-1
-          - ac-2
-        - matching:
-            pattern: ac-3*
-
+            - s2.1.2
 ```
-
-In this example, controls with the IDs of `ac-1` and `ac-2` will be included in the baseline due the two values inside `with-ids`. Furthermore, any control whose ID starts with `ac-3` will be included by the `matching` object, such as `ac-3`, `ac-3.1`, and `ac-3.2`.
 
 {{% /tab %}}
 {{< /tabs >}}
 
-### Excluding Controls from a Catalog **TODO**
+### Excluding Controls from a Catalog
 
-There are cases where manually listing each control to be included would be tedious, but using string matching or include-all would include controls we don't want in the baseline. When this happens, you can use control exclusion to better control which controls end up in the baseline. In the below example, we will include all of the controls from the linked catalog, then exclude a few of them.
+It is possible to exclude controls from a catalog. Exclusions work the same way as inclusions; except in this case the indicated control(s) do  not appear in the target catalog. The OSCAL Profile Resolution Specification Draft contains a more detailed explanation of [excluding controls](https://pages.nist.gov/OSCAL/concepts/processing/profile-resolution/#d2e589-head).
 
 {{< tabs XML JSON YAML >}}
 {{% tab %}}
+
 ```xml {linenos=table}
-<?xml version="1.0" encoding="UTF-8"?>
-<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-    uuid="bad4b7fe-4c0a-4aaa-94de-1468d7dab38f">
-    <metadata> ... </metadata>
-    <import href="NIST_SP-800-53_rev5_catalog.xml">
-        <include-all/>
-        <exclude-controls>
-          <with-id>ac-1</with-id>
-          <with-id>ac-2</with-id>
-        </exclude-controls>
-    </import>
-</profile>
+<import href="https://raw.githubusercontent.com/usnistgov/oscal-content/main/examples/catalog/json/basic-catalog.json">
+    <exclude-controls>
+    </exclude-controls>
+</import>
 ```
-
-In this example, the baseline would be all controls in the linked catalog, except for the control with ID `ac-1`. Note the use of `<include-all>`, which simply includes all controls in the catalog, and is the default behaviour with an empty `<import>`.
-
 {{% /tab %}}
-
 {{% tab %}}
 ```json {linenos=table}
-"profile": {
-    "metadata": {},
-    "imports": [
-        {"href": "NIST_SP-800-53_rev5_catalog.xml",
-         "include-all": {},
-         "exclude-controls": {
-           "with-ids": ["ac-1"]
+"imports": [
+      {
+        "href": "https://raw.githubusercontent.com/usnistgov/oscal-content/main/examples/catalog/json/basic-catalog.json",
+        "exclude-controls": [
+          {
           }
-        }  
-    ]
-}
+        ]
+      }
+    ],
 ```
-
-In this example, the baseline would be all controls in the linked catalog, except for the control with ID `ac-1`. Note the use of `include-all`, which simply includes all controls in the catalog, and is the default behaviour with an empty `import`.
 
 {{% /tab %}}
 {{% tab %}}
 ```yaml {linenos=table}
-profile:
-    metadata: ~
-    imports:
-        - href: NIST_SP-800-53_rev5_catalog.xml
-          include-all: ~
-          exclude-controls:
-            - with-ids:
-              - ac-1
+imports:
+    - href: https://raw.githubusercontent.com/usnistgov/oscal-content/main/examples/catalog/json/basic-catalog.json
+      exclude-controls:
 ```
-
-In this example, the baseline would be all controls in the linked catalog, except for the control with ID `ac-1`. Note the use of `include-all`, which simply includes all controls in the catalog, and is the default behaviour with an empty `import`.
-
 {{% /tab %}}
 {{< /tabs >}}
 
-### Merge Phase **TODO**
 
+## Merge Phase
 
+The second part of an OSCAL Profile is the `merge` section.  In this section, the set of included objects from the `import` section are combined. 
 
-## Modify Phase **TODO**
+The `merge` section provides directives as to how controls should be organized. It also provides directives for resolving conflicts where two or more variations of a control are imported as a result of multiple import statements. The three optional [structuring directives](https://pages.nist.gov/OSCAL/concepts/processing/profile-resolution/#d2e786-head) are `flat`, `as-is`, and `custom`. 
 
-The Merge Phase is the second major section of an OSCAL Profile. This section contains instructions on how to structure and format the Control Baseline, including handling of duplicated control IDs. While this section is optional, leaving out will result in a generated OSCAL Catalog that has no formatting.
-
-### Setting a Combine Method **TODO**
-
-Lets take a took at the first half of the Merge Phase, handling duplicated control IDs. This section is optional, but is important to include and config if you are importing from multiple Catalogs whose controls may have overlapping IDs. This issue is better handled using the Mapping feature above, but is covered here for pre-OSCAL version 1.1 releases.
+Profiles with the flat merge directive must be resolved as unstructured catalogs, with no groupings or nesting of controls. The flat directive was used in the profile as follows:
 
 {{< tabs XML JSON YAML >}}
 {{% tab %}}
+
 ```xml {linenos=table}
-<?xml version="1.0" encoding="UTF-8"?>
-<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-    uuid="bad4b7fe-4c0a-4aaa-94de-1468d7dab38f">
-    <metadata> ... </metadata>
-    <import> ... </import>
-    <merge>
-      <combine method="use-first"/>
-    </merge>
-</profile>
+<merge>
+    <flat/>
+</merge>
 ```
-
-Above we see the use of the `<merge>` element, which contains all of the instructions of the Merge Phase. The first child element is what we are covering in this section: `<combine>`.
-
-`<combine>` will always have an attribute `method`, which can be set to one of two string values: `"use-first"` or `"keep"`. Depending on the value chosen, duplicated IDs will be handled in the follow ways:
-
-- `"use-first"`: If a control with a duplicate ID is found, the control that is found early in the imported documents will take priority, and the newly discovered control will be discarded entirely. Using this method risks losing controls, but will prevent duplicate ID errors in the Baseline.
-
-- `"keep"`: When a duplicate Control ID is found, simply import it into the Baseline and continue. Using this method will cause a fatal error whenever two controls with the same ID are imported, ensuring that no information is lost, but preventing the generation of the Baseline.
-
-If the `<merge>` element is not provided, or the `<combine>` element is not provided, or the `"method"` attribute is incorrectly set (or not set at all), the default behavior will be identical to if `"keep"` was used.
 
 {{% /tab %}}
-
 {{% tab %}}
+
 ```json {linenos=table}
-"profile": {
-    "metadata": {},
-    "imports": [],
-    "merge": {
-      "combine":
-        "method":"use-first"
-    }
-}
+"merge": {
+    "flat": {}
+},
 ```
-
-Above we see the use of the `"merge"` object, which contains all of the instructions of the Merge Phase. The first child object is what we are covering in this section: `"combine"`.
-
-`"combine"` will always have an object `"method"`, which can be set to one of two string values: `"use-first"` or `"keep"`. Depending on the value chosen, duplicated IDs will be handled in the follow ways:
-
-- `"use-first"`: If a control with a duplicate ID is found, the control that is found early in the imported documents will take priority, and the newly discovered control will be discarded entirely. Using this method risks losing controls, but will prevent duplicate ID errors in the Baseline.
-
-- `"keep"`: When a duplicate Control ID is found, simply import it into the Baseline and continue. Using this method will cause a fatal error whenever two controls with the same ID are imported, ensuring that no information is lost, but preventing the generation of the Baseline.
-
-If the `"merge"` object is not provided, or the `"combine"` object is not provided, or the `"method"` object is incorrectly set (or not set at all), the default behavior will be identical to if `"keep"` was used.
-
 
 {{% /tab %}}
 {{% tab %}}
 ```yaml {linenos=table}
-profile:
-    metadata: ~
-    imports: ~
-    merge:
-      combine:
-        method: "use-first"
-
+merge:
+    flat: {}
 ```
-
-Above we see the use of the `merge` object, which contains all of the instructions of the Merge Phase. The first child object is what we are covering in this section: `combine`.
-
-`combine` will always have an object `method`, which can be set to one of two string values: `"use-first"` or `"keep"`. Depending on the value chosen, duplicated IDs will be handled in the follow ways:
-
-- `"use-first"`: If a control with a duplicate ID is found, the control that is found early in the imported documents will take priority, and the newly discovered control will be discarded entirely. Using this method risks losing controls, but will prevent duplicate ID errors in the Baseline.
-
-- `"keep"`: When a duplicate Control ID is found, simply import it into the Baseline and continue. Using this method will cause a fatal error whenever two controls with the same ID are imported, ensuring that no information is lost, but preventing the generation of the Baseline.
-
-If the `merge` object is not provided, or the `combine` object is not provided, or the `method` object is incorrectly set (or not set at all), the default behavior will be identical to if `"keep"` was used.
-
 {{% /tab %}}
 {{< /tabs >}}
 
-### Structuring the Baseline **TODO**
+The `flat` merge directive will produce an unstructured catalog with the following requirements:
+- All included controls are output to the target as a flat list directly under "catalog".
+- Any included "[loose params](https://pages.nist.gov/OSCAL/concepts/processing/profile-resolution/#d2e622-head)" are output to the target as a flat list directly under "catalog".
+- Any groups are discarded.
 
-Now we will cover the second part of the Merge Phase, structuring the Baseline. There are several options for handling this, depending on how much control you as the author want to have over the resulting Baseline. We will cover the two most common uses first, then cover the last option afterwards. This final option, referred to as Custom Structuring, is signifigantly more complex, and is only needed for specialized use cases.
+An [`as-is`](https://pages.nist.gov/OSCAL/concepts/processing/profile-resolution/#d2e854-head) directive is used to reproduce the structure of the source documents in the target catalog.
 
-{{< tabs XML JSON YAML >}}
-{{% tab %}}
-```xml {linenos=table}
-<?xml version="1.0" encoding="UTF-8"?>
-<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-    uuid="bad4b7fe-4c0a-4aaa-94de-1468d7dab38f">
-    <metadata> ... </metadata>
-    <import> ... </import>
-    <merge>
-      <combine method="use-first"/>
-      <flat/> OR <as-is> true </as-is>
-    </merge>
-</profile>
-```
-
-We have combined the first two options into one example above. In a real profile only one of the choices referred to by the `OR` would appear on that line.
-
-When you provide the `<flat/>` choice, the outputted Baseline will be stripped of ALL formatting. Any and all controls or groups that have been imported during the previous Import Phase will be output into a flat list, with no hierarchy or structure. This means that controls that are children of a parent control will appear alongside, or on the same level as, their parents in the baseline. This loss of information is typically not preferable, but can be useful when creating small baselines, or when creating a machine-readable baseline that does not care about control structuring.
-
-When you provide the `<as-is> true </as-is>` choice, structuring information is extracted from the Source Catalog(s) and replicated in the output Baseline. This means that child controls will still appear as children of their parents, and grouped controls will still appear under their respective groups in the Baseline. This is the most typical choice when creating a Baseline that imports from a single source Catalog.
-
-If no `<merge>` element is provided, or none of the three structuring directives are provided, the default behavior will be identical to if you provided `<flat/>`.
-
-
-{{% /tab %}}
-
-{{% tab %}}
-```json {linenos=table}
-"profile": {
-    "metadata": {},
-    "imports": [],
-    "merge": {
-      "combine":
-        "method":"use-first"
-      "flat": null OR "as-is": "true"
-    }
-}
-```
-
-We have combined the first two options into one example above. In a real profile only one of the choices referred to by the `OR` would appear on that line.
-
-When you provide the `"flat"` choice, the outputted Baseline will be stripped of ALL formatting. Any and all controls or groups that have been imported during the previous Import Phase will be output into a flat list, with no hierarchy or structure. This means that controls that are children of a parent control will appear alongside, or on the same level as, their parents in the baseline. This loss of information is typically not preferable, but can be useful when creating small baselines, or when creating a machine-readable baseline that does not care about control structuring.
-
-When you provide the `"as-is": "true"` choice, structuring information is extracted from the Source Catalog(s) and replicated in the output Baseline. This means that child controls will still appear as children of their parents, and grouped controls will still appear under their respective groups in the Baseline. This is the most typical choice when creating a Baseline that imports from a single source Catalog.
-
-If no `"merge"` object is provided, or none of the three structuring directives are provided, the default behavior will be identical to if you provided `"flat"`.
-
-
-{{% /tab %}}
-{{% tab %}}
-```yaml {linenos=table}
-profile:
-    metadata: ~
-    imports: ~
-    merge:
-      combine:
-        method: "use-first"
-      flat: ~ OR as-is: true
-
-```
-
-We have combined the first two options into one example above. In a real profile only one of the choices referred to by the `OR` would appear on that line.
-
-When you provide the `flat` choice, the outputted Baseline will be stripped of ALL formatting. Any and all controls or groups that have been imported during the previous Import Phase will be output into a flat list, with no hierarchy or structure. This means that controls that are children of a parent control will appear alongside, or on the same level as, their parents in the baseline. This loss of information is typically not preferable, but can be useful when creating small baselines, or when creating a machine-readable baseline that does not care about control structuring.
-
-When you provide the `as-is: true` choice, structuring information is extracted from the Source Catalog(s) and replicated in the output Baseline. This means that child controls will still appear as children of their parents, and grouped controls will still appear under their respective groups in the Baseline. This is the most typical choice when creating a Baseline that imports from a single source Catalog.
-
-If no `merge` object is provided, or none of the three structuring directives are provided, the default behavior will be identical to if you provided `flat`.
-
-{{% /tab %}}
-{{< /tabs >}}
-
-### The Custom Structuring Directive **TODO**
-
-There is a third choice besides `flat` and `as-is`, which is `custom`. This allows for you as the author to fully control the exact structure of the output Baseline. `custom` is useful for when you have very specific needs for the structure of the output, but you want to define that structure in a format neutral way in the profile, such that it can be shared to other users.
-
-As `custom` is both complex and only used in limited cases, it will not be covered in this tutorial. Please refer to the [Profile Resolution Specification](/concepts/processing/profile-resolution/) or the [Profile model][profile-docs] for more information.
+A [`custom`](https://https://pages.nist.gov/OSCAL/concepts/processing/profile-resolution/#d2e887-head) directive provides the target catalog with a custom structure.
 
 ## Modify Phase
 
 The third and final part of an OSCAL Profile is the `modify` section.
 In this section fine-grained edits can be made to the output resolved catalog.
+
 These edits can be used to tailor controls to match an organization's needs, such as adding specific guidance, removing extraneous details, or even changing the meaning of a control.
 There is a great deal of in-depth functionality available to use in this section, but we will only be covering a decent starting point.
 
