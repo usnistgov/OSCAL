@@ -22,9 +22,11 @@ Before reading this tutorial you should:
 
 An OSCAL profile is a specific set of security controls selected and modified when needed from one or more control catalogs for use in managing risks in an information system. Such a profile is also known as [baseline][baseline-definition], or overlay in the [NIST SP 800-37 rev2](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-37r2.pdf)
 
-In the most basic sense, a baseline is simply another catalog, and could be represented using the OSCAL Catalog Model. However, baselines are fundementally based on and rooted in whichever source catalog(s) they use as a foundation. With this in mind, OSCAL uses a different model to represent baselines that identifies the source catalog(s),which controls it will "select" or "import", and any changes made to those controls. An **OSCAL Profile** is a machine-readable representation of a **baseline**, expressed using the OSCAL [Profile model][profile-docs], which includes contextualizing documentation and metadata.
+An OSCAL profile is a machine-readable representation of a baseline, expressed using the OSCAL [profile model][profile-docs], which includes contextualizing documentation and metadata.
+In the most basic sense, an OSCAL profile is a collection of "pointers" to other catalog(s)'s controls, along with instructions to tailor the controls and change how the controls are grouped.
 
-OSCAL Profiles are created within the context of the [Profile Resolution Specification](/concepts/processing/profile-resolution/), which defines exactly how tools can programmatically understand OSCAL Profiles. 
+An OSCAL profile can be transformed into an OSCAL catalog through a process called profile resolution, which is described in the [Profile Resolution Specification](/concepts/processing/profile-resolution/).
+The output "resolved" catalog contains the controls selected, tailored, and grouped by the profile.
 
 This tutorial illustrates how to create an OSCAL profile using the OSCAL XML, JSON, and YAML formats, which each implement the OSCAL [profile model](/concepts/layer/control/profile/). The OSCAL project provides an [XML Schema and documentation](/concepts/layer/control/profile/), which is useful for validating an XML profile, and a [JSON Schema and documentation](/concepts/layer/control/profile/), which is useful for validating JSON and YAML profiles.
 
@@ -54,7 +56,7 @@ In the example above, the contents of the `<profile>` element is provided as emp
 The `@id` attribute (on line 3) is the document's *universally unique identifier* (UUID), a unique 128-bit number displayed as a string of hyphenated hexadecimal digits as defined by [RFC 4122](https://tools.ietf.org/html/rfc4122). OSCAL documents use a version 4 UUID (randomly generated) to uniquely identify the document.
 
 A `<profile>` contains:
-- `<metadata>` (required) - Provides document metadata for the profile. As OSCAL Metadata sections use a shared structure across all models, refer to the metadata tutorial section of the Catalog tutorial for more information.
+- `<metadata>` (required) - Provides document metadata for the profile. As OSCAL Metadata sections use a shared structure across all models, refer to the metadata tutorial section of the catalog tutorial for more information.
 - `<import>` (required) - This is explored below in the [import phase](#import-phase) section of this tutorial.
 - `<merge>` (optional) - This is explored below in the [merge phase](#merge-phase) section of this tutorial.
 - `<modify>` (optional) - This is explored below in the [modify phase](#modify-phase) section of this tutorial.
@@ -83,7 +85,7 @@ The `id` attribute (on line 3) is the document's *universally unique identifier*
 
 A `profile` contains:
 
-- `metadata` (required) - Provides document metadata for the profile. As OSCAL Metadata sections use a shared structure across all models, refer to the metadata tutorial section of the Catalog tutorial for more information.
+- `metadata` (required) - Provides document metadata for the profile. As OSCAL Metadata sections use a shared structure across all models, refer to the metadata tutorial section of the catalog tutorial for more information.
 - `import` (required) - This is explored below in the [import phase](#import-phase) section of this tutorial.
 - `merge` (optional) - This is explored below in the [merge phase](#merge-phase) section of this tutorial.
 - `modify` (optional) - This is explored below in the [modify phase](#modify-phase) section of this tutorial.
@@ -109,7 +111,7 @@ The `id` attribute (on line 3) is the document's *universally unique identifier*
 
 A `profile` contains:
 
-- `metadata` (required) - Provides document metadata for the profile. As OSCAL Metadata sections use a shared structure across all models, refer to the metadata tutorial section of the Catalog tutorial for more information.
+- `metadata` (required) - Provides document metadata for the profile. As OSCAL Metadata sections use a shared structure across all models, refer to the metadata tutorial section of the catalog tutorial for more information.
 - `import` (required) - This is explored below in the [import phase](#import-phase) section of this tutorial.
 - `merge` (optional) - This is explored below in the [merge phase](#merge-phase) section of this tutorial.
 - `modify` (optional) - This is explored below in the [modify phase](#modify-phase) section of this tutorial.
@@ -121,19 +123,19 @@ We will now discuss each of these data structures in the following sections and 
 
 ## The Three Sections (or Phases) of Profiles
 
-OSCAL Profiles are broken up into three main sections, each representing a "phase" of operations to be applied to the source Catalog(s). 
+OSCAL profiles are broken up into three main sections, each representing a "phase" of operations to be applied to the source catalog(s). 
  
 They are:
 - Import: Selects which controls from the source catalog(s) are to be used in the baseline
 - Merge: Defines how to merge objects when importing from multiple catalogs, and defines the structure of the baseline
 - Modify: Defines a list of modifications to make to the imported controls, such as setting parameters or changing values
 
-As this is a basic tutorial, and many baselines are simply a subset of controls pulled from a larger catalog, we will be focusing mainly on the "Import" section, which covers many of the core use cases of OSCAL Profiles. 
+As this is a basic tutorial, and many baselines are simply a subset of controls pulled from a larger catalog, we will be focusing mainly on the "Import" section, which covers many of the core use cases of OSCAL profiles. 
 
-## Import Section
+## Import Phase
 
-The first major part of an OSCAL Profile is the "Import" section. In this section, the source catalog(s) are identified, and the subset of controls to be extracted are defined.
-There will be one "Import" object per catalog referenced, so in the simple case of building a baseline from a single catalog, there will be a single "import" object. Lets look at a basic example.
+The first major part of an OSCAL profile is the `import` section. In this section, the source catalog(s) are identified, and the subset of controls to be extracted are defined.
+There will be one "import" object per catalog referenced, so in the simple case of building a baseline from a single catalog, there will be a single "import" object. Lets look at a basic example.
 
 For the rest of this tutorial, we'll be using the catalog we [created during the last tutorial](https://pages.nist.gov/OSCAL/learn/tutorials/control/basic-catalog/#the-final-catalog).
 
@@ -151,7 +153,7 @@ For the rest of this tutorial, we'll be using the catalog we [created during the
   </import>
 ```
 
-Here we can see the `<import>` element inside an example OSCAL Profile.
+Here we can see the `<import>` element inside an example OSCAL profile.
 
 {{% /tab %}}
 {{% tab %}}
@@ -178,7 +180,7 @@ Here we can see the `<import>` element inside an example OSCAL Profile.
     ],
 ```
 
-Here we can see the `import` object inside an example OSCAL Profile.
+Here we can see the `import` object inside an example OSCAL profile.
 {{% /tab %}}
 {{% tab %}}
 
@@ -192,7 +194,7 @@ Here we can see the `import` object inside an example OSCAL Profile.
             - s2.1.2
 ```
 
-Here we can see the `import` object inside an example OSCAL Profile.
+Here we can see the `import` object inside an example OSCAL profile.
 {{% /tab %}}
 {{< /tabs >}}
 
@@ -293,7 +295,8 @@ imports:
 
 ### Excluding Controls from a Catalog
 
-It is possible to exclude controls from a catalog. Exclusions work the same way as inclusions; except in this case the indicated control(s) do  not appear in the target catalog. The OSCAL Profile Resolution Specification Draft contains a more detailed explanation of [excluding controls](https://pages.nist.gov/OSCAL/concepts/processing/profile-resolution/#d2e589-head).
+It is possible to exclude controls from a catalog. Exclusions work the same way as inclusions; except in this case the indicated control(s) do  not appear in the target catalog.
+The OSCAL profile Resolution Specification Draft contains a more detailed explanation of [excluding controls](https://pages.nist.gov/OSCAL/concepts/processing/profile-resolution/#d2e589-head).
 
 {{< tabs XML JSON YAML >}}
 {{% tab %}}
@@ -331,7 +334,7 @@ imports:
 
 ## Merge Phase
 
-The second part of an OSCAL Profile is the `merge` section.  In this section, the set of included objects from the `import` section are combined. 
+The second part of an OSCAL profile is the `merge` section.  In this section, the set of included objects from the `import` section are combined. 
 
 The `merge` section provides directives as to how controls should be organized. It also provides directives for resolving conflicts where two or more variations of a control are imported as a result of multiple import statements. The three optional [structuring directives](https://pages.nist.gov/OSCAL/concepts/processing/profile-resolution/#d2e786-head) are `flat`, `as-is`, and `custom`. 
 
@@ -375,7 +378,7 @@ A [`custom`](https://https://pages.nist.gov/OSCAL/concepts/processing/profile-re
 
 ## Modify Phase
 
-The third and final part of an OSCAL Profile is the `modify` section.
+The third and final part of an OSCAL profile is the `modify` section.
 In this section fine-grained edits can be made to the output resolved catalog.
 
 These edits can be used to tailor controls to match an organization's needs, such as adding specific guidance, removing extraneous details, or even changing the meaning of a control.
@@ -641,7 +644,7 @@ A `modify` object has an optional array of `alters` objects.
 
 ## The Final Profile
 
-After applying all of the techniques discussed in this tutorial, we obtain an OSCAL Profile with the following structure:
+After applying all of the techniques discussed in this tutorial, we obtain an OSCAL profile with the following structure:
 
 {{< tabs XML JSON YAML >}}
 {{% tab %}}
@@ -1265,9 +1268,9 @@ catalog:
 This concludes the tutorial. At this point you should be familiar with:
 
 - The basic structure of a control baseline expressed in OSCAL.
-- The use of the Import Section to select controls from a Source Catalog
-- Using the Merge Section to structure the output Baseline
-- The use of the Modify Section to set the values of parameters
+- The use of the "Import" section to select controls from a source catalog.
+- Using the "Merge" section to structure the output baseline.
+- The use of the "Modify" section to set the values of parameters.
 
 For more information you can review the [OSCAL profile model documentation][profile-docs].
 
