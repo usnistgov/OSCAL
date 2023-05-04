@@ -20,7 +20,7 @@ Before reading this tutorial you should:
 
 ## What is an OSCAL Profile?
 
-A [baseline][baseline-definition], or overlay in other terminology, defines a specific set of selected security control requirements from one or more control catalogs for use in managing risks in an information system.
+An OSCAL profile is a specific set of security controls selected and modified when needed from one or more control catalogs for use in managing risks in an information system. Such a profile is also known as [baseline][baseline-definition], or overlay in the [NIST SP 800-37 rev2](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-37r2.pdf)
 
 In the most basic sense, a baseline is simply another catalog, and could be represented using the OSCAL Catalog Model. However, baselines are fundementally based on and rooted in whichever source catalog(s) they use as a foundation. With this in mind, OSCAL uses a different model to represent baselines that identifies the source catalog(s),which controls it will "select" or "import", and any changes made to those controls. An **OSCAL Profile** is a machine-readable representation of a **baseline**, expressed using the OSCAL [Profile model][profile-docs], which includes contextualizing documentation and metadata.
 

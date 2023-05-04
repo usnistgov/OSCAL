@@ -13,7 +13,7 @@ The following tutorials provide step-by-step walk-throughs explaining how to cre
 ## [Control Layer Topics](control/)
 
 - [Creating a Basic Control Catalog](control/basic-catalog/): Explains how to create a [catalog](/concepts/terminology/#catalog) of [controls](/concepts/terminology/#control) using the OSCAL [catalog model](/concepts/layer/control/catalog/).
-- [Creating a Basic Profile](/learn/tutorials/profile/): A tutorial on creating a baseline using the OSCAL [profile model](/concepts/layer/control/profile/).
+- [Creating a Basic Profile](/learn/tutorials/profile/): Explains how to create and modify a subset of controls from a catalog in OSCAL by using the OSCAL [profile model](/concepts/layer/control/profile/).
 ## [Implementation Layer Topics](implementation/)
 
 - [Creating a Basic Component Definition](implementation/simple-component-definition/): Teaches how to create a component-definition using the OSCAL [component definition](/concepts/layer/implementation/component-definition/) model.
