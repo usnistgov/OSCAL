@@ -10,7 +10,7 @@ aliases:
   - /learn/tutorials/profile/
 ---
 
-This tutorial covers creating and modifying a subset of controls from a catalog in OSCAL by using the OSCAL profile model. Such subset is often refer to as basic baseline. 
+This tutorial covers creating and modifying a subset of controls from a catalog in OSCAL by using the OSCAL profile model. Such a subset of controls is often referred to as a "control baseline".
 
 Before reading this tutorial you should:
 - Have some familiarity with the [XML](https://www.w3.org/standards/xml/core), [JSON](https://www.json.org/), or [YAML](https://yaml.org/spec/) formats.
@@ -20,13 +20,13 @@ Before reading this tutorial you should:
 
 ## What is an OSCAL Profile?
 
-An OSCAL profile is a specific set of security controls selected and modified when needed from one or more control catalogs for use in managing risks in an information system. Such a profile is also known as [baseline][baseline-definition], or overlay in the [NIST SP 800-37 rev2](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-37r2.pdf)
+An OSCAL profile is a specific set of security controls selected and modified when needed from one or more control catalogs for use in managing risks in an information system. Such a profile is also known as [baseline][baseline-definition], or overlay in the NIST SP 800-37 rev2, [Risk Management Framework for Information Systems and Organizations: A System Life Cycle Approach for Security and Privacy](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-37r2.pdf).
 
 An OSCAL profile is a machine-readable representation of a baseline, expressed using the OSCAL [profile model][profile-docs], which includes contextualizing documentation and metadata.
 In the most basic sense, an OSCAL profile is a collection of "pointers" to other catalog(s)'s controls, along with instructions to tailor the controls and change how the controls are grouped.
 
-An OSCAL profile can be transformed into an OSCAL catalog through a process called profile resolution, which is described in the [Profile Resolution Specification](/concepts/processing/profile-resolution/).
-The output "resolved" catalog contains the controls selected, tailored, and grouped by the profile.
+An OSCAL profile can be transformed into an OSCAL catalog through a process named *profile resolution*, which is described in the [Profile Resolution Specification](/concepts/processing/profile-resolution/).
+The output *resolved* catalog contains the controls selected, tailored, and grouped by the profile.
 
 This tutorial illustrates how to create an OSCAL profile using the OSCAL XML, JSON, and YAML formats, which each implement the OSCAL [profile model](/concepts/layer/control/profile/). The OSCAL project provides an [XML Schema and documentation](/concepts/layer/control/profile/), which is useful for validating an XML profile, and a [JSON Schema and documentation](/concepts/layer/control/profile/), which is useful for validating JSON and YAML profiles.
 
@@ -79,9 +79,9 @@ A `<profile>` contains:
 
 The root of the OSCAL profile model is [`profile`](/reference/latest/profile/xml-reference/#/profile).
 
-In the example above, the contents of the `profile` element is provided as empty data items. These are included to illustrate the content model of an OSCAL profile, and we will be covering each element's syntax later in this tutorial.
+In the example above, the contents of the `profile` object are provided as empty data items. These are included to illustrate the content model of an OSCAL profile, and we will be covering each element's syntax later in this tutorial.
 
-The `id` attribute (on line 3) is the document's *universally unique identifier* (UUID), a unique 128-bit number displayed as a string of hyphenated hexadecimal digits as defined by [RFC 4122](https://tools.ietf.org/html/rfc4122). OSCAL documents use a version 4 UUID (randomly generated) to uniquely identify the document.
+The `id` property (on line 3) is the document's *universally unique identifier* (UUID), a unique 128-bit number displayed as a string of hyphenated hexadecimal digits as defined by [RFC 4122](https://tools.ietf.org/html/rfc4122). OSCAL documents use a version 4 UUID (randomly generated) to uniquely identify the document.
 
 A `profile` contains:
 
@@ -105,9 +105,9 @@ profile:
 
 The root of the OSCAL profile model is [`profile`](/reference/latest/profile/xml-reference/#/profile).
 
-In the example above, the contents of the `profile` element is provided as empty data items. These are included to illustrate the content model of an OSCAL profile, and we will be covering each element's syntax later in this tutorial.
+In the example above, the contents of the `profile` object are provided as empty data items. These are included to illustrate the content model of an OSCAL profile, and we will be covering each element's syntax later in this tutorial.
 
-The `id` attribute (on line 3) is the document's *universally unique identifier* (UUID), a unique 128-bit number displayed as a string of hyphenated hexadecimal digits as defined by [RFC 4122](https://tools.ietf.org/html/rfc4122). OSCAL documents use a version 4 UUID (randomly generated) to uniquely identify the document.
+The `id` property (on line 3) is the document's *universally unique identifier* (UUID), a unique 128-bit number displayed as a string of hyphenated hexadecimal digits as defined by [RFC 4122](https://tools.ietf.org/html/rfc4122). OSCAL documents use a version 4 UUID (randomly generated) to uniquely identify the document.
 
 A `profile` contains:
 
@@ -135,7 +135,8 @@ As this is a basic tutorial, and many baselines are simply a subset of controls 
 ## Import Phase
 
 The first major part of an OSCAL profile is the `import` section. In this section, the source catalog(s) are identified, and the subset of controls to be extracted are defined.
-There will be one "import" object per catalog referenced, so in the simple case of building a baseline from a single catalog, there will be a single "import" object. Lets look at a basic example.
+
+There will be one *import* object per catalog referenced, so in the simple case of building a baseline from a single catalog, there will be a single import object. Let's look at a basic example.
 
 For the rest of this tutorial, we'll be using the catalog we [created during the last tutorial](https://pages.nist.gov/OSCAL/learn/tutorials/control/basic-catalog/#the-final-catalog).
 
@@ -198,9 +199,9 @@ Here we can see the `import` object inside an example OSCAL profile.
 {{% /tab %}}
 {{< /tabs >}}
 
-Notice that for all 3 examples, we import a catalog defined in XML. The profile resolution specification allows us to import multiple documents irrespective of the input format (as long as it is valid OSCAL).
+Notice that for all three examples, we import a catalog defined in XML. The profile resolution specification allows us to import multiple documents irrespective of the input format (as long as it is valid OSCAL).
 
-Now that we've seen a basic example, lets take a quick walkthrough of some of the basic functions of this section and how to use them.
+Now that we've seen a basic example, let's take a quick walkthrough of some of the basic functions of this section and how to use them.
 
 ### Including Controls from a Catalog
 
@@ -334,7 +335,7 @@ imports:
 
 ## Merge Phase
 
-The second part of an OSCAL profile is the `merge` section.  In this section, the set of included objects from the `import` section are combined. 
+The second part of an OSCAL profile represents the *merge* phase. In this section, the profile describes how the set of included objects from the import phase are to be combined.
 
 The `merge` section provides directives as to how controls should be organized. It also provides directives for resolving conflicts where two or more variations of a control are imported as a result of multiple import statements. The three optional [structuring directives](https://pages.nist.gov/OSCAL/concepts/processing/profile-resolution/#d2e786-head) are `flat`, `as-is`, and `custom`. 
 
@@ -367,9 +368,9 @@ merge:
 {{% /tab %}}
 {{< /tabs >}}
 
-The `flat` merge directive will produce an unstructured catalog with the following requirements:
-- All included controls are output to the target as a flat list directly under "catalog".
-- Any included "[loose params](https://pages.nist.gov/OSCAL/concepts/processing/profile-resolution/#d2e622-head)" are output to the target as a flat list directly under "catalog".
+The *flat* merge directive will produce an unstructured catalog with the following requirements:
+All included controls are output to the target as a flat list directly under `catalog`.
+- Any included "[*loose parameters*](https://pages.nist.gov/OSCAL/concepts/processing/profile-resolution/#d2e622-head) are output to the target as a flat list directly under `catalog`.
 - Any groups are discarded.
 
 An [`as-is`](https://pages.nist.gov/OSCAL/concepts/processing/profile-resolution/#d2e854-head) directive is used to reproduce the structure of the source documents in the target catalog.
@@ -382,7 +383,7 @@ The third and final part of an OSCAL profile is the `modify` section.
 In this section fine-grained edits can be made to the output resolved catalog.
 
 These edits can be used to tailor controls to match an organization's needs, such as adding specific guidance, removing extraneous details, or even changing the meaning of a control.
-There is a great deal of in-depth functionality available to use in this section, but we will only be covering a decent starting point.
+This section offers a great deal of in-depth functionality; here we cover only the most useful basics.
 
 ### Setting Parameters
 
@@ -463,7 +464,7 @@ The `alter` directive is extremely powerful, and allows us to:
 * Add content (`links`, `params`, `props`, and `parts`) to a given control at any position.
 * Remove content from a control.
 
-Note that the alter statement cannot add or remove sub-controls to a target control, as that would conflict semantically with the `include` directive.
+Note that the `alter` statement cannot add subcontrols to, or remove them from, a target control, as that would conflict semantically with the `include` directive.
 
 For our example profile, let's say we wanted to add some supplemental guidance to control `s1.1.1` "Information security roles and responsibilities" from our example catalog:
 
@@ -797,7 +798,7 @@ profile:
 
 ### Obtaining a Resolved Catalog
 
-The [profile resolution specification](/concepts/processing/profile-resolution/) describes how to use an input profile to generate a new "resolved" catalog that captures the transformations made to the controls listed in the profile. The profile resolution specitication has multiple NIST implementations, and is open to third party implementations maintained by the community.
+The [profile resolution specification](/concepts/processing/profile-resolution/) describes how to use an input profile to generate a new *resolved* catalog that captures the selection, arrangement and changes made to the controls listed in the profile. The profile resolution specification has multiple NIST implementations, and is open to third party implementations maintained by the community.
 
 For this example, let's use the NIST-maintained [OSCAL Command Line Interface (CLI)](https://github.com/usnistgov/oscal-cli). Upon installation, a user can perform profile resolution with the OSCAL-CLI as follows:
 
