@@ -56,7 +56,7 @@ In the example above, the contents of the `<profile>` element is provided as emp
 The `@id` attribute (on line 3) is the document's *universally unique identifier* (UUID), a unique 128-bit number displayed as a string of hyphenated hexadecimal digits as defined by [RFC 4122](https://tools.ietf.org/html/rfc4122). OSCAL documents use a version 4 UUID (randomly generated) to uniquely identify the document.
 
 A `<profile>` contains:
-- `<metadata>` (required) - Provides document metadata for the profile. As OSCAL Metadata sections use a shared structure across all models, refer to the metadata tutorial section of the catalog tutorial for more information.
+- `<metadata>` (required) - Provides document metadata for the profile. As OSCAL Metadata sections use a shared structure across all models, refer to the [metadata tutorial](metadata-tutorial) for more information.
 - `<import>` (required) - This is explored below in the [import phase](#import-phase) section of this tutorial.
 - `<merge>` (optional) - This is explored below in the [merge phase](#merge-phase) section of this tutorial.
 - `<modify>` (optional) - This is explored below in the [modify phase](#modify-phase) section of this tutorial.
@@ -85,7 +85,7 @@ The `id` property (on line 3) is the document's *universally unique identifier* 
 
 A `profile` contains:
 
-- `metadata` (required) - Provides document metadata for the profile. As OSCAL Metadata sections use a shared structure across all models, refer to the metadata tutorial section of the catalog tutorial for more information.
+- `metadata` (required) - Provides document metadata for the profile. As OSCAL Metadata sections use a shared structure across all models, refer to the [metadata tutorial](metadata-tutorial) for more information.
 - `import` (required) - This is explored below in the [import phase](#import-phase) section of this tutorial.
 - `merge` (optional) - This is explored below in the [merge phase](#merge-phase) section of this tutorial.
 - `modify` (optional) - This is explored below in the [modify phase](#modify-phase) section of this tutorial.
@@ -111,7 +111,7 @@ The `id` property (on line 3) is the document's *universally unique identifier* 
 
 A `profile` contains:
 
-- `metadata` (required) - Provides document metadata for the profile. As OSCAL Metadata sections use a shared structure across all models, refer to the metadata tutorial section of the catalog tutorial for more information.
+- `metadata` (required) - Provides document metadata for the profile. As OSCAL Metadata sections use a shared structure across all models, refer to the [metadata tutorial](metadata-tutorial) for more information.
 - `import` (required) - This is explored below in the [import phase](#import-phase) section of this tutorial.
 - `merge` (optional) - This is explored below in the [merge phase](#merge-phase) section of this tutorial.
 - `modify` (optional) - This is explored below in the [modify phase](#modify-phase) section of this tutorial.
@@ -579,7 +579,7 @@ A `modify` object has an optional array of `alters` objects.
 * `adds` is an array of objects can add some content to a control at a position specified by the `position` field, which can be "before", "after", "starting", and "ending".
   If `position` is set to "before" or "after", an object must be selected via the `by-id` field.
 
-* `remove` is an array of objects that can remove some content from a control as selected by the `by-class`, `by-id`, `by-item-name`, `by-name`, or `by-ns` fields.
+* `removes` is an array of objects that can remove some content from a control as selected by the `by-class`, `by-id`, `by-item-name`, `by-name`, or `by-ns` fields.
 {{% /tab %}}
 {{% tab %}}
 ```yaml {linenos=table}
@@ -639,7 +639,7 @@ A `modify` object has an optional array of `alters` objects.
 * `adds` is an array of objects can add some content to a control at a position specified by the `position` field, which can be "before", "after", "starting", and "ending".
   If `position` is set to "before" or "after", an object must be selected via the `by-id` field.
 
-* `remove` is an array of objects that can remove some content from a control as selected by the `by-class`, `by-id`, `by-item-name`, `by-name`, or `by-ns` fields.
+* `removes` is an array of objects that can remove some content from a control as selected by the `by-class`, `by-id`, `by-item-name`, `by-name`, or `by-ns` fields.
 {{% /tab %}}
 {{< /tabs >}}
 
@@ -1275,6 +1275,7 @@ This concludes the tutorial. At this point you should be familiar with:
 
 For more information you can review the [OSCAL profile model documentation][profile-docs].
 
+[metadata-tutorial]: /learn/tutorials/general/metadata/
 [profile-docs]: /concepts/layer/profile/
 [baseline-definition]: /concepts/terminology/#baseline
 [oscal-markup-line]: /reference/datatypes/#markup-line
