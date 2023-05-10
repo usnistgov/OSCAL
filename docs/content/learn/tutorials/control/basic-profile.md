@@ -20,13 +20,13 @@ Before reading this tutorial you should:
 
 ## What is an OSCAL Profile?
 
-An OSCAL profile is a specific set of security controls selected and modified when needed from one or more control catalogs for use in managing risks in an information system. Such a profile is also known as [baseline][baseline-definition], or overlay in the NIST SP 800-37 rev2, [Risk Management Framework for Information Systems and Organizations: A System Life Cycle Approach for Security and Privacy](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-37r2.pdf).
+An OSCAL profile is a specific set of security controls selected and modified when needed from one or more control catalogs for use in managing risks in an information system. Such a profile is also known as [baseline][baseline-definition], or overlay in the [Risk Management Framework for Information Systems and Organizations: A System Life Cycle Approach for Security and Privacy (NIST SP 800-37 Revision 2)](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-37r2.pdf).
 
 An OSCAL profile is a machine-readable representation of a baseline, expressed using the OSCAL [profile model][profile-docs], which includes contextualizing documentation and metadata.
 In the most basic sense, an OSCAL profile is a collection of "pointers" to other catalog(s)'s controls, along with instructions to tailor the controls and change how the controls are grouped.
 
 An OSCAL profile can be transformed into an OSCAL catalog through a process named *profile resolution*, which is described in the [Profile Resolution Specification](/concepts/processing/profile-resolution/).
-The output *resolved* catalog contains the controls selected, tailored, and grouped by the profile.
+The output *resolved* catalog contains the controls selected, tailored, or (optionally) grouped by the profile.
 
 This tutorial illustrates how to create an OSCAL profile using the OSCAL XML, JSON, and YAML formats, which each implement the OSCAL [profile model](/concepts/layer/control/profile/). The OSCAL project provides an [XML Schema and documentation](/concepts/layer/control/profile/), which is useful for validating an XML profile, and a [JSON Schema and documentation](/concepts/layer/control/profile/), which is useful for validating JSON and YAML profiles.
 
@@ -53,7 +53,7 @@ The root of the OSCAL profile model is [`<profile>`](/reference/latest/profile/x
 
 In the example above, the contents of the `<profile>` element is provided as empty data items. These are included to illustrate the content model of an OSCAL profile, and we will be covering each element's syntax later in this tutorial.
 
-The `@id` attribute (on line 3) is the document's *universally unique identifier* (UUID), a unique 128-bit number displayed as a string of hyphenated hexadecimal digits as defined by [RFC 4122](https://tools.ietf.org/html/rfc4122). OSCAL documents use a version 4 UUID (randomly generated) to uniquely identify the document.
+The `@uuid` attribute (on line 3) is the document's *universally unique identifier* (UUID), a unique 128-bit number displayed as a string of hyphenated hexadecimal digits as defined by [RFC 4122](https://tools.ietf.org/html/rfc4122). OSCAL documents use a version 4 UUID (randomly generated) to uniquely identify the document.
 
 A `<profile>` contains:
 - `<metadata>` (required) - Provides document metadata for the profile. As OSCAL Metadata sections use a shared structure across all models, refer to the [metadata tutorial](metadata-tutorial) for more information.
@@ -81,7 +81,7 @@ The root of the OSCAL profile model is [`profile`](/reference/latest/profile/xml
 
 In the example above, the contents of the `profile` object are provided as empty data items. These are included to illustrate the content model of an OSCAL profile, and we will be covering each element's syntax later in this tutorial.
 
-The `id` property (on line 3) is the document's *universally unique identifier* (UUID), a unique 128-bit number displayed as a string of hyphenated hexadecimal digits as defined by [RFC 4122](https://tools.ietf.org/html/rfc4122). OSCAL documents use a version 4 UUID (randomly generated) to uniquely identify the document.
+The `uuid` property (on line 3) is the document's *universally unique identifier* (UUID), a unique 128-bit number displayed as a string of hyphenated hexadecimal digits as defined by [RFC 4122](https://tools.ietf.org/html/rfc4122). OSCAL documents use a version 4 UUID (randomly generated) to uniquely identify the document.
 
 A `profile` contains:
 
@@ -107,7 +107,7 @@ The root of the OSCAL profile model is [`profile`](/reference/latest/profile/xml
 
 In the example above, the contents of the `profile` object are provided as empty data items. These are included to illustrate the content model of an OSCAL profile, and we will be covering each element's syntax later in this tutorial.
 
-The `id` property (on line 3) is the document's *universally unique identifier* (UUID), a unique 128-bit number displayed as a string of hyphenated hexadecimal digits as defined by [RFC 4122](https://tools.ietf.org/html/rfc4122). OSCAL documents use a version 4 UUID (randomly generated) to uniquely identify the document.
+The `uuid` property (on line 3) is the document's *universally unique identifier* (UUID), a unique 128-bit number displayed as a string of hyphenated hexadecimal digits as defined by [RFC 4122](https://tools.ietf.org/html/rfc4122). OSCAL documents use a version 4 UUID (randomly generated) to uniquely identify the document.
 
 A `profile` contains:
 
@@ -134,11 +134,11 @@ As this is a basic tutorial, and many baselines are simply a subset of controls 
 
 ## Import Phase
 
-The first major part of an OSCAL profile is the `import` section. In this section, the source catalog(s) are identified, and the subset of controls to be extracted are defined.
+The first major part of an OSCAL profile is the `import` section. In this section, the source catalog(s) are identified, and the subset of controls to be imported into the resulting catalog are selected.
 
 There will be one *import* object per catalog referenced, so in the simple case of building a baseline from a single catalog, there will be a single import object. Let's look at a basic example.
 
-For the rest of this tutorial, we'll be using the catalog we [created during the last tutorial](https://pages.nist.gov/OSCAL/learn/tutorials/control/basic-catalog/#the-final-catalog).
+For the rest of this tutorial, we'll be using the catalog we [created during the last tutorial](/learn/tutorials/control/basic-catalog/#the-final-catalog).
 
 {{< tabs XML JSON YAML >}}
 {{% tab %}}
@@ -199,7 +199,7 @@ Here we can see the `import` object inside an example OSCAL profile.
 {{% /tab %}}
 {{< /tabs >}}
 
-Notice that for all three examples, we import a catalog defined in XML. The profile resolution specification allows us to import multiple documents irrespective of the input format (as long as it is valid OSCAL).
+Notice that for all three examples, we import a catalog defined in XML. The profile resolution specification allows us to import multiple documents irrespective of the input format (as long as it is [valid, well-formed OSCAL](/concepts/layer/validation/)).
 
 Now that we've seen a basic example, let's take a quick walkthrough of some of the basic functions of this section and how to use them.
 
@@ -296,7 +296,7 @@ imports:
 
 ### Excluding Controls from a Catalog
 
-It is possible to exclude controls from a catalog. Exclusions work the same way as inclusions; except in this case the indicated control(s) do  not appear in the target catalog.
+It is possible to exclude controls from a catalog. Exclusions work the same way as inclusions, except in this case the indicated control(s) do *not* appear in the target catalog.
 The OSCAL profile Resolution Specification Draft contains a more detailed explanation of [excluding controls](https://pages.nist.gov/OSCAL/concepts/processing/profile-resolution/#d2e589-head).
 
 {{< tabs XML JSON YAML >}}
@@ -513,7 +513,7 @@ A `<modify>` element can have any number of `<alter>` elements inside of it.
 * `<add>` elements can add some content to a control at a position specified by `@position`, which can be "before", "after", "starting", and "ending".
   If `@position` is set to "before" or "after", an object must be selected via the `@by-id` attribute.
 
-* `<remove>` elements can remove some content from a control as selected by the `@by-class`, `@by-id`, `@by-item-name`, `@by-name`, or `@by-ns` attributes.
+* `<remove>` elements can remove some content from a control as selected by the `@by-class`, `@by-id`, `@by-item-name`, `@by-name`, or `@by-ns` attributes, singly or in combination. If more than one of these match directives is used, only objects identified by *all* these criteria (for example, by both `@by-name` and `@by-ns` if those are given together) are identified for removal.
 
 A single `<alter>` element can have multiple `<add>` and `<remove>` sub-elements.
 {{% /tab %}}
@@ -579,7 +579,7 @@ A `modify` object has an optional array of `alters` objects.
 * `adds` is an array of objects can add some content to a control at a position specified by the `position` field, which can be "before", "after", "starting", and "ending".
   If `position` is set to "before" or "after", an object must be selected via the `by-id` field.
 
-* `removes` is an array of objects that can remove some content from a control as selected by the `by-class`, `by-id`, `by-item-name`, `by-name`, or `by-ns` fields.
+* `removes` is an array of objects that can remove some content from a control as selected by the `by-class`, `by-id`, `by-item-name`, `by-name`, or `by-ns` fields, singly or in combination. If more than one of these match directives is used, only objects identified by *all* these criteria (for example, by both `by-name` and `by-ns` if those are given together) are identified for removal.
 {{% /tab %}}
 {{% tab %}}
 ```yaml {linenos=table}
@@ -639,7 +639,7 @@ A `modify` object has an optional array of `alters` objects.
 * `adds` is an array of objects can add some content to a control at a position specified by the `position` field, which can be "before", "after", "starting", and "ending".
   If `position` is set to "before" or "after", an object must be selected via the `by-id` field.
 
-* `removes` is an array of objects that can remove some content from a control as selected by the `by-class`, `by-id`, `by-item-name`, `by-name`, or `by-ns` fields.
+* `removes` is an array of objects that can remove some content from a control as selected by the `by-class`, `by-id`, `by-item-name`, `by-name`, or `by-ns` fields, singly or in combination. If more than one of these match directives is used, only objects identified by *all* these criteria (for example, by both `by-name` and `by-ns` if those are given together) are identified for removal.
 {{% /tab %}}
 {{< /tabs >}}
 
@@ -658,7 +658,7 @@ After applying all of the techniques discussed in this tutorial, we obtain an OS
     </title>
     <last-modified>2023-04-10T10:31:28.355446-04:00</last-modified>
     <version>1.0</version>
-    <oscal-version>1.04</oscal-version>
+    <oscal-version>1.0.4</oscal-version>
     <revisions/>
     <remarks>
       <p>The following document is used in the OSCAL Profile Tutorial and builds on the catalog created for the OSCAL Catalog Tutorial</p>
@@ -957,7 +957,7 @@ Notice, that the OSCAL CLI automatically detects the file type of the profile an
       "title": "Sample Security Profile *for Demonstration* and Testing",
       "last-modified": "2023-04-10T19:13:52.867888591Z",
       "version": "1.0",
-      "oscal-version": "1.04"
+      "oscal-version": "1.0.4"
     },
     "controls": [
       {
@@ -1124,7 +1124,7 @@ catalog:
     title: Sample Security Profile *for Demonstration* and Testing
     last-modified: "2023-04-10T19:13:52.867888591Z"
     version: "1.0"
-    oscal-version: "1.04"
+    oscal-version: "1.0.4"
   controls:
     - id: s1.1.1
       title: Information security roles and responsibilities
