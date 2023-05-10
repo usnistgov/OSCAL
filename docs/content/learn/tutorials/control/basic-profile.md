@@ -10,7 +10,7 @@ aliases:
   - /learn/tutorials/profile/
 ---
 
-This tutorial covers creating and modifying a subset of controls from a catalog in OSCAL by using the OSCAL profile model. Such a subset of controls is often referred to as a "control baseline".
+This tutorial covers creating and modifying a subset of controls from a catalog in OSCAL by using the OSCAL profile model. Such a subset of controls is often referred to as a ["control baseline"](https://csrc.nist.gov/glossary/term/baseline).
 
 Before reading this tutorial you should:
 - Have some familiarity with the [XML](https://www.w3.org/standards/xml/core), [JSON](https://www.json.org/), or [YAML](https://yaml.org/spec/) formats.
