@@ -331,3 +331,33 @@
     }
   }
 }
+
+
+.no-anchor-xslt {
+  // : :after
+  font-style: normal;
+  font-variant: normal;
+  font-kerning: auto;
+  font-optical-sizing: auto;
+  font-feature-settings: normal;
+  font-variation-settings: normal;
+  font-weight: normal;
+  font-stretch: normal;
+  font-size: 1em;
+  line-height: inherit;
+  font-family: anchorjs-icons;
+  position: absolute;
+  margin-left: -1em;
+  padding-right: 0.5em;
+}
+
+.no-anchor-xslt:hover {
+  text-decoration: underline;
+  transform: scale(1.06);
+  border-image: "⚓";
+}
+
+.no-anchor-xslt :hover::before {
+  font-family: anchorjs-icons;
+  background-image: "⚓";
+}
