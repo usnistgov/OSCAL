@@ -149,7 +149,7 @@ For the rest of this tutorial, we'll be using the catalog we [created during the
       <matching pattern="s1.1.*"/>
     </include-controls>
     <include-controls>
-      <with-id>s2.1.2</with-id>
+      <with-id>s2.1.1</with-id>
     </include-controls>
   </import>
 ```
@@ -173,7 +173,7 @@ Here we can see the `<import>` element inside an example OSCAL profile.
           },
           {
             "with-ids": [
-              "s2.1.2"
+              "s2.1.1"
             ]
           }
         ]
@@ -192,7 +192,7 @@ Here we can see the `import` object inside an example OSCAL profile.
         - matching:
             - pattern: s1.1.*
         - with-ids:
-            - s2.1.2
+            - s2.1.1
 ```
 
 Here we can see the `import` object inside an example OSCAL profile.
@@ -257,7 +257,7 @@ Controls can also be included based on id matching:
 ```xml {linenos=table}
 <import href="https://raw.githubusercontent.com/usnistgov/oscal-content/main/examples/catalog/json/basic-catalog.json">
     <include-controls>
-      <with-id>s2.1.2</with-id>
+      <with-id>s2.1.1</with-id>
     </include-controls>
 </import>
 ```
@@ -271,7 +271,7 @@ Controls can also be included based on id matching:
         "include-controls": [
           {
             "with-ids": [
-              "s2.1.2"
+              "s2.1.1"
             ]
           }
         ]
@@ -288,7 +288,7 @@ imports:
     - href: https://raw.githubusercontent.com/usnistgov/oscal-content/main/examples/catalog/json/basic-catalog.json
       include-controls:
         - with-ids:
-            - s2.1.2
+            - s2.1.1
 ```
 
 {{% /tab %}}
@@ -305,7 +305,8 @@ The OSCAL profile Resolution Specification Draft contains a more detailed explan
 ```xml {linenos=table}
 <import href="https://raw.githubusercontent.com/usnistgov/oscal-content/main/examples/catalog/json/basic-catalog.json">
     <exclude-controls>
-    </exclude-controls>
+     <with-id>s2.1.2</with-id>
+    </exclude-controls>    
 </import>
 ```
 {{% /tab %}}
@@ -316,6 +317,9 @@ The OSCAL profile Resolution Specification Draft contains a more detailed explan
         "href": "https://raw.githubusercontent.com/usnistgov/oscal-content/main/examples/catalog/json/basic-catalog.json",
         "exclude-controls": [
           {
+            "with-ids": [
+              "s2.1.2"
+            ]
           }
         ]
       }
@@ -328,6 +332,8 @@ The OSCAL profile Resolution Specification Draft contains a more detailed explan
 imports:
     - href: https://raw.githubusercontent.com/usnistgov/oscal-content/main/examples/catalog/json/basic-catalog.json
       exclude-controls:
+        - with-ids:
+            - s2.1.2
 ```
 {{% /tab %}}
 {{< /tabs >}}
@@ -669,8 +675,11 @@ After applying all of the techniques discussed in this tutorial, we obtain an OS
       <matching pattern="s1.1.*"/>
     </include-controls>
     <include-controls>
-      <with-id>s2.1.2</with-id>
+      <with-id>s2.1.1</with-id>
     </include-controls>
+    <exclude-controls>
+        <with-id>s2.1.2</with-id>
+    </exclude-controls>
   </import>
   <merge>
     <flat/>
@@ -715,8 +724,15 @@ After applying all of the techniques discussed in this tutorial, we obtain an OS
           },
           {
             "with-ids": [
-              "s2.1.2"
-            ]
+              "s2.1.1"
+            ],
+          "exclude-controls": [
+            {
+              "with-ids": [
+                "s2.1.2"
+              ]
+            }
+          ]
           }
         ]
       }
@@ -773,6 +789,9 @@ profile:
         - matching:
             - pattern: s1.1.*
         - with-ids:
+            - s2.1.1
+      exclude-controls:
+        - with-ids:
             - s2.1.2
   merge:
     flat: {}
@@ -796,7 +815,7 @@ profile:
 {{% /tab %}}
 {{< /tabs >}}
 
-### Obtaining a Resolved Catalog
+### Creating the Resolved Catalog from a Profile
 
 The [profile resolution specification](/concepts/processing/profile-resolution/) describes how to use an input profile to generate a new *resolved* catalog that captures the selection, arrangement and changes made to the controls listed in the profile. The profile resolution specification has multiple NIST implementations, and is open to third party implementations maintained by the community.
 
@@ -813,15 +832,14 @@ Notice, that the OSCAL CLI automatically detects the file type of the profile an
 
 ```xml {linenos=table}
 <?xml version="1.0" encoding="UTF-8"?>
-<catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0" uuid="9510e179-7744-4afa-a9d3-92beadffd85f">
+<catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0" uuid="9ed3e413-1404-45b2-8608-192d41bf3785">
   <metadata>
     <title>Sample Security Profile 
       <em>for Demonstration</em> and Testing
     </title>
-    <last-modified>2023-04-10T19:13:52.867888591Z</last-modified>
+    <last-modified>2023-05-13T22:06:43.017554394Z</last-modified>
     <version>1.0</version>
-    <oscal-version>1.04</oscal-version>
-    <revisions/>
+    <oscal-version>1.0.4</oscal-version>
   </metadata>
   <control id="s1.1.1">
     <title>Information security roles and responsibilities</title>
@@ -902,38 +920,95 @@ Notice, that the OSCAL CLI automatically detects the file type of the profile an
       <p>Segregation of duties is a method for reducing the risk of accidental or deliberate misuse of an organization’s assets.</p>
     </part>
   </control>
-  <control id="s2.1.2">
-    <title>Access to networks and network services</title>
-    <prop name="label" value="2.1.2"/>
-    <part id="s2.1.2_stm" name="statement">
-      <p>Users should only be provided with access to the network and network services that they have been specifically authorized to use.</p>
+  <control id="s2.1.1">
+    <title>Access control policy</title>
+    <prop name="label" value="2.1.1"/>
+    <part id="s2.1.1_stm" name="statement">
+      <p>An access control policy should be established, documented and reviewed based on business and information security requirements.</p>
     </part>
-    <part id="s2.1.2_gdn" name="guidance">
-      <part id="s2.1.2_gdn.1" name="item">
-        <p>A policy should be formulated concerning the use of networks and network services. This policy should cover:</p>
+    <part id="s2.1.1_gdn" name="guidance">
+      <part id="s2.1.1_gdn.1" name="item">
+        <p>Asset owners should determine appropriate access control rules, access rights and restrictions for specific user roles towards their assets, with the amount of detail and the strictness of the controls reflecting the associated information security risks.</p>
+      </part>
+      <part id="s2.1.1_gdn.2" name="item">
+        <p>Access controls are both logical and physical and these should be considered together.</p>
+      </part>
+      <part id="s2.1.1_gdn.3" name="item">
+        <p>Users and service providers should be given a clear statement of the business requirements to be met by access controls.</p>
+      </part>
+      <part id="s2.1.1_gdn.4" name="item">
+        <p>The policy should take account of the following:</p>
         <ol>
           <li>
-            <p>the networks and network services which are allowed to be accessed;</p>
+            <p>security requirements of business applications;</p>
           </li>
           <li>
-            <p>authorization procedures for determining who is allowed to access which networks and networked services;</p>
+            <p>policies for information dissemination and authorization, e.g. the need-to-know principle and information security levels and classification of information;</p>
           </li>
           <li>
-            <p>management controls and procedures to protect access to network connections and network services;</p>
+            <p>consistency between the access rights and information classification policies of systems and networks;</p>
           </li>
           <li>
-            <p>the means used to access networks and network services (e.g. use of VPN or wireless network);</p>
+            <p>relevant legislation and any contractual obligations regarding limitation of access to data or services;</p>
           </li>
           <li>
-            <p>user authentication requirements for accessing various network services;</p>
+            <p>management of access rights in a distributed and networked environment which recognizes all types of connections available;</p>
           </li>
           <li>
-            <p>monitoring of the use of network service</p>
+            <p>segregation of access control roles, e.g. access request, access authorization, access administration;</p>
+          </li>
+          <li>
+            <p>requirements for formal authorization of access requests;</p>
+          </li>
+          <li>
+            <p>requirements for periodic review of access rights;</p>
+          </li>
+          <li>
+            <p>removal of access rights;</p>
+          </li>
+          <li>
+            <p>archiving of records of all significant events concerning the use and management of user identities and secret authentication information;,</p>
+          </li>
+          <li>
+            <p>roles with privileged access.</p>
           </li>
         </ol>
       </part>
-      <part id="s2.1.2_gdn.2" name="item">
-        <p>The policy on the use of network services should be consistent with the organization’s access control policy</p>
+    </part>
+    <part id="s2.1.1_stm" name="information">
+      <part id="s2.1.1_stm.1" name="item">
+        <p>Care should be taken when specifying access control rules to consider:</p>
+        <ol>
+          <li>
+            <p>establishing rules based on the premise “Everything is generally forbidden unless expressly permitted” rather than the weaker rule “Everything is generally permitted unless expressly forbidden”;</p>
+          </li>
+          <li>
+            <p>changes in information labels that are initiated automatically by information processing facilities and those initiated at the discretion of a user;</p>
+          </li>
+          <li>
+            <p>changes in user permissions that are initiated automatically by the information system and those initiated by an administrator;</p>
+          </li>
+          <li>
+            <p>rules which require specific approval before enactment and those which do not.</p>
+          </li>
+        </ol>
+      </part>
+      <part id="s2.1.1_stm.2" name="item">
+        <p>Access control rules should be supported by formal procedures and defined responsibilities.</p>
+      </part>
+      <part id="s2.1.1_stm.3" name="item">
+        <p>Role based access control is an approach used successfully by many organizations to link access rights with business roles.</p>
+      </part>
+      <part id="s2.1.1_stm.4" name="item">
+        <p>Two of the frequent principles directing the access control policy are:</p>
+        <ol>
+          <li>
+            <p>Need-to-know: you are only granted access to the information you need to perform your tasks (different tasks/roles mean different need-to-know and hence different access profile);</p>
+          </li>
+          <li>
+            <p>Need-to-use: you are only granted access to the information processing facilities (IT equipment, applications, procedures, rooms) you need to perform your task/job/role.</p>
+          </li>
+        </ol>
       </part>
     </part>
   </control>
@@ -952,10 +1027,10 @@ Notice, that the OSCAL CLI automatically detects the file type of the profile an
 ```json {linenos=table}
 {
   "catalog": {
-    "uuid": "9510e179-7744-4afa-a9d3-92beadffd85f",
+    "uuid": "b51ff9bb-5ffd-415d-a25c-7eef2fd6d48b",
     "metadata": {
       "title": "Sample Security Profile *for Demonstration* and Testing",
-      "last-modified": "2023-04-10T19:13:52.867888591Z",
+      "last-modified": "2023-05-13T22:08:03.596582192Z",
       "version": "1.0",
       "oscal-version": "1.0.4"
     },
@@ -1070,33 +1145,69 @@ Notice, that the OSCAL CLI automatically detects the file type of the profile an
         ]
       },
       {
-        "id": "s2.1.2",
-        "title": "Access to networks and network services",
+        "id": "s2.1.1",
+        "title": "Access control policy",
         "props": [
           {
             "name": "label",
-            "value": "2.1.2"
+            "value": "2.1.1"
           }
         ],
         "parts": [
           {
-            "id": "s2.1.2_stm",
+            "id": "s2.1.1_stm",
             "name": "statement",
-            "prose": "Users should only be provided with access to the network and network services that they have been specifically authorized to use."
+            "prose": "An access control policy should be established, documented and reviewed based on business and information security requirements."
           },
           {
-            "id": "s2.1.2_gdn",
+            "id": "s2.1.1_gdn",
             "name": "guidance",
             "parts": [
               {
-                "id": "s2.1.2_gdn.1",
+                "id": "s2.1.1_gdn.1",
                 "name": "item",
-                "prose": "A policy should be formulated concerning the use of networks and network services. This policy should cover:\n\n1. the networks and network services which are allowed to be accessed;\n2. authorization procedures for determining who is allowed to access which networks and networked services;\n3. management controls and procedures to protect access to network connections and network services;\n4. the means used to access networks and network services (e.g. use of VPN or wireless network);\n5. user authentication requirements for accessing various network services;\n6. monitoring of the use of network service"
+                "prose": "Asset owners should determine appropriate access control rules, access rights and restrictions for specific user roles towards their assets, with the amount of detail and the strictness of the controls reflecting the associated information security risks."
               },
               {
-                "id": "s2.1.2_gdn.2",
+                "id": "s2.1.1_gdn.2",
                 "name": "item",
-                "prose": "The policy on the use of network services should be consistent with the organization’s access control policy"
+                "prose": "Access controls are both logical and physical and these should be considered together."
+              },
+              {
+                "id": "s2.1.1_gdn.3",
+                "name": "item",
+                "prose": "Users and service providers should be given a clear statement of the business requirements to be met by access controls."
+              },
+              {
+                "id": "s2.1.1_gdn.4",
+                "name": "item",
+                "prose": "The policy should take account of the following:\n\n1. security requirements of business applications;\n2. policies for information dissemination and authorization, e.g. the need-to-know principle and information security levels and classification of information;\n3. consistency between the access rights and information classification policies of systems and networks;\n4. relevant legislation and any contractual obligations regarding limitation of access to data or services;\n5. management of access rights in a distributed and networked environment which recognizes all types of connections available;\n6. segregation of access control roles, e.g. access request, access authorization, access administration;\n7. requirements for formal authorization of access requests;\n8. requirements for periodic review of access rights;\n9. removal of access rights;\n10. archiving of records of all significant events concerning the use and management of user identities and secret authentication information;,\n11. roles with privileged access."
+              }
+            ]
+          },
+          {
+            "id": "s2.1.1_stm",
+            "name": "information",
+            "parts": [
+              {
+                "id": "s2.1.1_stm.1",
+                "name": "item",
+                "prose": "Care should be taken when specifying access control rules to consider:\n\n1. establishing rules based on the premise “Everything is generally forbidden unless expressly permitted” rather than the weaker rule “Everything is generally permitted unless expressly forbidden”;\n2. changes in information labels that are initiated automatically by information processing facilities and those initiated at the discretion of a user;\n3. changes in user permissions that are initiated automatically by the information system and those initiated by an administrator;\n4. rules which require specific approval before enactment and those which do not."
+              },
+              {
+                "id": "s2.1.1_stm.2",
+                "name": "item",
+                "prose": "Access control rules should be supported by formal procedures and defined responsibilities."
+              },
+              {
+                "id": "s2.1.1_stm.3",
+                "name": "item",
+                "prose": "Role based access control is an approach used successfully by many organizations to link access rights with business roles."
+              },
+              {
+                "id": "s2.1.1_stm.4",
+                "name": "item",
+                "prose": "Two of the frequent principles directing the access control policy are:\n\n1. Need-to-know: you are only granted access to the information you need to perform your tasks (different tasks/roles mean different need-to-know and hence different access profile);\n2. Need-to-use: you are only granted access to the information processing facilities (IT equipment, applications, procedures, rooms) you need to perform your task/job/role."
               }
             ]
           }
@@ -1119,146 +1230,151 @@ Notice, that the OSCAL CLI automatically detects the file type of the profile an
 ```yaml {linenos=table}
 ---
 catalog:
-  uuid: 9510e179-7744-4afa-a9d3-92beadffd85f
+  uuid: b1296da4-4ada-40f1-bbeb-20e3429bef41
   metadata:
     title: Sample Security Profile *for Demonstration* and Testing
-    last-modified: "2023-04-10T19:13:52.867888591Z"
+    last-modified: 2023-05-13T22:08:16.76575041Z
     version: "1.0"
-    oscal-version: "1.0.4"
+    oscal-version: 1.0.4
   controls:
-    - id: s1.1.1
-      title: Information security roles and responsibilities
-      params:
-        - id: s1.1.1-prm1
-          label: a choice from a selection
-          select:
-            how-many: one-or-more
-            choice:
-              - "initiating a device lock after {{ insert: param, s1.1.1-prm_2 }} of inactivity"
-              - requiring the user to initiate a device lock before leaving the system unattended
-        - id: s1.1.1-prm_2
-          label: a duration (maximum 30 minutes)
-      props:
-        - name: label
-          value: 1.1.1
+  - id: s1.1.1
+    title: Information security roles and responsibilities
+    params:
+    - id: s1.1.1-prm1
+      label: a choice from a selection
+      select:
+        how-many: one-or-more
+        choice:
+        - "initiating a device lock after {{ insert: param, s1.1.1-prm_2 }} of inactivity"
+        - requiring the user to initiate a device lock before leaving the system unattended
+    - id: s1.1.1-prm_2
+      label: a duration (maximum 30 minutes)
+    props:
+    - name: label
+      value: 1.1.1
+    parts:
+    - id: s1.1.1_stm
+      name: statement
+      prose: |-
+        All information security responsibilities should be defined and allocated.
+
+        A value has been assigned to {{ insert: param, s1.1.1-prm1 }}.
+
+        A cross link has been established with a choppy syntax: [(choppy)](#s1.2).
+    - id: s1.1.1_gdn
+      name: guidance
       parts:
-        - id: s1.1.1_stm
-          name: statement
-          prose: |-
-            All information security responsibilities should be defined and allocated.
+      - id: s1.1.1_gdn.1
+        name: item
+        prose: "Allocation of information security responsibilities should be done in accordance with the information security policies. Responsibilities for the protection of individual assets and for carrying out specific information security processes should be identified. Responsibilities for information security risk management activities and in particular for acceptance of residual risks should be defined. These responsibilities should be supplemented, where necessary, with more detailed guidance for specific sites and information processing facilities. Local responsibilities for the protection of assets and for carrying out specific security processes should be defined."
+      - id: s1.1.1_gdn.2
+        name: item
+        prose: Individuals with allocated information security responsibilities may delegate security tasks to others. Nevertheless they remain accountable and should determine that any delegated tasks have been correctly performed.
+      - id: s1.1.1_gdn.3
+        name: item
+        prose: |-
+          Areas for which individuals are responsible should be stated. In particular the following should take place:
 
-            A value has been assigned to {{ insert: param, s1.1.1-prm1 }}.
-
-            A cross link has been established with a choppy syntax: [(choppy)](#s1.2).
-        - id: s1.1.1_gdn
-          name: guidance
-          parts:
-            - id: s1.1.1_gdn.1
-              name: item
-              prose:
-                Allocation of information security responsibilities should be done
-                in accordance with the information security policies. Responsibilities for
-                the protection of individual assets and for carrying out specific information
-                security processes should be identified. Responsibilities for information
-                security risk management activities and in particular for acceptance of
-                residual risks should be defined. These responsibilities should be supplemented,
-                where necessary, with more detailed guidance for specific sites and information
-                processing facilities. Local responsibilities for the protection of assets
-                and for carrying out specific security processes should be defined.
-            - id: s1.1.1_gdn.2
-              name: item
-              prose:
-                Individuals with allocated information security responsibilities may
-                delegate security tasks to others. Nevertheless they remain accountable
-                and should determine that any delegated tasks have been correctly performed.
-            - id: s1.1.1_gdn.3
-              name: item
-              prose: |-
-                Areas for which individuals are responsible should be stated. In particular the following should take place:
-
-                1. the assets and information security processes should be identified and defined;
-                2. the entity responsible for each asset or information security process should be assigned and the details of this responsibility should be documented;
-                3. authorization levels should be defined and documented;
-                4. to be able to fulfil responsibilities in the information security area the appointed individuals should be competent in the area and be given opportunities to keep up to date with developments;
-                5. coordination and oversight of information security aspects of supplier relationships should be identified and documented.
-            - id: s1.1.1_gdn.4
-              name: item
-              prose:
-                "Users of devices running Gnome can adjust the inactivity timeout using
-                the following link: https://help.gnome.org/admin/system-admin-guide/stable/desktop-lockscreen.html.en"
-        - id: s1.1.1_inf
-          name: information
-          props:
-            - name: label
-              value: Other information
-          prose: |-
-            Many organizations appoint an information security manager to take overall responsibility for the development and implementation of information security and to support the identification of controls.
-
-            However, responsibility for resourcing and implementing the controls will often remain with individual managers. One common practice is to appoint an owner for each asset who then becomes responsible for its day-to-day protection.
-    - id: s1.1.2
-      title: Segregation of duties
+          1. the assets and information security processes should be identified and defined;
+          2. the entity responsible for each asset or information security process should be assigned and the details of this responsibility should be documented;
+          3. authorization levels should be defined and documented;
+          4. to be able to fulfil responsibilities in the information security area the appointed individuals should be competent in the area and be given opportunities to keep up to date with developments;
+          5. coordination and oversight of information security aspects of supplier relationships should be identified and documented.
+      - id: s1.1.1_gdn.4
+        name: item
+        prose: "Users of devices running Gnome can adjust the inactivity timeout using the following link: https://help.gnome.org/admin/system-admin-guide/stable/desktop-lockscreen.html.en"
+    - id: s1.1.1_inf
+      name: information
       props:
-        - name: label
-          value: 1.1.2
-      parts:
-        - id: s1.1.2_stm
-          name: statement
-          prose:
-            Conflicting duties and areas of responsibility should be segregated to
-            reduce opportunities for unauthorized or unintentional modification or misuse
-            of the organization’s assets.
-        - id: s1.1.2_gdn
-          name: guidance
-          parts:
-            - id: s1.1.2_gdn.1
-              name: item
-              prose:
-                Care should be taken that no single person can access, modify or use
-                assets without authorization or detection. The initiation of an event should
-                be separated from its authorization. The possibility of collusion should
-                be considered in designing the controls.
-            - id: s1.1.2_gdn.2
-              name: item
-              prose:
-                Small organizations may find segregation of duties difficult to achieve,
-                but the principle should be applied as far as is possible and practicable.
-                Whenever it is difficult to segregate, other controls such as monitoring
-                of activities, audit trails and management supervision should be considered.
-        - id: s1.1.2_inf
-          name: information
-          prose:
-            Segregation of duties is a method for reducing the risk of accidental
-            or deliberate misuse of an organization’s assets.
-    - id: s2.1.2
-      title: Access to networks and network services
-      props:
-        - name: label
-          value: 2.1.2
-      parts:
-        - id: s2.1.2_stm
-          name: statement
-          prose:
-            Users should only be provided with access to the network and network
-            services that they have been specifically authorized to use.
-        - id: s2.1.2_gdn
-          name: guidance
-          parts:
-            - id: s2.1.2_gdn.1
-              name: item
-              prose: |-
-                A policy should be formulated concerning the use of networks and network services. This policy should cover:
+      - name: label
+        value: Other information
+      prose: |-
+        Many organizations appoint an information security manager to take overall responsibility for the development and implementation of information security and to support the identification of controls.
 
-                1. the networks and network services which are allowed to be accessed;
-                2. authorization procedures for determining who is allowed to access which networks and networked services;
-                3. management controls and procedures to protect access to network connections and network services;
-                4. the means used to access networks and network services (e.g. use of VPN or wireless network);
-                5. user authentication requirements for accessing various network services;
-                6. monitoring of the use of network service
-            - id: s2.1.2_gdn.2
-              name: item
-              prose:
-                The policy on the use of network services should be consistent with
-                the organization’s access control policy
+        However, responsibility for resourcing and implementing the controls will often remain with individual managers. One common practice is to appoint an owner for each asset who then becomes responsible for its day-to-day protection.
+  - id: s1.1.2
+    title: Segregation of duties
+    props:
+    - name: label
+      value: 1.1.2
+    parts:
+    - id: s1.1.2_stm
+      name: statement
+      prose: Conflicting duties and areas of responsibility should be segregated to reduce opportunities for unauthorized or unintentional modification or misuse of the organization’s assets.
+    - id: s1.1.2_gdn
+      name: guidance
+      parts:
+      - id: s1.1.2_gdn.1
+        name: item
+        prose: "Care should be taken that no single person can access, modify or use assets without authorization or detection. The initiation of an event should be separated from its authorization. The possibility of collusion should be considered in designing the controls."
+      - id: s1.1.2_gdn.2
+        name: item
+        prose: "Small organizations may find segregation of duties difficult to achieve, but the principle should be applied as far as is possible and practicable. Whenever it is difficult to segregate, other controls such as monitoring of activities, audit trails and management supervision should be considered."
+    - id: s1.1.2_inf
+      name: information
+      prose: Segregation of duties is a method for reducing the risk of accidental or deliberate misuse of an organization’s assets.
+  - id: s2.1.1
+    title: Access control policy
+    props:
+    - name: label
+      value: 2.1.1
+    parts:
+    - id: s2.1.1_stm
+      name: statement
+      prose: "An access control policy should be established, documented and reviewed based on business and information security requirements."
+    - id: s2.1.1_gdn
+      name: guidance
+      parts:
+      - id: s2.1.1_gdn.1
+        name: item
+        prose: "Asset owners should determine appropriate access control rules, access rights and restrictions for specific user roles towards their assets, with the amount of detail and the strictness of the controls reflecting the associated information security risks."
+      - id: s2.1.1_gdn.2
+        name: item
+        prose: Access controls are both logical and physical and these should be considered together.
+      - id: s2.1.1_gdn.3
+        name: item
+        prose: Users and service providers should be given a clear statement of the business requirements to be met by access controls.
+      - id: s2.1.1_gdn.4
+        name: item
+        prose: |-
+          The policy should take account of the following:
+
+          1. security requirements of business applications;
+          2. policies for information dissemination and authorization, e.g. the need-to-know principle and information security levels and classification of information;
+          3. consistency between the access rights and information classification policies of systems and networks;
+          4. relevant legislation and any contractual obligations regarding limitation of access to data or services;
+          5. management of access rights in a distributed and networked environment which recognizes all types of connections available;
+          6. segregation of access control roles, e.g. access request, access authorization, access administration;
+          7. requirements for formal authorization of access requests;
+          8. requirements for periodic review of access rights;
+          9. removal of access rights;
+          10. archiving of records of all significant events concerning the use and management of user identities and secret authentication information;,
+          11. roles with privileged access.
+    - id: s2.1.1_stm
+      name: information
+      parts:
+      - id: s2.1.1_stm.1
+        name: item
+        prose: |-
+          Care should be taken when specifying access control rules to consider:
+
+          1. establishing rules based on the premise “Everything is generally forbidden unless expressly permitted” rather than the weaker rule “Everything is generally permitted unless expressly forbidden”;
+          2. changes in information labels that are initiated automatically by information processing facilities and those initiated at the discretion of a user;
+          3. changes in user permissions that are initiated automatically by the information system and those initiated by an administrator;
+          4. rules which require specific approval before enactment and those which do not.
+      - id: s2.1.1_stm.2
+        name: item
+        prose: Access control rules should be supported by formal procedures and defined responsibilities.
+      - id: s2.1.1_stm.3
+        name: item
+        prose: Role based access control is an approach used successfully by many organizations to link access rights with business roles.
+      - id: s2.1.1_stm.4
+        name: item
+        prose: |-
+          Two of the frequent principles directing the access control policy are:
+
+          1. Need-to-know: you are only granted access to the information you need to perform your tasks (different tasks/roles mean different need-to-know and hence different access profile);
+          2. Need-to-use: you are only granted access to the information processing facilities (IT equipment, applications, procedures, rooms) you need to perform your task/job/role.
 ```
 
 {{% /tab %}}
