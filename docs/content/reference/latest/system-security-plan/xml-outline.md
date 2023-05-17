@@ -1,6 +1,6 @@
 ---
-title: "OSCAL System Security Plan Model v1.0.4 XML Format Outline"
-heading: "System Security Plan Model v1.0.4 XML Format Outline"
+title: "OSCAL System Security Plan Model v1.0.5 XML Format Outline"
+heading: "System Security Plan Model v1.0.5 XML Format Outline"
 custom_js:
   - "/js/oscal-metaschema-map-expander.js"
 weight: 50

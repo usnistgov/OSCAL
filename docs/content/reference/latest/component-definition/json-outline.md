@@ -1,6 +1,6 @@
 ---
-title: "OSCAL Component Definition Model v1.0.4 JSON Format Outline"
-heading: "Component Definition Model v1.0.4 JSON Format Outline"
+title: "OSCAL Component Definition Model v1.0.5 JSON Format Outline"
+heading: "Component Definition Model v1.0.5 JSON Format Outline"
 custom_js:
   - "/js/oscal-metaschema-map-expander.js"
 weight: 10

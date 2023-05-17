@@ -1,6 +1,6 @@
 ---
-title: "OSCAL System Security Plan Model v1.0.4 XML Format Reference"
-heading: "System Security Plan Model v1.0.4 XML Format Reference"
+title: "OSCAL System Security Plan Model v1.0.5 XML Format Reference"
+heading: "System Security Plan Model v1.0.5 XML Format Reference"
 weight: 60
 generateanchors: false
 sidenav:
