@@ -23,7 +23,7 @@ Before reading this tutorial you should:
 An OSCAL profile is a specific set of security controls selected and modified when needed from one or more control catalogs for use in managing risks in an information system. Such a profile is also known as [baseline][baseline-definition], or overlay in the [Risk Management Framework for Information Systems and Organizations: A System Life Cycle Approach for Security and Privacy (NIST SP 800-37 Revision 2)](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-37r2.pdf).
 
 An OSCAL profile is a machine-readable representation of a baseline, expressed using the OSCAL [profile model][profile-docs], which includes contextualizing documentation and metadata.
-In the most basic sense, an OSCAL profile is a collection of "pointers" to other catalog(s)'s controls, along with instructions to tailor the controls and change how the controls are grouped.
+In the most basic sense, an OSCAL profile is a collection of "pointers" to controls from other catalog(s), along with instructions to tailor the controls and change how the controls are grouped.
 
 An OSCAL profile can be transformed into an OSCAL catalog through a process named *profile resolution*, which is described in the [Profile Resolution Specification](/concepts/processing/profile-resolution/).
 The output *resolved* catalog contains the controls selected, tailored, or (optionally) grouped by the profile.
@@ -376,7 +376,7 @@ merge:
 
 The *flat* merge directive will produce an unstructured catalog with the following requirements:
 All included controls are output to the target as a flat list directly under `catalog`.
-- Any included "[*loose parameters*](https://pages.nist.gov/OSCAL/concepts/processing/profile-resolution/#d2e622-head) are output to the target as a flat list directly under `catalog`.
+- Any included "[*loose parameters*](https://pages.nist.gov/OSCAL/concepts/processing/profile-resolution/#d2e622-head)" are output to the target as a flat list directly under `catalog`.
 - Any groups are discarded.
 
 An [`as-is`](https://pages.nist.gov/OSCAL/concepts/processing/profile-resolution/#d2e854-head) directive is used to reproduce the structure of the source documents in the target catalog.
