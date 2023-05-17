@@ -1,0 +1,1939 @@
+<!doctype html><html><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="IE=edge"><title>Creating a Profile</title><script async type=text/javascript id=_fed_an_ua_tag src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=NIST&subagency=github&pua=UA-66610693-1&yt=true&exts=ppsx,pps,f90,sch,rtf,wrl,txz,m1v,xlsm,msi,xsd,f,tif,eps,mpg,xml,pl,xlt,c"></script><script src=https://code.jquery.com/jquery-3.4.1.min.js integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin=anonymous referrerpolicy=no-referrer></script>
+<link rel=stylesheet href=../../../../css/hugo-uswds.css integrity="sha512-RLB7sHbyrE8ew8mHyyrzweyZ6lweXOZCNYDFuphdqL6oE+wzpa4CRBXCBerEWsGausrZJBkrtDb5QueW6kpqPQ=="><link rel="shortcut icon" type=image/png href=../../../../img/oscal-page-icon-180.png><link rel=icon type=image/png href=../../../../img/oscal-gears-icon-140.png><link rel=icon type=image/png sizes=192x192 href=../../../../img/oscal-page-icon-180.png><link rel=apple-touch-icon-precomposed type=image/png href=../../../../img/oscal-page-icon-180.png><link rel=apple-touch-icon-precomposed type=image/png sizes=72x72 href=../../../../img/oscal-page-icon-180.png><link rel=apple-touch-icon-precomposed type=image/png sizes=114x114 href=../../../../img/oscal-page-icon-180.png><link rel=apple-touch-icon-precomposed type=image/png sizes=144x144 href=../../../../img/oscal-page-icon-180.png><link rel=stylesheet href=https://pages.nist.gov/nist-header-footer/css/nist-combined.css><script src=https://pages.nist.gov/nist-header-footer/js/nist-header-footer.js defer></script>
+<link rel=stylesheet type=text/css href=https://pages.nist.gov/leaveNotice/css/jquery.leaveNotice.css></head><body><a class=usa-skipnav href=#main-content>Skip to main content</a><div class=usa-overlay></div><header class="usa-header usa-header--basic"><div class=usa-nav-container><div class=usa-navbar><div class=usa-logo id=basic-logo><em class=usa-logo__text><a href=../../../../ title="OSCAL: the Open Security Controls Assessment Language" aria-label=Home>OSCAL</a></em></div><button class=usa-menu-btn>Menu</button></div><nav aria-label="Primary navigation" class=usa-nav><button class=usa-nav__close><img src=../../../../img/close.svg alt=close></button><ul class="usa-nav__primary usa-accordion"><li class=usa-nav__primary-item><a class=usa-nav__link href=../../../../about/><span>About</span></a></li><li class=usa-nav__primary-item><a class=usa-nav__link href=../../../../learn/><span>Learn</span></a></li><li class=usa-nav__primary-item><a class=usa-nav__link href=../../../../concepts/><span>Concepts</span></a></li><li class=usa-nav__primary-item><a class=usa-nav__link href=../../../../reference/><span>Reference</span></a></li><li class=usa-nav__primary-item><a class=usa-nav__link href=../../../../downloads/><span>Downloads</span></a></li><li class=usa-nav__primary-item><a class=usa-nav__link href=../../../../examples/><span>Examples</span></a></li><li class=usa-nav__primary-item><a class=usa-nav__link href=../../../../tools/><span>Tools</span></a></li><li class=usa-nav__primary-item><a class=usa-nav__link href=../../../../contribute/><span>Contribute</span></a></li><li class=usa-nav__primary-item><a class=usa-nav__link href=../../../../events/><span>Events</span></a></li><li class=usa-nav__primary-item><a class=usa-nav__link href=../../../../contact/><span>Contact Us</span></a></li></ul><form class="usa-search usa-search--small" action=https://search.usa.gov/search><input id=affiliate name=affiliate type=hidden value=oscal>
+<input name=utf8 type=hidden value=&#x2713;><div role=search><label class=usa-sr-only for=basic-search-field-small>Search</label>
+<input class=usa-input id=query type=search name=query>
+<button class=usa-button type=submit><span class=usa-sr-only>Search</span></button></div></form></nav></div></header><main class="usa-layout-docs padding-top-2"><div class="grid-container grid-container-widescreen"><div class="grid-row grid-gap"><nav aria-label="Secondary Navigation" class="usa-layout-docs__sidenav widescreen:grid-col-3 desktop:grid-col-2"><ul class=usa-sidenav><li><a class="usa-sidenav__item subnav-top-level section" href=../../../../learn/>Learning Resources</a><ul class=usa-sidenav__sublist><li><a class="usa-sidenav__item section" href=../../../../learn/presentations/>Instructional Videos, Presentations, and Blogs</a><ul class=usa-sidenav__sublist><li><a class="usa-sidenav__item page" href=../../../../learn/presentations/oscal-workshop-2021-02/>2nd OSCAL Workshop</a></li><li><a class="usa-sidenav__item page" href=../../../../learn/presentations/oscal-workshop-2022-03/>3rd OSCAL Workshop</a></li><li><a class="usa-sidenav__item section" href=../../../../learn/presentations/mini-workshop/>OSCAL Mini Workshop Series</a></li></ul></li><li><a class="usa-sidenav__item section" href=../../../../learn/tutorials/>Walkthrough Tutorials</a><ul class=usa-sidenav__sublist><li><a class="usa-sidenav__item section" href=../../../../learn/tutorials/general/>General Topics</a><ul class=usa-sidenav__sublist><li><a class="usa-sidenav__item page" href=../../../../learn/tutorials/general/metadata/>Creating and Using Metadata</a></li><li><a class="usa-sidenav__item page" href=../../../../learn/tutorials/general/extension/>Extending OSCAL Models</a></li></ul></li><li><a class="usa-sidenav__item section" href=../../../../learn/tutorials/control/>Control Layer Topics</a><ul class=usa-sidenav__sublist><li><a class="usa-sidenav__item page" href=../../../../learn/tutorials/control/basic-catalog/>Creating a Control Catalog</a></li><li><a class="usa-sidenav__item page active-page usa-current" href=../../../../learn/tutorials/control/basic-profile/>Creating a Profile</a></li></ul></li><li><a class="usa-sidenav__item section" href=../../../../learn/tutorials/implementation/>Implementation Layer Topics</a><ul class=usa-sidenav__sublist><li><a class="usa-sidenav__item page" href=../../../../learn/tutorials/implementation/simple-component-definition/>Creating a Component Definition</a></li><li><a class="usa-sidenav__item page" href=../../../../learn/tutorials/implementation/validation-modeling/>Representing Test Validation Information</a></li></ul></li></ul></li></ul></li></ul></nav><div id=main-content class="usa-layout-docs__main widescreen:grid-col-7 desktop:grid-col-8 display-block"><article><header><h1>Creating a Profile</h1></header><p>This tutorial covers creating and modifying a subset of controls from a catalog in OSCAL by using the OSCAL profile model. Such a subset of controls is often referred to as a <a href=https://csrc.nist.gov/glossary/term/baseline>"control baseline"</a>.</p><p>Before reading this tutorial you should:</p><ul><li>Have some familiarity with the <a href=https://www.w3.org/standards/xml/core>XML</a>, <a href=https://www.json.org/>JSON</a>, or <a href=https://yaml.org/spec/>YAML</a> formats.</li><li>Review the OSCAL control layer <a href=../../../../concepts/layer/control/>overview</a>.</li><li>Review the OSCAL <a href=../../../../concepts/layer/control/catalog/>catalog</a> and <a href=../../../../concepts/layer/control/profile/>profile</a> model overview pages.</li><li>Review the tutorial on <a href=../../../../learn/tutorials/catalog/>Creating a Control Catalog</a>.</li></ul><h2 id=what-is-an-oscal-profile>What is an OSCAL Profile?</h2><p>An OSCAL profile is a specific set of security controls selected and modified when needed from one or more control catalogs for use in managing risks in an information system. Such a profile is also known as <a href=../../../../concepts/terminology/#baseline>baseline</a>, or overlay in the <a href=https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-37r2.pdf>Risk Management Framework for Information Systems and Organizations: A System Life Cycle Approach for Security and Privacy (NIST SP 800-37 Revision 2)</a>.</p><p>An OSCAL profile is a machine-readable representation of a baseline, expressed using the OSCAL <a href=../../../../concepts/layer/profile/>profile model</a>, which includes contextualizing documentation and metadata.
+In the most basic sense, an OSCAL profile is a collection of "pointers" to controls from other catalog(s), along with instructions to tailor the controls and change how the controls are grouped.</p><p>An OSCAL profile can be transformed into an OSCAL catalog through a process named <em>profile resolution</em>, which is described in the <a href=../../../../concepts/processing/profile-resolution/>Profile Resolution Specification</a>.
+The output <em>resolved</em> catalog contains the controls selected, tailored, or (optionally) grouped by the profile.</p><p>This tutorial illustrates how to create an OSCAL profile using the OSCAL XML, JSON, and YAML formats, which each implement the OSCAL <a href=../../../../concepts/layer/control/profile/>profile model</a>. The OSCAL project provides an <a href=../../../../concepts/layer/control/profile/>XML Schema and documentation</a>, which is useful for validating an XML profile, and a <a href=../../../../concepts/layer/control/profile/>JSON Schema and documentation</a>, which is useful for validating JSON and YAML profiles.</p><h2 id=creating-an-oscal-profile>Creating an OSCAL Profile</h2><p>The examples below illustrate the top-level structure of the OSCAL profile model.</p><div id=tabs-0 class="hugo-codetabs usa-accordion"><ul><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-0-xml-tab><span>XML</span></button></li><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-0-json-tab><span>JSON</span></button></li><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-0-yaml-tab><span>YAML</span></button></li></ul><div id=tabs-0-content class=hugo-tab-content><div id=tabs-0-xml-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-xml data-lang=xml><span class=cp>&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+<span class=nt>&lt;profile</span> <span class=na>xmlns=</span><span class=s>&#34;http://csrc.nist.gov/ns/oscal/1.0&#34;</span>
+    <span class=na>uuid=</span><span class=s>&#34;9510e179-7744-4afa-a9d3-92beadffd85f&#34;</span><span class=nt>&gt;</span>
+    <span class=c>&lt;!-- To be filled in: --&gt;</span>
+    <span class=nt>&lt;metadata/&gt;</span>
+    <span class=nt>&lt;import/&gt;</span>
+    <span class=nt>&lt;merge/&gt;</span>
+    <span class=nt>&lt;modify/&gt;</span>
+    <span class=nt>&lt;back-matter/&gt;</span>
+<span class=nt>&lt;/profile&gt;</span>
+</code></pre></td></tr></table></div></div><p>The root of the OSCAL profile model is <a href=../../../../reference/latest/profile/xml-reference/#/profile><code>&lt;profile></code></a>.</p><p>In the example above, the contents of the <code>&lt;profile></code> element is provided as empty data items. These are included to illustrate the content model of an OSCAL profile, and we will be covering each element's syntax later in this tutorial.</p><p>The <code>@uuid</code> attribute (on line 3) is the document's <em>universally unique identifier</em> (UUID), a unique 128-bit number displayed as a string of hyphenated hexadecimal digits as defined by <a href=https://tools.ietf.org/html/rfc4122>RFC 4122</a>. OSCAL documents use a version 4 UUID (randomly generated) to uniquely identify the document.</p><p>A <code>&lt;profile></code> contains:</p><ul><li><code>&lt;metadata></code> (required) - Provides document metadata for the profile. As OSCAL Metadata sections use a shared structure across all models, refer to the <a href=metadata-tutorial>metadata tutorial</a> for more information.</li><li><code>&lt;import></code> (required) - This is explored below in the <a href=#import-phase>import phase</a> section of this tutorial.</li><li><code>&lt;merge></code> (optional) - This is explored below in the <a href=#merge-phase>merge phase</a> section of this tutorial.</li><li><code>&lt;modify></code> (optional) - This is explored below in the <a href=#modify-phase>modify phase</a> section of this tutorial.</li><li><code>&lt;back-matter></code> (optional) – Contains references used within the profile. Use of <code>&lt;back-matter></code> is not covered in this tutorial.</li></ul></div><div id=tabs-0-json-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-json data-lang=json><span class=p>{</span>
+  <span class=nt>&#34;profile&#34;</span><span class=p>:</span> <span class=p>{</span>
+    <span class=nt>&#34;uuid&#34;</span><span class=p>:</span> <span class=s2>&#34;9510e179-7744-4afa-a9d3-92beadffd85f&#34;</span><span class=p>,</span>
+    <span class=err>//</span> <span class=err>To</span> <span class=err>be</span> <span class=err>filled</span> <span class=err>in:</span>
+    <span class=nt>&#34;metadata&#34;</span><span class=p>:</span> <span class=p>{},</span>
+    <span class=nt>&#34;import&#34;</span><span class=p>:</span> <span class=p>{},</span>
+    <span class=nt>&#34;merge&#34;</span><span class=p>:</span> <span class=p>{},</span>
+    <span class=nt>&#34;modify&#34;</span><span class=p>:</span> <span class=p>{},</span>
+    <span class=nt>&#34;back-matter&#34;</span><span class=p>:</span> <span class=p>{}</span>
+  <span class=p>}</span>
+<span class=p>}</span>
+</code></pre></td></tr></table></div></div><p>The root of the OSCAL profile model is <a href=../../../../reference/latest/profile/xml-reference/#/profile><code>profile</code></a>.</p><p>In the example above, the contents of the <code>profile</code> object are provided as empty data items. These are included to illustrate the content model of an OSCAL profile, and we will be covering each element's syntax later in this tutorial.</p><p>The <code>uuid</code> property (on line 3) is the document's <em>universally unique identifier</em> (UUID), a unique 128-bit number displayed as a string of hyphenated hexadecimal digits as defined by <a href=https://tools.ietf.org/html/rfc4122>RFC 4122</a>. OSCAL documents use a version 4 UUID (randomly generated) to uniquely identify the document.</p><p>A <code>profile</code> contains:</p><ul><li><code>metadata</code> (required) - Provides document metadata for the profile. As OSCAL Metadata sections use a shared structure across all models, refer to the <a href=metadata-tutorial>metadata tutorial</a> for more information.</li><li><code>import</code> (required) - This is explored below in the <a href=#import-phase>import phase</a> section of this tutorial.</li><li><code>merge</code> (optional) - This is explored below in the <a href=#merge-phase>merge phase</a> section of this tutorial.</li><li><code>modify</code> (optional) - This is explored below in the <a href=#modify-phase>modify phase</a> section of this tutorial.</li><li><code>back-matter</code> (optional) – Contains references used within the profile. Use of <code>back-matter</code> is not covered in this tutorial.</li></ul></div><div id=tabs-0-yaml-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-yaml data-lang=yaml><span class=nt>profile</span><span class=p>:</span><span class=w>
+</span><span class=w>  </span><span class=nt>uuid</span><span class=p>:</span><span class=w> </span><span class=s2>&#34;9510e179-7744-4afa-a9d3-92beadffd85f&#34;</span><span class=p>,</span><span class=w>
+</span><span class=w>  </span><span class=c># To be filled in:</span><span class=w>
+</span><span class=w>  </span><span class=nt>metadata</span><span class=p>:</span><span class=w> </span><span class=l>~</span><span class=w>
+</span><span class=w>  </span><span class=nt>import</span><span class=p>:</span><span class=w> </span><span class=l>~</span><span class=w>
+</span><span class=w>  </span><span class=nt>merge</span><span class=p>:</span><span class=w> </span><span class=l>~</span><span class=w>
+</span><span class=w>  </span><span class=nt>modify</span><span class=p>:</span><span class=w> </span><span class=l>~</span><span class=w>
+</span><span class=w>  </span><span class=nt>back-matter</span><span class=p>:</span><span class=w> </span><span class=l>~</span><span class=w>
+</span></code></pre></td></tr></table></div></div><p>The root of the OSCAL profile model is <a href=../../../../reference/latest/profile/xml-reference/#/profile><code>profile</code></a>.</p><p>In the example above, the contents of the <code>profile</code> object are provided as empty data items. These are included to illustrate the content model of an OSCAL profile, and we will be covering each element's syntax later in this tutorial.</p><p>The <code>uuid</code> property (on line 3) is the document's <em>universally unique identifier</em> (UUID), a unique 128-bit number displayed as a string of hyphenated hexadecimal digits as defined by <a href=https://tools.ietf.org/html/rfc4122>RFC 4122</a>. OSCAL documents use a version 4 UUID (randomly generated) to uniquely identify the document.</p><p>A <code>profile</code> contains:</p><ul><li><code>metadata</code> (required) - Provides document metadata for the profile. As OSCAL Metadata sections use a shared structure across all models, refer to the <a href=metadata-tutorial>metadata tutorial</a> for more information.</li><li><code>import</code> (required) - This is explored below in the <a href=#import-phase>import phase</a> section of this tutorial.</li><li><code>merge</code> (optional) - This is explored below in the <a href=#merge-phase>merge phase</a> section of this tutorial.</li><li><code>modify</code> (optional) - This is explored below in the <a href=#modify-phase>modify phase</a> section of this tutorial.</li><li><code>back-matter</code> (optional) – Contains references used within the profile. Use of <code>back-matter</code> is not covered in this tutorial.</li></ul></div></div></div><p>We will now discuss each of these data structures in the following sections and identify how they each can be used to represent our baseline.</p><h2 id=the-three-sections-or-phases-of-profiles>The Three Sections (or Phases) of Profiles</h2><p>OSCAL profiles are broken up into three main sections, each representing a "phase" of operations to be applied to the source catalog(s).</p><p>They are:</p><ul><li>Import: Selects which controls from the source catalog(s) are to be used in the baseline</li><li>Merge: Defines how to merge objects when importing from multiple catalogs, and defines the structure of the baseline</li><li>Modify: Defines a list of modifications to make to the imported controls, such as setting parameters or changing values</li></ul><p>As this is a basic tutorial, and many baselines are simply a subset of controls pulled from a larger catalog, we will be focusing mainly on the "Import" section, which covers many of the core use cases of OSCAL profiles.</p><h2 id=import-phase>Import Phase</h2><p>The first major part of an OSCAL profile is the <code>import</code> section. In this section, the source catalog(s) are identified, and the subset of controls to be imported into the resulting catalog are selected.</p><p>There will be one <em>import</em> object per catalog referenced, so in the simple case of building a baseline from a single catalog, there will be a single import object. Let's look at a basic example.</p><p>For the rest of this tutorial, we'll be using the catalog we <a href=../../../../learn/tutorials/control/basic-catalog/#the-final-catalog>created during the last tutorial</a>.</p><div id=tabs-1 class="hugo-codetabs usa-accordion"><ul><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-1-xml-tab><span>XML</span></button></li><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-1-json-tab><span>JSON</span></button></li><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-1-yaml-tab><span>YAML</span></button></li></ul><div id=tabs-1-content class=hugo-tab-content><div id=tabs-1-xml-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;import</span> <span class=na>href=</span><span class=s>&#34;https://raw.githubusercontent.com/usnistgov/oscal-content/main/examples/catalog/json/basic-catalog.json&#34;</span><span class=nt>&gt;</span>
+    <span class=nt>&lt;include-controls&gt;</span>
+      <span class=nt>&lt;matching</span> <span class=na>pattern=</span><span class=s>&#34;s1.1.*&#34;</span><span class=nt>/&gt;</span>
+    <span class=nt>&lt;/include-controls&gt;</span>
+    <span class=nt>&lt;include-controls&gt;</span>
+      <span class=nt>&lt;with-id&gt;</span>s2.1.1<span class=nt>&lt;/with-id&gt;</span>
+    <span class=nt>&lt;/include-controls&gt;</span>
+  <span class=nt>&lt;/import&gt;</span>
+</code></pre></td></tr></table></div></div><p>Here we can see the <code>&lt;import></code> element inside an example OSCAL profile.</p></div><div id=tabs-1-json-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-json data-lang=json><span class=s2>&#34;imports&#34;</span><span class=err>:</span> <span class=p>[</span>
+      <span class=p>{</span>
+        <span class=nt>&#34;href&#34;</span><span class=p>:</span> <span class=s2>&#34;https://raw.githubusercontent.com/usnistgov/oscal-content/main/examples/catalog/json/basic-catalog.json&#34;</span><span class=p>,</span>
+        <span class=nt>&#34;include-controls&#34;</span><span class=p>:</span> <span class=p>[</span>
+          <span class=p>{</span>
+            <span class=nt>&#34;matching&#34;</span><span class=p>:</span> <span class=p>[</span>
+              <span class=p>{</span>
+                <span class=nt>&#34;pattern&#34;</span><span class=p>:</span> <span class=s2>&#34;s1.1.*&#34;</span>
+              <span class=p>}</span>
+            <span class=p>]</span>
+          <span class=p>},</span>
+          <span class=p>{</span>
+            <span class=nt>&#34;with-ids&#34;</span><span class=p>:</span> <span class=p>[</span>
+              <span class=s2>&#34;s2.1.1&#34;</span>
+            <span class=p>]</span>
+          <span class=p>}</span>
+        <span class=p>]</span>
+      <span class=p>}</span>
+    <span class=p>]</span><span class=err>,</span>
+</code></pre></td></tr></table></div></div><p>Here we can see the <code>import</code> object inside an example OSCAL profile.</p></div><div id=tabs-1-yaml-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-yaml data-lang=yaml><span class=w> </span><span class=nt>imports</span><span class=p>:</span><span class=w>
+</span><span class=w>    </span>- <span class=nt>href</span><span class=p>:</span><span class=w> </span><span class=l>https://raw.githubusercontent.com/usnistgov/oscal-content/main/examples/catalog/json/basic-catalog.json</span><span class=w>
+</span><span class=w>      </span><span class=nt>include-controls</span><span class=p>:</span><span class=w>
+</span><span class=w>        </span>- <span class=nt>matching</span><span class=p>:</span><span class=w>
+</span><span class=w>            </span>- <span class=nt>pattern</span><span class=p>:</span><span class=w> </span><span class=l>s1.1.*</span><span class=w>
+</span><span class=w>        </span>- <span class=nt>with-ids</span><span class=p>:</span><span class=w>
+</span><span class=w>            </span>- <span class=l>s2.1.1</span><span class=w>
+</span></code></pre></td></tr></table></div></div><p>Here we can see the <code>import</code> object inside an example OSCAL profile.</p></div></div></div><p>Notice that for all three examples, we import a catalog defined in XML. The profile resolution specification allows us to import multiple documents irrespective of the input format (as long as it is <a href=../../../../concepts/layer/validation/>valid, well-formed OSCAL</a>).</p><p>Now that we've seen a basic example, let's take a quick walkthrough of some of the basic functions of this section and how to use them.</p><h3 id=including-controls-from-a-catalog>Including Controls from a Catalog</h3><p>Each <code>import</code> object contains directives on which catalog will be included and present in the outcome.</p><p>Controls can be included based on pattern matching:</p><div id=tabs-2 class="hugo-codetabs usa-accordion"><ul><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-2-xml-tab><span>XML</span></button></li><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-2-json-tab><span>JSON</span></button></li><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-2-yaml-tab><span>YAML</span></button></li></ul><div id=tabs-2-content class=hugo-tab-content><div id=tabs-2-xml-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;import</span> <span class=na>href=</span><span class=s>&#34;https://raw.githubusercontent.com/usnistgov/oscal-content/main/examples/catalog/json/basic-catalog.json&#34;</span><span class=nt>&gt;</span>
+    <span class=nt>&lt;include-controls&gt;</span>
+      <span class=nt>&lt;matching</span> <span class=na>pattern=</span><span class=s>&#34;s1.1.*&#34;</span><span class=nt>/&gt;</span>
+    <span class=nt>&lt;/include-controls&gt;</span>
+<span class=nt>&lt;/import&gt;</span>
+</code></pre></td></tr></table></div></div></div><div id=tabs-2-json-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-json data-lang=json><span class=s2>&#34;imports&#34;</span><span class=err>:</span> <span class=p>[</span>
+      <span class=p>{</span>
+        <span class=nt>&#34;href&#34;</span><span class=p>:</span> <span class=s2>&#34;https://raw.githubusercontent.com/usnistgov/oscal-content/main/examples/catalog/json/basic-catalog.json&#34;</span><span class=p>,</span>
+        <span class=nt>&#34;include-controls&#34;</span><span class=p>:</span> <span class=p>[</span>
+          <span class=p>{</span>
+            <span class=nt>&#34;matching&#34;</span><span class=p>:</span> <span class=p>[</span>
+              <span class=p>{</span>
+                <span class=nt>&#34;pattern&#34;</span><span class=p>:</span> <span class=s2>&#34;s1.1.*&#34;</span>
+              <span class=p>}</span>
+            <span class=p>]</span>
+          <span class=p>},</span>
+</code></pre></td></tr></table></div></div></div><div id=tabs-2-yaml-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-yaml data-lang=yaml><span class=w>  </span><span class=nt>imports</span><span class=p>:</span><span class=w>
+</span><span class=w>    </span>- <span class=nt>href</span><span class=p>:</span><span class=w> </span><span class=l>https://raw.githubusercontent.com/usnistgov/oscal-content/main/examples/catalog/json/basic-catalog.json</span><span class=w>
+</span><span class=w>      </span><span class=nt>include-controls</span><span class=p>:</span><span class=w>
+</span><span class=w>        </span>- <span class=nt>matching</span><span class=p>:</span><span class=w>
+</span><span class=w>            </span>- <span class=nt>pattern</span><span class=p>:</span><span class=w> </span><span class=l>s1.1.*</span><span class=w>
+</span></code></pre></td></tr></table></div></div></div></div></div><p>Controls can also be included based on id matching:</p><div id=tabs-3 class="hugo-codetabs usa-accordion"><ul><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-3-xml-tab><span>XML</span></button></li><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-3-json-tab><span>JSON</span></button></li><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-3-yaml-tab><span>YAML</span></button></li></ul><div id=tabs-3-content class=hugo-tab-content><div id=tabs-3-xml-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;import</span> <span class=na>href=</span><span class=s>&#34;https://raw.githubusercontent.com/usnistgov/oscal-content/main/examples/catalog/json/basic-catalog.json&#34;</span><span class=nt>&gt;</span>
+    <span class=nt>&lt;include-controls&gt;</span>
+      <span class=nt>&lt;with-id&gt;</span>s2.1.1<span class=nt>&lt;/with-id&gt;</span>
+    <span class=nt>&lt;/include-controls&gt;</span>
+<span class=nt>&lt;/import&gt;</span>
+</code></pre></td></tr></table></div></div></div><div id=tabs-3-json-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-json data-lang=json> <span class=s2>&#34;imports&#34;</span><span class=err>:</span> <span class=p>[</span>
+      <span class=p>{</span>
+        <span class=nt>&#34;href&#34;</span><span class=p>:</span> <span class=s2>&#34;https://raw.githubusercontent.com/usnistgov/oscal-content/main/examples/catalog/json/basic-catalog.json&#34;</span><span class=p>,</span>
+        <span class=nt>&#34;include-controls&#34;</span><span class=p>:</span> <span class=p>[</span>
+          <span class=p>{</span>
+            <span class=nt>&#34;with-ids&#34;</span><span class=p>:</span> <span class=p>[</span>
+              <span class=s2>&#34;s2.1.1&#34;</span>
+            <span class=p>]</span>
+          <span class=p>}</span>
+        <span class=p>]</span>
+      <span class=p>}</span>
+    <span class=p>]</span><span class=err>,</span>
+
+</code></pre></td></tr></table></div></div></div><div id=tabs-3-yaml-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-yaml data-lang=yaml><span class=nt>imports</span><span class=p>:</span><span class=w>
+</span><span class=w>    </span>- <span class=nt>href</span><span class=p>:</span><span class=w> </span><span class=l>https://raw.githubusercontent.com/usnistgov/oscal-content/main/examples/catalog/json/basic-catalog.json</span><span class=w>
+</span><span class=w>      </span><span class=nt>include-controls</span><span class=p>:</span><span class=w>
+</span><span class=w>        </span>- <span class=nt>with-ids</span><span class=p>:</span><span class=w>
+</span><span class=w>            </span>- <span class=l>s2.1.1</span><span class=w>
+</span></code></pre></td></tr></table></div></div></div></div></div><h3 id=excluding-controls-from-a-catalog>Excluding Controls from a Catalog</h3><p>It is possible to exclude controls from a catalog. Exclusions work the same way as inclusions, except in this case the indicated control(s) do <em>not</em> appear in the target catalog.
+The OSCAL profile Resolution Specification Draft contains a more detailed explanation of <a href=https://pages.nist.gov/OSCAL/concepts/processing/profile-resolution/#d2e589-head>excluding controls</a>.</p><div id=tabs-4 class="hugo-codetabs usa-accordion"><ul><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-4-xml-tab><span>XML</span></button></li><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-4-json-tab><span>JSON</span></button></li><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-4-yaml-tab><span>YAML</span></button></li></ul><div id=tabs-4-content class=hugo-tab-content><div id=tabs-4-xml-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;import</span> <span class=na>href=</span><span class=s>&#34;https://raw.githubusercontent.com/usnistgov/oscal-content/main/examples/catalog/json/basic-catalog.json&#34;</span><span class=nt>&gt;</span>
+    <span class=nt>&lt;exclude-controls&gt;</span>
+     <span class=nt>&lt;with-id&gt;</span>s2.1.2<span class=nt>&lt;/with-id&gt;</span>
+    <span class=nt>&lt;/exclude-controls&gt;</span>    
+<span class=nt>&lt;/import&gt;</span>
+</code></pre></td></tr></table></div></div></div><div id=tabs-4-json-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-json data-lang=json><span class=s2>&#34;imports&#34;</span><span class=err>:</span> <span class=p>[</span>
+      <span class=p>{</span>
+        <span class=nt>&#34;href&#34;</span><span class=p>:</span> <span class=s2>&#34;https://raw.githubusercontent.com/usnistgov/oscal-content/main/examples/catalog/json/basic-catalog.json&#34;</span><span class=p>,</span>
+        <span class=nt>&#34;exclude-controls&#34;</span><span class=p>:</span> <span class=p>[</span>
+          <span class=p>{</span>
+            <span class=nt>&#34;with-ids&#34;</span><span class=p>:</span> <span class=p>[</span>
+              <span class=s2>&#34;s2.1.2&#34;</span>
+            <span class=p>]</span>
+          <span class=p>}</span>
+        <span class=p>]</span>
+      <span class=p>}</span>
+    <span class=p>]</span><span class=err>,</span>
+</code></pre></td></tr></table></div></div></div><div id=tabs-4-yaml-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-yaml data-lang=yaml><span class=nt>imports</span><span class=p>:</span><span class=w>
+</span><span class=w>    </span>- <span class=nt>href</span><span class=p>:</span><span class=w> </span><span class=l>https://raw.githubusercontent.com/usnistgov/oscal-content/main/examples/catalog/json/basic-catalog.json</span><span class=w>
+</span><span class=w>      </span><span class=nt>exclude-controls</span><span class=p>:</span><span class=w>
+</span><span class=w>        </span>- <span class=nt>with-ids</span><span class=p>:</span><span class=w>
+</span><span class=w>            </span>- <span class=l>s2.1.2</span><span class=w>
+</span></code></pre></td></tr></table></div></div></div></div></div><h2 id=merge-phase>Merge Phase</h2><p>The second part of an OSCAL profile represents the <em>merge</em> phase. In this section, the profile describes how the set of included objects from the import phase are to be combined.</p><p>The <code>merge</code> section provides directives as to how controls should be organized. It also provides directives for resolving conflicts where two or more variations of a control are imported as a result of multiple import statements. The three optional <a href=https://pages.nist.gov/OSCAL/concepts/processing/profile-resolution/#d2e786-head>structuring directives</a> are <code>flat</code>, <code>as-is</code>, and <code>custom</code>.</p><p>Profiles with the flat merge directive must be resolved as unstructured catalogs, with no groupings or nesting of controls. The flat directive was used in the profile as follows:</p><div id=tabs-5 class="hugo-codetabs usa-accordion"><ul><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-5-xml-tab><span>XML</span></button></li><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-5-json-tab><span>JSON</span></button></li><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-5-yaml-tab><span>YAML</span></button></li></ul><div id=tabs-5-content class=hugo-tab-content><div id=tabs-5-xml-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;merge&gt;</span>
+    <span class=nt>&lt;flat/&gt;</span>
+<span class=nt>&lt;/merge&gt;</span>
+</code></pre></td></tr></table></div></div></div><div id=tabs-5-json-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-json data-lang=json><span class=s2>&#34;merge&#34;</span><span class=err>:</span> <span class=p>{</span>
+    <span class=nt>&#34;flat&#34;</span><span class=p>:</span> <span class=p>{}</span>
+<span class=p>}</span><span class=err>,</span>
+</code></pre></td></tr></table></div></div></div><div id=tabs-5-yaml-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-yaml data-lang=yaml><span class=nt>merge</span><span class=p>:</span><span class=w>
+</span><span class=w>    </span><span class=nt>flat</span><span class=p>:</span><span class=w> </span>{}<span class=w>
+</span></code></pre></td></tr></table></div></div></div></div></div><p>The <em>flat</em> merge directive will produce an unstructured catalog with the following requirements:
+All included controls are output to the target as a flat list directly under <code>catalog</code>.</p><ul><li>Any included "<a href=https://pages.nist.gov/OSCAL/concepts/processing/profile-resolution/#d2e622-head><em>loose parameters</em></a>" are output to the target as a flat list directly under <code>catalog</code>.</li><li>Any groups are discarded.</li></ul><p>An <a href=https://pages.nist.gov/OSCAL/concepts/processing/profile-resolution/#d2e854-head><code>as-is</code></a> directive is used to reproduce the structure of the source documents in the target catalog.</p><p>A <a href=https://https://pages.nist.gov/OSCAL/concepts/processing/profile-resolution/#d2e887-head><code>custom</code></a> directive provides the target catalog with a custom structure.</p><h2 id=modify-phase>Modify Phase</h2><p>The third and final part of an OSCAL profile is the <code>modify</code> section.
+In this section fine-grained edits can be made to the output resolved catalog.</p><p>These edits can be used to tailor controls to match an organization's needs, such as adding specific guidance, removing extraneous details, or even changing the meaning of a control.
+This section offers a great deal of in-depth functionality; here we cover only the most useful basics.</p><h3 id=setting-parameters>Setting Parameters</h3><p>The <code>set-parameters</code> directive can be used to modify all aspects of a <a href=https://pages.nist.gov/OSCAL/reference/latest/catalog/json-reference/#/catalog/controls/params>parameter</a>.</p><p>Let's say in our profile we wanted to change the label on the parameter <code>s1.1.1-prm_2</code> from our example catalog:</p><div id=tabs-6 class="hugo-codetabs usa-accordion"><ul><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-6-xml-tab><span>XML</span></button></li><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-6-json-tab><span>JSON</span></button></li><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-6-yaml-tab><span>YAML</span></button></li></ul><div id=tabs-6-content class=hugo-tab-content><div id=tabs-6-xml-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;param</span> <span class=na>id=</span><span class=s>&#34;s1.1.1-prm_2&#34;</span><span class=nt>&gt;</span>
+    <span class=nt>&lt;label&gt;</span>a duration<span class=nt>&lt;/label&gt;</span>
+<span class=nt>&lt;/param&gt;</span>
+</code></pre></td></tr></table></div></div><p>As profile authors, let's say we'd like to modify the parameter's label to be more specific:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;set-parameter</span> <span class=na>param-id=</span><span class=s>&#34;s1.1.1-prm_2&#34;</span><span class=nt>&gt;</span>
+  <span class=nt>&lt;label&gt;</span>a duration (maximum 30 minutes)<span class=nt>&lt;/label&gt;</span>
+<span class=nt>&lt;/set-parameter&gt;</span>
+</code></pre></td></tr></table></div></div><p>The <code>&lt;modify></code> element can have any number of <code>&lt;set-parameter></code> elements within it.
+<code>&lt;set-parameter></code> selects a parameter via the mandatory <code>@param-id</code> attribute and modifies the child items of the parameter (<code>label</code>, <code>class</code>, <code>usage</code>, etc.).</p></div><div id=tabs-6-json-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-json data-lang=json><span class=p>{</span>
+  <span class=nt>&#34;params&#34;</span><span class=p>:</span> <span class=p>[</span>
+    <span class=p>{</span>
+      <span class=nt>&#34;id&#34;</span><span class=p>:</span> <span class=s2>&#34;s1.1.1-prm_2&#34;</span><span class=p>,</span>
+      <span class=nt>&#34;label&#34;</span><span class=p>:</span> <span class=s2>&#34;a duration&#34;</span>
+    <span class=p>}</span>
+  <span class=p>]</span>
+<span class=p>}</span>
+</code></pre></td></tr></table></div></div><p>As profile authors, let's say we'd like to modify the parameter's label to be more specific:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-json data-lang=json><span class=p>{</span>
+  <span class=nt>&#34;set-parameters&#34;</span><span class=p>:</span> <span class=p>[</span>
+    <span class=p>{</span>
+      <span class=nt>&#34;param-id&#34;</span><span class=p>:</span> <span class=s2>&#34;s1.1.1-prm_2&#34;</span><span class=p>,</span>
+      <span class=nt>&#34;label&#34;</span><span class=p>:</span> <span class=s2>&#34;a duration (maximum 30 minutes)&#34;</span>
+    <span class=p>}</span>
+  <span class=p>],</span>
+<span class=p>}</span>
+</code></pre></td></tr></table></div></div><p>The <code>modify</code> contains an optional array <code>set-parameters</code> within it.
+<code>set-parameters</code> selects a parameter via the mandatory <code>param-id</code> field and modifies the child items of the parameter (<code>label</code>, <code>class</code>, <code>usage</code>, etc.).</p></div><div id=tabs-6-yaml-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-yaml data-lang=yaml><span class=nt>params</span><span class=p>:</span><span class=w>
+</span><span class=w>  </span>- <span class=nt>id</span><span class=p>:</span><span class=w> </span><span class=l>s1.1.1-prm_2</span><span class=w>
+</span><span class=w>    </span><span class=nt>label</span><span class=p>:</span><span class=w> </span><span class=l>a duration</span><span class=w>
+</span></code></pre></td></tr></table></div></div><p>As profile authors, let's say we'd like to modify the parameter's label to be more specific:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-yaml data-lang=yaml><span class=nt>set-parameters</span><span class=p>:</span><span class=w>
+</span><span class=w>    </span><span class=nt>param-id</span><span class=p>:</span><span class=w> </span><span class=l>s1.1.1-prm_2</span><span class=w>
+</span><span class=w>    </span><span class=nt>label</span><span class=p>:</span><span class=w> </span><span class=l>a duration (maximum 30 minutes)</span><span class=w>
+</span></code></pre></td></tr></table></div></div><p>The <code>modify</code> contains an optional array <code>set-parameters</code> within it.
+<code>set-parameters</code> selects a parameter via the mandatory <code>param-id</code> field and modifies the child items of the parameter (<code>label</code>, <code>class</code>, <code>usage</code>, etc.).</p></div></div></div><h3 id=altering>Altering</h3><p>The <code>alter</code> directive is extremely powerful, and allows us to:</p><ul><li>Add content (<code>links</code>, <code>params</code>, <code>props</code>, and <code>parts</code>) to a given control at any position.</li><li>Remove content from a control.</li></ul><p>Note that the <code>alter</code> statement cannot add subcontrols to, or remove them from, a target control, as that would conflict semantically with the <code>include</code> directive.</p><p>For our example profile, let's say we wanted to add some supplemental guidance to control <code>s1.1.1</code> "Information security roles and responsibilities" from our example catalog:</p><div id=tabs-7 class="hugo-codetabs usa-accordion"><ul><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-7-xml-tab><span>XML</span></button></li><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-7-json-tab><span>JSON</span></button></li><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-7-yaml-tab><span>YAML</span></button></li></ul><div id=tabs-7-content class=hugo-tab-content><div id=tabs-7-xml-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;control</span> <span class=na>id=</span><span class=s>&#34;s1.1.1&#34;</span><span class=nt>&gt;</span>
+  <span class=nt>&lt;title&gt;</span>Information security roles and responsibilities<span class=nt>&lt;/title&gt;</span>
+  <span class=c>&lt;!-- Omitting non-relevant params, props, and parts for brevity --&gt;</span>
+  <span class=nt>&lt;part</span> <span class=na>id=</span><span class=s>&#34;s1.1.1_gdn&#34;</span> <span class=na>name=</span><span class=s>&#34;guidance&#34;</span><span class=nt>&gt;</span>
+      <span class=nt>&lt;part</span> <span class=na>id=</span><span class=s>&#34;s1.1.1_gdn.1&#34;</span> <span class=na>name=</span><span class=s>&#34;item&#34;</span><span class=nt>&gt;</span>
+        <span class=nt>&lt;p&gt;</span>Allocation of information security responsibilities should be done in accordance with the information security policies. Responsibilities for the protection of individual assets and for carrying out specific information security processes should be identified. Responsibilities for information security risk management activities and in particular for acceptance of residual risks should be defined. These responsibilities should be supplemented, where necessary, with more detailed guidance for specific sites and information processing facilities. Local responsibilities for the protection of assets and for carrying out specific security processes should be defined.<span class=nt>&lt;/p&gt;</span>
+      <span class=nt>&lt;/part&gt;</span>
+      <span class=nt>&lt;part</span> <span class=na>id=</span><span class=s>&#34;s1.1.1_gdn.2&#34;</span> <span class=na>name=</span><span class=s>&#34;item&#34;</span><span class=nt>&gt;</span>
+        <span class=nt>&lt;p&gt;</span>Individuals with allocated information security responsibilities may delegate security tasks to others. Nevertheless they remain accountable and should determine that any delegated tasks have been correctly performed.<span class=nt>&lt;/p&gt;</span>
+      <span class=nt>&lt;/part&gt;</span>
+      <span class=nt>&lt;part</span> <span class=na>id=</span><span class=s>&#34;s1.1.1_gdn.3&#34;</span> <span class=na>name=</span><span class=s>&#34;item&#34;</span><span class=nt>&gt;</span>
+        <span class=nt>&lt;p&gt;</span>Areas for which individuals are responsible should be stated. In particular the following should take place:<span class=nt>&lt;/p&gt;</span>
+        <span class=nt>&lt;ol&gt;</span>
+            <span class=nt>&lt;li&gt;</span>the assets and information security processes should be identified and defined;<span class=nt>&lt;/li&gt;</span>
+            <span class=nt>&lt;li&gt;</span>the entity responsible for each asset or information security process should be assigned and the details of this responsibility should be documented;<span class=nt>&lt;/li&gt;</span>
+            <span class=nt>&lt;li&gt;</span>authorization levels should be defined and documented;<span class=nt>&lt;/li&gt;</span>
+            <span class=nt>&lt;li&gt;</span>to be able to fulfil responsibilities in the information security area the appointed individuals should be competent in the area and be given opportunities to keep up to date with developments;<span class=nt>&lt;/li&gt;</span>
+            <span class=nt>&lt;li&gt;</span>coordination and oversight of information security aspects of supplier relationships should be identified and documented.<span class=nt>&lt;/li&gt;</span>
+        <span class=nt>&lt;/ol&gt;</span>
+      <span class=nt>&lt;/part&gt;</span>
+  <span class=nt>&lt;/part&gt;</span>
+<span class=nt>&lt;/control&gt;</span>
+</code></pre></td></tr></table></div></div><p>As profile authors, let's say we'd like to insert a new <code>part</code> after <code>s.1.1.1_gdn.3</code> with additional guidance on setting an automatic lock on a specific platform:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;alter</span> <span class=na>control-id=</span><span class=s>&#34;s1.1.1&#34;</span><span class=nt>&gt;</span>
+  <span class=nt>&lt;add</span> <span class=na>position=</span><span class=s>&#34;after&#34;</span> <span class=na>by-id=</span><span class=s>&#34;s1.1.1_gdn.3&#34;</span><span class=nt>&gt;</span>
+    <span class=c>&lt;!-- new part to be inserted within s1.1.1 after s1.1.1_gdn.3 --&gt;</span>
+    <span class=nt>&lt;part</span> <span class=na>id=</span><span class=s>&#34;s1.1.1_gdn.4&#34;</span> <span class=na>name=</span><span class=s>&#34;item&#34;</span><span class=nt>&gt;</span>
+      <span class=nt>&lt;p&gt;</span>Users of devices running Gnome can adjust the inactivity timeout using the following link: https://help.gnome.org/admin/system-admin-guide/stable/desktop-lockscreen.html.en<span class=nt>&lt;/p&gt;</span>
+    <span class=nt>&lt;/part&gt;</span>
+  <span class=nt>&lt;/add&gt;</span>
+<span class=nt>&lt;/alter&gt;</span>
+</code></pre></td></tr></table></div></div><p>A <code>&lt;modify></code> element can have any number of <code>&lt;alter></code> elements inside of it.
+<code>&lt;alter></code> selects a single control through the mandatory <code>@control-id</code> attribute and modifies them with the following sub-elements:</p><ul><li><p><code>&lt;add></code> elements can add some content to a control at a position specified by <code>@position</code>, which can be "before", "after", "starting", and "ending".
+If <code>@position</code> is set to "before" or "after", an object must be selected via the <code>@by-id</code> attribute.</p></li><li><p><code>&lt;remove></code> elements can remove some content from a control as selected by the <code>@by-class</code>, <code>@by-id</code>, <code>@by-item-name</code>, <code>@by-name</code>, or <code>@by-ns</code> attributes, singly or in combination. If more than one of these match directives is used, only objects identified by <em>all</em> these criteria (for example, by both <code>@by-name</code> and <code>@by-ns</code> if those are given together) are identified for removal.</p></li></ul><p>A single <code>&lt;alter></code> element can have multiple <code>&lt;add></code> and <code>&lt;remove></code> sub-elements.</p></div><div id=tabs-7-json-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-json data-lang=json><span class=p>{</span>
+  <span class=nt>&#34;id&#34;</span><span class=p>:</span> <span class=s2>&#34;s1.1.1&#34;</span><span class=p>,</span>
+  <span class=nt>&#34;title&#34;</span><span class=p>:</span> <span class=s2>&#34;Information security roles and responsibilities&#34;</span><span class=p>,</span>
+  <span class=err>//</span> <span class=err>Omitting</span> <span class=err>non-relevant</span> <span class=err>params,</span> <span class=err>props,</span> <span class=err>and</span> <span class=err>parts</span> <span class=err>for</span> <span class=err>brevity</span>
+  <span class=nt>&#34;parts&#34;</span><span class=p>:</span> <span class=p>[</span>
+    <span class=p>{</span>
+      <span class=nt>&#34;id&#34;</span><span class=p>:</span> <span class=s2>&#34;s1.1.1_gdn&#34;</span><span class=p>,</span>
+      <span class=nt>&#34;name&#34;</span><span class=p>:</span> <span class=s2>&#34;guidance&#34;</span><span class=p>,</span>
+      <span class=nt>&#34;parts&#34;</span><span class=p>:</span> <span class=p>[</span>
+        <span class=p>{</span>
+          <span class=nt>&#34;id&#34;</span><span class=p>:</span> <span class=s2>&#34;s1.1.1_gdn.1&#34;</span><span class=p>,</span>
+          <span class=nt>&#34;name&#34;</span><span class=p>:</span> <span class=s2>&#34;item&#34;</span><span class=p>,</span>
+          <span class=nt>&#34;prose&#34;</span><span class=p>:</span> <span class=s2>&#34;Allocation of information security responsibilities should be done in accordance with the information security policies. Responsibilities for the protection of individual assets and for carrying out specific information security processes should be identified. Responsibilities for information security risk management activities and in particular for acceptance of residual risks should be defined. These responsibilities should be supplemented, where necessary, with more detailed guidance for specific sites and information processing facilities. Local responsibilities for the protection of assets and for carrying out specific security processes should be defined.&#34;</span>
+        <span class=p>},</span>
+        <span class=p>{</span>
+          <span class=nt>&#34;id&#34;</span><span class=p>:</span> <span class=s2>&#34;s1.1.1_gdn.2&#34;</span><span class=p>,</span>
+          <span class=nt>&#34;name&#34;</span><span class=p>:</span> <span class=s2>&#34;item&#34;</span><span class=p>,</span>
+          <span class=nt>&#34;prose&#34;</span><span class=p>:</span> <span class=s2>&#34;Individuals with allocated information security responsibilities may delegate security tasks to others. Nevertheless they remain accountable and should determine that any delegated tasks have been correctly performed.&#34;</span>
+        <span class=p>},</span>
+        <span class=p>{</span>
+          <span class=nt>&#34;id&#34;</span><span class=p>:</span> <span class=s2>&#34;s1.1.1_gdn.3&#34;</span><span class=p>,</span>
+          <span class=nt>&#34;name&#34;</span><span class=p>:</span> <span class=s2>&#34;item&#34;</span><span class=p>,</span>
+          <span class=nt>&#34;prose&#34;</span><span class=p>:</span> <span class=s2>&#34;Areas for which individuals are responsible should be stated. In particular the following should take place:\n\n1. the assets and information security processes should be identified and defined;\n1. the entity responsible for each asset or information security process should be assigned and the details of this responsibility should be documented;\n1. authorization levels should be defined and documented;\n1. to be able to fulfil responsibilities in the information security area the appointed individuals should be competent in the area and be given opportunities to keep up to date with developments;\n1. coordination and oversight of information security aspects of supplier relationships should be identified and documented.\n&#34;</span>
+        <span class=p>}</span>
+      <span class=p>]</span>
+    <span class=p>}</span>
+  <span class=p>]</span>
+<span class=p>}</span>
+</code></pre></td></tr></table></div></div><p>As profile authors, let's say we'd like to insert a new <code>part</code> after <code>s.1.1.1_gdn.3</code> with additional guidance on setting an automatic lock on a specific platform:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-json data-lang=json><span class=p>{</span>
+  <span class=nt>&#34;alters&#34;</span><span class=p>:</span> <span class=p>[</span>
+    <span class=p>{</span>
+      <span class=nt>&#34;control-id&#34;</span><span class=p>:</span> <span class=s2>&#34;s1.1.1&#34;</span><span class=p>,</span>
+      <span class=nt>&#34;adds&#34;</span><span class=p>:</span> <span class=p>[</span>
+        <span class=p>{</span>
+          <span class=nt>&#34;by-id&#34;</span><span class=p>:</span> <span class=s2>&#34;s1.1.1_gdn.3&#34;</span><span class=p>,</span>
+          <span class=nt>&#34;position&#34;</span><span class=p>:</span> <span class=s2>&#34;after&#34;</span><span class=p>,</span>
+          <span class=nt>&#34;parts&#34;</span><span class=p>:</span> <span class=p>[</span>
+            <span class=p>{</span>
+              <span class=nt>&#34;id&#34;</span><span class=p>:</span> <span class=s2>&#34;s1.1.1_gdn.4&#34;</span><span class=p>,</span>
+              <span class=nt>&#34;name&#34;</span><span class=p>:</span> <span class=s2>&#34;item&#34;</span><span class=p>,</span>
+              <span class=nt>&#34;prose&#34;</span><span class=p>:</span> <span class=s2>&#34;Users of devices running Gnome can adjust the inactivity timeout using the following link: https://help.gnome.org/admin/system-admin-guide/stable/desktop-lockscreen.html.en&#34;</span>
+            <span class=p>}</span>
+          <span class=p>]</span>
+        <span class=p>}</span>
+      <span class=p>]</span>
+    <span class=p>}</span>
+  <span class=p>]</span>
+<span class=p>}</span>
+</code></pre></td></tr></table></div></div><p>A <code>modify</code> object has an optional array of <code>alters</code> objects.
+<code>alters</code> objects select a single control through the mandatory <code>control-id</code> field and modifies them with the following sub-objects:</p><ul><li><p><code>adds</code> is an array of objects can add some content to a control at a position specified by the <code>position</code> field, which can be "before", "after", "starting", and "ending".
+If <code>position</code> is set to "before" or "after", an object must be selected via the <code>by-id</code> field.</p></li><li><p><code>removes</code> is an array of objects that can remove some content from a control as selected by the <code>by-class</code>, <code>by-id</code>, <code>by-item-name</code>, <code>by-name</code>, or <code>by-ns</code> fields, singly or in combination. If more than one of these match directives is used, only objects identified by <em>all</em> these criteria (for example, by both <code>by-name</code> and <code>by-ns</code> if those are given together) are identified for removal.</p></li></ul></div><div id=tabs-7-yaml-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-yaml data-lang=yaml><span class=nn>---</span><span class=w>
+</span><span class=w></span><span class=nt>id</span><span class=p>:</span><span class=w> </span><span class=l>s1.1.1</span><span class=w>
+</span><span class=w></span><span class=nt>title</span><span class=p>:</span><span class=w> </span><span class=l>Information security roles and responsibilities</span><span class=w>
+</span><span class=w></span><span class=nt>parts</span><span class=p>:</span><span class=w>
+</span><span class=w></span>- <span class=nt>id</span><span class=p>:</span><span class=w> </span><span class=l>s1.1.1_gdn</span><span class=w>
+</span><span class=w>  </span><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>guidance</span><span class=w>
+</span><span class=w>  </span><span class=nt>parts</span><span class=p>:</span><span class=w>
+</span><span class=w>  </span>- <span class=nt>id</span><span class=p>:</span><span class=w> </span><span class=l>s1.1.1_gdn.1</span><span class=w>
+</span><span class=w>    </span><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>item</span><span class=w>
+</span><span class=w>    </span><span class=nt>prose</span><span class=p>:</span><span class=w> </span><span class=l>Allocation of information security responsibilities should be done in accordance</span><span class=w>
+</span><span class=w>      </span><span class=l>with the information security policies. Responsibilities for the protection</span><span class=w>
+</span><span class=w>      </span><span class=l>of individual assets and for carrying out specific information security processes</span><span class=w>
+</span><span class=w>      </span><span class=l>should be identified. Responsibilities for information security risk management</span><span class=w>
+</span><span class=w>      </span><span class=l>activities and in particular for acceptance of residual risks should be defined.</span><span class=w>
+</span><span class=w>      </span><span class=l>These responsibilities should be supplemented, where necessary, with more detailed</span><span class=w>
+</span><span class=w>      </span><span class=l>guidance for specific sites and information processing facilities. Local responsibilities</span><span class=w>
+</span><span class=w>      </span><span class=l>for the protection of assets and for carrying out specific security processes</span><span class=w>
+</span><span class=w>      </span><span class=l>should be defined.</span><span class=w>
+</span><span class=w>  </span>- <span class=nt>id</span><span class=p>:</span><span class=w> </span><span class=l>s1.1.1_gdn.2</span><span class=w>
+</span><span class=w>    </span><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>item</span><span class=w>
+</span><span class=w>    </span><span class=nt>prose</span><span class=p>:</span><span class=w> </span><span class=l>Individuals with allocated information security responsibilities may delegate</span><span class=w>
+</span><span class=w>      </span><span class=l>security tasks to others. Nevertheless they remain accountable and should determine</span><span class=w>
+</span><span class=w>      </span><span class=l>that any delegated tasks have been correctly performed.</span><span class=w>
+</span><span class=w>  </span>- <span class=nt>id</span><span class=p>:</span><span class=w> </span><span class=l>s1.1.1_gdn.3</span><span class=w>
+</span><span class=w>    </span><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>item</span><span class=w>
+</span><span class=w>    </span><span class=nt>prose</span><span class=p>:</span><span class=w> </span><span class=p>|</span><span class=sd>
+</span><span class=sd>      Areas for which individuals are responsible should be stated. In particular the following should take place:
+</span><span class=sd>
+</span><span class=sd>      1. the assets and information security processes should be identified and defined;
+</span><span class=sd>      1. the entity responsible for each asset or information security process should be assigned and the details of this responsibility should be documented;
+</span><span class=sd>      1. authorization levels should be defined and documented;
+</span><span class=sd>      1. to be able to fulfil responsibilities in the information security area the appointed individuals should be competent in the area and be given opportunities to keep up to date with developments;
+</span><span class=sd>      1. coordination and oversight of information security aspects of supplier relationships should be identified and documented.</span><span class=w>      
+</span></code></pre></td></tr></table></div></div><p>As profile authors, let's say we'd like to insert a new <code>part</code> after <code>s.1.1.1_gdn.3</code> with additional guidance on setting an automatic lock on a specific platform:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-yaml data-lang=yaml><span class=nn>---</span><span class=w>
+</span><span class=w></span><span class=nt>alters</span><span class=p>:</span><span class=w>
+</span><span class=w></span>- <span class=nt>control-id</span><span class=p>:</span><span class=w> </span><span class=l>s1.1.1</span><span class=w>
+</span><span class=w>  </span><span class=nt>adds</span><span class=p>:</span><span class=w>
+</span><span class=w>  </span>- <span class=nt>by-id</span><span class=p>:</span><span class=w> </span><span class=l>s1.1.1_gdn.3</span><span class=w>
+</span><span class=w>    </span><span class=nt>position</span><span class=p>:</span><span class=w> </span><span class=l>after</span><span class=w>
+</span><span class=w>    </span><span class=nt>parts</span><span class=p>:</span><span class=w>
+</span><span class=w>    </span>- <span class=nt>id</span><span class=p>:</span><span class=w> </span><span class=l>s1.1.1_gdn.4</span><span class=w>
+</span><span class=w>      </span><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>item</span><span class=w>
+</span><span class=w>      </span><span class=nt>prose</span><span class=p>:</span><span class=w> </span><span class=s1>&#39;Users of devices running Gnome can adjust the inactivity timeout using
+</span><span class=s1>        the following link: https://help.gnome.org/admin/system-admin-guide/stable/desktop-lockscreen.html.en&#39;</span><span class=w>
+</span></code></pre></td></tr></table></div></div><p>A <code>modify</code> object has an optional array of <code>alters</code> objects.
+<code>alters</code> objects select a single control through the mandatory <code>control-id</code> field and modifies them with the following sub-objects:</p><ul><li><p><code>adds</code> is an array of objects can add some content to a control at a position specified by the <code>position</code> field, which can be "before", "after", "starting", and "ending".
+If <code>position</code> is set to "before" or "after", an object must be selected via the <code>by-id</code> field.</p></li><li><p><code>removes</code> is an array of objects that can remove some content from a control as selected by the <code>by-class</code>, <code>by-id</code>, <code>by-item-name</code>, <code>by-name</code>, or <code>by-ns</code> fields, singly or in combination. If more than one of these match directives is used, only objects identified by <em>all</em> these criteria (for example, by both <code>by-name</code> and <code>by-ns</code> if those are given together) are identified for removal.</p></li></ul></div></div></div><h2 id=the-final-profile>The Final Profile</h2><p>After applying all of the techniques discussed in this tutorial, we obtain an OSCAL profile with the following structure:</p><div id=tabs-8 class="hugo-codetabs usa-accordion"><ul><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-8-xml-tab><span>XML</span></button></li><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-8-json-tab><span>JSON</span></button></li><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-8-yaml-tab><span>YAML</span></button></li></ul><div id=tabs-8-content class=hugo-tab-content><div id=tabs-8-xml-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-xml data-lang=xml><span class=cp>&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+<span class=nt>&lt;profile</span> <span class=na>xmlns=</span><span class=s>&#34;http://csrc.nist.gov/ns/oscal/1.0&#34;</span> <span class=na>uuid=</span><span class=s>&#34;c0dc468c-934e-4fe9-b5bf-9fc63f5a2915&#34;</span><span class=nt>&gt;</span>
+  <span class=nt>&lt;metadata&gt;</span>
+    <span class=nt>&lt;title&gt;</span>Sample Security Profile 
+      <span class=nt>&lt;em&gt;</span>for Demonstration<span class=nt>&lt;/em&gt;</span> and Testing
+    <span class=nt>&lt;/title&gt;</span>
+    <span class=nt>&lt;last-modified&gt;</span>2023-04-10T10:31:28.355446-04:00<span class=nt>&lt;/last-modified&gt;</span>
+    <span class=nt>&lt;version&gt;</span>1.0<span class=nt>&lt;/version&gt;</span>
+    <span class=nt>&lt;oscal-version&gt;</span>1.0.4<span class=nt>&lt;/oscal-version&gt;</span>
+    <span class=nt>&lt;revisions/&gt;</span>
+    <span class=nt>&lt;remarks&gt;</span>
+      <span class=nt>&lt;p&gt;</span>The following document is used in the OSCAL Profile Tutorial and builds on the catalog created for the OSCAL Catalog Tutorial<span class=nt>&lt;/p&gt;</span>
+    <span class=nt>&lt;/remarks&gt;</span>
+  <span class=nt>&lt;/metadata&gt;</span>
+  <span class=nt>&lt;import</span> <span class=na>href=</span><span class=s>&#34;https://raw.githubusercontent.com/usnistgov/oscal-content/main/examples/catalog/json/basic-catalog.json&#34;</span><span class=nt>&gt;</span>
+    <span class=nt>&lt;include-controls&gt;</span>
+      <span class=nt>&lt;matching</span> <span class=na>pattern=</span><span class=s>&#34;s1.1.*&#34;</span><span class=nt>/&gt;</span>
+    <span class=nt>&lt;/include-controls&gt;</span>
+    <span class=nt>&lt;include-controls&gt;</span>
+      <span class=nt>&lt;with-id&gt;</span>s2.1.1<span class=nt>&lt;/with-id&gt;</span>
+    <span class=nt>&lt;/include-controls&gt;</span>
+    <span class=nt>&lt;exclude-controls&gt;</span>
+        <span class=nt>&lt;with-id&gt;</span>s2.1.2<span class=nt>&lt;/with-id&gt;</span>
+    <span class=nt>&lt;/exclude-controls&gt;</span>
+  <span class=nt>&lt;/import&gt;</span>
+  <span class=nt>&lt;merge&gt;</span>
+    <span class=nt>&lt;flat/&gt;</span>
+  <span class=nt>&lt;/merge&gt;</span>
+  <span class=nt>&lt;modify&gt;</span>
+    <span class=nt>&lt;set-parameter</span> <span class=na>param-id=</span><span class=s>&#34;s1.1.1-prm_2&#34;</span><span class=nt>&gt;</span>
+      <span class=nt>&lt;label&gt;</span>a duration (maximum 30 minutes)<span class=nt>&lt;/label&gt;</span>
+    <span class=nt>&lt;/set-parameter&gt;</span>
+    <span class=nt>&lt;alter</span> <span class=na>control-id=</span><span class=s>&#34;s1.1.1&#34;</span><span class=nt>&gt;</span>
+      <span class=nt>&lt;add</span> <span class=na>position=</span><span class=s>&#34;after&#34;</span> <span class=na>by-id=</span><span class=s>&#34;s1.1.1_gdn.3&#34;</span><span class=nt>&gt;</span>
+        <span class=nt>&lt;part</span> <span class=na>id=</span><span class=s>&#34;s1.1.1_gdn.4&#34;</span> <span class=na>name=</span><span class=s>&#34;item&#34;</span><span class=nt>&gt;</span>
+          <span class=nt>&lt;p&gt;</span>Users of devices running Gnome can adjust the inactivity timeout using the following link: https://help.gnome.org/admin/system-admin-guide/stable/desktop-lockscreen.html.en<span class=nt>&lt;/p&gt;</span>
+        <span class=nt>&lt;/part&gt;</span>
+      <span class=nt>&lt;/add&gt;</span>
+    <span class=nt>&lt;/alter&gt;</span>
+  <span class=nt>&lt;/modify&gt;</span>
+<span class=nt>&lt;/profile&gt;</span>
+</code></pre></td></tr></table></div></div></div><div id=tabs-8-json-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span><span class=lnt>49
+</span><span class=lnt>50
+</span><span class=lnt>51
+</span><span class=lnt>52
+</span><span class=lnt>53
+</span><span class=lnt>54
+</span><span class=lnt>55
+</span><span class=lnt>56
+</span><span class=lnt>57
+</span><span class=lnt>58
+</span><span class=lnt>59
+</span><span class=lnt>60
+</span><span class=lnt>61
+</span><span class=lnt>62
+</span><span class=lnt>63
+</span><span class=lnt>64
+</span><span class=lnt>65
+</span><span class=lnt>66
+</span><span class=lnt>67
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-json data-lang=json><span class=p>{</span>
+  <span class=nt>&#34;profile&#34;</span><span class=p>:</span> <span class=p>{</span>
+    <span class=nt>&#34;uuid&#34;</span><span class=p>:</span> <span class=s2>&#34;c0dc468c-934e-4fe9-b5bf-9fc63f5a2915&#34;</span><span class=p>,</span>
+    <span class=nt>&#34;metadata&#34;</span><span class=p>:</span> <span class=p>{</span>
+      <span class=nt>&#34;title&#34;</span><span class=p>:</span> <span class=s2>&#34;Sample Security Profile *for Demonstration* and Testing&#34;</span><span class=p>,</span>
+      <span class=nt>&#34;last-modified&#34;</span><span class=p>:</span> <span class=s2>&#34;2023-04-10T10:31:28.355446-04:00&#34;</span><span class=p>,</span>
+      <span class=nt>&#34;version&#34;</span><span class=p>:</span> <span class=s2>&#34;1.0&#34;</span><span class=p>,</span>
+      <span class=nt>&#34;oscal-version&#34;</span><span class=p>:</span> <span class=s2>&#34;1.04&#34;</span><span class=p>,</span>
+      <span class=nt>&#34;remarks&#34;</span><span class=p>:</span> <span class=s2>&#34;The following document is used in the OSCAL Profile Tutorial and builds on the catalog created for the OSCAL Catalog Tutorial&#34;</span>
+    <span class=p>},</span>
+    <span class=nt>&#34;imports&#34;</span><span class=p>:</span> <span class=p>[</span>
+      <span class=p>{</span>
+        <span class=nt>&#34;href&#34;</span><span class=p>:</span> <span class=s2>&#34;https://raw.githubusercontent.com/usnistgov/oscal-content/main/examples/catalog/json/basic-catalog.json&#34;</span><span class=p>,</span>
+        <span class=nt>&#34;include-controls&#34;</span><span class=p>:</span> <span class=p>[</span>
+          <span class=p>{</span>
+            <span class=nt>&#34;matching&#34;</span><span class=p>:</span> <span class=p>[</span>
+              <span class=p>{</span>
+                <span class=nt>&#34;pattern&#34;</span><span class=p>:</span> <span class=s2>&#34;s1.1.*&#34;</span>
+              <span class=p>}</span>
+            <span class=p>]</span>
+          <span class=p>},</span>
+          <span class=p>{</span>
+            <span class=nt>&#34;with-ids&#34;</span><span class=p>:</span> <span class=p>[</span>
+              <span class=s2>&#34;s2.1.1&#34;</span>
+            <span class=p>],</span>
+          <span class=nt>&#34;exclude-controls&#34;</span><span class=p>:</span> <span class=p>[</span>
+            <span class=p>{</span>
+              <span class=nt>&#34;with-ids&#34;</span><span class=p>:</span> <span class=p>[</span>
+                <span class=s2>&#34;s2.1.2&#34;</span>
+              <span class=p>]</span>
+            <span class=p>}</span>
+          <span class=p>]</span>
+          <span class=p>}</span>
+        <span class=p>]</span>
+      <span class=p>}</span>
+    <span class=p>],</span>
+    <span class=nt>&#34;merge&#34;</span><span class=p>:</span> <span class=p>{</span>
+      <span class=nt>&#34;flat&#34;</span><span class=p>:</span> <span class=p>{}</span>
+    <span class=p>},</span>
+    <span class=nt>&#34;modify&#34;</span><span class=p>:</span> <span class=p>{</span>
+      <span class=nt>&#34;set-parameters&#34;</span><span class=p>:</span> <span class=p>[</span>
+        <span class=p>{</span>
+          <span class=nt>&#34;param-id&#34;</span><span class=p>:</span> <span class=s2>&#34;s1.1.1-prm_2&#34;</span><span class=p>,</span>
+          <span class=nt>&#34;label&#34;</span><span class=p>:</span> <span class=s2>&#34;a duration (maximum 30 minutes)&#34;</span>
+        <span class=p>}</span>
+      <span class=p>],</span>
+      <span class=nt>&#34;alters&#34;</span><span class=p>:</span> <span class=p>[</span>
+        <span class=p>{</span>
+          <span class=nt>&#34;control-id&#34;</span><span class=p>:</span> <span class=s2>&#34;s1.1.1&#34;</span><span class=p>,</span>
+          <span class=nt>&#34;adds&#34;</span><span class=p>:</span> <span class=p>[</span>
+            <span class=p>{</span>
+              <span class=nt>&#34;by-id&#34;</span><span class=p>:</span> <span class=s2>&#34;s1.1.1_gdn.3&#34;</span><span class=p>,</span>
+              <span class=nt>&#34;position&#34;</span><span class=p>:</span> <span class=s2>&#34;after&#34;</span><span class=p>,</span>
+              <span class=nt>&#34;parts&#34;</span><span class=p>:</span> <span class=p>[</span>
+                <span class=p>{</span>
+                  <span class=nt>&#34;id&#34;</span><span class=p>:</span> <span class=s2>&#34;s1.1.1_gdn.4&#34;</span><span class=p>,</span>
+                  <span class=nt>&#34;name&#34;</span><span class=p>:</span> <span class=s2>&#34;item&#34;</span><span class=p>,</span>
+                  <span class=nt>&#34;prose&#34;</span><span class=p>:</span> <span class=s2>&#34;Users of devices running Gnome can adjust the inactivity timeout using the following link: https://help.gnome.org/admin/system-admin-guide/stable/desktop-lockscreen.html.en&#34;</span>
+                <span class=p>}</span>
+              <span class=p>]</span>
+            <span class=p>}</span>
+          <span class=p>]</span>
+        <span class=p>}</span>
+      <span class=p>]</span>
+    <span class=p>}</span>
+  <span class=p>}</span>
+<span class=p>}</span>
+</code></pre></td></tr></table></div></div></div><div id=tabs-8-yaml-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-yaml data-lang=yaml><span class=nn>---</span><span class=w>
+</span><span class=w></span><span class=nt>profile</span><span class=p>:</span><span class=w>
+</span><span class=w>  </span><span class=nt>uuid</span><span class=p>:</span><span class=w> </span><span class=l>c0dc468c-934e-4fe9-b5bf-9fc63f5a2915</span><span class=w>
+</span><span class=w>  </span><span class=nt>metadata</span><span class=p>:</span><span class=w>
+</span><span class=w>    </span><span class=nt>title</span><span class=p>:</span><span class=w> </span><span class=l>Sample Security Profile *for Demonstration* and Testing</span><span class=w>
+</span><span class=w>    </span><span class=nt>last-modified</span><span class=p>:</span><span class=w> </span><span class=s2>&#34;2023-04-10T10:31:28.355446-04:00&#34;</span><span class=w>
+</span><span class=w>    </span><span class=nt>version</span><span class=p>:</span><span class=w> </span><span class=s2>&#34;1.0&#34;</span><span class=w>
+</span><span class=w>    </span><span class=nt>oscal-version</span><span class=p>:</span><span class=w> </span><span class=s2>&#34;1.04&#34;</span><span class=w>
+</span><span class=w>    </span><span class=nt>remarks</span><span class=p>:</span><span class=w>
+</span><span class=w>      </span><span class=l>The following document is used in the OSCAL Profile Tutorial and builds</span><span class=w>
+</span><span class=w>      </span><span class=kc>on</span><span class=w> </span><span class=l>the catalog created for the OSCAL Catalog Tutorial</span><span class=w>
+</span><span class=w>  </span><span class=nt>imports</span><span class=p>:</span><span class=w>
+</span><span class=w>    </span>- <span class=nt>href</span><span class=p>:</span><span class=w> </span><span class=l>https://raw.githubusercontent.com/usnistgov/oscal-content/main/examples/catalog/json/basic-catalog.json</span><span class=w>
+</span><span class=w>      </span><span class=nt>include-controls</span><span class=p>:</span><span class=w>
+</span><span class=w>        </span>- <span class=nt>matching</span><span class=p>:</span><span class=w>
+</span><span class=w>            </span>- <span class=nt>pattern</span><span class=p>:</span><span class=w> </span><span class=l>s1.1.*</span><span class=w>
+</span><span class=w>        </span>- <span class=nt>with-ids</span><span class=p>:</span><span class=w>
+</span><span class=w>            </span>- <span class=l>s2.1.1</span><span class=w>
+</span><span class=w>      </span><span class=nt>exclude-controls</span><span class=p>:</span><span class=w>
+</span><span class=w>        </span>- <span class=nt>with-ids</span><span class=p>:</span><span class=w>
+</span><span class=w>            </span>- <span class=l>s2.1.2</span><span class=w>
+</span><span class=w>  </span><span class=nt>merge</span><span class=p>:</span><span class=w>
+</span><span class=w>    </span><span class=nt>flat</span><span class=p>:</span><span class=w> </span>{}<span class=w>
+</span><span class=w>  </span><span class=nt>modify</span><span class=p>:</span><span class=w>
+</span><span class=w>    </span><span class=nt>set-parameters</span><span class=p>:</span><span class=w>
+</span><span class=w>      </span>- <span class=nt>param-id</span><span class=p>:</span><span class=w> </span><span class=l>s1.1.1-prm_2</span><span class=w>
+</span><span class=w>        </span><span class=nt>label</span><span class=p>:</span><span class=w> </span><span class=l>a duration (maximum 30 minutes)</span><span class=w>
+</span><span class=w>    </span><span class=nt>alters</span><span class=p>:</span><span class=w>
+</span><span class=w>      </span>- <span class=nt>control-id</span><span class=p>:</span><span class=w> </span><span class=l>s1.1.1</span><span class=w>
+</span><span class=w>        </span><span class=nt>adds</span><span class=p>:</span><span class=w>
+</span><span class=w>          </span>- <span class=nt>by-id</span><span class=p>:</span><span class=w> </span><span class=l>s1.1.1_gdn.3</span><span class=w>
+</span><span class=w>            </span><span class=nt>position</span><span class=p>:</span><span class=w> </span><span class=l>after</span><span class=w>
+</span><span class=w>            </span><span class=nt>parts</span><span class=p>:</span><span class=w>
+</span><span class=w>              </span>- <span class=nt>id</span><span class=p>:</span><span class=w> </span><span class=l>s1.1.1_gdn.4</span><span class=w>
+</span><span class=w>                </span><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>item</span><span class=w>
+</span><span class=w>                </span><span class=nt>prose</span><span class=p>:</span><span class=w>
+</span><span class=w>                  </span><span class=s2>&#34;Users of devices running Gnome can adjust the inactivity timeout
+</span><span class=s2>                  using the following link: https://help.gnome.org/admin/system-admin-guide/stable/desktop-lockscreen.html.en&#34;</span><span class=w>
+</span><span class=w>
+</span></code></pre></td></tr></table></div></div></div></div></div><h3 id=creating-the-resolved-catalog-from-a-profile>Creating the Resolved Catalog from a Profile</h3><p>The <a href=../../../../concepts/processing/profile-resolution/>profile resolution specification</a> describes how to use an input profile to generate a new <em>resolved</em> catalog that captures the selection, arrangement and changes made to the controls listed in the profile. The profile resolution specification has multiple NIST implementations, and is open to third party implementations maintained by the community.</p><p>For this example, let's use the NIST-maintained <a href=https://github.com/usnistgov/oscal-cli>OSCAL Command Line Interface (CLI)</a>. Upon installation, a user can perform profile resolution with the OSCAL-CLI as follows:</p><div id=tabs-9 class="hugo-codetabs usa-accordion"><ul><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-9-xml-tab><span>XML</span></button></li><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-9-json-tab><span>JSON</span></button></li><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-9-yaml-tab><span>YAML</span></button></li></ul><div id=tabs-9-content class=hugo-tab-content><div id=tabs-9-xml-tab class=hugo-tab-content-item><div class=highlight><pre class=chroma><code class=language-bash data-lang=bash><span class=c1># Resolve input profile saved to &#34;profile.xml&#34;</span>
+$ oscal-cli profile resolve profile.xml
+</code></pre></div><p>Notice, that the OSCAL CLI automatically detects the file type of the profile and produces the following output catalog:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>  1
+</span><span class=lnt>  2
+</span><span class=lnt>  3
+</span><span class=lnt>  4
+</span><span class=lnt>  5
+</span><span class=lnt>  6
+</span><span class=lnt>  7
+</span><span class=lnt>  8
+</span><span class=lnt>  9
+</span><span class=lnt> 10
+</span><span class=lnt> 11
+</span><span class=lnt> 12
+</span><span class=lnt> 13
+</span><span class=lnt> 14
+</span><span class=lnt> 15
+</span><span class=lnt> 16
+</span><span class=lnt> 17
+</span><span class=lnt> 18
+</span><span class=lnt> 19
+</span><span class=lnt> 20
+</span><span class=lnt> 21
+</span><span class=lnt> 22
+</span><span class=lnt> 23
+</span><span class=lnt> 24
+</span><span class=lnt> 25
+</span><span class=lnt> 26
+</span><span class=lnt> 27
+</span><span class=lnt> 28
+</span><span class=lnt> 29
+</span><span class=lnt> 30
+</span><span class=lnt> 31
+</span><span class=lnt> 32
+</span><span class=lnt> 33
+</span><span class=lnt> 34
+</span><span class=lnt> 35
+</span><span class=lnt> 36
+</span><span class=lnt> 37
+</span><span class=lnt> 38
+</span><span class=lnt> 39
+</span><span class=lnt> 40
+</span><span class=lnt> 41
+</span><span class=lnt> 42
+</span><span class=lnt> 43
+</span><span class=lnt> 44
+</span><span class=lnt> 45
+</span><span class=lnt> 46
+</span><span class=lnt> 47
+</span><span class=lnt> 48
+</span><span class=lnt> 49
+</span><span class=lnt> 50
+</span><span class=lnt> 51
+</span><span class=lnt> 52
+</span><span class=lnt> 53
+</span><span class=lnt> 54
+</span><span class=lnt> 55
+</span><span class=lnt> 56
+</span><span class=lnt> 57
+</span><span class=lnt> 58
+</span><span class=lnt> 59
+</span><span class=lnt> 60
+</span><span class=lnt> 61
+</span><span class=lnt> 62
+</span><span class=lnt> 63
+</span><span class=lnt> 64
+</span><span class=lnt> 65
+</span><span class=lnt> 66
+</span><span class=lnt> 67
+</span><span class=lnt> 68
+</span><span class=lnt> 69
+</span><span class=lnt> 70
+</span><span class=lnt> 71
+</span><span class=lnt> 72
+</span><span class=lnt> 73
+</span><span class=lnt> 74
+</span><span class=lnt> 75
+</span><span class=lnt> 76
+</span><span class=lnt> 77
+</span><span class=lnt> 78
+</span><span class=lnt> 79
+</span><span class=lnt> 80
+</span><span class=lnt> 81
+</span><span class=lnt> 82
+</span><span class=lnt> 83
+</span><span class=lnt> 84
+</span><span class=lnt> 85
+</span><span class=lnt> 86
+</span><span class=lnt> 87
+</span><span class=lnt> 88
+</span><span class=lnt> 89
+</span><span class=lnt> 90
+</span><span class=lnt> 91
+</span><span class=lnt> 92
+</span><span class=lnt> 93
+</span><span class=lnt> 94
+</span><span class=lnt> 95
+</span><span class=lnt> 96
+</span><span class=lnt> 97
+</span><span class=lnt> 98
+</span><span class=lnt> 99
+</span><span class=lnt>100
+</span><span class=lnt>101
+</span><span class=lnt>102
+</span><span class=lnt>103
+</span><span class=lnt>104
+</span><span class=lnt>105
+</span><span class=lnt>106
+</span><span class=lnt>107
+</span><span class=lnt>108
+</span><span class=lnt>109
+</span><span class=lnt>110
+</span><span class=lnt>111
+</span><span class=lnt>112
+</span><span class=lnt>113
+</span><span class=lnt>114
+</span><span class=lnt>115
+</span><span class=lnt>116
+</span><span class=lnt>117
+</span><span class=lnt>118
+</span><span class=lnt>119
+</span><span class=lnt>120
+</span><span class=lnt>121
+</span><span class=lnt>122
+</span><span class=lnt>123
+</span><span class=lnt>124
+</span><span class=lnt>125
+</span><span class=lnt>126
+</span><span class=lnt>127
+</span><span class=lnt>128
+</span><span class=lnt>129
+</span><span class=lnt>130
+</span><span class=lnt>131
+</span><span class=lnt>132
+</span><span class=lnt>133
+</span><span class=lnt>134
+</span><span class=lnt>135
+</span><span class=lnt>136
+</span><span class=lnt>137
+</span><span class=lnt>138
+</span><span class=lnt>139
+</span><span class=lnt>140
+</span><span class=lnt>141
+</span><span class=lnt>142
+</span><span class=lnt>143
+</span><span class=lnt>144
+</span><span class=lnt>145
+</span><span class=lnt>146
+</span><span class=lnt>147
+</span><span class=lnt>148
+</span><span class=lnt>149
+</span><span class=lnt>150
+</span><span class=lnt>151
+</span><span class=lnt>152
+</span><span class=lnt>153
+</span><span class=lnt>154
+</span><span class=lnt>155
+</span><span class=lnt>156
+</span><span class=lnt>157
+</span><span class=lnt>158
+</span><span class=lnt>159
+</span><span class=lnt>160
+</span><span class=lnt>161
+</span><span class=lnt>162
+</span><span class=lnt>163
+</span><span class=lnt>164
+</span><span class=lnt>165
+</span><span class=lnt>166
+</span><span class=lnt>167
+</span><span class=lnt>168
+</span><span class=lnt>169
+</span><span class=lnt>170
+</span><span class=lnt>171
+</span><span class=lnt>172
+</span><span class=lnt>173
+</span><span class=lnt>174
+</span><span class=lnt>175
+</span><span class=lnt>176
+</span><span class=lnt>177
+</span><span class=lnt>178
+</span><span class=lnt>179
+</span><span class=lnt>180
+</span><span class=lnt>181
+</span><span class=lnt>182
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-xml data-lang=xml><span class=cp>&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+<span class=nt>&lt;catalog</span> <span class=na>xmlns=</span><span class=s>&#34;http://csrc.nist.gov/ns/oscal/1.0&#34;</span> <span class=na>uuid=</span><span class=s>&#34;9ed3e413-1404-45b2-8608-192d41bf3785&#34;</span><span class=nt>&gt;</span>
+  <span class=nt>&lt;metadata&gt;</span>
+    <span class=nt>&lt;title&gt;</span>Sample Security Profile 
+      <span class=nt>&lt;em&gt;</span>for Demonstration<span class=nt>&lt;/em&gt;</span> and Testing
+    <span class=nt>&lt;/title&gt;</span>
+    <span class=nt>&lt;last-modified&gt;</span>2023-05-13T22:06:43.017554394Z<span class=nt>&lt;/last-modified&gt;</span>
+    <span class=nt>&lt;version&gt;</span>1.0<span class=nt>&lt;/version&gt;</span>
+    <span class=nt>&lt;oscal-version&gt;</span>1.0.4<span class=nt>&lt;/oscal-version&gt;</span>
+  <span class=nt>&lt;/metadata&gt;</span>
+  <span class=nt>&lt;control</span> <span class=na>id=</span><span class=s>&#34;s1.1.1&#34;</span><span class=nt>&gt;</span>
+    <span class=nt>&lt;title&gt;</span>Information security roles and responsibilities<span class=nt>&lt;/title&gt;</span>
+    <span class=nt>&lt;param</span> <span class=na>id=</span><span class=s>&#34;s1.1.1-prm1&#34;</span><span class=nt>&gt;</span>
+      <span class=nt>&lt;label&gt;</span>a choice from a selection<span class=nt>&lt;/label&gt;</span>
+      <span class=nt>&lt;select</span> <span class=na>how-many=</span><span class=s>&#34;one-or-more&#34;</span><span class=nt>&gt;</span>
+        <span class=nt>&lt;choice&gt;</span>initiating a device lock after 
+          <span class=nt>&lt;insert</span> <span class=na>type=</span><span class=s>&#34;param&#34;</span> <span class=na>id-ref=</span><span class=s>&#34;s1.1.1-prm_2&#34;</span><span class=nt>/&gt;</span> of inactivity
+        <span class=nt>&lt;/choice&gt;</span>
+        <span class=nt>&lt;choice&gt;</span>requiring the user to initiate a device lock before leaving the system unattended<span class=nt>&lt;/choice&gt;</span>
+      <span class=nt>&lt;/select&gt;</span>
+    <span class=nt>&lt;/param&gt;</span>
+    <span class=nt>&lt;param</span> <span class=na>id=</span><span class=s>&#34;s1.1.1-prm_2&#34;</span><span class=nt>&gt;</span>
+      <span class=nt>&lt;label&gt;</span>a duration (maximum 30 minutes)<span class=nt>&lt;/label&gt;</span>
+    <span class=nt>&lt;/param&gt;</span>
+    <span class=nt>&lt;prop</span> <span class=na>name=</span><span class=s>&#34;label&#34;</span> <span class=na>value=</span><span class=s>&#34;1.1.1&#34;</span><span class=nt>/&gt;</span>
+    <span class=nt>&lt;part</span> <span class=na>id=</span><span class=s>&#34;s1.1.1_stm&#34;</span> <span class=na>name=</span><span class=s>&#34;statement&#34;</span><span class=nt>&gt;</span>
+      <span class=nt>&lt;p&gt;</span>All information security responsibilities should be defined and allocated.<span class=nt>&lt;/p&gt;</span>
+      <span class=nt>&lt;p&gt;</span>A value has been assigned to 
+        <span class=nt>&lt;insert</span> <span class=na>type=</span><span class=s>&#34;param&#34;</span> <span class=na>id-ref=</span><span class=s>&#34;s1.1.1-prm1&#34;</span><span class=nt>/&gt;</span>.
+      <span class=nt>&lt;/p&gt;</span>
+      <span class=nt>&lt;p&gt;</span>A cross link has been established with a choppy syntax: 
+        <span class=nt>&lt;a</span> <span class=na>href=</span><span class=s>&#34;#s1.2&#34;</span><span class=nt>&gt;</span>(choppy)<span class=nt>&lt;/a&gt;</span>.
+      <span class=nt>&lt;/p&gt;</span>
+    <span class=nt>&lt;/part&gt;</span>
+    <span class=nt>&lt;part</span> <span class=na>id=</span><span class=s>&#34;s1.1.1_gdn&#34;</span> <span class=na>name=</span><span class=s>&#34;guidance&#34;</span><span class=nt>&gt;</span>
+      <span class=nt>&lt;part</span> <span class=na>id=</span><span class=s>&#34;s1.1.1_gdn.1&#34;</span> <span class=na>name=</span><span class=s>&#34;item&#34;</span><span class=nt>&gt;</span>
+        <span class=nt>&lt;p&gt;</span>Allocation of information security responsibilities should be done in accordance with the information security policies. Responsibilities for the protection of individual assets and for carrying out specific information security processes should be identified. Responsibilities for information security risk management activities and in particular for acceptance of residual risks should be defined. These responsibilities should be supplemented, where necessary, with more detailed guidance for specific sites and information processing facilities. Local responsibilities for the protection of assets and for carrying out specific security processes should be defined.<span class=nt>&lt;/p&gt;</span>
+      <span class=nt>&lt;/part&gt;</span>
+      <span class=nt>&lt;part</span> <span class=na>id=</span><span class=s>&#34;s1.1.1_gdn.2&#34;</span> <span class=na>name=</span><span class=s>&#34;item&#34;</span><span class=nt>&gt;</span>
+        <span class=nt>&lt;p&gt;</span>Individuals with allocated information security responsibilities may delegate security tasks to others. Nevertheless they remain accountable and should determine that any delegated tasks have been correctly performed.<span class=nt>&lt;/p&gt;</span>
+      <span class=nt>&lt;/part&gt;</span>
+      <span class=nt>&lt;part</span> <span class=na>id=</span><span class=s>&#34;s1.1.1_gdn.3&#34;</span> <span class=na>name=</span><span class=s>&#34;item&#34;</span><span class=nt>&gt;</span>
+        <span class=nt>&lt;p&gt;</span>Areas for which individuals are responsible should be stated. In particular the following should take place:<span class=nt>&lt;/p&gt;</span>
+        <span class=nt>&lt;ol&gt;</span>
+          <span class=nt>&lt;li&gt;</span>
+            <span class=nt>&lt;p&gt;</span>the assets and information security processes should be identified and defined;<span class=nt>&lt;/p&gt;</span>
+          <span class=nt>&lt;/li&gt;</span>
+          <span class=nt>&lt;li&gt;</span>
+            <span class=nt>&lt;p&gt;</span>the entity responsible for each asset or information security process should be assigned and the details of this responsibility should be documented;<span class=nt>&lt;/p&gt;</span>
+          <span class=nt>&lt;/li&gt;</span>
+          <span class=nt>&lt;li&gt;</span>
+            <span class=nt>&lt;p&gt;</span>authorization levels should be defined and documented;<span class=nt>&lt;/p&gt;</span>
+          <span class=nt>&lt;/li&gt;</span>
+          <span class=nt>&lt;li&gt;</span>
+            <span class=nt>&lt;p&gt;</span>to be able to fulfil responsibilities in the information security area the appointed individuals should be competent in the area and be given opportunities to keep up to date with developments;<span class=nt>&lt;/p&gt;</span>
+          <span class=nt>&lt;/li&gt;</span>
+          <span class=nt>&lt;li&gt;</span>
+            <span class=nt>&lt;p&gt;</span>coordination and oversight of information security aspects of supplier relationships should be identified and documented.<span class=nt>&lt;/p&gt;</span>
+          <span class=nt>&lt;/li&gt;</span>
+        <span class=nt>&lt;/ol&gt;</span>
+      <span class=nt>&lt;/part&gt;</span>
+      <span class=nt>&lt;part</span> <span class=na>id=</span><span class=s>&#34;s1.1.1_gdn.4&#34;</span> <span class=na>name=</span><span class=s>&#34;item&#34;</span><span class=nt>&gt;</span>
+        <span class=nt>&lt;p&gt;</span>Users of devices running Gnome can adjust the inactivity timeout using the following link: https://help.gnome.org/admin/system-admin-guide/stable/desktop-lockscreen.html.en<span class=nt>&lt;/p&gt;</span>
+      <span class=nt>&lt;/part&gt;</span>
+    <span class=nt>&lt;/part&gt;</span>
+    <span class=nt>&lt;part</span> <span class=na>id=</span><span class=s>&#34;s1.1.1_inf&#34;</span> <span class=na>name=</span><span class=s>&#34;information&#34;</span><span class=nt>&gt;</span>
+      <span class=nt>&lt;prop</span> <span class=na>name=</span><span class=s>&#34;label&#34;</span> <span class=na>value=</span><span class=s>&#34;Other information&#34;</span><span class=nt>/&gt;</span>
+      <span class=nt>&lt;p&gt;</span>Many organizations appoint an information security manager to take overall responsibility for the development and implementation of information security and to support the identification of controls.<span class=nt>&lt;/p&gt;</span>
+      <span class=nt>&lt;p&gt;</span>However, responsibility for resourcing and implementing the controls will often remain with individual managers. One common practice is to appoint an owner for each asset who then becomes responsible for its day-to-day protection.<span class=nt>&lt;/p&gt;</span>
+    <span class=nt>&lt;/part&gt;</span>
+  <span class=nt>&lt;/control&gt;</span>
+  <span class=nt>&lt;control</span> <span class=na>id=</span><span class=s>&#34;s1.1.2&#34;</span><span class=nt>&gt;</span>
+    <span class=nt>&lt;title&gt;</span>Segregation of duties<span class=nt>&lt;/title&gt;</span>
+    <span class=nt>&lt;prop</span> <span class=na>name=</span><span class=s>&#34;label&#34;</span> <span class=na>value=</span><span class=s>&#34;1.1.2&#34;</span><span class=nt>/&gt;</span>
+    <span class=nt>&lt;part</span> <span class=na>id=</span><span class=s>&#34;s1.1.2_stm&#34;</span> <span class=na>name=</span><span class=s>&#34;statement&#34;</span><span class=nt>&gt;</span>
+      <span class=nt>&lt;p&gt;</span>Conflicting duties and areas of responsibility should be segregated to reduce opportunities for unauthorized or unintentional modification or misuse of the organization’s assets.<span class=nt>&lt;/p&gt;</span>
+    <span class=nt>&lt;/part&gt;</span>
+    <span class=nt>&lt;part</span> <span class=na>id=</span><span class=s>&#34;s1.1.2_gdn&#34;</span> <span class=na>name=</span><span class=s>&#34;guidance&#34;</span><span class=nt>&gt;</span>
+      <span class=nt>&lt;part</span> <span class=na>id=</span><span class=s>&#34;s1.1.2_gdn.1&#34;</span> <span class=na>name=</span><span class=s>&#34;item&#34;</span><span class=nt>&gt;</span>
+        <span class=nt>&lt;p&gt;</span>Care should be taken that no single person can access, modify or use assets without authorization or detection. The initiation of an event should be separated from its authorization. The possibility of collusion should be considered in designing the controls.<span class=nt>&lt;/p&gt;</span>
+      <span class=nt>&lt;/part&gt;</span>
+      <span class=nt>&lt;part</span> <span class=na>id=</span><span class=s>&#34;s1.1.2_gdn.2&#34;</span> <span class=na>name=</span><span class=s>&#34;item&#34;</span><span class=nt>&gt;</span>
+        <span class=nt>&lt;p&gt;</span>Small organizations may find segregation of duties difficult to achieve, but the principle should be applied as far as is possible and practicable. Whenever it is difficult to segregate, other controls such as monitoring of activities, audit trails and management supervision should be considered.<span class=nt>&lt;/p&gt;</span>
+      <span class=nt>&lt;/part&gt;</span>
+    <span class=nt>&lt;/part&gt;</span>
+    <span class=nt>&lt;part</span> <span class=na>id=</span><span class=s>&#34;s1.1.2_inf&#34;</span> <span class=na>name=</span><span class=s>&#34;information&#34;</span><span class=nt>&gt;</span>
+      <span class=nt>&lt;p&gt;</span>Segregation of duties is a method for reducing the risk of accidental or deliberate misuse of an organization’s assets.<span class=nt>&lt;/p&gt;</span>
+    <span class=nt>&lt;/part&gt;</span>
+  <span class=nt>&lt;/control&gt;</span>
+  <span class=nt>&lt;control</span> <span class=na>id=</span><span class=s>&#34;s2.1.1&#34;</span><span class=nt>&gt;</span>
+    <span class=nt>&lt;title&gt;</span>Access control policy<span class=nt>&lt;/title&gt;</span>
+    <span class=nt>&lt;prop</span> <span class=na>name=</span><span class=s>&#34;label&#34;</span> <span class=na>value=</span><span class=s>&#34;2.1.1&#34;</span><span class=nt>/&gt;</span>
+    <span class=nt>&lt;part</span> <span class=na>id=</span><span class=s>&#34;s2.1.1_stm&#34;</span> <span class=na>name=</span><span class=s>&#34;statement&#34;</span><span class=nt>&gt;</span>
+      <span class=nt>&lt;p&gt;</span>An access control policy should be established, documented and reviewed based on business and information security requirements.<span class=nt>&lt;/p&gt;</span>
+    <span class=nt>&lt;/part&gt;</span>
+    <span class=nt>&lt;part</span> <span class=na>id=</span><span class=s>&#34;s2.1.1_gdn&#34;</span> <span class=na>name=</span><span class=s>&#34;guidance&#34;</span><span class=nt>&gt;</span>
+      <span class=nt>&lt;part</span> <span class=na>id=</span><span class=s>&#34;s2.1.1_gdn.1&#34;</span> <span class=na>name=</span><span class=s>&#34;item&#34;</span><span class=nt>&gt;</span>
+        <span class=nt>&lt;p&gt;</span>Asset owners should determine appropriate access control rules, access rights and restrictions for specific user roles towards their assets, with the amount of detail and the strictness of the controls reflecting the associated information security risks.<span class=nt>&lt;/p&gt;</span>
+      <span class=nt>&lt;/part&gt;</span>
+      <span class=nt>&lt;part</span> <span class=na>id=</span><span class=s>&#34;s2.1.1_gdn.2&#34;</span> <span class=na>name=</span><span class=s>&#34;item&#34;</span><span class=nt>&gt;</span>
+        <span class=nt>&lt;p&gt;</span>Access controls are both logical and physical and these should be considered together.<span class=nt>&lt;/p&gt;</span>
+      <span class=nt>&lt;/part&gt;</span>
+      <span class=nt>&lt;part</span> <span class=na>id=</span><span class=s>&#34;s2.1.1_gdn.3&#34;</span> <span class=na>name=</span><span class=s>&#34;item&#34;</span><span class=nt>&gt;</span>
+        <span class=nt>&lt;p&gt;</span>Users and service providers should be given a clear statement of the business requirements to be met by access controls.<span class=nt>&lt;/p&gt;</span>
+      <span class=nt>&lt;/part&gt;</span>
+      <span class=nt>&lt;part</span> <span class=na>id=</span><span class=s>&#34;s2.1.1_gdn.4&#34;</span> <span class=na>name=</span><span class=s>&#34;item&#34;</span><span class=nt>&gt;</span>
+        <span class=nt>&lt;p&gt;</span>The policy should take account of the following:<span class=nt>&lt;/p&gt;</span>
+        <span class=nt>&lt;ol&gt;</span>
+          <span class=nt>&lt;li&gt;</span>
+            <span class=nt>&lt;p&gt;</span>security requirements of business applications;<span class=nt>&lt;/p&gt;</span>
+          <span class=nt>&lt;/li&gt;</span>
+          <span class=nt>&lt;li&gt;</span>
+            <span class=nt>&lt;p&gt;</span>policies for information dissemination and authorization, e.g. the need-to-know principle and information security levels and classification of information;<span class=nt>&lt;/p&gt;</span>
+          <span class=nt>&lt;/li&gt;</span>
+          <span class=nt>&lt;li&gt;</span>
+            <span class=nt>&lt;p&gt;</span>consistency between the access rights and information classification policies of systems and networks;<span class=nt>&lt;/p&gt;</span>
+          <span class=nt>&lt;/li&gt;</span>
+          <span class=nt>&lt;li&gt;</span>
+            <span class=nt>&lt;p&gt;</span>relevant legislation and any contractual obligations regarding limitation of access to data or services;<span class=nt>&lt;/p&gt;</span>
+          <span class=nt>&lt;/li&gt;</span>
+          <span class=nt>&lt;li&gt;</span>
+            <span class=nt>&lt;p&gt;</span>management of access rights in a distributed and networked environment which recognizes all types of connections available;<span class=nt>&lt;/p&gt;</span>
+          <span class=nt>&lt;/li&gt;</span>
+          <span class=nt>&lt;li&gt;</span>
+            <span class=nt>&lt;p&gt;</span>segregation of access control roles, e.g. access request, access authorization, access administration;<span class=nt>&lt;/p&gt;</span>
+          <span class=nt>&lt;/li&gt;</span>
+          <span class=nt>&lt;li&gt;</span>
+            <span class=nt>&lt;p&gt;</span>requirements for formal authorization of access requests;<span class=nt>&lt;/p&gt;</span>
+          <span class=nt>&lt;/li&gt;</span>
+          <span class=nt>&lt;li&gt;</span>
+            <span class=nt>&lt;p&gt;</span>requirements for periodic review of access rights;<span class=nt>&lt;/p&gt;</span>
+          <span class=nt>&lt;/li&gt;</span>
+          <span class=nt>&lt;li&gt;</span>
+            <span class=nt>&lt;p&gt;</span>removal of access rights;<span class=nt>&lt;/p&gt;</span>
+          <span class=nt>&lt;/li&gt;</span>
+          <span class=nt>&lt;li&gt;</span>
+            <span class=nt>&lt;p&gt;</span>archiving of records of all significant events concerning the use and management of user identities and secret authentication information;,<span class=nt>&lt;/p&gt;</span>
+          <span class=nt>&lt;/li&gt;</span>
+          <span class=nt>&lt;li&gt;</span>
+            <span class=nt>&lt;p&gt;</span>roles with privileged access.<span class=nt>&lt;/p&gt;</span>
+          <span class=nt>&lt;/li&gt;</span>
+        <span class=nt>&lt;/ol&gt;</span>
+      <span class=nt>&lt;/part&gt;</span>
+    <span class=nt>&lt;/part&gt;</span>
+    <span class=nt>&lt;part</span> <span class=na>id=</span><span class=s>&#34;s2.1.1_stm&#34;</span> <span class=na>name=</span><span class=s>&#34;information&#34;</span><span class=nt>&gt;</span>
+      <span class=nt>&lt;part</span> <span class=na>id=</span><span class=s>&#34;s2.1.1_stm.1&#34;</span> <span class=na>name=</span><span class=s>&#34;item&#34;</span><span class=nt>&gt;</span>
+        <span class=nt>&lt;p&gt;</span>Care should be taken when specifying access control rules to consider:<span class=nt>&lt;/p&gt;</span>
+        <span class=nt>&lt;ol&gt;</span>
+          <span class=nt>&lt;li&gt;</span>
+            <span class=nt>&lt;p&gt;</span>establishing rules based on the premise “Everything is generally forbidden unless expressly permitted” rather than the weaker rule “Everything is generally permitted unless expressly forbidden”;<span class=nt>&lt;/p&gt;</span>
+          <span class=nt>&lt;/li&gt;</span>
+          <span class=nt>&lt;li&gt;</span>
+            <span class=nt>&lt;p&gt;</span>changes in information labels that are initiated automatically by information processing facilities and those initiated at the discretion of a user;<span class=nt>&lt;/p&gt;</span>
+          <span class=nt>&lt;/li&gt;</span>
+          <span class=nt>&lt;li&gt;</span>
+            <span class=nt>&lt;p&gt;</span>changes in user permissions that are initiated automatically by the information system and those initiated by an administrator;<span class=nt>&lt;/p&gt;</span>
+          <span class=nt>&lt;/li&gt;</span>
+          <span class=nt>&lt;li&gt;</span>
+            <span class=nt>&lt;p&gt;</span>rules which require specific approval before enactment and those which do not.<span class=nt>&lt;/p&gt;</span>
+          <span class=nt>&lt;/li&gt;</span>
+        <span class=nt>&lt;/ol&gt;</span>
+      <span class=nt>&lt;/part&gt;</span>
+      <span class=nt>&lt;part</span> <span class=na>id=</span><span class=s>&#34;s2.1.1_stm.2&#34;</span> <span class=na>name=</span><span class=s>&#34;item&#34;</span><span class=nt>&gt;</span>
+        <span class=nt>&lt;p&gt;</span>Access control rules should be supported by formal procedures and defined responsibilities.<span class=nt>&lt;/p&gt;</span>
+      <span class=nt>&lt;/part&gt;</span>
+      <span class=nt>&lt;part</span> <span class=na>id=</span><span class=s>&#34;s2.1.1_stm.3&#34;</span> <span class=na>name=</span><span class=s>&#34;item&#34;</span><span class=nt>&gt;</span>
+        <span class=nt>&lt;p&gt;</span>Role based access control is an approach used successfully by many organizations to link access rights with business roles.<span class=nt>&lt;/p&gt;</span>
+      <span class=nt>&lt;/part&gt;</span>
+      <span class=nt>&lt;part</span> <span class=na>id=</span><span class=s>&#34;s2.1.1_stm.4&#34;</span> <span class=na>name=</span><span class=s>&#34;item&#34;</span><span class=nt>&gt;</span>
+        <span class=nt>&lt;p&gt;</span>Two of the frequent principles directing the access control policy are:<span class=nt>&lt;/p&gt;</span>
+        <span class=nt>&lt;ol&gt;</span>
+          <span class=nt>&lt;li&gt;</span>
+            <span class=nt>&lt;p&gt;</span>Need-to-know: you are only granted access to the information you need to perform your tasks (different tasks/roles mean different need-to-know and hence different access profile);<span class=nt>&lt;/p&gt;</span>
+          <span class=nt>&lt;/li&gt;</span>
+          <span class=nt>&lt;li&gt;</span>
+            <span class=nt>&lt;p&gt;</span>Need-to-use: you are only granted access to the information processing facilities (IT equipment, applications, procedures, rooms) you need to perform your task/job/role.<span class=nt>&lt;/p&gt;</span>
+          <span class=nt>&lt;/li&gt;</span>
+        <span class=nt>&lt;/ol&gt;</span>
+      <span class=nt>&lt;/part&gt;</span>
+    <span class=nt>&lt;/part&gt;</span>
+  <span class=nt>&lt;/control&gt;</span>
+<span class=nt>&lt;/catalog&gt;</span>
+</code></pre></td></tr></table></div></div></div><div id=tabs-9-json-tab class=hugo-tab-content-item><div class=highlight><pre class=chroma><code class=language-bash data-lang=bash><span class=c1># Resolve input profile saved to &#34;profile.json&#34;</span>
+$ oscal-cli profile resolve profile.json
+</code></pre></div><p>Notice, that the OSCAL CLI automatically detects the file type of the profile and produces the following output catalog:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>  1
+</span><span class=lnt>  2
+</span><span class=lnt>  3
+</span><span class=lnt>  4
+</span><span class=lnt>  5
+</span><span class=lnt>  6
+</span><span class=lnt>  7
+</span><span class=lnt>  8
+</span><span class=lnt>  9
+</span><span class=lnt> 10
+</span><span class=lnt> 11
+</span><span class=lnt> 12
+</span><span class=lnt> 13
+</span><span class=lnt> 14
+</span><span class=lnt> 15
+</span><span class=lnt> 16
+</span><span class=lnt> 17
+</span><span class=lnt> 18
+</span><span class=lnt> 19
+</span><span class=lnt> 20
+</span><span class=lnt> 21
+</span><span class=lnt> 22
+</span><span class=lnt> 23
+</span><span class=lnt> 24
+</span><span class=lnt> 25
+</span><span class=lnt> 26
+</span><span class=lnt> 27
+</span><span class=lnt> 28
+</span><span class=lnt> 29
+</span><span class=lnt> 30
+</span><span class=lnt> 31
+</span><span class=lnt> 32
+</span><span class=lnt> 33
+</span><span class=lnt> 34
+</span><span class=lnt> 35
+</span><span class=lnt> 36
+</span><span class=lnt> 37
+</span><span class=lnt> 38
+</span><span class=lnt> 39
+</span><span class=lnt> 40
+</span><span class=lnt> 41
+</span><span class=lnt> 42
+</span><span class=lnt> 43
+</span><span class=lnt> 44
+</span><span class=lnt> 45
+</span><span class=lnt> 46
+</span><span class=lnt> 47
+</span><span class=lnt> 48
+</span><span class=lnt> 49
+</span><span class=lnt> 50
+</span><span class=lnt> 51
+</span><span class=lnt> 52
+</span><span class=lnt> 53
+</span><span class=lnt> 54
+</span><span class=lnt> 55
+</span><span class=lnt> 56
+</span><span class=lnt> 57
+</span><span class=lnt> 58
+</span><span class=lnt> 59
+</span><span class=lnt> 60
+</span><span class=lnt> 61
+</span><span class=lnt> 62
+</span><span class=lnt> 63
+</span><span class=lnt> 64
+</span><span class=lnt> 65
+</span><span class=lnt> 66
+</span><span class=lnt> 67
+</span><span class=lnt> 68
+</span><span class=lnt> 69
+</span><span class=lnt> 70
+</span><span class=lnt> 71
+</span><span class=lnt> 72
+</span><span class=lnt> 73
+</span><span class=lnt> 74
+</span><span class=lnt> 75
+</span><span class=lnt> 76
+</span><span class=lnt> 77
+</span><span class=lnt> 78
+</span><span class=lnt> 79
+</span><span class=lnt> 80
+</span><span class=lnt> 81
+</span><span class=lnt> 82
+</span><span class=lnt> 83
+</span><span class=lnt> 84
+</span><span class=lnt> 85
+</span><span class=lnt> 86
+</span><span class=lnt> 87
+</span><span class=lnt> 88
+</span><span class=lnt> 89
+</span><span class=lnt> 90
+</span><span class=lnt> 91
+</span><span class=lnt> 92
+</span><span class=lnt> 93
+</span><span class=lnt> 94
+</span><span class=lnt> 95
+</span><span class=lnt> 96
+</span><span class=lnt> 97
+</span><span class=lnt> 98
+</span><span class=lnt> 99
+</span><span class=lnt>100
+</span><span class=lnt>101
+</span><span class=lnt>102
+</span><span class=lnt>103
+</span><span class=lnt>104
+</span><span class=lnt>105
+</span><span class=lnt>106
+</span><span class=lnt>107
+</span><span class=lnt>108
+</span><span class=lnt>109
+</span><span class=lnt>110
+</span><span class=lnt>111
+</span><span class=lnt>112
+</span><span class=lnt>113
+</span><span class=lnt>114
+</span><span class=lnt>115
+</span><span class=lnt>116
+</span><span class=lnt>117
+</span><span class=lnt>118
+</span><span class=lnt>119
+</span><span class=lnt>120
+</span><span class=lnt>121
+</span><span class=lnt>122
+</span><span class=lnt>123
+</span><span class=lnt>124
+</span><span class=lnt>125
+</span><span class=lnt>126
+</span><span class=lnt>127
+</span><span class=lnt>128
+</span><span class=lnt>129
+</span><span class=lnt>130
+</span><span class=lnt>131
+</span><span class=lnt>132
+</span><span class=lnt>133
+</span><span class=lnt>134
+</span><span class=lnt>135
+</span><span class=lnt>136
+</span><span class=lnt>137
+</span><span class=lnt>138
+</span><span class=lnt>139
+</span><span class=lnt>140
+</span><span class=lnt>141
+</span><span class=lnt>142
+</span><span class=lnt>143
+</span><span class=lnt>144
+</span><span class=lnt>145
+</span><span class=lnt>146
+</span><span class=lnt>147
+</span><span class=lnt>148
+</span><span class=lnt>149
+</span><span class=lnt>150
+</span><span class=lnt>151
+</span><span class=lnt>152
+</span><span class=lnt>153
+</span><span class=lnt>154
+</span><span class=lnt>155
+</span><span class=lnt>156
+</span><span class=lnt>157
+</span><span class=lnt>158
+</span><span class=lnt>159
+</span><span class=lnt>160
+</span><span class=lnt>161
+</span><span class=lnt>162
+</span><span class=lnt>163
+</span><span class=lnt>164
+</span><span class=lnt>165
+</span><span class=lnt>166
+</span><span class=lnt>167
+</span><span class=lnt>168
+</span><span class=lnt>169
+</span><span class=lnt>170
+</span><span class=lnt>171
+</span><span class=lnt>172
+</span><span class=lnt>173
+</span><span class=lnt>174
+</span><span class=lnt>175
+</span><span class=lnt>176
+</span><span class=lnt>177
+</span><span class=lnt>178
+</span><span class=lnt>179
+</span><span class=lnt>180
+</span><span class=lnt>181
+</span><span class=lnt>182
+</span><span class=lnt>183
+</span><span class=lnt>184
+</span><span class=lnt>185
+</span><span class=lnt>186
+</span><span class=lnt>187
+</span><span class=lnt>188
+</span><span class=lnt>189
+</span><span class=lnt>190
+</span><span class=lnt>191
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-json data-lang=json><span class=p>{</span>
+  <span class=nt>&#34;catalog&#34;</span><span class=p>:</span> <span class=p>{</span>
+    <span class=nt>&#34;uuid&#34;</span><span class=p>:</span> <span class=s2>&#34;b51ff9bb-5ffd-415d-a25c-7eef2fd6d48b&#34;</span><span class=p>,</span>
+    <span class=nt>&#34;metadata&#34;</span><span class=p>:</span> <span class=p>{</span>
+      <span class=nt>&#34;title&#34;</span><span class=p>:</span> <span class=s2>&#34;Sample Security Profile *for Demonstration* and Testing&#34;</span><span class=p>,</span>
+      <span class=nt>&#34;last-modified&#34;</span><span class=p>:</span> <span class=s2>&#34;2023-05-13T22:08:03.596582192Z&#34;</span><span class=p>,</span>
+      <span class=nt>&#34;version&#34;</span><span class=p>:</span> <span class=s2>&#34;1.0&#34;</span><span class=p>,</span>
+      <span class=nt>&#34;oscal-version&#34;</span><span class=p>:</span> <span class=s2>&#34;1.0.4&#34;</span>
+    <span class=p>},</span>
+    <span class=nt>&#34;controls&#34;</span><span class=p>:</span> <span class=p>[</span>
+      <span class=p>{</span>
+        <span class=nt>&#34;id&#34;</span><span class=p>:</span> <span class=s2>&#34;s1.1.1&#34;</span><span class=p>,</span>
+        <span class=nt>&#34;title&#34;</span><span class=p>:</span> <span class=s2>&#34;Information security roles and responsibilities&#34;</span><span class=p>,</span>
+        <span class=nt>&#34;params&#34;</span><span class=p>:</span> <span class=p>[</span>
+          <span class=p>{</span>
+            <span class=nt>&#34;id&#34;</span><span class=p>:</span> <span class=s2>&#34;s1.1.1-prm1&#34;</span><span class=p>,</span>
+            <span class=nt>&#34;label&#34;</span><span class=p>:</span> <span class=s2>&#34;a choice from a selection&#34;</span><span class=p>,</span>
+            <span class=nt>&#34;select&#34;</span><span class=p>:</span> <span class=p>{</span>
+              <span class=nt>&#34;how-many&#34;</span><span class=p>:</span> <span class=s2>&#34;one-or-more&#34;</span><span class=p>,</span>
+              <span class=nt>&#34;choice&#34;</span><span class=p>:</span> <span class=p>[</span>
+                <span class=s2>&#34;initiating a device lock after {{ insert: param, s1.1.1-prm_2 }} of inactivity&#34;</span><span class=p>,</span>
+                <span class=s2>&#34;requiring the user to initiate a device lock before leaving the system unattended&#34;</span>
+              <span class=p>]</span>
+            <span class=p>}</span>
+          <span class=p>},</span>
+          <span class=p>{</span>
+            <span class=nt>&#34;id&#34;</span><span class=p>:</span> <span class=s2>&#34;s1.1.1-prm_2&#34;</span><span class=p>,</span>
+            <span class=nt>&#34;label&#34;</span><span class=p>:</span> <span class=s2>&#34;a duration (maximum 30 minutes)&#34;</span>
+          <span class=p>}</span>
+        <span class=p>],</span>
+        <span class=nt>&#34;props&#34;</span><span class=p>:</span> <span class=p>[</span>
+          <span class=p>{</span>
+            <span class=nt>&#34;name&#34;</span><span class=p>:</span> <span class=s2>&#34;label&#34;</span><span class=p>,</span>
+            <span class=nt>&#34;value&#34;</span><span class=p>:</span> <span class=s2>&#34;1.1.1&#34;</span>
+          <span class=p>}</span>
+        <span class=p>],</span>
+        <span class=nt>&#34;parts&#34;</span><span class=p>:</span> <span class=p>[</span>
+          <span class=p>{</span>
+            <span class=nt>&#34;id&#34;</span><span class=p>:</span> <span class=s2>&#34;s1.1.1_stm&#34;</span><span class=p>,</span>
+            <span class=nt>&#34;name&#34;</span><span class=p>:</span> <span class=s2>&#34;statement&#34;</span><span class=p>,</span>
+            <span class=nt>&#34;prose&#34;</span><span class=p>:</span> <span class=s2>&#34;All information security responsibilities should be defined and allocated.\n\nA value has been assigned to {{ insert: param, s1.1.1-prm1 }}.\n\nA cross link has been established with a choppy syntax: [(choppy)](#s1.2).&#34;</span>
+          <span class=p>},</span>
+          <span class=p>{</span>
+            <span class=nt>&#34;id&#34;</span><span class=p>:</span> <span class=s2>&#34;s1.1.1_gdn&#34;</span><span class=p>,</span>
+            <span class=nt>&#34;name&#34;</span><span class=p>:</span> <span class=s2>&#34;guidance&#34;</span><span class=p>,</span>
+            <span class=nt>&#34;parts&#34;</span><span class=p>:</span> <span class=p>[</span>
+              <span class=p>{</span>
+                <span class=nt>&#34;id&#34;</span><span class=p>:</span> <span class=s2>&#34;s1.1.1_gdn.1&#34;</span><span class=p>,</span>
+                <span class=nt>&#34;name&#34;</span><span class=p>:</span> <span class=s2>&#34;item&#34;</span><span class=p>,</span>
+                <span class=nt>&#34;prose&#34;</span><span class=p>:</span> <span class=s2>&#34;Allocation of information security responsibilities should be done in accordance with the information security policies. Responsibilities for the protection of individual assets and for carrying out specific information security processes should be identified. Responsibilities for information security risk management activities and in particular for acceptance of residual risks should be defined. These responsibilities should be supplemented, where necessary, with more detailed guidance for specific sites and information processing facilities. Local responsibilities for the protection of assets and for carrying out specific security processes should be defined.&#34;</span>
+              <span class=p>},</span>
+              <span class=p>{</span>
+                <span class=nt>&#34;id&#34;</span><span class=p>:</span> <span class=s2>&#34;s1.1.1_gdn.2&#34;</span><span class=p>,</span>
+                <span class=nt>&#34;name&#34;</span><span class=p>:</span> <span class=s2>&#34;item&#34;</span><span class=p>,</span>
+                <span class=nt>&#34;prose&#34;</span><span class=p>:</span> <span class=s2>&#34;Individuals with allocated information security responsibilities may delegate security tasks to others. Nevertheless they remain accountable and should determine that any delegated tasks have been correctly performed.&#34;</span>
+              <span class=p>},</span>
+              <span class=p>{</span>
+                <span class=nt>&#34;id&#34;</span><span class=p>:</span> <span class=s2>&#34;s1.1.1_gdn.3&#34;</span><span class=p>,</span>
+                <span class=nt>&#34;name&#34;</span><span class=p>:</span> <span class=s2>&#34;item&#34;</span><span class=p>,</span>
+                <span class=nt>&#34;prose&#34;</span><span class=p>:</span> <span class=s2>&#34;Areas for which individuals are responsible should be stated. In particular the following should take place:\n\n1. the assets and information security processes should be identified and defined;\n2. the entity responsible for each asset or information security process should be assigned and the details of this responsibility should be documented;\n3. authorization levels should be defined and documented;\n4. to be able to fulfil responsibilities in the information security area the appointed individuals should be competent in the area and be given opportunities to keep up to date with developments;\n5. coordination and oversight of information security aspects of supplier relationships should be identified and documented.&#34;</span>
+              <span class=p>},</span>
+              <span class=p>{</span>
+                <span class=nt>&#34;id&#34;</span><span class=p>:</span> <span class=s2>&#34;s1.1.1_gdn.4&#34;</span><span class=p>,</span>
+                <span class=nt>&#34;name&#34;</span><span class=p>:</span> <span class=s2>&#34;item&#34;</span><span class=p>,</span>
+                <span class=nt>&#34;prose&#34;</span><span class=p>:</span> <span class=s2>&#34;Users of devices running Gnome can adjust the inactivity timeout using the following link: https://help.gnome.org/admin/system-admin-guide/stable/desktop-lockscreen.html.en&#34;</span>
+              <span class=p>}</span>
+            <span class=p>]</span>
+          <span class=p>},</span>
+          <span class=p>{</span>
+            <span class=nt>&#34;id&#34;</span><span class=p>:</span> <span class=s2>&#34;s1.1.1_inf&#34;</span><span class=p>,</span>
+            <span class=nt>&#34;name&#34;</span><span class=p>:</span> <span class=s2>&#34;information&#34;</span><span class=p>,</span>
+            <span class=nt>&#34;props&#34;</span><span class=p>:</span> <span class=p>[</span>
+              <span class=p>{</span>
+                <span class=nt>&#34;name&#34;</span><span class=p>:</span> <span class=s2>&#34;label&#34;</span><span class=p>,</span>
+                <span class=nt>&#34;value&#34;</span><span class=p>:</span> <span class=s2>&#34;Other information&#34;</span>
+              <span class=p>}</span>
+            <span class=p>],</span>
+            <span class=nt>&#34;prose&#34;</span><span class=p>:</span> <span class=s2>&#34;Many organizations appoint an information security manager to take overall responsibility for the development and implementation of information security and to support the identification of controls.\n\nHowever, responsibility for resourcing and implementing the controls will often remain with individual managers. One common practice is to appoint an owner for each asset who then becomes responsible for its day-to-day protection.&#34;</span>
+          <span class=p>}</span>
+        <span class=p>]</span>
+      <span class=p>},</span>
+      <span class=p>{</span>
+        <span class=nt>&#34;id&#34;</span><span class=p>:</span> <span class=s2>&#34;s1.1.2&#34;</span><span class=p>,</span>
+        <span class=nt>&#34;title&#34;</span><span class=p>:</span> <span class=s2>&#34;Segregation of duties&#34;</span><span class=p>,</span>
+        <span class=nt>&#34;props&#34;</span><span class=p>:</span> <span class=p>[</span>
+          <span class=p>{</span>
+            <span class=nt>&#34;name&#34;</span><span class=p>:</span> <span class=s2>&#34;label&#34;</span><span class=p>,</span>
+            <span class=nt>&#34;value&#34;</span><span class=p>:</span> <span class=s2>&#34;1.1.2&#34;</span>
+          <span class=p>}</span>
+        <span class=p>],</span>
+        <span class=nt>&#34;parts&#34;</span><span class=p>:</span> <span class=p>[</span>
+          <span class=p>{</span>
+            <span class=nt>&#34;id&#34;</span><span class=p>:</span> <span class=s2>&#34;s1.1.2_stm&#34;</span><span class=p>,</span>
+            <span class=nt>&#34;name&#34;</span><span class=p>:</span> <span class=s2>&#34;statement&#34;</span><span class=p>,</span>
+            <span class=nt>&#34;prose&#34;</span><span class=p>:</span> <span class=s2>&#34;Conflicting duties and areas of responsibility should be segregated to reduce opportunities for unauthorized or unintentional modification or misuse of the organization’s assets.&#34;</span>
+          <span class=p>},</span>
+          <span class=p>{</span>
+            <span class=nt>&#34;id&#34;</span><span class=p>:</span> <span class=s2>&#34;s1.1.2_gdn&#34;</span><span class=p>,</span>
+            <span class=nt>&#34;name&#34;</span><span class=p>:</span> <span class=s2>&#34;guidance&#34;</span><span class=p>,</span>
+            <span class=nt>&#34;parts&#34;</span><span class=p>:</span> <span class=p>[</span>
+              <span class=p>{</span>
+                <span class=nt>&#34;id&#34;</span><span class=p>:</span> <span class=s2>&#34;s1.1.2_gdn.1&#34;</span><span class=p>,</span>
+                <span class=nt>&#34;name&#34;</span><span class=p>:</span> <span class=s2>&#34;item&#34;</span><span class=p>,</span>
+                <span class=nt>&#34;prose&#34;</span><span class=p>:</span> <span class=s2>&#34;Care should be taken that no single person can access, modify or use assets without authorization or detection. The initiation of an event should be separated from its authorization. The possibility of collusion should be considered in designing the controls.&#34;</span>
+              <span class=p>},</span>
+              <span class=p>{</span>
+                <span class=nt>&#34;id&#34;</span><span class=p>:</span> <span class=s2>&#34;s1.1.2_gdn.2&#34;</span><span class=p>,</span>
+                <span class=nt>&#34;name&#34;</span><span class=p>:</span> <span class=s2>&#34;item&#34;</span><span class=p>,</span>
+                <span class=nt>&#34;prose&#34;</span><span class=p>:</span> <span class=s2>&#34;Small organizations may find segregation of duties difficult to achieve, but the principle should be applied as far as is possible and practicable. Whenever it is difficult to segregate, other controls such as monitoring of activities, audit trails and management supervision should be considered.&#34;</span>
+              <span class=p>}</span>
+            <span class=p>]</span>
+          <span class=p>},</span>
+          <span class=p>{</span>
+            <span class=nt>&#34;id&#34;</span><span class=p>:</span> <span class=s2>&#34;s1.1.2_inf&#34;</span><span class=p>,</span>
+            <span class=nt>&#34;name&#34;</span><span class=p>:</span> <span class=s2>&#34;information&#34;</span><span class=p>,</span>
+            <span class=nt>&#34;prose&#34;</span><span class=p>:</span> <span class=s2>&#34;Segregation of duties is a method for reducing the risk of accidental or deliberate misuse of an organization’s assets.&#34;</span>
+          <span class=p>}</span>
+        <span class=p>]</span>
+      <span class=p>},</span>
+      <span class=p>{</span>
+        <span class=nt>&#34;id&#34;</span><span class=p>:</span> <span class=s2>&#34;s2.1.1&#34;</span><span class=p>,</span>
+        <span class=nt>&#34;title&#34;</span><span class=p>:</span> <span class=s2>&#34;Access control policy&#34;</span><span class=p>,</span>
+        <span class=nt>&#34;props&#34;</span><span class=p>:</span> <span class=p>[</span>
+          <span class=p>{</span>
+            <span class=nt>&#34;name&#34;</span><span class=p>:</span> <span class=s2>&#34;label&#34;</span><span class=p>,</span>
+            <span class=nt>&#34;value&#34;</span><span class=p>:</span> <span class=s2>&#34;2.1.1&#34;</span>
+          <span class=p>}</span>
+        <span class=p>],</span>
+        <span class=nt>&#34;parts&#34;</span><span class=p>:</span> <span class=p>[</span>
+          <span class=p>{</span>
+            <span class=nt>&#34;id&#34;</span><span class=p>:</span> <span class=s2>&#34;s2.1.1_stm&#34;</span><span class=p>,</span>
+            <span class=nt>&#34;name&#34;</span><span class=p>:</span> <span class=s2>&#34;statement&#34;</span><span class=p>,</span>
+            <span class=nt>&#34;prose&#34;</span><span class=p>:</span> <span class=s2>&#34;An access control policy should be established, documented and reviewed based on business and information security requirements.&#34;</span>
+          <span class=p>},</span>
+          <span class=p>{</span>
+            <span class=nt>&#34;id&#34;</span><span class=p>:</span> <span class=s2>&#34;s2.1.1_gdn&#34;</span><span class=p>,</span>
+            <span class=nt>&#34;name&#34;</span><span class=p>:</span> <span class=s2>&#34;guidance&#34;</span><span class=p>,</span>
+            <span class=nt>&#34;parts&#34;</span><span class=p>:</span> <span class=p>[</span>
+              <span class=p>{</span>
+                <span class=nt>&#34;id&#34;</span><span class=p>:</span> <span class=s2>&#34;s2.1.1_gdn.1&#34;</span><span class=p>,</span>
+                <span class=nt>&#34;name&#34;</span><span class=p>:</span> <span class=s2>&#34;item&#34;</span><span class=p>,</span>
+                <span class=nt>&#34;prose&#34;</span><span class=p>:</span> <span class=s2>&#34;Asset owners should determine appropriate access control rules, access rights and restrictions for specific user roles towards their assets, with the amount of detail and the strictness of the controls reflecting the associated information security risks.&#34;</span>
+              <span class=p>},</span>
+              <span class=p>{</span>
+                <span class=nt>&#34;id&#34;</span><span class=p>:</span> <span class=s2>&#34;s2.1.1_gdn.2&#34;</span><span class=p>,</span>
+                <span class=nt>&#34;name&#34;</span><span class=p>:</span> <span class=s2>&#34;item&#34;</span><span class=p>,</span>
+                <span class=nt>&#34;prose&#34;</span><span class=p>:</span> <span class=s2>&#34;Access controls are both logical and physical and these should be considered together.&#34;</span>
+              <span class=p>},</span>
+              <span class=p>{</span>
+                <span class=nt>&#34;id&#34;</span><span class=p>:</span> <span class=s2>&#34;s2.1.1_gdn.3&#34;</span><span class=p>,</span>
+                <span class=nt>&#34;name&#34;</span><span class=p>:</span> <span class=s2>&#34;item&#34;</span><span class=p>,</span>
+                <span class=nt>&#34;prose&#34;</span><span class=p>:</span> <span class=s2>&#34;Users and service providers should be given a clear statement of the business requirements to be met by access controls.&#34;</span>
+              <span class=p>},</span>
+              <span class=p>{</span>
+                <span class=nt>&#34;id&#34;</span><span class=p>:</span> <span class=s2>&#34;s2.1.1_gdn.4&#34;</span><span class=p>,</span>
+                <span class=nt>&#34;name&#34;</span><span class=p>:</span> <span class=s2>&#34;item&#34;</span><span class=p>,</span>
+                <span class=nt>&#34;prose&#34;</span><span class=p>:</span> <span class=s2>&#34;The policy should take account of the following:\n\n1. security requirements of business applications;\n2. policies for information dissemination and authorization, e.g. the need-to-know principle and information security levels and classification of information;\n3. consistency between the access rights and information classification policies of systems and networks;\n4. relevant legislation and any contractual obligations regarding limitation of access to data or services;\n5. management of access rights in a distributed and networked environment which recognizes all types of connections available;\n6. segregation of access control roles, e.g. access request, access authorization, access administration;\n7. requirements for formal authorization of access requests;\n8. requirements for periodic review of access rights;\n9. removal of access rights;\n10. archiving of records of all significant events concerning the use and management of user identities and secret authentication information;,\n11. roles with privileged access.&#34;</span>
+              <span class=p>}</span>
+            <span class=p>]</span>
+          <span class=p>},</span>
+          <span class=p>{</span>
+            <span class=nt>&#34;id&#34;</span><span class=p>:</span> <span class=s2>&#34;s2.1.1_stm&#34;</span><span class=p>,</span>
+            <span class=nt>&#34;name&#34;</span><span class=p>:</span> <span class=s2>&#34;information&#34;</span><span class=p>,</span>
+            <span class=nt>&#34;parts&#34;</span><span class=p>:</span> <span class=p>[</span>
+              <span class=p>{</span>
+                <span class=nt>&#34;id&#34;</span><span class=p>:</span> <span class=s2>&#34;s2.1.1_stm.1&#34;</span><span class=p>,</span>
+                <span class=nt>&#34;name&#34;</span><span class=p>:</span> <span class=s2>&#34;item&#34;</span><span class=p>,</span>
+                <span class=nt>&#34;prose&#34;</span><span class=p>:</span> <span class=s2>&#34;Care should be taken when specifying access control rules to consider:\n\n1. establishing rules based on the premise “Everything is generally forbidden unless expressly permitted” rather than the weaker rule “Everything is generally permitted unless expressly forbidden”;\n2. changes in information labels that are initiated automatically by information processing facilities and those initiated at the discretion of a user;\n3. changes in user permissions that are initiated automatically by the information system and those initiated by an administrator;\n4. rules which require specific approval before enactment and those which do not.&#34;</span>
+              <span class=p>},</span>
+              <span class=p>{</span>
+                <span class=nt>&#34;id&#34;</span><span class=p>:</span> <span class=s2>&#34;s2.1.1_stm.2&#34;</span><span class=p>,</span>
+                <span class=nt>&#34;name&#34;</span><span class=p>:</span> <span class=s2>&#34;item&#34;</span><span class=p>,</span>
+                <span class=nt>&#34;prose&#34;</span><span class=p>:</span> <span class=s2>&#34;Access control rules should be supported by formal procedures and defined responsibilities.&#34;</span>
+              <span class=p>},</span>
+              <span class=p>{</span>
+                <span class=nt>&#34;id&#34;</span><span class=p>:</span> <span class=s2>&#34;s2.1.1_stm.3&#34;</span><span class=p>,</span>
+                <span class=nt>&#34;name&#34;</span><span class=p>:</span> <span class=s2>&#34;item&#34;</span><span class=p>,</span>
+                <span class=nt>&#34;prose&#34;</span><span class=p>:</span> <span class=s2>&#34;Role based access control is an approach used successfully by many organizations to link access rights with business roles.&#34;</span>
+              <span class=p>},</span>
+              <span class=p>{</span>
+                <span class=nt>&#34;id&#34;</span><span class=p>:</span> <span class=s2>&#34;s2.1.1_stm.4&#34;</span><span class=p>,</span>
+                <span class=nt>&#34;name&#34;</span><span class=p>:</span> <span class=s2>&#34;item&#34;</span><span class=p>,</span>
+                <span class=nt>&#34;prose&#34;</span><span class=p>:</span> <span class=s2>&#34;Two of the frequent principles directing the access control policy are:\n\n1. Need-to-know: you are only granted access to the information you need to perform your tasks (different tasks/roles mean different need-to-know and hence different access profile);\n2. Need-to-use: you are only granted access to the information processing facilities (IT equipment, applications, procedures, rooms) you need to perform your task/job/role.&#34;</span>
+              <span class=p>}</span>
+            <span class=p>]</span>
+          <span class=p>}</span>
+        <span class=p>]</span>
+      <span class=p>}</span>
+    <span class=p>]</span>
+  <span class=p>}</span>
+<span class=p>}</span>
+</code></pre></td></tr></table></div></div></div><div id=tabs-9-yaml-tab class=hugo-tab-content-item><div class=highlight><pre class=chroma><code class=language-bash data-lang=bash><span class=c1># Resolve input profile saved to &#34;profile.yaml&#34;</span>
+$ oscal-cli profile resolve profile.yaml
+</code></pre></div><p>Notice, that the OSCAL CLI automatically detects the file type of the profile and produces the following output catalog:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>  1
+</span><span class=lnt>  2
+</span><span class=lnt>  3
+</span><span class=lnt>  4
+</span><span class=lnt>  5
+</span><span class=lnt>  6
+</span><span class=lnt>  7
+</span><span class=lnt>  8
+</span><span class=lnt>  9
+</span><span class=lnt> 10
+</span><span class=lnt> 11
+</span><span class=lnt> 12
+</span><span class=lnt> 13
+</span><span class=lnt> 14
+</span><span class=lnt> 15
+</span><span class=lnt> 16
+</span><span class=lnt> 17
+</span><span class=lnt> 18
+</span><span class=lnt> 19
+</span><span class=lnt> 20
+</span><span class=lnt> 21
+</span><span class=lnt> 22
+</span><span class=lnt> 23
+</span><span class=lnt> 24
+</span><span class=lnt> 25
+</span><span class=lnt> 26
+</span><span class=lnt> 27
+</span><span class=lnt> 28
+</span><span class=lnt> 29
+</span><span class=lnt> 30
+</span><span class=lnt> 31
+</span><span class=lnt> 32
+</span><span class=lnt> 33
+</span><span class=lnt> 34
+</span><span class=lnt> 35
+</span><span class=lnt> 36
+</span><span class=lnt> 37
+</span><span class=lnt> 38
+</span><span class=lnt> 39
+</span><span class=lnt> 40
+</span><span class=lnt> 41
+</span><span class=lnt> 42
+</span><span class=lnt> 43
+</span><span class=lnt> 44
+</span><span class=lnt> 45
+</span><span class=lnt> 46
+</span><span class=lnt> 47
+</span><span class=lnt> 48
+</span><span class=lnt> 49
+</span><span class=lnt> 50
+</span><span class=lnt> 51
+</span><span class=lnt> 52
+</span><span class=lnt> 53
+</span><span class=lnt> 54
+</span><span class=lnt> 55
+</span><span class=lnt> 56
+</span><span class=lnt> 57
+</span><span class=lnt> 58
+</span><span class=lnt> 59
+</span><span class=lnt> 60
+</span><span class=lnt> 61
+</span><span class=lnt> 62
+</span><span class=lnt> 63
+</span><span class=lnt> 64
+</span><span class=lnt> 65
+</span><span class=lnt> 66
+</span><span class=lnt> 67
+</span><span class=lnt> 68
+</span><span class=lnt> 69
+</span><span class=lnt> 70
+</span><span class=lnt> 71
+</span><span class=lnt> 72
+</span><span class=lnt> 73
+</span><span class=lnt> 74
+</span><span class=lnt> 75
+</span><span class=lnt> 76
+</span><span class=lnt> 77
+</span><span class=lnt> 78
+</span><span class=lnt> 79
+</span><span class=lnt> 80
+</span><span class=lnt> 81
+</span><span class=lnt> 82
+</span><span class=lnt> 83
+</span><span class=lnt> 84
+</span><span class=lnt> 85
+</span><span class=lnt> 86
+</span><span class=lnt> 87
+</span><span class=lnt> 88
+</span><span class=lnt> 89
+</span><span class=lnt> 90
+</span><span class=lnt> 91
+</span><span class=lnt> 92
+</span><span class=lnt> 93
+</span><span class=lnt> 94
+</span><span class=lnt> 95
+</span><span class=lnt> 96
+</span><span class=lnt> 97
+</span><span class=lnt> 98
+</span><span class=lnt> 99
+</span><span class=lnt>100
+</span><span class=lnt>101
+</span><span class=lnt>102
+</span><span class=lnt>103
+</span><span class=lnt>104
+</span><span class=lnt>105
+</span><span class=lnt>106
+</span><span class=lnt>107
+</span><span class=lnt>108
+</span><span class=lnt>109
+</span><span class=lnt>110
+</span><span class=lnt>111
+</span><span class=lnt>112
+</span><span class=lnt>113
+</span><span class=lnt>114
+</span><span class=lnt>115
+</span><span class=lnt>116
+</span><span class=lnt>117
+</span><span class=lnt>118
+</span><span class=lnt>119
+</span><span class=lnt>120
+</span><span class=lnt>121
+</span><span class=lnt>122
+</span><span class=lnt>123
+</span><span class=lnt>124
+</span><span class=lnt>125
+</span><span class=lnt>126
+</span><span class=lnt>127
+</span><span class=lnt>128
+</span><span class=lnt>129
+</span><span class=lnt>130
+</span><span class=lnt>131
+</span><span class=lnt>132
+</span><span class=lnt>133
+</span><span class=lnt>134
+</span><span class=lnt>135
+</span><span class=lnt>136
+</span><span class=lnt>137
+</span><span class=lnt>138
+</span><span class=lnt>139
+</span><span class=lnt>140
+</span><span class=lnt>141
+</span><span class=lnt>142
+</span><span class=lnt>143
+</span><span class=lnt>144
+</span><span class=lnt>145
+</span><span class=lnt>146
+</span><span class=lnt>147
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-yaml data-lang=yaml><span class=nn>---</span><span class=w>
+</span><span class=w></span><span class=nt>catalog</span><span class=p>:</span><span class=w>
+</span><span class=w>  </span><span class=nt>uuid</span><span class=p>:</span><span class=w> </span><span class=l>b1296da4-4ada-40f1-bbeb-20e3429bef41</span><span class=w>
+</span><span class=w>  </span><span class=nt>metadata</span><span class=p>:</span><span class=w>
+</span><span class=w>    </span><span class=nt>title</span><span class=p>:</span><span class=w> </span><span class=l>Sample Security Profile *for Demonstration* and Testing</span><span class=w>
+</span><span class=w>    </span><span class=nt>last-modified</span><span class=p>:</span><span class=w> </span><span class=ld>2023-05-13T22:08:16.76575041Z</span><span class=w>
+</span><span class=w>    </span><span class=nt>version</span><span class=p>:</span><span class=w> </span><span class=s2>&#34;1.0&#34;</span><span class=w>
+</span><span class=w>    </span><span class=nt>oscal-version</span><span class=p>:</span><span class=w> </span><span class=m>1.0.4</span><span class=w>
+</span><span class=w>  </span><span class=nt>controls</span><span class=p>:</span><span class=w>
+</span><span class=w>  </span>- <span class=nt>id</span><span class=p>:</span><span class=w> </span><span class=l>s1.1.1</span><span class=w>
+</span><span class=w>    </span><span class=nt>title</span><span class=p>:</span><span class=w> </span><span class=l>Information security roles and responsibilities</span><span class=w>
+</span><span class=w>    </span><span class=nt>params</span><span class=p>:</span><span class=w>
+</span><span class=w>    </span>- <span class=nt>id</span><span class=p>:</span><span class=w> </span><span class=l>s1.1.1-prm1</span><span class=w>
+</span><span class=w>      </span><span class=nt>label</span><span class=p>:</span><span class=w> </span><span class=l>a choice from a selection</span><span class=w>
+</span><span class=w>      </span><span class=nt>select</span><span class=p>:</span><span class=w>
+</span><span class=w>        </span><span class=nt>how-many</span><span class=p>:</span><span class=w> </span><span class=l>one-or-more</span><span class=w>
+</span><span class=w>        </span><span class=nt>choice</span><span class=p>:</span><span class=w>
+</span><span class=w>        </span>- <span class=s2>&#34;initiating a device lock after {{ insert: param, s1.1.1-prm_2 }} of inactivity&#34;</span><span class=w>
+</span><span class=w>        </span>- <span class=l>requiring the user to initiate a device lock before leaving the system unattended</span><span class=w>
+</span><span class=w>    </span>- <span class=nt>id</span><span class=p>:</span><span class=w> </span><span class=l>s1.1.1-prm_2</span><span class=w>
+</span><span class=w>      </span><span class=nt>label</span><span class=p>:</span><span class=w> </span><span class=l>a duration (maximum 30 minutes)</span><span class=w>
+</span><span class=w>    </span><span class=nt>props</span><span class=p>:</span><span class=w>
+</span><span class=w>    </span>- <span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>label</span><span class=w>
+</span><span class=w>      </span><span class=nt>value</span><span class=p>:</span><span class=w> </span><span class=m>1.1.1</span><span class=w>
+</span><span class=w>    </span><span class=nt>parts</span><span class=p>:</span><span class=w>
+</span><span class=w>    </span>- <span class=nt>id</span><span class=p>:</span><span class=w> </span><span class=l>s1.1.1_stm</span><span class=w>
+</span><span class=w>      </span><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>statement</span><span class=w>
+</span><span class=w>      </span><span class=nt>prose</span><span class=p>:</span><span class=w> </span><span class=p>|-</span><span class=sd>
+</span><span class=sd>        All information security responsibilities should be defined and allocated.
+</span><span class=sd>
+</span><span class=sd>        A value has been assigned to {{ insert: param, s1.1.1-prm1 }}.
+</span><span class=sd>
+</span><span class=sd>        A cross link has been established with a choppy syntax: [(choppy)](#s1.2).</span><span class=w>        
+</span><span class=w>    </span>- <span class=nt>id</span><span class=p>:</span><span class=w> </span><span class=l>s1.1.1_gdn</span><span class=w>
+</span><span class=w>      </span><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>guidance</span><span class=w>
+</span><span class=w>      </span><span class=nt>parts</span><span class=p>:</span><span class=w>
+</span><span class=w>      </span>- <span class=nt>id</span><span class=p>:</span><span class=w> </span><span class=l>s1.1.1_gdn.1</span><span class=w>
+</span><span class=w>        </span><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>item</span><span class=w>
+</span><span class=w>        </span><span class=nt>prose</span><span class=p>:</span><span class=w> </span><span class=s2>&#34;Allocation of information security responsibilities should be done in accordance with the information security policies. Responsibilities for the protection of individual assets and for carrying out specific information security processes should be identified. Responsibilities for information security risk management activities and in particular for acceptance of residual risks should be defined. These responsibilities should be supplemented, where necessary, with more detailed guidance for specific sites and information processing facilities. Local responsibilities for the protection of assets and for carrying out specific security processes should be defined.&#34;</span><span class=w>
+</span><span class=w>      </span>- <span class=nt>id</span><span class=p>:</span><span class=w> </span><span class=l>s1.1.1_gdn.2</span><span class=w>
+</span><span class=w>        </span><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>item</span><span class=w>
+</span><span class=w>        </span><span class=nt>prose</span><span class=p>:</span><span class=w> </span><span class=l>Individuals with allocated information security responsibilities may delegate security tasks to others. Nevertheless they remain accountable and should determine that any delegated tasks have been correctly performed.</span><span class=w>
+</span><span class=w>      </span>- <span class=nt>id</span><span class=p>:</span><span class=w> </span><span class=l>s1.1.1_gdn.3</span><span class=w>
+</span><span class=w>        </span><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>item</span><span class=w>
+</span><span class=w>        </span><span class=nt>prose</span><span class=p>:</span><span class=w> </span><span class=p>|-</span><span class=sd>
+</span><span class=sd>          Areas for which individuals are responsible should be stated. In particular the following should take place:
+</span><span class=sd>
+</span><span class=sd>          1. the assets and information security processes should be identified and defined;
+</span><span class=sd>          2. the entity responsible for each asset or information security process should be assigned and the details of this responsibility should be documented;
+</span><span class=sd>          3. authorization levels should be defined and documented;
+</span><span class=sd>          4. to be able to fulfil responsibilities in the information security area the appointed individuals should be competent in the area and be given opportunities to keep up to date with developments;
+</span><span class=sd>          5. coordination and oversight of information security aspects of supplier relationships should be identified and documented.</span><span class=w>          
+</span><span class=w>      </span>- <span class=nt>id</span><span class=p>:</span><span class=w> </span><span class=l>s1.1.1_gdn.4</span><span class=w>
+</span><span class=w>        </span><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>item</span><span class=w>
+</span><span class=w>        </span><span class=nt>prose</span><span class=p>:</span><span class=w> </span><span class=s2>&#34;Users of devices running Gnome can adjust the inactivity timeout using the following link: https://help.gnome.org/admin/system-admin-guide/stable/desktop-lockscreen.html.en&#34;</span><span class=w>
+</span><span class=w>    </span>- <span class=nt>id</span><span class=p>:</span><span class=w> </span><span class=l>s1.1.1_inf</span><span class=w>
+</span><span class=w>      </span><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>information</span><span class=w>
+</span><span class=w>      </span><span class=nt>props</span><span class=p>:</span><span class=w>
+</span><span class=w>      </span>- <span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>label</span><span class=w>
+</span><span class=w>        </span><span class=nt>value</span><span class=p>:</span><span class=w> </span><span class=l>Other information</span><span class=w>
+</span><span class=w>      </span><span class=nt>prose</span><span class=p>:</span><span class=w> </span><span class=p>|-</span><span class=sd>
+</span><span class=sd>        Many organizations appoint an information security manager to take overall responsibility for the development and implementation of information security and to support the identification of controls.
+</span><span class=sd>
+</span><span class=sd>        However, responsibility for resourcing and implementing the controls will often remain with individual managers. One common practice is to appoint an owner for each asset who then becomes responsible for its day-to-day protection.</span><span class=w>        
+</span><span class=w>  </span>- <span class=nt>id</span><span class=p>:</span><span class=w> </span><span class=l>s1.1.2</span><span class=w>
+</span><span class=w>    </span><span class=nt>title</span><span class=p>:</span><span class=w> </span><span class=l>Segregation of duties</span><span class=w>
+</span><span class=w>    </span><span class=nt>props</span><span class=p>:</span><span class=w>
+</span><span class=w>    </span>- <span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>label</span><span class=w>
+</span><span class=w>      </span><span class=nt>value</span><span class=p>:</span><span class=w> </span><span class=m>1.1.2</span><span class=w>
+</span><span class=w>    </span><span class=nt>parts</span><span class=p>:</span><span class=w>
+</span><span class=w>    </span>- <span class=nt>id</span><span class=p>:</span><span class=w> </span><span class=l>s1.1.2_stm</span><span class=w>
+</span><span class=w>      </span><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>statement</span><span class=w>
+</span><span class=w>      </span><span class=nt>prose</span><span class=p>:</span><span class=w> </span><span class=l>Conflicting duties and areas of responsibility should be segregated to reduce opportunities for unauthorized or unintentional modification or misuse of the organization’s assets.</span><span class=w>
+</span><span class=w>    </span>- <span class=nt>id</span><span class=p>:</span><span class=w> </span><span class=l>s1.1.2_gdn</span><span class=w>
+</span><span class=w>      </span><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>guidance</span><span class=w>
+</span><span class=w>      </span><span class=nt>parts</span><span class=p>:</span><span class=w>
+</span><span class=w>      </span>- <span class=nt>id</span><span class=p>:</span><span class=w> </span><span class=l>s1.1.2_gdn.1</span><span class=w>
+</span><span class=w>        </span><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>item</span><span class=w>
+</span><span class=w>        </span><span class=nt>prose</span><span class=p>:</span><span class=w> </span><span class=s2>&#34;Care should be taken that no single person can access, modify or use assets without authorization or detection. The initiation of an event should be separated from its authorization. The possibility of collusion should be considered in designing the controls.&#34;</span><span class=w>
+</span><span class=w>      </span>- <span class=nt>id</span><span class=p>:</span><span class=w> </span><span class=l>s1.1.2_gdn.2</span><span class=w>
+</span><span class=w>        </span><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>item</span><span class=w>
+</span><span class=w>        </span><span class=nt>prose</span><span class=p>:</span><span class=w> </span><span class=s2>&#34;Small organizations may find segregation of duties difficult to achieve, but the principle should be applied as far as is possible and practicable. Whenever it is difficult to segregate, other controls such as monitoring of activities, audit trails and management supervision should be considered.&#34;</span><span class=w>
+</span><span class=w>    </span>- <span class=nt>id</span><span class=p>:</span><span class=w> </span><span class=l>s1.1.2_inf</span><span class=w>
+</span><span class=w>      </span><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>information</span><span class=w>
+</span><span class=w>      </span><span class=nt>prose</span><span class=p>:</span><span class=w> </span><span class=l>Segregation of duties is a method for reducing the risk of accidental or deliberate misuse of an organization’s assets.</span><span class=w>
+</span><span class=w>  </span>- <span class=nt>id</span><span class=p>:</span><span class=w> </span><span class=l>s2.1.1</span><span class=w>
+</span><span class=w>    </span><span class=nt>title</span><span class=p>:</span><span class=w> </span><span class=l>Access control policy</span><span class=w>
+</span><span class=w>    </span><span class=nt>props</span><span class=p>:</span><span class=w>
+</span><span class=w>    </span>- <span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>label</span><span class=w>
+</span><span class=w>      </span><span class=nt>value</span><span class=p>:</span><span class=w> </span><span class=m>2.1.1</span><span class=w>
+</span><span class=w>    </span><span class=nt>parts</span><span class=p>:</span><span class=w>
+</span><span class=w>    </span>- <span class=nt>id</span><span class=p>:</span><span class=w> </span><span class=l>s2.1.1_stm</span><span class=w>
+</span><span class=w>      </span><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>statement</span><span class=w>
+</span><span class=w>      </span><span class=nt>prose</span><span class=p>:</span><span class=w> </span><span class=s2>&#34;An access control policy should be established, documented and reviewed based on business and information security requirements.&#34;</span><span class=w>
+</span><span class=w>    </span>- <span class=nt>id</span><span class=p>:</span><span class=w> </span><span class=l>s2.1.1_gdn</span><span class=w>
+</span><span class=w>      </span><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>guidance</span><span class=w>
+</span><span class=w>      </span><span class=nt>parts</span><span class=p>:</span><span class=w>
+</span><span class=w>      </span>- <span class=nt>id</span><span class=p>:</span><span class=w> </span><span class=l>s2.1.1_gdn.1</span><span class=w>
+</span><span class=w>        </span><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>item</span><span class=w>
+</span><span class=w>        </span><span class=nt>prose</span><span class=p>:</span><span class=w> </span><span class=s2>&#34;Asset owners should determine appropriate access control rules, access rights and restrictions for specific user roles towards their assets, with the amount of detail and the strictness of the controls reflecting the associated information security risks.&#34;</span><span class=w>
+</span><span class=w>      </span>- <span class=nt>id</span><span class=p>:</span><span class=w> </span><span class=l>s2.1.1_gdn.2</span><span class=w>
+</span><span class=w>        </span><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>item</span><span class=w>
+</span><span class=w>        </span><span class=nt>prose</span><span class=p>:</span><span class=w> </span><span class=l>Access controls are both logical and physical and these should be considered together.</span><span class=w>
+</span><span class=w>      </span>- <span class=nt>id</span><span class=p>:</span><span class=w> </span><span class=l>s2.1.1_gdn.3</span><span class=w>
+</span><span class=w>        </span><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>item</span><span class=w>
+</span><span class=w>        </span><span class=nt>prose</span><span class=p>:</span><span class=w> </span><span class=l>Users and service providers should be given a clear statement of the business requirements to be met by access controls.</span><span class=w>
+</span><span class=w>      </span>- <span class=nt>id</span><span class=p>:</span><span class=w> </span><span class=l>s2.1.1_gdn.4</span><span class=w>
+</span><span class=w>        </span><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>item</span><span class=w>
+</span><span class=w>        </span><span class=nt>prose</span><span class=p>:</span><span class=w> </span><span class=p>|-</span><span class=sd>
+</span><span class=sd>          The policy should take account of the following:
+</span><span class=sd>
+</span><span class=sd>          1. security requirements of business applications;
+</span><span class=sd>          2. policies for information dissemination and authorization, e.g. the need-to-know principle and information security levels and classification of information;
+</span><span class=sd>          3. consistency between the access rights and information classification policies of systems and networks;
+</span><span class=sd>          4. relevant legislation and any contractual obligations regarding limitation of access to data or services;
+</span><span class=sd>          5. management of access rights in a distributed and networked environment which recognizes all types of connections available;
+</span><span class=sd>          6. segregation of access control roles, e.g. access request, access authorization, access administration;
+</span><span class=sd>          7. requirements for formal authorization of access requests;
+</span><span class=sd>          8. requirements for periodic review of access rights;
+</span><span class=sd>          9. removal of access rights;
+</span><span class=sd>          10. archiving of records of all significant events concerning the use and management of user identities and secret authentication information;,
+</span><span class=sd>          11. roles with privileged access.</span><span class=w>          
+</span><span class=w>    </span>- <span class=nt>id</span><span class=p>:</span><span class=w> </span><span class=l>s2.1.1_stm</span><span class=w>
+</span><span class=w>      </span><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>information</span><span class=w>
+</span><span class=w>      </span><span class=nt>parts</span><span class=p>:</span><span class=w>
+</span><span class=w>      </span>- <span class=nt>id</span><span class=p>:</span><span class=w> </span><span class=l>s2.1.1_stm.1</span><span class=w>
+</span><span class=w>        </span><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>item</span><span class=w>
+</span><span class=w>        </span><span class=nt>prose</span><span class=p>:</span><span class=w> </span><span class=p>|-</span><span class=sd>
+</span><span class=sd>          Care should be taken when specifying access control rules to consider:
+</span><span class=sd>
+</span><span class=sd>          1. establishing rules based on the premise “Everything is generally forbidden unless expressly permitted” rather than the weaker rule “Everything is generally permitted unless expressly forbidden”;
+</span><span class=sd>          2. changes in information labels that are initiated automatically by information processing facilities and those initiated at the discretion of a user;
+</span><span class=sd>          3. changes in user permissions that are initiated automatically by the information system and those initiated by an administrator;
+</span><span class=sd>          4. rules which require specific approval before enactment and those which do not.</span><span class=w>          
+</span><span class=w>      </span>- <span class=nt>id</span><span class=p>:</span><span class=w> </span><span class=l>s2.1.1_stm.2</span><span class=w>
+</span><span class=w>        </span><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>item</span><span class=w>
+</span><span class=w>        </span><span class=nt>prose</span><span class=p>:</span><span class=w> </span><span class=l>Access control rules should be supported by formal procedures and defined responsibilities.</span><span class=w>
+</span><span class=w>      </span>- <span class=nt>id</span><span class=p>:</span><span class=w> </span><span class=l>s2.1.1_stm.3</span><span class=w>
+</span><span class=w>        </span><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>item</span><span class=w>
+</span><span class=w>        </span><span class=nt>prose</span><span class=p>:</span><span class=w> </span><span class=l>Role based access control is an approach used successfully by many organizations to link access rights with business roles.</span><span class=w>
+</span><span class=w>      </span>- <span class=nt>id</span><span class=p>:</span><span class=w> </span><span class=l>s2.1.1_stm.4</span><span class=w>
+</span><span class=w>        </span><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>item</span><span class=w>
+</span><span class=w>        </span><span class=nt>prose</span><span class=p>:</span><span class=w> </span><span class=p>|-</span><span class=sd>
+</span><span class=sd>          Two of the frequent principles directing the access control policy are:
+</span><span class=sd>
+</span><span class=sd>          1. Need-to-know: you are only granted access to the information you need to perform your tasks (different tasks/roles mean different need-to-know and hence different access profile);
+</span><span class=sd>          2. Need-to-use: you are only granted access to the information processing facilities (IT equipment, applications, procedures, rooms) you need to perform your task/job/role.</span><span class=w>          
+</span></code></pre></td></tr></table></div></div></div></div></div><h2 id=summary>Summary</h2><p>This concludes the tutorial. At this point you should be familiar with:</p><ul><li>The basic structure of a control baseline expressed in OSCAL.</li><li>The use of the "Import" section to select controls from a source catalog.</li><li>Using the "Merge" section to structure the output baseline.</li><li>The use of the "Modify" section to set the values of parameters.</li></ul><p>For more information you can review the <a href=../../../../concepts/layer/profile/>OSCAL profile model documentation</a>.</p></article></div><nav aria-label="Table of Contents" class="toc-container usa-layout-docs__sidenav widescreen:grid-col-2 desktop:grid-col-2"><div id=js-toc></div></nav></div></div></main><p class="font-sans-sm text-center" style="margin:1.5rem auto">This page was last updated on May 16, 2023. <button id=main-improve-page onclick='window.location.href="https://github.com/usnistgov/OSCAL/tree/main/docs/content/learn/tutorials/control/basic-profile.md"' class="usa-button usa-button--accent-cool">Improve this Page</button></p><script src=https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.12.0/tocbot.min.js integrity=sha384-roIHE2HuL+PZHzo8X7MgpHu256WMUJvsKqI2GaUJY3moVp06oLtx0QvZnvZJdcCb crossorigin=anonymous referrerpolicy=no-referrer></script>
+<script type=text/javascript src=../../../../js/site.min.js integrity="sha512-TOjPncw6vJGMqCN0T2rsjrQya/QLKFveYQcF5PwoN6zXlxEROomkD0l86oPwX7qmDrA4M5K5+OZOA6vCIY4lQA=="></script>
+<script type=text/javascript src=https://pages.nist.gov/leaveNotice/js/jquery.leaveNotice-nist.min.js></script>
+<script>$(document).ready(function(){$('a[href*="//"]:not([href*="pages.nist.gov"]):not([href*="www.nist.gov"]):not([href^="#"]):not([href^="/"])').addClass("usa-link usa-link--external"),$("a.usa-link--external").leaveNotice()})</script><script src=https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.3.0/anchor.min.js integrity="sha512-G2OGlm41XXw+fcgDcRPjVYEn7qCY6qiKWNqDGT37SnKh0qtRXTuKZ5/UQR0kDN0PZRNWcGExd3lAeqEH0I36bQ==" crossorigin=anonymous></script>
+<script>anchors.options={placement:"left"},anchors.add()</script><script>tocbot.init({tocSelector:"#js-toc",contentSelector:"#main-content",headingSelector:"h2,h3,h4",includeHtml:!1,collapseDepth:0,hasInnerContainers:!0,orderedList:!1,listClass:"usa-sidenav",extraLinkClasses:"usa-sidenav__item",activeLinkClass:"usa-current",headingsOffset:1,scrollSmoothOffset:0})</script></body></html>
