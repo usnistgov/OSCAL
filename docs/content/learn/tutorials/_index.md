@@ -9,6 +9,7 @@ The following tutorials provide step-by-step walk-throughs explaining how to cre
 
 - [Using the metadata section](general/metadata/): Explains use of the `metadata` section that is required to be provided in all OSCAL content.
 - [Extending OSCAL models](general/extension/): Discusses how to use OSCAL properties and links to provided extended data in OSCAL content.
+- [Testing new releases](releases/): Provides a few pointers for community members looking to test new OSCAL releases.
 
 ## [Control Layer Topics](control/)
 
