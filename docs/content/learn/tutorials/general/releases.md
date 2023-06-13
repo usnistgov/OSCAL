@@ -71,7 +71,7 @@ For more details see ["How do I test downstream tooling?"](#how-do-i-test-downst
 #### Validating XML OSCAL content
 
 XML OSCAL content can be validated using many tools that support XML Schema (XSD) files.
-Schemas are located in the OSCAL repository at the path `/xml/schema`.
+Schemas are located in the OSCAL repository at the path [`/xml/schema`](https://github.com/usnistgov/OSCAL/tree/main/xml/schema).
 
 As an example, a piece of OSCAL content can be validated against a schema using [`libxml2`](https://gitlab.gnome.org/GNOME/libxml2)'s [`xmllint`](https://gnome.pages.gitlab.gnome.org/libxml2/xmllint.html):
 
@@ -84,7 +84,7 @@ $ xmllint --noout \
 #### Validating JSON and YAML OSCAL content
 
 JSON and YAML OSCAL content can be validated using many tools that support [JSON Schema](http://json-schema.org/implementations.html).
-Schemas are located in the OSCAL repository at the path `/json/schema/`.
+Schemas are located in the OSCAL repository at the path [`/json/schema/`](https://github.com/usnistgov/OSCAL/tree/main/json/schema).
 
 As an example, a piece of OSCAL content can be validated against a schema using the [AJV CLI](https://github.com/ajv-validator/ajv-cli):
 
@@ -96,4 +96,34 @@ $ ajv validate \
 
 ### How do I perform XML pipeline operations using a new release?
 
+The OSCAL project provides XML tooling that can be used to validate and convert OSCAL content, as well as to perform operations like [profile resolution](/concepts/processing/profile-resolution/).
+Currently the underlying XML tooling is also used to generate the XML and JSON schemas as well as the [model reference](/reference/) pages.
+
+Relevant changes to the XML tooling are provided as part of the [patch notes](https://github.com/usnistgov/OSCAL/releases/) for a release.
+
+To use the XML tools from a release, first follow the environment setup instructions located in [`/build/README.md`](https://github.com/usnistgov/OSCAL/tree/main/build) and [`/build/ci-cd/README.md`](https://github.com/usnistgov/OSCAL/tree/main/build/ci-cd).
+The [Docker](https://www.docker.com/) container definition (located in [`/build/Dockerfile`](https://github.com/usnistgov/OSCAL/blob/main/build/Dockerfile)) provides a simple way to replicate the build environment reproducibly.
+
+#### Conversion
+
+Detailed instructions for performing OSCAL content conversion from XML to JSON are located at [`/json/README.md`](https://github.com/usnistgov/OSCAL/tree/main/json).
+Detailed instructions for performing OSCAL content conversion from JSON to XML are located at [`/xml/README.md`](https://github.com/usnistgov/OSCAL/tree/main/xml).
+
+#### Profile Resolution
+
+Detailed instructions for performing profile resolution are located at [`/src/utils/util/resolver-pipeline/readme.md`](https://github.com/usnistgov/OSCAL/tree/main/src/utils/util/resolver-pipeline).
+
 ### How do I test downstream OSCAL tooling?
+
+Pre-releases for downstream OSCAL tooling such as the [OSCAL-CLI](https://github.com/usnistgov/oscal-cli) are currently done as deemed necessary.
+If you would like to see a pre-release for an OSCAL tool, please open an issue on the repository.
+
+## Summary
+
+At this point you should be familiar with:
+
+- How to find information about a release, such as patch notes.
+- The mechanisms that the OSCAL team relies on for feedback on new releases.
+- How to clone a release for local testing.
+- How to validate existing OSCAL content against a new release.
+- How to use a specific release's XML tooling.
