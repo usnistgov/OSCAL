@@ -17,13 +17,13 @@ aliases:
 
 ## Our Vision
 
-NIST and the community will maintain a set of OSCAL models for organizations and service providers to facilitate seamless, continuous security assessment by exchanging information about system implementation and analysis without vendor lock-in. ​
+NIST and the community will mature and maintain a set of OSCAL models for organizations and service providers to facilitate seamless, continuous security assessment by exchanging information about system implementation and analysis without vendor lock-in. ​
 
 Community engagement and collaboration will mature OSCAL models faster and drive the broadest international adoption possible in public and private sectors.
 
 ## What is OSCAL?
 
-NIST is developing the Open Security Controls Assessment Language (OSCAL) as a standardized, data-centric framework that can be applied to an information system for documenting and assessing its security controls. Today, security controls and control baselines are represented in proprietary formats, requiring data conversion and manual effort to describe their implementation. An important goal of OSCAL is to move the security controls and control baselines from a text-based and manual approach (using word processors or spreadsheets) to a set of standardized and machine-readable formats. With systems security information represented in OSCAL, security professionals will be able to automate security assessment, auditing, and continuous monitoring processes.
+NIST is developing the Open Security Controls Assessment Language (OSCAL) as a standardized, data-centric framework that can be applied to an information system for documenting and assessing its security controls. Today, security controls and control baselines are represented in proprietary formats, requiring data conversion and manual effort to describe their implementation. An important goal of OSCAL is to move the security controls and control baselines from a text-based and manual approach (using word processors or spreadsheets) to a set of standardized, machine-readable formats. With systems' security information represented in OSCAL, security professionals will be able to automate security assessment, auditing, and continuous monitoring processes.
 
 <!-- markdownlint-disable MD026 -->
 ## Why OSCAL?
@@ -33,7 +33,7 @@ There are a number of complicating factors contributing to the challenges faced 
 
 * Multiple regulatory standards and frameworks, which change over time;
 * Regulatory standards and frameworks overlap in scope and can often conflict or be difficult to manage together; and
-* Information systems are increasing in size and complexity.
+* Systems are increasing in size and complexity.
 
 To address information security and privacy risks, the implementation of selected controls needs to be verified and shown to be effective. To provide assurance of a system's security and privacy posture, the control implementation of a system must be both correctly described, assessed, and authorized. These tasks are resource-intensive, and often challenging to perform within budget constraints given the complexity of the problem.
 
@@ -45,11 +45,11 @@ OSCAL addresses a number of challenges around security controls and security con
 
 ### Control Information Lacks Standardization
 
-The core challenge, and one of the primary reasons for creating OSCAL, is that concepts like security controls and profiles are represented today largely in proprietary ways. In many cases they are written in prose documents that are imprecise, lead to differences in interpretation, and are not machine-readable; meaning that the prose instructions require someone to manually implement the control in information systems in order for the tool to use the information.
+The core challenge, and one of the primary reasons for creating OSCAL, is that concepts like security controls and profiles are represented today largely in proprietary ways. In many cases they are written in prose documents that are imprecise, lead to differences in interpretation, and are not machine-readable; meaning that the prose instructions require someone to manually implement the control in systems in order for the tool to use the information.
 
 ### Assessing Control Implementations Across Multiple Components
 
-Organizations are also struggling with information systems that have many different components. Some components require the use of different profiles per component; this is commonly the case with cloud environments. Also, systems can be multi-tenant or have mixed ownership of components (often referred to as shared responsibility). Information system owners need to be able to assess the security of these systems against their specific requirements and to simultaneously provide these views to their stakeholders.
+Organizations are also struggling with systems that have many different components. Some components require the use of different profiles per component; this is commonly the case with cloud environments. Also, systems can be multi-tenant or have mixed ownership of components (often referred to as shared responsibility). Information system owners need to be able to assess the security of these systems against their specific requirements and to simultaneously provide these views to their stakeholders.
 
 ### Supporting Multiple Regulatory Frameworks Simultaneously
 
