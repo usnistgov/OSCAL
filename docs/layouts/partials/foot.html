@@ -1,23 +1,42 @@
 {{ if not .Site.IsServer }}
 <script type="text/javascript" src="https://pages.nist.gov/leaveNotice/js/jquery.leaveNotice-nist.min.js"></script>
 <script>
-$(document).ready(function () {
-  $('a[href*="//"]{{ if .Site.IsServer }}:not([href*="http://localhost:1313/"]){{ end }}:not([href*="pages.nist.gov"]):not([href*="www.nist.gov"]):not([href^="#"]):not([href^="/"])').addClass('usa-link usa-link--external');
-  $('a.usa-link--external').leaveNotice();
-});
+  $(document).ready(function () {
+    $('a[href*="//"]{{ if .Site.IsServer }}:not([href*="http://localhost:1313/"]){{ end }}:not([href*="pages.nist.gov"]):not([href*="www.nist.gov"]):not([href^="#"]):not([href^="/"])').addClass('usa-link usa-link--external');
+    $('a.usa-link--external').leaveNotice();
+  });
 </script>
 {{ end }}
 
-{{ $generateAnchors := true }}
-{{- if isset .Page.Params "generateanchors" -}}
-  {{ $generateAnchors = .Page.Params.generateanchors }}
-{{- end -}}
-{{ if $generateAnchors -}}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.3.0/anchor.min.js" integrity="sha512-G2OGlm41XXw+fcgDcRPjVYEn7qCY6qiKWNqDGT37SnKh0qtRXTuKZ5/UQR0kDN0PZRNWcGExd3lAeqEH0I36bQ==" crossorigin="anonymous"></script>
+{{ $generateAnchors:= true }}
+
+{{ if ne .Page.Params.generateanchors nil }}
+{{ $generateAnchors = .Page.Params.generateanchors }}
+{{ end }}
+
+{{ if $generateAnchors }}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.3.0/anchor.min.js"
+  integrity="sha512-G2OGlm41XXw+fcgDcRPjVYEn7qCY6qiKWNqDGT37SnKh0qtRXTuKZ5/UQR0kDN0PZRNWcGExd3lAeqEH0I36bQ=="
+  crossorigin="anonymous">
+  </script>
 <script>
+
+  /*
   anchors.options = {
-    placement: 'left'
+   placement: 'left'
   };
-  anchors.add();
+  anchors.add(); 
+  */
+
+  document.addEventListener('DOMContentLoaded', function (event) {
+
+    anchors.options = {
+      placement: 'left',
+      icon: "⚓",
+    };
+    // anchors.add();
+    anchors.add('.name:not(.reference-element-anchor)');
+    // $("a").not(".anchor-xslt").add();
+  });
 </script>
-{{- end }}
+{{ end }}
