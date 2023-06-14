@@ -19,7 +19,7 @@ Before reading this tutorial, you should have a basic familiarity with:
 
 ## The OSCAL release model
 
-OSCAL releases roughly follow a [semantic versioning](https://semver.org/) convention of `MAJOR`.`MINOR`.`PATCH` (for more details, see [the development roadmap](/contribute/roadmap/)).
+OSCAL releases roughly follow a [semantic versioning](https://semver.org/) convention of `MAJOR`.`MINOR`.`PATCH` (for more details, see the document detailing [OSCAL's branch and version structure](https://github.com/usnistgov/OSCAL/blob/main/versioning-and-branching.md)).
 
 For the most part, minor and patch releases have a backwards-compatibility guarantee with exceptions announced on the [GitHub discussion page](https://github.com/usnistgov/OSCAL/discussions).
 
@@ -35,7 +35,7 @@ Releases are [tagged in Git](https://git-scm.com/book/en/v2/Git-Basics-Tagging) 
 For example, a release for version 1.0.0 would be tagged `v1.0.0`.
 
 To test a specific release, [clone the repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) and checkout the release's associated tag.
-Be sure to [clone the repository with submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules#_cloning_submodules) if you plan to use XML pipeline operations.
+Be sure to [clone the repository with submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules#_cloning_submodules).
 
 As an example, to test the [OSCAL 1.0.5 pre-release](https://github.com/usnistgov/OSCAL/releases/tag/v1.0.5), you could clone the repository directly at the release tag:
 
@@ -70,6 +70,7 @@ For more details see ["How do I test downstream tooling?"](#how-do-i-test-downst
 
 #### Validating XML OSCAL content
 
+{{<callout>}}We appreciate the community using [example content from NIST](https://github.com/usnistgov/oscal-content/blob/main/examples/) and others, but we strongly encourage the community to test validation against real-world, production-grade data.{{</callout>}}
 XML OSCAL content can be validated using many tools that support XML Schema (XSD) files.
 Schemas are located in the OSCAL repository at the path [`/xml/schema`](https://github.com/usnistgov/OSCAL/tree/main/xml/schema).
 
@@ -82,6 +83,8 @@ $ xmllint --noout \
 ```
 
 #### Validating JSON and YAML OSCAL content
+
+{{<callout>}}We appreciate the community using [example content from NIST](https://github.com/usnistgov/oscal-content/blob/main/examples/) and others, but we strongly encourage the community to test validation against real-world, production-grade data.{{</callout>}}
 
 JSON and YAML OSCAL content can be validated using many tools that support [JSON Schema](http://json-schema.org/implementations.html).
 Schemas are located in the OSCAL repository at the path [`/json/schema/`](https://github.com/usnistgov/OSCAL/tree/main/json/schema).
@@ -106,10 +109,14 @@ The [Docker](https://www.docker.com/) container definition (located in [`/build/
 
 #### Conversion
 
+{{<callout>}}We appreciate the community using [example content from NIST](https://github.com/usnistgov/oscal-content/blob/main/examples/) and others, but we strongly encourage the community to test content conversion against real-world, production-grade data.{{</callout>}}
+
 Detailed instructions for performing OSCAL content conversion from XML to JSON are located at [`/json/README.md`](https://github.com/usnistgov/OSCAL/tree/main/json).
 Detailed instructions for performing OSCAL content conversion from JSON to XML are located at [`/xml/README.md`](https://github.com/usnistgov/OSCAL/tree/main/xml).
 
 #### Profile Resolution
+
+{{<callout>}}We appreciate the community using [example content from NIST](https://github.com/usnistgov/oscal-content/blob/main/examples/) and others, but we strongly encourage the community to test profile resolution against real-world, production-grade data.{{</callout>}}
 
 Detailed instructions for performing profile resolution are located at [`/src/utils/util/resolver-pipeline/readme.md`](https://github.com/usnistgov/OSCAL/tree/main/src/utils/util/resolver-pipeline).
 
