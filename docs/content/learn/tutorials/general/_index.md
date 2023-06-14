@@ -12,3 +12,4 @@ The following tutorials cover general topics that apply to all of the OSCAL [mod
 
 - [Using the metadata section](metadata/): Explains use of the `metadata` section that is required to be provided in all OSCAL content.
 - [Extending OSCAL models](extension/): A discussion of how to use OSCAL properties and links to provided extended data in OSCAL content.
+- [Testing new releases](releases/): A set of pointers for community members looking to test new OSCAL releases.
