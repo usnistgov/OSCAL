@@ -1,6 +1,6 @@
 ---
-title: "OSCAL Profile Model v1.0.5 XML Format Outline"
-heading: "Profile Model v1.0.5 XML Format Outline"
+title: "OSCAL Profile Model v1.0.4 XML Format Outline"
+heading: "Profile Model v1.0.4 XML Format Outline"
 custom_js:
   - "/js/oscal-metaschema-map-expander.js"
 weight: 50
@@ -261,6 +261,8 @@ The following outline is a representation of the [XML format](https://github.com
                               <details class="OM-entry">
                                  <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/profile/metadata/location/address/country">country</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="nobr">&lt;/country&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 or 1]</span></span></summary>
                                  <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span> value</p>
+                                 
+                                 
                                  <p class="close-tag nobr">&lt;/country&gt;</p>
                               </details>
                            </div>
@@ -405,6 +407,8 @@ The following outline is a representation of the [XML format](https://github.com
                                     <details class="OM-entry">
                                        <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/profile/metadata/party/address/country">country</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="nobr">&lt;/country&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 or 1]</span></span></summary>
                                        <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span> value</p>
+                                       
+                                       
                                        <p class="close-tag nobr">&lt;/country&gt;</p>
                                     </details>
                                  </div>
@@ -415,6 +419,11 @@ The following outline is a representation of the [XML format](https://github.com
                               <details class="OM-entry">
                                  <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/profile/metadata/party/location-uuid">location-uuid</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="nobr">&lt;/location-uuid&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
                                  <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span> value</p>
+                                 
+                                 
+                                 
+                                 
+                                 
                                  <p class="close-tag nobr">&lt;/location-uuid&gt;</p>
                               </details>
                            </div>
@@ -422,6 +431,10 @@ The following outline is a representation of the [XML format](https://github.com
                         <details class="OM-entry">
                            <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/profile/metadata/party/member-of-organization">member-of-organization</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="nobr">&lt;/member-of-organization&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
                            <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span> value</p>
+                           
+                           
+                           
+                           
                            <p class="close-tag nobr">&lt;/member-of-organization&gt;</p>
                         </details>
                         <details class="OM-entry">
@@ -441,6 +454,11 @@ The following outline is a representation of the [XML format](https://github.com
                         <details class="OM-entry">
                            <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/profile/metadata/responsible-party/party-uuid">party-uuid</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="nobr">&lt;/party-uuid&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[1 to ∞]</span></span></summary>
                            <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span> value</p>
+                           
+                           
+                           
+                           
+                           
                            <p class="close-tag nobr">&lt;/party-uuid&gt;</p>
                         </details>
                         <details class="OM-entry">
@@ -758,9 +776,10 @@ The following outline is a representation of the [XML format](https://github.com
                                           <div class="OM-entry">
                                              <p class="OM-line">&lt;p&gt; <span class="OM-lit OM-gloss">or other elements defined as <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span></span> <span class="OM-cardinality">[0 to ∞]</span></p>
                                           </div>
-                                          <div class="OM-entry">
-                                             <p class="OM-line"><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/profile/merge/custom/group/part/part">part</a></span>&gt;<span class="show-closed"><span class="OM-lit OM-gloss"> (recursive: model like parent <span class="OM-ref">part</span>) </span><span class="nobr">&lt;/part&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></p>
-                                          </div>
+                                          <details class="OM-entry">
+                                             <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/profile/merge/custom/group/part/part">part</a></span>&gt;<span class="show-closed"><span class="OM-lit OM-gloss"> (recursive: model like parent <span class="OM-ref">part</span>) </span><span class="nobr">&lt;/part&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
+                                             <p class="OM-map-name">[Empty]</p>
+                                          </details>
                                           <details class="OM-entry">
                                              <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/profile/merge/custom/group/part/link">link</a></span> <span class="nobr" id="/profile/merge/custom/group/part/link/@href"><a class="OM-name" href="../xml-reference/#/profile/merge/custom/group/part/link/@href">href</a>="<span class="OM-datatype"><a href="/reference/datatypes/#uri-reference">uri-reference</a></span>"</span> <span class="nobr" id="/profile/merge/custom/group/part/link/@rel"><a class="OM-name" href="../xml-reference/#/profile/merge/custom/group/part/link/@rel">rel</a>="<span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span>"</span> <span class="nobr" id="/profile/merge/custom/group/part/link/@media-type"><a class="OM-name" href="../xml-reference/#/profile/merge/custom/group/part/link/@media-type">media-type</a>="<span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span>"</span>&gt;<span class="show-closed"> … <span class="nobr">&lt;/link&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
                                              <div class="model-container">
@@ -781,9 +800,10 @@ The following outline is a representation of the [XML format](https://github.com
                                     <div class="OM-choices">
                                        <p class="OM-lit">A choice of:</p>
                                        <div class="OM-choice">
-                                          <div class="OM-entry">
-                                             <p class="OM-line"><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/profile/merge/custom/group/group">group</a></span>&gt;<span class="show-closed"><span class="OM-lit OM-gloss"> (recursive: model like ancestor <span class="OM-ref">group</span>) </span><span class="nobr">&lt;/group&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></p>
-                                          </div>
+                                          <details class="OM-entry">
+                                             <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/profile/merge/custom/group/group">group</a></span>&gt;<span class="show-closed"><span class="OM-lit OM-gloss"> (recursive: model like ancestor <span class="OM-ref">group</span>) </span><span class="nobr">&lt;/group&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
+                                             <p class="OM-map-name">[Empty]</p>
+                                          </details>
                                        </div>
                                        <div class="OM-choice">
                                           <details class="OM-entry">
@@ -1212,9 +1232,10 @@ The following outline is a representation of the [XML format](https://github.com
                                     <div class="OM-entry">
                                        <p class="OM-line">&lt;p&gt; <span class="OM-lit OM-gloss">or other elements defined as <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span></span> <span class="OM-cardinality">[0 to ∞]</span></p>
                                     </div>
-                                    <div class="OM-entry">
-                                       <p class="OM-line"><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/profile/modify/alter/add/part/part">part</a></span>&gt;<span class="show-closed"><span class="OM-lit OM-gloss"> (recursive: model like parent <span class="OM-ref">part</span>) </span><span class="nobr">&lt;/part&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></p>
-                                    </div>
+                                    <details class="OM-entry">
+                                       <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/profile/modify/alter/add/part/part">part</a></span>&gt;<span class="show-closed"><span class="OM-lit OM-gloss"> (recursive: model like parent <span class="OM-ref">part</span>) </span><span class="nobr">&lt;/part&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
+                                       <p class="OM-map-name">[Empty]</p>
+                                    </details>
                                     <details class="OM-entry">
                                        <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/profile/modify/alter/add/part/link">link</a></span> <span class="nobr" id="/profile/modify/alter/add/part/link/@href"><a class="OM-name" href="../xml-reference/#/profile/modify/alter/add/part/link/@href">href</a>="<span class="OM-datatype"><a href="/reference/datatypes/#uri-reference">uri-reference</a></span>"</span> <span class="nobr" id="/profile/modify/alter/add/part/link/@rel"><a class="OM-name" href="../xml-reference/#/profile/modify/alter/add/part/link/@rel">rel</a>="<span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span>"</span> <span class="nobr" id="/profile/modify/alter/add/part/link/@media-type"><a class="OM-name" href="../xml-reference/#/profile/modify/alter/add/part/link/@media-type">media-type</a>="<span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span>"</span>&gt;<span class="show-closed"> … <span class="nobr">&lt;/link&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
                                        <div class="model-container">

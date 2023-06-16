@@ -1,6 +1,6 @@
 ---
-title: "OSCAL Catalog Model v1.0.5 XML Format Reference"
-heading: "Catalog Model v1.0.5 XML Format Reference"
+title: "OSCAL Catalog Model v1.0.4 XML Format Reference"
+heading: "Catalog Model v1.0.4 XML Format Reference"
 weight: 60
 generateanchors: false
 sidenav:
@@ -25,8 +25,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
       and metadata. The root of the Control Catalog format is catalog. </div>
    <div class="model-entry definition assembly">
       <div class="definition-header">
-         <h1 id="/catalog" class="toc1 name">catalog</h1>
-         <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog/catalog">(global definition)</a></p>
+         <h1 id="/catalog" class="toc1 name">catalog</h1><a href="/catalog">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog/catalog">(global definition)</a></p>
          <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog">Switch to JSON</a></div>
          <p class="formal-name">Catalog</p>
       </div>
@@ -64,8 +63,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
             <summary>Attribute (1)</summary>
             <div class="model-entry definition assembly">
                <div class="instance-header">
-                  <h2 id="/catalog/@uuid" class="toc2 name">uuid</h2>
-                  <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                  <h2 id="/catalog/@uuid" class="toc2 name">uuid</h2><a href="/catalog/@uuid">🔗</a><p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                   <p class="occurrence">[1]</p>
                   <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/uuid">Switch to JSON</a></div>
                   <p class="formal-name">Catalog Universally Unique Identifier</p>
@@ -80,8 +78,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
             <summary>Elements (5)</summary>
             <div class="model-entry definition assembly">
                <div class="instance-header">
-                  <h2 id="/catalog/metadata" class="toc2 name">metadata</h2>
-                  <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog/catalog/metadata">(global definition)</a></p>
+                  <h2 id="/catalog/metadata" class="toc2 name">metadata</h2><a href="/catalog/metadata">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog/catalog/metadata">(global definition)</a></p>
                   <p class="occurrence">[1]</p>
                   <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata">Switch to JSON</a></div>
                   <p class="formal-name">Publication metadata</p>
@@ -170,8 +167,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                      <summary>Elements (14)</summary>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/catalog/metadata/title" class="toc3 name">title</h3>
-                           <p class="type" id="/catalog/metadata/title/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                           <h3 id="/catalog/metadata/title" class="toc3 name">title</h3><a href="/catalog/metadata/title">🔗</a><p class="type" id="/catalog/metadata/title/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                            <p class="occurrence">[1]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/title">Switch to JSON</a></div>
                            <p class="formal-name">Document Title</p>
@@ -182,8 +178,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                      </div>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/catalog/metadata/published" class="toc3 name">published</h3>
-                           <p class="type" id="/catalog/metadata/published/_VALUE"><a href="/reference/datatypes/#datetime-with-timezone">dateTime-with-timezone</a></p>
+                           <h3 id="/catalog/metadata/published" class="toc3 name">published</h3><a href="/catalog/metadata/published">🔗</a><p class="type" id="/catalog/metadata/published/_VALUE"><a href="/reference/datatypes/#datetime-with-timezone">dateTime-with-timezone</a></p>
                            <p class="occurrence">[0 or 1]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/published">Switch to JSON</a></div>
                            <p class="formal-name">Publication Timestamp</p>
@@ -210,8 +205,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                      </div>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/catalog/metadata/last-modified" class="toc3 name">last-modified</h3>
-                           <p class="type" id="/catalog/metadata/last-modified/_VALUE"><a href="/reference/datatypes/#datetime-with-timezone">dateTime-with-timezone</a></p>
+                           <h3 id="/catalog/metadata/last-modified" class="toc3 name">last-modified</h3><a href="/catalog/metadata/last-modified">🔗</a><p class="type" id="/catalog/metadata/last-modified/_VALUE"><a href="/reference/datatypes/#datetime-with-timezone">dateTime-with-timezone</a></p>
                            <p class="occurrence">[1]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/last-modified">Switch to JSON</a></div>
                            <p class="formal-name">Last Modified Timestamp</p>
@@ -238,8 +232,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                      </div>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/catalog/metadata/version" class="toc3 name">version</h3>
-                           <p class="type" id="/catalog/metadata/version/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
+                           <h3 id="/catalog/metadata/version" class="toc3 name">version</h3><a href="/catalog/metadata/version">🔗</a><p class="type" id="/catalog/metadata/version/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                            <p class="occurrence">[1]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/version">Switch to JSON</a></div>
                            <p class="formal-name">Document Version</p>
@@ -265,8 +258,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                      </div>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/catalog/metadata/oscal-version" class="toc3 name">oscal-version</h3>
-                           <p class="type" id="/catalog/metadata/oscal-version/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
+                           <h3 id="/catalog/metadata/oscal-version" class="toc3 name">oscal-version</h3><a href="/catalog/metadata/oscal-version">🔗</a><p class="type" id="/catalog/metadata/oscal-version/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                            <p class="occurrence">[1]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/oscal-version">Switch to JSON</a></div>
                            <p class="formal-name">OSCAL version</p>
@@ -287,8 +279,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                      </div>
                      <div class="model-entry definition ">
                         <div class="instance-header">
-                           <h3 id="/catalog/metadata/revisions" class="toc3 name">revisions</h3>
-                           <p class="type">element<br /></p>
+                           <h3 id="/catalog/metadata/revisions" class="toc3 name">revisions</h3><a href="/catalog/metadata/revisions">🔗</a><p class="type">element<br /></p>
                            <p class="occurrence">[0 or 1]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/revisions">Switch to JSON</a></div>
                         </div>
@@ -297,8 +288,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               <summary>Element (1)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/metadata/revisions/revision" class="toc4 name">revision</h4>
-                                    <p class="type">element<br /></p>
+                                    <h4 id="/catalog/metadata/revisions/revision" class="toc4 name">revision</h4><a href="/catalog/metadata/revisions/revision">🔗</a><p class="type">element<br /></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/revisions">Switch to JSON</a></div>
                                     <p class="formal-name">Revision History Entry</p>
@@ -340,8 +330,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <summary>Elements (8)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/metadata/revisions/revision/title" class="toc5 name">title</h5>
-                                             <p class="type" id="/catalog/metadata/revisions/revision/title/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                             <h5 id="/catalog/metadata/revisions/revision/title" class="toc5 name">title</h5><a href="/catalog/metadata/revisions/revision/title">🔗</a><p class="type" id="/catalog/metadata/revisions/revision/title/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/revisions/title">Switch to JSON</a></div>
                                              <p class="formal-name">Document Title</p>
@@ -353,8 +342,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/metadata/revisions/revision/published" class="toc5 name">published</h5>
-                                             <p class="type" id="/catalog/metadata/revisions/revision/published/_VALUE"><a href="/reference/datatypes/#datetime-with-timezone">dateTime-with-timezone</a></p>
+                                             <h5 id="/catalog/metadata/revisions/revision/published" class="toc5 name">published</h5><a href="/catalog/metadata/revisions/revision/published">🔗</a><p class="type" id="/catalog/metadata/revisions/revision/published/_VALUE"><a href="/reference/datatypes/#datetime-with-timezone">dateTime-with-timezone</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/revisions/published">Switch to JSON</a></div>
                                              <p class="formal-name">Publication Timestamp</p>
@@ -381,8 +369,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/metadata/revisions/revision/last-modified" class="toc5 name">last-modified</h5>
-                                             <p class="type" id="/catalog/metadata/revisions/revision/last-modified/_VALUE"><a href="/reference/datatypes/#datetime-with-timezone">dateTime-with-timezone</a></p>
+                                             <h5 id="/catalog/metadata/revisions/revision/last-modified" class="toc5 name">last-modified</h5><a href="/catalog/metadata/revisions/revision/last-modified">🔗</a><p class="type" id="/catalog/metadata/revisions/revision/last-modified/_VALUE"><a href="/reference/datatypes/#datetime-with-timezone">dateTime-with-timezone</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/revisions/last-modified">Switch to JSON</a></div>
                                              <p class="formal-name">Last Modified Timestamp</p>
@@ -409,8 +396,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/metadata/revisions/revision/version" class="toc5 name">version</h5>
-                                             <p class="type" id="/catalog/metadata/revisions/revision/version/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
+                                             <h5 id="/catalog/metadata/revisions/revision/version" class="toc5 name">version</h5><a href="/catalog/metadata/revisions/revision/version">🔗</a><p class="type" id="/catalog/metadata/revisions/revision/version/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/revisions/version">Switch to JSON</a></div>
                                              <p class="formal-name">Document Version</p>
@@ -436,8 +422,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/metadata/revisions/revision/oscal-version" class="toc5 name">oscal-version</h5>
-                                             <p class="type" id="/catalog/metadata/revisions/revision/oscal-version/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
+                                             <h5 id="/catalog/metadata/revisions/revision/oscal-version" class="toc5 name">oscal-version</h5><a href="/catalog/metadata/revisions/revision/oscal-version">🔗</a><p class="type" id="/catalog/metadata/revisions/revision/oscal-version/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/revisions/oscal-version">Switch to JSON</a></div>
                                              <p class="formal-name">OSCAL version</p>
@@ -458,8 +443,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/metadata/revisions/revision/prop" class="toc5 name">prop</h5>
-                                             <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/revision/prop">(global definition)</a></p>
+                                             <h5 id="/catalog/metadata/revisions/revision/prop" class="toc5 name">prop</h5><a href="/catalog/metadata/revisions/revision/prop">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/revision/prop">(global definition)</a></p>
                                              <p class="occurrence">[0 to ∞]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/revisions/props">Switch to JSON</a></div>
                                              <p class="formal-name">Property</p>
@@ -489,8 +473,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 <summary>Attributes (5)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/catalog/metadata/revisions/revision/prop/@name" class="toc6 name">name</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                      <h6 id="/catalog/metadata/revisions/revision/prop/@name" class="toc6 name">name</h6><a href="/catalog/metadata/revisions/revision/prop/@name">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                       <p class="occurrence">[1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/revisions/props/name">Switch to JSON</a></div>
                                                       <p class="formal-name">Property Name</p>
@@ -515,8 +498,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/catalog/metadata/revisions/revision/prop/@uuid" class="toc6 name">uuid</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                                      <h6 id="/catalog/metadata/revisions/revision/prop/@uuid" class="toc6 name">uuid</h6><a href="/catalog/metadata/revisions/revision/prop/@uuid">🔗</a><p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/revisions/props/uuid">Switch to JSON</a></div>
                                                       <p class="formal-name">Property Universally Unique Identifier</p>
@@ -528,8 +510,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/catalog/metadata/revisions/revision/prop/@ns" class="toc6 name">ns</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
+                                                      <h6 id="/catalog/metadata/revisions/revision/prop/@ns" class="toc6 name">ns</h6><a href="/catalog/metadata/revisions/revision/prop/@ns">🔗</a><p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/revisions/props/ns">Switch to JSON</a></div>
                                                       <p class="formal-name">Property Namespace</p>
@@ -554,8 +535,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/catalog/metadata/revisions/revision/prop/@value" class="toc6 name">value</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                      <h6 id="/catalog/metadata/revisions/revision/prop/@value" class="toc6 name">value</h6><a href="/catalog/metadata/revisions/revision/prop/@value">🔗</a><p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                                       <p class="occurrence">[1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/revisions/props/value">Switch to JSON</a></div>
                                                       <p class="formal-name">Property Value</p>
@@ -566,8 +546,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/catalog/metadata/revisions/revision/prop/@class" class="toc6 name">class</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                      <h6 id="/catalog/metadata/revisions/revision/prop/@class" class="toc6 name">class</h6><a href="/catalog/metadata/revisions/revision/prop/@class">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/revisions/props/class">Switch to JSON</a></div>
                                                       <p class="formal-name">Property Class</p>
@@ -591,8 +570,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 <summary>Element (1)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/catalog/metadata/revisions/revision/prop/remarks" class="toc6 name">remarks</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                      <h6 id="/catalog/metadata/revisions/revision/prop/remarks" class="toc6 name">remarks</h6><a href="/catalog/metadata/revisions/revision/prop/remarks">🔗</a><p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/revisions/props/remarks">Switch to JSON</a></div>
                                                       <p class="formal-name">Remarks</p>
@@ -619,8 +597,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/metadata/revisions/revision/link" class="toc5 name">link</h5>
-                                             <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/revision/link">(global definition)</a></p>
+                                             <h5 id="/catalog/metadata/revisions/revision/link" class="toc5 name">link</h5><a href="/catalog/metadata/revisions/revision/link">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/revision/link">(global definition)</a></p>
                                              <p class="occurrence">[0 to ∞]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/revisions/links">Switch to JSON</a></div>
                                              <p class="formal-name">Link</p>
@@ -653,8 +630,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 <summary>Attributes (3)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/catalog/metadata/revisions/revision/link/@href" class="toc6 name">href</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
+                                                      <h6 id="/catalog/metadata/revisions/revision/link/@href" class="toc6 name">href</h6><a href="/catalog/metadata/revisions/revision/link/@href">🔗</a><p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
                                                       <p class="occurrence">[1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/revisions/links/href">Switch to JSON</a></div>
                                                       <p class="formal-name">Hypertext Reference</p>
@@ -679,8 +655,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/catalog/metadata/revisions/revision/link/@rel" class="toc6 name">rel</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                      <h6 id="/catalog/metadata/revisions/revision/link/@rel" class="toc6 name">rel</h6><a href="/catalog/metadata/revisions/revision/link/@rel">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/revisions/links/rel">Switch to JSON</a></div>
                                                       <p class="formal-name">Relation</p>
@@ -703,8 +678,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/catalog/metadata/revisions/revision/link/@media-type" class="toc6 name">media-type</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                      <h6 id="/catalog/metadata/revisions/revision/link/@media-type" class="toc6 name">media-type</h6><a href="/catalog/metadata/revisions/revision/link/@media-type">🔗</a><p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/revisions/links/media-type">Switch to JSON</a></div>
                                                       <p class="formal-name">Media Type</p>
@@ -733,8 +707,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 <summary>Element (1)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/catalog/metadata/revisions/revision/link/text" class="toc6 name">text</h6>
-                                                      <p class="type" id="/catalog/metadata/revisions/revision/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                      <h6 id="/catalog/metadata/revisions/revision/link/text" class="toc6 name">text</h6><a href="/catalog/metadata/revisions/revision/link/text">🔗</a><p class="type" id="/catalog/metadata/revisions/revision/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/revisions/links/text">Switch to JSON</a></div>
                                                       <p class="formal-name">Link Text</p>
@@ -749,8 +722,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/metadata/revisions/revision/remarks" class="toc5 name">remarks</h5>
-                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                             <h5 id="/catalog/metadata/revisions/revision/remarks" class="toc5 name">remarks</h5><a href="/catalog/metadata/revisions/revision/remarks">🔗</a><p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/revisions/remarks">Switch to JSON</a></div>
                                              <p class="formal-name">Remarks</p>
@@ -780,8 +752,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                      </div>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/catalog/metadata/document-id" class="toc3 name">document-id</h3>
-                           <p class="type" id="/catalog/metadata/document-id/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
+                           <h3 id="/catalog/metadata/document-id" class="toc3 name">document-id</h3><a href="/catalog/metadata/document-id">🔗</a><p class="type" id="/catalog/metadata/document-id/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                            <p class="occurrence">[0 to ∞]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/document-ids">Switch to JSON</a></div>
                            <p class="formal-name">Document Identifier</p>
@@ -807,8 +778,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               <summary>Attribute (1)</summary>
                               <div class="model-entry definition field">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/metadata/document-id/@scheme" class="toc4 name">scheme</h4>
-                                    <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
+                                    <h4 id="/catalog/metadata/document-id/@scheme" class="toc4 name">scheme</h4><a href="/catalog/metadata/document-id/@scheme">🔗</a><p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/document-ids/scheme">Switch to JSON</a></div>
                                     <p class="formal-name">Document Identification Scheme</p>
@@ -835,8 +805,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                      </div>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/catalog/metadata/prop" class="toc3 name">prop</h3>
-                           <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/metadata/prop">(global definition)</a></p>
+                           <h3 id="/catalog/metadata/prop" class="toc3 name">prop</h3><a href="/catalog/metadata/prop">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/metadata/prop">(global definition)</a></p>
                            <p class="occurrence">[0 to ∞]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/props">Switch to JSON</a></div>
                            <p class="formal-name">Property</p>
@@ -866,8 +835,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               <summary>Attributes (5)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/metadata/prop/@name" class="toc4 name">name</h4>
-                                    <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                    <h4 id="/catalog/metadata/prop/@name" class="toc4 name">name</h4><a href="/catalog/metadata/prop/@name">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/props/name">Switch to JSON</a></div>
                                     <p class="formal-name">Property Name</p>
@@ -892,8 +860,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/metadata/prop/@uuid" class="toc4 name">uuid</h4>
-                                    <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                    <h4 id="/catalog/metadata/prop/@uuid" class="toc4 name">uuid</h4><a href="/catalog/metadata/prop/@uuid">🔗</a><p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/props/uuid">Switch to JSON</a></div>
                                     <p class="formal-name">Property Universally Unique Identifier</p>
@@ -905,8 +872,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/metadata/prop/@ns" class="toc4 name">ns</h4>
-                                    <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
+                                    <h4 id="/catalog/metadata/prop/@ns" class="toc4 name">ns</h4><a href="/catalog/metadata/prop/@ns">🔗</a><p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/props/ns">Switch to JSON</a></div>
                                     <p class="formal-name">Property Namespace</p>
@@ -931,8 +897,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/metadata/prop/@value" class="toc4 name">value</h4>
-                                    <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                    <h4 id="/catalog/metadata/prop/@value" class="toc4 name">value</h4><a href="/catalog/metadata/prop/@value">🔗</a><p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/props/value">Switch to JSON</a></div>
                                     <p class="formal-name">Property Value</p>
@@ -943,8 +908,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/metadata/prop/@class" class="toc4 name">class</h4>
-                                    <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                    <h4 id="/catalog/metadata/prop/@class" class="toc4 name">class</h4><a href="/catalog/metadata/prop/@class">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/props/class">Switch to JSON</a></div>
                                     <p class="formal-name">Property Class</p>
@@ -968,8 +932,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               <summary>Element (1)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/metadata/prop/remarks" class="toc4 name">remarks</h4>
-                                    <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                    <h4 id="/catalog/metadata/prop/remarks" class="toc4 name">remarks</h4><a href="/catalog/metadata/prop/remarks">🔗</a><p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/props/remarks">Switch to JSON</a></div>
                                     <p class="formal-name">Remarks</p>
@@ -996,8 +959,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                      </div>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/catalog/metadata/link" class="toc3 name">link</h3>
-                           <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/metadata/link">(global definition)</a></p>
+                           <h3 id="/catalog/metadata/link" class="toc3 name">link</h3><a href="/catalog/metadata/link">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/metadata/link">(global definition)</a></p>
                            <p class="occurrence">[0 to ∞]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/links">Switch to JSON</a></div>
                            <p class="formal-name">Link</p>
@@ -1030,8 +992,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               <summary>Attributes (3)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/metadata/link/@href" class="toc4 name">href</h4>
-                                    <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
+                                    <h4 id="/catalog/metadata/link/@href" class="toc4 name">href</h4><a href="/catalog/metadata/link/@href">🔗</a><p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/links/href">Switch to JSON</a></div>
                                     <p class="formal-name">Hypertext Reference</p>
@@ -1056,8 +1017,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/metadata/link/@rel" class="toc4 name">rel</h4>
-                                    <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                    <h4 id="/catalog/metadata/link/@rel" class="toc4 name">rel</h4><a href="/catalog/metadata/link/@rel">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/links/rel">Switch to JSON</a></div>
                                     <p class="formal-name">Relation</p>
@@ -1080,8 +1040,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/metadata/link/@media-type" class="toc4 name">media-type</h4>
-                                    <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                    <h4 id="/catalog/metadata/link/@media-type" class="toc4 name">media-type</h4><a href="/catalog/metadata/link/@media-type">🔗</a><p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/links/media-type">Switch to JSON</a></div>
                                     <p class="formal-name">Media Type</p>
@@ -1110,8 +1069,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               <summary>Element (1)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/metadata/link/text" class="toc4 name">text</h4>
-                                    <p class="type" id="/catalog/metadata/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                    <h4 id="/catalog/metadata/link/text" class="toc4 name">text</h4><a href="/catalog/metadata/link/text">🔗</a><p class="type" id="/catalog/metadata/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/links/text">Switch to JSON</a></div>
                                     <p class="formal-name">Link Text</p>
@@ -1126,8 +1084,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                      </div>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/catalog/metadata/role" class="toc3 name">role</h3>
-                           <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/metadata/role">(global definition)</a></p>
+                           <h3 id="/catalog/metadata/role" class="toc3 name">role</h3><a href="/catalog/metadata/role">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/metadata/role">(global definition)</a></p>
                            <p class="occurrence">[0 to ∞]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/roles">Switch to JSON</a></div>
                            <p class="formal-name">Role</p>
@@ -1152,8 +1109,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               <summary>Attribute (1)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/metadata/role/@id" class="toc4 name">id</h4>
-                                    <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                    <h4 id="/catalog/metadata/role/@id" class="toc4 name">id</h4><a href="/catalog/metadata/role/@id">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/roles/id">Switch to JSON</a></div>
                                     <p class="formal-name">Role Identifier</p>
@@ -1170,8 +1126,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               <summary>Elements (6)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/metadata/role/title" class="toc4 name">title</h4>
-                                    <p class="type" id="/catalog/metadata/role/title/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                    <h4 id="/catalog/metadata/role/title" class="toc4 name">title</h4><a href="/catalog/metadata/role/title">🔗</a><p class="type" id="/catalog/metadata/role/title/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/roles/title">Switch to JSON</a></div>
                                     <p class="formal-name">Role Title</p>
@@ -1182,8 +1137,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/metadata/role/short-name" class="toc4 name">short-name</h4>
-                                    <p class="type" id="/catalog/metadata/role/short-name/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
+                                    <h4 id="/catalog/metadata/role/short-name" class="toc4 name">short-name</h4><a href="/catalog/metadata/role/short-name">🔗</a><p class="type" id="/catalog/metadata/role/short-name/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/roles/short-name">Switch to JSON</a></div>
                                     <p class="formal-name">Role Short Name</p>
@@ -1194,8 +1148,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/metadata/role/description" class="toc4 name">description</h4>
-                                    <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                    <h4 id="/catalog/metadata/role/description" class="toc4 name">description</h4><a href="/catalog/metadata/role/description">🔗</a><p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/roles/description">Switch to JSON</a></div>
                                     <p class="formal-name">Role Description</p>
@@ -1219,8 +1172,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/metadata/role/prop" class="toc4 name">prop</h4>
-                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/role/prop">(global definition)</a></p>
+                                    <h4 id="/catalog/metadata/role/prop" class="toc4 name">prop</h4><a href="/catalog/metadata/role/prop">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/role/prop">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/roles/props">Switch to JSON</a></div>
                                     <p class="formal-name">Property</p>
@@ -1250,8 +1202,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <summary>Attributes (5)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/metadata/role/prop/@name" class="toc5 name">name</h5>
-                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <h5 id="/catalog/metadata/role/prop/@name" class="toc5 name">name</h5><a href="/catalog/metadata/role/prop/@name">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/roles/props/name">Switch to JSON</a></div>
                                              <p class="formal-name">Property Name</p>
@@ -1276,8 +1227,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/metadata/role/prop/@uuid" class="toc5 name">uuid</h5>
-                                             <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                             <h5 id="/catalog/metadata/role/prop/@uuid" class="toc5 name">uuid</h5><a href="/catalog/metadata/role/prop/@uuid">🔗</a><p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/roles/props/uuid">Switch to JSON</a></div>
                                              <p class="formal-name">Property Universally Unique Identifier</p>
@@ -1289,8 +1239,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/metadata/role/prop/@ns" class="toc5 name">ns</h5>
-                                             <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
+                                             <h5 id="/catalog/metadata/role/prop/@ns" class="toc5 name">ns</h5><a href="/catalog/metadata/role/prop/@ns">🔗</a><p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/roles/props/ns">Switch to JSON</a></div>
                                              <p class="formal-name">Property Namespace</p>
@@ -1315,8 +1264,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/metadata/role/prop/@value" class="toc5 name">value</h5>
-                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                             <h5 id="/catalog/metadata/role/prop/@value" class="toc5 name">value</h5><a href="/catalog/metadata/role/prop/@value">🔗</a><p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/roles/props/value">Switch to JSON</a></div>
                                              <p class="formal-name">Property Value</p>
@@ -1327,8 +1275,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/metadata/role/prop/@class" class="toc5 name">class</h5>
-                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <h5 id="/catalog/metadata/role/prop/@class" class="toc5 name">class</h5><a href="/catalog/metadata/role/prop/@class">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/roles/props/class">Switch to JSON</a></div>
                                              <p class="formal-name">Property Class</p>
@@ -1352,8 +1299,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <summary>Element (1)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/metadata/role/prop/remarks" class="toc5 name">remarks</h5>
-                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                             <h5 id="/catalog/metadata/role/prop/remarks" class="toc5 name">remarks</h5><a href="/catalog/metadata/role/prop/remarks">🔗</a><p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/roles/props/remarks">Switch to JSON</a></div>
                                              <p class="formal-name">Remarks</p>
@@ -1380,8 +1326,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/metadata/role/link" class="toc4 name">link</h4>
-                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/role/link">(global definition)</a></p>
+                                    <h4 id="/catalog/metadata/role/link" class="toc4 name">link</h4><a href="/catalog/metadata/role/link">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/role/link">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/roles/links">Switch to JSON</a></div>
                                     <p class="formal-name">Link</p>
@@ -1414,8 +1359,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <summary>Attributes (3)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/metadata/role/link/@href" class="toc5 name">href</h5>
-                                             <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
+                                             <h5 id="/catalog/metadata/role/link/@href" class="toc5 name">href</h5><a href="/catalog/metadata/role/link/@href">🔗</a><p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/roles/links/href">Switch to JSON</a></div>
                                              <p class="formal-name">Hypertext Reference</p>
@@ -1440,8 +1384,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/metadata/role/link/@rel" class="toc5 name">rel</h5>
-                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <h5 id="/catalog/metadata/role/link/@rel" class="toc5 name">rel</h5><a href="/catalog/metadata/role/link/@rel">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/roles/links/rel">Switch to JSON</a></div>
                                              <p class="formal-name">Relation</p>
@@ -1464,8 +1407,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/metadata/role/link/@media-type" class="toc5 name">media-type</h5>
-                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                             <h5 id="/catalog/metadata/role/link/@media-type" class="toc5 name">media-type</h5><a href="/catalog/metadata/role/link/@media-type">🔗</a><p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/roles/links/media-type">Switch to JSON</a></div>
                                              <p class="formal-name">Media Type</p>
@@ -1494,8 +1436,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <summary>Element (1)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/metadata/role/link/text" class="toc5 name">text</h5>
-                                             <p class="type" id="/catalog/metadata/role/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                             <h5 id="/catalog/metadata/role/link/text" class="toc5 name">text</h5><a href="/catalog/metadata/role/link/text">🔗</a><p class="type" id="/catalog/metadata/role/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/roles/links/text">Switch to JSON</a></div>
                                              <p class="formal-name">Link Text</p>
@@ -1510,8 +1451,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/metadata/role/remarks" class="toc4 name">remarks</h4>
-                                    <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                    <h4 id="/catalog/metadata/role/remarks" class="toc4 name">remarks</h4><a href="/catalog/metadata/role/remarks">🔗</a><p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/roles/remarks">Switch to JSON</a></div>
                                     <p class="formal-name">Remarks</p>
@@ -1538,8 +1478,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                      </div>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/catalog/metadata/location" class="toc3 name">location</h3>
-                           <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/metadata/location">(global definition)</a></p>
+                           <h3 id="/catalog/metadata/location" class="toc3 name">location</h3><a href="/catalog/metadata/location">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/metadata/location">(global definition)</a></p>
                            <p class="occurrence">[0 to ∞]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/locations">Switch to JSON</a></div>
                            <p class="formal-name">Location</p>
@@ -1580,8 +1519,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               <summary>Attribute (1)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/metadata/location/@uuid" class="toc4 name">uuid</h4>
-                                    <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                    <h4 id="/catalog/metadata/location/@uuid" class="toc4 name">uuid</h4><a href="/catalog/metadata/location/@uuid">🔗</a><p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/locations/uuid">Switch to JSON</a></div>
                                     <p class="formal-name">Location Universally Unique Identifier</p>
@@ -1597,8 +1535,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               <summary>Elements (8)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/metadata/location/title" class="toc4 name">title</h4>
-                                    <p class="type" id="/catalog/metadata/location/title/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                    <h4 id="/catalog/metadata/location/title" class="toc4 name">title</h4><a href="/catalog/metadata/location/title">🔗</a><p class="type" id="/catalog/metadata/location/title/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/locations/title">Switch to JSON</a></div>
                                     <p class="formal-name">Location Title</p>
@@ -1609,8 +1546,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/metadata/location/address" class="toc4 name">address</h4>
-                                    <p class="type">element<br /></p>
+                                    <h4 id="/catalog/metadata/location/address" class="toc4 name">address</h4><a href="/catalog/metadata/location/address">🔗</a><p class="type">element<br /></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/locations/address">Switch to JSON</a></div>
                                     <p class="formal-name">Address</p>
@@ -1630,8 +1566,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <summary>Attribute (1)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/metadata/location/address/@type" class="toc5 name">type</h5>
-                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <h5 id="/catalog/metadata/location/address/@type" class="toc5 name">type</h5><a href="/catalog/metadata/location/address/@type">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/locations/address/type">Switch to JSON</a></div>
                                              <p class="formal-name">Address Type</p>
@@ -1658,8 +1593,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <summary>Elements (5)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/metadata/location/address/addr-line" class="toc5 name">addr-line</h5>
-                                             <p class="type" id="/catalog/metadata/location/address/addr-line/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
+                                             <h5 id="/catalog/metadata/location/address/addr-line" class="toc5 name">addr-line</h5><a href="/catalog/metadata/location/address/addr-line">🔗</a><p class="type" id="/catalog/metadata/location/address/addr-line/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 to ∞]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/locations/address/addr-lines">Switch to JSON</a></div>
                                              <p class="formal-name">Address line</p>
@@ -1670,8 +1604,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/metadata/location/address/city" class="toc5 name">city</h5>
-                                             <p class="type" id="/catalog/metadata/location/address/city/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
+                                             <h5 id="/catalog/metadata/location/address/city" class="toc5 name">city</h5><a href="/catalog/metadata/location/address/city">🔗</a><p class="type" id="/catalog/metadata/location/address/city/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/locations/address/city">Switch to JSON</a></div>
                                              <p class="formal-name">City</p>
@@ -1682,8 +1615,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/metadata/location/address/state" class="toc5 name">state</h5>
-                                             <p class="type" id="/catalog/metadata/location/address/state/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
+                                             <h5 id="/catalog/metadata/location/address/state" class="toc5 name">state</h5><a href="/catalog/metadata/location/address/state">🔗</a><p class="type" id="/catalog/metadata/location/address/state/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/locations/address/state">Switch to JSON</a></div>
                                              <p class="formal-name">State</p>
@@ -1694,8 +1626,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/metadata/location/address/postal-code" class="toc5 name">postal-code</h5>
-                                             <p class="type" id="/catalog/metadata/location/address/postal-code/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
+                                             <h5 id="/catalog/metadata/location/address/postal-code" class="toc5 name">postal-code</h5><a href="/catalog/metadata/location/address/postal-code">🔗</a><p class="type" id="/catalog/metadata/location/address/postal-code/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/locations/address/postal-code">Switch to JSON</a></div>
                                              <p class="formal-name">Postal Code</p>
@@ -1706,8 +1637,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/metadata/location/address/country" class="toc5 name">country</h5>
-                                             <p class="type" id="/catalog/metadata/location/address/country/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
+                                             <h5 id="/catalog/metadata/location/address/country" class="toc5 name">country</h5><a href="/catalog/metadata/location/address/country">🔗</a><p class="type" id="/catalog/metadata/location/address/country/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/locations/address/country">Switch to JSON</a></div>
                                              <p class="formal-name">Country Code</p>
@@ -1727,8 +1657,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/metadata/location/email-address" class="toc4 name">email-address</h4>
-                                    <p class="type" id="/catalog/metadata/location/email-address/_VALUE"><a href="/reference/datatypes/#email">email</a></p>
+                                    <h4 id="/catalog/metadata/location/email-address" class="toc4 name">email-address</h4><a href="/catalog/metadata/location/email-address">🔗</a><p class="type" id="/catalog/metadata/location/email-address/_VALUE"><a href="/reference/datatypes/#email">email</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/locations/email-addresses">Switch to JSON</a></div>
                                     <p class="formal-name">Email Address</p>
@@ -1747,8 +1676,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/metadata/location/telephone-number" class="toc4 name">telephone-number</h4>
-                                    <p class="type" id="/catalog/metadata/location/telephone-number/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
+                                    <h4 id="/catalog/metadata/location/telephone-number" class="toc4 name">telephone-number</h4><a href="/catalog/metadata/location/telephone-number">🔗</a><p class="type" id="/catalog/metadata/location/telephone-number/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/locations/telephone-numbers">Switch to JSON</a></div>
                                     <p class="formal-name">Telephone Number</p>
@@ -1767,8 +1695,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <summary>Attribute (1)</summary>
                                        <div class="model-entry definition field">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/metadata/location/telephone-number/@type" class="toc5 name">type</h5>
-                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                             <h5 id="/catalog/metadata/location/telephone-number/@type" class="toc5 name">type</h5><a href="/catalog/metadata/location/telephone-number/@type">🔗</a><p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/locations/telephone-numbers/type">Switch to JSON</a></div>
                                              <p class="formal-name">type flag</p>
@@ -1797,8 +1724,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/metadata/location/url" class="toc4 name">url</h4>
-                                    <p class="type" id="/catalog/metadata/location/url/_VALUE"><a href="/reference/datatypes/#uri">uri</a></p>
+                                    <h4 id="/catalog/metadata/location/url" class="toc4 name">url</h4><a href="/catalog/metadata/location/url">🔗</a><p class="type" id="/catalog/metadata/location/url/_VALUE"><a href="/reference/datatypes/#uri">uri</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/locations/urls">Switch to JSON</a></div>
                                     <p class="formal-name">Location URL</p>
@@ -1810,8 +1736,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/metadata/location/prop" class="toc4 name">prop</h4>
-                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/location/prop">(global definition)</a></p>
+                                    <h4 id="/catalog/metadata/location/prop" class="toc4 name">prop</h4><a href="/catalog/metadata/location/prop">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/location/prop">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/locations/props">Switch to JSON</a></div>
                                     <p class="formal-name">Property</p>
@@ -1841,8 +1766,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <summary>Attributes (5)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/metadata/location/prop/@name" class="toc5 name">name</h5>
-                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <h5 id="/catalog/metadata/location/prop/@name" class="toc5 name">name</h5><a href="/catalog/metadata/location/prop/@name">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/locations/props/name">Switch to JSON</a></div>
                                              <p class="formal-name">Property Name</p>
@@ -1867,8 +1791,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/metadata/location/prop/@uuid" class="toc5 name">uuid</h5>
-                                             <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                             <h5 id="/catalog/metadata/location/prop/@uuid" class="toc5 name">uuid</h5><a href="/catalog/metadata/location/prop/@uuid">🔗</a><p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/locations/props/uuid">Switch to JSON</a></div>
                                              <p class="formal-name">Property Universally Unique Identifier</p>
@@ -1880,8 +1803,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/metadata/location/prop/@ns" class="toc5 name">ns</h5>
-                                             <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
+                                             <h5 id="/catalog/metadata/location/prop/@ns" class="toc5 name">ns</h5><a href="/catalog/metadata/location/prop/@ns">🔗</a><p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/locations/props/ns">Switch to JSON</a></div>
                                              <p class="formal-name">Property Namespace</p>
@@ -1906,8 +1828,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/metadata/location/prop/@value" class="toc5 name">value</h5>
-                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                             <h5 id="/catalog/metadata/location/prop/@value" class="toc5 name">value</h5><a href="/catalog/metadata/location/prop/@value">🔗</a><p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/locations/props/value">Switch to JSON</a></div>
                                              <p class="formal-name">Property Value</p>
@@ -1918,8 +1839,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/metadata/location/prop/@class" class="toc5 name">class</h5>
-                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <h5 id="/catalog/metadata/location/prop/@class" class="toc5 name">class</h5><a href="/catalog/metadata/location/prop/@class">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/locations/props/class">Switch to JSON</a></div>
                                              <p class="formal-name">Property Class</p>
@@ -1943,8 +1863,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <summary>Element (1)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/metadata/location/prop/remarks" class="toc5 name">remarks</h5>
-                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                             <h5 id="/catalog/metadata/location/prop/remarks" class="toc5 name">remarks</h5><a href="/catalog/metadata/location/prop/remarks">🔗</a><p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/locations/props/remarks">Switch to JSON</a></div>
                                              <p class="formal-name">Remarks</p>
@@ -1971,8 +1890,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/metadata/location/link" class="toc4 name">link</h4>
-                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/location/link">(global definition)</a></p>
+                                    <h4 id="/catalog/metadata/location/link" class="toc4 name">link</h4><a href="/catalog/metadata/location/link">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/location/link">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/locations/links">Switch to JSON</a></div>
                                     <p class="formal-name">Link</p>
@@ -2005,8 +1923,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <summary>Attributes (3)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/metadata/location/link/@href" class="toc5 name">href</h5>
-                                             <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
+                                             <h5 id="/catalog/metadata/location/link/@href" class="toc5 name">href</h5><a href="/catalog/metadata/location/link/@href">🔗</a><p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/locations/links/href">Switch to JSON</a></div>
                                              <p class="formal-name">Hypertext Reference</p>
@@ -2031,8 +1948,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/metadata/location/link/@rel" class="toc5 name">rel</h5>
-                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <h5 id="/catalog/metadata/location/link/@rel" class="toc5 name">rel</h5><a href="/catalog/metadata/location/link/@rel">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/locations/links/rel">Switch to JSON</a></div>
                                              <p class="formal-name">Relation</p>
@@ -2055,8 +1971,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/metadata/location/link/@media-type" class="toc5 name">media-type</h5>
-                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                             <h5 id="/catalog/metadata/location/link/@media-type" class="toc5 name">media-type</h5><a href="/catalog/metadata/location/link/@media-type">🔗</a><p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/locations/links/media-type">Switch to JSON</a></div>
                                              <p class="formal-name">Media Type</p>
@@ -2085,8 +2000,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <summary>Element (1)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/metadata/location/link/text" class="toc5 name">text</h5>
-                                             <p class="type" id="/catalog/metadata/location/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                             <h5 id="/catalog/metadata/location/link/text" class="toc5 name">text</h5><a href="/catalog/metadata/location/link/text">🔗</a><p class="type" id="/catalog/metadata/location/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/locations/links/text">Switch to JSON</a></div>
                                              <p class="formal-name">Link Text</p>
@@ -2101,8 +2015,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/metadata/location/remarks" class="toc4 name">remarks</h4>
-                                    <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                    <h4 id="/catalog/metadata/location/remarks" class="toc4 name">remarks</h4><a href="/catalog/metadata/location/remarks">🔗</a><p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/locations/remarks">Switch to JSON</a></div>
                                     <p class="formal-name">Remarks</p>
@@ -2129,8 +2042,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                      </div>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/catalog/metadata/party" class="toc3 name">party</h3>
-                           <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/metadata/party">(global definition)</a></p>
+                           <h3 id="/catalog/metadata/party" class="toc3 name">party</h3><a href="/catalog/metadata/party">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/metadata/party">(global definition)</a></p>
                            <p class="occurrence">[0 to ∞]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/parties">Switch to JSON</a></div>
                            <p class="formal-name">Party (organization or person)</p>
@@ -2156,8 +2068,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               <summary>Attributes (2)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/metadata/party/@uuid" class="toc4 name">uuid</h4>
-                                    <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                    <h4 id="/catalog/metadata/party/@uuid" class="toc4 name">uuid</h4><a href="/catalog/metadata/party/@uuid">🔗</a><p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/parties/uuid">Switch to JSON</a></div>
                                     <p class="formal-name">Party Universally Unique Identifier</p>
@@ -2170,8 +2081,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/metadata/party/@type" class="toc4 name">type</h4>
-                                    <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                    <h4 id="/catalog/metadata/party/@type" class="toc4 name">type</h4><a href="/catalog/metadata/party/@type">🔗</a><p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/parties/type">Switch to JSON</a></div>
                                     <p class="formal-name">Party Type</p>
@@ -2198,8 +2108,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               <summary>Elements (11)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/metadata/party/name" class="toc4 name">name</h4>
-                                    <p class="type" id="/catalog/metadata/party/name/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
+                                    <h4 id="/catalog/metadata/party/name" class="toc4 name">name</h4><a href="/catalog/metadata/party/name">🔗</a><p class="type" id="/catalog/metadata/party/name/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/parties/name">Switch to JSON</a></div>
                                     <p class="formal-name">Party Name</p>
@@ -2211,8 +2120,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/metadata/party/short-name" class="toc4 name">short-name</h4>
-                                    <p class="type" id="/catalog/metadata/party/short-name/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
+                                    <h4 id="/catalog/metadata/party/short-name" class="toc4 name">short-name</h4><a href="/catalog/metadata/party/short-name">🔗</a><p class="type" id="/catalog/metadata/party/short-name/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/parties/short-name">Switch to JSON</a></div>
                                     <p class="formal-name">Party Short Name</p>
@@ -2223,8 +2131,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/metadata/party/external-id" class="toc4 name">external-id</h4>
-                                    <p class="type" id="/catalog/metadata/party/external-id/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
+                                    <h4 id="/catalog/metadata/party/external-id" class="toc4 name">external-id</h4><a href="/catalog/metadata/party/external-id">🔗</a><p class="type" id="/catalog/metadata/party/external-id/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/parties/external-ids">Switch to JSON</a></div>
                                     <p class="formal-name">Party External Identifier</p>
@@ -2236,8 +2143,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <summary>Attribute (1)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/metadata/party/external-id/@scheme" class="toc5 name">scheme</h5>
-                                             <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
+                                             <h5 id="/catalog/metadata/party/external-id/@scheme" class="toc5 name">scheme</h5><a href="/catalog/metadata/party/external-id/@scheme">🔗</a><p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/parties/external-ids/scheme">Switch to JSON</a></div>
                                              <p class="formal-name">External Identifier Schema</p>
@@ -2262,8 +2168,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/metadata/party/prop" class="toc4 name">prop</h4>
-                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/party/prop">(global definition)</a></p>
+                                    <h4 id="/catalog/metadata/party/prop" class="toc4 name">prop</h4><a href="/catalog/metadata/party/prop">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/party/prop">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/parties/props">Switch to JSON</a></div>
                                     <p class="formal-name">Property</p>
@@ -2293,8 +2198,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <summary>Attributes (5)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/metadata/party/prop/@name" class="toc5 name">name</h5>
-                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <h5 id="/catalog/metadata/party/prop/@name" class="toc5 name">name</h5><a href="/catalog/metadata/party/prop/@name">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/parties/props/name">Switch to JSON</a></div>
                                              <p class="formal-name">Property Name</p>
@@ -2319,8 +2223,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/metadata/party/prop/@uuid" class="toc5 name">uuid</h5>
-                                             <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                             <h5 id="/catalog/metadata/party/prop/@uuid" class="toc5 name">uuid</h5><a href="/catalog/metadata/party/prop/@uuid">🔗</a><p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/parties/props/uuid">Switch to JSON</a></div>
                                              <p class="formal-name">Property Universally Unique Identifier</p>
@@ -2332,8 +2235,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/metadata/party/prop/@ns" class="toc5 name">ns</h5>
-                                             <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
+                                             <h5 id="/catalog/metadata/party/prop/@ns" class="toc5 name">ns</h5><a href="/catalog/metadata/party/prop/@ns">🔗</a><p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/parties/props/ns">Switch to JSON</a></div>
                                              <p class="formal-name">Property Namespace</p>
@@ -2358,8 +2260,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/metadata/party/prop/@value" class="toc5 name">value</h5>
-                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                             <h5 id="/catalog/metadata/party/prop/@value" class="toc5 name">value</h5><a href="/catalog/metadata/party/prop/@value">🔗</a><p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/parties/props/value">Switch to JSON</a></div>
                                              <p class="formal-name">Property Value</p>
@@ -2370,8 +2271,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/metadata/party/prop/@class" class="toc5 name">class</h5>
-                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <h5 id="/catalog/metadata/party/prop/@class" class="toc5 name">class</h5><a href="/catalog/metadata/party/prop/@class">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/parties/props/class">Switch to JSON</a></div>
                                              <p class="formal-name">Property Class</p>
@@ -2395,8 +2295,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <summary>Element (1)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/metadata/party/prop/remarks" class="toc5 name">remarks</h5>
-                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                             <h5 id="/catalog/metadata/party/prop/remarks" class="toc5 name">remarks</h5><a href="/catalog/metadata/party/prop/remarks">🔗</a><p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/parties/props/remarks">Switch to JSON</a></div>
                                              <p class="formal-name">Remarks</p>
@@ -2423,8 +2322,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/metadata/party/link" class="toc4 name">link</h4>
-                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/party/link">(global definition)</a></p>
+                                    <h4 id="/catalog/metadata/party/link" class="toc4 name">link</h4><a href="/catalog/metadata/party/link">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/party/link">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/parties/links">Switch to JSON</a></div>
                                     <p class="formal-name">Link</p>
@@ -2457,8 +2355,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <summary>Attributes (3)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/metadata/party/link/@href" class="toc5 name">href</h5>
-                                             <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
+                                             <h5 id="/catalog/metadata/party/link/@href" class="toc5 name">href</h5><a href="/catalog/metadata/party/link/@href">🔗</a><p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/parties/links/href">Switch to JSON</a></div>
                                              <p class="formal-name">Hypertext Reference</p>
@@ -2483,8 +2380,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/metadata/party/link/@rel" class="toc5 name">rel</h5>
-                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <h5 id="/catalog/metadata/party/link/@rel" class="toc5 name">rel</h5><a href="/catalog/metadata/party/link/@rel">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/parties/links/rel">Switch to JSON</a></div>
                                              <p class="formal-name">Relation</p>
@@ -2507,8 +2403,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/metadata/party/link/@media-type" class="toc5 name">media-type</h5>
-                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                             <h5 id="/catalog/metadata/party/link/@media-type" class="toc5 name">media-type</h5><a href="/catalog/metadata/party/link/@media-type">🔗</a><p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/parties/links/media-type">Switch to JSON</a></div>
                                              <p class="formal-name">Media Type</p>
@@ -2537,8 +2432,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <summary>Element (1)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/metadata/party/link/text" class="toc5 name">text</h5>
-                                             <p class="type" id="/catalog/metadata/party/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                             <h5 id="/catalog/metadata/party/link/text" class="toc5 name">text</h5><a href="/catalog/metadata/party/link/text">🔗</a><p class="type" id="/catalog/metadata/party/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/parties/links/text">Switch to JSON</a></div>
                                              <p class="formal-name">Link Text</p>
@@ -2553,8 +2447,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/metadata/party/email-address" class="toc4 name">email-address</h4>
-                                    <p class="type" id="/catalog/metadata/party/email-address/_VALUE"><a href="/reference/datatypes/#email">email</a></p>
+                                    <h4 id="/catalog/metadata/party/email-address" class="toc4 name">email-address</h4><a href="/catalog/metadata/party/email-address">🔗</a><p class="type" id="/catalog/metadata/party/email-address/_VALUE"><a href="/reference/datatypes/#email">email</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/parties/email-addresses">Switch to JSON</a></div>
                                     <p class="formal-name">Email Address</p>
@@ -2573,8 +2466,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/metadata/party/telephone-number" class="toc4 name">telephone-number</h4>
-                                    <p class="type" id="/catalog/metadata/party/telephone-number/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
+                                    <h4 id="/catalog/metadata/party/telephone-number" class="toc4 name">telephone-number</h4><a href="/catalog/metadata/party/telephone-number">🔗</a><p class="type" id="/catalog/metadata/party/telephone-number/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/parties/telephone-numbers">Switch to JSON</a></div>
                                     <p class="formal-name">Telephone Number</p>
@@ -2593,8 +2485,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <summary>Attribute (1)</summary>
                                        <div class="model-entry definition field">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/metadata/party/telephone-number/@type" class="toc5 name">type</h5>
-                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                             <h5 id="/catalog/metadata/party/telephone-number/@type" class="toc5 name">type</h5><a href="/catalog/metadata/party/telephone-number/@type">🔗</a><p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/parties/telephone-numbers/type">Switch to JSON</a></div>
                                              <p class="formal-name">type flag</p>
@@ -2625,8 +2516,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                  <p>A choice:</p>
                                  <div class="model-entry definition assembly">
                                     <div class="instance-header">
-                                       <h4 id="/catalog/metadata/party/address" class="toc4 name">address</h4>
-                                       <p class="type">element<br /></p>
+                                       <h4 id="/catalog/metadata/party/address" class="toc4 name">address</h4><a href="/catalog/metadata/party/address">🔗</a><p class="type">element<br /></p>
                                        <p class="occurrence">[0 to ∞]</p>
                                        <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/parties/addresses">Switch to JSON</a></div>
                                        <p class="formal-name">Address</p>
@@ -2637,8 +2527,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                           <summary>Attribute (1)</summary>
                                           <div class="model-entry definition assembly">
                                              <div class="instance-header">
-                                                <h5 id="/catalog/metadata/party/address/@type" class="toc5 name">type</h5>
-                                                <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                <h5 id="/catalog/metadata/party/address/@type" class="toc5 name">type</h5><a href="/catalog/metadata/party/address/@type">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                 <p class="occurrence">[0 or 1]</p>
                                                 <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/parties/addresses/type">Switch to JSON</a></div>
                                                 <p class="formal-name">Address Type</p>
@@ -2665,8 +2554,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                           <summary>Elements (5)</summary>
                                           <div class="model-entry definition assembly">
                                              <div class="instance-header">
-                                                <h5 id="/catalog/metadata/party/address/addr-line" class="toc5 name">addr-line</h5>
-                                                <p class="type" id="/catalog/metadata/party/address/addr-line/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
+                                                <h5 id="/catalog/metadata/party/address/addr-line" class="toc5 name">addr-line</h5><a href="/catalog/metadata/party/address/addr-line">🔗</a><p class="type" id="/catalog/metadata/party/address/addr-line/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                                                 <p class="occurrence">[0 to ∞]</p>
                                                 <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/parties/addresses/addr-lines">Switch to JSON</a></div>
                                                 <p class="formal-name">Address line</p>
@@ -2677,8 +2565,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                           </div>
                                           <div class="model-entry definition assembly">
                                              <div class="instance-header">
-                                                <h5 id="/catalog/metadata/party/address/city" class="toc5 name">city</h5>
-                                                <p class="type" id="/catalog/metadata/party/address/city/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
+                                                <h5 id="/catalog/metadata/party/address/city" class="toc5 name">city</h5><a href="/catalog/metadata/party/address/city">🔗</a><p class="type" id="/catalog/metadata/party/address/city/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                                                 <p class="occurrence">[0 or 1]</p>
                                                 <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/parties/addresses/city">Switch to JSON</a></div>
                                                 <p class="formal-name">City</p>
@@ -2689,8 +2576,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                           </div>
                                           <div class="model-entry definition assembly">
                                              <div class="instance-header">
-                                                <h5 id="/catalog/metadata/party/address/state" class="toc5 name">state</h5>
-                                                <p class="type" id="/catalog/metadata/party/address/state/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
+                                                <h5 id="/catalog/metadata/party/address/state" class="toc5 name">state</h5><a href="/catalog/metadata/party/address/state">🔗</a><p class="type" id="/catalog/metadata/party/address/state/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                                                 <p class="occurrence">[0 or 1]</p>
                                                 <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/parties/addresses/state">Switch to JSON</a></div>
                                                 <p class="formal-name">State</p>
@@ -2701,8 +2587,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                           </div>
                                           <div class="model-entry definition assembly">
                                              <div class="instance-header">
-                                                <h5 id="/catalog/metadata/party/address/postal-code" class="toc5 name">postal-code</h5>
-                                                <p class="type" id="/catalog/metadata/party/address/postal-code/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
+                                                <h5 id="/catalog/metadata/party/address/postal-code" class="toc5 name">postal-code</h5><a href="/catalog/metadata/party/address/postal-code">🔗</a><p class="type" id="/catalog/metadata/party/address/postal-code/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                                                 <p class="occurrence">[0 or 1]</p>
                                                 <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/parties/addresses/postal-code">Switch to JSON</a></div>
                                                 <p class="formal-name">Postal Code</p>
@@ -2713,8 +2598,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                           </div>
                                           <div class="model-entry definition assembly">
                                              <div class="instance-header">
-                                                <h5 id="/catalog/metadata/party/address/country" class="toc5 name">country</h5>
-                                                <p class="type" id="/catalog/metadata/party/address/country/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
+                                                <h5 id="/catalog/metadata/party/address/country" class="toc5 name">country</h5><a href="/catalog/metadata/party/address/country">🔗</a><p class="type" id="/catalog/metadata/party/address/country/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                                                 <p class="occurrence">[0 or 1]</p>
                                                 <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/parties/addresses/country">Switch to JSON</a></div>
                                                 <p class="formal-name">Country Code</p>
@@ -2734,8 +2618,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                  </div>
                                  <div class="model-entry definition assembly">
                                     <div class="instance-header">
-                                       <h4 id="/catalog/metadata/party/location-uuid" class="toc4 name">location-uuid</h4>
-                                       <p class="type" id="/catalog/metadata/party/location-uuid/_VALUE"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                       <h4 id="/catalog/metadata/party/location-uuid" class="toc4 name">location-uuid</h4><a href="/catalog/metadata/party/location-uuid">🔗</a><p class="type" id="/catalog/metadata/party/location-uuid/_VALUE"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                        <p class="occurrence">[0 to ∞]</p>
                                        <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/parties/location-uuids">Switch to JSON</a></div>
                                        <p class="formal-name">Location Reference</p>
@@ -2762,8 +2645,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/metadata/party/member-of-organization" class="toc4 name">member-of-organization</h4>
-                                    <p class="type" id="/catalog/metadata/party/member-of-organization/_VALUE"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                    <h4 id="/catalog/metadata/party/member-of-organization" class="toc4 name">member-of-organization</h4><a href="/catalog/metadata/party/member-of-organization">🔗</a><p class="type" id="/catalog/metadata/party/member-of-organization/_VALUE"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/parties/member-of-organizations">Switch to JSON</a></div>
                                     <p class="formal-name">Organizational Affiliation</p>
@@ -2789,8 +2671,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/metadata/party/remarks" class="toc4 name">remarks</h4>
-                                    <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                    <h4 id="/catalog/metadata/party/remarks" class="toc4 name">remarks</h4><a href="/catalog/metadata/party/remarks">🔗</a><p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/parties/remarks">Switch to JSON</a></div>
                                     <p class="formal-name">Remarks</p>
@@ -2817,8 +2698,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                      </div>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/catalog/metadata/responsible-party" class="toc3 name">responsible-party</h3>
-                           <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/metadata/responsible-party">(global definition)</a></p>
+                           <h3 id="/catalog/metadata/responsible-party" class="toc3 name">responsible-party</h3><a href="/catalog/metadata/responsible-party">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/metadata/responsible-party">(global definition)</a></p>
                            <p class="occurrence">[0 to ∞]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/responsible-parties">Switch to JSON</a></div>
                            <p class="formal-name">Responsible Party</p>
@@ -2839,8 +2719,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               <summary>Attribute (1)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/metadata/responsible-party/@role-id" class="toc4 name">role-id</h4>
-                                    <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                    <h4 id="/catalog/metadata/responsible-party/@role-id" class="toc4 name">role-id</h4><a href="/catalog/metadata/responsible-party/@role-id">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/responsible-parties/role-id">Switch to JSON</a></div>
                                     <p class="formal-name">Responsible Role</p>
@@ -2854,8 +2733,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               <summary>Elements (4)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/metadata/responsible-party/party-uuid" class="toc4 name">party-uuid</h4>
-                                    <p class="type" id="/catalog/metadata/responsible-party/party-uuid/_VALUE"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                    <h4 id="/catalog/metadata/responsible-party/party-uuid" class="toc4 name">party-uuid</h4><a href="/catalog/metadata/responsible-party/party-uuid">🔗</a><p class="type" id="/catalog/metadata/responsible-party/party-uuid/_VALUE"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                     <p class="occurrence">[1 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/responsible-parties/party-uuids">Switch to JSON</a></div>
                                     <p class="formal-name">Party Reference</p>
@@ -2884,8 +2762,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/metadata/responsible-party/prop" class="toc4 name">prop</h4>
-                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/responsible-party/prop">(global definition)</a></p>
+                                    <h4 id="/catalog/metadata/responsible-party/prop" class="toc4 name">prop</h4><a href="/catalog/metadata/responsible-party/prop">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/responsible-party/prop">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/responsible-parties/props">Switch to JSON</a></div>
                                     <p class="formal-name">Property</p>
@@ -2915,8 +2792,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <summary>Attributes (5)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/metadata/responsible-party/prop/@name" class="toc5 name">name</h5>
-                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <h5 id="/catalog/metadata/responsible-party/prop/@name" class="toc5 name">name</h5><a href="/catalog/metadata/responsible-party/prop/@name">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/responsible-parties/props/name">Switch to JSON</a></div>
                                              <p class="formal-name">Property Name</p>
@@ -2941,8 +2817,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/metadata/responsible-party/prop/@uuid" class="toc5 name">uuid</h5>
-                                             <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                             <h5 id="/catalog/metadata/responsible-party/prop/@uuid" class="toc5 name">uuid</h5><a href="/catalog/metadata/responsible-party/prop/@uuid">🔗</a><p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/responsible-parties/props/uuid">Switch to JSON</a></div>
                                              <p class="formal-name">Property Universally Unique Identifier</p>
@@ -2954,8 +2829,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/metadata/responsible-party/prop/@ns" class="toc5 name">ns</h5>
-                                             <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
+                                             <h5 id="/catalog/metadata/responsible-party/prop/@ns" class="toc5 name">ns</h5><a href="/catalog/metadata/responsible-party/prop/@ns">🔗</a><p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/responsible-parties/props/ns">Switch to JSON</a></div>
                                              <p class="formal-name">Property Namespace</p>
@@ -2980,8 +2854,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/metadata/responsible-party/prop/@value" class="toc5 name">value</h5>
-                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                             <h5 id="/catalog/metadata/responsible-party/prop/@value" class="toc5 name">value</h5><a href="/catalog/metadata/responsible-party/prop/@value">🔗</a><p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/responsible-parties/props/value">Switch to JSON</a></div>
                                              <p class="formal-name">Property Value</p>
@@ -2992,8 +2865,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/metadata/responsible-party/prop/@class" class="toc5 name">class</h5>
-                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <h5 id="/catalog/metadata/responsible-party/prop/@class" class="toc5 name">class</h5><a href="/catalog/metadata/responsible-party/prop/@class">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/responsible-parties/props/class">Switch to JSON</a></div>
                                              <p class="formal-name">Property Class</p>
@@ -3017,8 +2889,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <summary>Element (1)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/metadata/responsible-party/prop/remarks" class="toc5 name">remarks</h5>
-                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                             <h5 id="/catalog/metadata/responsible-party/prop/remarks" class="toc5 name">remarks</h5><a href="/catalog/metadata/responsible-party/prop/remarks">🔗</a><p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/responsible-parties/props/remarks">Switch to JSON</a></div>
                                              <p class="formal-name">Remarks</p>
@@ -3045,8 +2916,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/metadata/responsible-party/link" class="toc4 name">link</h4>
-                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/responsible-party/link">(global definition)</a></p>
+                                    <h4 id="/catalog/metadata/responsible-party/link" class="toc4 name">link</h4><a href="/catalog/metadata/responsible-party/link">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/responsible-party/link">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/responsible-parties/links">Switch to JSON</a></div>
                                     <p class="formal-name">Link</p>
@@ -3079,8 +2949,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <summary>Attributes (3)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/metadata/responsible-party/link/@href" class="toc5 name">href</h5>
-                                             <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
+                                             <h5 id="/catalog/metadata/responsible-party/link/@href" class="toc5 name">href</h5><a href="/catalog/metadata/responsible-party/link/@href">🔗</a><p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/responsible-parties/links/href">Switch to JSON</a></div>
                                              <p class="formal-name">Hypertext Reference</p>
@@ -3105,8 +2974,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/metadata/responsible-party/link/@rel" class="toc5 name">rel</h5>
-                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <h5 id="/catalog/metadata/responsible-party/link/@rel" class="toc5 name">rel</h5><a href="/catalog/metadata/responsible-party/link/@rel">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/responsible-parties/links/rel">Switch to JSON</a></div>
                                              <p class="formal-name">Relation</p>
@@ -3129,8 +2997,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/metadata/responsible-party/link/@media-type" class="toc5 name">media-type</h5>
-                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                             <h5 id="/catalog/metadata/responsible-party/link/@media-type" class="toc5 name">media-type</h5><a href="/catalog/metadata/responsible-party/link/@media-type">🔗</a><p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/responsible-parties/links/media-type">Switch to JSON</a></div>
                                              <p class="formal-name">Media Type</p>
@@ -3159,8 +3026,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <summary>Element (1)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/metadata/responsible-party/link/text" class="toc5 name">text</h5>
-                                             <p class="type" id="/catalog/metadata/responsible-party/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                             <h5 id="/catalog/metadata/responsible-party/link/text" class="toc5 name">text</h5><a href="/catalog/metadata/responsible-party/link/text">🔗</a><p class="type" id="/catalog/metadata/responsible-party/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/responsible-parties/links/text">Switch to JSON</a></div>
                                              <p class="formal-name">Link Text</p>
@@ -3175,8 +3041,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/metadata/responsible-party/remarks" class="toc4 name">remarks</h4>
-                                    <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                    <h4 id="/catalog/metadata/responsible-party/remarks" class="toc4 name">remarks</h4><a href="/catalog/metadata/responsible-party/remarks">🔗</a><p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/responsible-parties/remarks">Switch to JSON</a></div>
                                     <p class="formal-name">Remarks</p>
@@ -3203,8 +3068,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                      </div>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/catalog/metadata/remarks" class="toc3 name">remarks</h3>
-                           <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                           <h3 id="/catalog/metadata/remarks" class="toc3 name">remarks</h3><a href="/catalog/metadata/remarks">🔗</a><p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                            <p class="occurrence">[0 or 1]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/remarks">Switch to JSON</a></div>
                            <p class="formal-name">Remarks</p>
@@ -3231,8 +3095,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
             </div>
             <div class="model-entry definition assembly">
                <div class="instance-header">
-                  <h2 id="/catalog/param" class="toc2 name">param</h2>
-                  <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog/catalog/param">(global definition)</a></p>
+                  <h2 id="/catalog/param" class="toc2 name">param</h2><a href="/catalog/param">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog/catalog/param">(global definition)</a></p>
                   <p class="occurrence">[0 to ∞]</p>
                   <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/params">Switch to JSON</a></div>
                   <p class="formal-name">Parameter</p>
@@ -3288,8 +3151,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                      <summary>Attributes (3)</summary>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/catalog/param/@id" class="toc3 name">id</h3>
-                           <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                           <h3 id="/catalog/param/@id" class="toc3 name">id</h3><a href="/catalog/param/@id">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                            <p class="occurrence">[1]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/params/id">Switch to JSON</a></div>
                            <p class="formal-name">Parameter Identifier</p>
@@ -3303,8 +3165,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                      </div>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/catalog/param/@class" class="toc3 name">class</h3>
-                           <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                           <h3 id="/catalog/param/@class" class="toc3 name">class</h3><a href="/catalog/param/@class">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                            <p class="occurrence">[0 or 1]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/params/class">Switch to JSON</a></div>
                            <p class="formal-name">Parameter Class</p>
@@ -3324,8 +3185,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                      </div>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/catalog/param/@depends-on" class="toc3 name">depends-on</h3>
-                           <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                           <h3 id="/catalog/param/@depends-on" class="toc3 name">depends-on</h3><a href="/catalog/param/@depends-on">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                            <p class="occurrence">[0 or 1]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/params/depends-on">Switch to JSON</a></div>
                            <p class="formal-name">Depends on</p>
@@ -3340,8 +3200,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                      <summary>Elements (9)</summary>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/catalog/param/prop" class="toc3 name">prop</h3>
-                           <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/parameter/prop">(global definition)</a></p>
+                           <h3 id="/catalog/param/prop" class="toc3 name">prop</h3><a href="/catalog/param/prop">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/parameter/prop">(global definition)</a></p>
                            <p class="occurrence">[0 to ∞]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/params/props">Switch to JSON</a></div>
                            <p class="formal-name">Property</p>
@@ -3371,8 +3230,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               <summary>Attributes (5)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/param/prop/@name" class="toc4 name">name</h4>
-                                    <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                    <h4 id="/catalog/param/prop/@name" class="toc4 name">name</h4><a href="/catalog/param/prop/@name">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/params/props/name">Switch to JSON</a></div>
                                     <p class="formal-name">Property Name</p>
@@ -3397,8 +3255,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/param/prop/@uuid" class="toc4 name">uuid</h4>
-                                    <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                    <h4 id="/catalog/param/prop/@uuid" class="toc4 name">uuid</h4><a href="/catalog/param/prop/@uuid">🔗</a><p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/params/props/uuid">Switch to JSON</a></div>
                                     <p class="formal-name">Property Universally Unique Identifier</p>
@@ -3410,8 +3267,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/param/prop/@ns" class="toc4 name">ns</h4>
-                                    <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
+                                    <h4 id="/catalog/param/prop/@ns" class="toc4 name">ns</h4><a href="/catalog/param/prop/@ns">🔗</a><p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/params/props/ns">Switch to JSON</a></div>
                                     <p class="formal-name">Property Namespace</p>
@@ -3436,8 +3292,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/param/prop/@value" class="toc4 name">value</h4>
-                                    <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                    <h4 id="/catalog/param/prop/@value" class="toc4 name">value</h4><a href="/catalog/param/prop/@value">🔗</a><p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/params/props/value">Switch to JSON</a></div>
                                     <p class="formal-name">Property Value</p>
@@ -3448,8 +3303,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/param/prop/@class" class="toc4 name">class</h4>
-                                    <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                    <h4 id="/catalog/param/prop/@class" class="toc4 name">class</h4><a href="/catalog/param/prop/@class">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/params/props/class">Switch to JSON</a></div>
                                     <p class="formal-name">Property Class</p>
@@ -3473,8 +3327,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               <summary>Element (1)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/param/prop/remarks" class="toc4 name">remarks</h4>
-                                    <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                    <h4 id="/catalog/param/prop/remarks" class="toc4 name">remarks</h4><a href="/catalog/param/prop/remarks">🔗</a><p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/params/props/remarks">Switch to JSON</a></div>
                                     <p class="formal-name">Remarks</p>
@@ -3501,8 +3354,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                      </div>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/catalog/param/link" class="toc3 name">link</h3>
-                           <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/parameter/link">(global definition)</a></p>
+                           <h3 id="/catalog/param/link" class="toc3 name">link</h3><a href="/catalog/param/link">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/parameter/link">(global definition)</a></p>
                            <p class="occurrence">[0 to ∞]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/params/links">Switch to JSON</a></div>
                            <p class="formal-name">Link</p>
@@ -3535,8 +3387,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               <summary>Attributes (3)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/param/link/@href" class="toc4 name">href</h4>
-                                    <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
+                                    <h4 id="/catalog/param/link/@href" class="toc4 name">href</h4><a href="/catalog/param/link/@href">🔗</a><p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/params/links/href">Switch to JSON</a></div>
                                     <p class="formal-name">Hypertext Reference</p>
@@ -3561,8 +3412,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/param/link/@rel" class="toc4 name">rel</h4>
-                                    <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                    <h4 id="/catalog/param/link/@rel" class="toc4 name">rel</h4><a href="/catalog/param/link/@rel">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/params/links/rel">Switch to JSON</a></div>
                                     <p class="formal-name">Relation</p>
@@ -3585,8 +3435,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/param/link/@media-type" class="toc4 name">media-type</h4>
-                                    <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                    <h4 id="/catalog/param/link/@media-type" class="toc4 name">media-type</h4><a href="/catalog/param/link/@media-type">🔗</a><p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/params/links/media-type">Switch to JSON</a></div>
                                     <p class="formal-name">Media Type</p>
@@ -3615,8 +3464,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               <summary>Element (1)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/param/link/text" class="toc4 name">text</h4>
-                                    <p class="type" id="/catalog/param/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                    <h4 id="/catalog/param/link/text" class="toc4 name">text</h4><a href="/catalog/param/link/text">🔗</a><p class="type" id="/catalog/param/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/params/links/text">Switch to JSON</a></div>
                                     <p class="formal-name">Link Text</p>
@@ -3631,8 +3479,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                      </div>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/catalog/param/label" class="toc3 name">label</h3>
-                           <p class="type" id="/catalog/param/label/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                           <h3 id="/catalog/param/label" class="toc3 name">label</h3><a href="/catalog/param/label">🔗</a><p class="type" id="/catalog/param/label/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                            <p class="occurrence">[0 or 1]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/params/label">Switch to JSON</a></div>
                            <p class="formal-name">Parameter Label</p>
@@ -3652,8 +3499,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                      </div>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/catalog/param/usage" class="toc3 name">usage</h3>
-                           <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                           <h3 id="/catalog/param/usage" class="toc3 name">usage</h3><a href="/catalog/param/usage">🔗</a><p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                            <p class="occurrence">[0 or 1]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/params/usage">Switch to JSON</a></div>
                            <p class="formal-name">Parameter Usage Description</p>
@@ -3677,8 +3523,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                      </div>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/catalog/param/constraint" class="toc3 name">constraint</h3>
-                           <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/parameter/constraint">(global definition)</a></p>
+                           <h3 id="/catalog/param/constraint" class="toc3 name">constraint</h3><a href="/catalog/param/constraint">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/parameter/constraint">(global definition)</a></p>
                            <p class="occurrence">[0 to ∞]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/params/constraints">Switch to JSON</a></div>
                            <p class="formal-name">Constraint</p>
@@ -3689,8 +3534,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               <summary>Elements (2)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/param/constraint/description" class="toc4 name">description</h4>
-                                    <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                    <h4 id="/catalog/param/constraint/description" class="toc4 name">description</h4><a href="/catalog/param/constraint/description">🔗</a><p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/params/constraints/description">Switch to JSON</a></div>
                                     <p class="formal-name">Constraint Description</p>
@@ -3714,8 +3558,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/param/constraint/test" class="toc4 name">test</h4>
-                                    <p class="type">element<br /></p>
+                                    <h4 id="/catalog/param/constraint/test" class="toc4 name">test</h4><a href="/catalog/param/constraint/test">🔗</a><p class="type">element<br /></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/params/constraints/tests">Switch to JSON</a></div>
                                     <p class="formal-name">Constraint Test</p>
@@ -3726,8 +3569,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <summary>Elements (2)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/param/constraint/test/expression" class="toc5 name">expression</h5>
-                                             <p class="type" id="/catalog/param/constraint/test/expression/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
+                                             <h5 id="/catalog/param/constraint/test/expression" class="toc5 name">expression</h5><a href="/catalog/param/constraint/test/expression">🔗</a><p class="type" id="/catalog/param/constraint/test/expression/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/params/constraints/tests/expression">Switch to JSON</a></div>
                                              <p class="formal-name">Constraint test</p>
@@ -3738,8 +3580,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/param/constraint/test/remarks" class="toc5 name">remarks</h5>
-                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                             <h5 id="/catalog/param/constraint/test/remarks" class="toc5 name">remarks</h5><a href="/catalog/param/constraint/test/remarks">🔗</a><p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/params/constraints/tests/remarks">Switch to JSON</a></div>
                                              <p class="formal-name">Remarks</p>
@@ -3769,8 +3610,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                      </div>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/catalog/param/guideline" class="toc3 name">guideline</h3>
-                           <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/parameter/guideline">(global definition)</a></p>
+                           <h3 id="/catalog/param/guideline" class="toc3 name">guideline</h3><a href="/catalog/param/guideline">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/parameter/guideline">(global definition)</a></p>
                            <p class="occurrence">[0 to ∞]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/params/guidelines">Switch to JSON</a></div>
                            <p class="formal-name">Guideline</p>
@@ -3796,8 +3636,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                         <p>A choice:</p>
                         <div class="model-entry definition assembly">
                            <div class="instance-header">
-                              <h3 id="/catalog/param/value" class="toc3 name">value</h3>
-                              <p class="type" id="/catalog/param/value/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
+                              <h3 id="/catalog/param/value" class="toc3 name">value</h3><a href="/catalog/param/value">🔗</a><p class="type" id="/catalog/param/value/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                               <p class="occurrence">[0 to ∞]</p>
                               <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/params/values">Switch to JSON</a></div>
                               <p class="formal-name">Parameter Value</p>
@@ -3817,8 +3656,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                         </div>
                         <div class="model-entry definition assembly">
                            <div class="instance-header">
-                              <h3 id="/catalog/param/select" class="toc3 name">select</h3>
-                              <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/parameter/select">(global definition)</a></p>
+                              <h3 id="/catalog/param/select" class="toc3 name">select</h3><a href="/catalog/param/select">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/parameter/select">(global definition)</a></p>
                               <p class="occurrence">[0 or 1]</p>
                               <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/params/select">Switch to JSON</a></div>
                               <p class="formal-name">Selection</p>
@@ -3840,8 +3678,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                  <summary>Attribute (1)</summary>
                                  <div class="model-entry definition assembly">
                                     <div class="instance-header">
-                                       <h4 id="/catalog/param/select/@how-many" class="toc4 name">how-many</h4>
-                                       <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                       <h4 id="/catalog/param/select/@how-many" class="toc4 name">how-many</h4><a href="/catalog/param/select/@how-many">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                        <p class="occurrence">[0 or 1]</p>
                                        <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/params/select/how-many">Switch to JSON</a></div>
                                        <p class="formal-name">Parameter Cardinality</p>
@@ -3869,8 +3706,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                  <summary>Element (1)</summary>
                                  <div class="model-entry definition assembly">
                                     <div class="instance-header">
-                                       <h4 id="/catalog/param/select/choice" class="toc4 name">choice</h4>
-                                       <p class="type" id="/catalog/param/select/choice/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                       <h4 id="/catalog/param/select/choice" class="toc4 name">choice</h4><a href="/catalog/param/select/choice">🔗</a><p class="type" id="/catalog/param/select/choice/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                        <p class="occurrence">[0 to ∞]</p>
                                        <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/params/select/choice">Switch to JSON</a></div>
                                        <p class="formal-name">Choice</p>
@@ -3885,8 +3721,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                      </div>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/catalog/param/remarks" class="toc3 name">remarks</h3>
-                           <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                           <h3 id="/catalog/param/remarks" class="toc3 name">remarks</h3><a href="/catalog/param/remarks">🔗</a><p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                            <p class="occurrence">[0 or 1]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/params/remarks">Switch to JSON</a></div>
                            <p class="formal-name">Remarks</p>
@@ -3913,8 +3748,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
             </div>
             <div class="model-entry definition assembly">
                <div class="instance-header">
-                  <h2 id="/catalog/control" class="toc2 name">control</h2>
-                  <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog/catalog/control">(global definition)</a></p>
+                  <h2 id="/catalog/control" class="toc2 name">control</h2><a href="/catalog/control">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog/catalog/control">(global definition)</a></p>
                   <p class="occurrence">[0 to ∞]</p>
                   <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls">Switch to JSON</a></div>
                   <p class="formal-name">Control</p>
@@ -4064,8 +3898,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                      <summary>Attributes (2)</summary>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/catalog/control/@id" class="toc3 name">id</h3>
-                           <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                           <h3 id="/catalog/control/@id" class="toc3 name">id</h3><a href="/catalog/control/@id">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                            <p class="occurrence">[1]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls/id">Switch to JSON</a></div>
                            <p class="formal-name">Control Identifier</p>
@@ -4077,8 +3910,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                      </div>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/catalog/control/@class" class="toc3 name">class</h3>
-                           <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                           <h3 id="/catalog/control/@class" class="toc3 name">class</h3><a href="/catalog/control/@class">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                            <p class="occurrence">[0 or 1]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls/class">Switch to JSON</a></div>
                            <p class="formal-name">Control Class</p>
@@ -4103,8 +3935,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                      <summary>Elements (6)</summary>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/catalog/control/title" class="toc3 name">title</h3>
-                           <p class="type" id="/catalog/control/title/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                           <h3 id="/catalog/control/title" class="toc3 name">title</h3><a href="/catalog/control/title">🔗</a><p class="type" id="/catalog/control/title/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                            <p class="occurrence">[1]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls/title">Switch to JSON</a></div>
                            <p class="formal-name">Control Title</p>
@@ -4115,8 +3946,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                      </div>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/catalog/control/param" class="toc3 name">param</h3>
-                           <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog/control/param">(global definition)</a></p>
+                           <h3 id="/catalog/control/param" class="toc3 name">param</h3><a href="/catalog/control/param">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog/control/param">(global definition)</a></p>
                            <p class="occurrence">[0 to ∞]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls/params">Switch to JSON</a></div>
                            <p class="formal-name">Parameter</p>
@@ -4172,8 +4002,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               <summary>Attributes (3)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/control/param/@id" class="toc4 name">id</h4>
-                                    <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                    <h4 id="/catalog/control/param/@id" class="toc4 name">id</h4><a href="/catalog/control/param/@id">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls/params/id">Switch to JSON</a></div>
                                     <p class="formal-name">Parameter Identifier</p>
@@ -4187,8 +4016,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/control/param/@class" class="toc4 name">class</h4>
-                                    <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                    <h4 id="/catalog/control/param/@class" class="toc4 name">class</h4><a href="/catalog/control/param/@class">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls/params/class">Switch to JSON</a></div>
                                     <p class="formal-name">Parameter Class</p>
@@ -4208,8 +4036,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/control/param/@depends-on" class="toc4 name">depends-on</h4>
-                                    <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                    <h4 id="/catalog/control/param/@depends-on" class="toc4 name">depends-on</h4><a href="/catalog/control/param/@depends-on">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls/params/depends-on">Switch to JSON</a></div>
                                     <p class="formal-name">Depends on</p>
@@ -4224,8 +4051,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               <summary>Elements (9)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/control/param/prop" class="toc4 name">prop</h4>
-                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/parameter/prop">(global definition)</a></p>
+                                    <h4 id="/catalog/control/param/prop" class="toc4 name">prop</h4><a href="/catalog/control/param/prop">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/parameter/prop">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls/params/props">Switch to JSON</a></div>
                                     <p class="formal-name">Property</p>
@@ -4255,8 +4081,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <summary>Attributes (5)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/control/param/prop/@name" class="toc5 name">name</h5>
-                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <h5 id="/catalog/control/param/prop/@name" class="toc5 name">name</h5><a href="/catalog/control/param/prop/@name">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls/params/props/name">Switch to JSON</a></div>
                                              <p class="formal-name">Property Name</p>
@@ -4281,8 +4106,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/control/param/prop/@uuid" class="toc5 name">uuid</h5>
-                                             <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                             <h5 id="/catalog/control/param/prop/@uuid" class="toc5 name">uuid</h5><a href="/catalog/control/param/prop/@uuid">🔗</a><p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls/params/props/uuid">Switch to JSON</a></div>
                                              <p class="formal-name">Property Universally Unique Identifier</p>
@@ -4294,8 +4118,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/control/param/prop/@ns" class="toc5 name">ns</h5>
-                                             <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
+                                             <h5 id="/catalog/control/param/prop/@ns" class="toc5 name">ns</h5><a href="/catalog/control/param/prop/@ns">🔗</a><p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls/params/props/ns">Switch to JSON</a></div>
                                              <p class="formal-name">Property Namespace</p>
@@ -4320,8 +4143,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/control/param/prop/@value" class="toc5 name">value</h5>
-                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                             <h5 id="/catalog/control/param/prop/@value" class="toc5 name">value</h5><a href="/catalog/control/param/prop/@value">🔗</a><p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls/params/props/value">Switch to JSON</a></div>
                                              <p class="formal-name">Property Value</p>
@@ -4332,8 +4154,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/control/param/prop/@class" class="toc5 name">class</h5>
-                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <h5 id="/catalog/control/param/prop/@class" class="toc5 name">class</h5><a href="/catalog/control/param/prop/@class">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls/params/props/class">Switch to JSON</a></div>
                                              <p class="formal-name">Property Class</p>
@@ -4357,8 +4178,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <summary>Element (1)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/control/param/prop/remarks" class="toc5 name">remarks</h5>
-                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                             <h5 id="/catalog/control/param/prop/remarks" class="toc5 name">remarks</h5><a href="/catalog/control/param/prop/remarks">🔗</a><p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls/params/props/remarks">Switch to JSON</a></div>
                                              <p class="formal-name">Remarks</p>
@@ -4385,8 +4205,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/control/param/link" class="toc4 name">link</h4>
-                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/parameter/link">(global definition)</a></p>
+                                    <h4 id="/catalog/control/param/link" class="toc4 name">link</h4><a href="/catalog/control/param/link">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/parameter/link">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls/params/links">Switch to JSON</a></div>
                                     <p class="formal-name">Link</p>
@@ -4419,8 +4238,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <summary>Attributes (3)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/control/param/link/@href" class="toc5 name">href</h5>
-                                             <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
+                                             <h5 id="/catalog/control/param/link/@href" class="toc5 name">href</h5><a href="/catalog/control/param/link/@href">🔗</a><p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls/params/links/href">Switch to JSON</a></div>
                                              <p class="formal-name">Hypertext Reference</p>
@@ -4445,8 +4263,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/control/param/link/@rel" class="toc5 name">rel</h5>
-                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <h5 id="/catalog/control/param/link/@rel" class="toc5 name">rel</h5><a href="/catalog/control/param/link/@rel">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls/params/links/rel">Switch to JSON</a></div>
                                              <p class="formal-name">Relation</p>
@@ -4469,8 +4286,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/control/param/link/@media-type" class="toc5 name">media-type</h5>
-                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                             <h5 id="/catalog/control/param/link/@media-type" class="toc5 name">media-type</h5><a href="/catalog/control/param/link/@media-type">🔗</a><p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls/params/links/media-type">Switch to JSON</a></div>
                                              <p class="formal-name">Media Type</p>
@@ -4499,8 +4315,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <summary>Element (1)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/control/param/link/text" class="toc5 name">text</h5>
-                                             <p class="type" id="/catalog/control/param/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                             <h5 id="/catalog/control/param/link/text" class="toc5 name">text</h5><a href="/catalog/control/param/link/text">🔗</a><p class="type" id="/catalog/control/param/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls/params/links/text">Switch to JSON</a></div>
                                              <p class="formal-name">Link Text</p>
@@ -4515,8 +4330,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/control/param/label" class="toc4 name">label</h4>
-                                    <p class="type" id="/catalog/control/param/label/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                    <h4 id="/catalog/control/param/label" class="toc4 name">label</h4><a href="/catalog/control/param/label">🔗</a><p class="type" id="/catalog/control/param/label/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls/params/label">Switch to JSON</a></div>
                                     <p class="formal-name">Parameter Label</p>
@@ -4536,8 +4350,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/control/param/usage" class="toc4 name">usage</h4>
-                                    <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                    <h4 id="/catalog/control/param/usage" class="toc4 name">usage</h4><a href="/catalog/control/param/usage">🔗</a><p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls/params/usage">Switch to JSON</a></div>
                                     <p class="formal-name">Parameter Usage Description</p>
@@ -4561,8 +4374,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/control/param/constraint" class="toc4 name">constraint</h4>
-                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/parameter/constraint">(global definition)</a></p>
+                                    <h4 id="/catalog/control/param/constraint" class="toc4 name">constraint</h4><a href="/catalog/control/param/constraint">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/parameter/constraint">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls/params/constraints">Switch to JSON</a></div>
                                     <p class="formal-name">Constraint</p>
@@ -4573,8 +4385,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <summary>Elements (2)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/control/param/constraint/description" class="toc5 name">description</h5>
-                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                             <h5 id="/catalog/control/param/constraint/description" class="toc5 name">description</h5><a href="/catalog/control/param/constraint/description">🔗</a><p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls/params/constraints/description">Switch to JSON</a></div>
                                              <p class="formal-name">Constraint Description</p>
@@ -4598,8 +4409,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/control/param/constraint/test" class="toc5 name">test</h5>
-                                             <p class="type">element<br /></p>
+                                             <h5 id="/catalog/control/param/constraint/test" class="toc5 name">test</h5><a href="/catalog/control/param/constraint/test">🔗</a><p class="type">element<br /></p>
                                              <p class="occurrence">[0 to ∞]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls/params/constraints/tests">Switch to JSON</a></div>
                                              <p class="formal-name">Constraint Test</p>
@@ -4610,8 +4420,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 <summary>Elements (2)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/catalog/control/param/constraint/test/expression" class="toc6 name">expression</h6>
-                                                      <p class="type" id="/catalog/control/param/constraint/test/expression/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
+                                                      <h6 id="/catalog/control/param/constraint/test/expression" class="toc6 name">expression</h6><a href="/catalog/control/param/constraint/test/expression">🔗</a><p class="type" id="/catalog/control/param/constraint/test/expression/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                                                       <p class="occurrence">[1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls/params/constraints/tests/expression">Switch to JSON</a></div>
                                                       <p class="formal-name">Constraint test</p>
@@ -4622,8 +4431,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/catalog/control/param/constraint/test/remarks" class="toc6 name">remarks</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                      <h6 id="/catalog/control/param/constraint/test/remarks" class="toc6 name">remarks</h6><a href="/catalog/control/param/constraint/test/remarks">🔗</a><p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls/params/constraints/tests/remarks">Switch to JSON</a></div>
                                                       <p class="formal-name">Remarks</p>
@@ -4653,8 +4461,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/control/param/guideline" class="toc4 name">guideline</h4>
-                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/parameter/guideline">(global definition)</a></p>
+                                    <h4 id="/catalog/control/param/guideline" class="toc4 name">guideline</h4><a href="/catalog/control/param/guideline">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/parameter/guideline">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls/params/guidelines">Switch to JSON</a></div>
                                     <p class="formal-name">Guideline</p>
@@ -4680,8 +4487,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                  <p>A choice:</p>
                                  <div class="model-entry definition assembly">
                                     <div class="instance-header">
-                                       <h4 id="/catalog/control/param/value" class="toc4 name">value</h4>
-                                       <p class="type" id="/catalog/control/param/value/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
+                                       <h4 id="/catalog/control/param/value" class="toc4 name">value</h4><a href="/catalog/control/param/value">🔗</a><p class="type" id="/catalog/control/param/value/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                                        <p class="occurrence">[0 to ∞]</p>
                                        <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls/params/values">Switch to JSON</a></div>
                                        <p class="formal-name">Parameter Value</p>
@@ -4701,8 +4507,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                  </div>
                                  <div class="model-entry definition assembly">
                                     <div class="instance-header">
-                                       <h4 id="/catalog/control/param/select" class="toc4 name">select</h4>
-                                       <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/parameter/select">(global definition)</a></p>
+                                       <h4 id="/catalog/control/param/select" class="toc4 name">select</h4><a href="/catalog/control/param/select">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/parameter/select">(global definition)</a></p>
                                        <p class="occurrence">[0 or 1]</p>
                                        <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls/params/select">Switch to JSON</a></div>
                                        <p class="formal-name">Selection</p>
@@ -4724,8 +4529,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                           <summary>Attribute (1)</summary>
                                           <div class="model-entry definition assembly">
                                              <div class="instance-header">
-                                                <h5 id="/catalog/control/param/select/@how-many" class="toc5 name">how-many</h5>
-                                                <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                <h5 id="/catalog/control/param/select/@how-many" class="toc5 name">how-many</h5><a href="/catalog/control/param/select/@how-many">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                 <p class="occurrence">[0 or 1]</p>
                                                 <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls/params/select/how-many">Switch to JSON</a></div>
                                                 <p class="formal-name">Parameter Cardinality</p>
@@ -4753,8 +4557,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                           <summary>Element (1)</summary>
                                           <div class="model-entry definition assembly">
                                              <div class="instance-header">
-                                                <h5 id="/catalog/control/param/select/choice" class="toc5 name">choice</h5>
-                                                <p class="type" id="/catalog/control/param/select/choice/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                <h5 id="/catalog/control/param/select/choice" class="toc5 name">choice</h5><a href="/catalog/control/param/select/choice">🔗</a><p class="type" id="/catalog/control/param/select/choice/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                                 <p class="occurrence">[0 to ∞]</p>
                                                 <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls/params/select/choice">Switch to JSON</a></div>
                                                 <p class="formal-name">Choice</p>
@@ -4769,8 +4572,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/control/param/remarks" class="toc4 name">remarks</h4>
-                                    <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                    <h4 id="/catalog/control/param/remarks" class="toc4 name">remarks</h4><a href="/catalog/control/param/remarks">🔗</a><p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls/params/remarks">Switch to JSON</a></div>
                                     <p class="formal-name">Remarks</p>
@@ -4797,8 +4599,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                      </div>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/catalog/control/prop" class="toc3 name">prop</h3>
-                           <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog/control/prop">(global definition)</a></p>
+                           <h3 id="/catalog/control/prop" class="toc3 name">prop</h3><a href="/catalog/control/prop">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog/control/prop">(global definition)</a></p>
                            <p class="occurrence">[0 to ∞]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls/props">Switch to JSON</a></div>
                            <p class="formal-name">Property</p>
@@ -4828,8 +4629,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               <summary>Attributes (5)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/control/prop/@name" class="toc4 name">name</h4>
-                                    <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                    <h4 id="/catalog/control/prop/@name" class="toc4 name">name</h4><a href="/catalog/control/prop/@name">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls/props/name">Switch to JSON</a></div>
                                     <p class="formal-name">Property Name</p>
@@ -4854,8 +4654,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/control/prop/@uuid" class="toc4 name">uuid</h4>
-                                    <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                    <h4 id="/catalog/control/prop/@uuid" class="toc4 name">uuid</h4><a href="/catalog/control/prop/@uuid">🔗</a><p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls/props/uuid">Switch to JSON</a></div>
                                     <p class="formal-name">Property Universally Unique Identifier</p>
@@ -4867,8 +4666,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/control/prop/@ns" class="toc4 name">ns</h4>
-                                    <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
+                                    <h4 id="/catalog/control/prop/@ns" class="toc4 name">ns</h4><a href="/catalog/control/prop/@ns">🔗</a><p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls/props/ns">Switch to JSON</a></div>
                                     <p class="formal-name">Property Namespace</p>
@@ -4893,8 +4691,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/control/prop/@value" class="toc4 name">value</h4>
-                                    <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                    <h4 id="/catalog/control/prop/@value" class="toc4 name">value</h4><a href="/catalog/control/prop/@value">🔗</a><p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls/props/value">Switch to JSON</a></div>
                                     <p class="formal-name">Property Value</p>
@@ -4905,8 +4702,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/control/prop/@class" class="toc4 name">class</h4>
-                                    <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                    <h4 id="/catalog/control/prop/@class" class="toc4 name">class</h4><a href="/catalog/control/prop/@class">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls/props/class">Switch to JSON</a></div>
                                     <p class="formal-name">Property Class</p>
@@ -4930,8 +4726,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               <summary>Element (1)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/control/prop/remarks" class="toc4 name">remarks</h4>
-                                    <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                    <h4 id="/catalog/control/prop/remarks" class="toc4 name">remarks</h4><a href="/catalog/control/prop/remarks">🔗</a><p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls/props/remarks">Switch to JSON</a></div>
                                     <p class="formal-name">Remarks</p>
@@ -4958,8 +4753,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                      </div>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/catalog/control/link" class="toc3 name">link</h3>
-                           <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog/control/link">(global definition)</a></p>
+                           <h3 id="/catalog/control/link" class="toc3 name">link</h3><a href="/catalog/control/link">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog/control/link">(global definition)</a></p>
                            <p class="occurrence">[0 to ∞]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls/links">Switch to JSON</a></div>
                            <p class="formal-name">Link</p>
@@ -4992,8 +4786,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               <summary>Attributes (3)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/control/link/@href" class="toc4 name">href</h4>
-                                    <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
+                                    <h4 id="/catalog/control/link/@href" class="toc4 name">href</h4><a href="/catalog/control/link/@href">🔗</a><p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls/links/href">Switch to JSON</a></div>
                                     <p class="formal-name">Hypertext Reference</p>
@@ -5018,8 +4811,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/control/link/@rel" class="toc4 name">rel</h4>
-                                    <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                    <h4 id="/catalog/control/link/@rel" class="toc4 name">rel</h4><a href="/catalog/control/link/@rel">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls/links/rel">Switch to JSON</a></div>
                                     <p class="formal-name">Relation</p>
@@ -5042,8 +4834,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/control/link/@media-type" class="toc4 name">media-type</h4>
-                                    <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                    <h4 id="/catalog/control/link/@media-type" class="toc4 name">media-type</h4><a href="/catalog/control/link/@media-type">🔗</a><p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls/links/media-type">Switch to JSON</a></div>
                                     <p class="formal-name">Media Type</p>
@@ -5072,8 +4863,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               <summary>Element (1)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/control/link/text" class="toc4 name">text</h4>
-                                    <p class="type" id="/catalog/control/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                    <h4 id="/catalog/control/link/text" class="toc4 name">text</h4><a href="/catalog/control/link/text">🔗</a><p class="type" id="/catalog/control/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls/links/text">Switch to JSON</a></div>
                                     <p class="formal-name">Link Text</p>
@@ -5088,8 +4878,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                      </div>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/catalog/control/part" class="toc3 name">part</h3>
-                           <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog/control/part">(global definition)</a></p>
+                           <h3 id="/catalog/control/part" class="toc3 name">part</h3><a href="/catalog/control/part">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog/control/part">(global definition)</a></p>
                            <p class="occurrence">[0 to ∞]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls/parts">Switch to JSON</a></div>
                            <p class="formal-name">Part</p>
@@ -5143,8 +4932,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               <summary>Attributes (4)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/control/part/@id" class="toc4 name">id</h4>
-                                    <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                    <h4 id="/catalog/control/part/@id" class="toc4 name">id</h4><a href="/catalog/control/part/@id">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls/parts/id">Switch to JSON</a></div>
                                     <p class="formal-name">Part Identifier</p>
@@ -5158,8 +4946,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/control/part/@name" class="toc4 name">name</h4>
-                                    <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                    <h4 id="/catalog/control/part/@name" class="toc4 name">name</h4><a href="/catalog/control/part/@name">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls/parts/name">Switch to JSON</a></div>
                                     <p class="formal-name">Part Name</p>
@@ -5170,8 +4957,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/control/part/@ns" class="toc4 name">ns</h4>
-                                    <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
+                                    <h4 id="/catalog/control/part/@ns" class="toc4 name">ns</h4><a href="/catalog/control/part/@ns">🔗</a><p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls/parts/ns">Switch to JSON</a></div>
                                     <p class="formal-name">Part Namespace</p>
@@ -5196,8 +4982,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/control/part/@class" class="toc4 name">class</h4>
-                                    <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                    <h4 id="/catalog/control/part/@class" class="toc4 name">class</h4><a href="/catalog/control/part/@class">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls/parts/class">Switch to JSON</a></div>
                                     <p class="formal-name">Part Class</p>
@@ -5223,8 +5008,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               <summary>Elements (4+)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/control/part/title" class="toc4 name">title</h4>
-                                    <p class="type" id="/catalog/control/part/title/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                    <h4 id="/catalog/control/part/title" class="toc4 name">title</h4><a href="/catalog/control/part/title">🔗</a><p class="type" id="/catalog/control/part/title/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls/parts/title">Switch to JSON</a></div>
                                     <p class="formal-name">Part Title</p>
@@ -5235,8 +5019,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/control/part/prop" class="toc4 name">prop</h4>
-                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/part/prop">(global definition)</a></p>
+                                    <h4 id="/catalog/control/part/prop" class="toc4 name">prop</h4><a href="/catalog/control/part/prop">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/part/prop">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls/parts/props">Switch to JSON</a></div>
                                     <p class="formal-name">Property</p>
@@ -5266,8 +5049,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <summary>Attributes (5)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/control/part/prop/@name" class="toc5 name">name</h5>
-                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <h5 id="/catalog/control/part/prop/@name" class="toc5 name">name</h5><a href="/catalog/control/part/prop/@name">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls/parts/props/name">Switch to JSON</a></div>
                                              <p class="formal-name">Property Name</p>
@@ -5292,8 +5074,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/control/part/prop/@uuid" class="toc5 name">uuid</h5>
-                                             <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                             <h5 id="/catalog/control/part/prop/@uuid" class="toc5 name">uuid</h5><a href="/catalog/control/part/prop/@uuid">🔗</a><p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls/parts/props/uuid">Switch to JSON</a></div>
                                              <p class="formal-name">Property Universally Unique Identifier</p>
@@ -5305,8 +5086,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/control/part/prop/@ns" class="toc5 name">ns</h5>
-                                             <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
+                                             <h5 id="/catalog/control/part/prop/@ns" class="toc5 name">ns</h5><a href="/catalog/control/part/prop/@ns">🔗</a><p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls/parts/props/ns">Switch to JSON</a></div>
                                              <p class="formal-name">Property Namespace</p>
@@ -5331,8 +5111,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/control/part/prop/@value" class="toc5 name">value</h5>
-                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                             <h5 id="/catalog/control/part/prop/@value" class="toc5 name">value</h5><a href="/catalog/control/part/prop/@value">🔗</a><p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls/parts/props/value">Switch to JSON</a></div>
                                              <p class="formal-name">Property Value</p>
@@ -5343,8 +5122,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/control/part/prop/@class" class="toc5 name">class</h5>
-                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <h5 id="/catalog/control/part/prop/@class" class="toc5 name">class</h5><a href="/catalog/control/part/prop/@class">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls/parts/props/class">Switch to JSON</a></div>
                                              <p class="formal-name">Property Class</p>
@@ -5368,8 +5146,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <summary>Element (1)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/control/part/prop/remarks" class="toc5 name">remarks</h5>
-                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                             <h5 id="/catalog/control/part/prop/remarks" class="toc5 name">remarks</h5><a href="/catalog/control/part/prop/remarks">🔗</a><p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls/parts/props/remarks">Switch to JSON</a></div>
                                              <p class="formal-name">Remarks</p>
@@ -5406,8 +5183,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/control/part/part" class="toc4 name">part</h4>
-                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/part/part">(global definition)</a></p>
+                                    <h4 id="/catalog/control/part/part" class="toc4 name">part</h4><a href="/catalog/control/part/part">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/part/part">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls/parts/parts">Switch to JSON</a></div>
                                     <p class="formal-name">Part</p>
@@ -5461,8 +5237,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/control/part/link" class="toc4 name">link</h4>
-                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/part/link">(global definition)</a></p>
+                                    <h4 id="/catalog/control/part/link" class="toc4 name">link</h4><a href="/catalog/control/part/link">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/part/link">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls/parts/links">Switch to JSON</a></div>
                                     <p class="formal-name">Link</p>
@@ -5495,8 +5270,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <summary>Attributes (3)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/control/part/link/@href" class="toc5 name">href</h5>
-                                             <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
+                                             <h5 id="/catalog/control/part/link/@href" class="toc5 name">href</h5><a href="/catalog/control/part/link/@href">🔗</a><p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls/parts/links/href">Switch to JSON</a></div>
                                              <p class="formal-name">Hypertext Reference</p>
@@ -5521,8 +5295,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/control/part/link/@rel" class="toc5 name">rel</h5>
-                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <h5 id="/catalog/control/part/link/@rel" class="toc5 name">rel</h5><a href="/catalog/control/part/link/@rel">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls/parts/links/rel">Switch to JSON</a></div>
                                              <p class="formal-name">Relation</p>
@@ -5545,8 +5318,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/control/part/link/@media-type" class="toc5 name">media-type</h5>
-                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                             <h5 id="/catalog/control/part/link/@media-type" class="toc5 name">media-type</h5><a href="/catalog/control/part/link/@media-type">🔗</a><p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls/parts/links/media-type">Switch to JSON</a></div>
                                              <p class="formal-name">Media Type</p>
@@ -5575,8 +5347,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <summary>Element (1)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/control/part/link/text" class="toc5 name">text</h5>
-                                             <p class="type" id="/catalog/control/part/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                             <h5 id="/catalog/control/part/link/text" class="toc5 name">text</h5><a href="/catalog/control/part/link/text">🔗</a><p class="type" id="/catalog/control/part/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls/parts/links/text">Switch to JSON</a></div>
                                              <p class="formal-name">Link Text</p>
@@ -5594,8 +5365,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                      </div>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/catalog/control/control" class="toc3 name">control</h3>
-                           <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog/control/control">(global definition)</a></p>
+                           <h3 id="/catalog/control/control" class="toc3 name">control</h3><a href="/catalog/control/control">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog/control/control">(global definition)</a></p>
                            <p class="occurrence">[0 to ∞]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/controls/controls">Switch to JSON</a></div>
                            <p class="formal-name">Control</p>
@@ -5748,8 +5518,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
             </div>
             <div class="model-entry definition assembly">
                <div class="instance-header">
-                  <h2 id="/catalog/group" class="toc2 name">group</h2>
-                  <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog/catalog/group">(global definition)</a></p>
+                  <h2 id="/catalog/group" class="toc2 name">group</h2><a href="/catalog/group">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog/catalog/group">(global definition)</a></p>
                   <p class="occurrence">[0 to ∞]</p>
                   <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups">Switch to JSON</a></div>
                   <p class="formal-name">Control Group</p>
@@ -5797,8 +5566,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                      <summary>Attributes (2)</summary>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/catalog/group/@id" class="toc3 name">id</h3>
-                           <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                           <h3 id="/catalog/group/@id" class="toc3 name">id</h3><a href="/catalog/group/@id">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                            <p class="occurrence">[0 or 1]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/id">Switch to JSON</a></div>
                            <p class="formal-name">Group Identifier</p>
@@ -5810,8 +5578,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                      </div>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/catalog/group/@class" class="toc3 name">class</h3>
-                           <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                           <h3 id="/catalog/group/@class" class="toc3 name">class</h3><a href="/catalog/group/@class">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                            <p class="occurrence">[0 or 1]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/class">Switch to JSON</a></div>
                            <p class="formal-name">Group Class</p>
@@ -5836,8 +5603,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                      <summary>Elements (7)</summary>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/catalog/group/title" class="toc3 name">title</h3>
-                           <p class="type" id="/catalog/group/title/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                           <h3 id="/catalog/group/title" class="toc3 name">title</h3><a href="/catalog/group/title">🔗</a><p class="type" id="/catalog/group/title/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                            <p class="occurrence">[1]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/title">Switch to JSON</a></div>
                            <p class="formal-name">Group Title</p>
@@ -5848,8 +5614,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                      </div>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/catalog/group/param" class="toc3 name">param</h3>
-                           <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog/group/param">(global definition)</a></p>
+                           <h3 id="/catalog/group/param" class="toc3 name">param</h3><a href="/catalog/group/param">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog/group/param">(global definition)</a></p>
                            <p class="occurrence">[0 to ∞]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/params">Switch to JSON</a></div>
                            <p class="formal-name">Parameter</p>
@@ -5905,8 +5670,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               <summary>Attributes (3)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/group/param/@id" class="toc4 name">id</h4>
-                                    <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                    <h4 id="/catalog/group/param/@id" class="toc4 name">id</h4><a href="/catalog/group/param/@id">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/params/id">Switch to JSON</a></div>
                                     <p class="formal-name">Parameter Identifier</p>
@@ -5920,8 +5684,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/group/param/@class" class="toc4 name">class</h4>
-                                    <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                    <h4 id="/catalog/group/param/@class" class="toc4 name">class</h4><a href="/catalog/group/param/@class">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/params/class">Switch to JSON</a></div>
                                     <p class="formal-name">Parameter Class</p>
@@ -5941,8 +5704,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/group/param/@depends-on" class="toc4 name">depends-on</h4>
-                                    <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                    <h4 id="/catalog/group/param/@depends-on" class="toc4 name">depends-on</h4><a href="/catalog/group/param/@depends-on">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/params/depends-on">Switch to JSON</a></div>
                                     <p class="formal-name">Depends on</p>
@@ -5957,8 +5719,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               <summary>Elements (9)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/group/param/prop" class="toc4 name">prop</h4>
-                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/parameter/prop">(global definition)</a></p>
+                                    <h4 id="/catalog/group/param/prop" class="toc4 name">prop</h4><a href="/catalog/group/param/prop">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/parameter/prop">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/params/props">Switch to JSON</a></div>
                                     <p class="formal-name">Property</p>
@@ -5988,8 +5749,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <summary>Attributes (5)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/group/param/prop/@name" class="toc5 name">name</h5>
-                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <h5 id="/catalog/group/param/prop/@name" class="toc5 name">name</h5><a href="/catalog/group/param/prop/@name">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/params/props/name">Switch to JSON</a></div>
                                              <p class="formal-name">Property Name</p>
@@ -6014,8 +5774,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/group/param/prop/@uuid" class="toc5 name">uuid</h5>
-                                             <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                             <h5 id="/catalog/group/param/prop/@uuid" class="toc5 name">uuid</h5><a href="/catalog/group/param/prop/@uuid">🔗</a><p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/params/props/uuid">Switch to JSON</a></div>
                                              <p class="formal-name">Property Universally Unique Identifier</p>
@@ -6027,8 +5786,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/group/param/prop/@ns" class="toc5 name">ns</h5>
-                                             <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
+                                             <h5 id="/catalog/group/param/prop/@ns" class="toc5 name">ns</h5><a href="/catalog/group/param/prop/@ns">🔗</a><p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/params/props/ns">Switch to JSON</a></div>
                                              <p class="formal-name">Property Namespace</p>
@@ -6053,8 +5811,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/group/param/prop/@value" class="toc5 name">value</h5>
-                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                             <h5 id="/catalog/group/param/prop/@value" class="toc5 name">value</h5><a href="/catalog/group/param/prop/@value">🔗</a><p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/params/props/value">Switch to JSON</a></div>
                                              <p class="formal-name">Property Value</p>
@@ -6065,8 +5822,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/group/param/prop/@class" class="toc5 name">class</h5>
-                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <h5 id="/catalog/group/param/prop/@class" class="toc5 name">class</h5><a href="/catalog/group/param/prop/@class">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/params/props/class">Switch to JSON</a></div>
                                              <p class="formal-name">Property Class</p>
@@ -6090,8 +5846,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <summary>Element (1)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/group/param/prop/remarks" class="toc5 name">remarks</h5>
-                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                             <h5 id="/catalog/group/param/prop/remarks" class="toc5 name">remarks</h5><a href="/catalog/group/param/prop/remarks">🔗</a><p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/params/props/remarks">Switch to JSON</a></div>
                                              <p class="formal-name">Remarks</p>
@@ -6118,8 +5873,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/group/param/link" class="toc4 name">link</h4>
-                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/parameter/link">(global definition)</a></p>
+                                    <h4 id="/catalog/group/param/link" class="toc4 name">link</h4><a href="/catalog/group/param/link">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/parameter/link">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/params/links">Switch to JSON</a></div>
                                     <p class="formal-name">Link</p>
@@ -6152,8 +5906,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <summary>Attributes (3)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/group/param/link/@href" class="toc5 name">href</h5>
-                                             <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
+                                             <h5 id="/catalog/group/param/link/@href" class="toc5 name">href</h5><a href="/catalog/group/param/link/@href">🔗</a><p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/params/links/href">Switch to JSON</a></div>
                                              <p class="formal-name">Hypertext Reference</p>
@@ -6178,8 +5931,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/group/param/link/@rel" class="toc5 name">rel</h5>
-                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <h5 id="/catalog/group/param/link/@rel" class="toc5 name">rel</h5><a href="/catalog/group/param/link/@rel">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/params/links/rel">Switch to JSON</a></div>
                                              <p class="formal-name">Relation</p>
@@ -6202,8 +5954,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/group/param/link/@media-type" class="toc5 name">media-type</h5>
-                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                             <h5 id="/catalog/group/param/link/@media-type" class="toc5 name">media-type</h5><a href="/catalog/group/param/link/@media-type">🔗</a><p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/params/links/media-type">Switch to JSON</a></div>
                                              <p class="formal-name">Media Type</p>
@@ -6232,8 +5983,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <summary>Element (1)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/group/param/link/text" class="toc5 name">text</h5>
-                                             <p class="type" id="/catalog/group/param/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                             <h5 id="/catalog/group/param/link/text" class="toc5 name">text</h5><a href="/catalog/group/param/link/text">🔗</a><p class="type" id="/catalog/group/param/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/params/links/text">Switch to JSON</a></div>
                                              <p class="formal-name">Link Text</p>
@@ -6248,8 +5998,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/group/param/label" class="toc4 name">label</h4>
-                                    <p class="type" id="/catalog/group/param/label/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                    <h4 id="/catalog/group/param/label" class="toc4 name">label</h4><a href="/catalog/group/param/label">🔗</a><p class="type" id="/catalog/group/param/label/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/params/label">Switch to JSON</a></div>
                                     <p class="formal-name">Parameter Label</p>
@@ -6269,8 +6018,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/group/param/usage" class="toc4 name">usage</h4>
-                                    <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                    <h4 id="/catalog/group/param/usage" class="toc4 name">usage</h4><a href="/catalog/group/param/usage">🔗</a><p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/params/usage">Switch to JSON</a></div>
                                     <p class="formal-name">Parameter Usage Description</p>
@@ -6294,8 +6042,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/group/param/constraint" class="toc4 name">constraint</h4>
-                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/parameter/constraint">(global definition)</a></p>
+                                    <h4 id="/catalog/group/param/constraint" class="toc4 name">constraint</h4><a href="/catalog/group/param/constraint">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/parameter/constraint">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/params/constraints">Switch to JSON</a></div>
                                     <p class="formal-name">Constraint</p>
@@ -6306,8 +6053,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <summary>Elements (2)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/group/param/constraint/description" class="toc5 name">description</h5>
-                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                             <h5 id="/catalog/group/param/constraint/description" class="toc5 name">description</h5><a href="/catalog/group/param/constraint/description">🔗</a><p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/params/constraints/description">Switch to JSON</a></div>
                                              <p class="formal-name">Constraint Description</p>
@@ -6331,8 +6077,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/group/param/constraint/test" class="toc5 name">test</h5>
-                                             <p class="type">element<br /></p>
+                                             <h5 id="/catalog/group/param/constraint/test" class="toc5 name">test</h5><a href="/catalog/group/param/constraint/test">🔗</a><p class="type">element<br /></p>
                                              <p class="occurrence">[0 to ∞]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/params/constraints/tests">Switch to JSON</a></div>
                                              <p class="formal-name">Constraint Test</p>
@@ -6343,8 +6088,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 <summary>Elements (2)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/catalog/group/param/constraint/test/expression" class="toc6 name">expression</h6>
-                                                      <p class="type" id="/catalog/group/param/constraint/test/expression/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
+                                                      <h6 id="/catalog/group/param/constraint/test/expression" class="toc6 name">expression</h6><a href="/catalog/group/param/constraint/test/expression">🔗</a><p class="type" id="/catalog/group/param/constraint/test/expression/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                                                       <p class="occurrence">[1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/params/constraints/tests/expression">Switch to JSON</a></div>
                                                       <p class="formal-name">Constraint test</p>
@@ -6355,8 +6099,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/catalog/group/param/constraint/test/remarks" class="toc6 name">remarks</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                      <h6 id="/catalog/group/param/constraint/test/remarks" class="toc6 name">remarks</h6><a href="/catalog/group/param/constraint/test/remarks">🔗</a><p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/params/constraints/tests/remarks">Switch to JSON</a></div>
                                                       <p class="formal-name">Remarks</p>
@@ -6386,8 +6129,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/group/param/guideline" class="toc4 name">guideline</h4>
-                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/parameter/guideline">(global definition)</a></p>
+                                    <h4 id="/catalog/group/param/guideline" class="toc4 name">guideline</h4><a href="/catalog/group/param/guideline">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/parameter/guideline">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/params/guidelines">Switch to JSON</a></div>
                                     <p class="formal-name">Guideline</p>
@@ -6413,8 +6155,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                  <p>A choice:</p>
                                  <div class="model-entry definition assembly">
                                     <div class="instance-header">
-                                       <h4 id="/catalog/group/param/value" class="toc4 name">value</h4>
-                                       <p class="type" id="/catalog/group/param/value/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
+                                       <h4 id="/catalog/group/param/value" class="toc4 name">value</h4><a href="/catalog/group/param/value">🔗</a><p class="type" id="/catalog/group/param/value/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                                        <p class="occurrence">[0 to ∞]</p>
                                        <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/params/values">Switch to JSON</a></div>
                                        <p class="formal-name">Parameter Value</p>
@@ -6434,8 +6175,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                  </div>
                                  <div class="model-entry definition assembly">
                                     <div class="instance-header">
-                                       <h4 id="/catalog/group/param/select" class="toc4 name">select</h4>
-                                       <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/parameter/select">(global definition)</a></p>
+                                       <h4 id="/catalog/group/param/select" class="toc4 name">select</h4><a href="/catalog/group/param/select">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/parameter/select">(global definition)</a></p>
                                        <p class="occurrence">[0 or 1]</p>
                                        <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/params/select">Switch to JSON</a></div>
                                        <p class="formal-name">Selection</p>
@@ -6457,8 +6197,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                           <summary>Attribute (1)</summary>
                                           <div class="model-entry definition assembly">
                                              <div class="instance-header">
-                                                <h5 id="/catalog/group/param/select/@how-many" class="toc5 name">how-many</h5>
-                                                <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                <h5 id="/catalog/group/param/select/@how-many" class="toc5 name">how-many</h5><a href="/catalog/group/param/select/@how-many">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                 <p class="occurrence">[0 or 1]</p>
                                                 <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/params/select/how-many">Switch to JSON</a></div>
                                                 <p class="formal-name">Parameter Cardinality</p>
@@ -6486,8 +6225,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                           <summary>Element (1)</summary>
                                           <div class="model-entry definition assembly">
                                              <div class="instance-header">
-                                                <h5 id="/catalog/group/param/select/choice" class="toc5 name">choice</h5>
-                                                <p class="type" id="/catalog/group/param/select/choice/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                <h5 id="/catalog/group/param/select/choice" class="toc5 name">choice</h5><a href="/catalog/group/param/select/choice">🔗</a><p class="type" id="/catalog/group/param/select/choice/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                                 <p class="occurrence">[0 to ∞]</p>
                                                 <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/params/select/choice">Switch to JSON</a></div>
                                                 <p class="formal-name">Choice</p>
@@ -6502,8 +6240,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/group/param/remarks" class="toc4 name">remarks</h4>
-                                    <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                    <h4 id="/catalog/group/param/remarks" class="toc4 name">remarks</h4><a href="/catalog/group/param/remarks">🔗</a><p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/params/remarks">Switch to JSON</a></div>
                                     <p class="formal-name">Remarks</p>
@@ -6530,8 +6267,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                      </div>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/catalog/group/prop" class="toc3 name">prop</h3>
-                           <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog/group/prop">(global definition)</a></p>
+                           <h3 id="/catalog/group/prop" class="toc3 name">prop</h3><a href="/catalog/group/prop">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog/group/prop">(global definition)</a></p>
                            <p class="occurrence">[0 to ∞]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/props">Switch to JSON</a></div>
                            <p class="formal-name">Property</p>
@@ -6561,8 +6297,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               <summary>Attributes (5)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/group/prop/@name" class="toc4 name">name</h4>
-                                    <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                    <h4 id="/catalog/group/prop/@name" class="toc4 name">name</h4><a href="/catalog/group/prop/@name">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/props/name">Switch to JSON</a></div>
                                     <p class="formal-name">Property Name</p>
@@ -6587,8 +6322,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/group/prop/@uuid" class="toc4 name">uuid</h4>
-                                    <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                    <h4 id="/catalog/group/prop/@uuid" class="toc4 name">uuid</h4><a href="/catalog/group/prop/@uuid">🔗</a><p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/props/uuid">Switch to JSON</a></div>
                                     <p class="formal-name">Property Universally Unique Identifier</p>
@@ -6600,8 +6334,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/group/prop/@ns" class="toc4 name">ns</h4>
-                                    <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
+                                    <h4 id="/catalog/group/prop/@ns" class="toc4 name">ns</h4><a href="/catalog/group/prop/@ns">🔗</a><p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/props/ns">Switch to JSON</a></div>
                                     <p class="formal-name">Property Namespace</p>
@@ -6626,8 +6359,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/group/prop/@value" class="toc4 name">value</h4>
-                                    <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                    <h4 id="/catalog/group/prop/@value" class="toc4 name">value</h4><a href="/catalog/group/prop/@value">🔗</a><p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/props/value">Switch to JSON</a></div>
                                     <p class="formal-name">Property Value</p>
@@ -6638,8 +6370,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/group/prop/@class" class="toc4 name">class</h4>
-                                    <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                    <h4 id="/catalog/group/prop/@class" class="toc4 name">class</h4><a href="/catalog/group/prop/@class">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/props/class">Switch to JSON</a></div>
                                     <p class="formal-name">Property Class</p>
@@ -6663,8 +6394,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               <summary>Element (1)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/group/prop/remarks" class="toc4 name">remarks</h4>
-                                    <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                    <h4 id="/catalog/group/prop/remarks" class="toc4 name">remarks</h4><a href="/catalog/group/prop/remarks">🔗</a><p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/props/remarks">Switch to JSON</a></div>
                                     <p class="formal-name">Remarks</p>
@@ -6691,8 +6421,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                      </div>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/catalog/group/link" class="toc3 name">link</h3>
-                           <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog/group/link">(global definition)</a></p>
+                           <h3 id="/catalog/group/link" class="toc3 name">link</h3><a href="/catalog/group/link">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog/group/link">(global definition)</a></p>
                            <p class="occurrence">[0 to ∞]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/links">Switch to JSON</a></div>
                            <p class="formal-name">Link</p>
@@ -6725,8 +6454,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               <summary>Attributes (3)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/group/link/@href" class="toc4 name">href</h4>
-                                    <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
+                                    <h4 id="/catalog/group/link/@href" class="toc4 name">href</h4><a href="/catalog/group/link/@href">🔗</a><p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/links/href">Switch to JSON</a></div>
                                     <p class="formal-name">Hypertext Reference</p>
@@ -6751,8 +6479,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/group/link/@rel" class="toc4 name">rel</h4>
-                                    <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                    <h4 id="/catalog/group/link/@rel" class="toc4 name">rel</h4><a href="/catalog/group/link/@rel">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/links/rel">Switch to JSON</a></div>
                                     <p class="formal-name">Relation</p>
@@ -6775,8 +6502,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/group/link/@media-type" class="toc4 name">media-type</h4>
-                                    <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                    <h4 id="/catalog/group/link/@media-type" class="toc4 name">media-type</h4><a href="/catalog/group/link/@media-type">🔗</a><p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/links/media-type">Switch to JSON</a></div>
                                     <p class="formal-name">Media Type</p>
@@ -6805,8 +6531,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               <summary>Element (1)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/group/link/text" class="toc4 name">text</h4>
-                                    <p class="type" id="/catalog/group/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                    <h4 id="/catalog/group/link/text" class="toc4 name">text</h4><a href="/catalog/group/link/text">🔗</a><p class="type" id="/catalog/group/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/links/text">Switch to JSON</a></div>
                                     <p class="formal-name">Link Text</p>
@@ -6821,8 +6546,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                      </div>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/catalog/group/part" class="toc3 name">part</h3>
-                           <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog/group/part">(global definition)</a></p>
+                           <h3 id="/catalog/group/part" class="toc3 name">part</h3><a href="/catalog/group/part">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog/group/part">(global definition)</a></p>
                            <p class="occurrence">[0 to ∞]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/parts">Switch to JSON</a></div>
                            <p class="formal-name">Part</p>
@@ -6876,8 +6600,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               <summary>Attributes (4)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/group/part/@id" class="toc4 name">id</h4>
-                                    <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                    <h4 id="/catalog/group/part/@id" class="toc4 name">id</h4><a href="/catalog/group/part/@id">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/parts/id">Switch to JSON</a></div>
                                     <p class="formal-name">Part Identifier</p>
@@ -6891,8 +6614,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/group/part/@name" class="toc4 name">name</h4>
-                                    <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                    <h4 id="/catalog/group/part/@name" class="toc4 name">name</h4><a href="/catalog/group/part/@name">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/parts/name">Switch to JSON</a></div>
                                     <p class="formal-name">Part Name</p>
@@ -6903,8 +6625,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/group/part/@ns" class="toc4 name">ns</h4>
-                                    <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
+                                    <h4 id="/catalog/group/part/@ns" class="toc4 name">ns</h4><a href="/catalog/group/part/@ns">🔗</a><p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/parts/ns">Switch to JSON</a></div>
                                     <p class="formal-name">Part Namespace</p>
@@ -6929,8 +6650,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/group/part/@class" class="toc4 name">class</h4>
-                                    <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                    <h4 id="/catalog/group/part/@class" class="toc4 name">class</h4><a href="/catalog/group/part/@class">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/parts/class">Switch to JSON</a></div>
                                     <p class="formal-name">Part Class</p>
@@ -6956,8 +6676,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               <summary>Elements (4+)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/group/part/title" class="toc4 name">title</h4>
-                                    <p class="type" id="/catalog/group/part/title/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                    <h4 id="/catalog/group/part/title" class="toc4 name">title</h4><a href="/catalog/group/part/title">🔗</a><p class="type" id="/catalog/group/part/title/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/parts/title">Switch to JSON</a></div>
                                     <p class="formal-name">Part Title</p>
@@ -6968,8 +6687,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/group/part/prop" class="toc4 name">prop</h4>
-                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/part/prop">(global definition)</a></p>
+                                    <h4 id="/catalog/group/part/prop" class="toc4 name">prop</h4><a href="/catalog/group/part/prop">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/part/prop">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/parts/props">Switch to JSON</a></div>
                                     <p class="formal-name">Property</p>
@@ -6999,8 +6717,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <summary>Attributes (5)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/group/part/prop/@name" class="toc5 name">name</h5>
-                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <h5 id="/catalog/group/part/prop/@name" class="toc5 name">name</h5><a href="/catalog/group/part/prop/@name">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/parts/props/name">Switch to JSON</a></div>
                                              <p class="formal-name">Property Name</p>
@@ -7025,8 +6742,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/group/part/prop/@uuid" class="toc5 name">uuid</h5>
-                                             <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                             <h5 id="/catalog/group/part/prop/@uuid" class="toc5 name">uuid</h5><a href="/catalog/group/part/prop/@uuid">🔗</a><p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/parts/props/uuid">Switch to JSON</a></div>
                                              <p class="formal-name">Property Universally Unique Identifier</p>
@@ -7038,8 +6754,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/group/part/prop/@ns" class="toc5 name">ns</h5>
-                                             <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
+                                             <h5 id="/catalog/group/part/prop/@ns" class="toc5 name">ns</h5><a href="/catalog/group/part/prop/@ns">🔗</a><p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/parts/props/ns">Switch to JSON</a></div>
                                              <p class="formal-name">Property Namespace</p>
@@ -7064,8 +6779,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/group/part/prop/@value" class="toc5 name">value</h5>
-                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                             <h5 id="/catalog/group/part/prop/@value" class="toc5 name">value</h5><a href="/catalog/group/part/prop/@value">🔗</a><p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/parts/props/value">Switch to JSON</a></div>
                                              <p class="formal-name">Property Value</p>
@@ -7076,8 +6790,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/group/part/prop/@class" class="toc5 name">class</h5>
-                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <h5 id="/catalog/group/part/prop/@class" class="toc5 name">class</h5><a href="/catalog/group/part/prop/@class">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/parts/props/class">Switch to JSON</a></div>
                                              <p class="formal-name">Property Class</p>
@@ -7101,8 +6814,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <summary>Element (1)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/group/part/prop/remarks" class="toc5 name">remarks</h5>
-                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                             <h5 id="/catalog/group/part/prop/remarks" class="toc5 name">remarks</h5><a href="/catalog/group/part/prop/remarks">🔗</a><p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/parts/props/remarks">Switch to JSON</a></div>
                                              <p class="formal-name">Remarks</p>
@@ -7139,8 +6851,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/group/part/part" class="toc4 name">part</h4>
-                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/part/part">(global definition)</a></p>
+                                    <h4 id="/catalog/group/part/part" class="toc4 name">part</h4><a href="/catalog/group/part/part">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/part/part">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/parts/parts">Switch to JSON</a></div>
                                     <p class="formal-name">Part</p>
@@ -7194,8 +6905,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/group/part/link" class="toc4 name">link</h4>
-                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/part/link">(global definition)</a></p>
+                                    <h4 id="/catalog/group/part/link" class="toc4 name">link</h4><a href="/catalog/group/part/link">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/part/link">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/parts/links">Switch to JSON</a></div>
                                     <p class="formal-name">Link</p>
@@ -7228,8 +6938,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <summary>Attributes (3)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/group/part/link/@href" class="toc5 name">href</h5>
-                                             <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
+                                             <h5 id="/catalog/group/part/link/@href" class="toc5 name">href</h5><a href="/catalog/group/part/link/@href">🔗</a><p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/parts/links/href">Switch to JSON</a></div>
                                              <p class="formal-name">Hypertext Reference</p>
@@ -7254,8 +6963,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/group/part/link/@rel" class="toc5 name">rel</h5>
-                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <h5 id="/catalog/group/part/link/@rel" class="toc5 name">rel</h5><a href="/catalog/group/part/link/@rel">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/parts/links/rel">Switch to JSON</a></div>
                                              <p class="formal-name">Relation</p>
@@ -7278,8 +6986,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/group/part/link/@media-type" class="toc5 name">media-type</h5>
-                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                             <h5 id="/catalog/group/part/link/@media-type" class="toc5 name">media-type</h5><a href="/catalog/group/part/link/@media-type">🔗</a><p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/parts/links/media-type">Switch to JSON</a></div>
                                              <p class="formal-name">Media Type</p>
@@ -7308,8 +7015,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <summary>Element (1)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/group/part/link/text" class="toc5 name">text</h5>
-                                             <p class="type" id="/catalog/group/part/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                             <h5 id="/catalog/group/part/link/text" class="toc5 name">text</h5><a href="/catalog/group/part/link/text">🔗</a><p class="type" id="/catalog/group/part/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/parts/links/text">Switch to JSON</a></div>
                                              <p class="formal-name">Link Text</p>
@@ -7329,8 +7035,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                         <p>A choice:</p>
                         <div class="model-entry definition assembly">
                            <div class="instance-header">
-                              <h3 id="/catalog/group/group" class="toc3 name">group</h3>
-                              <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog/group/group">(global definition)</a></p>
+                              <h3 id="/catalog/group/group" class="toc3 name">group</h3><a href="/catalog/group/group">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog/group/group">(global definition)</a></p>
                               <p class="occurrence">[0 to ∞]</p>
                               <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/groups">Switch to JSON</a></div>
                               <p class="formal-name">Control Group</p>
@@ -7378,8 +7083,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                         </div>
                         <div class="model-entry definition assembly">
                            <div class="instance-header">
-                              <h3 id="/catalog/group/control" class="toc3 name">control</h3>
-                              <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog/group/control">(global definition)</a></p>
+                              <h3 id="/catalog/group/control" class="toc3 name">control</h3><a href="/catalog/group/control">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog/group/control">(global definition)</a></p>
                               <p class="occurrence">[0 to ∞]</p>
                               <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls">Switch to JSON</a></div>
                               <p class="formal-name">Control</p>
@@ -7529,8 +7233,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                  <summary>Attributes (2)</summary>
                                  <div class="model-entry definition assembly">
                                     <div class="instance-header">
-                                       <h4 id="/catalog/group/control/@id" class="toc4 name">id</h4>
-                                       <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                       <h4 id="/catalog/group/control/@id" class="toc4 name">id</h4><a href="/catalog/group/control/@id">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                        <p class="occurrence">[1]</p>
                                        <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls/id">Switch to JSON</a></div>
                                        <p class="formal-name">Control Identifier</p>
@@ -7542,8 +7245,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                  </div>
                                  <div class="model-entry definition assembly">
                                     <div class="instance-header">
-                                       <h4 id="/catalog/group/control/@class" class="toc4 name">class</h4>
-                                       <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                       <h4 id="/catalog/group/control/@class" class="toc4 name">class</h4><a href="/catalog/group/control/@class">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                        <p class="occurrence">[0 or 1]</p>
                                        <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls/class">Switch to JSON</a></div>
                                        <p class="formal-name">Control Class</p>
@@ -7568,8 +7270,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                  <summary>Elements (6)</summary>
                                  <div class="model-entry definition assembly">
                                     <div class="instance-header">
-                                       <h4 id="/catalog/group/control/title" class="toc4 name">title</h4>
-                                       <p class="type" id="/catalog/group/control/title/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                       <h4 id="/catalog/group/control/title" class="toc4 name">title</h4><a href="/catalog/group/control/title">🔗</a><p class="type" id="/catalog/group/control/title/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                        <p class="occurrence">[1]</p>
                                        <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls/title">Switch to JSON</a></div>
                                        <p class="formal-name">Control Title</p>
@@ -7580,8 +7281,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                  </div>
                                  <div class="model-entry definition assembly">
                                     <div class="instance-header">
-                                       <h4 id="/catalog/group/control/param" class="toc4 name">param</h4>
-                                       <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog/control/param">(global definition)</a></p>
+                                       <h4 id="/catalog/group/control/param" class="toc4 name">param</h4><a href="/catalog/group/control/param">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog/control/param">(global definition)</a></p>
                                        <p class="occurrence">[0 to ∞]</p>
                                        <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls/params">Switch to JSON</a></div>
                                        <p class="formal-name">Parameter</p>
@@ -7637,8 +7337,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                           <summary>Attributes (3)</summary>
                                           <div class="model-entry definition assembly">
                                              <div class="instance-header">
-                                                <h5 id="/catalog/group/control/param/@id" class="toc5 name">id</h5>
-                                                <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                <h5 id="/catalog/group/control/param/@id" class="toc5 name">id</h5><a href="/catalog/group/control/param/@id">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                 <p class="occurrence">[1]</p>
                                                 <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls/params/id">Switch to JSON</a></div>
                                                 <p class="formal-name">Parameter Identifier</p>
@@ -7652,8 +7351,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                           </div>
                                           <div class="model-entry definition assembly">
                                              <div class="instance-header">
-                                                <h5 id="/catalog/group/control/param/@class" class="toc5 name">class</h5>
-                                                <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                <h5 id="/catalog/group/control/param/@class" class="toc5 name">class</h5><a href="/catalog/group/control/param/@class">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                 <p class="occurrence">[0 or 1]</p>
                                                 <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls/params/class">Switch to JSON</a></div>
                                                 <p class="formal-name">Parameter Class</p>
@@ -7673,8 +7371,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                           </div>
                                           <div class="model-entry definition assembly">
                                              <div class="instance-header">
-                                                <h5 id="/catalog/group/control/param/@depends-on" class="toc5 name">depends-on</h5>
-                                                <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                <h5 id="/catalog/group/control/param/@depends-on" class="toc5 name">depends-on</h5><a href="/catalog/group/control/param/@depends-on">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                 <p class="occurrence">[0 or 1]</p>
                                                 <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls/params/depends-on">Switch to JSON</a></div>
                                                 <p class="formal-name">Depends on</p>
@@ -7689,8 +7386,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                           <summary>Elements (9)</summary>
                                           <div class="model-entry definition assembly">
                                              <div class="instance-header">
-                                                <h5 id="/catalog/group/control/param/prop" class="toc5 name">prop</h5>
-                                                <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/parameter/prop">(global definition)</a></p>
+                                                <h5 id="/catalog/group/control/param/prop" class="toc5 name">prop</h5><a href="/catalog/group/control/param/prop">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/parameter/prop">(global definition)</a></p>
                                                 <p class="occurrence">[0 to ∞]</p>
                                                 <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls/params/props">Switch to JSON</a></div>
                                                 <p class="formal-name">Property</p>
@@ -7720,8 +7416,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                    <summary>Attributes (5)</summary>
                                                    <div class="model-entry definition assembly">
                                                       <div class="instance-header">
-                                                         <h6 id="/catalog/group/control/param/prop/@name" class="toc6 name">name</h6>
-                                                         <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                         <h6 id="/catalog/group/control/param/prop/@name" class="toc6 name">name</h6><a href="/catalog/group/control/param/prop/@name">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                          <p class="occurrence">[1]</p>
                                                          <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls/params/props/name">Switch to JSON</a></div>
                                                          <p class="formal-name">Property Name</p>
@@ -7746,8 +7441,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                    </div>
                                                    <div class="model-entry definition assembly">
                                                       <div class="instance-header">
-                                                         <h6 id="/catalog/group/control/param/prop/@uuid" class="toc6 name">uuid</h6>
-                                                         <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                                         <h6 id="/catalog/group/control/param/prop/@uuid" class="toc6 name">uuid</h6><a href="/catalog/group/control/param/prop/@uuid">🔗</a><p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                                          <p class="occurrence">[0 or 1]</p>
                                                          <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls/params/props/uuid">Switch to JSON</a></div>
                                                          <p class="formal-name">Property Universally Unique Identifier</p>
@@ -7759,8 +7453,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                    </div>
                                                    <div class="model-entry definition assembly">
                                                       <div class="instance-header">
-                                                         <h6 id="/catalog/group/control/param/prop/@ns" class="toc6 name">ns</h6>
-                                                         <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
+                                                         <h6 id="/catalog/group/control/param/prop/@ns" class="toc6 name">ns</h6><a href="/catalog/group/control/param/prop/@ns">🔗</a><p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                                          <p class="occurrence">[0 or 1]</p>
                                                          <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls/params/props/ns">Switch to JSON</a></div>
                                                          <p class="formal-name">Property Namespace</p>
@@ -7785,8 +7478,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                    </div>
                                                    <div class="model-entry definition assembly">
                                                       <div class="instance-header">
-                                                         <h6 id="/catalog/group/control/param/prop/@value" class="toc6 name">value</h6>
-                                                         <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                         <h6 id="/catalog/group/control/param/prop/@value" class="toc6 name">value</h6><a href="/catalog/group/control/param/prop/@value">🔗</a><p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                                          <p class="occurrence">[1]</p>
                                                          <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls/params/props/value">Switch to JSON</a></div>
                                                          <p class="formal-name">Property Value</p>
@@ -7797,8 +7489,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                    </div>
                                                    <div class="model-entry definition assembly">
                                                       <div class="instance-header">
-                                                         <h6 id="/catalog/group/control/param/prop/@class" class="toc6 name">class</h6>
-                                                         <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                         <h6 id="/catalog/group/control/param/prop/@class" class="toc6 name">class</h6><a href="/catalog/group/control/param/prop/@class">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                          <p class="occurrence">[0 or 1]</p>
                                                          <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls/params/props/class">Switch to JSON</a></div>
                                                          <p class="formal-name">Property Class</p>
@@ -7822,8 +7513,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                    <summary>Element (1)</summary>
                                                    <div class="model-entry definition assembly">
                                                       <div class="instance-header">
-                                                         <h6 id="/catalog/group/control/param/prop/remarks" class="toc6 name">remarks</h6>
-                                                         <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                         <h6 id="/catalog/group/control/param/prop/remarks" class="toc6 name">remarks</h6><a href="/catalog/group/control/param/prop/remarks">🔗</a><p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                                          <p class="occurrence">[0 or 1]</p>
                                                          <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls/params/props/remarks">Switch to JSON</a></div>
                                                          <p class="formal-name">Remarks</p>
@@ -7850,8 +7540,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                           </div>
                                           <div class="model-entry definition assembly">
                                              <div class="instance-header">
-                                                <h5 id="/catalog/group/control/param/link" class="toc5 name">link</h5>
-                                                <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/parameter/link">(global definition)</a></p>
+                                                <h5 id="/catalog/group/control/param/link" class="toc5 name">link</h5><a href="/catalog/group/control/param/link">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/parameter/link">(global definition)</a></p>
                                                 <p class="occurrence">[0 to ∞]</p>
                                                 <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls/params/links">Switch to JSON</a></div>
                                                 <p class="formal-name">Link</p>
@@ -7884,8 +7573,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                    <summary>Attributes (3)</summary>
                                                    <div class="model-entry definition assembly">
                                                       <div class="instance-header">
-                                                         <h6 id="/catalog/group/control/param/link/@href" class="toc6 name">href</h6>
-                                                         <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
+                                                         <h6 id="/catalog/group/control/param/link/@href" class="toc6 name">href</h6><a href="/catalog/group/control/param/link/@href">🔗</a><p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
                                                          <p class="occurrence">[1]</p>
                                                          <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls/params/links/href">Switch to JSON</a></div>
                                                          <p class="formal-name">Hypertext Reference</p>
@@ -7910,8 +7598,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                    </div>
                                                    <div class="model-entry definition assembly">
                                                       <div class="instance-header">
-                                                         <h6 id="/catalog/group/control/param/link/@rel" class="toc6 name">rel</h6>
-                                                         <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                         <h6 id="/catalog/group/control/param/link/@rel" class="toc6 name">rel</h6><a href="/catalog/group/control/param/link/@rel">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                          <p class="occurrence">[0 or 1]</p>
                                                          <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls/params/links/rel">Switch to JSON</a></div>
                                                          <p class="formal-name">Relation</p>
@@ -7934,8 +7621,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                    </div>
                                                    <div class="model-entry definition assembly">
                                                       <div class="instance-header">
-                                                         <h6 id="/catalog/group/control/param/link/@media-type" class="toc6 name">media-type</h6>
-                                                         <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                         <h6 id="/catalog/group/control/param/link/@media-type" class="toc6 name">media-type</h6><a href="/catalog/group/control/param/link/@media-type">🔗</a><p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                                          <p class="occurrence">[0 or 1]</p>
                                                          <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls/params/links/media-type">Switch to JSON</a></div>
                                                          <p class="formal-name">Media Type</p>
@@ -7964,8 +7650,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                    <summary>Element (1)</summary>
                                                    <div class="model-entry definition assembly">
                                                       <div class="instance-header">
-                                                         <h6 id="/catalog/group/control/param/link/text" class="toc6 name">text</h6>
-                                                         <p class="type" id="/catalog/group/control/param/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                         <h6 id="/catalog/group/control/param/link/text" class="toc6 name">text</h6><a href="/catalog/group/control/param/link/text">🔗</a><p class="type" id="/catalog/group/control/param/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                                          <p class="occurrence">[0 or 1]</p>
                                                          <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls/params/links/text">Switch to JSON</a></div>
                                                          <p class="formal-name">Link Text</p>
@@ -7980,8 +7665,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                           </div>
                                           <div class="model-entry definition assembly">
                                              <div class="instance-header">
-                                                <h5 id="/catalog/group/control/param/label" class="toc5 name">label</h5>
-                                                <p class="type" id="/catalog/group/control/param/label/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                <h5 id="/catalog/group/control/param/label" class="toc5 name">label</h5><a href="/catalog/group/control/param/label">🔗</a><p class="type" id="/catalog/group/control/param/label/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                                 <p class="occurrence">[0 or 1]</p>
                                                 <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls/params/label">Switch to JSON</a></div>
                                                 <p class="formal-name">Parameter Label</p>
@@ -8001,8 +7685,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                           </div>
                                           <div class="model-entry definition assembly">
                                              <div class="instance-header">
-                                                <h5 id="/catalog/group/control/param/usage" class="toc5 name">usage</h5>
-                                                <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                <h5 id="/catalog/group/control/param/usage" class="toc5 name">usage</h5><a href="/catalog/group/control/param/usage">🔗</a><p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                                 <p class="occurrence">[0 or 1]</p>
                                                 <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls/params/usage">Switch to JSON</a></div>
                                                 <p class="formal-name">Parameter Usage Description</p>
@@ -8026,8 +7709,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                           </div>
                                           <div class="model-entry definition assembly">
                                              <div class="instance-header">
-                                                <h5 id="/catalog/group/control/param/constraint" class="toc5 name">constraint</h5>
-                                                <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/parameter/constraint">(global definition)</a></p>
+                                                <h5 id="/catalog/group/control/param/constraint" class="toc5 name">constraint</h5><a href="/catalog/group/control/param/constraint">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/parameter/constraint">(global definition)</a></p>
                                                 <p class="occurrence">[0 to ∞]</p>
                                                 <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls/params/constraints">Switch to JSON</a></div>
                                                 <p class="formal-name">Constraint</p>
@@ -8038,8 +7720,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                    <summary>Elements (2)</summary>
                                                    <div class="model-entry definition assembly">
                                                       <div class="instance-header">
-                                                         <h6 id="/catalog/group/control/param/constraint/description" class="toc6 name">description</h6>
-                                                         <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                         <h6 id="/catalog/group/control/param/constraint/description" class="toc6 name">description</h6><a href="/catalog/group/control/param/constraint/description">🔗</a><p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                                          <p class="occurrence">[0 or 1]</p>
                                                          <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls/params/constraints/description">Switch to JSON</a></div>
                                                          <p class="formal-name">Constraint Description</p>
@@ -8063,8 +7744,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                    </div>
                                                    <div class="model-entry definition assembly">
                                                       <div class="instance-header">
-                                                         <h6 id="/catalog/group/control/param/constraint/test" class="toc6 name">test</h6>
-                                                         <p class="type">element<br /></p>
+                                                         <h6 id="/catalog/group/control/param/constraint/test" class="toc6 name">test</h6><a href="/catalog/group/control/param/constraint/test">🔗</a><p class="type">element<br /></p>
                                                          <p class="occurrence">[0 to ∞]</p>
                                                          <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls/params/constraints/tests">Switch to JSON</a></div>
                                                          <p class="formal-name">Constraint Test</p>
@@ -8075,8 +7755,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                             <summary>Elements (2)</summary>
                                                             <div class="model-entry definition assembly">
                                                                <div class="instance-header">
-                                                                  <p id="/catalog/group/control/param/constraint/test/expression" class="toc7 name">expression</p>
-                                                                  <p class="type" id="/catalog/group/control/param/constraint/test/expression/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
+                                                                  <p id="/catalog/group/control/param/constraint/test/expression" class="toc7 name">expression</p><a href="/catalog/group/control/param/constraint/test/expression">🔗</a><p class="type" id="/catalog/group/control/param/constraint/test/expression/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                                                                   <p class="occurrence">[1]</p>
                                                                   <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls/params/constraints/tests/expression">Switch to JSON</a></div>
                                                                   <p class="formal-name">Constraint test</p>
@@ -8087,8 +7766,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                             </div>
                                                             <div class="model-entry definition assembly">
                                                                <div class="instance-header">
-                                                                  <p id="/catalog/group/control/param/constraint/test/remarks" class="toc7 name">remarks</p>
-                                                                  <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                                  <p id="/catalog/group/control/param/constraint/test/remarks" class="toc7 name">remarks</p><a href="/catalog/group/control/param/constraint/test/remarks">🔗</a><p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                                                   <p class="occurrence">[0 or 1]</p>
                                                                   <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls/params/constraints/tests/remarks">Switch to JSON</a></div>
                                                                   <p class="formal-name">Remarks</p>
@@ -8118,8 +7796,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                           </div>
                                           <div class="model-entry definition assembly">
                                              <div class="instance-header">
-                                                <h5 id="/catalog/group/control/param/guideline" class="toc5 name">guideline</h5>
-                                                <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/parameter/guideline">(global definition)</a></p>
+                                                <h5 id="/catalog/group/control/param/guideline" class="toc5 name">guideline</h5><a href="/catalog/group/control/param/guideline">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/parameter/guideline">(global definition)</a></p>
                                                 <p class="occurrence">[0 to ∞]</p>
                                                 <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls/params/guidelines">Switch to JSON</a></div>
                                                 <p class="formal-name">Guideline</p>
@@ -8145,8 +7822,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              <p>A choice:</p>
                                              <div class="model-entry definition assembly">
                                                 <div class="instance-header">
-                                                   <h5 id="/catalog/group/control/param/value" class="toc5 name">value</h5>
-                                                   <p class="type" id="/catalog/group/control/param/value/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
+                                                   <h5 id="/catalog/group/control/param/value" class="toc5 name">value</h5><a href="/catalog/group/control/param/value">🔗</a><p class="type" id="/catalog/group/control/param/value/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                                                    <p class="occurrence">[0 to ∞]</p>
                                                    <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls/params/values">Switch to JSON</a></div>
                                                    <p class="formal-name">Parameter Value</p>
@@ -8166,8 +7842,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              </div>
                                              <div class="model-entry definition assembly">
                                                 <div class="instance-header">
-                                                   <h5 id="/catalog/group/control/param/select" class="toc5 name">select</h5>
-                                                   <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/parameter/select">(global definition)</a></p>
+                                                   <h5 id="/catalog/group/control/param/select" class="toc5 name">select</h5><a href="/catalog/group/control/param/select">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/parameter/select">(global definition)</a></p>
                                                    <p class="occurrence">[0 or 1]</p>
                                                    <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls/params/select">Switch to JSON</a></div>
                                                    <p class="formal-name">Selection</p>
@@ -8189,8 +7864,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                       <summary>Attribute (1)</summary>
                                                       <div class="model-entry definition assembly">
                                                          <div class="instance-header">
-                                                            <h6 id="/catalog/group/control/param/select/@how-many" class="toc6 name">how-many</h6>
-                                                            <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                            <h6 id="/catalog/group/control/param/select/@how-many" class="toc6 name">how-many</h6><a href="/catalog/group/control/param/select/@how-many">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                             <p class="occurrence">[0 or 1]</p>
                                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls/params/select/how-many">Switch to JSON</a></div>
                                                             <p class="formal-name">Parameter Cardinality</p>
@@ -8218,8 +7892,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                       <summary>Element (1)</summary>
                                                       <div class="model-entry definition assembly">
                                                          <div class="instance-header">
-                                                            <h6 id="/catalog/group/control/param/select/choice" class="toc6 name">choice</h6>
-                                                            <p class="type" id="/catalog/group/control/param/select/choice/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                            <h6 id="/catalog/group/control/param/select/choice" class="toc6 name">choice</h6><a href="/catalog/group/control/param/select/choice">🔗</a><p class="type" id="/catalog/group/control/param/select/choice/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                                             <p class="occurrence">[0 to ∞]</p>
                                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls/params/select/choice">Switch to JSON</a></div>
                                                             <p class="formal-name">Choice</p>
@@ -8234,8 +7907,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                           </div>
                                           <div class="model-entry definition assembly">
                                              <div class="instance-header">
-                                                <h5 id="/catalog/group/control/param/remarks" class="toc5 name">remarks</h5>
-                                                <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                <h5 id="/catalog/group/control/param/remarks" class="toc5 name">remarks</h5><a href="/catalog/group/control/param/remarks">🔗</a><p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                                 <p class="occurrence">[0 or 1]</p>
                                                 <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls/params/remarks">Switch to JSON</a></div>
                                                 <p class="formal-name">Remarks</p>
@@ -8262,8 +7934,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                  </div>
                                  <div class="model-entry definition assembly">
                                     <div class="instance-header">
-                                       <h4 id="/catalog/group/control/prop" class="toc4 name">prop</h4>
-                                       <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog/control/prop">(global definition)</a></p>
+                                       <h4 id="/catalog/group/control/prop" class="toc4 name">prop</h4><a href="/catalog/group/control/prop">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog/control/prop">(global definition)</a></p>
                                        <p class="occurrence">[0 to ∞]</p>
                                        <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls/props">Switch to JSON</a></div>
                                        <p class="formal-name">Property</p>
@@ -8293,8 +7964,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                           <summary>Attributes (5)</summary>
                                           <div class="model-entry definition assembly">
                                              <div class="instance-header">
-                                                <h5 id="/catalog/group/control/prop/@name" class="toc5 name">name</h5>
-                                                <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                <h5 id="/catalog/group/control/prop/@name" class="toc5 name">name</h5><a href="/catalog/group/control/prop/@name">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                 <p class="occurrence">[1]</p>
                                                 <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls/props/name">Switch to JSON</a></div>
                                                 <p class="formal-name">Property Name</p>
@@ -8319,8 +7989,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                           </div>
                                           <div class="model-entry definition assembly">
                                              <div class="instance-header">
-                                                <h5 id="/catalog/group/control/prop/@uuid" class="toc5 name">uuid</h5>
-                                                <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                                <h5 id="/catalog/group/control/prop/@uuid" class="toc5 name">uuid</h5><a href="/catalog/group/control/prop/@uuid">🔗</a><p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                                 <p class="occurrence">[0 or 1]</p>
                                                 <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls/props/uuid">Switch to JSON</a></div>
                                                 <p class="formal-name">Property Universally Unique Identifier</p>
@@ -8332,8 +8001,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                           </div>
                                           <div class="model-entry definition assembly">
                                              <div class="instance-header">
-                                                <h5 id="/catalog/group/control/prop/@ns" class="toc5 name">ns</h5>
-                                                <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
+                                                <h5 id="/catalog/group/control/prop/@ns" class="toc5 name">ns</h5><a href="/catalog/group/control/prop/@ns">🔗</a><p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                                 <p class="occurrence">[0 or 1]</p>
                                                 <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls/props/ns">Switch to JSON</a></div>
                                                 <p class="formal-name">Property Namespace</p>
@@ -8358,8 +8026,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                           </div>
                                           <div class="model-entry definition assembly">
                                              <div class="instance-header">
-                                                <h5 id="/catalog/group/control/prop/@value" class="toc5 name">value</h5>
-                                                <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                <h5 id="/catalog/group/control/prop/@value" class="toc5 name">value</h5><a href="/catalog/group/control/prop/@value">🔗</a><p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                                 <p class="occurrence">[1]</p>
                                                 <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls/props/value">Switch to JSON</a></div>
                                                 <p class="formal-name">Property Value</p>
@@ -8370,8 +8037,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                           </div>
                                           <div class="model-entry definition assembly">
                                              <div class="instance-header">
-                                                <h5 id="/catalog/group/control/prop/@class" class="toc5 name">class</h5>
-                                                <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                <h5 id="/catalog/group/control/prop/@class" class="toc5 name">class</h5><a href="/catalog/group/control/prop/@class">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                 <p class="occurrence">[0 or 1]</p>
                                                 <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls/props/class">Switch to JSON</a></div>
                                                 <p class="formal-name">Property Class</p>
@@ -8395,8 +8061,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                           <summary>Element (1)</summary>
                                           <div class="model-entry definition assembly">
                                              <div class="instance-header">
-                                                <h5 id="/catalog/group/control/prop/remarks" class="toc5 name">remarks</h5>
-                                                <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                <h5 id="/catalog/group/control/prop/remarks" class="toc5 name">remarks</h5><a href="/catalog/group/control/prop/remarks">🔗</a><p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                                 <p class="occurrence">[0 or 1]</p>
                                                 <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls/props/remarks">Switch to JSON</a></div>
                                                 <p class="formal-name">Remarks</p>
@@ -8423,8 +8088,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                  </div>
                                  <div class="model-entry definition assembly">
                                     <div class="instance-header">
-                                       <h4 id="/catalog/group/control/link" class="toc4 name">link</h4>
-                                       <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog/control/link">(global definition)</a></p>
+                                       <h4 id="/catalog/group/control/link" class="toc4 name">link</h4><a href="/catalog/group/control/link">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog/control/link">(global definition)</a></p>
                                        <p class="occurrence">[0 to ∞]</p>
                                        <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls/links">Switch to JSON</a></div>
                                        <p class="formal-name">Link</p>
@@ -8457,8 +8121,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                           <summary>Attributes (3)</summary>
                                           <div class="model-entry definition assembly">
                                              <div class="instance-header">
-                                                <h5 id="/catalog/group/control/link/@href" class="toc5 name">href</h5>
-                                                <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
+                                                <h5 id="/catalog/group/control/link/@href" class="toc5 name">href</h5><a href="/catalog/group/control/link/@href">🔗</a><p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
                                                 <p class="occurrence">[1]</p>
                                                 <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls/links/href">Switch to JSON</a></div>
                                                 <p class="formal-name">Hypertext Reference</p>
@@ -8483,8 +8146,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                           </div>
                                           <div class="model-entry definition assembly">
                                              <div class="instance-header">
-                                                <h5 id="/catalog/group/control/link/@rel" class="toc5 name">rel</h5>
-                                                <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                <h5 id="/catalog/group/control/link/@rel" class="toc5 name">rel</h5><a href="/catalog/group/control/link/@rel">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                 <p class="occurrence">[0 or 1]</p>
                                                 <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls/links/rel">Switch to JSON</a></div>
                                                 <p class="formal-name">Relation</p>
@@ -8507,8 +8169,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                           </div>
                                           <div class="model-entry definition assembly">
                                              <div class="instance-header">
-                                                <h5 id="/catalog/group/control/link/@media-type" class="toc5 name">media-type</h5>
-                                                <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                <h5 id="/catalog/group/control/link/@media-type" class="toc5 name">media-type</h5><a href="/catalog/group/control/link/@media-type">🔗</a><p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                                 <p class="occurrence">[0 or 1]</p>
                                                 <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls/links/media-type">Switch to JSON</a></div>
                                                 <p class="formal-name">Media Type</p>
@@ -8537,8 +8198,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                           <summary>Element (1)</summary>
                                           <div class="model-entry definition assembly">
                                              <div class="instance-header">
-                                                <h5 id="/catalog/group/control/link/text" class="toc5 name">text</h5>
-                                                <p class="type" id="/catalog/group/control/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                <h5 id="/catalog/group/control/link/text" class="toc5 name">text</h5><a href="/catalog/group/control/link/text">🔗</a><p class="type" id="/catalog/group/control/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                                 <p class="occurrence">[0 or 1]</p>
                                                 <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls/links/text">Switch to JSON</a></div>
                                                 <p class="formal-name">Link Text</p>
@@ -8553,8 +8213,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                  </div>
                                  <div class="model-entry definition assembly">
                                     <div class="instance-header">
-                                       <h4 id="/catalog/group/control/part" class="toc4 name">part</h4>
-                                       <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog/control/part">(global definition)</a></p>
+                                       <h4 id="/catalog/group/control/part" class="toc4 name">part</h4><a href="/catalog/group/control/part">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog/control/part">(global definition)</a></p>
                                        <p class="occurrence">[0 to ∞]</p>
                                        <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls/parts">Switch to JSON</a></div>
                                        <p class="formal-name">Part</p>
@@ -8608,8 +8267,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                           <summary>Attributes (4)</summary>
                                           <div class="model-entry definition assembly">
                                              <div class="instance-header">
-                                                <h5 id="/catalog/group/control/part/@id" class="toc5 name">id</h5>
-                                                <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                <h5 id="/catalog/group/control/part/@id" class="toc5 name">id</h5><a href="/catalog/group/control/part/@id">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                 <p class="occurrence">[0 or 1]</p>
                                                 <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls/parts/id">Switch to JSON</a></div>
                                                 <p class="formal-name">Part Identifier</p>
@@ -8623,8 +8281,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                           </div>
                                           <div class="model-entry definition assembly">
                                              <div class="instance-header">
-                                                <h5 id="/catalog/group/control/part/@name" class="toc5 name">name</h5>
-                                                <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                <h5 id="/catalog/group/control/part/@name" class="toc5 name">name</h5><a href="/catalog/group/control/part/@name">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                 <p class="occurrence">[1]</p>
                                                 <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls/parts/name">Switch to JSON</a></div>
                                                 <p class="formal-name">Part Name</p>
@@ -8635,8 +8292,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                           </div>
                                           <div class="model-entry definition assembly">
                                              <div class="instance-header">
-                                                <h5 id="/catalog/group/control/part/@ns" class="toc5 name">ns</h5>
-                                                <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
+                                                <h5 id="/catalog/group/control/part/@ns" class="toc5 name">ns</h5><a href="/catalog/group/control/part/@ns">🔗</a><p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                                 <p class="occurrence">[0 or 1]</p>
                                                 <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls/parts/ns">Switch to JSON</a></div>
                                                 <p class="formal-name">Part Namespace</p>
@@ -8661,8 +8317,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                           </div>
                                           <div class="model-entry definition assembly">
                                              <div class="instance-header">
-                                                <h5 id="/catalog/group/control/part/@class" class="toc5 name">class</h5>
-                                                <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                <h5 id="/catalog/group/control/part/@class" class="toc5 name">class</h5><a href="/catalog/group/control/part/@class">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                 <p class="occurrence">[0 or 1]</p>
                                                 <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls/parts/class">Switch to JSON</a></div>
                                                 <p class="formal-name">Part Class</p>
@@ -8688,8 +8343,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                           <summary>Elements (4+)</summary>
                                           <div class="model-entry definition assembly">
                                              <div class="instance-header">
-                                                <h5 id="/catalog/group/control/part/title" class="toc5 name">title</h5>
-                                                <p class="type" id="/catalog/group/control/part/title/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                <h5 id="/catalog/group/control/part/title" class="toc5 name">title</h5><a href="/catalog/group/control/part/title">🔗</a><p class="type" id="/catalog/group/control/part/title/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                                 <p class="occurrence">[0 or 1]</p>
                                                 <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls/parts/title">Switch to JSON</a></div>
                                                 <p class="formal-name">Part Title</p>
@@ -8700,8 +8354,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                           </div>
                                           <div class="model-entry definition assembly">
                                              <div class="instance-header">
-                                                <h5 id="/catalog/group/control/part/prop" class="toc5 name">prop</h5>
-                                                <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/part/prop">(global definition)</a></p>
+                                                <h5 id="/catalog/group/control/part/prop" class="toc5 name">prop</h5><a href="/catalog/group/control/part/prop">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/part/prop">(global definition)</a></p>
                                                 <p class="occurrence">[0 to ∞]</p>
                                                 <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls/parts/props">Switch to JSON</a></div>
                                                 <p class="formal-name">Property</p>
@@ -8731,8 +8384,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                    <summary>Attributes (5)</summary>
                                                    <div class="model-entry definition assembly">
                                                       <div class="instance-header">
-                                                         <h6 id="/catalog/group/control/part/prop/@name" class="toc6 name">name</h6>
-                                                         <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                         <h6 id="/catalog/group/control/part/prop/@name" class="toc6 name">name</h6><a href="/catalog/group/control/part/prop/@name">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                          <p class="occurrence">[1]</p>
                                                          <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls/parts/props/name">Switch to JSON</a></div>
                                                          <p class="formal-name">Property Name</p>
@@ -8757,8 +8409,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                    </div>
                                                    <div class="model-entry definition assembly">
                                                       <div class="instance-header">
-                                                         <h6 id="/catalog/group/control/part/prop/@uuid" class="toc6 name">uuid</h6>
-                                                         <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                                         <h6 id="/catalog/group/control/part/prop/@uuid" class="toc6 name">uuid</h6><a href="/catalog/group/control/part/prop/@uuid">🔗</a><p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                                          <p class="occurrence">[0 or 1]</p>
                                                          <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls/parts/props/uuid">Switch to JSON</a></div>
                                                          <p class="formal-name">Property Universally Unique Identifier</p>
@@ -8770,8 +8421,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                    </div>
                                                    <div class="model-entry definition assembly">
                                                       <div class="instance-header">
-                                                         <h6 id="/catalog/group/control/part/prop/@ns" class="toc6 name">ns</h6>
-                                                         <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
+                                                         <h6 id="/catalog/group/control/part/prop/@ns" class="toc6 name">ns</h6><a href="/catalog/group/control/part/prop/@ns">🔗</a><p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                                          <p class="occurrence">[0 or 1]</p>
                                                          <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls/parts/props/ns">Switch to JSON</a></div>
                                                          <p class="formal-name">Property Namespace</p>
@@ -8796,8 +8446,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                    </div>
                                                    <div class="model-entry definition assembly">
                                                       <div class="instance-header">
-                                                         <h6 id="/catalog/group/control/part/prop/@value" class="toc6 name">value</h6>
-                                                         <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                         <h6 id="/catalog/group/control/part/prop/@value" class="toc6 name">value</h6><a href="/catalog/group/control/part/prop/@value">🔗</a><p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                                          <p class="occurrence">[1]</p>
                                                          <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls/parts/props/value">Switch to JSON</a></div>
                                                          <p class="formal-name">Property Value</p>
@@ -8808,8 +8457,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                    </div>
                                                    <div class="model-entry definition assembly">
                                                       <div class="instance-header">
-                                                         <h6 id="/catalog/group/control/part/prop/@class" class="toc6 name">class</h6>
-                                                         <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                         <h6 id="/catalog/group/control/part/prop/@class" class="toc6 name">class</h6><a href="/catalog/group/control/part/prop/@class">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                          <p class="occurrence">[0 or 1]</p>
                                                          <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls/parts/props/class">Switch to JSON</a></div>
                                                          <p class="formal-name">Property Class</p>
@@ -8833,8 +8481,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                    <summary>Element (1)</summary>
                                                    <div class="model-entry definition assembly">
                                                       <div class="instance-header">
-                                                         <h6 id="/catalog/group/control/part/prop/remarks" class="toc6 name">remarks</h6>
-                                                         <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                         <h6 id="/catalog/group/control/part/prop/remarks" class="toc6 name">remarks</h6><a href="/catalog/group/control/part/prop/remarks">🔗</a><p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                                          <p class="occurrence">[0 or 1]</p>
                                                          <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls/parts/props/remarks">Switch to JSON</a></div>
                                                          <p class="formal-name">Remarks</p>
@@ -8871,8 +8518,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                           </div>
                                           <div class="model-entry definition assembly">
                                              <div class="instance-header">
-                                                <h5 id="/catalog/group/control/part/part" class="toc5 name">part</h5>
-                                                <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/part/part">(global definition)</a></p>
+                                                <h5 id="/catalog/group/control/part/part" class="toc5 name">part</h5><a href="/catalog/group/control/part/part">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/part/part">(global definition)</a></p>
                                                 <p class="occurrence">[0 to ∞]</p>
                                                 <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls/parts/parts">Switch to JSON</a></div>
                                                 <p class="formal-name">Part</p>
@@ -8926,8 +8572,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                           </div>
                                           <div class="model-entry definition assembly">
                                              <div class="instance-header">
-                                                <h5 id="/catalog/group/control/part/link" class="toc5 name">link</h5>
-                                                <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/part/link">(global definition)</a></p>
+                                                <h5 id="/catalog/group/control/part/link" class="toc5 name">link</h5><a href="/catalog/group/control/part/link">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/part/link">(global definition)</a></p>
                                                 <p class="occurrence">[0 to ∞]</p>
                                                 <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls/parts/links">Switch to JSON</a></div>
                                                 <p class="formal-name">Link</p>
@@ -8960,8 +8605,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                    <summary>Attributes (3)</summary>
                                                    <div class="model-entry definition assembly">
                                                       <div class="instance-header">
-                                                         <h6 id="/catalog/group/control/part/link/@href" class="toc6 name">href</h6>
-                                                         <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
+                                                         <h6 id="/catalog/group/control/part/link/@href" class="toc6 name">href</h6><a href="/catalog/group/control/part/link/@href">🔗</a><p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
                                                          <p class="occurrence">[1]</p>
                                                          <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls/parts/links/href">Switch to JSON</a></div>
                                                          <p class="formal-name">Hypertext Reference</p>
@@ -8986,8 +8630,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                    </div>
                                                    <div class="model-entry definition assembly">
                                                       <div class="instance-header">
-                                                         <h6 id="/catalog/group/control/part/link/@rel" class="toc6 name">rel</h6>
-                                                         <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                         <h6 id="/catalog/group/control/part/link/@rel" class="toc6 name">rel</h6><a href="/catalog/group/control/part/link/@rel">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                          <p class="occurrence">[0 or 1]</p>
                                                          <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls/parts/links/rel">Switch to JSON</a></div>
                                                          <p class="formal-name">Relation</p>
@@ -9010,8 +8653,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                    </div>
                                                    <div class="model-entry definition assembly">
                                                       <div class="instance-header">
-                                                         <h6 id="/catalog/group/control/part/link/@media-type" class="toc6 name">media-type</h6>
-                                                         <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                         <h6 id="/catalog/group/control/part/link/@media-type" class="toc6 name">media-type</h6><a href="/catalog/group/control/part/link/@media-type">🔗</a><p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                                          <p class="occurrence">[0 or 1]</p>
                                                          <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls/parts/links/media-type">Switch to JSON</a></div>
                                                          <p class="formal-name">Media Type</p>
@@ -9040,8 +8682,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                    <summary>Element (1)</summary>
                                                    <div class="model-entry definition assembly">
                                                       <div class="instance-header">
-                                                         <h6 id="/catalog/group/control/part/link/text" class="toc6 name">text</h6>
-                                                         <p class="type" id="/catalog/group/control/part/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                         <h6 id="/catalog/group/control/part/link/text" class="toc6 name">text</h6><a href="/catalog/group/control/part/link/text">🔗</a><p class="type" id="/catalog/group/control/part/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                                          <p class="occurrence">[0 or 1]</p>
                                                          <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls/parts/links/text">Switch to JSON</a></div>
                                                          <p class="formal-name">Link Text</p>
@@ -9059,8 +8700,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                  </div>
                                  <div class="model-entry definition assembly">
                                     <div class="instance-header">
-                                       <h4 id="/catalog/group/control/control" class="toc4 name">control</h4>
-                                       <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog/control/control">(global definition)</a></p>
+                                       <h4 id="/catalog/group/control/control" class="toc4 name">control</h4><a href="/catalog/group/control/control">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog/control/control">(global definition)</a></p>
                                        <p class="occurrence">[0 to ∞]</p>
                                        <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/groups/controls/controls">Switch to JSON</a></div>
                                        <p class="formal-name">Control</p>
@@ -9217,8 +8857,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
             </div>
             <div class="model-entry definition assembly">
                <div class="instance-header">
-                  <h2 id="/catalog/back-matter" class="toc2 name">back-matter</h2>
-                  <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog/catalog/back-matter">(global definition)</a></p>
+                  <h2 id="/catalog/back-matter" class="toc2 name">back-matter</h2><a href="/catalog/back-matter">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog/catalog/back-matter">(global definition)</a></p>
                   <p class="occurrence">[0 or 1]</p>
                   <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/back-matter">Switch to JSON</a></div>
                   <p class="formal-name">Back matter</p>
@@ -9248,8 +8887,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                      <summary>Element (1)</summary>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/catalog/back-matter/resource" class="toc3 name">resource</h3>
-                           <p class="type">element<br /></p>
+                           <h3 id="/catalog/back-matter/resource" class="toc3 name">resource</h3><a href="/catalog/back-matter/resource">🔗</a><p class="type">element<br /></p>
                            <p class="occurrence">[0 to ∞]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/back-matter/resources">Switch to JSON</a></div>
                            <p class="formal-name">Resource</p>
@@ -9367,8 +9005,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               <summary>Attribute (1)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/back-matter/resource/@uuid" class="toc4 name">uuid</h4>
-                                    <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                    <h4 id="/catalog/back-matter/resource/@uuid" class="toc4 name">uuid</h4><a href="/catalog/back-matter/resource/@uuid">🔗</a><p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/back-matter/resources/uuid">Switch to JSON</a></div>
                                     <p class="formal-name">Resource Universally Unique Identifier</p>
@@ -9383,8 +9020,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               <summary>Elements (8)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/back-matter/resource/title" class="toc4 name">title</h4>
-                                    <p class="type" id="/catalog/back-matter/resource/title/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                    <h4 id="/catalog/back-matter/resource/title" class="toc4 name">title</h4><a href="/catalog/back-matter/resource/title">🔗</a><p class="type" id="/catalog/back-matter/resource/title/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/back-matter/resources/title">Switch to JSON</a></div>
                                     <p class="formal-name">Resource Title</p>
@@ -9395,8 +9031,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/back-matter/resource/description" class="toc4 name">description</h4>
-                                    <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                    <h4 id="/catalog/back-matter/resource/description" class="toc4 name">description</h4><a href="/catalog/back-matter/resource/description">🔗</a><p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/back-matter/resources/description">Switch to JSON</a></div>
                                     <p class="formal-name">Resource Description</p>
@@ -9420,8 +9055,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/back-matter/resource/prop" class="toc4 name">prop</h4>
-                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/back-matter/resource/prop">(global definition)</a></p>
+                                    <h4 id="/catalog/back-matter/resource/prop" class="toc4 name">prop</h4><a href="/catalog/back-matter/resource/prop">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/back-matter/resource/prop">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/back-matter/resources/props">Switch to JSON</a></div>
                                     <p class="formal-name">Property</p>
@@ -9451,8 +9085,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <summary>Attributes (5)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/back-matter/resource/prop/@name" class="toc5 name">name</h5>
-                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <h5 id="/catalog/back-matter/resource/prop/@name" class="toc5 name">name</h5><a href="/catalog/back-matter/resource/prop/@name">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/back-matter/resources/props/name">Switch to JSON</a></div>
                                              <p class="formal-name">Property Name</p>
@@ -9477,8 +9110,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/back-matter/resource/prop/@uuid" class="toc5 name">uuid</h5>
-                                             <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                             <h5 id="/catalog/back-matter/resource/prop/@uuid" class="toc5 name">uuid</h5><a href="/catalog/back-matter/resource/prop/@uuid">🔗</a><p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/back-matter/resources/props/uuid">Switch to JSON</a></div>
                                              <p class="formal-name">Property Universally Unique Identifier</p>
@@ -9490,8 +9122,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/back-matter/resource/prop/@ns" class="toc5 name">ns</h5>
-                                             <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
+                                             <h5 id="/catalog/back-matter/resource/prop/@ns" class="toc5 name">ns</h5><a href="/catalog/back-matter/resource/prop/@ns">🔗</a><p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/back-matter/resources/props/ns">Switch to JSON</a></div>
                                              <p class="formal-name">Property Namespace</p>
@@ -9516,8 +9147,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/back-matter/resource/prop/@value" class="toc5 name">value</h5>
-                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                             <h5 id="/catalog/back-matter/resource/prop/@value" class="toc5 name">value</h5><a href="/catalog/back-matter/resource/prop/@value">🔗</a><p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/back-matter/resources/props/value">Switch to JSON</a></div>
                                              <p class="formal-name">Property Value</p>
@@ -9528,8 +9158,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/back-matter/resource/prop/@class" class="toc5 name">class</h5>
-                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                             <h5 id="/catalog/back-matter/resource/prop/@class" class="toc5 name">class</h5><a href="/catalog/back-matter/resource/prop/@class">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/back-matter/resources/props/class">Switch to JSON</a></div>
                                              <p class="formal-name">Property Class</p>
@@ -9553,8 +9182,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <summary>Element (1)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/back-matter/resource/prop/remarks" class="toc5 name">remarks</h5>
-                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                             <h5 id="/catalog/back-matter/resource/prop/remarks" class="toc5 name">remarks</h5><a href="/catalog/back-matter/resource/prop/remarks">🔗</a><p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/back-matter/resources/props/remarks">Switch to JSON</a></div>
                                              <p class="formal-name">Remarks</p>
@@ -9581,8 +9209,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/back-matter/resource/document-id" class="toc4 name">document-id</h4>
-                                    <p class="type" id="/catalog/back-matter/resource/document-id/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
+                                    <h4 id="/catalog/back-matter/resource/document-id" class="toc4 name">document-id</h4><a href="/catalog/back-matter/resource/document-id">🔗</a><p class="type" id="/catalog/back-matter/resource/document-id/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/back-matter/resources/document-ids">Switch to JSON</a></div>
                                     <p class="formal-name">Document Identifier</p>
@@ -9608,8 +9235,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <summary>Attribute (1)</summary>
                                        <div class="model-entry definition field">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/back-matter/resource/document-id/@scheme" class="toc5 name">scheme</h5>
-                                             <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
+                                             <h5 id="/catalog/back-matter/resource/document-id/@scheme" class="toc5 name">scheme</h5><a href="/catalog/back-matter/resource/document-id/@scheme">🔗</a><p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/back-matter/resources/document-ids/scheme">Switch to JSON</a></div>
                                              <p class="formal-name">Document Identification Scheme</p>
@@ -9636,8 +9262,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/back-matter/resource/citation" class="toc4 name">citation</h4>
-                                    <p class="type">element<br /></p>
+                                    <h4 id="/catalog/back-matter/resource/citation" class="toc4 name">citation</h4><a href="/catalog/back-matter/resource/citation">🔗</a><p class="type">element<br /></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/back-matter/resources/citation">Switch to JSON</a></div>
                                     <p class="formal-name">Citation</p>
@@ -9658,8 +9283,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <summary>Elements (3)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/back-matter/resource/citation/text" class="toc5 name">text</h5>
-                                             <p class="type" id="/catalog/back-matter/resource/citation/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                             <h5 id="/catalog/back-matter/resource/citation/text" class="toc5 name">text</h5><a href="/catalog/back-matter/resource/citation/text">🔗</a><p class="type" id="/catalog/back-matter/resource/citation/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/back-matter/resources/citation/text">Switch to JSON</a></div>
                                              <p class="formal-name">Citation Text</p>
@@ -9670,8 +9294,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/back-matter/resource/citation/prop" class="toc5 name">prop</h5>
-                                             <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/back-matter/resource/citation/prop">(global definition)</a></p>
+                                             <h5 id="/catalog/back-matter/resource/citation/prop" class="toc5 name">prop</h5><a href="/catalog/back-matter/resource/citation/prop">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/back-matter/resource/citation/prop">(global definition)</a></p>
                                              <p class="occurrence">[0 to ∞]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/back-matter/resources/citation/props">Switch to JSON</a></div>
                                              <p class="formal-name">Property</p>
@@ -9701,8 +9324,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 <summary>Attributes (5)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/catalog/back-matter/resource/citation/prop/@name" class="toc6 name">name</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                      <h6 id="/catalog/back-matter/resource/citation/prop/@name" class="toc6 name">name</h6><a href="/catalog/back-matter/resource/citation/prop/@name">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                       <p class="occurrence">[1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/back-matter/resources/citation/props/name">Switch to JSON</a></div>
                                                       <p class="formal-name">Property Name</p>
@@ -9727,8 +9349,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/catalog/back-matter/resource/citation/prop/@uuid" class="toc6 name">uuid</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                                      <h6 id="/catalog/back-matter/resource/citation/prop/@uuid" class="toc6 name">uuid</h6><a href="/catalog/back-matter/resource/citation/prop/@uuid">🔗</a><p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/back-matter/resources/citation/props/uuid">Switch to JSON</a></div>
                                                       <p class="formal-name">Property Universally Unique Identifier</p>
@@ -9740,8 +9361,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/catalog/back-matter/resource/citation/prop/@ns" class="toc6 name">ns</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
+                                                      <h6 id="/catalog/back-matter/resource/citation/prop/@ns" class="toc6 name">ns</h6><a href="/catalog/back-matter/resource/citation/prop/@ns">🔗</a><p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/back-matter/resources/citation/props/ns">Switch to JSON</a></div>
                                                       <p class="formal-name">Property Namespace</p>
@@ -9766,8 +9386,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/catalog/back-matter/resource/citation/prop/@value" class="toc6 name">value</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                      <h6 id="/catalog/back-matter/resource/citation/prop/@value" class="toc6 name">value</h6><a href="/catalog/back-matter/resource/citation/prop/@value">🔗</a><p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                                       <p class="occurrence">[1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/back-matter/resources/citation/props/value">Switch to JSON</a></div>
                                                       <p class="formal-name">Property Value</p>
@@ -9778,8 +9397,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/catalog/back-matter/resource/citation/prop/@class" class="toc6 name">class</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                      <h6 id="/catalog/back-matter/resource/citation/prop/@class" class="toc6 name">class</h6><a href="/catalog/back-matter/resource/citation/prop/@class">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/back-matter/resources/citation/props/class">Switch to JSON</a></div>
                                                       <p class="formal-name">Property Class</p>
@@ -9803,8 +9421,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 <summary>Element (1)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/catalog/back-matter/resource/citation/prop/remarks" class="toc6 name">remarks</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                      <h6 id="/catalog/back-matter/resource/citation/prop/remarks" class="toc6 name">remarks</h6><a href="/catalog/back-matter/resource/citation/prop/remarks">🔗</a><p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/back-matter/resources/citation/props/remarks">Switch to JSON</a></div>
                                                       <p class="formal-name">Remarks</p>
@@ -9831,8 +9448,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/back-matter/resource/citation/link" class="toc5 name">link</h5>
-                                             <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/back-matter/resource/citation/link">(global definition)</a></p>
+                                             <h5 id="/catalog/back-matter/resource/citation/link" class="toc5 name">link</h5><a href="/catalog/back-matter/resource/citation/link">🔗</a><p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/back-matter/resource/citation/link">(global definition)</a></p>
                                              <p class="occurrence">[0 to ∞]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/back-matter/resources/citation/links">Switch to JSON</a></div>
                                              <p class="formal-name">Link</p>
@@ -9865,8 +9481,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 <summary>Attributes (3)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/catalog/back-matter/resource/citation/link/@href" class="toc6 name">href</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
+                                                      <h6 id="/catalog/back-matter/resource/citation/link/@href" class="toc6 name">href</h6><a href="/catalog/back-matter/resource/citation/link/@href">🔗</a><p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
                                                       <p class="occurrence">[1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/back-matter/resources/citation/links/href">Switch to JSON</a></div>
                                                       <p class="formal-name">Hypertext Reference</p>
@@ -9891,8 +9506,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/catalog/back-matter/resource/citation/link/@rel" class="toc6 name">rel</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                      <h6 id="/catalog/back-matter/resource/citation/link/@rel" class="toc6 name">rel</h6><a href="/catalog/back-matter/resource/citation/link/@rel">🔗</a><p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/back-matter/resources/citation/links/rel">Switch to JSON</a></div>
                                                       <p class="formal-name">Relation</p>
@@ -9915,8 +9529,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/catalog/back-matter/resource/citation/link/@media-type" class="toc6 name">media-type</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                      <h6 id="/catalog/back-matter/resource/citation/link/@media-type" class="toc6 name">media-type</h6><a href="/catalog/back-matter/resource/citation/link/@media-type">🔗</a><p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/back-matter/resources/citation/links/media-type">Switch to JSON</a></div>
                                                       <p class="formal-name">Media Type</p>
@@ -9945,8 +9558,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 <summary>Element (1)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/catalog/back-matter/resource/citation/link/text" class="toc6 name">text</h6>
-                                                      <p class="type" id="/catalog/back-matter/resource/citation/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                      <h6 id="/catalog/back-matter/resource/citation/link/text" class="toc6 name">text</h6><a href="/catalog/back-matter/resource/citation/link/text">🔗</a><p class="type" id="/catalog/back-matter/resource/citation/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/back-matter/resources/citation/links/text">Switch to JSON</a></div>
                                                       <p class="formal-name">Link Text</p>
@@ -9964,8 +9576,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/back-matter/resource/rlink" class="toc4 name">rlink</h4>
-                                    <p class="type">element<br /></p>
+                                    <h4 id="/catalog/back-matter/resource/rlink" class="toc4 name">rlink</h4><a href="/catalog/back-matter/resource/rlink">🔗</a><p class="type">element<br /></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/back-matter/resources/rlinks">Switch to JSON</a></div>
                                     <p class="formal-name">Resource link</p>
@@ -9988,8 +9599,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <summary>Attributes (2)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/back-matter/resource/rlink/@href" class="toc5 name">href</h5>
-                                             <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
+                                             <h5 id="/catalog/back-matter/resource/rlink/@href" class="toc5 name">href</h5><a href="/catalog/back-matter/resource/rlink/@href">🔗</a><p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/back-matter/resources/rlinks/href">Switch to JSON</a></div>
                                              <p class="formal-name">Hypertext Reference</p>
@@ -10000,8 +9610,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/back-matter/resource/rlink/@media-type" class="toc5 name">media-type</h5>
-                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                             <h5 id="/catalog/back-matter/resource/rlink/@media-type" class="toc5 name">media-type</h5><a href="/catalog/back-matter/resource/rlink/@media-type">🔗</a><p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/back-matter/resources/rlinks/media-type">Switch to JSON</a></div>
                                              <p class="formal-name">Media Type</p>
@@ -10026,8 +9635,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <summary>Element (1)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/back-matter/resource/rlink/hash" class="toc5 name">hash</h5>
-                                             <p class="type" id="/catalog/back-matter/resource/rlink/hash/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
+                                             <h5 id="/catalog/back-matter/resource/rlink/hash" class="toc5 name">hash</h5><a href="/catalog/back-matter/resource/rlink/hash">🔗</a><p class="type" id="/catalog/back-matter/resource/rlink/hash/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 to ∞]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/back-matter/resources/rlinks/hashes">Switch to JSON</a></div>
                                              <p class="formal-name">Hash</p>
@@ -10051,8 +9659,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 <summary>Attribute (1)</summary>
                                                 <div class="model-entry definition field">
                                                    <div class="instance-header">
-                                                      <h6 id="/catalog/back-matter/resource/rlink/hash/@algorithm" class="toc6 name">algorithm</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                      <h6 id="/catalog/back-matter/resource/rlink/hash/@algorithm" class="toc6 name">algorithm</h6><a href="/catalog/back-matter/resource/rlink/hash/@algorithm">🔗</a><p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                                       <p class="occurrence">[1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/back-matter/resources/rlinks/hashes/algorithm">Switch to JSON</a></div>
                                                       <p class="formal-name">Hash algorithm</p>
@@ -10110,8 +9717,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/back-matter/resource/base64" class="toc4 name">base64</h4>
-                                    <p class="type" id="/catalog/back-matter/resource/base64/_VALUE"><a href="/reference/datatypes/#base64binary">base64Binary</a></p>
+                                    <h4 id="/catalog/back-matter/resource/base64" class="toc4 name">base64</h4><a href="/catalog/back-matter/resource/base64">🔗</a><p class="type" id="/catalog/back-matter/resource/base64/_VALUE"><a href="/reference/datatypes/#base64binary">base64Binary</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/back-matter/resources/base64">Switch to JSON</a></div>
                                     <p class="formal-name">Base64</p>
@@ -10122,8 +9728,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <summary>Attributes (2)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/back-matter/resource/base64/@filename" class="toc5 name">filename</h5>
-                                             <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
+                                             <h5 id="/catalog/back-matter/resource/base64/@filename" class="toc5 name">filename</h5><a href="/catalog/back-matter/resource/base64/@filename">🔗</a><p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/back-matter/resources/base64/filename">Switch to JSON</a></div>
                                              <p class="formal-name">File Name</p>
@@ -10134,8 +9739,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/catalog/back-matter/resource/base64/@media-type" class="toc5 name">media-type</h5>
-                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                             <h5 id="/catalog/back-matter/resource/base64/@media-type" class="toc5 name">media-type</h5><a href="/catalog/back-matter/resource/base64/@media-type">🔗</a><p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/back-matter/resources/base64/media-type">Switch to JSON</a></div>
                                              <p class="formal-name">Media Type</p>
@@ -10160,8 +9764,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/catalog/back-matter/resource/remarks" class="toc4 name">remarks</h4>
-                                    <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                    <h4 id="/catalog/back-matter/resource/remarks" class="toc4 name">remarks</h4><a href="/catalog/back-matter/resource/remarks">🔗</a><p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/back-matter/resources/remarks">Switch to JSON</a></div>
                                     <p class="formal-name">Remarks</p>

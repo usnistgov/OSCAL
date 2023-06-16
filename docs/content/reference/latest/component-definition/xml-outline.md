@@ -1,6 +1,6 @@
 ---
-title: "OSCAL Component Definition Model v1.0.5 XML Format Outline"
-heading: "Component Definition Model v1.0.5 XML Format Outline"
+title: "OSCAL Component Definition Model v1.0.4 XML Format Outline"
+heading: "Component Definition Model v1.0.4 XML Format Outline"
 custom_js:
   - "/js/oscal-metaschema-map-expander.js"
 weight: 50
@@ -261,6 +261,8 @@ The following outline is a representation of the [XML format](https://github.com
                               <details class="OM-entry">
                                  <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/component-definition/metadata/location/address/country">country</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="nobr">&lt;/country&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 or 1]</span></span></summary>
                                  <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span> value</p>
+                                 
+                                 
                                  <p class="close-tag nobr">&lt;/country&gt;</p>
                               </details>
                            </div>
@@ -405,6 +407,8 @@ The following outline is a representation of the [XML format](https://github.com
                                     <details class="OM-entry">
                                        <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/component-definition/metadata/party/address/country">country</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="nobr">&lt;/country&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 or 1]</span></span></summary>
                                        <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span> value</p>
+                                       
+                                       
                                        <p class="close-tag nobr">&lt;/country&gt;</p>
                                     </details>
                                  </div>
@@ -415,6 +419,11 @@ The following outline is a representation of the [XML format](https://github.com
                               <details class="OM-entry">
                                  <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/component-definition/metadata/party/location-uuid">location-uuid</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="nobr">&lt;/location-uuid&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
                                  <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span> value</p>
+                                 
+                                 
+                                 
+                                 
+                                 
                                  <p class="close-tag nobr">&lt;/location-uuid&gt;</p>
                               </details>
                            </div>
@@ -422,6 +431,10 @@ The following outline is a representation of the [XML format](https://github.com
                         <details class="OM-entry">
                            <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/component-definition/metadata/party/member-of-organization">member-of-organization</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="nobr">&lt;/member-of-organization&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
                            <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span> value</p>
+                           
+                           
+                           
+                           
                            <p class="close-tag nobr">&lt;/member-of-organization&gt;</p>
                         </details>
                         <details class="OM-entry">
@@ -441,6 +454,11 @@ The following outline is a representation of the [XML format](https://github.com
                         <details class="OM-entry">
                            <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/component-definition/metadata/responsible-party/party-uuid">party-uuid</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="nobr">&lt;/party-uuid&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[1 to ∞]</span></span></summary>
                            <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span> value</p>
+                           
+                           
+                           
+                           
+                           
                            <p class="close-tag nobr">&lt;/party-uuid&gt;</p>
                         </details>
                         <details class="OM-entry">
@@ -586,6 +604,11 @@ The following outline is a representation of the [XML format](https://github.com
                         <details class="OM-entry">
                            <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/component-definition/component/responsible-role/party-uuid">party-uuid</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="nobr">&lt;/party-uuid&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
                            <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span> value</p>
+                           
+                           
+                           
+                           
+                           
                            <p class="close-tag nobr">&lt;/party-uuid&gt;</p>
                         </details>
                         <details class="OM-entry">
@@ -767,6 +790,11 @@ The following outline is a representation of the [XML format](https://github.com
                                     <details class="OM-entry">
                                        <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/component-definition/component/control-implementation/implemented-requirement/responsible-role/party-uuid">party-uuid</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="nobr">&lt;/party-uuid&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
                                        <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span> value</p>
+                                       
+                                       
+                                       
+                                       
+                                       
                                        <p class="close-tag nobr">&lt;/party-uuid&gt;</p>
                                     </details>
                                     <details class="OM-entry">
@@ -853,6 +881,11 @@ The following outline is a representation of the [XML format](https://github.com
                                           <details class="OM-entry">
                                              <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/component-definition/component/control-implementation/implemented-requirement/statement/responsible-role/party-uuid">party-uuid</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="nobr">&lt;/party-uuid&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
                                              <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span> value</p>
+                                             
+                                             
+                                             
+                                             
+                                             
                                              <p class="close-tag nobr">&lt;/party-uuid&gt;</p>
                                           </details>
                                           <details class="OM-entry">
@@ -1105,6 +1138,11 @@ The following outline is a representation of the [XML format](https://github.com
                                     <details class="OM-entry">
                                        <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/component-definition/capability/control-implementation/implemented-requirement/responsible-role/party-uuid">party-uuid</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="nobr">&lt;/party-uuid&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
                                        <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span> value</p>
+                                       
+                                       
+                                       
+                                       
+                                       
                                        <p class="close-tag nobr">&lt;/party-uuid&gt;</p>
                                     </details>
                                     <details class="OM-entry">
@@ -1191,6 +1229,11 @@ The following outline is a representation of the [XML format](https://github.com
                                           <details class="OM-entry">
                                              <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/component-definition/capability/control-implementation/implemented-requirement/statement/responsible-role/party-uuid">party-uuid</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="nobr">&lt;/party-uuid&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
                                              <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span> value</p>
+                                             
+                                             
+                                             
+                                             
+                                             
                                              <p class="close-tag nobr">&lt;/party-uuid&gt;</p>
                                           </details>
                                           <details class="OM-entry">

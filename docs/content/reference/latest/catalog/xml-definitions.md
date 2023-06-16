@@ -1,6 +1,6 @@
 ---
-title: "OSCAL Catalog Model v1.0.5 XML Format Metaschema Reference"
-heading: "Catalog Model v1.0.5 XML Metaschema Reference"
+title: "OSCAL Catalog Model v1.0.4 XML Format Metaschema Reference"
+heading: "Catalog Model v1.0.4 XML Metaschema Reference"
 weight: 80
 generateanchors: false
 sidenav:

@@ -1,6 +1,6 @@
 ---
-title: "OSCAL Plan of Action and Milestones Model v1.0.5 XML Format Outline"
-heading: "Plan of Action and Milestones Model v1.0.5 XML Format Outline"
+title: "OSCAL Plan of Action and Milestones Model v1.0.4 XML Format Outline"
+heading: "Plan of Action and Milestones Model v1.0.4 XML Format Outline"
 custom_js:
   - "/js/oscal-metaschema-map-expander.js"
 weight: 50
@@ -260,6 +260,8 @@ The following outline is a representation of the [XML format](https://github.com
                               <details class="OM-entry">
                                  <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/plan-of-action-and-milestones/metadata/location/address/country">country</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="nobr">&lt;/country&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 or 1]</span></span></summary>
                                  <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span> value</p>
+                                 
+                                 
                                  <p class="close-tag nobr">&lt;/country&gt;</p>
                               </details>
                            </div>
@@ -404,6 +406,8 @@ The following outline is a representation of the [XML format](https://github.com
                                     <details class="OM-entry">
                                        <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/plan-of-action-and-milestones/metadata/party/address/country">country</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="nobr">&lt;/country&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 or 1]</span></span></summary>
                                        <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span> value</p>
+                                       
+                                       
                                        <p class="close-tag nobr">&lt;/country&gt;</p>
                                     </details>
                                  </div>
@@ -414,6 +418,11 @@ The following outline is a representation of the [XML format](https://github.com
                               <details class="OM-entry">
                                  <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/plan-of-action-and-milestones/metadata/party/location-uuid">location-uuid</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="nobr">&lt;/location-uuid&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
                                  <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span> value</p>
+                                 
+                                 
+                                 
+                                 
+                                 
                                  <p class="close-tag nobr">&lt;/location-uuid&gt;</p>
                               </details>
                            </div>
@@ -421,6 +430,10 @@ The following outline is a representation of the [XML format](https://github.com
                         <details class="OM-entry">
                            <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/plan-of-action-and-milestones/metadata/party/member-of-organization">member-of-organization</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="nobr">&lt;/member-of-organization&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
                            <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span> value</p>
+                           
+                           
+                           
+                           
                            <p class="close-tag nobr">&lt;/member-of-organization&gt;</p>
                         </details>
                         <details class="OM-entry">
@@ -440,6 +453,11 @@ The following outline is a representation of the [XML format](https://github.com
                         <details class="OM-entry">
                            <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/plan-of-action-and-milestones/metadata/responsible-party/party-uuid">party-uuid</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="nobr">&lt;/party-uuid&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[1 to ∞]</span></span></summary>
                            <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span> value</p>
+                           
+                           
+                           
+                           
+                           
                            <p class="close-tag nobr">&lt;/party-uuid&gt;</p>
                         </details>
                         <details class="OM-entry">
@@ -617,6 +635,11 @@ The following outline is a representation of the [XML format](https://github.com
                               <details class="OM-entry">
                                  <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/plan-of-action-and-milestones/local-definitions/component/responsible-role/party-uuid">party-uuid</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="nobr">&lt;/party-uuid&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
                                  <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span> value</p>
+                                 
+                                 
+                                 
+                                 
+                                 
                                  <p class="close-tag nobr">&lt;/party-uuid&gt;</p>
                               </details>
                               <details class="OM-entry">
@@ -704,6 +727,11 @@ The following outline is a representation of the [XML format](https://github.com
                               <details class="OM-entry">
                                  <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/plan-of-action-and-milestones/local-definitions/inventory-item/responsible-party/party-uuid">party-uuid</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="nobr">&lt;/party-uuid&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[1 to ∞]</span></span></summary>
                                  <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span> value</p>
+                                 
+                                 
+                                 
+                                 
+                                 
                                  <p class="close-tag nobr">&lt;/party-uuid&gt;</p>
                               </details>
                               <details class="OM-entry">
@@ -782,6 +810,11 @@ The following outline is a representation of the [XML format](https://github.com
                                     <details class="OM-entry">
                                        <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/plan-of-action-and-milestones/local-definitions/inventory-item/implemented-component/responsible-party/party-uuid">party-uuid</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="nobr">&lt;/party-uuid&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[1 to ∞]</span></span></summary>
                                        <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span> value</p>
+                                       
+                                       
+                                       
+                                       
+                                       
                                        <p class="close-tag nobr">&lt;/party-uuid&gt;</p>
                                     </details>
                                     <details class="OM-entry">
@@ -906,11 +939,28 @@ The following outline is a representation of the [XML format](https://github.com
                   <details class="OM-entry">
                      <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/plan-of-action-and-milestones/observation/method">method</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="nobr">&lt;/method&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[1 to ∞]</span></span></summary>
                      <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span> value</p>
+                     
+                     An inspection was performed.
+                     An interview was performed.
+                     A manual or automated test was performed.
+                     This is only for use when converting historic content to OSCAL, where the conversion
+                     process cannot initially identify the appropriate method(s).
+                     
+                     
                      <p class="close-tag nobr">&lt;/method&gt;</p>
                   </details>
                   <details class="OM-entry">
                      <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/plan-of-action-and-milestones/observation/type">type</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="nobr">&lt;/type&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
                      <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span> value</p>
+                     
+                     A difference between the SSP implementation statement, and actual implementation.
+                     An observation about the status of a the associated control objective.
+                     A mitigating factor was identified.
+                     An assessment finding. Used for observations made by tools, penetration testing, and
+                     other means.
+                     An observation from a past assessment, which was converted to OSCAL at a later date.
+                     
+                     
                      <p class="close-tag nobr">&lt;/type&gt;</p>
                   </details>
                   <details class="OM-entry">
@@ -987,6 +1037,11 @@ The following outline is a representation of the [XML format](https://github.com
                                     <details class="OM-entry">
                                        <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/plan-of-action-and-milestones/observation/origin/related-task/responsible-party/party-uuid">party-uuid</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="nobr">&lt;/party-uuid&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[1 to ∞]</span></span></summary>
                                        <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span> value</p>
+                                       
+                                       
+                                       
+                                       
+                                       
                                        <p class="close-tag nobr">&lt;/party-uuid&gt;</p>
                                     </details>
                                     <details class="OM-entry">
@@ -1517,6 +1572,17 @@ The following outline is a representation of the [XML format](https://github.com
                   <details class="OM-entry">
                      <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/plan-of-action-and-milestones/risk/status">status</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="nobr">&lt;/status&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[1]</span></span></summary>
                      <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span> value</p>
+                     
+                     The risk has been identified.
+                     The identified risk is being investigated. (Open risk)
+                     Remediation activities are underway, but are not yet complete. (Open risk)
+                     A risk deviation, such as false positive, risk reduction, or operational requirement
+                     has been submitted for approval. (Open risk)
+                     A risk deviation, such as false positive, risk reduction, or operational requirement
+                     has been approved. (Open risk)
+                     The risk has been resolved.
+                     
+                     
                      <p class="close-tag nobr">&lt;/status&gt;</p>
                   </details>
                   <details class="OM-entry">
@@ -1593,6 +1659,11 @@ The following outline is a representation of the [XML format](https://github.com
                                     <details class="OM-entry">
                                        <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/plan-of-action-and-milestones/risk/origin/related-task/responsible-party/party-uuid">party-uuid</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="nobr">&lt;/party-uuid&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[1 to ∞]</span></span></summary>
                                        <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span> value</p>
+                                       
+                                       
+                                       
+                                       
+                                       
                                        <p class="close-tag nobr">&lt;/party-uuid&gt;</p>
                                     </details>
                                     <details class="OM-entry">
@@ -2054,6 +2125,11 @@ The following outline is a representation of the [XML format](https://github.com
                                           <details class="OM-entry">
                                              <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/plan-of-action-and-milestones/risk/characterization/origin/related-task/responsible-party/party-uuid">party-uuid</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="nobr">&lt;/party-uuid&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[1 to ∞]</span></span></summary>
                                              <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span> value</p>
+                                             
+                                             
+                                             
+                                             
+                                             
                                              <p class="close-tag nobr">&lt;/party-uuid&gt;</p>
                                           </details>
                                           <details class="OM-entry">
@@ -2668,6 +2744,11 @@ The following outline is a representation of the [XML format](https://github.com
                                           <details class="OM-entry">
                                              <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/plan-of-action-and-milestones/risk/response/origin/related-task/responsible-party/party-uuid">party-uuid</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="nobr">&lt;/party-uuid&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[1 to ∞]</span></span></summary>
                                              <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span> value</p>
+                                             
+                                             
+                                             
+                                             
+                                             
                                              <p class="close-tag nobr">&lt;/party-uuid&gt;</p>
                                           </details>
                                           <details class="OM-entry">
@@ -3214,9 +3295,10 @@ The following outline is a representation of the [XML format](https://github.com
                                  </div>
                                  <p class="close-tag nobr">&lt;/dependency&gt;</p>
                               </details>
-                              <div class="OM-entry">
-                                 <p class="OM-line"><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/plan-of-action-and-milestones/risk/response/task/task">task</a></span>&gt;<span class="show-closed"><span class="OM-lit OM-gloss"> (recursive: model like parent <span class="OM-ref">task</span>) </span><span class="nobr">&lt;/task&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></p>
-                              </div>
+                              <details class="OM-entry">
+                                 <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/plan-of-action-and-milestones/risk/response/task/task">task</a></span>&gt;<span class="show-closed"><span class="OM-lit OM-gloss"> (recursive: model like parent <span class="OM-ref">task</span>) </span><span class="nobr">&lt;/task&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
+                                 <p class="OM-map-name">[Empty]</p>
+                              </details>
                               <details class="OM-entry">
                                  <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/plan-of-action-and-milestones/risk/response/task/associated-activity">associated-activity</a></span> <span class="nobr" id="/plan-of-action-and-milestones/risk/response/task/associated-activity/@activity-uuid"><a class="OM-name" href="../xml-reference/#/plan-of-action-and-milestones/risk/response/task/associated-activity/@activity-uuid">activity-uuid</a>="<span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span>"</span>&gt;<span class="show-closed"> … <span class="nobr">&lt;/associated-activity&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
                                  <div class="model-container">
@@ -3282,6 +3364,11 @@ The following outline is a representation of the [XML format](https://github.com
                                           <details class="OM-entry">
                                              <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/plan-of-action-and-milestones/risk/response/task/associated-activity/responsible-role/party-uuid">party-uuid</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="nobr">&lt;/party-uuid&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
                                              <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span> value</p>
+                                             
+                                             
+                                             
+                                             
+                                             
                                              <p class="close-tag nobr">&lt;/party-uuid&gt;</p>
                                           </details>
                                           <details class="OM-entry">
@@ -3630,6 +3717,11 @@ The following outline is a representation of the [XML format](https://github.com
                                     <details class="OM-entry">
                                        <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/plan-of-action-and-milestones/risk/response/task/responsible-role/party-uuid">party-uuid</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="nobr">&lt;/party-uuid&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
                                        <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span> value</p>
+                                       
+                                       
+                                       
+                                       
+                                       
                                        <p class="close-tag nobr">&lt;/party-uuid&gt;</p>
                                     </details>
                                     <details class="OM-entry">
@@ -3732,6 +3824,17 @@ The following outline is a representation of the [XML format](https://github.com
                               <details class="OM-entry">
                                  <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/plan-of-action-and-milestones/risk/risk-log/entry/status-change">status-change</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="nobr">&lt;/status-change&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 or 1]</span></span></summary>
                                  <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span> value</p>
+                                 
+                                 The risk has been identified.
+                                 The identified risk is being investigated. (Open risk)
+                                 Remediation activities are underway, but are not yet complete. (Open risk)
+                                 A risk deviation, such as false positive, risk reduction, or operational requirement
+                                 has been submitted for approval. (Open risk)
+                                 A risk deviation, such as false positive, risk reduction, or operational requirement
+                                 has been approved. (Open risk)
+                                 The risk has been resolved.
+                                 
+                                 
                                  <p class="close-tag nobr">&lt;/status-change&gt;</p>
                               </details>
                               <details class="OM-entry">
@@ -3802,6 +3905,11 @@ The following outline is a representation of the [XML format](https://github.com
                                                 <details class="OM-entry">
                                                    <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/plan-of-action-and-milestones/risk/risk-log/entry/related-response/related-task/responsible-party/party-uuid">party-uuid</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="nobr">&lt;/party-uuid&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[1 to ∞]</span></span></summary>
                                                    <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span> value</p>
+                                                   
+                                                   
+                                                   
+                                                   
+                                                   
                                                    <p class="close-tag nobr">&lt;/party-uuid&gt;</p>
                                                 </details>
                                                 <details class="OM-entry">
