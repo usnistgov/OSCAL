@@ -100,7 +100,7 @@ The following steps are known to work on [Ubuntu](https://ubuntu.com/) (tested i
     cd path/to/repo/OSCAL/build
     export JAVA_CLASSPATH=/opt/oscal
     sudo mkdir -p "${JAVA_CLASSPATH}"
-    sudo chown -R $USER:USER "${JAVA_CLASSPATH}"
+    sudo chown -R "$USER":"$USER" "${JAVA_CLASSPATH}"
     mvn dependency:copy-dependencies -DoutputDirectory="${JAVA_CLASSPATH}"
     export CALABASH_HOME="${JAVA_CLASSPATH}"
     export SAXON_HOME="${JAVA_CLASSPATH}"
