@@ -25,6 +25,7 @@ on:
   workflow_call: {}
 jobs:
   xspec-tests:
+    if: github.repository == 'usnistgov/OSCAL' || github.event.pull_request.head.repo.name == github.repository
     name: Run XSpec tests
     runs-on: ubuntu-22.04
     steps:
