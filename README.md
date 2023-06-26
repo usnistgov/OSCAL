@@ -10,6 +10,18 @@ The [OSCAL website](https://www.nist.gov/oscal) provides an overview of the OSCA
 
 If you are interested in contributing to the development of OSCAL, refer to the [contributor guidance](https://github.com/usnistgov/OSCAL/blob/main/CONTRIBUTING.md) for more information.
 
+## Project Repositories
+
+| Repository                                                       | Description                                                                        |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| [OSCAL](https://github.com/usnistgov/OSCAL/)                     | The main OSCAL project that contains the source code for the OSCAL models.         |
+| [OSCAL-Pages](https://github.com/usnistgov/OSCAL-Pages/)         | The project that contains the public OSCAL website content.                        |
+| [OSCAL-Reference](https://github.com/usnistgov/OSCAL-Reference/) | The project that contains the model documentation and developer reference content. |
+| [OSCAL-Content](https://github.com/usnistgov/oscal-content/)     | The project that contains examples of OSCAL model content.                         |
+| [OSCAL-DEFINE](https://github.com/usnistgov/OSCAL-DEFINE/)       | The project for managing research into the development and enhancement of OSCAL.   |
+
+
+
 ## Project Status
 
 To view the latest release of OSCAL check out [GitHub releases](../../releases). Each release on that page provides a complete summary of the changes made in each release.

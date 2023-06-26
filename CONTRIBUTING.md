@@ -83,10 +83,6 @@ The OSCAL project uses a typical GitHub fork and pull request [workflow](https:/
 This repository consists of the following directories and files pertaining to the OSCAL project:
 
 - [.github](.github): Contains GitHub issue and pull request templates for the OSCAL project.
-- [json](json): Provides OSCAL JavaScript Object Notation (JSON) schemas and utilities that can be used to convert content in other OSCAL formats to OSCAL JSON-based formats.
-- [xml](xml): Provides OSCAL Extensible Markup Language (XML) schemas and utilities that can be used to convert content in other OSCAL formats to OSCAL XML-based formats.
-- [docs](docs): Stores sources for the [OSCAL website](https://pages.nist.gov/OSCAL).
-- [content](content): This directory once stored XML, JSON, and YAML content examples. These examples have been moved to the OSCAL content GitHub [repository](https://github.com/usnistgov/oscal-content/tree/main).
 - [build](build): Contains a collection of scripts, eXtensible Stylesheet Language Transformations (XSLTs), and other artifacts used to support this repository's continuous integration and continuous deployment (CI/CD) processes.
 - [src](src): This includes the resources used by the NIST OSCAL Team to manage OSCAL development, including the metaschema files used to maintain the OSCAL models across all supported formats. This directory once stored source artifacts used to produce the XML, JSON, and YAML resources that were provided in this repository. These resources have been moved to the OSCAL content GitHub [repository](https://github.com/usnistgov/oscal-content/tree/main/src).
 - [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md): This file contains a code of conduct for OSCAL project contributors.
@@ -138,7 +134,7 @@ git clone --recurse-submodules https://github.com/usnistgov/OSCAL.git
 
 This GitHub repository makes use of Git submodules to mount other repositories as subdirectories.
 
-The command above handles initializing submodule as part of the clone. To do this seperately when cloning this repo for the first time, you need to initialize the submodules that this repository depends on. To do this you must execute the following command:
+The command above handles initializing submodule as part of the clone. To do this separately when cloning this repo for the first time, you need to initialize the submodules that this repository depends on. To do this you must execute the following command:
 
 ```
 git submodule update --init

@@ -28,29 +28,3 @@ jobs:
       commit_resources: true
     secrets:
       access_token: ${{ secrets.COMMIT_TOKEN }}
-  validate-website-reference:
-    if: github.event_name == 'pull_request'
-    uses: ./.github/workflows/workflow-generate-website-reference.yml
-    with:
-      commit_resources: false
-  push-website-reference:
-    if: github.event_name == 'push'
-    uses: ./.github/workflows/workflow-generate-website-reference.yml
-    with:
-      commit_resources: true
-    secrets:
-      access_token: ${{ secrets.COMMIT_TOKEN }}
-  validate-website:
-    if: github.event_name == 'pull_request'
-    needs: validate-website-reference
-    uses: ./.github/workflows/workflow-generate-website.yml
-    with:
-      commit_resources: false
-  push-website:
-    if: github.event_name == 'push'
-    needs: push-website-reference
-    uses: ./.github/workflows/workflow-generate-website.yml
-    with:
-      commit_resources: true
-    secrets:
-      access_token: ${{ secrets.COMMIT_TOKEN }}
