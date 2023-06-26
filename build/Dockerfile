@@ -8,18 +8,6 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone &
         apt-utils build-essential git jq libxml2-utils maven nodejs npm python3-pip unzip wget && \
     apt-get clean
 
-FROM golang:1.20.5-bullseye as oscal-hugo-build
-
-RUN mkdir -p /go/src/github.com/usnistgov/OSCAL/build
-
-WORKDIR /go/src/github.com/usnistgov/OSCAL/build
-
-ADD tools.go .
-ADD go.mod .
-ADD go.sum .
-
-RUN go install -tags "extended" github.com/gohugoio/hugo
-
 FROM oscal-os-dependencies as oscal-runtime-dependencies
 
 RUN mkdir -p /opt/oscal
@@ -40,8 +28,6 @@ VOLUME ["/oscal"]
 WORKDIR /oscal
 
 FROM oscal-base as cli
-
-COPY --from=oscal-hugo-build /go/bin/hugo /usr/local/bin
 
 ENV SAXON_HOME=/opt/oscal
 ENV CALABASH_HOME=${SAXON_HOME}

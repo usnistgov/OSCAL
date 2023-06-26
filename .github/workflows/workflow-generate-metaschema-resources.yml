@@ -130,24 +130,18 @@ jobs:
         path: |
           ${{ runner.temp }}/metaschema-artifacts.zip
         retention-days: 5
-    - uses: actions/upload-artifact@0b7f8abb1508181956e8e162db84b466c27e18ce
-      if: always()
-      with:
-        name: schematron-validation-reports
-        path: |
-          ${{ runner.temp }}/schematron-validations.zip
-        retention-days: 5
-    # Store Built Artifacts
-    # ---------------
-    - name: Publish Schemas and Converters
-      # only do this on master
-      if: github.event.inputs.commit_resources == 'true' || inputs.commit_resources == true
-      uses: stefanzweifel/git-auto-commit-action@3ea6ae190baf489ba007f7c92608f33ce20ef04a
-      with:
-        repository: ${{ env.CHECKOUT_PATH }}
-        file_pattern: xml json
-        skip_dirty_check: false
-        commit_user_name: OSCAL GitHub Actions Bot
-        commit_user_email: oscal@nist.gov
-        commit_author: OSCAL GitHub Actions Bot <oscal@nist.gov>
-        commit_message: Publishing generated metaschema resources [ci skip]
+    # Turning this off since the plan would be to publish the schemas and convertors, but not store in the project source.
+    # # Store Built Artifacts
+    # # ---------------
+    # - name: Publish Schemas and Converters
+    #   # only do this on master
+    #   if: github.event.inputs.commit_resources == 'true' || inputs.commit_resources == true
+    #   uses: stefanzweifel/git-auto-commit-action@be7095c202abcf573b09f20541e0ee2f6a3a9d9b
+    #   with:
+    #     repository: ${{ env.CHECKOUT_PATH }}
+    #     file_pattern: xml json
+    #     skip_dirty_check: false
+    #     commit_user_name: OSCAL GitHub Actions Bot
+    #     commit_user_email: oscal@nist.gov
+    #     commit_author: OSCAL GitHub Actions Bot <oscal@nist.gov>
+    #     commit_message: Publishing generated metaschema resources [ci skip]

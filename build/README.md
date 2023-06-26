@@ -144,10 +144,9 @@ This will generate converters based on the definitions in the Metaschema [config
 
 ### Building Website Documentation
 
-To generate OSCAL model documentation, which is used as part of the [website generation pipeline](../docs), execute the following:
+To generate OSCAL model documentation, which is used as part of the website generation pipeline, visit the following:
 
-```
-./build/ci-cd/generate-model-documentation.sh
-```
+https://github.com/usnistgov/OSCAL-Reference/
+
 
 To customize which OSCAL models have generated documentation, review and modify the [metaschema configuration file](./ci-cd/config/metaschema) accordingly.
