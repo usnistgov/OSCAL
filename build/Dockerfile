@@ -9,6 +9,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone &
     apt-get clean
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 FROM golang:1.20.5-bullseye as oscal-hugo-build
 
 RUN mkdir -p /go/src/github.com/usnistgov/OSCAL/build
@@ -23,6 +24,8 @@ RUN go install -tags "extended" github.com/gohugoio/hugo
 
 =======
 >>>>>>> 5d5b1c311 (Adjustment of OSCAL project to support multi-repository approach)
+=======
+>>>>>>> bf9b66c07 (Adjustment of OSCAL project to support multi-repository approach)
 FROM oscal-os-dependencies as oscal-runtime-dependencies
 
 RUN mkdir -p /opt/oscal
