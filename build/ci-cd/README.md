@@ -55,9 +55,7 @@ The following scripts and tools in this repository and its submodules are itemiz
 1. [copy-and-convert-content.sh](copy-and-convert-content.sh): Copies selective content from the [src/content](https://github.com/usnistgov/OSCAL/tree/master/src/content) directory, and generates instance of this content in alternate OSCAL formats using the appropriate content converters. Note __This script requires that the process have write access to the Git repository branch that the CI/CD is operating on to work completely.__
 1. [validate-content-conversion-round-trips.sh](validate-content-conversion-round-trips.sh): Performs round trip validations of the content from XML->JSON->XML to confirm that the conversions are lossless and that resulting files comply with their schemas.
 
-    Additional scripts are provided that generate content for the OSCAL project website, supported by the GitHub Actions ```build``` workflow on the ```master``` branch.
-
-1. [generate-model-documentation.sh](generate-model-documentation.sh): This is used as part of the site generation pipeline to build HTML documentation for the OSCAL models.
+Additional scripts are provided that generate content for the OSCAL project website, supported by the GitHub Actions ```build``` workflow on the ```master``` branch.
 
 Not every script above is run with every pull request as part of the CI/CD system. Some are only for local development and testing. Please review the [../../.github/workflows](GitHub Actions workflows) for current inventory of what is used for CI and CD for every pull request.
 
