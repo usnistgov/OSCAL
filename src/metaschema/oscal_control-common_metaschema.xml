@@ -238,10 +238,10 @@
                         </constraint>
                 </define-flag>
                 <model>
-                        <define-field name="parameter-choice" as-type="markup-line" max-occurs="unbounded">
+                        <define-field name="choice" as-type="markup-line" max-occurs="unbounded">
                                 <formal-name>Choice</formal-name>
-                                <description>A value selection among several such options</description>
-                                <use-name>choice</use-name>
+                                <description>A value selection among several such
+                                        options.</description>
                                 <json-value-key>value</json-value-key>
                                 <!-- CHANGED "alternatives" to "choices" -->
                                 <group-as name="choice" in-json="ARRAY"/>
