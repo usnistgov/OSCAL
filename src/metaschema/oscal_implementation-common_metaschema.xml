@@ -649,11 +649,10 @@
             <description>Identifies the parameter that will be set by the enclosed value.</description>
             <flag ref="param-id" required="yes"/>
             <model>
-                  <define-field name="parameter-value" as-type="string" min-occurs="1" max-occurs="unbounded">
+                  <define-field name="value" as-type="string" min-occurs="1" max-occurs="unbounded">
                         <!-- CHANGED type from "markup-line" to "string" since this is intended to be a scalar value -->
                         <formal-name>Parameter Value</formal-name>
                         <description>A parameter value or set of values.</description>
-                        <use-name>value</use-name>
                         <group-as name="values" in-json="ARRAY"/>
                   </define-field>
                   <field ref="remarks" in-xml="WITH_WRAPPER"/>
