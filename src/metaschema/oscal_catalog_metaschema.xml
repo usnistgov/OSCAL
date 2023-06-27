@@ -64,6 +64,9 @@
                   <index name="catalog-props" target="//prop" >
                         <key-field target="@uuid"/>
                   </index>
+                  <index name="catalog-groups-controls-parts" target="//(control|group|part)">
+                        <key-field target="@id"/>
+                  </index>
                   <index name="catalog-controls" target="//control" >
                         <key-field target="@id"/>
                   </index>
@@ -261,7 +264,7 @@
                               referenced control.</enum>
                   </allowed-values>
                   <!-- TODO: add expect constraint to check for controls that reference themselves -->
-                  <index-has-key name="catalog-controls"
+                  <index-has-key name="catalog-groups-controls-parts"
                         target="link[@rel=('related','required','incorporated-into','moved-to') and starts-with(@href,'#')]">
                         <key-field target="@href" pattern="#(.*)"/>
                   </index-has-key>
