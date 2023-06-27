@@ -38,7 +38,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
             </details>
          </div>
          <details class="constraints" open="open">
-            <summary>Constraints (7)</summary>
+            <summary>Constraints (8)</summary>
             <div class="constraint">
                <p><span class="usa-tag">allowed values</span>  for <code class="path">metadata/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
                <p>The value <b>must</b> be one of the following:</p>
@@ -66,6 +66,9 @@ The following is the XML format reference for this [model](/concepts/layer/contr
             </div>
             <div class="constraint">
                <p><span class="usa-tag">index</span>  for <code class="path">//prop</code> an index <code>catalog-props</code> shall list values returned by targets <code>//prop</code> using keys constructed of key field(s) <code>@uuid</code></p>
+            </div>
+            <div class="constraint">
+               <p><span class="usa-tag">index</span>  for <code class="path">//(control|group|part)</code> an index <code>catalog-groups-controls-parts</code> shall list values returned by targets <code>//(control|group|part)</code> using keys constructed of key field(s) <code>@id</code></p>
             </div>
             <div class="constraint">
                <p><span class="usa-tag">index</span>  for <code class="path">//control</code> an index <code>catalog-controls</code> shall list values returned by targets <code>//control</code> using keys constructed of key field(s) <code>@id</code></p>
@@ -5449,7 +5452,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                            </ul>
                      </div>
                      <div class="constraint">
-                        <p><span class="usa-tag">index has key</span>  for <code class="path">link[@rel=('related','required','incorporated-into','moved-to') and starts-with(@href,'#')]</code>this value must correspond to a listing in the index <code>catalog-controls</code> using a key constructed of key field(s) <code>@href</code></p>
+                        <p><span class="usa-tag">index has key</span>  for <code class="path">link[@rel=('related','required','incorporated-into','moved-to') and starts-with(@href,'#')]</code>this value must correspond to a listing in the index <code>catalog-groups-controls-parts</code> using a key constructed of key field(s) <code>@href</code></p>
                      </div>
                      <div class="constraint">
                         <p><span class="usa-tag">allowed values</span>  for <code class="path">part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
@@ -9185,7 +9188,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     </ul>
                               </div>
                               <div class="constraint">
-                                 <p><span class="usa-tag">index has key</span>  for <code class="path">link[@rel=('related','required','incorporated-into','moved-to') and starts-with(@href,'#')]</code>this value must correspond to a listing in the index <code>catalog-controls</code> using a key constructed of key field(s) <code>@href</code></p>
+                                 <p><span class="usa-tag">index has key</span>  for <code class="path">link[@rel=('related','required','incorporated-into','moved-to') and starts-with(@href,'#')]</code>this value must correspond to a listing in the index <code>catalog-groups-controls-parts</code> using a key constructed of key field(s) <code>@href</code></p>
                               </div>
                               <div class="constraint">
                                  <p><span class="usa-tag">allowed values</span>  for <code class="path">part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
@@ -11201,7 +11204,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </ul>
                                  </div>
                                  <div class="constraint">
-                                    <p><span class="usa-tag">index has key</span>  for <code class="path">link[@rel=('related','required','incorporated-into','moved-to') and starts-with(@href,'#')]</code>this value must correspond to a listing in the index <code>catalog-controls</code> using a key constructed of key field(s) <code>@href</code></p>
+                                    <p><span class="usa-tag">index has key</span>  for <code class="path">link[@rel=('related','required','incorporated-into','moved-to') and starts-with(@href,'#')]</code>this value must correspond to a listing in the index <code>catalog-groups-controls-parts</code> using a key constructed of key field(s) <code>@href</code></p>
                                  </div>
                                  <div class="constraint">
                                     <p><span class="usa-tag">allowed values</span>  for <code class="path">part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
@@ -14937,7 +14940,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 </ul>
                                           </div>
                                           <div class="constraint">
-                                             <p><span class="usa-tag">index has key</span>  for <code class="path">link[@rel=('related','required','incorporated-into','moved-to') and starts-with(@href,'#')]</code>this value must correspond to a listing in the index <code>catalog-controls</code> using a key constructed of key field(s) <code>@href</code></p>
+                                             <p><span class="usa-tag">index has key</span>  for <code class="path">link[@rel=('related','required','incorporated-into','moved-to') and starts-with(@href,'#')]</code>this value must correspond to a listing in the index <code>catalog-groups-controls-parts</code> using a key constructed of key field(s) <code>@href</code></p>
                                           </div>
                                           <div class="constraint">
                                              <p><span class="usa-tag">allowed values</span>  for <code class="path">part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
