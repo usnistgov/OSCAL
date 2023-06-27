@@ -3,8 +3,7 @@
     xmlns:opr="http://csrc.nist.gov/ns/oscal/profile-resolution"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     exclude-result-prefixes="#all"
-    xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0"
-    default-mode="scrubbing">
+    xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
 
     <!--
 
