@@ -5468,7 +5468,7 @@
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
              as-type="markup-line"
-             name="parameter-choice"
+             name="choice"
              gi="choice"
              in-json="SCALAR">
          <value as-type="markup-line" in-json="string">
@@ -5607,7 +5607,7 @@
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
              as-type="markup-line"
-             name="parameter-choice"
+             name="choice"
              gi="choice"
              in-json="SCALAR">
          <value as-type="markup-line" in-json="string">
@@ -5800,7 +5800,7 @@
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
              as-type="markup-line"
-             name="parameter-choice"
+             name="choice"
              gi="choice"
              in-json="SCALAR">
          <value as-type="markup-line" in-json="string">
@@ -5993,7 +5993,7 @@
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
              as-type="markup-line"
-             name="parameter-choice"
+             name="choice"
              gi="choice"
              in-json="SCALAR">
          <value as-type="markup-line" in-json="string">
@@ -7288,7 +7288,7 @@
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
              as-type="markup-line"
-             name="parameter-choice"
+             name="choice"
              gi="choice"
              in-json="SCALAR">
          <value as-type="markup-line" in-json="string">
@@ -7687,7 +7687,7 @@
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
              as-type="markup-line"
-             name="parameter-choice"
+             name="choice"
              gi="choice"
              in-json="SCALAR">
          <value as-type="markup-line" in-json="string">
@@ -7826,7 +7826,7 @@
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
              as-type="markup-line"
-             name="parameter-choice"
+             name="choice"
              gi="choice"
              in-json="SCALAR">
          <value as-type="markup-line" in-json="string">
@@ -9035,7 +9035,7 @@
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
              as-type="string"
-             name="parameter-value"
+             name="value"
              gi="value"
              in-json="SCALAR">
          <value as-type="string" in-json="string">
@@ -9135,7 +9135,7 @@
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
              as-type="string"
-             name="parameter-value"
+             name="value"
              gi="value"
              in-json="SCALAR">
          <value as-type="string" in-json="string">
@@ -9397,7 +9397,7 @@
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
              as-type="string"
-             name="parameter-value"
+             name="value"
              gi="value"
              in-json="SCALAR">
          <value as-type="string" in-json="string">
@@ -9497,7 +9497,7 @@
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
              as-type="string"
-             name="parameter-value"
+             name="value"
              gi="value"
              in-json="SCALAR">
          <value as-type="string" in-json="string">
@@ -12043,7 +12043,7 @@
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
              as-type="string"
-             name="parameter-value"
+             name="value"
              gi="value"
              in-json="SCALAR">
          <value as-type="string" in-json="string">
@@ -12127,7 +12127,7 @@
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
              as-type="string"
-             name="parameter-value"
+             name="value"
              gi="value"
              in-json="SCALAR">
          <value as-type="string" in-json="string">
@@ -12273,7 +12273,7 @@
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
              as-type="string"
-             name="parameter-value"
+             name="value"
              gi="value"
              in-json="SCALAR">
          <value as-type="string" in-json="string">
@@ -12783,7 +12783,7 @@
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
              as-type="string"
-             name="parameter-value"
+             name="value"
              gi="value"
              in-json="SCALAR">
          <value as-type="string" in-json="string">

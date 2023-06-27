@@ -2687,7 +2687,7 @@
             "minItems" : 1,
             "items" : 
             { "title" : "Choice",
-              "description" : "A value selection among several such options",
+              "description" : "A value selection among several such options.",
               "type" : "string" } } },
         "additionalProperties" : false },
       "oscal-ar-oscal-catalog-common:include-all" : 

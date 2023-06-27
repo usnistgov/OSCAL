@@ -497,10 +497,10 @@
                <xs:annotation>
                   <xs:appinfo>
                      <m:formal-name>Choice</m:formal-name>
-                     <m:description>A value selection among several such options</m:description>
+                     <m:description>A value selection among several such options.</m:description>
                   </xs:appinfo>
                   <xs:documentation>
-                     <b>Choice</b>: A value selection among several such options</xs:documentation>
+                     <b>Choice</b>: A value selection among several such options.</xs:documentation>
                </xs:annotation>
                <xs:complexContent>
                   <xs:extension base="MarkupLineDatatype"/>

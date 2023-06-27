@@ -2326,7 +2326,7 @@
       <!-- XML match="profile/merge/custom//group/param/select/choice" -->
       <field collapsible="no"
              as-type="markup-line"
-             name="parameter-choice"
+             name="choice"
              gi="choice"
              in-json="SCALAR">
          <xsl:apply-templates select="." mode="get-value-property"/>
@@ -2754,7 +2754,7 @@
       <!-- XML match="profile/modify/set-parameter/select/choice" -->
       <field collapsible="no"
              as-type="markup-line"
-             name="parameter-choice"
+             name="choice"
              gi="choice"
              in-json="SCALAR">
          <xsl:apply-templates select="." mode="get-value-property"/>
@@ -2946,7 +2946,7 @@
       <!-- XML match="profile/modify/alter/add/param/select/choice" -->
       <field collapsible="no"
              as-type="markup-line"
-             name="parameter-choice"
+             name="choice"
              gi="choice"
              in-json="SCALAR">
          <xsl:apply-templates select="." mode="get-value-property"/>

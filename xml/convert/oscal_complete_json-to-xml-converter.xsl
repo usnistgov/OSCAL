@@ -4640,7 +4640,7 @@
       <!-- XML match="catalog/param/select/choice" -->
       <field collapsible="no"
              as-type="markup-line"
-             name="parameter-choice"
+             name="choice"
              gi="choice"
              in-json="SCALAR">
          <xsl:apply-templates select="." mode="get-value-property"/>
@@ -4832,7 +4832,7 @@
       <!-- XML match="catalog//control/param/select/choice" -->
       <field collapsible="no"
              as-type="markup-line"
-             name="parameter-choice"
+             name="choice"
              gi="choice"
              in-json="SCALAR">
          <xsl:apply-templates select="." mode="get-value-property"/>
@@ -5117,7 +5117,7 @@
       <!-- XML match="catalog//group/param/select/choice" -->
       <field collapsible="no"
              as-type="markup-line"
-             name="parameter-choice"
+             name="choice"
              gi="choice"
              in-json="SCALAR">
          <xsl:apply-templates select="." mode="get-value-property"/>
@@ -5402,7 +5402,7 @@
       <!-- XML match="catalog//group//control/param/select/choice" -->
       <field collapsible="no"
              as-type="markup-line"
-             name="parameter-choice"
+             name="choice"
              gi="choice"
              in-json="SCALAR">
          <xsl:apply-templates select="." mode="get-value-property"/>
@@ -6932,7 +6932,7 @@
       <!-- XML match="profile/merge/custom//group/param/select/choice" -->
       <field collapsible="no"
              as-type="markup-line"
-             name="parameter-choice"
+             name="choice"
              gi="choice"
              in-json="SCALAR">
          <xsl:apply-templates select="." mode="get-value-property"/>
@@ -7360,7 +7360,7 @@
       <!-- XML match="profile/modify/set-parameter/select/choice" -->
       <field collapsible="no"
              as-type="markup-line"
-             name="parameter-choice"
+             name="choice"
              gi="choice"
              in-json="SCALAR">
          <xsl:apply-templates select="." mode="get-value-property"/>
@@ -7552,7 +7552,7 @@
       <!-- XML match="profile/modify/alter/add/param/select/choice" -->
       <field collapsible="no"
              as-type="markup-line"
-             name="parameter-choice"
+             name="choice"
              gi="choice"
              in-json="SCALAR">
          <xsl:apply-templates select="." mode="get-value-property"/>
@@ -8979,7 +8979,7 @@
       <!-- XML match="component-definition/component/control-implementation/set-parameter/value" -->
       <field collapsible="no"
              as-type="string"
-             name="parameter-value"
+             name="value"
              gi="value"
              in-json="SCALAR">
          <xsl:apply-templates select="." mode="get-value-property"/>
@@ -9061,7 +9061,7 @@
       <!-- XML match="component-definition/component/control-implementation/implemented-requirement/set-parameter/value" -->
       <field collapsible="no"
              as-type="string"
-             name="parameter-value"
+             name="value"
              gi="value"
              in-json="SCALAR">
          <xsl:apply-templates select="." mode="get-value-property"/>
@@ -9319,7 +9319,7 @@
       <!-- XML match="component-definition/capability/control-implementation/set-parameter/value" -->
       <field collapsible="no"
              as-type="string"
-             name="parameter-value"
+             name="value"
              gi="value"
              in-json="SCALAR">
          <xsl:apply-templates select="." mode="get-value-property"/>
@@ -9401,7 +9401,7 @@
       <!-- XML match="component-definition/capability/control-implementation/implemented-requirement/set-parameter/value" -->
       <field collapsible="no"
              as-type="string"
-             name="parameter-value"
+             name="value"
              gi="value"
              in-json="SCALAR">
          <xsl:apply-templates select="." mode="get-value-property"/>
@@ -12290,7 +12290,7 @@
       <!-- XML match="system-security-plan/control-implementation/set-parameter/value" -->
       <field collapsible="no"
              as-type="string"
-             name="parameter-value"
+             name="value"
              gi="value"
              in-json="SCALAR">
          <xsl:apply-templates select="." mode="get-value-property"/>
@@ -12348,7 +12348,7 @@
       <!-- XML match="system-security-plan/control-implementation/implemented-requirement/set-parameter/value" -->
       <field collapsible="no"
              as-type="string"
-             name="parameter-value"
+             name="value"
              gi="value"
              in-json="SCALAR">
          <xsl:apply-templates select="." mode="get-value-property"/>
@@ -12497,7 +12497,7 @@
       <!-- XML match="system-security-plan/control-implementation/implemented-requirement/statement/by-component/set-parameter/value" -->
       <field collapsible="no"
              as-type="string"
-             name="parameter-value"
+             name="value"
              gi="value"
              in-json="SCALAR">
          <xsl:apply-templates select="." mode="get-value-property"/>
@@ -12983,7 +12983,7 @@
       <!-- XML match="system-security-plan/control-implementation/implemented-requirement/by-component/set-parameter/value" -->
       <field collapsible="no"
              as-type="string"
-             name="parameter-value"
+             name="value"
              gi="value"
              in-json="SCALAR">
          <xsl:apply-templates select="." mode="get-value-property"/>
