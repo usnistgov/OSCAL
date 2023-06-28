@@ -4,7 +4,12 @@
     "$comment" : "OSCAL Plan of Action and Milestones (POA&M) Model: JSON Schema",
     "type" : "object",
     "definitions" : 
-    { "oscal-poam-oscal-poam:plan-of-action-and-milestones" : 
+    { "json-schema-directive" : 
+      { "title" : "Schema Directive",
+        "description" : "A JSON Schema directive to bind a specific schema to its document instance.",
+        "$id" : "#json-schema-directive",
+        "$ref" : "#/definitions/URIReferenceDatatype" },
+      "oscal-poam-oscal-poam:plan-of-action-and-milestones" : 
       { "title" : "Plan of Action and Milestones (POA&M)",
         "description" : "A plan of action and milestones which identifies initial and residual risks, deviations, and disposition, such as those required by FedRAMP.",
         "$id" : "#assembly_oscal-poam_plan-of-action-and-milestones",
@@ -335,7 +340,7 @@
               { "scheme" : 
                 { "title" : "External Identifier Schema",
                   "description" : "Indicates the type of external identifier.",
-                  "allOf" : 
+                  "anyOf" : 
                   [ 
                     { "$ref" : "#/definitions/URIDatatype" },
                     
@@ -553,7 +558,7 @@
         { "name" : 
           { "title" : "Property Name",
             "description" : "A textual label that uniquely identifies a specific attribute, characteristic, or quality of the property's containing object.",
-            "allOf" : 
+            "anyOf" : 
             [ 
               { "$ref" : "#/definitions/TokenDatatype" },
               
@@ -594,7 +599,7 @@
           "rel" : 
           { "title" : "Relation",
             "description" : "Describes the type of relationship provided by the link. This can be an indicator of the link's purpose.",
-            "allOf" : 
+            "anyOf" : 
             [ 
               { "$ref" : "#/definitions/TokenDatatype" },
               
@@ -681,7 +686,7 @@
         { "algorithm" : 
           { "title" : "Hash algorithm",
             "description" : "Method by which a hash is derived",
-            "allOf" : 
+            "anyOf" : 
             [ 
               { "$ref" : "#/definitions/StringDatatype" },
               
@@ -739,7 +744,7 @@
         { "type" : 
           { "title" : "type flag",
             "description" : "Indicates the type of phone number.",
-            "allOf" : 
+            "anyOf" : 
             [ 
               { "$ref" : "#/definitions/StringDatatype" },
               
@@ -761,7 +766,7 @@
         { "type" : 
           { "title" : "Address Type",
             "description" : "Indicates the type of address.",
-            "allOf" : 
+            "anyOf" : 
             [ 
               { "$ref" : "#/definitions/TokenDatatype" },
               
@@ -804,7 +809,7 @@
         { "scheme" : 
           { "title" : "Document Identification Scheme",
             "description" : "Qualifies the kind of document identifier using a URI. If the scheme is not provided the value of the element will be interpreted as a string of characters.",
-            "allOf" : 
+            "anyOf" : 
             [ 
               { "$ref" : "#/definitions/URIDatatype" },
               
@@ -828,7 +833,7 @@
           "type" : 
           { "title" : "Component Type",
             "description" : "A category describing the purpose of the component.",
-            "allOf" : 
+            "anyOf" : 
             [ 
               { "$ref" : "#/definitions/StringDatatype" },
               
@@ -970,7 +975,7 @@
         { "state" : 
           { "title" : "Implementation State",
             "description" : "Identifies the implementation status of the control or control objective.",
-            "allOf" : 
+            "anyOf" : 
             [ 
               { "$ref" : "#/definitions/TokenDatatype" },
               
@@ -1159,7 +1164,7 @@
         { "identifier-type" : 
           { "title" : "Identification System Type",
             "description" : "Identifies the identification system from which the provided identifier was assigned.",
-            "allOf" : 
+            "anyOf" : 
             [ 
               { "$ref" : "#/definitions/URIDatatype" },
               
@@ -1534,7 +1539,7 @@
           "type" : 
           { "title" : "Task Type",
             "description" : "The type of task.",
-            "allOf" : 
+            "anyOf" : 
             [ 
               { "$ref" : "#/definitions/TokenDatatype" },
               
@@ -1884,7 +1889,7 @@
         { "type" : 
           { "title" : "Subject Type",
             "description" : "Indicates the type of assessment subject, such as a component, inventory, item, location, or party represented by this selection statement.",
-            "allOf" : 
+            "anyOf" : 
             [ 
               { "$ref" : "#/definitions/TokenDatatype" },
               
@@ -1938,7 +1943,7 @@
           "type" : 
           { "title" : "Subject Universally Unique Identifier Reference Type",
             "description" : "Used to indicate the type of object pointed to by the uuid-ref within a subject.",
-            "allOf" : 
+            "anyOf" : 
             [ 
               { "$ref" : "#/definitions/TokenDatatype" },
               
@@ -1978,7 +1983,7 @@
           "type" : 
           { "title" : "Subject Universally Unique Identifier Reference Type",
             "description" : "Used to indicate the type of object pointed to by the uuid-ref within a subject.",
-            "allOf" : 
+            "anyOf" : 
             [ 
               { "$ref" : "#/definitions/TokenDatatype" },
               
@@ -2142,7 +2147,7 @@
               "reason" : 
               { "title" : "Objective Status Reason",
                 "description" : "The reason the objective was given it's status.",
-                "allOf" : 
+                "anyOf" : 
                 [ 
                   { "$ref" : "#/definitions/TokenDatatype" },
                   
@@ -2198,7 +2203,7 @@
             "items" : 
             { "title" : "Observation Method",
               "description" : "Identifies how the observation was made.",
-              "allOf" : 
+              "anyOf" : 
               [ 
                 { "$ref" : "#/definitions/StringDatatype" },
                 
@@ -2213,7 +2218,7 @@
             "items" : 
             { "title" : "Observation Type",
               "description" : "Identifies the nature of the observation. More than one may be used to further qualify and enable filtering.",
-              "allOf" : 
+              "anyOf" : 
               [ 
                 { "$ref" : "#/definitions/TokenDatatype" },
                 
@@ -2400,7 +2405,7 @@
         { "system" : 
           { "title" : "Threat Type Identification System",
             "description" : "Specifies the source of the threat information.",
-            "allOf" : 
+            "anyOf" : 
             [ 
               { "$ref" : "#/definitions/URIDatatype" },
               
@@ -2648,7 +2653,7 @@
       { "title" : "Risk Status",
         "description" : "Describes the status of the associated risk.",
         "$id" : "#field_oscal-assessment-common_risk-status",
-        "allOf" : 
+        "anyOf" : 
         [ 
           { "$ref" : "#/definitions/TokenDatatype" },
           
@@ -2692,7 +2697,7 @@
                 "system" : 
                 { "title" : "Naming System",
                   "description" : "Specifies the naming system under which this risk metric is organized, which allows for the same names to be used in different systems controlled by different parties. This avoids the potential of a name clash.",
-                  "allOf" : 
+                  "anyOf" : 
                   [ 
                     { "$ref" : "#/definitions/URIDatatype" },
                     
@@ -2743,7 +2748,7 @@
           "lifecycle" : 
           { "title" : "Remediation Intent",
             "description" : "Identifies whether this is a recommendation, such as from an assessor or tool, or an actual plan accepted by the system owner.",
-            "allOf" : 
+            "anyOf" : 
             [ 
               { "$ref" : "#/definitions/TokenDatatype" },
               
@@ -2841,7 +2846,7 @@
           "name" : 
           { "title" : "Part Name",
             "description" : "A textual label that uniquely identifies the part's semantic type.",
-            "allOf" : 
+            "anyOf" : 
             [ 
               { "$ref" : "#/definitions/TokenDatatype" },
               
@@ -2884,15 +2889,18 @@
         [ "name" ],
         "additionalProperties" : false },
       "Base64Datatype" : 
-      { "type" : "string",
+      { "description" : "Binary data encoded using the Base 64 encoding algorithm as defined by RFC4648.",
+        "type" : "string",
         "pattern" : "^[0-9A-Za-z+/]+={0,2}$",
         "contentEncoding" : "base64" },
       "DateTimeWithTimezoneDatatype" : 
-      { "type" : "string",
+      { "description" : "A string representing a point in time with a required timezone.",
+        "type" : "string",
         "format" : "date-time",
-        "pattern" : "^(((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30)))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]*[1-9])?(Z|(-((0[0-9]|1[0-2]):00|0[39]:30)|\\+((0[0-9]|1[0-4]):00|(0[34569]|10):30|(0[58]|12):45)))$" },
+        "pattern" : "^(((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30)))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|(-((0[0-9]|1[0-2]):00|0[39]:30)|\\+((0[0-9]|1[0-4]):00|(0[34569]|10):30|(0[58]|12):45)))$" },
       "EmailAddressDatatype" : 
-      { "allOf" : 
+      { "description" : "An email address string formatted according to RFC 6531.",
+        "allOf" : 
         [ 
           { "$ref" : "#/definitions/StringDatatype" },
           
@@ -2900,42 +2908,50 @@
             "format" : "email",
             "pattern" : "^.+@.+$" } ] },
       "IntegerDatatype" : 
-      { "type" : "integer" },
+      { "description" : "A whole number value.",
+        "type" : "integer" },
       "NonNegativeIntegerDatatype" : 
-      { "allOf" : 
+      { "description" : "An integer value that is equal to or greater than 0.",
+        "allOf" : 
         [ 
           { "$ref" : "#/definitions/IntegerDatatype" },
           
           { "type" : "number",
             "minimum" : 0 } ] },
       "PositiveIntegerDatatype" : 
-      { "allOf" : 
+      { "description" : "An integer value that is greater than 0.",
+        "allOf" : 
         [ 
           { "$ref" : "#/definitions/IntegerDatatype" },
           
           { "type" : "number",
             "minimum" : 1 } ] },
       "StringDatatype" : 
-      { "type" : "string",
+      { "description" : "A non-empty string with leading and trailing whitespace disallowed. Whitespace is: U+9, U+10, U+32 or [ \n\t]+",
+        "type" : "string",
         "pattern" : "^\\S(.*\\S)?$" },
       "TokenDatatype" : 
-      { "type" : "string",
+      { "description" : "A non-colonized name as defined by XML Schema Part 2: Datatypes Second Edition. https://www.w3.org/TR/xmlschema11-2/#NCName.",
+        "type" : "string",
         "pattern" : "^(\\p{L}|_)(\\p{L}|\\p{N}|[.\\-_])*$" },
       "URIDatatype" : 
-      { "type" : "string",
+      { "description" : "A universal resource identifier (URI) formatted according to RFC3986.",
+        "type" : "string",
         "format" : "uri",
         "pattern" : "^[a-zA-Z][a-zA-Z0-9+\\-.]+:.+$" },
       "URIReferenceDatatype" : 
-      { "type" : "string",
+      { "description" : "A URI Reference, either a URI or a relative-reference, formatted according to section 4.1 of RFC3986.",
+        "type" : "string",
         "format" : "uri-reference" },
       "UUIDDatatype" : 
-      { "type" : "string",
-        "description" : "A type 4 ('random' or 'pseudorandom') or type 5 UUID per RFC 4122.",
+      { "description" : "A type 4 ('random' or 'pseudorandom') or type 5 UUID per RFC 4122.",
+        "type" : "string",
         "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[45][0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" } },
     "properties" : 
-    { "plan-of-action-and-milestones" : 
+    { "$schema" : 
+      { "$ref" : "#json-schema-directive" },
+      "plan-of-action-and-milestones" : 
       { "$ref" : "#assembly_oscal-poam_plan-of-action-and-milestones" } },
     "required" : 
     [ "plan-of-action-and-milestones" ],
-    "additionalProperties" : false,
-    "maxProperties" : 1 }
+    "additionalProperties" : false }
