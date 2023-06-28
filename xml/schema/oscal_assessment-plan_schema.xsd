@@ -4714,7 +4714,7 @@
          <xs:group ref="blockElementGroup"/>
       </xs:choice>
    </xs:complexType>
-   <xs:group name="blockElementGroup">
+   <xs:group name="headingBlockElementGroup">
       <xs:choice>
          <xs:element name="h1" type="inlineMarkupType"/>
          <xs:element name="h2" type="inlineMarkupType"/>
@@ -4722,13 +4722,25 @@
          <xs:element name="h4" type="inlineMarkupType"/>
          <xs:element name="h5" type="inlineMarkupType"/>
          <xs:element name="h6" type="inlineMarkupType"/>
+      </xs:choice>
+   </xs:group>
+   <xs:group name="blockElementGroup">
+      <xs:choice>
+         <xs:group ref="headingBlockElementGroup"/>
+         <xs:group ref="listsGroup"/>
+         <xs:group ref="blockTextGroup"/>
          <xs:element name="p" type="inlineMarkupType"/>
-         <xs:element name="ul" type="listType"/>
-         <xs:element name="ol" type="listType"/>
-         <xs:element name="pre" type="preformattedType"/>
          <xs:element name="table" type="tableType"/>
+         <!-- QUESTION: Deprecate this? -->
          <xs:element name="img" type="imageType"/>
+      </xs:choice>
+   </xs:group>
+   <xs:group name="blockTextGroup">
+      <xs:choice>
+         <xs:element name="pre" type="preformattedType"/>
+         <xs:element name="hr"/>
          <!-- TODO: need to add support for blockquote, which can contain block elements. usnistgov/metaschema#70 -->
+         <xs:element name="blockquote" type="blockQuoteType"/>
       </xs:choice>
    </xs:group>
    <xs:complexType name="preformattedType" mixed="true">
@@ -4749,12 +4761,28 @@
                      maxOccurs="unbounded"/>
       </xs:sequence>
    </xs:complexType>
+   <xs:complexType name="orderedListType">
+      <xs:complexContent>
+         <xs:extension base="listType">
+		<!-- TODO: confirm if romans are allowed -->
+            <xs:attribute name="start" type="xs:nonNegativeInteger"/>
+         </xs:extension>
+      </xs:complexContent>
+   </xs:complexType>
+   <xs:group name="listsGroup">
+      <xs:choice>
+         <xs:element name="ul" type="listType"/>
+         <xs:element name="ol" type="orderedListType"/>
+      </xs:choice>
+   </xs:group>
    <xs:complexType name="listItemType" mixed="true">
     <!-- TODO: is this the correct construction? -->
       <xs:choice minOccurs="0" maxOccurs="unbounded">
          <xs:group ref="inlineMarkupGroup"/>
-         <xs:element name="ul" type="listType"/>
-         <xs:element name="ol" type="listType"/>
+         <xs:group ref="listsGroup"/>
+         <xs:group ref="blockTextGroup"/>
+         <xs:group ref="headingBlockElementGroup"/>
+         <xs:element name="p" type="inlineMarkupType"/>
       </xs:choice>
    </xs:complexType>
    <xs:complexType name="tableType">
@@ -4785,6 +4813,12 @@
          <xs:enumeration value="right"/>
       </xs:restriction>
    </xs:simpleType>
+   <xs:complexType name="blockQuoteType">
+    <!-- TODO: confirm if nested blockquote is supported in markdown -->
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+         <xs:group ref="blockElementGroup"/>
+      </xs:choice>
+   </xs:complexType>
    <xs:complexType name="MarkupLineDatatype" mixed="true">
       <xs:complexContent>
          <xs:extension base="inlineMarkupType"/>
@@ -4799,12 +4833,13 @@
       <xs:choice>
          <xs:element name="a" type="anchorType"/>
          <xs:element name="insert" type="insertType"/>
+         <xs:element name="br"/>
          <xs:group ref="phraseMarkupGroup"/>
       </xs:choice>
    </xs:group>
    <xs:group name="phraseMarkupGroup">
       <xs:choice>
-         <xs:element name="code" type="inlineMarkupType"/>
+         <xs:element name="code" type="codeType"/>
          <xs:element name="em" type="inlineMarkupType"/>
          <xs:element name="i" type="inlineMarkupType"/>
          <xs:element name="b" type="inlineMarkupType"/>
@@ -4815,15 +4850,24 @@
          <xs:element name="img" type="imageType"/>
       </xs:choice>
    </xs:group>
+   <xs:complexType name="codeType">
+      <xs:complexContent>
+         <xs:extension base="inlineMarkupType">
+            <xs:attribute name="class" type="xs:token"/>
+         </xs:extension>
+      </xs:complexContent>
+   </xs:complexType>
    <xs:complexType name="imageType">
       <xs:attribute name="alt" type="xs:string"/>
       <xs:attribute name="src" use="required" type="xs:anyURI"/>
+      <xs:attribute name="title" type="xs:string"/>
    </xs:complexType>
    <xs:complexType name="anchorType" mixed="true">
       <xs:choice minOccurs="0" maxOccurs="unbounded">
          <xs:group ref="phraseMarkupGroup"/>
       </xs:choice>
       <xs:attribute name="href" type="xs:anyURI"/>
+      <xs:attribute name="title" type="xs:string"/>
    </xs:complexType>
    <xs:complexType name="insertType">
       <xs:annotation>
@@ -4841,70 +4885,84 @@
       </xs:attribute>
    </xs:complexType>
    <xs:simpleType name="Base64Datatype">
+      <xs:annotation>
+         <xs:documentation>Binary data encoded using the Base64 encoding algorithm
+				as defined by RFC4648.</xs:documentation>
+      </xs:annotation>
       <xs:restriction base="xs:base64Binary">
          <xs:pattern value="[0-9A-Za-z+/]+={0,2}"/>
       </xs:restriction>
    </xs:simpleType>
    <xs:simpleType name="DateTimeDatatype">
+      <xs:annotation>
+         <xs:documentation>A string representing a point in time with an optional timezone.</xs:documentation>
+      </xs:annotation>
       <xs:restriction base="xs:dateTime">
-         <xs:pattern value="(((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30)))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]*[1-9])?(Z|(-((0[0-9]|1[0-2]):00|0[39]:30)|\+((0[0-9]|1[0-4]):00|(0[34569]|10):30|(0[58]|12):45)))?"/>
+         <xs:pattern value="(((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30)))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|(-((0[0-9]|1[0-2]):00|0[39]:30)|\+((0[0-9]|1[0-4]):00|(0[34569]|10):30|(0[58]|12):45)))?"/>
       </xs:restriction>
    </xs:simpleType>
    <xs:simpleType name="DateTimeWithTimezoneDatatype">
       <xs:annotation>
-         <xs:documentation>The xs:dateTime with a required timezone.</xs:documentation>
+         <xs:documentation>A string representing a point in time with a required timezone.</xs:documentation>
       </xs:annotation>
       <xs:restriction base="DateTimeDatatype">
-         <xs:pattern value="(((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30)))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]*[1-9])?(Z|(-((0[0-9]|1[0-2]):00|0[39]:30)|\+((0[0-9]|1[0-4]):00|(0[34569]|10):30|(0[58]|12):45)))"/>
+         <xs:pattern value="(((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30)))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|(-((0[0-9]|1[0-2]):00|0[39]:30)|\+((0[0-9]|1[0-4]):00|(0[34569]|10):30|(0[58]|12):45)))"/>
       </xs:restriction>
    </xs:simpleType>
    <xs:simpleType name="EmailAddressDatatype">
       <xs:annotation>
-         <xs:documentation>An email address</xs:documentation>
+         <xs:documentation>An email address string formatted according to RFC 6531.</xs:documentation>
       </xs:annotation>
       <xs:restriction base="StringDatatype">
          <xs:pattern value=".+@.+">
-            <xs:annotation>
-               <xs:documentation>Need a better pattern.</xs:documentation>
-            </xs:annotation>
-         </xs:pattern>
+				<!-- TODO: Need a better pattern. -->
+			</xs:pattern>
       </xs:restriction>
    </xs:simpleType>
    <xs:simpleType name="NonNegativeIntegerDatatype">
+      <xs:annotation>
+         <xs:documentation>An integer value that is equal to or greater than 0.</xs:documentation>
+      </xs:annotation>
       <xs:restriction base="xs:nonNegativeInteger">
          <xs:pattern value="\S(.*\S)?">
             <xs:annotation>
-               <xs:documentation>A trimmed string, at least one character with no
-						leading or trailing whitespace.</xs:documentation>
+               <xs:documentation>This pattern ensures that leading and trailing whitespace is
+						disallowed. This helps to even the user experience between implementations
+						related to whitespace.</xs:documentation>
             </xs:annotation>
          </xs:pattern>
       </xs:restriction>
    </xs:simpleType>
    <xs:simpleType name="PositiveIntegerDatatype">
+      <xs:annotation>
+         <xs:documentation>An integer value that is greater than 0.</xs:documentation>
+      </xs:annotation>
       <xs:restriction base="xs:positiveInteger">
          <xs:pattern value="\S(.*\S)?">
             <xs:annotation>
-               <xs:documentation>A trimmed string, at least one character with no
-						leading or trailing whitespace.</xs:documentation>
+               <xs:documentation>This pattern ensures that leading and trailing whitespace is
+						disallowed. This helps to even the user experience between implementations
+						related to whitespace.</xs:documentation>
             </xs:annotation>
          </xs:pattern>
       </xs:restriction>
    </xs:simpleType>
    <xs:simpleType name="StringDatatype">
       <xs:annotation>
-         <xs:documentation>A string, but not empty and not whitespace-only
-				(whitespace is U+9, U+10, U+32 or [ \n\t]+ )</xs:documentation>
+         <xs:documentation>A non-empty string of Unicode characters with leading and trailing whitespace
+				disallowed. Whitespace is: U+9, U+10, U+32 or [ \n\t]+</xs:documentation>
       </xs:annotation>
       <xs:restriction base="xs:string">
          <xs:annotation>
-            <xs:documentation>The OSCAL 'string' datatype restricts the XSD type by prohibiting leading 
+            <xs:documentation>The 'string' datatype restricts the XSD type by prohibiting leading 
 					and trailing whitespace, and something (not only whitespace) is required.</xs:documentation>
          </xs:annotation>
          <xs:whiteSpace value="preserve"/>
          <xs:pattern value="\S(.*\S)?">
             <xs:annotation>
-               <xs:documentation>A trimmed string, at least one character with no
-						leading or trailing whitespace.</xs:documentation>
+               <xs:documentation>This pattern ensures that leading and trailing whitespace is
+						disallowed. This helps to even the user experience between implementations
+						related to whitespace.</xs:documentation>
             </xs:annotation>
          </xs:pattern>
       </xs:restriction>
@@ -4912,13 +4970,11 @@
    <xs:simpleType name="TokenDatatype">
       <xs:annotation>
 			<!--<xs:documentation>Matching XSD NCName, except whitespace is not collapsed.</xs:documentation> -->
-         <xs:documentation>A string token following the rules of XML "no
-				colon" names, with no whitespace. (XML names are single alphabetic
-				characters followed by alphanumeric characters, periods, underscores or dashes.)
-			</xs:documentation>
+         <xs:documentation>A non-empty, non-colonized name as defined by XML Schema Part 2: Datatypes
+				Second Edition (https://www.w3.org/TR/xmlschema11-2/#NCName), with leading and trailing
+				whitespace disallowed.</xs:documentation>
       </xs:annotation>
       <xs:restriction base="StringDatatype">
-<!-- 			value="(\p{L}|_)(\p{L}|\p{N}|[.\-_]|\xb7|[#x0300-#x036F#x203F-#x2040])*">-->
          <xs:pattern value="(\p{L}|_)(\p{L}|\p{N}|[.\-_])*">
             <xs:annotation>
 					<!--<xs:documentation>An XML initial character (but not colon), followed 
@@ -4931,7 +4987,7 @@
    </xs:simpleType>
    <xs:simpleType name="URIDatatype">
       <xs:annotation>
-         <xs:documentation>A URI</xs:documentation>
+         <xs:documentation>A universal resource identifier (URI) formatted according to RFC3986.</xs:documentation>
       </xs:annotation>
       <xs:restriction base="xs:anyURI">
          <xs:pattern value="[a-zA-Z][a-zA-Z0-9+\-.]+:.*\S">
@@ -4943,14 +4999,14 @@
    </xs:simpleType>
    <xs:simpleType name="URIReferenceDatatype">
       <xs:annotation>
-         <xs:documentation>A URI reference, such as a relative URL
-			</xs:documentation>
+         <xs:documentation>A URI Reference, either a URI or a relative-reference, formatted according to section 4.1 of RFC3986.</xs:documentation>
       </xs:annotation>
       <xs:restriction base="xs:anyURI">
          <xs:pattern value="\S(.*\S)?">
             <xs:annotation>
-               <xs:documentation>A trimmed URI, at least one character with no
-						leading or trailing whitespace.</xs:documentation>
+               <xs:documentation>This pattern ensures that leading and trailing whitespace is
+						disallowed. This helps to even the user experience between implementations
+						related to whitespace.</xs:documentation>
             </xs:annotation>
          </xs:pattern>
       </xs:restriction>
