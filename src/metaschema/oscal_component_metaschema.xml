@@ -177,7 +177,7 @@
             &allowed-values-responsible-roles-component-production;
       </allowed-values>
 
-      <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='asset-type']/@value">
+      <allowed-values allow-other="yes" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='asset-type']/@value">
             &allowed-values-property-name-asset-type-values;
       </allowed-values>
 
