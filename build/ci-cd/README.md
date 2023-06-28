@@ -48,7 +48,7 @@ graph TD
 The following scripts and tools in this repository and its submodules are itemized below. 
 
 1. [run-all.sh](run-all.sh): Runs all of the scripts in workflow order.
-1. [validate-metaschema.sh](validate-metaschema.sh): Ensures that all of [OSCAL's Metaschema modules](https://github.com/usnistgov/OSCAL/tree/master/src/metaschema) are valid according to the Metaschema XML schema.
+1. [validate-metaschema.sh](validate-metaschema.sh): Ensures that all [metaschema](https://github.com/usnistgov/OSCAL/tree/master/src/metaschema) are valid according to the [metaschema XML schema](https://github.com/usnistgov/metaschema/blob/main/schema/xml/metaschema.xsd).
 1. [generate-schema.sh](generate-schema.sh): Generates [XML schema](https://github.com/usnistgov/OSCAL/tree/master/xml/schema) and [JSON schema](https://github.com/usnistgov/OSCAL/tree/master/json/schema) files for each OSCAL model based on their [respective metaschemas](https://github.com/usnistgov/OSCAL/tree/master/src/metaschema).
 1. [validate-content.sh](validate-content.sh): Validates OSCAL content in the repository's [src](https://github.com/usnistgov/OSCAL/tree/master/src) against the content's respective OSCAL model and format.
 1. [generate-content-converters.sh](generate-content-converters.sh): Generates [JSON to XML](https://github.com/usnistgov/OSCAL/tree/master/xml/convert) and [XML to JSON](https://github.com/usnistgov/OSCAL/tree/master/json/convert) content conversion scripts for each OSCAL model based on their [respective metaschemas](https://github.com/usnistgov/OSCAL/tree/master/src/metaschema).
