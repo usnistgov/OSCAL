@@ -562,7 +562,7 @@ include-controls:
       <section id="import-nested">
         <head>Dealing with Nested Controls and Groups</head>
         <p>In OSCAL, controls may contain child controls. For instance, in SP 800-53 many controls are supplemented with control enhancements; in OSCAL these are represented as child controls within parent controls. So parent AC-2 (in a given catalog) has children AC-2(1) through AC-2(13), for example.</p>
-        <p>By default, inclusion of a control also causes any of that control&apos;s ancestors (or parents) to also be included. By default, inclusion of a control DOES NOT cause the inclusion of any descendants (or children) of that control to be included. This applies to both controls and groups.</p>
+        <p>By default, inclusion of a control also causes any of that control&apos;s ancestors to also be included. By default, inclusion of a control DOES NOT cause the inclusion of any descendants of that control to be included. This applies to both controls and groups.</p>
         <p>This default behavior can be modified by the following two optional children of the
           <src>include-controls</src> object.
         </p>
@@ -579,23 +579,6 @@ include-controls:
                 <src>with-child-controls</src> is provided, the processor MUST consider the
               directive as being equivalent to one having <src>with-child-controls:no</src>.
           </req></p>
-        </section>
-        <section id="include-parent-controls">
-          <head>with-parent-controls</head>
-          <p>Although similar to the above
-            <src>with-child-controls</src>, the optional
-            <src>with-parent-controls</src> applies to parents of the included control, and has the opposite default behavior. In order to maintain the structure of the source catalog, profile resolution includes all parents of an included control by default. If a profile author wants to change this structure, they should use an exclude directive that lists all of the undesired parents. As a shortcut for this,
-            <src>with-parent-controls</src> provides the following functionality:
-          </p>
-          <p><req level="must" id="req-with-parent-controls-yes">A <src>with-parent-controls:
-                yes</src> directive on an <src>include-controls</src> indicates that <em>all parent
-                controls</em> of the included control MUST also be included.</req></p>
-          <p><req level="must" id="req-with-parent-controls-no">A <src>with-parent-controls:
-                no</src> directive on an <src>include-controls</src> indicates that ONLY the
-              matching control is included, any parent MUST NOT be included. </req></p>
-          <p><req level="must" id="req-with-parent-controls-none">If no <src>with-parent-controls</src> is provided, the processor MUST
-              consider the directive as being equivalent to one having
-                <src>with-parent-controls:yes</src>. </req></p>
         </section>
       </section>
       <section id="exclude-directive">
