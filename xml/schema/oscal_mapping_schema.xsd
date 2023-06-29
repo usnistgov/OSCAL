@@ -5,44 +5,37 @@
             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             elementFormDefault="qualified"
             targetNamespace="http://csrc.nist.gov/ns/oscal/1.0"
-            version="1.0.4">
+            version="1.0.3">
    <xs:annotation>
       <xs:appinfo>
-         <m:schema-name>OSCAL Control Catalog Model</m:schema-name>
-         <m:schema-version>1.0.4</m:schema-version>
-         <m:short-name>oscal-catalog</m:short-name>
+         <m:schema-name>OSCAL Control Mapping Model</m:schema-name>
+         <m:schema-version>1.0.3</m:schema-version>
+         <m:short-name>oscal-mapping</m:short-name>
          <m:remarks>
-            <p>The OSCAL Control Catalog format can be used to describe a collection of security controls and related control enhancements, along with contextualizing documentation and metadata. The root of the Control Catalog format is <code>catalog</code>.</p>
+            <p>The OSCAL Control mapping format can be used to describe how a collection of security controls and related control enhancements relate to another collection of controls. The root of the Control Catalog format is <code>mapping-collection</code>. </p>
          </m:remarks>
-         <m:root>catalog</m:root>
+         <m:root>mapping-collection</m:root>
       </xs:appinfo>
    </xs:annotation>
-   <xs:element name="catalog" type="oscal-catalog-catalog-ASSEMBLY"/>
-   <xs:complexType name="oscal-catalog-catalog-ASSEMBLY">
+   <xs:element name="mapping-collection"
+                type="oscal-mapping-mapping-collection-ASSEMBLY"/>
+   <xs:complexType name="oscal-mapping-mapping-collection-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
-            <m:formal-name>Catalog</m:formal-name>
-            <m:description>A structured, <a href="https://pages.nist.gov/OSCAL/concepts/terminology/#catalog">organized collection</a> of control information.</m:description>
+            <m:formal-name>Mapping Collection</m:formal-name>
+            <m:description>A collection of relationship-based control and/or control statement mappings.</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Catalog</b>: A structured, organized collection of control information.</xs:documentation>
+            <b>Mapping Collection</b>: A collection of relationship-based control and/or control statement mappings.</xs:documentation>
       </xs:annotation>
       <xs:sequence>
          <xs:element name="metadata"
                       type="oscal-metadata-metadata-ASSEMBLY"
                       minOccurs="1"
                       maxOccurs="1"/>
-         <xs:element name="param"
-                      type="oscal-control-common-parameter-ASSEMBLY"
-                      minOccurs="0"
-                      maxOccurs="unbounded"/>
-         <xs:element name="control"
-                      type="oscal-catalog-control-ASSEMBLY"
-                      minOccurs="0"
-                      maxOccurs="unbounded"/>
-         <xs:element name="group"
-                      type="oscal-catalog-group-ASSEMBLY"
-                      minOccurs="0"
+         <xs:element name="mapping"
+                      type="oscal-mapping-mapping-ASSEMBLY"
+                      minOccurs="1"
                       maxOccurs="unbounded"/>
          <xs:element name="back-matter"
                       type="oscal-metadata-back-matter-ASSEMBLY"
@@ -52,515 +45,47 @@
       <xs:attribute name="uuid" use="required" type="UUIDDatatype">
          <xs:annotation>
             <xs:appinfo>
-               <m:formal-name>Catalog Universally Unique Identifier</m:formal-name>
-               <m:description>Provides a globally unique means to identify a given catalog instance.</m:description>
+               <m:formal-name>Mapping Collection Universally Unique Identifier</m:formal-name>
+               <m:description>A globally unique identifier with cross-instance scope for this catalog instance. This UUID should be changed when this document is revised.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Catalog Universally Unique Identifier</b>: Provides a globally unique means to identify a given catalog instance.</xs:documentation>
+               <b>Mapping Collection Universally Unique Identifier</b>: A globally unique identifier with cross-instance scope for this catalog instance. This UUID should be changed when this document is revised.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
-   <xs:complexType name="oscal-catalog-group-ASSEMBLY">
+   <xs:complexType name="oscal-mapping-mapping-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
-            <m:formal-name>Control Group</m:formal-name>
-            <m:description>A group of controls, or of groups of controls.</m:description>
+            <m:formal-name>Control Mapping</m:formal-name>
+            <m:description>A mapping between two target resources.</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Control Group</b>: A group of controls, or of groups of controls.</xs:documentation>
+            <b>Control Mapping</b>: A mapping between two target resources.</xs:documentation>
       </xs:annotation>
       <xs:sequence>
-         <xs:element name="title" minOccurs="1" maxOccurs="1">
-            <xs:complexType mixed="true">
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Group Title</m:formal-name>
-                     <m:description>A name given to the group, which may be used by a tool for display and navigation.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Group Title</b>: A name given to the group, which may be used by a tool for display and navigation.</xs:documentation>
-               </xs:annotation>
-               <xs:complexContent>
-                  <xs:extension base="MarkupLineDatatype"/>
-               </xs:complexContent>
-            </xs:complexType>
-         </xs:element>
-         <xs:element name="param"
-                      type="oscal-control-common-parameter-ASSEMBLY"
-                      minOccurs="0"
-                      maxOccurs="unbounded"/>
-         <xs:element name="prop"
-                      type="oscal-metadata-property-ASSEMBLY"
-                      minOccurs="0"
-                      maxOccurs="unbounded"/>
-         <xs:element name="link"
-                      type="oscal-metadata-link-ASSEMBLY"
-                      minOccurs="0"
-                      maxOccurs="unbounded"/>
-         <xs:element name="part"
-                      type="oscal-control-common-part-ASSEMBLY"
-                      minOccurs="0"
-                      maxOccurs="unbounded"/>
-         <xs:choice>
-            <xs:element name="group"
-                         type="oscal-catalog-group-ASSEMBLY"
-                         minOccurs="0"
-                         maxOccurs="unbounded"/>
-            <xs:element name="control"
-                         type="oscal-catalog-control-ASSEMBLY"
-                         minOccurs="0"
-                         maxOccurs="unbounded"/>
-         </xs:choice>
-      </xs:sequence>
-      <xs:attribute name="id" type="TokenDatatype">
-         <xs:annotation>
-            <xs:appinfo>
-               <m:formal-name>Group Identifier</m:formal-name>
-               <m:description>Identifies the group for the purpose of cross-linking within the defining instance or from other instances that reference the catalog.</m:description>
-            </xs:appinfo>
-            <xs:documentation>
-               <b>Group Identifier</b>: Identifies the group for the purpose of cross-linking within the defining instance or from other instances that reference the catalog.</xs:documentation>
-         </xs:annotation>
-      </xs:attribute>
-      <xs:attribute name="class" type="TokenDatatype">
-         <xs:annotation>
-            <xs:appinfo>
-               <m:formal-name>Group Class</m:formal-name>
-               <m:description>A textual label that provides a sub-type or characterization of the group.</m:description>
-            </xs:appinfo>
-            <xs:documentation>
-               <b>Group Class</b>: A textual label that provides a sub-type or characterization of the group.</xs:documentation>
-         </xs:annotation>
-      </xs:attribute>
-   </xs:complexType>
-   <xs:complexType name="oscal-catalog-control-ASSEMBLY">
-      <xs:annotation>
-         <xs:appinfo>
-            <m:formal-name>Control</m:formal-name>
-            <m:description>A <a href="https://pages.nist.gov/OSCAL/concepts/terminology/#control">structured object</a> representing a requirement or guideline, which when implemented will reduce an aspect of risk related to an information system and its information.</m:description>
-         </xs:appinfo>
-         <xs:documentation>
-            <b>Control</b>: A structured object representing a requirement or guideline, which when implemented will reduce an aspect of risk related to an information system and its information.</xs:documentation>
-      </xs:annotation>
-      <xs:sequence>
-         <xs:element name="title" minOccurs="1" maxOccurs="1">
-            <xs:complexType mixed="true">
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Control Title</m:formal-name>
-                     <m:description>A name given to the control, which may be used by a tool for display and navigation.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Control Title</b>: A name given to the control, which may be used by a tool for display and navigation.</xs:documentation>
-               </xs:annotation>
-               <xs:complexContent>
-                  <xs:extension base="MarkupLineDatatype"/>
-               </xs:complexContent>
-            </xs:complexType>
-         </xs:element>
-         <xs:element name="param"
-                      type="oscal-control-common-parameter-ASSEMBLY"
-                      minOccurs="0"
-                      maxOccurs="unbounded"/>
-         <xs:element name="prop"
-                      type="oscal-metadata-property-ASSEMBLY"
-                      minOccurs="0"
-                      maxOccurs="unbounded"/>
-         <xs:element name="link"
-                      type="oscal-metadata-link-ASSEMBLY"
-                      minOccurs="0"
-                      maxOccurs="unbounded"/>
-         <xs:element name="part"
-                      type="oscal-control-common-part-ASSEMBLY"
-                      minOccurs="0"
-                      maxOccurs="unbounded"/>
-         <xs:element name="mapping" minOccurs="0" maxOccurs="1">
-            <xs:complexType>
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Mapping</m:formal-name>
-                     <m:description>A mapping between the containing control and another resource.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Mapping</b>: A mapping between the containing control and another resource.</xs:documentation>
-               </xs:annotation>
-               <xs:sequence>
-                  <xs:element name="target-resource"
-                               type="oscal-mapping-common-mapping-resource-reference-ASSEMBLY"
-                               minOccurs="1"
-                               maxOccurs="1"/>
-                  <xs:element name="map"
-                               type="oscal-mapping-common-map-ASSEMBLY"
-                               minOccurs="1"
-                               maxOccurs="unbounded"/>
-               </xs:sequence>
-               <xs:attribute name="uuid" use="required" type="UUIDDatatype">
-                  <xs:annotation>
-                     <xs:appinfo>
-                        <m:formal-name>Mapping Identifier</m:formal-name>
-                        <m:description>The unique identifier for the mapping.</m:description>
-                     </xs:appinfo>
-                     <xs:documentation>
-                        <b>Mapping Identifier</b>: The unique identifier for the mapping.</xs:documentation>
-                  </xs:annotation>
-               </xs:attribute>
-            </xs:complexType>
-         </xs:element>
-         <xs:element name="control"
-                      type="oscal-catalog-control-ASSEMBLY"
-                      minOccurs="0"
+         <xs:element name="source-resource"
+                      type="oscal-mapping-common-mapping-resource-reference-ASSEMBLY"
+                      minOccurs="1"
+                      maxOccurs="1"/>
+         <xs:element name="target-resource"
+                      type="oscal-mapping-common-mapping-resource-reference-ASSEMBLY"
+                      minOccurs="1"
+                      maxOccurs="1"/>
+         <xs:element name="map"
+                      type="oscal-mapping-common-map-ASSEMBLY"
+                      minOccurs="1"
                       maxOccurs="unbounded"/>
       </xs:sequence>
-      <xs:attribute name="id" use="required" type="TokenDatatype">
+      <xs:attribute name="uuid" use="required" type="UUIDDatatype">
          <xs:annotation>
             <xs:appinfo>
-               <m:formal-name>Control Identifier</m:formal-name>
-               <m:description>Identifies a control such that it can be referenced in the defining catalog and other OSCAL instances (e.g., profiles).</m:description>
+               <m:formal-name>Mapping Universally Unique Identifier</m:formal-name>
+               <m:description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this mapping definition elsewhere in this or other OSCAL instances. The locally defined <em>UUID</em> of the <code>mapping</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same mapping across revisions of the document.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Control Identifier</b>: Identifies a control such that it can be referenced in the defining catalog and other OSCAL instances (e.g., profiles).</xs:documentation>
+               <b>Mapping Universally Unique Identifier</b>: A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this mapping definition elsewhere in this or other OSCAL instances. The locally defined UUID of the mapping can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same mapping across revisions of the document.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="class" type="TokenDatatype">
-         <xs:annotation>
-            <xs:appinfo>
-               <m:formal-name>Control Class</m:formal-name>
-               <m:description>A textual label that provides a sub-type or characterization of the control.</m:description>
-            </xs:appinfo>
-            <xs:documentation>
-               <b>Control Class</b>: A textual label that provides a sub-type or characterization of the control.</xs:documentation>
-         </xs:annotation>
-      </xs:attribute>
-   </xs:complexType>
-   <xs:complexType name="oscal-control-common-part-ASSEMBLY">
-      <xs:annotation>
-         <xs:appinfo>
-            <m:formal-name>Part</m:formal-name>
-            <m:description>An annotated, markup-based textual element of a control's or catalog group's definition, or a child of another part.</m:description>
-         </xs:appinfo>
-         <xs:documentation>
-            <b>Part</b>: An annotated, markup-based textual element of a control's or catalog group's definition, or a child of another part.</xs:documentation>
-      </xs:annotation>
-      <xs:sequence>
-         <xs:element name="title" minOccurs="0" maxOccurs="1">
-            <xs:complexType mixed="true">
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Part Title</m:formal-name>
-                     <m:description>An optional name given to the part, which may be used by a tool for display and navigation.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Part Title</b>: An optional name given to the part, which may be used by a tool for display and navigation.</xs:documentation>
-               </xs:annotation>
-               <xs:complexContent>
-                  <xs:extension base="MarkupLineDatatype"/>
-               </xs:complexContent>
-            </xs:complexType>
-         </xs:element>
-         <xs:element name="prop"
-                      type="oscal-metadata-property-ASSEMBLY"
-                      minOccurs="0"
-                      maxOccurs="unbounded"/>
-         <xs:group ref="blockElementGroup" maxOccurs="unbounded" minOccurs="0"/>
-         <xs:element name="part"
-                      type="oscal-control-common-part-ASSEMBLY"
-                      minOccurs="0"
-                      maxOccurs="unbounded"/>
-         <xs:element name="link"
-                      type="oscal-metadata-link-ASSEMBLY"
-                      minOccurs="0"
-                      maxOccurs="unbounded"/>
-      </xs:sequence>
-      <xs:attribute name="id" type="TokenDatatype">
-         <xs:annotation>
-            <xs:appinfo>
-               <m:formal-name>Part Identifier</m:formal-name>
-               <m:description>A unique identifier for the part.</m:description>
-            </xs:appinfo>
-            <xs:documentation>
-               <b>Part Identifier</b>: A unique identifier for the part.</xs:documentation>
-         </xs:annotation>
-      </xs:attribute>
-      <xs:attribute name="name" use="required" type="TokenDatatype">
-         <xs:annotation>
-            <xs:appinfo>
-               <m:formal-name>Part Name</m:formal-name>
-               <m:description>A textual label that uniquely identifies the part's semantic type, which exists in a value space qualified by the <code>ns</code>.</m:description>
-            </xs:appinfo>
-            <xs:documentation>
-               <b>Part Name</b>: A textual label that uniquely identifies the part's semantic type, which exists in a value space qualified by the ns.</xs:documentation>
-         </xs:annotation>
-      </xs:attribute>
-      <xs:attribute name="ns" type="URIDatatype">
-         <xs:annotation>
-            <xs:appinfo>
-               <m:formal-name>Part Namespace</m:formal-name>
-               <m:description>An optional namespace qualifying the part's <code>name</code>. This allows different organizations to associate distinct semantics with the same name.</m:description>
-            </xs:appinfo>
-            <xs:documentation>
-               <b>Part Namespace</b>: An optional namespace qualifying the part's name. This allows different organizations to associate distinct semantics with the same name.</xs:documentation>
-         </xs:annotation>
-      </xs:attribute>
-      <xs:attribute name="class" type="TokenDatatype">
-         <xs:annotation>
-            <xs:appinfo>
-               <m:formal-name>Part Class</m:formal-name>
-               <m:description>An optional textual providing a sub-type or characterization of the part's <code>name</code>, or a category to which the part belongs.</m:description>
-            </xs:appinfo>
-            <xs:documentation>
-               <b>Part Class</b>: An optional textual providing a sub-type or characterization of the part's name, or a category to which the part belongs.</xs:documentation>
-         </xs:annotation>
-      </xs:attribute>
-   </xs:complexType>
-   <xs:complexType name="oscal-control-common-parameter-ASSEMBLY">
-      <xs:annotation>
-         <xs:appinfo>
-            <m:formal-name>Parameter</m:formal-name>
-            <m:description>Parameters provide a mechanism for the dynamic assignment of value(s) in a control.</m:description>
-         </xs:appinfo>
-         <xs:documentation>
-            <b>Parameter</b>: Parameters provide a mechanism for the dynamic assignment of value(s) in a control.</xs:documentation>
-      </xs:annotation>
-      <xs:sequence>
-         <xs:element name="prop"
-                      type="oscal-metadata-property-ASSEMBLY"
-                      minOccurs="0"
-                      maxOccurs="unbounded"/>
-         <xs:element name="link"
-                      type="oscal-metadata-link-ASSEMBLY"
-                      minOccurs="0"
-                      maxOccurs="unbounded"/>
-         <xs:element name="label" minOccurs="0" maxOccurs="1">
-            <xs:complexType mixed="true">
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Parameter Label</m:formal-name>
-                     <m:description>A short, placeholder name for the parameter, which can be used as a substitute for a <code>value</code> if no value is assigned.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Parameter Label</b>: A short, placeholder name for the parameter, which can be used as a substitute for a value if no value is assigned.</xs:documentation>
-               </xs:annotation>
-               <xs:complexContent>
-                  <xs:extension base="MarkupLineDatatype"/>
-               </xs:complexContent>
-            </xs:complexType>
-         </xs:element>
-         <xs:element name="usage" minOccurs="0" maxOccurs="1">
-            <xs:complexType>
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Parameter Usage Description</m:formal-name>
-                     <m:description>Describes the purpose and use of a parameter.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Parameter Usage Description</b>: Describes the purpose and use of a parameter.</xs:documentation>
-               </xs:annotation>
-               <xs:complexContent>
-                  <xs:extension base="MarkupMultilineDatatype"/>
-               </xs:complexContent>
-            </xs:complexType>
-         </xs:element>
-         <xs:element name="constraint"
-                      type="oscal-control-common-parameter-constraint-ASSEMBLY"
-                      minOccurs="0"
-                      maxOccurs="unbounded"/>
-         <xs:element name="guideline"
-                      type="oscal-control-common-parameter-guideline-ASSEMBLY"
-                      minOccurs="0"
-                      maxOccurs="unbounded"/>
-         <xs:choice>
-            <xs:element name="value"
-                         type="oscal-control-common-parameter-value-FIELD"
-                         minOccurs="0"
-                         maxOccurs="unbounded"/>
-            <xs:element name="select"
-                         type="oscal-control-common-parameter-selection-ASSEMBLY"
-                         minOccurs="0"
-                         maxOccurs="1"/>
-         </xs:choice>
-         <xs:element name="remarks" minOccurs="0" maxOccurs="1">
-            <xs:annotation>
-               <xs:appinfo>
-                  <m:formal-name>Remarks</m:formal-name>
-                  <m:description>Additional commentary about the containing object.</m:description>
-               </xs:appinfo>
-               <xs:documentation>
-                  <b>Remarks</b>: Additional commentary about the containing object.</xs:documentation>
-            </xs:annotation>
-            <xs:complexType>
-               <xs:group ref="blockElementGroup" maxOccurs="unbounded" minOccurs="0"/>
-            </xs:complexType>
-         </xs:element>
-      </xs:sequence>
-      <xs:attribute name="id" use="required" type="TokenDatatype">
-         <xs:annotation>
-            <xs:appinfo>
-               <m:formal-name>Parameter Identifier</m:formal-name>
-               <m:description>A unique identifier for the parameter.</m:description>
-            </xs:appinfo>
-            <xs:documentation>
-               <b>Parameter Identifier</b>: A unique identifier for the parameter.</xs:documentation>
-         </xs:annotation>
-      </xs:attribute>
-      <xs:attribute name="class" type="TokenDatatype">
-         <xs:annotation>
-            <xs:appinfo>
-               <m:formal-name>Parameter Class</m:formal-name>
-               <m:description>A textual label that provides a characterization of the type, purpose, use or scope of the parameter.</m:description>
-            </xs:appinfo>
-            <xs:documentation>
-               <b>Parameter Class</b>: A textual label that provides a characterization of the type, purpose, use or scope of the parameter.</xs:documentation>
-         </xs:annotation>
-      </xs:attribute>
-      <xs:attribute name="depends-on" type="TokenDatatype">
-         <xs:annotation>
-            <xs:appinfo>
-               <m:formal-name>Depends on</m:formal-name>
-               <m:description>
-                  <strong>(deprecated)</strong> Another parameter invoking this one. This construct has been deprecated and should not be used.</m:description>
-            </xs:appinfo>
-            <xs:documentation>
-               <b>Depends on</b>: (deprecated) Another parameter invoking this one. This construct has been deprecated and should not be used.</xs:documentation>
-         </xs:annotation>
-      </xs:attribute>
-   </xs:complexType>
-   <xs:complexType name="oscal-control-common-parameter-constraint-ASSEMBLY">
-      <xs:annotation>
-         <xs:appinfo>
-            <m:formal-name>Constraint</m:formal-name>
-            <m:description>A formal or informal expression of a constraint or test.</m:description>
-         </xs:appinfo>
-         <xs:documentation>
-            <b>Constraint</b>: A formal or informal expression of a constraint or test.</xs:documentation>
-      </xs:annotation>
-      <xs:sequence>
-         <xs:element name="description" minOccurs="0" maxOccurs="1">
-            <xs:complexType>
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Constraint Description</m:formal-name>
-                     <m:description>A textual summary of the constraint to be applied.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Constraint Description</b>: A textual summary of the constraint to be applied.</xs:documentation>
-               </xs:annotation>
-               <xs:complexContent>
-                  <xs:extension base="MarkupMultilineDatatype"/>
-               </xs:complexContent>
-            </xs:complexType>
-         </xs:element>
-         <xs:element name="test" minOccurs="0" maxOccurs="unbounded">
-            <xs:complexType>
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Constraint Test</m:formal-name>
-                     <m:description>A test expression which is expected to be evaluated by a tool.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Constraint Test</b>: A test expression which is expected to be evaluated by a tool.</xs:documentation>
-               </xs:annotation>
-               <xs:sequence>
-                  <xs:element name="expression" minOccurs="1" maxOccurs="1">
-                     <xs:simpleType>
-                        <xs:annotation>
-                           <xs:appinfo>
-                              <m:formal-name>Constraint test</m:formal-name>
-                              <m:description>A formal (executable) expression of a constraint.</m:description>
-                           </xs:appinfo>
-                           <xs:documentation>
-                              <b>Constraint test</b>: A formal (executable) expression of a constraint.</xs:documentation>
-                        </xs:annotation>
-                        <xs:restriction base="StringDatatype"/>
-                     </xs:simpleType>
-                  </xs:element>
-                  <xs:element name="remarks" minOccurs="0" maxOccurs="1">
-                     <xs:annotation>
-                        <xs:appinfo>
-                           <m:formal-name>Remarks</m:formal-name>
-                           <m:description>Additional commentary about the containing object.</m:description>
-                        </xs:appinfo>
-                        <xs:documentation>
-                           <b>Remarks</b>: Additional commentary about the containing object.</xs:documentation>
-                     </xs:annotation>
-                     <xs:complexType>
-                        <xs:group ref="blockElementGroup" maxOccurs="unbounded" minOccurs="0"/>
-                     </xs:complexType>
-                  </xs:element>
-               </xs:sequence>
-            </xs:complexType>
-         </xs:element>
-      </xs:sequence>
-   </xs:complexType>
-   <xs:complexType name="oscal-control-common-parameter-guideline-ASSEMBLY">
-      <xs:annotation>
-         <xs:appinfo>
-            <m:formal-name>Guideline</m:formal-name>
-            <m:description>A prose statement that provides a recommendation for the use of a parameter.</m:description>
-         </xs:appinfo>
-         <xs:documentation>
-            <b>Guideline</b>: A prose statement that provides a recommendation for the use of a parameter.</xs:documentation>
-      </xs:annotation>
-      <xs:sequence>
-         <xs:group ref="blockElementGroup" maxOccurs="unbounded" minOccurs="0"/>
-      </xs:sequence>
-   </xs:complexType>
-   <xs:simpleType name="oscal-control-common-parameter-value-FIELD">
-      <xs:annotation>
-         <xs:appinfo>
-            <m:formal-name>Parameter Value</m:formal-name>
-            <m:description>A parameter value or set of values.</m:description>
-         </xs:appinfo>
-         <xs:documentation>
-            <b>Parameter Value</b>: A parameter value or set of values.</xs:documentation>
-      </xs:annotation>
-      <xs:restriction base="StringDatatype"/>
-   </xs:simpleType>
-   <xs:complexType name="oscal-control-common-parameter-selection-ASSEMBLY">
-      <xs:annotation>
-         <xs:appinfo>
-            <m:formal-name>Selection</m:formal-name>
-            <m:description>Presenting a choice among alternatives.</m:description>
-         </xs:appinfo>
-         <xs:documentation>
-            <b>Selection</b>: Presenting a choice among alternatives.</xs:documentation>
-      </xs:annotation>
-      <xs:sequence>
-         <xs:element name="choice" minOccurs="0" maxOccurs="unbounded">
-            <xs:complexType mixed="true">
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Choice</m:formal-name>
-                     <m:description>A value selection among several such options.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Choice</b>: A value selection among several such options.</xs:documentation>
-               </xs:annotation>
-               <xs:complexContent>
-                  <xs:extension base="MarkupLineDatatype"/>
-               </xs:complexContent>
-            </xs:complexType>
-         </xs:element>
-      </xs:sequence>
-      <xs:attribute name="how-many" type="TokenDatatype">
-         <xs:annotation>
-            <xs:appinfo>
-               <m:formal-name>Parameter Cardinality</m:formal-name>
-               <m:description>Describes the number of selections that must occur. Without this setting, only one value should be assumed to be permitted.</m:description>
-            </xs:appinfo>
-            <xs:documentation>
-               <b>Parameter Cardinality</b>: Describes the number of selections that must occur. Without this setting, only one value should be assumed to be permitted.</xs:documentation>
-         </xs:annotation>
-      </xs:attribute>
-   </xs:complexType>
-   <xs:complexType name="oscal-control-common-include-all-ASSEMBLY">
-      <xs:annotation>
-         <xs:appinfo>
-            <m:formal-name>Include All</m:formal-name>
-            <m:description>Include all controls from the imported catalog or profile resources.</m:description>
-         </xs:appinfo>
-         <xs:documentation>
-            <b>Include All</b>: Include all controls from the imported catalog or profile resources.</xs:documentation>
-      </xs:annotation>
    </xs:complexType>
    <xs:complexType name="oscal-metadata-metadata-ASSEMBLY">
       <xs:annotation>
