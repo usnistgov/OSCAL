@@ -465,16 +465,6 @@
                   </allowed-values>
             </constraint>
       </define-flag>
-      <define-flag as-type="token" name="with-parent-controls">
-            <formal-name>Include Parent Controls with Control</formal-name>
-            <description>When a control is included, whether its parent (ancestor) controls are also included.</description>
-            <constraint>
-                  <allowed-values>
-                        <enum value="yes">Include parent controls with an included control.</enum>
-                        <enum value="no">When importing a control, only include parent controls that are also explicitly called.</enum>
-                  </allowed-values>
-            </constraint>
-      </define-flag>
       <define-flag as-type="string" name="pattern">
             <formal-name>Pattern</formal-name>
             <description>A <a href="https://en.wikipedia.org/wiki/Glob_(programming)">glob expression</a> matching the IDs of one or more controls to be selected.</description>
