@@ -4593,7 +4593,6 @@ The following is a reference for the XML element and attribute types derived fro
                   </div>
                   <div class="body">
                      <p class="description"><span class="usa-tag">description</span> A value selection among several such options.</p>
-                     <p><span class="usa-tag">use name</span> <code class="name">choice</code></p>
                   </div>
                </div>
             </div>
