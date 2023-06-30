@@ -4,7 +4,7 @@ An OSCAL Metaschema defines the the information structures that define an OSCAL 
 
 OSCAL Metaschemas are used to generate other OSCAL artifacts based on the metaschema description. These artifacts include:
 
-- XML and JSON schemas, or *data models*, which are derived from the metaschema and expressed as XSD and JSON Schema;
+- XML and JSON schemas, or *data models*, which are derived from the Metaschema modules and expressed as XSD and JSON Schema;
 - Conversion scripts that can convert OSCAL content between the XML and JSON OSCAL formats, ensuring the resulting content is schema valid;
 - XML and JSON [model documentation](https://pages.nist.gov/OSCAL/docs/schemas/) for use on the [OSCAL website](https://pages.nist.gov/OSCAL).
 
