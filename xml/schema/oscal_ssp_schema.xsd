@@ -5,11 +5,11 @@
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            elementFormDefault="qualified"
            targetNamespace="http://csrc.nist.gov/ns/oscal/1.0"
-           version="1.0.4">
+           version="1.0.6">
    <xs:annotation>
       <xs:appinfo>
          <m:schema-name>OSCAL System Security Plan (SSP) Model</m:schema-name>
-         <m:schema-version>1.0.4</m:schema-version>
+         <m:schema-version>1.0.6</m:schema-version>
          <m:short-name>oscal-ssp</m:short-name>
          <m:remarks>
             <p>The OSCAL Control SSP format can be used to describe the information typically specified in a system security plan, such as those defined in NIST SP 800-18.</p>

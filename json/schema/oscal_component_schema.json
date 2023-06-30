@@ -1,6 +1,6 @@
 
   { "$schema" : "http://json-schema.org/draft-07/schema#",
-    "$id" : "http://csrc.nist.gov/ns/oscal/1.0.4/oscal-component-definition-schema.json",
+    "$id" : "http://csrc.nist.gov/ns/oscal/1.0.6/oscal-component-definition-schema.json",
     "$comment" : "OSCAL Component Definition Model: JSON Schema",
     "type" : "object",
     "definitions" : 
