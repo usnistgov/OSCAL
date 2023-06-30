@@ -3933,7 +3933,7 @@
       <!-- XML match="system-security-plan/control-implementation/set-parameter/value" -->
       <field collapsible="no"
              as-type="string"
-             name="parameter-value"
+             name="value"
              gi="value"
              in-json="SCALAR">
          <xsl:apply-templates select="." mode="get-value-property"/>
@@ -3991,7 +3991,7 @@
       <!-- XML match="system-security-plan/control-implementation/implemented-requirement/set-parameter/value" -->
       <field collapsible="no"
              as-type="string"
-             name="parameter-value"
+             name="value"
              gi="value"
              in-json="SCALAR">
          <xsl:apply-templates select="." mode="get-value-property"/>
@@ -4140,7 +4140,7 @@
       <!-- XML match="system-security-plan/control-implementation/implemented-requirement/statement/by-component/set-parameter/value" -->
       <field collapsible="no"
              as-type="string"
-             name="parameter-value"
+             name="value"
              gi="value"
              in-json="SCALAR">
          <xsl:apply-templates select="." mode="get-value-property"/>
@@ -4626,7 +4626,7 @@
       <!-- XML match="system-security-plan/control-implementation/implemented-requirement/by-component/set-parameter/value" -->
       <field collapsible="no"
              as-type="string"
-             name="parameter-value"
+             name="value"
              gi="value"
              in-json="SCALAR">
          <xsl:apply-templates select="." mode="get-value-property"/>

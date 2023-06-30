@@ -2061,7 +2061,7 @@
       <!-- XML match="component-definition/component/control-implementation/set-parameter/value" -->
       <field collapsible="no"
              as-type="string"
-             name="parameter-value"
+             name="value"
              gi="value"
              in-json="SCALAR">
          <xsl:apply-templates select="." mode="get-value-property"/>
@@ -2143,7 +2143,7 @@
       <!-- XML match="component-definition/component/control-implementation/implemented-requirement/set-parameter/value" -->
       <field collapsible="no"
              as-type="string"
-             name="parameter-value"
+             name="value"
              gi="value"
              in-json="SCALAR">
          <xsl:apply-templates select="." mode="get-value-property"/>
@@ -2401,7 +2401,7 @@
       <!-- XML match="component-definition/capability/control-implementation/set-parameter/value" -->
       <field collapsible="no"
              as-type="string"
-             name="parameter-value"
+             name="value"
              gi="value"
              in-json="SCALAR">
          <xsl:apply-templates select="." mode="get-value-property"/>
@@ -2483,7 +2483,7 @@
       <!-- XML match="component-definition/capability/control-implementation/implemented-requirement/set-parameter/value" -->
       <field collapsible="no"
              as-type="string"
-             name="parameter-value"
+             name="value"
              gi="value"
              in-json="SCALAR">
          <xsl:apply-templates select="." mode="get-value-property"/>

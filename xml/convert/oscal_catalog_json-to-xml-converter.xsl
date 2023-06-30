@@ -1914,7 +1914,7 @@
       <!-- XML match="catalog/param/select/choice" -->
       <field collapsible="no"
              as-type="markup-line"
-             name="parameter-choice"
+             name="choice"
              gi="choice"
              in-json="SCALAR">
          <xsl:apply-templates select="." mode="get-value-property"/>
@@ -2106,7 +2106,7 @@
       <!-- XML match="catalog//control/param/select/choice" -->
       <field collapsible="no"
              as-type="markup-line"
-             name="parameter-choice"
+             name="choice"
              gi="choice"
              in-json="SCALAR">
          <xsl:apply-templates select="." mode="get-value-property"/>
@@ -2391,7 +2391,7 @@
       <!-- XML match="catalog//group/param/select/choice" -->
       <field collapsible="no"
              as-type="markup-line"
-             name="parameter-choice"
+             name="choice"
              gi="choice"
              in-json="SCALAR">
          <xsl:apply-templates select="." mode="get-value-property"/>
@@ -2676,7 +2676,7 @@
       <!-- XML match="catalog//group//control/param/select/choice" -->
       <field collapsible="no"
              as-type="markup-line"
-             name="parameter-choice"
+             name="choice"
              gi="choice"
              in-json="SCALAR">
          <xsl:apply-templates select="." mode="get-value-property"/>

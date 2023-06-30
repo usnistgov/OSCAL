@@ -8,7 +8,7 @@
 <METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/toolchains/xslt-M4/validate/metaschema.xsd" abstract="yes">
         <schema-name>OSCAL Control Catalog Format -- Common Models</schema-name>
-        <schema-version>1.0.4</schema-version>
+        <schema-version>1.0.6</schema-version>
         <short-name>oscal-catalog-common</short-name>
         <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
         <json-base-uri>http://csrc.nist.gov/ns/oscal</json-base-uri>
@@ -238,10 +238,10 @@
                         </constraint>
                 </define-flag>
                 <model>
-                        <define-field name="parameter-choice" as-type="markup-line" max-occurs="unbounded">
+                        <define-field name="choice" as-type="markup-line" max-occurs="unbounded">
                                 <formal-name>Choice</formal-name>
-                                <description>A value selection among several such options</description>
-                                <use-name>choice</use-name>
+                                <description>A value selection among several such
+                                        options.</description>
                                 <json-value-key>value</json-value-key>
                                 <!-- CHANGED "alternatives" to "choices" -->
                                 <group-as name="choice" in-json="ARRAY"/>
