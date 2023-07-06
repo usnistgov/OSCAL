@@ -1,0 +1,1016 @@
+<!doctype html><html><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="IE=edge"><title>Creating a Component Definition</title><script async type=text/javascript id=_fed_an_ua_tag src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=NIST&subagency=github&pua=UA-66610693-1&yt=true&exts=ppsx,pps,f90,sch,rtf,wrl,txz,m1v,xlsm,msi,xsd,f,tif,eps,mpg,xml,pl,xlt,c"></script><script src=https://code.jquery.com/jquery-3.4.1.min.js integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin=anonymous referrerpolicy=no-referrer></script>
+<link rel=stylesheet href=../../../../css/hugo-uswds.css integrity="sha512-RLB7sHbyrE8ew8mHyyrzweyZ6lweXOZCNYDFuphdqL6oE+wzpa4CRBXCBerEWsGausrZJBkrtDb5QueW6kpqPQ=="><link rel="shortcut icon" type=image/png href=../../../../img/oscal-page-icon-180.png><link rel=icon type=image/png href=../../../../img/oscal-gears-icon-140.png><link rel=icon type=image/png sizes=192x192 href=../../../../img/oscal-page-icon-180.png><link rel=apple-touch-icon-precomposed type=image/png href=../../../../img/oscal-page-icon-180.png><link rel=apple-touch-icon-precomposed type=image/png sizes=72x72 href=../../../../img/oscal-page-icon-180.png><link rel=apple-touch-icon-precomposed type=image/png sizes=114x114 href=../../../../img/oscal-page-icon-180.png><link rel=apple-touch-icon-precomposed type=image/png sizes=144x144 href=../../../../img/oscal-page-icon-180.png><link rel=stylesheet href=https://pages.nist.gov/nist-header-footer/css/nist-combined.css><script src=https://pages.nist.gov/nist-header-footer/js/nist-header-footer.js defer></script>
+<link rel=stylesheet type=text/css href=https://pages.nist.gov/leaveNotice/css/jquery.leaveNotice.css></head><body><a class=usa-skipnav href=#main-content>Skip to main content</a><div class=usa-overlay></div><header class="usa-header usa-header--basic"><div class=usa-nav-container><div class=usa-navbar><div class=usa-logo id=basic-logo><em class=usa-logo__text><a href=../../../../ title="OSCAL: the Open Security Controls Assessment Language" aria-label=Home>OSCAL</a></em></div><button class=usa-menu-btn>Menu</button></div><nav aria-label="Primary navigation" class=usa-nav><button class=usa-nav__close><img src=../../../../img/close.svg alt=close></button><ul class="usa-nav__primary usa-accordion"><li class=usa-nav__primary-item><a class=usa-nav__link href=../../../../about/><span>About</span></a></li><li class=usa-nav__primary-item><a class=usa-nav__link href=../../../../learn/><span>Learn</span></a></li><li class=usa-nav__primary-item><a class=usa-nav__link href=../../../../concepts/><span>Concepts</span></a></li><li class=usa-nav__primary-item><a class=usa-nav__link href=https://pages.nist.gov/OSCAL-Reference/><span>Reference</span></a></li><li class=usa-nav__primary-item><a class=usa-nav__link href=../../../../downloads/><span>Downloads</span></a></li><li class=usa-nav__primary-item><a class=usa-nav__link href=../../../../examples/><span>Examples</span></a></li><li class=usa-nav__primary-item><a class=usa-nav__link href=../../../../tools/><span>Tools</span></a></li><li class=usa-nav__primary-item><a class=usa-nav__link href=../../../../contribute/><span>Contribute</span></a></li><li class=usa-nav__primary-item><a class=usa-nav__link href=../../../../events/><span>Events</span></a></li><li class=usa-nav__primary-item><a class=usa-nav__link href=../../../../contact/><span>Contact Us</span></a></li></ul><form class="usa-search usa-search--small" action=https://search.usa.gov/search><input id=affiliate name=affiliate type=hidden value=oscal>
+<input name=utf8 type=hidden value=&#x2713;><div role=search><label class=usa-sr-only for=basic-search-field-small>Search</label>
+<input class=usa-input id=query type=search name=query>
+<button class=usa-button type=submit><span class=usa-sr-only>Search</span></button></div></form></nav></div></header><main class="usa-layout-docs padding-top-2"><div class="grid-container grid-container-widescreen"><div class="grid-row grid-gap"><nav aria-label="Secondary Navigation" class="usa-layout-docs__sidenav widescreen:grid-col-3 desktop:grid-col-2"><ul class=usa-sidenav><li><a class="usa-sidenav__item subnav-top-level section" href=../../../../learn/>Learning Resources</a><ul class=usa-sidenav__sublist><li><a class="usa-sidenav__item section" href=../../../../learn/presentations/>Instructional Videos, Presentations, and Blogs</a><ul class=usa-sidenav__sublist><li><a class="usa-sidenav__item page" href=../../../../learn/presentations/oscal-workshop-2021-02/>2nd OSCAL Workshop</a></li><li><a class="usa-sidenav__item page" href=../../../../learn/presentations/oscal-workshop-2022-03/>3rd OSCAL Workshop</a></li><li><a class="usa-sidenav__item section" href=../../../../learn/presentations/mini-workshop/>OSCAL Mini Workshop Series</a></li></ul></li><li><a class="usa-sidenav__item section" href=../../../../learn/tutorials/>Walkthrough Tutorials</a><ul class=usa-sidenav__sublist><li><a class="usa-sidenav__item section" href=../../../../learn/tutorials/general/>General Topics</a><ul class=usa-sidenav__sublist><li><a class="usa-sidenav__item page" href=../../../../learn/tutorials/general/metadata/>Creating and Using Metadata</a></li><li><a class="usa-sidenav__item page" href=../../../../learn/tutorials/general/extension/>Extending OSCAL Models</a></li><li><a class="usa-sidenav__item page" href=../../../../learn/tutorials/general/releases/>Testing New Releases</a></li></ul></li><li><a class="usa-sidenav__item section" href=../../../../learn/tutorials/control/>Control Layer Topics</a><ul class=usa-sidenav__sublist><li><a class="usa-sidenav__item page" href=../../../../learn/tutorials/control/basic-catalog/>Creating a Control Catalog</a></li><li><a class="usa-sidenav__item page" href=../../../../learn/tutorials/control/basic-profile/>Creating a Profile</a></li></ul></li><li><a class="usa-sidenav__item section" href=../../../../learn/tutorials/implementation/>Implementation Layer Topics</a><ul class=usa-sidenav__sublist><li><a class="usa-sidenav__item page active-page usa-current" href=../../../../learn/tutorials/implementation/simple-component-definition/>Creating a Component Definition</a></li><li><a class="usa-sidenav__item page" href=../../../../learn/tutorials/implementation/validation-modeling/>Representing Test Validation Information</a></li></ul></li></ul></li></ul></li></ul></nav><div id=main-content class="usa-layout-docs__main widescreen:grid-col-7 desktop:grid-col-8 display-block"><article><header><h1>Creating a Component Definition</h1></header><p>This tutorial covers creating a basic OSCAL component definition. Before reading this tutorial you should:</p><ul><li>Have some familiarity with the <a href=https://www.w3.org/standards/xml/core>XML</a>, <a href=https://www.json.org/>JSON</a>, or <a href=https://yaml.org/spec/>YAML</a> formats.</li><li>Read the OSCAL implementation layer <a href=../../../../concepts/layer/implementation/>overview</a>.</li><li>Review the OSCAL <a href=../../../../concepts/layer/implementation/component-definition/>component definition</a> model overview.</li><li>Be familiar with the use of OSCAL properties and links.</li></ul><h2 id=what-is-an-oscal-component-definition>What is an OSCAL Component Definition?</h2><p>An OSCAL <a href=../../../../concepts/layer/implementation/component-definition/>component definition</a> contains a collection of components. Each component in a component definition describes how a given implementation of a hardware, software, service, policy, process, or procedure asset can support or provide implementations of specific controls. The asset described by a component in a component definition is called a <em>component subject</em>"* in this tutorial.</p><p>By publishing a set of components in a component definition, product and service vendors, capability owners, policy and process owners, and <a href=../../../../concepts/layer/implementation/component-definition/#component-definition-authors>others</a> can share control implementation information for a component subject they maintain. The information about a component subject can then be <a href=../../../../concepts/layer/implementation/component-definition/#component-definition-consumers>used</a> when implementing that subject in an information system. This allows the control narrative for the subject to be imported into the System Security Plan (SSP).</p><p>It is important to note that component definitions do not describe actual implementations; rather, component definitions describe possible implementations which can be instantiated within an information system. Thus, component definitions serve as references with content that can be (re)used (e.g., in the SSP OSCAL model) to develop comprehensive and consistent control implementations within an SSP.</p><p>In this tutorial, we will walk through the process of creating an OSCAL component definition model instance for <a href=https://docs.mongodb.com/>MongoDB</a>. Our goal is to demonstrate how to provide standard control implementations for the benefit of system owners and SSP authors that use a similar software application.</p><p>As potential components in information systems that may need to meet the OMB A-130 Authorization to Operate requirements, the component definition in this tutorial will show proper implementation of a couple <a href=https://github.com/usnistgov/oscal-content/tree/master/nist.gov/SP800-53/rev5/xml>NIST SP 800-53 rev 5 controls</a> deemed necessary for high, moderate, or low impact systems. While this example focuses on NIST controls, the same approach could be applied to any catalog of controls (e.g., ISO/IEC 27002).</p><p>For the purposes of this tutorial we'll presume the MongoDB component can partially or fully satisfy the following controls:</p><table><thead><tr><th>NIST 800-53 rev5 Control</th><th>Description</th></tr></thead><tbody><tr><td>SA-4(9)</td><td>Acquisition Process - Functions, Ports, Protocols, and Services in Use</td></tr><tr><td>SC-8(1)</td><td>Transmission Confidentiality and Integrity</td></tr></tbody></table><p>This tutorial demonstrates how to document a set of implemented controls as an OSCAL component definition for these controls.</p><h2 id=creating-an-oscal-component-definition-instance>Creating an OSCAL Component Definition Instance</h2><p>The examples below illustrate the top-level structure of the OSCAL Component Definition Model.</p><div id=tabs-0 class="hugo-codetabs usa-accordion"><ul><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-0-xml-tab><span>XML</span></button></li><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-0-json-tab><span>JSON</span></button></li><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-0-yaml-tab><span>YAML</span></button></li></ul><div id=tabs-0-content class=hugo-tab-content><div id=tabs-0-xml-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span><span class=lnt>9
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-xml data-lang=xml><span class=line><span class=cl><span class=cp>&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+</span></span><span class=line><span class=cl><span class=nt>&lt;component-definition</span> <span class=na>xmlns=</span><span class=s>&#34;http://csrc.nist.gov/ns/oscal/1.0&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=na>uuid=</span><span class=s>&#34;a7ba800c-a432-44cd-9075-0862cd66da6b&#34;</span><span class=nt>&gt;</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&lt;metadata/&gt;</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&lt;import-component-definition/&gt;</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&lt;component/&gt;</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&lt;capability/&gt;</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&lt;back-matter/&gt;</span>
+</span></span><span class=line><span class=cl><span class=nt>&lt;/component-definition&gt;</span></span></span></code></pre></td></tr></table></div></div><p>The root of the OSCAL component definition model is <a href=../../../../reference/latest/component-definition/xml-reference/#/component-definition><code>&lt;component-definition></code></a>. Note that the schema location attribute is omitted for this example. The <code>@uuid</code> attribute (on line 3) is the document's universally unique identifier (UUID), a unique 128-bit number displayed as a string of hyphenated hexadecimal digits as defined by RFC 4122. OSCAL documents use a version 4 UUID (randomly generated) to uniquely identify the document.</p><p>A <code>&lt;component-definition></code> contains the following elements:</p><ul><li><code>&lt;metadata></code> (required) - Provides document metadata for the component definition. This is covered in the <a href=#defining-the-component-definitions-metadata>next section</a> to a limited extent. The metadata used here is similar to metadata for other OSCAL models, therefor is not described extensively in this tutorial.</li><li><code>&lt;import-component-definition></code> (optional) – Identifies a collection of external component definitions from other resources from which related information is referenced within this component definition. Use of <code>&lt;import-component-definition></code> is not covered in this tutorial.</li><li><code>&lt;component></code> (optional) - Defines a given component in the component definition. Zero or more <code>&lt;component></code> elements may be used. Use of this element is <a href=#defining-the-mongodb-component>discussed later</a> in this tutorial.</li><li><code>&lt;capability></code> (optional) - Defines a given capability in the component definition. Zero or more <code>&lt;capability></code> elements may be used. Capabilities are not covered in this tutorial.</li><li><code>&lt;back-matter></code> (optional) – Contains resources which are referenced within the component definition. Use of <code>&lt;back-matter></code> is not covered in this tutorial.</li></ul></div><div id=tabs-0-json-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&#34;component-definition&#34;</span><span class=p>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;uuid&#34;</span><span class=p>:</span> <span class=s2>&#34;a7ba800c-a432-44cd-9075-0862cd66da6b&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;metadata&#34;</span><span class=p>:</span> <span class=p>{},</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;import-component-definitions&#34;</span><span class=p>:</span> <span class=p>[{}],</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;components&#34;</span><span class=p>:</span> <span class=p>[{}],</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;capabilities&#34;</span><span class=p>:</span> <span class=p>[{}],</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;back-matter&#34;</span><span class=p>:</span> <span class=p>{}</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></td></tr></table></div></div><p>The root of the OSCAL component definition model is <a href=../../../../reference/latest/component-definition/json-reference/#/component-definition><code>component-definition</code></a>. The <code>uuid</code> property (on line 3) is the document's universally unique identifier (UUID), a unique 128-bit number displayed as a string of hyphenated hexadecimal digits as defined by RFC 4122. OSCAL documents use a version 4 UUID (randomly generated) to uniquely identify the document.</p><p>A <code>component-definition</code> contains the following properties:</p><ul><li><code>metadata</code> (required) - Provides document metadata for the component definition. This is covered in the <a href=#defining-the-component-definitions-metadata>next section</a> to a limited extent. The metadata used here is similar to metadata for other OSCAL models, therefor is not described extensively in this tutorial.</li><li><code>import-component-definitions</code> (optional) – Identifies a collection of external component definitions from other resources from which related information is referenced within this component definition. Use of <code>import-component-definitions</code> is not covered in this tutorial.</li><li><code>components</code> (optional) - Groups <code>component</code> objects which each define a given component in the component definition. One or more <code>component</code> objects may be provided. Use of this property is <a href=#defining-the-mongodb-component>discussed later</a> in this tutorial.</li><li><code>capabilities</code> (optional) - Defines a group of given capabilities in the component definition. One or more <code>capability</code> objects may be used. Capabilities are not covered in this tutorial.</li><li><code>back-matter</code> (optional) – Contains references which are referenced within the component definition. Use of <code>back-matter</code> is not covered in this tutorial.</li></ul></div><div id=tabs-0-yaml-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-yaml data-lang=yaml><span class=line><span class=cl><span class=nn>---</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>component-definition</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>uuid</span><span class=p>:</span><span class=w> </span><span class=l>a7ba800c-a432-44cd-9075-0862cd66da6b</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>metadata</span><span class=p>:</span><span class=w> </span><span class=l>~</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>import-component-definitions</span><span class=p>:</span><span class=w> </span><span class=l>~</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>components</span><span class=p>:</span><span class=w> </span><span class=l>~</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>capabilities</span><span class=p>:</span><span class=w> </span><span class=l>~</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>back-matter</span><span class=p>:</span><span class=w> </span><span class=l>~</span></span></span></code></pre></td></tr></table></div></div><p>The root of the OSCAL component definition model is <a href=../../../../reference/latest/component-definition/json-reference/#/component-definition><code>component-definition</code></a>. The <code>uuid</code> key (on line 3) is the document's universally unique identifier (UUID), a unique 128-bit number displayed as a string of hyphenated hexadecimal digits as defined by RFC 4122. OSCAL documents use a version 4 UUID (randomly generated) to uniquely identify the document.</p><p>A <code>component-definition</code> contains the following keys:</p><ul><li><code>metadata</code> (required) - Provides document metadata for the component definition. This is covered in the <a href=#defining-the-component-definitions-metadata>next section</a> to a limited extent. The metadata used here is similar to metadata for other OSCAL models, therefor is not described extensively in this tutorial.</li><li><code>import-component-definitions</code> (optional) – Identifies a collection of external component definitions from other resources from which related information is referenced within this component definition. Use of <code>import-component-definitions</code> is not covered in this tutorial.</li><li><code>components</code> (optional) - Groups <code>component</code> items which define given component(s) in the component definition. One or more <code>component</code> items may be used. Use of this key is <a href=#defining-the-mongodb-component>discussed later</a> in this tutorial.</li><li><code>capabilities</code> (optional) - Defines a group of given capabilities in the component definition. One or more <code>capability</code> items may be used. Capabilities are not covered in this tutorial.</li><li><code>back-matter</code> (optional) – Contains references which are referenced within the component definition. Use of <code>back-matter</code> is not covered in this tutorial.</li></ul></div></div></div><p>For simplicity of this tutorial, we will only discuss certain data structures in the sections that follow and identify how they can be used to represent our component definition.</p><h3 id=defining-the-component-definitions-metadata>Defining the Component Definition’s Metadata</h3><p>Most OSCAL models have a standard metadata syntax, therefore, this is not covered extensively in this tutorial. There are a few considerations however when authoring metadata for a component definition, such as the <code>role</code> and <code>party</code> data items illustrated in the example below.</p><div id=tabs-1 class="hugo-codetabs usa-accordion"><ul><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-1-xml-tab><span>XML</span></button></li><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-1-json-tab><span>JSON</span></button></li><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-1-yaml-tab><span>YAML</span></button></li></ul><div id=tabs-1-content class=hugo-tab-content><div id=tabs-1-xml-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-xml data-lang=xml><span class=line><span class=cl><span class=nt>&lt;component-definition</span> <span class=na>xmlns=</span><span class=s>&#34;http://csrc.nist.gov/ns/oscal/1.0&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=na>uuid=</span><span class=s>&#34;a7ba800c-a432-44cd-9075-0862cd66da6b&#34;</span><span class=nt>&gt;</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&lt;metadata&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;title&gt;</span>MongoDB Component Definition Example<span class=nt>&lt;/title&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;last-modified&gt;</span>2001-08-26T23:11:47Z<span class=nt>&lt;/last-modified&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;version&gt;</span>20210826<span class=nt>&lt;/version&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;oscal-version&gt;</span>1.0.0<span class=nt>&lt;/oscal-version&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;role</span> <span class=na>id=</span><span class=s>&#34;provider&#34;</span><span class=nt>&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&lt;title&gt;</span>Provider<span class=nt>&lt;/title&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;/role&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;party</span> <span class=na>uuid=</span><span class=s>&#34;ef7c799a-c50e-49ab-83e0-515e989e6df1&#34;</span> <span class=na>type=</span><span class=s>&#34;organization&#34;</span><span class=nt>&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&lt;name&gt;</span>MongoDB<span class=nt>&lt;/name&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&lt;link</span> <span class=na>rel=</span><span class=s>&#34;website&#34;</span> <span class=na>href=</span><span class=s>&#34;https://www.mongodb.com&#34;</span><span class=nt>/&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;/party&gt;</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&lt;/metadata&gt;</span>
+</span></span><span class=line><span class=cl><span class=nt>&lt;/component-definition&gt;</span></span></span></code></pre></td></tr></table></div></div><p>The <a href=../../../../reference/latest/component-definition/xml-reference/#/component-definition/metadata/role><code>&lt;role></code></a> element defines a function assumed or expected to be assumed by a party in a specific situation. In this case the role <code>provider</code> has been standardized by OSCAL to be used for <a href=../../../../concepts/layer/implementation/component-definition/#component-definition-authors>component definition authors</a>. This element has a required <code>@id</code> attribute which expects an <a href=../../../../reference/datatypes/#token>token</a> data type. A <code>&lt;title></code> is also provided.</p><p>The <code>&lt;party></code> element represents either a person or organization that serves as the responsible entity. A party must have an associated <code>@uuid</code> which is used to reference this party, a <code>&lt;name></code> which provides a formal label, and a <code>@type</code> which defines the nature of the party. There are prescribed types, including <em>"person"</em>, and <em>"organization"</em>. In this case we are defining the MongoDB project as an organization. A pointer to the organization's website is also included.</p></div><div id=tabs-1-json-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&#34;component-definition&#34;</span><span class=p>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;uuid&#34;</span><span class=p>:</span> <span class=s2>&#34;a7ba800c-a432-44cd-9075-0862cd66da6b&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;metadata&#34;</span><span class=p>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;title&#34;</span><span class=p>:</span> <span class=s2>&#34;MongoDB Component Definition Example&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;last-modified&#34;</span><span class=p>:</span> <span class=s2>&#34;2001-12-17T09:30:47Z&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;version&#34;</span><span class=p>:</span> <span class=mi>20210507</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;oscal-version&#34;</span><span class=p>:</span> <span class=s2>&#34;1.0.0&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;roles&#34;</span><span class=p>:</span> <span class=p>[{</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;id&#34;</span><span class=p>:</span> <span class=s2>&#34;provider&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;title&#34;</span><span class=p>:</span> <span class=s2>&#34;Provider&#34;</span>
+</span></span><span class=line><span class=cl>      <span class=p>}],</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;parties&#34;</span><span class=p>:</span> <span class=p>[{</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;uuid&#34;</span><span class=p>:</span> <span class=s2>&#34;ef7c799a-c50e-49ab-83e0-515e989e6df1&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;type&#34;</span><span class=p>:</span> <span class=s2>&#34;organization&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;name&#34;</span><span class=p>:</span> <span class=s2>&#34;MongoDB&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;links&#34;</span><span class=p>:</span> <span class=p>[{</span>
+</span></span><span class=line><span class=cl>          <span class=nt>&#34;href&#34;</span><span class=p>:</span> <span class=s2>&#34;https://www.mongodb.com&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>          <span class=nt>&#34;rel&#34;</span><span class=p>:</span> <span class=s2>&#34;website&#34;</span>
+</span></span><span class=line><span class=cl>        <span class=p>}]</span>
+</span></span><span class=line><span class=cl>      <span class=p>}]</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></td></tr></table></div></div><p>The <a href=../../../../reference/latest/component-definition/json-reference/#/component-definition/metadata/roles><code>roles</code></a> property provides a grouping of role objects that each defines a function assumed or expected to be assumed by a party in a specific situation. In this case the role <code>provider</code> has been standardized by OSCAL to be used for <a href=../../../../concepts/layer/implementation/component-definition/#component-definition-authors>component definition authors</a>. This element has a required <code>id</code> attribute which expects an <a href=../../../../reference/datatypes/#token>token</a> data type. A <code>title</code> is also provided.</p><p>The <a href=../../../../reference/latest/component-definition/json-reference/#/component-definition/metadata/parties><code>parties</code></a> property provides a grouping of party objects that each represent either a person or organization that serves as the responsible entity. A party must have an associated <code>uuid</code> which is used to reference this party, a <code>name</code> which provides a formal label, and a <code>type</code> which defines the nature of the party. There are prescribed types, including <em>"person"</em>, and <em>"organization"</em>. In this case we are defining the MongoDB project as an organization. A pointer to the organization's website is also included.</p></div><div id=tabs-1-yaml-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-yaml data-lang=yaml><span class=line><span class=cl><span class=nn>---</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>component-definition</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>uuid</span><span class=p>:</span><span class=w> </span><span class=l>a7ba800c-a432-44cd-9075-0862cd66da6b</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>metadata</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>title</span><span class=p>:</span><span class=w> </span><span class=l>MongoDB Component Definition Example</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>last-modified</span><span class=p>:</span><span class=w> </span><span class=s1>&#39;2001-12-17T09:30:47Z&#39;</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>version</span><span class=p>:</span><span class=w> </span><span class=m>20210507</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>oscal-version</span><span class=p>:</span><span class=w> </span><span class=m>1.0.0</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>roles</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>- <span class=nt>id</span><span class=p>:</span><span class=w> </span><span class=l>provider</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>title</span><span class=p>:</span><span class=w> </span><span class=l>Provider</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>parties</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>- <span class=nt>uuid</span><span class=p>:</span><span class=w> </span><span class=l>ef7c799a-c50e-49ab-83e0-515e989e6df1</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>type</span><span class=p>:</span><span class=w> </span><span class=l>organization</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>MongoDB</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>links</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=nt>href</span><span class=p>:</span><span class=w> </span><span class=l>&lt;https://www.mongodb.com&gt;</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>rel</span><span class=p>:</span><span class=w> </span><span class=l>website</span></span></span></code></pre></td></tr></table></div></div><p>The <a href=../../../../reference/latest/component-definition/json-reference/#/component-definition/metadata/roles><code>roles</code></a> key provides a grouping of role items that each defines a function assumed or expected to be assumed by a party in a specific situation. In this case the role <code>provider</code> has been standardized by OSCAL to be used for <a href=../../../../concepts/layer/implementation/component-definition/#component-definition-authors>component definition authors</a>. A role item has a required <code>id</code> attribute which expects an <a href=../../../../reference/datatypes/#token>token</a> data type. A <code>title</code> is also provided.</p><p>The <a href=../../../../reference/latest/component-definition/json-reference/#/component-definition/metadata/parties><code>parties</code></a> key provides a grouping of party objects that each represent either a person or organization that serves as the responsible entity. A party must have an associated <code>uuid</code> which is used to reference this party, a <code>name</code> which provides a formal label, and a <code>type</code> which defines the nature of the party. There are prescribed types, including <em>"person"</em>, and <em>"organization"</em>. In this case we are defining the MongoDB project as an organization. A pointer to the organization's website is also included.</p></div></div></div><h3 id=defining-the-mongodb-component>Defining the MongoDB Component</h3><p>Within the component definition model, components provide a way to describe subject assets which may be used as parts of an information system. A component allows potential control implementations to be described for an subject asset, which can then be used when implementing an information system. While components are optional in a component definition, a typical component definition will include at least one component. In this example, we'll demonstrate how the control implementation of the MongoDB software is represented using the OSCAL component definition model. The snippet below provides an example of the minimum data needed to define a component.</p><div id=tabs-2 class="hugo-codetabs usa-accordion"><ul><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-2-xml-tab><span>XML</span></button></li><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-2-json-tab><span>JSON</span></button></li><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-2-yaml-tab><span>YAML</span></button></li></ul><div id=tabs-2-content class=hugo-tab-content><div id=tabs-2-xml-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-xml data-lang=xml><span class=line><span class=cl><span class=nt>&lt;component-definition</span> <span class=na>xmlns=</span><span class=s>&#34;http://csrc.nist.gov/ns/oscal/1.0&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=na>uuid=</span><span class=s>&#34;a7ba800c-a432-44cd-9075-0862cd66da6b&#34;</span><span class=nt>&gt;</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&lt;component</span> <span class=na>uuid=</span><span class=s>&#34;91f646c5-b1b6-4786-9ec3-2305a044e217&#34;</span> <span class=na>type=</span><span class=s>&#34;software&#34;</span><span class=nt>&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;title&gt;</span>MongoDB<span class=nt>&lt;/title&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;description&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&lt;p&gt;</span>MongoDB is a source-available, cross-platform document-oriented
+</span></span><span class=line><span class=cl>        database program. Classified as a NoSQL database program, MongoDB
+</span></span><span class=line><span class=cl>        uses JSON-like documents with optional schemas.<span class=nt>&lt;/p&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;/description&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;purpose&gt;</span>Provides a NoSQL database service<span class=nt>&lt;/purpose&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;responsible-role</span> <span class=na>role-id=</span><span class=s>&#34;provider&#34;</span><span class=nt>&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&lt;party-uuid&gt;</span>ef7c799a-c50e-49ab-83e0-515e989e6df1<span class=nt>&lt;/party-uuid&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;/responsible-role&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;protocol</span> <span class=nt>/&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;control-implementation</span> <span class=nt>/&gt;</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&lt;/component&gt;</span>
+</span></span><span class=line><span class=cl><span class=nt>&lt;/component-definition&gt;</span></span></span></code></pre></td></tr></table></div></div><p>A component is represented using the <a href=../../../../reference/latest/component-definition/xml-reference/#/component-definition/component><code>&lt;component></code></a> element (on line 3). This element requires a unique identifier, which is provided using the <code>@uuid</code> attribute.</p><p>The required <code>@type</code> attribute categorizes the component by asset type. Some common examples include interconnection, hardware, software, service, policy, process/procedure, plan, guidance, standard, and validation. In our example, we’ll set the MongoDB component as the "<em>software</em>" type, since MongoDB is a software application.</p><p>Next, the component needs to have title and description elements that help to support human-readability of this information.</p><p>The optional <code>&lt;responsible-role></code> element can be used to reference one or more roles with responsibility for performing a function relative to the component. In this tutorial, will reference the <code>provider</code> and map this role to the mongoDB party.</p></div><div id=tabs-2-json-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&#34;component-definition&#34;</span><span class=p>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;components&#34;</span><span class=p>:</span> <span class=p>[{</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;uuid&#34;</span><span class=p>:</span> <span class=s2>&#34;91f646c5-b1b6-4786-9ec3-2305a044e217&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;type&#34;</span><span class=p>:</span> <span class=s2>&#34;software&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;title&#34;</span><span class=p>:</span> <span class=s2>&#34;MongoDB&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;description&#34;</span><span class=p>:</span> <span class=s2>&#34;MongoDB is a source-available, cross-platform document-oriented database program. Classified as a NoSQL database program, MongoDB uses JSON-like documents with optional schemas.&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;purpose&#34;</span><span class=p>:</span> <span class=s2>&#34;Provides a NoSQL database service&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;responsible-roles&#34;</span><span class=p>:</span> <span class=p>[{</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;role-id&#34;</span><span class=p>:</span> <span class=s2>&#34;provider&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;party-uuid&#34;</span><span class=p>:</span> <span class=s2>&#34;ef7c799a-c50e-49ab-83e0-515e989e6df1&#34;</span>
+</span></span><span class=line><span class=cl>      <span class=p>}],</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;protocols&#34;</span><span class=p>:</span> <span class=p>[{}],</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;control-implementations&#34;</span><span class=p>:</span> <span class=p>[{}]</span>
+</span></span><span class=line><span class=cl>    <span class=p>}]</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></td></tr></table></div></div><p>A component is represented in the <a href=../../../../reference/latest/component-definition/json-reference/#/component-definition/components>components</a> object array shown in line 4. Each component requires a unique identifier, which is provided using the <code>uuid</code> property.</p><p>The required <code>type</code> property categorizes the component by asset type. Some common examples include interconnection, hardware, software, service, policy, process/procedure, plan, guidance, standard, and validation. In our example, we’ll set the MongoDB component as the "<em>software</em>" type, since MongoDB is a software application.</p><p>Next, the component needs to have title and description properties that help to support human-readability of this information.</p><p>The optional <code>responsible-roles</code> property can be used to reference one or more roles with responsibility for performing a function relative to the component. In this tutorial, will reference the <code>provider</code> and map this role to the mongoDB party.</p></div><div id=tabs-2-yaml-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-yaml data-lang=yaml><span class=line><span class=cl><span class=nn>---</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>component-definition</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>components</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span>- <span class=nt>uuid</span><span class=p>:</span><span class=w> </span><span class=l>91f646c5-b1b6-4786-9ec3-2305a044e217</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>type</span><span class=p>:</span><span class=w> </span><span class=l>software</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>title</span><span class=p>:</span><span class=w> </span><span class=l>MongoDB</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>description</span><span class=p>:</span><span class=w> </span><span class=p>&gt;-</span><span class=sd>
+</span></span></span><span class=line><span class=cl><span class=sd>      MongoDB is a source-available, cross-platform document-oriented
+</span></span></span><span class=line><span class=cl><span class=sd>      database program. Classified as a NoSQL database program, MongoDB
+</span></span></span><span class=line><span class=cl><span class=sd>      uses JSON-like documents with optional schemas.</span><span class=w>      
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>purpose</span><span class=p>:</span><span class=w> </span><span class=l>Provides a NoSQL database service</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>responsible-roles</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>- <span class=nt>role-id</span><span class=p>:</span><span class=w> </span><span class=l>provider</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>party-uuid</span><span class=p>:</span><span class=w> </span><span class=l>ef7c799a-c50e-49ab-83e0-515e989e6df1</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>protocols</span><span class=p>:</span><span class=w> </span><span class=l>~</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>control-implementations</span><span class=p>:</span><span class=w> </span><span class=l>~</span></span></span></code></pre></td></tr></table></div></div><p>A component is represented in the <a href=../../../../reference/latest/component-definition/json-reference/#/component-definition/components>components</a> object array shown in line 4. Each component requires a unique identifier, which is provided using the <code>uuid</code> property.</p><p>The required <code>type</code> key categorizes the component by asset type. Some common examples include interconnection, hardware, software, service, policy, process/procedure, plan, guidance, standard, and validation. In our example, we’ll set the MongoDB component to a "<em>software</em>" type.</p><p>Next, the component needs to have title and description keys that help to support human-readability of this information.</p><p>The optional <code>responsible-roles</code> key can be used to reference one or more roles with responsibility for performing a function relative to the component. In this tutorial, will reference the <code>provider</code> and map this role to the mongoDB party.</p></div></div></div><h3 id=defining-protocols-used-in-a-component>Defining Protocols Used in a Component</h3><p>Another optional but valuable sub-element of <code>&lt;component></code> is <a href=../../../../reference/latest/component-definition/xml-reference/#/component-definition/component/protocol><code>&lt;protocol></code></a>. Generally, <code>&lt;protocol></code> elements are applicable when dealing with a <code>&lt;component></code> of types <em>"service"</em>, but they can also be provided for component types <em>"software"</em>, <em>"hardware"</em>, or <em>"interconnection"</em>. In our example, we'll assume that installations of MongoDB will result in an installation of mongod (Mongo Daemon) which runs the MongoDB database as a process and uses the following protocols:</p><table><thead><tr><th>Port</th><th>Transport</th><th>Direction</th><th>Description</th></tr></thead><tbody><tr><td>27017</td><td>TCP</td><td>Inbound</td><td>The default port for mongod and mongos instances.</td></tr><tr><td>27018</td><td>TCP</td><td>Inbound</td><td>The default port when running with --shardsvr runtime operation.</td></tr><tr><td>27019</td><td>TCP</td><td>Inbound-Outbound</td><td>The default port when running with --configsvr runtime operation</td></tr></tbody></table><p>This is represented below.</p><div id=tabs-3 class="hugo-codetabs usa-accordion"><ul><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-3-xml-tab><span>XML</span></button></li><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-3-json-tab><span>JSON</span></button></li><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-3-yaml-tab><span>YAML</span></button></li></ul><div id=tabs-3-content class=hugo-tab-content><div id=tabs-3-xml-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-xml data-lang=xml><span class=line><span class=cl><span class=nt>&lt;component-definition</span> <span class=na>xmlns=</span><span class=s>&#34;http://csrc.nist.gov/ns/oscal/1.0&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=na>uuid=</span><span class=s>&#34;a7ba800c-a432-44cd-9075-0862cd66da6b&#34;</span><span class=nt>&gt;</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&lt;component</span> <span class=na>uuid=</span><span class=s>&#34;91f646c5-b1b6-4786-9ec3-2305a044e217&#34;</span> <span class=na>type=</span><span class=s>&#34;service&#34;</span><span class=nt>&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;title&gt;</span>MongoDB<span class=nt>&lt;/title&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;protocol</span> <span class=na>uuid=</span><span class=s>&#34;2b4a1b3a-cbc5-4cc8-bde6-7437c28c4e54&#34;</span> <span class=na>name=</span><span class=s>&#34;mongodb&#34;</span><span class=nt>&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&lt;title&gt;</span>Primary daemon process for the MongoDB system.<span class=nt>&lt;/title&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&lt;port-range</span> <span class=na>start=</span><span class=s>&#34;27017&#34;</span> <span class=na>end=</span><span class=s>&#34;27017&#34;</span> <span class=na>transport=</span><span class=s>&#34;TCP&#34;</span> <span class=nt>/&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;/protocol&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;protocol</span> <span class=na>uuid=</span><span class=s>&#34;99d8d4e5-e734-4e05-a2f9-7353097b8b61&#34;</span>
+</span></span><span class=line><span class=cl>        <span class=na>name=</span><span class=s>&#34;mongodb-shardsrv&#34;</span><span class=nt>&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&lt;title&gt;</span>MongoDB protocol for sharding with shardsrv option.<span class=nt>&lt;/title&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&lt;port-range</span> <span class=na>start=</span><span class=s>&#34;27018&#34;</span> <span class=na>end=</span><span class=s>&#34;27018&#34;</span> <span class=na>transport=</span><span class=s>&#34;TCP&#34;</span> <span class=nt>/&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;/protocol&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;protocol</span> <span class=na>uuid=</span><span class=s>&#34;6fa762f1-09ca-44d5-a94c-cfceb57debd5&#34;</span>
+</span></span><span class=line><span class=cl>        <span class=na>name=</span><span class=s>&#34;mongodb-configsvr&#34;</span><span class=nt>&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&lt;title&gt;</span>MongoDB protocol for configsrv operation.<span class=nt>&lt;/title&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&lt;port-range</span> <span class=na>start=</span><span class=s>&#34;27019&#34;</span> <span class=na>end=</span><span class=s>&#34;27019&#34;</span> <span class=na>transport=</span><span class=s>&#34;TCP&#34;</span> <span class=nt>/&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;/protocol&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;control-implementation</span> <span class=nt>/&gt;</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&lt;/component&gt;</span>
+</span></span><span class=line><span class=cl><span class=nt>&lt;/component-definition&gt;</span></span></span></code></pre></td></tr></table></div></div><p>The <a href=../../../../reference/latest/component-definition/xml-reference/#/component-definition/component/protocol><code>&lt;protocol></code></a> element has a mandatory <code>@uuid</code> and mandatory <code>@name</code> attribute that should be set to the common name of the protocol, which should be the appropriate "service name" from the <a href="https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml?search=27017">IANA Service Name and Transport Protocol Port Number Registry</a>. In this example, we set it to "mongodb", which is registered with IANA. The <code>@name</code> attribute accepts <a href=../../../../reference/datatypes/#string>string</a> data types and can be set to other values when there is no corresponding IANA service name for the port (e.g., lines 10 and 15). Descriptive text for the protocol can be provided using the <code>title</code> element. The <code>&lt;port-range></code> element is where we can specify the port number(s) and associated transport. If the protocol uses multiple contiguous port numbers, a single <code>&lt;port-range></code> element with <code>start="27017" end="27019"</code> is sufficient, however; when the component has several protocols, it is acceptable to have multiple <code>&lt;protocol></code> and <code>&lt;port-range></code> elements as shown in the example XML above.</p></div><div id=tabs-3-json-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&#34;component-definition&#34;</span><span class=p>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;components&#34;</span><span class=p>:</span> <span class=p>[{</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;uuid&#34;</span><span class=p>:</span> <span class=s2>&#34;91f646c5-b1b6-4786-9ec3-2305a044e217&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;type&#34;</span><span class=p>:</span> <span class=s2>&#34;service&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;title&#34;</span><span class=p>:</span> <span class=s2>&#34;MongoDB&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;protocols&#34;</span><span class=p>:</span> <span class=p>[{</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;uuid&#34;</span><span class=p>:</span> <span class=s2>&#34;2b4a1b3a-cbc5-4cc8-bde6-7437c28c4e54&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;name&#34;</span><span class=p>:</span> <span class=s2>&#34;mongodb&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;title&#34;</span><span class=p>:</span> <span class=s2>&#34;Primary daemon process for the MongoDB system.&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;port-ranges&#34;</span><span class=p>:</span> <span class=p>[{</span>
+</span></span><span class=line><span class=cl>          <span class=nt>&#34;start&#34;</span><span class=p>:</span> <span class=mi>27017</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>          <span class=nt>&#34;end&#34;</span><span class=p>:</span> <span class=mi>27017</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>          <span class=nt>&#34;transport&#34;</span><span class=p>:</span> <span class=s2>&#34;TCP&#34;</span>
+</span></span><span class=line><span class=cl>        <span class=p>}]</span>
+</span></span><span class=line><span class=cl>      <span class=p>},</span>
+</span></span><span class=line><span class=cl>      <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;uuid&#34;</span><span class=p>:</span> <span class=s2>&#34;99d8d4e5-e734-4e05-a2f9-7353097b8b61&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;name&#34;</span><span class=p>:</span> <span class=s2>&#34;mongodb-shardsrv&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;title&#34;</span><span class=p>:</span> <span class=s2>&#34;MongoDB protocol for sharding with shardsrv option.&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;port-ranges&#34;</span><span class=p>:</span> <span class=p>[{</span>
+</span></span><span class=line><span class=cl>          <span class=nt>&#34;start&#34;</span><span class=p>:</span> <span class=mi>27018</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>          <span class=nt>&#34;end&#34;</span><span class=p>:</span> <span class=mi>27018</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>          <span class=nt>&#34;transport&#34;</span><span class=p>:</span> <span class=s2>&#34;TCP&#34;</span>
+</span></span><span class=line><span class=cl>        <span class=p>}]</span>
+</span></span><span class=line><span class=cl>      <span class=p>},</span>
+</span></span><span class=line><span class=cl>      <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;uuid&#34;</span><span class=p>:</span> <span class=s2>&#34;6fa762f1-09ca-44d5-a94c-cfceb57debd5&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;name&#34;</span><span class=p>:</span> <span class=s2>&#34;mongodb-configsvr&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;title&#34;</span><span class=p>:</span> <span class=s2>&#34;MongoDB protocol for configsrv operation.&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;port-ranges&#34;</span><span class=p>:</span> <span class=p>[{</span>
+</span></span><span class=line><span class=cl>          <span class=nt>&#34;start&#34;</span><span class=p>:</span> <span class=mi>27019</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>          <span class=nt>&#34;end&#34;</span><span class=p>:</span> <span class=mi>27019</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>          <span class=nt>&#34;transport&#34;</span><span class=p>:</span> <span class=s2>&#34;TCP&#34;</span>
+</span></span><span class=line><span class=cl>        <span class=p>}]</span>
+</span></span><span class=line><span class=cl>      <span class=p>}]</span>
+</span></span><span class=line><span class=cl>    <span class=p>}]</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></td></tr></table></div></div><p>The <a href=../../../../reference/latest/component-definition/json-reference/#/component-definition/components/protocols><code>protocols</code></a> grouping has objects with mandatory <code>uuid</code> and mandatory <code>name</code> properties that should be set to the common name of the protocol, which should be the appropriate "service name" from the <a href="https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml?search=27017">IANA Service Name and Transport Protocol Port Number Registry</a>. In this example, we set it to "mongodb", which is registered with IANA. The <code>name</code> property accepts <a href=../../../../reference/datatypes/#string>string</a> data types and can be set to other values when there is no corresponding IANA service name for the port (e.g., lines 19 and 29). Descriptive text for the protocol can be provided using the <code>title</code> property. The <code>port-ranges</code> object grouping is where you can specify the port number(s) and associated transport. If the protocol uses multiple contiguous port numbers, a single <code>port-ranges</code> object with <code>"start":"27017"</code> and <code>"end":"27019"</code> is sufficient; however, when the component has several protocols, it is acceptable to have multiple <code>protocols</code> and <code>port-ranges</code> objects as shown in the example XML above.</p></div><div id=tabs-3-yaml-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-yaml data-lang=yaml><span class=line><span class=cl><span class=nn>---</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>component-definition</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>components</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span>- <span class=nt>uuid</span><span class=p>:</span><span class=w> </span><span class=l>91f646c5-b1b6-4786-9ec3-2305a044e217</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>type</span><span class=p>:</span><span class=w> </span><span class=l>service</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>title</span><span class=p>:</span><span class=w> </span><span class=l>MongoDB</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>protocols</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>- <span class=nt>uuid</span><span class=p>:</span><span class=w> </span><span class=l>2b4a1b3a-cbc5-4cc8-bde6-7437c28c4e54</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>mongodb</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>title</span><span class=p>:</span><span class=w> </span><span class=l>Primary daemon process for the MongoDB system.</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>port-ranges</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=nt>start</span><span class=p>:</span><span class=w> </span><span class=m>27017</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>end</span><span class=p>:</span><span class=w> </span><span class=m>27017</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>transport</span><span class=p>:</span><span class=w> </span><span class=l>TCP</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>- <span class=nt>uuid</span><span class=p>:</span><span class=w> </span><span class=l>99d8d4e5-e734-4e05-a2f9-7353097b8b61</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>mongodb-shardsrv</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>title</span><span class=p>:</span><span class=w> </span><span class=l>MongoDB protocol for sharding with shardsrv option.</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>port-ranges</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=nt>start</span><span class=p>:</span><span class=w> </span><span class=m>27018</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>end</span><span class=p>:</span><span class=w> </span><span class=m>27018</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>transport</span><span class=p>:</span><span class=w> </span><span class=l>TCP</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>- <span class=nt>uuid</span><span class=p>:</span><span class=w> </span><span class=l>6fa762f1-09ca-44d5-a94c-cfceb57debd5</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>mongodb-configsvr</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>title</span><span class=p>:</span><span class=w> </span><span class=l>MongoDB protocol for configsrv operation.</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>port-ranges</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=nt>start</span><span class=p>:</span><span class=w> </span><span class=m>27019</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>end</span><span class=p>:</span><span class=w> </span><span class=m>27019</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>transport</span><span class=p>:</span><span class=w> </span><span class=l>TCP</span></span></span></code></pre></td></tr></table></div></div><p>The <a href=../../../../reference/latest/component-definition/json-reference/#/component-definition/components/protocols><code>protocols</code></a> key has items with mandatory <code>uuid</code> and mandatory <code>name</code> keys that should be set to the common name of the protocol, which should be the appropriate "service name" from the <a href="https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml?search=27017">IANA Service Name and Transport Protocol Port Number Registry</a>. In this example, we set it to "mongodb", which is registered with IANA. The <code>name</code> key accepts <a href=../../../../reference/datatypes/#string>string</a> data types and can be set to other values when there is no corresponding IANA service name for the port (e.g., lines 17 and 24). Descriptive text for the protocol can be provided using the <code>title</code> key. The <code>port-ranges</code> key can contain items where you can specify the port number(s) and associated transport. If the protocol uses multiple contiguous port numbers, a single <code>port-ranges</code> key with <code>start: 27017</code> and <code>end: 27019</code> is sufficient; however, when the component has several protocols, it is acceptable to have multiple <code>protocols</code> and <code>port-ranges</code> items as shown in the example XML above.</p></div></div></div><h3 id=defining-control-implementation-details>Defining Control Implementation Details</h3><p>By providing control implementation details in a component, information is provided about how the given component target can satisfy controls with an associated OSCAL <a href=../../../../concepts/layer/control/catalog/>catalog</a> in general, or an associated OSCAL <a href=../../../../concepts/layer/control/profile/>profile</a> to describe how the component subject can satisfy controls from a specific baseline. In this example, we document how the MongoDB component may satisfy <strong>SC-8(1)</strong> which requires the implementation of cryptographic mechanisms to prevent unauthorized disclosure of information and/or detect changes to information during transmission.</p><p>An example of providing control implementation details for SC-8(1) is provided below.</p><div id=tabs-4 class="hugo-codetabs usa-accordion"><ul><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-4-xml-tab><span>XML</span></button></li><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-4-json-tab><span>JSON</span></button></li><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-4-yaml-tab><span>YAML</span></button></li></ul><div id=tabs-4-content class=hugo-tab-content><div id=tabs-4-xml-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-xml data-lang=xml><span class=line><span class=cl><span class=nt>&lt;component-definition</span> <span class=na>xmlns=</span><span class=s>&#34;http://csrc.nist.gov/ns/oscal/1.0&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=na>uuid=</span><span class=s>&#34;a7ba800c-a432-44cd-9075-0862cd66da6b&#34;</span><span class=nt>&gt;</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&lt;component</span> <span class=na>uuid=</span><span class=s>&#34;91f646c5-b1b6-4786-9ec3-2305a044e217&#34;</span> <span class=na>type=</span><span class=s>&#34;software&#34;</span><span class=nt>&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;control-implementation</span>
+</span></span><span class=line><span class=cl>        <span class=na>uuid=</span><span class=s>&#34;49f0b690-ed9f-4f32-aae0-625b77aa6d27&#34;</span>
+</span></span><span class=line><span class=cl>        <span class=na>source=</span><span class=s>&#34;https://github.com/usnistgov/oscal-content/blob/master/nist.gov/SP800-53/rev5/xml/NIST_SP-800-53_rev5_MODERATE-baseline_profile.xml&#34;</span><span class=nt>&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&lt;description&gt;</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&lt;p&gt;</span>MongoDB control implementations for NIST SP 800-53 revision 5.<span class=nt>&lt;/p&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&lt;/description&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&lt;implemented-requirement</span>
+</span></span><span class=line><span class=cl>          <span class=na>uuid=</span><span class=s>&#34;cf8338c5-fb6e-4593-a4a8-b3c4946ee2a0&#34;</span>
+</span></span><span class=line><span class=cl>          <span class=na>control-id=</span><span class=s>&#34;sc-8.1&#34;</span><span class=nt>&gt;</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&lt;description&gt;</span>
+</span></span><span class=line><span class=cl>          <span class=nt>&lt;p&gt;</span>MongoDB supports TLS 1.x to encrypt data in transit,
+</span></span><span class=line><span class=cl>          preventing unauthorized disclosure or changes to information
+</span></span><span class=line><span class=cl>          during transmission. To implement TLS, set the PEMKeyFile
+</span></span><span class=line><span class=cl>          option in the configuration /etc/mongod.conf to the
+</span></span><span class=line><span class=cl>          certificate file&#39;s path and restart the the component.<span class=nt>&lt;/p&gt;</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&lt;/description&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&lt;/implemented-requirement&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;/control-implementation&gt;</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&lt;/component&gt;</span>
+</span></span><span class=line><span class=cl><span class=nt>&lt;/component-definition&gt;</span></span></span></code></pre></td></tr></table></div></div><p>To document this, we use the <a href=../../../../reference/latest/component-definition/xml-reference/#/component-definition/component/control-implementation><code>&lt;control-implementation></code></a> element. This element requires a unique identifier, which is provided using the <code>@uuid</code> attribute. This element also has a <code>@source</code> attribute that is used to provide a URI reference to the appropriate OSCAL catalog or profile. The URI reference can be a URI, a relative reference, or a fragment that points to a <a href=../../../../reference/latest/component-definition/xml-reference/#/component-definition/back-matter><code>&lt;back-matter></code></a> resource. The <code>&lt;implemented-requirement></code> element on line 10 is where we can specify the control (e.g., SC-8(1)) and the implementation description. The <code>&lt;implemented-requirement></code> element also has its own unique identifier <code>@uuid</code>, and the control is specified in the <code>@control-id</code> attribute on line 12. We then use the <code>&lt;description></code> element to describe how this component can satisfy the specified control.</p><p>In the example above, we demonstrated how to use OSCAL to document the MongoDB software component's control implementation for NIST control SC-8(1). However, one could document how the same component also satisfies controls from other security risk management frameworks (e.g., FedRAMP, ISO 27002, etc.) by simply adding additional <a href=../../../../reference/latest/component-definition/xml-reference/#/component-definition/component/control-implementation><code>&lt;control-implementation></code></a> elements for each catalog or profile. Likewise, for each <code>&lt;control-implementation></code>, we can add additional <code>&lt;implemented-requirement></code> elements for every control that can be implemented by the component. Additionally, we can address implementations at the control statement-level using the <a href=../../../../reference/latest/component-definition/xml-reference/#/component-definition/component/control-implementation/implemented-requirement/statement><code>&lt;statement></code></a> element, allowing implementation details to be provided in a more fine-grained way.</p></div><div id=tabs-4-json-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&#34;component-definition&#34;</span><span class=p>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;uuid&#34;</span><span class=p>:</span> <span class=s2>&#34;a7ba800c-a432-44cd-9075-0862cd66da6b&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;components&#34;</span><span class=p>:</span> <span class=p>[{</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;uuid&#34;</span><span class=p>:</span> <span class=s2>&#34;91f646c5-b1b6-4786-9ec3-2305a044e217&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;type&#34;</span><span class=p>:</span> <span class=s2>&#34;software&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;control-implementations&#34;</span><span class=p>:</span> <span class=p>[{</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;uuid&#34;</span><span class=p>:</span> <span class=s2>&#34;49f0b690-ed9f-4f32-aae0-625b77aa6d27&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;source&#34;</span><span class=p>:</span> <span class=s2>&#34;https://github.com/usnistgov/oscal-content/blob/master/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_MODERATE-baseline_profile.json&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;description&#34;</span><span class=p>:</span> <span class=s2>&#34;MongoDB control implementations for NIST SP 800-53
+</span></span></span><span class=line><span class=cl><span class=s2>          revision 5.&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;implemented-requirements&#34;</span> <span class=p>[{</span>
+</span></span><span class=line><span class=cl>          <span class=nt>&#34;uuid&#34;</span><span class=p>:</span> <span class=s2>&#34;cf8338c5-fb6e-4593-a4a8-b3c4946ee2a0&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>          <span class=nt>&#34;control-id&#34;</span><span class=p>:</span> <span class=s2>&#34;sc-8.1&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>          <span class=nt>&#34;description&#34;</span><span class=p>:</span> <span class=s2>&#34;MongoDB supports TLS 1.x to encrypt data in transit,
+</span></span></span><span class=line><span class=cl><span class=s2>            preventing unauthorized disclosure or changes to information
+</span></span></span><span class=line><span class=cl><span class=s2>            during transmission. To implement TLS, set the PEMKeyFile option
+</span></span></span><span class=line><span class=cl><span class=s2>            in the configuration file /etc/mongod.conf to the certificate
+</span></span></span><span class=line><span class=cl><span class=s2>            file&#39;s path and restart the the component.&#34;</span>
+</span></span><span class=line><span class=cl>        <span class=p>}]</span>
+</span></span><span class=line><span class=cl>      <span class=p>}]</span>
+</span></span><span class=line><span class=cl>    <span class=p>}]</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></td></tr></table></div></div><p>To document this, we use the <a href=../../../../reference/latest/component-definition/json-reference/#/component-definition/components/control-implementations><code>control-implementations</code></a> grouping. Objects within this grouping require a unique identifier, which is provided using the <code>uuid</code> property. This object also has a <code>source</code> property that is used to provide a URI reference to the appropriate OSCAL catalog or profile. The URI reference can be a URI, a relative reference, or a fragment that points to a <a href=../../../../reference/latest/component-definition/json-reference/#/component-definition/back-matter><code>back-matter</code></a> resource. The <code>implemented-requirements</code> grouping on line 12 is where we can specify the control (e.g., SC-8(1)) and the implementation description. Each object in the <code>implemented-requirements</code> grouping also has its own unique identifier <code>uuid</code>, and the control is specified using the <code>control-id</code> property on line 14. We then use the <code>description</code> property to describe how this component can satisfy the specified control.</p><p>In the example above, we demonstrated how to use OSCAL to document the MongoDB software component's control implementation for NIST control SC-8(1). However, one could document how the same component also satisfies controls from other security risk management frameworks (e.g., FedRAMP, ISO 27002, etc.) by simply adding additional <a href=../../../../reference/latest/component-definition/json-reference/#/component-definition/components/control-implementations><code>control-implementations</code></a> objects for each catalog or profile. Likewise, for each <code>control-implementations</code> object, we can add additional <code>implemented-requirements</code> objects for every control that can be implemented by the component. Additionally, we can address implementations at the control statement-level using the <a href=../../../../reference/latest/component-definition/json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements><code>statements</code></a> grouping, allowing implementation details to be provided in a more fine-grained way.</p></div><div id=tabs-4-yaml-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-yaml data-lang=yaml><span class=line><span class=cl><span class=nn>---</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>component-definition</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>uuid</span><span class=p>:</span><span class=w> </span><span class=l>a7ba800c-a432-44cd-9075-0862cd66da6b,</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>components</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span>- <span class=nt>uuid</span><span class=p>:</span><span class=w> </span><span class=l>91f646c5-b1b6-4786-9ec3-2305a044e217</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>type</span><span class=p>:</span><span class=w> </span><span class=l>software</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>control-implementations</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>- <span class=nt>uuid</span><span class=p>:</span><span class=w> </span><span class=l>49f0b690-ed9f-4f32-aae0-625b77aa6d27</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>source</span><span class=p>:</span><span class=w> </span><span class=l>&lt;https://github.com/usnistgov/oscal-content/blob/master/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_MODERATE-baseline_profile.json&gt;</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>description</span><span class=p>:</span><span class=w> </span><span class=p>&gt;-</span><span class=sd>
+</span></span></span><span class=line><span class=cl><span class=sd>        </span><span class=w>        </span><span class=l>MongoDB control implementations for NIST SP 800-53rev5.</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>implemented-requirements</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=nt>uuid</span><span class=p>:</span><span class=w> </span><span class=l>cf8338c5-fb6e-4593-a4a8-b3c4946ee2a0</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>control-id</span><span class=p>:</span><span class=w> </span><span class=l>sc-8.1</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>description</span><span class=p>:</span><span class=w> </span><span class=p>&gt;-</span><span class=sd>
+</span></span></span><span class=line><span class=cl><span class=sd>          MongoDB supports TLS 1.x to encrypt data in transit, preventing
+</span></span></span><span class=line><span class=cl><span class=sd>          unauthorized disclosure or changes to information during
+</span></span></span><span class=line><span class=cl><span class=sd>          transmission. To implement TLS, set the PEMKeyFile option in the
+</span></span></span><span class=line><span class=cl><span class=sd>          configuration file /etc/mongod.conf to the certificate file&#39;s path
+</span></span></span><span class=line><span class=cl><span class=sd>          and restart the the component.</span><span class=w>          </span></span></span></code></pre></td></tr></table></div></div><p>To document this, we use the <a href=../../../../reference/latest/component-definition/json-reference/#/component-definition/components/control-implementations><code>control-implementations</code></a> key. Items associated with this key require a unique identifier, which is provided using the <code>uuid</code> key. These items also have a <code>source</code> key that is used to provide a URI reference to the appropriate OSCAL catalog or profile. The URI reference can be a URI, a relative reference, or a fragment that points to a <a href=../../../../reference/latest/component-definition/json-reference/#/component-definition/back-matter><code>back-matter</code></a> resource. The <code>implemented-requirements</code> key on line 13 is where we can specify the control (e.g., SC-8(1)) and the implementation description. Each item under the <code>implemented-requirements</code> key also has its own unique identifier <code>uuid</code>, and the control is specified using the <code>control-id</code> key on line 15. We then use the <code>description</code> key to describe how this component can satisfy the specified control.</p><p>In the example above, we demonstrated how to use OSCAL to document the MongoDB software component's control implementation for NIST control SC-8(1). However, one could document how the same component also satisfies controls from other security risk management frameworks (e.g., FedRAMP, ISO 27002, etc.) by simply adding additional <a href=../../../../reference/latest/component-definition/json-reference/#/component-definition/components/control-implementations><code>control-implementations</code></a> items for each catalog or profile. Likewise, for each <code>control-implementations</code> item, we can add additional <code>implemented-requirements</code> items for every control that can be implemented by the component. Additionally, we can address implementations at the control statement-level using the <a href=../../../../reference/latest/component-definition/json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements><code>statements</code></a> key, allowing implementation details to be provided in a more fine-grained way.</p></div></div></div><h2 id=the-final-component-definition>The Final Component Definition</h2><p>Combining all the content described in this tutorial, we can produce a completed component definition instance. Provided below are well-formed complete examples. Having these implementation details readily available in an OSCAL component definition means they can be used to populate an OSCAL SSP and should give SSP authors helpful content for their control implementation statements. These examples can also be downloaded in <a href=https://github.com/usnistgov/oscal-content/tree/master/examples/component-definition/xml/example-component-definition.xml>XML</a>,
+<a href=https://github.com/usnistgov/oscal-content/tree/master/examples/component-definition/json/example-component-definition.json>JSON</a>,
+and <a href=https://github.com/usnistgov/oscal-content/tree/master/examples/component-definition/yaml/example-component-definition.yaml>YAML</a>.</p><div id=tabs-8 class="hugo-codetabs usa-accordion"><ul><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-8-xml-tab><span>XML</span></button></li><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-8-json-tab><span>JSON</span></button></li><li class=hugo-tab><button class=usa-accordion__button aria-expanded=true aria-controls=tabs-8-yaml-tab><span>YAML</span></button></li></ul><div id=tabs-8-content class=hugo-tab-content><div id=tabs-8-xml-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span><span class=lnt>49
+</span><span class=lnt>50
+</span><span class=lnt>51
+</span><span class=lnt>52
+</span><span class=lnt>53
+</span><span class=lnt>54
+</span><span class=lnt>55
+</span><span class=lnt>56
+</span><span class=lnt>57
+</span><span class=lnt>58
+</span><span class=lnt>59
+</span><span class=lnt>60
+</span><span class=lnt>61
+</span><span class=lnt>62
+</span><span class=lnt>63
+</span><span class=lnt>64
+</span><span class=lnt>65
+</span><span class=lnt>66
+</span><span class=lnt>67
+</span><span class=lnt>68
+</span><span class=lnt>69
+</span><span class=lnt>70
+</span><span class=lnt>71
+</span><span class=lnt>72
+</span><span class=lnt>73
+</span><span class=lnt>74
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-xml data-lang=xml><span class=line><span class=cl><span class=cp>&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+</span></span><span class=line><span class=cl><span class=nt>&lt;component-definition</span> <span class=na>xmlns=</span><span class=s>&#34;http://csrc.nist.gov/ns/oscal/1.0&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=na>uuid=</span><span class=s>&#34;a7ba800c-a432-44cd-9075-0862cd66da6b&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=na>xmlns:xsi=</span><span class=s>&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=na>xsi:schemaLocation=</span><span class=s>&#34;http://csrc.nist.gov/ns/oscal/1.0 https://raw.githubusercontent.com/usnistgov/OSCAL/master/xml/schema/oscal_component_schema.xsd&#34;</span><span class=nt>&gt;</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&lt;metadata&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;title&gt;</span>MongoDB Component Definition Example<span class=nt>&lt;/title&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;last-modified&gt;</span>2001-08-26T23:11:47Z<span class=nt>&lt;/last-modified&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;version&gt;</span>20210826<span class=nt>&lt;/version&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;oscal-version&gt;</span>1.0.0<span class=nt>&lt;/oscal-version&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;role</span> <span class=na>id=</span><span class=s>&#34;provider&#34;</span><span class=nt>&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&lt;title&gt;</span>Provider<span class=nt>&lt;/title&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;/role&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;party</span> <span class=na>uuid=</span><span class=s>&#34;ef7c799a-c50e-49ab-83e0-515e989e6df1&#34;</span> <span class=na>type=</span><span class=s>&#34;organization&#34;</span><span class=nt>&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&lt;name&gt;</span>MongoDB<span class=nt>&lt;/name&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&lt;link</span> <span class=na>rel=</span><span class=s>&#34;website&#34;</span> <span class=na>href=</span><span class=s>&#34;https://www.mongodb.com&#34;</span><span class=nt>/&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;/party&gt;</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&lt;/metadata&gt;</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&lt;component</span> <span class=na>uuid=</span><span class=s>&#34;91f646c5-b1b6-4786-9ec3-2305a044e217&#34;</span> <span class=na>type=</span><span class=s>&#34;software&#34;</span><span class=nt>&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;title&gt;</span>MongoDB<span class=nt>&lt;/title&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;description&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&lt;p&gt;</span>MongoDB is a source-available, cross-platform document-oriented
+</span></span><span class=line><span class=cl>        database program. Classified as a NoSQL database program, MongoDB
+</span></span><span class=line><span class=cl>        uses JSON-like documents with optional schemas.<span class=nt>&lt;/p&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;/description&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;purpose&gt;</span>Provides a NoSQL database service<span class=nt>&lt;/purpose&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;responsible-role</span> <span class=na>role-id=</span><span class=s>&#34;provider&#34;</span><span class=nt>&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&lt;party-uuid&gt;</span>ef7c799a-c50e-49ab-83e0-515e989e6df1<span class=nt>&lt;/party-uuid&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;/responsible-role&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;protocol</span> <span class=na>uuid=</span><span class=s>&#34;2b4a1b3a-cbc5-4cc8-bde6-7437c28c4e54&#34;</span> <span class=na>name=</span><span class=s>&#34;mongodb&#34;</span><span class=nt>&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&lt;title&gt;</span>Primary daemon process for the MongoDB system.<span class=nt>&lt;/title&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&lt;port-range</span> <span class=na>start=</span><span class=s>&#34;27017&#34;</span> <span class=na>end=</span><span class=s>&#34;27017&#34;</span> <span class=na>transport=</span><span class=s>&#34;TCP&#34;</span> <span class=nt>/&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;/protocol&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;protocol</span> <span class=na>uuid=</span><span class=s>&#34;99d8d4e5-e734-4e05-a2f9-7353097b8b61&#34;</span>
+</span></span><span class=line><span class=cl>        <span class=na>name=</span><span class=s>&#34;mongodb-shardsrv&#34;</span><span class=nt>&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&lt;title&gt;</span>MongoDB protocol for sharding with shardsrv option.<span class=nt>&lt;/title&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&lt;port-range</span> <span class=na>start=</span><span class=s>&#34;27018&#34;</span> <span class=na>end=</span><span class=s>&#34;27018&#34;</span> <span class=na>transport=</span><span class=s>&#34;TCP&#34;</span> <span class=nt>/&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;/protocol&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;protocol</span> <span class=na>uuid=</span><span class=s>&#34;6fa762f1-09ca-44d5-a94c-cfceb57debd5&#34;</span>
+</span></span><span class=line><span class=cl>        <span class=na>name=</span><span class=s>&#34;mongodb-configsvr&#34;</span><span class=nt>&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&lt;title&gt;</span>MongoDB protocol for configsrv operation.<span class=nt>&lt;/title&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&lt;port-range</span> <span class=na>start=</span><span class=s>&#34;27019&#34;</span> <span class=na>end=</span><span class=s>&#34;27019&#34;</span> <span class=na>transport=</span><span class=s>&#34;TCP&#34;</span> <span class=nt>/&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;/protocol&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;control-implementation</span>
+</span></span><span class=line><span class=cl>        <span class=na>uuid=</span><span class=s>&#34;49f0b690-ed9f-4f32-aae0-625b77aa6d27&#34;</span>
+</span></span><span class=line><span class=cl>        <span class=na>source=</span><span class=s>&#34;https://github.com/usnistgov/oscal-content/blob/master/nist.gov/SP800-53/rev5/xml/NIST_SP-800-53_rev5_MODERATE-baseline_profile.xml&#34;</span><span class=nt>&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&lt;description&gt;</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&lt;p&gt;</span>MongoDB control implementations for NIST SP 800-53 revision 5.<span class=nt>&lt;/p&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&lt;/description&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&lt;implemented-requirement</span>
+</span></span><span class=line><span class=cl>          <span class=na>uuid=</span><span class=s>&#34;cf8338c5-fb6e-4593-a4a8-b3c4946ee2a0&#34;</span>
+</span></span><span class=line><span class=cl>          <span class=na>control-id=</span><span class=s>&#34;sc-8.1&#34;</span><span class=nt>&gt;</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&lt;description&gt;</span>
+</span></span><span class=line><span class=cl>          <span class=nt>&lt;p&gt;</span>MongoDB supports TLS 1.x to encrypt data in transit,
+</span></span><span class=line><span class=cl>          preventing unauthorized disclosure or changes to information
+</span></span><span class=line><span class=cl>          during transmission. To implement TLS, set the PEMKeyFile
+</span></span><span class=line><span class=cl>          option in the configuration /etc/mongod.conf to the
+</span></span><span class=line><span class=cl>          certificate file&#39;s path and restart the the component.<span class=nt>&lt;/p&gt;</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&lt;/description&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&lt;/implemented-requirement&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&lt;implemented-requirement</span>
+</span></span><span class=line><span class=cl>          <span class=na>uuid=</span><span class=s>&#34;cf8338c5-fb6e-4593-a4a8-b3c4946ee2a0&#34;</span>
+</span></span><span class=line><span class=cl>          <span class=na>control-id=</span><span class=s>&#34;sa-4.9&#34;</span><span class=nt>&gt;</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&lt;description&gt;</span>
+</span></span><span class=line><span class=cl>          <span class=nt>&lt;p&gt;</span>Must ensure that MongoDB only listens for network
+</span></span><span class=line><span class=cl>          connections on authorized interfaces by configuring the MongoDB
+</span></span><span class=line><span class=cl>          configuration file to limit the services exposure to only the
+</span></span><span class=line><span class=cl>          network interfaces on which MongoDB instances should listen for
+</span></span><span class=line><span class=cl>          incoming connections.<span class=nt>&lt;/p&gt;</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&lt;/description&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&lt;/implemented-requirement&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;/control-implementation&gt;</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&lt;/component&gt;</span>
+</span></span><span class=line><span class=cl><span class=nt>&lt;/component-definition&gt;</span></span></span></code></pre></td></tr></table></div></div></div><div id=tabs-8-json-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span><span class=lnt>49
+</span><span class=lnt>50
+</span><span class=lnt>51
+</span><span class=lnt>52
+</span><span class=lnt>53
+</span><span class=lnt>54
+</span><span class=lnt>55
+</span><span class=lnt>56
+</span><span class=lnt>57
+</span><span class=lnt>58
+</span><span class=lnt>59
+</span><span class=lnt>60
+</span><span class=lnt>61
+</span><span class=lnt>62
+</span><span class=lnt>63
+</span><span class=lnt>64
+</span><span class=lnt>65
+</span><span class=lnt>66
+</span><span class=lnt>67
+</span><span class=lnt>68
+</span><span class=lnt>69
+</span><span class=lnt>70
+</span><span class=lnt>71
+</span><span class=lnt>72
+</span><span class=lnt>73
+</span><span class=lnt>74
+</span><span class=lnt>75
+</span><span class=lnt>76
+</span><span class=lnt>77
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&#34;component-definition&#34;</span><span class=p>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;uuid&#34;</span><span class=p>:</span> <span class=s2>&#34;a7ba800c-a432-44cd-9075-0862cd66da6b&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;metadata&#34;</span><span class=p>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;title&#34;</span><span class=p>:</span> <span class=s2>&#34;MongoDB Component Definition Example&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;last-modified&#34;</span><span class=p>:</span> <span class=s2>&#34;2001-12-17T09:30:47Z&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;version&#34;</span><span class=p>:</span> <span class=mi>20210507</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;oscal-version&#34;</span><span class=p>:</span> <span class=s2>&#34;1.0.0&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;roles&#34;</span><span class=p>:</span> <span class=p>[{</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;id&#34;</span><span class=p>:</span> <span class=s2>&#34;supplier&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;title&#34;</span><span class=p>:</span> <span class=s2>&#34;Supplier&#34;</span>
+</span></span><span class=line><span class=cl>      <span class=p>}],</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;parties&#34;</span><span class=p>:</span> <span class=p>[{</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;uuid&#34;</span><span class=p>:</span> <span class=s2>&#34;ef7c799a-c50e-49ab-83e0-515e989e6df1&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;type&#34;</span><span class=p>:</span> <span class=s2>&#34;organization&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;name&#34;</span><span class=p>:</span> <span class=s2>&#34;MongoDB&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;links&#34;</span><span class=p>:</span> <span class=s2>&#34;https://www.mongodb.com&#34;</span>
+</span></span><span class=line><span class=cl>      <span class=p>}]</span>
+</span></span><span class=line><span class=cl>    <span class=p>},</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;components&#34;</span><span class=p>:</span> <span class=p>[{</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;uuid&#34;</span><span class=p>:</span> <span class=s2>&#34;91f646c5-b1b6-4786-9ec3-2305a044e217&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;type&#34;</span><span class=p>:</span> <span class=s2>&#34;software&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;title&#34;</span><span class=p>:</span> <span class=s2>&#34;MongoDB&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;description&#34;</span><span class=p>:</span> <span class=s2>&#34;MongoDB is a source-available, cross-platform document-oriented database program. Classified as a NoSQL database program, MongoDB uses JSON-like documents with optional schemas.&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;purpose&#34;</span><span class=p>:</span> <span class=s2>&#34;Provides a NoSQL database service&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;responsible-roles&#34;</span><span class=p>:</span> <span class=p>[{</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;role-id&#34;</span><span class=p>:</span> <span class=s2>&#34;provider&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;party-uuid&#34;</span><span class=p>:</span> <span class=s2>&#34;ef7c799a-c50e-49ab-83e0-515e989e6df1&#34;</span>
+</span></span><span class=line><span class=cl>      <span class=p>}],</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;protocols&#34;</span><span class=p>:</span> <span class=p>[{</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;uuid&#34;</span><span class=p>:</span> <span class=s2>&#34;2b4a1b3a-cbc5-4cc8-bde6-7437c28c4e54&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;name&#34;</span><span class=p>:</span> <span class=s2>&#34;mongodb&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;title&#34;</span><span class=p>:</span> <span class=s2>&#34;Primary daemon process for the MongoDB system.&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;port-ranges&#34;</span><span class=p>:</span> <span class=p>[{</span>
+</span></span><span class=line><span class=cl>          <span class=nt>&#34;start&#34;</span><span class=p>:</span> <span class=mi>27017</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>          <span class=nt>&#34;end&#34;</span><span class=p>:</span> <span class=mi>27017</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>          <span class=nt>&#34;transport&#34;</span><span class=p>:</span> <span class=s2>&#34;TCP&#34;</span>
+</span></span><span class=line><span class=cl>        <span class=p>}]</span>
+</span></span><span class=line><span class=cl>      <span class=p>},</span>
+</span></span><span class=line><span class=cl>      <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;uuid&#34;</span><span class=p>:</span> <span class=s2>&#34;99d8d4e5-e734-4e05-a2f9-7353097b8b61&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;name&#34;</span><span class=p>:</span> <span class=s2>&#34;mongodb-shardsrv&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;title&#34;</span><span class=p>:</span> <span class=s2>&#34;MongoDB protocol for sharding with shardsrv option.&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;port-ranges&#34;</span><span class=p>:</span> <span class=p>[{</span>
+</span></span><span class=line><span class=cl>          <span class=nt>&#34;start&#34;</span><span class=p>:</span> <span class=mi>27018</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>          <span class=nt>&#34;end&#34;</span><span class=p>:</span> <span class=mi>27018</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>          <span class=nt>&#34;transport&#34;</span><span class=p>:</span> <span class=s2>&#34;TCP&#34;</span>
+</span></span><span class=line><span class=cl>        <span class=p>}]</span>
+</span></span><span class=line><span class=cl>      <span class=p>},</span>
+</span></span><span class=line><span class=cl>      <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;uuid&#34;</span><span class=p>:</span> <span class=s2>&#34;6fa762f1-09ca-44d5-a94c-cfceb57debd5&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;name&#34;</span><span class=p>:</span> <span class=s2>&#34;mongodb-configsvr&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;title&#34;</span><span class=p>:</span> <span class=s2>&#34;MongoDB protocol for configsrv operation.&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;port-ranges&#34;</span><span class=p>:</span> <span class=p>[{</span>
+</span></span><span class=line><span class=cl>          <span class=nt>&#34;start&#34;</span><span class=p>:</span> <span class=mi>27019</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>          <span class=nt>&#34;end&#34;</span><span class=p>:</span> <span class=mi>27019</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>          <span class=nt>&#34;transport&#34;</span><span class=p>:</span> <span class=s2>&#34;TCP&#34;</span>
+</span></span><span class=line><span class=cl>        <span class=p>}]</span>
+</span></span><span class=line><span class=cl>      <span class=p>}],</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;control-implementations&#34;</span><span class=p>:</span> <span class=p>[{</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;uuid&#34;</span><span class=p>:</span> <span class=s2>&#34;49f0b690-ed9f-4f32-aae0-625b77aa6d27&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;source&#34;</span><span class=p>:</span> <span class=s2>&#34;https://github.com/usnistgov/oscal-content/blob/master/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_MODERATE-baseline_profile.json&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;description&#34;</span><span class=p>:</span> <span class=s2>&#34;MongoDB control implementations for NIST SP 800-53
+</span></span></span><span class=line><span class=cl><span class=s2>          revision 5.&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;implemented-requirements&#34;</span> <span class=p>[{</span>
+</span></span><span class=line><span class=cl>          <span class=nt>&#34;uuid&#34;</span><span class=p>:</span> <span class=s2>&#34;cf8338c5-fb6e-4593-a4a8-b3c4946ee2a0&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>          <span class=nt>&#34;control-id&#34;</span><span class=p>:</span> <span class=s2>&#34;sc-8.1&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>          <span class=nt>&#34;description&#34;</span><span class=p>:</span> <span class=s2>&#34;MongoDB supports TLS 1.x to encrypt data in transit,
+</span></span></span><span class=line><span class=cl><span class=s2>            preventing unauthorized disclosure or changes to information
+</span></span></span><span class=line><span class=cl><span class=s2>            during transmission. To implement TLS, set the PEMKeyFile option
+</span></span></span><span class=line><span class=cl><span class=s2>            in the configuration file /etc/mongod.conf to the certificate
+</span></span></span><span class=line><span class=cl><span class=s2>            file&#39;s path and restart the the component.&#34;</span>
+</span></span><span class=line><span class=cl>        <span class=p>}]</span>
+</span></span><span class=line><span class=cl>      <span class=p>}]</span>
+</span></span><span class=line><span class=cl>    <span class=p>}]</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></td></tr></table></div></div></div><div id=tabs-8-yaml-tab class=hugo-tab-content-item><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span><span class=lnt>49
+</span><span class=lnt>50
+</span><span class=lnt>51
+</span><span class=lnt>52
+</span><span class=lnt>53
+</span><span class=lnt>54
+</span><span class=lnt>55
+</span><span class=lnt>56
+</span><span class=lnt>57
+</span><span class=lnt>58
+</span><span class=lnt>59
+</span><span class=lnt>60
+</span><span class=lnt>61
+</span><span class=lnt>62
+</span><span class=lnt>63
+</span><span class=lnt>64
+</span><span class=lnt>65
+</span><span class=lnt>66
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-yaml data-lang=yaml><span class=line><span class=cl><span class=nn>---</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>component-definition</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>uuid</span><span class=p>:</span><span class=w> </span><span class=l>a7ba800c-a432-44cd-9075-0862cd66da6b</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>metadata</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>title</span><span class=p>:</span><span class=w> </span><span class=l>MongoDB Component Definition Example</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>last-modified</span><span class=p>:</span><span class=w> </span><span class=s1>&#39;2001-12-17T09:30:47Z&#39;</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>version</span><span class=p>:</span><span class=w> </span><span class=m>20210507</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>oscal-version</span><span class=p>:</span><span class=w> </span><span class=m>1.0.0</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>roles</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>- <span class=nt>id</span><span class=p>:</span><span class=w> </span><span class=l>provider</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>title</span><span class=p>:</span><span class=w> </span><span class=l>Provider</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>parties</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>- <span class=nt>uuid</span><span class=p>:</span><span class=w> </span><span class=l>ef7c799a-c50e-49ab-83e0-515e989e6df1</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>type</span><span class=p>:</span><span class=w> </span><span class=l>organization</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>MongoDB</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>links</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=nt>href</span><span class=p>:</span><span class=w> </span><span class=l>&lt;https://www.mongodb.com&gt;</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>rel</span><span class=p>:</span><span class=w> </span><span class=l>website</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>components</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span>- <span class=nt>uuid</span><span class=p>:</span><span class=w> </span><span class=l>91f646c5-b1b6-4786-9ec3-2305a044e217</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>type</span><span class=p>:</span><span class=w> </span><span class=l>software</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>title</span><span class=p>:</span><span class=w> </span><span class=l>MongoDB</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>description</span><span class=p>:</span><span class=w> </span><span class=p>&gt;-</span><span class=sd>
+</span></span></span><span class=line><span class=cl><span class=sd>      MongoDB is a source-available, cross-platform document-oriented
+</span></span></span><span class=line><span class=cl><span class=sd>      database program. Classified as a NoSQL database program, MongoDB
+</span></span></span><span class=line><span class=cl><span class=sd>      uses JSON-like documents with optional schemas.</span><span class=w>      
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>purpose</span><span class=p>:</span><span class=w> </span><span class=l>Provides a NoSQL database service</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>responsible-roles</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>- <span class=nt>role-id</span><span class=p>:</span><span class=w> </span><span class=l>provider</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>party-uuid</span><span class=p>:</span><span class=w> </span><span class=l>ef7c799a-c50e-49ab-83e0-515e989e6df1</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>protocols</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>- <span class=nt>uuid</span><span class=p>:</span><span class=w> </span><span class=l>2b4a1b3a-cbc5-4cc8-bde6-7437c28c4e54</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>mongodb</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>title</span><span class=p>:</span><span class=w> </span><span class=l>Primary daemon process for the MongoDB system.</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>port-ranges</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=nt>start</span><span class=p>:</span><span class=w> </span><span class=m>27017</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>end</span><span class=p>:</span><span class=w> </span><span class=m>27017</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>transport</span><span class=p>:</span><span class=w> </span><span class=l>TCP</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>- <span class=nt>uuid</span><span class=p>:</span><span class=w> </span><span class=l>99d8d4e5-e734-4e05-a2f9-7353097b8b61</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>mongodb-shardsrv</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>title</span><span class=p>:</span><span class=w> </span><span class=l>MongoDB protocol for sharding with shardsrv option.</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>port-ranges</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=nt>start</span><span class=p>:</span><span class=w> </span><span class=m>27018</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>end</span><span class=p>:</span><span class=w> </span><span class=m>27018</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>transport</span><span class=p>:</span><span class=w> </span><span class=l>TCP</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>- <span class=nt>uuid</span><span class=p>:</span><span class=w> </span><span class=l>6fa762f1-09ca-44d5-a94c-cfceb57debd5</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>mongodb-configsvr</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>title</span><span class=p>:</span><span class=w> </span><span class=l>MongoDB protocol for configsrv operation.</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>port-ranges</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=nt>start</span><span class=p>:</span><span class=w> </span><span class=m>27019</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>end</span><span class=p>:</span><span class=w> </span><span class=m>27019</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>transport</span><span class=p>:</span><span class=w> </span><span class=l>TCP</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>control-implementations</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>- <span class=nt>uuid</span><span class=p>:</span><span class=w> </span><span class=l>49f0b690-ed9f-4f32-aae0-625b77aa6d27</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>source</span><span class=p>:</span><span class=w> </span><span class=l>&lt;https://github.com/usnistgov/oscal-content/blob/master/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_MODERATE-baseline_profile.json&gt;</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>description</span><span class=p>:</span><span class=w> </span><span class=p>&gt;-</span><span class=sd>
+</span></span></span><span class=line><span class=cl><span class=sd>        </span><span class=w>        </span><span class=l>MongoDB control implementations for NIST SP 800-53rev5.</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>implemented-requirements</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=nt>uuid</span><span class=p>:</span><span class=w> </span><span class=l>cf8338c5-fb6e-4593-a4a8-b3c4946ee2a0</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>control-id</span><span class=p>:</span><span class=w> </span><span class=l>sc-8.1</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>description</span><span class=p>:</span><span class=w> </span><span class=p>&gt;-</span><span class=sd>
+</span></span></span><span class=line><span class=cl><span class=sd>          MongoDB supports TLS 1.x to encrypt data in transit, preventing
+</span></span></span><span class=line><span class=cl><span class=sd>          unauthorized disclosure or changes to information during
+</span></span></span><span class=line><span class=cl><span class=sd>          transmission. To implement TLS, set the PEMKeyFile option in the
+</span></span></span><span class=line><span class=cl><span class=sd>          configuration file /etc/mongod.conf to the certificate file&#39;s path
+</span></span></span><span class=line><span class=cl><span class=sd>          and restart the the component.</span><span class=w>          </span></span></span></code></pre></td></tr></table></div></div></div></div></div><h2 id=summary>Summary</h2><p>This concludes the tutorial. You should now be familiar with:</p><ul><li>The basic structure of a component definition in OSCAL.</li><li>How to provide the basic metadata required in an OSCAL component definition.</li><li>How to define a component within an OSCAL component definition.</li><li>How to use the protocol elements in a component.</li><li>How to specify the control implementation for a component.</li></ul><p>For more information, you can review the OSCAL component definition model <a href=../../../../concepts/layer/implementation/component-definition/>documentation</a>.</p></article></div><nav aria-label="Table of Contents" class="toc-container usa-layout-docs__sidenav widescreen:grid-col-2 desktop:grid-col-2"><div id=js-toc></div></nav></div></div></main><p class="font-sans-sm text-center" style="margin:1.5rem auto">This page was last updated on June 28, 2023. <button id=main-improve-page onclick='window.location.href="https://github.com/usnistgov/OSCAL/tree/main/docs/content/learn/tutorials/implementation/simple-component-definition.md"' class="usa-button usa-button--accent-cool">Improve this Page</button></p><script src=https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.12.0/tocbot.min.js integrity=sha384-roIHE2HuL+PZHzo8X7MgpHu256WMUJvsKqI2GaUJY3moVp06oLtx0QvZnvZJdcCb crossorigin=anonymous referrerpolicy=no-referrer></script>
+<script type=text/javascript src=../../../../js/site.min.js integrity="sha512-BtzZp1nYKlN4EJRRqXweO0IJjK1MhKWdq+73Q5GL+j6Nun0rxc6jzNSL7lxS7LUvnPmftl6WSq6YUmcZzpeetA=="></script>
+<script type=text/javascript src=https://pages.nist.gov/leaveNotice/js/jquery.leaveNotice-nist.min.js></script>
+<script>$(document).ready(function(){$('a[href*="//"]:not([href*="pages.nist.gov"]):not([href*="www.nist.gov"]):not([href^="#"]):not([href^="/"])').addClass("usa-link usa-link--external"),$("a.usa-link--external").leaveNotice()})</script><script src=https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.3.0/anchor.min.js integrity="sha512-G2OGlm41XXw+fcgDcRPjVYEn7qCY6qiKWNqDGT37SnKh0qtRXTuKZ5/UQR0kDN0PZRNWcGExd3lAeqEH0I36bQ==" crossorigin=anonymous></script>
+<script>anchors.options={placement:"left"},anchors.add()</script><script>tocbot.init({tocSelector:"#js-toc",contentSelector:"#main-content",headingSelector:"h2,h3,h4",includeHtml:!1,collapseDepth:0,hasInnerContainers:!0,orderedList:!1,listClass:"usa-sidenav",extraLinkClasses:"usa-sidenav__item",activeLinkClass:"usa-current",headingsOffset:1,scrollSmoothOffset:0})</script></body></html>
