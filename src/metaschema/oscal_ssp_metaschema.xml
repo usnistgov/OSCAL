@@ -109,7 +109,7 @@
         <group-as name="links" in-json="ARRAY"/>
       </assembly>
       <field ref="date-authorized"/>
-      <define-field name="security-sensitivity-level" min-occurs="1">
+      <define-field name="security-sensitivity-level" min-occurs="0">
         <formal-name>Security Sensitivity Level</formal-name>
         <description>The overall information system sensitivity categorization, such as defined by <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</description>
         <remarks>
@@ -118,7 +118,7 @@
         </remarks>
       </define-field>
       <assembly ref="system-information" min-occurs="1"/>
-      <assembly ref="security-impact-level" min-occurs="1"/>
+      <assembly ref="security-impact-level" min-occurs="0"/>
       <assembly ref="status" min-occurs="1"/>
       <assembly ref="authorization-boundary" min-occurs="1"/>
       <assembly ref="network-architecture"/>
