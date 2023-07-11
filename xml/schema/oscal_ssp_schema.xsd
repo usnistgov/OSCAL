@@ -168,7 +168,7 @@
                       type="oscal-ssp-date-authorized-FIELD"
                       minOccurs="0"
                       maxOccurs="1"/>
-         <xs:element name="security-sensitivity-level" minOccurs="1" maxOccurs="1">
+         <xs:element name="security-sensitivity-level" minOccurs="0" maxOccurs="1">
             <xs:simpleType>
                <xs:annotation>
                   <xs:appinfo>
@@ -187,7 +187,7 @@
                       maxOccurs="1"/>
          <xs:element name="security-impact-level"
                       type="oscal-ssp-security-impact-level-ASSEMBLY"
-                      minOccurs="1"
+                      minOccurs="0"
                       maxOccurs="1"/>
          <xs:element name="status"
                       type="oscal-ssp-status-ASSEMBLY"
