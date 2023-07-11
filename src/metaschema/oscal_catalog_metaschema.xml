@@ -17,7 +17,6 @@
       </remarks>
       <import href="oscal_control-common_metaschema.xml"/>
       <import href="oscal_metadata_metaschema.xml"/>
-      <import href="oscal_mapping-common_metaschema.xml"/>
       <define-assembly name="catalog">
             <formal-name>Catalog</formal-name>
             <description>A structured, <a href="https://pages.nist.gov/OSCAL/concepts/terminology/#catalog">organized collection</a> of control information.</description>
@@ -212,23 +211,6 @@
                   <assembly ref="part" max-occurs="unbounded">
                         <group-as name="parts" in-json="ARRAY"/>
                   </assembly>
-                  <define-assembly name="mapping">
-                        <formal-name>Mapping</formal-name>
-                        <description>A mapping between the containing control and another
-                              resource.</description>
-                        <define-flag name="uuid" as-type="uuid" required="yes">
-                              <formal-name>Mapping Identifier</formal-name>
-                              <description>The unique identifier for the mapping.</description>
-                        </define-flag>
-                        <model>
-                              <assembly ref="mapping-resource-reference" min-occurs="1">
-                                    <use-name>target-resource</use-name>
-                              </assembly>
-                              <assembly ref="map" min-occurs="1" max-occurs="unbounded">
-                                    <group-as name="maps" in-json="ARRAY"/>
-                              </assembly>
-                        </model>
-                  </define-assembly>
                   <assembly ref="control" max-occurs="unbounded">
                         <group-as name="controls" in-json="ARRAY"/>
                   </assembly>

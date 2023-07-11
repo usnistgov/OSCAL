@@ -15,7 +15,6 @@
             <p>This format represents a combination of all of the OSCAL models.</p>
       </remarks>
       <import href="oscal_catalog_metaschema.xml"/>
-      <import href="oscal_mapping_metaschema.xml"/>
       <import href="oscal_profile_metaschema.xml"/>
       <import href="oscal_component_metaschema.xml"/>
       <import href="oscal_ssp_metaschema.xml"/>
