@@ -1,7 +1,7 @@
 
  { "$schema" : "http://json-schema.org/draft-07/schema#",
-  "$id" : "http://csrc.nist.gov/ns/oscal/1.0.6/oscal-catalog-schema.json",
-  "$comment" : "OSCAL Control Catalog Model: JSON Schema",
+  "$id" : "http://csrc.nist.gov/ns/oscal/1.0.3/oscal-mapping-schema.json",
+  "$comment" : "OSCAL Control Mapping Model: JSON Schema",
   "type" : "object",
   "definitions" : 
   { "json-schema-directive" : 
@@ -9,341 +9,60 @@
     "description" : "A JSON Schema directive to bind a specific schema to its document instance.",
     "$id" : "#json-schema-directive",
     "$ref" : "#/definitions/URIReferenceDatatype" },
-   "oscal-catalog-oscal-catalog:catalog" : 
-   { "title" : "Catalog",
-    "description" : "A structured, organized collection of control information.",
-    "$id" : "#assembly_oscal-catalog_catalog",
+   "oscal-mapping-oscal-mapping:mapping-collection" : 
+   { "title" : "Mapping Collection",
+    "description" : "A collection of relationship-based control and/or control statement mappings.",
+    "$id" : "#assembly_oscal-mapping_mapping-collection",
     "type" : "object",
     "properties" : 
     { "uuid" : 
-     { "title" : "Catalog Universally Unique Identifier",
-      "description" : "Provides a globally unique means to identify a given catalog instance.",
+     { "title" : "Mapping Collection Universally Unique Identifier",
+      "description" : "A globally unique identifier with cross-instance scope for this catalog instance. This UUID should be changed when this document is revised.",
       "$ref" : "#/definitions/UUIDDatatype" },
      "metadata" : 
      { "$ref" : "#assembly_oscal-metadata_metadata" },
-     "params" : 
-     { "type" : "array",
-      "minItems" : 1,
-      "items" : 
-      { "$ref" : "#assembly_oscal-control-common_parameter" } },
-     "controls" : 
-     { "type" : "array",
-      "minItems" : 1,
-      "items" : 
-      { "$ref" : "#assembly_oscal-catalog_control" } },
-     "groups" : 
-     { "type" : "array",
-      "minItems" : 1,
-      "items" : 
-      { "$ref" : "#assembly_oscal-catalog_group" } },
+     "mappings" : 
+     { "anyOf" : 
+      [ 
+       { "$ref" : "#assembly_oscal-mapping_mapping" },
+       
+       { "type" : "array",
+        "minItems" : 1,
+        "items" : 
+        { "$ref" : "#assembly_oscal-mapping_mapping" } } ] },
      "back-matter" : 
      { "$ref" : "#assembly_oscal-metadata_back-matter" } },
     "required" : 
     [ "uuid",
-     "metadata" ],
+     "metadata",
+     "mappings" ],
     "additionalProperties" : false },
-   "oscal-catalog-oscal-catalog:group" : 
-   { "title" : "Control Group",
-    "description" : "A group of controls, or of groups of controls.",
-    "$id" : "#assembly_oscal-catalog_group",
+   "oscal-mapping-oscal-mapping:mapping" : 
+   { "title" : "Control Mapping",
+    "description" : "A mapping between two target resources.",
+    "$id" : "#assembly_oscal-mapping_mapping",
     "type" : "object",
     "properties" : 
-    { "id" : 
-     { "title" : "Group Identifier",
-      "description" : "Identifies the group for the purpose of cross-linking within the defining instance or from other instances that reference the catalog.",
-      "$ref" : "#/definitions/TokenDatatype" },
-     "class" : 
-     { "title" : "Group Class",
-      "description" : "A textual label that provides a sub-type or characterization of the group.",
-      "$ref" : "#/definitions/TokenDatatype" },
-     "title" : 
-     { "title" : "Group Title",
-      "description" : "A name given to the group, which may be used by a tool for display and navigation.",
-      "type" : "string" },
-     "params" : 
+    { "uuid" : 
+     { "title" : "Mapping Universally Unique Identifier",
+      "description" : "A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this mapping definition elsewhere in this or other OSCAL instances. The locally defined UUID of the mapping can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same mapping across revisions of the document.",
+      "$ref" : "#/definitions/UUIDDatatype" },
+     "source-resource" : 
+     { "$ref" : "#assembly_oscal-mapping-common_mapping-resource-reference" },
+     "target-resource" : 
+     { "$ref" : "#assembly_oscal-mapping-common_mapping-resource-reference" },
+     "maps" : 
      { "type" : "array",
       "minItems" : 1,
       "items" : 
-      { "$ref" : "#assembly_oscal-control-common_parameter" } },
-     "props" : 
-     { "type" : "array",
-      "minItems" : 1,
-      "items" : 
-      { "$ref" : "#assembly_oscal-metadata_property" } },
-     "links" : 
-     { "type" : "array",
-      "minItems" : 1,
-      "items" : 
-      { "$ref" : "#assembly_oscal-metadata_link" } },
-     "parts" : 
-     { "type" : "array",
-      "minItems" : 1,
-      "items" : 
-      { "$ref" : "#assembly_oscal-control-common_part" } },
-     "groups" : 
-     { "type" : "array",
-      "minItems" : 1,
-      "items" : 
-      { "$ref" : "#assembly_oscal-catalog_group" } },
-     "controls" : 
-     { "type" : "array",
-      "minItems" : 1,
-      "items" : 
-      { "$ref" : "#assembly_oscal-catalog_control" } } },
+      { "$ref" : "#assembly_oscal-mapping-common_map" } } },
     "required" : 
-    [ "title" ],
+    [ "uuid",
+     "source-resource",
+     "target-resource",
+     "maps" ],
     "additionalProperties" : false },
-   "oscal-catalog-oscal-catalog:control" : 
-   { "title" : "Control",
-    "description" : "A structured object representing a requirement or guideline, which when implemented will reduce an aspect of risk related to an information system and its information.",
-    "$id" : "#assembly_oscal-catalog_control",
-    "type" : "object",
-    "properties" : 
-    { "id" : 
-     { "title" : "Control Identifier",
-      "description" : "Identifies a control such that it can be referenced in the defining catalog and other OSCAL instances (e.g., profiles).",
-      "$ref" : "#/definitions/TokenDatatype" },
-     "class" : 
-     { "title" : "Control Class",
-      "description" : "A textual label that provides a sub-type or characterization of the control.",
-      "$ref" : "#/definitions/TokenDatatype" },
-     "title" : 
-     { "title" : "Control Title",
-      "description" : "A name given to the control, which may be used by a tool for display and navigation.",
-      "type" : "string" },
-     "params" : 
-     { "type" : "array",
-      "minItems" : 1,
-      "items" : 
-      { "$ref" : "#assembly_oscal-control-common_parameter" } },
-     "props" : 
-     { "type" : "array",
-      "minItems" : 1,
-      "items" : 
-      { "$ref" : "#assembly_oscal-metadata_property" } },
-     "links" : 
-     { "type" : "array",
-      "minItems" : 1,
-      "items" : 
-      { "$ref" : "#assembly_oscal-metadata_link" } },
-     "parts" : 
-     { "type" : "array",
-      "minItems" : 1,
-      "items" : 
-      { "$ref" : "#assembly_oscal-control-common_part" } },
-     "mapping" : 
-     { "title" : "Mapping",
-      "description" : "A mapping between the containing control and another resource.",
-      "type" : "object",
-      "properties" : 
-      { "uuid" : 
-       { "title" : "Mapping Identifier",
-        "description" : "The unique identifier for the mapping.",
-        "$ref" : "#/definitions/UUIDDatatype" },
-       "target-resource" : 
-       { "$ref" : "#assembly_oscal-mapping-common_mapping-resource-reference" },
-       "maps" : 
-       { "type" : "array",
-        "minItems" : 1,
-        "items" : 
-        { "$ref" : "#assembly_oscal-mapping-common_map" } } },
-      "required" : 
-      [ "uuid",
-       "target-resource",
-       "maps" ],
-      "additionalProperties" : false },
-     "controls" : 
-     { "type" : "array",
-      "minItems" : 1,
-      "items" : 
-      { "$ref" : "#assembly_oscal-catalog_control" } } },
-    "required" : 
-    [ "id",
-     "title" ],
-    "additionalProperties" : false },
-   "oscal-catalog-oscal-control-common:part" : 
-   { "title" : "Part",
-    "description" : "An annotated, markup-based textual element of a control's or catalog group's definition, or a child of another part.",
-    "$id" : "#assembly_oscal-control-common_part",
-    "type" : "object",
-    "properties" : 
-    { "id" : 
-     { "title" : "Part Identifier",
-      "description" : "A unique identifier for the part.",
-      "$ref" : "#/definitions/TokenDatatype" },
-     "name" : 
-     { "title" : "Part Name",
-      "description" : "A textual label that uniquely identifies the part's semantic type, which exists in a value space qualified by the ns.",
-      "$ref" : "#/definitions/TokenDatatype" },
-     "ns" : 
-     { "title" : "Part Namespace",
-      "description" : "An optional namespace qualifying the part's name. This allows different organizations to associate distinct semantics with the same name.",
-      "$ref" : "#/definitions/URIDatatype" },
-     "class" : 
-     { "title" : "Part Class",
-      "description" : "An optional textual providing a sub-type or characterization of the part's name, or a category to which the part belongs.",
-      "$ref" : "#/definitions/TokenDatatype" },
-     "title" : 
-     { "title" : "Part Title",
-      "description" : "An optional name given to the part, which may be used by a tool for display and navigation.",
-      "type" : "string" },
-     "props" : 
-     { "type" : "array",
-      "minItems" : 1,
-      "items" : 
-      { "$ref" : "#assembly_oscal-metadata_property" } },
-     "prose" : 
-     { "title" : "Part Text",
-      "description" : "Permits multiple paragraphs, lists, tables etc.",
-      "type" : "string" },
-     "parts" : 
-     { "type" : "array",
-      "minItems" : 1,
-      "items" : 
-      { "$ref" : "#assembly_oscal-control-common_part" } },
-     "links" : 
-     { "type" : "array",
-      "minItems" : 1,
-      "items" : 
-      { "$ref" : "#assembly_oscal-metadata_link" } } },
-    "required" : 
-    [ "name" ],
-    "additionalProperties" : false },
-   "oscal-catalog-oscal-control-common:parameter" : 
-   { "title" : "Parameter",
-    "description" : "Parameters provide a mechanism for the dynamic assignment of value(s) in a control.",
-    "$id" : "#assembly_oscal-control-common_parameter",
-    "type" : "object",
-    "properties" : 
-    { "id" : 
-     { "title" : "Parameter Identifier",
-      "description" : "A unique identifier for the parameter.",
-      "$ref" : "#/definitions/TokenDatatype" },
-     "class" : 
-     { "title" : "Parameter Class",
-      "description" : "A textual label that provides a characterization of the type, purpose, use or scope of the parameter.",
-      "$ref" : "#/definitions/TokenDatatype" },
-     "depends-on" : 
-     { "title" : "Depends on",
-      "description" : "(deprecated) Another parameter invoking this one. This construct has been deprecated and should not be used.",
-      "$ref" : "#/definitions/TokenDatatype" },
-     "props" : 
-     { "type" : "array",
-      "minItems" : 1,
-      "items" : 
-      { "$ref" : "#assembly_oscal-metadata_property" } },
-     "links" : 
-     { "type" : "array",
-      "minItems" : 1,
-      "items" : 
-      { "$ref" : "#assembly_oscal-metadata_link" } },
-     "label" : 
-     { "title" : "Parameter Label",
-      "description" : "A short, placeholder name for the parameter, which can be used as a substitute for a value if no value is assigned.",
-      "type" : "string" },
-     "usage" : 
-     { "title" : "Parameter Usage Description",
-      "description" : "Describes the purpose and use of a parameter.",
-      "type" : "string" },
-     "constraints" : 
-     { "type" : "array",
-      "minItems" : 1,
-      "items" : 
-      { "$ref" : "#assembly_oscal-control-common_parameter-constraint" } },
-     "guidelines" : 
-     { "type" : "array",
-      "minItems" : 1,
-      "items" : 
-      { "$ref" : "#assembly_oscal-control-common_parameter-guideline" } },
-     "values" : 
-     { "type" : "array",
-      "minItems" : 1,
-      "items" : 
-      { "$ref" : "#field_oscal-control-common_parameter-value" } },
-     "select" : 
-     { "$ref" : "#assembly_oscal-control-common_parameter-selection" },
-     "remarks" : 
-     { "$ref" : "#field_oscal-metadata_remarks" } },
-    "required" : 
-    [ "id" ],
-    "additionalProperties" : false },
-   "oscal-catalog-oscal-control-common:parameter-constraint" : 
-   { "title" : "Constraint",
-    "description" : "A formal or informal expression of a constraint or test.",
-    "$id" : "#assembly_oscal-control-common_parameter-constraint",
-    "type" : "object",
-    "properties" : 
-    { "description" : 
-     { "title" : "Constraint Description",
-      "description" : "A textual summary of the constraint to be applied.",
-      "type" : "string" },
-     "tests" : 
-     { "type" : "array",
-      "minItems" : 1,
-      "items" : 
-      { "title" : "Constraint Test",
-       "description" : "A test expression which is expected to be evaluated by a tool.",
-       "type" : "object",
-       "properties" : 
-       { "expression" : 
-        { "title" : "Constraint test",
-         "description" : "A formal (executable) expression of a constraint.",
-         "$ref" : "#/definitions/StringDatatype" },
-        "remarks" : 
-        { "$ref" : "#field_oscal-metadata_remarks" } },
-       "required" : 
-       [ "expression" ],
-       "additionalProperties" : false } } },
-    "additionalProperties" : false },
-   "oscal-catalog-oscal-control-common:parameter-guideline" : 
-   { "title" : "Guideline",
-    "description" : "A prose statement that provides a recommendation for the use of a parameter.",
-    "$id" : "#assembly_oscal-control-common_parameter-guideline",
-    "type" : "object",
-    "properties" : 
-    { "prose" : 
-     { "title" : "Guideline Text",
-      "description" : "Prose permits multiple paragraphs, lists, tables etc.",
-      "type" : "string" } },
-    "required" : 
-    [ "prose" ],
-    "additionalProperties" : false },
-   "oscal-catalog-oscal-control-common:parameter-value" : 
-   { "title" : "Parameter Value",
-    "description" : "A parameter value or set of values.",
-    "$id" : "#field_oscal-control-common_parameter-value",
-    "$ref" : "#/definitions/StringDatatype" },
-   "oscal-catalog-oscal-control-common:parameter-selection" : 
-   { "title" : "Selection",
-    "description" : "Presenting a choice among alternatives.",
-    "$id" : "#assembly_oscal-control-common_parameter-selection",
-    "type" : "object",
-    "properties" : 
-    { "how-many" : 
-     { "title" : "Parameter Cardinality",
-      "description" : "Describes the number of selections that must occur. Without this setting, only one value should be assumed to be permitted.",
-      "allOf" : 
-      [ 
-       { "$ref" : "#/definitions/TokenDatatype" },
-       
-       { "enum" : 
-        [ "one",
-         "one-or-more" ] } ] },
-     "choice" : 
-     { "type" : "array",
-      "minItems" : 1,
-      "items" : 
-      { "title" : "Choice",
-       "description" : "A value selection among several such options.",
-       "type" : "string" } } },
-    "additionalProperties" : false },
-   "oscal-catalog-oscal-control-common:include-all" : 
-   { "title" : "Include All",
-    "description" : "Include all controls from the imported catalog or profile resources.",
-    "$id" : "#assembly_oscal-control-common_include-all",
-    "type" : "object",
-    "additionalProperties" : false },
-   "oscal-catalog-oscal-metadata:metadata" : 
+   "oscal-mapping-oscal-metadata:metadata" : 
    { "title" : "Document Metadata",
     "description" : "Provides information about the containing document, and defines concepts that are shared across the document.",
     "$id" : "#assembly_oscal-metadata_metadata",
@@ -615,22 +334,22 @@
      "version",
      "oscal-version" ],
     "additionalProperties" : false },
-   "oscal-catalog-oscal-metadata:location-uuid" : 
+   "oscal-mapping-oscal-metadata:location-uuid" : 
    { "title" : "Location Universally Unique Identifier Reference",
     "description" : "Reference to a location by UUID.",
     "$id" : "#field_oscal-metadata_location-uuid",
     "$ref" : "#/definitions/UUIDDatatype" },
-   "oscal-catalog-oscal-metadata:party-uuid" : 
+   "oscal-mapping-oscal-metadata:party-uuid" : 
    { "title" : "Party Universally Unique Identifier Reference",
     "description" : "Reference to a party by UUID.",
     "$id" : "#field_oscal-metadata_party-uuid",
     "$ref" : "#/definitions/UUIDDatatype" },
-   "oscal-catalog-oscal-metadata:role-id" : 
+   "oscal-mapping-oscal-metadata:role-id" : 
    { "title" : "Role Identifier Reference",
     "description" : "Reference to a role by UUID.",
     "$id" : "#field_oscal-metadata_role-id",
     "$ref" : "#/definitions/TokenDatatype" },
-   "oscal-catalog-oscal-metadata:back-matter" : 
+   "oscal-mapping-oscal-metadata:back-matter" : 
    { "title" : "Back matter",
     "description" : "A collection of resources that may be referenced from within the OSCAL document instance.",
     "$id" : "#assembly_oscal-metadata_back-matter",
@@ -736,7 +455,7 @@
        [ "uuid" ],
        "additionalProperties" : false } } },
     "additionalProperties" : false },
-   "oscal-catalog-oscal-metadata:property" : 
+   "oscal-mapping-oscal-metadata:property" : 
    { "title" : "Property",
     "description" : "An attribute, characteristic, or quality of the containing object expressed as a namespace qualified name/value pair.",
     "$id" : "#assembly_oscal-metadata_property",
@@ -772,7 +491,7 @@
     [ "name",
      "value" ],
     "additionalProperties" : false },
-   "oscal-catalog-oscal-metadata:link" : 
+   "oscal-mapping-oscal-metadata:link" : 
    { "title" : "Link",
     "description" : "A reference to a local or remote resource, that has a specific relation to the containing object.",
     "$id" : "#assembly_oscal-metadata_link",
@@ -806,7 +525,7 @@
     "required" : 
     [ "href" ],
     "additionalProperties" : false },
-   "oscal-catalog-oscal-metadata:responsible-party" : 
+   "oscal-mapping-oscal-metadata:responsible-party" : 
    { "title" : "Responsible Party",
     "description" : "A reference to a set of persons and/or organizations that have responsibility for performing the referenced role in the context of the containing object.",
     "$id" : "#assembly_oscal-metadata_responsible-party",
@@ -837,7 +556,7 @@
     [ "role-id",
      "party-uuids" ],
     "additionalProperties" : false },
-   "oscal-catalog-oscal-metadata:action" : 
+   "oscal-mapping-oscal-metadata:action" : 
    { "title" : "Action",
     "description" : "An action applied by a role within a given party to the content.",
     "$id" : "#assembly_oscal-metadata_action",
@@ -881,7 +600,7 @@
      "type",
      "system" ],
     "additionalProperties" : false },
-   "oscal-catalog-oscal-metadata:responsible-role" : 
+   "oscal-mapping-oscal-metadata:responsible-role" : 
    { "title" : "Responsible Role",
     "description" : "A reference to a role with responsibility for performing a function relative to the containing object, optionally associated with a set of persons and/or organizations that perform that role.",
     "$id" : "#assembly_oscal-metadata_responsible-role",
@@ -911,7 +630,7 @@
     "required" : 
     [ "role-id" ],
     "additionalProperties" : false },
-   "oscal-catalog-oscal-metadata:hash" : 
+   "oscal-mapping-oscal-metadata:hash" : 
    { "title" : "Hash",
     "description" : "A representation of a cryptographic digest generated over a resource using a specified hash algorithm.",
     "$id" : "#field_oscal-metadata_hash",
@@ -939,37 +658,37 @@
     [ "value",
      "algorithm" ],
     "additionalProperties" : false },
-   "oscal-catalog-oscal-metadata:remarks" : 
+   "oscal-mapping-oscal-metadata:remarks" : 
    { "title" : "Remarks",
     "description" : "Additional commentary about the containing object.",
     "$id" : "#field_oscal-metadata_remarks",
     "type" : "string" },
-   "oscal-catalog-oscal-metadata:published" : 
+   "oscal-mapping-oscal-metadata:published" : 
    { "title" : "Publication Timestamp",
     "description" : "The date and time the document was last made available.",
     "$id" : "#field_oscal-metadata_published",
     "$ref" : "#/definitions/DateTimeWithTimezoneDatatype" },
-   "oscal-catalog-oscal-metadata:last-modified" : 
+   "oscal-mapping-oscal-metadata:last-modified" : 
    { "title" : "Last Modified Timestamp",
     "description" : "The date and time the document was last stored for later retrieval.",
     "$id" : "#field_oscal-metadata_last-modified",
     "$ref" : "#/definitions/DateTimeWithTimezoneDatatype" },
-   "oscal-catalog-oscal-metadata:version" : 
+   "oscal-mapping-oscal-metadata:version" : 
    { "title" : "Document Version",
     "description" : "Used to distinguish a specific revision of an OSCAL document from other previous and future versions.",
     "$id" : "#field_oscal-metadata_version",
     "$ref" : "#/definitions/StringDatatype" },
-   "oscal-catalog-oscal-metadata:oscal-version" : 
+   "oscal-mapping-oscal-metadata:oscal-version" : 
    { "title" : "OSCAL Version",
     "description" : "The OSCAL model version the document was authored against and will conform to as valid.",
     "$id" : "#field_oscal-metadata_oscal-version",
     "$ref" : "#/definitions/StringDatatype" },
-   "oscal-catalog-oscal-metadata:email-address" : 
+   "oscal-mapping-oscal-metadata:email-address" : 
    { "title" : "Email Address",
     "description" : "An email address as defined by RFC 5322 Section 3.4.1.",
     "$id" : "#field_oscal-metadata_email-address",
     "$ref" : "#/definitions/EmailAddressDatatype" },
-   "oscal-catalog-oscal-metadata:telephone-number" : 
+   "oscal-mapping-oscal-metadata:telephone-number" : 
    { "title" : "Telephone Number",
     "description" : "A telephone service number as defined by ITU-T E.164.",
     "$id" : "#field_oscal-metadata_telephone-number",
@@ -991,7 +710,7 @@
     "required" : 
     [ "number" ],
     "additionalProperties" : false },
-   "oscal-catalog-oscal-metadata:address" : 
+   "oscal-mapping-oscal-metadata:address" : 
    { "title" : "Address",
     "description" : "A postal address for the location.",
     "$id" : "#assembly_oscal-metadata_address",
@@ -1029,12 +748,12 @@
       "description" : "The ISO 3166-1 alpha-2 country code for the mailing address.",
       "$ref" : "#/definitions/StringDatatype" } },
     "additionalProperties" : false },
-   "oscal-catalog-oscal-metadata:addr-line" : 
+   "oscal-mapping-oscal-metadata:addr-line" : 
    { "title" : "Address line",
     "description" : "A single line of an address.",
     "$id" : "#field_oscal-metadata_addr-line",
     "$ref" : "#/definitions/StringDatatype" },
-   "oscal-catalog-oscal-metadata:document-id" : 
+   "oscal-mapping-oscal-metadata:document-id" : 
    { "title" : "Document Identifier",
     "description" : "A document identifier qualified by an identifier scheme.",
     "$id" : "#field_oscal-metadata_document-id",
@@ -1054,7 +773,7 @@
     "required" : 
     [ "identifier" ],
     "additionalProperties" : false },
-   "oscal-catalog-oscal-mapping-common:map" : 
+   "oscal-mapping-oscal-mapping-common:map" : 
    { "title" : "Mapping Entry",
     "description" : "A relationship-based mapping between a source and target set consisting of members (i.e., controls, control statements) from the respective source and target.",
     "$id" : "#assembly_oscal-mapping-common_map",
@@ -1106,7 +825,7 @@
      "sources",
      "targets" ],
     "additionalProperties" : false },
-   "oscal-catalog-oscal-mapping-common:mapping-item" : 
+   "oscal-mapping-oscal-mapping-common:mapping-item" : 
    { "title" : "Mapping Entry Item (source or target)",
     "description" : "Identifies a specific edge within a source or target that is the subject of a mapping.",
     "$id" : "#assembly_oscal-mapping-common_mapping-item",
@@ -1142,7 +861,7 @@
     [ "type",
      "id-ref" ],
     "additionalProperties" : false },
-   "oscal-catalog-oscal-mapping-common:mapping-resource-reference" : 
+   "oscal-mapping-oscal-mapping-common:mapping-resource-reference" : 
    { "title" : "Mapped Resource Reference",
     "description" : "A reference to a resource that is either the source or target of a mapping.",
     "$id" : "#assembly_oscal-mapping-common_mapping-resource-reference",
@@ -1220,8 +939,8 @@
   "properties" : 
   { "$schema" : 
    { "$ref" : "#json-schema-directive" },
-   "catalog" : 
-   { "$ref" : "#assembly_oscal-catalog_catalog" } },
+   "mapping-collection" : 
+   { "$ref" : "#assembly_oscal-mapping_mapping-collection" } },
   "required" : 
-  [ "catalog" ],
+  [ "mapping-collection" ],
   "additionalProperties" : false }
