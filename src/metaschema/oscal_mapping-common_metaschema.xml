@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../build/metaschema/toolchains/xslt-M4/validate/metaschema-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/toolchains/xslt-M4/validate/metaschema.xsd" abstract="yes">
+    <schema-name>OSCAL Mapping Model -- Common Models</schema-name>
+    <schema-version>1.0.0</schema-version>
+    <short-name>oscal-mapping-common</short-name>
+    <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
+    <json-base-uri>http://csrc.nist.gov/ns/oscal</json-base-uri>
+
+    <import href="oscal_metadata_metaschema.xml"/>
+
+    <define-assembly name="map">
+        <formal-name>Mapping Entry</formal-name>
+        <description>A relationship-based mapping between a source and target set consisting of members (i.e., controls, control statements) from the respective source and target.</description>
+        <define-flag name="uuid" as-type="uuid" required="yes">
+            <formal-name>Mapping Entry Identifier</formal-name>
+            <description>The unique identifier for the mapping entry.</description>
+        </define-flag>
+        <model>
+            <assembly ref="property" max-occurs="unbounded">
+                <group-as name="props" in-json="ARRAY"/>
+            </assembly>
+            <assembly ref="link" max-occurs="unbounded">
+                <group-as name="links" in-json="ARRAY"/>
+            </assembly>
+            <define-field name="relationship" as-type="token" min-occurs="1">
+                <formal-name>Mapping Entry Relationship</formal-name>
+                <description>The relationship type for the mapping entry, which describes the relationship between the effective requirements of the specified source and target sets.</description>
+                <json-value-key>type</json-value-key>
+                <define-flag name="ns" as-type="uri" default="http://csrc.nist.gov/ns/oscal">
+                    <formal-name>Relationship Value Namespace</formal-name>
+                    <description>A namespace qualifying the relationship's value. This allows different organizations to associate distinct semantics for relationships with the same name.</description>
+                    <remarks>
+                        <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                        <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
+                    </remarks>
+                </define-flag>
+                <constraint>
+                    <allowed-values target=".[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]">
+                        <enum value="equivalent-to">The effective requirements of the source is equivalent in semantic meaning to the effective requirements of the target. The words may differ, but both mapped sets convey similar information with the same effective meaning. This relationship may be reversed, since `A equivalent-to B` also means that `B equivalent-to A`.</enum>
+                        <enum value="equal-to">The actual requirements of the source are the same as the actual requirements target. Differences in capitalization, spelling, and grammar can be ignored, if these differences do not change the meaning. This relationship may be reversed, since `A equal-to B` also means that `B equal-to A`.</enum>
+                        <enum value="subset-of">The effective requirements of the source is a semantic subset of the effective requirements of the target. This relationship may be reversed as a `superset-of`, since `A subset-of B` also means that `B superset-of A`.</enum>
+                        <enum value="superset-of">The effective requirements of the source is a semantic superset of the effective requirements of the target. This relationship may be reversed as a `subset-of`, since `A superset-of B` also means that `B subset-of A`.</enum>
+                        <enum value="intersects-with">The effective requirements of the source and target have some semantic equivalence, but not all effective requirements from each are contained within the other. This relationship may be reversed, since `A intersects-with B` also means that `B intersects-with A`. A lower granularity mapping, such as a statement level mapping using 'equivalent-to', 'subset-of', and/or 'superset-of', may provide a more functional mapping that allows for more inference than using this relationship type.</enum>
+                    </allowed-values>
+                </constraint>
+                <remarks>
+                    <p>When establishing relationships, mapping SHOULD be done at the control statement level where possible. This approach allows for more use of 'equivalent-to', which represents a stronger relationship than the other relationship types.</p>
+                </remarks>
+            </define-field>
+            <assembly ref="mapping-item" min-occurs="1" max-occurs="unbounded">
+                <use-name>source</use-name>
+                <group-as name="sources" in-json="ARRAY"/>
+            </assembly>
+            <assembly ref="mapping-item" min-occurs="1" max-occurs="unbounded">
+                <use-name>target</use-name>
+                <group-as name="targets" in-json="ARRAY"/>
+            </assembly>
+            <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
+        </model>
+    </define-assembly>
+    <define-assembly name="mapping-item">
+        <formal-name>Mapping Entry Item (source or target)</formal-name>
+        <description>Identifies a specific edge within a source or target that is the subject of a mapping.</description>
+        <define-flag name="type" as-type="token" required="yes">
+            <formal-name>Subject Type</formal-name>
+            <description>The semantic type of the subject.</description>
+            <constraint>
+                <allowed-values>
+                    <enum value="control">A control as <a href="https://pages.nist.gov/OSCAL/concepts/terminology/#control">defined</a> by OSCAL.</enum>
+                    <enum value="statement">A textual element of a control that defines part of the control's requirements.</enum>
+                </allowed-values>
+            </constraint>
+        </define-flag>
+        <define-flag name="id-ref" as-type="string" required="yes">
+            <formal-name>Subject Identifier Reference</formal-name>
+            <description>A reference to an identified subject that is of the specified <code>type</code>.</description>
+        </define-flag>
+        <model>
+            <assembly ref="property" max-occurs="unbounded">
+                <group-as name="props" in-json="ARRAY"/>
+            </assembly>
+            <assembly ref="link" max-occurs="unbounded">
+                <group-as name="links" in-json="ARRAY"/>
+            </assembly>
+            <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
+        </model>
+    </define-assembly>
+
+    <define-assembly name="mapping-resource-reference">
+        <formal-name>Mapped Resource Reference</formal-name>
+        <description>A reference to a resource that is either the source or target of a mapping.</description>
+        <define-flag name="type" as-type="token" required="yes">
+            <formal-name>Resource Type</formal-name>
+            <description>The semantic type of the resource.</description>
+            <constraint>
+                <allowed-values>
+                    <enum value="catalog">The mapped resource is a control catalog.</enum>
+                </allowed-values>
+            </constraint>
+        </define-flag>
+        <define-flag name="href" as-type="uri-reference" required="yes">
+            <formal-name>Catalog or Profile Reference</formal-name>
+            <description>A resolvable URL reference to the base catalog or profile that this profile is tailoring.</description>
+            <remarks>
+                <p>This value may be one of:</p>
+                <ol>
+                    <li>an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
+                    <li>a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing document, or</li>
+                    <li>a bare URI fragment (i.e., `#uuid`) pointing to a <code>back-matter</code> resource in this or an imported document (see <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>).</li>
+                </ol>
+            </remarks>
+        </define-flag>
+        <model>
+            <assembly ref="property" max-occurs="unbounded">
+                <group-as name="props" in-json="ARRAY"/>
+            </assembly>
+            <assembly ref="link" max-occurs="unbounded">
+                <group-as name="links" in-json="ARRAY"/>
+            </assembly>
+            <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
+        </model>
+    </define-assembly>
+</METASCHEMA>
