@@ -21,10 +21,10 @@ jobs:
     uses: ./.github/workflows/workflow-generate-metaschema-resources.yml
     with:
       commit_resources: false
-  push-metaschema-artifacts:
-    if: github.event_name == 'push'
-    uses: ./.github/workflows/workflow-generate-metaschema-resources.yml
-    with:
-      commit_resources: true
-    secrets:
-      access_token: ${{ secrets.COMMIT_TOKEN }}
+  # push-metaschema-artifacts:
+  #   if: github.event_name == 'push'
+  #   uses: ./.github/workflows/workflow-generate-metaschema-resources.yml
+  #   with:
+  #     commit_resources: true
+  #   secrets:
+  #     access_token: ${{ secrets.COMMIT_TOKEN }}
