@@ -130,8 +130,6 @@ jobs:
         path: |
           ${{ runner.temp }}/metaschema-artifacts.zip
         retention-days: 5
-<<<<<<< HEAD
-<<<<<<< HEAD
     - uses: actions/upload-artifact@0b7f8abb1508181956e8e162db84b466c27e18ce
       if: always()
       with:
@@ -153,9 +151,6 @@ jobs:
         commit_user_email: oscal@nist.gov
         commit_author: OSCAL GitHub Actions Bot <oscal@nist.gov>
         commit_message: Publishing generated metaschema resources [ci skip]
-=======
-=======
->>>>>>> bf9b66c07 (Adjustment of OSCAL project to support multi-repository approach)
     # Turning this off since the plan would be to publish the schemas and convertors, but not store in the project source.
     # # Store Built Artifacts
     # # ---------------
@@ -171,7 +166,4 @@ jobs:
     #     commit_user_email: oscal@nist.gov
     #     commit_author: OSCAL GitHub Actions Bot <oscal@nist.gov>
     #     commit_message: Publishing generated metaschema resources [ci skip]
-<<<<<<< HEAD
->>>>>>> 5d5b1c311 (Adjustment of OSCAL project to support multi-repository approach)
-=======
->>>>>>> bf9b66c07 (Adjustment of OSCAL project to support multi-repository approach)
+
