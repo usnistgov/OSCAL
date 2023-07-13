@@ -5,11 +5,11 @@
             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             elementFormDefault="qualified"
             targetNamespace="http://csrc.nist.gov/ns/oscal/1.0"
-            version="1.0.3">
+            version="1.0.6">
    <xs:annotation>
       <xs:appinfo>
          <m:schema-name>OSCAL Control Mapping Model</m:schema-name>
-         <m:schema-version>1.0.3</m:schema-version>
+         <m:schema-version>1.0.6</m:schema-version>
          <m:short-name>oscal-mapping</m:short-name>
          <m:remarks>
             <p>The OSCAL Control mapping format can be used to describe how a collection of security controls and related control enhancements relate to another collection of controls. The root of the Control Catalog format is <code>mapping-collection</code>. </p>
