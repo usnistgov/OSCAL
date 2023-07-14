@@ -2,18 +2,8 @@ name: Validate Repo Markdown
 on:
   workflow_call:
     inputs:
-      ignorePattern:
-        description: 'a pattern provided to grep for files/directories to ignore'
-        required: false
-        default: '^docs/'
-        type: string
-      markdownLinkCheckConfig:
-        description: 'the path to the markdown link check config file'
-        required: false
-        default: 'build/config/.markdown-link-check/config.json'
-        type: string
       create_issue:
-        description: 'create new GitHub issue if broken links found'
+        description: "create new GitHub issue if broken links found"
         required: false
         default: false
         type: boolean
@@ -22,49 +12,26 @@ jobs:
     name: Validate Repo Markdown
     runs-on: ubuntu-20.04
     steps:
-    # use this for pulls where checkout is anonymous
-    - uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c
-      with:
-        submodules: recursive
-    # Setup runtime environment
-    # -------------------------
-    - name: Set up NodeJS
-      uses: actions/setup-node@64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c
-      with:
-        node-version-file: 'build/.nvmrc'
-        cache: 'npm'
-        cache-dependency-path: '**/package-lock.json'
-    - name: Setup Dependencies
-      run: |
-        # NodeJS
-        cd "${{ github.workspace }}/build"
-        # If you are a developer and need to modify the workflow, be sure to review
-        # the package.json and package-lock.json to ensure the following deps are
-        # at least installed (they will be updated by dependabot):
-        # - ajv-cli
-        # - ajv-formats
-        # - markdown-link-check
-        # - yaml-convert
-        npm install --loglevel verbose
-        echo "$PWD/node_modules/.bin/" >> $GITHUB_PATH
-    # Build Artifacts
-    # ---------------
-    - name: Validate repo Markdown content instances
-      run: |
-        # this command will filter out any docs Markdown files, which are checked in a different job
-        git ls-files "*.md" -z | \
-        grep --null-data -v "${{ inputs.ignorePattern }}" | \
-        xargs -0 markdown-link-check -c "${{ inputs.markdownLinkCheckConfig }}" | \
-        tee mlc_report.log
-        # Exit code of xargs and markdown-link-check, not git or grep or tee pipe elements
-        exit ${PIPESTATUS[2]}
-      id: linkchecker
-    - name: Create issue if bad links detected in repo
-      if: failure() && inputs.create_issue == true
-      uses: peter-evans/create-issue-from-file@433e51abf769039ee20ba1293a088ca19d573b7f # v3.0.0
-      with:
-        title: Scheduled Check of Markdown Documents Found Bad Hyperlinks
-        content-filepath: mlc_report.log
-        labels: |
-          bug
-          Scope: Documentation
+      - uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c
+        with:
+          submodules: recursive
+      - name: Set up NodeJS
+        uses: actions/setup-node@64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c
+        with:
+          node-version-file: "build/.nvmrc"
+          cache: "npm"
+          cache-dependency-path: "build/package-lock.json"
+      - name: Perform link checking
+        run: |
+          make linkcheck
+        working-directory: build
+        id: linkchecker
+      - name: Create issue if bad links detected in repo
+        if: failure() && inputs.create_issue == true
+        uses: peter-evans/create-issue-from-file@433e51abf769039ee20ba1293a088ca19d573b7f # v3.0.0
+        with:
+          title: Scheduled Check of Markdown Documents Found Bad Hyperlinks
+          content-filepath: mlc_report.log
+          labels: |
+            bug
+            Scope: Documentation
