@@ -17,7 +17,7 @@ all: artifacts checks ## Run all pipelines
 artifacts: schemas ## Generate all artifacts
 
 .PHONY: checks
-checks: linkcheck ## Run all tests and checks
+checks: linkcheck validate ## Run all tests and checks
 
 .PHONY: dependencies
 dependencies: node_modules ## Ensure dependencies have been installed
@@ -34,9 +34,6 @@ SRC_DIR:=../src/metaschema
 METASCHEMAS:=$(shell find $(SRC_DIR) -name '*_metaschema.xml' -a ! -name '*common*' -a ! -name '*metadata*')
 GENERATED_DIR:=generated
 
-$(GENERATED_DIR):
-	mkdir -p $(GENERATED_DIR)
-
 #####################
 # Schema Generation #
 #####################
@@ -44,13 +41,12 @@ $(GENERATED_DIR):
 XSD_OUTPUTS:=$(patsubst $(SRC_DIR)/%_metaschema.xml,$(GENERATED_DIR)/%_schema.xsd,$(METASCHEMAS))
 JSONSCHEMA_OUTPUTS:=$(patsubst $(SRC_DIR)/%_metaschema.xml,$(GENERATED_DIR)/%_schema.json,$(METASCHEMAS))
 
-# Note: dependants should specify the json or the xsd schemas, not both.
-# 	If both are specified the command will run twice.
-$(GENERATED_DIR)/%_schema.json $(GENERATED_DIR)/%_schema.xsd: $(GENERATED_DIR) $(SRC_DIR)/%_metaschema.xml
+$(GENERATED_DIR)/%_schema.json $(GENERATED_DIR)/%_schema.xsd: $(SRC_DIR)/%_metaschema.xml
+	@mkdir -p $(GENERATED_DIR)
 	$(METASCHEMA_XSLT_COMMAND) schema-gen $(SRC_DIR)/$*_metaschema.xml $(GENERATED_DIR) $*
 
 .PHONY: schemas
-schemas: $(XSD_OUTPUTS) ## Generate the schemas
+schemas: $(XSD_OUTPUTS) $(JSONSCHEMA_OUTPUTS) ## Generate the schemas
 
 .PHONY: clean-schemas
 clean-schemas: ## Remove generated schemas
@@ -72,7 +68,8 @@ linkcheck: $(LINKCHECK_OUTPUT) ## Perform Markdown link checking
 # 3. Pass the files as an argument to the markdown link checker
 # 4. Write the log to a file
 # 5. Exit with a failure if any of the link checker invocations failed
-$(LINKCHECK_OUTPUT): node_modules $(GENERATED_DIR)
+$(LINKCHECK_OUTPUT): node_modules
+	@mkdir -p $(GENERATED_DIR)
 	@echo Checking Markdown links...
 	cd ..; git ls-files -z "*.md" | \
 		xargs -0 npx --prefix build/ markdown-link-check -c build/$(LINKCHECK_CONFIG) | \
@@ -82,3 +79,20 @@ $(LINKCHECK_OUTPUT): node_modules $(GENERATED_DIR)
 .PHONY: clean-linkcheck
 clean-linkcheck: ## Remove linkcheck log
 	rm -fr $(LINKCHECK_OUTPUT)
+
+#######################
+# Artifact Validation #
+#######################
+
+.PHONY: validate
+validate: validate-jsonschemas validate-xsds ## Validate all generated content
+
+.PHONY: validate-jsonschemas
+validate-jsonschemas: $(JSONSCHEMA_OUTPUTS) ## Validate generated JSON Schemas
+	@echo Validating generated JSON Schemas
+	npx ajv compile -c "ajv-formats" -s "$(GENERATED_DIR)/*_schema.json"
+
+.PHONY: validate-xsds
+validate-xsds: $(XSD_OUTPUTS) ## Validate generated XSD files
+	@echo Validting generated XSDs
+	xmllint --noout $(XSD_OUTPUTS)
