@@ -1,0 +1,30 @@
+name: Package Release
+on:
+  push:
+    tags:
+      - v*
+jobs:
+  package-release:
+    name: Package Release
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c
+        with:
+          submodules: recursive
+      - uses: actions/setup-java@v3
+        with:
+          distribution: "temurin"
+          java-version: "17"
+      - name: Generate artifacts
+        run: |
+          make artifacts
+        working-directory: build
+      - name: Create release
+        uses: softprops/action-gh-release@v1
+        with:
+          token: ${{ secrets.COMMIT_TOKEN }}
+          draft: true
+          generate_release_notes: true
+          fail_on_unmatched_files: true
+          files: |
+            build/generated/oscal_*

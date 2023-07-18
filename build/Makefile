@@ -11,7 +11,13 @@ help: ## Show this help message
 	{ printf "\033[32m%-30s\033[0m %s\n", $$1, $$2 }'
 
 .PHONY: all
-all: schemas linkcheck ## Run all pipelines
+all: artifacts checks ## Run all pipelines
+
+.PHONY: artifacts
+artifacts: schemas ## Generate all artifacts
+
+.PHONY: checks
+checks: linkcheck ## Run all tests and checks
 
 .PHONY: dependencies
 dependencies: node_modules ## Ensure dependencies have been installed
@@ -60,12 +66,14 @@ LINKCHECK_CONFIG:=markdown-link-check.json
 .PHONY: linkcheck
 linkcheck: $(LINKCHECK_OUTPUT) ## Perform Markdown link checking
 
+# WARNING: will fail if locally deleted markdown files are not staged.
 # 1. cd into the parent directory
 # 2. list all markdown files known to git
 # 3. Pass the files as an argument to the markdown link checker
 # 4. Write the log to a file
 # 5. Exit with a failure if any of the link checker invocations failed
 $(LINKCHECK_OUTPUT): node_modules $(GENERATED_DIR)
+	@echo Checking Markdown links...
 	cd ..; git ls-files -z "*.md" | \
 		xargs -0 npx --prefix build/ markdown-link-check -c build/$(LINKCHECK_CONFIG) | \
 		tee build/$(LINKCHECK_OUTPUT); \
