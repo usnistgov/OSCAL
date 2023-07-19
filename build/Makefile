@@ -14,10 +14,10 @@ help: ## Show this help message
 all: artifacts checks ## Run all pipelines
 
 .PHONY: artifacts
-artifacts: schemas ## Generate all artifacts
+artifacts: schemas converters ## Generate all artifacts
 
 .PHONY: checks
-checks: linkcheck validate ## Run all tests and checks
+checks: linkcheck validate test-profile-resolution ## Run all tests and checks
 
 .PHONY: dependencies
 dependencies: node_modules ## Ensure dependencies have been installed
@@ -26,7 +26,7 @@ node_modules: package.json package-lock.json
 	npm ci
 
 .PHONY: clean
-clean: clean-schemas clean-linkcheck ## Remove all generated content
+clean: clean-schemas clean-linkcheck clean-converters ## Remove all generated content
 
 METASCHEMA_XSLT_COMMAND:=metaschema-xslt/bin/metaschema-xslt
 SRC_DIR:=../src/metaschema
@@ -51,6 +51,25 @@ schemas: $(XSD_OUTPUTS) $(JSONSCHEMA_OUTPUTS) ## Generate the schemas
 .PHONY: clean-schemas
 clean-schemas: ## Remove generated schemas
 	rm -fr $(GENERATED_DIR)/*_schema.*
+
+########################
+# Converter Generation #
+########################
+
+XML2JSON_CONVERTERS:=$(patsubst $(SRC_DIR)/%_metaschema.xml,$(GENERATED_DIR)/%_xml-to-json-converter.xsl,$(METASCHEMAS))
+JSON2XML_CONVERTERS:=$(patsubst $(SRC_DIR)/%_metaschema.xml,$(GENERATED_DIR)/%_json-to-xml-converter.xsl,$(METASCHEMAS))
+
+$(GENERATED_DIR)/%_xml-to-json-converter.xsl $(GENERATED_DIR)/%_json-to-xml-converter.xsl: $(SRC_DIR)/%_metaschema.xml
+	@mkdir -p $(GENERATED_DIR)
+	$(METASCHEMA_XSLT_COMMAND) converter-gen $(SRC_DIR)/$*_metaschema.xml $(GENERATED_DIR) $*
+
+.PHONY: converters
+converters: $(XML2JSON_CONVERTERS) $(JSON2XML_CONVERTERS) ## Generate the converters
+
+.PHONY: clean-converters
+clean-converters: ## Remove generated converters
+	rm -fr $(GENERATED_DIR)/*_xml-to-json-converter.xsl
+	rm -fr $(GENERATED_DIR)/*_json-to-xml-converter.xsl
 
 #######################
 # Markdown Link Check #
@@ -96,3 +115,8 @@ validate-jsonschemas: $(JSONSCHEMA_OUTPUTS) ## Validate generated JSON Schemas
 validate-xsds: $(XSD_OUTPUTS) ## Validate generated XSD files
 	@echo Validting generated XSDs
 	xmllint --noout $(XSD_OUTPUTS)
+
+.IGNORE: test-profile-resolution # TODO: fix up the profile resolution tests
+.PHONY: test-profile-resolution
+test-profile-resolution: ## Unit test the profile resolver
+	$(MAKE) -C ../src/utils/resolver-pipeline test
