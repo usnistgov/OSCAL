@@ -87,13 +87,13 @@ linkcheck: $(LINKCHECK_OUTPUT) ## Perform Markdown link checking
 # 3. Pass the files as an argument to the markdown link checker
 # 4. Write the log to a file
 # 5. Exit with a failure if any of the link checker invocations failed
-$(LINKCHECK_OUTPUT): node_modules
+$(LINKCHECK_OUTPUT): node_modules $(LINKCHECK_CONFIG)
 	@mkdir -p $(GENERATED_DIR)
 	@echo Checking Markdown links...
 	cd ..; git ls-files -z "*.md" | \
 		xargs -0 npx --prefix build/ markdown-link-check -c build/$(LINKCHECK_CONFIG) | \
 		tee build/$(LINKCHECK_OUTPUT); \
-	exit $${PIPESTATUS[2]}
+	exit $${PIPESTATUS[1]}
 
 .PHONY: clean-linkcheck
 clean-linkcheck: ## Remove linkcheck log

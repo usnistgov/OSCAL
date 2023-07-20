@@ -17,7 +17,7 @@ jobs:
           java-version: "17"
       - name: Generate artifacts
         run: |
-          make artifacts
+          make artifacts -j2
         working-directory: build
       - name: Create release
         uses: softprops/action-gh-release@v1
