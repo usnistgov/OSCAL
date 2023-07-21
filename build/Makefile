@@ -104,7 +104,7 @@ clean-linkcheck: ## Remove linkcheck log
 #######################
 
 .PHONY: validate
-validate: validate-jsonschemas validate-xsds ## Validate all generated content
+validate: validate-jsonschemas validate-xsds validate-composition ## Validate all generated content
 
 .PHONY: validate-jsonschemas
 validate-jsonschemas: $(JSONSCHEMA_OUTPUTS) ## Validate generated JSON Schemas
@@ -115,6 +115,15 @@ validate-jsonschemas: $(JSONSCHEMA_OUTPUTS) ## Validate generated JSON Schemas
 validate-xsds: $(XSD_OUTPUTS) ## Validate generated XSD files
 	@echo Validting generated XSDs
 	xmllint --noout $(XSD_OUTPUTS)
+
+VALIDATE_COMPOSITION_TARGETS:=$(patsubst $(SRC_DIR)/oscal_%_metaschema.xml,validate-composition-%,$(METASCHEMAS))
+
+.PHONY: validate-composition
+validate-composition: $(VALIDATE_COMPOSITION_TARGETS) ## Validate source metaschemas
+
+validate-composition-%:
+	@echo Performing composition validation of the $* model via schematron
+	$(METASCHEMA_XSLT_COMMAND) composition-validate $(SRC_DIR)/oscal_$*_metaschema.xml
 
 .IGNORE: test-profile-resolution # TODO: fix up the profile resolution tests
 .PHONY: test-profile-resolution
