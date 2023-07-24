@@ -8,7 +8,7 @@
 <?xml-stylesheet type="text/css" href="metaschema-author.css"?>
 <METASCHEMA xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0">
       <schema-name>OSCAL Control Catalog Model</schema-name>
-      <schema-version>1.0.6</schema-version>
+      <schema-version>1.1.0</schema-version>
       <short-name>oscal-catalog</short-name>
       <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
       <json-base-uri>http://csrc.nist.gov/ns/oscal</json-base-uri>
