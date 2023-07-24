@@ -11,7 +11,7 @@ The build tools in this directory require a Unix environment with the following 
 - [NodeJS](https://nodejs.org/en) (ensure the version matches [`.nvmrc`](./.nvmrc)): Required to perform link checking
 - [`libxml`](https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home): Provides `xmllint` which is required to validate generated XML artifacts
 
-Additionally ensure your environment has standard build tools such as `git`, [`make`](https://www.gnu.org/software/make/), and `bash`.
+Additionally ensure your environment has standard build tools such as [`git` 2.34.1 or newer](https://git-scm.com/), [`make` 4.3 or newer](https://www.gnu.org/software/make/), and [`bash` 3.2 or newer for syntax we require](https://git.savannah.gnu.org/cgit/bash.git/tree/NEWS?h=bash-3.2-beta).
 
 ## Overview
 
@@ -36,7 +36,6 @@ Developers can also generate individual artifacts using the following commands:
 
 ## Checks
 
-The OSCAL repository has 
 
 Developers can run checks using the `make checks` command.
 
