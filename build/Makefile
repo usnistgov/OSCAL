@@ -11,7 +11,7 @@ help: ## Show this help message
 	{ printf "\033[32m%-30s\033[0m %s\n", $$1, $$2 }'
 
 .PHONY: all
-all: artifacts checks ## Run all pipelines
+all: artifacts checks archives ## Run all pipelines
 
 .PHONY: artifacts
 artifacts: schemas converters ## Generate all artifacts
@@ -26,7 +26,7 @@ node_modules: package.json package-lock.json
 	npm ci
 
 .PHONY: clean
-clean: clean-schemas clean-linkcheck clean-converters ## Remove all generated content
+clean: clean-schemas clean-linkcheck clean-converters clean-archives ## Remove all generated content
 
 METASCHEMA_XSLT_COMMAND:=metaschema-xslt/bin/metaschema-xslt
 SRC_DIR:=../src/metaschema
@@ -70,6 +70,38 @@ converters: $(XML2JSON_CONVERTERS) $(JSON2XML_CONVERTERS) ## Generate the conver
 clean-converters: ## Remove generated converters
 	rm -fr $(GENERATED_DIR)/*_xml-to-json-converter.xsl
 	rm -fr $(GENERATED_DIR)/*_json-to-xml-converter.xsl
+
+######################
+# Archive Generation #
+######################
+
+RELEASE:=SNAPSHOT
+ZIP_ARCHIVE:=$(GENERATED_DIR)/oscal-$(RELEASE).zip
+TARBZ2_ARCHIVE:=$(GENERATED_DIR)/oscal-$(RELEASE).tar.bz2
+ARCHIVE_TEMP_DIR:=$(GENERATED_DIR)/archive_temp
+
+.PHONY: archives
+archives: $(ZIP_ARCHIVE) ## Archive converters and schemas
+
+$(ZIP_ARCHIVE) $(TARBZ2_ARCHIVE): converters schemas
+	@echo Generating archive
+	mkdir -p $(ARCHIVE_TEMP_DIR)/{json,xml}/{convert,schema}
+	cp ../src/release/README.txt "$(ARCHIVE_TEMP_DIR)/README.md"
+	cp $(XSD_OUTPUTS) "$(ARCHIVE_TEMP_DIR)/xml/schema"
+	cp $(JSONSCHEMA_OUTPUTS) "$(ARCHIVE_TEMP_DIR)/json/schema"
+	cp $(XML2JSON_CONVERTERS) "$(ARCHIVE_TEMP_DIR)/xml/convert"
+	cp $(JSON2XML_CONVERTERS) "$(ARCHIVE_TEMP_DIR)/json/convert"
+
+	(cd "$(ARCHIVE_TEMP_DIR)" && zip -r $(abspath $(ZIP_ARCHIVE)) .)
+	tar -jcvf "$(TARBZ2_ARCHIVE)" -C "$(ARCHIVE_TEMP_DIR)" .
+
+	@echo Removing temporary archive staging directory $(ARCHIVE_TEMP_DIR)
+	rm -fr $(ARCHIVE_TEMP_DIR)
+
+.PHONY: clean-archives
+clean-archives: ## Clean generated archive of converters and schemas
+	rm -fr $(ARCHIVE_TEMP_DIR)
+	rm -fr $(ZIP_ARCHIVE) $(TARBZ2_ARCHIVE)
 
 #######################
 # Markdown Link Check #

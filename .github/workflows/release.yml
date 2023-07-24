@@ -16,8 +16,9 @@ jobs:
           distribution: "temurin"
           java-version: "17"
       - name: Generate artifacts
+        # RELEASE is set to the tag name (vX.X.X) without the first character
         run: |
-          make artifacts -j2
+          make -j2 artifacts archives RELEASE=${GITHUB_REF_NAME:1}
         working-directory: build
       - name: Create release
         uses: softprops/action-gh-release@v1
@@ -27,4 +28,4 @@ jobs:
           generate_release_notes: true
           fail_on_unmatched_files: true
           files: |
-            build/generated/oscal_*
+            build/generated/oscal*
