@@ -1,5 +1,5 @@
 {
-  "ignorePatterns": [
+    "ignorePatterns": [
         {
             "pattern": "https://docs.github.com"
         },
@@ -9,8 +9,8 @@
         {
             "pattern": "https://help.github.com"
         }
-  ],
-  "replacementPatterns": [
+    ],
+    "replacementPatterns": [
         {
             "pattern": "^../../issues",
             "replacement": "https://github.com/usnistgov/OSCAL/issues"
