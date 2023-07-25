@@ -1,5 +1,3 @@
-[submodule "build/metaschema"]
-	path = build/metaschema
-	url = https://github.com/usnistgov/metaschema.git
-	branch = master
-	update = rebase
+[submodule "build/metaschema-xslt"]
+	path = build/metaschema-xslt
+	url = https://github.com/usnistgov/metaschema-xslt.git

@@ -1,0 +1,32 @@
+name: Periodic Checks
+on:
+  schedule:
+    - cron: "0 0 * * MON"
+    - cron: "0 0 * * THU"
+  workflow_dispatch:
+jobs:
+  linkcheck:
+    name: Validate Markdown Links
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c
+        with:
+          submodules: recursive
+      - uses: actions/setup-node@64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c
+        with:
+          node-version-file: "build/.nvmrc"
+          cache: "npm"
+          cache-dependency-path: "build/package-lock.json"
+      - name: Perform link checking
+        run: |
+          make linkcheck
+        working-directory: build
+      - name: Create an issue if bad links are detected
+        if: failure()
+        uses: peter-evans/create-issue-from-file@433e51abf769039ee20ba1293a088ca19d573b7f # v3.0.0
+        with:
+          title: Scheduled Check of Markdown Documents Found Bad Hyperlinks
+          content-filepath: build/generated/mlc_report.log
+          labels: |
+            bug
+            Scope: Documentation
