@@ -1,0 +1,635 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+    xmlns:o="http://csrc.nist.gov/ns/oscal/1.0"
+    xmlns:opr="http://csrc.nist.gov/ns/oscal/profile-resolution"
+    xmlns:ov="http://csrc.nist.gov/ns/oscal/test/variable"
+    xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    stylesheet="../../oscal-profile-resolve-merge.xsl">
+
+    <x:scenario label="Tests for match=catalog[exists(merge/custom)] priority=13 template">
+        <x:scenario label="Single import, custom structure">
+            <x:context>
+                <catalog uuid="xyz-tiny_catalog">
+                    <selection uuid="xyz-tiny_catalog_selection">
+                        <group id="x">
+                            <title>Group X of XYZ</title>
+                            <control id="x1" opr:id="xyz-tiny_catalog#x1"><title>Control X1</title></control>
+                            <control id="x2" opr:id="xyz-tiny_catalog#x2"><title>Control X2</title></control>
+                            <control id="x3" opr:id="xyz-tiny_catalog#x3"><title>Control X3</title></control>
+                        </group>
+                        <group id="y">
+                            <title>Group Y of XYZ</title>
+                            <control id="y1" opr:id="xyz-tiny_catalog#y1"><title>Control Y1</title></control>
+                            <control id="y2" opr:id="xyz-tiny_catalog#y2"><title>Control Y2</title></control>
+                            <control id="y3" opr:id="xyz-tiny_catalog#y3"><title>Control Y3</title></control>
+                        </group>
+                        <group id="z">
+                            <title>Group Z of XYZ</title>
+                            <control id="z1" opr:id="xyz-tiny_catalog#z1"><title>Control Z1</title></control>
+                            <control id="z2" opr:id="xyz-tiny_catalog#z2"><title>Control Z2</title></control>
+                            <control id="z3" opr:id="xyz-tiny_catalog#z3"><title>Control Z3</title>
+                                <control id="z3.a" opr:id="xyz-tiny_catalog#z3.a"><title>Control Z3-A</title>
+                                    <control id="z3.a-1" opr:id="xyz-tiny_catalog#z3.a-1">
+                                        <title>Control Z3-A-1</title></control>
+                                </control>
+                            </control>
+                        </group>
+                    </selection>
+                    <merge>
+                        <custom>
+                            <group id="g1">
+                                <title>New Group 1</title>
+                                <insert-controls>
+                                    <include-controls>
+                                        <with-id>x1</with-id>
+                                        <with-id>y1</with-id>
+                                        <with-id>z1</with-id>
+                                    </include-controls>
+                                </insert-controls>
+                            </group>
+                            <group id="g2">
+                                <title>New Group 2</title>
+                                <insert-controls>
+                                    <include-controls>
+                                        <with-id>x2</with-id>
+                                        <with-id>y2</with-id>
+                                        <with-id>z2</with-id>
+                                    </include-controls>
+                                </insert-controls>
+                            </group>
+                        </custom>
+                    </merge>
+                </catalog>
+            </x:context>
+            <x:expect label="Catalog with its attributes, and result of processing merge/custom">
+                <catalog uuid="xyz-tiny_catalog">
+                    <group id="g1">...</group>
+                    <group id="g2">...</group>
+                </catalog>
+            </x:expect>
+        </x:scenario>
+    </x:scenario>
+
+    <x:scenario label="Tests for match=custom mode=o:custom-merge template">
+        <x:scenario label="Basic structure">
+            <x:context mode="o:custom-merge">
+                <custom>
+                    <foo/>
+                </custom>
+            </x:context>
+            <x:expect label="Processed child without custom wrapper tags">
+                <foo/>
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="Test behavior of custom groups">
+            <x:scenario label="Single import with groups, merged into custom groups">
+                <x:context mode="o:custom-merge" select="//o:custom">
+                    <catalog uuid="xyz-tiny_catalog">
+                        <selection uuid="xyz-tiny_catalog_selection">
+                            <group id="x">
+                                <title>Group X of XYZ</title>
+                                <control id="x1" opr:id="xyz-tiny_catalog#x1"><title>Control X1</title></control>
+                                <control id="x2" opr:id="xyz-tiny_catalog#x2"><title>Control X2</title></control>
+                                <control id="x3" opr:id="xyz-tiny_catalog#x3"><title>Control X3</title></control>
+                            </group>
+                            <group id="y">
+                                <title>Group Y of XYZ</title>
+                                <control id="y1" opr:id="xyz-tiny_catalog#y1"><title>Control Y1</title></control>
+                                <control id="y2" opr:id="xyz-tiny_catalog#y2"><title>Control Y2</title></control>
+                                <control id="y3" opr:id="xyz-tiny_catalog#y3"><title>Control Y3</title></control>
+                            </group>
+                            <group id="z">
+                                <title>Group Z of XYZ</title>
+                                <control id="z1" opr:id="xyz-tiny_catalog#z1"><title>Control Z1</title></control>
+                                <control id="z2" opr:id="xyz-tiny_catalog#z2"><title>Control Z2</title></control>
+                                <control id="z3" opr:id="xyz-tiny_catalog#z3"><title>Control Z3</title>
+                                    <control id="z3.a" opr:id="xyz-tiny_catalog#z3.a"><title>Control Z3-A</title>
+                                        <control id="z3.a-1" opr:id="xyz-tiny_catalog#z3.a-1">
+                                            <title>Control Z3-A-1</title></control>
+                                    </control>
+                                </control>
+                            </group>
+                        </selection>
+                        <merge>
+                            <custom>
+                                <group id="g1">
+                                    <title>New Group 1</title>
+                                    <insert-controls>
+                                        <include-controls>
+                                            <with-id>x1</with-id>
+                                            <with-id>y1</with-id>
+                                            <with-id>z1</with-id>
+                                        </include-controls>
+                                    </insert-controls>
+                                </group>
+                                <group id="g2">
+                                    <title>New Group 2</title>
+                                    <insert-controls>
+                                        <include-controls>
+                                            <with-id>x2</with-id>
+                                            <with-id>y2</with-id>
+                                            <with-id>z2</with-id>
+                                        </include-controls>
+                                    </insert-controls>
+                                </group>
+                            </custom>
+                        </merge>
+                    </catalog>
+                </x:context>
+                <x:expect label="New groups for XYZ 1 and 2">
+                    <group id="g1">
+                        <title>New Group 1</title>
+                        <control id="x1"><title>Control X1</title></control>
+                        <control id="y1"><title>Control Y1</title></control>
+                        <control id="z1"><title>Control Z1</title></control>
+                    </group>
+                    <group id="g2">
+                        <title>New Group 2</title>
+                        <control id="x2"><title>Control X2</title></control>
+                        <control id="y2"><title>Control Y2</title></control>
+                        <control id="z2"><title>Control Z2</title></control>
+                    </group>
+                </x:expect>
+            </x:scenario>
+            <x:scenario label="Multiple imports with different group structure">
+                <x:context mode="o:custom-merge" select="//o:custom">
+                    <catalog uuid="xyz-tiny_catalog">
+                        <selection uuid="x_selection">
+                            <group id="x">
+                                <title>Group X of XYZ</title>
+                                <control id="x1" opr:id="xyz-tiny_catalog#x1"><title>Control X1</title></control>
+                                <control id="x2" opr:id="xyz-tiny_catalog#x2"><title>Control X2</title></control>
+                                <control id="x3" opr:id="xyz-tiny_catalog#x3"><title>Control X3</title></control>
+                            </group>
+                        </selection>
+                        <selection uuid="y_selection">
+                            <group id="parent">
+                                <title>Parent of Group Y</title>
+                                <group id="y">
+                                    <title>Group Y of XYZ</title>
+                                    <control id="y1" opr:id="xyz-tiny_catalog#y1"><title>Control Y1</title></control>
+                                    <control id="y2" opr:id="xyz-tiny_catalog#y2"><title>Control Y2</title></control>
+                                    <control id="y3" opr:id="xyz-tiny_catalog#y3"><title>Control Y3</title></control>
+                                </group>
+                            </group>
+                        </selection>
+                        <selection uuid="z:selection">
+                            <control id="z1" opr:id="xyz-tiny_catalog#z1"><title>Control Z1</title></control>
+                            <control id="z2" opr:id="xyz-tiny_catalog#z2"><title>Control Z2</title></control>
+                            <control id="z3" opr:id="xyz-tiny_catalog#z3"><title>Control Z3</title>
+                                <control id="z3.a" opr:id="xyz-tiny_catalog#z3.a"><title>Control Z3-A</title>
+                                    <control id="z3.a-1" opr:id="xyz-tiny_catalog#z3.a-1">
+                                        <title>Control Z3-A-1</title></control>
+                                </control>
+                            </control>
+                        </selection>
+                        <merge>
+                            <custom>
+                                <group id="g1">
+                                    <title>New Group 1</title>
+                                    <insert-controls>
+                                        <include-controls>
+                                            <with-id>x1</with-id>
+                                            <with-id>y1</with-id>
+                                            <with-id>z1</with-id>
+                                        </include-controls>
+                                    </insert-controls>
+                                </group>
+                                <group id="g2">
+                                    <title>New Group 2</title>
+                                    <insert-controls>
+                                        <include-controls>
+                                            <with-id>x2</with-id>
+                                            <with-id>y2</with-id>
+                                            <with-id>z2</with-id>
+                                        </include-controls>
+                                    </insert-controls>
+                                </group>
+                            </custom>
+                        </merge>
+                    </catalog>
+                </x:context>
+                <x:expect label="New groups for XYZ 1 and 2">
+                    <group id="g1">
+                        <title>New Group 1</title>
+                        <control id="x1"><title>Control X1</title></control>
+                        <control id="y1"><title>Control Y1</title></control>
+                        <control id="z1"><title>Control Z1</title></control>
+                    </group>
+                    <group id="g2">
+                        <title>New Group 2</title>
+                        <control id="x2"><title>Control X2</title></control>
+                        <control id="y2"><title>Control Y2</title></control>
+                        <control id="z2"><title>Control Z2</title></control>
+                    </group>
+                </x:expect>
+            </x:scenario>
+            <x:scenario label="Custom groups using include-all, exclude-controls, and insert-controls">
+                <x:context mode="o:custom-merge" select="//o:custom">
+                    <catalog uuid="xyz-tiny_catalog">
+                        <selection uuid="xyz-tiny_catalog_selection">
+                            <control id="x1" opr:id="xyz-tiny_catalog#x1"><title>Control X1</title></control>
+                            <control id="x2" opr:id="xyz-tiny_catalog#x2"><title>Control X2</title></control>
+                            <control id="x3" opr:id="xyz-tiny_catalog#x3"><title>Control X3</title></control>
+                        </selection>
+                        <merge>
+                            <custom>
+                                <group>
+                                    <title>Group A</title>
+                                    <insert-controls>
+                                        <include-all/>
+                                        <exclude-controls>
+                                            <with-id>x2</with-id>
+                                        </exclude-controls>
+                                    </insert-controls>
+                                </group>
+                                <group>
+                                    <title>Group B</title>
+                                    <insert-controls>
+                                        <include-controls>
+                                            <with-id>x2</with-id>
+                                        </include-controls>
+                                    </insert-controls>
+                                </group>
+                            </custom>
+                        </merge>
+                    </catalog>
+                </x:context>
+                <x:expect label="Group A with controls x1 and x3" test="/o:group[1]">
+                    <group>
+                        <title>Group A</title>
+                        <control id="x1"><title>Control X1</title></control>
+                        <control id="x3"><title>Control X3</title></control>
+                    </group>
+                </x:expect>
+                <x:expect label="Group B with control x2" test="/o:group[2]">
+                    <group>
+                        <title>Group B</title>
+                        <control id="x2"><title>Control X2</title></control>
+                    </group>
+                </x:expect>
+            </x:scenario>
+            <x:scenario label="Nested custom groups">
+                <x:context mode="o:custom-merge" select="//o:custom">
+                    <catalog uuid="xyz-tiny_catalog">
+                        <selection uuid="xyz-tiny_catalog_selection">
+                            <control id="x1" opr:id="xyz-tiny_catalog#x1"><title>Control X1</title></control>
+                            <control id="x2" opr:id="xyz-tiny_catalog#x2"><title>Control X2</title></control>
+                            <control id="x3" opr:id="xyz-tiny_catalog#x3"><title>Control X3</title></control>
+                        </selection>
+                        <merge>
+                            <custom>
+                                <group id="a">
+                                    <title>Group A</title>
+                                    <group id="a.1">
+                                        <title>Group A.1</title>
+                                        <insert-controls>
+                                            <include-controls>
+                                                <with-id>x2</with-id>
+                                                <with-id>nonexistent</with-id>
+                                            </include-controls>
+                                        </insert-controls>
+                                    </group>
+                                </group>
+                                <group id="b">
+                                    <title>Group B</title>
+                                    <group id="b.1">
+                                        <title>Group B.1</title>
+                                        <insert-controls>
+                                            <include-controls>
+                                                <matching>q*</matching>
+                                            </include-controls>
+                                        </insert-controls>
+                                    </group>
+                                </group>
+                            </custom>
+                        </merge>
+                    </catalog>
+                </x:context>
+                <x:expect label="Group A containing group A.1 containing control x2" test="/o:group[1]">
+                    <group id="a">
+                        <title>Group A</title>
+                        <group id="a.1">
+                            <title>Group A.1</title>
+                            <control id="x2"><title>Control X2</title></control>
+                        </group>
+                    </group>
+                </x:expect>
+                <x:expect label="Group B containing group B.1 containing no controls" test="/o:group[2]">
+                    <group id="b">
+                        <title>Group B</title>
+                        <group id="b.1">
+                            <title>Group B.1</title>
+                        </group>
+                    </group>
+                </x:expect>
+            </x:scenario>
+        </x:scenario>
+    </x:scenario>
+
+    <x:scenario label="Tests for match=insert-controls mode=o:custom-merge template">
+        <x:scenario label="include-all followed by exclude-controls">
+            <x:context mode="o:custom-merge" select="//o:insert-controls">
+                <catalog uuid="xyz-tiny_catalog">
+                    <selection uuid="xyz-tiny_catalog">
+                        <control id="x1" opr:id="xyz-tiny_catalog#x1"><title>Control X1</title></control>
+                        <control id="x2" opr:id="xyz-tiny_catalog#x2"><title>Control X2</title></control>
+                        <control id="x3" opr:id="xyz-tiny_catalog#x3"><title>Control X3</title></control>
+                    </selection>
+                    <merge>
+                        <custom>
+                            <insert-controls>
+                                <include-all/>
+                                <exclude-controls>
+                                    <with-id>x2</with-id>
+                                    <matching pattern="*1"/>
+                                </exclude-controls>
+                            </insert-controls>
+                        </custom>
+                    </merge>
+                </catalog>
+            </x:context>
+            <x:expect label="Control x3 because x1 and x2 were excluded">
+                <control id="x3"><title>Control X3</title></control>                
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="insert-controls looking for controls not in catalog/selection">
+            <x:context mode="o:custom-merge" select="//o:custom">
+                <catalog uuid="xyz-tiny_catalog">
+                    <selection uuid="xyz-tiny_catalog_selection">
+                        <control id="x1" opr:id="xyz-tiny_catalog#x1"><title>Control X1</title></control>
+                        <control id="x2" opr:id="xyz-tiny_catalog#x2"><title>Control X2</title></control>
+                        <control id="x3" opr:id="xyz-tiny_catalog#x3"><title>Control X3</title></control>
+                    </selection>
+                    <merge>
+                        <custom>
+                            <insert-controls>
+                                <include-controls>
+                                    <matching pattern="nonexistent*"/>
+                                    <with-id>nonexistent</with-id>
+                                </include-controls>
+                            </insert-controls>
+                        </custom>
+                    </merge>
+                </catalog>
+            </x:context>
+            <x:expect label="Nothing" select="()"/>
+        </x:scenario>
+        <x:scenario label="Descending order by control ID">
+            <x:variable name="ov:order" select="'descending'"/>
+            <x:like label="SHARED: Context with placeholder for insert-controls order"/>
+            <x:expect label="Controls x3, x1, and ax2 in that order">
+                <control id="x3"><title>Control X3</title></control>
+                <control id="x1"><title>Control X1</title></control>
+                <control id="ax2"><title>Control X2</title></control>
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="Ascending by control ID">
+            <x:variable name="ov:order" select="'ascending'"/>
+            <x:like label="SHARED: Context with placeholder for insert-controls order"/>
+            <x:expect label="Controls ax2, x1, and x3 in that order">
+                <control id="ax2"><title>Control X2</title></control>
+                <control id="x1"><title>Control X1</title></control>
+                <control id="x3"><title>Control X3</title></control>                
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="Keep order from catalog">
+            <!-- Note: Output of selection phase XSLT has catalog/selection that
+                reflects order of controls in input catalog. For tests that confirm
+                this behavior, search select.xspec for "Order of controls in output". -->
+            <x:variable name="ov:order" select="'keep'"/>
+            <x:like label="SHARED: Context with placeholder for insert-controls order"/>
+            <x:expect label="Controls x1, ax2, and x3 in that order">
+                <control id="x1"><title>Control X1</title></control>
+                <control id="ax2"><title>Control X2</title></control>
+                <control id="x3"><title>Control X3</title></control>                
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="Empty string for order attribute (behaves like order=keep)">
+            <x:variable name="ov:order" select="''"/>
+            <x:like label="SHARED: Context with placeholder for insert-controls order"/>
+            <x:expect label="Controls x1, ax2, and x3 in that order">
+                <control id="x1"><title>Control X1</title></control>
+                <control id="ax2"><title>Control X2</title></control>
+                <control id="x3"><title>Control X3</title></control>
+            </x:expect>
+        </x:scenario>
+    </x:scenario>
+
+    <x:scenario shared="yes" label="SHARED: Context with placeholder for insert-controls order">
+        <x:context mode="o:custom-merge" select="//o:insert-controls">
+            <catalog uuid="xyz-tiny_catalog">
+                <selection uuid="xyz-tiny_catalog_selection">
+                    <control id="x1" opr:id="xyz-tiny_catalog#x1"><title>Control X1</title></control>
+                    <control id="ax2" opr:id="xyz-tiny_catalog#ax2"><title>Control X2</title></control>
+                    <control id="x3" opr:id="xyz-tiny_catalog#x3"><title>Control X3</title></control>
+                </selection>
+                <merge>
+                    <custom>
+                        <insert-controls order="{$ov:order}">
+                            <include-controls><!-- Order of with-id elements does not matter. -->
+                                <with-id>x1</with-id>
+                                <with-id>x3</with-id>
+                                <with-id>ax2</with-id>
+                            </include-controls>
+                        </insert-controls>                            
+                    </custom>
+                </merge>
+            </catalog>
+        </x:context>
+    </x:scenario>
+
+    <x:scenario label="Tests for match=include-all | include-controls mode=o:custom-merge template">
+        <!-- Template shares code with selection phase, which is tested in select.xspec.
+            These scenarios merely spot-check. -->
+        <x:scenario label="include-controls matches something">
+            <x:context mode="o:custom-merge" select="//o:include-controls">
+                <catalog uuid="xyz-tiny_catalog">
+                    <selection>
+                        <control id="a1"/>
+                        <control id="a2"/>
+                    </selection>
+                    <merge>
+                        <custom>
+                            <insert-controls>
+                                <include-controls>
+                                    <with-id>a1</with-id>
+                                </include-controls>
+                            </insert-controls>
+                        </custom>
+                    </merge>
+                </catalog>
+            </x:context>
+            <x:expect label="Specified controls">
+                <control id="a1"/>
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="include-controls does not match anything">
+            <x:context mode="o:custom-merge" select="//o:include-controls">
+                <catalog uuid="xyz-tiny_catalog">
+                    <selection>
+                        <control id="a1"/>
+                    </selection>
+                    <merge>
+                        <custom>
+                            <insert-controls>
+                                <include-controls>
+                                    <with-id>nonexistent</with-id>
+                                </include-controls>
+                            </insert-controls>
+                        </custom>
+                    </merge>
+                </catalog>
+            </x:context>
+            <x:expect label="Nothing" select="()"/>
+        </x:scenario>
+        <x:scenario label="include-all with no exclusions">
+            <x:context mode="o:custom-merge" select="//o:include-all">
+                <catalog uuid="xyz-tiny_catalog">
+                    <selection>
+                        <control id="a1"/>
+                        <control id="a2"/>
+                    </selection>
+                    <merge>
+                        <custom>
+                            <insert-controls>
+                                <include-all/>
+                            </insert-controls>
+                        </custom>
+                    </merge>
+                </catalog>
+            </x:context>
+            <x:expect label="All controls">
+                <control id="a1"/>
+                <control id="a2"/>
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="include-all with exclusions">
+            <x:context mode="o:custom-merge" select="//o:include-all">
+                <catalog uuid="xyz-tiny_catalog">
+                    <selection>
+                        <control id="a1"/>
+                        <control id="a2"/>
+                    </selection>
+                    <merge>
+                        <custom>
+                            <insert-controls>
+                                <include-all/>
+                                <exclude-controls>
+                                    <matching pattern="a*"/>
+                                </exclude-controls>
+                            </insert-controls>
+                        </custom>
+                    </merge>
+                </catalog>
+            </x:context>
+            <x:expect label="All controls not excluded - in this case, nothing"
+                select="()"/>
+        </x:scenario>
+        <x:scenario label="include-controls without child controls (default choice)">
+            <x:context mode="o:custom-merge" select="//o:include-controls">
+                <catalog uuid="xyz-tiny_catalog">
+                    <selection>
+                        <control id="a1">
+                            <control id="a1.1"/>
+                        </control>
+                    </selection>
+                    <merge>
+                        <custom>
+                            <insert-controls>
+                                <include-controls with-child-controls="no">
+                                    <with-id>a1</with-id>
+                                </include-controls>
+                            </insert-controls>
+                        </custom>
+                    </merge>
+                </catalog>
+            </x:context>
+            <x:expect label="Parent control without child control">
+                <control id="a1"/>
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="include-controls with child controls (nondefault choice)">
+            <x:context mode="o:custom-merge" select="//o:include-controls">
+                <catalog uuid="xyz-tiny_catalog">
+                    <selection>
+                        <control id="a1">
+                            <control id="a1.1"/>
+                        </control>
+                    </selection>
+                    <merge>
+                        <custom>
+                            <insert-controls>
+                                <include-controls with-child-controls="yes">
+                                    <with-id>a1</with-id>
+                                </include-controls>
+                            </insert-controls>
+                        </custom>
+                    </merge>
+                </catalog>
+            </x:context>
+            <x:expect label="Parent control with child control">
+                <control id="a1">
+                    <control id="a1.1"/>
+                </control>
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="include-controls with parent controls (default choice)">
+            <x:context mode="o:custom-merge" select="//o:include-controls">
+                <catalog uuid="xyz-tiny_catalog">
+                    <selection>
+                        <control id="a1">
+                            <control id="a1.1"/>
+                        </control>
+                    </selection>
+                    <merge>
+                        <custom>
+                            <insert-controls>
+                                <include-controls with-parent-controls="yes">
+                                    <with-id>a1.1</with-id>
+                                </include-controls>
+                            </insert-controls>
+                        </custom>
+                    </merge>
+                </catalog>
+            </x:context>
+            <x:expect label="Parent control with child">
+                <control id="a1">
+                    <control id="a1.1"/>
+                </control>
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="include-controls without parent controls (nondefault choice)">
+            <x:context mode="o:custom-merge" select="//o:include-controls">
+                <catalog uuid="xyz-tiny_catalog">
+                    <selection>
+                        <control id="a1">
+                            <control id="a1.1"/>
+                        </control>
+                    </selection>
+                    <merge>
+                        <custom>
+                            <insert-controls>
+                                <include-controls with-parent-controls="no">
+                                    <with-id>a1.1</with-id>
+                                </include-controls>
+                            </insert-controls>
+                        </custom>
+                    </merge>
+                </catalog>
+            </x:context>
+            <x:expect label="Child control without parent">
+                <control id="a1.1"/>
+            </x:expect>
+        </x:scenario>
+    </x:scenario>
+
+    <x:scenario label="Tests for match=exclude-controls mode=o:custom-merge template">
+        <x:context mode="o:custom-merge">
+            <exclude-controls>
+                <with-id>x1</with-id>
+            </exclude-controls>
+        </x:context>
+        <x:expect label="Nothing" select="()"/>
+    </x:scenario>
+</x:description>

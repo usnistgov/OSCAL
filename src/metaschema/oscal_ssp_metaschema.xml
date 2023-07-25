@@ -13,7 +13,7 @@
 <METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/toolchains/xslt-M4/validate/metaschema.xsd">
   <schema-name>OSCAL System Security Plan (SSP) Model</schema-name>
-  <schema-version>1.0.4</schema-version>
+  <schema-version>1.1.0</schema-version>
   <short-name>oscal-ssp</short-name>
   <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
   <json-base-uri>http://csrc.nist.gov/ns/oscal</json-base-uri>
@@ -30,12 +30,12 @@
   <!-- ############################################## -->
   <define-assembly name="system-security-plan">
     <formal-name>System Security Plan (SSP)</formal-name>
-    <description>A system security plan, such as those described in NIST SP 800-18</description>
+    <description>A system security plan, such as those described in NIST SP 800-18.</description>
     <root-name>system-security-plan</root-name>
     <define-flag name="uuid" as-type="uuid" required="yes">
       <formal-name>System Security Plan Universally Unique Identifier</formal-name>
       <!-- Identifier Declaration -->
-      <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this system security plan (SSP) elsewhere in <a href="/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>SSP</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance).This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+      <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this system security plan (SSP) elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>SSP</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance).This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
     </define-flag>
     <model>
       <assembly ref="metadata" min-occurs="1"/>
@@ -45,6 +45,11 @@
       <assembly ref="control-implementation" min-occurs="1"/>
       <assembly ref="back-matter"/>
     </model>
+    <constraint>
+      <index name="by-component-uuid" target="control-implementation/implemented-requirement//by-component|doc(system-implementation/leveraged-authorization/link[@rel='system-security-plan']/@href)/system-security-plan/control-implementation/implemented-requirement//by-component">
+        <key-field target="@uuid"/>
+      </index>
+    </constraint>
   </define-assembly>
 
   <!-- ######################################################### -->
@@ -57,12 +62,13 @@
       <formal-name>Profile Reference</formal-name>
       <description>A resolvable URL reference to the profile or catalog to use as the system's control baseline.</description>
       <remarks>
-        <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment that points to a <code>back-matter</code>
-          <code>resource</code> in the same document.</p>
-        <!-- TODO: Add a link to "within the scope of the containing OSCAL document" to point to documentation of identification scopes" -->
-        <p>If a local reference using a fragment is used, this will be indicated by a fragment "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document. The identified resource will be used instead as the target resource.</p>
-        <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the target resource. A relative URI will be resolved relative to the location of the document containing the link.</p>
-        <p>If the resource is an OSCAL profile, it is expected that a tool will resolve the profile according to the OSCAL [profile resolution specification](https://pages.nist.gov/OSCAL/concepts/processing/profile-resolution/) to produce a resolved profile for use when processing the containing system security plan. This allows a system security plan processor to use the baseline as a catalog of controls.</p>
+        <p>This value may be one of:</p>
+        <ol>
+          <li>an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
+          <li>a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing document, or</li>
+          <li>a bare URI fragment (i.e., `#uuid`) pointing to a <code>back-matter</code> resource in this or an imported document (see <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>).</li>
+        </ol>
+        <p>If the resource is an OSCAL profile, it is expected that a tool will resolve the profile according to the OSCAL <a href="https://pages.nist.gov/OSCAL/concepts/processing/profile-resolution/">profile resolution specification</a> to produce a resolved profile for use when processing the containing system security plan. This allows a system security plan processor to use the baseline as a catalog of controls.</p>
         <p>While it is possible to reference a previously resolved OSCAL profile as a catalog, this practice is discouraged since the unresolved form of the profile communicates more information about selections and changes to the underlying catalog. Furthermore, the underlying catalog can be maintained separately from the profile, which also has maintenance advantages for distinct maintainers, ensuring that the best available information is produced through profile resolution.</p>
       </remarks>
     </define-flag>
@@ -88,6 +94,9 @@
       <define-field name="system-name-short" as-type="string">
         <formal-name>System Name - Short</formal-name>
         <description>A short name for the system, such as an acronym, that is suitable for display in a data table or summary list.</description>
+        <remarks>
+          <p>Since <code>system-name-short</code> is optional, if the <code>system-name-short</code> is not provided, the <code>system-name</code> can be used as a substitute.</p>
+        </remarks>
       </define-field>
       <define-field name="description" as-type="markup-multiline" min-occurs="1" in-xml="WITH_WRAPPER">
         <formal-name>System Description</formal-name>
@@ -100,17 +109,16 @@
         <group-as name="links" in-json="ARRAY"/>
       </assembly>
       <field ref="date-authorized"/>
-      <define-field name="security-sensitivity-level" min-occurs="1">
+      <define-field name="security-sensitivity-level" min-occurs="0">
         <formal-name>Security Sensitivity Level</formal-name>
-        <description>The overall information system sensitivity categorization, such as defined by <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.
-        </description>
+        <description>The overall information system sensitivity categorization, such as defined by <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.</description>
         <remarks>
           <p>Often, organizations require the security sensitivity level to correspond with the highest confidentiality, integrity, or availability level identified by <code>security-impact-level</code>.
           </p>
         </remarks>
       </define-field>
       <assembly ref="system-information" min-occurs="1"/>
-      <assembly ref="security-impact-level" min-occurs="1"/>
+      <assembly ref="security-impact-level" min-occurs="0"/>
       <assembly ref="status" min-occurs="1"/>
       <assembly ref="authorization-boundary" min-occurs="1"/>
       <assembly ref="network-architecture"/>
@@ -121,7 +129,7 @@
       <field ref="remarks" in-xml="WITH_WRAPPER"/>
     </model>
     <constraint>
-      <allowed-values target="prop/@name" allow-other="yes">
+      <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
         <enum value="identity-assurance-level">A value of 1, 2, or 3 as defined by <a href="https://doi.org/10.6028/NIST.SP.800-63-3">SP 800-63-3</a>.
         </enum>
         <enum value="authenticator-assurance-level">A value of 1, 2, or 3 as defined by <a href="https://doi.org/10.6028/NIST.SP.800-63-3">SP 800-63-3</a>.
@@ -137,11 +145,11 @@
         <enum value="3">As defined by <a href="https://doi.org/10.6028/NIST.SP.800-63-3">SP 800-63-3</a>.
         </enum>
       </allowed-values>
-      <allowed-values target="prop/@name" allow-other="yes">
+      <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
         <enum value="cloud-deployment-model">The associated value is one of: public-cloud, private-cloud, community-cloud, government-only-cloud, hybrid-cloud, or other.</enum>
         <enum value="cloud-service-model">The associated value is one of: saas, paas, iaas, or other.</enum>
       </allowed-values>
-      <allowed-values target="prop[@name='cloud-deployment-model']/@value">
+      <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='cloud-deployment-model']/@value">
         <enum value="public-cloud">The public cloud deployment model as defined by <a href="https://doi.org/10.6028/NIST.SP.800-145">The NIST Definition of Cloud Computing</a>.
         </enum>
         <enum value="private-cloud">The private cloud deployment model as defined by <a href="https://doi.org/10.6028/NIST.SP.800-145">The NIST Definition of Cloud Computing</a>.
@@ -155,7 +163,7 @@
           <p>The hybrid cloud deployment model, as defined by <a href="https://doi.org/10.6028/NIST.SP.800-145">The NIST Definition of Cloud Computing</a>, can be supported by selecting two or more of the existing deployment models.</p>
         </remarks>
       </allowed-values>
-      <allowed-values target="prop[@name='cloud-service-model']/@value">
+      <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='cloud-service-model']/@value">
         <enum value="saas">Software as a service (SaaS) cloud service model as defined by <a href="https://doi.org/10.6028/NIST.SP.800-145">The NIST Definition of Cloud Computing</a>.
         </enum>
         <enum value="paas">Platform as a service (PaaS) cloud service model as defined by <a href="https://doi.org/10.6028/NIST.SP.800-145">The NIST Definition of Cloud Computing</a>.
@@ -177,8 +185,7 @@
   </define-assembly>
   <define-assembly name="system-information">
     <formal-name>System Information</formal-name>
-    <description>Contains details about all information types that are stored, processed, or transmitted by the system, such as privacy information, and those defined in <a href="https://doi.org/10.6028/NIST.SP.800-60v2r1">NIST SP 800-60</a>.
-    </description>
+    <description>Contains details about all information types that are stored, processed, or transmitted by the system, such as privacy information, and those defined in <a href="https://doi.org/10.6028/NIST.SP.800-60v2r1">NIST SP 800-60</a>.</description>
     <model>
       <assembly ref="property" max-occurs="unbounded">
         <group-as name="props" in-json="ARRAY"/>
@@ -188,13 +195,12 @@
       </assembly>
       <define-assembly name="information-type" min-occurs="1" max-occurs="unbounded">
         <formal-name>Information Type</formal-name>
-        <description>Contains details about one information type that is stored, processed, or transmitted by the system, such as privacy information, and those defined in <a href="https://doi.org/10.6028/NIST.SP.800-60v2r1">NIST SP 800-60</a>.
-        </description>
+        <description>Contains details about one information type that is stored, processed, or transmitted by the system, such as privacy information, and those defined in <a href="https://doi.org/10.6028/NIST.SP.800-60v2r1">NIST SP 800-60</a>.</description>
         <group-as name="information-types" in-json="ARRAY"/>
         <define-flag name="uuid" as-type="uuid">
           <formal-name>Information Type Universally Unique Identifier</formal-name>
           <!-- Identifier Declaration -->
-          <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this information type elsewhere in <a href="/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>information type</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+          <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this information type elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>information type</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
         </define-flag>
         <model>
           <define-field name="title" as-type="markup-line" min-occurs="1">
@@ -218,13 +224,16 @@
                   <enum value="http://doi.org/10.6028/NIST.SP.800-60v2r1">Based on the section identifiers in NIST <a href="https://doi.org/10.6028/NIST.SP.800-60v2r1">Special Publication 800-60 Volume II Revision 1</a>.</enum>
                 </allowed-values>
               </constraint>
+              <remarks>
+                <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+              </remarks>
             </define-flag>
             <model>
               <define-field name="information-type-id" as-type="string" max-occurs="unbounded">
                 <!-- This is an id because the idenfier is assigned and managed externally by humans. -->
                 <formal-name>Information Type Systematized Identifier</formal-name>
                 <!-- Identifier Declaration -->
-                <description>A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier qualified by the given identification <code>system</code> used, such as NIST SP 800-60.  This identifier has <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope and can be used to reference this system elsewhere in <a href="/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. This id should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+                <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#human-oriented">human-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier qualified by the given identification <code>system</code> used, such as NIST SP 800-60.  This identifier has <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope and can be used to reference this system elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. This id should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
                 <json-value-key>id</json-value-key>
                 <group-as name="information-type-ids" in-json="ARRAY"/>
               </define-field>
@@ -236,51 +245,21 @@
           <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
           </assembly>
-          <define-assembly name="confidentiality-impact" min-occurs="1">
+          <assembly ref="impact">
             <formal-name>Confidentiality Impact Level</formal-name>
             <description>The expected level of impact resulting from the unauthorized disclosure of the described information.</description>
-            <model>
-              <assembly ref="property" max-occurs="unbounded">
-                <group-as name="props" in-json="ARRAY"/>
-              </assembly>
-              <assembly ref="link" max-occurs="unbounded">
-                <group-as name="links" in-json="ARRAY"/>
-              </assembly>
-              <field ref="base" min-occurs="1"/>
-              <field ref="selected"/>
-              <field ref="adjustment-justification" in-xml="WITH_WRAPPER"/>
-            </model>
-          </define-assembly>
-          <define-assembly name="integrity-impact" min-occurs="1">
+            <use-name>confidentiality-impact</use-name>
+          </assembly>
+          <assembly ref="impact">
             <formal-name>Integrity Impact Level</formal-name>
             <description>The expected level of impact resulting from the unauthorized modification of the described information.</description>
-            <model>
-              <assembly ref="property" max-occurs="unbounded">
-                <group-as name="props" in-json="ARRAY"/>
-              </assembly>
-              <assembly ref="link" max-occurs="unbounded">
-                <group-as name="links" in-json="ARRAY"/>
-              </assembly>
-              <field ref="base" min-occurs="1"/>
-              <field ref="selected"/>
-              <field ref="adjustment-justification" in-xml="WITH_WRAPPER"/>
-            </model>
-          </define-assembly>
-          <define-assembly name="availability-impact" min-occurs="1">
+            <use-name>integrity-impact</use-name>
+          </assembly>
+          <assembly ref="impact">
             <formal-name>Availability Impact Level</formal-name>
             <description>The expected level of impact resulting from the disruption of access to or use of the described information or the information system.</description>
-            <model>
-              <assembly ref="property" max-occurs="unbounded">
-                <group-as name="props" in-json="ARRAY"/>
-              </assembly>
-              <assembly ref="link" max-occurs="unbounded">
-                <group-as name="links" in-json="ARRAY"/>
-              </assembly>
-              <field ref="base" min-occurs="1"/>
-              <field ref="selected"/>
-              <field ref="adjustment-justification" in-xml="WITH_WRAPPER"/>
-            </model>
-          </define-assembly>
+            <use-name>availability-impact</use-name>
+          </assembly>
         </model>
         <constraint>
           <expect level="WARNING" target="." test="@uuid">
@@ -290,20 +269,24 @@
       </define-assembly>
     </model>
     <constraint>
-      <allowed-values target="prop/@name" allow-other="yes">
+      <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
         <enum value="privacy-designation">Is this a privacy sensitive system? yes or no</enum>
       </allowed-values>
-      <allowed-values target="prop[@name='privacy-designation']/@value">
+      <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='privacy-designation']/@value">
         <enum value="yes">The system is privacy sensitive.</enum>
         <enum value="no">The system is not privacy sensitive.</enum>
       </allowed-values>
-      <allowed-values target="link/@rel">
+      <allowed-values target="link/@rel" allow-other="yes">
         <enum value="privacy-impact-assessment">A link to the privacy impact assessment.</enum>
       </allowed-values>
       <matches target="link[@rel='privacy-impact-assessment']/@href[starts-with(.,'#')]" datatype="uri-reference"/>
       <index-has-key name="index-back-matter-resource" target="link[@rel='privacy-impact-assessment' and starts-with(@href,'#')]">
         <key-field target="@href" pattern="#(.*)"/>
       </index-has-key>
+      <!-- 
+        TODO: Per discussion in usnisgov/OSCAL#1331 review on 29 July 2022,
+        add the path target to security-sensitivity-level as well.
+      -->
       <matches target="link[@rel='privacy-impact-assessment']/@href[not(starts-with(.,'#'))]" datatype="uri"/>
       <allowed-values target="information-type/(confidentiality-impact|integrity-impact|availability-impact)/(base|selected)">
         <enum value="fips-199-low">A 'low' sensitivity level as defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.
@@ -317,6 +300,21 @@
         </remarks>
       </allowed-values>
     </constraint>
+  </define-assembly>
+  <define-assembly name="impact">
+    <formal-name>Impact Level</formal-name>
+    <description>The expected level of impact resulting from the described information.</description>
+    <model>
+      <assembly ref="property" max-occurs="unbounded">
+        <group-as name="props" in-json="ARRAY"/>
+      </assembly>
+      <assembly ref="link" max-occurs="unbounded">
+        <group-as name="links" in-json="ARRAY"/>
+      </assembly>
+      <field ref="base" min-occurs="1"/>
+      <field ref="selected"/>
+      <field ref="adjustment-justification" in-xml="WITH_WRAPPER"/>
+    </model>
   </define-assembly>
   <define-field name="base" as-type="string" scope="local">
     <formal-name>Base Level (Confidentiality, Integrity, or Availability)</formal-name>
@@ -334,18 +332,19 @@
     <formal-name>Security Impact Level</formal-name>
     <description>The overall level of expected impact resulting from unauthorized disclosure, modification, or loss of access to information.</description>
     <model>
+      <!-- 
+        TODO: Per discussion in usnisgov/OSCAL#1331 review on 29 July 2022,
+        add the path target to security-impact-level as well for fips-199-low/mod/high.
+      -->
       <define-field name="security-objective-confidentiality" as-type="string" min-occurs="1">
-        <!-- CHANGED: cardinality to min 1 -->
         <formal-name>Security Objective: Confidentiality</formal-name>
         <description>A target-level of confidentiality for the system, based on the sensitivity of information within the system.</description>
       </define-field>
       <define-field name="security-objective-integrity" as-type="string" min-occurs="1">
-        <!-- CHANGED: cardinality to min 1 -->
         <formal-name>Security Objective: Integrity</formal-name>
         <description>A target-level of integrity for the system, based on the sensitivity of information within the system.</description>
       </define-field>
       <define-field name="security-objective-availability" as-type="string" min-occurs="1">
-        <!-- CHANGED: cardinality to min 1 -->
         <formal-name>Security Objective: Availability</formal-name>
         <description>A target-level of availability for the system, based on the sensitivity of information within the system.</description>
       </define-field>
@@ -416,7 +415,7 @@
     <define-flag name="uuid" as-type="uuid" required="yes">
       <formal-name>Diagram ID</formal-name>
       <!-- Identifier Declaration -->
-      <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this diagram elsewhere in <a href="/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>diagram</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+      <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this diagram elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>diagram</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
     </define-flag>
     <model>
       <define-field name="description" as-type="markup-multiline" in-xml="WITH_WRAPPER">
@@ -440,7 +439,7 @@
       <field ref="remarks" in-xml="WITH_WRAPPER"/>
     </model>
     <constraint>
-      <allowed-values target="link/@rel">
+      <allowed-values target="link/@rel" allow-other="yes">
         <enum value="diagram">A reference to the diagram image.</enum>
       </allowed-values>
       <matches target="link[@rel='diagram']/@href[starts-with(.,'#')]" datatype="uri-reference"/>
@@ -538,13 +537,12 @@
       </assembly>
       <define-assembly name="leveraged-authorization" max-occurs="unbounded">
         <formal-name>Leveraged Authorization</formal-name>
-        <description>A description of another authorized system from which this system inherits capabilities that satisfy security requirements. Another term for this concept is a <em>common control provider</em>.
-        </description>
+        <description>A description of another authorized system from which this system inherits capabilities that satisfy security requirements. Another term for this concept is a <em>common control provider</em>.</description>
         <group-as name="leveraged-authorizations" in-json="ARRAY"/>
         <define-flag name="uuid" as-type="uuid" required="yes">
           <formal-name>Leveraged Authorization Universally Unique Identifier</formal-name>
           <!-- Identifier Declaration -->
-          <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope and can be used to reference this leveraged authorization elsewhere in <a href="/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>leveraged authorization</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+          <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope and can be used to reference this leveraged authorization elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>leveraged authorization</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
         </define-flag>
         <model>
           <define-field name="title" as-type="markup-line" min-occurs="1">
@@ -560,13 +558,13 @@
           <define-field name="party-uuid" as-type="uuid" min-occurs="1">
             <formal-name>party-uuid field</formal-name>
             <!-- Identifier Reference -->
-            <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to the  <code>party</code> that manages the leveraged system.</description>
+            <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to the  <code>party</code> that manages the leveraged system.</description>
           </define-field>
           <field ref="date-authorized" min-occurs="1"/>
           <field ref="remarks" in-xml="WITH_WRAPPER"/>
         </model>
         <constraint>
-          <allowed-values target="link/@rel">
+          <allowed-values target="link/@rel" allow-other="yes">
             <enum value="system-security-plan">A reference to the system security plan for the leveraged authorization.</enum>
           </allowed-values>
           <matches target="link[@rel='system-security-plan']/@href[starts-with(.,'#')]" datatype="uri-reference"/>
@@ -641,7 +639,8 @@
         <key-field target="@href"/>
       </index-has-key>
 
-      <allowed-values target="(component | inventory-item)/prop[@name='allows-authenticated-scan']/@value">
+      <!-- TODO: check that prop names are defined -->
+      <allowed-values target="(component | inventory-item)/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='allows-authenticated-scan']/@value">
         <enum value="yes">The component allows an authenticated scan.</enum>
         <enum value="no">The component does not allow an authenticated scan.</enum>
       </allowed-values>
@@ -679,7 +678,7 @@
           <p>Since multiple <code>set-parameter</code> entries can be provided, each parameter must be set only once.</p>
         </remarks>
       </is-unique>
-      <index name="by-component-export-provided-uuid" target="implemented-requirement/by-component/export/provided">
+      <index name="by-component-export-provided-uuid" target="implemented-requirement//by-component/export/provided">
         <key-field target="@uuid"/>
       </index>
     </constraint>
@@ -693,7 +692,7 @@
     <define-flag name="uuid" as-type="uuid" required="yes">
       <formal-name>Control Requirement Universally Unique Identifier</formal-name>
       <!-- Identifier Declaration -->
-      <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this control requirement elsewhere in <a href="/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>control requirement</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+      <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this control requirement elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>control requirement</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
     </define-flag>
     <flag ref="control-id" required="yes"/>
     <model>
@@ -720,18 +719,15 @@
       <field ref="remarks" in-xml="WITH_WRAPPER"/>
     </model>
     <constraint>
-      <allowed-values target="prop/@name" allow-other="yes">
-        <enum value="control-origination">Identifies the source of the implemented control.</enum>
+      <allowed-values target="(.|statement|.//by-component)/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+        <enum value="control-origination">Identifies the source of the implemented control.  Any <code>control-origination</code> prop defined in a child context will override the parent value.</enum>
       </allowed-values>
-      <allowed-values target="prop[@name='control-origination']/@value">
+      <allowed-values target="(.|statement|.//by-component)/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='control-origination']/@value">
         <enum value="organization">The control is implemented by the organization owning the system, but is not specific to the system itself.</enum>
         <enum value="system-specific">The control is implemented specifically to this system.</enum>
         <enum value="customer-configured">The control is provided by the system, but must be configured by the customer.</enum>
         <enum value="customer-provided">The control must be implemented by the customer.</enum>
         <enum value="inherited">This control is inherited from an underlying system.</enum>
-      </allowed-values>
-      <allowed-values target="prop/@name" allow-other="yes">
-        <enum value="leveraged-authorization">Indicates all or some portion of this control is inherited from an underlying authorized system.</enum>
       </allowed-values>
       <allowed-values target="responsible-role/@role-id" allow-other="yes">
             &allowed-values-responsible-roles-operations;
@@ -787,7 +783,7 @@
     <define-flag name="uuid" as-type="uuid" required="yes">
       <formal-name>Control Statement Reference Universally Unique Identifier</formal-name>
       <!-- Identifier Reference -->
-      <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this control statement elsewhere in <a href="/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The <em>UUID</em> of the <code>control statement</code> in the source OSCAL instance is sufficient to reference the data item locally or globally (e.g., in an imported OSCAL instance).</description>
+      <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this control statement elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The <em>UUID</em> of the <code>control statement</code> in the source OSCAL instance is sufficient to reference the data item locally or globally (e.g., in an imported OSCAL instance).</description>
     </define-flag>
     <model>
       <assembly ref="property" max-occurs="unbounded">
@@ -830,12 +826,12 @@
     <define-flag required="yes" name="component-uuid" as-type="uuid">
       <formal-name>Component Universally Unique Identifier Reference</formal-name>
       <!-- Identifier Reference -->
-      <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to the <code>component</code> that is implemeting a given control.</description>
+      <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to the <code>component</code> that is implemeting a given control.</description>
     </define-flag>
     <define-flag name="uuid" as-type="uuid" required="yes">
       <formal-name>By-Component Universally Unique Identifier</formal-name>
       <!-- Identifier Declaration -->
-      <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this by-component entry elsewhere in <a href="/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>by-component</code> entry can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+      <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this by-component entry elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>by-component</code> entry can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
     </define-flag>
     <model>
       <define-field name="description" as-type="markup-multiline" min-occurs="1" in-xml="WITH_WRAPPER">
@@ -879,7 +875,7 @@
             <define-flag name="uuid" as-type="uuid" required="yes">
               <formal-name>Provided Universally Unique Identifier</formal-name>
               <!-- Identifier Declaration -->
-              <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this provided entry elsewhere in <a href="/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>provided</code> entry can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+              <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this provided entry elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>provided</code> entry can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
             </define-flag>
             <model>
               <define-field name="description" as-type="markup-multiline" min-occurs="1" in-xml="WITH_WRAPPER">
@@ -914,7 +910,7 @@
             <define-flag name="uuid" as-type="uuid" required="yes">
               <formal-name>Responsibility Universally Unique Identifier</formal-name>
               <!-- Identifier Declaration -->
-              <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this responsibility elsewhere in <a href="/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>responsibility</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+              <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this responsibility elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>responsibility</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
             </define-flag>
             <flag ref="provided-uuid" required="no" />
             <model>
@@ -963,7 +959,7 @@
         <define-flag name="uuid" as-type="uuid" required="yes">
           <formal-name>Inherited Universally Unique Identifier</formal-name>
           <!-- Identifier Declaration -->
-          <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this inherited entry elsewhere in <a href="/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>inherited control implementation</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+          <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this inherited entry elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>inherited control implementation</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
         </define-flag>
         <flag ref="provided-uuid" required="no" />
         <model>
@@ -999,7 +995,7 @@
         <define-flag name="uuid" as-type="uuid" required="yes">
           <formal-name>Satisfied Universally Unique Identifier</formal-name>
           <!-- Identifier Declaration -->
-          <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this satisfied control implementation entry elsewhere in <a href="/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>control implementation</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+          <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this satisfied control implementation entry elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>control implementation</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
         </define-flag>
         <flag ref="responsibility-uuid" required="no" />
         <model>
@@ -1035,6 +1031,10 @@
       <field ref="remarks" in-xml="WITH_WRAPPER"/>
     </model>
     <constraint>
+      <allowed-values target="link/@rel" allow-other="yes">
+        <!-- TODO: More work needs to be done around link enforcement constraints and requires Metaschema work on recurse-depth-first() recursive index searching. -->
+        <enum value="imported-from">The hyperlink identifies a URI pointing to the <code>component</code> in a <code>component-definition</code> that originally described the <code>component</code> this component was based on.</enum>
+      </allowed-values>
       <allowed-values target=".//responsible-role/@role-id" allow-other="yes">
             &allowed-values-responsible-roles-operations;
             &allowed-values-responsible-roles-component-production;
@@ -1045,6 +1045,13 @@
           <p>Since multiple <code>set-parameter</code> entries can be provided, each parameter must be set only once.</p>
         </remarks>
       </is-unique>
+
+      <allowed-values target="link/@rel" allow-other="yes">
+        <enum value="provided-by">A reference to the UUID of a control or statement <code>by-component</code> object that is used as evidence of implementation.</enum>
+      </allowed-values>
+      <index-has-key name="by-component-uuid" target="link[@rel='provided-by']">
+        <key-field target="@href" pattern="#(.*)" />
+      </index-has-key>
     </constraint>
     <remarks>
       <p>Use of <code>set-parameter</code> in this context, sets the parameter for the control referenced in the containing <code>implemented-requirement</code> applied to the referenced component. If the <code>by-component</code> is used as a child of a <code>statement</code>, then the parameter value also applies only in the context of the referenced statement. If the same parameter is also set in the <code>control-implementation</code> or a specific <code>implemented-requirement</code>, then this <code>by-component/set-parameter</code> value will override the other value(s) in the context of the referenced component, control, and statement (if parent).</p>
@@ -1054,12 +1061,12 @@
   <define-flag name="provided-uuid" as-type="uuid" scope="local">
     <formal-name>Provided UUID</formal-name>
     <!-- Identifier Reference -->
-    <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to an inherited control implementation that a leveraging system is inheriting from a leveraged system.</description>
+    <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to an inherited control implementation that a leveraging system is inheriting from a leveraged system.</description>
   </define-flag>
 
   <define-flag name="responsibility-uuid" as-type="uuid" scope="local">
     <formal-name>Responsibility UUID</formal-name>
     <!-- Identifier Reference -->
-    <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a control implementation that satisfies a responsibility imposed by a leveraged system.</description>
+    <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a control implementation that satisfies a responsibility imposed by a leveraged system.</description>
   </define-flag>
 </METASCHEMA>

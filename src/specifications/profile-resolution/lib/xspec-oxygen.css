@@ -1,0 +1,68 @@
+@namespace x "http://www.jenitennison.com/xslt/xspec";
+
+* { display: block }
+
+/*
+ * 
+ * 
+ * 
+ * 
+ *
+ * */
+
+x|description { font-family: sans-serif }
+
+/* x|helper      { } */
+
+
+
+x|scenario { margin-top: 1em; border: thin solid purple; padding: 0.5em;
+  background-color: lightgreen; line-height: 1.8em }
+
+x|scenario[pending] { background-color: gainsboro }
+
+x|scenario[pending=clarification] { background-color: peachpuff }
+
+x|scenario:before {
+    content: "Scenario: "
+    oxy_textfield(
+          edit, '@label',
+          columns, 120);
+}
+
+x|scenario[pending]:before {
+    content:
+    "Scenario: Pending "
+        oxy_textfield(
+            edit, "@pending",
+            values, "deployment, repair, update, discussion",
+            color, "blue",
+            columns, 10) " "
+        oxy_textfield(
+          edit, '@label',
+          columns, 120);
+}
+
+x|context { }
+
+
+x|context:before {
+    content: "Testing context:"
+        oxy_urlChooser(        
+        edit, "@href",
+        columns 50);
+}
+
+
+x|expect { }
+
+
+x|expect:before {
+    content: "Expecting:"
+        oxy_urlChooser(        
+        edit, "@href",
+        columns 55);
+}
+
+
+

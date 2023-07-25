@@ -1,0 +1,31 @@
+{
+    "ignorePatterns": [
+        {
+            "pattern": "https://docs.github.com"
+        },
+        {
+            "pattern": "https://guides.github.com"
+        },
+        {
+            "pattern": "https://help.github.com"
+        }
+    ],
+    "replacementPatterns": [
+        {
+            "pattern": "^../../issues",
+            "replacement": "https://github.com/usnistgov/OSCAL/issues"
+        },
+        {
+            "pattern": "^../../projects",
+            "replacement": "https://github.com/usnistgov/OSCAL/projects"
+        },
+        {
+            "pattern": "^../../releases",
+            "replacement": "https://github.com/usnistgov/OSCAL/releases"
+        },
+        {
+            "pattern": "^../../tree",
+            "replacement": "https://github.com/usnistgov/OSCAL/tree"
+        }
+    ]
+}

@@ -1,0 +1,508 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:v="http://csrc.nist.gov/ns/version"
+    stylesheet="../../version-util.xsl"
+    xslt-version="3.0">
+
+    <x:scenario label="Tests for v:compare function with two parameters">
+        <x:scenario label="Difference in 1st number">
+            <x:call function="v:compare">
+                <x:param select="'2.10.20'"/>
+                <x:param select="'1.20.30'"/>
+            </x:call>
+            <x:expect label="A is newer" select="xs:integer(1)"/>
+        </x:scenario>
+        <x:scenario label="Difference in 2nd number">
+            <x:call function="v:compare">
+                <x:param select="'5.2.10'"/>
+                <x:param select="'5.1.20'"/>
+            </x:call>
+            <x:expect label="A is newer" select="xs:integer(1)"/>
+        </x:scenario>
+        <x:scenario label="Difference in 3rd number">
+            <x:call function="v:compare">
+                <x:param select="'5.2.20'"/>
+                <x:param select="'5.2.10'"/>
+            </x:call>
+            <x:expect label="A is newer" select="xs:integer(1)"/>
+        </x:scenario>
+        <x:scenario label="Difference in pre-release, where ">
+            <!-- Examples of precedence from semver.org
+                1.0.0-alpha < 1.0.0-alpha.1 < 1.0.0-alpha.beta < 1.0.0-beta < 1.0.0-beta.2 < 1.0.0-beta.11 < 1.0.0-rc.1 < 1.0.0
+            -->
+            <x:scenario label="B equals A plus an extra part">
+                <x:call function="v:compare">
+                    <x:param select="'1.0.0-alpha'"/>
+                    <x:param select="'1.0.0-alpha.1'"/>
+                </x:call>
+                <x:expect label="A is older" select="xs:integer(-1)"/>
+            </x:scenario>
+            <x:scenario label="B equals A plus an extra part (another example)">
+                <x:call function="v:compare">
+                    <x:param select="'1.0.0-beta'"/>
+                    <x:param select="'1.0.0-beta.2'"/>
+                </x:call>
+                <x:expect label="A is older" select="xs:integer(-1)"/>
+            </x:scenario>
+            <x:scenario label="the A part is all-numeric, while B part has non-numeric character">
+                <x:call function="v:compare">
+                    <x:param select="'1.0.0-alpha.1'"/>
+                    <x:param select="'1.0.0-alpha.beta'"/>
+                </x:call>
+                <x:expect label="A is older" select="xs:integer(-1)"/>
+            </x:scenario>
+            <x:scenario label="both parts have non-numeric characters">
+                <x:call function="v:compare">
+                    <x:param select="'1.0.0-alpha.beta'"/>
+                    <x:param select="'1.0.0-beta'"/>
+                </x:call>
+                <x:expect label="A is older because alpha is before beta in ASCII sequence" select="xs:integer(-1)"/>
+            </x:scenario>
+            <x:scenario label="both parts have non-numeric characters (another example)">
+                <x:call function="v:compare">
+                    <x:param select="'1.0.0-beta.11'"/>
+                    <x:param select="'1.0.0-rc.1'"/>
+                </x:call>
+                <x:expect label="A is older because beta is before rc in ASCII sequence" select="xs:integer(-1)"/>
+            </x:scenario>
+            <x:scenario label="both parts are all-numeric">
+                <x:call function="v:compare">
+                    <x:param select="'1.0.0-beta.2'"/>
+                    <x:param select="'1.0.0-beta.11'"/>
+                </x:call>
+                <x:expect label="A is older because 2 is before 11 as numbers" select="xs:integer(-1)"/>
+            </x:scenario>
+            <x:scenario label="both parts are all-numeric, swapping order of input parameters">
+                <x:call function="v:compare">
+                    <x:param select="'1.0.0-beta.11'"/>
+                    <x:param select="'1.0.0-beta.2'"/>
+                </x:call>
+                <x:expect label="A is newer because 11 is after 2 as numbers" select="xs:integer(1)"/>
+            </x:scenario>
+            <x:scenario label="A has a pre-release part and B does not">
+                <x:call function="v:compare">
+                    <x:param select="'1.0.0-rc.1'"/>
+                    <x:param select="'1.0.0'"/>
+                </x:call>
+                <x:expect label="A is older" select="xs:integer(-1)"/>
+            </x:scenario>            
+        </x:scenario>
+        <x:scenario label="A and B differ only in build metadata, ">
+            <x:scenario label="with pre-release string">
+                <x:call function="v:compare">
+                    <x:param select="'1.0.0-alpha+001'"/>
+                    <x:param select="'1.0.0-alpha+002'"/>
+                </x:call>
+                <x:expect label="A and B have the same precedence, because build metadata does not affect precedence" select="xs:integer(0)"/>
+            </x:scenario>
+            <x:scenario label="without pre-release string">
+                <x:call function="v:compare">
+                    <x:param select="'1.0.0+exp.sha.5114f85'"/>
+                    <x:param select="'1.0.0+20130313144700'"/>
+                </x:call>
+                <x:expect label="A and B have the same precedence, because build metadata does not affect precedence" select="xs:integer(0)"/>
+            </x:scenario>
+        </x:scenario>
+        <x:scenario label="Improper form (two-parameter function does not make corrections)">
+            <x:scenario label="First string has improper form" catch="yes">
+                <x:call function="v:compare">
+                    <x:param select="'1.0'"/>
+                    <x:param select="'1.0.0'"/>
+                </x:call>
+                <x:expect label="Error" test="$x:result instance of map(*) and $x:result('err') instance of map(*)"/>
+            </x:scenario>
+            <x:scenario label="Second string has improper form" catch="yes">
+                <x:call function="v:compare">
+                    <x:param select="'1.0.0'"/>
+                    <x:param select="'1.0'"/>
+                </x:call>
+                <x:expect label="Error" test="$x:result instance of map(*) and $x:result('err') instance of map(*)"/>
+            </x:scenario>
+            <x:scenario label="Both strings have identical improper form" catch="yes">
+                <x:call function="v:compare">
+                    <x:param select="'1.0'"/>
+                    <x:param select="'1.0'"/>
+                </x:call>
+                <x:expect label="Error" test="$x:result instance of map(*) and $x:result('err') instance of map(*)"/>
+            </x:scenario>
+        </x:scenario>        
+    </x:scenario>
+
+    <x:scenario label="Tests for v:compare function with three parameters">
+        <x:scenario label="Normalize space ">
+            <x:scenario label="in A">
+                <x:call function="v:compare">
+                    <x:param select="' 1.0.0-draft '"/>
+                    <x:param select="'1.0.0-draft'"/>
+                    <x:param select="map{'normalize-space': true()}"/>
+                </x:call>
+                <x:expect label="A and B are the same" select="xs:integer(0)"/>
+            </x:scenario>
+            <x:scenario label="in B">
+                <x:call function="v:compare">
+                    <x:param select="'1.0.0-draft'"/>
+                    <x:param select="' 1.0.0-draft '"/>
+                    <x:param select="map{'normalize-space': true()}"/>
+                </x:call>
+                <x:expect label="A and B are the same" select="xs:integer(0)"/>
+            </x:scenario>
+        </x:scenario>
+        <x:scenario label="Supply missing zeros ">
+            <x:scenario label="in 'z' spot of A">
+                <x:call function="v:compare">
+                    <x:param select="'2.10-draft'"/>
+                    <x:param select="'2.10.0-draft'"/>
+                    <x:param select="map{'supply-missing-zeros': true()}"/>
+                </x:call>
+                <x:expect label="A and B are the same" select="xs:integer(0)"/>
+            </x:scenario>
+            <x:scenario label="in 'z' spot of B">
+                <x:call function="v:compare">
+                    <x:param select="'2.10.0'"/>
+                    <x:param select="'2.10'"/>
+                    <x:param select="map{'supply-missing-zeros': true()}"/>
+                </x:call>
+                <x:expect label="A and B are the same" select="xs:integer(0)"/>
+            </x:scenario>
+            <x:scenario label="in 'y' and 'z' spots of A">
+                <x:call function="v:compare">
+                    <x:param select="'5-draft'"/>
+                    <x:param select="'5.0.0-draft'"/>
+                    <x:param select="map{'supply-missing-zeros': true()}"/>
+                </x:call>
+                <x:expect label="A and B are the same" select="xs:integer(0)"/>
+            </x:scenario>
+            <x:scenario label="in 'y' and 'z' spots of B">
+                <x:call function="v:compare">
+                    <x:param select="'5.0.0'"/>
+                    <x:param select="'5'"/>
+                    <x:param select="map{'supply-missing-zeros': true()}"/>
+                </x:call>
+                <x:expect label="A and B are the same" select="xs:integer(0)"/>
+            </x:scenario>
+        </x:scenario>
+        <x:scenario label="Remove leading zeros ">
+            <x:scenario label="in A">
+                <x:call function="v:compare">
+                    <x:param select="'010.020.030-rc010.00'"/>
+                    <x:param select="'10.20.30-rc010.0'"/>
+                    <x:param select="map{'remove-leading-zeros': true()}"/>
+                </x:call>
+                <x:expect label="A and B are the same" select="xs:integer(0)"/>
+            </x:scenario>
+            <x:scenario label="in B">
+                <x:call function="v:compare">
+                    <x:param select="'10.20.30-rc010.0'"/>
+                    <x:param select="'010.020.030-rc010.00'"/>
+                    <x:param select="map{'remove-leading-zeros': true()}"/>
+                </x:call>
+                <x:expect label="A and B are the same" select="xs:integer(0)"/>
+            </x:scenario>
+            <x:scenario label="in A and B">
+                <x:call function="v:compare">
+                    <x:param select="'010.020.030-rc010.00'"/>
+                    <x:param select="'0010.0020.0030-rc010.000'"/>
+                    <x:param select="map{'remove-leading-zeros': true()}"/>
+                </x:call>
+                <x:expect label="A and B are the same" select="xs:integer(0)"/>
+            </x:scenario>
+            <x:scenario label="at beginning and end">
+                <x:call function="v:compare">
+                    <x:param select="'0.020.030-rc010.00'"/>
+                    <x:param select="'00.0020.0030-rc010.0'"/>
+                    <x:param select="map{'remove-leading-zeros': true()}"/>
+                </x:call>
+                <x:expect label="A and B are the same" select="xs:integer(0)"/>
+            </x:scenario>
+        </x:scenario>
+        <x:scenario label="Allow empty string ">
+            <x:scenario label="as first input">
+                <x:call function="v:compare">
+                    <x:param select="''"/>
+                    <x:param select="'1.0.0'"/>
+                    <x:param select="map{'allow-empty-string': true()}"/>
+                </x:call>
+                <x:expect label="B is newer" select="xs:integer(-1)"/>
+            </x:scenario>
+            <x:scenario label="as second input">
+                <x:call function="v:compare">
+                    <x:param select="'1.0.0'"/>
+                    <x:param select="''"/>
+                    <x:param select="map{'allow-empty-string': true()}"/>
+                </x:call>
+                <x:expect label="A is newer" select="xs:integer(1)"/>
+            </x:scenario>
+            <x:scenario label="for both inputs">
+                <x:call function="v:compare">
+                    <x:param select="''"/>
+                    <x:param select="''"/>
+                    <x:param select="map{'allow-empty-string': true()}"/>
+                </x:call>
+                <x:expect label="A and B are the same" select="xs:integer(0)"/>
+            </x:scenario>
+        </x:scenario>
+        <x:scenario label="Improper form even after modifications">
+            <x:scenario label="First string has improper form" catch="yes">
+                <x:call function="v:compare">
+                    <x:param select="'!2.0.0'"/>
+                    <x:param select="'1.0.0'"/>
+                    <x:param select="map{}"/>
+                </x:call>
+                <x:expect label="Error" test="$x:result instance of map(*) and $x:result('err') instance of map(*)"/>
+            </x:scenario>
+            <x:scenario label="Second string has improper form" catch="yes">
+                <x:call function="v:compare">
+                    <x:param select="'1.0.0'"/>
+                    <x:param select="'!0'"/>
+                    <x:param select="map{}"/>
+                </x:call>
+                <x:expect label="Error" test="$x:result instance of map(*) and $x:result('err') instance of map(*)"/>
+            </x:scenario>
+            <x:scenario label="Both strings have identical improper form" catch="yes">
+                <x:call function="v:compare">
+                    <x:param select="'!1.0.0'"/>
+                    <x:param select="'!1.0.0'"/>
+                    <x:param select="map{}"/>
+                </x:call>
+                <x:expect label="Error" test="$x:result instance of map(*) and $x:result('err') instance of map(*)"/>
+            </x:scenario>
+        </x:scenario>
+        <x:scenario label="Multiple modifications">
+            <x:call function="v:compare">
+                <x:param select="' 01.00-draft '"/>
+                <x:param select="'1.0.0-draft'"/>
+                <x:param select="map{
+                    'normalize-space': true(),
+                    'supply-missing-zeros': true(),
+                    'remove-leading-zeros': true(),
+                    'allow-empty-string': true()
+                    }"/>
+            </x:call>
+            <x:expect label="A and B are the same" select="xs:integer(0)"/>
+        </x:scenario>
+    </x:scenario>
+    
+    <x:scenario label="Tests for v:normalize-version function">
+        <x:scenario label="Multiple modifications requested">
+            <x:scenario label="Spot check 1">
+                <x:call function="v:normalize-version">
+                    <x:param select="' 01.00-draft '"/>
+                    <x:param select="map{
+                        'normalize-space': true(),
+                        'supply-missing-zeros': true(),
+                        'remove-leading-zeros': true()
+                        }"/>
+                </x:call>
+                <x:expect label="Removed space; inserted 0 for z; removed leading zeros" select="'1.0.0-draft'"/>
+            </x:scenario>
+            <x:scenario label="Spot check 2">
+                <x:call function="v:normalize-version">
+                    <x:param select="' 01.00-draft '"/>
+                    <x:param select="map{
+                        'normalize-space': true(),
+                        'supply-missing-zeros': true()
+                        }"/>
+                </x:call>
+                <x:expect label="Removed space; inserted 0 for z; leading zeros unchanged" select="'01.00.0-draft'"/>
+            </x:scenario>
+            <x:scenario label="Spot check 3">
+                <x:call function="v:normalize-version">
+                    <x:param select="' 01.00-draft '"/>
+                    <x:param select="map{
+                        'normalize-space': true(),
+                        'remove-leading-zeros': true()
+                        }"/>
+                </x:call>
+                <x:expect label="Removed space; did not insert 0 for z; removed leading zeros" select="'1.0-draft'"/>
+            </x:scenario>
+        </x:scenario>
+        <x:scenario label="No modifications requested">
+            <x:scenario label="Explicit values of false">
+                <x:call function="v:normalize-version">
+                    <x:param select="' 01.00-draft '"/>
+                    <x:param select="map{
+                        'normalize-space': false(),
+                        'supply-missing-zeros': false(),
+                        'remove-leading-zeros': false()
+                        }"/>
+                </x:call>
+                <x:expect label="Input string is unchanged" select="' 01.00-draft '"/>
+            </x:scenario>
+            <x:scenario label="Relevant options omitted, and unknown options supplied">
+                <x:call function="v:normalize-version">
+                    <x:param select="' 01.00-draft '"/>
+                    <x:param select="map{
+                        'unknown1': false(),
+                        'unknown2': true()
+                        }"/>
+                </x:call>
+                <x:expect label="Input string is unchanged" select="' 01.00-draft '"/>
+            </x:scenario>
+            <x:scenario label="Empty map">
+                <x:call function="v:normalize-version">
+                    <x:param select="' 01.00-draft '"/>
+                    <x:param select="map{}"/>
+                </x:call>
+                <x:expect label="Input string is unchanged" select="' 01.00-draft '"/>
+            </x:scenario>
+        </x:scenario>
+    </x:scenario>
+
+    <x:scenario label="Tests for v:normalize-space-option function">
+        <x:scenario label="option = true">
+            <x:call function="v:normalize-space-option">
+                <x:param select="' a b '"/>
+                <x:param select="true()"/>
+            </x:call>
+            <x:expect label="Input string without leading or trailing space" select="'a b'"/>
+        </x:scenario>
+        <x:scenario label="option = false">
+            <x:call function="v:normalize-space-option">
+                <x:param select="' a b '"/>
+                <x:param select="false()"/>
+            </x:call>
+            <x:expect label="Input string unchanged" select="' a b '"/>
+        </x:scenario>
+        <x:scenario label="option = empty sequence">
+            <x:call function="v:normalize-space-option">
+                <x:param select="' a b '"/>
+                <x:param select="()"/>
+            </x:call>
+            <x:expect label="Input string unchanged" select="' a b '"/>
+        </x:scenario>
+    </x:scenario>
+
+    <x:scenario label="Tests for v:supply-missing-zeros function">
+        <x:scenario label="Missing z, prerelease string, option = true">
+            <x:call function="v:supply-missing-zeros">
+                <x:param select="'2.10-draft.3'"/>
+                <x:param select="true()"/>
+            </x:call>
+            <x:expect label="z inserted" select="'2.10.0-draft.3'"/>
+        </x:scenario>
+        <x:scenario label="Missing y and z, prerelease string, option = true">
+            <x:call function="v:supply-missing-zeros">
+                <x:param select="'2-draft.3'"/>
+                <x:param select="true()"/>
+            </x:call>
+            <x:expect label="y and z inserted" select="'2.0.0-draft.3'"/>
+        </x:scenario>
+        <x:scenario label="Missing z, no prerelease string, option = true">
+            <x:call function="v:supply-missing-zeros">
+                <x:param select="'2.10'"/>
+                <x:param select="true()"/>
+            </x:call>
+            <x:expect label="z inserted" select="'2.10.0'"/>
+        </x:scenario>
+        <x:scenario label="Missing y and z, no prerelease string, option = true">
+            <x:call function="v:supply-missing-zeros">
+                <x:param select="'2'"/>
+                <x:param select="true()"/>
+            </x:call>
+            <x:expect label="y and z inserted" select="'2.0.0'"/>
+        </x:scenario>
+        <x:scenario label="option = false">
+            <x:call function="v:supply-missing-zeros">
+                <x:param select="'1.2-draft.3'"/>
+                <x:param select="false()"/>
+            </x:call>
+            <x:expect label="Input string unchanged" select="'1.2-draft.3'"/>
+        </x:scenario>
+        <x:scenario label="option = empty sequence">
+            <x:call function="v:supply-missing-zeros">
+                <x:param select="'1.2-draft.3'"/>
+                <x:param select="()"/>
+            </x:call>
+            <x:expect label="Input string unchanged" select="'1.2-draft.3'"/>
+        </x:scenario>
+    </x:scenario>
+
+    <x:scenario label="Tests for v:remove-leading-zeros">
+        <x:scenario label="option = true">
+            <x:call function="v:remove-leading-zeros">
+                <x:param select="'010.020.030-rc010.-010.020'"/>
+                <x:param select="true()"/>
+            </x:call>
+            <x:expect label="Leading zeros removed from the all-numeric identifiers"
+                select="'10.20.30-rc010.-010.20'"/>
+        </x:scenario>
+        <x:scenario label="option = true, no prerelease part">
+            <x:call function="v:remove-leading-zeros">
+                <x:param select="'010.020.030'"/>
+                <x:param select="true()"/>
+            </x:call>
+            <x:expect label="Leading zeros removed from the all-numeric identifiers"
+                select="'10.20.30'"/>
+        </x:scenario>
+        <x:scenario label="option = false">
+            <x:call function="v:remove-leading-zeros">
+                <x:param select="'010.020.030-rc010.-010.020'"/>
+                <x:param select="false()"/>
+            </x:call>
+            <x:expect label="Input string unchanged" select="'010.020.030-rc010.-010.020'"/>
+        </x:scenario>
+        <x:scenario label="option = empty sequence">
+            <x:call function="v:remove-leading-zeros">
+                <x:param select="'010.020.030-rc010.-010.020'"/>
+                <x:param select="()"/>
+            </x:call>
+            <x:expect label="Input string unchanged" select="'010.020.030-rc010.-010.020'"/>
+        </x:scenario>
+    </x:scenario>
+
+    <x:scenario label="Tests for v:version-to-xyz function">
+        <x:scenario label="String with three dot-separated numeric parts">
+            <x:call function="v:version-to-xyz">
+                <x:param select="'1.22.333'"/>
+                <x:param select="false()"/>
+            </x:call>
+            <x:expect label="Sequence of three numbers as strings" select="('1', '22', '333')"/>
+        </x:scenario>
+        <x:scenario label="String with two dot-separated numeric parts">
+            <x:call function="v:version-to-xyz">
+                <x:param select="'1.22'"/>
+                <x:param select="true()"/>
+            </x:call>
+            <x:expect label="Sequence of three numbers as strings with zero in 3rd spot" select="('1', '22', '0')"/>
+        </x:scenario>
+        <x:scenario label="String with one number">
+            <x:call function="v:version-to-xyz">
+                <x:param select="'1'"/>
+                <x:param select="true()"/>
+            </x:call>
+            <x:expect label="Sequence of three numbers as strings with zero in 2nd and 3rd spot" select="('1', '0', '0')"/>
+        </x:scenario>
+        <x:scenario label="String with hyphen between the numbers">
+            <x:call function="v:version-to-xyz">
+                <x:param select="'1-22-333'"/>
+                <x:param select="true()"/>
+            </x:call>
+            <!-- The "-22-333" substring would be interpreted as a pre-release descriptor, not the y.z in an x.y.z pattern -->
+            <x:expect label="Sequence of three numbers as strings with zero in 2nd and 3rd spot" select="('1', '0', '0')"/>
+        </x:scenario>
+        <x:scenario label="Fewer than 3 dot-separated numbers, and 2nd input is false">
+            <x:call function="v:version-to-xyz">
+                <x:param select="'1:22:333'"/>
+                <x:param select="false()"/>
+            </x:call>
+            <x:expect label="Sequence of three numbers as strings with empty string in 2nd and 3rd spot" select="('1', '', '')"/>
+        </x:scenario>
+        <x:scenario label="Error cases">
+            <x:scenario label="Empty string" catch="yes">
+                <x:call function="v:version-to-xyz">
+                    <x:param select="''"/>
+                    <x:param select="false()"/>
+                </x:call>
+                <x:expect label="Error" test="$x:result instance of map(*) and $x:result('err') instance of map(*)"/>
+            </x:scenario>
+            <x:scenario label="String with non-numeric first character" catch="yes">
+                <x:call function="v:version-to-xyz">
+                    <x:param select="'v1.22.333'"/>
+                    <x:param select="false()"/>
+                </x:call>
+                <x:expect label="Error" test="$x:result instance of map(*) and $x:result('err') instance of map(*)"/>
+            </x:scenario>
+        </x:scenario>
+    </x:scenario>
+</x:description>

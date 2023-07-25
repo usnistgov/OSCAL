@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description
+    xmlns="http://csrc.nist.gov/ns/oscal/1.0"    
+    xmlns:o="http://csrc.nist.gov/ns/oscal/1.0"
+    xmlns:opr="http://csrc.nist.gov/ns/oscal/profile-resolution"
+    xmlns:ov="http://csrc.nist.gov/ns/oscal/xspec/variable"
+    xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    run-as="external"
+    stylesheet="../../oscal-profile-resolve-metadata.xsl">
+    
+    <!-- In this file, the purpose of run-as="external" is to enable
+        individual scenarios to specify values of global XSLT
+        parameters. -->
+
+    <x:variable name="ov:sample-output-from-pipeline-step-1" as="element(o:profile)">
+        <profile uuid="cb1ec926-3441-458f-8cce-ea11308c9d37">
+            <metadata>
+                <title>Test Profile</title>
+                <last-modified>2021-05-30T14:39:35.84-04:00</last-modified>
+                <version>1.3</version>
+                <oscal-version>1.0.1</oscal-version>
+            </metadata>
+            <selection uuid="6498eb6e-8653-4470-8b97-54054d3ba886" opr:src="some-value">
+                <metadata>
+                    <title>XYZ Tiny Catalog</title>
+                    <last-modified>2020-05-30T14:51:42.355-04:00</last-modified>
+                    <version>1.0</version>
+                    <oscal-version>1.0.0</oscal-version>
+                    <prop name="catalog-required" value="some value"/>
+                    <link href="#catalog-internal"><text>Internal link within catalog</text></link>
+                </metadata>
+                <group opr:id="some-id">
+                    <title>Group X of XYZ</title>
+                </group>
+            </selection>
+        </profile>
+    </x:variable>
+
+    <x:scenario label="Tests for match='/ | * | @*' template for all modes">
+        <x:variable name="ov:arbitrary-element" as="element(arbitrary-element)">
+            <arbitrary-element xmlns="" arbitrary-attribute="val">text<child/></arbitrary-element>
+        </x:variable>
+        <x:scenario label="Element">
+            <x:context select="$ov:arbitrary-element"/>
+            <x:expect label="Copy" select="$ov:arbitrary-element"/>
+        </x:scenario>
+        <x:scenario label="Attribute">
+            <x:context select="$ov:arbitrary-element/@arbitrary-attribute"/>
+            <x:expect label="Copy"
+                test="$x:result instance of attribute(arbitrary-attribute) and $x:result/string()='val'"/>
+        </x:scenario>
+    </x:scenario>
+
+    <x:scenario label="Tests for match=profile template">
+        <x:variable name="ov:top-uuid" as="xs:string"
+            select="'12345678-90AB-4CDE-a012-bcdef0123456'"/>
+        <x:param name="profile-origin-uri" select="'urn:UNKNOWN/some-profile-filename.xml'"/>
+        <x:context>
+            <profile uuid="test"/>
+        </x:context>
+        <x:scenario label="Basic case">
+            <x:param name="top-uuid" select="$ov:top-uuid"/>
+            <x:param name="uuid-method" select="'user-provided'"/>
+            <x:expect label="Catalog uses specified uuid"
+                test="/o:catalog/@uuid/string()" select="$ov:top-uuid"/>
+        </x:scenario>
+        <x:scenario label="selection/metadata has prop and link children">
+            <x:context select="$ov:sample-output-from-pipeline-step-1"/>            
+            <x:expect label="Source catalog prop does not leak into output catalog metadata"
+                test="exists(/o:catalog/o:metadata) and
+                empty(/o:catalog/o:metadata/o:prop[@name='catalog-required'])"/>
+            <x:expect label="Source catalog link does not leak into output catalog metadata"
+                test="exists(/o:catalog/o:metadata) and
+                empty(/o:catalog/o:metadata/o:link[@href='#catalog-internal'])"/>
+        </x:scenario>
+    </x:scenario>
+
+    <x:scenario label="Tests for match=profile/metadata template">
+        <x:scenario label="Simple case">
+            <x:context select="$ov:sample-output-from-pipeline-step-1/o:metadata"/>
+            <x:expect label="Metadata includes profile version, resolution-tool prop, and source-profile link">
+                <metadata>
+                    <title>Test Profile</title>
+                    <last-modified>...</last-modified>
+                    <version>1.3</version>
+                    <oscal-version>...</oscal-version>
+                    <prop name="resolution-tool" value="OSCAL Profile Resolver XSLT Pipeline OPRXP" />
+                    <link href="urn:UNKNOWN" rel="source-profile" />
+                </metadata>
+            </x:expect>
+            <x:expect label="version value matches version of source profile"
+                test="/o:metadata/o:version/string()" select="'1.3'"/>
+        </x:scenario>
+        <x:scenario label="profile/metadata has additional children, 'leader' and others">
+            <x:context select="/o:profile/o:metadata">
+                <profile uuid="pathological-profile">
+                    <metadata>
+                        <title>Pathological Profile</title>
+                        <published>2019-11-13T12:41:07.061-05:00</published>
+                        <last-modified>2019-11-13T12:41:07.061-05:00</last-modified>
+                        <version>1.0</version>
+                        <oscal-version>1.0-rc2</oscal-version>
+                        <document-id scheme="https://www.doi.org/">...doi...</document-id>
+                        <party>
+                            <org>
+                                <org-name>Standing Committee</org-name>
+                            </org>
+                        </party>
+                    </metadata>
+                </profile>
+            </x:context>            
+            <x:expect label="resolution-tool and source-profile are between last 'leader' (document-id) and 'everything else' (party)">
+                <metadata>
+                    <title>...</title>
+                    <published>2019-11-13T12:41:07.061-05:00</published>
+                    <last-modified>...</last-modified>
+                    <version>...</version>
+                    <oscal-version>...</oscal-version>
+                    <document-id scheme="https://www.doi.org/">...doi...</document-id>
+                    <prop name="resolution-tool" value="..."/>
+                    <link href="urn:UNKNOWN" rel="source-profile"/>
+                    <party>
+                        <org>
+                            <org-name>Standing Committee</org-name>
+                        </org>
+                    </party>
+                </metadata>
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="profile/metadata has prop child">
+            <x:context select="/o:profile/o:metadata">
+                <profile uuid="pathological-profile">
+                    <metadata>
+                        <title>Pathological Profile</title>
+                        <last-modified>2019-11-13T12:41:07.061-05:00</last-modified>
+                        <version>1.0</version>
+                        <oscal-version>1.0-rc2</oscal-version>
+                        <prop name="required" value="some value"/>
+                        <prop name="optional" value="some other value"/>
+                    </metadata>
+                </profile>
+            </x:context>            
+            <x:expect label="resolution-tool prop is after last prop from input">
+                <metadata>
+                    <title>...</title>
+                    <last-modified>...</last-modified>
+                    <version>...</version>
+                    <oscal-version>...</oscal-version>
+                    <prop name="required" value="some value"/>
+                    <prop name="optional" value="some other value"/>
+                    <prop name="resolution-tool" value="..."/>
+                    <link href="..." rel="source-profile"/>
+                </metadata>
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="profile/metadata has link">
+            <x:context select="/o:profile/o:metadata">
+                <profile uuid="pathological-profile">
+                    <metadata>
+                        <title>Pathological Profile</title>
+                        <last-modified>2019-11-13T12:41:07.061-05:00</last-modified>
+                        <version>1.0</version>
+                        <oscal-version>1.0-rc2</oscal-version>
+                        <link href="#internal"><text>Internal link</text></link>
+                    </metadata>
+                </profile>
+            </x:context>
+            <x:expect label="source-profile link is inserted before copied link">
+                <metadata>
+                    <title>...</title>
+                    <last-modified>...</last-modified>
+                    <version>...</version>
+                    <oscal-version>...</oscal-version>
+                    <prop name="resolution-tool" value="..."/>
+                    <link href="..." rel="source-profile"/>
+                    <link href="#internal"><text>Internal link</text></link>
+                </metadata>
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="Option to hide source profile URI">
+            <x:param name="hide-source-profile-uri" select="true()"/>
+            <x:context select="$ov:sample-output-from-pipeline-step-1/o:metadata"/>
+            <x:expect label="link rel=source-profile has generic href value"
+                test="//o:link[@rel='source-profile']">
+                <link href="profile" rel="source-profile"/>
+            </x:expect>
+        </x:scenario>
+    </x:scenario>
+
+    <x:scenario label="Tests for match=last-modified template">
+        <x:scenario label="Typical case">
+            <x:context select="$ov:sample-output-from-pipeline-step-1/o:metadata/o:last-modified"/>
+            <x:expect label="last-modified element without attributes">
+                <last-modified>...</last-modified>
+            </x:expect>
+            <x:expect label="Element content is a time stamp"
+                test="$x:result/node() castable as xs:dateTime"/>
+            <!-- last-modified content must represent the time the profile resolution
+                completed. Sanity-check that last-modified is not a copy of the
+                last-modified timestamps from the input document. -->
+            <x:variable name="ov:inputs-last-modified" as="xs:string+"
+                select="$ov:sample-output-from-pipeline-step-1//o:last-modified/string()"/>
+            <x:expect label="last-modified content is not from input document"
+                test="not(o:metadata/o:last-modified/string() = $ov:inputs-last-modified)"/>
+        </x:scenario>
+        <x:scenario label="Empty last-modified in source document">
+            <x:context>
+                <last-modified/>
+            </x:context>
+            <x:expect label="Output still has a time stamp"
+                test="$x:result/self::o:last-modified/node() castable as xs:dateTime"/>
+        </x:scenario>
+    </x:scenario>
+
+    <x:scenario label="Tests for match=profile/metadata/oscal-version template">
+        <x:scenario label="Simple case">
+            <x:context select="/o:profile/o:metadata/o:oscal-version">
+                <profile>
+                    <metadata>
+                        <oscal-version>1.3</oscal-version>
+                    </metadata>
+                </profile>
+            </x:context>
+            <x:expect label="oscal-version">
+                <oscal-version>...</oscal-version>
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="Sanity checks for calling opr:oscal-version with correct inputs: ">
+            <x:scenario label="Most recent version is in selection metadata" catch="yes">
+                <x:context select="/o:profile/o:metadata/o:oscal-version">
+                    <profile>
+                        <metadata>
+                            <oscal-version>1.0.3</oscal-version>
+                        </metadata>
+                        <!-- All selections from pipeline's step 1 output
+                            are under consideration, not just first or last. -->
+                        <selection>
+                            <metadata>
+                                <oscal-version>1.0.1</oscal-version>
+                            </metadata>
+                        </selection>
+                        <selection>
+                            <metadata>
+                                <oscal-version>1.0.4</oscal-version>
+                            </metadata>
+                        </selection>
+                        <selection>
+                            <metadata>
+                                <oscal-version>1.0.2</oscal-version>
+                            </metadata>
+                        </selection>
+                    </profile>
+                </x:context>
+                <x:expect label="Error"
+                    test="$x:result instance of map(*) and $x:result('err') instance of map(*)"/>
+            </x:scenario>
+            <x:scenario label="Most recent version is in profile metadata">
+                <x:context select="/o:profile/o:metadata/o:oscal-version">
+                    <profile>
+                        <metadata>
+                            <oscal-version>1.0.4</oscal-version>
+                        </metadata>
+                        <selection>
+                            <metadata>
+                                <oscal-version>1.0.1</oscal-version>
+                            </metadata>
+                        </selection>
+                    </profile>
+                </x:context>
+                <x:expect label="Version from profile">
+                    <oscal-version>1.0.4</oscal-version>
+                </x:expect>
+            </x:scenario>
+        </x:scenario>
+    </x:scenario>
+
+    <x:scenario label="Tests for opr:oscal-version function">
+        <x:scenario label="Same major version">
+            <x:scenario label="Source profile version at least as new as all imported documents">
+                <x:call function="opr:oscal-version">
+                    <x:param name="source" select="'1.0.1'"/>
+                    <x:param name="imported" select="('1.0.0','1.0.1')"/>
+                </x:call>
+                <x:expect label="Source version and no error" select="'1.0.1'"/>
+            </x:scenario>
+            <x:scenario label="Source profile version older than at least one imported document" catch="yes">
+                <x:call function="opr:oscal-version">
+                    <x:param name="source" select="'1.0.0'"/>
+                    <x:param name="imported" select="('1.0.0','1.0.1')"/>
+                </x:call>
+                <x:expect label="Error"
+                    test="$x:result instance of map(*) and $x:result('err') instance of map(*)"/>
+            </x:scenario>
+            <x:scenario label="Imported document has a newer pre-release identifier" catch="yes">
+                <x:call function="opr:oscal-version">
+                    <x:param name="source" select="'1.0.1-rc1'"/>
+                    <x:param name="imported" select="('1.0.0','1.0.1-rc2')"/>
+                </x:call>
+                <x:expect label="Error"
+                    test="$x:result instance of map(*) and $x:result('err') instance of map(*)"/>
+            </x:scenario>
+        </x:scenario>
+        <x:scenario label="Different major version">
+            <x:scenario label="Source profile version at least as new as all imported documents">
+                <x:call function="opr:oscal-version">
+                    <x:param name="source" select="'2.0.1'"/>
+                    <x:param name="imported" select="('1.37.40','1.37')"/>
+                </x:call>
+                <x:expect label="Source version and no error" select="'2.0.1'"/>
+            </x:scenario>
+            <x:scenario label="Source profile version older than at least one imported document" catch="yes">
+                <x:call function="opr:oscal-version">
+                    <x:param name="source" select="'1.37.40'"/>
+                    <x:param name="imported" select="('2.0','1.0.1')"/>
+                </x:call>
+                <x:expect label="Error"
+                    test="$x:result instance of map(*) and $x:result('err') instance of map(*)"/>
+            </x:scenario>
+        </x:scenario>
+    </x:scenario>
+    
+    <x:scenario label="Tests for match=selection/metadata template">
+        <x:context select="$ov:sample-output-from-pipeline-step-1//o:selection/o:metadata"/>
+        <x:expect label="Nothing" select="()"/>
+    </x:scenario>
+
+</x:description>

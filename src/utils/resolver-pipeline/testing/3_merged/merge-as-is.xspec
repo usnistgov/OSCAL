@@ -1,0 +1,630 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+    xmlns:o="http://csrc.nist.gov/ns/oscal/1.0"
+    xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    xmlns:opr="http://csrc.nist.gov/ns/oscal/profile-resolution"
+    stylesheet="../../oscal-profile-resolve-merge.xsl"
+    xslt-version="3.0">
+
+    <x:scenario label="Tests for match=catalog[merge/as-is=$true-content] priority=12 template">
+        <x:scenario label="Single import, as-is merge">
+            <x:context>
+                <catalog>
+                    <selection uuid="xyz-tiny_catalog" opr:id="...">
+                        <group id="x" opr:id="xyz-tiny_catalog#x">
+                            <title>Group X of XYZ</title>
+                            <control id="x1" opr:id="xyz-tiny_catalog#x1"><title>Control X1</title></control>
+                            <control id="x2" opr:id="xyz-tiny_catalog#x2"><title>Control X2</title></control>
+                            <control id="x3" opr:id="xyz-tiny_catalog#x3"><title>Control X3</title></control>
+                        </group>
+                        <group id="y" opr:id="xyz-tiny_catalog#y">
+                            <title>Group Y of XYZ</title>
+                            <control id="y1" opr:id="xyz-tiny_catalog#y1"><title>Control Y1</title></control>
+                            <control id="y2" opr:id="xyz-tiny_catalog#y2"><title>Control Y2</title></control>
+                            <control id="y3" opr:id="xyz-tiny_catalog#y3"><title>Control Y3</title></control>
+                        </group>
+                        <group id="z" opr:id="xyz-tiny_catalog#z">
+                            <title>Group Z of XYZ</title>
+                            <control id="z1" opr:id="xyz-tiny_catalog#z1"><title>Control Z1</title></control>
+                            <control id="z2" opr:id="xyz-tiny_catalog#z2"><title>Control Z2</title></control>
+                            <control id="z3" opr:id="xyz-tiny_catalog#z3"><title>Control Z3</title>
+                                <control id="z3.a" opr:id="xyz-tiny_catalog#z3.a"><title>Control Z3-A</title>
+                                    <control id="z3.a-1" opr:id="xyz-tiny_catalog#z3.a-1"><title>Control Z3-A-1</title></control>
+                                </control>
+                            </control>
+                        </group>
+                    </selection>
+                    <merge>
+                        <as-is>true</as-is>
+                    </merge>
+                </catalog>
+            </x:context>
+            <x:expect label="XYZ catalog with original grouping">
+                <catalog>
+                    <group id="x">
+                        <title>Group X of XYZ</title>
+                        <control id="x1"><title>Control X1</title></control>
+                        <control id="x2"><title>Control X2</title></control>
+                        <control id="x3"><title>Control X3</title></control>
+                    </group>
+                    <group id="y">
+                        <title>Group Y of XYZ</title>
+                        <control id="y1"><title>Control Y1</title></control>
+                        <control id="y2"><title>Control Y2</title></control>
+                        <control id="y3"><title>Control Y3</title></control>
+                    </group>
+                    <group id="z">
+                        <title>Group Z of XYZ</title>
+                        <control id="z1"><title>Control Z1</title></control>
+                        <control id="z2"><title>Control Z2</title></control>
+                        <control id="z3"><title>Control Z3</title>
+                            <control id="z3.a"><title>Control Z3-A</title>
+                                <control id="z3.a-1"><title>Control Z3-A-1</title></control>
+                            </control>
+                        </control>
+                    </group>
+                </catalog>
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="Parallel imports, as-is merge">
+            <x:context>
+                <catalog>
+                    <selection id="xyz-tiny_catalog" opr:id="xyz-tiny_catalog#xyz-tiny_catalog">
+                        <group id="x" opr:id="xyz-tiny_catalog#x">
+                            <title>Group X of XYZ</title>
+                            <control id="x1" opr:id="xyz-tiny_catalog#x1"><title>Control X1</title></control>
+                        </group>
+                        <group id="z" opr:id="xyz-tiny_catalog#z">
+                            <title>Group Z of XYZ</title>
+                            <control id="z1" opr:id="xyz-tiny_catalog#z1"><title>Control Z1</title></control>
+                            <control id="z3" opr:id="xyz-tiny_catalog#z3"><title>Control Z3</title>
+                                <control id="z3.a" opr:id="xyz-tiny_catalog#z3.a"><title>Control Z3-A</title>
+                                    <control id="z3.a-1" opr:id="xyz-tiny_catalog#z3.a-1"><title>Control Z3-A-1</title></control>
+                                </control>
+                            </control>
+                        </group>
+                    </selection>
+                    <selection id="xyz-tiny_catalog" opr:id="xyz-tiny_catalog#xyz-tiny_catalog">
+                        <group id="x" opr:id="xyz-tiny_catalog#x">
+                            <title>Group X of XYZ</title>
+                            <control id="x1" opr:id="xyz-tiny_catalog#x1"><title>Control X1</title></control>
+                            <control id="x2" opr:id="xyz-tiny_catalog#x2"><title>Control X2</title></control>
+                        </group>
+                        <group id="y" opr:id="xyz-tiny_catalog#y">
+                            <title>Group Y of XYZ</title>
+                            <control id="y1" opr:id="xyz-tiny_catalog#y1"><title>Control Y1</title></control>
+                            <control id="y2" opr:id="xyz-tiny_catalog#y2"><title>Control Y2</title></control>
+                            <control id="y3" opr:id="xyz-tiny_catalog#y3"><title>Control Y3</title></control>
+                        </group>
+                        <group id="z" opr:id="xyz-tiny_catalog#z">
+                            <title>Group Z of XYZ</title>
+                            <control id="z3" opr:id="xyz-tiny_catalog#z3"><title>Control Z3</title>
+                                <control id="z3.a" opr:id="xyz-tiny_catalog#z3.a"><title>Control Z3-A</title>
+                                    <control id="z3.a-1" opr:id="xyz-tiny_catalog#z3.a-1"><title>Control Z3-A-1</title></control>
+                                </control>
+                            </control>
+                        </group>
+                    </selection>
+                    <merge>
+                        <as-is>true</as-is>
+                    </merge>
+                </catalog>
+            </x:context>
+            <x:expect label="XYZ catalog merged, with some redundancy">
+                <catalog>
+                    <group id="x">
+                        <title>Group X of XYZ</title>
+                        <control id="x1"><title>Control X1</title></control>
+                        <control id="x1"><title>Control X1</title></control>
+                        <control id="x2"><title>Control X2</title></control>
+                    </group>
+                    <group id="z">
+                        <title>Group Z of XYZ</title>
+                        <control id="z1"><title>Control Z1</title></control>
+                        <control id="z3"><title>Control Z3</title>
+                            <control id="z3.a"><title>Control Z3-A</title>
+                                <control id="z3.a-1"><title>Control Z3-A-1</title></control>
+                            </control>
+                        </control>
+                        <control id="z3"><title>Control Z3</title>
+                            <control id="z3.a"><title>Control Z3-A</title>
+                                <control id="z3.a-1"><title>Control Z3-A-1</title></control>
+                            </control>
+                        </control>
+                    </group>
+                    <group id="y">
+                        <title>Group Y of XYZ</title>
+                        <control id="y1"><title>Control Y1</title></control>
+                        <control id="y2"><title>Control Y2</title></control>
+                        <control id="y3"><title>Control Y3</title></control>
+                    </group>
+                </catalog>
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="Merge with loose parameters">
+            <x:context>
+                <catalog>
+                    <selection id="xyz-tiny_catalog" opr:id="xyz-tiny_catalog#xyz-tiny_catalog">
+                        <group id="x" opr:id="xyz-tiny_catalog#x">
+                            <title>Group X of XYZ</title>
+                            <prop value="special" name="status"/>
+                            <param id="param-x">
+                                <label>Param X</label>
+                                <constraint>no control</constraint>
+                            </param>
+                            <control id="x1" opr:id="xyz-tiny_catalog#x1"><title>Control X1</title></control>
+                        </group>
+                    </selection>
+                    <selection id="xyz-tiny_catalog" opr:id="xyz-tiny_catalog#xyz-tiny_catalog">
+                        <group id="x" opr:id="xyz-tiny_catalog#x">
+                            <title>Group X of XYZ</title>
+                            <prop value="special" name="status"/>
+                            <param id="param-x">
+                                <select>
+                                    <choice>some choice</choice>
+                                    <choice>some other choice</choice>
+                                </select>
+                            </param>
+                            <control id="x1" opr:id="xyz-tiny_catalog#x1"><title>Control X1</title></control>
+                            <control id="x2" opr:id="xyz-tiny_catalog#x2"><title>Control X2</title></control>
+                        </group>
+                    </selection>
+                    <merge>
+                        <as-is>true</as-is>
+                    </merge>
+                </catalog>
+            </x:context>
+            <x:expect label="Output has loose parameters with redundancy">
+                <catalog>
+                    <group id="x">
+                        <title>Group X of XYZ</title>
+                        <prop value="special" name="status"/>
+                        <prop value="special" name="status"/>
+                        <param id="param-x">
+                            <label>Param X</label>
+                            <constraint>no control</constraint>
+                        </param>
+                        <param id="param-x">
+                            <select>
+                                <choice>some choice</choice>
+                                <choice>some other choice</choice>
+                            </select>
+                        </param>
+                        <control id="x1"><title>Control X1</title></control>
+                        <control id="x1"><title>Control X1</title></control>
+                        <control id="x2"><title>Control X2</title></control>
+                    </group>
+                </catalog>
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="Catalog with attribute, metadata, and modify child">
+            <x:context>
+                <catalog uuid="zzz">
+                    <metadata>
+                        <title>Test Profile</title>
+                        <last-modified>2019-11-13T12:41:07.061-05:00</last-modified>
+                        <version>1.3</version>
+                        <oscal-version>1.0.2</oscal-version>
+                        <prop name="resolution-tool" value="OSCAL Profile Resolver XSLT Pipeline OPRXP" />
+                        <link href="urn:UNKNOWN" rel="source-profile" />
+                    </metadata>
+                    <selection uuid="xyz-tiny_catalog">
+                        <control id="x1"><title>Control X1</title></control>
+                    </selection>
+                    <merge>
+                        <as-is>true</as-is>
+                    </merge>
+                    <modify>
+                        <set-parameter param-id="a1_prm1">
+                            <constraint>
+                                <description>
+                                    <p>at least every 3 years</p>
+                                </description>
+                            </constraint>
+                        </set-parameter>
+                    </modify>
+                </catalog>
+            </x:context>
+            <x:expect label="Output includes catalog attribute, metadata, and modify child">
+                <catalog uuid="zzz">
+                    <metadata>
+                        <title>Test Profile</title>
+                        <last-modified>2019-11-13T12:41:07.061-05:00</last-modified>
+                        <version>1.3</version>
+                        <oscal-version>1.0.2</oscal-version>
+                        <prop name="resolution-tool" value="OSCAL Profile Resolver XSLT Pipeline OPRXP" />
+                        <link href="urn:UNKNOWN" rel="source-profile" />
+                    </metadata>
+                    <control id="x1"><title>Control X1</title></control>
+                    <modify>
+                        <set-parameter param-id="a1_prm1">
+                            <constraint>
+                                <description>
+                                    <p>at least every 3 years</p>
+                                </description>
+                            </constraint>
+                        </set-parameter>
+                    </modify>
+                </catalog>
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="Catalog with back matter inside and outside selection">
+            <x:context>
+                <catalog uuid="zzz">
+                    <selection uuid="xyz-tiny_catalog">
+                        <control id="x1"><title>Control X1</title></control>
+                        <back-matter>
+                            <resource uuid="0050231f-4fd0-43d6-8fa0-431367cd83e2">
+                                <title>Ref BBB</title>
+                                <citation>
+                                    <text>Bbb bbbbb Bbb b.</text>
+                                </citation>
+                                <rlink href="bbb.html"/>
+                            </resource>
+                        </back-matter>
+                    </selection>
+                    <merge>
+                        <as-is>true</as-is>
+                    </merge>
+                    <back-matter>
+                        <resource uuid="0050231f-4fd0-43d6-8fa0-431367cd83e1">
+                            <title>Ref AAA</title>
+                            <citation>
+                                <text>Aaaa aaaa aaaa</text>
+                            </citation>
+                            <rlink href="aaa.html"/>
+                        </resource>
+                    </back-matter>
+                </catalog>
+            </x:context>
+            <x:expect label="Output includes consolidated back matter">
+                <catalog uuid="zzz">
+                    <control id="x1"><title>Control X1</title></control>
+                    <back-matter>
+                        <resource uuid="0050231f-4fd0-43d6-8fa0-431367cd83e2">
+                            <title>Ref BBB</title>
+                            <citation>
+                                <text>Bbb bbbbb Bbb b.</text>
+                            </citation>
+                            <rlink href="bbb.html"/>
+                        </resource>
+                        <resource uuid="0050231f-4fd0-43d6-8fa0-431367cd83e1">
+                            <title>Ref AAA</title>
+                            <citation>
+                                <text>Aaaa aaaa aaaa</text>
+                            </citation>
+                            <rlink href="aaa.html"/>
+                        </resource>
+                    </back-matter>
+                </catalog>
+            </x:expect>
+        </x:scenario>
+    </x:scenario>
+
+    <x:scenario label="Tests for o:merge-groups-as-is template">
+        <x:scenario label="$merging is sequence of selection elements ">
+            <x:scenario label="with duplicate identifiers">
+                <x:call template="o:merge-groups-as-is">
+                    <x:param name="merging" as="element(o:selection)+">
+                        <selection uuid="a"><title>uuid a</title></selection>
+                        <selection uuid="a"><title>uuid a again</title></selection>
+                        <selection opr:id="b"><title>opr:id b</title></selection>
+                        <selection opr:id="b"><title>opr:id b again</title></selection>
+                        <selection uuid="c"><title>uuid c</title></selection>
+                        <selection opr:id="c"><title>opr:id c</title></selection>
+                    </x:param>
+                </x:call>
+                <x:expect label="One output per unique identifier name/value pair, but opr:id is omitted">
+                    <selection uuid="a"><title>uuid a</title></selection>
+                    <selection><title>opr:id b</title></selection>
+                    <selection uuid="c"><title>uuid c</title></selection>
+                </x:expect>
+            </x:scenario>
+            <x:scenario label="ungrouped with children other than title, param, control">
+                <x:call template="o:merge-groups-as-is">
+                    <x:param name="merging" as="element(o:selection)+" select="//o:selection">
+                        <catalog>
+                          <selection id="xyz-tiny_catalog" opr:id="xyz-tiny_catalog#xyz-tiny_catalog">
+                              <prop value="special" name="status"/>
+                              <param id="param-x">
+                                  <label>Param X</label>
+                                  <constraint>no control</constraint>
+                              </param>
+                              <control id="x1" opr:id="xyz-tiny_catalog#x1"><title>Control X1</title></control>
+                              <back-matter>
+                                  <resource opr:id="ref001">
+                                      <title>Ref AAA</title>
+                                  </resource>
+                              </back-matter>
+                          </selection>
+                          <merge>
+                              <as-is>true</as-is>
+                          </merge>
+                      </catalog>
+                    </x:param>
+                </x:call>
+                <!-- This template's output has back-matter in the "wrong" place,
+                    but that is OK because the caller ignores back-matter. -->
+                <x:expect label="'other' children followed by params and controls">
+                    <selection id="xyz-tiny_catalog">
+                        <prop value="special" name="status"/>
+                        <back-matter>
+                            <resource>
+                                <title>Ref AAA</title>
+                            </resource>
+                        </back-matter>
+                        <param id="param-x">
+                            <label>Param X</label>
+                            <constraint>no control</constraint>
+                        </param>
+                        <control id="x1"><title>Control X1</title></control>
+                    </selection>
+                </x:expect>
+            </x:scenario>
+            <x:scenario label="grouped with children other than title, param, control">
+                <x:call template="o:merge-groups-as-is">
+                    <x:param name="merging" as="element(o:selection)+" select="//o:selection">
+                        <catalog>
+                            <selection id="xyz-tiny_catalog" opr:id="xyz-tiny_catalog#xyz-tiny_catalog">
+                                <group>
+                                    <title>Group X of XYZ</title>
+                                    <control id="x1" opr:id="xyz-tiny_catalog#x1"><title>Control X1</title></control>
+                                </group>
+                                <back-matter>
+                                    <resource opr:id="ref001">
+                                        <title>Ref AAA</title>
+                                    </resource>
+                                </back-matter>
+                            </selection>
+                            <merge>
+                                <as-is>true</as-is>
+                            </merge>
+                        </catalog>
+                    </x:param>
+                </x:call>
+                <!-- This template's output has back-matter in the "wrong" place,
+                    but that is OK because the caller ignores back-matter. -->
+                <x:expect label="'other' children followed by group">
+                    <selection id="xyz-tiny_catalog">
+                        <back-matter>
+                            <resource>
+                                <title>Ref AAA</title>
+                            </resource>
+                        </back-matter>
+                        <group>
+                            <title>Group X of XYZ</title>
+                            <control id="x1"><title>Control X1</title></control>
+                        </group>
+                    </selection>
+                </x:expect>
+            </x:scenario>
+            <x:scenario label="grouped but no controls in groups">
+                <x:call template="o:merge-groups-as-is">
+                    <x:param name="merging" as="element(o:selection)+" select="//o:selection">
+                        <catalog>
+                            <selection id="xyz-tiny_catalog" opr:id="xyz-tiny_catalog#xyz-tiny_catalog">
+                                <group>
+                                    <title>Group X of XYZ</title>
+                                </group>
+                            </selection>
+                            <merge>
+                                <as-is>true</as-is>
+                            </merge>
+                        </catalog>
+                    </x:param>
+                </x:call>
+                <x:expect label="selection but no groups">
+                    <selection id="xyz-tiny_catalog"/>
+                </x:expect>
+            </x:scenario>
+            <x:scenario label="grouped with controls not as children but only deeper descendants">
+                <x:call template="o:merge-groups-as-is">
+                    <x:param name="merging" as="element(o:selection)+" select="//o:selection">
+                        <catalog>
+                            <selection id="xyz-tiny_catalog" opr:id="xyz-tiny_catalog#xyz-tiny_catalog">
+                                <group>
+                                    <title>Group X of XYZ</title>
+                                    <group>
+                                        <title>Group XX</title>
+                                        <control id="x1" opr:id="xyz-tiny_catalog#x1"><title>Control X1</title></control>
+                                    </group>
+                                </group>
+                            </selection>
+                            <merge>
+                                <as-is>true</as-is>
+                            </merge>
+                        </catalog>
+                    </x:param>
+                </x:call>
+                <x:expect label="Groups are retained in output">
+                    <selection id="xyz-tiny_catalog">
+                        <group>
+                            <title>Group X of XYZ</title>
+                            <group>
+                                <title>Group XX</title>
+                                <control id="x1"><title>Control X1</title></control>
+                            </group>
+                        </group>
+                    </selection>
+                </x:expect> 
+            </x:scenario>
+            <x:scenario label="with params and controls that need merging">
+                <x:call template="o:merge-groups-as-is">
+                    <x:param name="merging" as="element(o:selection)+" select="//o:selection">
+                        <catalog>
+                            <selection id="xyz-tiny_catalog" opr:id="xyz-tiny_catalog#xyz-tiny_catalog">
+                                <param id="param-x">
+                                    <label>Param X</label>
+                                    <constraint>no control</constraint>
+                                </param>
+                                <control id="x1" opr:id="xyz-tiny_catalog#x1"><title>Control X1</title></control>
+                            </selection>
+                            <selection id="xyz-tiny_catalog" opr:id="xyz-tiny_catalog#xyz-tiny_catalog">
+                                <param id="param-x">
+                                    <label>Param X</label>
+                                    <constraint>no control</constraint>
+                                </param>
+                                <control id="x1" opr:id="xyz-tiny_catalog#x1"><title>Control X1</title></control>
+                            </selection>
+                            <merge>
+                                <as-is>true</as-is>
+                                <combine method="use-first"/>
+                            </merge>
+                        </catalog>
+                    </x:param>
+                </x:call>
+                <x:expect label="merged params and controls, following use-first directive">
+                    <selection id="xyz-tiny_catalog">
+                        <param id="param-x">
+                            <label>Param X</label>
+                            <constraint>no control</constraint>
+                        </param>
+                        <control id="x1"><title>Control X1</title></control>
+                    </selection>
+                </x:expect>
+            </x:scenario>
+        </x:scenario>
+        <x:scenario label="$merging is sequence of group elements ">
+            <x:scenario label="with duplicate identifiers">
+                <x:call template="o:merge-groups-as-is">
+                    <x:param name="merging" as="element(o:group)+">
+                        <group id="a"><title>id a</title></group>
+                        <group id="a"><title>id a again</title></group>
+                        <group opr:id="b"><title>opr:id b</title></group>
+                        <group opr:id="b"><title>opr:id b again</title></group>
+                        <group id="c"><title>id c</title></group>
+                        <group opr:id="c"><title>opr:id c</title></group>
+                    </x:param>
+                </x:call>
+                <x:expect label="One output per unique identifier name/value pair, but opr:id is omitted">
+                    <group id="a"><title>id a</title></group>
+                    <group><title>opr:id b</title></group>
+                    <group id="c"><title>id c</title></group>
+                </x:expect>
+            </x:scenario>
+            <x:scenario label="with children other than title, param, control">
+                <x:call template="o:merge-groups-as-is">
+                    <x:param name="merging" as="element(o:group)+" select="//o:group">
+                        <catalog>
+                            <selection id="xyz-tiny_catalog" opr:id="xyz-tiny_catalog#xyz-tiny_catalog">
+                                <group>
+                                    <title>Group X of XYZ</title>
+                                    <prop value="special" name="status"/>
+                                    <param id="param-x">
+                                        <label>Param X</label>
+                                        <constraint>no control</constraint>
+                                    </param>
+                                    <control id="x1" opr:id="xyz-tiny_catalog#x1"><title>Control X1</title></control>
+                                </group>
+                                <group id="group-y">
+                                    <title>Group Y of XYZ</title>
+                                    <control id="y1" opr:id="xyz-tiny_catalog#y1"><title>Control Y1</title></control>
+                                </group>
+                            </selection>
+                            <merge>
+                                <as-is>true</as-is>
+                            </merge>
+                        </catalog>
+                    </x:param>
+                </x:call>
+                <x:expect label="groups with title followed by 'other' children, params, and controls">
+                    <group>
+                        <title>Group X of XYZ</title>
+                        <prop value="special" name="status"/>
+                        <param id="param-x">
+                            <label>Param X</label>
+                            <constraint>no control</constraint>
+                        </param>
+                        <control id="x1"><title>Control X1</title></control>
+                    </group>
+                    <group id="group-y">
+                        <title>Group Y of XYZ</title>
+                        <control id="y1"><title>Control Y1</title></control>
+                    </group>
+                </x:expect>
+            </x:scenario>
+            <x:scenario label="with nested groups">
+                <x:call template="o:merge-groups-as-is">
+                    <x:param name="merging" as="element(o:group)+" select="//o:selection/o:group">
+                        <catalog>
+                            <selection id="xyz-tiny_catalog" opr:id="xyz-tiny_catalog#xyz-tiny_catalog">
+                                <group>
+                                    <title>Group X of XYZ</title>
+                                    <prop value="special" name="status"/>
+                                    <param id="param-x">
+                                        <label>Param X</label>
+                                        <constraint>no control</constraint>
+                                    </param>
+                                    <control id="x1" opr:id="xyz-tiny_catalog#x1"><title>Control X1</title></control>
+                                </group>
+                                <group id="group-y">
+                                    <title>Group Y of XYZ</title>
+                                    <group id="group-yy">
+                                        <title>Group YY</title>
+                                        <control id="y1" opr:id="xyz-tiny_catalog#y1"><title>Control Y1</title></control>
+                                    </group>
+                                </group>
+                            </selection>
+                            <merge>
+                                <as-is>true</as-is>
+                            </merge>
+                        </catalog>
+                    </x:param>
+                </x:call>
+                <x:expect label="groups including nested group">
+                    <group>
+                        <title>Group X of XYZ</title>
+                        <prop value="special" name="status"/>
+                        <param id="param-x">
+                            <label>Param X</label>
+                            <constraint>no control</constraint>
+                        </param>
+                        <control id="x1"><title>Control X1</title></control>
+                    </group>
+                    <group id="group-y">
+                        <title>Group Y of XYZ</title>
+                        <group id="group-yy">
+                            <title>Group YY</title>
+                            <control id="y1"><title>Control Y1</title></control>
+                        </group>
+                    </group>
+                </x:expect>
+            </x:scenario>
+            <x:scenario label="with controls not as children but only deeper descendants">
+                <x:call template="o:merge-groups-as-is">
+                    <x:param name="merging" as="element(o:group)+" select="//o:selection/o:group">
+                        <catalog>
+                            <selection id="xyz-tiny_catalog" opr:id="xyz-tiny_catalog#xyz-tiny_catalog">
+                                <group>
+                                    <title>Group X of XYZ</title>
+                                    <group>
+                                        <title>Group XX</title>
+                                        <control id="x1" opr:id="xyz-tiny_catalog#x1"><title>Control X1</title></control>
+                                    </group>
+                                </group>
+                            </selection>
+                            <merge>
+                                <as-is>true</as-is>
+                            </merge>
+                        </catalog>
+                    </x:param>
+                </x:call>
+                <x:expect label="Groups are retained in output">
+                    <group>
+                        <title>Group X of XYZ</title>
+                        <group>
+                            <title>Group XX</title>
+                            <control id="x1"><title>Control X1</title></control>
+                        </group>
+                    </group>
+                </x:expect> 
+            </x:scenario>
+        </x:scenario>
+        <x:scenario label="$merging is empty sequence">
+            <x:call template="o:merge-groups-as-is">
+                <x:param name="merging" select="()"/>
+            </x:call>
+            <x:expect label="Nothing" select="()"/>
+        </x:scenario>
+    </x:scenario>
+</x:description>

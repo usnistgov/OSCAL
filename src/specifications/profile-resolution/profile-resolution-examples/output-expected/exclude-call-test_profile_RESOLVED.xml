@@ -18,9 +18,12 @@
    </control>
    <control id="a3">
       <title>Control A3</title>
+      <param id="a3_prm1">
+         <label>A3 Parameter 1</label>
+      </param>
       <prop name="label" value="third"/>
       <part name="statement" id="a3-stmt">
-         <p>A3 aaaaa aaaaaaaaaa</p>
+         <p>A3 aaaaa <insert type="param" id-ref="a3_prm1"/> aaaaaaaaaa</p>
       </part>
    </control>
    <control id="b1">
@@ -68,14 +71,14 @@
    <control id="c3.a">
       <title>Control C3-A</title>
       <prop name="label" value="tenth"/>
-      <part name="statement" id="c3-stmt">
+      <part name="statement" id="c3.a-stmt">
          <p>C3 A ccccc cccccccccccccc.</p>
       </part>
    </control>
    <control id="c3.a-1">
       <title>Control C3-A-1</title>
       <prop name="label" value="eleventh"/>
-      <part name="statement" id="c3-stmt">
+      <part name="statement" id="c3.a-1-stmt">
          <p>C3 A-1 ccccc cccccccccccccc.</p>
       </part>
    </control>

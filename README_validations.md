@@ -26,7 +26,7 @@ For OSCAL XML, this schema syntax is [XML Schema Definition (XSD)](https://www.w
 
 Each tool will have its own way to provide for validation. Bindings or configurations to link documents to schemas can be maintained either inside or outside the documents themselves; many tools offer several ways to do this.
 
-Some tools support self-contained validation functionality without full-fledged application frameworks or development environments, with tools like [`xmllint`](http://xmlsoft.org/xmllint.html) offering command-line interfaces. Similarly, you can use the [`ajv-cli`](https://github.com/ajv-validator/ajv-cli) for JSON.
+Some tools support self-contained validation functionality without full-fledged application frameworks or development environments, with tools like [`xmllint`](https://linux.die.net/man/1/xmllint/) offering command-line interfaces. Similarly, you can use the [`ajv-cli`](https://github.com/ajv-validator/ajv-cli) for JSON.
 
 ## What does success look like?
 

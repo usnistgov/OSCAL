@@ -1,10 +1,10 @@
 {
     "name": "ci-cd-packages",
+    "private": true,
     "version": "1.0.0",
-    "dependencies": {
-        "ajv-cli": "^4.0.x",
-        "ajv-formats": "^2.1.x",
-        "markdown-link-check": "^3.10.3",
-        "yaml-convert": "^1.0.x"
+    "devDependencies": {
+        "ajv-cli": "^5.0.0",
+        "ajv-formats": "^2.1.1",
+        "markdown-link-check": "3.10.2"
     }
 }

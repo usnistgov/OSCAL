@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <METASCHEMA xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0">
     <schema-name>OSCAL Assessment Plan Model</schema-name>
-    <schema-version>1.0.4</schema-version>
+    <schema-version>1.1.0</schema-version>
     <short-name>oscal-ap</short-name>
     <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
     <json-base-uri>http://csrc.nist.gov/ns/oscal</json-base-uri>
@@ -21,7 +21,7 @@
         <define-flag name="uuid" required="yes" as-type="uuid">
             <formal-name>Assessment Plan Universally Unique Identifier</formal-name>
             <!-- Identifier Declaration -->
-            <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this assessment plan in <a href="/concepts/identifier-use/#ap-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>assessment plan</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+            <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this assessment plan in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ap-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>assessment plan</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
         </define-flag>
         <model>
             <assembly ref="metadata" min-occurs="1" max-occurs="1"/>
@@ -91,7 +91,7 @@
                     </assembly>
                 </model>
                 <constraint>
-                    <allowed-values target="part/@name">
+                    <allowed-values target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
                         <enum value="rules-of-engagement">Defines the circumstances, conditions, degree, and manner in which the use of cyber-attack techniques or actions may be applied to the assessment.</enum>
                         <enum value="disclosures">Any information the assessor should make known to the system owner or authorizing official. Has child 'item' parts for each individual disclosure.</enum>
                         <enum value="assessment-inclusions">Defines any assessment activities which the system owner or authorizing official wishes to ensure are performed as part of the assessment.</enum>

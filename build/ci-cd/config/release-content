@@ -1,6 +1,0 @@
-# file to include in the release
-xml/convert/*.xsl
-xml/schema/*.xsd
-json/convert/*.xsl
-json/schema/*.json
-src/release/*.txt|/
