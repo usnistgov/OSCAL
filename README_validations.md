@@ -8,7 +8,7 @@ Well-formedness also applies to JSON and YAML and their respective parsers.
 
 But *validating* goes beyond parsing: it tells you not only that a file can be read successfully, but also that its data structures conform to rules for a particular application of XML, JSON, or YAML. [Well-formed JSON, XML, or YAML is not necessarily valid OSCAL JSON, XML, or YAML](https://pages.nist.gov/OSCAL/concepts/layer/validation/).
 
-If working with XML you will need an XML *schema* (or functional equivalent) to validate your OSCAL. If working with JSON or YAML, you will need a JSON schema. Normative schemas suitable for validating the various OSCAL models are available in the project's source code repository [for XML](https://github.com/usnistgov/OSCAL/tree/main/xml/schema) and [for JSON and YAML](https://github.com/usnistgov/OSCAL/tree/main/json/schema).
+If working with XML you will need an XML *schema* (or functional equivalent) to validate your OSCAL. If working with JSON or YAML, you will need a JSON schema. Normative schemas suitable for validating the various OSCAL models are [made available as part of a release](https://github.com/usnistgov/OSCAL/releases/latest/) and [can also be built locally](./build/README.md).
 
 ## What are the OSCAL models?
 
@@ -83,13 +83,13 @@ In this case the processor reports the syntax issues it detects, to the extent p
 
 A validation error tells you, first and foremost, that your file is incorrect in a basic way. For example, an element (data structure) may be out of place, or missing a required piece. Tools that fail to implement schema validation, misconfigured tools, data quality issues, workflow issues, or many other causes may be the cause. They also vary in how easy they are to correct. The most common problem is that the wrong schema is being used.
 
-The most important consideration in correcting a validation error is selecting the appropriate schema and the appropriate version of that schema. OSCAL maintains backward compatibility across all schemas as expressed through [the use of semantic versioning](https://github.com/usnistgov/OSCAL/blob/main/docs/content/downloads/_index.md#oscal-releases).
+The most important consideration in correcting a validation error is selecting the appropriate schema and the appropriate version of that schema. OSCAL maintains backward compatibility across all schemas as expressed through [the use of semantic versioning](./versioning-and-branching.md).
 
 A *well-formedness error*, however, tells you your file is incorrect in a more fundamental way. It is both more severe (further processing cannot continue) but also easier to address by using tools correctly. In a mature system, well-formedness errors should be rare, and when they do occur it is because preliminary checks for well-formedness were not implemented or ignored.
 
 ## How can I correct my errors?
 
-End users will ordinarily find it easiest and best to edit a file in an OSCAL tool with a graphical user interface or a structured editor. These would be tools that are especially built or configured to support changing the file while respecting the rulesof well-formedness and validating against the rules of an intended schema.
+End users will ordinarily find it easiest and best to edit a file in an OSCAL tool with a graphical user interface or a structured editor. These would be tools that are especially built or configured to support changing the file while respecting the rules of well-formedness and validating against the rules of an intended schema.
 
 In order to build such tools and support other operations, developers may also do this work. Commercial off-the-shelf developer environments may support these basic operations for a range of formats.
 

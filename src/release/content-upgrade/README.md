@@ -22,7 +22,7 @@ java -cp Saxon-HE-10.6.jar net.sf.saxon.Transform -xsl:oscal-rc2-v1-0-0-update.x
 
 ### Content Upgrades with Oxygen XML Editor
 
-If you prefer the use of an integrated development environment (IDE), you can use [the Oxygen XML Editor](https://www.oxygenxml.com/) to [configure and execute XSLT transforms](https://www.oxygenxml.com/doc/ug-oxygen/topics/xslt-tab.html). This IDE embeds a Java Runtime Environment and mutliple versions of the Saxon XSLT processor for you convenience.
+If you prefer the use of an integrated development environment (IDE), you can use [the Oxygen XML Editor](https://www.oxygenxml.com/) to [configure and execute XSLT transforms](https://www.oxygenxml.com/doc/ug-oxygen/topics/xslt-tab.html). This IDE embeds a Java Runtime Environment and multiple versions of the Saxon XSLT processor for you convenience.
 
 After you installed the Oxygen XML Editor, to transform a sample OSCAL document `catalog_v1.0.0-rc2.xml`, upgrade its content from v1.0.0 RC2 to v1.0., and save the result in the file `catalog_v1.0.0.xml`, you can configure the XSLT transform to your preference in the XSLT tab or like so:
 
@@ -45,7 +45,7 @@ Please review each transform (or [contact us for more help](https://pages.nist.g
 
 By default, you will upgrade content in a document instance and it does not explicitly add a `xsi:schemaLocation` attribute every time. Often, `xsi:schemaLocation` can be a local path or remote URI that is frequently out of date. The `xsi:schemaLocation` is an empty string by default (`''`), and it will not be included and the transform will emit a warning message.
 
-If you do wish to explicit add `xsi:schemaLocation`, you can apply the transform on the commmand line like so:
+If you do wish to explicit add `xsi:schemaLocation`, you can apply the transform on the command line like so:
 
 ```sh
 java -cp Saxon-HE-10.6.jar net.sf.saxon.Transform -xsl:oscal-rc2-v1-0-0-update.xsl -s:catalog_v1.0.0-rc2.xml -o:catalog_v1.0.0.xml schema-location="'http://csrc.nist.gov/ns/oscal/1.0 ../../../../../xml/schema/oscal_catalog_schema.xsd'"
@@ -58,11 +58,7 @@ Similarly, you can specify this parameter in [the XSLT transform's' parameter co
 
 ### What do you do if you have OSCAL documents in JSON or YAML format?
 
-To upgrade content in JSON or YAML format, you will use the approach outlined below.
-
-1. Convert the JSON or YAML file into XML with [the appropriate content converter](https://github.com/usnistgov/OSCAL/tree/main/xml).
-1. Upgrade the XML content from the current version to target version.
-1. Conver the upgraded target content from XML back to JSON or YAML with [the appropriate content converter](https://github.com/usnistgov/OSCAL/tree/main/json).
+See the [converter artifact usage section of the build README](../../../build/README.md#converters).
 
 ### What do you do if you are several versions behind?
 
