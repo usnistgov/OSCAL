@@ -98,7 +98,7 @@ Once the release is ready, the release can be made using the following Git comma
 ```
 git checkout main
 git merge --no-ff release-1.2
-git tag -a 1.2.0
+git tag -a v1.2.0
 git push --follow-tags
 ```
 
