@@ -60,6 +60,8 @@ git remote add upstream git@github.com:usnistgov/OSCAL.git
 
 ## Personal Working Branches
 
+Staff on the NIST OSCAL Team can do work on branches in this repository or choose to do work as an individual outside contributor in a fork as described below.
+
 All individual work will be done in branches in a personal fork of this repository.
 
 Personal branches should be named using the convention `<issue #>-brief-dashed-name`.
