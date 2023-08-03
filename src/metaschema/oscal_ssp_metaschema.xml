@@ -83,6 +83,7 @@
   <define-assembly name="system-characteristics">
     <formal-name>System Characteristics</formal-name>
     <description>Contains the characteristics of the system, such as its name, purpose, and security impact level.</description>
+    <flag ref="characterization-ns"/>
     <model>
       <field ref="system-id" min-occurs="1" max-occurs="unbounded">
         <group-as name="system-ids" in-json="ARRAY"/>
@@ -328,6 +329,19 @@
     <formal-name>Adjustment Justification</formal-name>
     <description>If the selected security level is different from the base security level, this contains the justification for the change.</description>
   </define-field>
+  <define-flag name="characterization-ns" as-type="uri">
+    <formal-name>Characterization Namespace</formal-name>
+    <description>A namespace qualifying the system information characterization scheme.</description>
+    <use-name>ns</use-name>
+    <constraint>
+      <allowed-values allow-other="yes">
+        <enum value="http://csrc.nist.gov/ns/fips-199">The system is categorized according to <a href="https://csrc.nist.gov/pubs/fips/199/final">FIPS-199.</a></enum>
+      </allowed-values>
+    </constraint>
+    <remarks>
+       <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+    </remarks>
+ </define-flag>
   <define-assembly name="security-impact-level">
     <formal-name>Security Impact Level</formal-name>
     <description>The overall level of expected impact resulting from unauthorized disclosure, modification, or loss of access to information.</description>
