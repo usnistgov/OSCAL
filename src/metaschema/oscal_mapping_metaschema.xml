@@ -31,6 +31,9 @@
 
             <model>
                   <assembly ref="metadata" min-occurs="1"/>
+                  <assembly ref="mapping-provenance" min-occurs="1">
+                        <use-name>Provenance</use-name>
+                  </assembly>
                   <assembly ref="mapping" min-occurs="1" max-occurs="unbounded">
                         <group-as name="mappings"/>
                   </assembly>
@@ -44,11 +47,6 @@
                   <p>A mapping collection affirmatively declares the relationships that exist between sets of controls and/or control statements in a source and target. It is expected that inferences can be made based on what is mapped; however, no inferences should be made based on what is not mapped, since it is impossible to quantify how complete or granular a given mapping is.</p>
             </remarks>
       </define-assembly>
-
-
-      <assembly ref="mapping-provenance" min-occurs="1">
-            <use-name>Provenance</use-name>
-      </assembly>
 
       <define-assembly name="mapping">
             <formal-name>Control Mapping</formal-name>
