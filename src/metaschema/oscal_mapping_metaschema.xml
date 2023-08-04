@@ -32,7 +32,7 @@
             <model>
                   <assembly ref="metadata" min-occurs="1"/>
                   <assembly ref="mapping-provenance" min-occurs="1">
-                        <use-name>Provenance</use-name>
+                        <use-name>provenance</use-name>
                   </assembly>
                   <assembly ref="mapping" min-occurs="1" max-occurs="unbounded">
                         <group-as name="mappings"/>
