@@ -122,4 +122,81 @@
             <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
         </model>
     </define-assembly>
+
+<!-- 
+
+<provenance
+	responsible-parties=""
+	method=“human|automation”
+	matching=“lexical|logical|semantic|etc”
+	confidence-score=""
+	status=“complete|not-complete|draft|deprecated|superseded|etc”>
+    Description of context and intended use...
+</provenance>
+
+-->
+
+    <define-assembly name="mapping-provenance">
+        <formal-name>Mapping Provenance</formal-name>
+        <description>Describes requirements, incompatibilities and gaps that are identified between a target and source in a mapping item.</description>
+        
+        <assembly ref="responsible-party" max-occurs="unbounded">
+            <group-as name="responsible-parties" in-json="ARRAY"/>
+        </assembly>
+        
+        <define-flag name="method" required="yes" as-type="string">
+            <formal-name>Method</formal-name>
+            <description>The method used to complete the overall mapping.</description>
+            <constraint>
+                <allowed-values>
+                    <enum value="human">Human</enum>
+                    <enum value="automation">Automation</enum>
+                </allowed-values>            
+            </constraint>
+        </define-flag>
+
+        <define-flag name="matching" required="yes" as-type="string">
+            <formal-name>Matching</formal-name>
+            <description>The method used for relating controls within the mapping.</description>
+            <constraint>
+                <allowed-values>
+                    <enum value="lexical">Lexical</enum>
+                    <enum value="logical">Logical</enum>
+                    <enum value="semantic">Semantic</enum>
+                    <enum value="syntactic">Syntactic</enum>
+                    <enum value="functional">Functional</enum>
+                </allowed-values>            
+            </constraint>
+        </define-flag>
+
+        <define-field name="confidence-score" required="yes" as-type="string">
+            <formal-name>Confidence Score</formal-name>
+            <description>If automation is used, this can record a confidence score, if assigned.</description>
+        </define-field>
+
+        <define-flag name="status" required="yes" as-type="string">
+            <formal-name>Status</formal-name>
+            <description>The focus of the qualifier.</description>
+            <constraint>
+                <allowed-values>
+                    <enum value="complete">Complete</enum>
+                    <enum value="not-complete">Not Complete</enum>
+                    <enum value="draft">Draft</enum>
+                    <enum value="deprecated">Deprecated</enum>
+                    <enum value="superseded">Superseded</enum>
+                </allowed-values>            
+            </constraint>
+        </define-flag>
+
+        <define-field name="description" as-type="markup-multiline" min-occurs="1" in-xml="WITH_WRAPPER">
+            <formal-name>Description</formal-name>
+            <description>Description of the context and intended use of the mapping.</description>
+        </define-field>
+
+        <model>
+            <field ref="remarks" in-xml="WITH_WRAPPER"/>
+        </model>
+    </define-assembly>
+
+
 </METASCHEMA>
