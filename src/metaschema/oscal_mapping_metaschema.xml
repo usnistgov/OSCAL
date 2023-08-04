@@ -46,7 +46,7 @@
       </define-assembly>
 
 
-      <assembly ref="mapping-provenance" min-occurs="1" max-occurs="1">
+      <assembly ref="mapping-provenance" min-occurs="1">
             <use-name>Provenance</use-name>
       </assembly>
 
