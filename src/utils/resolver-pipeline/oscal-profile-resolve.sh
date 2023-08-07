@@ -26,7 +26,7 @@ OUTPUT_BASELINE=$2
 ADDITIONAL_ARGS=$(shift 2; echo $@)
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)"
-OSCAL_DIR="${SCRIPT_DIR}/../../../.."
+OSCAL_DIR="${SCRIPT_DIR}/../../.."
 POM_FILE="${OSCAL_DIR}/build/pom.xml"
 ENTRY_STYLESHEET="${SCRIPT_DIR}/oscal-profile-RESOLVE.xsl"
 
