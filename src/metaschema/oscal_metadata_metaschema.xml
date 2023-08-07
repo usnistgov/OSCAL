@@ -536,23 +536,7 @@
                             <assembly ref="link" max-occurs="unbounded">
                                 <group-as name="links" in-json="ARRAY"/>
                             </assembly>
-                            
-<!--
-                            <define-assembly name="biblio">
-                                <formal-name>Bibliographic Definition</formal-name>
-                                <description>A container for structured bibliographic information. The model of this information is undefined by OSCAL.</description>
-                                <model>
-                                    <any/>
-                                </model>
-                            </define-assembly>
--->
                             </model>
-<!--
-                        <remarks>
-                            <p>The <code>text</code> is used to define the endnote text, without any required bibliographic structure. If structured bibliographic data is needed, then the <code>biblio</code> can be used for this purpose.</p>
-                            <p>A <code>biblio</code> can be used to capture a structured bibliographical citation in an appropriate format.</p>
-                        </remarks>
--->
                     </define-assembly>
                     <define-assembly name="rlink" max-occurs="unbounded">
                         <formal-name>Resource link</formal-name>
