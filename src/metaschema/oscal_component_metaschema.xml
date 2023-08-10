@@ -27,6 +27,7 @@
   </remarks>
 
   <import href="oscal_implementation-common_metaschema.xml"/>
+  <import href="oscal_shared-responsibility-common_metaschema.xml"/>
 
   <define-assembly name="component-definition">
     <formal-name>Component Definition</formal-name>
@@ -414,6 +415,20 @@
       <assembly ref="responsible-role" max-occurs="unbounded">
         <group-as name="responsible-roles" in-json="ARRAY"/>
       </assembly>
+
+      <!-- ADDED for CRM/SRRM: Implementation Status and Shared Responsibility Assembly -->
+      <assembly ref="implementation-status">
+        <remarks>
+          <p>The <code>implementation-status</code> is used to qualify the <code>status</code> value to indicate the degree to which the control is implemented.</p>
+        </remarks>
+      </assembly>
+      <assembly ref="shared-responsibility">
+        <remarks>
+          <p>TODO: Documentation</p>
+        </remarks>
+      </assembly>
+      <!-- END ADDED -->      
+      
       <assembly ref="statement" max-occurs="unbounded">
         <group-as name="statements" in-json="ARRAY"/>
       </assembly>
