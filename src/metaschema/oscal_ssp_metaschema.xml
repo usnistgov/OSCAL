@@ -289,7 +289,7 @@
         add the path target to security-sensitivity-level as well.
       -->
       <matches target="link[@rel='privacy-impact-assessment']/@href[not(starts-with(.,'#'))]" datatype="uri"/>
-      <allowed-values target="information-type/(confidentiality-impact|integrity-impact|availability-impact)/(base|selected)">
+      <allowed-values target="information-type/(confidentiality-impact|integrity-impact|availability-impact)/(base|selected) and ../@ns = 'http://csrc.nist.gov/ns/fips-199'" >
         <enum value="fips-199-low">A 'low' sensitivity level as defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.
         </enum>
         <enum value="fips-199-moderate">A 'moderate' sensitivity level as defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.
