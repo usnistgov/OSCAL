@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<METASCHEMA xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" abstract="yes">
+   <schema-name>OSCAL Shared Responsibility Format -- Common Modules</schema-name>
+   <schema-version>1.1.0</schema-version>
+   <short-name>oscal-shared-responsibility-common</short-name>
+   <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
+   <json-base-uri>http://csrc.nist.gov/ns/oscal</json-base-uri>
+   <remarks>
+      <p>This contains all modules common to shared responsibility in the ssp and component definition models. </p>
+   </remarks>
+   <!-- IMPORT STATEMENTS -->
+   <import href="oscal_control-common_metaschema.xml"/>
+   <import href="oscal_implementation-common_metaschema.xml"/>
+
+   <!-- Shared Responsibility Assembly -->
+
+  <define-assembly name="shared-responsibility" max-occurs="1">
+    <formal-name>Shared Responsibility (Exportable)</formal-name>
+    <description>Identifies content intended for external consumption, such as with leveraged organizations, customer responsibility documentation, and shared security responsibility documentation.</description>
+    <model>
+      <define-field name="description" as-type="markup-multiline" in-xml="WITH_WRAPPER">
+        <formal-name>Control Implementation Export Description</formal-name>
+        <description>An implementation statement that describes the aspects of the control or control statement implementation that can be available to another system leveraging this system.</description>
+      </define-field>
+      <assembly ref="property" max-occurs="unbounded">
+        <group-as name="props" in-json="ARRAY"/>
+      </assembly>
+      <assembly ref="link" max-occurs="unbounded">
+        <group-as name="links" in-json="ARRAY"/>
+        <!-- TODO: Model specific link relationships -->
+      </assembly>
+      <define-assembly name="provided" max-occurs="unbounded">
+        <formal-name>Provided Control Implementation</formal-name>
+        <description>Describes a capability which may be inherited by a leveraging system.</description>
+        <!-- CHANGED: "provided-group" to "provided" -->
+        <group-as name="provided" in-json="ARRAY"/>
+        <define-flag name="uuid" as-type="uuid" required="yes">
+          <formal-name>Provided Universally Unique Identifier</formal-name>
+          <!-- Identifier Declaration -->
+          <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this provided entry elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>provided</code> entry can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+        </define-flag>
+        <model>
+          <define-field name="description" as-type="markup-multiline" min-occurs="1" in-xml="WITH_WRAPPER">
+            <formal-name>Provided Control Implementation Description</formal-name>
+            <description>An implementation statement that describes the aspects of the control or control statement implementation that can be provided to another system leveraging this system.</description>
+          </define-field>
+          <assembly ref="property" max-occurs="unbounded">
+            <group-as name="props" in-json="ARRAY"/>
+          </assembly>
+          <assembly ref="link" max-occurs="unbounded">
+            <group-as name="links" in-json="ARRAY"/>
+            <!-- TODO: Model specific link relationships -->
+          </assembly>
+          <assembly ref="responsible-role" min-occurs="0" max-occurs="unbounded">
+            <group-as name="responsible-roles" in-json="ARRAY"/>
+          </assembly>
+          <field ref="remarks" in-xml="WITH_WRAPPER"/>
+        </model>
+        <constraint>
+          <is-unique id="unique-provided-responsible-role" target="responsible-role">
+            <key-field target="@role-id"/>
+            <remarks>
+              <p>Since <code>responsible-role</code> associates multiple <code>party-uuid</code> entries with a single <code>role-id</code>, each role-id must be referenced only once.</p>
+            </remarks>
+          </is-unique>
+        </constraint>
+      </define-assembly>
+      <define-assembly name="responsibility" max-occurs="unbounded">
+        <formal-name>Control Implementation Responsibility</formal-name>
+        <description>Describes a control implementation responsibility imposed on a leveraging system.</description>
+        <group-as name="responsibilities" in-json="ARRAY"/>
+        <define-flag name="uuid" as-type="uuid" required="yes">
+          <formal-name>Responsibility Universally Unique Identifier</formal-name>
+          <!-- Identifier Declaration -->
+          <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this responsibility elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>responsibility</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+        </define-flag>
+        <flag ref="provided-uuid" required="no" />
+        <model>
+          <define-field name="description" as-type="markup-multiline" min-occurs="1" in-xml="WITH_WRAPPER">
+            <formal-name>Control Implementation Responsibility Description</formal-name>
+            <description>An implementation statement that describes the aspects of the control or control statement implementation that a leveraging system must implement to satisfy the control provided by a leveraged system.</description>
+          </define-field>
+          <assembly ref="property" max-occurs="unbounded">
+            <group-as name="props" in-json="ARRAY"/>
+          </assembly>
+          <assembly ref="link" max-occurs="unbounded">
+            <group-as name="links" in-json="ARRAY"/>
+            <!-- TODO: Model specific link relationships -->
+          </assembly>
+          <assembly ref="responsible-role" min-occurs="0" max-occurs="unbounded">
+            <group-as name="responsible-roles" in-json="ARRAY"/>
+            <remarks>
+              <p>A role defined at the by-component level takes precedence over the same role defined on the parent implemented-requirement or on the referenced component. </p>
+            </remarks>
+          </assembly>
+          <field ref="remarks" in-xml="WITH_WRAPPER"/>
+        </model>
+        <constraint>
+          <is-unique id="unique-responsibility-responsible-role" target="responsible-role">
+            <key-field target="@role-id"/>
+            <remarks>
+              <p>Since <code>responsible-role</code> associates multiple <code>party-uuid</code> entries with a single <code>role-id</code>, each role-id must be referenced only once.</p>
+            </remarks>
+          </is-unique>
+        </constraint>
+      </define-assembly>
+      <field ref="remarks" in-xml="WITH_WRAPPER"/>
+    </model>
+    <constraint>
+      <has-cardinality target="provided|responsibility" min-occurs="1"/>
+      <index-has-key name="by-component-export-provided-uuid" target="responsibility">
+        <key-field target="@provided-uuid"/>
+      </index-has-key>
+    </constraint>
+  </define-assembly>
+
+
+</METASCHEMA>
