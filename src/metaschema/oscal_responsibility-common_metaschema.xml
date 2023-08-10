@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../build/metaschema-xslt/src/validate/metaschema-composition-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+
 <METASCHEMA xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" abstract="yes">
    <schema-name>OSCAL Shared Responsibility Format -- Common Modules</schema-name>
    <schema-version>1.1.0</schema-version>
-   <short-name>oscal-shared-responsibility-common</short-name>
+   <short-name>oscal-responsibility-common</short-name>
    <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
    <json-base-uri>http://csrc.nist.gov/ns/oscal</json-base-uri>
    <remarks>
       <p>This contains all modules common to shared responsibility in the ssp and component definition models. </p>
    </remarks>
+
    <!-- IMPORT STATEMENTS -->
    <import href="oscal_control-common_metaschema.xml"/>
    <import href="oscal_implementation-common_metaschema.xml"/>
@@ -29,6 +32,7 @@
         <group-as name="links" in-json="ARRAY"/>
         <!-- TODO: Model specific link relationships -->
       </assembly>
+
       <define-assembly name="provided" max-occurs="unbounded">
         <formal-name>Provided Control Implementation</formal-name>
         <description>Describes a capability which may be inherited by a leveraging system.</description>
@@ -65,6 +69,7 @@
           </is-unique>
         </constraint>
       </define-assembly>
+
       <define-assembly name="responsibility" max-occurs="unbounded">
         <formal-name>Control Implementation Responsibility</formal-name>
         <description>Describes a control implementation responsibility imposed on a leveraging system.</description>
@@ -104,15 +109,109 @@
           </is-unique>
         </constraint>
       </define-assembly>
+
       <field ref="remarks" in-xml="WITH_WRAPPER"/>
     </model>
     <constraint>
       <has-cardinality target="provided|responsibility" min-occurs="1"/>
-      <index-has-key name="by-component-export-provided-uuid" target="responsibility">
+
+      <index name="shared-responsibility-provided-uuid" target="//shared-responsibility/provided">
+        <key-field target="@uuid"/>
+      </index>
+
+      <index-has-key name="shared-responsibility-provided-uuid" target="responsibility">
         <key-field target="@provided-uuid"/>
       </index-has-key>
     </constraint>
   </define-assembly>
 
 
+  <define-assembly name="inherited" max-occurs="unbounded">
+    <formal-name>Inherited Control Implementation</formal-name>
+    <description>Describes a control implementation inherited by a leveraging system.</description>
+    <!-- CHANGED: "inherited-group" to "inherited" -->
+    <group-as name="inherited" in-json="ARRAY"/>
+    <define-flag name="uuid" as-type="uuid" required="yes">
+      <formal-name>Inherited Universally Unique Identifier</formal-name>
+      <!-- Identifier Declaration -->
+      <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this inherited entry elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>inherited control implementation</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+    </define-flag>
+    <flag ref="provided-uuid" required="no" />
+    <model>
+      <define-field name="description" as-type="markup-multiline" min-occurs="1" in-xml="WITH_WRAPPER">
+        <formal-name>Inherited Control Implementation Description</formal-name>
+        <description>An implementation statement that describes the aspects of a control or control statement implementation that a leveraging system is inheriting from a leveraged system.</description>
+      </define-field>
+      <assembly ref="property" max-occurs="unbounded">
+        <group-as name="props" in-json="ARRAY"/>
+      </assembly>
+      <assembly ref="link" max-occurs="unbounded">
+        <group-as name="links" in-json="ARRAY"/>
+        <!-- TODO: Model specific link relationships -->
+      </assembly>
+      <assembly ref="responsible-role" min-occurs="0" max-occurs="unbounded">
+        <group-as name="responsible-roles" in-json="ARRAY"/>
+      </assembly>
+    </model>
+    <constraint>
+      <is-unique id="unique-inherited-responsible-role" target="responsible-role">
+        <key-field target="@role-id"/>
+        <remarks>
+          <p>Since <code>responsible-role</code> associates multiple <code>party-uuid</code> entries with a single <code>role-id</code>, each role-id must be referenced only once.</p>
+        </remarks>
+      </is-unique>
+    </constraint>
+  </define-assembly>
+
+
+  <define-assembly name="satisfied" max-occurs="unbounded">
+    <formal-name>Satisfied Control Implementation Responsibility</formal-name>
+    <description>Describes how this system satisfies a responsibility imposed by a leveraged system.</description>
+    <!-- CHANGED: "satisfied-group" to "satisfied" -->
+    <group-as name="satisfied" in-json="ARRAY"/>
+    <define-flag name="uuid" as-type="uuid" required="yes">
+      <formal-name>Satisfied Universally Unique Identifier</formal-name>
+      <!-- Identifier Declaration -->
+      <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this satisfied control implementation entry elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>control implementation</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+    </define-flag>
+    <flag ref="responsibility-uuid" required="no" />
+    <model>
+      <define-field name="description" as-type="markup-multiline" min-occurs="1" in-xml="WITH_WRAPPER">
+        <formal-name>Satisfied Control Implementation Responsibility Description</formal-name>
+        <description>An implementation statement that describes the aspects of a control or control statement implementation that a leveraging system is implementing based on a requirement from a leveraged system.</description>
+      </define-field>
+      <assembly ref="property" max-occurs="unbounded">
+        <group-as name="props" in-json="ARRAY"/>
+      </assembly>
+      <assembly ref="link" max-occurs="unbounded">
+        <group-as name="links" in-json="ARRAY"/>
+        <!-- TODO: Model specific link relationships -->
+      </assembly>
+      <assembly ref="responsible-role" min-occurs="0" max-occurs="unbounded">
+        <group-as name="responsible-roles" in-json="ARRAY"/>
+      </assembly>
+      <field ref="remarks" in-xml="WITH_WRAPPER"/>
+    </model>
+    <constraint>
+      <is-unique id="unique-satisfied-responsible-role" target="responsible-role">
+        <key-field target="@role-id"/>
+        <remarks>
+          <p>Since <code>responsible-role</code> associates multiple <code>party-uuid</code> entries with a single <code>role-id</code>, each role-id must be referenced only once.</p>
+        </remarks>
+      </is-unique>
+    </constraint>
+  </define-assembly>
+
+
+  <define-flag name="provided-uuid" as-type="uuid" scope="local">
+    <formal-name>Provided UUID</formal-name>
+    <!-- Identifier Reference -->
+    <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to an inherited control implementation that a leveraging system is inheriting from a leveraged system.</description>
+  </define-flag>
+
+  <define-flag name="responsibility-uuid" as-type="uuid" scope="local">
+    <formal-name>Responsibility UUID</formal-name>
+    <!-- Identifier Reference -->
+    <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a control implementation that satisfies a responsibility imposed by a leveraged system.</description>
+  </define-flag>
 </METASCHEMA>

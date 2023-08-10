@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="../../build/metaschema/toolchains/xslt-M4/validate/metaschema-composition-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="../../build/metaschema-xslt/src/validate/metaschema-composition-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <!DOCTYPE METASCHEMA [
   <!ENTITY allowed-values-responsible-roles-operations SYSTEM "./shared-constraints/allowed-values-responsible-roles-operations.ent">
   <!ENTITY allowed-values-responsible-roles-component-production SYSTEM "./shared-constraints/allowed-values-responsible-roles-component-production.ent">
@@ -12,7 +12,7 @@
   <!ENTITY allowed-values-component-type SYSTEM "./shared-constraints/allowed-values-component-type.ent">
 ]>
 <METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/toolchains/xslt-M4/validate/metaschema.xsd">
+  xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema-xslt/support/metaschema/schema/xml/metaschema.xsd">
   <schema-name>OSCAL Component Definition Model</schema-name>
   <schema-version>1.1.0</schema-version>
   <short-name>oscal-component-definition</short-name>
@@ -27,7 +27,7 @@
   </remarks>
 
   <import href="oscal_implementation-common_metaschema.xml"/>
-  <import href="oscal_shared-responsibility-common_metaschema.xml"/>
+  <import href="oscal_responsibility-common_metaschema.xml"/>
 
   <define-assembly name="component-definition">
     <formal-name>Component Definition</formal-name>
@@ -416,18 +416,18 @@
         <group-as name="responsible-roles" in-json="ARRAY"/>
       </assembly>
 
-      <!-- ADDED for CRM/SRRM: Implementation Status and Shared Responsibility Assembly -->
+      <!-- ADDED for CRM/SSRM: Implementation Status and Shared Responsibility Assembly -->
       <assembly ref="implementation-status">
         <remarks>
           <p>The <code>implementation-status</code> is used to qualify the <code>status</code> value to indicate the degree to which the control is implemented.</p>
         </remarks>
       </assembly>
-      <assembly ref="shared-responsibility">
+      <assembly ref="shared-responsibility" max-occurs="1">
         <remarks>
           <p>TODO: Documentation</p>
         </remarks>
       </assembly>
-      <!-- END ADDED -->      
+      <!-- END ADDED -->
       
       <assembly ref="statement" max-occurs="unbounded">
         <group-as name="statements" in-json="ARRAY"/>
