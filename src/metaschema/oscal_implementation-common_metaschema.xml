@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="../../build/metaschema/toolchains/xslt-M4/validate/metaschema-composition-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="../../build/metaschema-xslt/src/validate/metaschema-composition-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <!DOCTYPE METASCHEMA [
       <!ENTITY allowed-values-responsible-roles-operations SYSTEM "./shared-constraints/allowed-values-responsible-roles-operations.ent">
       <!ENTITY allowed-values-responsible-roles-component-production SYSTEM "./shared-constraints/allowed-values-responsible-roles-component-production.ent">
@@ -12,7 +12,7 @@
       <!ENTITY allowed-values-component-type SYSTEM "./shared-constraints/allowed-values-component-type.ent">
 ]>
 <METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/toolchains/xslt-M4/validate/metaschema.xsd" abstract="yes">
+      xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema-xslt/support/metaschema/schema/xml/metaschema.xsd" abstract="yes">
       <schema-name>OSCAL Implementation Common Information</schema-name>
       <schema-version>1.1.0</schema-version>
       <short-name>oscal-implementation-common</short-name>
