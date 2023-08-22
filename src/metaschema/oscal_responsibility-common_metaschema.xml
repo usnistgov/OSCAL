@@ -209,7 +209,6 @@
     </constraint>
   </define-assembly>  
 
-
   <define-flag name="provided-uuid" as-type="uuid" scope="local">
     <formal-name>Provided UUID</formal-name>
     <!-- Identifier Reference -->
