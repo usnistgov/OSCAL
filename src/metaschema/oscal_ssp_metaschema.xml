@@ -854,9 +854,11 @@
       </assembly>
 
       <!-- CHANGED from Export for CRM/SSRM: Shared Responsibility Assembly -->
-      <assembly ref="shared-responsibility"></assembly>
-      <assembly ref="inherited"></assembly>
-      <assembly ref="satisfied"></assembly>
+      <assembly ref="shared-responsibility" max-occurs="1">
+        <remarks>
+          <p>TODO: Documentation</p>
+        </remarks>
+      </assembly>
 
       <assembly ref="responsible-role" max-occurs="unbounded">
         <group-as name="responsible-roles" in-json="ARRAY"/>
