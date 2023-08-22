@@ -177,6 +177,11 @@
     <formal-name>Shared Responsibility (Exportable)</formal-name>
     <description>Identifies content intended for external consumption, such as with leveraged organizations, customer responsibility documentation, and shared security responsibility documentation.</description>
     <model>
+      <define-flag name="exportable" as-type="boolean">
+        <formal-name>Exportable</formal-name>
+        <description>Indicates that the implmentation status is exportable for external consumption, such as with leveraged organizations, customer responsibility documentation, and shared security responsibility documentation.</description>
+      </define-flag>   
+      
       <define-field name="description" as-type="markup-multiline" in-xml="WITH_WRAPPER">
         <formal-name>Control Implementation Export Description</formal-name>
         <description>An implementation statement that describes the aspects of the control or control statement implementation that can be available to another system leveraging this system.</description>
