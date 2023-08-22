@@ -109,6 +109,9 @@
           </is-unique>
         </constraint>
       </define-assembly>
+      <assembly ref="inherited"></assembly>
+      <assembly ref="satisfied"></assembly>
+
 
       <field ref="remarks" in-xml="WITH_WRAPPER"/>
     </model>
