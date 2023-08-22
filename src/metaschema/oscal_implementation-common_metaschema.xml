@@ -335,10 +335,10 @@
             <formal-name>Implementation Status</formal-name>
             <description>Indicates the degree to which the a given control is implemented.</description>
 
-            <define-field name="exportable" as-type="boolean">
+            <define-flag name="exportable" as-type="boolean">
                   <formal-name>Exportable</formal-name>
                   <description>Indicates that the implmentation status is exportable for external consumption, such as with leveraged organizations, customer responsibility documentation, and shared security responsibility documentation.</description>
-            </define-field>        
+            </define-flag>        
 
             <define-flag name="state" as-type="token" required="yes">
                   <formal-name>Implementation State</formal-name>
