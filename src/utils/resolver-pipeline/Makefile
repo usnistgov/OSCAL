@@ -13,7 +13,7 @@ SUPPORT_DIR:=$(shell pwd)/java_modules
 
 $(SUPPORT_DIR):
 	mkdir -p "$(SUPPORT_DIR)"
-	mvn -f $(POM_FILE) \
+	mvn --quiet -f $(POM_FILE) \
 		dependency:copy-dependencies \
 		-DoutputDirectory="$(SUPPORT_DIR)"
 
