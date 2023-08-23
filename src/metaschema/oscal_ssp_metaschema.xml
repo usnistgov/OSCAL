@@ -856,10 +856,18 @@
       </assembly>
 
       <!-- CHANGED from Export for CRM/SSRM: Shared Responsibility Assembly -->
-      <assembly ref="provided"></assembly>
-      <assembly ref="responsibility"></assembly>
-      <assembly ref="inherited"></assembly>
-      <assembly ref="satisfied"></assembly>
+      <assembly ref="provided">
+        <group-as name="provided" in-json="ARRAY"/>
+      </assembly>
+      <assembly ref="responsibility">
+        <group-as name="responsibility" in-json="ARRAY"/>
+      </assembly>
+      <assembly ref="inherited">
+        <group-as name="inherited" in-json="ARRAY"/>
+      </assembly>
+      <assembly ref="satisfied">
+        <group-as name="satisfied" in-json="ARRAY"/>
+      </assembly>
 
       <assembly ref="export" max-occurs="1">
         <remarks>
