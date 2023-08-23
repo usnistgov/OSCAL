@@ -422,7 +422,12 @@
           <p>The <code>implementation-status</code> is used to qualify the <code>status</code> value to indicate the degree to which the control is implemented.</p>
         </remarks>
       </assembly>
-      <assembly ref="shared-responsibility" max-occurs="1">
+      <assembly ref="provided"></assembly>
+      <assembly ref="responsibility"></assembly>
+      <assembly ref="inherited"></assembly>
+      <assembly ref="satisfied"></assembly>
+
+      <assembly ref="export" max-occurs="1">
         <remarks>
           <p>TODO: Documentation</p>
         </remarks>
