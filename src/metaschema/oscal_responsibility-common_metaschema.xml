@@ -29,7 +29,7 @@
     </define-flag>
     <model>
       <flag ref="exportable" />
-      
+
       <define-field name="description" as-type="markup-multiline" min-occurs="1" in-xml="WITH_WRAPPER">
         <formal-name>Provided Control Implementation Description</formal-name>
         <description>An implementation statement that describes the aspects of the control or control statement implementation that can be provided to another system leveraging this system.</description>
@@ -199,10 +199,18 @@
         <!-- TODO: Model specific link relationships -->
       </assembly>
 
-      <assembly ref="provided"></assembly>
-      <assembly ref="responsibility"></assembly>
-      <assembly ref="inherited"></assembly>
-      <assembly ref="satisfied"></assembly>
+      <assembly ref="provided">
+        <group-as name="provided" in-json="ARRAY"/>
+      </assembly>
+      <assembly ref="responsibility">
+        <group-as name="responsibility" in-json="ARRAY"/>
+      </assembly>
+      <assembly ref="inherited">
+        <group-as name="inherited" in-json="ARRAY"/>
+      </assembly>
+      <assembly ref="satisfied">
+        <group-as name="satisfied" in-json="ARRAY"/>
+      </assembly>
 
       <field ref="remarks" in-xml="WITH_WRAPPER"/>
     </model>
