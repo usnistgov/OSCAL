@@ -402,7 +402,7 @@
                pending="[dev]"/>
    <x:scenario label="9.2 Metadata Resolution | If any of the above OSCAL versions (imported document versions, source profile version, tool version) are of a different major version (the first digit differs), the tool SHOULD provide an error and cease processing."
                pending="[dev]"/>
-   <x:scenario label="9.2 Metadata Resolution | The value of metadata:last-modified in the target MUST be set with a valid timestamp representing the time the profile resolution completed."
+   <x:scenario label="9.2 Metadata Resolution | The value of metadata:last-modified in the target MUST be set with a valid timestamp. This value SHOULD represent the time that resolution occurred."
                pending="[dev]"/>
    <x:scenario label="9.2 Metadata Resolution | A child prop object with name:source-profile MUST be created. The value object of this prop SHOULD be set with a valid URI that points to the profile that resulted in this catalog."
                pending="[dev]"/>

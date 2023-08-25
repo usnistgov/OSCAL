@@ -325,7 +325,7 @@
       <statement>If any of the above OSCAL versions (imported document versions, source profile version, tool version) are of a different major version (the first digit differs), the tool SHOULD provide an error and cease processing.</statement>
    </requirement>
    <requirement level="must" id="req-meta-last-modified">
-      <statement>The value of metadata:last-modified in the target MUST be set with a valid timestamp representing the time the profile resolution completed.</statement>
+      <statement>The value of metadata:last-modified in the target MUST be set with a valid timestamp. This value SHOULD represent the time that profile resolution occurred.</statement>
       <test status="pending">PENDING develop an external (XPath) test</test>
    </requirement>
    <requirement level="should" id="req-meta-source-profile">
