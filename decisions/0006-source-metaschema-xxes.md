@@ -4,7 +4,7 @@ Date: 08/25/2023
 
 ## Status
 
-Proposed
+Approved
 
 ## Context
 
@@ -22,7 +22,7 @@ This has put additional burden on OSCAL tool developers seeking to consume the s
 The NIST OSCAL Team should include the "resolved" Metaschema module sources as an artifact generated upon release.
 Additionally, the NIST OSCAL Team should document the process for obtaining a resolved Metaschema module as part of the [streamlined build process](./0005-repository-reorganization.md#streamlined-build-process).
 
-In the event that Metaschema stabilizes constraint imports, the NIST OSCAL team will deprecate the generated artifacts for removal in the next major release.
+In the event that Metaschema stabilizes constraint imports, the NIST OSCAL Team will review this ADR and potentially determine a deprecation strategy for these generated artifacts in the relevant releases.
 
 ## Consequences
 
