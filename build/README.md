@@ -34,7 +34,8 @@ Developers can generate schemas locally using the `make artifacts` command.
 Developers can also generate individual artifacts using the following commands:
 
 * `make schemas`: Generates the JSON Schemas and XSDs off of the source Metaschemas;
-* `make converters`: Generates the XSLT stylesheets for JSON<->XML conversion off of the source Metaschemas.
+* `make converters`: Generates the XSLT stylesheets for JSON<->XML conversion off of the source Metaschemas;
+* `make resolved-metaschemas`: Resolves external entities (XXE) present in the source OSCAL Metaschema modules for use with tools that do not support XXEs.
 
 ### Checks
 

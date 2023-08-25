@@ -9,8 +9,8 @@ Documentation for the OSCAL models can be found at: https://pages.nist.gov/OSCAL
 
 This release provides 2 types of resources, each located in a different subdirectory:
 
-- xml: Provides the XML schemas and content converters that are needed to support the OSCAL model XML-based formats. Instructions for using this information can be found at: https://github.com/usnistgov/OSCAL/tree/master/xml.
-- json: Provides the JSON schemas and content converters that are needed to support the OSCAL model JSON-based formats. Instructions for using this information can be found at: https://github.com/usnistgov/OSCAL/tree/master/json.
+- `xml/` and `json/`: Provides the XML and JSON schemas and content converters that are needed to support the OSCAL model. Instructions for using these artifacts can be found at https://github.com/usnistgov/OSCAL/blob/develop/build/README.md#artifact-usage
+- `metaschema/`: Provides the source OSCAL Metaschema modules with all external entities (XXE) resolved for tools that do not support XXEs.
 
 These directories provide stable, released versions of the resources provided on the OSCAL GitHub repository: https://github.com/usnistgov/OSCAL.
 
@@ -32,6 +32,6 @@ OSCAL is being developed in a public GitHub repository, in collaboration with in
 - Help with developing OSCAL models and associated content.
 - Assistance with developing documentation, tutorials, and other informational resources.
 
-If you are interested in helping, please visit or contributing page for more information at: https://github.com/usnistgov/OSCAL/blob/master/CONTRIBUTING.md.
+If you are interested in helping, please visit or contributing page for more information at: https://github.com/usnistgov/OSCAL/blob/main/CONTRIBUTING.md.
 
 Please direct any questions, comments, concerns, or kudos by email to: oscal@nist.gov.
