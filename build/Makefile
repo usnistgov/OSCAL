@@ -115,7 +115,7 @@ archives: $(ZIP_ARCHIVE) ## Archive converters and schemas
 $(ZIP_ARCHIVE) $(TARBZ2_ARCHIVE): converters schemas resolved-metaschemas
 	@echo Generating archive
 	mkdir -p $(ARCHIVE_TEMP_DIR)/{{json,xml}/{convert,schema},metaschema}
-	cp ../src/release/release-readme.md "$(ARCHIVE_TEMP_DIR)/README.md"
+	cp ../src/release/release-readme.txt "$(ARCHIVE_TEMP_DIR)/README.txt"
 	cp $(XSD_OUTPUTS) "$(ARCHIVE_TEMP_DIR)/xml/schema"
 	cp $(JSONSCHEMA_OUTPUTS) "$(ARCHIVE_TEMP_DIR)/json/schema"
 	cp $(XML2JSON_CONVERTERS) "$(ARCHIVE_TEMP_DIR)/xml/convert"
