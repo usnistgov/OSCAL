@@ -14,7 +14,7 @@ help: ## Show this help message
 all: artifacts checks archives ## Run all pipelines
 
 .PHONY: artifacts
-artifacts: schemas converters ## Generate all artifacts
+artifacts: schemas converters resolved-metaschemas ## Generate all artifacts
 
 .PHONY: checks
 checks: linkcheck validate test-profile-resolution ## Run all tests and checks
@@ -26,11 +26,13 @@ node_modules: package.json package-lock.json
 	npm ci
 
 .PHONY: clean
-clean: clean-schemas clean-linkcheck clean-converters clean-archives ## Remove all generated content
+clean: clean-schemas clean-linkcheck clean-converters clean-archives clean-resolved-metaschemas ## Remove all generated content
 
 METASCHEMA_XSLT_COMMAND:=metaschema-xslt/bin/metaschema-xslt
 SRC_DIR:=../src/metaschema
-# Contains the metaschemas that do not contain "common" or "metadata"
+# Contains all OSCAL metaschema modules, including those without exported roots
+ALL_METASCHEMAS:=$(shell find $(SRC_DIR) -name '*_metaschema.xml')
+# Contains the OSCAL metaschema modules that contain root assemblies
 METASCHEMAS:=$(shell find $(SRC_DIR) -name '*_metaschema.xml' -a ! -name '*common*' -a ! -name '*metadata*')
 GENERATED_DIR:=generated
 
@@ -71,6 +73,33 @@ clean-converters: ## Remove generated converters
 	rm -fr $(GENERATED_DIR)/*_xml-to-json-converter.xsl
 	rm -fr $(GENERATED_DIR)/*_json-to-xml-converter.xsl
 
+###################################
+# Resolved Metaschemas Generation #
+###################################
+
+POM_PATH:=./pom.xml
+define EXEC_SAXON
+	mvn --quiet -f "$(POM_PATH)" exec:java \
+    	-Dexec.mainClass="net.sf.saxon.Transform" \
+		-Dexec.args="$1"
+endef
+
+RESOLVER_STYLESHEET:=./resolve-entities.xsl
+
+RESOLVED_METASCHEMA_SUFFIX:=RESOLVED
+RESOLVED_METASCHEMAS:=$(patsubst $(SRC_DIR)/%_metaschema.xml,$(GENERATED_DIR)/%_metaschema_$(RESOLVED_METASCHEMA_SUFFIX).xml,$(ALL_METASCHEMAS))
+
+$(GENERATED_DIR)/%_metaschema_$(RESOLVED_METASCHEMA_SUFFIX).xml: $(SRC_DIR)/%_metaschema.xml
+	@mkdir -p $(GENERATED_DIR)
+	$(call EXEC_SAXON,-s:$(SRC_DIR)/$*_metaschema.xml -xsl:$(RESOLVER_STYLESHEET) -o:$@ importHrefSuffix=$(RESOLVED_METASCHEMA_SUFFIX))
+
+.PHONY: resolved-metaschemas
+resolved-metaschemas: $(RESOLVED_METASCHEMAS) ## Generate the resolved metaschema modules
+
+.PHONY: clean-resolved-metaschemas
+clean-resolved-metaschemas: ## Remove generated resolvd metaschema modules
+	rm -f $(RESOLVED_METASCHEMAS)
+
 ######################
 # Archive Generation #
 ######################
@@ -83,14 +112,15 @@ ARCHIVE_TEMP_DIR:=$(GENERATED_DIR)/archive_temp
 .PHONY: archives
 archives: $(ZIP_ARCHIVE) ## Archive converters and schemas
 
-$(ZIP_ARCHIVE) $(TARBZ2_ARCHIVE): converters schemas
+$(ZIP_ARCHIVE) $(TARBZ2_ARCHIVE): converters schemas resolved-metaschemas
 	@echo Generating archive
-	mkdir -p $(ARCHIVE_TEMP_DIR)/{json,xml}/{convert,schema}
-	cp ../src/release/README.txt "$(ARCHIVE_TEMP_DIR)/README.md"
+	mkdir -p $(ARCHIVE_TEMP_DIR)/{{json,xml}/{convert,schema},metaschema}
+	cp ../src/release/release-readme.txt "$(ARCHIVE_TEMP_DIR)/README.txt"
 	cp $(XSD_OUTPUTS) "$(ARCHIVE_TEMP_DIR)/xml/schema"
 	cp $(JSONSCHEMA_OUTPUTS) "$(ARCHIVE_TEMP_DIR)/json/schema"
 	cp $(XML2JSON_CONVERTERS) "$(ARCHIVE_TEMP_DIR)/xml/convert"
 	cp $(JSON2XML_CONVERTERS) "$(ARCHIVE_TEMP_DIR)/json/convert"
+	cp $(RESOLVED_METASCHEMAS) "$(ARCHIVE_TEMP_DIR)/metaschema"
 
 	(cd "$(ARCHIVE_TEMP_DIR)" && zip -r $(abspath $(ZIP_ARCHIVE)) .)
 	tar -jcvf "$(TARBZ2_ARCHIVE)" -C "$(ARCHIVE_TEMP_DIR)" .
@@ -161,3 +191,17 @@ validate-composition-%:
 .PHONY: test-profile-resolution
 test-profile-resolution: ## Unit test the profile resolver
 	$(MAKE) -C ../src/utils/resolver-pipeline test
+
+###################
+# Utility Targets #
+###################
+
+# These targets may be used by consumers of the OSCAL repository
+
+# All artifacts typically included in a release
+RELEASE_ARTIFACTS:=$(XSD_OUTPUTS) $(JSONSCHEMA_OUTPUTS) $(XML2JSON_CONVERTERS) $(JSON2XML_CONVERTERS) $(RESOLVED_METASCHEMAS) $(ZIP_ARCHIVE) $(TARBZ2_ARCHIVE)
+
+# This target is used by OSCAL-Reference to generate meta-redirects for release assets
+.PHONY: list-release-artifacts
+list-release-artifacts: ## Print out a list of all artifacts typically included in an OSCAL release
+	@echo $(RELEASE_ARTIFACTS)
