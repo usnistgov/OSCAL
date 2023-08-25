@@ -1410,7 +1410,7 @@ control:
           <p><req level="must" id="req-meta-oscal-version">The value of metadata:oscal-version in the target MUST be set with a string that identifies the version of OSCAL used by this tool to resolve the profile (ex. 1.0.0). This value MUST be determined by compiling the oscal-versions from each imported document and the source profile, and taking the most recent minor version. If this version is more recent than what the resolution tool is using, then the value of oscal-version MUST be the version that the tool used internally.</req> <req level="must" id="req-meta-oscalversion-error">If any of the above OSCAL versions (imported document versions, source profile version, tool version) are of a different major version (the first digit differs), the tool SHOULD provide an error and cease processing.</req></p>
         </li>
         <li>
-          <p><req level="must" id="req-meta-last-modified">The value of metadata:last-modified in the target MUST be set with a valid timestamp representing the time the profile resolution completed.</req></p>
+          <p><req level="must" id="req-meta-last-modified">The value of metadata:last-modified in the target MUST be set with a valid timestamp. This value SHOULD represent the time that profile resolution occurred.</req></p>
         </li>
         <li>
           <p><req level="should" id="req-meta-source-profile">A child <src>prop</src> object with <src>name:source-profile</src> MUST be created. The <src>value</src> object of this <src>prop</src> SHOULD be set with a valid URI that points to the profile that resulted in this catalog. </req> 
