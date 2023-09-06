@@ -26,7 +26,7 @@ jobs:
         working-directory: build
       - name: Create an issue or comment if bad links are detected
         if: failure()
-        uses: actions/github-script@d7906e4ad0b1822421a7e6a35d5ca353c962f410 # v6.4.1
+        uses: actions/github-script@d7906e4ad0b1822421a7e6a35d5ca353c962f410
         with:
           script: |
             // Read the markdown linkcheck report
