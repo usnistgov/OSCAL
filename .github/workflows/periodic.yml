@@ -4,11 +4,6 @@ on:
     - cron: "0 0 * * MON"
     - cron: "0 0 * * THU"
   workflow_dispatch:
-  # TODO remove (this is to test the link checker behavior)
-  pull_request:
-    branches:
-      - main
-      - develop
 jobs:
   linkcheck:
     name: Validate Markdown Links

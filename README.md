@@ -56,6 +56,3 @@ Run the following Git command to clone the OSCAL repository.
 ```
 git clone --recurse-submodules https://github.com/usnistgov/OSCAL.git
 ```
-
-<!-- TODO: remove! This is to test the linkchecker behavior -->
-https://test.invalid
