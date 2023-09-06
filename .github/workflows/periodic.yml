@@ -13,6 +13,9 @@ jobs:
   linkcheck:
     name: Validate Markdown Links
     runs-on: ubuntu-22.04
+    permissions:
+      # Needed to post comments and issues
+      issues: write
     steps:
       - uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744
         with:
