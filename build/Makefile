@@ -169,7 +169,7 @@ clean-linkcheck: ## Remove linkcheck log
 validate: validate-jsonschemas validate-xsds validate-composition ## Validate all generated content
 
 .PHONY: validate-jsonschemas
-validate-jsonschemas: $(JSONSCHEMA_OUTPUTS) ## Validate generated JSON Schemas
+validate-jsonschemas: node_modules $(JSONSCHEMA_OUTPUTS) ## Validate generated JSON Schemas
 	@echo Validating generated JSON Schemas
 	npx ajv compile -c "ajv-formats" -s "$(GENERATED_DIR)/*_schema.json"
 
