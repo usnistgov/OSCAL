@@ -1,3 +1,4 @@
 /node_modules/
-/generated/
+# Ignore all variations of generated_* directories
+/generated*/
 /out/
