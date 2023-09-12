@@ -3,7 +3,7 @@
 <METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema-xslt/support/metaschema/schema/xml/metaschema.xsd">
     <schema-name>OSCAL Plan of Action and Milestones (POA&amp;M) Model</schema-name>
-    <schema-version>1.1.0</schema-version>
+    <schema-version>1.1.1</schema-version>
     <short-name>oscal-poam</short-name>
     <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
     <json-base-uri>http://csrc.nist.gov/ns/oscal</json-base-uri>
