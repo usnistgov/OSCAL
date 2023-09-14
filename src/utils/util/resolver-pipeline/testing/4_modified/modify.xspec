@@ -1605,7 +1605,7 @@
             </x:expect>
             <x:expect label="The target control does not appear" test="empty($x:result//*[@id='a1-stmt'])"/>
         </x:scenario>
-        <x:scenario label="Explicit binding to a param that needs to be set *and* have new params inserted">
+        <x:scenario label="Explicit binding to a param that needs to be set *and* have new params inserted as siblings">
             <x:variable name="ov:context">
                 <catalog id="abc">
                     <control id="a1">
@@ -1645,6 +1645,38 @@
                     <constraint>at least every 3 years</constraint>
                 </param>
                 <param id="new_prm2"/>
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="Explicit binding to a param that needs to be set *and* have new prop inserted as child">
+            <x:variable name="ov:context">
+                <catalog id="abc">
+                    <control id="a1">
+                        <title>Control A1</title>
+                        <param id="a1_prm1">
+                            <label>A1 Parameter 1</label>
+                        </param>
+                    </control>
+                    <modify>
+                        <set-parameter param-id="a1_prm1">
+                            <constraint>at least every 3 years</constraint>
+                        </set-parameter>
+                        <alter control-id="a1">
+                            <add position="starting" by-id="a1_prm1">
+                                <prop name="param-label" ns="https://fedramp.gov/ns/oscal" value="AC-1(a)"/>
+                            </add>
+                        </alter>
+                    </modify>
+                </catalog>
+            </x:variable>
+            <x:context select="$ov:context//o:param[@id='a1_prm1']">
+                <x:param name="modifications" select="$ov:context//o:modify" tunnel="yes"/>
+            </x:context>
+            <x:expect label="original param with constraint (added by process-param template) and param-label prop">
+                <param id="a1_prm1">
+                    <prop name="param-label" ns="https://fedramp.gov/ns/oscal" value="AC-1(a)"/>
+                    <label>A1 Parameter 1</label>
+                    <constraint>at least every 3 years</constraint>
+                </param>
             </x:expect>
         </x:scenario>
     </x:scenario>
