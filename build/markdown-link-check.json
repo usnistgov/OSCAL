@@ -8,7 +8,10 @@
         },
         {
             "pattern": "https://help.github.com"
-        }
+        },
+        {
+            "pattern": "https://linux.die.net/man/1/xmllint/"
+        }        
     ],
     "replacementPatterns": [
         {
