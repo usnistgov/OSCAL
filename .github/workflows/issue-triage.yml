@@ -5,6 +5,7 @@ on:
     types:
       - opened
       - reopened
+      - transferred
 
 jobs:
   add-to-project:
