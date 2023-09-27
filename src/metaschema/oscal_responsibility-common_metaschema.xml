@@ -181,7 +181,7 @@
 
 
   
-  <define-assembly name="export" max-occurs="1">
+  <define-assembly name="export" max-occurs="1" deprecated="1.1.0">
     <formal-name>Shared Responsibility</formal-name>
     <description>Identifies content intended for external consumption, such as with leveraged organizations, customer responsibility documentation, and shared security responsibility documentation.</description>
     <model>
