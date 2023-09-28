@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/css" href="../../author/CSS/oscal-author.css" title="Authoring" alternate="no"?>
-<?xml-model href="../../../schematron/oscal-profile.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
-<?xml-model href="../../../../specifications/profile-resolution/example-checkup.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="../../schematron/oscal-profile.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="../../../specifications/profile-resolution/example-checkup.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <profile xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="pathological-profile">
     <metadata>
         <title>Pathological Profile</title>
