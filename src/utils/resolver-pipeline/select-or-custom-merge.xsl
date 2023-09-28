@@ -34,7 +34,7 @@
         <xsl:param name="context" select="." as="element()"/>
         <xsl:attribute name="opr:id" namespace="http://csrc.nist.gov/ns/oscal/profile-resolution">
             <xsl:value-of
-                select="concat(opr:catalog-identifier($context/root()/o:catalog), '#', $context/(@id, generate-id())[1])"/>
+                select="concat(opr:catalog-identifier($context/root()/(o:catalog|o:profile)), '#', $context/(@id, generate-id())[1])"/>
         </xsl:attribute>
     </xsl:template>
 
@@ -91,8 +91,8 @@
     </xsl:function>
 
     <xsl:function name="opr:catalog-identifier" as="xs:string">
-        <xsl:param name="catalog" as="element(o:catalog)"/>
-        <xsl:sequence select="$catalog/(@uuid,base-uri(root(.)))[1]"/>
+        <xsl:param name="catalog-or-profile" as="element()"/>
+        <xsl:sequence select="$catalog-or-profile/(@uuid,base-uri(root(.)))[1]"/>
     </xsl:function>
 
 </xsl:stylesheet>

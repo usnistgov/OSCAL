@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <x:description xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+    xmlns:mh="http://csrc.nist.gov/ns/message"
     xmlns:o="http://csrc.nist.gov/ns/oscal/1.0"
     xmlns:opr="http://csrc.nist.gov/ns/oscal/profile-resolution"
     xmlns:ov="http://csrc.nist.gov/ns/oscal/xspec/variable"
@@ -18,6 +19,170 @@
             <x:context select="$ov:arbitrary-element/@arbitrary-attribute"/>
             <x:expect label="Copy"
                 test="$x:result instance of attribute(arbitrary-attribute) and $x:result/string()='val'"/>
+        </x:scenario>
+    </x:scenario>
+
+    <x:scenario label="Tests for mode=all-or-last-only template">
+        <x:scenario label="Element that can occur with any multiplicity">
+            <x:context mode="all-or-last-only" select="(//o:link)[2]">
+                <parent>
+                    <link href="target1"/>
+                    <link href="target2"/>
+                    <link href="target3"/>
+                </parent>
+            </x:context>
+            <x:expect label="Copy of element, regardless of multiplicity or position">
+                <link href="target2"/>
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="Non-OSCAL element">
+            <x:context mode="all-or-last-only" select="(//opr:title)[2]">
+                <parent>
+                    <opr:title>A</opr:title>
+                    <opr:title>B</opr:title>
+                    <opr:title>C</opr:title>
+                </parent>
+            </x:context>
+            <x:expect label="Copy of element, regardless of multiplicity or position">
+                <opr:title>B</opr:title>
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="Element that can occur at most once, ">
+            <x:variable name="ov:context-parent">
+                <parent>
+                    <title>Original</title>
+                    <title>Intermediate replacement</title>
+                    <title>Another intermediate replacement</title>
+                    <title>Last replacement</title>
+                </parent>
+            </x:variable>
+            <x:scenario label="first of four instances">
+                <x:context mode="all-or-last-only" select="($ov:context-parent//o:title)[1]"/>
+                <x:expect label="Nothing; the warning will come from the next to last instance, and the copy will come from the last instance"
+                select="()"/>
+            </x:scenario>
+            <x:scenario label="second of four instances">
+                <x:context mode="all-or-last-only" select="($ov:context-parent//o:title)[2]"/>
+                <x:expect label="Nothing; the warning will come from the next to last instance, and the copy will come from the last instance"
+                    select="()"/>
+            </x:scenario>
+            <x:scenario label="next to last instance">
+                <x:context mode="all-or-last-only" select="($ov:context-parent//o:title)[last()-1]"/>
+                <x:expect label="PI for warning about extra title"
+                    test="$x:result/self::processing-instruction('message-handler')">
+                    <?message-handler Warning: Found 4 elements of type <title>. Only the last will be present in result.?>
+                </x:expect>
+                <x:expect label="No elements" test="empty($x:result/self::element())"/>
+            </x:scenario>
+            <x:scenario label="last instance">
+                <x:context mode="all-or-last-only" select="($ov:context-parent//o:title)[last()]"/>
+                <x:expect label="Copy of element">
+                    <title>Last replacement</title>
+                </x:expect>
+                <x:expect label="No PI for warning or error" test="empty($x:result/self::processing-instruction())"/>
+            </x:scenario>
+        </x:scenario>
+    </x:scenario>
+
+    <x:scenario label="Tests for name=process-expected-child-elements template">
+        <x:scenario label="Child elements out of sequence, extraneous elements, and extra title">
+            <x:context>
+                <parent>
+                    <param id="param-A.a">
+                        <label>A.a parameter</label>
+                        <value>A.a value</value>
+                    </param>
+                    <published/>
+                    <prop name="label" value="1st"/>
+                    <title>Original</title>
+                    <prop name="label" value="2nd"/>
+                    <title>Replacement</title>
+                    <param id="param-B.b">
+                        <label>B.b parameter</label>
+                        <value>B.b value</value>
+                    </param>
+                    <opr:title>Non-OSCAL Title</opr:title>
+                </parent>
+            </x:context>
+            <x:call template="process-expected-child-elements">
+                <x:param name="expected-child-element-names"
+                    select="('title','param','prop')"/>
+            </x:call>
+            <x:expect label="One title, all params, all props, and no other elements" test="element()">
+                <title>Replacement</title>
+                <param id="param-A.a">
+                    <label>A.a parameter</label>
+                    <value>A.a value</value>
+                </param>
+                <param id="param-B.b">
+                    <label>B.b parameter</label>
+                    <value>B.b value</value>
+                </param>
+                <prop name="label" value="1st"/>
+                <prop name="label" value="2nd"/>
+            </x:expect>
+            <x:expect label="PI for warning about extra OSCAL-namespace title" test="/processing-instruction('message-handler')">
+                <?message-handler Warning: Found 2 elements of type <title>. Only the last will be present in result.?>
+            </x:expect>
+            <!-- Note: An extraneous <published/> element causes the report-unexpected-child-elements
+                template, not the template being called in this scenario, to output an error PI. -->
+        </x:scenario>
+    </x:scenario>
+
+    <x:scenario label="Tests for name=report-unexpected-child-elements template">
+        <x:scenario label="Unexpected elements among expected and opr:* child elements">
+            <x:context>
+                <parent>
+                    <param id="param-A.a">
+                        <label>A.a parameter</label>
+                        <value>A.a value</value>
+                    </param>
+                    <published/>
+                    <prop name="label" value="1st"/>
+                    <title>OSCAL Title</title>
+                    <opr:title>Non-OSCAL Title</opr:title>
+                    <unknown-element>Text</unknown-element>
+                </parent>
+            </x:context>
+            <x:call template="report-unexpected-child-elements">
+                <x:param name="expected-child-element-names"
+                    select="('title','param','prop')"/>
+            </x:call>
+            <x:expect label="Processing instructions about 'published' and 'unknown-element' elements"
+                test="/processing-instruction('message-handler')">
+                <?message-handler Error: Element of type <published> is not valid inside <parent> and will not be present in result.?>
+                <?message-handler Error: Element of type <unknown-element> is not valid inside <parent> and will not be present in result.?>
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="No unexpected child elements">
+            <x:context>
+                <parent>
+                    <param id="param-A.a">
+                        <label>A.a parameter</label>
+                        <value>A.a value</value>
+                    </param>
+                    <prop name="label" value="1st"/>
+                    <title>OSCAL Title</title>
+                    <opr:title>Non-OSCAL Title</opr:title>
+                </parent>
+            </x:context>
+            <x:call template="report-unexpected-child-elements">
+                <x:param name="expected-child-element-names"
+                    select="('title','param','prop')"/>
+            </x:call>
+            <x:expect label="Nothing" select="()"/>
+        </x:scenario>
+        <x:scenario label="No child elements">
+            <x:context>
+                <parent>
+                    <!-- no child elements -->
+                </parent>
+            </x:context>
+            <x:call template="report-unexpected-child-elements">
+                <x:param name="expected-child-element-names"
+                    select="('title','param','prop')"/>
+            </x:call>
+            <x:expect label="Nothing" select="()"/>
         </x:scenario>
     </x:scenario>
 
@@ -56,8 +221,8 @@
             </x:context>
             <x:expect label="Catalog with correct sequence of children">
                 <catalog id="worksheet">
-                    <metadata>...</metadata>
                     <opr:foo/>
+                    <metadata>...</metadata>
                     <param id="loose">...</param>
                     <control id="control_A">...</control>
                     <group>...</group>
@@ -84,8 +249,8 @@
                     </back-matter>
                 </catalog>                
             </x:context>
-            <x:expect label="Catalog with last metadata child and last back-matter child">
-                <catalog id="worksheet">
+            <x:expect label="Catalog with last metadata child and last back-matter child"
+                test="$x:result/self::o:catalog[@id='worksheet']/element()">
                     <metadata>
                         <title>Catalog Y</title>
                         <version>1.3</version>
@@ -93,7 +258,11 @@
                     <back-matter>
                         <opr:bar/>
                     </back-matter>
-                </catalog>                                
+            </x:expect>
+            <x:expect label="Inside catalog, separate PI warnings about extra metadata and extra back-matter"
+                test="$x:result/self::o:catalog/processing-instruction('message-handler')">
+                <?message-handler Warning: Found 2 elements of type <metadata>. Only the last will be present in result.?>
+                <?message-handler Warning: Found 2 elements of type <back-matter>. Only the last will be present in result.?>
             </x:expect>
         </x:scenario>
         <x:scenario label="Catalog with loose parameter as child, ">
@@ -225,8 +394,8 @@
                     <remarks><p>Remark 2</p></remarks>
                 </metadata>
             </x:context>
-            <x:expect label="Metadata with last instance of each child type that cannot occur multiple times">
-                <metadata>
+            <x:expect label="Metadata with last instance of each child type that cannot occur multiple times"
+                test="$x:result/self::o:metadata/element()">
                     <title>Title 2</title>
                     <published>2021-11-13T12:41:07.061-05:00</published>
                     <last-modified>2021-11-13T12:41:07.061-05:00</last-modified>
@@ -238,7 +407,16 @@
                         </revision>
                     </revisions>
                     <remarks><p>Remark 2</p></remarks>
-                </metadata>
+            </x:expect>
+            <x:expect label="Inside metadata, one warning PI for each type of extra element"
+                test="$x:result/self::o:metadata/processing-instruction('message-handler')">
+                <?message-handler Warning: Found 2 elements of type <title>. Only the last will be present in result.?>
+                <?message-handler Warning: Found 2 elements of type <published>. Only the last will be present in result.?>
+                <?message-handler Warning: Found 2 elements of type <last-modified>. Only the last will be present in result.?>
+                <?message-handler Warning: Found 2 elements of type <version>. Only the last will be present in result.?>
+                <?message-handler Warning: Found 2 elements of type <oscal-version>. Only the last will be present in result.?>
+                <?message-handler Warning: Found 2 elements of type <revisions>. Only the last will be present in result.?>
+                <?message-handler Warning: Found 2 elements of type <remarks>. Only the last will be present in result.?>
             </x:expect>
         </x:scenario>
     </x:scenario>
@@ -322,10 +500,12 @@
                     <title>Revised title</title>
                 </group>
             </x:context>
-            <x:expect label="Group with last title">
-                <group id="a123">
+            <x:expect label="Group with last title" test="$x:result/self::o:group[@id='a123']/element()">
                     <title>Revised title</title>
-                </group>
+            </x:expect>
+            <x:expect label="Inside group, PI for warning about extra title"
+                test="$x:result/self::o:group/processing-instruction('message-handler')">
+                <?message-handler Warning: Found 2 elements of type <title>. Only the last will be present in result.?>
             </x:expect>
         </x:scenario>
     </x:scenario>
@@ -406,10 +586,13 @@
                     <title>Second revision added during modify phase</title>
                 </control>
             </x:context>
-            <x:expect label="Control with last title">
-                <control id="a123">
+            <x:expect label="Control with last title"
+                test="$x:result/self::o:control[@id='a123']/element()">
                     <title>Second revision added during modify phase</title>
-                </control>
+            </x:expect>
+            <x:expect label="Inside control, PI for warning about extra title"
+                test="$x:result/self::o:control/processing-instruction('message-handler')">
+                <?message-handler Warning: Found 3 elements of type <title>. Only the last will be present in result.?>
             </x:expect>
         </x:scenario>
     </x:scenario>

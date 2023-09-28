@@ -6,11 +6,6 @@
     xmlns:x="http://www.jenitennison.com/xslt/xspec"
     stylesheet="../../oscal-profile-resolve-merge.xsl">
 
-    <!-- Override value of $in_xspec global XSLT variable so that error behavior
-        in "Error case: Elements of different kinds" scenario can differ for
-        testing vs. production usage. -->
-    <x:param name="in_xspec" select="true()"/>
-
     <!-- These variables provide contexts that indicate how to combine elements. -->
     <x:variable name="ov:combine-merge">
         <catalog>
@@ -144,7 +139,7 @@
                 </control>
             </x:expect>
         </x:scenario>
-        <x:scenario label="Error case: Elements of different kinds" catch="yes">
+        <x:scenario label="Error case: Elements of different kinds">
             <x:context mode="o:combine-elements" select="$ov:combine-merge">
                 <x:param name="elements" as="element()+" select="//*:control">
                     <selection>
@@ -153,8 +148,10 @@
                     </selection>
                 </x:param>
             </x:context>
-            <x:expect label="XSLT error, fatal when $in_xspec is true"
-                test="$x:result instance of map(*) and $x:result('err') instance of map(*)"/>            
+            <x:expect label="PI for error about lack of support"
+                test="$x:result/self::processing-instruction('message-handler')">
+                <?message-handler Error: Combining elements of different types is not supported.?>
+            </x:expect>
         </x:scenario>
         <x:scenario label="Empty sequence">
             <x:context mode="o:combine-elements" select="$ov:combine-merge">

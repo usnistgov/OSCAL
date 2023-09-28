@@ -12,10 +12,9 @@
 
     <xsl:import href="message-handler.xsl"/>
 
-    <xsl:variable name="in_xspec" as="xs:boolean" select="false()"/>
     <xsl:variable name="true-content" as="xs:string+" select="('true','1')"/>
 
-    <xsl:template match="* | @*" mode="#all">
+    <xsl:template match="* | @* | processing-instruction('message-handler')" mode="#all">
         <xsl:copy copy-namespaces="no">
             <xsl:apply-templates mode="#current" select="node() | @*"/>
         </xsl:copy>
@@ -26,6 +25,7 @@
     <xsl:template match="/*" priority="1">
         <!-- emitting nothing as this is input is erroneous; a catalog will match one of the following
             templates not this one. -->
+        
     </xsl:template>
 
     <!-- If there is no selection and no merge (i.e., we don't reach one of
@@ -36,12 +36,20 @@
     </xsl:template>
 
     <!-- If there is a selection but neither merge/as-is nor merge/custom,
-        use flat structuring. -->
+        use flat structuring without grouping or hierarchy of controls. -->
     <xsl:template match="catalog[exists(selection)]" priority="10" as="element(catalog)">
         <catalog>
             <xsl:apply-templates select="@*"/>
             <xsl:apply-templates select="metadata"/>
+
+            <!-- For controls, first undo grouping and then undo nesting. -->
+            <xsl:variable name="controls-ungrouped-but-nested">
             <xsl:apply-templates select="selection"/>
+            </xsl:variable>
+            <xsl:apply-templates select="$controls-ungrouped-but-nested/* | $controls-ungrouped-but-nested/*/descendant::control"
+                mode="remove-nested-controls"/>
+
+            <xsl:apply-templates select="processing-instruction('message-handler')"/>
             <xsl:apply-templates select="modify"/>
             <xsl:where-populated>
                 <back-matter>
@@ -51,10 +59,24 @@
         </catalog>
     </xsl:template>
 
+    <!-- Skip descendant controls as part of flat structuring. The template that
+        initiates this mode outputs the descendants as siblings instead, so this
+        skipping operation avoids redundancy.
+        
+        For other contexts, the 'remove-nested-controls' operation falls back
+        to the generic template rule having mode="#all". -->
+    <xsl:template match="control[control]" mode="remove-nested-controls">
+        <xsl:copy copy-namespaces="no">
+            <xsl:apply-templates mode="#current" select="(* | @*) except control"/>
+        </xsl:copy>
+    </xsl:template>
+
     <!-- If there is a merge/as-is directive, we go down that branch.
         If there is also a merge/custom directive, we apply the
         higher-priority template instead of this one. -->
-    <xsl:template match="catalog[merge/as-is=$true-content]" priority="12" as="element(catalog)">
+    <!-- Template return value is element(catalog) possibly preceded by a
+        processing instruction from detect-multiple-structuring-directives. -->
+    <xsl:template match="catalog[merge/as-is=$true-content]" priority="12" as="item()+">
         <xsl:call-template name="detect-multiple-structuring-directives"/>
         <catalog>
             <xsl:apply-templates select="@*"/>
@@ -68,6 +90,7 @@
             <xsl:for-each select="$merged-selections/selection">
                 <xsl:sequence select="* except back-matter"/>
             </xsl:for-each>
+            <xsl:apply-templates select="processing-instruction('message-handler')"/>
             <!-- copying 'modify' unchanged through this transformation -->
             <xsl:apply-templates select="modify"/>
             <xsl:call-template name="combine-back-matter"/>
@@ -76,7 +99,9 @@
 
 
     <!-- If there is a merge/custom directive, we go down that branch. -->
-    <xsl:template match="catalog[exists(merge/custom)]" priority="13" as="element(catalog)">
+    <!-- Template return value is element(catalog) possibly preceded by a
+        processing instruction from detect-multiple-structuring-directives. -->
+    <xsl:template match="catalog[exists(merge/custom)]" priority="13" as="item()+">
         <xsl:call-template name="detect-multiple-structuring-directives"/>
         <catalog>
             <xsl:apply-templates select="@*"/>
@@ -84,13 +109,15 @@
 
             <xsl:apply-templates select="merge/custom" mode="o:custom-merge"/>
 
+            <xsl:apply-templates select="processing-instruction('message-handler')"/>
+
             <!-- copying 'modify' unchanged through this transformation -->
             <xsl:apply-templates select="modify"/>
             <xsl:call-template name="combine-back-matter"/>
         </catalog>
     </xsl:template>
 
-    <xsl:template name="detect-multiple-structuring-directives" as="empty-sequence()">
+    <xsl:template name="detect-multiple-structuring-directives" as="processing-instruction()?">
         <xsl:context-item as="element(catalog)" use="required"/>
         <xsl:variable name="flat" as="element(flat)*" select="merge/flat[.=$true-content]"/>
         <xsl:variable name="as-is" as="element(as-is)*" select="merge/as-is[.=$true-content]"/>
@@ -237,7 +264,7 @@
             <xsl:call-template name="mh:message-handler">
                 <xsl:with-param name="text">Combining elements of different types is not supported.</xsl:with-param>
                 <xsl:with-param name="message-type">Error</xsl:with-param>
-                <xsl:with-param name="terminate" select="$in_xspec"/>
+                <xsl:with-param name="terminate" select="false()"/>
             </xsl:call-template>
         </xsl:if>
         <xsl:for-each-group select="$elements" group-by="(@opr:id,@id,generate-id())[1]">

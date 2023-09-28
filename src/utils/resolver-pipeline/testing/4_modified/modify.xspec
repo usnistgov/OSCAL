@@ -122,7 +122,7 @@
                 </catalog>
             </x:expect>
         </x:scenario>
-        
+
         <x:scenario label="Simple property addition to a control, solo">
             <x:context>
                 <catalog id="abc">
@@ -197,7 +197,7 @@
                 </catalog>
             </x:expect>
         </x:scenario>
-        
+
         <x:scenario label="Add a part and a prop, explicit ending position">
             <x:context>
                 <catalog id="abc">
@@ -297,10 +297,10 @@
         <x:context select="$ov:catalog1//o:modify"/>
         <x:expect label="Nothing" select="()"/>
     </x:scenario>
-        
+
     <x:scenario label="Tests for match=set-parameter template">
-        <x:scenario label="set-param child does not match anything">
-            <x:context select="//set-parameter">
+        <x:scenario label="set-parameter child does not match anything">
+            <x:context select="//o:set-parameter">
                 <catalog id="abc">
                     <param id="p1">
                         <label>Parameter #1</label>
@@ -312,12 +312,14 @@
                     </modify>
                 </catalog>
             </x:context>
-            <x:expect label="No result; there is a nonfatal warning message but we don't catch it"
-                select="()"/>
+            <x:expect label="No elements" test="$x:result/self::element()" select="()"/>
+            <x:expect label="PI for warning" test="$x:result/self::processing-instruction('message-handler')">
+                <?message-handler Warning: set-parameter with param-id="nonexistent" does not match any param id.?>
+            </x:expect>
         </x:scenario>
     </x:scenario>
 
-    <x:scenario label="Tests for match=param priority=2 template">
+    <x:scenario label="Tests for name=process-param template">
         <x:scenario label="Basic case: Add a constraint to a parameter that doesn't have one">
             <x:variable name="ov:context">
                 <catalog id="abc">
@@ -331,16 +333,17 @@
                     </modify>
                 </catalog>
             </x:variable>
-            <x:context select="$ov:context//o:param">
+            <x:context select="$ov:context//o:param"/>
+            <x:call template="process-param">
                 <x:param name="modifications" select="$ov:context//o:modify" tunnel="yes"/>
-            </x:context>
+            </x:call>
             <x:expect label="Copy of parameter with constraint inserted">
                 <param id="p1">
                     <label>Parameter #1</label>
                     <constraint>at least every 3 years</constraint>
-                </param>                
+                </param>
             </x:expect>
-        </x:scenario>        
+        </x:scenario>
         <x:scenario label="Add constraint, guideline, and link to a parameter that has these items">
             <x:variable name="ov:context">
                 <catalog id="abc">
@@ -360,9 +363,10 @@
                     </modify>
                 </catalog>
             </x:variable>
-            <x:context select="$ov:context//o:param">
+            <x:context select="$ov:context//o:param"/>
+            <x:call template="process-param">
                 <x:param name="modifications" select="$ov:context//o:modify" tunnel="yes"/>
-            </x:context>
+            </x:call>
             <x:expect label="Parameter with link, constraint, and guideline inserted after existing ones; remarks preserved">
                 <param id="p1">
                     <link href="ORIGINAL"/>
@@ -373,9 +377,9 @@
                     <guideline><p>ORIGINAL guideline</p></guideline>
                     <guideline><p>NEW guideline</p></guideline>
                     <remarks><p>ORIGINAL remarks</p></remarks>
-                </param>                
+                </param>
             </x:expect>
-        </x:scenario>        
+        </x:scenario>
         <x:scenario label="Override label, usage, and value, keeping the last one of each element">
             <x:variable name="ov:context">
                 <catalog id="abc">
@@ -402,9 +406,10 @@
                     </modify>
                 </catalog>
             </x:variable>
-            <x:context select="$ov:context//o:param">
+            <x:context select="$ov:context//o:param"/>
+            <x:call template="process-param">
                 <x:param name="modifications" select="$ov:context//o:modify" tunnel="yes"/>
-            </x:context>
+            </x:call>
             <x:expect label="Newer label, usage, and value; original constraint plus new one">
                 <param id="p1">
                     <label>Further Modified Parameter #1</label>
@@ -412,7 +417,7 @@
                     <constraint>in the first quarter</constraint>
                     <constraint>at least every 3 years</constraint>
                     <value>NEWER</value>
-                </param>                
+                </param>
             </x:expect>
         </x:scenario>
         <x:scenario label="select and value are mutually exclusive; keep the last one in document order">
@@ -442,18 +447,19 @@
                     </modify>
                 </catalog>
             </x:variable>
-            <x:context select="$ov:context//o:param">
+            <x:context select="$ov:context//o:param"/>
+            <x:call template="process-param">
                 <x:param name="modifications" select="$ov:context//o:modify" tunnel="yes"/>
-            </x:context>
+            </x:call>
             <x:expect label="p1 has select, while p2 has NEW value">
                 <param id="p1">
                     <label>Parameter #1</label>
                     <select><choice>1</choice></select>
-                </param>                
+                </param>
                 <param id="p2">
                     <label>Parameter #2</label>
                     <value>NEW</value>
-                </param>                
+                </param>
             </x:expect>
         </x:scenario>
         <x:scenario label="Override prop with same uuid, and insert prop with distinct uuid">
@@ -487,9 +493,10 @@
                     </modify>
                 </catalog>
             </x:variable>
-            <x:context select="$ov:context//o:param">
+            <x:context select="$ov:context//o:param"/>
+            <x:call template="process-param">
                 <x:param name="modifications" select="$ov:context//o:modify" tunnel="yes"/>
-            </x:context>
+            </x:call>
             <x:expect label="All uuid-lacking props in order. Among uuid-bearing props, the survivors are original bbb, newer ccc, and newest aaa">
                 <param id="p1">
                     <prop value="1" name="pr1"/>
@@ -504,7 +511,7 @@
                     <prop value="NEWEST-A" name="aaa" uuid="309deb03-491b-4677-9148-bc1b79a21c9c"/>
                     <prop value="8" name="pr8"/>
                     <label>Parameter #1</label>
-                </param>                
+                </param>
             </x:expect>
         </x:scenario>
     </x:scenario>
@@ -522,7 +529,7 @@
                         <prop value="20" name="add2"/>
                         <prop value="1" name="source1"/>
                         <prop value="2" name="source2"/>
-                    </control>                    
+                    </control>
                 </x:expect>
             </x:scenario>
             <x:scenario label="with position=ending">
@@ -535,7 +542,7 @@
                         <prop value="2" name="source2"/>
                         <prop value="10" name="add1"/>
                         <prop value="20" name="add2"/>
-                    </control>                    
+                    </control>
                 </x:expect>
             </x:scenario>
             <x:scenario label="with no valid position">
@@ -548,34 +555,20 @@
                         <prop value="2" name="source2"/>
                         <prop value="10" name="add1"/>
                         <prop value="20" name="add2"/>
-                    </control>                    
+                    </control>
                 </x:expect>
             </x:scenario>
             <x:scenario label="with position=before">
                 <x:variable name="ov:add-position" select="'before'"/>
                 <x:like label="SHARED_add-parameterized-position"/>
-                <x:expect label="Props added inside control after title (same as position=starting)">
-                    <control id="a1">
-                        <title>Control A</title>
-                        <prop value="10" name="add1"/>
-                        <prop value="20" name="add2"/>
-                        <prop value="1" name="source1"/>
-                        <prop value="2" name="source2"/>
-                    </control>                    
-                </x:expect>
+                <x:expect label="Error (before is not the same as starting)"
+                    test="exists($x:result/self::processing-instruction('message-handler')[starts-with(.,'Terminating ')])"/>
             </x:scenario>
             <x:scenario label="with position=after">
                 <x:variable name="ov:add-position" select="'after'"/>
                 <x:like label="SHARED_add-parameterized-position"/>
-                <x:expect label="Props added inside control after other content (same as position=ending)">
-                    <control id="a1">
-                        <title>Control A</title>
-                        <prop value="1" name="source1"/>
-                        <prop value="2" name="source2"/>
-                        <prop value="10" name="add1"/>
-                        <prop value="20" name="add2"/>
-                    </control>                    
-                </x:expect>
+                <x:expect label="Error (after is not the same as ending)"
+                    test="exists($x:result/self::processing-instruction('message-handler')[starts-with(.,'Terminating ')])"/>
             </x:scenario>
             <x:scenario label="adding title to this control">
                 <x:variable name="ov:context">
@@ -601,10 +594,10 @@
                         <title>Control A</title>
                         <title>New Title</title>
                         <prop value="1" name="source1"/>
-                    </control>                    
+                    </control>
                 </x:expect>
             </x:scenario>
-            <x:scenario label="with a child control marked as removed">
+            <x:scenario label="where this control is a child control independently marked as removed">
                 <x:variable name="ov:context">
                     <catalog id="abc">
                         <control id="a1">
@@ -634,7 +627,8 @@
                 <x:context select="$ov:context//o:control[@id='a1.1']">
                     <x:param name="modifications" select="$ov:context//o:modify" tunnel="yes"/>
                 </x:context>
-                <x:expect label="Nothing, because the control was removed" select="()"/>
+                <x:expect label="Error (cannot modify a removed control)"
+                    test="exists($x:result/self::processing-instruction('message-handler')[starts-with(.,'Terminating ')])"/>
             </x:scenario>
             <x:scenario label="with multiple identically configured alter directives">
                 <x:variable name="ov:context">
@@ -672,7 +666,7 @@
                         <prop value="20" name="add2"/>
                         <prop value="30" name="add3"/>
                         <prop value="40" name="add4"/>
-                    </control>                    
+                    </control>
                 </x:expect>
             </x:scenario>
             <x:scenario label="with multiple alter directives and different positions">
@@ -711,7 +705,7 @@
                         <prop value="2" name="source2"/>
                         <prop value="10" name="add1"/>
                         <prop value="20" name="add2"/>
-                    </control>                    
+                    </control>
                 </x:expect>
             </x:scenario>
             <x:scenario label="with multiple identically configured add directives in one alter">
@@ -748,21 +742,23 @@
                         <prop value="20" name="add2"/>
                         <prop value="30" name="add3"/>
                         <prop value="40" name="add4"/>
-                    </control>                    
+                    </control>
                 </x:expect>
             </x:scenario>
         </x:scenario>
-        <x:scenario label="Explicit binding to this control as a descendant of another control, ">
-            <x:scenario label="with position=starting">
+        <x:scenario label="Explicit binding to this control as a child of another control, ">
+            <x:scenario label="with position=starting, trying to insert part">
                 <x:variable name="ov:add-position" select="'starting'"/>
                 <x:variable name="ov:by-id" select="'a1.1'"/>
-                <x:like label="SHARED_add-explicit-parameterized-position"/>
-                <x:expect label="Part added inside control A.1 before other content">
+                <x:like label="SHARED_add-explicit-part-parameterized-position"/>
+                <x:expect label="Error (selection type is control, while insertion type is part)"
+                    test="exists($x:result/self::processing-instruction('message-handler')[starts-with(.,'Terminating ')])"/>
+<!--                <x:expect label="Part added inside control A.1 before other content">
                     <control id="a1.1">
                         <title>Control A.1</title>
                         <part name="statement" id="new-stmt">
                             <p>New text</p>
-                        </part>                            
+                        </part>
                         <prop value="3" name="source3"/>
                         <prop value="4" name="source4"/>
                         <part name="statement" id="a1.1-stmt">
@@ -770,12 +766,15 @@
                         </part>
                     </control>
                 </x:expect>
+-->
             </x:scenario>
-            <x:scenario label="with position=ending">
+            <x:scenario label="with position=ending, trying to insert part">
                 <x:variable name="ov:add-position" select="'ending'"/>
                 <x:variable name="ov:by-id" select="'a1.1'"/>
-                <x:like label="SHARED_add-explicit-parameterized-position"/>
-                <x:expect label="Part added inside control A.1 after other content">
+                <x:like label="SHARED_add-explicit-part-parameterized-position"/>
+                <x:expect label="Error (selection type is control, while insertion type is part)"
+                    test="exists($x:result/self::processing-instruction('message-handler')[starts-with(.,'Terminating ')])"/>
+<!--                <x:expect label="Part added inside control A.1 after other content">
                     <control id="a1.1">
                         <title>Control A.1</title>
                         <prop value="3" name="source3"/>
@@ -785,15 +784,18 @@
                         </part>
                         <part name="statement" id="new-stmt">
                             <p>New text</p>
-                        </part>                            
+                        </part>
                     </control>
                 </x:expect>
+-->
             </x:scenario>
-            <x:scenario label="with no valid position">
+            <x:scenario label="with no valid position, trying to insert part">
                 <x:variable name="ov:add-position" select="''"/>
                 <x:variable name="ov:by-id" select="'a1.1'"/>
-                <x:like label="SHARED_add-explicit-parameterized-position"/>
-                <x:expect label="Part added inside control A.1 after other content (same as position=ending)">
+                <x:like label="SHARED_add-explicit-part-parameterized-position"/>
+                <x:expect label="Error (selection type is control, while insertion type is part)"
+                    test="exists($x:result/self::processing-instruction('message-handler')[starts-with(.,'Terminating ')])"/>
+<!--                <x:expect label="Part added inside control A.1 after other content (same as position=ending)">
                     <control id="a1.1">
                         <title>Control A.1</title>
                         <prop value="3" name="source3"/>
@@ -803,47 +805,12 @@
                         </part>
                         <part name="statement" id="new-stmt">
                             <p>New text</p>
-                        </part>                            
-                    </control>
-                </x:expect>
-            </x:scenario>
-            <x:scenario label="with position=before">
-                <x:variable name="ov:add-position" select="'before'"/>
-                <x:variable name="ov:by-id" select="'a1.1'"/>
-                <x:like label="SHARED_add-explicit-parameterized-position"/>
-                <x:expect label="Part added outside and before control A.1">
-                    <part name="statement" id="new-stmt">
-                        <p>New text</p>
-                    </part>                            
-                    <control id="a1.1">
-                        <title>Control A.1</title>
-                        <prop value="3" name="source3"/>
-                        <prop value="4" name="source4"/>
-                        <part name="statement" id="a1.1-stmt">
-                            <p>Text</p>
                         </part>
                     </control>
                 </x:expect>
+-->
             </x:scenario>
-            <x:scenario label="with position=after">
-                <x:variable name="ov:add-position" select="'after'"/>
-                <x:variable name="ov:by-id" select="'a1.1'"/>
-                <x:like label="SHARED_add-explicit-parameterized-position"/>
-                <x:expect label="Part added outside and after control A.1">
-                    <control id="a1.1">
-                        <title>Control A.1</title>
-                        <prop value="3" name="source3"/>
-                        <prop value="4" name="source4"/>
-                        <part name="statement" id="a1.1-stmt">
-                            <p>Text</p>
-                        </part>
-                    </control>
-                    <part name="statement" id="new-stmt">
-                        <p>New text</p>
-                    </part>                            
-                </x:expect>
-            </x:scenario>
-            <x:scenario label="adding title to this control">
+            <x:scenario label="with position=starting, trying to insert title">
                 <x:variable name="ov:context">
                     <catalog id="abc">
                         <control id="a1">
@@ -865,14 +832,125 @@
                 <x:context select="$ov:context//o:control[@id='a1.1']">
                     <x:param name="modifications" select="$ov:context//o:modify" tunnel="yes"/>
                 </x:context>
-                <x:expect label="Old and new titles (next pipeline phase will keep exactly one)">
+                <x:expect label="Error (selection type is control, while insertion type is title)"
+                    test="exists($x:result/self::processing-instruction('message-handler')[starts-with(.,'Terminating ')])"/>
+                <!--                <x:expect label="Old and new titles (next pipeline phase will keep exactly one)">
                     <control id="a1.1">
                         <title>Control A.1</title>
                         <title>New Title</title>
                         <prop value="3" name="source3"/>
-                    </control>                    
+                    </control>
+                </x:expect>
+-->
+            </x:scenario>
+            <x:scenario label="with position=starting, trying to insert control">
+                <x:variable name="ov:add-position" select="'starting'"/>
+                <x:variable name="ov:by-id" select="'a1.1'"/>
+                <x:like label="SHARED_add-explicit-control-parameterized-position"/>
+                <x:expect label="Error (unsupported position)"
+                    test="exists($x:result/self::processing-instruction('message-handler')[starts-with(.,'Terminating ')])"/>
+                <!--                <x:expect label="Part added inside control A.1 before other content">
+                    <control id="a1.1">
+                        <title>Control A.1</title>
+                        <part name="statement" id="new-stmt">
+                            <p>New text</p>
+                        </part>
+                        <prop value="3" name="source3"/>
+                        <prop value="4" name="source4"/>
+                        <part name="statement" id="a1.1-stmt">
+                            <p>Text</p>
+                        </part>
+                    </control>
+                </x:expect>
+-->
+            </x:scenario>
+            <x:scenario label="with position=ending, trying to insert control">
+                <x:variable name="ov:add-position" select="'ending'"/>
+                <x:variable name="ov:by-id" select="'a1.1'"/>
+                <x:like label="SHARED_add-explicit-control-parameterized-position"/>
+                <x:expect label="Error (unsupported position)"
+                    test="exists($x:result/self::processing-instruction('message-handler')[starts-with(.,'Terminating ')])"/>
+                <!--                <x:expect label="Part added inside control A.1 after other content">
+                    <control id="a1.1">
+                        <title>Control A.1</title>
+                        <prop value="3" name="source3"/>
+                        <prop value="4" name="source4"/>
+                        <part name="statement" id="a1.1-stmt">
+                            <p>Text</p>
+                        </part>
+                        <part name="statement" id="new-stmt">
+                            <p>New text</p>
+                        </part>
+                    </control>
+                </x:expect>
+-->
+            </x:scenario>
+            <x:scenario label="with no valid position, trying to insert control">
+                <x:variable name="ov:add-position" select="''"/>
+                <x:variable name="ov:by-id" select="'a1.1'"/>
+                <x:like label="SHARED_add-explicit-control-parameterized-position"/>
+                <x:expect label="Error (unsupported position)"
+                    test="exists($x:result/self::processing-instruction('message-handler')[starts-with(.,'Terminating ')])"/>
+                <!--                <x:expect label="Part added inside control A.1 after other content (same as position=ending)">
+                    <control id="a1.1">
+                        <title>Control A.1</title>
+                        <prop value="3" name="source3"/>
+                        <prop value="4" name="source4"/>
+                        <part name="statement" id="a1.1-stmt">
+                            <p>Text</p>
+                        </part>
+                        <part name="statement" id="new-stmt">
+                            <p>New text</p>
+                        </part>
+                    </control>
+                </x:expect>
+-->
+            </x:scenario>
+
+            <x:scenario label="with position=before, trying to insert control">
+                <x:variable name="ov:add-position" select="'before'"/>
+                <x:variable name="ov:by-id" select="'a1.1'"/>
+                <x:like label="SHARED_add-explicit-control-parameterized-position"/>
+                <x:expect label="Control added outside and before control A.1">
+                    <control id="new-control">
+                        <title>New control</title>
+                    </control>
+                    <control id="a1.1">
+                        <title>Control A.1</title>
+                        <prop value="3" name="source3"/>
+                        <prop value="4" name="source4"/>
+                        <part name="statement" id="a1.1-stmt">
+                            <p>Text</p>
+                        </part>
+                    </control>
                 </x:expect>
             </x:scenario>
+            <x:scenario label="with position=after, trying to insert control">
+                <x:variable name="ov:add-position" select="'after'"/>
+                <x:variable name="ov:by-id" select="'a1.1'"/>
+                <x:like label="SHARED_add-explicit-control-parameterized-position"/>
+                <x:expect label="Part added outside and after control A.1">
+                    <control id="a1.1">
+                        <title>Control A.1</title>
+                        <prop value="3" name="source3"/>
+                        <prop value="4" name="source4"/>
+                        <part name="statement" id="a1.1-stmt">
+                            <p>Text</p>
+                        </part>
+                    </control>
+                    <control id="new-control">
+                        <title>New control</title>
+                    </control>
+                </x:expect>
+            </x:scenario>
+            <x:scenario label="with position=before, trying to insert part">
+                <x:variable name="ov:add-position" select="'before'"/>
+                <x:variable name="ov:by-id" select="'a1.1'"/>
+                <x:like label="SHARED_add-explicit-part-parameterized-position"/>
+                <x:expect label="Error (selection type is control, while insertion type is part)"
+                    test="exists($x:result/self::processing-instruction('message-handler')[starts-with(.,'Terminating ')])"/>
+            </x:scenario>
+
             <x:scenario label="with a child control marked as removed">
                 <x:variable name="ov:context">
                     <catalog id="abc">
@@ -891,7 +969,7 @@
                         <modify>
                             <alter control-id="a1">
                                 <remove by-id="a1.1"/>
-                                <add position="starting" by-id="a1.1">
+                                <add position="before" by-id="a1.1">
                                     <title>New Title</title>
                                 </add>
                             </alter>
@@ -901,32 +979,51 @@
                 <x:context select="$ov:context//o:control[@id='a1.1']">
                     <x:param name="modifications" select="$ov:context//o:modify" tunnel="yes"/>
                 </x:context>
-                <x:expect label="Nothing, because the control was removed" select="()"/>
+                <x:expect label="Error (cannot modify a removed control)"
+                    test="exists($x:result/self::processing-instruction('message-handler')[starts-with(.,'Terminating ')])"/>
             </x:scenario>
         </x:scenario>
-        <x:scenario label="Inoperative case: Explicit binding to control identified in alter, rather than object inside" pending="Supported? See https://github.com/usnistgov/OSCAL/discussions/1305">
+        <x:scenario label="Explicit binding to same control identified in alter, rather than object inside">
             <x:variable name="ov:by-id" select="'a1'"/>
-            <x:like label="SHARED_add-explicit-parameterized-position"/>
-            <x:expect label="No change">
+            <x:variable name="ov:add-position" select="'ending'"/>
+            <x:like label="SHARED_add-explicit-control-parameterized-position"/>
+            <x:expect label="Control added inside control A, at end">
                 <control id="a1">
                     <title>Control A</title>
                     <prop value="1" name="source1"/>
                     <prop value="2" name="source2"/>
-                    <part name="statement" id="a1-stmt">
-                        <p>Text</p>
-                    </part>
-                    <control id="a1.1">
-                        <title>Control A.1</title>
-                        <prop value="3" name="source3"/>
-                        <prop value="4" name="source4"/>
-                        <part name="statement" id="a1.1-stmt">
-                            <p>Text</p>
-                        </part>
+                    <part name="statement" id="a1-stmt">...</part>
+                    <control id="a1.1">...</control>
+                    <control id="new-control">
+                        <title>New control</title>
                     </control>
                 </control>
             </x:expect>
+            <x:pending label="Use these x:expect elements if situation is an inoperative case, NOT like #1311. See https://github.com/usnistgov/OSCAL/discussions/1305.">
+                <x:expect label="No change">
+                    <control id="a1">
+                        <title>Control A</title>
+                        <prop value="1" name="source1"/>
+                        <prop value="2" name="source2"/>
+                        <part name="statement" id="a1-stmt">
+                            <p>Text</p>
+                        </part>
+                        <control id="a1.1">
+                            <title>Control A.1</title>
+                            <prop value="3" name="source3"/>
+                            <prop value="4" name="source4"/>
+                            <part name="statement" id="a1.1-stmt">
+                                <p>Text</p>
+                            </part>
+                        </control>
+                    </control>
+                </x:expect>
+                <x:expect label="New control is not present"
+                    test="empty(//control[@id='new-control']"/>
+            </x:pending>
         </x:scenario>
-        <x:scenario label="Inoperative case: Explicit binding with no matching id">
+        <x:scenario label="Error case: Explicit binding with no matching id">
+            <!--  TODO: I think the spec says inoperative and lags the latest discussions. -->
             <x:variable name="ov:context">
                 <catalog id="abc">
                     <control id="a1">
@@ -951,16 +1048,65 @@
             <x:context select="$ov:context//*[@id='a1']">
                 <x:param name="modifications" select="$ov:context//o:modify" tunnel="yes"/>
             </x:context>
-            <x:expect label="No change">
-                <control id="a1">
-                    <title>Control A</title>
-                    <prop value="1" name="source1"/>
-                    <prop value="2" name="source2"/>
-                    <part name="statement" id="a1-stmt">
-                        <p>Text</p>
-                    </part>
-                </control>
-            </x:expect>
+            <x:expect label="Error (by-id does not match anything)"
+                test="exists($x:result/self::processing-instruction('message-handler')[starts-with(.,'Terminating ')])"/>
+            <x:pending label="Use this x:expect element if error is nonfatal">
+                <x:expect label="No change">
+                    <control id="a1">
+                        <title>Control A</title>
+                        <prop value="1" name="source1"/>
+                        <prop value="2" name="source2"/>
+                        <part name="statement" id="a1-stmt">
+                            <p>Text</p>
+                        </part>
+                    </control>
+                </x:expect>
+            </x:pending>
+        </x:scenario>
+    </x:scenario>
+
+    <x:scenario label="Tests for oscal:no-valid-position-given function">
+        <x:scenario label="Invalid value">
+            <x:call function="oscal:no-valid-position-given">
+                <x:param select="//*/@position"><foo position="junk"/></x:param>
+            </x:call>
+            <x:expect label="true" select="true()"/>
+        </x:scenario>
+        <x:scenario label="Empty string value">
+            <x:call function="oscal:no-valid-position-given">
+                <x:param select="//*/@position"><foo position=""/></x:param>
+            </x:call>
+            <x:expect label="true" select="true()"/>
+        </x:scenario>
+        <x:scenario label="Missing value">
+            <x:call function="oscal:no-valid-position-given">
+                <x:param select="//*/@position"><foo/></x:param>
+            </x:call>
+            <x:expect label="true" select="true()"/>
+        </x:scenario>
+        <x:scenario label="Valid value, before">
+            <x:call function="oscal:no-valid-position-given">
+                <x:param select="//*/@position"><foo position="before"/></x:param>
+            </x:call>
+            <x:expect label="false" select="false()"/>
+        </x:scenario>
+        <x:scenario label="Valid value, after">
+            <x:call function="oscal:no-valid-position-given">
+                <x:param select="//*/@position"><foo position="after"/></x:param>
+            </x:call>
+            <x:expect label="false" select="false()"/>
+        </x:scenario>
+        <x:scenario label="Valid value, starting">
+            <x:call function="oscal:no-valid-position-given">
+                <x:param select="//*/@position"><foo position="starting"/></x:param>
+            </x:call>
+            <x:expect label="false" select="false()"/>
+        </x:scenario>
+        <x:scenario label="Valid value, ending">
+            <x:call function="oscal:no-valid-position-given">
+                <x:param select="//*/@position"><foo position="ending"/></x:param>
+            </x:call>
+            <x:expect label="false" select="false()"/>
         </x:scenario>
     </x:scenario>
 
@@ -979,7 +1125,7 @@
                 <x:param name="modifications">
                     <modify>
                         <alter control-id="a1">
-                            <add by-id="a1-stmt">
+                            <add by-id="a1-stmt" position="after">
                                 <part name="statement" id="new-stmt"/>
                             </add>
                         </alter>
@@ -987,9 +1133,9 @@
                 </x:param>
             </x:call>
             <x:expect label="The add element">
-                <add by-id="a1-stmt">
+                <add by-id="a1-stmt" position="after">
                     <part name="statement" id="new-stmt"/>
-                </add>                
+                </add>
             </x:expect>
         </x:scenario>
         <x:scenario label="Multiple matching add elements in multiple alter elements">
@@ -998,24 +1144,24 @@
                     <control id="a1">
                         <title>Control A</title>
                         <part name="statement" id="a1-stmt"/>
-                        <part name="extra-part" id="a1-extra"/>
+                        <part name="nonmatch-part" id="a1-nonmatch"/>
                     </control>
                 </x:param>
                 <x:param name="modifications">
                     <modify>
                         <alter control-id="a1">
-                            <add by-id="a1-stmt">
+                            <add by-id="a1-stmt" position="after">
                                 <part name="statement" id="new-stmt"/>
                             </add>
-                            <add by-id="a1-extra">
-                                <part name="extra" id="new-extra"/>
+                            <add by-id="a1-nonmatch" position="after">
+                                <part name="nonmatch" id="new-nonmatch"/>
                             </add>
                         </alter>
                         <alter control-id="a1">
-                            <add by-id="a1-stmt">
+                            <add by-id="a1-stmt" position="before">
                                 <part name="another-statement" id="new-stmt-2"/>
                             </add>
-                            <add by-id="a1-stmt">
+                            <add by-id="a1-stmt" position="after">
                                 <part name="yet-another-statement" id="new-stmt-3"/>
                             </add>
                         </alter>
@@ -1023,31 +1169,32 @@
                 </x:param>
             </x:call>
             <x:expect label="All matching add elements">
-                <add by-id="a1-stmt">
+                <add by-id="a1-stmt" position="after">
                     <part name="statement" id="new-stmt"/>
                 </add>
-                <add by-id="a1-stmt">
+                <add by-id="a1-stmt" position="before">
                     <part name="another-statement" id="new-stmt-2"/>
                 </add>
-                <add by-id="a1-stmt">
+                <add by-id="a1-stmt" position="after">
                     <part name="yet-another-statement" id="new-stmt-3"/>
                 </add>
             </x:expect>
             <x:expect label="No nonmatching add element"
-                test="empty(//*[@by-id='a1-extra'])"/>
+                test="empty(//*[@by-id='a1-nonmatch'])"/>
         </x:scenario>
-        <x:scenario label="No matching add elements">
+        <x:scenario label="Nothing in $modifications matches $here">
             <x:call function="oscal:patches-to-id-targeting-ancestor">
                 <x:param name="here" select="//*[@id='a1-stmt']">
                     <control id="a1">
                         <title>Control A</title>
                         <part name="statement" id="a1-stmt"/>
+                        <part name="another-statement" id="a1-another-stmt"/>
                     </control>
                 </x:param>
                 <x:param name="modifications">
                     <modify>
                         <alter control-id="a1">
-                            <add by-id="nonexistent">
+                            <add by-id="a1-another-stmt" position="after">
                                 <part name="statement" id="new-stmt"/>
                             </add>
                         </alter>
@@ -1056,7 +1203,34 @@
             </x:call>
             <x:expect label="Nothing" select="()"/>
         </x:scenario>
-        <x:scenario label="Match is inside descendant control compared to the control to which 'alter' points">
+        <x:scenario label="Match is inside child control compared to the control to which 'alter' points (not supported)">
+            <x:call function="oscal:patches-to-id-targeting-ancestor">
+                <x:param name="here" select="//*[@id='a1-stmt']">
+                    <control id="a1">
+                        <title>Control A</title>
+                        <control id="a1.1">
+                            <title>Control A1</title>
+                            <control id="a1.1.1">
+                                <title>Control A1-1</title>
+                                <part name="statement" id="a1-stmt"/>
+                            </control>
+                        </control>
+                    </control>
+                </x:param>
+                <x:param name="modifications">
+                    <modify>
+                        <alter control-id="a1.1">
+                            <add by-id="a1-stmt" position="after">
+                                <part name="statement" id="new-stmt"/>
+                            </add>
+                        </alter>
+                    </modify>
+                </x:param>
+            </x:call>
+            <x:expect label="Nothing, because the child control's descendants are not in scope for modifications to the parent control"
+                select="()"/>
+        </x:scenario>
+        <x:scenario label="Match is inside non-child descendant control compared to the control to which 'alter' points (not supported)">
             <x:call function="oscal:patches-to-id-targeting-ancestor">
                 <x:param name="here" select="//*[@id='a1-stmt']">
                     <control id="a1">
@@ -1073,25 +1247,17 @@
                 <x:param name="modifications">
                     <modify>
                         <alter control-id="a1">
-                            <add by-id="a1-stmt">
+                            <add by-id="a1-stmt" position="after">
                                 <part name="statement" id="new-stmt"/>
                             </add>
                         </alter>
                     </modify>
                 </x:param>
             </x:call>
-            <x:expect label="The add element">
-                <add by-id="a1-stmt">
-                    <part name="statement" id="new-stmt"/>
-                </add>                
-            </x:expect>
+            <x:expect label="Nothing, because the descendant control's descendants are not in scope for modifications to the ancestor control"
+                select="()"/>
         </x:scenario>
-        <x:scenario label="Match is the same control to which 'alter' points">
-            <!-- Question: Is this case supposed to work? If not, then in the function, change
-            <xsl:variable name="controls" select="$here/ancestor-or-self::control" as="element(control)*"/>
-            back to
-            <xsl:variable name="controls" select="$here/ancestor::control" as="element(control)*"/>
-            -->
+        <x:scenario label="Match is the same control to which 'alter' points (supported per #1311 and treated like implicit binding)">
             <x:call function="oscal:patches-to-id-targeting-ancestor">
                 <x:param name="here" select="//*[@id='a1.1']">
                     <control id="a1">
@@ -1108,25 +1274,17 @@
                 <x:param name="modifications">
                     <modify>
                         <alter control-id="a1.1">
-                            <add by-id="a1.1">
-                                <part name="statement" id="new-stmt"/>
+                            <add by-id="a1.1" position="starting">
+                                <part id="new-stmt"/>
                             </add>
                         </alter>
                     </modify>
                 </x:param>
             </x:call>
-            <x:expect label="The add element">
-                <add by-id="a1.1">
-                    <part name="statement" id="new-stmt"/>
-                </add>                
-            </x:expect>
+            <x:expect label="Nothing, because that case is handled by code for implicit binding"
+                select="()"/>
         </x:scenario>
-        <x:scenario label="Match is a descendant control compared to the control to which 'alter' points">
-            <!-- Question: Is this case supposed to work? If not, then in the function, change
-            <xsl:variable name="controls" select="$here/ancestor-or-self::control" as="element(control)*"/>
-            back to
-            <xsl:variable name="controls" select="$here/ancestor::control" as="element(control)*"/>
-            -->
+        <x:scenario label="Match is a child control compared to the control to which 'alter' points">
             <x:call function="oscal:patches-to-id-targeting-ancestor">
                 <x:param name="here" select="//*[@id='a1.1.1']">
                     <control id="a1">
@@ -1144,7 +1302,8 @@
                     <modify>
                         <alter control-id="a1.1">
                             <add position="before" by-id="a1.1.1">
-                                <part name="statement" id="new-stmt"/>
+                                <control id="new-control1"/>
+                                <control id="new-control2"/>
                             </add>
                         </alter>
                     </modify>
@@ -1152,13 +1311,68 @@
             </x:call>
             <x:expect label="The add element">
                 <add position="before" by-id="a1.1.1">
-                    <part name="statement" id="new-stmt"/>
-                </add>                
+                    <control id="new-control1"/>
+                    <control id="new-control2"/>
+                </add>
             </x:expect>
+        </x:scenario>
+        <x:scenario label="Error case: Match is a control and position=before, but at least one element to add is not a control">
+            <x:call function="oscal:patches-to-id-targeting-ancestor">
+                <x:param name="here" select="//*[@id='a1.1.1']">
+                    <control id="a1">
+                        <title>Control A</title>
+                        <control id="a1.1">
+                            <title>Control A1</title>
+                            <control id="a1.1.1">
+                                <title>Control A1-1</title>
+                                <part name="statement" id="a1-stmt"/>
+                            </control>
+                        </control>
+                    </control>
+                </x:param>
+                <x:param name="modifications">
+                    <modify>
+                        <alter control-id="a1.1">
+                            <add position="before" by-id="a1.1.1">
+                                <control id="new-control1"/>
+                                <part name="statement" id="new-stmt">
+                                    <!-- Inserting an unlike element is not supported -->
+                                </part>
+                                <control id="new-control2"/>
+                            </add>
+                        </alter>
+                    </modify>
+                </x:param>
+            </x:call>
+            <x:expect label="Error because insertion type does not equal selection type for a child of add"
+                test="exists($x:result/self::processing-instruction('message-handler')[starts-with(.,'Terminating ')])"/>
+        </x:scenario>
+        <x:scenario label="Error case: Match is other than a control and position=after, but at least one element to add is a control">
+            <x:call function="oscal:patches-to-id-targeting-ancestor">
+                <x:param name="here" select="//*[@id='a1-stmt']">
+                    <control id="a1">
+                        <title>Control A</title>
+                        <part name="statement" id="a1-stmt"/>
+                    </control>
+                </x:param>
+                <x:param name="modifications">
+                    <modify>
+                        <alter control-id="a1">
+                            <add by-id="a1-stmt" position="after">
+                                <control id="new-control1">
+                                    <!-- Inserting an unlike element is not supported -->
+                                </control>
+                            </add>
+                        </alter>
+                    </modify>
+                </x:param>
+            </x:call>
+            <x:expect label="Error because insertion type does not equal selection type for a child of add"
+                test="exists($x:result/self::processing-instruction('message-handler')[starts-with(.,'Terminating ')])"/>
         </x:scenario>
         <x:scenario label="Edge case: Empty $modifications param">
             <x:call function="oscal:patches-to-id-targeting-ancestor">
-                <x:param name="here" select="id('a1-stmt')">
+                <x:param name="here" select="//*[@id='a1-stmt']">
                     <catalog id="abc">
                         <control id="a1">
                             <title>Control A</title>
@@ -1177,7 +1391,7 @@
             <x:scenario label="with position=starting">
                 <x:variable name="ov:add-position" select="'starting'"/>
                 <x:variable name="ov:by-id" select="'a1-stmt'"/>
-                <x:like label="SHARED_add-explicit-parameterized-position"/>
+                <x:like label="SHARED_add-explicit-part-parameterized-position"/>
                 <x:expect label="Part added inside a1-stmt part, before other content">
                     <part name="statement" id="a1-stmt">
                         <part name="statement" id="new-stmt">
@@ -1193,7 +1407,7 @@
             <x:scenario label="with position=ending">
                 <x:variable name="ov:add-position" select="'ending'"/>
                 <x:variable name="ov:by-id" select="'a1-stmt'"/>
-                <x:like label="SHARED_add-explicit-parameterized-position"/>
+                <x:like label="SHARED_add-explicit-part-parameterized-position"/>
                 <x:expect label="Part added inside a1-stmt part, after other content">
                     <part name="statement" id="a1-stmt">
                         <p>Text</p>
@@ -1209,7 +1423,7 @@
             <x:scenario label="with no valid position">
                 <x:variable name="ov:add-position" select="''"/>
                 <x:variable name="ov:by-id" select="'a1-stmt'"/>
-                <x:like label="SHARED_add-explicit-parameterized-position"/>
+                <x:like label="SHARED_add-explicit-part-parameterized-position"/>
                 <x:expect label="Part added inside a1-stmt part, after other content (same as position=ending)">
                     <part name="statement" id="a1-stmt">
                         <p>Text</p>
@@ -1225,7 +1439,7 @@
             <x:scenario label="with position=before">
                 <x:variable name="ov:add-position" select="'before'"/>
                 <x:variable name="ov:by-id" select="'a1-stmt'"/>
-                <x:like label="SHARED_add-explicit-parameterized-position"/>
+                <x:like label="SHARED_add-explicit-part-parameterized-position"/>
                 <x:expect label="Part added outside and before a1-stmt part">
                     <part name="statement" id="new-stmt">
                         <p>New text</p>
@@ -1238,10 +1452,34 @@
                     </part>
                 </x:expect>
             </x:scenario>
+            <x:scenario label="with position=before but selection type does not match insertion type (Error case)">
+                <x:variable name="ov:context">
+                    <catalog id="abc">
+                        <control id="a1">
+                            <title>Control A</title>
+                            <part name="statement" id="a1-stmt">
+                                <title>Statement</title>
+                            </part>
+                        </control>
+                        <modify>
+                            <alter control-id="a1">
+                                <add position="before" by-id="a1-stmt">
+                                    <prop/>
+                                </add>
+                            </alter>
+                        </modify>
+                    </catalog>
+                </x:variable>
+                <x:context select="$ov:context//o:part[@id='a1-stmt']">
+                    <x:param name="modifications" select="$ov:context//o:modify" tunnel="yes"/>
+                </x:context>
+                <x:expect label="Error; this mismatch is not supported"
+                    test="exists($x:result/self::processing-instruction('message-handler')[starts-with(.,'Terminating ')])"/>
+            </x:scenario>
             <x:scenario label="with position=after">
                 <x:variable name="ov:add-position" select="'after'"/>
                 <x:variable name="ov:by-id" select="'a1-stmt'"/>
-                <x:like label="SHARED_add-explicit-parameterized-position"/>
+                <x:like label="SHARED_add-explicit-part-parameterized-position"/>
                 <x:expect label="Part added outside and after a1-stmt part">
                     <part name="statement" id="a1-stmt">
                         <p>Text</p>
@@ -1253,6 +1491,30 @@
                         <p>New text</p>
                     </part>
                 </x:expect>
+            </x:scenario>
+            <x:scenario label="with position=after but selection type does not match insertion type (Error case)">
+                <x:variable name="ov:context">
+                    <catalog id="abc">
+                        <control id="a1">
+                            <title>Control A</title>
+                            <part name="statement" id="a1-stmt">
+                                <title>Statement</title>
+                            </part>
+                        </control>
+                        <modify>
+                            <alter control-id="a1">
+                                <add position="after" by-id="a1-stmt">
+                                    <prop/>
+                                </add>
+                            </alter>
+                        </modify>
+                    </catalog>
+                </x:variable>
+                <x:context select="$ov:context//o:part[@id='a1-stmt']">
+                    <x:param name="modifications" select="$ov:context//o:modify" tunnel="yes"/>
+                </x:context>
+                <x:expect label="Error; this mismatch is not supported"
+                    test="exists($x:result/self::processing-instruction('message-handler')[starts-with(.,'Terminating ')])"/>
             </x:scenario>
             <x:scenario label="adding title to a part object within this control">
                 <x:variable name="ov:context">
@@ -1286,7 +1548,7 @@
         <x:scenario label="Explicit binding to a non-child descendant of a control">
             <x:variable name="ov:add-position" select="'starting'"/>
             <x:variable name="ov:by-id" select="'a1-substmt'"/>
-            <x:like label="SHARED_add-explicit-parameterized-position"/>
+            <x:like label="SHARED_add-explicit-part-parameterized-position"/>
             <x:expect label="Part added inside a1-substmt part, before other content">
                 <part name="statement" id="a1-substmt">
                     <part name="statement" id="new-stmt">
@@ -1299,17 +1561,15 @@
         <x:scenario label="Explicit binding to a descendant that is inside a child control">
             <x:variable name="ov:add-position" select="'starting'"/>
             <x:variable name="ov:by-id" select="'a1.1-stmt'"/>
-            <x:like label="SHARED_add-explicit-parameterized-position"/>
-            <x:expect label="Part added inside a1.1-stmt part, before other content">
+            <x:like label="SHARED_add-explicit-part-parameterized-position"/>
+            <x:expect label="No change, because the child control's descendants are not in scope for modifications to the parent control">
                 <part name="statement" id="a1.1-stmt">
-                    <part name="statement" id="new-stmt">
-                        <p>New text</p>
-                    </part>
                     <p>Text</p>
                 </part>
             </x:expect>
+            <x:expect label="New text does not appear" test="empty(//p[.='New text'])"/>
         </x:scenario>
-        <x:scenario label="Explicit binding to a control that a 'remove' element targets for removal">
+        <x:scenario label="Explicit binding to a part that a 'remove' element targets for removal, trying to insert content around the removed part (e.g., replacement)">
             <x:variable name="ov:context">
                 <catalog id="abc">
                     <control id="a1">
@@ -1320,26 +1580,17 @@
                             <p>Text</p>
                         </part>
                         <part name="statement" id="a1-stmt2">
-                            <p>Text</p>
+                            <p>Text2</p>
                         </part>
                     </control>
                     <modify>
                         <alter control-id="a1">
                             <remove by-id="a1-stmt"/>
                             <add position="after" by-id="a1-stmt">
-                                <prop value="0" name="after"/>
+                                <part name="statement" id="a1-stmt-after"/>
                             </add>
                             <add position="before" by-id="a1-stmt">
-                                <prop value="0" name="before"/>
-                            </add>
-                            <add position="starting" by-id="a1-stmt">
-                                <prop value="0" name="starting"/>
-                            </add>
-                            <add position="ending" by-id="a1-stmt">
-                                <prop value="0" name="ending"/>
-                            </add>
-                            <add by-id="a1-stmt">
-                                <prop value="0" name="default"/>
+                                <part name="statement" id="a1-stmt-before"/>
                             </add>
                         </alter>
                     </modify>
@@ -1349,13 +1600,84 @@
                 <x:param name="modifications" select="$ov:context//o:modify" tunnel="yes"/>
             </x:context>
             <x:expect label="Elements in 'add' that use 'before' and 'after'">
-                <prop value="0" name="before"/>
-                <prop value="0" name="after"/>
+                <part name="statement" id="a1-stmt-before"/>
+                <part name="statement" id="a1-stmt-after"/>
             </x:expect>
             <x:expect label="The target control does not appear" test="empty($x:result//*[@id='a1-stmt'])"/>
-            <x:expect label="The 'starting' element does not appear" test="empty($x:result//*[@name='starting'])"/>
-            <x:expect label="The 'ending' element does not appear" test="empty($x:result//*[@name='ending'])"/>
-            <x:expect label="The element with no valid position does not appear" test="empty($x:result//*[@name='default'])"/>
+        </x:scenario>
+        <x:scenario label="Explicit binding to a param that needs to be set *and* have new params inserted as siblings">
+            <x:variable name="ov:context">
+                <catalog id="abc">
+                    <control id="a1">
+                        <title>Control A1</title>
+                        <param id="a1_prm1">
+                            <label>A1 Parameter 1</label>
+                        </param>
+                    </control>
+                    <modify>
+                        <set-parameter param-id="a1_prm1">
+                            <constraint>at least every 3 years</constraint>
+                        </set-parameter>
+                        <alter control-id="a1">
+                            <add position="before" by-id="a1_prm1">
+                                <param id="new_prm">
+                                    <prop name="annotated" ns="https://fedramp.gov/ns/oscal" value="new-param"/>
+                                    <label>A1 Parameter New</label>
+                                </param>
+                            </add>
+                            <add position="after" by-id="a1_prm1">
+                                <param id="new_prm2"/>
+                            </add>
+                        </alter>
+                    </modify>
+                </catalog>
+            </x:variable>
+            <x:context select="$ov:context//o:param[@id='a1_prm1']">
+                <x:param name="modifications" select="$ov:context//o:modify" tunnel="yes"/>
+            </x:context>
+            <x:expect label="new_prm param, original param with constraint added by process-param template, and new_prm2 param">
+                <param id="new_prm">
+                    <prop name="annotated" ns="https://fedramp.gov/ns/oscal" value="new-param"/>
+                    <label>A1 Parameter New</label>
+                </param>
+                <param id="a1_prm1">
+                    <label>A1 Parameter 1</label>
+                    <constraint>at least every 3 years</constraint>
+                </param>
+                <param id="new_prm2"/>
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="Explicit binding to a param that needs to be set *and* have new prop inserted as child">
+            <x:variable name="ov:context">
+                <catalog id="abc">
+                    <control id="a1">
+                        <title>Control A1</title>
+                        <param id="a1_prm1">
+                            <label>A1 Parameter 1</label>
+                        </param>
+                    </control>
+                    <modify>
+                        <set-parameter param-id="a1_prm1">
+                            <constraint>at least every 3 years</constraint>
+                        </set-parameter>
+                        <alter control-id="a1">
+                            <add position="starting" by-id="a1_prm1">
+                                <prop name="param-label" ns="https://fedramp.gov/ns/oscal" value="AC-1(a)"/>
+                            </add>
+                        </alter>
+                    </modify>
+                </catalog>
+            </x:variable>
+            <x:context select="$ov:context//o:param[@id='a1_prm1']">
+                <x:param name="modifications" select="$ov:context//o:modify" tunnel="yes"/>
+            </x:context>
+            <x:expect label="original param with constraint (added by process-param template) and param-label prop">
+                <param id="a1_prm1">
+                    <prop name="param-label" ns="https://fedramp.gov/ns/oscal" value="AC-1(a)"/>
+                    <label>A1 Parameter 1</label>
+                    <constraint>at least every 3 years</constraint>
+                </param>
+            </x:expect>
         </x:scenario>
     </x:scenario>
 
@@ -1682,7 +2004,7 @@
             <x:param name="modifications" select="$ov:context//o:modify" tunnel="yes"/>
         </x:context>
     </x:scenario>
-    <x:scenario shared="yes" label="SHARED_add-explicit-parameterized-position">
+    <x:scenario shared="yes" label="SHARED_add-explicit-part-parameterized-position">
         <x:variable name="ov:context">
             <catalog id="abc">
                 <control id="a1">
@@ -1710,6 +2032,43 @@
                             <part name="statement" id="new-stmt">
                                 <p>New text</p>
                             </part>
+                        </add>
+                    </alter>
+                </modify>
+            </catalog>
+        </x:variable>
+        <x:context select="$ov:context//*[@id=$ov:by-id]">
+            <x:param name="modifications" select="$ov:context//o:modify" tunnel="yes"/>
+        </x:context>
+    </x:scenario>
+    <x:scenario shared="yes" label="SHARED_add-explicit-control-parameterized-position">
+        <x:variable name="ov:context">
+            <catalog id="abc">
+                <control id="a1">
+                    <title>Control A</title>
+                    <prop value="1" name="source1"/>
+                    <prop value="2" name="source2"/>
+                    <part name="statement" id="a1-stmt">
+                        <p>Text</p>
+                        <part name="statement" id="a1-substmt">
+                            <p>Text</p>
+                        </part>
+                    </part>
+                    <control id="a1.1">
+                        <title>Control A.1</title>
+                        <prop value="3" name="source3"/>
+                        <prop value="4" name="source4"/>
+                        <part name="statement" id="a1.1-stmt">
+                            <p>Text</p>
+                        </part>
+                    </control>
+                </control>
+                <modify>
+                    <alter control-id="a1">
+                        <add position="{$ov:add-position}" by-id="{$ov:by-id}">
+                            <control id="new-control">
+                                <title>New control</title>
+                            </control>
                         </add>
                     </alter>
                 </modify>
