@@ -7,7 +7,7 @@
     stylesheet="../../oscal-profile-resolve-select.xsl">
     
     <!-- Location of sample files, relative to compiled test in xspec/ subdirectory -->
-    <x:variable name="ov:filedir" as="xs:string" select="resolve-uri('../../../../../../specifications/profile-resolution/profile-resolution-examples')"/>
+    <x:variable name="ov:filedir" as="xs:string" select="resolve-uri('../../../../../specifications/profile-resolution/profile-resolution-examples')"/>
 
     <x:scenario label="Direct import by file href">
         <x:context>

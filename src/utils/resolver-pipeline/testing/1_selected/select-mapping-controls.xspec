@@ -24,7 +24,7 @@
         When this is determined, tests can be added for those sections. -->
 
     <!-- Location of sample files, relative to compiled test in xspec/ subdirectory -->
-    <x:variable name="ov:filedir" as="xs:string" select="resolve-uri('../../../../../../specifications/profile-resolution/profile-resolution-examples')"/>
+    <x:variable name="ov:filedir" as="xs:string" select="resolve-uri('../../../../../specifications/profile-resolution/profile-resolution-examples')"/>
 
     <x:scenario label="Import controls using ID mapping">
         <x:scenario label="Basic case" pending="Mapping is not implemented yet">
