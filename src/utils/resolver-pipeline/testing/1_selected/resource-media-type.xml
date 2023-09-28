@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="../../../../../specifications/profile-resolution/example-checkup.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="../../../../specifications/profile-resolution/example-checkup.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <!-- Modified by conversion XSLT 2021-04-05T11:22:08.131-04:00 - RC2 OSCAL becomes RC3 OSCAL -->
 <profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
          uuid="427f8c54-c3af-4ca3-a92c-f6abaa015ba5">
