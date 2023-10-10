@@ -2,6 +2,14 @@
     {
         "section_id": "import",
         "requirement_id": "req-uri-resolve",
-        "scenarios": []
+        "scenarios": [
+            {
+                "source_profile_path": "source_profile_example.xml",
+                "expected_catalog_path": "resolved_catalog_example.xml",
+                "select_expressions": [
+                    "/"
+                ]
+            }
+        ]
     }
 ]
