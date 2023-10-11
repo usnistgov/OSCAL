@@ -1,4 +1,10 @@
 #!/usr/bin/env python3
+
+"""
+A simple CLI application that tests profile resolver implementations against the adjacent
+specification.
+"""
+
 import argparse
 import sys
 import os.path
@@ -8,12 +14,15 @@ import shutil
 import json
 from xml.etree import ElementTree as ET
 
-from typing import TypedDict, List, Dict, Set, Tuple
+from typing import TypedDict, List, Dict, Set, Optional
 
 
-# Via https://gist.github.com/rene-d/9e584a7dd2935d0f461904b9f2950007
 class Colors:
-    """ ANSI color codes """
+    """
+    ANSI color codes
+
+    Via https://gist.github.com/rene-d/9e584a7dd2935d0f461904b9f2950007
+    """
     BLACK = "\033[0;30m"
     RED = "\033[0;31m"
     GREEN = "\033[0;32m"
@@ -72,7 +81,7 @@ DRIVER_DESTINATION_TOKEN = "{dest}"
 class Driver(object):
     """Handles running the profile resolver given a source file and destination path"""
 
-    def __init__(self, command: str) -> None:
+    def __init__(self, command: str, workdir: Optional[str] = None) -> None:
         """
         Note: Creates a temporary directory as a side effect, consumer must call .cleanup() to remove
         """
@@ -88,6 +97,9 @@ class Driver(object):
 
     def run(self, src_path) -> ET.ElementTree:
         """
+        Run the command specified by `self.command`, substituting `DRIVER_SOURCE_TOKEN` and
+        `DRIVER_DESTINATION_TOKEN` with `src_path` and a generated output path respectively.
+
         Note: Places output files in a temporary directory, consumer must call .cleanup() to remove
         """
         src_name = os.path.basename(src_path)
@@ -101,7 +113,8 @@ class Driver(object):
 
         # Notice: this code does not protect against shell injection of any kind,
         # `self.command` and `src_path` must be trusted.
-        ret = subprocess.run(command, shell=True, capture_output=True)
+        ret = subprocess.run(command, shell=True,
+                             capture_output=True, cwd=self.workdir)
         # TODO handle command failure
 
         if ret.returncode != 0:
@@ -115,8 +128,12 @@ class Driver(object):
         shutil.rmtree(self.out_directory)
 
 
-def elements_equal(e1: ET.ElementTree, e2: ET.ElementTree):
-    """Via https://stackoverflow.com/a/24349916"""
+def elements_equal(e1: ET.ElementTree, e2: ET.ElementTree) -> bool:
+    """
+    Compare two element trees
+
+    Via https://stackoverflow.com/a/24349916
+    """
     if e1.tag != e2.tag:
         return False
     if e1.text != e2.text:
@@ -148,6 +165,9 @@ class RequirementTests(object):
             tests_json = json.loads(tests_file.read())
             # TODO any sort of input validation, this is currently at best a type hint
             self.tests: List[TestRequirement] = tests_json
+
+        # used to resolve files relative to the spec file
+        self.tests_workdir = os.path.dirname(self.tests_path)
 
         # K,V of section ids -> section titles
         self.section_heads: Dict[str, str] = {}
@@ -219,7 +239,7 @@ class RequirementTests(object):
                 f"{Colors.YELLOW}Warning: Unknown section id {section_id} containing {len(covered_tests[section_id])} requirements{Colors.END}")
 
     def run(self, command, do_cleanup=True) -> bool:
-        driver = Driver(command)
+        driver = Driver(command, self.tests_workdir)
 
         suite_pass = True
 
@@ -251,9 +271,16 @@ class RequirementTests(object):
         """
         Runs a given test scenario, returning True if all selection expressions pass
         """
-        result = driver.run(scenario["source_profile_path"])
+
+        # Correct for path relative to spec tests file
+        expected_path = scenario["expected_catalog_path"]
+        if not os.path.isabs(expected_path):
+            expected_path = os.path.join(self.tests_workdir, expected_path)
         # TODO user friendly error if catalog path cannot be found
-        expected = ET.parse(scenario["expected_catalog_path"])
+        expected = ET.parse(expected_path)
+
+        # Driver already uses the spec tests file's parent dir as the cwd, no path correction needed
+        result = driver.run(scenario["source_profile_path"])
 
         # if no selection expressions exist, test still successfully produced an output
         scenario_pass = True
@@ -264,9 +291,11 @@ class RequirementTests(object):
             for result_elem, expected_elem in zip(result_selection, expected_selection):
                 if not elements_equal(result_elem, expected_elem):
                     scenario_pass = False
+                    # TODO print both elements for comparison
 
             if len(result_selection) != len(expected_selection):
                 print("Resulting selection lengths do not match")
+                # TODO print extra elements
                 scenario_pass = False
 
         return scenario_pass
