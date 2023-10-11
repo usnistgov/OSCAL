@@ -7,7 +7,47 @@ import shutil
 import json
 from xml.etree import ElementTree as ET
 
-from typing import TypedDict, List
+from typing import TypedDict, List, Dict, Set, Tuple
+
+
+# Via https://gist.github.com/rene-d/9e584a7dd2935d0f461904b9f2950007
+class Colors:
+    """ ANSI color codes """
+    BLACK = "\033[0;30m"
+    RED = "\033[0;31m"
+    GREEN = "\033[0;32m"
+    BROWN = "\033[0;33m"
+    BLUE = "\033[0;34m"
+    PURPLE = "\033[0;35m"
+    CYAN = "\033[0;36m"
+    LIGHT_GRAY = "\033[0;37m"
+    DARK_GRAY = "\033[1;30m"
+    LIGHT_RED = "\033[1;31m"
+    LIGHT_GREEN = "\033[1;32m"
+    YELLOW = "\033[1;33m"
+    LIGHT_BLUE = "\033[1;34m"
+    LIGHT_PURPLE = "\033[1;35m"
+    LIGHT_CYAN = "\033[1;36m"
+    LIGHT_WHITE = "\033[1;37m"
+    BOLD = "\033[1m"
+    FAINT = "\033[2m"
+    ITALIC = "\033[3m"
+    UNDERLINE = "\033[4m"
+    BLINK = "\033[5m"
+    NEGATIVE = "\033[7m"
+    CROSSED = "\033[9m"
+    END = "\033[0m"
+    # cancel SGR codes if we don't write to a terminal
+    if not __import__("sys").stdout.isatty():
+        for _ in dir():
+            if isinstance(_, str) and _[0] != "_":
+                locals()[_] = ""
+    else:
+        # set Windows console in VT mode
+        if __import__("platform").system() == "Windows":
+            kernel32 = __import__("ctypes").windll.kernel32
+            kernel32.SetConsoleMode(kernel32.GetStdHandle(-11), 7)
+            del kernel32
 
 
 class TestScenario(TypedDict):
@@ -84,6 +124,8 @@ SCRIPT_DIR = os.path.dirname(os.path.realpath(__file__))
 DEFAULT_TESTS_PATH = os.path.join(SCRIPT_DIR, "spec-tests.json")
 DEFAULT_SPEC_PATH = os.path.join(SCRIPT_DIR, "profile-resolution-specml.xml")
 
+SPECML_NS = "http://csrc.nist.gov/ns/oscal/specml"
+
 
 class RequirementTests(object):
     def __init__(self, spec_path=DEFAULT_SPEC_PATH, tests_path=DEFAULT_TESTS_PATH) -> None:
@@ -97,15 +139,74 @@ class RequirementTests(object):
             # TODO any sort of input validation, this is currently at best a type hint
             self.tests: List[TestRequirement] = tests_json
 
-    def print_coverage(self):
-        # TODO make this return data that could be instrumented by external callers
-        for section in self.spec.findall("{http://csrc.nist.gov/ns/oscal/specml}section"):
-            section_head = section.find(
-                "{http://csrc.nist.gov/ns/oscal/specml}head").text
+        # K,V of section ids -> section titles
+        self.section_heads: Dict[str, str] = {}
+        # K,V of section ids -> requirement id -> requirement level
+        # TODO parse out requirement text and store alongside level?
+        self.section_requirements: Dict[str, Dict[str, str]] = {}
 
-            for requirement in section.findall("{http://csrc.nist.gov/ns/oscal/specml}req"):
-                pass
-            print(f"Section: {section_head}")
+        # process spec file
+        for section in self.spec.findall(f"{{{SPECML_NS}}}section"):
+            section_id = section.attrib['id']
+            section_head = section.find(f"{{{SPECML_NS}}}head").text
+
+            self.section_heads[section_id] = section_head
+            self.section_requirements[section_id] = {}
+
+            for requirement in section.findall(f".//{{{SPECML_NS}}}req"):
+                requirement_id = requirement.attrib['id']
+                # TODO determine if @level is required
+                requirement_level = requirement.attrib['level']
+
+                self.section_requirements[section_id][requirement_id] = requirement_level
+
+    def print_coverage(self):
+        """
+        Utility method that prints the test coverage against the spec
+        """
+        covered_tests: Dict[str, Set[str]] = {}
+
+        for test in self.tests:
+            if test["section_id"] not in covered_tests:
+                covered_tests[test["section_id"]] = set()
+            covered_tests[test["section_id"]].add(test["requirement_id"])
+
+        for section_id, section_head in self.section_heads.items():
+            requirements = set(self.section_requirements[section_id].keys())
+            tested_requirements = covered_tests.get(section_id, set())
+            covered_requirements = tested_requirements.intersection(
+                requirements)
+            uncovered_requirements = requirements.difference(
+                tested_requirements)
+            unknown_requirements = tested_requirements.difference(requirements)
+
+            section_color = Colors.GREEN
+            if len(requirements) == 0:
+                section_color = Colors.DARK_GRAY
+            elif len(tested_requirements) == 0:
+                section_color = Colors.RED
+            elif len(uncovered_requirements) > 0:
+                section_color = Colors.YELLOW
+
+            extra_warning = f"{Colors.RED}+{len(unknown_requirements)}" if len(
+                unknown_requirements) > 0 else ""
+
+            print(
+                f"{Colors.BOLD}{section_color}{section_head} ({section_id}): {len(covered_requirements)}/{len(requirements)} {extra_warning}{Colors.END}")
+
+            for requirement_id, level in self.section_requirements[section_id].items():
+                requirement_color = Colors.GREEN if requirement_id in tested_requirements else Colors.RED
+                print(f"    {requirement_color}{requirement_id} - {level}")
+
+            # Warn the user of extraneous requirements in the section
+            for requirement_id in unknown_requirements:
+                print(
+                    f"\n    {Colors.YELLOW}Warning: Unknown requirement id {requirement_id}{Colors.END}")
+
+        # Warn the user of extraneous sections in the tests
+        for section_id in set(covered_tests.keys()).difference(set(self.section_heads.keys())):
+            print(
+                f"{Colors.YELLOW}Warning: Unknown section id {section_id} containing {len(covered_tests[section_id])} requirements{Colors.END}")
 
     def run(self, command):
         driver = Driver(command)
