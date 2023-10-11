@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import argparse
+import sys
 import os.path
 import subprocess
 import tempfile
@@ -69,7 +70,12 @@ DRIVER_DESTINATION_TOKEN = "{dest}"
 
 
 class Driver(object):
+    """Handles running the profile resolver given a source file and destination path"""
+
     def __init__(self, command: str) -> None:
+        """
+        Note: Creates a temporary directory as a side effect, consumer must call .cleanup() to remove
+        """
         if not DRIVER_SOURCE_TOKEN in command:
             raise Exception(
                 f"Command `{command}` does not contain source token '{DRIVER_SOURCE_TOKEN}'")
@@ -81,6 +87,9 @@ class Driver(object):
         self.out_directory = tempfile.mkdtemp("oscal-pr-test-out")
 
     def run(self, src_path) -> ET.ElementTree:
+        """
+        Note: Places output files in a temporary directory, consumer must call .cleanup() to remove
+        """
         src_name = os.path.basename(src_path)
         # some-profile.xml => some-profile_RESOLVED.xml
         dest_name = os.path.splitext(src_name)[0] + "_RESOLVED.xml"
@@ -102,6 +111,7 @@ class Driver(object):
         return ET.parse(dest_path)
 
     def cleanup(self):
+        """Delete temporary directory"""
         shutil.rmtree(self.out_directory)
 
 
@@ -155,7 +165,6 @@ class RequirementTests(object):
 
             for requirement in section.findall(f".//{{{SPECML_NS}}}req"):
                 requirement_id = requirement.attrib['id']
-                # TODO determine if @level is required
                 requirement_level = requirement.attrib['level']
 
                 self.section_requirements[section_id][requirement_id] = requirement_level
@@ -188,6 +197,7 @@ class RequirementTests(object):
             elif len(uncovered_requirements) > 0:
                 section_color = Colors.YELLOW
 
+            # Provide the user with information about extraneous requirements
             extra_warning = f"{Colors.RED}+{len(unknown_requirements)}" if len(
                 unknown_requirements) > 0 else ""
 
@@ -208,25 +218,44 @@ class RequirementTests(object):
             print(
                 f"{Colors.YELLOW}Warning: Unknown section id {section_id} containing {len(covered_tests[section_id])} requirements{Colors.END}")
 
-    def run(self, command):
+    def run(self, command, do_cleanup=True) -> bool:
         driver = Driver(command)
-        test_record = []
 
-        for requirement in self.tests:
-            print(
-                f"Test requirement: {requirement['section_id']}/{requirement['requirement_id']}")
-            self._test_requirement(driver, requirement)
+        suite_pass = True
 
-    def _test_requirement(self, driver: Driver, requirement: TestRequirement):
-        requirement_pass = True
+        try:
+            for test in self.tests:
+                print(
+                    f"Test requirement: {test['section_id']}/{test['requirement_id']}")
+                test_pass = self._run_test(driver, test)
+
+                if not test_pass:
+                    suite_pass = False
+        finally:
+            if do_cleanup:
+                driver.cleanup()
+
+        return suite_pass
+
+    def _run_test(self, driver: Driver, requirement: TestRequirement) -> bool:
+        test_pass = True
 
         for scenario in requirement["scenarios"]:
-            self._test_scenario(driver, scenario)
+            scenario_pass = self._run_test_scenario(driver, scenario)
+            if not scenario_pass:
+                test_pass = False
 
-    def _test_scenario(self, driver: Driver, scenario: TestScenario):
+        return test_pass
+
+    def _run_test_scenario(self, driver: Driver, scenario: TestScenario) -> bool:
+        """
+        Runs a given test scenario, returning True if all selection expressions pass
+        """
         result = driver.run(scenario["source_profile_path"])
+        # TODO user friendly error if catalog path cannot be found
         expected = ET.parse(scenario["expected_catalog_path"])
 
+        # if no selection expressions exist, test still successfully produced an output
         scenario_pass = True
         for selection_expression in scenario["selection_expressions"]:
             result_selection = result.findall(selection_expression)
@@ -240,8 +269,7 @@ class RequirementTests(object):
                 print("Resulting selection lengths do not match")
                 scenario_pass = False
 
-        if not scenario_pass:
-            requirement_pass = False
+        return scenario_pass
 
 
 if __name__ == '__main__':
@@ -261,6 +289,8 @@ if __name__ == '__main__':
         "command", help="The program to call, with the input profile and output path"
         f" replaced with {DRIVER_SOURCE_TOKEN} and {DRIVER_DESTINATION_TOKEN} respectively")
 
+    # TODO argument for cleaning up output files
+
     # "coverage" subcommand
     parser_coverage = subparsers.add_parser(
         'coverage', description='Report the coverage of the given tests file against the spec')
@@ -270,6 +300,8 @@ if __name__ == '__main__':
     harness = RequirementTests(args.spec_path, args.tests_path)
 
     if args.action == "run":
-        harness.run(args.command)
+        suite_pass = harness.run(args.command)
+        if not suite_pass:
+            sys.exit(1)
     elif args.action == "coverage":
         harness.print_coverage()
