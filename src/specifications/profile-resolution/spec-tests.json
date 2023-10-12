@@ -4,10 +4,10 @@
         "requirement_id": "req-uri-resolve",
         "scenarios": [
             {
-                "source_profile_path": "requirement-tests/req-include-all-asis_RESOLVED.xml",
+                "source_profile_path": "requirement-tests/req-include-all-asis.xml",
                 "expected_catalog_path": "requirement-tests/output-expected/req-include-all-asis_RESOLVED.xml",
-                "select_expressions": [
-                    "/catalog/group"
+                "selection_expressions": [
+                    "./catalog/group"
                 ]
             }
         ]

@@ -93,6 +93,7 @@ class Driver(object):
                 f"Command `{command}` does not contain source token '{DRIVER_DESTINATION_TOKEN}'")
 
         self.command = command
+        self.workdir = workdir
         self.out_directory = tempfile.mkdtemp("oscal-pr-test-out")
 
     def run(self, src_path) -> ET.ElementTree:
@@ -288,10 +289,12 @@ class RequirementTests(object):
             result_selection = result.findall(selection_expression)
             expected_selection = expected.findall(selection_expression)
 
-            for result_elem, expected_elem in zip(result_selection, expected_selection):
+            for i, (result_elem, expected_elem) in enumerate(zip(result_selection, expected_selection)):
                 if not elements_equal(result_elem, expected_elem):
                     scenario_pass = False
                     # TODO print both elements for comparison
+                    print(
+                        f"    Selection {selection_expression} yielded mismatching results (index={i})")
 
             if len(result_selection) != len(expected_selection):
                 print("Resulting selection lengths do not match")
