@@ -3,6 +3,10 @@
 """
 A simple CLI application that tests profile resolver implementations against the adjacent
 specification.
+
+Caveats:
+- XPath functionality will depend on the version of Python being used (newer is better)
+- On some versions of Python, absolute selections (/) are broken, use relative selections (./) where possible
 """
 
 import argparse
@@ -140,9 +144,9 @@ def compare_elements(e1: Optional[ET.ElementTree], e2: Optional[ET.ElementTree],
     differences: List[str] = []
 
     if e1 is None:
-        differences.append(f"{path}/ (: selection only present on {e2Name} :)")
+        differences.append(f"{path}/ (: element only present on {e2Name} :)")
     elif e2 is None:
-        differences.append(f"{path}/ (: selection only present on {e1Name} :)")
+        differences.append(f"{path}/ (: element only present on {e1Name} :)")
     else:
         if e1.tag != e2.tag:
             # Fail early if tags are mismatched, no point in comparing tag contents
@@ -161,10 +165,16 @@ def compare_elements(e1: Optional[ET.ElementTree], e2: Optional[ET.ElementTree],
             for key in e1AttribSet.intersection(e2AttribSet):
                 if e1.attrib[key] != e2.attrib[key]:
                     # Attribute value mismatch
-                    differences.append(path + "/@" + key)
-            for key in list(e1AttribSet.difference(e2AttribSet)) + list(e2AttribSet.difference(e1AttribSet)):
-                # Attribute not present in one or the other
-                differences.append(path + "/@" + key)
+                    differences.append(
+                        f"{path}/@{key} (: value mismatch: {e1Name}={e1.attrib[key]}, {e2Name}={e2.attrib[key]} :)")
+
+            # Attribute not present in one or the other
+            for key in e1AttribSet.difference(e2AttribSet):
+                differences.append(
+                    f"{path}/@{key} (: attribute only present in {e1Name} :")
+            for key in e2AttribSet.difference(e1AttribSet):
+                differences.append(
+                    f"{path}/@{key} (: attribute only present in {e2Name} :")
 
             for i, (c1, c2) in enumerate(zip_longest(e1, e2)):
                 # zip_longest returns None for extra items of the shorter iterator
