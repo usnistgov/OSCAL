@@ -5,8 +5,12 @@ A simple CLI application that tests profile resolver implementations against the
 specification.
 
 Caveats:
-- XPath functionality will depend on the version of Python being used (newer is better)
-- On some versions of Python, absolute selections (/) are broken, use relative selections (./) where possible
+- XPath functionality will depend on the version of Python being used (newer is better).
+- On some versions of Python, absolute selections (/root/item) are broken and will result in a
+    warning, use relative selections instead (./item).
+- Comparisons of multiple elements are not "smart". Unlike the OSCAL Deep Diff, this tool does not
+    attempt to match items together. Selections should be written with this in mind (e.g. select a
+    specific oscal:param instead of comparing all of them when order is not explicitly specified).
 """
 
 import argparse
@@ -134,9 +138,14 @@ class Driver(object):
         shutil.rmtree(self.out_directory)
 
 
-def compare_elements(e1: Optional[ET.ElementTree], e2: Optional[ET.ElementTree], path=".", e1Name="left", e2Name="right") -> Tuple[bool, List[str]]:
+def compare_elements(e1: Optional[ET.ElementTree], e2: Optional[ET.ElementTree], path=".",
+                     e1Name="left", e2Name="right") -> Tuple[bool, List[str]]:
     """
-    Compare two element trees, returning if they are the same, and a list of XPath-like selections
+    Compare two element trees returning if they are the same, and a list of changes in the form of
+    XPath-like selections.
+
+    Warning: This comparison function will likely fail on mixed content (e.g. markup) and in cases
+    where the order of child elements is different.
 
     Note: comments added to some difference paths using XPath 2.0 (: comment syntax :)
     """
@@ -144,18 +153,21 @@ def compare_elements(e1: Optional[ET.ElementTree], e2: Optional[ET.ElementTree],
     differences: List[str] = []
 
     if e1 is None:
-        differences.append(f"{path}/ (: element only present on {e2Name} :)")
+        differences.append(
+            f"{path}/ (: tag mismatch: {e1Name}=None {e2Name}='{e2.tag}' :)")
     elif e2 is None:
-        differences.append(f"{path}/ (: element only present on {e1Name} :)")
+        differences.append(
+            f"{path}/ (: tag mismatch: {e1Name}='{e1.tag}' {e2Name}=None :)")
     else:
         if e1.tag != e2.tag:
             # Fail early if tags are mismatched, no point in comparing tag contents
             differences.append(
-                f"{path}/ (: tag mismatch: {e1Name}={e1.tag}, {e2Name}={e2.tag} :)")
+                f"{path}/ (: tag mismatch: {e1Name}='{e1.tag}', {e2Name}='{e2.tag}' :)")
         else:
             e1Text = (e1.text if e1.text is not None else "").strip()
             e2Text = (e2.text if e2.text is not None else "").strip()
 
+            # TODO compare on mixed content?
             if e1Text != e2Text:
                 differences.append(path + "/text()")
 
@@ -166,15 +178,15 @@ def compare_elements(e1: Optional[ET.ElementTree], e2: Optional[ET.ElementTree],
                 if e1.attrib[key] != e2.attrib[key]:
                     # Attribute value mismatch
                     differences.append(
-                        f"{path}/@{key} (: value mismatch: {e1Name}={e1.attrib[key]}, {e2Name}={e2.attrib[key]} :)")
+                        f"{path}/@{key} (: attribute value mismatch: {e1Name}='{e1.attrib[key]}', {e2Name}='{e2.attrib[key]}' :)")
 
             # Attribute not present in one or the other
             for key in e1AttribSet.difference(e2AttribSet):
                 differences.append(
-                    f"{path}/@{key} (: attribute only present in {e1Name} :")
+                    f"{path}/@{key} (: attribute value mismatch: {e1Name}='{e1.attrib[key]}', {e2Name}=None :")
             for key in e2AttribSet.difference(e1AttribSet):
                 differences.append(
-                    f"{path}/@{key} (: attribute only present in {e2Name} :")
+                    f"{path}/@{key} (: attribute value mismatch: in {e1Name}=None, {e2Name}='{e2.attrib[key]}' :")
 
             for i, (c1, c2) in enumerate(zip_longest(e1, e2)):
                 # zip_longest returns None for extra items of the shorter iterator
@@ -354,8 +366,10 @@ class RequirementTests(object):
                 selection_expression, QUERY_NS)
 
             for i, (result_elem, expected_elem) in enumerate(zip(result_selection, expected_selection)):
-                same, differences = compare_elements(
-                    result_elem, expected_elem, f"{selection_expression}[{i}]", e1Name="result", e2Name="expected")
+                same, differences = compare_elements(result_elem, expected_elem,
+                                                     # XPath selection used for debugging. Only specify position predicate if necessary
+                                                     f"{selection_expression}{f'[{i + 1}]' if len(result_selection) > 1 or len(expected_selection) > 1 else ''}",
+                                                     e1Name="result", e2Name="expected")
                 if not same:
                     scenario_pass = False
                     print(
