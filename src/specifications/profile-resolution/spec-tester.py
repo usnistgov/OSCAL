@@ -152,7 +152,10 @@ SCRIPT_DIR = os.path.dirname(os.path.realpath(__file__))
 DEFAULT_TESTS_PATH = os.path.join(SCRIPT_DIR, "spec-tests.json")
 DEFAULT_SPEC_PATH = os.path.join(SCRIPT_DIR, "profile-resolution-specml.xml")
 
-SPECML_NS = "http://csrc.nist.gov/ns/oscal/specml"
+QUERY_NS = {
+    "specml": "http://csrc.nist.gov/ns/oscal/specml",
+    "oscal": "http://csrc.nist.gov/ns/oscal/1.0"
+}
 
 
 class RequirementTests(object):
@@ -177,14 +180,14 @@ class RequirementTests(object):
         self.section_requirements: Dict[str, Dict[str, str]] = {}
 
         # process spec file
-        for section in self.spec.findall(f"{{{SPECML_NS}}}section"):
+        for section in self.spec.findall("specml:section", QUERY_NS):
             section_id = section.attrib['id']
-            section_head = section.find(f"{{{SPECML_NS}}}head").text
+            section_head = section.find("specml:head", QUERY_NS).text
 
             self.section_heads[section_id] = section_head
             self.section_requirements[section_id] = {}
 
-            for requirement in section.findall(f".//{{{SPECML_NS}}}req"):
+            for requirement in section.findall(".//specml:req", QUERY_NS):
                 requirement_id = requirement.attrib['id']
                 requirement_level = requirement.attrib['level']
 
@@ -286,8 +289,11 @@ class RequirementTests(object):
         # if no selection expressions exist, test still successfully produced an output
         scenario_pass = True
         for selection_expression in scenario["selection_expressions"]:
-            result_selection = result.findall(selection_expression)
-            expected_selection = expected.findall(selection_expression)
+            result_selection = result.findall(selection_expression, QUERY_NS)
+            expected_selection = expected.findall(
+                selection_expression, QUERY_NS)
+
+            print("results:", result_selection, expected_selection)
 
             for i, (result_elem, expected_elem) in enumerate(zip(result_selection, expected_selection)):
                 if not elements_equal(result_elem, expected_elem):

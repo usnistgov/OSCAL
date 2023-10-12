@@ -7,7 +7,7 @@
                 "source_profile_path": "requirement-tests/req-include-all-asis.xml",
                 "expected_catalog_path": "requirement-tests/output-expected/req-include-all-asis_RESOLVED.xml",
                 "selection_expressions": [
-                    "./catalog/group"
+                    "./oscal:group"
                 ]
             }
         ]
