@@ -11,6 +11,10 @@ Caveats:
 - Comparisons of multiple elements are not "smart". Unlike the OSCAL Deep Diff, this tool does not
     attempt to match items together. Selections should be written with this in mind (e.g. select a
     specific oscal:param instead of comparing all of them when order is not explicitly specified).
+
+Future Improvements:
+- TODO: Cache results of profile resolution in Driver class for commonly re-used sources
+- TODO: Make failure condition more granular (e.g. add parameter to prevent failure on "should" levels)
 """
 
 import argparse
@@ -20,6 +24,7 @@ import subprocess
 import tempfile
 import shutil
 import json
+import logging
 from itertools import zip_longest
 from xml.etree import ElementTree as ET
 
@@ -71,6 +76,7 @@ class Colors:
 
 class TestScenario(TypedDict):
     """A source profile along with the expected resulting profile and match expressions"""
+    description: Optional[str]
     source_profile_path: str
     expected_catalog_path: str
     selection_expressions: List[str]
@@ -87,10 +93,14 @@ DRIVER_SOURCE_TOKEN = "{src}"
 DRIVER_DESTINATION_TOKEN = "{dest}"
 
 
+INDENT_TEXT = "  "
+
+
 class Driver(object):
     """Handles running the profile resolver given a source file and destination path"""
 
-    def __init__(self, command: str, workdir: Optional[str] = None) -> None:
+    def __init__(self, command: str, workdir: Optional[str] = None,
+                 logger: Optional[logging.Logger] = None) -> None:
         """
         Note: Creates a temporary directory as a side effect, consumer must call .cleanup() to remove
         """
@@ -101,11 +111,16 @@ class Driver(object):
             raise Exception(
                 f"Command `{command}` does not contain source token '{DRIVER_DESTINATION_TOKEN}'")
 
+        self.logger = logger if logger is not None else logging.getLogger(
+            __name__)
         self.command = command
         self.workdir = workdir
         self.out_directory = tempfile.mkdtemp("oscal-pr-test-out")
 
-    def run(self, src_path) -> ET.ElementTree:
+        self.logger.debug(
+            f"Created temporary output directory '{self.out_directory}'")
+
+    def run(self, src_path, indent=0) -> ET.ElementTree:
         """
         Run the command specified by `self.command`, substituting `DRIVER_SOURCE_TOKEN` and
         `DRIVER_DESTINATION_TOKEN` with `src_path` and a generated output path respectively.
@@ -121,6 +136,8 @@ class Driver(object):
             .replace(DRIVER_SOURCE_TOKEN, f"'{src_path}'")\
             .replace(DRIVER_DESTINATION_TOKEN, f"'{dest_path}'")
 
+        self.logger.debug(f"{INDENT_TEXT*indent}Running command `{command}`")
+
         # Notice: this code does not protect against shell injection of any kind,
         # `self.command` and `src_path` must be trusted.
         ret = subprocess.run(command, shell=True,
@@ -135,6 +152,8 @@ class Driver(object):
 
     def cleanup(self):
         """Delete temporary directory"""
+        self.logger.debug(
+            f"Removing temporary output directory '{self.out_directory}'")
         shutil.rmtree(self.out_directory)
 
 
@@ -192,7 +211,7 @@ def compare_elements(e1: Optional[ET.ElementTree], e2: Optional[ET.ElementTree],
                 # zip_longest returns None for extra items of the shorter iterator
                 # XPath starts lists with 1
                 _, child_differences = compare_elements(
-                    c1, c2, path=f"{path}/[{i + 1}]", e1Name=e1Name, e2Name=e2Name)
+                    c1, c2, path=f"{path}/*[{i + 1}]", e1Name=e1Name, e2Name=e2Name)
                 differences += child_differences
 
     return len(differences) == 0, differences
@@ -207,15 +226,17 @@ QUERY_NS = {
     "oscal": "http://csrc.nist.gov/ns/oscal/1.0"
 }
 
-INDENT_TEXT = "  "
-
 
 class RequirementTests(object):
-    def __init__(self, spec_path=DEFAULT_SPEC_PATH, tests_path=DEFAULT_TESTS_PATH) -> None:
+    def __init__(self, spec_path=DEFAULT_SPEC_PATH, tests_path=DEFAULT_TESTS_PATH,
+                 logger: Optional[logging.Logger] = None) -> None:
         self.spec_path = spec_path
         self.tests_path = tests_path
 
         self.spec = ET.parse(self.spec_path)
+
+        self.logger = logger if logger is not None else logging.getLogger(
+            __name__)
 
         with open(self.tests_path) as tests_file:
             tests_json = json.loads(tests_file.read())
@@ -277,37 +298,38 @@ class RequirementTests(object):
             extra_warning = f"{Colors.RED}+{len(unknown_requirements)}" if len(
                 unknown_requirements) > 0 else ""
 
-            print(
+            self.logger.info(
                 f"{Colors.BOLD}{section_color}{section_head} ({section_id}): {len(covered_requirements)}/{len(requirements)} {extra_warning}{Colors.END}")
 
             for requirement_id, level in self.section_requirements[section_id].items():
                 requirement_color = Colors.GREEN if requirement_id in tested_requirements else Colors.RED
-                print(f"    {requirement_color}{requirement_id} - {level}")
+                self.logger.info(
+                    f"{INDENT_TEXT}{requirement_color}{section_id}/{requirement_id} - {level}{Colors.END}")
 
             # Warn the user of extraneous requirements in the section
             for requirement_id in unknown_requirements:
-                print(
-                    f"\n    {Colors.YELLOW}Warning: Unknown requirement id {requirement_id}{Colors.END}")
+                self.logger.warning(
+                    f"{INDENT_TEXT}{Colors.YELLOW}Unknown requirement id {requirement_id}{Colors.END}")
 
         # Warn the user of extraneous sections in the tests
         for section_id in set(covered_tests.keys()).difference(set(self.section_heads.keys())):
-            print(
-                f"{Colors.YELLOW}Warning: Unknown section id {section_id} containing {len(covered_tests[section_id])} requirements{Colors.END}")
+            self.logger.warning(
+                f"{Colors.YELLOW}Unknown section id {section_id} containing {len(covered_tests[section_id])} requirements{Colors.END}")
 
     def run(self, command, do_cleanup=True) -> bool:
-        driver = Driver(command, self.tests_workdir)
+        driver = Driver(command, self.tests_workdir, logger=self.logger)
 
         suite_pass = True
 
         try:
             for test in self.tests:
                 test_info = f"requirement({test['section_id']}/{test['requirement_id']})"
-                print(f"{Colors.BOLD}{test_info}{Colors.END}")
+                self.logger.info(f"{Colors.BOLD}{test_info}{Colors.END}")
                 if self._run_test(driver, test, indent=1):
-                    print(
+                    self.logger.info(
                         f"{Colors.BOLD}{Colors.GREEN}{test_info}... PASS{Colors.END}")
                 else:
-                    print(
+                    self.logger.error(
                         f"{Colors.BOLD}{Colors.RED}{test_info}... FAIL{Colors.END}")
                     suite_pass = False
         finally:
@@ -315,10 +337,11 @@ class RequirementTests(object):
                 driver.cleanup()
 
         if suite_pass:
-            print(
-                f"\n{Colors.GREEN}Spec suite {self.tests_path}... PASS{Colors.END}")
+            self.logger.info(
+                f"{Colors.GREEN}Spec suite {self.tests_path}... PASS{Colors.END}")
         else:
-            print(f"\n{Colors.RED}Spec suite {self.tests_path}... FAIL{Colors.END}")
+            self.logger.error(
+                f"{Colors.RED}Spec suite {self.tests_path}... FAIL{Colors.END}")
 
         return suite_pass
 
@@ -328,16 +351,17 @@ class RequirementTests(object):
         for scenario in requirement["scenarios"]:
             scenario_info = f"{INDENT_TEXT * indent}scenario(source='{scenario['source_profile_path']}', expected='{scenario['expected_catalog_path']}')"
 
-            print(f"{Colors.BOLD}{scenario_info}{Colors.END}")
+            self.logger.info(f"{Colors.BOLD}{scenario_info}{Colors.END}")
 
             scenario_pass = self._run_test_scenario(
                 driver, scenario, indent=indent + 1)
 
             if scenario_pass:
-                print(
+                self.logger.info(
                     f"{Colors.BOLD}{Colors.GREEN}{scenario_info}... PASS{Colors.END}")
             else:
-                print(
+                # TODO: param to fail if the level is not "must"
+                self.logger.error(
                     f"{Colors.BOLD}{Colors.RED}{scenario_info}... FAIL{Colors.END}")
                 test_pass = False
 
@@ -356,7 +380,7 @@ class RequirementTests(object):
         expected = ET.parse(expected_path)
 
         # Driver already uses the spec tests file's parent dir as the cwd, no path correction needed
-        result = driver.run(scenario["source_profile_path"])
+        result = driver.run(scenario["source_profile_path"], indent=indent + 1)
 
         # if no selection expressions exist, test still successfully produced an output
         scenario_pass = True
@@ -366,25 +390,29 @@ class RequirementTests(object):
                 selection_expression, QUERY_NS)
 
             for i, (result_elem, expected_elem) in enumerate(zip(result_selection, expected_selection)):
+                # XPath starts lists with 1
+                selection_expression_indexed = f"{selection_expression}{f'[{i + 1}]' if len(result_selection) > 1 or len(expected_selection) > 1 else ''}"
                 same, differences = compare_elements(result_elem, expected_elem,
                                                      # XPath selection used for debugging. Only specify position predicate if necessary
-                                                     f"{selection_expression}{f'[{i + 1}]' if len(result_selection) > 1 or len(expected_selection) > 1 else ''}",
-                                                     e1Name="result", e2Name="expected")
-                if not same:
+                                                     selection_expression_indexed, e1Name="result", e2Name="expected")
+                if same:
+                    self.logger.debug(
+                        f"{Colors.GREEN}{INDENT_TEXT * (indent + 1)}selection '{selection_expression_indexed}' result matched{Colors.END}")
+                else:
                     scenario_pass = False
-                    print(
-                        f"{Colors.RED}{INDENT_TEXT * indent}selection '{selection_expression}' result mismatch (index={i}):{Colors.END}")
+                    self.logger.error(
+                        f"{Colors.RED}{INDENT_TEXT * indent}selection '{selection_expression_indexed}' result mismatch:{Colors.END}")
                     for difference in differences:
                         # Clean up tags in comments to use namespaces
                         difference = difference.replace(
                             f"{{{QUERY_NS['oscal']}}}", "oscal:")
 
-                        print(
+                        self.logger.error(
                             f"{Colors.RED}{INDENT_TEXT * (indent + 1)}{difference}{Colors.END}")
 
             if len(result_selection) != len(expected_selection):
-                print(
-                    f"{Colors.RED}{INDENT_TEXT * (indent + 1)}selection '{selection_expression}' result size mismatch (got {len(result_selection)}, expecting {len(expected_selection)}){Colors.END}")
+                self.logger.error(
+                    f"{Colors.RED}{INDENT_TEXT * (indent + 1)}selection '{selection_expression}' result size mismatch (result={len(result_selection)}, expected={len(expected_selection)}){Colors.END}")
                 scenario_pass = False
 
         return scenario_pass
@@ -397,6 +425,8 @@ if __name__ == '__main__':
         "--tests_path", default=DEFAULT_TESTS_PATH, help="Override the tests file")
     parser.add_argument(
         "--spec_path", default=DEFAULT_SPEC_PATH, help="Override the spec file")
+    parser.add_argument("-v", "--verbose",
+                        help="display debug information", action="store_true")
 
     subparsers = parser.add_subparsers(
         required=True, dest="action", description="valid subcommands")
@@ -414,6 +444,15 @@ if __name__ == '__main__':
         'coverage', description='Report the coverage of the given tests file against the spec')
 
     args = parser.parse_args()
+
+    # truncate log levels for prettier console formatting
+    logging.addLevelName(logging.DEBUG, 'DEBG')
+    logging.addLevelName(logging.INFO, 'INFO')
+    logging.addLevelName(logging.WARNING, 'WARN')
+    logging.addLevelName(logging.ERROR, 'ERRR')
+    logging.addLevelName(logging.CRITICAL, 'CRIT')
+    logging.basicConfig(format='%(levelname)s: %(message)s',
+                        level=logging.DEBUG if args.verbose else logging.INFO)
 
     harness = RequirementTests(args.spec_path, args.tests_path)
 
