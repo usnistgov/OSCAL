@@ -4,10 +4,12 @@
         "requirement_id": "req-uri-resolve",
         "scenarios": [
             {
+                "description": "Check that group and control titles match, signalling that URIs have been resolved",
                 "source_profile_path": "requirement-tests/req-include-all-asis.xml",
                 "expected_catalog_path": "requirement-tests/output-expected/req-include-all-asis_RESOLVED.xml",
                 "selection_expressions": [
-                    "./oscal:group"
+                    "./oscal:group/oscal:title",
+                    "./oscal:group/oscal:control/oscal:title"
                 ]
             }
         ]

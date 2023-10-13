@@ -76,7 +76,7 @@ class Colors:
 
 class TestScenario(TypedDict):
     """A source profile along with the expected resulting profile and match expressions"""
-    description: Optional[str]
+    description: str
     source_profile_path: str
     expected_catalog_path: str
     selection_expressions: List[str]
@@ -372,6 +372,9 @@ class RequirementTests(object):
         Runs a given test scenario, returning True if all selection expressions pass
         """
 
+        self.logger.info(
+            f"{Colors.BLUE}{INDENT_TEXT * indent}Description: {scenario['description']}{Colors.END}")
+
         # Correct for path relative to spec tests file
         expected_path = scenario["expected_catalog_path"]
         if not os.path.isabs(expected_path):
@@ -397,11 +400,11 @@ class RequirementTests(object):
                                                      selection_expression_indexed, e1Name="result", e2Name="expected")
                 if same:
                     self.logger.debug(
-                        f"{Colors.GREEN}{INDENT_TEXT * (indent + 1)}selection '{selection_expression_indexed}' result matched{Colors.END}")
+                        f"{Colors.GREEN}{INDENT_TEXT * (indent + 1)}selection `{selection_expression_indexed}` result matched{Colors.END}")
                 else:
                     scenario_pass = False
                     self.logger.error(
-                        f"{Colors.RED}{INDENT_TEXT * indent}selection '{selection_expression_indexed}' result mismatch:{Colors.END}")
+                        f"{Colors.RED}{INDENT_TEXT * indent}selection `{selection_expression_indexed}` result mismatch:{Colors.END}")
                     for difference in differences:
                         # Clean up tags in comments to use namespaces
                         difference = difference.replace(
@@ -412,7 +415,7 @@ class RequirementTests(object):
 
             if len(result_selection) != len(expected_selection):
                 self.logger.error(
-                    f"{Colors.RED}{INDENT_TEXT * (indent + 1)}selection '{selection_expression}' result size mismatch (result={len(result_selection)}, expected={len(expected_selection)}){Colors.END}")
+                    f"{Colors.RED}{INDENT_TEXT * (indent + 1)}selection `{selection_expression}` result size mismatch (result={len(result_selection)}, expected={len(expected_selection)}){Colors.END}")
                 scenario_pass = False
 
         return scenario_pass
