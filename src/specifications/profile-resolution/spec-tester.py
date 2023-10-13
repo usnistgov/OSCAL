@@ -25,6 +25,7 @@ import tempfile
 import shutil
 import json
 import logging
+import time
 from itertools import zip_longest
 from xml.etree import ElementTree as ET
 
@@ -128,8 +129,9 @@ class Driver(object):
         Note: Places output files in a temporary directory, consumer must call .cleanup() to remove
         """
         src_name = os.path.basename(src_path)
-        # some-profile.xml => some-profile_RESOLVED.xml
-        dest_name = os.path.splitext(src_name)[0] + "_RESOLVED.xml"
+        # some-profile.xml => some-profile_RESOLVED_$TIMESTAMP.xml
+        dest_name = os.path.splitext(
+            src_name)[0] + f"_RESOLVED_{time.strftime('%Y%m%d-%H%M%S')}.xml"
         dest_path = os.path.join(self.out_directory, dest_name)
 
         command = self.command\
@@ -422,8 +424,10 @@ class RequirementTests(object):
 
 
 if __name__ == '__main__':
+    example_text = f"example: spec-tester.py run 'oscal-cli profile resolve --to=XML {DRIVER_SOURCE_TOKEN} {DRIVER_DESTINATION_TOKEN}'"
+
     parser = argparse.ArgumentParser(
-        description='OSCAL profile-resolution testing harness')
+        description='OSCAL profile-resolution testing harness', epilog=example_text)
     parser.add_argument(
         "--tests_path", default=DEFAULT_TESTS_PATH, help="Override the tests file")
     parser.add_argument(
@@ -435,7 +439,8 @@ if __name__ == '__main__':
         required=True, dest="action", description="valid subcommands")
 
     # "run" subcommand
-    parser_run = subparsers.add_parser('run', description='Run the spec tests')
+    parser_run = subparsers.add_parser(
+        'run', description='Run the spec tests', epilog=example_text)
     parser_run.add_argument(
         "command", help="The program to call, with the input profile and output path"
         f" replaced with {DRIVER_SOURCE_TOKEN} and {DRIVER_DESTINATION_TOKEN} respectively")
