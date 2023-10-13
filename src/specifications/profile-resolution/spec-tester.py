@@ -437,8 +437,8 @@ if __name__ == '__main__':
         "command", help="The program to call, with the input profile and output path"
         f" replaced with {DRIVER_SOURCE_TOKEN} and {DRIVER_DESTINATION_TOKEN} respectively")
 
-    # TODO argument for cleaning up output files
-
+    parser.add_argument("-k", "--keep",
+                        help="keep output directory", action="store_true")
     # "coverage" subcommand
     parser_coverage = subparsers.add_parser(
         'coverage', description='Report the coverage of the given tests file against the spec')
@@ -457,7 +457,7 @@ if __name__ == '__main__':
     harness = RequirementTests(args.spec_path, args.tests_path)
 
     if args.action == "run":
-        suite_pass = harness.run(args.command)
+        suite_pass = harness.run(args.command, do_cleanup=not args.keep)
         if not suite_pass:
             sys.exit(1)
     elif args.action == "coverage":
