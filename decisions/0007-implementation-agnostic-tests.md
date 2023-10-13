@@ -26,8 +26,6 @@ Some specifications such as [CommonMark](https://commonmark.org/) include a [tes
 
 ## Decision
 
-<!-- TODO -->
-
 ### SpecML
 
 The specification format will remain unchanged for now.
@@ -35,11 +33,44 @@ There is an argument for the format to be replaced or simplified in the future, 
 
 ### Test Suite Data Format
 
-<!-- TODO -->
+The test suite will be described using a JSON file with a simple data format.
+
+This file will contain a collection of objects that map to a given spec requirement via `section_id` and `requirement_id` fields.
+These objects will further contain a collection of "scenario" objects, each of which containing a `description`, `source_profile_path`, `expected_catalog_path`, and a collection of `selection_expressions`.
+
+For a given scenario, a test runner would be expected to perform profile resolution with the `source_profile_path` and compare selections of the resulting document with the `expected_catalog_path`.
+The `selection_expressions` are XPath expressions, though the [test harness](#test-harness) may further constrain the XPath expression's capabilities.
+
+Here is an example test suite made up of one requirement:
+
+```json
+[
+    {
+        "section_id": "import",
+        "requirement_id": "req-uri-resolve",
+        "scenarios": [
+            {
+                "description": "Check that group and control titles match, signalling that URIs have been resolved",
+                "source_profile_path": "requirement-tests/req-include-all-asis.xml",
+                "expected_catalog_path": "requirement-tests/output-expected/req-include-all-asis_RESOLVED.xml",
+                "selection_expressions": [
+                    "./oscal:group/oscal:title",
+                    "./oscal:group/oscal:control/oscal:title"
+                ]
+            }
+        ]
+    }
+]
+```
+
+The development of a JSON schema for this format is left as future work.
 
 ### Test Harness
 
-<!-- TODO -->
+A prototype testing harness has been developed, with the capability to report a given profile resolver's compliance to a specification given a [test suite JSON file](#test-suite-data-format).
+
+The prototype harness is built to be as simple as possible, avoiding external libraries.
+Python's native XPath capabilities are limited, further constraining the capabilities of the test suite.
 
 ## Consequences
 
