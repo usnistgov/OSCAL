@@ -156,6 +156,8 @@
         </enum>
         <enum value="community-cloud">The community cloud deployment model as defined by <a href="https://doi.org/10.6028/NIST.SP.800-145">The NIST Definition of Cloud Computing</a>.
         </enum>
+        <enum value="hybrid-cloud">The hybrid cloud deployment model as defined by as defined by <a href="https://doi.org/10.6028/NIST.SP.800-145">The NIST Definition of Cloud Computing</a>.
+        </enum>
         <!-- TODO: consider generalizing this in a way that applies to other usage contexts. -->
         <enum value="government-only-cloud">A specific type of community-cloud for use only by government services.</enum>
         <enum value="other">Any other type of cloud deployment model that is exclusive to the other choices.</enum>
