@@ -132,7 +132,7 @@
    </x:scenario>
    <x:scenario label="6.1.5 Multiple imports | Note that this occurs even if the same catalog is imported multiple times: each distinct import collects controls into a separate selection">
       <x:scenario label="Example req-chained-deepA.xml - PENDING&#xA;              chained profiles"
-                  pending="chained profiles"><?requirement rq-mulitple-imports ?>
+                  pending="chained profiles"><?requirement rq-multiple-imports ?>
          <x:context href="requirement-tests/req-chained-deepA.xml"/>
          <x:expect label="Resolution of req-chained-deepA.xml"
                    select="opr:scrub(.)"
