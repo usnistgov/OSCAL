@@ -2,7 +2,7 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns="http://csrc.nist.gov/ns/metaschema/test-suite/1.0"
     targetNamespace="http://csrc.nist.gov/ns/metaschema/test-suite/1.0" elementFormDefault="qualified">
-  <xs:include schemaLocation="metaschema-datatypes.xsd"/>
+  <xs:include schemaLocation="../../../build/metaschema-xslt/support/metaschema/schema/xml/metaschema-datatypes.xsd"/>
   
   <xs:element name="test-suite">
     <xs:complexType>

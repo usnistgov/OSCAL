@@ -412,7 +412,7 @@ profile:
       <section id="URI-multiple">
         <head>Multiple imports</head>
         <p>Each import directive is processed to produce a set of controls. <req
-            id="rq-mulitple-imports">Note that this occurs even if the same catalog is imported
+            id="rq-multiple-imports" level="must">Note that this occurs even if the same catalog is imported
             multiple times: each distinct import collects controls into a separate
               <int>selection</int></req>: </p>
         <tagging whose="source_profile">
@@ -445,7 +445,7 @@ intermediate:
           - ac-3
           - ac-4 
         </tagging>
-        <p><req id="rq-multiple-merge">The control inclusions are combined and collapsed in the next
+        <p><req id="rq-multiple-merge" level="must">The control inclusions are combined and collapsed in the next
             phase of processing</req>, <term>merge</term>(see <xref rid="merge-phase"/>) . </p>
         <p>Multiple imports against the same resource are allowed, and would most commonly occur when the profile author is using <xref rid="mapping"/> to create very specific output. 
           Multiple imports may result in outputs with clashing control IDs if mapping or the merge directive is not set correctly.</p>
