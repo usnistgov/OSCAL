@@ -1,10 +1,10 @@
 # OSCAL Content Data Governance and Release Management
 
-Date: 10/13/2023
+Date: 11/09/2023
 
 ## Status
 
-Proposed
+Approved
 
 ## Context
 
@@ -41,7 +41,7 @@ Moving forward, the team must commit to the following.
 1. The oscal-content repository will move to a `Makefile`-based approach for [usnistgov/oscal-content#116](https://github.com/usnistgov/oscal-content/issues/116) when [usnistgov/oscal-content#204](https://github.com/usnistgov/oscal-content/pull/204) is merged to match the same approach for the core repository enacted in [ADR 5](./0005-repository-reorganization.md). For consistency and simplicity of this new workflow, all examples, profiles, and catalogs will be developed in the [src directory](https://github.com/usnistgov/oscal-content/tree/7a079afed39b1a36a091c8d4ac939d096d42c76b/src) in OSCAL XML format only and converted later. This approach will simplify the architecture and improve efficiency of development cycles.
 1. Every OSCAL model release must coincide with an oscal-content release. At a minimum, even if examples or catalogs to be published do not change any content, the team must do the following.
     - Update the OSCAL submodule to the latest tagged release.
-    - All source catalogs and profiles must have their `oscal-version` and `version` incremented. Their `last-modified` and `published` timestamps must be updated.
+    - All source catalogs and profiles must have their `oscal-version` and `version` incremented. Their `last-modified` and `published` timestamps must be updated, even if the updated content in that release is backwards compatible with previous major, minor, and/or patch versions.
     - All `xml-model` instructions at the top of every example, profile, and catalog instance must be updated to the complete OSCAL XML schema artifact for the release that matches the `oscal-version`.
 1. The team will tag the commit with generated artifacts and mimic [the core repository's versioning, branching, and release guidelines](https://github.com/usnistgov/OSCAL/blob/f159b28948cb0034370fb819a45bfdaeaef5192a/versioning-and-branching.md), following [SemVer requirements](https://semver.org/).
 1. Releases of content will be created alongside the core OSCAL repository.
