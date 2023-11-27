@@ -1,2 +1,8 @@
-# directory specific owners
+# The OSCAL Admins team governs critical directories
+.github/workflows/      @usnistgov/itl-oscal-admins
+build/Makefile          @usnistgov/itl-oscal-admins
+# The OSCAL Maintainers team governs source and build directories
+src/                    @usnistgov/itl-oscal-maintainers
+build/                  @usnistgov/itl-oscal-maintainers
+# Otherwise governed by the OSCAL Team
 *                       @usnistgov/itl-oscal
