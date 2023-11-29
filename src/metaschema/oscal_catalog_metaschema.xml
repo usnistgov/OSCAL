@@ -146,7 +146,7 @@
                   </allowed-values>
                   <allowed-values target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
                         <enum value="overview">An introduction to a control or a group of controls.</enum>
-                        <enum value="statement">A set of implementation requirements.</enum>
+                        <enum value="instruction">An information providing directions for a control or a group of controls.</enum>
                   </allowed-values>
             </constraint>
             <remarks>
@@ -255,7 +255,7 @@
                         target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
                         <enum value="overview">An introduction to a control or a group of
                               controls.</enum>
-                        <enum value="statement">A set of implementation requirements.</enum>
+                        <enum value="statement">A set of implementation requirements or recommendations.</enum>
                         <enum value="guidance">Additional information to consider when selecting,
                               implementing, assessing, and monitoring a control.</enum>
                         <enum value="example">An example of an implemented requirement or control statement.</enum>
