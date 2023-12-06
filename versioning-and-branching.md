@@ -113,7 +113,7 @@ Once a patch release is ready, the release can be made using the following Git c
 ```
 git checkout main
 git merge --no-ff release-1.2
-git tag -a 1.2.1
+git tag -a v1.2.1
 git push --follow-tags
 ```
 
