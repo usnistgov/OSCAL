@@ -13,7 +13,7 @@
 <METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema-xslt/support/metaschema/schema/xml/metaschema.xsd">
   <schema-name>OSCAL System Security Plan (SSP) Model</schema-name>
-  <schema-version>1.1.1</schema-version>
+  <schema-version>1.1.2</schema-version>
   <short-name>oscal-ssp</short-name>
   <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
   <json-base-uri>http://csrc.nist.gov/ns/oscal</json-base-uri>
@@ -155,6 +155,8 @@
         <enum value="private-cloud">The private cloud deployment model as defined by <a href="https://doi.org/10.6028/NIST.SP.800-145">The NIST Definition of Cloud Computing</a>.
         </enum>
         <enum value="community-cloud">The community cloud deployment model as defined by <a href="https://doi.org/10.6028/NIST.SP.800-145">The NIST Definition of Cloud Computing</a>.
+        </enum>
+        <enum value="hybrid-cloud">The hybrid cloud deployment model as defined by <a href="https://doi.org/10.6028/NIST.SP.800-145">The NIST Definition of Cloud Computing</a>.
         </enum>
         <!-- TODO: consider generalizing this in a way that applies to other usage contexts. -->
         <enum value="government-only-cloud">A specific type of community-cloud for use only by government services.</enum>

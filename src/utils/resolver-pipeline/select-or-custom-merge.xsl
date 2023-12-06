@@ -11,8 +11,9 @@
 
     <xsl:include href="oscal-profile-resolve-functions.xsl"/>
 
-    <!-- A control is included if it is selected by the provided import instruction -->
-    <xsl:template match="control" mode="o:select" as="element(o:control)?">
+    <!-- A control is included if it is selected by the provided import instruction. -->
+    <!-- Also, for a nonselected control, this template can return selected children. -->
+    <xsl:template match="control" mode="o:select" as="element(o:control)*">
         <xsl:param name="import-instruction" tunnel="yes" required="yes"/>
         <xsl:choose>
             <xsl:when test="o:selects($import-instruction,.)">
@@ -20,12 +21,12 @@
                     <xsl:call-template name="add-process-id"/>
                     <xsl:apply-templates mode="#current" select="node() | @*"/>
                 </xsl:copy>
-           </xsl:when>
-           <xsl:otherwise>
-               <!-- Visit child controls in case they are selected using
+            </xsl:when>
+            <xsl:otherwise>
+                <!-- Visit child controls in case they are selected using
                    with-parent-controls="no". -->
-               <xsl:apply-templates mode="#current" select="control"/>
-           </xsl:otherwise>
+                <xsl:apply-templates mode="#current" select="control"/>
+            </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
 
@@ -50,28 +51,20 @@
             <xsl:sequence select="exists($importing/include-all)"/>
             <xsl:sequence select="some $c in ($importing/include-controls/with-id)
                 satisfies ($c = $candidate/@id)"/>
-            <xsl:sequence select="some $c in ($importing/include-controls[o:calls-parents(.)]/with-id)
-                satisfies ($c = $candidate/descendant::control/@id)"/>
             <xsl:sequence select="some $c in ($importing/include-controls[o:calls-children(.)]/with-id)
                 satisfies ($c = $candidate/ancestor::control/@id)"/>
             <xsl:sequence select="some $m in ($importing/include-controls/matching[@pattern != ''])
                 satisfies (matches($candidate/@id,$m/@pattern/o:glob-as-regex(string(.)) ))"/>
-            <xsl:sequence select="some $m in ($importing/include-controls[o:calls-parents(.)]/matching[@pattern != '']), $a in $candidate/descendant::control 
-                satisfies (matches($a/@id,$m/@pattern/o:glob-as-regex(string(.))))"/>
             <xsl:sequence select="some $m in ($importing/include-controls[o:calls-children(.)]/matching[@pattern != '']), $a in $candidate/ancestor::control 
                 satisfies (matches($a/@id,$m/@pattern/o:glob-as-regex(string(.))))"/>
         </xsl:variable>
         <xsl:variable name="exclude-reasons" as="xs:boolean+">
             <xsl:sequence select="exists($candidate/parent::control) and $importing/include-all/@with-child-controls='no'"/>
             <xsl:sequence select="some $c in ($importing/exclude-controls/with-id) satisfies ($c = $candidate/@id)"/>
-            <xsl:sequence select="some $c in ($importing/exclude-controls[o:calls-parents(.)]/with-id)
-                satisfies ($c = $candidate/descendant::control/@id)"/>
             <xsl:sequence select="some $c in ($importing/exclude-controls[o:calls-children(.)]/with-id)
                 satisfies ($c = $candidate/ancestor::control/@id)"/>
             <xsl:sequence select="some $m in ($importing/exclude-controls/matching[@pattern != ''])
                 satisfies (matches($candidate/@id,$m/@pattern/o:glob-as-regex(string(.))))"/>
-            <xsl:sequence select="some $m in ($importing/exclude-controls[o:calls-parents(.)]/matching[@pattern != '']), $a in $candidate/descendant::control
-                satisfies (matches($a/@id,$m/@pattern/o:glob-as-regex(string(.))))"/>
             <xsl:sequence select="some $m in ($importing/exclude-controls[o:calls-children(.)]/matching[@pattern != '']), $a in $candidate/ancestor::control
                 satisfies (matches($a/@id,$m/@pattern/o:glob-as-regex(string(.))))"/>
         </xsl:variable>
@@ -82,11 +75,6 @@
     <xsl:function name="o:calls-children" as="xs:boolean">
         <xsl:param name="caller" as="element()"/>
         <xsl:sequence select="$caller/@with-child-controls='yes'"/>
-    </xsl:function>
-    
-    <xsl:function name="o:calls-parents" as="xs:boolean">
-        <xsl:param name="caller" as="element()"/>
-        <xsl:sequence select="not($caller/@with-parent-controls='no')"/>
     </xsl:function>
 
     <xsl:function name="opr:catalog-identifier" as="xs:string">

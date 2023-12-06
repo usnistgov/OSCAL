@@ -67,7 +67,7 @@
       <statement>If a processor encounters a circular import as described above (self-imports are inherently circular), the processor MUST cease processing and generate an error. </statement>
       <test file="requirement-tests/req-circular_import.xml" status="pending">PENDING circular import detection</test>
    </requirement>
-   <requirement id="rq-mulitple-imports">
+   <requirement id="rq-multiple-imports">
       <statement>Note that this occurs even if the same catalog is imported multiple times: each distinct import collects controls into a separate selection</statement>
       <test file="requirement-tests/req-chained-deepA.xml" status="pending">PENDING chained profiles</test>
    </requirement>

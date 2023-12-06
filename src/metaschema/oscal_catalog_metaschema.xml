@@ -8,7 +8,7 @@
 <?xml-stylesheet type="text/css" href="metaschema-author.css"?>
 <METASCHEMA xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0">
       <schema-name>OSCAL Control Catalog Model</schema-name>
-      <schema-version>1.1.1</schema-version>
+      <schema-version>1.1.2</schema-version>
       <short-name>oscal-catalog</short-name>
       <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
       <json-base-uri>http://csrc.nist.gov/ns/oscal</json-base-uri>
@@ -146,6 +146,7 @@
                   </allowed-values>
                   <allowed-values target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
                         <enum value="overview">An introduction to a control or a group of controls.</enum>
+                        <enum value="instruction">Information providing directions for a control or a group of controls.</enum>
                   </allowed-values>
             </constraint>
             <remarks>
@@ -254,9 +255,10 @@
                         target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
                         <enum value="overview">An introduction to a control or a group of
                               controls.</enum>
-                        <enum value="statement">A set of control implementation requirements.</enum>
+                        <enum value="statement">A set of implementation requirements or recommendations.</enum>
                         <enum value="guidance">Additional information to consider when selecting,
                               implementing, assessing, and monitoring a control.</enum>
+                        <enum value="example">An example of an implemented requirement or control statement.</enum>
                         <enum value="assessment" deprecated="1.0.1">**(deprecated)** Use
                               'assessment-method' instead.</enum>
                         <enum value="assessment-method">The part describes a method-based assessment

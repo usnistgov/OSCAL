@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <METASCHEMA xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" abstract="yes">
    <schema-name>OSCAL Assessment Layer Format -- Common Modules</schema-name>
-   <schema-version>1.1.1</schema-version>
+   <schema-version>1.1.2</schema-version>
    <short-name>oscal-assessment-common</short-name>
    <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
    <json-base-uri>http://csrc.nist.gov/ns/oscal</json-base-uri>

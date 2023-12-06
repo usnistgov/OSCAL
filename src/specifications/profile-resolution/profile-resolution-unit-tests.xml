@@ -87,7 +87,7 @@
          <addresses-requirement requirement-id="req-resolve-profile">When a profile imports a profile,
             the subordinate profile SHOULD be resolved first into a catalog using this
             specification, before it is imported. </addresses-requirement>
-         <addresses-requirement requirement-id="rq-mulitple-imports">Note that this occurs even if the same catalog is imported
+         <addresses-requirement requirement-id="rq-multiple-imports">Note that this occurs even if the same catalog is imported
             multiple times: each distinct import collects controls into a separate
               selection</addresses-requirement>
          <addresses-requirement requirement-id="rq-multiple-merge">The control inclusions are combined and collapsed in the next

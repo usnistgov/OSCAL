@@ -292,40 +292,6 @@
                 </profile>
             </x:expect>
         </x:scenario>
-    
-        <x:scenario label="Default value of 'with-parent-controls' (yes)">
-            <x:context>
-                <profile>
-                    <import href="{$ov:filedir}/catalogs/xyz-tiny_catalog.xml">
-                        <include-controls with-parent-controls="yes">
-                            <with-id>z3.a-1</with-id>
-                        </include-controls>
-                    </import>
-                </profile>
-            </x:context>
-            
-            <x:expect label="Control Z3-A-1 and all its ancestors">
-                <profile>
-                    <selection uuid="..." opr:src="...">
-                        <metadata>...</metadata>
-                        <group opr:id="...">
-                            <title>Group X of XYZ</title>
-                        </group>
-                        <group opr:id="...">
-                            <title>Group Y of XYZ</title>
-                        </group>
-                        <group opr:id="...">
-                            <title>Group Z of XYZ</title>
-                            <control id="z3" opr:id="..."><title>Control Z3</title>
-                                <control id="z3.a" opr:id="..."><title>Control Z3-A</title>
-                                    <control id="z3.a-1" opr:id="..."><title>Control Z3-A-1</title></control>
-                                </control>
-                            </control>
-                        </group>
-                    </selection>
-                </profile>
-            </x:expect>
-        </x:scenario>
 
         <x:scenario label="Nondefault value of 'with-parent-controls' (no)">
             <x:context>
@@ -700,6 +666,20 @@
             </x:context>
             <x:expect label="Nothing" select="()"/>
         </x:scenario>
+        <x:scenario label="Control is not selected but its child controls are selected">
+            <!--Below, $import-instruction is an <import> element that
+                selects children a1.a and a1.c of the control with id="a1",
+                and the context node has id="a1". -->
+            <x:context mode="o:select"
+                select="doc($ov:filedir || '/catalogs/abc-multiple-children_catalog.xml')//o:control[@id='a1']">
+                <x:param name="import-instruction" tunnel="yes"
+                    select="(doc($ov:filedir || '/without-parent_profile.xml')//o:import)[1]"/>
+            </x:context>
+            <x:expect label="Copy of selected child control elements with opr:id inserted">
+                <control id="a1.a" opr:id="...">...</control>
+                <control id="a1.c" opr:id="...">...</control>
+            </x:expect>
+        </x:scenario>
     </x:scenario>
 
     <x:scenario label="Tests for match='param' mode='o:select' template">
@@ -785,32 +765,6 @@
                     </x:param>
                 </x:call>
                 <x:expect label="false" select="false()"/>
-            </x:scenario>
-            <x:scenario label="Select descendant ID, omitting with-parent-controls.">
-                <x:call function="o:selects">
-                    <x:param name="importing">
-                        <import>
-                            <include-controls>
-                                <with-id>level-four</with-id>
-                            </include-controls>
-                        </import>
-                    </x:param>
-                    <x:param name="candidate" select="$ov:control-hierarchy//o:control[@id='level-two']"/>
-                </x:call>
-                <x:expect label="true (with-parent-controls defaults to yes)" select="true()"/>
-            </x:scenario>
-            <x:scenario label="Select descendant ID, and explicitly include parent controls.">
-                <x:call function="o:selects">
-                    <x:param name="importing">
-                        <import>
-                            <include-controls with-parent-controls="yes">
-                                <with-id>level-four</with-id>
-                            </include-controls>
-                        </import>
-                    </x:param>
-                    <x:param name="candidate" select="$ov:control-hierarchy//o:control[@id='level-two']"/>
-                </x:call>
-                <x:expect label="true" select="true()"/>
             </x:scenario>
             <x:scenario label="Select descendant ID and do not include parent controls.">
                 <x:call function="o:selects">
@@ -924,32 +878,6 @@
                 </x:call>
                 <x:expect label="false" select="false()"/>
             </x:scenario>
-            <x:scenario label="Match descendant ID, omitting with-parent-controls.">
-                <x:call function="o:selects">
-                    <x:param name="importing">
-                        <import>
-                            <include-controls>
-                                <matching pattern="*-four"/>
-                            </include-controls>
-                        </import>
-                    </x:param>
-                    <x:param name="candidate" select="$ov:control-hierarchy//o:control[@id='level-two']"/>
-                </x:call>
-                <x:expect label="true (with-parent-controls defaults to yes)" select="true()"/>
-            </x:scenario>
-            <x:scenario label="Match descendant ID, with parent controls.">
-                <x:call function="o:selects">
-                    <x:param name="importing">
-                        <import>
-                            <include-controls with-parent-controls="yes">
-                                <matching pattern="*-four"/>
-                            </include-controls>
-                        </import>
-                    </x:param>
-                    <x:param name="candidate" select="$ov:control-hierarchy//o:control[@id='level-two']"/>
-                </x:call>
-                <x:expect label="true" select="true()"/>
-            </x:scenario>
             <x:scenario label="Match descendant ID, without parent controls.">
                 <x:call function="o:selects">
                     <x:param name="importing">
@@ -1001,23 +929,6 @@
                     <x:param name="candidate" select="$ov:control-hierarchy//o:control[@id='level-four']"/>
                 </x:call>
                 <x:expect label="false" select="false()"/>
-            </x:scenario>
-            <x:scenario label="Include grandchild with parent controls, and include child without parent controls">
-                <x:call function="o:selects">
-                    <x:param name="importing">
-                        <import>
-                            <include-controls with-parent-controls="yes">
-                                <with-id>level-four</with-id>
-                            </include-controls>
-                            <include-controls with-parent-controls="no">
-                                <with-id>level-three</with-id>
-                            </include-controls>
-                        </import>
-                    </x:param>
-                    <x:param name="candidate"
-                        select="$ov:control-hierarchy//o:control[@id='level-two']"/>
-                </x:call>
-                <x:expect label="true" select="true()"/>
             </x:scenario>
             <x:scenario label="Include grandparent with child controls, and include parent without child controls">
                 <x:call function="o:selects">
@@ -1078,48 +989,6 @@
                     <x:param name="candidate">
                         <control id="nonmatch"/>
                     </x:param>
-                </x:call>
-                <x:expect label="true" select="true()"/>
-            </x:scenario>
-            <x:scenario label="Exclude descendant ID, omitting with-parent-controls.">
-                <x:call function="o:selects">
-                    <x:param name="importing">
-                        <import>
-                            <include-all/>
-                            <exclude-controls>
-                                <with-id>level-four</with-id>
-                            </exclude-controls>
-                        </import>
-                    </x:param>
-                    <x:param name="candidate" select="$ov:control-hierarchy//o:control[@id='level-two']"/>
-                </x:call>
-                <x:expect label="false (with-parent-controls defaults to yes)" select="false()"/>
-            </x:scenario>
-            <x:scenario label="Exclude descendant ID with parent controls.">
-                <x:call function="o:selects">
-                    <x:param name="importing">
-                        <import>
-                            <include-all/>
-                            <exclude-controls with-parent-controls="yes">
-                                <with-id>level-four</with-id>
-                            </exclude-controls>
-                        </import>
-                    </x:param>
-                    <x:param name="candidate" select="$ov:control-hierarchy//o:control[@id='level-two']"/>
-                </x:call>
-                <x:expect label="false" select="false()"/>
-            </x:scenario>
-            <x:scenario label="Exclude descendant ID without parent controls.">
-                <x:call function="o:selects">
-                    <x:param name="importing">
-                        <import>
-                            <include-all/>
-                            <exclude-controls with-parent-controls="no">
-                                <with-id>level-four</with-id>
-                            </exclude-controls>
-                        </import>
-                    </x:param>
-                    <x:param name="candidate" select="$ov:control-hierarchy//o:control[@id='level-two']"/>
                 </x:call>
                 <x:expect label="true" select="true()"/>
             </x:scenario>
@@ -1262,34 +1131,6 @@
                     </x:param>
                 </x:call>
                 <x:expect label="true" select="true()"/>
-            </x:scenario>
-            <x:scenario label="Match descendant ID, omitting with-parent-controls.">
-                <x:call function="o:selects">
-                    <x:param name="importing">
-                        <import>
-                            <include-all/>
-                            <exclude-controls>
-                                <matching pattern="*-four"/>
-                            </exclude-controls>
-                        </import>
-                    </x:param>
-                    <x:param name="candidate" select="$ov:control-hierarchy//o:control[@id='level-two']"/>
-                </x:call>
-                <x:expect label="false (with-parent-controls defaults to yes)" select="false()"/>
-            </x:scenario>
-            <x:scenario label="Match descendant ID, with parent controls.">
-                <x:call function="o:selects">
-                    <x:param name="importing">
-                        <import>
-                            <include-all/>
-                            <exclude-controls with-parent-controls="yes">
-                                <matching pattern="*-four"/>
-                            </exclude-controls>
-                        </import>
-                    </x:param>
-                    <x:param name="candidate" select="$ov:control-hierarchy//o:control[@id='level-two']"/>
-                </x:call>
-                <x:expect label="false" select="false()"/>
             </x:scenario>
             <x:scenario label="Match descendant ID, without parent controls.">
                 <x:call function="o:selects">
@@ -1451,33 +1292,6 @@
                 </x:param>
             </x:call>
             <x:expect label="false" select="false()"/>
-        </x:scenario>
-    </x:scenario>
-
-    <x:scenario label="Tests for o:calls-parents function">
-        <x:scenario label="with-parent-controls attribute is 'yes'">
-            <x:call function="o:calls-parents">
-                <x:param>
-                    <elem with-parent-controls="yes"/>
-                </x:param>
-            </x:call>
-            <x:expect label="true" select="true()"/>
-        </x:scenario>
-        <x:scenario label="with-parent-controls attribute is 'no'">
-            <x:call function="o:calls-parents">
-                <x:param>
-                    <elem with-parent-controls="no"/>
-                </x:param>
-            </x:call>
-            <x:expect label="false" select="false()"/>
-        </x:scenario>
-        <x:scenario label="with-parent-controls attribute is omitted">
-            <x:call function="o:calls-parents">
-                <x:param>
-                    <elem/>
-                </x:param>
-            </x:call>
-            <x:expect label="true" select="true()"/>
         </x:scenario>
     </x:scenario>
 
