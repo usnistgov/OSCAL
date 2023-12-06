@@ -7,7 +7,7 @@
 <METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0">
       <schema-name>OSCAL Profile Model</schema-name>
-      <schema-version>1.1.1</schema-version>
+      <schema-version>1.1.2</schema-version>
       <short-name>oscal-profile</short-name>
       <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
       <json-base-uri>http://csrc.nist.gov/ns/oscal</json-base-uri>
