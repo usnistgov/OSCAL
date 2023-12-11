@@ -1,0 +1,569 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../build/metaschema-xslt/src/validate/metaschema-composition-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<METASCHEMA xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema-xslt/support/metaschema/schema/xml/metaschema.xsd">
+   <schema-name>OSCAL Component Definition Model</schema-name>
+   <schema-version>1.1.2</schema-version>
+   <short-name>oscal-component-definition</short-name>
+   <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
+   <json-base-uri>http://csrc.nist.gov/ns/oscal</json-base-uri>
+   <remarks>
+      <p>The OSCAL Component Definition Model can be used to describe the implementation of controls in a <code>component</code> or a set of components grouped as a <code>capability</code>. A component can be either a <em>technical component</em>, or a <em>documentary component</em>.</p>
+      <p>A technical component is a component that is implemented in hardware (physical or virtual) or software. Suppliers may document components in an OSCAL component definition that describes the implementation of controls in their hardware and software.</p>
+      <p>A documentary component is a component implemented for a documented process, procedure, or policy.  Suppliers may document components in an OSCAL component definition that describes the implementation of controls in their process, procedure, or policy.</p>
+      <p>The information provided by a technical or documentary component can be used by component consumers to provide starting narratives for documenting control implementations in an OSCAL SSP.</p>
+      <p>The root of the OSCAL Implementation Layer Component Definition model is <code>component-definition</code>.</p>
+   </remarks>
+   <import href="oscal_implementation-common_metaschema_RESOLVED.xml"/>
+   <import href="oscal_responsibility-common_metaschema_RESOLVED.xml"/>
+   <define-assembly name="component-definition">
+      <formal-name>Component Definition</formal-name>
+      <description>A collection of component descriptions, which may optionally be grouped by capability.</description>
+      <root-name>component-definition</root-name>
+      <define-flag name="uuid" as-type="uuid" required="yes">
+         <formal-name>Component Definition Universally Unique Identifier</formal-name>
+         <!-- Identifier Declaration -->
+         <description>Provides a globally unique means to identify a given component definition instance.</description>
+         <prop name="value-type" value="identifier"/>
+         <prop name="identifier-type" value="machine-oriented"/>
+         <prop name="identifier-uniqueness" value="global"/>
+         <prop name="identifier-scope" value="cross-instance"/>
+         <prop name="identifier-persistence" value="change-on-write"/>
+      </define-flag>
+      <model>
+         <assembly ref="metadata" min-occurs="1"/>
+         <assembly ref="import-component-definition" max-occurs="unbounded">
+            <group-as name="import-component-definitions" in-json="ARRAY"/>
+         </assembly>
+         <assembly ref="defined-component" max-occurs="unbounded">
+            <use-name>component</use-name>
+            <group-as name="components" in-json="ARRAY"/>
+         </assembly>
+         <assembly ref="capability" max-occurs="unbounded">
+            <group-as name="capabilities" in-json="ARRAY"/>
+         </assembly>
+         <assembly ref="back-matter"/>
+      </model>
+      <constraint>
+         <index name="index-system-component-uuid" target="component">
+            <key-field target="@uuid"/>
+            <remarks>
+               <p>Since multiple <code>component</code> entries can be provided, each component must have a unique <code>uuid</code>.</p>
+            </remarks>
+         </index>
+         <is-unique id="unique-component-definition-capability" target="capability">
+            <key-field target="@uuid"/>
+            <remarks>
+               <p>A given <code>component</code> must not be referenced more than once within the same <code>capability</code>.</p>
+            </remarks>
+         </is-unique>
+      </constraint>
+   </define-assembly>
+   <define-assembly name="import-component-definition">
+      <formal-name>Import Component Definition</formal-name>
+      <description>Loads a component definition from another resource.</description>
+      <define-flag name="href" as-type="uri-reference" required="yes">
+         <formal-name>Hyperlink Reference</formal-name>
+         <description>A link to a resource that defines a set of components and/or capabilities to import into this collection.</description>
+         <remarks>
+            <p>This value may be one of:</p>
+            <ol>
+               <li>an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
+               <li>a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing document, or</li>
+               <li>a bare URI fragment (i.e., `#uuid`) pointing to a <code>back-matter</code> resource in this or an imported document (see <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>).</li>
+            </ol>
+         </remarks>
+      </define-flag>
+   </define-assembly>
+   <define-assembly name="defined-component">
+      <formal-name>Component</formal-name>
+      <description>A defined component that can be part of an implemented system.</description>
+      <define-flag name="uuid" as-type="uuid" required="yes">
+         <formal-name>Component Identifier</formal-name>
+         <!-- Identifier Declaration -->
+         <description>Provides a globally unique means to identify a given component.</description>
+         <prop name="value-type" value="identifier"/>
+         <prop name="identifier-type" value="machine-oriented"/>
+         <prop name="identifier-uniqueness" value="global"/>
+         <prop name="identifier-scope" value="cross-instance"/>
+         <prop name="identifier-persistence" value="per-subject"/>
+      </define-flag>
+      <flag ref="defined-component-type" required="yes">
+         <use-name>type</use-name>
+      </flag>
+      <model>
+         <define-field name="title" as-type="markup-line" min-occurs="1">
+            <formal-name>Component Title</formal-name>
+            <description>A human readable name for the component.</description>
+         </define-field>
+         <define-field name="description"
+                        as-type="markup-multiline"
+                        min-occurs="1"
+                        in-xml="WITH_WRAPPER">
+            <formal-name>Component Description</formal-name>
+            <description>A description of the component, including information about its function.</description>
+         </define-field>
+         <define-field name="purpose" as-type="markup-line">
+            <formal-name>Purpose</formal-name>
+            <description>A summary of the technological or business purpose of the component.</description>
+         </define-field>
+         <assembly ref="property" max-occurs="unbounded">
+            <group-as name="props" in-json="ARRAY"/>
+         </assembly>
+         <assembly ref="link" max-occurs="unbounded">
+            <group-as name="links" in-json="ARRAY"/>
+         </assembly>
+         <assembly ref="responsible-role" max-occurs="unbounded">
+            <group-as name="responsible-roles" in-json="ARRAY"/>
+         </assembly>
+         <assembly ref="protocol" max-occurs="unbounded">
+            <group-as name="protocols" in-json="ARRAY"/>
+            <remarks>
+               <p>Used for <code>service</code> components to define the protocols supported by the service.</p>
+            </remarks>
+         </assembly>
+         <assembly ref="control-implementation" max-occurs="unbounded">
+            <group-as name="control-implementations" in-json="ARRAY"/>
+         </assembly>
+         <!--
+         <assembly ref="configuration" max-occurs="unbounded">
+           <group-as name="configurations" in-json="BY_KEY" />
+         </assembly>
+         <assembly ref="artifact" max-occurs="unbounded">
+           <group-as name="artifacts" in-json="BY_KEY" />
+         </assembly>
+-->
+         <field ref="remarks" in-xml="WITH_WRAPPER"/>
+      </model>
+      <constraint>
+         <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+        <!-- ========================================================================================================== -->
+        <!-- = Changes to the following values need to be synced with component in the SSP and component metaschemas. = -->
+        <!-- CHANGED (BJR): Done -->
+        <!-- ========================================================================================================== -->
+            <!-- These are shared between SSP components and component-definition components -->
+            <enum value="version">The version of the component.</enum>
+            <enum value="patch-level">The specific patch level of the component.</enum>
+            <enum value="model">The model of the component.</enum>
+            <!-- CHANGE: @name="date-released" changed to @name="release-date" -->
+            <enum value="release-date">The date the component was released, such as a software release date or policy publication date.</enum>
+            <enum value="validation-type">Used with component-type='validation' to provide a well-known name for a kind of validation.</enum>
+            <enum value="validation-reference">Used with component-type='validation' to indicate the validating body's assigned identifier for their validation of this component.</enum>
+            <!-- These are shared between SSP components, SSP inventory-items, and component-definition components -->
+            <enum value="asset-type">Simple indication of the asset's function, such as Router, Storage Array, DNS Server.</enum>
+            <enum value="asset-id">An organizationally specific identifier that is used to uniquely identify a logical or tangible item by the organization that owns the item.</enum>
+            <enum value="asset-tag">An asset tag assigned by the organization responsible for maintaining the logical or tangible item.</enum>
+            <enum value="public">Identifies whether the asset is publicly accessible (yes/no)</enum>
+            <enum value="virtual">Identifies whether the asset is virtualized (yes/no)</enum>
+            <enum value="vlan-id">Virtual LAN identifier of the asset.</enum>
+            <enum value="network-id">The network identifier of the asset.</enum>
+            <enum value="label">A human-readable label for the parent context.</enum>
+            <enum value="sort-id">An alternative identifier, whose value is easily sortable among other such values in the document.</enum>
+            <enum value="baseline-configuration-name">The name of the baseline configuration for the asset.</enum>
+            <enum value="allows-authenticated-scan">Can the asset be check with an authenticated scan? (yes/no)</enum>
+            <enum value="function">The function provided by the asset for the system.</enum>
+            <!-- CHANGE: @name="date-released" changed to @name="release-date" -->
+         </allowed-values>
+         <allowed-values target="link/@rel" allow-other="yes">
+        <!-- ========================================================================================================== -->
+        <!-- = Changes to the following values need to be synced with component in the SSP and component metaschemas. = -->
+        <!-- CHANGED (BJR): Done -->
+        <!-- ========================================================================================================== -->
+            <enum value="depends-on">A reference to another component that this component has a dependency on.</enum>
+            <!-- CHANGED (BJR): validated-by to validation per  https://github.com/usnistgov/OSCAL/blob/metaschema-m4-integration/docs/content/documentation/schema/implementation-layer/validation-modeling.md -->
+            <enum value="validation">A reference to another component of component-type=validation, that is a validation (e.g., FIPS 140-2) for this component</enum>
+            <enum value="proof-of-compliance">A pointer to a validation record (e.g., FIPS 140-2) or other compliance information.</enum>
+            <!-- rel values to also be allowed in implemented-component -->
+            <enum value="baseline-template">A reference to the baseline template used to configure the asset.</enum>
+            <enum value="uses-service">This service is used by the referenced component identifier.</enum>
+            <enum value="system-security-plan">A link to the system security plan of the external system.</enum>
+            <enum value="uses-network">This component uses the network provided by the identified network component.</enum>
+         </allowed-values>
+         <allowed-values target="responsible-role/@role-id|control-implementation/implemented-requirement/responsible-role/@role-id|control-implementation/implemented-requirement/statement/responsible-role/@role-id"
+                          allow-other="yes">
+        <!-- ========================================================================================================== -->
+        <!-- = Changes to the following values need to be synced with component in the SSP and component metaschemas. = -->
+        <!-- CHANGED (BJR): Done -->
+        <!-- ========================================================================================================== -->
+            <enum value="asset-owner">Accountable for ensuring the asset is managed in accordance with organizational policies and procedures.</enum>
+            <enum value="asset-administrator">Responsible for administering a set of assets.</enum>
+            <!-- CHANGE: from "soc" to "security-operations" -->
+            <enum value="security-operations">Members of the security operations center (SOC).</enum>
+            <!-- CHANGE: from "noc" to "network-operations" -->
+            <enum value="network-operations">Members of the network operations center (NOC).</enum>
+            <enum value="incident-response">Responsible for responding to an event that could lead to loss of, or disruption to, an organization's operations, services or functions.</enum>
+            <enum value="help-desk">Responsible for providing information and support to users.</enum>
+            <!-- CHANGE: from "configuration-management-lead" to "configuration-management" -->
+            <enum value="configuration-management">Responsible for the configuration management processes governing changes to the asset.</enum>
+            <enum value="maintainer">Responsible for the creation and maintenance of a component.</enum>
+            <enum value="provider">Organization responsible for providing the component, if this is different from the "maintainer" (e.g., a reseller).</enum>
+         </allowed-values>
+         <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='asset-type']/@value"
+                          allow-other="yes">
+            <!--  TODO: define values  -->
+<!--  CHANGHD "os" to "operating-system" -->
+            <enum value="operating-system">System software that manages computer hardware, software resources, and provides common services for computer programs.</enum>
+            <enum value="database">An electronic collection of data, or information, that is specially organized for rapid search and retrieval.</enum>
+            <enum value="web-server">A system that delivers content or services to end users over the Internet or an intranet.</enum>
+            <enum value="dns-server">A system that resolves domain names to internet protocol (IP) addresses.</enum>
+            <enum value="email-server">A computer system that sends and receives electronic mail messages.</enum>
+            <enum value="directory-server">A  system that stores, organizes and provides access to directory information in order to unify network resources.</enum>
+            <enum value="pbx">A private branch exchange (PBX) provides a a private telephone switchboard.</enum>
+            <enum value="firewall">A network security system that monitors and controls incoming and outgoing network traffic based on predetermined security rules.</enum>
+            <enum value="router">A physical or virtual networking device that forwards data packets between computer networks.</enum>
+            <enum value="switch">A physical or virtual networking device that connects devices within a computer network by using packet switching to receive and forward data to the destination device.</enum>
+            <enum value="storage-array">A consolidated, block-level data storage capability.</enum>
+            <enum value="appliance">A physical or virtual machine that centralizes hardware, software, or services for a specific purpose.</enum>
+         </allowed-values>
+         <!-- ========================================================================================================== -->
+         <!-- = TODO: The following was copied from implementation-common as-is and should probably be setup with  = -->
+         <!-- =       shared constraints; however, the values are highly static (yes/no, internal/external). -->
+         <!-- =       Can be changed later with no breaking impact. -->
+         <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='allows-authenticated-scan']/@value">
+            <enum value="yes">The component allows an authenticated scan.</enum>
+            <enum value="no">The component does not allow an authenticated scan.</enum>
+         </allowed-values>
+         <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='virtual']/@value">
+            <enum value="yes">The component is virtualized.</enum>
+            <enum value="no">The component is not virtualized.</enum>
+         </allowed-values>
+         <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='public']/@value">
+            <enum value="yes">The component is publicly accessible.</enum>
+            <enum value="no">The component is not publicly accessible.</enum>
+         </allowed-values>
+         <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='implementation-point']/@value">
+            <enum value="internal">The component is implemented within the system boundary.</enum>
+            <enum value="external">The component is implemented outside the system boundary.</enum>
+         </allowed-values>
+         <!-- ========================================================================================================== -->
+         <index-has-key name="index-metadata-location-uuid"
+                         target="prop[@name='physical-location']">
+            <key-field target="@value"/>
+         </index-has-key>
+         <matches target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='inherited-uuid']/@value"
+                   datatype="uuid"/>
+         <matches target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='release-date']/@value"
+                   datatype="date"/>
+         <!-- ========================================================================================================== -->
+         <!-- = Changes to the following values need to be synced with component in the SSP and component metaschemas. = -->
+         <!-- CHANGED (BJR): Done -->
+         <!-- ========================================================================================================== -->
+         <!-- ========================================================================================================== -->
+         <!-- = SOFTWARE: type='software' constraints                        = -->
+         <!-- ========================================================================================================== -->
+         <allowed-values target="(.)[@type='software']/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+            <enum value="software-identifier">If a "software" component-type, the identifier, such as a SWID tag, for the software component.</enum>
+         </allowed-values>
+         <!-- ========================================================================================================== -->
+         <!-- = SERVICE: type='service' constraints                        = -->
+         <!-- ========================================================================================================== -->
+         <allowed-values target="(.)[@type='service']/link/@rel" allow-other="yes">
+            <enum value="provided-by">This service is provided by the referenced component identifier.</enum>
+            <!-- CHANGE: Added "used-by" -->
+            <enum value="used-by">This service is used by the referenced component identifier.</enum>
+         </allowed-values>
+         <expect target="." test="not(exists((.)[not(@type='service')]/protocol))"/>
+         <!-- ========================================================================================================== -->
+         <!-- = TODO: Consider whether INTERCONNECTION constraints are appropriate here.      = -->
+         <!-- =       I'm not sure I see a use case for this, but doesn't break to add later. = -->
+         <!-- =       If interconnection is not appropriate for component-defintion, we'll need different = -->
+         <!-- =           component-type lists for the two models.                                        = -->
+         <!-- ========================================================================================================== -->
+         <is-unique id="unique-defined-component-responsible-role"
+                     target="responsible-role">
+            <key-field target="@role-id"/>
+            <remarks>
+               <p>Since <code>responsible-role</code> associates multiple <code>party-uuid</code> entries with a single <code>role-id</code>, each role-id must be referenced only once.</p>
+            </remarks>
+         </is-unique>
+      </constraint>
+      <remarks>
+         <p>Components may be products, services, APIs, policies, processes, plans, guidance, standards, or other tangible items that enable security and/or privacy.</p>
+         <p>The <code>type</code> indicates which of these component types is represented.</p>
+         <p>A group of components may be aggregated into a <code>capability</code>. For example, an account management capability that consists of an account management process, and a Lightweight Directory Access Protocol (LDAP) software implementation.</p>
+         <p>Capabilities are expressed by combining one or more components.</p>
+      </remarks>
+   </define-assembly>
+   <define-flag name="defined-component-type" as-type="string">
+      <formal-name>Component Type</formal-name>
+      <description>A category describing the purpose of the component.</description>
+      <constraint>
+         <allowed-values allow-other="yes">
+            <enum value="interconnection">A connection to something outside this system.</enum>
+            <enum value="software">Any software, operating system, or firmware.</enum>
+            <enum value="hardware">A physical device.</enum>
+            <enum value="service">A service that may provide APIs.</enum>
+            <enum value="policy">An enforceable policy.</enum>
+            <enum value="physical">A tangible asset used to provide physical protections or countermeasures.</enum>
+            <!-- CHANGED combined "process" and "procedure" as "process-proceedure" -->
+            <enum value="process-procedure">A list of steps or actions to take to achieve some end result.</enum>
+            <enum value="plan">An applicable plan.</enum>
+            <enum value="guidance">Any guideline or recommendation.</enum>
+            <enum value="standard">Any organizational or industry standard.</enum>
+            <enum value="validation">An external assessment performed on some other component, that has been validated by a third-party.</enum>
+         </allowed-values>
+      </constraint>
+   </define-flag>
+   <define-assembly name="capability">
+      <formal-name>Capability</formal-name>
+      <description>A grouping of other components and/or capabilities.</description>
+      <define-flag required="yes" name="uuid" as-type="uuid">
+         <formal-name>Capability Identifier</formal-name>
+         <!-- Identifier Declaration -->
+         <description>Provides a globally unique means to identify a given capability.</description>
+         <prop name="value-type" value="identifier"/>
+         <prop name="identifier-type" value="machine-oriented"/>
+         <prop name="identifier-uniqueness" value="global"/>
+         <prop name="identifier-scope" value="cross-instance"/>
+         <prop name="identifier-persistence" value="per-subject"/>
+      </define-flag>
+      <define-flag name="name" as-type="string" required="yes">
+         <formal-name>Capability Name</formal-name>
+         <description>The capability's human-readable name.</description>
+      </define-flag>
+      <model>
+         <define-field name="description"
+                        as-type="markup-multiline"
+                        min-occurs="1"
+                        in-xml="WITH_WRAPPER">
+            <formal-name>Capability Description</formal-name>
+            <description>A summary of the capability.</description>
+         </define-field>
+         <assembly ref="property" max-occurs="unbounded">
+            <group-as name="props" in-json="ARRAY"/>
+         </assembly>
+         <assembly ref="link" max-occurs="unbounded">
+            <group-as name="links" in-json="ARRAY"/>
+         </assembly>
+         <assembly ref="incorporates-component" max-occurs="unbounded">
+            <group-as name="incorporates-components" in-json="ARRAY"/>
+         </assembly>
+         <assembly ref="control-implementation" max-occurs="unbounded">
+            <group-as name="control-implementations" in-json="ARRAY"/>
+         </assembly>
+         <field ref="remarks" in-xml="WITH_WRAPPER"/>
+      </model>
+      <constraint>
+         <is-unique id="unique-component-definition-capability-incorporates-component"
+                     target="incorporates-component">
+            <key-field target="@component-uuid"/>
+            <remarks>
+               <p>A given <code>component</code> must not be referenced more than once within the same <code>capability</code>.</p>
+            </remarks>
+         </is-unique>
+         <!-- Feature Request: add constraint ensuring a capability's incorporates-component references //component-definition/component/@uuid in the same component definition instance or an imported instance-->
+      </constraint>
+   </define-assembly>
+   <define-assembly name="incorporates-component">
+      <formal-name>Incorporates Component</formal-name>
+      <!-- TODO: needs a description -->
+      <description>The collection of components comprising this capability.</description>
+      <define-flag required="yes" name="component-uuid" as-type="uuid">
+         <formal-name>Component Reference</formal-name>
+         <!-- Identifier Reference -->
+         <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a <code>component</code>.</description>
+      </define-flag>
+      <model>
+         <define-field name="description"
+                        as-type="markup-multiline"
+                        min-occurs="1"
+                        in-xml="WITH_WRAPPER">
+            <formal-name>Component Description</formal-name>
+            <description>A description of the component, including information about its function.</description>
+         </define-field>
+      </model>
+   </define-assembly>
+   <define-assembly name="control-implementation" scope="local">
+      <formal-name>Control Implementation Set</formal-name>
+      <description>Defines how the component or capability supports a set of controls.</description>
+      <define-flag name="uuid" as-type="uuid" required="yes">
+         <formal-name>Control Implementation Set Identifier</formal-name>
+         <!-- Identifier Declaration -->
+         <description>Provides a means to identify a set of control implementations that are supported by a given component or capability.</description>
+         <prop name="value-type" value="identifier"/>
+         <prop name="identifier-type" value="machine-oriented"/>
+         <prop name="identifier-uniqueness" value="global"/>
+         <prop name="identifier-scope" value="cross-instance"/>
+         <prop name="identifier-persistence" value="per-subject"/>
+      </define-flag>
+      <define-flag name="source" as-type="uri-reference" required="yes">
+         <formal-name>Source Resource Reference</formal-name>
+         <description>A reference to an OSCAL catalog or profile providing the referenced control or subcontrol definition.</description>
+         <remarks>
+            <p>This value may be one of:</p>
+            <ol>
+               <li>an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that points to a network resolvable resource,</li>
+               <li>a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#relative-reference">relative reference</a> pointing to a network resolvable resource whose base URI is the URI of the containing document, or</li>
+               <li>a bare URI fragment (i.e., `#uuid`) pointing to a <code>back-matter</code> resource in this or an imported document (see <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#linking-to-another-oscal-object">linking to another OSCAL object</a>).</li>
+            </ol>
+         </remarks>
+      </define-flag>
+      <model>
+         <define-field name="description"
+                        as-type="markup-multiline"
+                        min-occurs="1"
+                        in-xml="WITH_WRAPPER">
+            <formal-name>Control Implementation Description</formal-name>
+            <description>A description of how the specified set of controls are implemented for the containing component or capability.</description>
+         </define-field>
+         <assembly ref="property" max-occurs="unbounded">
+            <group-as name="props" in-json="ARRAY"/>
+         </assembly>
+         <assembly ref="link" max-occurs="unbounded">
+            <group-as name="links" in-json="ARRAY"/>
+         </assembly>
+         <assembly ref="set-parameter" max-occurs="unbounded">
+            <group-as name="set-parameters" in-json="ARRAY"/>
+         </assembly>
+         <assembly ref="implemented-requirement" min-occurs="1" max-occurs="unbounded">
+            <group-as name="implemented-requirements" in-json="ARRAY"/>
+         </assembly>
+      </model>
+      <constraint>
+         <is-unique id="unique-component-definition-control-implementation-set-parameter"
+                     target="set-parameter">
+            <key-field target="@param-id"/>
+            <remarks>
+               <p>Since multiple <code>set-parameter</code> entries can be provided, each parameter must be set only once.</p>
+            </remarks>
+         </is-unique>
+      </constraint>
+      <remarks>
+         <p>Use of <code>set-parameter</code> in this context, sets the parameter for all controls referenced by any <code>implemented-requirement</code> contained in this context. Any <code>set-parameter</code> defined in a child context will override this value. If not overridden by a child, this value applies in the child context.</p>
+      </remarks>
+   </define-assembly>
+   <define-assembly name="implemented-requirement" scope="local">
+      <formal-name>Control Implementation</formal-name>
+      <description>Describes how the containing component or capability implements an individual control.</description>
+      <define-flag name="uuid" as-type="uuid" required="yes">
+         <formal-name>Control Implementation Identifier</formal-name>
+         <!-- Identifier Declaration -->
+         <description>Provides a globally unique means to identify a given control implementation by a component.</description>
+         <prop name="value-type" value="identifier"/>
+         <prop name="identifier-type" value="machine-oriented"/>
+         <prop name="identifier-uniqueness" value="global"/>
+         <prop name="identifier-scope" value="cross-instance"/>
+         <prop name="identifier-persistence" value="per-subject"/>
+      </define-flag>
+      <flag ref="control-id" required="yes"/>
+      <model>
+         <define-field name="description"
+                        as-type="markup-multiline"
+                        min-occurs="1"
+                        in-xml="WITH_WRAPPER">
+            <formal-name>Control Implementation Description</formal-name>
+            <description>A suggestion from the supplier (e.g., component vendor or author) for how the specified control may be implemented if the containing component or capability is instantiated in a system security plan.</description>
+         </define-field>
+         <assembly ref="property" max-occurs="unbounded">
+            <group-as name="props" in-json="ARRAY"/>
+         </assembly>
+         <assembly ref="link" max-occurs="unbounded">
+            <group-as name="links" in-json="ARRAY"/>
+         </assembly>
+         <assembly ref="set-parameter" max-occurs="unbounded">
+            <group-as name="set-parameters" in-json="ARRAY"/>
+         </assembly>
+         <assembly ref="responsible-role" max-occurs="unbounded">
+            <group-as name="responsible-roles" in-json="ARRAY"/>
+         </assembly>
+         <!-- ADDED for CRM/SSRM: Implementation Status and Shared Responsibility Assembly -->
+         <assembly ref="implementation-status">
+            <remarks>
+               <p>The <code>implementation-status</code> is used to qualify the <code>status</code> value to indicate the degree to which the control is implemented.</p>
+            </remarks>
+         </assembly>
+         <assembly ref="provided">
+            <group-as name="provided" in-json="ARRAY"/>
+         </assembly>
+         <assembly ref="responsibility">
+            <group-as name="responsibility" in-json="ARRAY"/>
+         </assembly>
+         <assembly ref="inherited">
+            <group-as name="inherited" in-json="ARRAY"/>
+         </assembly>
+         <assembly ref="satisfied">
+            <group-as name="satisfied" in-json="ARRAY"/>
+         </assembly>
+         <assembly ref="export" max-occurs="1">
+            <remarks>
+               <p>TODO: Documentation</p>
+            </remarks>
+         </assembly>
+         <!-- END ADDED -->
+         <assembly ref="statement" max-occurs="unbounded">
+            <group-as name="statements" in-json="ARRAY"/>
+         </assembly>
+         <field ref="remarks" in-xml="WITH_WRAPPER"/>
+      </model>
+      <constraint>
+         <is-unique id="unique-component-definition-implemented-requirement-set-parameter"
+                     target="set-parameter">
+            <key-field target="@param-id"/>
+            <remarks>
+               <p>Since multiple <code>set-parameter</code> entries can be provided, each parameter must be set only once.</p>
+            </remarks>
+         </is-unique>
+         <is-unique id="unique-component-definition-implemented-requirement-responsible-role"
+                     target="responsible-role">
+            <key-field target="@role-id"/>
+            <remarks>
+               <p>Since <code>responsible-role</code> associates multiple <code>party-uuid</code> entries with a single <code>role-id</code>, each role-id must be referenced only once.</p>
+            </remarks>
+         </is-unique>
+         <is-unique id="unique-component-definition-implemented-requirement-statement"
+                     target="statement">
+            <key-field target="@statement-id"/>
+            <remarks>
+               <p>Since <code>statement</code> entries can be referenced using the statement's statement-id, each statement must be referenced only once.</p>
+            </remarks>
+         </is-unique>
+      </constraint>
+      <remarks>
+         <p>Implemented requirements within a component or capability in a component definition provide a means for component suppliers to suggest possible control implementation details, which may be used by a different party (e.g., component consumers) when authoring a system security plan. Thus, these requirements defined in a component definition are only a suggestion of how to implement, which may be adopted wholesale, changed, or ignored by a person defining an information system implementation.</p>
+         <p>Use of <code>set-parameter</code> in this context, sets the parameter for the referenced control and any associated statements.</p>
+      </remarks>
+   </define-assembly>
+   <define-assembly name="statement" scope="local">
+      <formal-name>Control Statement Implementation</formal-name>
+      <description>Identifies which statements within a control are addressed.</description>
+      <flag ref="statement-id" required="yes">
+         <remarks>
+            <p>A reference to the specific implemented statement associated with a control.</p>
+         </remarks>
+      </flag>
+      <define-flag name="uuid" as-type="uuid" required="yes">
+         <formal-name>Control Statement Reference Universally Unique Identifier</formal-name>
+         <!-- Identifier Reference -->
+         <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this control statement elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#component-definition-identifiers">this or other OSCAL instances</a>. The <em>UUID</em> of the <code>control statement</code> in the source OSCAL instance is sufficient to reference the data item locally or globally (e.g., in an imported OSCAL instance).</description>
+      </define-flag>
+      <model>
+         <define-field name="description"
+                        as-type="markup-multiline"
+                        min-occurs="1"
+                        in-xml="WITH_WRAPPER">
+            <formal-name>Statement Implementation Description</formal-name>
+            <description>A summary of how the containing control statement is implemented by the component or capability.</description>
+         </define-field>
+         <assembly ref="property" max-occurs="unbounded">
+            <group-as name="props" in-json="ARRAY"/>
+         </assembly>
+         <assembly ref="link" max-occurs="unbounded">
+            <group-as name="links" in-json="ARRAY"/>
+         </assembly>
+         <assembly ref="responsible-role" max-occurs="unbounded">
+            <group-as name="responsible-roles" in-json="ARRAY"/>
+         </assembly>
+         <field ref="remarks" in-xml="WITH_WRAPPER"/>
+      </model>
+      <constraint>
+         <is-unique id="unique-component-definition-statement-responsible-role"
+                     target="responsible-role">
+            <key-field target="@role-id"/>
+            <remarks>
+               <p>Since <code>responsible-role</code> associates multiple <code>party-uuid</code> entries with a single <code>role-id</code>, each role-id must be referenced only once.</p>
+            </remarks>
+         </is-unique>
+      </constraint>
+   </define-assembly>
+</METASCHEMA>

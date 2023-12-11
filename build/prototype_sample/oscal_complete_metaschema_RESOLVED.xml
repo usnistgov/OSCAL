@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../build/metaschema-xslt/src/validate/metaschema-composition-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!-- OSCAL GRAND UNIFIED MEGALOMETASCHEMA -->
+<!-- validate with XSD and Schematron (linked) -->
+<METASCHEMA xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0">
+   <schema-name>OSCAL Unified Model of Models</schema-name>
+   <schema-version>1.1.2</schema-version>
+   <short-name>oscal-complete</short-name>
+   <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
+   <json-base-uri>http://csrc.nist.gov/ns/oscal/1.0</json-base-uri>
+   <remarks>
+      <p>This format represents a combination of all of the OSCAL models.</p>
+   </remarks>
+   <import href="oscal_catalog_metaschema_RESOLVED.xml"/>
+   <import href="oscal_profile_metaschema_RESOLVED.xml"/>
+   <import href="oscal_component_metaschema_RESOLVED.xml"/>
+   <import href="oscal_ssp_metaschema_RESOLVED.xml"/>
+   <import href="oscal_assessment-plan_metaschema_RESOLVED.xml"/>
+   <import href="oscal_assessment-results_metaschema_RESOLVED.xml"/>
+   <import href="oscal_poam_metaschema_RESOLVED.xml"/>
+</METASCHEMA>

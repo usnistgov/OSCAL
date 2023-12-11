@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<METASCHEMA xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0">
+   <schema-name>OSCAL Assessment Plan Model</schema-name>
+   <schema-version>1.1.2</schema-version>
+   <short-name>oscal-ap</short-name>
+   <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
+   <json-base-uri>http://csrc.nist.gov/ns/oscal</json-base-uri>
+   <remarks>
+      <p>The OSCAL assessment plan format is used to describe the information typically provided by an assessor during the preparation for an assessment.</p>
+      <p>The root of the OSCAL assessment plan format is <code>assessment-plan</code>.
+        </p>
+   </remarks>
+   <!-- IMPORT STATEMENTS -->
+   <import href="oscal_metadata_metaschema_RESOLVED.xml"/>
+   <import href="oscal_assessment-common_metaschema_RESOLVED.xml"/>
+   <!-- TOP LEVEL ASSEMBLY -->
+   <define-assembly name="assessment-plan">
+      <formal-name>Security Assessment Plan (SAP)</formal-name>
+      <description>An assessment plan, such as those provided by a FedRAMP assessor.</description>
+      <root-name>assessment-plan</root-name>
+      <define-flag name="uuid" required="yes" as-type="uuid">
+         <formal-name>Assessment Plan Universally Unique Identifier</formal-name>
+         <!-- Identifier Declaration -->
+         <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this assessment plan in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ap-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>assessment plan</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+      </define-flag>
+      <model>
+         <assembly ref="metadata" min-occurs="1" max-occurs="1"/>
+         <assembly ref="import-ssp" min-occurs="1" max-occurs="1">
+            <remarks>
+               <p>Used by the SAP to import information about the system being assessed.</p>
+            </remarks>
+         </assembly>
+         <define-assembly name="local-definitions">
+                <!-- CHANGE: moved "local-definitions" to hete from assessment-subjects -->
+            <formal-name>Local Definitions</formal-name>
+            <description>Used to define data objects that are used in the assessment plan, that do not appear in the referenced SSP.</description>
+            <model>
+               <assembly ref="system-component" min-occurs="0" max-occurs="unbounded">
+                  <use-name>component</use-name>
+                  <group-as name="components" in-json="ARRAY"/>
+                  <remarks>
+                     <p>Used to add any components, not defined via the System Security Plan (AR-&gt;AP-&gt;SSP)</p>
+                  </remarks>
+               </assembly>
+               <assembly ref="inventory-item" min-occurs="0" max-occurs="unbounded">
+                  <group-as name="inventory-items" in-json="ARRAY"/>
+                  <remarks>
+                     <p>Used to add any inventory-items, not defined via the System Security Plan (AR-&gt;AP-&gt;SSP)</p>
+                  </remarks>
+               </assembly>
+               <assembly ref="system-user" min-occurs="0" max-occurs="unbounded">
+                  <use-name>user</use-name>
+                  <group-as name="users" in-json="ARRAY"/>
+                  <remarks>
+                     <p>Used to add any users, not defined via the System Security Plan (AR-&gt;AP-&gt;SSP)</p>
+                  </remarks>
+               </assembly>
+               <!-- CHANGED: "ojbective" to "add-objectives-and-methods" -->
+               <assembly ref="local-objective" min-occurs="0" max-occurs="unbounded">
+                  <use-name>objectives-and-methods</use-name>
+                  <group-as name="objectives-and-methods" in-json="ARRAY"/>
+               </assembly>
+               <!-- CHANGED: implemented new model -->
+               <assembly ref="activity" min-occurs="0" max-occurs="unbounded">
+                  <group-as name="activities" in-json="ARRAY"/>
+               </assembly>
+               <field ref="remarks"
+                       in-xml="WITH_WRAPPER"
+                       min-occurs="0"
+                       max-occurs="1"/>
+            </model>
+            <constraint>
+               <is-unique id="unique-ap-local-definitions-component" target="component">
+                  <key-field target="@uuid"/>
+                  <remarks>
+                     <p>Since multiple <code>component</code> entries can be provided, each component must have a unique <code>uuid</code>.</p>
+                  </remarks>
+               </is-unique>
+               <is-unique id="unique-ap-local-definitions-user" target="user">
+                  <key-field target="@uuid"/>
+                  <remarks>
+                     <p>A given <code>uuid</code> must be assigned only once to a user.</p>
+                  </remarks>
+               </is-unique>
+            </constraint>
+         </define-assembly>
+         <define-assembly name="terms-and-conditions">
+            <formal-name>Assessment Plan Terms and Conditions</formal-name>
+            <description>Used to define various terms and conditions under which an assessment, described by the plan, can be performed. Each child part defines a different type of term or condition.</description>
+            <model>
+               <assembly ref="assessment-part" max-occurs="unbounded">
+                  <group-as name="parts" in-json="ARRAY"/>
+               </assembly>
+            </model>
+            <constraint>
+               <allowed-values target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+                  <enum value="rules-of-engagement">Defines the circumstances, conditions, degree, and manner in which the use of cyber-attack techniques or actions may be applied to the assessment.</enum>
+                  <enum value="disclosures">Any information the assessor should make known to the system owner or authorizing official. Has child 'item' parts for each individual disclosure.</enum>
+                  <enum value="assessment-inclusions">Defines any assessment activities which the system owner or authorizing official wishes to ensure are performed as part of the assessment.</enum>
+                  <enum value="assessment-exclusions">Defines any assessment activities which the system owner or authorizing official explicitly prohibits from being performed as part of the assessment.</enum>
+                  <enum value="results-delivery">Defines conditions related to the delivery of the assessment results, such as when to deliver, how, and to whom.</enum>
+                  <enum value="assumptions">Defines any supposition made by the assessor. Has child 'item' parts for each assumption.</enum>
+                  <enum value="methodology">An explanation of practices, procedures, and rules used in the course of the assessment.</enum>
+               </allowed-values>
+            </constraint>
+         </define-assembly>
+         <!-- CHANGED: "objectives" to "reviewed-controls" -->
+         <assembly ref="reviewed-controls" min-occurs="1" max-occurs="1"/>
+         <assembly ref="assessment-subject" min-occurs="0" max-occurs="unbounded">
+            <group-as name="assessment-subjects" in-json="ARRAY"/>
+         </assembly>
+         <assembly ref="assessment-assets" min-occurs="0" max-occurs="1">
+                <!-- CHANGED: "assets" to "assessment-assets" -->
+            </assembly>
+         <!-- CHANGED: removed "assessment-actions" merging with "tasks" -->
+         <!-- CHANGED: Moved "schedule" to top level (from assessment-activities), and changed model to "task" -->
+         <assembly ref="task" min-occurs="0" max-occurs="unbounded">
+            <group-as name="tasks" in-json="ARRAY"/>
+         </assembly>
+         <assembly ref="back-matter" min-occurs="0" max-occurs="1"/>
+      </model>
+      <!-- todo: add remark need to describe how import-ssp is also importing roles, parties, locations defined in the SSP, as well as other (similar) objects that may have been imported into the SSP (e.g., control-id).  Controls that can be referenced are those imported into the SSP through resolved profile.  -->
+      <!-- bogus example
+        <constraint>
+            <index id="index-assessment-plan-roles" name="index-assessment-plan-role-ids" target="metadata/role|doc(import-ssp/@href)/metadata/role">
+                <key-field target="@id"/>
+            </index>
+            <index-has-key name="index-assessment-plan-role-ids" target="tasks/responsible-roles">
+                <key-field target="@role-id"/>
+            </index-has-key>
+        </constraint>
+        -->
+   </define-assembly>
+</METASCHEMA>
