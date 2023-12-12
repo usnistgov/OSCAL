@@ -417,7 +417,7 @@
       </assembly>
 
       <!-- ADDED for CRM/SSRM: Implementation Status and Shared Responsibility Assembly -->
-      <assembly ref="implementation-status">
+      <!-- <assembly ref="implementation-status">
         <remarks>
           <p>The <code>implementation-status</code> is used to qualify the <code>status</code> value to indicate the degree to which the control is implemented.</p>
         </remarks>
@@ -440,7 +440,7 @@
         <remarks>
           <p>TODO: Documentation</p>
         </remarks>
-      </assembly>
+      </assembly> -->
       <!-- END ADDED -->
       
       <assembly ref="statement" max-occurs="unbounded">
