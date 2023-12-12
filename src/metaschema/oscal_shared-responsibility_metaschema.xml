@@ -43,9 +43,6 @@
     </define-flag>
     <model>
       <assembly ref="metadata" min-occurs="1"/>
-      <assembly ref="import-component-definition" max-occurs="unbounded">
-        <group-as name="import-component-definitions" in-json="ARRAY"/>
-      </assembly>
       <assembly ref="defined-component" max-occurs="unbounded">
         <use-name>component</use-name>
         <group-as name="components" in-json="ARRAY"/>
