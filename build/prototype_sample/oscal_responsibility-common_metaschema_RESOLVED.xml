@@ -13,6 +13,50 @@
    <import href="oscal_control-common_metaschema_RESOLVED.xml"/>
    <import href="oscal_implementation-common_metaschema_RESOLVED.xml"/>
    <!-- Shared Responsibility Assembly -->
+   <define-assembly name="source-ssp" max-occurs="unbounded">
+      <formal-name>Source SSP</formal-name>
+      <description>Describes a capability which may be inherited by a leveraging system.</description>
+      <define-flag name="uuid" as-type="uuid" required="yes">
+         <formal-name>Provided Universally Unique Identifier</formal-name>
+         <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this provided entry elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>provided</code> entry can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+      </define-flag>
+      <model>
+         <define-flag required="no" name="ssp-uuid" as-type="uuid">
+            <formal-name>Source SSP</formal-name>
+            <description>This has not been described in the prototype.</description>
+         </define-flag>
+         <!-- TODO: This flag causes a title error - I assume it is a conflict in borrowing the CDef or in the common files. -->
+         <!-- named to ssp-title just to support general prototype review. -->
+         <define-field required="no" name="ssp-title" as-type="markup-line">
+            <formal-name>Title</formal-name>
+            <description>This has not been described in the prototype.</description>
+         </define-field>
+         <define-field name="published" as-type="dateTime-with-timezone">
+            <formal-name>Publication Timestamp</formal-name>
+            <description>This has not been described in the prototype.</description>
+         </define-field>
+         <define-field name="last-modified" as-type="dateTime-with-timezone">
+            <formal-name>Last Modified Timestamp</formal-name>
+            <description>This has not been described in the prototype.</description>
+         </define-field>
+         <define-field name="version">
+            <formal-name>Document Version</formal-name>
+            <description>This has not been described in the prototype.</description>
+         </define-field>
+         <!-- TODO: This flag causes a title error - I assume it is a conflict in borrowing the CDef or in the common files. -->
+         <!-- <define-flag name="referenced-profile" as-type="uri-reference" required="no">
+        <formal-name>Referenced Profile</formal-name>
+        <description>This has not been described in the prototype.</description>
+      </define-flag> -->
+         <assembly ref="property" max-occurs="unbounded">
+            <group-as name="props" in-json="ARRAY"/>
+         </assembly>
+         <assembly ref="link" max-occurs="unbounded">
+            <group-as name="links" in-json="ARRAY"/>
+         </assembly>
+         <field ref="remarks" in-xml="WITH_WRAPPER"/>
+      </model>
+   </define-assembly>
    <define-assembly name="provided" max-occurs="unbounded">
       <formal-name>Provided Control Implementation</formal-name>
       <description>Describes a capability which may be inherited by a leveraging system.</description>
@@ -201,12 +245,6 @@
          </assembly>
          <assembly ref="responsibility">
             <group-as name="responsibility" in-json="ARRAY"/>
-         </assembly>
-         <assembly ref="inherited">
-            <group-as name="inherited" in-json="ARRAY"/>
-         </assembly>
-         <assembly ref="satisfied">
-            <group-as name="satisfied" in-json="ARRAY"/>
          </assembly>
          <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>

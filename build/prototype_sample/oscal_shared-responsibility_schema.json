@@ -21,44 +21,23 @@
       "$ref" : "#/definitions/UUIDDatatype" },
      "metadata" : 
      { "$ref" : "#assembly_oscal-metadata_metadata" },
-     "import-component-definitions" : 
-     { "type" : "array",
-      "minItems" : 1,
-      "items" : 
-      { "$ref" : "#assembly_oscal-shared-responsibility_import-component-definition" } },
+     "source-ssp" : 
+     { "$ref" : "#assembly_oscal-responsibility-common_source-ssp" },
      "components" : 
      { "type" : "array",
       "minItems" : 1,
       "items" : 
-      { "$ref" : "#assembly_oscal-shared-responsibility_defined-component" } },
-     "capabilities" : 
-     { "type" : "array",
-      "minItems" : 1,
-      "items" : 
-      { "$ref" : "#assembly_oscal-shared-responsibility_capability" } },
+      { "$ref" : "#assembly_oscal-shared-responsibility_defined-shared-responsibility" } },
      "back-matter" : 
      { "$ref" : "#assembly_oscal-metadata_back-matter" } },
     "required" : 
     [ "uuid",
      "metadata" ],
     "additionalProperties" : false },
-   "oscal-shared-responsibility-oscal-shared-responsibility:import-component-definition" : 
-   { "title" : "Import Component Definition",
-    "description" : "Loads a component definition from another resource.",
-    "$id" : "#assembly_oscal-shared-responsibility_import-component-definition",
-    "type" : "object",
-    "properties" : 
-    { "href" : 
-     { "title" : "Hyperlink Reference",
-      "description" : "A link to a resource that defines a set of components and/or capabilities to import into this collection.",
-      "$ref" : "#/definitions/URIReferenceDatatype" } },
-    "required" : 
-    [ "href" ],
-    "additionalProperties" : false },
-   "oscal-shared-responsibility-oscal-shared-responsibility:defined-component" : 
-   { "title" : "Component",
+   "oscal-shared-responsibility-oscal-shared-responsibility:defined-shared-responsibility" : 
+   { "title" : "Defined Share Responsibility",
     "description" : "A defined component that can be part of an implemented system.",
-    "$id" : "#assembly_oscal-shared-responsibility_defined-component",
+    "$id" : "#assembly_oscal-shared-responsibility_defined-shared-responsibility",
     "type" : "object",
     "properties" : 
     { "uuid" : 
@@ -127,69 +106,6 @@
     [ "uuid",
      "type",
      "title",
-     "description" ],
-    "additionalProperties" : false },
-   "oscal-shared-responsibility-oscal-shared-responsibility:capability" : 
-   { "title" : "Capability",
-    "description" : "A grouping of other components and/or capabilities.",
-    "$id" : "#assembly_oscal-shared-responsibility_capability",
-    "type" : "object",
-    "properties" : 
-    { "uuid" : 
-     { "title" : "Capability Identifier",
-      "description" : "Provides a globally unique means to identify a given capability.",
-      "$ref" : "#/definitions/UUIDDatatype" },
-     "name" : 
-     { "title" : "Capability Name",
-      "description" : "The capability's human-readable name.",
-      "$ref" : "#/definitions/StringDatatype" },
-     "description" : 
-     { "title" : "Capability Description",
-      "description" : "A summary of the capability.",
-      "type" : "string" },
-     "props" : 
-     { "type" : "array",
-      "minItems" : 1,
-      "items" : 
-      { "$ref" : "#assembly_oscal-metadata_property" } },
-     "links" : 
-     { "type" : "array",
-      "minItems" : 1,
-      "items" : 
-      { "$ref" : "#assembly_oscal-metadata_link" } },
-     "incorporates-components" : 
-     { "type" : "array",
-      "minItems" : 1,
-      "items" : 
-      { "$ref" : "#assembly_oscal-shared-responsibility_incorporates-component" } },
-     "control-implementations" : 
-     { "type" : "array",
-      "minItems" : 1,
-      "items" : 
-      { "$ref" : "#assembly_oscal-shared-responsibility_control-implementation" } },
-     "remarks" : 
-     { "$ref" : "#field_oscal-metadata_remarks" } },
-    "required" : 
-    [ "uuid",
-     "name",
-     "description" ],
-    "additionalProperties" : false },
-   "oscal-shared-responsibility-oscal-shared-responsibility:incorporates-component" : 
-   { "title" : "Incorporates Component",
-    "description" : "The collection of components comprising this capability.",
-    "$id" : "#assembly_oscal-shared-responsibility_incorporates-component",
-    "type" : "object",
-    "properties" : 
-    { "component-uuid" : 
-     { "title" : "Component Reference",
-      "description" : "A machine-oriented identifier reference to a component.",
-      "$ref" : "#/definitions/UUIDDatatype" },
-     "description" : 
-     { "title" : "Component Description",
-      "description" : "A description of the component, including information about its function.",
-      "type" : "string" } },
-    "required" : 
-    [ "component-uuid",
      "description" ],
     "additionalProperties" : false },
    "oscal-shared-responsibility-oscal-shared-responsibility:control-implementation" : 
@@ -1591,6 +1507,49 @@
     "$id" : "#assembly_oscal-control-common_include-all",
     "type" : "object",
     "additionalProperties" : false },
+   "oscal-shared-responsibility-oscal-responsibility-common:source-ssp" : 
+   { "title" : "Source SSP",
+    "description" : "Describes a capability which may be inherited by a leveraging system.",
+    "$id" : "#assembly_oscal-responsibility-common_source-ssp",
+    "type" : "object",
+    "properties" : 
+    { "uuid" : 
+     { "title" : "Provided Universally Unique Identifier",
+      "description" : "A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this provided entry elsewhere in this or other OSCAL instances. The locally defined UUID of the provided entry can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.",
+      "$ref" : "#/definitions/UUIDDatatype" },
+     "title" : "Source SSP",
+     "description" : "This has not been described in the prototype.",
+     "ssp-title" : 
+     { "title" : "Title",
+      "description" : "This has not been described in the prototype.",
+      "type" : "string" },
+     "published" : 
+     { "title" : "Publication Timestamp",
+      "description" : "This has not been described in the prototype.",
+      "$ref" : "#/definitions/DateTimeWithTimezoneDatatype" },
+     "last-modified" : 
+     { "title" : "Last Modified Timestamp",
+      "description" : "This has not been described in the prototype.",
+      "$ref" : "#/definitions/DateTimeWithTimezoneDatatype" },
+     "version" : 
+     { "title" : "Document Version",
+      "description" : "This has not been described in the prototype.",
+      "$ref" : "#/definitions/StringDatatype" },
+     "props" : 
+     { "type" : "array",
+      "minItems" : 1,
+      "items" : 
+      { "$ref" : "#assembly_oscal-metadata_property" } },
+     "links" : 
+     { "type" : "array",
+      "minItems" : 1,
+      "items" : 
+      { "$ref" : "#assembly_oscal-metadata_link" } },
+     "remarks" : 
+     { "$ref" : "#field_oscal-metadata_remarks" } },
+    "required" : 
+    [ "uuid" ],
+    "additionalProperties" : false },
    "oscal-shared-responsibility-oscal-responsibility-common:provided" : 
    { "title" : "Provided Control Implementation",
     "description" : "Describes a capability which may be inherited by a leveraging system.",
@@ -1797,10 +1756,6 @@
      { "$ref" : "#assembly_oscal-responsibility-common_provided" },
      "responsibility" : 
      { "$ref" : "#assembly_oscal-responsibility-common_responsibility" },
-     "inherited" : 
-     { "$ref" : "#assembly_oscal-responsibility-common_inherited" },
-     "satisfied" : 
-     { "$ref" : "#assembly_oscal-responsibility-common_satisfied" },
      "remarks" : 
      { "$ref" : "#field_oscal-metadata_remarks" } },
     "additionalProperties" : false },

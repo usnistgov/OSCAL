@@ -1692,18 +1692,6 @@
       "minItems" : 1,
       "items" : 
       { "$ref" : "#assembly_oscal-metadata_responsible-role" } },
-     "implementation-status" : 
-     { "$ref" : "#assembly_oscal-implementation-common_implementation-status" },
-     "provided" : 
-     { "$ref" : "#assembly_oscal-responsibility-common_provided" },
-     "responsibility" : 
-     { "$ref" : "#assembly_oscal-responsibility-common_responsibility" },
-     "inherited" : 
-     { "$ref" : "#assembly_oscal-responsibility-common_inherited" },
-     "satisfied" : 
-     { "$ref" : "#assembly_oscal-responsibility-common_satisfied" },
-     "export" : 
-     { "$ref" : "#assembly_oscal-responsibility-common_export" },
      "statements" : 
      { "type" : "array",
       "minItems" : 1,
@@ -2118,6 +2106,49 @@
     "required" : 
     [ "id" ],
     "additionalProperties" : false },
+   "oscal-complete-oscal-responsibility-common:source-ssp" : 
+   { "title" : "Source SSP",
+    "description" : "Describes a capability which may be inherited by a leveraging system.",
+    "$id" : "#assembly_oscal-responsibility-common_source-ssp",
+    "type" : "object",
+    "properties" : 
+    { "uuid" : 
+     { "title" : "Provided Universally Unique Identifier",
+      "description" : "A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this provided entry elsewhere in this or other OSCAL instances. The locally defined UUID of the provided entry can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.",
+      "$ref" : "#/definitions/UUIDDatatype" },
+     "title" : "Source SSP",
+     "description" : "This has not been described in the prototype.",
+     "ssp-title" : 
+     { "title" : "Title",
+      "description" : "This has not been described in the prototype.",
+      "type" : "string" },
+     "published" : 
+     { "title" : "Publication Timestamp",
+      "description" : "This has not been described in the prototype.",
+      "$ref" : "#/definitions/DateTimeWithTimezoneDatatype" },
+     "last-modified" : 
+     { "title" : "Last Modified Timestamp",
+      "description" : "This has not been described in the prototype.",
+      "$ref" : "#/definitions/DateTimeWithTimezoneDatatype" },
+     "version" : 
+     { "title" : "Document Version",
+      "description" : "This has not been described in the prototype.",
+      "$ref" : "#/definitions/StringDatatype" },
+     "props" : 
+     { "type" : "array",
+      "minItems" : 1,
+      "items" : 
+      { "$ref" : "#assembly_oscal-metadata_property" } },
+     "links" : 
+     { "type" : "array",
+      "minItems" : 1,
+      "items" : 
+      { "$ref" : "#assembly_oscal-metadata_link" } },
+     "remarks" : 
+     { "$ref" : "#field_oscal-metadata_remarks" } },
+    "required" : 
+    [ "uuid" ],
+    "additionalProperties" : false },
    "oscal-complete-oscal-responsibility-common:provided" : 
    { "title" : "Provided Control Implementation",
     "description" : "Describes a capability which may be inherited by a leveraging system.",
@@ -2324,10 +2355,6 @@
      { "$ref" : "#assembly_oscal-responsibility-common_provided" },
      "responsibility" : 
      { "$ref" : "#assembly_oscal-responsibility-common_responsibility" },
-     "inherited" : 
-     { "$ref" : "#assembly_oscal-responsibility-common_inherited" },
-     "satisfied" : 
-     { "$ref" : "#assembly_oscal-responsibility-common_satisfied" },
      "remarks" : 
      { "$ref" : "#field_oscal-metadata_remarks" } },
     "additionalProperties" : false },

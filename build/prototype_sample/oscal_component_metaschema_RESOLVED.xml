@@ -468,28 +468,30 @@
             <group-as name="responsible-roles" in-json="ARRAY"/>
          </assembly>
          <!-- ADDED for CRM/SSRM: Implementation Status and Shared Responsibility Assembly -->
-         <assembly ref="implementation-status">
-            <remarks>
-               <p>The <code>implementation-status</code> is used to qualify the <code>status</code> value to indicate the degree to which the control is implemented.</p>
-            </remarks>
-         </assembly>
-         <assembly ref="provided">
-            <group-as name="provided" in-json="ARRAY"/>
-         </assembly>
-         <assembly ref="responsibility">
-            <group-as name="responsibility" in-json="ARRAY"/>
-         </assembly>
-         <assembly ref="inherited">
-            <group-as name="inherited" in-json="ARRAY"/>
-         </assembly>
-         <assembly ref="satisfied">
-            <group-as name="satisfied" in-json="ARRAY"/>
-         </assembly>
-         <assembly ref="export" max-occurs="1">
-            <remarks>
-               <p>TODO: Documentation</p>
-            </remarks>
-         </assembly>
+         <!-- <assembly ref="implementation-status">
+        <remarks>
+          <p>The <code>implementation-status</code> is used to qualify the <code>status</code> value to indicate the degree to which the control is implemented.</p>
+        </remarks>
+      </assembly>
+      
+      <assembly ref="provided">
+        <group-as name="provided" in-json="ARRAY"/>
+      </assembly>
+      <assembly ref="responsibility">
+        <group-as name="responsibility" in-json="ARRAY"/>
+      </assembly>
+      <assembly ref="inherited">
+        <group-as name="inherited" in-json="ARRAY"/>
+      </assembly>
+      <assembly ref="satisfied">
+        <group-as name="satisfied" in-json="ARRAY"/>
+      </assembly>
+
+      <assembly ref="export" max-occurs="1">
+        <remarks>
+          <p>TODO: Documentation</p>
+        </remarks>
+      </assembly> -->
          <!-- END ADDED -->
          <assembly ref="statement" max-occurs="unbounded">
             <group-as name="statements" in-json="ARRAY"/>

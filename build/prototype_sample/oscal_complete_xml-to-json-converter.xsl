@@ -75,7 +75,7 @@
       </xsl:if>
    </xsl:template>
    <!-- XML to JSON conversion: object filters -->
-   <xsl:strip-space elements="catalog metadata revision prop link role location address party responsible-party action param constraint test guideline select control part group back-matter resource citation rlink profile import include-all include-controls matching exclude-controls merge combine flat custom insert-controls modify set-parameter alter remove add component-definition import-component-definition component responsible-role protocol port-range control-implementation implemented-requirement implementation-status provided responsibility inherited satisfied export statement capability incorporates-component system-security-plan import-profile system-characteristics system-information information-type categorization confidentiality-impact integrity-impact availability-impact security-impact-level status authorization-boundary diagram network-architecture data-flow system-implementation leveraged-authorization user authorized-privilege inventory-item implemented-component by-component assessment-plan import-ssp local-definitions objectives-and-methods activity step reviewed-controls control-selection include-control exclude-control control-objective-selection include-objective exclude-objective related-controls terms-and-conditions assessment-subject include-subject exclude-subject assessment-assets assessment-platform uses-component task timing on-date within-date-range at-frequency dependency associated-activity subject assessment-results import-ap result assessment-task attestation assessment-log entry logged-by related-task identified-subject observation origin actor relevant-evidence risk characterization facet mitigating-factor response required-asset risk-log related-response related-observation finding target associated-risk plan-of-action-and-milestones poam-item related-finding"/>
+   <xsl:strip-space elements="catalog metadata revision prop link role location address party responsible-party action param constraint test guideline select control part group back-matter resource citation rlink profile import include-all include-controls matching exclude-controls merge combine flat custom insert-controls modify set-parameter alter remove add component-definition import-component-definition component responsible-role protocol port-range control-implementation implemented-requirement statement capability incorporates-component system-security-plan import-profile system-characteristics system-information information-type categorization confidentiality-impact integrity-impact availability-impact security-impact-level status authorization-boundary diagram network-architecture data-flow system-implementation leveraged-authorization user authorized-privilege inventory-item implemented-component by-component implementation-status provided responsibility inherited satisfied export assessment-plan import-ssp local-definitions objectives-and-methods activity step reviewed-controls control-selection include-control exclude-control control-objective-selection include-objective exclude-objective related-controls terms-and-conditions assessment-subject include-subject exclude-subject assessment-assets assessment-platform uses-component task timing on-date within-date-range at-frequency dependency associated-activity subject assessment-results import-ap result assessment-task attestation assessment-log entry logged-by related-task identified-subject observation origin actor relevant-evidence risk characterization facet mitigating-factor response required-asset risk-log related-response related-observation finding target associated-risk plan-of-action-and-milestones poam-item related-finding"/>
    <!-- METASCHEMA conversion stylesheet supports XML -> METASCHEMA/SUPERMODEL conversion -->
    <!-- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ -->
    <!-- METASCHEMA: OSCAL Unified Model of Models (version 1.1.2) in namespace "http://csrc.nist.gov/ns/oscal/1.0"-->
@@ -959,203 +959,6 @@
          <xsl:apply-templates select="remarks"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="implementation-status"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly name="implementation-status"
-                 key="implementation-status"
-                 gi="implementation-status">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">implementation-status</xsl:attribute>
-         </xsl:if>
-         <xsl:apply-templates select="@exportable"/>
-         <xsl:apply-templates select="@state"/>
-         <xsl:apply-templates select="remarks"/>
-      </assembly>
-   </xsl:template>
-   <xsl:template match="provided"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly name="provided" gi="provided">
-         <xsl:apply-templates select="@uuid"/>
-         <xsl:apply-templates select="@satisfied-uuid"/>
-         <xsl:apply-templates select="@exportable"/>
-         <xsl:apply-templates select="description"/>
-         <xsl:for-each-group select="prop" group-by="true()">
-            <group in-json="ARRAY" key="props">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:for-each-group select="link" group-by="true()">
-            <group in-json="ARRAY" key="links">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:for-each-group select="responsible-role" group-by="true()">
-            <group in-json="ARRAY" key="responsible-roles">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:apply-templates select="remarks"/>
-      </assembly>
-   </xsl:template>
-   <xsl:template match="responsibility"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly name="responsibility" gi="responsibility">
-         <xsl:apply-templates select="@uuid"/>
-         <xsl:apply-templates select="@provided-uuid"/>
-         <xsl:apply-templates select="@satisfied-uuid"/>
-         <xsl:apply-templates select="@exportable"/>
-         <xsl:apply-templates select="description"/>
-         <xsl:for-each-group select="prop" group-by="true()">
-            <group in-json="ARRAY" key="props">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:for-each-group select="link" group-by="true()">
-            <group in-json="ARRAY" key="links">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:for-each-group select="responsible-role" group-by="true()">
-            <group in-json="ARRAY" key="responsible-roles">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:apply-templates select="remarks"/>
-      </assembly>
-   </xsl:template>
-   <xsl:template match="inherited"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly name="inherited" gi="inherited">
-         <xsl:apply-templates select="@uuid"/>
-         <xsl:apply-templates select="@provided-uuid"/>
-         <xsl:apply-templates select="@satisfied-uuid"/>
-         <xsl:apply-templates select="@exportable"/>
-         <xsl:apply-templates select="description"/>
-         <xsl:for-each-group select="prop" group-by="true()">
-            <group in-json="ARRAY" key="props">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:for-each-group select="link" group-by="true()">
-            <group in-json="ARRAY" key="links">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:for-each-group select="responsible-role" group-by="true()">
-            <group in-json="ARRAY" key="responsible-roles">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-      </assembly>
-   </xsl:template>
-   <xsl:template match="satisfied"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly name="satisfied" gi="satisfied">
-         <xsl:apply-templates select="@uuid"/>
-         <xsl:apply-templates select="@responsibility-uuid"/>
-         <xsl:apply-templates select="@exportable"/>
-         <xsl:apply-templates select="description"/>
-         <xsl:for-each-group select="prop" group-by="true()">
-            <group in-json="ARRAY" key="props">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:for-each-group select="link" group-by="true()">
-            <group in-json="ARRAY" key="links">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:for-each-group select="responsible-role" group-by="true()">
-            <group in-json="ARRAY" key="responsible-roles">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:apply-templates select="remarks"/>
-      </assembly>
-   </xsl:template>
-   <xsl:template match="export"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly name="export" key="export" deprecated="1.1.0" gi="export">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">export</xsl:attribute>
-         </xsl:if>
-         <xsl:apply-templates select="@exportable"/>
-         <xsl:apply-templates select="description"/>
-         <xsl:for-each-group select="prop" group-by="true()">
-            <group in-json="ARRAY" key="props">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:for-each-group select="link" group-by="true()">
-            <group in-json="ARRAY" key="links">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:for-each-group select="provided" group-by="true()">
-            <group in-json="ARRAY" key="provided">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:for-each-group select="responsibility" group-by="true()">
-            <group in-json="ARRAY" key="responsibility">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:for-each-group select="inherited" group-by="true()">
-            <group in-json="ARRAY" key="inherited">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:for-each-group select="satisfied" group-by="true()">
-            <group in-json="ARRAY" key="satisfied">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:apply-templates select="remarks"/>
-      </assembly>
-   </xsl:template>
    <xsl:template match="capability"
                   xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
@@ -1740,6 +1543,189 @@
          <xsl:apply-templates select="export"/>
          <xsl:for-each-group select="responsible-role" group-by="true()">
             <group in-json="ARRAY" key="responsible-roles">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:apply-templates select="remarks"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="implementation-status"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <assembly name="implementation-status"
+                 key="implementation-status"
+                 gi="implementation-status">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">implementation-status</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="@exportable"/>
+         <xsl:apply-templates select="@state"/>
+         <xsl:apply-templates select="remarks"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="provided"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <assembly name="provided" gi="provided">
+         <xsl:apply-templates select="@uuid"/>
+         <xsl:apply-templates select="@satisfied-uuid"/>
+         <xsl:apply-templates select="@exportable"/>
+         <xsl:apply-templates select="description"/>
+         <xsl:for-each-group select="prop" group-by="true()">
+            <group in-json="ARRAY" key="props">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="link" group-by="true()">
+            <group in-json="ARRAY" key="links">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="responsible-role" group-by="true()">
+            <group in-json="ARRAY" key="responsible-roles">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:apply-templates select="remarks"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="responsibility"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <assembly name="responsibility" gi="responsibility">
+         <xsl:apply-templates select="@uuid"/>
+         <xsl:apply-templates select="@provided-uuid"/>
+         <xsl:apply-templates select="@satisfied-uuid"/>
+         <xsl:apply-templates select="@exportable"/>
+         <xsl:apply-templates select="description"/>
+         <xsl:for-each-group select="prop" group-by="true()">
+            <group in-json="ARRAY" key="props">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="link" group-by="true()">
+            <group in-json="ARRAY" key="links">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="responsible-role" group-by="true()">
+            <group in-json="ARRAY" key="responsible-roles">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:apply-templates select="remarks"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="inherited"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <assembly name="inherited" gi="inherited">
+         <xsl:apply-templates select="@uuid"/>
+         <xsl:apply-templates select="@provided-uuid"/>
+         <xsl:apply-templates select="@satisfied-uuid"/>
+         <xsl:apply-templates select="@exportable"/>
+         <xsl:apply-templates select="description"/>
+         <xsl:for-each-group select="prop" group-by="true()">
+            <group in-json="ARRAY" key="props">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="link" group-by="true()">
+            <group in-json="ARRAY" key="links">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="responsible-role" group-by="true()">
+            <group in-json="ARRAY" key="responsible-roles">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="satisfied"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <assembly name="satisfied" gi="satisfied">
+         <xsl:apply-templates select="@uuid"/>
+         <xsl:apply-templates select="@responsibility-uuid"/>
+         <xsl:apply-templates select="@exportable"/>
+         <xsl:apply-templates select="description"/>
+         <xsl:for-each-group select="prop" group-by="true()">
+            <group in-json="ARRAY" key="props">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="link" group-by="true()">
+            <group in-json="ARRAY" key="links">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="responsible-role" group-by="true()">
+            <group in-json="ARRAY" key="responsible-roles">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:apply-templates select="remarks"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="export"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <assembly name="export" key="export" deprecated="1.1.0" gi="export">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">export</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="@exportable"/>
+         <xsl:apply-templates select="description"/>
+         <xsl:for-each-group select="prop" group-by="true()">
+            <group in-json="ARRAY" key="props">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="link" group-by="true()">
+            <group in-json="ARRAY" key="links">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="provided" group-by="true()">
+            <group in-json="ARRAY" key="provided">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="responsibility" group-by="true()">
+            <group in-json="ARRAY" key="responsibility">
                <xsl:apply-templates select="current-group()">
                   <xsl:with-param name="with-key" select="false()"/>
                </xsl:apply-templates>
@@ -3755,181 +3741,6 @@
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="implementation-status/@exportable"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="boolean"
-             as-type="boolean"
-             name="exportable"
-             key="exportable"
-             gi="exportable">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="implementation-status/@state"
-                  priority="1"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-             as-type="token"
-             name="state"
-             key="state"
-             gi="state">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="provided/@uuid"
-                  priority="1"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-             as-type="uuid"
-             name="uuid"
-             key="uuid"
-             gi="uuid">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="provided/@satisfied-uuid"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-             as-type="uuid"
-             name="satisfied-uuid"
-             key="satisfied-uuid"
-             gi="satisfied-uuid">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="provided/@exportable"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="boolean"
-             as-type="boolean"
-             name="exportable"
-             key="exportable"
-             gi="exportable">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="responsibility/@uuid"
-                  priority="1"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-             as-type="uuid"
-             name="uuid"
-             key="uuid"
-             gi="uuid">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="responsibility/@provided-uuid"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-             as-type="uuid"
-             name="provided-uuid"
-             key="provided-uuid"
-             gi="provided-uuid">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="responsibility/@satisfied-uuid"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-             as-type="uuid"
-             name="satisfied-uuid"
-             key="satisfied-uuid"
-             gi="satisfied-uuid">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="responsibility/@exportable"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="boolean"
-             as-type="boolean"
-             name="exportable"
-             key="exportable"
-             gi="exportable">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="inherited/@uuid"
-                  priority="1"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-             as-type="uuid"
-             name="uuid"
-             key="uuid"
-             gi="uuid">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="inherited/@provided-uuid"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-             as-type="uuid"
-             name="provided-uuid"
-             key="provided-uuid"
-             gi="provided-uuid">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="inherited/@satisfied-uuid"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-             as-type="uuid"
-             name="satisfied-uuid"
-             key="satisfied-uuid"
-             gi="satisfied-uuid">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="inherited/@exportable"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="boolean"
-             as-type="boolean"
-             name="exportable"
-             key="exportable"
-             gi="exportable">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="satisfied/@uuid"
-                  priority="1"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-             as-type="uuid"
-             name="uuid"
-             key="uuid"
-             gi="uuid">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="satisfied/@responsibility-uuid"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-             as-type="uuid"
-             name="responsibility-uuid"
-             key="responsibility-uuid"
-             gi="responsibility-uuid">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="satisfied/@exportable"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="boolean"
-             as-type="boolean"
-             name="exportable"
-             key="exportable"
-             gi="exportable">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="export/@exportable"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="boolean"
-             as-type="boolean"
-             name="exportable"
-             key="exportable"
-             gi="exportable">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
    <xsl:template match="component-definition/component/control-implementation/implemented-requirement/statement/@statement-id | component-definition/capability/control-implementation/implemented-requirement/statement/@statement-id"
                   xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
@@ -4198,6 +4009,181 @@
              name="uuid"
              key="uuid"
              gi="uuid">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="implementation-status/@exportable"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="boolean"
+             as-type="boolean"
+             name="exportable"
+             key="exportable"
+             gi="exportable">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="implementation-status/@state"
+                  priority="1"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="string"
+             as-type="token"
+             name="state"
+             key="state"
+             gi="state">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="provided/@uuid"
+                  priority="1"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="string"
+             as-type="uuid"
+             name="uuid"
+             key="uuid"
+             gi="uuid">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="provided/@satisfied-uuid"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="string"
+             as-type="uuid"
+             name="satisfied-uuid"
+             key="satisfied-uuid"
+             gi="satisfied-uuid">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="provided/@exportable"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="boolean"
+             as-type="boolean"
+             name="exportable"
+             key="exportable"
+             gi="exportable">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="responsibility/@uuid"
+                  priority="1"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="string"
+             as-type="uuid"
+             name="uuid"
+             key="uuid"
+             gi="uuid">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="responsibility/@provided-uuid"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="string"
+             as-type="uuid"
+             name="provided-uuid"
+             key="provided-uuid"
+             gi="provided-uuid">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="responsibility/@satisfied-uuid"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="string"
+             as-type="uuid"
+             name="satisfied-uuid"
+             key="satisfied-uuid"
+             gi="satisfied-uuid">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="responsibility/@exportable"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="boolean"
+             as-type="boolean"
+             name="exportable"
+             key="exportable"
+             gi="exportable">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="inherited/@uuid"
+                  priority="1"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="string"
+             as-type="uuid"
+             name="uuid"
+             key="uuid"
+             gi="uuid">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="inherited/@provided-uuid"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="string"
+             as-type="uuid"
+             name="provided-uuid"
+             key="provided-uuid"
+             gi="provided-uuid">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="inherited/@satisfied-uuid"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="string"
+             as-type="uuid"
+             name="satisfied-uuid"
+             key="satisfied-uuid"
+             gi="satisfied-uuid">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="inherited/@exportable"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="boolean"
+             as-type="boolean"
+             name="exportable"
+             key="exportable"
+             gi="exportable">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="satisfied/@uuid"
+                  priority="1"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="string"
+             as-type="uuid"
+             name="uuid"
+             key="uuid"
+             gi="uuid">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="satisfied/@responsibility-uuid"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="string"
+             as-type="uuid"
+             name="responsibility-uuid"
+             key="responsibility-uuid"
+             gi="responsibility-uuid">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="satisfied/@exportable"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="boolean"
+             as-type="boolean"
+             name="exportable"
+             key="exportable"
+             gi="exportable">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="export/@exportable"
+                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="boolean"
+             as-type="boolean"
+             name="exportable"
+             key="exportable"
+             gi="exportable">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
@@ -9883,36 +9869,6 @@
                </xsl:apply-templates>
             </group>
          </xsl:for-each-group>
-         <xsl:apply-templates select="implementation-status"/>
-         <xsl:for-each-group select="provided" group-by="true()">
-            <group in-json="ARRAY" key="provided">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:for-each-group select="responsibility" group-by="true()">
-            <group in-json="ARRAY" key="responsibility">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:for-each-group select="inherited" group-by="true()">
-            <group in-json="ARRAY" key="inherited">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:for-each-group select="satisfied" group-by="true()">
-            <group in-json="ARRAY" key="satisfied">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:apply-templates select="export"/>
          <xsl:for-each-group select="statement" group-by="true()">
             <group in-json="ARRAY" key="statements">
                <xsl:apply-templates select="current-group()">
@@ -9979,510 +9935,6 @@
    </xsl:template>
    <xsl:template match="component-definition/component/control-implementation/implemented-requirement/responsible-role/link/text"
                   priority="13"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field collapsible="no"
-              as-type="markup-line"
-              name="text"
-              key="text"
-              gi="text"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-line" in-json="string">
-            <xsl:apply-templates mode="cast-prose"/>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="component-definition/component/control-implementation/implemented-requirement/provided/description"
-                  priority="11"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field in-xml="WITH_WRAPPER"
-              collapsible="no"
-              as-type="markup-multiline"
-              name="description"
-              key="description"
-              gi="description"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">description</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-multiline" in-json="string">
-            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
-                                 group-by="true()">
-               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
-            </xsl:for-each-group>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="component-definition/component/control-implementation/implemented-requirement/provided/link/text"
-                  priority="13"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field collapsible="no"
-              as-type="markup-line"
-              name="text"
-              key="text"
-              gi="text"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-line" in-json="string">
-            <xsl:apply-templates mode="cast-prose"/>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="component-definition/component/control-implementation/implemented-requirement/provided/responsible-role/link/text"
-                  priority="15"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field collapsible="no"
-              as-type="markup-line"
-              name="text"
-              key="text"
-              gi="text"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-line" in-json="string">
-            <xsl:apply-templates mode="cast-prose"/>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="component-definition/component/control-implementation/implemented-requirement/responsibility/description"
-                  priority="11"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field in-xml="WITH_WRAPPER"
-              collapsible="no"
-              as-type="markup-multiline"
-              name="description"
-              key="description"
-              gi="description"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">description</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-multiline" in-json="string">
-            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
-                                 group-by="true()">
-               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
-            </xsl:for-each-group>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="component-definition/component/control-implementation/implemented-requirement/responsibility/link/text"
-                  priority="13"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field collapsible="no"
-              as-type="markup-line"
-              name="text"
-              key="text"
-              gi="text"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-line" in-json="string">
-            <xsl:apply-templates mode="cast-prose"/>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="component-definition/component/control-implementation/implemented-requirement/responsibility/responsible-role/link/text"
-                  priority="15"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field collapsible="no"
-              as-type="markup-line"
-              name="text"
-              key="text"
-              gi="text"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-line" in-json="string">
-            <xsl:apply-templates mode="cast-prose"/>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="component-definition/component/control-implementation/implemented-requirement/inherited/description"
-                  priority="11"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field in-xml="WITH_WRAPPER"
-              collapsible="no"
-              as-type="markup-multiline"
-              name="description"
-              key="description"
-              gi="description"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">description</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-multiline" in-json="string">
-            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
-                                 group-by="true()">
-               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
-            </xsl:for-each-group>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="component-definition/component/control-implementation/implemented-requirement/inherited/link/text"
-                  priority="13"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field collapsible="no"
-              as-type="markup-line"
-              name="text"
-              key="text"
-              gi="text"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-line" in-json="string">
-            <xsl:apply-templates mode="cast-prose"/>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="component-definition/component/control-implementation/implemented-requirement/inherited/responsible-role/link/text"
-                  priority="15"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field collapsible="no"
-              as-type="markup-line"
-              name="text"
-              key="text"
-              gi="text"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-line" in-json="string">
-            <xsl:apply-templates mode="cast-prose"/>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="component-definition/component/control-implementation/implemented-requirement/satisfied/description"
-                  priority="11"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field in-xml="WITH_WRAPPER"
-              collapsible="no"
-              as-type="markup-multiline"
-              name="description"
-              key="description"
-              gi="description"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">description</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-multiline" in-json="string">
-            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
-                                 group-by="true()">
-               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
-            </xsl:for-each-group>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="component-definition/component/control-implementation/implemented-requirement/satisfied/link/text"
-                  priority="13"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field collapsible="no"
-              as-type="markup-line"
-              name="text"
-              key="text"
-              gi="text"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-line" in-json="string">
-            <xsl:apply-templates mode="cast-prose"/>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="component-definition/component/control-implementation/implemented-requirement/satisfied/responsible-role/link/text"
-                  priority="15"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field collapsible="no"
-              as-type="markup-line"
-              name="text"
-              key="text"
-              gi="text"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-line" in-json="string">
-            <xsl:apply-templates mode="cast-prose"/>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="component-definition/component/control-implementation/implemented-requirement/export/description"
-                  priority="10"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field in-xml="WITH_WRAPPER"
-              collapsible="no"
-              as-type="markup-multiline"
-              name="description"
-              key="description"
-              gi="description"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">description</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-multiline" in-json="string">
-            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
-                                 group-by="true()">
-               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
-            </xsl:for-each-group>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="component-definition/component/control-implementation/implemented-requirement/export/link/text"
-                  priority="12"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field collapsible="no"
-              as-type="markup-line"
-              name="text"
-              key="text"
-              gi="text"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-line" in-json="string">
-            <xsl:apply-templates mode="cast-prose"/>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="component-definition/component/control-implementation/implemented-requirement/export/provided/description"
-                  priority="12"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field in-xml="WITH_WRAPPER"
-              collapsible="no"
-              as-type="markup-multiline"
-              name="description"
-              key="description"
-              gi="description"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">description</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-multiline" in-json="string">
-            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
-                                 group-by="true()">
-               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
-            </xsl:for-each-group>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="component-definition/component/control-implementation/implemented-requirement/export/provided/link/text"
-                  priority="14"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field collapsible="no"
-              as-type="markup-line"
-              name="text"
-              key="text"
-              gi="text"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-line" in-json="string">
-            <xsl:apply-templates mode="cast-prose"/>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="component-definition/component/control-implementation/implemented-requirement/export/provided/responsible-role/link/text"
-                  priority="16"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field collapsible="no"
-              as-type="markup-line"
-              name="text"
-              key="text"
-              gi="text"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-line" in-json="string">
-            <xsl:apply-templates mode="cast-prose"/>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="component-definition/component/control-implementation/implemented-requirement/export/responsibility/description"
-                  priority="12"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field in-xml="WITH_WRAPPER"
-              collapsible="no"
-              as-type="markup-multiline"
-              name="description"
-              key="description"
-              gi="description"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">description</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-multiline" in-json="string">
-            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
-                                 group-by="true()">
-               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
-            </xsl:for-each-group>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="component-definition/component/control-implementation/implemented-requirement/export/responsibility/link/text"
-                  priority="14"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field collapsible="no"
-              as-type="markup-line"
-              name="text"
-              key="text"
-              gi="text"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-line" in-json="string">
-            <xsl:apply-templates mode="cast-prose"/>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="component-definition/component/control-implementation/implemented-requirement/export/responsibility/responsible-role/link/text"
-                  priority="16"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field collapsible="no"
-              as-type="markup-line"
-              name="text"
-              key="text"
-              gi="text"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-line" in-json="string">
-            <xsl:apply-templates mode="cast-prose"/>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="component-definition/component/control-implementation/implemented-requirement/export/inherited/description"
-                  priority="12"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field in-xml="WITH_WRAPPER"
-              collapsible="no"
-              as-type="markup-multiline"
-              name="description"
-              key="description"
-              gi="description"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">description</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-multiline" in-json="string">
-            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
-                                 group-by="true()">
-               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
-            </xsl:for-each-group>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="component-definition/component/control-implementation/implemented-requirement/export/inherited/link/text"
-                  priority="14"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field collapsible="no"
-              as-type="markup-line"
-              name="text"
-              key="text"
-              gi="text"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-line" in-json="string">
-            <xsl:apply-templates mode="cast-prose"/>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="component-definition/component/control-implementation/implemented-requirement/export/inherited/responsible-role/link/text"
-                  priority="16"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field collapsible="no"
-              as-type="markup-line"
-              name="text"
-              key="text"
-              gi="text"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-line" in-json="string">
-            <xsl:apply-templates mode="cast-prose"/>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="component-definition/component/control-implementation/implemented-requirement/export/satisfied/description"
-                  priority="12"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field in-xml="WITH_WRAPPER"
-              collapsible="no"
-              as-type="markup-multiline"
-              name="description"
-              key="description"
-              gi="description"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">description</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-multiline" in-json="string">
-            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
-                                 group-by="true()">
-               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
-            </xsl:for-each-group>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="component-definition/component/control-implementation/implemented-requirement/export/satisfied/link/text"
-                  priority="14"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field collapsible="no"
-              as-type="markup-line"
-              name="text"
-              key="text"
-              gi="text"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-line" in-json="string">
-            <xsl:apply-templates mode="cast-prose"/>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="component-definition/component/control-implementation/implemented-requirement/export/satisfied/responsible-role/link/text"
-                  priority="16"
                   xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
@@ -10779,36 +10231,6 @@
                </xsl:apply-templates>
             </group>
          </xsl:for-each-group>
-         <xsl:apply-templates select="implementation-status"/>
-         <xsl:for-each-group select="provided" group-by="true()">
-            <group in-json="ARRAY" key="provided">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:for-each-group select="responsibility" group-by="true()">
-            <group in-json="ARRAY" key="responsibility">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:for-each-group select="inherited" group-by="true()">
-            <group in-json="ARRAY" key="inherited">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:for-each-group select="satisfied" group-by="true()">
-            <group in-json="ARRAY" key="satisfied">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:apply-templates select="export"/>
          <xsl:for-each-group select="statement" group-by="true()">
             <group in-json="ARRAY" key="statements">
                <xsl:apply-templates select="current-group()">
@@ -10875,510 +10297,6 @@
    </xsl:template>
    <xsl:template match="component-definition/capability/control-implementation/implemented-requirement/responsible-role/link/text"
                   priority="13"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field collapsible="no"
-              as-type="markup-line"
-              name="text"
-              key="text"
-              gi="text"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-line" in-json="string">
-            <xsl:apply-templates mode="cast-prose"/>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="component-definition/capability/control-implementation/implemented-requirement/provided/description"
-                  priority="11"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field in-xml="WITH_WRAPPER"
-              collapsible="no"
-              as-type="markup-multiline"
-              name="description"
-              key="description"
-              gi="description"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">description</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-multiline" in-json="string">
-            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
-                                 group-by="true()">
-               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
-            </xsl:for-each-group>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="component-definition/capability/control-implementation/implemented-requirement/provided/link/text"
-                  priority="13"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field collapsible="no"
-              as-type="markup-line"
-              name="text"
-              key="text"
-              gi="text"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-line" in-json="string">
-            <xsl:apply-templates mode="cast-prose"/>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="component-definition/capability/control-implementation/implemented-requirement/provided/responsible-role/link/text"
-                  priority="15"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field collapsible="no"
-              as-type="markup-line"
-              name="text"
-              key="text"
-              gi="text"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-line" in-json="string">
-            <xsl:apply-templates mode="cast-prose"/>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="component-definition/capability/control-implementation/implemented-requirement/responsibility/description"
-                  priority="11"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field in-xml="WITH_WRAPPER"
-              collapsible="no"
-              as-type="markup-multiline"
-              name="description"
-              key="description"
-              gi="description"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">description</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-multiline" in-json="string">
-            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
-                                 group-by="true()">
-               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
-            </xsl:for-each-group>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="component-definition/capability/control-implementation/implemented-requirement/responsibility/link/text"
-                  priority="13"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field collapsible="no"
-              as-type="markup-line"
-              name="text"
-              key="text"
-              gi="text"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-line" in-json="string">
-            <xsl:apply-templates mode="cast-prose"/>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="component-definition/capability/control-implementation/implemented-requirement/responsibility/responsible-role/link/text"
-                  priority="15"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field collapsible="no"
-              as-type="markup-line"
-              name="text"
-              key="text"
-              gi="text"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-line" in-json="string">
-            <xsl:apply-templates mode="cast-prose"/>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="component-definition/capability/control-implementation/implemented-requirement/inherited/description"
-                  priority="11"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field in-xml="WITH_WRAPPER"
-              collapsible="no"
-              as-type="markup-multiline"
-              name="description"
-              key="description"
-              gi="description"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">description</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-multiline" in-json="string">
-            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
-                                 group-by="true()">
-               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
-            </xsl:for-each-group>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="component-definition/capability/control-implementation/implemented-requirement/inherited/link/text"
-                  priority="13"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field collapsible="no"
-              as-type="markup-line"
-              name="text"
-              key="text"
-              gi="text"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-line" in-json="string">
-            <xsl:apply-templates mode="cast-prose"/>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="component-definition/capability/control-implementation/implemented-requirement/inherited/responsible-role/link/text"
-                  priority="15"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field collapsible="no"
-              as-type="markup-line"
-              name="text"
-              key="text"
-              gi="text"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-line" in-json="string">
-            <xsl:apply-templates mode="cast-prose"/>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="component-definition/capability/control-implementation/implemented-requirement/satisfied/description"
-                  priority="11"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field in-xml="WITH_WRAPPER"
-              collapsible="no"
-              as-type="markup-multiline"
-              name="description"
-              key="description"
-              gi="description"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">description</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-multiline" in-json="string">
-            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
-                                 group-by="true()">
-               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
-            </xsl:for-each-group>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="component-definition/capability/control-implementation/implemented-requirement/satisfied/link/text"
-                  priority="13"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field collapsible="no"
-              as-type="markup-line"
-              name="text"
-              key="text"
-              gi="text"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-line" in-json="string">
-            <xsl:apply-templates mode="cast-prose"/>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="component-definition/capability/control-implementation/implemented-requirement/satisfied/responsible-role/link/text"
-                  priority="15"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field collapsible="no"
-              as-type="markup-line"
-              name="text"
-              key="text"
-              gi="text"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-line" in-json="string">
-            <xsl:apply-templates mode="cast-prose"/>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="component-definition/capability/control-implementation/implemented-requirement/export/description"
-                  priority="10"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field in-xml="WITH_WRAPPER"
-              collapsible="no"
-              as-type="markup-multiline"
-              name="description"
-              key="description"
-              gi="description"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">description</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-multiline" in-json="string">
-            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
-                                 group-by="true()">
-               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
-            </xsl:for-each-group>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="component-definition/capability/control-implementation/implemented-requirement/export/link/text"
-                  priority="12"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field collapsible="no"
-              as-type="markup-line"
-              name="text"
-              key="text"
-              gi="text"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-line" in-json="string">
-            <xsl:apply-templates mode="cast-prose"/>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="component-definition/capability/control-implementation/implemented-requirement/export/provided/description"
-                  priority="12"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field in-xml="WITH_WRAPPER"
-              collapsible="no"
-              as-type="markup-multiline"
-              name="description"
-              key="description"
-              gi="description"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">description</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-multiline" in-json="string">
-            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
-                                 group-by="true()">
-               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
-            </xsl:for-each-group>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="component-definition/capability/control-implementation/implemented-requirement/export/provided/link/text"
-                  priority="14"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field collapsible="no"
-              as-type="markup-line"
-              name="text"
-              key="text"
-              gi="text"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-line" in-json="string">
-            <xsl:apply-templates mode="cast-prose"/>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="component-definition/capability/control-implementation/implemented-requirement/export/provided/responsible-role/link/text"
-                  priority="16"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field collapsible="no"
-              as-type="markup-line"
-              name="text"
-              key="text"
-              gi="text"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-line" in-json="string">
-            <xsl:apply-templates mode="cast-prose"/>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="component-definition/capability/control-implementation/implemented-requirement/export/responsibility/description"
-                  priority="12"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field in-xml="WITH_WRAPPER"
-              collapsible="no"
-              as-type="markup-multiline"
-              name="description"
-              key="description"
-              gi="description"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">description</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-multiline" in-json="string">
-            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
-                                 group-by="true()">
-               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
-            </xsl:for-each-group>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="component-definition/capability/control-implementation/implemented-requirement/export/responsibility/link/text"
-                  priority="14"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field collapsible="no"
-              as-type="markup-line"
-              name="text"
-              key="text"
-              gi="text"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-line" in-json="string">
-            <xsl:apply-templates mode="cast-prose"/>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="component-definition/capability/control-implementation/implemented-requirement/export/responsibility/responsible-role/link/text"
-                  priority="16"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field collapsible="no"
-              as-type="markup-line"
-              name="text"
-              key="text"
-              gi="text"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-line" in-json="string">
-            <xsl:apply-templates mode="cast-prose"/>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="component-definition/capability/control-implementation/implemented-requirement/export/inherited/description"
-                  priority="12"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field in-xml="WITH_WRAPPER"
-              collapsible="no"
-              as-type="markup-multiline"
-              name="description"
-              key="description"
-              gi="description"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">description</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-multiline" in-json="string">
-            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
-                                 group-by="true()">
-               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
-            </xsl:for-each-group>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="component-definition/capability/control-implementation/implemented-requirement/export/inherited/link/text"
-                  priority="14"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field collapsible="no"
-              as-type="markup-line"
-              name="text"
-              key="text"
-              gi="text"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-line" in-json="string">
-            <xsl:apply-templates mode="cast-prose"/>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="component-definition/capability/control-implementation/implemented-requirement/export/inherited/responsible-role/link/text"
-                  priority="16"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field collapsible="no"
-              as-type="markup-line"
-              name="text"
-              key="text"
-              gi="text"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-line" in-json="string">
-            <xsl:apply-templates mode="cast-prose"/>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="component-definition/capability/control-implementation/implemented-requirement/export/satisfied/description"
-                  priority="12"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field in-xml="WITH_WRAPPER"
-              collapsible="no"
-              as-type="markup-multiline"
-              name="description"
-              key="description"
-              gi="description"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">description</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-multiline" in-json="string">
-            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
-                                 group-by="true()">
-               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
-            </xsl:for-each-group>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="component-definition/capability/control-implementation/implemented-requirement/export/satisfied/link/text"
-                  priority="14"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field collapsible="no"
-              as-type="markup-line"
-              name="text"
-              key="text"
-              gi="text"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-line" in-json="string">
-            <xsl:apply-templates mode="cast-prose"/>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="component-definition/capability/control-implementation/implemented-requirement/export/satisfied/responsible-role/link/text"
-                  priority="16"
                   xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
@@ -14631,122 +13549,6 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/inherited/description"
-                  priority="13"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field in-xml="WITH_WRAPPER"
-              collapsible="no"
-              as-type="markup-multiline"
-              name="description"
-              key="description"
-              gi="description"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">description</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-multiline" in-json="string">
-            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
-                                 group-by="true()">
-               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
-            </xsl:for-each-group>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/inherited/link/text"
-                  priority="15"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field collapsible="no"
-              as-type="markup-line"
-              name="text"
-              key="text"
-              gi="text"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-line" in-json="string">
-            <xsl:apply-templates mode="cast-prose"/>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/inherited/responsible-role/link/text"
-                  priority="17"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field collapsible="no"
-              as-type="markup-line"
-              name="text"
-              key="text"
-              gi="text"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-line" in-json="string">
-            <xsl:apply-templates mode="cast-prose"/>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/satisfied/description"
-                  priority="13"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field in-xml="WITH_WRAPPER"
-              collapsible="no"
-              as-type="markup-multiline"
-              name="description"
-              key="description"
-              gi="description"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">description</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-multiline" in-json="string">
-            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
-                                 group-by="true()">
-               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
-            </xsl:for-each-group>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/satisfied/link/text"
-                  priority="15"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field collapsible="no"
-              as-type="markup-line"
-              name="text"
-              key="text"
-              gi="text"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-line" in-json="string">
-            <xsl:apply-templates mode="cast-prose"/>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/satisfied/responsible-role/link/text"
-                  priority="17"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field collapsible="no"
-              as-type="markup-line"
-              name="text"
-              key="text"
-              gi="text"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-line" in-json="string">
-            <xsl:apply-templates mode="cast-prose"/>
-         </value>
-      </field>
-   </xsl:template>
    <xsl:template match="system-security-plan/control-implementation/implemented-requirement/statement/by-component/responsible-role/link/text"
                   priority="14"
                   xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -15190,122 +13992,6 @@
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/control-implementation/implemented-requirement/by-component/export/responsibility/responsible-role/link/text"
-                  priority="15"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field collapsible="no"
-              as-type="markup-line"
-              name="text"
-              key="text"
-              gi="text"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-line" in-json="string">
-            <xsl:apply-templates mode="cast-prose"/>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="system-security-plan/control-implementation/implemented-requirement/by-component/export/inherited/description"
-                  priority="11"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field in-xml="WITH_WRAPPER"
-              collapsible="no"
-              as-type="markup-multiline"
-              name="description"
-              key="description"
-              gi="description"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">description</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-multiline" in-json="string">
-            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
-                                 group-by="true()">
-               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
-            </xsl:for-each-group>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="system-security-plan/control-implementation/implemented-requirement/by-component/export/inherited/link/text"
-                  priority="13"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field collapsible="no"
-              as-type="markup-line"
-              name="text"
-              key="text"
-              gi="text"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-line" in-json="string">
-            <xsl:apply-templates mode="cast-prose"/>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="system-security-plan/control-implementation/implemented-requirement/by-component/export/inherited/responsible-role/link/text"
-                  priority="15"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field collapsible="no"
-              as-type="markup-line"
-              name="text"
-              key="text"
-              gi="text"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-line" in-json="string">
-            <xsl:apply-templates mode="cast-prose"/>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="system-security-plan/control-implementation/implemented-requirement/by-component/export/satisfied/description"
-                  priority="11"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field in-xml="WITH_WRAPPER"
-              collapsible="no"
-              as-type="markup-multiline"
-              name="description"
-              key="description"
-              gi="description"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">description</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-multiline" in-json="string">
-            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
-                                 group-by="true()">
-               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
-            </xsl:for-each-group>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="system-security-plan/control-implementation/implemented-requirement/by-component/export/satisfied/link/text"
-                  priority="13"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field collapsible="no"
-              as-type="markup-line"
-              name="text"
-              key="text"
-              gi="text"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-line" in-json="string">
-            <xsl:apply-templates mode="cast-prose"/>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="system-security-plan/control-implementation/implemented-requirement/by-component/export/satisfied/responsible-role/link/text"
                   priority="15"
                   xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>

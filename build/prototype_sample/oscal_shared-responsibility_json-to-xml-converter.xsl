@@ -103,9 +103,8 @@
          </xsl:if>
          <xsl:apply-templates select="*[@key='uuid']"/>
          <xsl:apply-templates select="*[@key='metadata']"/>
-         <xsl:apply-templates select="*[@key='import-component-definitions']"/>
+         <xsl:apply-templates select="*[@key='source-ssp']"/>
          <xsl:apply-templates select="*[@key='components']"/>
-         <xsl:apply-templates select="*[@key='capabilities']"/>
          <xsl:apply-templates select="*[@key='back-matter']"/>
       </assembly>
    </xsl:template>
@@ -182,19 +181,28 @@
          <xsl:apply-templates select="*[@key='remarks']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:array[@key='import-component-definitions']/j:map">
+   <xsl:template match="j:map[@key='source-ssp']">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="import-component-definition" -->
-      <assembly as-type="empty"
-                 name="import-component-definition"
-                 gi="import-component-definition">
-         <xsl:apply-templates select="*[@key='href']"/>
+      <!-- XML match="source-ssp" -->
+      <assembly name="source-ssp" key="source-ssp" gi="source-ssp">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">source-ssp</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="*[@key='uuid']"/>
+         <xsl:apply-templates select="*[@key='ssp-uuid']"/>
+         <xsl:apply-templates select="*[@key='ssp-title']"/>
+         <xsl:apply-templates select="*[@key='published']"/>
+         <xsl:apply-templates select="*[@key='last-modified']"/>
+         <xsl:apply-templates select="*[@key='version']"/>
+         <xsl:apply-templates select="*[@key='props']"/>
+         <xsl:apply-templates select="*[@key='links']"/>
+         <xsl:apply-templates select="*[@key='remarks']"/>
       </assembly>
    </xsl:template>
    <xsl:template match="j:array[@key='components']/j:map">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="component" -->
-      <assembly name="defined-component" gi="component">
+      <assembly name="defined-shared-responsibility" gi="component">
          <xsl:apply-templates select="*[@key='uuid']"/>
          <xsl:apply-templates select="*[@key='type']"/>
          <xsl:apply-templates select="*[@key='title']"/>
@@ -316,28 +324,6 @@
          <xsl:apply-templates select="*[@key='links']"/>
          <xsl:apply-templates select="*[@key='responsible-roles']"/>
          <xsl:apply-templates select="*[@key='remarks']"/>
-      </assembly>
-   </xsl:template>
-   <xsl:template match="j:array[@key='capabilities']/j:map">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="capability" -->
-      <assembly name="capability" gi="capability">
-         <xsl:apply-templates select="*[@key='uuid']"/>
-         <xsl:apply-templates select="*[@key='name']"/>
-         <xsl:apply-templates select="*[@key='description']"/>
-         <xsl:apply-templates select="*[@key='props']"/>
-         <xsl:apply-templates select="*[@key='links']"/>
-         <xsl:apply-templates select="*[@key='incorporates-components']"/>
-         <xsl:apply-templates select="*[@key='control-implementations']"/>
-         <xsl:apply-templates select="*[@key='remarks']"/>
-      </assembly>
-   </xsl:template>
-   <xsl:template match="j:array[@key='incorporates-components']/j:map">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="incorporates-component" -->
-      <assembly name="incorporates-component" gi="incorporates-component">
-         <xsl:apply-templates select="*[@key='component-uuid']"/>
-         <xsl:apply-templates select="*[@key='description']"/>
       </assembly>
    </xsl:template>
    <xsl:template match="j:map[@key='back-matter']">
@@ -722,19 +708,30 @@
    <xsl:template match="j:array[@key='actions']/j:map/j:string[@key='system']"
                   mode="keep-value-property"
                   priority="6"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:array[@key='import-component-definitions']/j:map/j:string[@key='href']"
-                  priority="1"><!-- XML match="import-component-definition/@href" -->
+   <xsl:template match="j:map[@key='source-ssp']/j:string[@key='uuid']" priority="1"><!-- XML match="source-ssp/@uuid" -->
       <flag in-json="string"
-             as-type="uri-reference"
-             name="href"
-             key="href"
-             gi="href">
+             as-type="uuid"
+             name="uuid"
+             key="uuid"
+             gi="uuid">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="j:array[@key='import-component-definitions']/j:map/j:string[@key='href']"
+   <xsl:template match="j:map[@key='source-ssp']/j:string[@key='uuid']"
                   mode="keep-value-property"
-                  priority="5"><!-- Not keeping the flag here. --></xsl:template>
+                  priority="4"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:map[@key='source-ssp']/j:string[@key='ssp-uuid']" priority="1"><!-- XML match="source-ssp/@ssp-uuid" -->
+      <flag in-json="string"
+             as-type="uuid"
+             name="ssp-uuid"
+             key="ssp-uuid"
+             gi="ssp-uuid">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:map[@key='source-ssp']/j:string[@key='ssp-uuid']"
+                  mode="keep-value-property"
+                  priority="4"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:array[@key='components']/j:map/j:string[@key='uuid']"
                   priority="1"><!-- XML match="component/@uuid" -->
       <flag in-json="string"
@@ -838,8 +835,8 @@
    <xsl:template match="j:array[@key='port-ranges']/j:map/j:string[@key='transport']"
                   mode="keep-value-property"
                   priority="9"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:string[@key='uuid'] | j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:string[@key='uuid']"
-                  priority="7"><!-- XML match="shared-responsibility/component/control-implementation/@uuid | shared-responsibility/capability/control-implementation/@uuid" -->
+   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:string[@key='uuid']"
+                  priority="7"><!-- XML match="shared-responsibility/component/control-implementation/@uuid" -->
       <flag in-json="string"
              as-type="uuid"
              name="uuid"
@@ -848,11 +845,11 @@
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:string[@key='uuid'] | j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:string[@key='uuid']"
+   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:string[@key='uuid']"
                   mode="keep-value-property"
                   priority="7"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:string[@key='source'] | j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:string[@key='source']"
-                  priority="7"><!-- XML match="shared-responsibility/component/control-implementation/@source | shared-responsibility/capability/control-implementation/@source" -->
+   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:string[@key='source']"
+                  priority="7"><!-- XML match="shared-responsibility/component/control-implementation/@source" -->
       <flag in-json="string"
              as-type="uri-reference"
              name="source"
@@ -861,7 +858,7 @@
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:string[@key='source'] | j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:string[@key='source']"
+   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:string[@key='source']"
                   mode="keep-value-property"
                   priority="7"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:array[@key='set-parameters']/j:map/j:string[@key='param-id']"><!-- XML match="set-parameter/@param-id" -->
@@ -876,8 +873,8 @@
    <xsl:template match="j:array[@key='set-parameters']/j:map/j:string[@key='param-id']"
                   mode="keep-value-property"
                   priority="9"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:string[@key='uuid'] | j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:string[@key='uuid']"
-                  priority="9"><!-- XML match="shared-responsibility/component/control-implementation/implemented-requirement/@uuid | shared-responsibility/capability/control-implementation/implemented-requirement/@uuid" -->
+   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:string[@key='uuid']"
+                  priority="9"><!-- XML match="shared-responsibility/component/control-implementation/implemented-requirement/@uuid" -->
       <flag in-json="string"
              as-type="uuid"
              name="uuid"
@@ -886,10 +883,10 @@
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:string[@key='uuid'] | j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:string[@key='uuid']"
+   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:string[@key='uuid']"
                   mode="keep-value-property"
                   priority="9"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:string[@key='control-id'] | j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:string[@key='control-id']"><!-- XML match="shared-responsibility/component/control-implementation/implemented-requirement/@control-id | shared-responsibility/capability/control-implementation/implemented-requirement/@control-id" -->
+   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:string[@key='control-id']"><!-- XML match="shared-responsibility/component/control-implementation/implemented-requirement/@control-id" -->
       <flag in-json="string"
              as-type="token"
              name="control-id"
@@ -898,7 +895,7 @@
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:string[@key='control-id'] | j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:string[@key='control-id']"
+   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:string[@key='control-id']"
                   mode="keep-value-property"
                   priority="9"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:map[@key='implementation-status']/j:boolean[@key='exportable']"><!-- XML match="implementation-status/@exportable" -->
@@ -1098,7 +1095,7 @@
    <xsl:template match="j:array[@key='satisfied']/j:map/j:boolean[@key='exportable']"
                   mode="keep-value-property"
                   priority="11"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='statements']/j:map/j:string[@key='statement-id'] | j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='statements']/j:map/j:string[@key='statement-id']"><!-- XML match="shared-responsibility/component/control-implementation/implemented-requirement/statement/@statement-id | shared-responsibility/capability/control-implementation/implemented-requirement/statement/@statement-id" -->
+   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='statements']/j:map/j:string[@key='statement-id']"><!-- XML match="shared-responsibility/component/control-implementation/implemented-requirement/statement/@statement-id" -->
       <flag in-json="string"
              as-type="token"
              name="statement-id"
@@ -1107,11 +1104,11 @@
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='statements']/j:map/j:string[@key='statement-id'] | j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='statements']/j:map/j:string[@key='statement-id']"
+   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='statements']/j:map/j:string[@key='statement-id']"
                   mode="keep-value-property"
                   priority="11"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='statements']/j:map/j:string[@key='uuid'] | j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='statements']/j:map/j:string[@key='uuid']"
-                  priority="11"><!-- XML match="shared-responsibility/component/control-implementation/implemented-requirement/statement/@uuid | shared-responsibility/capability/control-implementation/implemented-requirement/statement/@uuid" -->
+   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='statements']/j:map/j:string[@key='uuid']"
+                  priority="11"><!-- XML match="shared-responsibility/component/control-implementation/implemented-requirement/statement/@uuid" -->
       <flag in-json="string"
              as-type="uuid"
              name="uuid"
@@ -1120,48 +1117,9 @@
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='statements']/j:map/j:string[@key='uuid'] | j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='statements']/j:map/j:string[@key='uuid']"
+   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='statements']/j:map/j:string[@key='uuid']"
                   mode="keep-value-property"
                   priority="11"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:array[@key='capabilities']/j:map/j:string[@key='uuid']"
-                  priority="1"><!-- XML match="capability/@uuid" -->
-      <flag in-json="string"
-             as-type="uuid"
-             name="uuid"
-             key="uuid"
-             gi="uuid">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="j:array[@key='capabilities']/j:map/j:string[@key='uuid']"
-                  mode="keep-value-property"
-                  priority="5"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:array[@key='capabilities']/j:map/j:string[@key='name']"
-                  priority="1"><!-- XML match="capability/@name" -->
-      <flag in-json="string"
-             as-type="string"
-             name="name"
-             key="name"
-             gi="name">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="j:array[@key='capabilities']/j:map/j:string[@key='name']"
-                  mode="keep-value-property"
-                  priority="5"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:array[@key='incorporates-components']/j:map/j:string[@key='component-uuid']"
-                  priority="1"><!-- XML match="incorporates-component/@component-uuid" -->
-      <flag in-json="string"
-             as-type="uuid"
-             name="component-uuid"
-             key="component-uuid"
-             gi="component-uuid">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="j:array[@key='incorporates-components']/j:map/j:string[@key='component-uuid']"
-                  mode="keep-value-property"
-                  priority="7"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:map[@key='shared-responsibility']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:string[@key='uuid']"
                   priority="6"><!-- XML match="shared-responsibility/back-matter/resource/@uuid" -->
       <flag in-json="string"
@@ -2275,6 +2233,121 @@
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
+   <xsl:template match="j:map[@key='shared-responsibility']/j:map[@key='source-ssp']/j:string[@key='ssp-title']"
+                  priority="4">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="shared-responsibility/source-ssp/ssp-title" -->
+      <field collapsible="no"
+              as-type="markup-line"
+              name="ssp-title"
+              key="ssp-title"
+              gi="ssp-title"
+              in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">ssp-title</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='shared-responsibility']/j:map[@key='source-ssp']/j:string[@key='ssp-title']"
+                  mode="get-value-property"
+                  priority="4">
+      <value as-type="markup-line" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='shared-responsibility']/j:map[@key='source-ssp']/j:string[@key='published']"
+                  priority="4">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="shared-responsibility/source-ssp/published" -->
+      <field collapsible="no"
+              as-type="dateTime-with-timezone"
+              name="published"
+              key="published"
+              gi="published"
+              in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">published</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='shared-responsibility']/j:map[@key='source-ssp']/j:string[@key='published']"
+                  mode="get-value-property"
+                  priority="4">
+      <value as-type="dateTime-with-timezone" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='shared-responsibility']/j:map[@key='source-ssp']/j:string[@key='last-modified']"
+                  priority="4">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="shared-responsibility/source-ssp/last-modified" -->
+      <field collapsible="no"
+              as-type="dateTime-with-timezone"
+              name="last-modified"
+              key="last-modified"
+              gi="last-modified"
+              in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">last-modified</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='shared-responsibility']/j:map[@key='source-ssp']/j:string[@key='last-modified']"
+                  mode="get-value-property"
+                  priority="4">
+      <value as-type="dateTime-with-timezone" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='shared-responsibility']/j:map[@key='source-ssp']/j:string[@key='version']"
+                  priority="4">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="shared-responsibility/source-ssp/version" -->
+      <field collapsible="no"
+              as-type="string"
+              name="version"
+              key="version"
+              gi="version"
+              in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">version</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='shared-responsibility']/j:map[@key='source-ssp']/j:string[@key='version']"
+                  mode="get-value-property"
+                  priority="4">
+      <value as-type="string" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='shared-responsibility']/j:map[@key='source-ssp']/j:array[@key='links']/j:map/j:string[@key='text']"
+                  priority="6">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="shared-responsibility/source-ssp/link/text" -->
+      <field collapsible="no"
+              as-type="markup-line"
+              name="text"
+              key="text"
+              gi="text"
+              in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">text</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='shared-responsibility']/j:map[@key='source-ssp']/j:array[@key='links']/j:map/j:string[@key='text']"
+                  mode="get-value-property"
+                  priority="6">
+      <value as-type="markup-line" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
    <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='components']/j:map/j:string[@key='title']"
                   priority="5">
       <xsl:param name="with-key" select="true()"/>
@@ -2962,631 +3035,6 @@
       </field>
    </xsl:template>
    <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='statements']/j:map/j:array[@key='responsible-roles']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
-                  mode="get-value-property"
-                  priority="15">
-      <value as-type="markup-line" in-json="string">
-         <xsl:value-of select="."/>
-      </value>
-   </xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:string[@key='description']"
-                  priority="5">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="shared-responsibility/capability/description" -->
-      <field in-xml="WITH_WRAPPER"
-              collapsible="no"
-              as-type="markup-multiline"
-              name="description"
-              key="description"
-              gi="description"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">description</xsl:attribute>
-         </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
-   </xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:string[@key='description']"
-                  mode="get-value-property"
-                  priority="5">
-      <value as-type="markup-multiline" in-json="string">
-         <xsl:value-of select="."/>
-      </value>
-   </xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
-                  priority="7">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="shared-responsibility/capability/link/text" -->
-      <field collapsible="no"
-              as-type="markup-line"
-              name="text"
-              key="text"
-              gi="text"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
-   </xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
-                  mode="get-value-property"
-                  priority="7">
-      <value as-type="markup-line" in-json="string">
-         <xsl:value-of select="."/>
-      </value>
-   </xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:array[@key='incorporates-components']/j:map/j:string[@key='description']"
-                  priority="7">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="shared-responsibility/capability/incorporates-component/description" -->
-      <field in-xml="WITH_WRAPPER"
-              collapsible="no"
-              as-type="markup-multiline"
-              name="description"
-              key="description"
-              gi="description"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">description</xsl:attribute>
-         </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
-   </xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:array[@key='incorporates-components']/j:map/j:string[@key='description']"
-                  mode="get-value-property"
-                  priority="7">
-      <value as-type="markup-multiline" in-json="string">
-         <xsl:value-of select="."/>
-      </value>
-   </xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map"
-                  priority="6">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="shared-responsibility/capability/control-implementation" -->
-      <assembly name="control-implementation" gi="control-implementation">
-         <xsl:apply-templates select="*[@key='uuid']"/>
-         <xsl:apply-templates select="*[@key='source']"/>
-         <xsl:apply-templates select="*[@key='description']"/>
-         <xsl:apply-templates select="*[@key='props']"/>
-         <xsl:apply-templates select="*[@key='links']"/>
-         <xsl:apply-templates select="*[@key='set-parameters']"/>
-         <xsl:apply-templates select="*[@key='implemented-requirements']"/>
-      </assembly>
-   </xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:string[@key='description']"
-                  priority="7">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="shared-responsibility/capability/control-implementation/description" -->
-      <field in-xml="WITH_WRAPPER"
-              collapsible="no"
-              as-type="markup-multiline"
-              name="description"
-              key="description"
-              gi="description"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">description</xsl:attribute>
-         </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
-   </xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:string[@key='description']"
-                  mode="get-value-property"
-                  priority="7">
-      <value as-type="markup-multiline" in-json="string">
-         <xsl:value-of select="."/>
-      </value>
-   </xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
-                  priority="9">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="shared-responsibility/capability/control-implementation/link/text" -->
-      <field collapsible="no"
-              as-type="markup-line"
-              name="text"
-              key="text"
-              gi="text"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
-   </xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
-                  mode="get-value-property"
-                  priority="9">
-      <value as-type="markup-line" in-json="string">
-         <xsl:value-of select="."/>
-      </value>
-   </xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='set-parameters']/j:map/j:array[@key='values']/j:string"
-                  priority="10">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="shared-responsibility/capability/control-implementation/set-parameter/value" -->
-      <field collapsible="no"
-              as-type="string"
-              name="value"
-              gi="value"
-              in-json="SCALAR">
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
-   </xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='set-parameters']/j:map/j:array[@key='values']/j:string"
-                  mode="get-value-property"
-                  priority="10">
-      <value as-type="string" in-json="string">
-         <xsl:value-of select="."/>
-      </value>
-   </xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map"
-                  priority="8">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="shared-responsibility/capability/control-implementation/implemented-requirement" -->
-      <assembly name="implemented-requirement" gi="implemented-requirement">
-         <xsl:apply-templates select="*[@key='uuid']"/>
-         <xsl:apply-templates select="*[@key='control-id']"/>
-         <xsl:apply-templates select="*[@key='description']"/>
-         <xsl:apply-templates select="*[@key='props']"/>
-         <xsl:apply-templates select="*[@key='links']"/>
-         <xsl:apply-templates select="*[@key='set-parameters']"/>
-         <xsl:apply-templates select="*[@key='responsible-roles']"/>
-         <xsl:apply-templates select="*[@key='implementation-status']"/>
-         <xsl:apply-templates select="*[@key='provided']"/>
-         <xsl:apply-templates select="*[@key='responsibility']"/>
-         <xsl:apply-templates select="*[@key='inherited']"/>
-         <xsl:apply-templates select="*[@key='satisfied']"/>
-         <xsl:apply-templates select="*[@key='statements']"/>
-         <xsl:apply-templates select="*[@key='remarks']"/>
-      </assembly>
-   </xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:string[@key='description']"
-                  priority="9">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="shared-responsibility/capability/control-implementation/implemented-requirement/description" -->
-      <field in-xml="WITH_WRAPPER"
-              collapsible="no"
-              as-type="markup-multiline"
-              name="description"
-              key="description"
-              gi="description"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">description</xsl:attribute>
-         </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
-   </xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:string[@key='description']"
-                  mode="get-value-property"
-                  priority="9">
-      <value as-type="markup-multiline" in-json="string">
-         <xsl:value-of select="."/>
-      </value>
-   </xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
-                  priority="11">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="shared-responsibility/capability/control-implementation/implemented-requirement/link/text" -->
-      <field collapsible="no"
-              as-type="markup-line"
-              name="text"
-              key="text"
-              gi="text"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
-   </xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
-                  mode="get-value-property"
-                  priority="11">
-      <value as-type="markup-line" in-json="string">
-         <xsl:value-of select="."/>
-      </value>
-   </xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='set-parameters']/j:map/j:array[@key='values']/j:string"
-                  priority="12">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="shared-responsibility/capability/control-implementation/implemented-requirement/set-parameter/value" -->
-      <field collapsible="no"
-              as-type="string"
-              name="value"
-              gi="value"
-              in-json="SCALAR">
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
-   </xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='set-parameters']/j:map/j:array[@key='values']/j:string"
-                  mode="get-value-property"
-                  priority="12">
-      <value as-type="string" in-json="string">
-         <xsl:value-of select="."/>
-      </value>
-   </xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='responsible-roles']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
-                  priority="13">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="shared-responsibility/capability/control-implementation/implemented-requirement/responsible-role/link/text" -->
-      <field collapsible="no"
-              as-type="markup-line"
-              name="text"
-              key="text"
-              gi="text"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
-   </xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='responsible-roles']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
-                  mode="get-value-property"
-                  priority="13">
-      <value as-type="markup-line" in-json="string">
-         <xsl:value-of select="."/>
-      </value>
-   </xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='provided']/j:map/j:string[@key='description']"
-                  priority="11">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="shared-responsibility/capability/control-implementation/implemented-requirement/provided/description" -->
-      <field in-xml="WITH_WRAPPER"
-              collapsible="no"
-              as-type="markup-multiline"
-              name="description"
-              key="description"
-              gi="description"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">description</xsl:attribute>
-         </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
-   </xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='provided']/j:map/j:string[@key='description']"
-                  mode="get-value-property"
-                  priority="11">
-      <value as-type="markup-multiline" in-json="string">
-         <xsl:value-of select="."/>
-      </value>
-   </xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='provided']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
-                  priority="13">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="shared-responsibility/capability/control-implementation/implemented-requirement/provided/link/text" -->
-      <field collapsible="no"
-              as-type="markup-line"
-              name="text"
-              key="text"
-              gi="text"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
-   </xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='provided']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
-                  mode="get-value-property"
-                  priority="13">
-      <value as-type="markup-line" in-json="string">
-         <xsl:value-of select="."/>
-      </value>
-   </xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='provided']/j:map/j:array[@key='responsible-roles']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
-                  priority="15">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="shared-responsibility/capability/control-implementation/implemented-requirement/provided/responsible-role/link/text" -->
-      <field collapsible="no"
-              as-type="markup-line"
-              name="text"
-              key="text"
-              gi="text"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
-   </xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='provided']/j:map/j:array[@key='responsible-roles']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
-                  mode="get-value-property"
-                  priority="15">
-      <value as-type="markup-line" in-json="string">
-         <xsl:value-of select="."/>
-      </value>
-   </xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='responsibility']/j:map/j:string[@key='description']"
-                  priority="11">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="shared-responsibility/capability/control-implementation/implemented-requirement/responsibility/description" -->
-      <field in-xml="WITH_WRAPPER"
-              collapsible="no"
-              as-type="markup-multiline"
-              name="description"
-              key="description"
-              gi="description"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">description</xsl:attribute>
-         </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
-   </xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='responsibility']/j:map/j:string[@key='description']"
-                  mode="get-value-property"
-                  priority="11">
-      <value as-type="markup-multiline" in-json="string">
-         <xsl:value-of select="."/>
-      </value>
-   </xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='responsibility']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
-                  priority="13">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="shared-responsibility/capability/control-implementation/implemented-requirement/responsibility/link/text" -->
-      <field collapsible="no"
-              as-type="markup-line"
-              name="text"
-              key="text"
-              gi="text"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
-   </xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='responsibility']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
-                  mode="get-value-property"
-                  priority="13">
-      <value as-type="markup-line" in-json="string">
-         <xsl:value-of select="."/>
-      </value>
-   </xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='responsibility']/j:map/j:array[@key='responsible-roles']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
-                  priority="15">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="shared-responsibility/capability/control-implementation/implemented-requirement/responsibility/responsible-role/link/text" -->
-      <field collapsible="no"
-              as-type="markup-line"
-              name="text"
-              key="text"
-              gi="text"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
-   </xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='responsibility']/j:map/j:array[@key='responsible-roles']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
-                  mode="get-value-property"
-                  priority="15">
-      <value as-type="markup-line" in-json="string">
-         <xsl:value-of select="."/>
-      </value>
-   </xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='inherited']/j:map/j:string[@key='description']"
-                  priority="11">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="shared-responsibility/capability/control-implementation/implemented-requirement/inherited/description" -->
-      <field in-xml="WITH_WRAPPER"
-              collapsible="no"
-              as-type="markup-multiline"
-              name="description"
-              key="description"
-              gi="description"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">description</xsl:attribute>
-         </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
-   </xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='inherited']/j:map/j:string[@key='description']"
-                  mode="get-value-property"
-                  priority="11">
-      <value as-type="markup-multiline" in-json="string">
-         <xsl:value-of select="."/>
-      </value>
-   </xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='inherited']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
-                  priority="13">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="shared-responsibility/capability/control-implementation/implemented-requirement/inherited/link/text" -->
-      <field collapsible="no"
-              as-type="markup-line"
-              name="text"
-              key="text"
-              gi="text"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
-   </xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='inherited']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
-                  mode="get-value-property"
-                  priority="13">
-      <value as-type="markup-line" in-json="string">
-         <xsl:value-of select="."/>
-      </value>
-   </xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='inherited']/j:map/j:array[@key='responsible-roles']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
-                  priority="15">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="shared-responsibility/capability/control-implementation/implemented-requirement/inherited/responsible-role/link/text" -->
-      <field collapsible="no"
-              as-type="markup-line"
-              name="text"
-              key="text"
-              gi="text"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
-   </xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='inherited']/j:map/j:array[@key='responsible-roles']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
-                  mode="get-value-property"
-                  priority="15">
-      <value as-type="markup-line" in-json="string">
-         <xsl:value-of select="."/>
-      </value>
-   </xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='satisfied']/j:map/j:string[@key='description']"
-                  priority="11">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="shared-responsibility/capability/control-implementation/implemented-requirement/satisfied/description" -->
-      <field in-xml="WITH_WRAPPER"
-              collapsible="no"
-              as-type="markup-multiline"
-              name="description"
-              key="description"
-              gi="description"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">description</xsl:attribute>
-         </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
-   </xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='satisfied']/j:map/j:string[@key='description']"
-                  mode="get-value-property"
-                  priority="11">
-      <value as-type="markup-multiline" in-json="string">
-         <xsl:value-of select="."/>
-      </value>
-   </xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='satisfied']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
-                  priority="13">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="shared-responsibility/capability/control-implementation/implemented-requirement/satisfied/link/text" -->
-      <field collapsible="no"
-              as-type="markup-line"
-              name="text"
-              key="text"
-              gi="text"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
-   </xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='satisfied']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
-                  mode="get-value-property"
-                  priority="13">
-      <value as-type="markup-line" in-json="string">
-         <xsl:value-of select="."/>
-      </value>
-   </xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='satisfied']/j:map/j:array[@key='responsible-roles']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
-                  priority="15">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="shared-responsibility/capability/control-implementation/implemented-requirement/satisfied/responsible-role/link/text" -->
-      <field collapsible="no"
-              as-type="markup-line"
-              name="text"
-              key="text"
-              gi="text"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
-   </xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='satisfied']/j:map/j:array[@key='responsible-roles']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
-                  mode="get-value-property"
-                  priority="15">
-      <value as-type="markup-line" in-json="string">
-         <xsl:value-of select="."/>
-      </value>
-   </xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='statements']/j:map"
-                  priority="10">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="shared-responsibility/capability/control-implementation/implemented-requirement/statement" -->
-      <assembly name="statement" gi="statement">
-         <xsl:apply-templates select="*[@key='statement-id']"/>
-         <xsl:apply-templates select="*[@key='uuid']"/>
-         <xsl:apply-templates select="*[@key='description']"/>
-         <xsl:apply-templates select="*[@key='props']"/>
-         <xsl:apply-templates select="*[@key='links']"/>
-         <xsl:apply-templates select="*[@key='responsible-roles']"/>
-         <xsl:apply-templates select="*[@key='remarks']"/>
-      </assembly>
-   </xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='statements']/j:map/j:string[@key='description']"
-                  priority="11">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="shared-responsibility/capability/control-implementation/implemented-requirement/statement/description" -->
-      <field in-xml="WITH_WRAPPER"
-              collapsible="no"
-              as-type="markup-multiline"
-              name="description"
-              key="description"
-              gi="description"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">description</xsl:attribute>
-         </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
-   </xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='statements']/j:map/j:string[@key='description']"
-                  mode="get-value-property"
-                  priority="11">
-      <value as-type="markup-multiline" in-json="string">
-         <xsl:value-of select="."/>
-      </value>
-   </xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='statements']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
-                  priority="13">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="shared-responsibility/capability/control-implementation/implemented-requirement/statement/link/text" -->
-      <field collapsible="no"
-              as-type="markup-line"
-              name="text"
-              key="text"
-              gi="text"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
-   </xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='statements']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
-                  mode="get-value-property"
-                  priority="13">
-      <value as-type="markup-line" in-json="string">
-         <xsl:value-of select="."/>
-      </value>
-   </xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='statements']/j:map/j:array[@key='responsible-roles']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
-                  priority="15">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="shared-responsibility/capability/control-implementation/implemented-requirement/statement/responsible-role/link/text" -->
-      <field collapsible="no"
-              as-type="markup-line"
-              name="text"
-              key="text"
-              gi="text"
-              in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
-   </xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='statements']/j:map/j:array[@key='responsible-roles']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
                   mode="get-value-property"
                   priority="15">
       <value as-type="markup-line" in-json="string">

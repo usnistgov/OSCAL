@@ -411,30 +411,6 @@
                       type="oscal-metadata-responsible-role-ASSEMBLY"
                       minOccurs="0"
                       maxOccurs="unbounded"/>
-         <xs:element name="implementation-status"
-                      type="oscal-implementation-common-implementation-status-ASSEMBLY"
-                      minOccurs="0"
-                      maxOccurs="1"/>
-         <xs:element name="provided"
-                      type="oscal-responsibility-common-provided-ASSEMBLY"
-                      minOccurs="0"
-                      maxOccurs="1"/>
-         <xs:element name="responsibility"
-                      type="oscal-responsibility-common-responsibility-ASSEMBLY"
-                      minOccurs="0"
-                      maxOccurs="1"/>
-         <xs:element name="inherited"
-                      type="oscal-responsibility-common-inherited-ASSEMBLY"
-                      minOccurs="0"
-                      maxOccurs="1"/>
-         <xs:element name="satisfied"
-                      type="oscal-responsibility-common-satisfied-ASSEMBLY"
-                      minOccurs="0"
-                      maxOccurs="1"/>
-         <xs:element name="export"
-                      type="oscal-responsibility-common-export-ASSEMBLY"
-                      minOccurs="0"
-                      maxOccurs="1"/>
          <xs:element name="statement"
                       type="oscal-component-definition-statement-ASSEMBLY"
                       minOccurs="0"
@@ -2739,6 +2715,103 @@
             <b>Include All</b>: Include all controls from the imported catalog or profile resources.</xs:documentation>
       </xs:annotation>
    </xs:complexType>
+   <xs:complexType name="oscal-responsibility-common-source-ssp-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Source SSP</m:formal-name>
+            <m:description>Describes a capability which may be inherited by a leveraging system.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Source SSP</b>: Describes a capability which may be inherited by a leveraging system.</xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="ssp-title" minOccurs="0" maxOccurs="1">
+            <xs:complexType mixed="true">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Title</m:formal-name>
+                     <m:description>This has not been described in the prototype.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Title</b>: This has not been described in the prototype.</xs:documentation>
+               </xs:annotation>
+               <xs:complexContent>
+                  <xs:extension base="MarkupLineDatatype"/>
+               </xs:complexContent>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="published" minOccurs="0" maxOccurs="1">
+            <xs:simpleType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Publication Timestamp</m:formal-name>
+                     <m:description>This has not been described in the prototype.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Publication Timestamp</b>: This has not been described in the prototype.</xs:documentation>
+               </xs:annotation>
+               <xs:restriction base="DateTimeWithTimezoneDatatype"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="last-modified" minOccurs="0" maxOccurs="1">
+            <xs:simpleType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Last Modified Timestamp</m:formal-name>
+                     <m:description>This has not been described in the prototype.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Last Modified Timestamp</b>: This has not been described in the prototype.</xs:documentation>
+               </xs:annotation>
+               <xs:restriction base="DateTimeWithTimezoneDatatype"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="version" minOccurs="0" maxOccurs="1">
+            <xs:simpleType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Document Version</m:formal-name>
+                     <m:description>This has not been described in the prototype.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Document Version</b>: This has not been described in the prototype.</xs:documentation>
+               </xs:annotation>
+               <xs:restriction base="StringDatatype"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="prop"
+                      type="oscal-metadata-property-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
+         <xs:element name="link"
+                      type="oscal-metadata-link-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
+         <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Remarks</m:formal-name>
+                  <m:description>Additional commentary about the containing object.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Remarks</b>: Additional commentary about the containing object.</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+               <xs:group ref="blockElementGroup" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
+      <xs:attribute name="uuid" use="required" type="UUIDDatatype">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Provided Universally Unique Identifier</m:formal-name>
+               <m:description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this provided entry elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>provided</code> entry can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Provided Universally Unique Identifier</b>: A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this provided entry elsewhere in this or other OSCAL instances. The locally defined UUID of the provided entry can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+   </xs:complexType>
    <xs:complexType name="oscal-responsibility-common-provided-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
@@ -3123,14 +3196,6 @@
                       maxOccurs="1"/>
          <xs:element name="responsibility"
                       type="oscal-responsibility-common-responsibility-ASSEMBLY"
-                      minOccurs="0"
-                      maxOccurs="1"/>
-         <xs:element name="inherited"
-                      type="oscal-responsibility-common-inherited-ASSEMBLY"
-                      minOccurs="0"
-                      maxOccurs="1"/>
-         <xs:element name="satisfied"
-                      type="oscal-responsibility-common-satisfied-ASSEMBLY"
                       minOccurs="0"
                       maxOccurs="1"/>
          <xs:element name="remarks" minOccurs="0" maxOccurs="1">
