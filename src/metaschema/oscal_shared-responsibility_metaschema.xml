@@ -24,6 +24,8 @@
     <p>The most important assemblies to consider within this current version are: provided, responsibilities, inherited, and satisfied.</p>
   </remarks>
 
+  <import href="oscal_metadata_metaschema.xml"/>
+  <import href="oscal_implementation-common_metaschema.xml"/>
   <import href="oscal_responsibility-common_metaschema.xml"/>
 
   <define-assembly name="shared-responsibility">
@@ -37,9 +39,14 @@
     <model>
       <assembly ref="metadata" min-occurs="1"/>
       <assembly ref="source-ssp" max-occurs="1"/>
-      <assembly ref="control-implemenation" min-occurs="1"/>
+      <assembly ref="control-implementation" min-occurs="1"/>
       <assembly ref="back-matter"/>
     </model>
+    <constraint>
+      <index name="by-component-uuid" target="control-implementation/implemented-requirement//by-component|doc(system-implementation/leveraged-authorization/link[@rel='system-security-plan']/@href)/system-security-plan/control-implementation/implemented-requirement//by-component">
+        <key-field target="@uuid"/>
+      </index>
+    </constraint>
   </define-assembly>
 
 
