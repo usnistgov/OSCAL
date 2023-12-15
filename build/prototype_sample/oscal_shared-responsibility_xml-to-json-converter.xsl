@@ -262,9 +262,8 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">source-ssp</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="@uuid"/>
          <xsl:apply-templates select="@ssp-uuid"/>
-         <xsl:apply-templates select="ssp-title"/>
+         <xsl:apply-templates select="title"/>
          <xsl:apply-templates select="published"/>
          <xsl:apply-templates select="last-modified"/>
          <xsl:apply-templates select="version"/>
@@ -628,17 +627,6 @@
              name="system"
              key="system"
              gi="system">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="source-ssp/@uuid"
-                  priority="1"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-             as-type="uuid"
-             name="uuid"
-             key="uuid"
-             gi="uuid">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
@@ -1672,18 +1660,18 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="shared-responsibility/source-ssp/ssp-title"
+   <xsl:template match="shared-responsibility/source-ssp/title"
                   priority="4"
                   xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field collapsible="no"
               as-type="markup-line"
-              name="ssp-title"
-              key="ssp-title"
-              gi="ssp-title"
+              name="title"
+              key="title"
+              gi="title"
               in-json="SCALAR">
          <xsl:if test="$with-key">
-            <xsl:attribute name="key">ssp-title</xsl:attribute>
+            <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
          <value as-type="markup-line" in-json="string">
             <xsl:apply-templates mode="cast-prose"/>

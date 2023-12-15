@@ -34,17 +34,15 @@
     "additionalProperties" : false },
    "oscal-shared-responsibility-oscal-responsibility-common:source-ssp" : 
    { "title" : "Source SSP",
-    "description" : "Describes a capability which may be inherited by a leveraging system.",
+    "description" : "This has not been described in the prototype.",
     "$id" : "#assembly_oscal-responsibility-common_source-ssp",
     "type" : "object",
     "properties" : 
-    { "uuid" : 
-     { "title" : "Provided Universally Unique Identifier",
-      "description" : "A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this provided entry elsewhere in this or other OSCAL instances. The locally defined UUID of the provided entry can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.",
+    { "ssp-uuid" : 
+     { "title" : "SSP Universally Unique Identifier",
+      "description" : "This has not been described in the prototype.",
       "$ref" : "#/definitions/UUIDDatatype" },
-     "title" : "Source SSP",
-     "description" : "This has not been described in the prototype.",
-     "ssp-title" : 
+     "title" : 
      { "title" : "Source Title",
       "description" : "This has not been described in the prototype.",
       "type" : "string" },
@@ -75,7 +73,7 @@
      "remarks" : 
      { "$ref" : "#field_oscal-metadata_remarks" } },
     "required" : 
-    [ "uuid" ],
+    [ "ssp-uuid" ],
     "additionalProperties" : false },
    "oscal-shared-responsibility-oscal-responsibility-common:referenced-profile" : 
    { "title" : "Referenced Profile",

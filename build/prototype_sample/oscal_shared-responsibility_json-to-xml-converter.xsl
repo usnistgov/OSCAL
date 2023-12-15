@@ -187,9 +187,8 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">source-ssp</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="*[@key='uuid']"/>
          <xsl:apply-templates select="*[@key='ssp-uuid']"/>
-         <xsl:apply-templates select="*[@key='ssp-title']"/>
+         <xsl:apply-templates select="*[@key='title']"/>
          <xsl:apply-templates select="*[@key='published']"/>
          <xsl:apply-templates select="*[@key='last-modified']"/>
          <xsl:apply-templates select="*[@key='version']"/>
@@ -594,18 +593,6 @@
    <xsl:template match="j:array[@key='actions']/j:map/j:string[@key='system']"
                   mode="keep-value-property"
                   priority="6"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:map[@key='source-ssp']/j:string[@key='uuid']" priority="1"><!-- XML match="source-ssp/@uuid" -->
-      <flag in-json="string"
-             as-type="uuid"
-             name="uuid"
-             key="uuid"
-             gi="uuid">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="j:map[@key='source-ssp']/j:string[@key='uuid']"
-                  mode="keep-value-property"
-                  priority="4"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:map[@key='source-ssp']/j:string[@key='ssp-uuid']" priority="1"><!-- XML match="source-ssp/@ssp-uuid" -->
       <flag in-json="string"
              as-type="uuid"
@@ -1744,23 +1731,23 @@
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:map[@key='source-ssp']/j:string[@key='ssp-title']"
+   <xsl:template match="j:map[@key='shared-responsibility']/j:map[@key='source-ssp']/j:string[@key='title']"
                   priority="4">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="shared-responsibility/source-ssp/ssp-title" -->
+      <!-- XML match="shared-responsibility/source-ssp/title" -->
       <field collapsible="no"
               as-type="markup-line"
-              name="ssp-title"
-              key="ssp-title"
-              gi="ssp-title"
+              name="title"
+              key="title"
+              gi="title"
               in-json="SCALAR">
          <xsl:if test="$with-key">
-            <xsl:attribute name="key">ssp-title</xsl:attribute>
+            <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='shared-responsibility']/j:map[@key='source-ssp']/j:string[@key='ssp-title']"
+   <xsl:template match="j:map[@key='shared-responsibility']/j:map[@key='source-ssp']/j:string[@key='title']"
                   mode="get-value-property"
                   priority="4">
       <value as-type="markup-line" in-json="string">
