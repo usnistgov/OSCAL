@@ -14,27 +14,21 @@
    <!-- IMPORT STATEMENTS -->
    <import href="oscal_metadata_metaschema.xml"/>
 
-  <!-- Shared Responsibility Assembly -->
+  <!-- Shared Responsibility Assemblies -->
    
-   <define-assembly name="source-ssp" max-occurs="unbounded">
+   <define-assembly name="source-ssp" max-occurs="1">
     <formal-name>Source SSP</formal-name>
-    <description>Describes a capability which may be inherited by a leveraging system.</description>
+    <description>This has not been described in the prototype.</description>
 
-    <define-flag name="uuid" as-type="uuid" required="yes">
-      <formal-name>Provided Universally Unique Identifier</formal-name>
-      <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this provided entry elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>provided</code> entry can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+    <define-flag name="ssp-uuid" as-type="uuid" required="yes">
+      <formal-name>SSP Universally Unique Identifier</formal-name>
+      <description>This has not been described in the prototype.</description>
     </define-flag>
 
     <model>
-      <define-flag required="no" name="ssp-uuid" as-type="uuid">
-        <formal-name>Source SSP</formal-name>
-        <description>This has not been described in the prototype.</description>
-      </define-flag>
-
-      <!-- TODO: When this is named 'title' there is a duplicate key error. Unable to find the cause... -->
-      <define-field name="ssp-title" as-type="markup-line">
+      <define-field name="title" as-type="markup-line">
         <formal-name>Source Title</formal-name>
-        <description>This has not been described in the prototype. See development note on the field name.</description>
+        <description>This has not been described in the prototype.</description>
       </define-field>
 
       <define-field name="published" as-type="dateTime-with-timezone">

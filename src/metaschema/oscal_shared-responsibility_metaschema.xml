@@ -33,11 +33,6 @@
     <define-flag name="uuid" as-type="uuid" required="yes">
       <formal-name>Shared Responsibility Universally Unique Identifier</formal-name>
       <description>Provides a globally unique means to identify a given component definition instance.</description>
-      <prop name="value-type" value="identifier"/>
-      <prop name="identifier-type" value="machine-oriented"/>
-      <prop name="identifier-uniqueness" value="global"/>
-      <prop name="identifier-scope" value="cross-instance"/>
-      <prop name="identifier-persistence" value="change-on-write"/>
     </define-flag>
     <model>
       <assembly ref="metadata" min-occurs="1"/>
