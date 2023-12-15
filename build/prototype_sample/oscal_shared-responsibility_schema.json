@@ -23,43 +23,53 @@
      { "$ref" : "#assembly_oscal-metadata_metadata" },
      "source-ssp" : 
      { "$ref" : "#assembly_oscal-responsibility-common_source-ssp" },
-     "" : 
-     {  },
+     "control-implementation" : 
+     { "$ref" : "#assembly_oscal-shared-responsibility_control-implementation" },
      "back-matter" : 
      { "$ref" : "#assembly_oscal-metadata_back-matter" } },
     "required" : 
     [ "uuid",
      "metadata",
-     "" ],
+     "control-implementation" ],
     "additionalProperties" : false },
-   "oscal-shared-responsibility-oscal-responsibility-common:source-ssp" : 
-   { "title" : "Source SSP",
-    "description" : "This has not been described in the prototype.",
-    "$id" : "#assembly_oscal-responsibility-common_source-ssp",
+   "oscal-shared-responsibility-oscal-shared-responsibility:control-implementation" : 
+   { "title" : "Control Implementation",
+    "description" : "Describes how the system satisfies a set of controls.",
+    "$id" : "#assembly_oscal-shared-responsibility_control-implementation",
     "type" : "object",
     "properties" : 
-    { "ssp-uuid" : 
-     { "title" : "SSP Universally Unique Identifier",
-      "description" : "This has not been described in the prototype.",
-      "$ref" : "#/definitions/UUIDDatatype" },
-     "title" : 
-     { "title" : "Source Title",
-      "description" : "This has not been described in the prototype.",
+    { "description" : 
+     { "title" : "Control Implementation Description",
+      "description" : "A statement describing important things to know about how this set of control satisfaction documentation is approached.",
       "type" : "string" },
-     "published" : 
-     { "title" : "Publication Timestamp",
-      "description" : "This has not been described in the prototype.",
-      "$ref" : "#/definitions/DateTimeWithTimezoneDatatype" },
-     "last-modified" : 
-     { "title" : "Last Modified Timestamp",
-      "description" : "This has not been described in the prototype.",
-      "$ref" : "#/definitions/DateTimeWithTimezoneDatatype" },
-     "version" : 
-     { "title" : "Document Version",
-      "description" : "This has not been described in the prototype.",
-      "$ref" : "#/definitions/StringDatatype" },
-     "referenced-profile" : 
-     { "$ref" : "#assembly_oscal-responsibility-common_referenced-profile" },
+     "set-parameters" : 
+     { "type" : "array",
+      "minItems" : 1,
+      "items" : 
+      { "$ref" : "#assembly_oscal-implementation-common_set-parameter" } },
+     "implemented-requirements" : 
+     { "type" : "array",
+      "minItems" : 1,
+      "items" : 
+      { "$ref" : "#assembly_oscal-shared-responsibility_implemented-requirement" } } },
+    "required" : 
+    [ "description",
+     "implemented-requirements" ],
+    "additionalProperties" : false },
+   "oscal-shared-responsibility-oscal-shared-responsibility:implemented-requirement" : 
+   { "title" : "Control-based Requirement",
+    "description" : "Describes how the system satisfies the requirements of an individual control.",
+    "$id" : "#assembly_oscal-shared-responsibility_implemented-requirement",
+    "type" : "object",
+    "properties" : 
+    { "uuid" : 
+     { "title" : "Control Requirement Universally Unique Identifier",
+      "description" : "A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this control requirement elsewhere in this or other OSCAL instances. The locally defined UUID of the control requirement can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.",
+      "$ref" : "#/definitions/UUIDDatatype" },
+     "control-id" : 
+     { "title" : "Control Identifier Reference",
+      "description" : "A reference to a control with a corresponding id value. When referencing an externally defined control, the Control Identifier Reference must be used in the context of the external / imported OSCAL instance (e.g., uri-reference).",
+      "$ref" : "#/definitions/TokenDatatype" },
      "props" : 
      { "type" : "array",
       "minItems" : 1,
@@ -70,44 +80,46 @@
       "minItems" : 1,
       "items" : 
       { "$ref" : "#assembly_oscal-metadata_link" } },
+     "set-parameters" : 
+     { "type" : "array",
+      "minItems" : 1,
+      "items" : 
+      { "$ref" : "#assembly_oscal-implementation-common_set-parameter" } },
+     "responsible-roles" : 
+     { "type" : "array",
+      "minItems" : 1,
+      "items" : 
+      { "$ref" : "#assembly_oscal-metadata_responsible-role" } },
+     "statements" : 
+     { "type" : "array",
+      "minItems" : 1,
+      "items" : 
+      { "$ref" : "#assembly_oscal-shared-responsibility_statement" } },
+     "by-components" : 
+     { "type" : "array",
+      "minItems" : 1,
+      "items" : 
+      { "$ref" : "#assembly_oscal-shared-responsibility_by-component" } },
      "remarks" : 
      { "$ref" : "#field_oscal-metadata_remarks" } },
     "required" : 
-    [ "ssp-uuid" ],
+    [ "uuid",
+     "control-id" ],
     "additionalProperties" : false },
-   "oscal-shared-responsibility-oscal-responsibility-common:referenced-profile" : 
-   { "title" : "Referenced Profile",
-    "description" : "This has not been described in the prototype.",
-    "$id" : "#assembly_oscal-responsibility-common_referenced-profile",
+   "oscal-shared-responsibility-oscal-shared-responsibility:statement" : 
+   { "title" : "Specific Control Statement",
+    "description" : "Identifies which statements within a control are addressed.",
+    "$id" : "#assembly_oscal-shared-responsibility_statement",
     "type" : "object",
     "properties" : 
-    { "href" : 
-     { "title" : "Hyperlink Reference",
-      "description" : "A link to a resource that defines a set of components and/or capabilities to import into this collection.",
-      "$ref" : "#/definitions/URIReferenceDatatype" } },
-    "required" : 
-    [ "href" ],
-    "additionalProperties" : false },
-   "oscal-shared-responsibility-oscal-responsibility-common:provided" : 
-   { "title" : "Provided Control Implementation",
-    "description" : "Describes a capability which may be inherited by a leveraging system.",
-    "$id" : "#assembly_oscal-responsibility-common_provided",
-    "type" : "object",
-    "properties" : 
-    { "uuid" : 
-     { "title" : "Provided Universally Unique Identifier",
-      "description" : "A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this provided entry elsewhere in this or other OSCAL instances. The locally defined UUID of the provided entry can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.",
+    { "statement-id" : 
+     { "title" : "Control Statement Reference",
+      "description" : "A human-oriented identifier reference to a control statement.",
+      "$ref" : "#/definitions/TokenDatatype" },
+     "uuid" : 
+     { "title" : "Control Statement Reference Universally Unique Identifier",
+      "description" : "A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this control statement elsewhere in this or other OSCAL instances. The UUID of the control statement in the source OSCAL instance is sufficient to reference the data item locally or globally (e.g., in an imported OSCAL instance).",
       "$ref" : "#/definitions/UUIDDatatype" },
-     "satisfied-uuid" : 
-     { "title" : "Satisfied UUID",
-      "description" : "A machine-oriented identifier reference to a satisfied control implementation.",
-      "$ref" : "#/definitions/UUIDDatatype" },
-     "" : 
-     { "type" : "string" },
-     "description" : 
-     { "title" : "Provided Control Implementation Description",
-      "description" : "An implementation statement that describes the aspects of the control or control statement implementation that can be provided to another system leveraging this system.",
-      "type" : "string" },
      "props" : 
      { "type" : "array",
       "minItems" : 1,
@@ -123,35 +135,34 @@
       "minItems" : 1,
       "items" : 
       { "$ref" : "#assembly_oscal-metadata_responsible-role" } },
+     "by-components" : 
+     { "type" : "array",
+      "minItems" : 1,
+      "items" : 
+      { "$ref" : "#assembly_oscal-shared-responsibility_by-component" } },
      "remarks" : 
      { "$ref" : "#field_oscal-metadata_remarks" } },
     "required" : 
-    [ "uuid",
-     "description" ],
+    [ "statement-id",
+     "uuid" ],
     "additionalProperties" : false },
-   "oscal-shared-responsibility-oscal-responsibility-common:responsibility" : 
-   { "title" : "Control Implementation Responsibility",
-    "description" : "Describes a control implementation responsibility imposed on a leveraging system.",
-    "$id" : "#assembly_oscal-responsibility-common_responsibility",
+   "oscal-shared-responsibility-oscal-shared-responsibility:by-component" : 
+   { "title" : "Component Control Implementation",
+    "description" : "Defines how the referenced component implements a set of controls.",
+    "$id" : "#assembly_oscal-shared-responsibility_by-component",
     "type" : "object",
     "properties" : 
-    { "uuid" : 
-     { "title" : "Responsibility Universally Unique Identifier",
-      "description" : "A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this responsibility elsewhere in this or other OSCAL instances. The locally defined UUID of the responsibility can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.",
+    { "component-uuid" : 
+     { "title" : "Component Universally Unique Identifier Reference",
+      "description" : "A machine-oriented identifier reference to the component that is implemeting a given control.",
       "$ref" : "#/definitions/UUIDDatatype" },
-     "provided-uuid" : 
-     { "title" : "Provided UUID",
-      "description" : "A machine-oriented identifier reference to an inherited control implementation that a leveraging system is inheriting from a leveraged system.",
+     "uuid" : 
+     { "title" : "By-Component Universally Unique Identifier",
+      "description" : "A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this by-component entry elsewhere in this or other OSCAL instances. The locally defined UUID of the by-component entry can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.",
       "$ref" : "#/definitions/UUIDDatatype" },
-     "satisfied-uuid" : 
-     { "title" : "Satisfied UUID",
-      "description" : "A machine-oriented identifier reference to a satisfied control implementation.",
-      "$ref" : "#/definitions/UUIDDatatype" },
-     "" : 
-     { "type" : "string" },
      "description" : 
-     { "title" : "Control Implementation Responsibility Description",
-      "description" : "An implementation statement that describes the aspects of the control or control statement implementation that a leveraging system must implement to satisfy the control provided by a leveraged system.",
+     { "title" : "Control Implementation Description",
+      "description" : "An implementation statement that describes how a control or a control statement is implemented within the referenced system component.",
       "type" : "string" },
      "props" : 
      { "type" : "array",
@@ -163,129 +174,34 @@
       "minItems" : 1,
       "items" : 
       { "$ref" : "#assembly_oscal-metadata_link" } },
-     "responsible-roles" : 
+     "set-parameters" : 
      { "type" : "array",
       "minItems" : 1,
       "items" : 
-      { "$ref" : "#assembly_oscal-metadata_responsible-role" } },
-     "remarks" : 
-     { "$ref" : "#field_oscal-metadata_remarks" } },
-    "required" : 
-    [ "uuid",
-     "description" ],
-    "additionalProperties" : false },
-   "oscal-shared-responsibility-oscal-responsibility-common:inherited" : 
-   { "title" : "Inherited Control Implementation",
-    "description" : "Describes a control implementation inherited by a leveraging system.",
-    "$id" : "#assembly_oscal-responsibility-common_inherited",
-    "type" : "object",
-    "properties" : 
-    { "uuid" : 
-     { "title" : "Inherited Universally Unique Identifier",
-      "description" : "A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this inherited entry elsewhere in this or other OSCAL instances. The locally defined UUID of the inherited control implementation can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.",
-      "$ref" : "#/definitions/UUIDDatatype" },
-     "provided-uuid" : 
-     { "title" : "Provided UUID",
-      "description" : "A machine-oriented identifier reference to an inherited control implementation that a leveraging system is inheriting from a leveraged system.",
-      "$ref" : "#/definitions/UUIDDatatype" },
-     "satisfied-uuid" : 
-     { "title" : "Satisfied UUID",
-      "description" : "A machine-oriented identifier reference to a satisfied control implementation.",
-      "$ref" : "#/definitions/UUIDDatatype" },
-     "" : 
-     { "type" : "string" },
-     "description" : 
-     { "title" : "Inherited Control Implementation Description",
-      "description" : "An implementation statement that describes the aspects of a control or control statement implementation that a leveraging system is inheriting from a leveraged system.",
-      "type" : "string" },
-     "props" : 
-     { "type" : "array",
-      "minItems" : 1,
-      "items" : 
-      { "$ref" : "#assembly_oscal-metadata_property" } },
-     "links" : 
-     { "type" : "array",
-      "minItems" : 1,
-      "items" : 
-      { "$ref" : "#assembly_oscal-metadata_link" } },
-     "responsible-roles" : 
-     { "type" : "array",
-      "minItems" : 1,
-      "items" : 
-      { "$ref" : "#assembly_oscal-metadata_responsible-role" } } },
-    "required" : 
-    [ "uuid",
-     "description" ],
-    "additionalProperties" : false },
-   "oscal-shared-responsibility-oscal-responsibility-common:satisfied" : 
-   { "title" : "Satisfied Control Implementation Responsibility",
-    "description" : "Describes how this system satisfies a responsibility imposed by a leveraged system.",
-    "$id" : "#assembly_oscal-responsibility-common_satisfied",
-    "type" : "object",
-    "properties" : 
-    { "uuid" : 
-     { "title" : "Satisfied Universally Unique Identifier",
-      "description" : "A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this satisfied control implementation entry elsewhere in this or other OSCAL instances. The locally defined UUID of the control implementation can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.",
-      "$ref" : "#/definitions/UUIDDatatype" },
-     "responsibility-uuid" : 
-     { "title" : "Responsibility UUID",
-      "description" : "A machine-oriented identifier reference to a control implementation that satisfies a responsibility imposed by a leveraged system.",
-      "$ref" : "#/definitions/UUIDDatatype" },
-     "" : 
-     { "type" : "string" },
-     "description" : 
-     { "title" : "Satisfied Control Implementation Responsibility Description",
-      "description" : "An implementation statement that describes the aspects of a control or control statement implementation that a leveraging system is implementing based on a requirement from a leveraged system.",
-      "type" : "string" },
-     "props" : 
-     { "type" : "array",
-      "minItems" : 1,
-      "items" : 
-      { "$ref" : "#assembly_oscal-metadata_property" } },
-     "links" : 
-     { "type" : "array",
-      "minItems" : 1,
-      "items" : 
-      { "$ref" : "#assembly_oscal-metadata_link" } },
-     "responsible-roles" : 
-     { "type" : "array",
-      "minItems" : 1,
-      "items" : 
-      { "$ref" : "#assembly_oscal-metadata_responsible-role" } },
-     "remarks" : 
-     { "$ref" : "#field_oscal-metadata_remarks" } },
-    "required" : 
-    [ "uuid",
-     "description" ],
-    "additionalProperties" : false },
-   "oscal-shared-responsibility-oscal-responsibility-common:export" : 
-   { "title" : "Shared Responsibility",
-    "description" : "Identifies content intended for external consumption, such as with leveraged organizations, customer responsibility documentation, and shared security responsibility documentation.",
-    "$id" : "#assembly_oscal-responsibility-common_export",
-    "type" : "object",
-    "properties" : 
-    { "" : 
-     { "type" : "string" },
-     "description" : 
-     { "title" : "Control Implementation Export Description",
-      "description" : "An implementation statement that describes the aspects of the control or control statement implementation that can be available to another system leveraging this system.",
-      "type" : "string" },
-     "props" : 
-     { "type" : "array",
-      "minItems" : 1,
-      "items" : 
-      { "$ref" : "#assembly_oscal-metadata_property" } },
-     "links" : 
-     { "type" : "array",
-      "minItems" : 1,
-      "items" : 
-      { "$ref" : "#assembly_oscal-metadata_link" } },
+      { "$ref" : "#assembly_oscal-implementation-common_set-parameter" } },
+     "implementation-status" : 
+     { "$ref" : "#assembly_oscal-implementation-common_implementation-status" },
      "provided" : 
      { "$ref" : "#assembly_oscal-responsibility-common_provided" },
      "responsibility" : 
      { "$ref" : "#assembly_oscal-responsibility-common_responsibility" },
+     "inherited" : 
+     { "$ref" : "#assembly_oscal-responsibility-common_inherited" },
+     "satisfied" : 
+     { "$ref" : "#assembly_oscal-responsibility-common_satisfied" },
+     "export" : 
+     { "$ref" : "#assembly_oscal-responsibility-common_export" },
+     "responsible-roles" : 
+     { "type" : "array",
+      "minItems" : 1,
+      "items" : 
+      { "$ref" : "#assembly_oscal-metadata_responsible-role" } },
      "remarks" : 
      { "$ref" : "#field_oscal-metadata_remarks" } },
+    "required" : 
+    [ "component-uuid",
+     "uuid",
+     "description" ],
     "additionalProperties" : false },
    "oscal-shared-responsibility-oscal-metadata:metadata" : 
    { "title" : "Document Metadata",
@@ -998,11 +914,813 @@
     "required" : 
     [ "identifier" ],
     "additionalProperties" : false },
+   "oscal-shared-responsibility-oscal-implementation-common:system-component" : 
+   { "title" : "Component",
+    "description" : "A defined component that can be part of an implemented system.",
+    "$id" : "#assembly_oscal-implementation-common_system-component",
+    "type" : "object",
+    "properties" : 
+    { "uuid" : 
+     { "title" : "Component Identifier",
+      "description" : "A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this component elsewhere in this or other OSCAL instances. The locally defined UUID of the component can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.",
+      "$ref" : "#/definitions/UUIDDatatype" },
+     "type" : 
+     { "title" : "Component Type",
+      "description" : "A category describing the purpose of the component.",
+      "anyOf" : 
+      [ 
+       { "$ref" : "#/definitions/StringDatatype" },
+       
+       { "enum" : 
+        [ "this-system",
+         "system",
+         "interconnection",
+         "software",
+         "hardware",
+         "service",
+         "policy",
+         "physical",
+         "process-procedure",
+         "plan",
+         "guidance",
+         "standard",
+         "validation",
+         "network" ] } ] },
+     "title" : 
+     { "title" : "Component Title",
+      "description" : "A human readable name for the system component.",
+      "type" : "string" },
+     "description" : 
+     { "title" : "Component Description",
+      "description" : "A description of the component, including information about its function.",
+      "type" : "string" },
+     "purpose" : 
+     { "title" : "Purpose",
+      "description" : "A summary of the technological or business purpose of the component.",
+      "type" : "string" },
+     "props" : 
+     { "type" : "array",
+      "minItems" : 1,
+      "items" : 
+      { "$ref" : "#assembly_oscal-metadata_property" } },
+     "links" : 
+     { "type" : "array",
+      "minItems" : 1,
+      "items" : 
+      { "$ref" : "#assembly_oscal-metadata_link" } },
+     "status" : 
+     { "title" : "Status",
+      "description" : "Describes the operational status of the system component.",
+      "type" : "object",
+      "properties" : 
+      { "state" : 
+       { "title" : "State",
+        "description" : "The operational status.",
+        "allOf" : 
+        [ 
+         { "$ref" : "#/definitions/TokenDatatype" },
+         
+         { "enum" : 
+          [ "under-development",
+           "operational",
+           "disposition",
+           "other" ] } ] },
+       "remarks" : 
+       { "$ref" : "#field_oscal-metadata_remarks" } },
+      "required" : 
+      [ "state" ],
+      "additionalProperties" : false },
+     "responsible-roles" : 
+     { "type" : "array",
+      "minItems" : 1,
+      "items" : 
+      { "$ref" : "#assembly_oscal-metadata_responsible-role" } },
+     "protocols" : 
+     { "type" : "array",
+      "minItems" : 1,
+      "items" : 
+      { "$ref" : "#assembly_oscal-implementation-common_protocol" } },
+     "remarks" : 
+     { "$ref" : "#field_oscal-metadata_remarks" } },
+    "required" : 
+    [ "uuid",
+     "type",
+     "title",
+     "description",
+     "status" ],
+    "additionalProperties" : false },
+   "oscal-shared-responsibility-oscal-implementation-common:protocol" : 
+   { "title" : "Service Protocol Information",
+    "description" : "Information about the protocol used to provide a service.",
+    "$id" : "#assembly_oscal-implementation-common_protocol",
+    "type" : "object",
+    "properties" : 
+    { "uuid" : 
+     { "title" : "Service Protocol Information Universally Unique Identifier",
+      "description" : "A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this service protocol information elsewhere in this or other OSCAL instances. The locally defined UUID of the service protocol can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.",
+      "$ref" : "#/definitions/UUIDDatatype" },
+     "name" : 
+     { "title" : "Protocol Name",
+      "description" : "The common name of the protocol, which should be the appropriate \"service name\" from the IANA Service Name and Transport Protocol Port Number Registry.",
+      "$ref" : "#/definitions/StringDatatype" },
+     "title" : 
+     { "title" : "Protocol Title",
+      "description" : "A human readable name for the protocol (e.g., Transport Layer Security).",
+      "type" : "string" },
+     "port-ranges" : 
+     { "type" : "array",
+      "minItems" : 1,
+      "items" : 
+      { "$ref" : "#assembly_oscal-implementation-common_port-range" } } },
+    "required" : 
+    [ "name" ],
+    "additionalProperties" : false },
+   "oscal-shared-responsibility-oscal-implementation-common:port-range" : 
+   { "title" : "Port Range",
+    "description" : "Where applicable this is the IPv4 port range on which the service operates.",
+    "$id" : "#assembly_oscal-implementation-common_port-range",
+    "type" : "object",
+    "properties" : 
+    { "start" : 
+     { "title" : "Start",
+      "description" : "Indicates the starting port number in a port range",
+      "$ref" : "#/definitions/NonNegativeIntegerDatatype" },
+     "end" : 
+     { "title" : "End",
+      "description" : "Indicates the ending port number in a port range",
+      "$ref" : "#/definitions/NonNegativeIntegerDatatype" },
+     "transport" : 
+     { "title" : "Transport",
+      "description" : "Indicates the transport type.",
+      "allOf" : 
+      [ 
+       { "$ref" : "#/definitions/TokenDatatype" },
+       
+       { "enum" : 
+        [ "TCP",
+         "UDP" ] } ] } },
+    "additionalProperties" : false },
+   "oscal-shared-responsibility-oscal-implementation-common:implementation-status" : 
+   { "title" : "Implementation Status",
+    "description" : "Indicates the degree to which the a given control is implemented.",
+    "$id" : "#assembly_oscal-implementation-common_implementation-status",
+    "type" : "object",
+    "properties" : 
+    { "exportable" : 
+     { "title" : "Exportable",
+      "description" : "Indicates that the implmentation status is exportable for external consumption, such as with leveraged organizations, customer responsibility documentation, and shared security responsibility documentation.",
+      "$ref" : "#/definitions/BooleanDatatype" },
+     "state" : 
+     { "title" : "Implementation State",
+      "description" : "Identifies the implementation status of the control or control objective.",
+      "anyOf" : 
+      [ 
+       { "$ref" : "#/definitions/TokenDatatype" },
+       
+       { "enum" : 
+        [ "implemented",
+         "partial",
+         "planned",
+         "alternative",
+         "not-applicable" ] } ] },
+     "remarks" : 
+     { "$ref" : "#field_oscal-metadata_remarks" } },
+    "required" : 
+    [ "state" ],
+    "additionalProperties" : false },
+   "oscal-shared-responsibility-oscal-implementation-common:system-user" : 
+   { "title" : "System User",
+    "description" : "A type of user that interacts with the system based on an associated role.",
+    "$id" : "#assembly_oscal-implementation-common_system-user",
+    "type" : "object",
+    "properties" : 
+    { "uuid" : 
+     { "title" : "User Universally Unique Identifier",
+      "description" : "A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this user class elsewhere in this or other OSCAL instances. The locally defined UUID of the system user can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.",
+      "$ref" : "#/definitions/UUIDDatatype" },
+     "title" : 
+     { "title" : "User Title",
+      "description" : "A name given to the user, which may be used by a tool for display and navigation.",
+      "type" : "string" },
+     "short-name" : 
+     { "title" : "User Short Name",
+      "description" : "A short common name, abbreviation, or acronym for the user.",
+      "$ref" : "#/definitions/StringDatatype" },
+     "description" : 
+     { "title" : "User Description",
+      "description" : "A summary of the user's purpose within the system.",
+      "type" : "string" },
+     "props" : 
+     { "type" : "array",
+      "minItems" : 1,
+      "items" : 
+      { "$ref" : "#assembly_oscal-metadata_property" } },
+     "links" : 
+     { "type" : "array",
+      "minItems" : 1,
+      "items" : 
+      { "$ref" : "#assembly_oscal-metadata_link" } },
+     "role-ids" : 
+     { "type" : "array",
+      "minItems" : 1,
+      "items" : 
+      { "$ref" : "#field_oscal-metadata_role-id" } },
+     "authorized-privileges" : 
+     { "type" : "array",
+      "minItems" : 1,
+      "items" : 
+      { "$ref" : "#assembly_oscal-implementation-common_authorized-privilege" } },
+     "remarks" : 
+     { "$ref" : "#field_oscal-metadata_remarks" } },
+    "required" : 
+    [ "uuid" ],
+    "additionalProperties" : false },
+   "oscal-shared-responsibility-oscal-implementation-common:authorized-privilege" : 
+   { "title" : "Privilege",
+    "description" : "Identifies a specific system privilege held by the user, along with an associated description and/or rationale for the privilege.",
+    "$id" : "#assembly_oscal-implementation-common_authorized-privilege",
+    "type" : "object",
+    "properties" : 
+    { "title" : 
+     { "title" : "Privilege Title",
+      "description" : "A human readable name for the privilege.",
+      "type" : "string" },
+     "description" : 
+     { "title" : "Privilege Description",
+      "description" : "A summary of the privilege's purpose within the system.",
+      "type" : "string" },
+     "functions-performed" : 
+     { "type" : "array",
+      "minItems" : 1,
+      "items" : 
+      { "$ref" : "#field_oscal-implementation-common_function-performed" } } },
+    "required" : 
+    [ "title",
+     "functions-performed" ],
+    "additionalProperties" : false },
+   "oscal-shared-responsibility-oscal-implementation-common:function-performed" : 
+   { "title" : "Functions Performed",
+    "description" : "Describes a function performed for a given authorized privilege by this user class.",
+    "$id" : "#field_oscal-implementation-common_function-performed",
+    "$ref" : "#/definitions/StringDatatype" },
+   "oscal-shared-responsibility-oscal-implementation-common:inventory-item" : 
+   { "title" : "Inventory Item",
+    "description" : "A single managed inventory item within the system.",
+    "$id" : "#assembly_oscal-implementation-common_inventory-item",
+    "type" : "object",
+    "properties" : 
+    { "uuid" : 
+     { "title" : "Inventory Item Universally Unique Identifier",
+      "description" : "A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this inventory item elsewhere in this or other OSCAL instances. The locally defined UUID of the inventory item can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.",
+      "$ref" : "#/definitions/UUIDDatatype" },
+     "description" : 
+     { "title" : "Inventory Item Description",
+      "description" : "A summary of the inventory item stating its purpose within the system.",
+      "type" : "string" },
+     "props" : 
+     { "type" : "array",
+      "minItems" : 1,
+      "items" : 
+      { "$ref" : "#assembly_oscal-metadata_property" } },
+     "links" : 
+     { "type" : "array",
+      "minItems" : 1,
+      "items" : 
+      { "$ref" : "#assembly_oscal-metadata_link" } },
+     "responsible-parties" : 
+     { "type" : "array",
+      "minItems" : 1,
+      "items" : 
+      { "$ref" : "#assembly_oscal-metadata_responsible-party" } },
+     "implemented-components" : 
+     { "type" : "array",
+      "minItems" : 1,
+      "items" : 
+      { "title" : "Implemented Component",
+       "description" : "The set of components that are implemented in a given system inventory item.",
+       "type" : "object",
+       "properties" : 
+       { "component-uuid" : 
+        { "title" : "Component Universally Unique Identifier Reference",
+         "description" : "A machine-oriented identifier reference to a component that is implemented as part of an inventory item.",
+         "$ref" : "#/definitions/UUIDDatatype" },
+        "props" : 
+        { "type" : "array",
+         "minItems" : 1,
+         "items" : 
+         { "$ref" : "#assembly_oscal-metadata_property" } },
+        "links" : 
+        { "type" : "array",
+         "minItems" : 1,
+         "items" : 
+         { "$ref" : "#assembly_oscal-metadata_link" } },
+        "responsible-parties" : 
+        { "type" : "array",
+         "minItems" : 1,
+         "items" : 
+         { "$ref" : "#assembly_oscal-metadata_responsible-party" } },
+        "remarks" : 
+        { "$ref" : "#field_oscal-metadata_remarks" } },
+       "required" : 
+       [ "component-uuid" ],
+       "additionalProperties" : false } },
+     "remarks" : 
+     { "$ref" : "#field_oscal-metadata_remarks" } },
+    "required" : 
+    [ "uuid",
+     "description" ],
+    "additionalProperties" : false },
+   "oscal-shared-responsibility-oscal-implementation-common:set-parameter" : 
+   { "title" : "Set Parameter Value",
+    "description" : "Identifies the parameter that will be set by the enclosed value.",
+    "$id" : "#assembly_oscal-implementation-common_set-parameter",
+    "type" : "object",
+    "properties" : 
+    { "param-id" : 
+     { "title" : "Parameter ID",
+      "description" : "A human-oriented reference to a parameter within a control, who's catalog has been imported into the current implementation context.",
+      "$ref" : "#/definitions/TokenDatatype" },
+     "values" : 
+     { "type" : "array",
+      "minItems" : 1,
+      "items" : 
+      { "title" : "Parameter Value",
+       "description" : "A parameter value or set of values.",
+       "$ref" : "#/definitions/StringDatatype" } },
+     "remarks" : 
+     { "$ref" : "#field_oscal-metadata_remarks" } },
+    "required" : 
+    [ "param-id",
+     "values" ],
+    "additionalProperties" : false },
+   "oscal-shared-responsibility-oscal-implementation-common:system-id" : 
+   { "title" : "System Identification",
+    "description" : "A human-oriented, globally unique identifier with cross-instance scope that can be used to reference this system identification property elsewhere in this or other OSCAL instances. When referencing an externally defined system identification, the system identification must be used in the context of the external / imported OSCAL instance (e.g., uri-reference). This string should be assigned per-subject, which means it should be consistently used to identify the same system across revisions of the document.",
+    "$id" : "#field_oscal-implementation-common_system-id",
+    "type" : "object",
+    "properties" : 
+    { "identifier-type" : 
+     { "title" : "Identification System Type",
+      "description" : "Identifies the identification system from which the provided identifier was assigned.",
+      "anyOf" : 
+      [ 
+       { "$ref" : "#/definitions/URIDatatype" },
+       
+       { "enum" : 
+        [ "https://fedramp.gov",
+         "http://fedramp.gov/ns/oscal",
+         "https://ietf.org/rfc/rfc4122",
+         "http://ietf.org/rfc/rfc4122" ] } ] },
+     "id" : 
+     { "$ref" : "#/definitions/StringDatatype" } },
+    "required" : 
+    [ "id" ],
+    "additionalProperties" : false },
+   "oscal-shared-responsibility-oscal-control-common:part" : 
+   { "title" : "Part",
+    "description" : "An annotated, markup-based textual element of a control's or catalog group's definition, or a child of another part.",
+    "$id" : "#assembly_oscal-control-common_part",
+    "type" : "object",
+    "properties" : 
+    { "id" : 
+     { "title" : "Part Identifier",
+      "description" : "A unique identifier for the part.",
+      "$ref" : "#/definitions/TokenDatatype" },
+     "name" : 
+     { "title" : "Part Name",
+      "description" : "A textual label that uniquely identifies the part's semantic type, which exists in a value space qualified by the ns.",
+      "$ref" : "#/definitions/TokenDatatype" },
+     "ns" : 
+     { "title" : "Part Namespace",
+      "description" : "An optional namespace qualifying the part's name. This allows different organizations to associate distinct semantics with the same name.",
+      "$ref" : "#/definitions/URIDatatype" },
+     "class" : 
+     { "title" : "Part Class",
+      "description" : "An optional textual providing a sub-type or characterization of the part's name, or a category to which the part belongs.",
+      "$ref" : "#/definitions/TokenDatatype" },
+     "title" : 
+     { "title" : "Part Title",
+      "description" : "An optional name given to the part, which may be used by a tool for display and navigation.",
+      "type" : "string" },
+     "props" : 
+     { "type" : "array",
+      "minItems" : 1,
+      "items" : 
+      { "$ref" : "#assembly_oscal-metadata_property" } },
+     "prose" : 
+     { "title" : "Part Text",
+      "description" : "Permits multiple paragraphs, lists, tables etc.",
+      "type" : "string" },
+     "parts" : 
+     { "type" : "array",
+      "minItems" : 1,
+      "items" : 
+      { "$ref" : "#assembly_oscal-control-common_part" } },
+     "links" : 
+     { "type" : "array",
+      "minItems" : 1,
+      "items" : 
+      { "$ref" : "#assembly_oscal-metadata_link" } } },
+    "required" : 
+    [ "name" ],
+    "additionalProperties" : false },
+   "oscal-shared-responsibility-oscal-control-common:parameter" : 
+   { "title" : "Parameter",
+    "description" : "Parameters provide a mechanism for the dynamic assignment of value(s) in a control.",
+    "$id" : "#assembly_oscal-control-common_parameter",
+    "type" : "object",
+    "properties" : 
+    { "id" : 
+     { "title" : "Parameter Identifier",
+      "description" : "A unique identifier for the parameter.",
+      "$ref" : "#/definitions/TokenDatatype" },
+     "class" : 
+     { "title" : "Parameter Class",
+      "description" : "A textual label that provides a characterization of the type, purpose, use or scope of the parameter.",
+      "$ref" : "#/definitions/TokenDatatype" },
+     "depends-on" : 
+     { "title" : "Depends on",
+      "description" : "(deprecated) Another parameter invoking this one. This construct has been deprecated and should not be used.",
+      "$ref" : "#/definitions/TokenDatatype" },
+     "props" : 
+     { "type" : "array",
+      "minItems" : 1,
+      "items" : 
+      { "$ref" : "#assembly_oscal-metadata_property" } },
+     "links" : 
+     { "type" : "array",
+      "minItems" : 1,
+      "items" : 
+      { "$ref" : "#assembly_oscal-metadata_link" } },
+     "label" : 
+     { "title" : "Parameter Label",
+      "description" : "A short, placeholder name for the parameter, which can be used as a substitute for a value if no value is assigned.",
+      "type" : "string" },
+     "usage" : 
+     { "title" : "Parameter Usage Description",
+      "description" : "Describes the purpose and use of a parameter.",
+      "type" : "string" },
+     "constraints" : 
+     { "type" : "array",
+      "minItems" : 1,
+      "items" : 
+      { "$ref" : "#assembly_oscal-control-common_parameter-constraint" } },
+     "guidelines" : 
+     { "type" : "array",
+      "minItems" : 1,
+      "items" : 
+      { "$ref" : "#assembly_oscal-control-common_parameter-guideline" } },
+     "values" : 
+     { "type" : "array",
+      "minItems" : 1,
+      "items" : 
+      { "$ref" : "#field_oscal-control-common_parameter-value" } },
+     "select" : 
+     { "$ref" : "#assembly_oscal-control-common_parameter-selection" },
+     "remarks" : 
+     { "$ref" : "#field_oscal-metadata_remarks" } },
+    "required" : 
+    [ "id" ],
+    "additionalProperties" : false },
+   "oscal-shared-responsibility-oscal-control-common:parameter-constraint" : 
+   { "title" : "Constraint",
+    "description" : "A formal or informal expression of a constraint or test.",
+    "$id" : "#assembly_oscal-control-common_parameter-constraint",
+    "type" : "object",
+    "properties" : 
+    { "description" : 
+     { "title" : "Constraint Description",
+      "description" : "A textual summary of the constraint to be applied.",
+      "type" : "string" },
+     "tests" : 
+     { "type" : "array",
+      "minItems" : 1,
+      "items" : 
+      { "title" : "Constraint Test",
+       "description" : "A test expression which is expected to be evaluated by a tool.",
+       "type" : "object",
+       "properties" : 
+       { "expression" : 
+        { "title" : "Constraint test",
+         "description" : "A formal (executable) expression of a constraint.",
+         "$ref" : "#/definitions/StringDatatype" },
+        "remarks" : 
+        { "$ref" : "#field_oscal-metadata_remarks" } },
+       "required" : 
+       [ "expression" ],
+       "additionalProperties" : false } } },
+    "additionalProperties" : false },
+   "oscal-shared-responsibility-oscal-control-common:parameter-guideline" : 
+   { "title" : "Guideline",
+    "description" : "A prose statement that provides a recommendation for the use of a parameter.",
+    "$id" : "#assembly_oscal-control-common_parameter-guideline",
+    "type" : "object",
+    "properties" : 
+    { "prose" : 
+     { "title" : "Guideline Text",
+      "description" : "Prose permits multiple paragraphs, lists, tables etc.",
+      "type" : "string" } },
+    "required" : 
+    [ "prose" ],
+    "additionalProperties" : false },
+   "oscal-shared-responsibility-oscal-control-common:parameter-value" : 
+   { "title" : "Parameter Value",
+    "description" : "A parameter value or set of values.",
+    "$id" : "#field_oscal-control-common_parameter-value",
+    "$ref" : "#/definitions/StringDatatype" },
+   "oscal-shared-responsibility-oscal-control-common:parameter-selection" : 
+   { "title" : "Selection",
+    "description" : "Presenting a choice among alternatives.",
+    "$id" : "#assembly_oscal-control-common_parameter-selection",
+    "type" : "object",
+    "properties" : 
+    { "how-many" : 
+     { "title" : "Parameter Cardinality",
+      "description" : "Describes the number of selections that must occur. Without this setting, only one value should be assumed to be permitted.",
+      "allOf" : 
+      [ 
+       { "$ref" : "#/definitions/TokenDatatype" },
+       
+       { "enum" : 
+        [ "one",
+         "one-or-more" ] } ] },
+     "choice" : 
+     { "type" : "array",
+      "minItems" : 1,
+      "items" : 
+      { "title" : "Choice",
+       "description" : "A value selection among several such options.",
+       "type" : "string" } } },
+    "additionalProperties" : false },
+   "oscal-shared-responsibility-oscal-control-common:include-all" : 
+   { "title" : "Include All",
+    "description" : "Include all controls from the imported catalog or profile resources.",
+    "$id" : "#assembly_oscal-control-common_include-all",
+    "type" : "object",
+    "additionalProperties" : false },
+   "oscal-shared-responsibility-oscal-responsibility-common:source-ssp" : 
+   { "title" : "Source SSP",
+    "description" : "This has not been described in the prototype.",
+    "$id" : "#assembly_oscal-responsibility-common_source-ssp",
+    "type" : "object",
+    "properties" : 
+    { "ssp-uuid" : 
+     { "title" : "SSP Universally Unique Identifier",
+      "description" : "This has not been described in the prototype.",
+      "$ref" : "#/definitions/UUIDDatatype" },
+     "title" : 
+     { "title" : "Source Title",
+      "description" : "This has not been described in the prototype.",
+      "type" : "string" },
+     "published" : 
+     { "title" : "Publication Timestamp",
+      "description" : "This has not been described in the prototype.",
+      "$ref" : "#/definitions/DateTimeWithTimezoneDatatype" },
+     "last-modified" : 
+     { "title" : "Last Modified Timestamp",
+      "description" : "This has not been described in the prototype.",
+      "$ref" : "#/definitions/DateTimeWithTimezoneDatatype" },
+     "version" : 
+     { "title" : "Document Version",
+      "description" : "This has not been described in the prototype.",
+      "$ref" : "#/definitions/StringDatatype" },
+     "referenced-profile" : 
+     { "$ref" : "#assembly_oscal-responsibility-common_referenced-profile" },
+     "props" : 
+     { "type" : "array",
+      "minItems" : 1,
+      "items" : 
+      { "$ref" : "#assembly_oscal-metadata_property" } },
+     "links" : 
+     { "type" : "array",
+      "minItems" : 1,
+      "items" : 
+      { "$ref" : "#assembly_oscal-metadata_link" } },
+     "remarks" : 
+     { "$ref" : "#field_oscal-metadata_remarks" } },
+    "required" : 
+    [ "ssp-uuid" ],
+    "additionalProperties" : false },
+   "oscal-shared-responsibility-oscal-responsibility-common:referenced-profile" : 
+   { "title" : "Referenced Profile",
+    "description" : "This has not been described in the prototype.",
+    "$id" : "#assembly_oscal-responsibility-common_referenced-profile",
+    "type" : "object",
+    "properties" : 
+    { "href" : 
+     { "title" : "Hyperlink Reference",
+      "description" : "A link to a resource that defines a set of components and/or capabilities to import into this collection.",
+      "$ref" : "#/definitions/URIReferenceDatatype" } },
+    "required" : 
+    [ "href" ],
+    "additionalProperties" : false },
+   "oscal-shared-responsibility-oscal-responsibility-common:provided" : 
+   { "title" : "Provided Control Implementation",
+    "description" : "Describes a capability which may be inherited by a leveraging system.",
+    "$id" : "#assembly_oscal-responsibility-common_provided",
+    "type" : "object",
+    "properties" : 
+    { "uuid" : 
+     { "title" : "Provided Universally Unique Identifier",
+      "description" : "A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this provided entry elsewhere in this or other OSCAL instances. The locally defined UUID of the provided entry can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.",
+      "$ref" : "#/definitions/UUIDDatatype" },
+     "satisfied-uuid" : 
+     { "title" : "Satisfied UUID",
+      "description" : "A machine-oriented identifier reference to a satisfied control implementation.",
+      "$ref" : "#/definitions/UUIDDatatype" },
+     "" : 
+     { "type" : "string" },
+     "description" : 
+     { "title" : "Provided Control Implementation Description",
+      "description" : "An implementation statement that describes the aspects of the control or control statement implementation that can be provided to another system leveraging this system.",
+      "type" : "string" },
+     "props" : 
+     { "type" : "array",
+      "minItems" : 1,
+      "items" : 
+      { "$ref" : "#assembly_oscal-metadata_property" } },
+     "links" : 
+     { "type" : "array",
+      "minItems" : 1,
+      "items" : 
+      { "$ref" : "#assembly_oscal-metadata_link" } },
+     "responsible-roles" : 
+     { "type" : "array",
+      "minItems" : 1,
+      "items" : 
+      { "$ref" : "#assembly_oscal-metadata_responsible-role" } },
+     "remarks" : 
+     { "$ref" : "#field_oscal-metadata_remarks" } },
+    "required" : 
+    [ "uuid",
+     "description" ],
+    "additionalProperties" : false },
+   "oscal-shared-responsibility-oscal-responsibility-common:responsibility" : 
+   { "title" : "Control Implementation Responsibility",
+    "description" : "Describes a control implementation responsibility imposed on a leveraging system.",
+    "$id" : "#assembly_oscal-responsibility-common_responsibility",
+    "type" : "object",
+    "properties" : 
+    { "uuid" : 
+     { "title" : "Responsibility Universally Unique Identifier",
+      "description" : "A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this responsibility elsewhere in this or other OSCAL instances. The locally defined UUID of the responsibility can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.",
+      "$ref" : "#/definitions/UUIDDatatype" },
+     "provided-uuid" : 
+     { "title" : "Provided UUID",
+      "description" : "A machine-oriented identifier reference to an inherited control implementation that a leveraging system is inheriting from a leveraged system.",
+      "$ref" : "#/definitions/UUIDDatatype" },
+     "satisfied-uuid" : 
+     { "title" : "Satisfied UUID",
+      "description" : "A machine-oriented identifier reference to a satisfied control implementation.",
+      "$ref" : "#/definitions/UUIDDatatype" },
+     "" : 
+     { "type" : "string" },
+     "description" : 
+     { "title" : "Control Implementation Responsibility Description",
+      "description" : "An implementation statement that describes the aspects of the control or control statement implementation that a leveraging system must implement to satisfy the control provided by a leveraged system.",
+      "type" : "string" },
+     "props" : 
+     { "type" : "array",
+      "minItems" : 1,
+      "items" : 
+      { "$ref" : "#assembly_oscal-metadata_property" } },
+     "links" : 
+     { "type" : "array",
+      "minItems" : 1,
+      "items" : 
+      { "$ref" : "#assembly_oscal-metadata_link" } },
+     "responsible-roles" : 
+     { "type" : "array",
+      "minItems" : 1,
+      "items" : 
+      { "$ref" : "#assembly_oscal-metadata_responsible-role" } },
+     "remarks" : 
+     { "$ref" : "#field_oscal-metadata_remarks" } },
+    "required" : 
+    [ "uuid",
+     "description" ],
+    "additionalProperties" : false },
+   "oscal-shared-responsibility-oscal-responsibility-common:inherited" : 
+   { "title" : "Inherited Control Implementation",
+    "description" : "Describes a control implementation inherited by a leveraging system.",
+    "$id" : "#assembly_oscal-responsibility-common_inherited",
+    "type" : "object",
+    "properties" : 
+    { "uuid" : 
+     { "title" : "Inherited Universally Unique Identifier",
+      "description" : "A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this inherited entry elsewhere in this or other OSCAL instances. The locally defined UUID of the inherited control implementation can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.",
+      "$ref" : "#/definitions/UUIDDatatype" },
+     "provided-uuid" : 
+     { "title" : "Provided UUID",
+      "description" : "A machine-oriented identifier reference to an inherited control implementation that a leveraging system is inheriting from a leveraged system.",
+      "$ref" : "#/definitions/UUIDDatatype" },
+     "satisfied-uuid" : 
+     { "title" : "Satisfied UUID",
+      "description" : "A machine-oriented identifier reference to a satisfied control implementation.",
+      "$ref" : "#/definitions/UUIDDatatype" },
+     "" : 
+     { "type" : "string" },
+     "description" : 
+     { "title" : "Inherited Control Implementation Description",
+      "description" : "An implementation statement that describes the aspects of a control or control statement implementation that a leveraging system is inheriting from a leveraged system.",
+      "type" : "string" },
+     "props" : 
+     { "type" : "array",
+      "minItems" : 1,
+      "items" : 
+      { "$ref" : "#assembly_oscal-metadata_property" } },
+     "links" : 
+     { "type" : "array",
+      "minItems" : 1,
+      "items" : 
+      { "$ref" : "#assembly_oscal-metadata_link" } },
+     "responsible-roles" : 
+     { "type" : "array",
+      "minItems" : 1,
+      "items" : 
+      { "$ref" : "#assembly_oscal-metadata_responsible-role" } } },
+    "required" : 
+    [ "uuid",
+     "description" ],
+    "additionalProperties" : false },
+   "oscal-shared-responsibility-oscal-responsibility-common:satisfied" : 
+   { "title" : "Satisfied Control Implementation Responsibility",
+    "description" : "Describes how this system satisfies a responsibility imposed by a leveraged system.",
+    "$id" : "#assembly_oscal-responsibility-common_satisfied",
+    "type" : "object",
+    "properties" : 
+    { "uuid" : 
+     { "title" : "Satisfied Universally Unique Identifier",
+      "description" : "A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this satisfied control implementation entry elsewhere in this or other OSCAL instances. The locally defined UUID of the control implementation can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.",
+      "$ref" : "#/definitions/UUIDDatatype" },
+     "responsibility-uuid" : 
+     { "title" : "Responsibility UUID",
+      "description" : "A machine-oriented identifier reference to a control implementation that satisfies a responsibility imposed by a leveraged system.",
+      "$ref" : "#/definitions/UUIDDatatype" },
+     "" : 
+     { "type" : "string" },
+     "description" : 
+     { "title" : "Satisfied Control Implementation Responsibility Description",
+      "description" : "An implementation statement that describes the aspects of a control or control statement implementation that a leveraging system is implementing based on a requirement from a leveraged system.",
+      "type" : "string" },
+     "props" : 
+     { "type" : "array",
+      "minItems" : 1,
+      "items" : 
+      { "$ref" : "#assembly_oscal-metadata_property" } },
+     "links" : 
+     { "type" : "array",
+      "minItems" : 1,
+      "items" : 
+      { "$ref" : "#assembly_oscal-metadata_link" } },
+     "responsible-roles" : 
+     { "type" : "array",
+      "minItems" : 1,
+      "items" : 
+      { "$ref" : "#assembly_oscal-metadata_responsible-role" } },
+     "remarks" : 
+     { "$ref" : "#field_oscal-metadata_remarks" } },
+    "required" : 
+    [ "uuid",
+     "description" ],
+    "additionalProperties" : false },
+   "oscal-shared-responsibility-oscal-responsibility-common:export" : 
+   { "title" : "Shared Responsibility",
+    "description" : "Identifies content intended for external consumption, such as with leveraged organizations, customer responsibility documentation, and shared security responsibility documentation.",
+    "$id" : "#assembly_oscal-responsibility-common_export",
+    "type" : "object",
+    "properties" : 
+    { "" : 
+     { "type" : "string" },
+     "description" : 
+     { "title" : "Control Implementation Export Description",
+      "description" : "An implementation statement that describes the aspects of the control or control statement implementation that can be available to another system leveraging this system.",
+      "type" : "string" },
+     "props" : 
+     { "type" : "array",
+      "minItems" : 1,
+      "items" : 
+      { "$ref" : "#assembly_oscal-metadata_property" } },
+     "links" : 
+     { "type" : "array",
+      "minItems" : 1,
+      "items" : 
+      { "$ref" : "#assembly_oscal-metadata_link" } },
+     "provided" : 
+     { "$ref" : "#assembly_oscal-responsibility-common_provided" },
+     "responsibility" : 
+     { "$ref" : "#assembly_oscal-responsibility-common_responsibility" },
+     "remarks" : 
+     { "$ref" : "#field_oscal-metadata_remarks" } },
+    "additionalProperties" : false },
    "Base64Datatype" : 
    { "description" : "Binary data encoded using the Base 64 encoding algorithm as defined by RFC4648.",
     "type" : "string",
     "pattern" : "^[0-9A-Za-z+/]+={0,2}$",
     "contentEncoding" : "base64" },
+   "BooleanDatatype" : 
+   { "description" : "A binary value that is either: true or false.",
+    "type" : "boolean" },
    "DateTimeWithTimezoneDatatype" : 
    { "description" : "A string representing a point in time with a required timezone.",
     "type" : "string",
@@ -1017,6 +1735,17 @@
      { "type" : "string",
       "format" : "email",
       "pattern" : "^.+@.+$" } ] },
+   "IntegerDatatype" : 
+   { "description" : "A whole number value.",
+    "type" : "integer" },
+   "NonNegativeIntegerDatatype" : 
+   { "description" : "An integer value that is equal to or greater than 0.",
+    "allOf" : 
+    [ 
+     { "$ref" : "#/definitions/IntegerDatatype" },
+     
+     { "type" : "number",
+      "minimum" : 0 } ] },
    "StringDatatype" : 
    { "description" : "A non-empty string with leading and trailing whitespace disallowed. Whitespace is: U+9, U+10, U+32 or [ \n\t]+",
     "type" : "string",

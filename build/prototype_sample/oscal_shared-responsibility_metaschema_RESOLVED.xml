@@ -13,6 +13,8 @@
       <p>This prototype may contain assemblies that are not intended in this context.</p>
       <p>The most important assemblies to consider within this current version are: provided, responsibilities, inherited, and satisfied.</p>
    </remarks>
+   <import href="oscal_metadata_metaschema_RESOLVED.xml"/>
+   <import href="oscal_implementation-common_metaschema_RESOLVED.xml"/>
    <import href="oscal_responsibility-common_metaschema_RESOLVED.xml"/>
    <define-assembly name="shared-responsibility">
       <formal-name>Shared Responsibility</formal-name>
@@ -25,9 +27,15 @@
       <model>
          <assembly ref="metadata" min-occurs="1"/>
          <assembly ref="source-ssp" max-occurs="1"/>
-         <assembly ref="control-implemenation" min-occurs="1"/>
+         <assembly ref="control-implementation" min-occurs="1"/>
          <assembly ref="back-matter"/>
       </model>
+      <constraint>
+         <index name="by-component-uuid"
+                 target="control-implementation/implemented-requirement//by-component|doc(system-implementation/leveraged-authorization/link[@rel='system-security-plan']/@href)/system-security-plan/control-implementation/implemented-requirement//by-component">
+            <key-field target="@uuid"/>
+         </index>
+      </constraint>
    </define-assembly>
    <!-- 
     In the interest of evaluation simplicity, this is a direct copy from oscal_ssp_metaschema.xml.

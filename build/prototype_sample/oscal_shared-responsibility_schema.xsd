@@ -38,8 +38,8 @@
                       type="oscal-responsibility-common-source-ssp-ASSEMBLY"
                       minOccurs="0"
                       maxOccurs="1"/>
-         <xs:element name="control-implemenation"
-                      type="-ASSEMBLY"
+         <xs:element name="control-implementation"
+                      type="oscal-shared-responsibility-control-implementation-ASSEMBLY"
                       minOccurs="1"
                       maxOccurs="1"/>
          <xs:element name="back-matter"
@@ -58,464 +58,212 @@
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
-   <!--EXCEPTION (unused-definition): REMOVING unused assembly definition for 'control-implementation' from oscal-shared-responsibility. -->
-   <!--EXCEPTION (unused-definition): REMOVING unused assembly definition for 'implemented-requirement' from oscal-shared-responsibility. -->
-   <!--EXCEPTION (unused-definition): REMOVING unused assembly definition for 'statement' from oscal-shared-responsibility. -->
-   <!--EXCEPTION (unused-definition): REMOVING unused assembly definition for 'by-component' from oscal-shared-responsibility. -->
-   <xs:complexType name="oscal-responsibility-common-source-ssp-ASSEMBLY">
+   <xs:complexType name="oscal-shared-responsibility-control-implementation-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
-            <m:formal-name>Source SSP</m:formal-name>
-            <m:description>This has not been described in the prototype.</m:description>
+            <m:formal-name>Control Implementation</m:formal-name>
+            <m:description>Describes how the system satisfies a set of controls.</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Source SSP</b>: This has not been described in the prototype.</xs:documentation>
+            <b>Control Implementation</b>: Describes how the system satisfies a set of controls.</xs:documentation>
       </xs:annotation>
       <xs:sequence>
-         <xs:element name="title" minOccurs="0" maxOccurs="1">
-            <xs:complexType mixed="true">
+         <xs:element name="description" minOccurs="1" maxOccurs="1">
+            <xs:complexType>
                <xs:annotation>
                   <xs:appinfo>
-                     <m:formal-name>Source Title</m:formal-name>
-                     <m:description>This has not been described in the prototype.</m:description>
+                     <m:formal-name>Control Implementation Description</m:formal-name>
+                     <m:description>A statement describing important things to know about how this set of control satisfaction documentation is approached.</m:description>
                   </xs:appinfo>
                   <xs:documentation>
-                     <b>Source Title</b>: This has not been described in the prototype.</xs:documentation>
+                     <b>Control Implementation Description</b>: A statement describing important things to know about how this set of control satisfaction documentation is approached.</xs:documentation>
                </xs:annotation>
                <xs:complexContent>
-                  <xs:extension base="MarkupLineDatatype"/>
+                  <xs:extension base="MarkupMultilineDatatype"/>
                </xs:complexContent>
             </xs:complexType>
          </xs:element>
-         <xs:element name="published" minOccurs="0" maxOccurs="1">
-            <xs:simpleType>
+         <xs:element name="set-parameter"
+                      type="oscal-implementation-common-set-parameter-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
+         <xs:element name="implemented-requirement"
+                      type="oscal-shared-responsibility-implemented-requirement-ASSEMBLY"
+                      minOccurs="1"
+                      maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="oscal-shared-responsibility-implemented-requirement-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Control-based Requirement</m:formal-name>
+            <m:description>Describes how the system satisfies the requirements of an individual control.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Control-based Requirement</b>: Describes how the system satisfies the requirements of an individual control.</xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="prop"
+                      type="oscal-metadata-property-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
+         <xs:element name="link"
+                      type="oscal-metadata-link-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
+         <xs:element name="set-parameter"
+                      type="oscal-implementation-common-set-parameter-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
+         <xs:element name="responsible-role"
+                      type="oscal-metadata-responsible-role-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
+         <xs:element name="statement"
+                      type="oscal-shared-responsibility-statement-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
+         <xs:element name="by-component"
+                      type="oscal-shared-responsibility-by-component-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
+         <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Remarks</m:formal-name>
+                  <m:description>Additional commentary about the containing object.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Remarks</b>: Additional commentary about the containing object.</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+               <xs:group ref="blockElementGroup" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
+      <xs:attribute name="uuid" use="required" type="UUIDDatatype">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Control Requirement Universally Unique Identifier</m:formal-name>
+               <m:description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this control requirement elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>control requirement</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Control Requirement Universally Unique Identifier</b>: A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this control requirement elsewhere in this or other OSCAL instances. The locally defined UUID of the control requirement can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="control-id" use="required" type="TokenDatatype">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Control Identifier Reference</m:formal-name>
+               <m:description>A reference to a control with a corresponding <code>id</code> value. When referencing an externally defined <code>control</code>, the <code>Control Identifier Reference</code> must be used in the context of the external / imported OSCAL instance (e.g., uri-reference).</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Control Identifier Reference</b>: A reference to a control with a corresponding id value. When referencing an externally defined control, the Control Identifier Reference must be used in the context of the external / imported OSCAL instance (e.g., uri-reference).</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+   </xs:complexType>
+   <xs:complexType name="oscal-shared-responsibility-statement-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Specific Control Statement</m:formal-name>
+            <m:description>Identifies which statements within a control are addressed.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Specific Control Statement</b>: Identifies which statements within a control are addressed.</xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="prop"
+                      type="oscal-metadata-property-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
+         <xs:element name="link"
+                      type="oscal-metadata-link-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
+         <xs:element name="responsible-role"
+                      type="oscal-metadata-responsible-role-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
+         <xs:element name="by-component"
+                      type="oscal-shared-responsibility-by-component-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
+         <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Remarks</m:formal-name>
+                  <m:description>Additional commentary about the containing object.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Remarks</b>: Additional commentary about the containing object.</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+               <xs:group ref="blockElementGroup" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
+      <xs:attribute name="statement-id" use="required" type="TokenDatatype">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Control Statement Reference</m:formal-name>
+               <m:description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#human-oriented">human-oriented</a> identifier reference to a <code>control statement</code>.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Control Statement Reference</b>: A human-oriented identifier reference to a control statement.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="uuid" use="required" type="UUIDDatatype">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Control Statement Reference Universally Unique Identifier</m:formal-name>
+               <m:description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this control statement elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The <em>UUID</em> of the <code>control statement</code> in the source OSCAL instance is sufficient to reference the data item locally or globally (e.g., in an imported OSCAL instance).</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Control Statement Reference Universally Unique Identifier</b>: A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this control statement elsewhere in this or other OSCAL instances. The UUID of the control statement in the source OSCAL instance is sufficient to reference the data item locally or globally (e.g., in an imported OSCAL instance).</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+   </xs:complexType>
+   <xs:complexType name="oscal-shared-responsibility-by-component-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Component Control Implementation</m:formal-name>
+            <m:description>Defines how the referenced component implements a set of controls.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Component Control Implementation</b>: Defines how the referenced component implements a set of controls.</xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="description" minOccurs="1" maxOccurs="1">
+            <xs:complexType>
                <xs:annotation>
                   <xs:appinfo>
-                     <m:formal-name>Publication Timestamp</m:formal-name>
-                     <m:description>This has not been described in the prototype.</m:description>
+                     <m:formal-name>Control Implementation Description</m:formal-name>
+                     <m:description>An implementation statement that describes how a control or a control statement is implemented within the referenced system component.</m:description>
                   </xs:appinfo>
                   <xs:documentation>
-                     <b>Publication Timestamp</b>: This has not been described in the prototype.</xs:documentation>
+                     <b>Control Implementation Description</b>: An implementation statement that describes how a control or a control statement is implemented within the referenced system component.</xs:documentation>
                </xs:annotation>
-               <xs:restriction base="DateTimeWithTimezoneDatatype"/>
-            </xs:simpleType>
+               <xs:complexContent>
+                  <xs:extension base="MarkupMultilineDatatype"/>
+               </xs:complexContent>
+            </xs:complexType>
          </xs:element>
-         <xs:element name="last-modified" minOccurs="0" maxOccurs="1">
-            <xs:simpleType>
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Last Modified Timestamp</m:formal-name>
-                     <m:description>This has not been described in the prototype.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Last Modified Timestamp</b>: This has not been described in the prototype.</xs:documentation>
-               </xs:annotation>
-               <xs:restriction base="DateTimeWithTimezoneDatatype"/>
-            </xs:simpleType>
-         </xs:element>
-         <xs:element name="version" minOccurs="0" maxOccurs="1">
-            <xs:simpleType>
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Document Version</m:formal-name>
-                     <m:description>This has not been described in the prototype.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Document Version</b>: This has not been described in the prototype.</xs:documentation>
-               </xs:annotation>
-               <xs:restriction base="StringDatatype"/>
-            </xs:simpleType>
-         </xs:element>
-         <xs:element name="referenced-profile"
-                      type="oscal-responsibility-common-referenced-profile-ASSEMBLY"
+         <xs:element name="prop"
+                      type="oscal-metadata-property-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
+         <xs:element name="link"
+                      type="oscal-metadata-link-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
+         <xs:element name="set-parameter"
+                      type="oscal-implementation-common-set-parameter-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
+         <xs:element name="implementation-status"
+                      type="oscal-implementation-common-implementation-status-ASSEMBLY"
                       minOccurs="0"
                       maxOccurs="1"/>
-         <xs:element name="prop"
-                      type="oscal-metadata-property-ASSEMBLY"
-                      minOccurs="0"
-                      maxOccurs="unbounded"/>
-         <xs:element name="link"
-                      type="oscal-metadata-link-ASSEMBLY"
-                      minOccurs="0"
-                      maxOccurs="unbounded"/>
-         <xs:element name="remarks" minOccurs="0" maxOccurs="1">
-            <xs:annotation>
-               <xs:appinfo>
-                  <m:formal-name>Remarks</m:formal-name>
-                  <m:description>Additional commentary about the containing object.</m:description>
-               </xs:appinfo>
-               <xs:documentation>
-                  <b>Remarks</b>: Additional commentary about the containing object.</xs:documentation>
-            </xs:annotation>
-            <xs:complexType>
-               <xs:group ref="blockElementGroup" maxOccurs="unbounded" minOccurs="0"/>
-            </xs:complexType>
-         </xs:element>
-      </xs:sequence>
-      <xs:attribute name="ssp-uuid" use="required" type="UUIDDatatype">
-         <xs:annotation>
-            <xs:appinfo>
-               <m:formal-name>SSP Universally Unique Identifier</m:formal-name>
-               <m:description>This has not been described in the prototype.</m:description>
-            </xs:appinfo>
-            <xs:documentation>
-               <b>SSP Universally Unique Identifier</b>: This has not been described in the prototype.</xs:documentation>
-         </xs:annotation>
-      </xs:attribute>
-   </xs:complexType>
-   <xs:complexType name="oscal-responsibility-common-referenced-profile-ASSEMBLY">
-      <xs:annotation>
-         <xs:appinfo>
-            <m:formal-name>Referenced Profile</m:formal-name>
-            <m:description>This has not been described in the prototype.</m:description>
-         </xs:appinfo>
-         <xs:documentation>
-            <b>Referenced Profile</b>: This has not been described in the prototype.</xs:documentation>
-      </xs:annotation>
-      <xs:attribute name="href" use="required" type="URIReferenceDatatype">
-         <xs:annotation>
-            <xs:appinfo>
-               <m:formal-name>Hyperlink Reference</m:formal-name>
-               <m:description>A link to a resource that defines a set of components and/or capabilities to import into this collection.</m:description>
-            </xs:appinfo>
-            <xs:documentation>
-               <b>Hyperlink Reference</b>: A link to a resource that defines a set of components and/or capabilities to import into this collection.</xs:documentation>
-         </xs:annotation>
-      </xs:attribute>
-   </xs:complexType>
-   <xs:complexType name="oscal-responsibility-common-provided-ASSEMBLY">
-      <xs:annotation>
-         <xs:appinfo>
-            <m:formal-name>Provided Control Implementation</m:formal-name>
-            <m:description>Describes a capability which may be inherited by a leveraging system.</m:description>
-         </xs:appinfo>
-         <xs:documentation>
-            <b>Provided Control Implementation</b>: Describes a capability which may be inherited by a leveraging system.</xs:documentation>
-      </xs:annotation>
-      <xs:sequence>
-         <xs:attribute name="exportable" type="StringDatatype"/>
-         <xs:element name="description" minOccurs="1" maxOccurs="1">
-            <xs:complexType>
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Provided Control Implementation Description</m:formal-name>
-                     <m:description>An implementation statement that describes the aspects of the control or control statement implementation that can be provided to another system leveraging this system.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Provided Control Implementation Description</b>: An implementation statement that describes the aspects of the control or control statement implementation that can be provided to another system leveraging this system.</xs:documentation>
-               </xs:annotation>
-               <xs:complexContent>
-                  <xs:extension base="MarkupMultilineDatatype"/>
-               </xs:complexContent>
-            </xs:complexType>
-         </xs:element>
-         <xs:element name="prop"
-                      type="oscal-metadata-property-ASSEMBLY"
-                      minOccurs="0"
-                      maxOccurs="unbounded"/>
-         <xs:element name="link"
-                      type="oscal-metadata-link-ASSEMBLY"
-                      minOccurs="0"
-                      maxOccurs="unbounded"/>
-         <xs:element name="responsible-role"
-                      type="oscal-metadata-responsible-role-ASSEMBLY"
-                      minOccurs="0"
-                      maxOccurs="unbounded"/>
-         <xs:element name="remarks" minOccurs="0" maxOccurs="1">
-            <xs:annotation>
-               <xs:appinfo>
-                  <m:formal-name>Remarks</m:formal-name>
-                  <m:description>Additional commentary about the containing object.</m:description>
-               </xs:appinfo>
-               <xs:documentation>
-                  <b>Remarks</b>: Additional commentary about the containing object.</xs:documentation>
-            </xs:annotation>
-            <xs:complexType>
-               <xs:group ref="blockElementGroup" maxOccurs="unbounded" minOccurs="0"/>
-            </xs:complexType>
-         </xs:element>
-      </xs:sequence>
-      <xs:attribute name="uuid" use="required" type="UUIDDatatype">
-         <xs:annotation>
-            <xs:appinfo>
-               <m:formal-name>Provided Universally Unique Identifier</m:formal-name>
-               <m:description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this provided entry elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>provided</code> entry can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</m:description>
-            </xs:appinfo>
-            <xs:documentation>
-               <b>Provided Universally Unique Identifier</b>: A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this provided entry elsewhere in this or other OSCAL instances. The locally defined UUID of the provided entry can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.</xs:documentation>
-         </xs:annotation>
-      </xs:attribute>
-      <xs:attribute name="satisfied-uuid" type="UUIDDatatype">
-         <xs:annotation>
-            <xs:appinfo>
-               <m:formal-name>Satisfied UUID</m:formal-name>
-               <m:description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a satisfied control implementation.</m:description>
-            </xs:appinfo>
-            <xs:documentation>
-               <b>Satisfied UUID</b>: A machine-oriented identifier reference to a satisfied control implementation.</xs:documentation>
-         </xs:annotation>
-      </xs:attribute>
-   </xs:complexType>
-   <xs:complexType name="oscal-responsibility-common-responsibility-ASSEMBLY">
-      <xs:annotation>
-         <xs:appinfo>
-            <m:formal-name>Control Implementation Responsibility</m:formal-name>
-            <m:description>Describes a control implementation responsibility imposed on a leveraging system.</m:description>
-         </xs:appinfo>
-         <xs:documentation>
-            <b>Control Implementation Responsibility</b>: Describes a control implementation responsibility imposed on a leveraging system.</xs:documentation>
-      </xs:annotation>
-      <xs:sequence>
-         <xs:attribute name="exportable" type="StringDatatype"/>
-         <xs:element name="description" minOccurs="1" maxOccurs="1">
-            <xs:complexType>
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Control Implementation Responsibility Description</m:formal-name>
-                     <m:description>An implementation statement that describes the aspects of the control or control statement implementation that a leveraging system must implement to satisfy the control provided by a leveraged system.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Control Implementation Responsibility Description</b>: An implementation statement that describes the aspects of the control or control statement implementation that a leveraging system must implement to satisfy the control provided by a leveraged system.</xs:documentation>
-               </xs:annotation>
-               <xs:complexContent>
-                  <xs:extension base="MarkupMultilineDatatype"/>
-               </xs:complexContent>
-            </xs:complexType>
-         </xs:element>
-         <xs:element name="prop"
-                      type="oscal-metadata-property-ASSEMBLY"
-                      minOccurs="0"
-                      maxOccurs="unbounded"/>
-         <xs:element name="link"
-                      type="oscal-metadata-link-ASSEMBLY"
-                      minOccurs="0"
-                      maxOccurs="unbounded"/>
-         <xs:element name="responsible-role"
-                      type="oscal-metadata-responsible-role-ASSEMBLY"
-                      minOccurs="0"
-                      maxOccurs="unbounded"/>
-         <xs:element name="remarks" minOccurs="0" maxOccurs="1">
-            <xs:annotation>
-               <xs:appinfo>
-                  <m:formal-name>Remarks</m:formal-name>
-                  <m:description>Additional commentary about the containing object.</m:description>
-               </xs:appinfo>
-               <xs:documentation>
-                  <b>Remarks</b>: Additional commentary about the containing object.</xs:documentation>
-            </xs:annotation>
-            <xs:complexType>
-               <xs:group ref="blockElementGroup" maxOccurs="unbounded" minOccurs="0"/>
-            </xs:complexType>
-         </xs:element>
-      </xs:sequence>
-      <xs:attribute name="uuid" use="required" type="UUIDDatatype">
-         <xs:annotation>
-            <xs:appinfo>
-               <m:formal-name>Responsibility Universally Unique Identifier</m:formal-name>
-               <m:description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this responsibility elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>responsibility</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</m:description>
-            </xs:appinfo>
-            <xs:documentation>
-               <b>Responsibility Universally Unique Identifier</b>: A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this responsibility elsewhere in this or other OSCAL instances. The locally defined UUID of the responsibility can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.</xs:documentation>
-         </xs:annotation>
-      </xs:attribute>
-      <xs:attribute name="provided-uuid" type="UUIDDatatype">
-         <xs:annotation>
-            <xs:appinfo>
-               <m:formal-name>Provided UUID</m:formal-name>
-               <m:description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to an inherited control implementation that a leveraging system is inheriting from a leveraged system.</m:description>
-            </xs:appinfo>
-            <xs:documentation>
-               <b>Provided UUID</b>: A machine-oriented identifier reference to an inherited control implementation that a leveraging system is inheriting from a leveraged system.</xs:documentation>
-         </xs:annotation>
-      </xs:attribute>
-      <xs:attribute name="satisfied-uuid" type="UUIDDatatype">
-         <xs:annotation>
-            <xs:appinfo>
-               <m:formal-name>Satisfied UUID</m:formal-name>
-               <m:description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a satisfied control implementation.</m:description>
-            </xs:appinfo>
-            <xs:documentation>
-               <b>Satisfied UUID</b>: A machine-oriented identifier reference to a satisfied control implementation.</xs:documentation>
-         </xs:annotation>
-      </xs:attribute>
-   </xs:complexType>
-   <xs:complexType name="oscal-responsibility-common-inherited-ASSEMBLY">
-      <xs:annotation>
-         <xs:appinfo>
-            <m:formal-name>Inherited Control Implementation</m:formal-name>
-            <m:description>Describes a control implementation inherited by a leveraging system.</m:description>
-         </xs:appinfo>
-         <xs:documentation>
-            <b>Inherited Control Implementation</b>: Describes a control implementation inherited by a leveraging system.</xs:documentation>
-      </xs:annotation>
-      <xs:sequence>
-         <xs:attribute name="exportable" type="StringDatatype"/>
-         <xs:element name="description" minOccurs="1" maxOccurs="1">
-            <xs:complexType>
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Inherited Control Implementation Description</m:formal-name>
-                     <m:description>An implementation statement that describes the aspects of a control or control statement implementation that a leveraging system is inheriting from a leveraged system.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Inherited Control Implementation Description</b>: An implementation statement that describes the aspects of a control or control statement implementation that a leveraging system is inheriting from a leveraged system.</xs:documentation>
-               </xs:annotation>
-               <xs:complexContent>
-                  <xs:extension base="MarkupMultilineDatatype"/>
-               </xs:complexContent>
-            </xs:complexType>
-         </xs:element>
-         <xs:element name="prop"
-                      type="oscal-metadata-property-ASSEMBLY"
-                      minOccurs="0"
-                      maxOccurs="unbounded"/>
-         <xs:element name="link"
-                      type="oscal-metadata-link-ASSEMBLY"
-                      minOccurs="0"
-                      maxOccurs="unbounded"/>
-         <xs:element name="responsible-role"
-                      type="oscal-metadata-responsible-role-ASSEMBLY"
-                      minOccurs="0"
-                      maxOccurs="unbounded"/>
-      </xs:sequence>
-      <xs:attribute name="uuid" use="required" type="UUIDDatatype">
-         <xs:annotation>
-            <xs:appinfo>
-               <m:formal-name>Inherited Universally Unique Identifier</m:formal-name>
-               <m:description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this inherited entry elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>inherited control implementation</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</m:description>
-            </xs:appinfo>
-            <xs:documentation>
-               <b>Inherited Universally Unique Identifier</b>: A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this inherited entry elsewhere in this or other OSCAL instances. The locally defined UUID of the inherited control implementation can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.</xs:documentation>
-         </xs:annotation>
-      </xs:attribute>
-      <xs:attribute name="provided-uuid" type="UUIDDatatype">
-         <xs:annotation>
-            <xs:appinfo>
-               <m:formal-name>Provided UUID</m:formal-name>
-               <m:description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to an inherited control implementation that a leveraging system is inheriting from a leveraged system.</m:description>
-            </xs:appinfo>
-            <xs:documentation>
-               <b>Provided UUID</b>: A machine-oriented identifier reference to an inherited control implementation that a leveraging system is inheriting from a leveraged system.</xs:documentation>
-         </xs:annotation>
-      </xs:attribute>
-      <xs:attribute name="satisfied-uuid" type="UUIDDatatype">
-         <xs:annotation>
-            <xs:appinfo>
-               <m:formal-name>Satisfied UUID</m:formal-name>
-               <m:description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a satisfied control implementation.</m:description>
-            </xs:appinfo>
-            <xs:documentation>
-               <b>Satisfied UUID</b>: A machine-oriented identifier reference to a satisfied control implementation.</xs:documentation>
-         </xs:annotation>
-      </xs:attribute>
-   </xs:complexType>
-   <xs:complexType name="oscal-responsibility-common-satisfied-ASSEMBLY">
-      <xs:annotation>
-         <xs:appinfo>
-            <m:formal-name>Satisfied Control Implementation Responsibility</m:formal-name>
-            <m:description>Describes how this system satisfies a responsibility imposed by a leveraged system.</m:description>
-         </xs:appinfo>
-         <xs:documentation>
-            <b>Satisfied Control Implementation Responsibility</b>: Describes how this system satisfies a responsibility imposed by a leveraged system.</xs:documentation>
-      </xs:annotation>
-      <xs:sequence>
-         <xs:attribute name="exportable" type="StringDatatype"/>
-         <xs:element name="description" minOccurs="1" maxOccurs="1">
-            <xs:complexType>
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Satisfied Control Implementation Responsibility Description</m:formal-name>
-                     <m:description>An implementation statement that describes the aspects of a control or control statement implementation that a leveraging system is implementing based on a requirement from a leveraged system.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Satisfied Control Implementation Responsibility Description</b>: An implementation statement that describes the aspects of a control or control statement implementation that a leveraging system is implementing based on a requirement from a leveraged system.</xs:documentation>
-               </xs:annotation>
-               <xs:complexContent>
-                  <xs:extension base="MarkupMultilineDatatype"/>
-               </xs:complexContent>
-            </xs:complexType>
-         </xs:element>
-         <xs:element name="prop"
-                      type="oscal-metadata-property-ASSEMBLY"
-                      minOccurs="0"
-                      maxOccurs="unbounded"/>
-         <xs:element name="link"
-                      type="oscal-metadata-link-ASSEMBLY"
-                      minOccurs="0"
-                      maxOccurs="unbounded"/>
-         <xs:element name="responsible-role"
-                      type="oscal-metadata-responsible-role-ASSEMBLY"
-                      minOccurs="0"
-                      maxOccurs="unbounded"/>
-         <xs:element name="remarks" minOccurs="0" maxOccurs="1">
-            <xs:annotation>
-               <xs:appinfo>
-                  <m:formal-name>Remarks</m:formal-name>
-                  <m:description>Additional commentary about the containing object.</m:description>
-               </xs:appinfo>
-               <xs:documentation>
-                  <b>Remarks</b>: Additional commentary about the containing object.</xs:documentation>
-            </xs:annotation>
-            <xs:complexType>
-               <xs:group ref="blockElementGroup" maxOccurs="unbounded" minOccurs="0"/>
-            </xs:complexType>
-         </xs:element>
-      </xs:sequence>
-      <xs:attribute name="uuid" use="required" type="UUIDDatatype">
-         <xs:annotation>
-            <xs:appinfo>
-               <m:formal-name>Satisfied Universally Unique Identifier</m:formal-name>
-               <m:description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this satisfied control implementation entry elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>control implementation</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</m:description>
-            </xs:appinfo>
-            <xs:documentation>
-               <b>Satisfied Universally Unique Identifier</b>: A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this satisfied control implementation entry elsewhere in this or other OSCAL instances. The locally defined UUID of the control implementation can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.</xs:documentation>
-         </xs:annotation>
-      </xs:attribute>
-      <xs:attribute name="responsibility-uuid" type="UUIDDatatype">
-         <xs:annotation>
-            <xs:appinfo>
-               <m:formal-name>Responsibility UUID</m:formal-name>
-               <m:description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a control implementation that satisfies a responsibility imposed by a leveraged system.</m:description>
-            </xs:appinfo>
-            <xs:documentation>
-               <b>Responsibility UUID</b>: A machine-oriented identifier reference to a control implementation that satisfies a responsibility imposed by a leveraged system.</xs:documentation>
-         </xs:annotation>
-      </xs:attribute>
-   </xs:complexType>
-   <xs:complexType name="oscal-responsibility-common-export-ASSEMBLY">
-      <xs:annotation>
-         <xs:appinfo>
-            <m:formal-name>Shared Responsibility</m:formal-name>
-            <m:description>Identifies content intended for external consumption, such as with leveraged organizations, customer responsibility documentation, and shared security responsibility documentation.</m:description>
-         </xs:appinfo>
-         <xs:documentation>
-            <b>Shared Responsibility</b>: Identifies content intended for external consumption, such as with leveraged organizations, customer responsibility documentation, and shared security responsibility documentation.</xs:documentation>
-      </xs:annotation>
-      <xs:sequence>
-         <xs:attribute name="exportable" type="StringDatatype"/>
-         <xs:element name="description" minOccurs="0" maxOccurs="1">
-            <xs:complexType>
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Control Implementation Export Description</m:formal-name>
-                     <m:description>An implementation statement that describes the aspects of the control or control statement implementation that can be available to another system leveraging this system.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Control Implementation Export Description</b>: An implementation statement that describes the aspects of the control or control statement implementation that can be available to another system leveraging this system.</xs:documentation>
-               </xs:annotation>
-               <xs:complexContent>
-                  <xs:extension base="MarkupMultilineDatatype"/>
-               </xs:complexContent>
-            </xs:complexType>
-         </xs:element>
-         <xs:element name="prop"
-                      type="oscal-metadata-property-ASSEMBLY"
-                      minOccurs="0"
-                      maxOccurs="unbounded"/>
-         <xs:element name="link"
-                      type="oscal-metadata-link-ASSEMBLY"
-                      minOccurs="0"
-                      maxOccurs="unbounded"/>
          <xs:element name="provided"
                       type="oscal-responsibility-common-provided-ASSEMBLY"
                       minOccurs="0"
@@ -524,6 +272,22 @@
                       type="oscal-responsibility-common-responsibility-ASSEMBLY"
                       minOccurs="0"
                       maxOccurs="1"/>
+         <xs:element name="inherited"
+                      type="oscal-responsibility-common-inherited-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="1"/>
+         <xs:element name="satisfied"
+                      type="oscal-responsibility-common-satisfied-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="1"/>
+         <xs:element name="export"
+                      type="oscal-responsibility-common-export-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="1"/>
+         <xs:element name="responsible-role"
+                      type="oscal-metadata-responsible-role-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
          <xs:element name="remarks" minOccurs="0" maxOccurs="1">
             <xs:annotation>
                <xs:appinfo>
@@ -538,6 +302,26 @@
             </xs:complexType>
          </xs:element>
       </xs:sequence>
+      <xs:attribute name="component-uuid" use="required" type="UUIDDatatype">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Component Universally Unique Identifier Reference</m:formal-name>
+               <m:description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to the <code>component</code> that is implemeting a given control.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Component Universally Unique Identifier Reference</b>: A machine-oriented identifier reference to the component that is implemeting a given control.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="uuid" use="required" type="UUIDDatatype">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>By-Component Universally Unique Identifier</m:formal-name>
+               <m:description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this by-component entry elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>by-component</code> entry can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>By-Component Universally Unique Identifier</b>: A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this by-component entry elsewhere in this or other OSCAL instances. The locally defined UUID of the by-component entry can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
    </xs:complexType>
    <xs:complexType name="oscal-metadata-metadata-ASSEMBLY">
       <xs:annotation>
@@ -1789,6 +1573,1426 @@
          </xs:extension>
       </xs:simpleContent>
    </xs:complexType>
+   <xs:complexType name="oscal-implementation-common-system-component-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Component</m:formal-name>
+            <m:description>A defined component that can be part of an implemented system.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Component</b>: A defined component that can be part of an implemented system.</xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="title" minOccurs="1" maxOccurs="1">
+            <xs:complexType mixed="true">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Component Title</m:formal-name>
+                     <m:description>A human readable name for the system component.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Component Title</b>: A human readable name for the system component.</xs:documentation>
+               </xs:annotation>
+               <xs:complexContent>
+                  <xs:extension base="MarkupLineDatatype"/>
+               </xs:complexContent>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="description" minOccurs="1" maxOccurs="1">
+            <xs:complexType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Component Description</m:formal-name>
+                     <m:description>A description of the component, including information about its function.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Component Description</b>: A description of the component, including information about its function.</xs:documentation>
+               </xs:annotation>
+               <xs:complexContent>
+                  <xs:extension base="MarkupMultilineDatatype"/>
+               </xs:complexContent>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="purpose" minOccurs="0" maxOccurs="1">
+            <xs:complexType mixed="true">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Purpose</m:formal-name>
+                     <m:description>A summary of the technological or business purpose of the component.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Purpose</b>: A summary of the technological or business purpose of the component.</xs:documentation>
+               </xs:annotation>
+               <xs:complexContent>
+                  <xs:extension base="MarkupLineDatatype"/>
+               </xs:complexContent>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="prop"
+                      type="oscal-metadata-property-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
+         <xs:element name="link"
+                      type="oscal-metadata-link-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
+         <xs:element name="status" minOccurs="1" maxOccurs="1">
+            <xs:complexType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Status</m:formal-name>
+                     <m:description>Describes the operational status of the system component.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Status</b>: Describes the operational status of the system component.</xs:documentation>
+               </xs:annotation>
+               <xs:sequence>
+                  <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+                     <xs:annotation>
+                        <xs:appinfo>
+                           <m:formal-name>Remarks</m:formal-name>
+                           <m:description>Additional commentary about the containing object.</m:description>
+                        </xs:appinfo>
+                        <xs:documentation>
+                           <b>Remarks</b>: Additional commentary about the containing object.</xs:documentation>
+                     </xs:annotation>
+                     <xs:complexType>
+                        <xs:group ref="blockElementGroup" maxOccurs="unbounded" minOccurs="0"/>
+                     </xs:complexType>
+                  </xs:element>
+               </xs:sequence>
+               <xs:attribute name="state" use="required" type="TokenDatatype">
+                  <xs:annotation>
+                     <xs:appinfo>
+                        <m:formal-name>State</m:formal-name>
+                        <m:description>The operational status.</m:description>
+                     </xs:appinfo>
+                     <xs:documentation>
+                        <b>State</b>: The operational status.</xs:documentation>
+                  </xs:annotation>
+               </xs:attribute>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="responsible-role"
+                      type="oscal-metadata-responsible-role-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
+         <xs:element name="protocol"
+                      type="oscal-implementation-common-protocol-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
+         <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Remarks</m:formal-name>
+                  <m:description>Additional commentary about the containing object.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Remarks</b>: Additional commentary about the containing object.</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+               <xs:group ref="blockElementGroup" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
+      <xs:attribute name="uuid" use="required" type="UUIDDatatype">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Component Identifier</m:formal-name>
+               <m:description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this component elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>component</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Component Identifier</b>: A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this component elsewhere in this or other OSCAL instances. The locally defined UUID of the component can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="type" use="required" type="StringDatatype">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Component Type</m:formal-name>
+               <m:description>A category describing the purpose of the component.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Component Type</b>: A category describing the purpose of the component.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+   </xs:complexType>
+   <xs:complexType name="oscal-implementation-common-protocol-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Service Protocol Information</m:formal-name>
+            <m:description>Information about the protocol used to provide a service.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Service Protocol Information</b>: Information about the protocol used to provide a service.</xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="title" minOccurs="0" maxOccurs="1">
+            <xs:complexType mixed="true">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Protocol Title</m:formal-name>
+                     <m:description>A human readable name for the protocol (e.g., Transport Layer Security).</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Protocol Title</b>: A human readable name for the protocol (e.g., Transport Layer Security).</xs:documentation>
+               </xs:annotation>
+               <xs:complexContent>
+                  <xs:extension base="MarkupLineDatatype"/>
+               </xs:complexContent>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="port-range"
+                      type="oscal-implementation-common-port-range-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="uuid" type="UUIDDatatype">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Service Protocol Information Universally Unique Identifier</m:formal-name>
+               <m:description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this service protocol information elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>service protocol</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Service Protocol Information Universally Unique Identifier</b>: A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this service protocol information elsewhere in this or other OSCAL instances. The locally defined UUID of the service protocol can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="name" use="required" type="StringDatatype">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Protocol Name</m:formal-name>
+               <m:description>The common name of the protocol, which should be the appropriate "service name" from the <a href="https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml">IANA Service Name and Transport Protocol Port Number Registry</a>. </m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Protocol Name</b>: The common name of the protocol, which should be the appropriate "service name" from the IANA Service Name and Transport Protocol Port Number Registry. </xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+   </xs:complexType>
+   <xs:complexType name="oscal-implementation-common-port-range-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Port Range</m:formal-name>
+            <m:description>Where applicable this is the IPv4 port range on which the service operates.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Port Range</b>: Where applicable this is the IPv4 port range on which the service operates.</xs:documentation>
+      </xs:annotation>
+      <xs:attribute name="start" type="NonNegativeIntegerDatatype">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Start</m:formal-name>
+               <m:description>Indicates the starting port number in a port range</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Start</b>: Indicates the starting port number in a port range</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="end" type="NonNegativeIntegerDatatype">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>End</m:formal-name>
+               <m:description>Indicates the ending port number in a port range</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>End</b>: Indicates the ending port number in a port range</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="transport" type="TokenDatatype">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Transport</m:formal-name>
+               <m:description>Indicates the transport type.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Transport</b>: Indicates the transport type.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+   </xs:complexType>
+   <xs:complexType name="oscal-implementation-common-implementation-status-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Implementation Status</m:formal-name>
+            <m:description>Indicates the degree to which the a given control is implemented.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Implementation Status</b>: Indicates the degree to which the a given control is implemented.</xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Remarks</m:formal-name>
+                  <m:description>Additional commentary about the containing object.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Remarks</b>: Additional commentary about the containing object.</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+               <xs:group ref="blockElementGroup" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
+      <xs:attribute name="exportable" type="BooleanDatatype">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Exportable</m:formal-name>
+               <m:description>Indicates that the implmentation status is exportable for external consumption, such as with leveraged organizations, customer responsibility documentation, and shared security responsibility documentation.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Exportable</b>: Indicates that the implmentation status is exportable for external consumption, such as with leveraged organizations, customer responsibility documentation, and shared security responsibility documentation.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="state" use="required" type="TokenDatatype">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Implementation State</m:formal-name>
+               <m:description>Identifies the implementation status of the control or control objective.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Implementation State</b>: Identifies the implementation status of the control or control objective.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+   </xs:complexType>
+   <xs:complexType name="oscal-implementation-common-system-user-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>System User</m:formal-name>
+            <m:description>A type of user that interacts with the system based on an associated role.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>System User</b>: A type of user that interacts with the system based on an associated role.</xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="title" minOccurs="0" maxOccurs="1">
+            <xs:complexType mixed="true">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>User Title</m:formal-name>
+                     <m:description>A name given to the user, which may be used by a tool for display and navigation.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>User Title</b>: A name given to the user, which may be used by a tool for display and navigation.</xs:documentation>
+               </xs:annotation>
+               <xs:complexContent>
+                  <xs:extension base="MarkupLineDatatype"/>
+               </xs:complexContent>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="short-name" minOccurs="0" maxOccurs="1">
+            <xs:simpleType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>User Short Name</m:formal-name>
+                     <m:description>A short common name, abbreviation, or acronym for the user.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>User Short Name</b>: A short common name, abbreviation, or acronym for the user.</xs:documentation>
+               </xs:annotation>
+               <xs:restriction base="StringDatatype"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="description" minOccurs="0" maxOccurs="1">
+            <xs:complexType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>User Description</m:formal-name>
+                     <m:description>A summary of the user's purpose within the system.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>User Description</b>: A summary of the user's purpose within the system.</xs:documentation>
+               </xs:annotation>
+               <xs:complexContent>
+                  <xs:extension base="MarkupMultilineDatatype"/>
+               </xs:complexContent>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="prop"
+                      type="oscal-metadata-property-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
+         <xs:element name="link"
+                      type="oscal-metadata-link-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
+         <xs:element name="role-id"
+                      type="oscal-metadata-role-id-FIELD"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
+         <xs:element name="authorized-privilege"
+                      type="oscal-implementation-common-authorized-privilege-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
+         <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Remarks</m:formal-name>
+                  <m:description>Additional commentary about the containing object.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Remarks</b>: Additional commentary about the containing object.</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+               <xs:group ref="blockElementGroup" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
+      <xs:attribute name="uuid" use="required" type="UUIDDatatype">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>User Universally Unique Identifier</m:formal-name>
+               <m:description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this user class elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>system user</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>User Universally Unique Identifier</b>: A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this user class elsewhere in this or other OSCAL instances. The locally defined UUID of the system user can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+   </xs:complexType>
+   <xs:complexType name="oscal-implementation-common-authorized-privilege-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Privilege</m:formal-name>
+            <m:description>Identifies a specific system privilege held by the user, along with an associated description and/or rationale for the privilege.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Privilege</b>: Identifies a specific system privilege held by the user, along with an associated description and/or rationale for the privilege.</xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="title" minOccurs="1" maxOccurs="1">
+            <xs:complexType mixed="true">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Privilege Title</m:formal-name>
+                     <m:description>A human readable name for the privilege.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Privilege Title</b>: A human readable name for the privilege.</xs:documentation>
+               </xs:annotation>
+               <xs:complexContent>
+                  <xs:extension base="MarkupLineDatatype"/>
+               </xs:complexContent>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="description" minOccurs="0" maxOccurs="1">
+            <xs:complexType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Privilege Description</m:formal-name>
+                     <m:description>A summary of the privilege's purpose within the system.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Privilege Description</b>: A summary of the privilege's purpose within the system.</xs:documentation>
+               </xs:annotation>
+               <xs:complexContent>
+                  <xs:extension base="MarkupMultilineDatatype"/>
+               </xs:complexContent>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="function-performed"
+                      type="oscal-implementation-common-function-performed-FIELD"
+                      minOccurs="1"
+                      maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:simpleType name="oscal-implementation-common-function-performed-FIELD">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Functions Performed</m:formal-name>
+            <m:description>Describes a function performed for a given authorized privilege by this user class.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Functions Performed</b>: Describes a function performed for a given authorized privilege by this user class.</xs:documentation>
+      </xs:annotation>
+      <xs:restriction base="StringDatatype"/>
+   </xs:simpleType>
+   <xs:complexType name="oscal-implementation-common-inventory-item-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Inventory Item</m:formal-name>
+            <m:description>A single managed inventory item within the system.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Inventory Item</b>: A single managed inventory item within the system.</xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="description" minOccurs="1" maxOccurs="1">
+            <xs:complexType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Inventory Item Description</m:formal-name>
+                     <m:description>A summary of the inventory item stating its purpose within the system.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Inventory Item Description</b>: A summary of the inventory item stating its purpose within the system.</xs:documentation>
+               </xs:annotation>
+               <xs:complexContent>
+                  <xs:extension base="MarkupMultilineDatatype"/>
+               </xs:complexContent>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="prop"
+                      type="oscal-metadata-property-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
+         <xs:element name="link"
+                      type="oscal-metadata-link-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
+         <xs:element name="responsible-party"
+                      type="oscal-metadata-responsible-party-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
+         <xs:element name="implemented-component" minOccurs="0" maxOccurs="unbounded">
+            <xs:complexType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Implemented Component</m:formal-name>
+                     <m:description>The set of components that are implemented in a given system inventory item.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Implemented Component</b>: The set of components that are implemented in a given system inventory item.</xs:documentation>
+               </xs:annotation>
+               <xs:sequence>
+                  <xs:element name="prop"
+                               type="oscal-metadata-property-ASSEMBLY"
+                               minOccurs="0"
+                               maxOccurs="unbounded"/>
+                  <xs:element name="link"
+                               type="oscal-metadata-link-ASSEMBLY"
+                               minOccurs="0"
+                               maxOccurs="unbounded"/>
+                  <xs:element name="responsible-party"
+                               type="oscal-metadata-responsible-party-ASSEMBLY"
+                               minOccurs="0"
+                               maxOccurs="unbounded"/>
+                  <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+                     <xs:annotation>
+                        <xs:appinfo>
+                           <m:formal-name>Remarks</m:formal-name>
+                           <m:description>Additional commentary about the containing object.</m:description>
+                        </xs:appinfo>
+                        <xs:documentation>
+                           <b>Remarks</b>: Additional commentary about the containing object.</xs:documentation>
+                     </xs:annotation>
+                     <xs:complexType>
+                        <xs:group ref="blockElementGroup" maxOccurs="unbounded" minOccurs="0"/>
+                     </xs:complexType>
+                  </xs:element>
+               </xs:sequence>
+               <xs:attribute name="component-uuid" use="required" type="UUIDDatatype">
+                  <xs:annotation>
+                     <xs:appinfo>
+                        <m:formal-name>Component Universally Unique Identifier Reference</m:formal-name>
+                        <m:description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a <code>component</code> that is implemented as part of an inventory item.</m:description>
+                     </xs:appinfo>
+                     <xs:documentation>
+                        <b>Component Universally Unique Identifier Reference</b>: A machine-oriented identifier reference to a component that is implemented as part of an inventory item.</xs:documentation>
+                  </xs:annotation>
+               </xs:attribute>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Remarks</m:formal-name>
+                  <m:description>Additional commentary about the containing object.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Remarks</b>: Additional commentary about the containing object.</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+               <xs:group ref="blockElementGroup" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
+      <xs:attribute name="uuid" use="required" type="UUIDDatatype">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Inventory Item Universally Unique Identifier</m:formal-name>
+               <m:description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this inventory item elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>inventory item</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Inventory Item Universally Unique Identifier</b>: A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this inventory item elsewhere in this or other OSCAL instances. The locally defined UUID of the inventory item can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+   </xs:complexType>
+   <xs:complexType name="oscal-implementation-common-set-parameter-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Set Parameter Value</m:formal-name>
+            <m:description>Identifies the parameter that will be set by the enclosed value.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Set Parameter Value</b>: Identifies the parameter that will be set by the enclosed value.</xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="value" minOccurs="1" maxOccurs="unbounded">
+            <xs:simpleType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Parameter Value</m:formal-name>
+                     <m:description>A parameter value or set of values.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Parameter Value</b>: A parameter value or set of values.</xs:documentation>
+               </xs:annotation>
+               <xs:restriction base="StringDatatype"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Remarks</m:formal-name>
+                  <m:description>Additional commentary about the containing object.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Remarks</b>: Additional commentary about the containing object.</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+               <xs:group ref="blockElementGroup" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
+      <xs:attribute name="param-id" use="required" type="TokenDatatype">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Parameter ID</m:formal-name>
+               <m:description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#human-oriented">human-oriented</a> reference to a <code>parameter</code> within a control, who's catalog has been imported into the current implementation context.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Parameter ID</b>: A human-oriented reference to a parameter within a control, who's catalog has been imported into the current implementation context.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+   </xs:complexType>
+   <xs:complexType name="oscal-implementation-common-system-id-FIELD">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>System Identification</m:formal-name>
+            <m:description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#human-oriented">human-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this system identification property elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#scope">this or other OSCAL instances</a>. When referencing an externally defined <code>system identification</code>, the <code>system identification</code> must be used in the context of the external / imported OSCAL instance (e.g., uri-reference). This string should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same system across revisions of the document.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>System Identification</b>: A human-oriented, globally unique identifier with cross-instance scope that can be used to reference this system identification property elsewhere in this or other OSCAL instances. When referencing an externally defined system identification, the system identification must be used in the context of the external / imported OSCAL instance (e.g., uri-reference). This string should be assigned per-subject, which means it should be consistently used to identify the same system across revisions of the document.</xs:documentation>
+      </xs:annotation>
+      <xs:simpleContent>
+         <xs:extension base="StringDatatype">
+            <xs:attribute name="identifier-type" type="URIDatatype">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Identification System Type</m:formal-name>
+                     <m:description>Identifies the identification system from which the provided identifier was assigned. </m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Identification System Type</b>: Identifies the identification system from which the provided identifier was assigned. </xs:documentation>
+               </xs:annotation>
+            </xs:attribute>
+         </xs:extension>
+      </xs:simpleContent>
+   </xs:complexType>
+   <xs:complexType name="oscal-control-common-part-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Part</m:formal-name>
+            <m:description>An annotated, markup-based textual element of a control's or catalog group's definition, or a child of another part.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Part</b>: An annotated, markup-based textual element of a control's or catalog group's definition, or a child of another part.</xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="title" minOccurs="0" maxOccurs="1">
+            <xs:complexType mixed="true">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Part Title</m:formal-name>
+                     <m:description>An optional name given to the part, which may be used by a tool for display and navigation.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Part Title</b>: An optional name given to the part, which may be used by a tool for display and navigation.</xs:documentation>
+               </xs:annotation>
+               <xs:complexContent>
+                  <xs:extension base="MarkupLineDatatype"/>
+               </xs:complexContent>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="prop"
+                      type="oscal-metadata-property-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
+         <xs:group ref="blockElementGroup" maxOccurs="unbounded" minOccurs="0"/>
+         <xs:element name="part"
+                      type="oscal-control-common-part-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
+         <xs:element name="link"
+                      type="oscal-metadata-link-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="id" type="TokenDatatype">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Part Identifier</m:formal-name>
+               <m:description>A unique identifier for the part.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Part Identifier</b>: A unique identifier for the part.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="name" use="required" type="TokenDatatype">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Part Name</m:formal-name>
+               <m:description>A textual label that uniquely identifies the part's semantic type, which exists in a value space qualified by the <code>ns</code>.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Part Name</b>: A textual label that uniquely identifies the part's semantic type, which exists in a value space qualified by the ns.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="ns" type="URIDatatype">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Part Namespace</m:formal-name>
+               <m:description>An optional namespace qualifying the part's <code>name</code>. This allows different organizations to associate distinct semantics with the same name.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Part Namespace</b>: An optional namespace qualifying the part's name. This allows different organizations to associate distinct semantics with the same name.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="class" type="TokenDatatype">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Part Class</m:formal-name>
+               <m:description>An optional textual providing a sub-type or characterization of the part's <code>name</code>, or a category to which the part belongs.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Part Class</b>: An optional textual providing a sub-type or characterization of the part's name, or a category to which the part belongs.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+   </xs:complexType>
+   <xs:complexType name="oscal-control-common-parameter-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Parameter</m:formal-name>
+            <m:description>Parameters provide a mechanism for the dynamic assignment of value(s) in a control.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Parameter</b>: Parameters provide a mechanism for the dynamic assignment of value(s) in a control.</xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="prop"
+                      type="oscal-metadata-property-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
+         <xs:element name="link"
+                      type="oscal-metadata-link-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
+         <xs:element name="label" minOccurs="0" maxOccurs="1">
+            <xs:complexType mixed="true">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Parameter Label</m:formal-name>
+                     <m:description>A short, placeholder name for the parameter, which can be used as a substitute for a <code>value</code> if no value is assigned.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Parameter Label</b>: A short, placeholder name for the parameter, which can be used as a substitute for a value if no value is assigned.</xs:documentation>
+               </xs:annotation>
+               <xs:complexContent>
+                  <xs:extension base="MarkupLineDatatype"/>
+               </xs:complexContent>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="usage" minOccurs="0" maxOccurs="1">
+            <xs:complexType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Parameter Usage Description</m:formal-name>
+                     <m:description>Describes the purpose and use of a parameter.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Parameter Usage Description</b>: Describes the purpose and use of a parameter.</xs:documentation>
+               </xs:annotation>
+               <xs:complexContent>
+                  <xs:extension base="MarkupMultilineDatatype"/>
+               </xs:complexContent>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="constraint"
+                      type="oscal-control-common-parameter-constraint-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
+         <xs:element name="guideline"
+                      type="oscal-control-common-parameter-guideline-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
+         <xs:choice>
+            <xs:element name="value"
+                         type="oscal-control-common-parameter-value-FIELD"
+                         minOccurs="0"
+                         maxOccurs="unbounded"/>
+            <xs:element name="select"
+                         type="oscal-control-common-parameter-selection-ASSEMBLY"
+                         minOccurs="0"
+                         maxOccurs="1"/>
+         </xs:choice>
+         <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Remarks</m:formal-name>
+                  <m:description>Additional commentary about the containing object.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Remarks</b>: Additional commentary about the containing object.</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+               <xs:group ref="blockElementGroup" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
+      <xs:attribute name="id" use="required" type="TokenDatatype">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Parameter Identifier</m:formal-name>
+               <m:description>A unique identifier for the parameter.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Parameter Identifier</b>: A unique identifier for the parameter.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="class" type="TokenDatatype">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Parameter Class</m:formal-name>
+               <m:description>A textual label that provides a characterization of the type, purpose, use or scope of the parameter.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Parameter Class</b>: A textual label that provides a characterization of the type, purpose, use or scope of the parameter.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="depends-on" type="TokenDatatype">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Depends on</m:formal-name>
+               <m:description>
+                  <strong>(deprecated)</strong> Another parameter invoking this one. This construct has been deprecated and should not be used.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Depends on</b>: (deprecated) Another parameter invoking this one. This construct has been deprecated and should not be used.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+   </xs:complexType>
+   <xs:complexType name="oscal-control-common-parameter-constraint-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Constraint</m:formal-name>
+            <m:description>A formal or informal expression of a constraint or test.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Constraint</b>: A formal or informal expression of a constraint or test.</xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="description" minOccurs="0" maxOccurs="1">
+            <xs:complexType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Constraint Description</m:formal-name>
+                     <m:description>A textual summary of the constraint to be applied.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Constraint Description</b>: A textual summary of the constraint to be applied.</xs:documentation>
+               </xs:annotation>
+               <xs:complexContent>
+                  <xs:extension base="MarkupMultilineDatatype"/>
+               </xs:complexContent>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="test" minOccurs="0" maxOccurs="unbounded">
+            <xs:complexType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Constraint Test</m:formal-name>
+                     <m:description>A test expression which is expected to be evaluated by a tool.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Constraint Test</b>: A test expression which is expected to be evaluated by a tool.</xs:documentation>
+               </xs:annotation>
+               <xs:sequence>
+                  <xs:element name="expression" minOccurs="1" maxOccurs="1">
+                     <xs:simpleType>
+                        <xs:annotation>
+                           <xs:appinfo>
+                              <m:formal-name>Constraint test</m:formal-name>
+                              <m:description>A formal (executable) expression of a constraint.</m:description>
+                           </xs:appinfo>
+                           <xs:documentation>
+                              <b>Constraint test</b>: A formal (executable) expression of a constraint.</xs:documentation>
+                        </xs:annotation>
+                        <xs:restriction base="StringDatatype"/>
+                     </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+                     <xs:annotation>
+                        <xs:appinfo>
+                           <m:formal-name>Remarks</m:formal-name>
+                           <m:description>Additional commentary about the containing object.</m:description>
+                        </xs:appinfo>
+                        <xs:documentation>
+                           <b>Remarks</b>: Additional commentary about the containing object.</xs:documentation>
+                     </xs:annotation>
+                     <xs:complexType>
+                        <xs:group ref="blockElementGroup" maxOccurs="unbounded" minOccurs="0"/>
+                     </xs:complexType>
+                  </xs:element>
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="oscal-control-common-parameter-guideline-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Guideline</m:formal-name>
+            <m:description>A prose statement that provides a recommendation for the use of a parameter.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Guideline</b>: A prose statement that provides a recommendation for the use of a parameter.</xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:group ref="blockElementGroup" maxOccurs="unbounded" minOccurs="0"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:simpleType name="oscal-control-common-parameter-value-FIELD">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Parameter Value</m:formal-name>
+            <m:description>A parameter value or set of values.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Parameter Value</b>: A parameter value or set of values.</xs:documentation>
+      </xs:annotation>
+      <xs:restriction base="StringDatatype"/>
+   </xs:simpleType>
+   <xs:complexType name="oscal-control-common-parameter-selection-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Selection</m:formal-name>
+            <m:description>Presenting a choice among alternatives.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Selection</b>: Presenting a choice among alternatives.</xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="choice" minOccurs="0" maxOccurs="unbounded">
+            <xs:complexType mixed="true">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Choice</m:formal-name>
+                     <m:description>A value selection among several such options.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Choice</b>: A value selection among several such options.</xs:documentation>
+               </xs:annotation>
+               <xs:complexContent>
+                  <xs:extension base="MarkupLineDatatype"/>
+               </xs:complexContent>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
+      <xs:attribute name="how-many" type="TokenDatatype">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Parameter Cardinality</m:formal-name>
+               <m:description>Describes the number of selections that must occur. Without this setting, only one value should be assumed to be permitted.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Parameter Cardinality</b>: Describes the number of selections that must occur. Without this setting, only one value should be assumed to be permitted.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+   </xs:complexType>
+   <xs:complexType name="oscal-control-common-include-all-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Include All</m:formal-name>
+            <m:description>Include all controls from the imported catalog or profile resources.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Include All</b>: Include all controls from the imported catalog or profile resources.</xs:documentation>
+      </xs:annotation>
+   </xs:complexType>
+   <xs:complexType name="oscal-responsibility-common-source-ssp-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Source SSP</m:formal-name>
+            <m:description>This has not been described in the prototype.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Source SSP</b>: This has not been described in the prototype.</xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="title" minOccurs="0" maxOccurs="1">
+            <xs:complexType mixed="true">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Source Title</m:formal-name>
+                     <m:description>This has not been described in the prototype.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Source Title</b>: This has not been described in the prototype.</xs:documentation>
+               </xs:annotation>
+               <xs:complexContent>
+                  <xs:extension base="MarkupLineDatatype"/>
+               </xs:complexContent>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="published" minOccurs="0" maxOccurs="1">
+            <xs:simpleType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Publication Timestamp</m:formal-name>
+                     <m:description>This has not been described in the prototype.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Publication Timestamp</b>: This has not been described in the prototype.</xs:documentation>
+               </xs:annotation>
+               <xs:restriction base="DateTimeWithTimezoneDatatype"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="last-modified" minOccurs="0" maxOccurs="1">
+            <xs:simpleType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Last Modified Timestamp</m:formal-name>
+                     <m:description>This has not been described in the prototype.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Last Modified Timestamp</b>: This has not been described in the prototype.</xs:documentation>
+               </xs:annotation>
+               <xs:restriction base="DateTimeWithTimezoneDatatype"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="version" minOccurs="0" maxOccurs="1">
+            <xs:simpleType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Document Version</m:formal-name>
+                     <m:description>This has not been described in the prototype.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Document Version</b>: This has not been described in the prototype.</xs:documentation>
+               </xs:annotation>
+               <xs:restriction base="StringDatatype"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="referenced-profile"
+                      type="oscal-responsibility-common-referenced-profile-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="1"/>
+         <xs:element name="prop"
+                      type="oscal-metadata-property-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
+         <xs:element name="link"
+                      type="oscal-metadata-link-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
+         <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Remarks</m:formal-name>
+                  <m:description>Additional commentary about the containing object.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Remarks</b>: Additional commentary about the containing object.</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+               <xs:group ref="blockElementGroup" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
+      <xs:attribute name="ssp-uuid" use="required" type="UUIDDatatype">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>SSP Universally Unique Identifier</m:formal-name>
+               <m:description>This has not been described in the prototype.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>SSP Universally Unique Identifier</b>: This has not been described in the prototype.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+   </xs:complexType>
+   <xs:complexType name="oscal-responsibility-common-referenced-profile-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Referenced Profile</m:formal-name>
+            <m:description>This has not been described in the prototype.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Referenced Profile</b>: This has not been described in the prototype.</xs:documentation>
+      </xs:annotation>
+      <xs:attribute name="href" use="required" type="URIReferenceDatatype">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Hyperlink Reference</m:formal-name>
+               <m:description>A link to a resource that defines a set of components and/or capabilities to import into this collection.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Hyperlink Reference</b>: A link to a resource that defines a set of components and/or capabilities to import into this collection.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+   </xs:complexType>
+   <xs:complexType name="oscal-responsibility-common-provided-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Provided Control Implementation</m:formal-name>
+            <m:description>Describes a capability which may be inherited by a leveraging system.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Provided Control Implementation</b>: Describes a capability which may be inherited by a leveraging system.</xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:attribute name="exportable" type="StringDatatype"/>
+         <xs:element name="description" minOccurs="1" maxOccurs="1">
+            <xs:complexType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Provided Control Implementation Description</m:formal-name>
+                     <m:description>An implementation statement that describes the aspects of the control or control statement implementation that can be provided to another system leveraging this system.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Provided Control Implementation Description</b>: An implementation statement that describes the aspects of the control or control statement implementation that can be provided to another system leveraging this system.</xs:documentation>
+               </xs:annotation>
+               <xs:complexContent>
+                  <xs:extension base="MarkupMultilineDatatype"/>
+               </xs:complexContent>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="prop"
+                      type="oscal-metadata-property-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
+         <xs:element name="link"
+                      type="oscal-metadata-link-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
+         <xs:element name="responsible-role"
+                      type="oscal-metadata-responsible-role-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
+         <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Remarks</m:formal-name>
+                  <m:description>Additional commentary about the containing object.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Remarks</b>: Additional commentary about the containing object.</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+               <xs:group ref="blockElementGroup" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
+      <xs:attribute name="uuid" use="required" type="UUIDDatatype">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Provided Universally Unique Identifier</m:formal-name>
+               <m:description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this provided entry elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>provided</code> entry can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Provided Universally Unique Identifier</b>: A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this provided entry elsewhere in this or other OSCAL instances. The locally defined UUID of the provided entry can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="satisfied-uuid" type="UUIDDatatype">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Satisfied UUID</m:formal-name>
+               <m:description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a satisfied control implementation.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Satisfied UUID</b>: A machine-oriented identifier reference to a satisfied control implementation.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+   </xs:complexType>
+   <xs:complexType name="oscal-responsibility-common-responsibility-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Control Implementation Responsibility</m:formal-name>
+            <m:description>Describes a control implementation responsibility imposed on a leveraging system.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Control Implementation Responsibility</b>: Describes a control implementation responsibility imposed on a leveraging system.</xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:attribute name="exportable" type="StringDatatype"/>
+         <xs:element name="description" minOccurs="1" maxOccurs="1">
+            <xs:complexType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Control Implementation Responsibility Description</m:formal-name>
+                     <m:description>An implementation statement that describes the aspects of the control or control statement implementation that a leveraging system must implement to satisfy the control provided by a leveraged system.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Control Implementation Responsibility Description</b>: An implementation statement that describes the aspects of the control or control statement implementation that a leveraging system must implement to satisfy the control provided by a leveraged system.</xs:documentation>
+               </xs:annotation>
+               <xs:complexContent>
+                  <xs:extension base="MarkupMultilineDatatype"/>
+               </xs:complexContent>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="prop"
+                      type="oscal-metadata-property-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
+         <xs:element name="link"
+                      type="oscal-metadata-link-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
+         <xs:element name="responsible-role"
+                      type="oscal-metadata-responsible-role-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
+         <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Remarks</m:formal-name>
+                  <m:description>Additional commentary about the containing object.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Remarks</b>: Additional commentary about the containing object.</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+               <xs:group ref="blockElementGroup" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
+      <xs:attribute name="uuid" use="required" type="UUIDDatatype">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Responsibility Universally Unique Identifier</m:formal-name>
+               <m:description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this responsibility elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>responsibility</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Responsibility Universally Unique Identifier</b>: A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this responsibility elsewhere in this or other OSCAL instances. The locally defined UUID of the responsibility can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="provided-uuid" type="UUIDDatatype">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Provided UUID</m:formal-name>
+               <m:description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to an inherited control implementation that a leveraging system is inheriting from a leveraged system.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Provided UUID</b>: A machine-oriented identifier reference to an inherited control implementation that a leveraging system is inheriting from a leveraged system.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="satisfied-uuid" type="UUIDDatatype">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Satisfied UUID</m:formal-name>
+               <m:description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a satisfied control implementation.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Satisfied UUID</b>: A machine-oriented identifier reference to a satisfied control implementation.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+   </xs:complexType>
+   <xs:complexType name="oscal-responsibility-common-inherited-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Inherited Control Implementation</m:formal-name>
+            <m:description>Describes a control implementation inherited by a leveraging system.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Inherited Control Implementation</b>: Describes a control implementation inherited by a leveraging system.</xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:attribute name="exportable" type="StringDatatype"/>
+         <xs:element name="description" minOccurs="1" maxOccurs="1">
+            <xs:complexType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Inherited Control Implementation Description</m:formal-name>
+                     <m:description>An implementation statement that describes the aspects of a control or control statement implementation that a leveraging system is inheriting from a leveraged system.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Inherited Control Implementation Description</b>: An implementation statement that describes the aspects of a control or control statement implementation that a leveraging system is inheriting from a leveraged system.</xs:documentation>
+               </xs:annotation>
+               <xs:complexContent>
+                  <xs:extension base="MarkupMultilineDatatype"/>
+               </xs:complexContent>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="prop"
+                      type="oscal-metadata-property-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
+         <xs:element name="link"
+                      type="oscal-metadata-link-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
+         <xs:element name="responsible-role"
+                      type="oscal-metadata-responsible-role-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="uuid" use="required" type="UUIDDatatype">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Inherited Universally Unique Identifier</m:formal-name>
+               <m:description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this inherited entry elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>inherited control implementation</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Inherited Universally Unique Identifier</b>: A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this inherited entry elsewhere in this or other OSCAL instances. The locally defined UUID of the inherited control implementation can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="provided-uuid" type="UUIDDatatype">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Provided UUID</m:formal-name>
+               <m:description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to an inherited control implementation that a leveraging system is inheriting from a leveraged system.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Provided UUID</b>: A machine-oriented identifier reference to an inherited control implementation that a leveraging system is inheriting from a leveraged system.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="satisfied-uuid" type="UUIDDatatype">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Satisfied UUID</m:formal-name>
+               <m:description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a satisfied control implementation.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Satisfied UUID</b>: A machine-oriented identifier reference to a satisfied control implementation.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+   </xs:complexType>
+   <xs:complexType name="oscal-responsibility-common-satisfied-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Satisfied Control Implementation Responsibility</m:formal-name>
+            <m:description>Describes how this system satisfies a responsibility imposed by a leveraged system.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Satisfied Control Implementation Responsibility</b>: Describes how this system satisfies a responsibility imposed by a leveraged system.</xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:attribute name="exportable" type="StringDatatype"/>
+         <xs:element name="description" minOccurs="1" maxOccurs="1">
+            <xs:complexType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Satisfied Control Implementation Responsibility Description</m:formal-name>
+                     <m:description>An implementation statement that describes the aspects of a control or control statement implementation that a leveraging system is implementing based on a requirement from a leveraged system.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Satisfied Control Implementation Responsibility Description</b>: An implementation statement that describes the aspects of a control or control statement implementation that a leveraging system is implementing based on a requirement from a leveraged system.</xs:documentation>
+               </xs:annotation>
+               <xs:complexContent>
+                  <xs:extension base="MarkupMultilineDatatype"/>
+               </xs:complexContent>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="prop"
+                      type="oscal-metadata-property-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
+         <xs:element name="link"
+                      type="oscal-metadata-link-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
+         <xs:element name="responsible-role"
+                      type="oscal-metadata-responsible-role-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
+         <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Remarks</m:formal-name>
+                  <m:description>Additional commentary about the containing object.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Remarks</b>: Additional commentary about the containing object.</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+               <xs:group ref="blockElementGroup" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
+      <xs:attribute name="uuid" use="required" type="UUIDDatatype">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Satisfied Universally Unique Identifier</m:formal-name>
+               <m:description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this satisfied control implementation entry elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>control implementation</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Satisfied Universally Unique Identifier</b>: A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this satisfied control implementation entry elsewhere in this or other OSCAL instances. The locally defined UUID of the control implementation can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="responsibility-uuid" type="UUIDDatatype">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Responsibility UUID</m:formal-name>
+               <m:description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a control implementation that satisfies a responsibility imposed by a leveraged system.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Responsibility UUID</b>: A machine-oriented identifier reference to a control implementation that satisfies a responsibility imposed by a leveraged system.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+   </xs:complexType>
+   <xs:complexType name="oscal-responsibility-common-export-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Shared Responsibility</m:formal-name>
+            <m:description>Identifies content intended for external consumption, such as with leveraged organizations, customer responsibility documentation, and shared security responsibility documentation.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Shared Responsibility</b>: Identifies content intended for external consumption, such as with leveraged organizations, customer responsibility documentation, and shared security responsibility documentation.</xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:attribute name="exportable" type="StringDatatype"/>
+         <xs:element name="description" minOccurs="0" maxOccurs="1">
+            <xs:complexType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Control Implementation Export Description</m:formal-name>
+                     <m:description>An implementation statement that describes the aspects of the control or control statement implementation that can be available to another system leveraging this system.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Control Implementation Export Description</b>: An implementation statement that describes the aspects of the control or control statement implementation that can be available to another system leveraging this system.</xs:documentation>
+               </xs:annotation>
+               <xs:complexContent>
+                  <xs:extension base="MarkupMultilineDatatype"/>
+               </xs:complexContent>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="prop"
+                      type="oscal-metadata-property-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
+         <xs:element name="link"
+                      type="oscal-metadata-link-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="unbounded"/>
+         <xs:element name="provided"
+                      type="oscal-responsibility-common-provided-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="1"/>
+         <xs:element name="responsibility"
+                      type="oscal-responsibility-common-responsibility-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="1"/>
+         <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Remarks</m:formal-name>
+                  <m:description>Additional commentary about the containing object.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Remarks</b>: Additional commentary about the containing object.</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+               <xs:group ref="blockElementGroup" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
    <xs:complexType name="MarkupMultilineDatatype">
       <xs:choice minOccurs="1" maxOccurs="unbounded">
          <xs:group ref="blockElementGroup"/>
@@ -1973,6 +3177,14 @@
          <xs:pattern value="[0-9A-Za-z+/]+={0,2}"/>
       </xs:restriction>
    </xs:simpleType>
+   <xs:simpleType name="BooleanDatatype">
+      <xs:annotation>
+         <xs:documentation>A binary value that is either: true (or 1) or false (or 0).</xs:documentation>
+      </xs:annotation>
+      <xs:restriction base="xs:boolean">
+         <xs:pattern value="true|1|false|0"/>
+      </xs:restriction>
+   </xs:simpleType>
    <xs:simpleType name="DateTimeDatatype">
       <xs:annotation>
          <xs:documentation>A string representing a point in time with an optional timezone.</xs:documentation>
@@ -1997,6 +3209,20 @@
          <xs:pattern value=".+@.+">
 				<!-- TODO: Need a better pattern. -->
 			</xs:pattern>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="NonNegativeIntegerDatatype">
+      <xs:annotation>
+         <xs:documentation>An integer value that is equal to or greater than 0.</xs:documentation>
+      </xs:annotation>
+      <xs:restriction base="xs:nonNegativeInteger">
+         <xs:pattern value="\S(.*\S)?">
+            <xs:annotation>
+               <xs:documentation>This pattern ensures that leading and trailing whitespace is
+						disallowed. This helps to even the user experience between implementations
+						related to whitespace.</xs:documentation>
+            </xs:annotation>
+         </xs:pattern>
       </xs:restriction>
    </xs:simpleType>
    <xs:simpleType name="StringDatatype">
