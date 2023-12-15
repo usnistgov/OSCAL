@@ -3509,11 +3509,11 @@
             <xs:complexType mixed="true">
                <xs:annotation>
                   <xs:appinfo>
-                     <m:formal-name>Title</m:formal-name>
+                     <m:formal-name>Source Title</m:formal-name>
                      <m:description>This has not been described in the prototype.</m:description>
                   </xs:appinfo>
                   <xs:documentation>
-                     <b>Title</b>: This has not been described in the prototype.</xs:documentation>
+                     <b>Source Title</b>: This has not been described in the prototype.</xs:documentation>
                </xs:annotation>
                <xs:complexContent>
                   <xs:extension base="MarkupLineDatatype"/>
@@ -3559,6 +3559,10 @@
                <xs:restriction base="StringDatatype"/>
             </xs:simpleType>
          </xs:element>
+         <xs:element name="referenced-profile"
+                      type="oscal-responsibility-common-referenced-profile-ASSEMBLY"
+                      minOccurs="0"
+                      maxOccurs="1"/>
          <xs:element name="prop"
                       type="oscal-metadata-property-ASSEMBLY"
                       minOccurs="0"
@@ -3592,6 +3596,26 @@
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
+   <xs:complexType name="oscal-responsibility-common-referenced-profile-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Referenced Profile</m:formal-name>
+            <m:description>This has not been described in the prototype.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Referenced Profile</b>: This has not been described in the prototype.</xs:documentation>
+      </xs:annotation>
+      <xs:attribute name="href" use="required" type="URIReferenceDatatype">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Hyperlink Reference</m:formal-name>
+               <m:description>A link to a resource that defines a set of components and/or capabilities to import into this collection.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Hyperlink Reference</b>: A link to a resource that defines a set of components and/or capabilities to import into this collection.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+   </xs:complexType>
    <xs:complexType name="oscal-responsibility-common-provided-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
@@ -3602,16 +3626,7 @@
             <b>Provided Control Implementation</b>: Describes a capability which may be inherited by a leveraging system.</xs:documentation>
       </xs:annotation>
       <xs:sequence>
-         <xs:attribute name="exportable" type="BooleanDatatype">
-            <xs:annotation>
-               <xs:appinfo>
-                  <m:formal-name>Exportable</m:formal-name>
-                  <m:description>Indicates that the implmentation status is exportable for external consumption, such as with leveraged organizations, customer responsibility documentation, and shared security responsibility documentation.</m:description>
-               </xs:appinfo>
-               <xs:documentation>
-                  <b>Exportable</b>: Indicates that the implmentation status is exportable for external consumption, such as with leveraged organizations, customer responsibility documentation, and shared security responsibility documentation.</xs:documentation>
-            </xs:annotation>
-         </xs:attribute>
+         <xs:attribute name="exportable" type="StringDatatype"/>
          <xs:element name="description" minOccurs="1" maxOccurs="1">
             <xs:complexType>
                <xs:annotation>
@@ -3684,16 +3699,7 @@
             <b>Control Implementation Responsibility</b>: Describes a control implementation responsibility imposed on a leveraging system.</xs:documentation>
       </xs:annotation>
       <xs:sequence>
-         <xs:attribute name="exportable" type="BooleanDatatype">
-            <xs:annotation>
-               <xs:appinfo>
-                  <m:formal-name>Exportable</m:formal-name>
-                  <m:description>Indicates that the implmentation status is exportable for external consumption, such as with leveraged organizations, customer responsibility documentation, and shared security responsibility documentation.</m:description>
-               </xs:appinfo>
-               <xs:documentation>
-                  <b>Exportable</b>: Indicates that the implmentation status is exportable for external consumption, such as with leveraged organizations, customer responsibility documentation, and shared security responsibility documentation.</xs:documentation>
-            </xs:annotation>
-         </xs:attribute>
+         <xs:attribute name="exportable" type="StringDatatype"/>
          <xs:element name="description" minOccurs="1" maxOccurs="1">
             <xs:complexType>
                <xs:annotation>
@@ -3776,16 +3782,7 @@
             <b>Inherited Control Implementation</b>: Describes a control implementation inherited by a leveraging system.</xs:documentation>
       </xs:annotation>
       <xs:sequence>
-         <xs:attribute name="exportable" type="BooleanDatatype">
-            <xs:annotation>
-               <xs:appinfo>
-                  <m:formal-name>Exportable</m:formal-name>
-                  <m:description>Indicates that the implmentation status is exportable for external consumption, such as with leveraged organizations, customer responsibility documentation, and shared security responsibility documentation.</m:description>
-               </xs:appinfo>
-               <xs:documentation>
-                  <b>Exportable</b>: Indicates that the implmentation status is exportable for external consumption, such as with leveraged organizations, customer responsibility documentation, and shared security responsibility documentation.</xs:documentation>
-            </xs:annotation>
-         </xs:attribute>
+         <xs:attribute name="exportable" type="StringDatatype"/>
          <xs:element name="description" minOccurs="1" maxOccurs="1">
             <xs:complexType>
                <xs:annotation>
@@ -3855,16 +3852,7 @@
             <b>Satisfied Control Implementation Responsibility</b>: Describes how this system satisfies a responsibility imposed by a leveraged system.</xs:documentation>
       </xs:annotation>
       <xs:sequence>
-         <xs:attribute name="exportable" type="BooleanDatatype">
-            <xs:annotation>
-               <xs:appinfo>
-                  <m:formal-name>Exportable</m:formal-name>
-                  <m:description>Indicates that the implmentation status is exportable for external consumption, such as with leveraged organizations, customer responsibility documentation, and shared security responsibility documentation.</m:description>
-               </xs:appinfo>
-               <xs:documentation>
-                  <b>Exportable</b>: Indicates that the implmentation status is exportable for external consumption, such as with leveraged organizations, customer responsibility documentation, and shared security responsibility documentation.</xs:documentation>
-            </xs:annotation>
-         </xs:attribute>
+         <xs:attribute name="exportable" type="StringDatatype"/>
          <xs:element name="description" minOccurs="1" maxOccurs="1">
             <xs:complexType>
                <xs:annotation>
@@ -3937,16 +3925,7 @@
             <b>Shared Responsibility</b>: Identifies content intended for external consumption, such as with leveraged organizations, customer responsibility documentation, and shared security responsibility documentation.</xs:documentation>
       </xs:annotation>
       <xs:sequence>
-         <xs:attribute name="exportable" type="BooleanDatatype">
-            <xs:annotation>
-               <xs:appinfo>
-                  <m:formal-name>Exportable</m:formal-name>
-                  <m:description>Indicates that the implmentation status is exportable for external consumption, such as with leveraged organizations, customer responsibility documentation, and shared security responsibility documentation.</m:description>
-               </xs:appinfo>
-               <xs:documentation>
-                  <b>Exportable</b>: Indicates that the implmentation status is exportable for external consumption, such as with leveraged organizations, customer responsibility documentation, and shared security responsibility documentation.</xs:documentation>
-            </xs:annotation>
-         </xs:attribute>
+         <xs:attribute name="exportable" type="StringDatatype"/>
          <xs:element name="description" minOccurs="0" maxOccurs="1">
             <xs:complexType>
                <xs:annotation>

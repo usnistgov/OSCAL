@@ -502,7 +502,6 @@
       <assembly name="provided" gi="provided">
          <xsl:apply-templates select="*[@key='uuid']"/>
          <xsl:apply-templates select="*[@key='satisfied-uuid']"/>
-         <xsl:apply-templates select="*[@key='exportable']"/>
          <xsl:apply-templates select="*[@key='description']"/>
          <xsl:apply-templates select="*[@key='props']"/>
          <xsl:apply-templates select="*[@key='links']"/>
@@ -517,7 +516,6 @@
          <xsl:apply-templates select="*[@key='uuid']"/>
          <xsl:apply-templates select="*[@key='provided-uuid']"/>
          <xsl:apply-templates select="*[@key='satisfied-uuid']"/>
-         <xsl:apply-templates select="*[@key='exportable']"/>
          <xsl:apply-templates select="*[@key='description']"/>
          <xsl:apply-templates select="*[@key='props']"/>
          <xsl:apply-templates select="*[@key='links']"/>
@@ -532,7 +530,6 @@
          <xsl:apply-templates select="*[@key='uuid']"/>
          <xsl:apply-templates select="*[@key='provided-uuid']"/>
          <xsl:apply-templates select="*[@key='satisfied-uuid']"/>
-         <xsl:apply-templates select="*[@key='exportable']"/>
          <xsl:apply-templates select="*[@key='description']"/>
          <xsl:apply-templates select="*[@key='props']"/>
          <xsl:apply-templates select="*[@key='links']"/>
@@ -545,7 +542,6 @@
       <assembly name="satisfied" gi="satisfied">
          <xsl:apply-templates select="*[@key='uuid']"/>
          <xsl:apply-templates select="*[@key='responsibility-uuid']"/>
-         <xsl:apply-templates select="*[@key='exportable']"/>
          <xsl:apply-templates select="*[@key='description']"/>
          <xsl:apply-templates select="*[@key='props']"/>
          <xsl:apply-templates select="*[@key='links']"/>
@@ -560,7 +556,6 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">export</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="*[@key='exportable']"/>
          <xsl:apply-templates select="*[@key='description']"/>
          <xsl:apply-templates select="*[@key='props']"/>
          <xsl:apply-templates select="*[@key='links']"/>
@@ -1386,18 +1381,6 @@
    <xsl:template match="j:array[@key='provided']/j:map/j:string[@key='satisfied-uuid']"
                   mode="keep-value-property"
                   priority="12"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:array[@key='provided']/j:map/j:boolean[@key='exportable']"><!-- XML match="provided/@exportable" -->
-      <flag in-json="boolean"
-             as-type="boolean"
-             name="exportable"
-             key="exportable"
-             gi="exportable">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="j:array[@key='provided']/j:map/j:boolean[@key='exportable']"
-                  mode="keep-value-property"
-                  priority="12"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:array[@key='responsibility']/j:map/j:string[@key='uuid']"
                   priority="1"><!-- XML match="responsibility/@uuid" -->
       <flag in-json="string"
@@ -1433,18 +1416,6 @@
       </flag>
    </xsl:template>
    <xsl:template match="j:array[@key='responsibility']/j:map/j:string[@key='satisfied-uuid']"
-                  mode="keep-value-property"
-                  priority="12"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:array[@key='responsibility']/j:map/j:boolean[@key='exportable']"><!-- XML match="responsibility/@exportable" -->
-      <flag in-json="boolean"
-             as-type="boolean"
-             name="exportable"
-             key="exportable"
-             gi="exportable">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="j:array[@key='responsibility']/j:map/j:boolean[@key='exportable']"
                   mode="keep-value-property"
                   priority="12"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:array[@key='inherited']/j:map/j:string[@key='uuid']"
@@ -1484,18 +1455,6 @@
    <xsl:template match="j:array[@key='inherited']/j:map/j:string[@key='satisfied-uuid']"
                   mode="keep-value-property"
                   priority="12"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:array[@key='inherited']/j:map/j:boolean[@key='exportable']"><!-- XML match="inherited/@exportable" -->
-      <flag in-json="boolean"
-             as-type="boolean"
-             name="exportable"
-             key="exportable"
-             gi="exportable">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="j:array[@key='inherited']/j:map/j:boolean[@key='exportable']"
-                  mode="keep-value-property"
-                  priority="12"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:array[@key='satisfied']/j:map/j:string[@key='uuid']"
                   priority="1"><!-- XML match="satisfied/@uuid" -->
       <flag in-json="string"
@@ -1521,30 +1480,6 @@
    <xsl:template match="j:array[@key='satisfied']/j:map/j:string[@key='responsibility-uuid']"
                   mode="keep-value-property"
                   priority="12"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:array[@key='satisfied']/j:map/j:boolean[@key='exportable']"><!-- XML match="satisfied/@exportable" -->
-      <flag in-json="boolean"
-             as-type="boolean"
-             name="exportable"
-             key="exportable"
-             gi="exportable">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="j:array[@key='satisfied']/j:map/j:boolean[@key='exportable']"
-                  mode="keep-value-property"
-                  priority="12"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:map[@key='export']/j:boolean[@key='exportable']"><!-- XML match="export/@exportable" -->
-      <flag in-json="boolean"
-             as-type="boolean"
-             name="exportable"
-             key="exportable"
-             gi="exportable">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="j:map[@key='export']/j:boolean[@key='exportable']"
-                  mode="keep-value-property"
-                  priority="11"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:string[@key='uuid']"
                   priority="6"><!-- XML match="system-security-plan/back-matter/resource/@uuid" -->
       <flag in-json="string"

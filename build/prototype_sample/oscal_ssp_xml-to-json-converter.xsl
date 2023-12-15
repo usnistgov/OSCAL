@@ -913,7 +913,6 @@
       <assembly name="provided" gi="provided">
          <xsl:apply-templates select="@uuid"/>
          <xsl:apply-templates select="@satisfied-uuid"/>
-         <xsl:apply-templates select="@exportable"/>
          <xsl:apply-templates select="description"/>
          <xsl:for-each-group select="prop" group-by="true()">
             <group in-json="ARRAY" key="props">
@@ -946,7 +945,6 @@
          <xsl:apply-templates select="@uuid"/>
          <xsl:apply-templates select="@provided-uuid"/>
          <xsl:apply-templates select="@satisfied-uuid"/>
-         <xsl:apply-templates select="@exportable"/>
          <xsl:apply-templates select="description"/>
          <xsl:for-each-group select="prop" group-by="true()">
             <group in-json="ARRAY" key="props">
@@ -979,7 +977,6 @@
          <xsl:apply-templates select="@uuid"/>
          <xsl:apply-templates select="@provided-uuid"/>
          <xsl:apply-templates select="@satisfied-uuid"/>
-         <xsl:apply-templates select="@exportable"/>
          <xsl:apply-templates select="description"/>
          <xsl:for-each-group select="prop" group-by="true()">
             <group in-json="ARRAY" key="props">
@@ -1010,7 +1007,6 @@
       <assembly name="satisfied" gi="satisfied">
          <xsl:apply-templates select="@uuid"/>
          <xsl:apply-templates select="@responsibility-uuid"/>
-         <xsl:apply-templates select="@exportable"/>
          <xsl:apply-templates select="description"/>
          <xsl:for-each-group select="prop" group-by="true()">
             <group in-json="ARRAY" key="props">
@@ -1043,7 +1039,6 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">export</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="@exportable"/>
          <xsl:apply-templates select="description"/>
          <xsl:for-each-group select="prop" group-by="true()">
             <group in-json="ARRAY" key="props">
@@ -1771,16 +1766,6 @@
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="provided/@exportable"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="boolean"
-             as-type="boolean"
-             name="exportable"
-             key="exportable"
-             gi="exportable">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
    <xsl:template match="responsibility/@uuid"
                   priority="1"
                   xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -1809,16 +1794,6 @@
              name="satisfied-uuid"
              key="satisfied-uuid"
              gi="satisfied-uuid">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="responsibility/@exportable"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="boolean"
-             as-type="boolean"
-             name="exportable"
-             key="exportable"
-             gi="exportable">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
@@ -1853,16 +1828,6 @@
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="inherited/@exportable"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="boolean"
-             as-type="boolean"
-             name="exportable"
-             key="exportable"
-             gi="exportable">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
    <xsl:template match="satisfied/@uuid"
                   priority="1"
                   xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -1881,26 +1846,6 @@
              name="responsibility-uuid"
              key="responsibility-uuid"
              gi="responsibility-uuid">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="satisfied/@exportable"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="boolean"
-             as-type="boolean"
-             name="exportable"
-             key="exportable"
-             gi="exportable">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="export/@exportable"
-                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="boolean"
-             as-type="boolean"
-             name="exportable"
-             key="exportable"
-             gi="exportable">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>

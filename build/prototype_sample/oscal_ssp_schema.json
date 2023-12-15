@@ -1937,7 +1937,7 @@
      "title" : "Source SSP",
      "description" : "This has not been described in the prototype.",
      "ssp-title" : 
-     { "title" : "Title",
+     { "title" : "Source Title",
       "description" : "This has not been described in the prototype.",
       "type" : "string" },
      "published" : 
@@ -1952,6 +1952,8 @@
      { "title" : "Document Version",
       "description" : "This has not been described in the prototype.",
       "$ref" : "#/definitions/StringDatatype" },
+     "referenced-profile" : 
+     { "$ref" : "#assembly_oscal-responsibility-common_referenced-profile" },
      "props" : 
      { "type" : "array",
       "minItems" : 1,
@@ -1967,6 +1969,19 @@
     "required" : 
     [ "uuid" ],
     "additionalProperties" : false },
+   "oscal-ssp-oscal-responsibility-common:referenced-profile" : 
+   { "title" : "Referenced Profile",
+    "description" : "This has not been described in the prototype.",
+    "$id" : "#assembly_oscal-responsibility-common_referenced-profile",
+    "type" : "object",
+    "properties" : 
+    { "href" : 
+     { "title" : "Hyperlink Reference",
+      "description" : "A link to a resource that defines a set of components and/or capabilities to import into this collection.",
+      "$ref" : "#/definitions/URIReferenceDatatype" } },
+    "required" : 
+    [ "href" ],
+    "additionalProperties" : false },
    "oscal-ssp-oscal-responsibility-common:provided" : 
    { "title" : "Provided Control Implementation",
     "description" : "Describes a capability which may be inherited by a leveraging system.",
@@ -1981,10 +1996,8 @@
      { "title" : "Satisfied UUID",
       "description" : "A machine-oriented identifier reference to a satisfied control implementation.",
       "$ref" : "#/definitions/UUIDDatatype" },
-     "exportable" : 
-     { "title" : "Exportable",
-      "description" : "Indicates that the implmentation status is exportable for external consumption, such as with leveraged organizations, customer responsibility documentation, and shared security responsibility documentation.",
-      "$ref" : "#/definitions/BooleanDatatype" },
+     "" : 
+     { "type" : "string" },
      "description" : 
      { "title" : "Provided Control Implementation Description",
       "description" : "An implementation statement that describes the aspects of the control or control statement implementation that can be provided to another system leveraging this system.",
@@ -2028,10 +2041,8 @@
      { "title" : "Satisfied UUID",
       "description" : "A machine-oriented identifier reference to a satisfied control implementation.",
       "$ref" : "#/definitions/UUIDDatatype" },
-     "exportable" : 
-     { "title" : "Exportable",
-      "description" : "Indicates that the implmentation status is exportable for external consumption, such as with leveraged organizations, customer responsibility documentation, and shared security responsibility documentation.",
-      "$ref" : "#/definitions/BooleanDatatype" },
+     "" : 
+     { "type" : "string" },
      "description" : 
      { "title" : "Control Implementation Responsibility Description",
       "description" : "An implementation statement that describes the aspects of the control or control statement implementation that a leveraging system must implement to satisfy the control provided by a leveraged system.",
@@ -2075,10 +2086,8 @@
      { "title" : "Satisfied UUID",
       "description" : "A machine-oriented identifier reference to a satisfied control implementation.",
       "$ref" : "#/definitions/UUIDDatatype" },
-     "exportable" : 
-     { "title" : "Exportable",
-      "description" : "Indicates that the implmentation status is exportable for external consumption, such as with leveraged organizations, customer responsibility documentation, and shared security responsibility documentation.",
-      "$ref" : "#/definitions/BooleanDatatype" },
+     "" : 
+     { "type" : "string" },
      "description" : 
      { "title" : "Inherited Control Implementation Description",
       "description" : "An implementation statement that describes the aspects of a control or control statement implementation that a leveraging system is inheriting from a leveraged system.",
@@ -2116,10 +2125,8 @@
      { "title" : "Responsibility UUID",
       "description" : "A machine-oriented identifier reference to a control implementation that satisfies a responsibility imposed by a leveraged system.",
       "$ref" : "#/definitions/UUIDDatatype" },
-     "exportable" : 
-     { "title" : "Exportable",
-      "description" : "Indicates that the implmentation status is exportable for external consumption, such as with leveraged organizations, customer responsibility documentation, and shared security responsibility documentation.",
-      "$ref" : "#/definitions/BooleanDatatype" },
+     "" : 
+     { "type" : "string" },
      "description" : 
      { "title" : "Satisfied Control Implementation Responsibility Description",
       "description" : "An implementation statement that describes the aspects of a control or control statement implementation that a leveraging system is implementing based on a requirement from a leveraged system.",
@@ -2151,10 +2158,8 @@
     "$id" : "#assembly_oscal-responsibility-common_export",
     "type" : "object",
     "properties" : 
-    { "exportable" : 
-     { "title" : "Exportable",
-      "description" : "Indicates that the implmentation status is exportable for external consumption, such as with leveraged organizations, customer responsibility documentation, and shared security responsibility documentation.",
-      "$ref" : "#/definitions/BooleanDatatype" },
+    { "" : 
+     { "type" : "string" },
      "description" : 
      { "title" : "Control Implementation Export Description",
       "description" : "An implementation statement that describes the aspects of the control or control statement implementation that can be available to another system leveraging this system.",
