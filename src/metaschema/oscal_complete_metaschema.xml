@@ -21,4 +21,5 @@
       <import href="oscal_assessment-plan_metaschema.xml"/>
       <import href="oscal_assessment-results_metaschema.xml"/>
       <import href="oscal_poam_metaschema.xml"/>
+      <import href="oscal_shared-responsibility_metaschema.xml"/>
 </METASCHEMA>
