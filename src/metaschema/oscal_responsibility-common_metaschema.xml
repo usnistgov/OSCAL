@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="../../build/metaschema-xslt/src/validate/metaschema-composition-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
-
+<!-- <!DOCTYPE METASCHEMA [
+  <!ENTITY allowed-values-responsible-roles-system SYSTEM "./shared-constraints/allowed-values-responsible-roles-system.ent">
+  <!ENTITY allowed-values-responsible-roles-operations SYSTEM "./shared-constraints/allowed-values-responsible-roles-operations.ent">
+  <!ENTITY allowed-values-responsible-roles-component-production SYSTEM "./shared-constraints/allowed-values-responsible-roles-component-production.ent">
+]> -->
 <METASCHEMA xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" abstract="yes">
    <schema-name>OSCAL Shared Responsibility Format -- Common Modules</schema-name>
    <schema-version>1.1.0</schema-version>
@@ -13,6 +17,7 @@
 
    <!-- IMPORT STATEMENTS -->
    <import href="oscal_metadata_metaschema.xml"/>
+   <import href="oscal_implementation-common_metaschema.xml"/>
 
   <!-- Shared Responsibility Assemblies -->
    
@@ -302,4 +307,5 @@
     <!-- Identifier Reference -->
     <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a control implementation that satisfies a responsibility imposed by a leveraged system.</description>
   </define-flag>
+
 </METASCHEMA>
