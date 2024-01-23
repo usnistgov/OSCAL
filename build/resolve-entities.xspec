@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+   stylesheet="resolve-entities3.xsl"
+   xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0">
+   
+   <x:scenario label="Everything copies:">
+      <x:scenario label="A bare metaschema">
+         <x:context>
+            <METASCHEMA/>
+         </x:context>
+         <x:expect label="copies" select="$x:context"/>
+      </x:scenario>
+      <x:scenario label="With random PIs">
+         <x:context>
+            <?xml-stylesheet href="some.css"?>
+            <METASCHEMA>
+               <title>A test</title>
+               <?random?>
+            </METASCHEMA>
+      </x:context>
+         <x:expect label="copies" select="$x:context"/>
+      </x:scenario>
+      <x:scenario label="A comment" pending="dev"/>
+   </x:scenario>
+   
+   <x:scenario label="import/@href is modified:">
+      <x:scenario label="providing a suffix to the base name">
+         <x:context>
+            <METASCHEMA>
+               <import href="some.other.metaschema.xml"/>
+            </METASCHEMA>
+         </x:context>
+         <x:expect label="copies with @href modified">
+            <METASCHEMA>
+               <import href="some.other.metaschema_RESOLVED.xml"/>
+            </METASCHEMA>
+         </x:expect>
+      </x:scenario>
+      <x:scenario label="even when the suffix is not 'xml'">
+         <x:context>
+            <METASCHEMA>
+               <import href="some.other.metaschema"/>
+            </METASCHEMA>
+         </x:context>
+         <x:expect label="copies with @href modified">
+            <METASCHEMA>
+               <import href="some.other_RESOLVED.metaschema"/>
+            </METASCHEMA>
+         </x:expect>
+      </x:scenario>
+      <x:scenario label="or it is missing entirely">
+         <x:context>
+            <METASCHEMA>
+               <import href="some_metaschema"/>
+            </METASCHEMA>
+         </x:context>
+         <x:expect label="copies with @href modified">
+            <METASCHEMA>
+               <import href="some_metaschema_RESOLVED"/>
+            </METASCHEMA>
+         </x:expect>
+      </x:scenario>
+      <x:scenario label="providing a suffix to the base name">
+         <x:context>
+            <x:param name="splice">_NEW</x:param>
+            <METASCHEMA>
+               <import href="some.other.metaschema.xml"/>
+            </METASCHEMA>
+         </x:context>
+         <x:expect label="copies with @href modified">
+            <METASCHEMA>
+               <import href="some.other.metaschema_NEW.xml"/>
+            </METASCHEMA>
+         </x:expect>
+      </x:scenario>
+   </x:scenario>
+   
+</x:description>
