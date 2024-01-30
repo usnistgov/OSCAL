@@ -6,14 +6,27 @@
    exclude-result-prefixes="xs math"
    version="3.0">
    
-<!-- This XSLT provides the same outputs as resolve-entities.xsl for 'normal' inputs
-     i.e. when import/@href ends in '.xml'.
+<!--
+     Purpose: Process XML files through a parsing/serialization that resolves internal parsed entities.
+
+     Also renames file references in METASCHEMA/import/@href
+     using $importHrefSuffix to suffix the base name
+       so for $importHrefSuffix='NEW'
+       import href="a_metaschema_module.xml" becomes href="a_metaschema_module_NEW.xml"
+     
+     Otherwise this is an identity transform, so a diff over source and results should show only stated changes.
+     
+     Parameter: $importHrefSuffix is 'RESOLVED' by default
+  
+     XSpec: See the XSpec resolve-entities.xspec for functional testing, including the edge cases.
+
+     Compared to old resolve-entities.xsl: This XSLT provides the same outputs
+     for 'normal' inputs i.e. when import/@href ends in '.xml'.
    
      For extraordinary inputs it does a little differently.
      
-     See the XSpec resolve-entities.xspec for functional testing, including the edge cases.
-     
    -->
+   
    <!-- since whitespace is retained from input, it provides indenting
         - if (schema-based) strip-space is operative, switch @indent to 'yes'-->
    <xsl:output omit-xml-declaration="no" indent="no" encoding="ASCII"/>
