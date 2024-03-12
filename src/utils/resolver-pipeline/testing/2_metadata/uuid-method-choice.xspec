@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    xmlns:javaUUID="java.util.UUID"
     xmlns:ov="http://csrc.nist.gov/ns/oscal/xspec/variable"
     xmlns:u="http://csrc.nist.gov/ns/uuid"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
@@ -8,7 +9,7 @@
     <x:scenario label="Tests for u:determine-uuid template">
         <x:variable name="ov:fixed" as="xs:string" select="'00000000-0000-4000-B000-000000000000'"/>
         <x:variable name="ov:specified" as="xs:string" select="'f0ad1e6c-5de5-44cd-b92e-a4c507805f0f'"/>
-        <x:variable name="ov:service" as="xs:string" select="resolve-uri('../uuid-value.txt')"/>
+        <x:variable name="ov:service" as="xs:string" select="resolve-uri('uuid-value.txt',$x:xspec-uri)"/>
         <x:scenario label="Valid user-provided UUID">
             <x:call template="u:determine-uuid">
                 <x:param name="top-uuid" select="$ov:specified"/>
@@ -37,16 +38,22 @@
             <x:expect label="UUID is neither fixed one nor specified one"
                 test="$x:result ne $ov:specified and $x:result ne $ov:fixed"/>
         </x:scenario>
-        <x:scenario label="Random UUID using Java">
+        <x:scenario label="Random UUID using Java (Note: Not available in CI/CD)">
             <x:call template="u:determine-uuid">
                 <x:param name="top-uuid" select="$ov:specified"/>
                 <x:param name="uuid-method" select="'random-java'"/>
             </x:call>
-            <x:expect label="Nonempty string"
-                test="$x:result instance of xs:string and $x:result != ''"/>
+            <x:variable name="ov:java-fcn-available" as="xs:boolean"
+                select="function-available('javaUUID:randomUUID')"/>
+            <x:expect label="Nonempty"
+                test="if ($ov:java-fcn-available)
+                then (string($x:result) != '')
+                else true()"/>
             <x:expect label="UUID is neither fixed one nor specified one"
-                test="$x:result ne $ov:specified and $x:result ne $ov:fixed"/>
-        </x:scenario>
+                test="if ($ov:java-fcn-available)
+                then (string($x:result) ne $ov:specified and string($x:result) ne $ov:fixed)
+                else true()"/>
+            </x:scenario>
         <!-- FYI: Because the transform relies on use-when, which is evaluated at
             compile time, the same test invocation cannot check both
             when the XSLT and Java random number generators are available

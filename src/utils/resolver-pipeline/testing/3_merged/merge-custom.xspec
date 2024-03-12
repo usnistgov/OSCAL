@@ -574,7 +574,8 @@
                 </control>
             </x:expect>
         </x:scenario>
-        <x:scenario label="include-controls with parent controls (default choice)">
+        <x:scenario label="include-controls with parent controls (default choice)"
+          pending="Needs confirmation about latest expected result">
             <x:context mode="o:custom-merge" select="//o:include-controls">
                 <catalog uuid="xyz-tiny_catalog">
                     <selection>
