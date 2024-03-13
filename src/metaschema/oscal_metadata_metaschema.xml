@@ -679,7 +679,7 @@
         <use-name>prop</use-name>
         <define-flag name="name" as-type="token" required="yes">
             <formal-name>Property Name</formal-name>
-            <description>A textual label, within a namespace, that uniquely identifies a specific attribute, characteristic, or quality of the property's containing object.</description>
+            <description>A textual label, within a namespace, that identifies a specific attribute, characteristic, or quality of the property's containing object.</description>
         </define-flag>
         <define-flag name="uuid" as-type="uuid">
             <formal-name>Property Universally Unique Identifier</formal-name>
