@@ -19,4 +19,4 @@ By submitting a pull request, you are agreeing to provide this contribution unde
 - [ ] Have you added an explanation of what your changes do and why you'd like us to include them?
 - [ ] Have you written new tests for your core changes, as applicable?
 - [ ] Have you included examples of how to use your new feature(s)?
-- [ ] Have you updated all [OSCAL website](https://pages.nist.gov/OSCAL) and readme documentation affected by the changes you made? Changes to the OSCAL website can be made in the docs/content directory of your branch.
+- [ ] Have you updated the [OSCAL website](https://pages.nist.gov/OSCAL) and readme documentation affected by the changes you made? Changes to the OSCAL website can be made in the [OSCAL-Pages](https://github.com/usnistgov/OSCAL-Pages) and [OSCAL_Reference](https://github.com/usnistgov/OSCAL-Reference) repositories.
