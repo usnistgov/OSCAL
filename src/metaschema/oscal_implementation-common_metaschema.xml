@@ -12,16 +12,18 @@
       <!ENTITY allowed-values-component-type SYSTEM "./shared-constraints/allowed-values-component-type.ent">
 ]>
 <METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema-xslt/support/metaschema/schema/xml/metaschema.xsd" abstract="yes">
+      xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
+      xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema-xslt/support/metaschema/schema/xml/metaschema.xsd"
+      abstract="yes">
       <schema-name>OSCAL Implementation Common Information</schema-name>
       <schema-version>1.1.2</schema-version>
       <short-name>oscal-implementation-common</short-name>
       <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
       <json-base-uri>http://csrc.nist.gov/ns/oscal</json-base-uri>
 
-      <import href="oscal_metadata_metaschema.xml"/>
-      <import href="oscal_control-common_metaschema.xml"/>
-      
+      <import href="oscal_metadata_metaschema.xml" />
+      <import href="oscal_control-common_metaschema.xml" />
+
       <!-- ################################################## -->
       <!-- # The System Component and supporting constructs # -->
       <!-- ################################################## -->
@@ -31,7 +33,21 @@
             <define-flag name="uuid" as-type="uuid" required="yes">
                   <formal-name>Component Identifier</formal-name>
                   <!-- Identifier Declaration -->
-                  <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this component elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>component</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+                  <description>A <a
+                              href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">
+                        machine-oriented</a>, <a
+                              href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally
+                        unique</a> identifier with <a
+                              href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">
+                        cross-instance</a> scope that can be used to reference this component
+                        elsewhere in <a
+                              href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#scope">this
+                        or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>
+                        component</code> can be used to reference the data item locally or globally
+                        (e.g., in an imported OSCAL instance). This UUID should be assigned <a
+                              href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">
+                        per-subject</a>, which means it should be consistently used to identify the
+                        same subject across revisions of the document.</description>
             </define-flag>
             <flag ref="system-component-type" required="yes">
                   <!-- CHANGED: "component-type" to "type" -->
@@ -42,19 +58,22 @@
                         <formal-name>Component Title</formal-name>
                         <description>A human readable name for the system component.</description>
                   </define-field>
-                  <define-field name="description" as-type="markup-multiline" min-occurs="1" in-xml="WITH_WRAPPER">
+                  <define-field name="description" as-type="markup-multiline" min-occurs="1"
+                        in-xml="WITH_WRAPPER">
                         <formal-name>Component Description</formal-name>
-                        <description>A description of the component, including information about its function.</description>
+                        <description>A description of the component, including information about its
+                              function.</description>
                   </define-field>
                   <define-field name="purpose" as-type="markup-line">
                         <formal-name>Purpose</formal-name>
-                        <description>A summary of the technological or business purpose of the component.</description>
+                        <description>A summary of the technological or business purpose of the
+                              component.</description>
                   </define-field>
                   <assembly ref="property" max-occurs="unbounded">
-                        <group-as name="props" in-json="ARRAY"/>
+                        <group-as name="props" in-json="ARRAY" />
                   </assembly>
                   <assembly ref="link" max-occurs="unbounded">
-                        <group-as name="links" in-json="ARRAY"/>
+                        <group-as name="links" in-json="ARRAY" />
                   </assembly>
                   <define-assembly name="status" min-occurs="1">
                         <formal-name>Status</formal-name>
@@ -64,174 +83,261 @@
                               <description>The operational status.</description>
                               <constraint>
                                     <allowed-values>
-                                          <enum value="under-development">The component is being designed, developed, or implemented.</enum>
-                                          <enum value="operational">The component is currently operational and is available for use in the system.</enum>
-                                          <enum value="disposition">The component is no longer operational.</enum>
+                                          <enum value="under-development">The component is being
+                                                designed, developed, or implemented.</enum>
+                                          <enum value="operational">The component is currently
+                                                operational and is available for use in the system.</enum>
+                                          <enum value="disposition">The component is no longer
+                                                operational.</enum>
                                           <enum value="other">Some other state.</enum>
                                     </allowed-values>
                               </constraint>
                         </define-flag>
                         <model>
-                              <field ref="remarks" in-xml="WITH_WRAPPER"/>
+                              <field ref="remarks" in-xml="WITH_WRAPPER" />
                         </model>
                   </define-assembly>
                   <assembly ref="responsible-role" max-occurs="unbounded">
-                        <group-as name="responsible-roles" in-json="ARRAY"/>
+                        <group-as name="responsible-roles" in-json="ARRAY" />
                   </assembly>
                   <assembly ref="protocol" max-occurs="unbounded">
-                        <group-as name="protocols" in-json="ARRAY"/>
+                        <group-as name="protocols" in-json="ARRAY" />
                         <remarks>
-                              <p>Used for <code>service</code> components to define the protocols supported by the service.</p>
+                              <p>Used for <code>service</code> components to define the protocols
+                                    supported by the service.</p>
                         </remarks>
                   </assembly>
-                  <field ref="remarks" in-xml="WITH_WRAPPER"/>
+                  <field ref="remarks" in-xml="WITH_WRAPPER" />
             </model>
             <constraint>
-                  <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+                  <allowed-values
+                        target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
                         <!-- names related to inherited component -->
-                        <enum value="implementation-point">Relative placement of component ('internal' or 'external') to the system.</enum>
-                        <enum value="leveraged-authorization-uuid">UUID of the related leveraged-authorization assembly in this SSP.</enum>
-                        <enum value="inherited-uuid">UUID of the component as it was assigned in the leveraged system's SSP.</enum>
+                        <enum
+                              value="implementation-point">Relative placement of component
+                        ('internal' or 'external') to the system.</enum>
+                        <enum
+                              value="leveraged-authorization-uuid">UUID of the related
+                        leveraged-authorization assembly in this SSP.</enum>
+                        <enum
+                              value="inherited-uuid">UUID of the component as it was assigned in the
+                        leveraged system's SSP.</enum>
 
-                        <!-- ========================================================================================================== -->
-                        <!-- = Changes to the following values need to be synced with component in the SSP and component metaschemas. = -->
+                        <!--
+                        ========================================================================================================== -->
+                        <!-- = Changes to the following values need to be synced with component in
+                        the SSP and component metaschemas. = -->
                         <!-- CHANGED (BJR): Done -->
-                        <!-- ========================================================================================================== -->
+                        <!--
+                        ========================================================================================================== -->
                         &allowed-values-component_inventory-item_property-name;
-
-                        &allowed-values-component_component_property-name;
-                  </allowed-values>
+                        &allowed-values-component_component_property-name; </allowed-values>
 
                   <allowed-values target="link/@rel" allow-other="yes">
-                        <!-- ========================================================================================================== -->
-                        <!-- = Changes to the following values need to be synced with component in the SSP and component metaschemas. = -->
+                        <!--
+                        ========================================================================================================== -->
+                        <!-- = Changes to the following values need to be synced with component in
+                        the SSP and component metaschemas. = -->
                         <!-- CHANGED (BJR): Done -->
-                        <!-- ========================================================================================================== -->
-            &allowed-values-component_component_link-rel;
-                        <enum value="uses-network">This component uses the network provided by the identified network component.</enum>
-                        <enum value="imported-from">The hyperlink identifies a URI pointing to the <code>component</code> in a <code>component-definition</code> that originally defined the <code>component</code>.</enum>
+                        <!--
+                        ========================================================================================================== -->
+                        &allowed-values-component_component_link-rel; <enum value="uses-network">This
+                        component uses the network provided by the identified network component.</enum>
+                        <enum
+                              value="imported-from">The hyperlink identifies a URI pointing to the <code>
+                        component</code> in a <code>component-definition</code> that originally
+                        defined the <code>component</code>.</enum>
                   </allowed-values>
 
                   <allowed-values target="responsible-role/@role-id" allow-other="yes">
-                        <!-- ========================================================================================================== -->
-                        <!-- = Changes to the following values need to be synced with component in the SSP and component metaschemas. = -->
-                        <!-- ========================================================================================================== -->
-            &allowed-values-responsible-roles-operations;
-            &allowed-values-responsible-roles-component-production;
+                        <!--
+                        ========================================================================================================== -->
+                        <!-- = Changes to the following values need to be synced with component in
+                        the SSP and component metaschemas. = -->
+                        <!--
+                        ========================================================================================================== -->
+                        &allowed-values-responsible-roles-operations;
+                        &allowed-values-responsible-roles-component-production; </allowed-values>
+
+                  <allowed-values
+                        target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='asset-type']/@value"
+                        allow-other="yes">
+                        &allowed-values-property-name-asset-type-values;
                   </allowed-values>
 
-                  <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='asset-type']/@value" allow-other="yes">
-            &allowed-values-property-name-asset-type-values;
-                  </allowed-values>
-
-                  <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='allows-authenticated-scan']/@value">
+                  <allowed-values
+                        target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='allows-authenticated-scan']/@value">
                         <enum value="yes">The component allows an authenticated scan.</enum>
                         <enum value="no">The component does not allow an authenticated scan.</enum>
                   </allowed-values>
 
-                  <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='public']/@value">
+                  <allowed-values
+                        target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='public']/@value">
                         <enum value="yes">The component is publicly accessible.</enum>
                         <enum value="no">The component is not publicly accessible.</enum>
                   </allowed-values>
 
-                  <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='virtual']/@value">
+                  <allowed-values
+                        target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='virtual']/@value">
                         <enum value="yes">The component is virtualized.</enum>
                         <enum value="no">The component is not virtualized.</enum>
                   </allowed-values>
 
-                  <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='implementation-point']/@value">
-                        <enum value="internal">The component is implemented within the system boundary.</enum>
-                        <enum value="external">The component is implemented outside the system boundary.</enum>
+                  <allowed-values
+                        target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='implementation-point']/@value">
+                        <enum value="internal">The component is implemented within the system
+                              boundary.</enum>
+                        <enum value="external">The component is implemented outside the system
+                              boundary.</enum>
                   </allowed-values>
 
-                  <index-has-key name="index-metadata-location-uuid" target="prop[@name='physical-location']">
-                        <key-field target="@value"/>
+                  <index-has-key name="index-metadata-location-uuid"
+                        target="prop[@name='physical-location']">
+                        <key-field target="@value" />
                   </index-has-key>
 
-                  <matches target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='inherited-uuid']/@value" datatype="uuid" />
-                  <matches target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='release-date']/@value" datatype="date"/>
+                  <matches
+                        target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='inherited-uuid']/@value"
+                        datatype="uuid" />
+                  <matches
+                        target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='release-date']/@value"
+                        datatype="date" />
 
-                  <!-- ========================================================================================================== -->
-                  <!-- = Changes to the following values need to be synced with component in the SSP and component metaschemas. = -->
-                  <!-- ========================================================================================================== -->
+                  <!--
+                  ========================================================================================================== -->
+                  <!-- = Changes to the following values need to be synced with component in the SSP
+                  and component metaschemas. = -->
+                  <!--
+                  ========================================================================================================== -->
 
-                  <allowed-values target="(.)[@type=('software', 'hardware', 'service')]/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+                  <allowed-values
+                        target="(.)[@type=('software', 'hardware', 'service')]/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
                         <enum value="vendor-name">The name of the company or organization </enum>
                   </allowed-values>
 
                   <!-- TODO: Add ipv4-subnet property for type='network' - add pattern constraint -->
                   <!-- TODO: Add ipv6-subnet property for type='network' - add pattern constraint -->
 
-                  <!-- ========================================================================================================== -->
+                  <!--
+                  ========================================================================================================== -->
                   <!-- = VALIDATION: type='validation' constraints                        = -->
-                  <!-- ========================================================================================================== -->
+                  <!--
+                  ========================================================================================================== -->
                   <allowed-values target="(.)[@type='validation']/link/@rel" allow-other="yes">
-                        <enum value="validation-details">A link to an online information provided by the authorizing body.</enum>
+                        <enum value="validation-details">A link to an online information provided by
+                              the authorizing body.</enum>
                   </allowed-values>
 
-                  <!-- ========================================================================================================== -->
+                  <!--
+                  ========================================================================================================== -->
                   <!-- = SOFTWARE: type='software' constraints                        = -->
-                  <!-- ========================================================================================================== -->
-                  <allowed-values target="(.)[@type='software']/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
-            &allowed-values-component_component_software;
+                  <!--
+                  ========================================================================================================== -->
+                  <allowed-values
+                        target="(.)[@type='software']/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+                        &allowed-values-component_component_software;
                   </allowed-values>
 
-                  <!-- ========================================================================================================== -->
+                  <!--
+                  ========================================================================================================== -->
                   <!-- = SERVICE: type='service' constraints                        = -->
-                  <!-- ========================================================================================================== -->
+                  <!--
+                  ========================================================================================================== -->
                   <allowed-values target="(.)[@type='service']/link/@rel" allow-other="yes">
-            &allowed-values-component_component_service;
+                        &allowed-values-component_component_service;
                   </allowed-values>
 
-                  <expect target="." test="not(exists((.)[not(@type='service')]/protocol))"/>
+                  <expect target="." test="not(exists((.)[not(@type='service')]/protocol))" />
 
-                  <!-- ========================================================================================================== -->
+                  <!--
+                  ========================================================================================================== -->
                   <!-- = INTERCONNECTION: type='interconnection' constraints                        = -->
-                  <!-- ========================================================================================================== -->
-                  <allowed-values target="(.)[@type='interconnection']/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
-                        <enum value="isa-title">Title of the Interconnection Security Agreement (ISA).</enum>
+                  <!--
+                  ========================================================================================================== -->
+                  <allowed-values
+                        target="(.)[@type='interconnection']/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+                        <enum value="isa-title">Title of the Interconnection Security Agreement
+                              (ISA).</enum>
                         <enum value="isa-date">Date of the Interconnection Security Agreement (ISA).</enum>
-                        <enum value="isa-remote-system-name">The name of the remote interconnected system.</enum>
-                        <enum value="ipv4-address">An Internet Protocol Version 4 interconnection address</enum>
-                        <enum value="ipv6-address">An Internet Protocol Version 6 interconnection address</enum>
-                        <enum value="direction">An Internet Protocol Version 6 interconnection address</enum>
+                        <enum value="isa-remote-system-name">The name of the remote interconnected
+                              system.</enum>
+                        <enum value="ipv4-address">An Internet Protocol Version 4 interconnection
+                              address</enum>
+                        <enum value="ipv6-address">An Internet Protocol Version 6 interconnection
+                              address</enum>
+                        <enum value="direction">An Internet Protocol Version 6 interconnection
+                              address</enum>
                   </allowed-values>
-                  <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('ipv4-address','ipv6-address')]/@class">
+                  <allowed-values
+                        target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('ipv4-address','ipv6-address')]/@class">
                         <enum value="local">The identified IP address is for this system.</enum>
-                        <enum value="remote">The identified IP address is for the remote system to which this system is connected.</enum>
+                        <enum value="remote">The identified IP address is for the remote system to
+                              which this system is connected.</enum>
                   </allowed-values>
                   <allowed-values target="(.)[@type='interconnection']/link/@rel" allow-other="yes">
                         <!-- CHANGE: @name="agreement" changed to @name="isa-agreement" -->
                         <enum value="isa-agreement">A link to the system interconnection agreement.</enum>
                   </allowed-values>
-                  <allowed-values target="(.)[@type='interconnection']/responsible-role/@role-id" allow-other="yes">
-                        <enum value="isa-poc-local">Interconnection Security Agreement (ISA) point of contact (POC) for this system.</enum>
-                        <enum value="isa-poc-remote">Interconnection Security Agreement (ISA) point of contact (POC) for the remote interconnected system.</enum>
-                        <enum value="isa-authorizing-official-local">Interconnection Security Agreement (ISA) authorizing official for this system.</enum>
-                        <enum value="isa-authorizing-official-remote">Interconnection Security Agreement (ISA) authorizing official for the remote interconnected system.</enum>
+                  <allowed-values target="(.)[@type='interconnection']/responsible-role/@role-id"
+                        allow-other="yes">
+                        <enum value="isa-poc-local">Interconnection Security Agreement (ISA) point
+                              of contact (POC) for this system.</enum>
+                        <enum value="isa-poc-remote">Interconnection Security Agreement (ISA) point
+                              of contact (POC) for the remote interconnected system.</enum>
+                        <enum value="isa-authorizing-official-local">Interconnection Security
+                              Agreement (ISA) authorizing official for this system.</enum>
+                        <enum value="isa-authorizing-official-remote">Interconnection Security
+                              Agreement (ISA) authorizing official for the remote interconnected
+                              system.</enum>
                   </allowed-values>
-                  <matches target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='isa-date']/@value" datatype="dateTime"/>
-                  <matches target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='ipv4-address']/@value" datatype="ip-v4-address" />
-                  <matches target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='ipv6-address']/@value" datatype="ip-v6-address" />
-                  <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='direction']/@value">
+                  <matches
+                        target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='isa-date']/@value"
+                        datatype="dateTime" />
+                  <matches
+                        target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='ipv4-address']/@value"
+                        datatype="ip-v4-address" />
+                  <matches
+                        target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='ipv6-address']/@value"
+                        datatype="ip-v6-address" />
+                  <allowed-values
+                        target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='direction']/@value">
                         <enum value="incoming">Data from the remote system flows into this system.</enum>
                         <enum value="outgoing">Data from this system flows to the remote system.</enum>
                   </allowed-values>
                   <is-unique id="unique-system-component-responsible-role" target="responsible-role">
-                        <key-field target="@role-id"/>
+                        <key-field target="@role-id" />
                         <remarks>
-                              <p>Since <code>responsible-role</code> associates multiple <code>party-uuid</code> entries with a single <code>role-id</code>, each role-id must be referenced only once.</p>
+                              <p>Since <code>responsible-role</code> associates multiple <code>
+                                    party-uuid</code> entries with a single <code>role-id</code>,
+                                    each role-id must be referenced only once.</p>
                         </remarks>
                   </is-unique>
             </constraint>
             <remarks>
-                  <p>Components may be products, services, application programming interface (APIs), policies, processes, plans, guidance, standards, or other tangible items that enable security and/or privacy.</p>
+                  <p>Components may be products, services, application programming interface (APIs),
+                        policies, processes, plans, guidance, standards, or other tangible items
+                        that enable security and/or privacy.</p>
                   <p>The <code>type</code> indicates which of these component types is represented.</p>
-                  <!-- <p>A group of components may be aggregated into a <code>capability</code>. For example, an account management capability that consists of an account management process, and a Lightweight Directory Access Protocol (LDAP) software implementation.</p>
+                  <!-- <p>A group of components may be aggregated into a <code>capability</code>.
+                  For example, an account management capability that consists of an account
+                  management process, and a Lightweight Directory Access Protocol (LDAP) software
+                  implementation.</p>
          <p>Capabilities are expressed by combining one or more components.</p>-->
-                  <p>When defining a <code>service</code> component where are relationship to other components is known, one or more <code>link</code> entries with rel values of provided-by and used-by can be used to link to the specific component identifier(s) that provide and use the service respectively.</p>
+                  <p>When defining a <code>service</code> component where are relationship to other
+                        components is known, one or more <code>link</code> entries with rel values
+                        of provided-by and used-by can be used to link to the specific component
+                        identifier(s) that provide and use the service respectively.</p>
             </remarks>
       </define-assembly>
+
+      <define-field name="party-uuid" as-type="uuid">
+            <formal-name>party-uuid field</formal-name>
+            <!-- Identifier Reference -->
+            <description>A <a
+                        href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">
+                  machine-oriented</a> identifier reference to the <code>party</code> that manages
+                  the leveraged system.</description>
+      </define-field>
 
       <define-flag name="system-component-type" as-type="string">
             <formal-name>Component Type</formal-name>
@@ -239,9 +345,10 @@
             <constraint>
                   <allowed-values allow-other="yes">
                         <enum value="this-system">The system as a whole.</enum>
-                        <enum value="system">An external system, which may be a leveraged system or the other side of an interconnection.</enum>
-                        &allowed-values-component-type;
-                        <enum value="network">A physical or virtual network.</enum>
+                        <enum value="system">An
+                        external system, which may be a leveraged system or the other side of an
+                        interconnection.</enum> &allowed-values-component-type; <enum
+                              value="network">A physical or virtual network.</enum>
                   </allowed-values>
             </constraint>
       </define-flag>
@@ -252,23 +359,40 @@
             <define-flag name="uuid" as-type="uuid">
                   <formal-name>Service Protocol Information Universally Unique Identifier</formal-name>
                   <!-- Identifier Declaration -->
-                  <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this service protocol information elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>service protocol</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+                  <description>A <a
+                              href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">
+                        machine-oriented</a>, <a
+                              href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally
+                        unique</a> identifier with <a
+                              href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">
+                        cross-instance</a> scope that can be used to reference this service protocol
+                        information elsewhere in <a
+                              href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#scope">this
+                        or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>service
+                        protocol</code> can be used to reference the data item locally or globally
+                        (e.g., in an imported OSCAL instance). This UUID should be assigned <a
+                              href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">
+                        per-subject</a>, which means it should be consistently used to identify the
+                        same subject across revisions of the document.</description>
             </define-flag>
             <define-flag name="name" required="yes">
                   <formal-name>Protocol Name</formal-name>
-                  <description>The common name of the protocol, which should be the appropriate "service name" from the <a href="https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml">IANA Service Name and Transport Protocol Port Number Registry</a>.
-                  </description>
+                  <description>The common name of the protocol, which should be the appropriate
+                        "service name" from the <a
+                              href="https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml">IANA
+                        Service Name and Transport Protocol Port Number Registry</a>. </description>
                   <remarks>
                         <p>The short name of the protocol (e.g., https).</p>
                   </remarks>
             </define-flag>
             <model>
                   <define-field name="title" as-type="markup-line">
-            <formal-name>Protocol Title</formal-name>
-                        <description>A human readable name for the protocol (e.g., Transport Layer Security).</description>
+                        <formal-name>Protocol Title</formal-name>
+                        <description>A human readable name for the protocol (e.g., Transport Layer
+                              Security).</description>
                   </define-field>
                   <assembly ref="port-range" max-occurs="unbounded">
-                        <group-as name="port-ranges" in-json="ARRAY"/>
+                        <group-as name="port-ranges" in-json="ARRAY" />
                   </assembly>
             </model>
             <constraint>
@@ -306,26 +430,33 @@
             </define-flag>
             <!-- Added Contraints as Warnings -->
             <constraint>
-                  <expect level="WARNING" id="port-range-start-and-end-not-specified" target="." test="exists(@start) and exists(@end)">
+                  <expect level="WARNING" id="port-range-start-and-end-not-specified" target="."
+                        test="exists(@start) and exists(@end)">
                         <message>If a protocol is defined, it should include a start and end port range. To define a single port, the start and end should be the same value.</message>
                   </expect>
-                  <expect level="WARNING" id="port-range-start-specified-with-no-end" target="." test="exists(@start) and not(exists(@end))">
+                  <expect level="WARNING" id="port-range-start-specified-with-no-end" target="."
+                        test="exists(@start) and not(exists(@end))">
                         <message>A start port exists, but an end point does not. To define a single port, the start and end should be the same value.</message>
                   </expect>
-                  <expect level="WARNING" id="port-range-end-specified-with-no-start" target="." test="not(exists(@start)) and exists(@end)">
+                  <expect level="WARNING" id="port-range-end-specified-with-no-start" target="."
+                        test="not(exists(@start)) and exists(@end)">
                         <message>An end point exists, but a start port does not. To define a single port, the start and end should be the same value.</message>
                   </expect>
-                  <expect level="WARNING" id="port-range-end-date-is-before-start-date" target="." test="@start &lt;= @end">
+                  <expect level="WARNING" id="port-range-end-date-is-before-start-date" target="."
+                        test="@start &lt;= @end">
                         <message>The port range specified has an end port that is less than the start port.</message>
                   </expect>
             </constraint>
             <remarks>
-                  <p>To be validated as a natural number (integer &gt;= 1). A single port uses the same value for start and end. Use multiple 'port-range' entries for non-contiguous ranges.</p>
+                  <p>To be validated as a natural number (integer &gt;= 1). A single port uses the
+                        same value for start and end. Use multiple 'port-range' entries for
+                        non-contiguous ranges.</p>
             </remarks>
             <example>
-                  <service xmlns="http://csrc.nist.gov/ns/oscal/example" id="svc-01" name="Domain Name Service (DNS) Lookup">
+                  <service xmlns="http://csrc.nist.gov/ns/oscal/example" id="svc-01"
+                        name="Domain Name Service (DNS) Lookup">
                         <protocol name="dns">
-                              <port-range start="53" end="53" transport="tcp"/>
+                              <port-range start="53" end="53" transport="tcp" />
                         </protocol>
                   </service>
             </example>
@@ -339,19 +470,23 @@
 
             <define-flag name="state" as-type="token" required="yes">
                   <formal-name>Implementation State</formal-name>
-                  <description>Identifies the implementation status of the control or control objective.</description>
+                  <description>Identifies the implementation status of the control or control
+                        objective.</description>
                   <constraint>
                         <allowed-values allow-other="yes">
                               <enum value="implemented">The control is fully implemented.</enum>
                               <enum value="partial">The control is partially implemented.</enum>
-                              <enum value="planned">There is a plan for implementing the control as explained in the remarks.</enum>
-                              <enum value="alternative">There is an alternative implementation for this control as explained in the remarks.</enum>
-                              <enum value="not-applicable">This control does not apply to this system as justified in the remarks.</enum>
+                              <enum value="planned">There is a plan for implementing the control as
+                                    explained in the remarks.</enum>
+                              <enum value="alternative">There is an alternative implementation for
+                                    this control as explained in the remarks.</enum>
+                              <enum value="not-applicable">This control does not apply to this
+                                    system as justified in the remarks.</enum>
                         </allowed-values>
                   </constraint>
             </define-flag>
             <model>
-                  <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
+                  <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1" />
             </model>
       </define-assembly>
 
@@ -364,12 +499,27 @@
             <define-flag name="uuid" as-type="uuid" required="yes">
                   <formal-name>User Universally Unique Identifier</formal-name>
                   <!-- Identifier Declaration -->
-                  <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this user class elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>system user</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+                  <description>A <a
+                              href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">
+                        machine-oriented</a>, <a
+                              href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally
+                        unique</a> identifier with <a
+                              href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">
+                        cross-instance</a> scope that can be used to reference this user class
+                        elsewhere in <a
+                              href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#scope">this
+                        or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>system
+                        user</code> can be used to reference the data item locally or globally
+                        (e.g., in an imported OSCAL instance). This UUID should be assigned <a
+                              href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">
+                        per-subject</a>, which means it should be consistently used to identify the
+                        same subject across revisions of the document.</description>
             </define-flag>
             <model>
                   <define-field name="title" as-type="markup-line">
                         <formal-name>User Title</formal-name>
-                        <description>A name given to the user, which may be used by a tool for display and navigation.</description>
+                        <description>A name given to the user, which may be used by a tool for
+                              display and navigation.</description>
                   </define-field>
                   <define-field name="short-name">
                         <formal-name>User Short Name</formal-name>
@@ -380,49 +530,62 @@
                         <description>A summary of the user's purpose within the system.</description>
                   </define-field>
                   <assembly ref="property" max-occurs="unbounded">
-                        <group-as name="props" in-json="ARRAY"/>
+                        <group-as name="props" in-json="ARRAY" />
                   </assembly>
                   <assembly ref="link" max-occurs="unbounded">
-                        <group-as name="links" in-json="ARRAY"/>
-                        <!-- TODO: Model specific link relationships?  (BJR - I don't think we need this now) -->
+                        <group-as name="links" in-json="ARRAY" />
+                        <!-- TODO: Model specific link relationships?  (BJR - I don't think we need
+                        this now) -->
                   </assembly>
                   <field ref="role-id" min-occurs="0" max-occurs="unbounded">
-                        <group-as name="role-ids" in-json="ARRAY"/>
+                        <group-as name="role-ids" in-json="ARRAY" />
                   </field>
                   <assembly ref="authorized-privilege" max-occurs="unbounded">
-                        <group-as name="authorized-privileges" in-json="ARRAY"/>
+                        <group-as name="authorized-privileges" in-json="ARRAY" />
                   </assembly>
-                  <field ref="remarks" in-xml="WITH_WRAPPER"/>
+                  <field ref="remarks" in-xml="WITH_WRAPPER" />
             </model>
             <constraint>
-                  <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
-                        <enum value="type">The type of user, such as internal, external, or general-public.</enum>
-                        <enum value="privilege-level">The user's privilege level within the system, such as privileged, non-privileged, no-logical-access.</enum>
+                  <allowed-values
+                        target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+                        <enum value="type">The type of user, such as internal, external, or
+                              general-public.</enum>
+                        <enum value="privilege-level">The user's privilege level within the system,
+                              such as privileged, non-privileged, no-logical-access.</enum>
                   </allowed-values>
-                  <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='type']/@value">
-                        <enum value="internal">A user account for a person or entity that is part of the organization who owns or operates the system.</enum>
-                        <enum value="external">A user account for a person or entity that is not part of the organization who owns or operates the system.</enum>
+                  <allowed-values
+                        target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='type']/@value">
+                        <enum value="internal">A user account for a person or entity that is part of
+                              the organization who owns or operates the system.</enum>
+                        <enum value="external">A user account for a person or entity that is not
+                              part of the organization who owns or operates the system.</enum>
                         <enum value="general-public">A user of the system considered to be outside </enum>
                   </allowed-values>
-                  <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='privilege-level']/@value">
-                        <enum value="privileged">This role has elevated access to the system, such as a group or system administrator.</enum>
-                        <enum value="non-privileged">This role has typical user-level access to the system without elevated access.</enum>
-                        <enum value="no-logical-access">This role has no access to the system, such as a manager who approves access as part of a process.</enum>
+                  <allowed-values
+                        target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='privilege-level']/@value">
+                        <enum value="privileged">This role has elevated access to the system, such
+                              as a group or system administrator.</enum>
+                        <enum value="non-privileged">This role has typical user-level access to the
+                              system without elevated access.</enum>
+                        <enum value="no-logical-access">This role has no access to the system, such
+                              as a manager who approves access as part of a process.</enum>
                   </allowed-values>
                   <allowed-values target="role-id" allow-other="yes">
-            &allowed-values-responsible-roles-operations;
+                        &allowed-values-responsible-roles-operations;
                   </allowed-values>
             </constraint>
             <remarks>
-                  <p>Permissible values to be determined closer to the application, such as by a receiving authority.</p>
+                  <p>Permissible values to be determined closer to the application, such as by a
+                        receiving authority.</p>
             </remarks>
       </define-assembly>
       <define-assembly name="authorized-privilege">
             <formal-name>Privilege</formal-name>
-            <description>Identifies a specific system privilege held by the user, along with an associated description and/or rationale for the privilege.</description>
+            <description>Identifies a specific system privilege held by the user, along with an
+                  associated description and/or rationale for the privilege.</description>
             <model>
                   <define-field name="title" as-type="markup-line" min-occurs="1">
-            <formal-name>Privilege Title</formal-name>
+                        <formal-name>Privilege Title</formal-name>
                         <description>A human readable name for the privilege.</description>
                   </define-field>
                   <define-field name="description" as-type="markup-multiline" in-xml="WITH_WRAPPER">
@@ -430,13 +593,14 @@
                         <description>A summary of the privilege's purpose within the system.</description>
                   </define-field>
                   <field ref="function-performed" min-occurs="1" max-occurs="unbounded">
-                        <group-as name="functions-performed" in-json="ARRAY"/>
+                        <group-as name="functions-performed" in-json="ARRAY" />
                   </field>
             </model>
       </define-assembly>
       <define-field name="function-performed" as-type="string">
             <formal-name>Functions Performed</formal-name>
-            <description>Describes a function performed for a given authorized privilege by this user class.</description>
+            <description>Describes a function performed for a given authorized privilege by this
+                  user class.</description>
       </define-field>
 
       <!-- ################################################ -->
@@ -450,160 +614,233 @@
             <define-flag name="uuid" as-type="uuid" required="yes">
                   <formal-name>Inventory Item Universally Unique Identifier</formal-name>
                   <!-- Identifier Declaration -->
-                  <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this inventory item elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>inventory item</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+                  <description>A <a
+                              href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">
+                        machine-oriented</a>, <a
+                              href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally
+                        unique</a> identifier with <a
+                              href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">
+                        cross-instance</a> scope that can be used to reference this inventory item
+                        elsewhere in <a
+                              href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#scope">this
+                        or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>inventory
+                        item</code> can be used to reference the data item locally or globally
+                        (e.g., in an imported OSCAL instance). This UUID should be assigned <a
+                              href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">
+                        per-subject</a>, which means it should be consistently used to identify the
+                        same subject across revisions of the document.</description>
             </define-flag>
             <!-- CHANGED: Moved to property[@name='asset-id']. -->
             <!--      <define-flag name="asset-id">
          <!-\- This is an id because the idenfier is assigned and managed externally. -\->
          <formal-name>Asset Identifier</formal-name>
-         <description>Organizational asset identifier that is unique in the context of the system. This may be a reference to the identifier used in an asset tracking system or a vulnerability scanning tool.</description>
+         <description>Organizational asset identifier that is unique in the context of the system. This may
+            be a reference to the identifier used in an asset tracking system or a vulnerability
+            scanning tool.</description>
       </define-flag>  -->
             <model>
-                  <define-field name="description" as-type="markup-multiline" min-occurs="1" in-xml="WITH_WRAPPER">
+                  <define-field name="description" as-type="markup-multiline" min-occurs="1"
+                        in-xml="WITH_WRAPPER">
                         <formal-name>Inventory Item Description</formal-name>
-                        <description>A summary of the inventory item stating its purpose within the system.</description>
+                        <description>A summary of the inventory item stating its purpose within the
+                              system.</description>
                   </define-field>
                   <assembly ref="property" max-occurs="unbounded">
-                        <group-as name="props" in-json="ARRAY"/>
+                        <group-as name="props" in-json="ARRAY" />
                   </assembly>
                   <assembly ref="link" max-occurs="unbounded">
-                        <group-as name="links" in-json="ARRAY"/>
+                        <group-as name="links" in-json="ARRAY" />
                   </assembly>
                   <assembly ref="responsible-party" max-occurs="unbounded">
-                        <group-as name="responsible-parties" in-json="ARRAY"/>
+                        <group-as name="responsible-parties" in-json="ARRAY" />
                   </assembly>
                   <define-assembly name="implemented-component" max-occurs="unbounded">
-                        <!-- TODO: Sync constraints with system-component; maybe remove this? (CHANGED (BJR): Dave-See Gitter for details on this. -->
+                        <!-- TODO: Sync constraints with system-component; maybe remove this?
+                        (CHANGED (BJR): Dave-See Gitter for details on this. -->
                         <formal-name>Implemented Component</formal-name>
-                        <description>The set of components that are implemented in a given system inventory item.</description>
-                        <group-as name="implemented-components" in-json="ARRAY"/>
+                        <description>The set of components that are implemented in a given system
+                              inventory item.</description>
+                        <group-as name="implemented-components" in-json="ARRAY" />
 
                         <define-flag required="yes" name="component-uuid" as-type="uuid">
                               <formal-name>Component Universally Unique Identifier Reference</formal-name>
                               <!-- Identifier Reference -->
-                              <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a <code>component</code> that is implemented as part of an inventory item.</description>
+                              <description>A <a
+                                          href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">
+                                    machine-oriented</a> identifier reference to a <code>component</code>
+                                    that is implemented as part of an inventory item.</description>
                         </define-flag>
 
-                        <!-- CHANGED (daw): the following is not needed since it is required on the referenced component -->
-                        <!--      <!-\- CHANGED (BJR): Added component-type for alignment with system-component -\->
+                        <!-- CHANGED (daw): the following is not needed since it is required on the
+                        referenced component -->
+                        <!--      <!-\- CHANGED (BJR): Added component-type for alignment with
+                        system-component -\->
       <flag ref="component-type" required="yes" />
 -->
-                        <!-- The following is commented because this is not being used and can be inferred based on the type of the component -->
+                        <!-- The following is commented because this is not being used and can be
+                        inferred based on the type of the component -->
                         <!--
       <define-flag name="use">
          <formal-name>Implementation Use Type</formal-name>
          <description>The type of implementation</description>
          <constraint>
             <allowed-values allow-other="yes">
-               <enum value="runs-software">The implemented component is a 'software' component that the inventory item has installed and uses.</enum>
-               <enum value="uses-hardware">The implemented component is a 'hardware' component that the inventory item has installed and uses.</enum>
-               <enum value="enforces-policy">The implemented component is a 'policy' component that the inventory item supports and enforces.</enum>
-               <enum value="implements-process">The implemented component is a 'process' component that the inventory item supports and enforces.</enum>
+               <enum value="runs-software">The implemented component is a 'software' component that the inventory
+                        item has installed and uses.</enum>
+               <enum value="uses-hardware">The implemented component is a 'hardware' component that the inventory
+                        item has installed and uses.</enum>
+               <enum value="enforces-policy">The implemented component is a 'policy' component that the inventory
+                        item supports and enforces.</enum>
+               <enum value="implements-process">The implemented component is a 'process' component that the
+                        inventory item supports and enforces.</enum>
             </allowed-values>
          </constraint>
       </define-flag>
 -->
                         <model>
                               <assembly ref="property" max-occurs="unbounded">
-                                    <group-as name="props" in-json="ARRAY"/>
+                                    <group-as name="props" in-json="ARRAY" />
                               </assembly>
                               <assembly ref="link" max-occurs="unbounded">
-                                    <group-as name="links" in-json="ARRAY"/>
+                                    <group-as name="links" in-json="ARRAY" />
                               </assembly>
                               <assembly ref="responsible-party" max-occurs="unbounded">
-                                    <group-as name="responsible-parties" in-json="ARRAY"/>
+                                    <group-as name="responsible-parties" in-json="ARRAY" />
                                     <remarks>
-                                          <p>This construct is used to either: 1) associate a party or parties to a role defined on the component using the <code>responsible-role</code> construct, or 2) to define a party or parties that are responsible for a role defined within the context of the containing <code>inventory-item</code>.
-                                          </p>
+                                          <p>This construct is used to either: 1) associate a party
+                                                or parties to a role defined on the component using
+                                                the <code>responsible-role</code> construct, or 2)
+                                                to define a party or parties that are responsible
+                                                for a role defined within the context of the
+                                                containing <code>inventory-item</code>. </p>
                                     </remarks>
                               </assembly>
-                              <field ref="remarks" in-xml="WITH_WRAPPER"/>
+                              <field ref="remarks" in-xml="WITH_WRAPPER" />
                         </model>
                         <constraint>
-                              <!-- TODO: constrain component-uuid references to components defined in the document. ((BJR): Was unsure how to do this.) -->
-                              <!-- TODO: constrain link href values based on rel ((BJR): Was unsure of how to do this.) -->
+                              <!-- TODO: constrain component-uuid references to components defined
+                              in the document. ((BJR): Was unsure how to do this.) -->
+                              <!-- TODO: constrain link href values based on rel ((BJR): Was unsure
+                              of how to do this.) -->
 
-                              <!-- TODO: constrain property values based on name (CHANGED (BJR): Done.) -->
-                              <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
-                  &allowed-values-component_component_property-name;
-                  &allowed-values-component_inventory-item_property-name;
+                              <!-- TODO: constrain property values based on name (CHANGED (BJR):
+                              Done.) -->
+                              <allowed-values
+                                    target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+                                    &allowed-values-component_component_property-name;
+                                    &allowed-values-component_inventory-item_property-name;
 
                               </allowed-values>
                               <!-- ensure that at least one asset-id is provided -->
-                              <has-cardinality target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='asset-id']" min-occurs="1"/>
+                              <has-cardinality
+                                    target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='asset-id']"
+                                    min-occurs="1" />
 
 
                               <allowed-values target="responsible-party/@role-id" allow-other="yes">
-                  &allowed-values-responsible-roles-operations;
+                                    &allowed-values-responsible-roles-operations;
                               </allowed-values>
 
-                              <!-- TODO: constrain party-id references to parties defined in the document. (BJR Unsure how to do this. )-->
+                              <!-- TODO: constrain party-id references to parties defined in the
+                              document. (BJR Unsure how to do this. )-->
 
-                              <is-unique id="unique-implemented-component-responsible-party" target="responsible-party">
-                                    <key-field target="@role-id"/>
+                              <is-unique id="unique-implemented-component-responsible-party"
+                                    target="responsible-party">
+                                    <key-field target="@role-id" />
                                     <remarks>
-                                          <p>Since <code>responsible-party</code> associates multiple <code>party-uuid</code> entries with a single <code>role-id</code>, each role-id must be referenced only once.</p>
+                                          <p>Since <code>responsible-party</code> associates
+                                                multiple <code>party-uuid</code> entries with a
+                                                single <code>role-id</code>, each role-id must be
+                                                referenced only once.</p>
                                     </remarks>
                               </is-unique>
                         </constraint>
                   </define-assembly>
-                  <field ref="remarks" in-xml="WITH_WRAPPER"/>
+                  <field ref="remarks" in-xml="WITH_WRAPPER" />
             </model>
             <constraint>
-                  <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+                  <allowed-values
+                        target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
                         <enum value="ipv4-address">The Internet Protocol v4 Address of the asset.</enum>
-                        <enum value="ipv6-address">The Internet Protocol v6 Address of the asset.</enum>
-                        <enum value="fqdn">The full-qualified domain name (FQDN) of the asset.</enum>
-                        <enum value="uri">A Uniform Resource Identifier (URI) for the asset.</enum>
-                        <enum value="serial-number">A serial number for the asset.</enum>
-                        <enum value="netbios-name">The NetBIOS name for the asset.</enum>
-                        <enum value="mac-address">The media access control (MAC) address for the asset.</enum>
-                        <enum value="physical-location">The physical location of the asset's hardware (e.g., Data Center ID, Cage#, Rack#, or other meaningful location identifiers).</enum>
-                        <enum value="is-scanned">is the asset subjected to network scans? (yes/no)</enum>
-                        <!-- =========================================================================================== -->
-                        <!-- = The following is to support the legacy approach for inventory-items without components. = -->
-                        <!-- =========================================================================================== -->
+                        <enum
+                              value="ipv6-address">The Internet Protocol v6 Address of the asset.</enum>
+                        <enum
+                              value="fqdn">The full-qualified domain name (FQDN) of the asset.</enum>
+                        <enum
+                              value="uri">A Uniform Resource Identifier (URI) for the asset.</enum>
+                        <enum
+                              value="serial-number">A serial number for the asset.</enum>
+                        <enum
+                              value="netbios-name">The NetBIOS name for the asset.</enum>
+                        <enum
+                              value="mac-address">The media access control (MAC) address for the
+                        asset.</enum>
+                        <enum value="physical-location">The physical location of the
+                        asset's hardware (e.g., Data Center ID, Cage#, Rack#, or other meaningful
+                        location identifiers).</enum>
+                        <enum value="is-scanned">is the asset subjected
+                        to network scans? (yes/no)</enum>
+                        <!--
+                        =========================================================================================== -->
+                        <!-- = The following is to support the legacy approach for inventory-items
+                        without components. = -->
+                        <!--
+                        =========================================================================================== -->
                         <!-- This is "model" in the context of a component -->
-                        <enum value="hardware-model">The model number of the hardware used by the asset.</enum>
+                        <enum value="hardware-model">The model
+                        number of the hardware used by the asset.</enum>
                         <!-- This is "name" in the context of a component -->
-                        <enum value="os-name">The name of the operating system used by the asset.</enum>
+                        <enum value="os-name">The
+                        name of the operating system used by the asset.</enum>
                         <!-- This is "version" in the context of a component -->
-                        <enum value="os-version">The version of the operating system used by the asset.</enum>
+                        <enum
+                              value="os-version">The version of the operating system used by the
+                        asset.</enum>
                         <!-- This is "name" in the context of a component -->
-                        <enum value="software-name">The software product name used by the asset.</enum>
+                        <enum value="software-name">The software product name used by
+                        the asset.</enum>
                         <!-- This is "version" in the context of a component -->
-                        <enum value="software-version">The software product version used by the asset.</enum>
+                        <enum value="software-version">The software product version
+                        used by the asset.</enum>
                         <!-- This is "patch-level" in the context of a component -->
-                        <enum value="software-patch-level">The software product patch level used by the asset.</enum>
+                        <enum value="software-patch-level">The software
+                        product patch level used by the asset.</enum>
 
-                        <!-- =========================================================================================== -->
+                        <!--
+                        =========================================================================================== -->
                         <!-- = The following is shared with system-component. = -->
-                        <!-- =========================================================================================== -->
-                        &allowed-values-component_inventory-item_property-name;
-
-                  </allowed-values>
-                  <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='asset-type']/@value" allow-other="yes">
+                        <!--
+                        =========================================================================================== -->
+                        &allowed-values-component_inventory-item_property-name; </allowed-values>
+                  <allowed-values
+                        target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='asset-type']/@value"
+                        allow-other="yes">
                         &allowed-values-property-name-asset-type-values;
                   </allowed-values>
 
-                  <allowed-values target="(.)[@type=('software', 'hardware', 'service')]/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+                  <allowed-values
+                        target="(.)[@type=('software', 'hardware', 'service')]/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
                         <enum value="vendor-name">The name of the company or organization </enum>
                   </allowed-values>
 
 
-                  <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='is-scanned']/@value">
+                  <allowed-values
+                        target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='is-scanned']/@value">
                         <enum value="yes">The asset is included in periodic vulnerability scanning.</enum>
-                        <enum value="no">The asset is not included in periodic vulnerability scanning.</enum>
+                        <enum value="no">The asset is not included in periodic vulnerability
+                              scanning.</enum>
                   </allowed-values>
 
                   <allowed-values target="link/@rel" allow-other="yes">
-                        <enum value="baseline-template">A reference to the baseline template used to configure the asset.</enum>
+                        <enum value="baseline-template">A reference to the baseline template used to
+                              configure the asset.</enum>
                   </allowed-values>
-                  <!-- TODO: constrain link href values based on rel ((BJR): Was unsure how to do this.) -->
+                  <!-- TODO: constrain link href values based on rel ((BJR): Was unsure how to do
+                  this.) -->
 
                   <allowed-values target="responsible-party/@role-id" allow-other="yes">
-            &allowed-values-responsible-roles-operations;
-            &allowed-values-responsible-roles-component-production;
+                        &allowed-values-responsible-roles-operations;
+                        &allowed-values-responsible-roles-component-production;
                   </allowed-values>
 
                   <index-has-key name="index-metadata-role-id" target="responsible-party">
@@ -613,19 +850,21 @@
                         <key-field target="party-uuid"></key-field>
                   </index-has-key>
                   <is-unique id="unique-inventory-item-responsible-party" target="responsible-party">
-                        <key-field target="@role-id"/>
+                        <key-field target="@role-id" />
                         <remarks>
-                              <p>Since <code>responsible-party</code> associates multiple <code>party-uuid</code> entries with a single <code>role-id</code>, each role-id must be referenced only once.</p>
+                              <p>Since <code>responsible-party</code> associates multiple <code>
+                                    party-uuid</code> entries with a single <code>role-id</code>,
+                                    each role-id must be referenced only once.</p>
                         </remarks>
                   </is-unique>
             </constraint>
       </define-assembly>
 
 
-
       <!--   <define-assembly name="only-statement">
       <formal-name>Specific Statement</formal-name>
-      <description>Describes which specific statements are addressed by a requirement, by pointing to a specific requirement statement within a control.</description>
+      <description>Describes which specific statements are addressed by a requirement, by pointing to a
+      specific requirement statement within a control.</description>
       <json-key flag-name="statement-id"/>
       <flag ref="statement-id" required="yes">
          <remarks>
@@ -635,7 +874,8 @@
       <model>
          <define-field name="description" as-type="markup-multiline" min-occurs="1" in-xml="WITH_WRAPPER">
             <formal-name>Statement Implementation Description</formal-name>
-            <description>A description of the component, including information about its function.</description>
+            <description>A description of the component, including information about its
+      function.</description>
          </define-field>
          <field ref="property" max-occurs="unbounded">
             <group-as name="props" in-json="ARRAY"/>
@@ -658,20 +898,23 @@
       <define-flag name="statement-id" as-type="token">
             <formal-name>Control Statement Reference</formal-name>
             <!-- Identifier Reference -->
-            <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#human-oriented">human-oriented</a> identifier reference to a <code>control statement</code>.</description>
+            <description>A <a
+                        href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#human-oriented">
+                  human-oriented</a> identifier reference to a <code>control statement</code>.</description>
       </define-flag>
       <define-assembly name="set-parameter">
             <formal-name>Set Parameter Value</formal-name>
             <description>Identifies the parameter that will be set by the enclosed value.</description>
-            <flag ref="param-id" required="yes"/>
+            <flag ref="param-id" required="yes" />
             <model>
                   <define-field name="value" as-type="string" min-occurs="1" max-occurs="unbounded">
-                        <!-- CHANGED type from "markup-line" to "string" since this is intended to be a scalar value -->
+                        <!-- CHANGED type from "markup-line" to "string" since this is intended to
+                        be a scalar value -->
                         <formal-name>Parameter Value</formal-name>
                         <description>A parameter value or set of values.</description>
-                        <group-as name="values" in-json="ARRAY"/>
+                        <group-as name="values" in-json="ARRAY" />
                   </define-field>
-                  <field ref="remarks" in-xml="WITH_WRAPPER"/>
+                  <field ref="remarks" in-xml="WITH_WRAPPER" />
             </model>
       </define-assembly>
 
@@ -682,36 +925,74 @@
             <!-- Identifier Declaration -->
             <!-- 
                   TODO: Given feedback, we need to update Metaschema with usnistgov/metaschema#222
-                  with props like in https://github.com/david-waltermire-nist/OSCAL/commit/3aafc080b3dc5f488c15b763f707326e77a61f5d#diff-4176d3cf694dd36b02a94207426934306ec0fdaecc54d1bb96f50f52cd7ceae6R27-R32.
+                  with props like in
+            https://github.com/david-waltermire-nist/OSCAL/commit/3aafc080b3dc5f488c15b763f707326e77a61f5d#diff-4176d3cf694dd36b02a94207426934306ec0fdaecc54d1bb96f50f52cd7ceae6R27-R32.
 
-                  We need to determine if both identifier-type='machine-oriented' and identifier-type='human-oriented'.
+                  We need to determine if both identifier-type='machine-oriented' and
+            identifier-type='human-oriented'.
                   Option 2 is identifier-type='unspecified'.
             -->
-            <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#human-oriented">human-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this system identification property elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#scope">this or other OSCAL instances</a>. When referencing an externally defined <code>system identification</code>, the <code>system identification</code> must be used in the context of the external / imported OSCAL instance (e.g., uri-reference). This string should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same system across revisions of the document.</description>
+            <description>A <a
+                        href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#human-oriented">
+                  human-oriented</a>, <a
+                        href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally
+                  unique</a> identifier with <a
+                        href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">
+                  cross-instance</a> scope that can be used to reference this system identification
+                  property elsewhere in <a
+                        href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#scope">this or
+                  other OSCAL instances</a>. When referencing an externally defined <code>system
+                  identification</code>, the <code>system identification</code> must be used in the
+                  context of the external / imported OSCAL instance (e.g., uri-reference). This
+                  string should be assigned <a
+                        href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">
+                  per-subject</a>, which means it should be consistently used to identify the same
+                  system across revisions of the document.</description>
             <json-value-key>id</json-value-key>
             <define-flag name="identifier-type" as-type="uri">
                   <formal-name>Identification System Type</formal-name>
-                  <description>Identifies the identification system from which the provided identifier was assigned. </description>
+                  <description>Identifies the identification system from which the provided
+                        identifier was assigned. </description>
                   <constraint>
                         <allowed-values allow-other="yes">
-                              <enum value="https://fedramp.gov" deprecated="1.0.3">**deprecated** The identifier was assigned by FedRAMP. This has been deprecated; use <code>http://fedramp.gov/ns/oscal</code> instead.</enum>
-                              <enum value="http://fedramp.gov/ns/oscal">The identifier was assigned by FedRAMP.</enum>
-                              <enum value="https://ietf.org/rfc/rfc4122" deprecated="1.0.3">**deprecated** A Universally Unique Identifier (UUID) as defined by RFC4122. This value has been deprecated; use <code>http://ietf.org/rfc/rfc4122</code> instead.</enum>
-                              <enum value="http://ietf.org/rfc/rfc4122">A Universally Unique Identifier (UUID) as defined by RFC4122.</enum>
+                              <enum value="https://fedramp.gov" deprecated="1.0.3">**deprecated**
+                                    The identifier was assigned by FedRAMP. This has been
+                                    deprecated; use <code>http://fedramp.gov/ns/oscal</code>
+                                    instead.</enum>
+                              <enum value="http://fedramp.gov/ns/oscal">The identifier was assigned
+                                    by FedRAMP.</enum>
+                              <enum value="https://ietf.org/rfc/rfc4122" deprecated="1.0.3">**deprecated**
+                                    A Universally Unique Identifier (UUID) as defined by RFC4122.
+                                    This value has been deprecated; use <code>
+                                    http://ietf.org/rfc/rfc4122</code> instead.</enum>
+                              <enum value="http://ietf.org/rfc/rfc4122">A Universally Unique
+                                    Identifier (UUID) as defined by RFC4122.</enum>
                         </allowed-values>
                   </constraint>
                   <remarks>
-                        <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                        <p>This value must be an <a
+                                    href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute
+                              URI</a> that serves as a <a
+                                    href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming
+                              system identifier</a>.</p>
                   </remarks>
             </define-flag>
       </define-field>
 
+      <define-field name="date-authorized" as-type="date" scope="local">
+            <formal-name>System Authorization Date</formal-name>
+            <description>The date the system received its most recent authorization to operate.</description>
+      </define-field>
+          
       <!-- ===== FLAGS ===== -->
       <define-flag name="param-id" as-type="token">
             <!-- This is an id because the idenfier is assigned and managed by humans. -->
             <formal-name>Parameter ID</formal-name>
             <!-- Identifier Reference -->
-            <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#human-oriented">human-oriented</a> reference to a <code>parameter</code> within a control, who's catalog has been imported into the current implementation context.</description>
+            <description>A <a
+                        href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#human-oriented">
+                  human-oriented</a> reference to a <code>parameter</code> within a control, who's
+                  catalog has been imported into the current implementation context.</description>
             <example>
                   <set-param xmlns="http://csrc.nist.gov/ns/oscal/example" param-id="ac-2_prm_2">
                         <enum>System ISSO</enum>
@@ -721,7 +1002,9 @@
 
       <define-flag name="exportable" as-type="boolean">
             <formal-name>Exportable</formal-name>
-            <description>Indicates that the implmentation status is exportable for external consumption, such as with leveraged organizations, customer responsibility documentation, and shared security responsibility documentation.</description>
-      </define-flag>        
+            <description>Indicates that the implmentation status is exportable for external
+                  consumption, such as with leveraged organizations, customer responsibility
+                  documentation, and shared security responsibility documentation.</description>
+      </define-flag>
 
 </METASCHEMA>
