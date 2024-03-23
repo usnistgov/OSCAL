@@ -381,10 +381,12 @@
       <p>If 'other' is selected, a remark must be included to describe the current state.</p>
     </remarks>
   </define-assembly>
+  <!-- Moved to oscal_implementation-commong_metaschema.xml to use it in SR and CDef
   <define-field name="date-authorized" as-type="date" scope="local">
     <formal-name>System Authorization Date</formal-name>
     <description>The date the system received its authorization.</description>
   </define-field>
+  -->
   <define-assembly name="authorization-boundary">
     <formal-name>Authorization Boundary</formal-name>
     <description>A description of this system's authorization boundary, optionally supplemented by diagrams that illustrate the authorization boundary.</description>
@@ -552,6 +554,7 @@
           <!-- Identifier Declaration -->
           <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope and can be used to reference this leveraged authorization elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>leveraged authorization</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
         </define-flag>
+        <flag ref="ssp-uuid" />
         <model>
           <define-field name="title" as-type="markup-line" min-occurs="1">
             <formal-name>title field</formal-name>
