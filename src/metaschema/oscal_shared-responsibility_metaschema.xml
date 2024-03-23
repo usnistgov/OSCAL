@@ -22,8 +22,9 @@
   </remarks>
   
   <!-- IMPORT STATEMENTS -->
+  <!-- Already imported in oscal_responsibility-common_metaschema.xml
   <import href="oscal_metadata_metaschema.xml" />
-  <import href="oscal_implementation-common_metaschema.xml" />
+  <import href="oscal_implementation-common_metaschema.xml" /> -->
   <import href="oscal_responsibility-common_metaschema.xml" />
 
   <define-assembly name="shared-responsibility">
