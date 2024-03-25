@@ -325,7 +325,7 @@
         <group-as name="provided" in-json="ARRAY" />
       </assembly>
       <assembly ref="responsibility" max-occurs="unbounded">
-        <group-as name="responsibility" in-json="ARRAY" />
+        <group-as name="responsibilities" in-json="ARRAY" />
       </assembly>
       <assembly ref="inherited" max-occurs="unbounded">
         <group-as name="inherited" in-json="ARRAY" />
