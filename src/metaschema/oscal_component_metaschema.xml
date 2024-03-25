@@ -351,7 +351,8 @@
         which means it should be consistently used to identify the same subject across revisions of
         the document.</description>
     </define-flag>
-    <!-- The following flags make no sense in teh context of a CDef.
+    <!-- The following flags make no sense in the context of a Component Definition 
+         since the control are implemented by the current component.
     <flag ref="provided-uuid" required="no" />
     <flag ref="implemented-by" required="no" />
     -->
