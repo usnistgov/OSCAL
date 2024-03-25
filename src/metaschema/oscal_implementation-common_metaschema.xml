@@ -979,7 +979,7 @@
             </define-flag>
       </define-field>
 
-      <define-field name="date-authorized" as-type="date" scope="local">
+      <define-field name="date-authorized" as-type="date" >
             <formal-name>System Authorization Date</formal-name>
             <description>The date the system received its most recent authorization to operate.</description>
       </define-field>
