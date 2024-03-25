@@ -554,7 +554,8 @@
           <!-- Identifier Declaration -->
           <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope and can be used to reference this leveraged authorization elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>leveraged authorization</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
         </define-flag>
-        <flag ref="ssp-uuid" />
+        <flag ref="ssp-uuid" required="no"/>
+        <flag ref="sr-uuid" required="no"/>
         <model>
           <define-field name="title" as-type="markup-line" min-occurs="1">
             <formal-name>title field</formal-name>
@@ -862,7 +863,7 @@
         <group-as name="provided" in-json="ARRAY"/>
       </assembly>
       <assembly ref="responsibility" max-occurs="unbounded">
-        <group-as name="responsibility" in-json="ARRAY"/>
+        <group-as name="responsibilities" in-json="ARRAY"/>
       </assembly>
       <assembly ref="inherited" max-occurs="unbounded">
         <group-as name="inherited" in-json="ARRAY"/>

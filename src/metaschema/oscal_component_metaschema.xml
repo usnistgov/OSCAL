@@ -26,8 +26,9 @@
     <p>The root of the OSCAL Implementation Layer Component Definition model is <code>component-definition</code>.</p>
   </remarks>
 
-  <import href="oscal_implementation-common_metaschema.xml"/>
-  <import href="oscal_responsibility-common_metaschema.xml"/>
+  <!-- IMPORTS -->
+  <import href="oscal_implementation-common_metaschema.xml"/> 
+  <!-- <import href="oscal_responsibility-common_metaschema.xml"/> -->
 
   <define-assembly name="component-definition">
     <formal-name>Component Definition</formal-name>
@@ -134,7 +135,6 @@
           <p>Used for <code>service</code> components to define the protocols supported by the service.</p>
         </remarks>
       </assembly>
-
       <assembly ref="control-implementation" max-occurs="unbounded">
         <group-as name="control-implementations" in-json="ARRAY"/>
       </assembly>
@@ -312,6 +312,7 @@
       <!-- Feature Request: add constraint ensuring a capability's incorporates-component references //component-definition/component/@uuid in the same component definition instance or an imported instance-->
     </constraint>
   </define-assembly>
+
   <define-assembly name="incorporates-component">
     <formal-name>Incorporates Component</formal-name>
     <!-- TODO: needs a description -->
@@ -327,6 +328,67 @@
         <description>A description of the component, including information about its function.</description>
       </define-field>
     </model>
+  </define-assembly>
+
+  <define-assembly name="responsibility" scope="local">
+    <formal-name>Control Implementation Responsibility</formal-name>
+    <description>Describes a control implementation responsibility imposed on a leveraging system.</description>
+    <!-- <group-as name="responsibilities" in-json="ARRAY"/> -->
+    <define-flag name="uuid" as-type="uuid" required="yes">
+      <formal-name>Responsibility Universally Unique Identifier</formal-name>
+      <!-- Identifier Declaration -->
+      <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">
+        machine-oriented</a>, <a
+          href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally
+        unique</a> identifier with <a
+          href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a>
+        scope that can be used to reference this responsibility elsewhere in <a
+          href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ssp-identifiers">this or other
+        OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>responsibility</code>
+        can be used to reference the data item locally or globally (e.g., in an imported OSCAL
+        instance). This UUID should be assigned <a
+          href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>,
+        which means it should be consistently used to identify the same subject across revisions of
+        the document.</description>
+    </define-flag>
+    <!-- The following flags make no sense in teh context of a CDef.
+    <flag ref="provided-uuid" required="no" />
+    <flag ref="implemented-by" required="no" />
+    -->
+    <flag ref="exportable" />
+    <model>
+      <define-field name="description" as-type="markup-multiline" min-occurs="1"
+        in-xml="WITH_WRAPPER">
+        <formal-name>Control Implementation Responsibility Description</formal-name>
+        <description>An implementation statement that describes the aspects of the control or
+          control statement implementation that a customer must implement to satisfy the
+          control provided by the component.</description>
+      </define-field>
+      <assembly ref="property" max-occurs="unbounded">
+        <group-as name="props" in-json="ARRAY" />
+      </assembly>
+      <assembly ref="link" max-occurs="unbounded">
+        <group-as name="links" in-json="ARRAY" />
+        <!-- TODO: Model specific link relationships -->
+      </assembly>
+      <assembly ref="responsible-role" min-occurs="0" max-occurs="unbounded">
+        <group-as name="responsible-roles" in-json="ARRAY" />
+        <remarks>
+          <p>A role defined at the by-component level takes precedence over the same role defined on
+            the parent implemented-requirement or on the referenced component. </p>
+        </remarks>
+      </assembly>
+      <field ref="remarks" in-xml="WITH_WRAPPER" />
+    </model>
+    <constraint>
+      <is-unique id="unique-responsibility-responsible-role" target="responsible-role">
+        <key-field target="@role-id" />
+        <remarks>
+          <p>Since <code>responsible-role</code> associates multiple <code>party-uuid</code> entries
+            with a single <code>role-id</code>, each role-id must be referenced only once.</p>
+        </remarks>
+      </is-unique>
+    </constraint>
   </define-assembly>
 
   <define-assembly name="control-implementation" scope="local">
@@ -412,11 +474,14 @@
       <assembly ref="set-parameter" max-occurs="unbounded">
         <group-as name="set-parameters" in-json="ARRAY"/>
       </assembly>
+      <assembly ref="responsibility" max-occurs="unbounded">
+        <group-as name="responsibilities" in-json="ARRAY"/>
+      </assembly>
       <assembly ref="responsible-role" max-occurs="unbounded">
         <group-as name="responsible-roles" in-json="ARRAY"/>
       </assembly>
 
-      <!-- ADDED for CRM/SSRM: Implementation Status and Shared Responsibility Assembly -->
+      <!-- ADDED for SRM: Implementation Status and Shared Responsibility Assembly -->
       <!-- <assembly ref="implementation-status">
         <remarks>
           <p>The <code>implementation-status</code> is used to qualify the <code>status</code> value to indicate the degree to which the control is implemented.</p>
@@ -427,7 +492,7 @@
         <group-as name="provided" in-json="ARRAY"/>
       </assembly>
       <assembly ref="responsibility">
-        <group-as name="responsibility" in-json="ARRAY"/>
+        <group-as name="responsibilities" in-json="ARRAY"/>
       </assembly>
       <assembly ref="inherited">
         <group-as name="inherited" in-json="ARRAY"/>
@@ -435,7 +500,6 @@
       <assembly ref="satisfied">
         <group-as name="satisfied" in-json="ARRAY"/>
       </assembly>
-
       <assembly ref="export" max-occurs="1">
         <remarks>
           <p>TODO: Documentation</p>
@@ -496,6 +560,9 @@
       </assembly>
       <assembly ref="link" max-occurs="unbounded">
         <group-as name="links" in-json="ARRAY"/>
+      </assembly>
+      <assembly ref="responsibility" max-occurs="unbounded">
+        <group-as name="responsibilities" in-json="ARRAY"/>
       </assembly>
       <assembly ref="responsible-role" max-occurs="unbounded">
         <group-as name="responsible-roles" in-json="ARRAY"/>

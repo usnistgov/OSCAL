@@ -1002,7 +1002,7 @@
 
       <define-flag name="exportable" as-type="boolean">
             <formal-name>Exportable</formal-name>
-            <description>Indicates that the implmentation status is exportable for external
+            <description>Indicates that the information is exportable for external
                   consumption, such as with leveraged organizations, customer responsibility
                   documentation, and shared security responsibility documentation.</description>
       </define-flag>
