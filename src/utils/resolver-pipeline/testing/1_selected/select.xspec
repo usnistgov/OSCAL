@@ -8,8 +8,8 @@
     stylesheet="../../oscal-profile-resolve-select.xsl"
     xslt-version="3.0">
 
-    <!-- Location of sample files, relative to compiled test in xspec/ subdirectory -->
-    <x:variable name="ov:filedir" as="xs:string" select="resolve-uri('../../../../../../specifications/profile-resolution/profile-resolution-examples')"/>
+    <!-- Location of sample files, relative to this test file -->
+    <x:variable name="ov:filedir" as="xs:string" select="resolve-uri('../../../../specifications/profile-resolution/profile-resolution-examples',$x:xspec-uri)"/>
 
     <x:variable name="ov:unique" as="function(*)"
         select="function($seq as xs:string*) as xs:boolean {
