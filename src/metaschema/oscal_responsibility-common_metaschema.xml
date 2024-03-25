@@ -301,6 +301,7 @@
       <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented"> machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this satisfied control implementation entry elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>control implementation</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
     </define-flag>
     <flag ref="responsibility-uuid" required="no" />
+    <flag ref="inherited-uuid" required="no" />
     <flag ref="exportable" />
     <model>
       <define-field name="description" as-type="markup-multiline" min-occurs="1"
@@ -378,6 +379,7 @@
     </constraint>
   </define-assembly>
 
+  <!-- FLAGS DEFINITIONS -->
   <define-flag name="provided-uuid" as-type="uuid" scope="local">
     <formal-name>Provided UUID</formal-name>
     <!-- Identifier Reference -->
@@ -401,6 +403,16 @@
     <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">
       machine-oriented</a> identifier reference to a control implementation that satisfies a
       responsibility imposed by a leveraged system.</description>
+  </define-flag>
+
+  <define-flag name="inherited-uuid" as-type="uuid" scope="local">
+    <formal-name>Inherited UUID</formal-name>
+    <!-- Identifier Reference -->
+    <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">
+      machine-oriented</a> identifier reference to the control inherited by the leveraging system from the 
+      leveraged system. The complete satisfaction of the inherited control might depend on responsibilities 
+      that must be locally satisfied by the leveraging system or further passed on as customer responsibilities.
+      This flag binds the inherited control information with current additional control satisfaction information.</description>
   </define-flag>
 
 </METASCHEMA>
