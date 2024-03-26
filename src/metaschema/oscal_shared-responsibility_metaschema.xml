@@ -20,7 +20,7 @@
     <p>The most important assemblies to consider within this current version are: provided,
       responsibilities, inherited, and satisfied.</p>
   </remarks>
-  
+
   <!-- IMPORT STATEMENTS -->
   <!-- Already imported in oscal_responsibility-common_metaschema.xml
   <import href="oscal_metadata_metaschema.xml" />
@@ -382,6 +382,5 @@
   <!-- 
     END: SR Additions from SSP
   -->
-
 
 </METASCHEMA>
