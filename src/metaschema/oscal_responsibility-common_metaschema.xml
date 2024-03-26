@@ -176,7 +176,9 @@
         the document.</description>
     </define-flag>
     <flag ref="provided-uuid" required="no" />
+    <!-- Identifying the implementer of an inheritable control for which a responsibility exists can be done through provided-uuid.
     <flag ref="implemented-by" required="no" />
+    -->
     <flag ref="exportable" />
     <model>
       <define-field name="description" as-type="markup-multiline" min-occurs="1"
