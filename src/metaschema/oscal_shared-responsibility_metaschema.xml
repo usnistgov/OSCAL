@@ -29,8 +29,7 @@
 
   <define-assembly name="shared-responsibility">
     <formal-name>Shared Responsibility</formal-name>
-    <description>A collection of component descriptions, which may optionally be grouped by
-      capability.</description>
+    <description>A collection of components or capabilities provided by a leveraged system and which can be inherited by a leveraging system.</description>
     <root-name>shared-responsibility</root-name>
     <define-flag name="uuid" as-type="uuid" required="yes">
       <formal-name>Shared Responsibility Universally Unique Identifier</formal-name>
