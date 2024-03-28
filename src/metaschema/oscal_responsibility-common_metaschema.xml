@@ -34,7 +34,8 @@
     have one, and the SR would serve as the first step towards digitalization. The `ssp-uuid` will not be
     required -->
     <flag ref="ssp-uuid" required="no" />
-    <flag ref="sr-uuid" required="no" />
+    <!-- should an SR be created from another SR? 
+    <flag ref="sr-uuid" required="no" /> -->
 
     <model>
       <define-field name="title" as-type="markup-line">
@@ -101,7 +102,7 @@
 
   <define-assembly name="provided">
     <formal-name>Provided Control Implementation</formal-name>
-    <description>Describes a capability which may be inherited by a leveraging system.</description>
+    <description>Describes a capability provided by a component of the leveraged system which may be inherited by a leveraging system.</description>
     <!-- CHANGED: "provided-group" to "provided" -->
     <!-- <group-as name="provided" in-json="ARRAY"/> -->
     <define-flag name="uuid" as-type="uuid" required="yes">
@@ -404,9 +405,14 @@
     <formal-name>Implementer UUID</formal-name>
     <!-- Identifier Reference -->
     <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">
-      machine-oriented</a> identifier reference to the control implementation. An inheritable
-      control provided by a leveraged system can be inherited by a leveraging system and further
-      provid it to their customers, with or without associated responsibilities.</description>
+      machine-oriented</a>, <a
+      href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally
+    unique</a> identifier with <a
+      href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a>
+    scope that is used to reference the party responsible for the implemented capability or control. An inheritable
+      capability or control provided by a leveraged system can be inherited by a leveraging system and further
+      provided to leveraging system's customers. The entity responsible for implementing the control is often
+       rederred to as the “Control Originator”.</description>
   </define-flag>
 
   <define-flag name="responsibility-uuid" as-type="uuid" scope="local">
