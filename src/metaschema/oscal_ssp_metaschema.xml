@@ -695,7 +695,13 @@
         <formal-name>Leveraged Authorization</formal-name>
         <description>A description of another authorized system from which this system inherits
           capabilities that satisfy security requirements. Another term for this concept is a <em>common
-          control provider</em>.</description>
+          control provider</em>.The information regarding the inheritable capabilities can be retrieved 
+        directly from the leveraging system's SSP (when available) and can be noted in the <code>ssp-uuid</code> flag, 
+        or from a <code>shared-responsibility</code> instance of the system, when the leveraging system's SSP  
+        is not available (docuemnted in this case by the <code>sr-uuid</code> flag). 
+        Additionally, when the leveraging system's SSP is available in OSCAL, the 
+        <em>UUID</em> of the leveraged system's SSP will be availabe in the <code>source-ssp</code> of 
+        the <code>shared-responsibility</code> instance, provided by the <code>ssp-uuid</code> flag.</description>
         <group-as name="leveraged-authorizations" in-json="ARRAY" />
         <define-flag name="uuid" as-type="uuid" required="yes">
           <formal-name>Leveraged Authorization Universally Unique Identifier</formal-name>
