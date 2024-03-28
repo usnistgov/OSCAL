@@ -29,7 +29,8 @@
 
   <define-assembly name="shared-responsibility">
     <formal-name>Shared Responsibility</formal-name>
-    <description>A collection of components or capabilities provided by a leveraged system and which can be inherited by a leveraging system.</description>
+    <description>A collection of components or capabilities provided by a leveraged system and which
+      can be inherited by a leveraging system.</description>
     <root-name>shared-responsibility</root-name>
     <define-flag name="uuid" as-type="uuid" required="yes">
       <formal-name>Shared Responsibility Universally Unique Identifier</formal-name>
@@ -322,15 +323,27 @@
       <!-- CHANGED from Export for SRM: Shared Responsibility Assembly -->
       <assembly ref="provided" max-occurs="unbounded">
         <group-as name="provided" in-json="ARRAY" />
+        <remarks>
+          <p>The leveraged system's <code>provided</code> information could be used to document the leveraging system's <code>inherited</code> capability.</p>
+        </remarks>
       </assembly>
       <assembly ref="responsibility" max-occurs="unbounded">
         <group-as name="responsibilities" in-json="ARRAY" />
+        <remarks>
+          <p>The leveraged system's <code>responsibity</code> information could be used to docuemnt the leveraged system's <code>satisfied</code> capability.</p>
+        </remarks>
       </assembly>
       <assembly ref="inherited" max-occurs="unbounded">
         <group-as name="inherited" in-json="ARRAY" />
+        <remarks>
+          <p>The leveraged system's <code>provided</code> information could be used to document the leveraging system's <code>inherited</code> capability.</p>
+        </remarks>
       </assembly>
       <assembly ref="satisfied" max-occurs="unbounded">
         <group-as name="satisfied" in-json="ARRAY" />
+        <remarks>
+          <p>The leveraged system's <code>responsibity</code> information could be used to docuemnt the leveraged system's <code>satisfied</code> capability.</p>
+        </remarks>
       </assembly>
       <assembly ref="responsible-role" max-occurs="unbounded">
         <group-as name="responsible-roles" in-json="ARRAY" />
