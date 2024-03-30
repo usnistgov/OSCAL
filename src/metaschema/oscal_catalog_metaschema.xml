@@ -130,14 +130,12 @@
                   <assembly ref="part" max-occurs="unbounded">
                         <group-as name="parts" in-json="ARRAY"/>
                   </assembly>
-                  <choice>
-                        <assembly ref="group" max-occurs="unbounded">
-                              <group-as name="groups" in-json="ARRAY"/>
-                        </assembly>
-                        <assembly ref="control" max-occurs="unbounded">
-                              <group-as name="controls" in-json="ARRAY"/>
-                        </assembly>
-                  </choice>
+                  <assembly ref="group" max-occurs="unbounded">
+                        <group-as name="groups" in-json="ARRAY"/>
+                  </assembly>
+                  <assembly ref="control" max-occurs="unbounded">
+                        <group-as name="controls" in-json="ARRAY"/>
+                  </assembly>
                   <!--<any/>-->
             </model>
             <constraint>
