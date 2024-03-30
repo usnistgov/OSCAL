@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="../../build/metaschema/toolchains/xslt-M4/validate/metaschema-composition-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
-<!-- OSCAL CATALOG METASCHEMA -->
+<!-- OSCAL MAPPING METASCHEMA -->
 <!-- validate with XSD and Schematron (linked) -->
 <!DOCTYPE METASCHEMA [
    <!ENTITY allowed-values-control-group-property-name SYSTEM "shared-constraints/allowed-values-control-group-property-name.ent">
@@ -35,7 +35,13 @@
                         <use-name>provenance</use-name>
                   </assembly>
                   <assembly ref="mapping" min-occurs="1" max-occurs="unbounded">
-                        <group-as name="mappings"/>
+                        <group-as name="mappings" />
+                  </assembly>
+                  <assembly ref="gap-summary">
+                        <use-name>source-gap-summary</use-name>
+                  </assembly>
+                  <assembly ref="gap-summary">
+                        <use-name>target-gap-summary</use-name>
                   </assembly>
                   <assembly ref="back-matter">
                         <remarks>
@@ -63,7 +69,7 @@
                         <use-name>target-resource</use-name>
                   </assembly>
                   <assembly ref="map" min-occurs="1" max-occurs="unbounded">
-                        <group-as name="maps" in-json="ARRAY"/>
+                        <group-as name="maps" in-json="ARRAY" />
                   </assembly>
             </model>
       </define-assembly>
