@@ -325,9 +325,11 @@
         <description>Select a control or controls from an imported control set.</description>
         <flag ref="with-child-controls"/>
         <model>
-              <field ref="with-id" max-occurs="unbounded">
-                    <group-as name="with-ids" in-json="ARRAY"/>
-              </field>
+              <define-field name="with-id" as-type="token" max-occurs="unbounded">
+                  <formal-name>Match Controls by Identifier</formal-name>
+                  <description>Selecting a control by its ID given as a literal.</description>
+                  <group-as name="with-ids" in-json="ARRAY"/>
+              </define-field>
               <assembly ref="matching" max-occurs="unbounded">
                     <group-as name="matching" in-json="ARRAY"/>
               </assembly>
