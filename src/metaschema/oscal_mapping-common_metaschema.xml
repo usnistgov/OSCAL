@@ -88,7 +88,7 @@
                             edge cases such is the need to tailor a <code>relationship</code> in the context 
                             of a component or system to better align with the implementation and configuration 
                             of the respective component or system. Also, this <code>relationship</code> is 
-                            provided in support of the <a href="https://doi.org/10.6028/NIST.IR.8477"></a>NIST IR 8477</a>.</enum>
+                            provided in support of the <a href="https://doi.org/10.6028/NIST.IR.8477">NIST IR 8477</a>.</enum>
                     </allowed-values>
                 </constraint>
                 <remarks>
