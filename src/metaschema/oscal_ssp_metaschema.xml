@@ -1135,7 +1135,7 @@
 
       <assembly ref="export" max-occurs="1">
         <remarks>
-          <p>TODO: Documentation</p>
+          <p>This data field has been <em>deprecated</em> in favor of using the <code>exportable</code> flag to align with the <em>Shared Responsibility</em> model which needs the ability of capturing, when needed, the customers' and providers' control satisfaction implementations and responsibilities.</p>
         </remarks>
       </assembly>
 

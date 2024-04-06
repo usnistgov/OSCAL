@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="../../build/metaschema-xslt/src/validate/metaschema-composition-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <!-- <!DOCTYPE METASCHEMA [
-  <!ENTITY allowed-values-responsible-roles-system SYSTEM "./shared-constraints/allowed-values-responsible-roles-system.ent">
-  <!ENTITY allowed-values-responsible-roles-operations SYSTEM "./shared-constraints/allowed-values-responsible-roles-operations.ent">
-  <!ENTITY allowed-values-responsible-roles-component-production SYSTEM "./shared-constraints/allowed-values-responsible-roles-component-production.ent">
+  <!ENTITY allowed-values-responsible-roles-system SYSTEM
+"./shared-constraints/allowed-values-responsible-roles-system.ent">
+  <!ENTITY allowed-values-responsible-roles-operations SYSTEM
+"./shared-constraints/allowed-values-responsible-roles-operations.ent">
+  <!ENTITY allowed-values-responsible-roles-component-production SYSTEM
+"./shared-constraints/allowed-values-responsible-roles-component-production.ent">
 ]>
 -->
 <METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -31,7 +34,8 @@
     <description>The leveraged System Security Plan (SSP) that documents the components implementing
       inheritable controls.</description>
     <!-- While it is desirable for the SSP of the system to be in OSCAL, legacy systems might not
-    have one, and the SR would serve as the first step towards digitalization. The `ssp-uuid` will not be
+    have one, and the SR would serve as the first step towards digitalization. The `ssp-uuid` will not
+    be
     required -->
     <flag ref="ssp-uuid" required="no" />
     <!-- should an SR be created from another SR? 
@@ -102,7 +106,8 @@
 
   <define-assembly name="provided">
     <formal-name>Provided Control Implementation</formal-name>
-    <description>Describes a capability provided by a component of the leveraged system which may be inherited by a leveraging system.</description>
+    <description>Describes a capability provided by a component of the leveraged system which may be
+      inherited by a leveraging system.</description>
     <!-- CHANGED: "provided-group" to "provided" -->
     <!-- <group-as name="provided" in-json="ARRAY"/> -->
     <define-flag name="uuid" as-type="uuid" required="yes">
@@ -130,7 +135,9 @@
       <define-field name="description" as-type="markup-multiline" min-occurs="1"
         in-xml="WITH_WRAPPER">
         <formal-name>Provided Control Implementation Description</formal-name>
-        <description>An implementation statement that describes the aspects of the control or control statement implementation that can be provided to another system leveraging this system.</description>
+        <description>An implementation statement that describes the aspects of the control or
+          control statement implementation that can be provided to another system leveraging this
+          system.</description>
       </define-field>
       <assembly ref="property" max-occurs="unbounded">
         <group-as name="props" in-json="ARRAY" />
@@ -148,7 +155,8 @@
       <is-unique id="unique-provided-responsible-role" target="responsible-role">
         <key-field target="@role-id" />
         <remarks>
-          <p>Since <code>responsible-role</code> associates multiple <code>party-uuid</code> entries with a single <code>role-id</code>, each role-id must be referenced only once.</p>
+          <p>Since <code>responsible-role</code> associates multiple <code>party-uuid</code> entries
+            with a single <code>role-id</code>, each role-id must be referenced only once.</p>
         </remarks>
       </is-unique>
     </constraint>
@@ -177,7 +185,8 @@
         the document.</description>
     </define-flag>
     <flag ref="provided-uuid" required="no" />
-    <!-- Identifying the implementer of an inheritable control for which a responsibility exists can be done through provided-uuid.
+    <!-- Identifying the implementer of an inheritable control for which a responsibility exists can
+    be done through provided-uuid.
     <flag ref="implemented-by" required="no" />
     -->
     <flag ref="exportable" />
@@ -280,12 +289,20 @@
     <define-flag name="uuid" as-type="uuid" required="yes">
       <formal-name>Satisfied Universally Unique Identifier</formal-name>
       <!-- Identifier Declaration -->
-      <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">
-        machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally
-        unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a>
-        scope that can be used to reference this satisfied control implementation entry elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ssp-identifiers">this or other
-        OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>control implementation</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL
-        instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+      <description>A <a
+          href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">
+        machine-oriented</a>, <a
+          href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally
+        unique</a> identifier with <a
+          href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a>
+        scope that can be used to reference this satisfied control implementation entry elsewhere in <a
+          href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ssp-identifiers">this or other
+        OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>control implementation</code>
+        can be used to reference the data item locally or globally (e.g., in an imported OSCAL
+        instance). This UUID should be assigned <a
+          href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>,
+        which means it should be consistently used to identify the same subject across revisions of
+        the document.</description>
     </define-flag>
     <flag ref="responsibility-uuid" required="no" />
     <flag ref="inherited-uuid" required="no" />
@@ -325,13 +342,8 @@
     <formal-name>Shared Responsibility</formal-name>
     <description>Identifies content intended for external consumption, such as with leveraged
       organizations, customer responsibility documentation, and shared security responsibility
-      documentation.</description>
-
+      documentation. </description>
     <model>
-      <!-- Not clear why exportable flag in an export assembly would be needed. It did not exist
-      anyway.
-        <flag ref="exportable" /> 
-      -->
       <define-field name="description" as-type="markup-multiline" in-xml="WITH_WRAPPER">
         <formal-name>Control Implementation Export Description</formal-name>
         <description>An implementation statement that describes the aspects of the control or
@@ -353,7 +365,6 @@
       </assembly>
       <field ref="remarks" in-xml="WITH_WRAPPER" />
     </model>
-
     <constraint>
       <has-cardinality target="provided|responsibility" min-occurs="1" />
       <index name="shared-responsibility-provided-uuid" target="//shared-responsibility/provided">
@@ -367,26 +378,26 @@
   </define-assembly>
 
   <!-- FLAG DEFINITIONS -->
-  <define-flag name="ssp-uuid" as-type="uuid" >
+  <define-flag name="ssp-uuid" as-type="uuid">
     <formal-name>SSP Universally Unique Identifier</formal-name>
     <description>A <a
         href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">
       machine-oriented</a>, <a
-        href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally
-      unique</a> identifier with <a
+        href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a>
+      identifier with <a
         href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a>
       scope that can be used to reference the sourced SSP in <a
         href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#scope">this or other OSCAL
       instances</a>.</description>
   </define-flag>
 
-  <define-flag name="sr-uuid" as-type="uuid" >
+  <define-flag name="sr-uuid" as-type="uuid">
     <formal-name>SR Universally Unique Identifier</formal-name>
     <description>A <a
         href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">
       machine-oriented</a>, <a
-        href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally
-      unique</a> identifier with <a
+        href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a>
+      identifier with <a
         href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a>
       scope that can be used to reference the Shared Responsibility leveraged in <a
         href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#scope">this or other OSCAL
@@ -406,13 +417,13 @@
     <!-- Identifier Reference -->
     <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">
       machine-oriented</a>, <a
-      href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally
-    unique</a> identifier with <a
-      href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a>
-    scope that is used to reference the party responsible for the implemented capability or control. An inheritable
-      capability or control provided by a leveraged system can be inherited by a leveraging system and further
-      provided to leveraging system's customers. The entity responsible for implementing the control is often
-       rederred to as the “Control Originator”.</description>
+        href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a>
+      identifier with <a
+        href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a>
+      scope that is used to reference the party responsible for the implemented capability or
+      control. An inheritable capability or control provided by a leveraged system can be inherited
+      by a leveraging system and further provided to leveraging system's customers. The entity
+      responsible for implementing the control is often rederred to as the “Control Originator”.</description>
   </define-flag>
 
   <define-flag name="responsibility-uuid" as-type="uuid" scope="local">
@@ -429,9 +440,9 @@
     <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">
       machine-oriented</a> identifier reference to the control inherited by the leveraging system
       from the leveraged system. The satisfaction of the inherited control might depend on the
-      responsibilities by the leveraging system and must be satisfied by either the leveraging system 
-      or be further passed on as customer responsibilities. The flag binds the inherited control information 
-      with this control information.</description>
+      responsibilities by the leveraging system and must be satisfied by either the leveraging
+      system or be further passed on as customer responsibilities. The flag binds the inherited
+      control information with this control information.</description>
   </define-flag>
 
   <!-- FIELDS -->
