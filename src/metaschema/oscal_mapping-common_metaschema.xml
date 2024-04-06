@@ -14,7 +14,42 @@
 
     <import href="oscal_metadata_metaschema.xml" />
 
+    <!-- #################### -->
     <!-- ASSEMBLY DEFINITIONS -->
+    <!-- #################### -->
+
+    <define-assembly name="mapping">
+        <formal-name>Control Mapping</formal-name>
+        <description>A mapping between two target resources.</description>
+        <define-flag name="uuid" as-type="uuid" required="yes">
+            <formal-name>Mapping Universally Unique Identifier</formal-name>
+            <description>A <a
+                    href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">
+                machine-oriented</a>, <a
+                    href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally
+                unique</a> identifier with <a
+                    href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">
+                cross-instance</a> scope that can be used to reference this mapping definition
+                elsewhere in this or other OSCAL instances. The locally defined <em>UUID</em> of the <code>
+                mapping</code> can be used to reference the data item locally or globally (e.g., in
+                an imported OSCAL instance). This UUID should be assigned <a
+                    href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">
+                per-subject</a>, which means it should be consistently used to identify the same
+                mapping across revisions of the document.</description>
+        </define-flag>
+        <model>
+            <assembly ref="mapping-resource-reference" min-occurs="1">
+                <use-name>source-resource</use-name>
+            </assembly>
+            <assembly ref="mapping-resource-reference" min-occurs="1">
+                <use-name>target-resource</use-name>
+            </assembly>
+            <assembly ref="map" min-occurs="1" max-occurs="unbounded">
+                <group-as name="maps" in-json="ARRAY" />
+            </assembly>
+        </model>
+    </define-assembly>
+
     <define-assembly name="map">
         <formal-name>Mapping Entry</formal-name>
         <description>A relationship-based mapping between a source and target set consisting of
@@ -50,7 +85,7 @@
                     map</code>. The <code>relationship</code> type and the <code>matching-rationale</code>
                     must be used together. However, more than one <code>matching-rationale</code>
                     method may apply to a <code>source</code> and <code>target</code> pair. </description>
-                <!-- json-value-key>type</json-value-key -->
+                <json-value-key>type</json-value-key>
                 <constraint>
                     <allowed-values target=".[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]">
                         <enum value="equivalent-to">The <code>source</code> and <code>target</code>
@@ -82,13 +117,15 @@
                             could result on <code>relationships</code> mapping that allows for more
                             inference than using this relationship type.</enum>
                         <enum value="no-relationship">The <code>source</code> and <code>target</code>
-                            requirements are not related; their content does not overlap. This relation 
-                            is introduced not with the intention to support exhaustiv mapping of all  
-                            requirements and statements that have no overlap, but rather to support 
-                            edge cases such is the need to tailor a <code>relationship</code> in the context 
-                            of a component or system to better align with the implementation and configuration 
-                            of the respective component or system. Also, this <code>relationship</code> is 
-                            provided in support of the <a href="https://doi.org/10.6028/NIST.IR.8477">NIST IR 8477</a>.</enum>
+                            requirements are not related; their content does not overlap. This
+                            relation is introduced not with the intention to support exhaustiv
+                            mapping of all requirements and statements that have no overlap, but
+                            rather to support edge cases such is the need to tailor a <code>
+                            relationship</code> in the context of a component or system to better
+                            align with the implementation and configuration of the respective
+                            component or system. Also, this <code>relationship</code> is provided in
+                            support of the <a href="https://doi.org/10.6028/NIST.IR.8477">NIST IR
+                            8477</a>.</enum>
                     </allowed-values>
                 </constraint>
                 <remarks>
@@ -208,7 +245,6 @@
         </model>
     </define-assembly>
 
-
     <!-- Original
     <qualifier
         subject=“source|target|both”
@@ -313,7 +349,7 @@
         category=“restricted|addressable|blocked”>
         Description of qualifier...
     </qualifier>
--->
+    -->
 
     <define-assembly name="gap-summary">
         <formal-name>Gap Summary</formal-name>
@@ -323,7 +359,6 @@
             relationship-gal</code>. </description>
         <define-flag name="uuid" as-type="uuid" required="yes">
             <formal-name>Gap Summary Universally Unique Identifier</formal-name>
-            <!-- Identifier Declaration -->
             <description>A <a
                     href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">
                 machine-oriented</a>, <a
@@ -355,6 +390,10 @@
         </model>
     </define-assembly>
 
+    <!-- TBD: Move assembly to a common file since it is also defined in oscal_profile_metaschema.xml.-->
+    <!-- NOTE: there is another locallly defined assembly but it is NOT identical with this one in mapping and profile -->
+    <!-- NOTE: NOT clear the selection of controls using pattern matching is needed. If NOT needed, we can simplify but this 
+        assembly will be similar to the assessemnt-common one and cannot be moved. -->
     <define-assembly name="select-control-by-id" scope="local">
         <formal-name>Select Control</formal-name>
         <description>Select a control or controls from an imported control set.</description>
@@ -378,13 +417,26 @@
         </remarks>
     </define-assembly>
 
-    <!-- FIELD DEFINITIONS-->
+    <!-- TBD: Move assembly to a common file since it is also defined in oscal_profile_metaschema.xml -->
+    <!-- NOTE: This assembly used in mapping and profile is NOT used in the assessment-common for select-control-by-id -->
+    <define-assembly name="matching">
+        <formal-name>Match Controls by Pattern</formal-name>
+        <description>Selecting a set of controls by matching their IDs with a wildcard
+            pattern.</description>
+        <flag ref="pattern" />
+    </define-assembly>
+
+    <!-- ################# -->
+    <!-- FIELD DEFINITIONS -->
+    <!-- ################# -->
     <define-field name="confidence-score" as-type="string">
         <formal-name>Confidence Score</formal-name>
         <description>If automation is used, this can record a confidence score, if assigned.</description>
     </define-field>
 
+    <!-- ################ -->
     <!-- FLAG DEFINITIONS -->
+    <!-- ################ -->
     <define-flag name="matching-rationale" as-type="string">
         <formal-name>Matching</formal-name>
         <description>The method used for relating controls within the mapping. The supported methods
@@ -429,8 +481,15 @@
         </constraint>
     </define-flag>
 
-    <!-- From oscal_control-common_metaschema the only flag needed. 
-        Better near-future definition re-organization is needed to avoid the duplication. -->
+    <!-- TBD: Move assembly to a common file since it is also defined in oscal_profile_metaschema.xml -->
+    <define-flag as-type="string" name="pattern">
+        <formal-name>Pattern</formal-name>
+        <description>A <a href="https://en.wikipedia.org/wiki/Glob_(programming)">glob expression</a>
+            matching the IDs of one or more controls to be selected.</description>
+    </define-flag>
+
+    <!-- TBD: Move assembly to a common file since it is also defined in oscal_control-common_metaschema.xml -->
+    <!-- NOTE: This is the only flag needed, and including all ones defined in oscal_control-common_metaschema.xml, constraints included. -->
     <define-flag as-type="token" name="with-child-controls">
         <formal-name>Include Contained Controls with Control</formal-name>
         <description>When a control is included, whether its child (dependent) controls are also
