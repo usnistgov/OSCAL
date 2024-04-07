@@ -900,7 +900,7 @@
 
       <assembly ref="export" max-occurs="1">
         <remarks>
-          <p>This data field has been <em>deprecated</em> in favor of using the <code>exportable</code> flag to align with the <em>Shared Responsibility</em> model which needs the ability of capturing, when needed, the customers' and providers' control satisfaction implementations and responsibilities.</p>
+          <p>This data field has been **deprecated** in favor of the <code>exportable</code> flag to align the <code>provided</code>, <code>responsibilities</code>, <code>inherited</code> and <code>satisfied</code> asseblies in the System Security Plan (SSP) and the Shared Responsibility models and provide the cability of capturing, when needed, the customers' and providers' control satisfaction implementations and responsibilities.</p>
         </remarks>
       </assembly>
 

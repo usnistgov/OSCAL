@@ -340,7 +340,7 @@
 
   <define-assembly name="export" deprecated="1.2.0">
     <formal-name>Shared Responsibility</formal-name>
-    <description>Identifies content intended for external consumption, such as with leveraged
+    <description>**(deprecated)** Identifies content intended for external consumption, such as with leveraged
       organizations, customer responsibility documentation, and shared security responsibility
       documentation. </description>
     <model>
