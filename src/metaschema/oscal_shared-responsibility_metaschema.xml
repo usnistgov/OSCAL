@@ -14,11 +14,9 @@
   <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
   <json-base-uri>http://csrc.nist.gov/ns/oscal</json-base-uri>
   <remarks>
-    <p>This is a prototype OSCAL Shared Responsibility Model for evaluation purposes, based on a
-      copy of the OSCAL Component Definition Model.</p>
+    <p>This is a prototype OSCAL Shared Responsibility Model for evaluation purposes, based on a copy of the OSCAL Component Definition Model.</p>
     <p>This prototype may contain assemblies that are not intended in this context.</p>
-    <p>The most important assemblies to consider within this current version are: provided,
-      responsibilities, inherited, and satisfied.</p>
+    <p>The most important assemblies to consider within this current version are: provided, responsibilities, inherited, and satisfied.</p>
   </remarks>
 
   <!-- IMPORT STATEMENTS -->
@@ -29,13 +27,11 @@
 
   <define-assembly name="shared-responsibility">
     <formal-name>Shared Responsibility</formal-name>
-    <description>A collection of components or capabilities provided by a leveraged system and which
-      can be inherited by a leveraging system.</description>
+    <description>A collection of components or capabilities provided by a leveraged system and which can be inherited by a leveraging system.</description>
     <root-name>shared-responsibility</root-name>
     <define-flag name="uuid" as-type="uuid" required="yes">
       <formal-name>Shared Responsibility Universally Unique Identifier</formal-name>
-      <description>Provides a globally unique means to identify a given component definition
-        instance.</description>
+      <description>Provides a globally unique means to identify a given component definition instance.</description>
     </define-flag>
     <model>
       <assembly ref="metadata" min-occurs="1" />
@@ -65,8 +61,7 @@
       <define-field name="description" as-type="markup-multiline" min-occurs="1"
         in-xml="WITH_WRAPPER">
         <formal-name>Control Implementation Description</formal-name>
-        <description>A statement describing important things to know about how this set of control
-          satisfaction documentation is approached.</description>
+        <description>A statement describing important things to know about how this set of control satisfaction documentation is approached.</description>
       </define-field>
       <assembly ref="set-parameter" max-occurs="unbounded">
         <group-as name="set-parameters" in-json="ARRAY" />
@@ -79,16 +74,12 @@
       <is-unique id="unique-ssp-control-implementation-set-parameter" target="set-parameter">
         <key-field target="@param-id" />
         <remarks>
-          <p>Since multiple <code>set-parameter</code> entries can be provided, each parameter must
-            be set only once.</p>
+          <p>Since multiple <code>set-parameter</code> entries can be provided, each parameter must be set only once.</p>
         </remarks>
       </is-unique>
     </constraint>
     <remarks>
-      <p>Use of <code>set-parameter</code> in this context, sets the parameter for all controls
-        referenced by any <code>implemented-requirement</code> contained in this context. Any <code>
-        set-parameter</code> defined in a child context will override this value. If not overridden
-        by a child, this value applies in the child context.</p>
+      <p>Use of <code>set-parameter</code> in this context, sets the parameter for all controls referenced by any <code>implemented-requirement</code> contained in this context. Any <code>set-parameter</code> defined in a child context will override this value. If not overridden by a child, this value applies in the child context.</p>
     </remarks>
   </define-assembly>
   <define-assembly name="implemented-requirement" scope="local">
@@ -97,20 +88,7 @@
     <define-flag name="uuid" as-type="uuid" required="yes">
       <formal-name>Control Requirement Universally Unique Identifier</formal-name>
       <!-- Identifier Declaration -->
-      <description>A <a
-          href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">
-        machine-oriented</a>, <a
-          href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally
-        unique</a> identifier with <a
-          href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a>
-        scope that can be used to reference this control requirement elsewhere in <a
-          href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ssp-identifiers">this or other
-        OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>control requirement</code>
-        can be used to reference the data item locally or globally (e.g., in an imported OSCAL
-        instance). This UUID should be assigned <a
-          href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>,
-        which means it should be consistently used to identify the same subject across revisions of
-        the document.</description>
+      <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this service protocol information elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>service protocol</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
     </define-flag>
     <flag ref="control-id" required="yes" />
     <model>
@@ -144,11 +122,9 @@
       </allowed-values>
       <allowed-values
         target="(.|statement|.//by-component)/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='control-origination']/@value">
-        <enum value="organization">The control is implemented by the organization owning the system,
-          but is not specific to the system itself.</enum>
+        <enum value="organization">The control is implemented by the organization owning the system, but is not specific to the system itself.</enum>
         <enum value="system-specific">The control is implemented specifically to this system.</enum>
-        <enum value="customer-configured">The control is provided by the system, but must be
-          configured by the customer.</enum>
+        <enum value="customer-configured">The control is provided by the system, but must be configured by the customer.</enum>
         <enum value="customer-provided">The control must be implemented by the customer.</enum>
         <enum value="inherited">This control is inherited from an underlying system.</enum>
       </allowed-values>
@@ -165,44 +141,36 @@
       </index-has-key>
       <has-cardinality target=".//by-component" min-occurs="1">
         <remarks>
-          <p>Since all implementation statements are defined at the by-component level (e.g.,
-            type=this-system), there must be at least one by-component.</p>
+          <p>Since all implementation statements are defined at the by-component level (e.g., type=this-system), there must be at least one by-component.</p>
         </remarks>
       </has-cardinality>
       <is-unique id="unique-ssp-implemented-requirement-set-parameter" target="set-parameter">
         <key-field target="@param-id" />
         <remarks>
-          <p>Since multiple <code>set-parameter</code> entries can be provided, each parameter must
-            be set only once.</p>
+          <p>Since multiple <code>set-parameter</code> entries can be provided, each parameter must be set only once.</p>
         </remarks>
       </is-unique>
       <is-unique id="unique-ssp-implemented-requirement-responsible-role" target="responsible-role">
         <key-field target="@role-id" />
         <remarks>
-          <p>Since <code>responsible-role</code> associates multiple <code>party-uuid</code> entries
-            with a single <code>role-id</code>, each role-id must be referenced only once.</p>
+          <p>Since <code>responsible-role</code> associates multiple <code>party-uuid</code> entries with a single <code>role-id</code>, each role-id must be referenced only once.</p>
         </remarks>
       </is-unique>
       <is-unique id="unique-ssp-implemented-requirement-statement" target="statement">
         <key-field target="@statement-id" />
         <remarks>
-          <p>Since <code>statement</code> entries can be referenced using the statement's
-            statement-id, each statement must be referenced only once.</p>
+          <p>Since <code>statement</code> entries can be referenced using the statement's statement-id, each statement must be referenced only once.</p>
         </remarks>
       </is-unique>
       <is-unique id="unique-ssp-implemented-requirement-by-component" target="by-component">
         <key-field target="@component-uuid" />
         <remarks>
-          <p>Since <code>by-component</code> can reference <code>component</code> entries using the
-            component's uuid, each component must be referenced only once. This ensures that all
-            implementation statements are contained in the same <code>by-component</code> entry.</p>
+          <p>Since <code>by-component</code> can reference <code>component</code> entries using the component's uuid, each component must be referenced only once. This ensures that all implementation statements are contained in the same <code>by-component</code> entry.</p>
         </remarks>
       </is-unique>
     </constraint>
     <remarks>
-      <p>Use of <code>set-parameter</code> in this context, sets the parameter for the referenced
-        control. Any <code>set-parameter</code> defined in a child context will override this value.
-        If not overridden by a child, this value applies in the child context.</p>
+      <p>Use of <code>set-parameter</code> in this context, sets the parameter for the referenced control. Any <code>set-parameter</code> defined in a child context will override this value. If not overridden by a child, this value applies in the child context.</p>
     </remarks>
   </define-assembly>
   <define-assembly name="statement" scope="local">
@@ -216,17 +184,7 @@
     <define-flag name="uuid" as-type="uuid" required="yes">
       <formal-name>Control Statement Reference Universally Unique Identifier</formal-name>
       <!-- Identifier Reference -->
-      <description>A <a
-          href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">
-        machine-oriented</a>, <a
-          href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally
-        unique</a> identifier with <a
-          href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a>
-        scope that can be used to reference this control statement elsewhere in <a
-          href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ssp-identifiers">this or other
-        OSCAL instances</a>. The <em>UUID</em> of the <code>control statement</code> in the source
-        OSCAL instance is sufficient to reference the data item locally or globally (e.g., in an
-        imported OSCAL instance).</description>
+      <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this service protocol information elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>service protocol</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
     </define-flag>
     <model>
       <assembly ref="property" max-occurs="unbounded">
@@ -250,17 +208,14 @@
       <is-unique id="unique-ssp-statement-responsible-role" target="responsible-role">
         <key-field target="@role-id" />
         <remarks>
-          <p>Since <code>responsible-role</code> associates multiple <code>party-uuid</code> entries
-            with a single <code>role-id</code>, each role-id must be referenced only once.</p>
+          <p>Since <code>responsible-role</code> associates multiple <code>party-uuid</code> entries with a single <code>role-id</code>, each role-id must be referenced only once.</p>
         </remarks>
       </is-unique>
       <is-unique id="unique-ssp-implemented-requirement-statement-by-component"
         target="by-component">
         <key-field target="@component-uuid" />
         <remarks>
-          <p>Since <code>by-component</code> can reference <code>component</code> entries using the
-            component's uuid, each component must be referenced only once. This ensures that all
-            implementation statements are contained in the same <code>by-component</code> entry.</p>
+          <p>Since <code>by-component</code> can reference <code>component</code> entries using the component's uuid, each component must be referenced only once. This ensures that all implementation statements are contained in the same <code>by-component</code> entry.</p>
         </remarks>
       </is-unique>
 
@@ -274,35 +229,18 @@
     <define-flag required="yes" name="component-uuid" as-type="uuid">
       <formal-name>Component Universally Unique Identifier Reference</formal-name>
       <!-- Identifier Reference -->
-      <description>A <a
-          href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">
-        machine-oriented</a> identifier reference to the <code>component</code> that is implemeting
-        a given control.</description>
+      <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to the <code>component</code> that is implemeting a given control.</description>
     </define-flag>
     <define-flag name="uuid" as-type="uuid" required="yes">
       <formal-name>By-Component Universally Unique Identifier</formal-name>
       <!-- Identifier Declaration -->
-      <description>A <a
-          href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">
-        machine-oriented</a>, <a
-          href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally
-        unique</a> identifier with <a
-          href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a>
-        scope that can be used to reference this by-component entry elsewhere in <a
-          href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ssp-identifiers">this or other
-        OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>by-component</code>
-        entry can be used to reference the data item locally or globally (e.g., in an imported OSCAL
-        instance). This UUID should be assigned <a
-          href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>,
-        which means it should be consistently used to identify the same subject across revisions of
-        the document.</description>
+      <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this service protocol information elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>service protocol</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
     </define-flag>
     <model>
       <define-field name="description" as-type="markup-multiline" min-occurs="1"
         in-xml="WITH_WRAPPER">
         <formal-name>Control Implementation Description</formal-name>
-        <description>An implementation statement that describes how a control or a control statement
-          is implemented within the referenced system component.</description>
+        <description>An implementation statement that describes how a control or a control statement is implemented within the referenced system component.</description>
       </define-field>
       <assembly ref="property" max-occurs="unbounded">
         <group-as name="props" in-json="ARRAY" />
@@ -315,8 +253,7 @@
       </assembly>
       <assembly ref="implementation-status">
         <remarks>
-          <p>The <code>implementation-status</code> is used to qualify the <code>status</code> value
-            to indicate the degree to which the control is implemented.</p>
+          <p>The <code>implementation-status</code> is used to qualify the <code>status</code> value to indicate the degree to which the control is implemented.</p>
         </remarks>
       </assembly>
 
@@ -355,9 +292,7 @@
       <allowed-values target="link/@rel" allow-other="yes">
         <!-- TODO: More work needs to be done around link enforcement constraints and requires
         Metaschema work on recurse-depth-first() recursive index searching. -->
-        <enum value="imported-from">The hyperlink identifies a URI pointing to the <code>component</code>
-          in a <code>component-definition</code> that originally described the <code>component</code>
-          this component was based on.</enum>
+        <enum value="imported-from">The hyperlink identifies a URI pointing to the <code>component</code> in a <code>component-definition</code> that originally described the <code>component</code> this component was based on.</enum>
       </allowed-values>
       <allowed-values target=".//responsible-role/@role-id" allow-other="yes">
         &allowed-values-responsible-roles-operations;
@@ -366,28 +301,19 @@
       <is-unique id="unique-ssp-by-component-set-parameter" target="set-parameter">
         <key-field target="@param-id" />
         <remarks>
-          <p>Since multiple <code>set-parameter</code> entries can be provided, each parameter must
-            be set only once.</p>
+          <p>Since multiple <code>set-parameter</code> entries can be provided, each parameter must be set only once.</p>
         </remarks>
       </is-unique>
 
       <allowed-values target="link/@rel" allow-other="yes">
-        <enum value="provided-by">A reference to the UUID of a control or statement <code>
-          by-component</code> object that is used as evidence of implementation.</enum>
+        <enum value="provided-by">A reference to the UUID of a control or statement <code>by-component</code> object that is used as evidence of implementation.</enum>
       </allowed-values>
       <index-has-key name="by-component-uuid" target="link[@rel='provided-by']">
         <key-field target="@href" pattern="#(.*)" />
       </index-has-key>
     </constraint>
     <remarks>
-      <p>Use of <code>set-parameter</code> in this context, sets the parameter for the control
-        referenced in the containing <code>implemented-requirement</code> applied to the referenced
-        component. If the <code>by-component</code> is used as a child of a <code>statement</code>,
-        then the parameter value also applies only in the context of the referenced statement. If
-        the same parameter is also set in the <code>control-implementation</code> or a specific <code>
-        implemented-requirement</code>, then this <code>by-component/set-parameter</code> value will
-        override the other value(s) in the context of the referenced component, control, and
-        statement (if parent).</p>
+      <p>Use of <code>set-parameter</code> in this context, sets the parameter for the control referenced in the containing <code>implemented-requirement</code> applied to the referenced component. If the <code>by-component</code> is used as a child of a <code>statement</code>, then the parameter value also applies only in the context of the referenced statement. If the same parameter is also set in the <code>control-implementation</code> or a specific <code>implemented-requirement</code>, then this <code>by-component/set-parameter</code> value will override the other value(s) in the context of the referenced component, control, and statement (if parent).</p>
     </remarks>
   </define-assembly>
 

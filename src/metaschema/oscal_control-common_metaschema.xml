@@ -148,8 +148,7 @@
                         </define-field>
                         <define-field name="usage" as-type="markup-multiline" in-xml="WITH_WRAPPER">
                                 <formal-name>Parameter Usage Description</formal-name>
-                                <description>Describes the purpose and use of a
-                                        parameter.</description>
+                                <description>Describes the purpose and use of a parameter.</description>
                         </define-field>
                         <assembly ref="parameter-constraint" max-occurs="unbounded">
                                 <use-name>constraint</use-name>
@@ -184,9 +183,7 @@
                                 <enum value="alt-label">An alternate to the value provided by the parameter's label. This will typically be qualified by a class.</enum>
                         </allowed-values>
                         <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/rmf')]/@name">
-                                <enum value="aggregates">The parent parameter provides an
-                                        aggregation of two or more other parameters, each described
-                                        by this property.</enum>
+                                <enum value="aggregates">The parent parameter provides an aggregation of two or more other parameters, each described by this property.</enum>
                         </allowed-values>
                         <expect target="." test="not(exists(@depends-on))">
                                 <message>depends-on is deprecated</message>
@@ -213,8 +210,7 @@
                                 <model>
                                         <define-field name="expression" as-type="string" min-occurs="1">
                                                 <formal-name>Constraint test</formal-name>
-                                                <description>A formal (executable) expression of a
-                                                  constraint.</description>
+                                                <description>A formal (executable) expression of a constraint.</description>
                                         </define-field>
                                         <field ref="remarks" in-xml="WITH_WRAPPER"/>
                                 </model>
@@ -253,8 +249,7 @@
                 <model>
                         <define-field name="choice" as-type="markup-line" max-occurs="unbounded">
                                 <formal-name>Choice</formal-name>
-                                <description>A value selection among several such
-                                        options.</description>
+                                <description>A value selection among several such options.</description>
                                 <json-value-key>value</json-value-key>
                                 <group-as name="choice" in-json="ARRAY"/>
                         </define-field>
