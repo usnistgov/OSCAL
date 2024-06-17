@@ -305,7 +305,7 @@
                   </constraint>
             </define-flag>
             <!-- Added Contraints as Warnings -->
-            <constraint>
+            <!-- constraint>
                   <expect level="WARNING" id="port-range-start-and-end-not-specified" target="." test="exists(@start) and exists(@end)">
                         <message>If a protocol is defined, it should include a start and end port range. To define a single port, the start and end should be the same value.</message>
                   </expect>
@@ -317,6 +317,17 @@
                   </expect>
                   <expect level="WARNING" id="port-range-end-date-is-before-start-date" target="." test="@start &lt;= @end">
                         <message>The port range specified has an end port that is less than the start port.</message>
+                  </expect>
+            </constraint -->
+            <constraint>
+                  <expect level="WARNING" target="." test="exists(@start)" id="port-range-has-start">
+                        <message>A port range should have a start port given.</message>
+                  </expect>
+                  <expect level="WARNING" target="." test="exists(@end)" id="port-range-has-end">
+                        <message>A port range should have an end port given. To define a single port, the start and end should be the same value.</message>
+                  </expect>
+                  <expect level="WARNING" target="." test="not(@start > @end)" id="port-range-starts-before-end">
+                        <message>The port range start should not be after its end.</message>
                   </expect>
             </constraint>
             <remarks>
