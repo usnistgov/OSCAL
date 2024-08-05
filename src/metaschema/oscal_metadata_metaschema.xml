@@ -570,7 +570,7 @@
                         </remarks>
                     </define-assembly>
 
-                    <define-field name="base64" as-type="base64Binary">
+                    <define-field name="base64" as-type="base64">
                         <formal-name>Base64</formal-name>
                         <description>A resource encoded using the Base64 alphabet defined by <a href="https://www.rfc-editor.org/rfc/rfc2045.html">RFC 2045</a>.</description>
                         <json-value-key>value</json-value-key>
@@ -589,7 +589,7 @@
                         <enum value="version">For resources representing a published document, this represents the version number of that document.</enum>
                         <enum value="published">For resources representing a published document, this represents the publication date of that document.</enum>
                     </allowed-values>
-                    <matches target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='published']/@value" datatype="dateTime-with-timezone"/>
+                    <matches target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='published']/@value" datatype="date-time-with-timezone"/>
                     <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='type']/@value">
                         <!-- More general. Applies across all models. -->
                         <enum value="logo">Indicates the resource is an organization's logo.</enum>
@@ -852,7 +852,7 @@
             <formal-name>Action Universally Unique Identifier</formal-name>
             <description>A unique identifier that can be used to reference this defined action elsewhere in an OSCAL document. A UUID should be consistently used for a given location across revisions of the document.</description>
         </define-flag>
-        <define-flag name="date" as-type="dateTime-with-timezone">
+        <define-flag name="date" as-type="date-time-with-timezone">
             <formal-name>Action Occurrence Date</formal-name>
             <description>The date and time when the action occurred.</description>
         </define-flag>
@@ -989,7 +989,7 @@
     <!-- #################### -->
     <!-- # Local constructs # -->
     <!-- #################### -->
-    <define-field name="published" as-type="dateTime-with-timezone" scope="local">
+    <define-field name="published" as-type="date-time-with-timezone" scope="local">
         <formal-name>Publication Timestamp</formal-name>
         <description>The date and time the document was last made available.</description>
         <remarks>
@@ -999,7 +999,7 @@
         </remarks>
     </define-field>
 
-    <define-field name="last-modified" as-type="dateTime-with-timezone" scope="local">
+    <define-field name="last-modified" as-type="date-time-with-timezone" scope="local">
         <formal-name>Last Modified Timestamp</formal-name>
         <description>The date and time the document was last stored for later retrieval.</description>
         <remarks>
@@ -1026,7 +1026,7 @@
         </remarks>
     </define-field>
 
-    <define-field name="email-address" as-type="email" scope="local">
+    <define-field name="email-address" as-type="email-address" scope="local">
         <formal-name>Email Address</formal-name>
         <description>An email address as defined by <a
                 href="https://tools.ietf.org/html/rfc5322#section-3.4.1">RFC 5322 Section
