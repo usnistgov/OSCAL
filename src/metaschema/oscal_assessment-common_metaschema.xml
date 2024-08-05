@@ -243,7 +243,7 @@
                   <define-assembly name="on-date" min-occurs="1">
                      <formal-name>On Date Condition</formal-name>
                      <description>The task is intended to occur on the specified date.</description>
-                     <define-flag name="date" as-type="dateTime-with-timezone" required="yes">
+                     <define-flag name="date" as-type="date-time-with-timezone" required="yes">
                         <formal-name>On Date Condition</formal-name>
                         <description>The task must occur on the specified date.</description>
                      </define-flag>
@@ -251,11 +251,11 @@
                   <define-assembly name="within-date-range" min-occurs="1">
                      <formal-name>On Date Range Condition</formal-name>
                      <description>The task is intended to occur within the specified date range.</description>
-                     <define-flag name="start" as-type="dateTime-with-timezone" required="yes">
+                     <define-flag name="start" as-type="date-time-with-timezone" required="yes">
                         <formal-name>Start Date Condition</formal-name>
                         <description>The task must occur on or after the specified date.</description>
                      </define-flag>
-                     <define-flag name="end" as-type="dateTime-with-timezone" required="yes">
+                     <define-flag name="end" as-type="date-time-with-timezone" required="yes">
                         <formal-name>End Date Condition</formal-name>
                         <description>The task must occur on or before the specified date.</description>
                      </define-flag>
@@ -263,7 +263,7 @@
                   <define-assembly name="at-frequency" min-occurs="1">
                      <formal-name>Frequency Condition</formal-name>
                      <description>The task is intended to occur at the specified frequency.</description>
-                     <define-flag name="period" as-type="positiveInteger" required="yes">
+                     <define-flag name="period" as-type="positive-integer" required="yes">
                         <formal-name>Period</formal-name>
                         <description>The task must occur after the specified period has elapsed.</description>
                      </define-flag>
@@ -948,11 +948,11 @@
                <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
             </model>
          </define-assembly>
-         <define-field name="collected" as-type="dateTime-with-timezone" min-occurs="1" max-occurs="1">
+         <define-field name="collected" as-type="date-time-with-timezone" min-occurs="1" max-occurs="1">
             <formal-name>Collected Field</formal-name>
             <description>Date/time stamp identifying when the finding information was collected.</description>
          </define-field>
-         <define-field name="expires" as-type="dateTime-with-timezone" min-occurs="0" max-occurs="1">
+         <define-field name="expires" as-type="date-time-with-timezone" min-occurs="0" max-occurs="1">
             <formal-name>Expires Field</formal-name>
             <description>Date/time identifying when the finding information is out-of-date and no longer valid. Typically used with continuous assessment scenarios.</description>
          </define-field>
@@ -1191,7 +1191,7 @@
             </model>
          </define-assembly>
 
-         <define-field name="deadline" as-type="dateTime-with-timezone">
+         <define-field name="deadline" as-type="date-time-with-timezone">
             <formal-name>Risk Resolution Deadline</formal-name>
             <description>The date/time by which the risk must be resolved.</description>
          </define-field>
@@ -1221,11 +1221,11 @@
                         <formal-name>Risk Task Description</formal-name>
                         <description>A human-readable description of what was done regarding the risk.</description>
                      </define-field>
-                     <define-field name="start" as-type="dateTime-with-timezone" min-occurs="1" max-occurs="1">
+                     <define-field name="start" as-type="date-time-with-timezone" min-occurs="1" max-occurs="1">
                         <formal-name>Start</formal-name>
                         <description>Identifies the start date and time of the event.</description>
                      </define-field>
-                     <define-field name="end" as-type="dateTime-with-timezone" max-occurs="1">
+                     <define-field name="end" as-type="date-time-with-timezone" max-occurs="1">
                         <formal-name>End</formal-name>
                         <description>Identifies the end date and time of the event. If the event is a point in time, the start and end will be the same date and time.</description>
                      </define-field>
