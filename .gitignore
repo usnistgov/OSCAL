@@ -7,6 +7,7 @@ vault
 /OSCAL-dev.xpr
 .vscode
 .DS_Store
+.history
 
 # Working files
 scratch

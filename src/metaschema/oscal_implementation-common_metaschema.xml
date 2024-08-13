@@ -326,7 +326,7 @@
                   <expect level="WARNING" target="." test="exists(@end)" id="port-range-has-end">
                         <message>A port range should have an end port given. To define a single port, the start and end should be the same value.</message>
                   </expect>
-                  <expect level="WARNING" target="." test="not(@start > @end)" id="port-range-starts-before-end">
+                  <expect level="WARNING" target="." test="not(@start > @end)" id="port-range-starts-before-ends">
                         <message>The port range start should not be after its end.</message>
                   </expect>
             </constraint>
