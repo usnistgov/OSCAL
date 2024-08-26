@@ -12,7 +12,7 @@ jobs:
       # Needed to post comments and issues
       issues: write
     steps:
-      - uses: actions/checkout@9bb56186c3b09b4f86b1c65136769dd318469633
+      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332
         with:
           submodules: recursive
       - uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8
