@@ -430,22 +430,6 @@
         </remarks>
     </define-assembly>
 
-    <define-flag name="location-uuid" as-type="uuid">
-        <formal-name>Location Universally Unique Identifier Reference</formal-name>
-        <!-- Identifier Reference -->
-        <description>Reference to a location by UUID.</description>
-        <prop name="value-type" value="identifier-reference"/>
-        <prop name="identifier-type" value="machine-oriented"/>
-        <prop name="identifier-scope" value="cross-instance"/>
-        <constraint>
-            <!-- TODO: Dave to resolve syntax error. Likely requires updated metaschema schema -->
-            <index-has-key name="index-metadata-location-uuid">
-                <!-- TODO: This is impacted by cross-document cross-references We need to relocate or localize this constraint. -->
-                <key-field target="."/>
-            </index-has-key>
-        </constraint>
-    </define-flag>
-
     <define-field name="location-uuid" as-type="uuid">
         <formal-name>Location Universally Unique Identifier Reference</formal-name>
         <!-- Identifier Reference -->
