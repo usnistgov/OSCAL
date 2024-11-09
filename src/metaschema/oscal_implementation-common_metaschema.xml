@@ -526,8 +526,6 @@
                   &allowed-values-component_inventory-item_property-name;
 
                               </allowed-values>
-                              <!-- ensure that at least one asset-id is provided -->
-                              <has-cardinality target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='asset-id']" min-occurs="1"/>
 
 
                               <allowed-values target="responsible-party/@role-id" allow-other="yes">
