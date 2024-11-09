@@ -232,8 +232,6 @@
             &allowed-values-component_component_service;
       </allowed-values>
 
-      <expect target="." test="not(exists((.)[not(@type='service')]/protocol))"/>
-
       <!-- ========================================================================================================== -->
       <!-- = TODO: Consider whether INTERCONNECTION constraints are appropriate here.      = -->
       <!-- =       I'm not sure I see a use case for this, but doesn't break to add later. = -->
