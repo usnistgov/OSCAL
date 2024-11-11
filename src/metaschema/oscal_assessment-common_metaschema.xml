@@ -1373,14 +1373,14 @@
                <constraint>
                   <allowed-values allow-other="yes"><!-- Other values -->
                      <enum value="http://fedramp.gov" deprecated="1.0.3">**deprecated** The FedRAMP naming system. This has been deprecated; use <code>http://fedramp.gov/ns/oscal</code> instead.</enum>
-                     <enum value="http://fedramp.gov/ns/oscal">The FedRAMP naming system.</enum>
-                     <enum value="http://csrc.nist.gov/ns/oscal"/>
+                     <enum value="http://fedramp.gov/ns/oscal">The facet naming system defined by FedRAMP.</enum>
+                     <enum value="http://csrc.nist.gov/ns/oscal">The facet naming system defined by OSCAL.</enum>
                      <enum value="http://csrc.nist.gov/ns/oscal/unknown">The facet is from an unknown taxonomy. The meaning of the name is tool or organization specific.</enum>
-                     <enum value="http://cve.mitre.org"/>
+                     <enum value="http://cve.mitre.org">The facet naming system defined by the CVE Program.</enum>
                      <!-- To identify which CVSS values to use -->
-                     <enum value="http://www.first.org/cvss/v2.0"/>
-                     <enum value="http://www.first.org/cvss/v3.0"/>
-                     <enum value="http://www.first.org/cvss/v3.1"/>
+                     <enum value="http://www.first.org/cvss/v2.0">The facet naming system for representing Common Vunerability Scoring System (CVSS) vectors as defined by the the <a href="https://www.first.org/">Forum for Incident Response and Security Teams</a> <a href="https://www.first.org/cvss/">CVSS Special Interest Group</a> (CVSS-SIG) for <a href="https://www.first.org/cvss/v2/">CVSS v2</a>.</enum>
+                     <enum value="http://www.first.org/cvss/v3.0">The facet naming system for representing Common Vunerability Scoring System (CVSS) vectors as defined by the the <a href="https://www.first.org/">Forum for Incident Response and Security Teams</a> <a href="https://www.first.org/cvss/">CVSS Special Interest Group</a> (CVSS-SIG) for <a href="https://www.first.org/cvss/v3-0/">CVSS v3.0</a>.</enum>
+                     <enum value="http://www.first.org/cvss/v3.1">The facet naming system for representing Common Vunerability Scoring System (CVSS) vectors as defined by the the <a href="https://www.first.org/">Forum for Incident Response and Security Teams</a> <a href="https://www.first.org/cvss/">CVSS Special Interest Group</a> (CVSS-SIG) for <a href="https://www.first.org/cvss/v3-1/">CVSS v3.1</a>.</enum>
                   </allowed-values>
                </constraint>
                <remarks>
@@ -1488,11 +1488,11 @@
                   <enum value="not-defined">Not Defined</enum>
                </allowed-values>
                <allowed-values target="(.)[@system='http://www.first.org/cvss/v2.0' and @name=('target-distribution', 'confidentiality-requirement', 'integrity-requirement', 'availability-requirement')]/@value">
-                  <enum value="none"></enum>
-                  <enum value="low"></enum>
-                  <enum value="medium"></enum>
-                  <enum value="high"></enum>
-                  <enum value="not-defined"></enum>
+                  <enum value="none">None</enum>
+                  <enum value="low">Low</enum>
+                  <enum value="medium">Medium</enum>
+                  <enum value="high">High</enum>
+                  <enum value="not-defined">Not Defined</enum>
                </allowed-values>
 
                <allowed-values target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1')]/@name">
@@ -1684,7 +1684,7 @@
       </model>
       <constraint>
          <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
-            <enum value="type"></enum>
+            <enum value="type">Risk Response Type</enum>
          </allowed-values>
          <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='type']/@value">
             <enum value="avoid">The risk will be eliminated.</enum>
