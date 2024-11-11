@@ -1381,6 +1381,7 @@
                      <enum value="http://www.first.org/cvss/v2.0">The facet naming system for representing Common Vunerability Scoring System (CVSS) vectors as defined by the the <a href="https://www.first.org/">Forum for Incident Response and Security Teams</a> <a href="https://www.first.org/cvss/">CVSS Special Interest Group</a> (CVSS-SIG) for <a href="https://www.first.org/cvss/v2/">CVSS v2</a>.</enum>
                      <enum value="http://www.first.org/cvss/v3.0">The facet naming system for representing Common Vunerability Scoring System (CVSS) vectors as defined by the the <a href="https://www.first.org/">Forum for Incident Response and Security Teams</a> <a href="https://www.first.org/cvss/">CVSS Special Interest Group</a> (CVSS-SIG) for <a href="https://www.first.org/cvss/v3-0/">CVSS v3.0</a>.</enum>
                      <enum value="http://www.first.org/cvss/v3.1">The facet naming system for representing Common Vunerability Scoring System (CVSS) vectors as defined by the the <a href="https://www.first.org/">Forum for Incident Response and Security Teams</a> <a href="https://www.first.org/cvss/">CVSS Special Interest Group</a> (CVSS-SIG) for <a href="https://www.first.org/cvss/v3-1/">CVSS v3.1</a>.</enum>
+                     <enum value="https://www.first.org/cvss/v4-0">The facet naming system for representing Common Vunerability Scoring System (CVSS) vectors as defined by the the <a href="https://www.first.org/">Forum for Incident Response and Security Teams</a> <a href="https://www.first.org/cvss/">CVSS Special Interest Group</a> (CVSS-SIG) for <a href="https://www.first.org/cvss/v4-0/">CVSS v4.0</a>.</enum>
                   </allowed-values>
                </constraint>
                <remarks>
@@ -1595,6 +1596,173 @@
                   <enum value="not-defined">Not Defined</enum>
                   <enum value="unchanged">Unchanged</enum>
                   <enum value="changed">Changed</enum>
+               </allowed-values>
+               <allowed-values id="oscal-cvss-v4.0-vectors" target="(.)[@system=('https://www.first.org/cvss/v4-0')]/@name">
+                  <enum value="av">Base: Attack Vector</enum>
+                  <enum value="ac">Base: Attack Complexity</enum>
+                  <enum value="at">Base: Attack Requirements</enum>
+                  <enum value="pr">Base: Privileges Required</enum>
+                  <enum value="ui">Base: User Interaction</enum>
+                  <enum value="vc">Base: Vulnerable System Confidentiality Impact</enum>
+                  <enum value="vi">Base: Vulnerable System Integrity Impact</enum>
+                  <enum value="va">Base: Vulnerable System Availability Impact</enum>
+                  <enum value="sc">Base: Subsequent System Confidentiality Impact</enum>
+                  <enum value="si">Base: Vulnerable System Integrity Impact</enum>
+                  <enum value="sa">Base: Vulnerable System Availability Impact</enum>
+                  <enum value="s">Supplemental: Safety</enum>
+                  <enum value="au">Supplemental: Automatable</enum>
+                  <enum value="r">Supplemental: Recovery</enum>
+                  <enum value="v">Supplemental: Value Density</enum>
+                  <enum value="re">Supplemental: Vulnerability Response Effort</enum>
+                  <enum value="u">Supplemental: Provider Urgency</enum>
+                  <enum value="mav">Environmental: Modified Attack Vector</enum>
+                  <enum value="mac">Environmental: Modified Attack Complexity</enum>
+                  <enum value="mat">Environmental: Modified Attack Requirements</enum>
+                  <enum value="mpr">Environmental: Modified Privileges Required</enum>
+                  <enum value="mui">Environmental: Modified User Interaction</enum>
+                  <enum value="mvc">Environmental: Modified Vulnerable System Confidentiality</enum>
+                  <enum value="mvi">Environmental: Modified Vulnerable System Integrity</enum>
+                  <enum value="mva">Environmental: Modified Vulnerable System Availability</enum>
+                  <enum value="msc">Environmental: Subsequent Vulnerable System Confidentiality</enum>
+                  <enum value="msi">Environmental: Subsequent Vulnerable System Integrity</enum>
+                  <enum value="msa">Environmental: Subsequent Vulnerable System Availability</enum>
+                  <enum value="cr">Environmental: Confidentiality Requirements</enum>
+                  <enum value="ir">Environmental: Integrity Requirements</enum>
+                  <enum value="ar">Environmental: Availability Requirements</enum>
+                  <enum value="e">Threat: Exploit Maturity</enum>
+               </allowed-values>
+               <allowed-values id="oscal-cvss-v4.0-av-values" target=".[@system='https://www.first.org/cvss/v4-0') and @name='av']/@value">
+                  <formal-name>Attack Vector Values</formal-name>
+                  <enum value="n">Network</enum>
+                  <enum value="a">Adjacent</enum>
+                  <enum value="l">Local</enum>
+                  <enum value="p">Physical</enum>
+               </allowed-values>
+               <allowed-values id="oscal-cvss-v4.0-ac-values" target=".[@system='https://www.first.org/cvss/v4-0' and @name='ac']/@value">
+                  <formal-name>Attack Complexity Values</formal-name>
+                  <enum value="h">High</enum>
+                  <enum value="l">Low</enum>
+               </allowed-values>
+               <allowed-values id="oscal-cvss-v4.0-at-values" target=".[@system='https://www.first.org/cvss/v4-0' and @name='at']/@value">
+                  <formal-name>Attack Requirements Values</formal-name>
+                  <enum value="n">None</enum>
+                  <enum value="p">Present</enum>
+               </allowed-values>
+               <allowed-values id="oscal-cvss-v4.0-pr-cia-values" target=".[@system='https://www.first.org/cvss/v4-0' and @name=('pr','vc','vi','va','sc','si','sa')]/@value">
+                  <formal-name>Privileges Required, Confidentiality, Integrity, and Availability Values</formal-name>
+                  <enum value="n">None</enum>
+                  <enum value="l">Low</enum>
+                  <enum value="h">High</enum>
+               </allowed-values>
+               <allowed-values id="oscal-cvss-v4.0-ui-values" target=".[@system='https://www.first.org/cvss/v4-0' and @name='ui']/@value">
+                  <formal-name>User Interaction Values</formal-name>
+                  <enum value="n">None</enum>
+                  <enum value="p">Passive</enum>
+                  <enum value="a">Active</enum>
+               </allowed-values>
+               <allowed-values id="oscal-cvss-v4.0-s-values" target=".[@system='https://www.first.org/cvss/v4-0' and @name='s']/@value">
+                  <formal-name>Safety Values</formal-name>
+                  <enum value="x">Not Defined</enum>
+                  <enum value="n">Negligible</enum>
+                  <enum value="p">Present</enum>
+               </allowed-values>
+               <allowed-values id="oscal-cvss-v4.0-au-values" target=".[@system='https://www.first.org/cvss/v4-0' and @name='au']/@value">
+                  <formal-name>Automatable Values</formal-name>
+                  <enum value="x">Not Defined</enum>
+                  <enum value="n">No</enum>
+                  <enum value="y">Yes</enum>
+               </allowed-values>
+               <allowed-values id="oscal-cvss-v4.0-r-values" target=".[@system='https://www.first.org/cvss/v4-0' and @name='r']/@value">
+                  <formal-name>Recovery Values</formal-name>
+                  <enum value="x">Not Defined</enum>
+                  <enum value="a">Automatic</enum>
+                  <enum value="u">User</enum>
+                  <enum value="i">Irrecoverable</enum>
+               </allowed-values>
+               <allowed-values id="oscal-cvss-v4.0-v-values" target=".[@system='https://www.first.org/cvss/v4-0' and @name='v']/@value">
+                  <formal-name>Value Density Values</formal-name>
+                  <enum value="x">Not Defined</enum>
+                  <enum value="a">Automatic</enum>
+                  <enum value="u">User</enum>
+                  <enum value="i">Irrecoverable</enum>
+               </allowed-values>
+               <allowed-values id="oscal-cvss-v4.0-re-values" target=".[@system='https://www.first.org/cvss/v4-0' and @name='re']/@value">
+                  <formal-name>Vulnerability Response Effort Values</formal-name>
+                  <enum value="x">Not Defined</enum>
+                  <enum value="l">Low</enum>
+                  <enum value="m">Moderate</enum>
+                  <enum value="h">High</enum>
+               </allowed-values>
+               <allowed-values id="oscal-cvss-v4.0-u-values" target=".[@system='https://www.first.org/cvss/v4-0' and @name='u']/@value">
+                  <formal-name>Provider Urgency Values</formal-name>
+                  <enum value="x">Not Defined</enum>
+                  <enum value="clear">Clear</enum>
+                  <enum value="green">Green</enum>
+                  <enum value="amber">Amber</enum>
+                  <enum value="red">Red</enum>
+               </allowed-values>
+               <allowed-values id="oscal-cvss-v4.0-mav-values" target=".[@system='https://www.first.org/cvss/v4-0') and @name='mav']/@value">
+                  <formal-name>Modified Attack Vector Values</formal-name>
+                  <enum value="x">Not Defined</enum>
+                  <enum value="n">Network</enum>
+                  <enum value="a">Adjacent</enum>
+                  <enum value="l">Local</enum>
+                  <enum value="p">Physical</enum>
+               </allowed-values>
+               <allowed-values id="oscal-cvss-v4.0-mac-values" target=".[@system='https://www.first.org/cvss/v4-0' and @name='mac']/@value">
+                  <formal-name>Modified Attack Complexity Values</formal-name>
+                  <enum value="x">Not Defined</enum>
+                  <enum value="h">High</enum>
+                  <enum value="l">Low</enum>
+               </allowed-values>
+               <allowed-values id="oscal-cvss-v4.0-mat-values" target=".[@system='https://www.first.org/cvss/v4-0' and @name='mat']/@value">
+                  <formal-name>Modified Attack Requirements Values</formal-name>
+                  <enum value="x">Not Defined</enum>
+                  <enum value="n">None</enum>
+                  <enum value="p">Present</enum>
+               </allowed-values>
+               <allowed-values id="oscal-cvss-v4.0-mpr-mvs-cia-values" target=".[@system='https://www.first.org/cvss/v4-0' and @name=('mpr','mvc','mvi')]/@value">
+                  <formal-name>Modified Privileges Required, and Vulnerable System Confidentiality, Integrity, and Availability Values</formal-name>
+                  <enum value="x">Not Defined</enum>
+                  <enum value="n">None</enum>
+                  <enum value="l">Low</enum>
+                  <enum value="h">High</enum>
+               </allowed-values>
+               <allowed-values id="oscal-cvss-v4.0-mui-values" target=".[@system='https://www.first.org/cvss/v4-0' and @name='mui']/@value">
+                  <formal-name>Modified User Interaction Values</formal-name>
+                  <enum value="x">Not Defined</enum>
+                  <enum value="n">None</enum>
+                  <enum value="p">Passive</enum>
+                  <enum value="a">Active</enum>
+               </allowed-values>
+               <allowed-values id="oscal-cvss-v4.0-msc-values" target=".[@system='https://www.first.org/cvss/v4-0' and @name='msc']/@value">
+                  <formal-name>Modified Subsequent System Confidentiality Values</formal-name>
+                  <enum value="x">Not Defined</enum>
+                  <enum value="n">Negligible</enum>
+                  <enum value="l">Low</enum>
+                  <enum value="h">High</enum>
+               </allowed-values>
+               <allowed-values id="oscal-cvss-v4.0-msi-msa-cia-values" target=".[@system='https://www.first.org/cvss/v4-0' and @name=('msi','msa')]/@value">
+                  <formal-name>Modified Safety-Related Subsequent System Integrity and Availability Values</formal-name>
+                  <enum value="x">Not Defined</enum>
+                  <enum value="n">Negligible</enum>
+                  <enum value="l">Low</enum>
+                  <enum value="h">High</enum>
+                  <enum value="s">Safety</enum>
+               </allowed-values>
+               <allowed-values id="oscal-cvss-v4.0-env-cia-values" target=".[@system='https://www.first.org/cvss/v4-0' and @name=('cr','ir','ar')]/@value">
+                  <formal-name>Vulnerability Response Effort Values</formal-name>
+                  <enum value="x">Not Defined</enum>
+                  <enum value="l">Low</enum>
+                  <enum value="m">Medium</enum>
+                  <enum value="h">High</enum>
+               </allowed-values>
+               <allowed-values id="oscal-cvss-v4.0-e-values" target=".[@system='https://www.first.org/cvss/v4-0' and @name='e']/@value">
+                  <formal-name>Vulnerability Response Effort Values</formal-name>
+                  <enum value="x">Not Defined</enum>
+                  <enum value="a">Attacked</enum>
+                  <enum value="p">PoC</enum>
+                  <enum value="u">Unreported</enum>
                </allowed-values>
             </constraint>
          </define-assembly>
