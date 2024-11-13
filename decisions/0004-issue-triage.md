@@ -19,7 +19,7 @@ The NIST OSCAL Team potentially needs a more transparent (to NIST staff and the 
 The NIST OSCAL Team should perform periodic backlog refinement and integrate issue triage as part of the process to formally accept or reject work for inclusion into the backlog. To act upon this decision, the team would need to complete the following steps of a plan.
 
 1. Document the backlog process (as minimally and clearly as possible).
-1. Adjust the supporting automation to automate issues to go to [the project board](https://github.com/usnistgov/OSCAL/projects/25) with a triage status.
+1. Adjust the supporting automation to automate issues to go to [the project board](https://github.com/orgs/usnistgov/projects/25) with a triage status.
 1. Decommission the old issue triage board.
 1. Schedule and initiate periodic backlog refinement with the team, asynchronously or synchronolously in private meetings (to start).
 
