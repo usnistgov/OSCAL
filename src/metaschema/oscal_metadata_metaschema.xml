@@ -430,22 +430,6 @@
         </remarks>
     </define-assembly>
 
-    <define-flag name="location-uuid" as-type="uuid">
-        <formal-name>Location Universally Unique Identifier Reference</formal-name>
-        <!-- Identifier Reference -->
-        <description>Reference to a location by UUID.</description>
-        <prop name="value-type" value="identifier-reference"/>
-        <prop name="identifier-type" value="machine-oriented"/>
-        <prop name="identifier-scope" value="cross-instance"/>
-        <constraint>
-            <!-- TODO: Dave to resolve syntax error. Likely requires updated metaschema schema -->
-            <index-has-key name="index-metadata-location-uuid">
-                <!-- TODO: This is impacted by cross-document cross-references We need to relocate or localize this constraint. -->
-                <key-field target="."/>
-            </index-has-key>
-        </constraint>
-    </define-flag>
-
     <define-field name="location-uuid" as-type="uuid">
         <formal-name>Location Universally Unique Identifier Reference</formal-name>
         <!-- Identifier Reference -->
@@ -956,10 +940,10 @@
             </remarks>
         </define-flag>
         <constraint>
-            <matches target=".[@algorithm=('SHA-224','SHA3-224')]" regex="^[0-9a-fA-F]{28}$"/>
-            <matches target=".[@algorithm=('SHA-256','SHA3-256')]" regex="^[0-9a-fA-F]{32}$"/>
-            <matches target=".[@algorithm=('SHA-384','SHA3-384')]" regex="^[0-9a-fA-F]{48}$"/>
-            <matches target=".[@algorithm=('SHA-512','SHA3-512')]" regex="^[0-9a-fA-F]{64}$"/>
+            <matches id="oscal-check-hash-length-SHA2-3-224" target=".[@algorithm=('SHA-224','SHA3-224')]" regex="^[0-9a-fA-F]{56}$"/>
+            <matches id="oscal-check-hash-length-SHA2-3-256" target=".[@algorithm=('SHA-256','SHA3-256')]" regex="^[0-9a-fA-F]{64}$"/>
+            <matches id="oscal-check-hash-length-SHA2-3-384" target=".[@algorithm=('SHA-384','SHA3-384')]" regex="^[0-9a-fA-F]{96}$"/>
+            <matches id="oscal-check-hash-length-SHA2-3-512" target=".[@algorithm=('SHA-512','SHA3-512')]" regex="^[0-9a-fA-F]{128}$"/>
         </constraint>
     </define-field>
 

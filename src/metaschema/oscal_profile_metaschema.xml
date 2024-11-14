@@ -412,9 +412,9 @@
                   <description>A designation of how a selection of controls in a profile is to be ordered.</description>
                   <constraint>
                         <allowed-values>
-                              <enum value="keep"/>
-                              <enum value="ascending"/>
-                              <enum value="descending"/>
+                              <enum value="keep">Use the order of their appearance, using a depth-first traversal of the source profile's imports.</enum>
+                              <enum value="ascending">Sort all selected controls into ascending alphanumeric order by their ID.</enum>
+                              <enum value="descending">Sort all selected controls into descending alphanumeric order by their ID.</enum>
                         </allowed-values>
                   </constraint>
             </define-flag>
