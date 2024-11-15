@@ -633,14 +633,6 @@
         <key-field target="@href"/>
       </index-has-key>
 
-      <!-- References to components of @type="software" -->
-      <index name="index-system-implementation-component-uuid-software" target="component[@type='service']">
-        <key-field target="@uuid"/>
-      </index>
-      <index-has-key name="index-system-implementation-component-uuid-software" target="component[@type='service']/link[@rel='provided-by']">
-        <key-field target="@href"/>
-      </index-has-key>
-
       <!-- TODO: check that prop names are defined -->
       <allowed-values target="(component | inventory-item)/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='allows-authenticated-scan']/@value">
         <enum value="yes">The component allows an authenticated scan.</enum>
