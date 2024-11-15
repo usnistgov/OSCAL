@@ -11,7 +11,10 @@
         },
         {
             "pattern": "https://linux.die.net/man/1/xmllint/"
-        }        
+        },
+        {
+            "pattern": "https://csrc.nist.gov/Projects/Open-Security-Controls-Assessment-Language"
+        }       
     ],
     "replacementPatterns": [
         {

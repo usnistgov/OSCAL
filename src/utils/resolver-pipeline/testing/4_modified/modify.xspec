@@ -300,7 +300,7 @@
         
     <x:scenario label="Tests for match=set-parameter template">
         <x:scenario label="set-param child does not match anything">
-            <x:context select="//set-parameter">
+            <x:context select="//o:set-parameter">
                 <catalog id="abc">
                     <param id="p1">
                         <label>Parameter #1</label>
@@ -1158,7 +1158,7 @@
         </x:scenario>
         <x:scenario label="Edge case: Empty $modifications param">
             <x:call function="oscal:patches-to-id-targeting-ancestor">
-                <x:param name="here" select="id('a1-stmt')">
+                <x:param name="here" select="//*[@id='a1-stmt']">
                     <catalog id="abc">
                         <control id="a1">
                             <title>Control A</title>

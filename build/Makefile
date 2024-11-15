@@ -153,7 +153,7 @@ $(LINKCHECK_OUTPUT): node_modules $(LINKCHECK_CONFIG)
 	@mkdir -p $(GENERATED_DIR)
 	@echo Checking Markdown links...
 	cd ..; git ls-files -z "*.md" | \
-		xargs -0 npx --prefix build/ markdown-link-check -c build/$(LINKCHECK_CONFIG) | \
+		xargs -0n1 npx --prefix build/ markdown-link-check -c build/$(LINKCHECK_CONFIG) | \
 		tee build/$(LINKCHECK_OUTPUT); \
 	exit $${PIPESTATUS[1]}
 

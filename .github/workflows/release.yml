@@ -8,7 +8,7 @@ jobs:
     name: Package Release
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
+      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332
         with:
           submodules: recursive
       - uses: actions/setup-java@v4
@@ -21,7 +21,7 @@ jobs:
           make -j2 artifacts archives RELEASE=${GITHUB_REF_NAME:1}
         working-directory: build
       - name: Create release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           token: ${{ secrets.COMMIT_TOKEN }}
           draft: true
