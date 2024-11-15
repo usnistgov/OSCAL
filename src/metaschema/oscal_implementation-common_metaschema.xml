@@ -280,7 +280,7 @@
       <define-assembly name="port-range">
             <formal-name>Port Range</formal-name>
             <description>Where applicable this is the transport layer protocol port range an IPv4-based or IPv6-based service uses.</description>
-            <define-flag name="start" as-type="nonNegativeInteger">
+            <define-flag name="start" as-type="non-negative-integer">
                   <formal-name>Start</formal-name>
                   <description>Indicates the starting port number in a port range for a transport layer protocol</description>
                   <remarks>
