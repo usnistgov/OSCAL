@@ -77,7 +77,8 @@
                 </model>
                 <constraint>
                         <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
-            &allowed-values-control-group-property-name;
+                                &allowed-values-control-group-property-name;
+                                <enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="method">its an assement method.</enum>
                         </allowed-values>
                 </constraint>
                 <remarks>
@@ -182,7 +183,7 @@
                         <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
                                 &allowed-values-control-group-property-name;
                                 <enum value="alt-label">An alternate to the value provided by the parameter's label. This will typically be qualified by a class.</enum>
-                        </allowed-values>
+                        </allowed-values>        
                         <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/rmf')]/@name">
                                 <enum value="aggregates">The parent parameter provides an
                                         aggregation of two or more other parameters, each described
