@@ -78,6 +78,8 @@
                 <constraint>
                         <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
                                 &allowed-values-control-group-property-name;
+                                <enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="method-id">its an assement method.</enum>
+                                <enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="method">depracated name for assessment method.</enum>
                         </allowed-values>
                 </constraint>
                 <remarks>
