@@ -193,6 +193,7 @@
                         <enum value="ipv4-address">An Internet Protocol Version 4 interconnection address.</enum>
                         <enum value="ipv6-address">An Internet Protocol Version 6 interconnection address.</enum>
                         <enum value="direction">The direction of network connectivity for the interconnection address.</enum>
+                        <enum value="uri">A Uniform Resource Identifier (URI) for the interconnection address.</enum>                        
                   </allowed-values>
                   <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('ipv4-address','ipv6-address')]/@class">
                         <enum value="local">The identified IP address is for this system.</enum>
