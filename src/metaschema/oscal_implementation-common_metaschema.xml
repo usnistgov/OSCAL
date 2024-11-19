@@ -190,11 +190,17 @@
                         <enum value="isa-title">Title of the Interconnection Security Agreement (ISA).</enum>
                         <enum value="isa-date">Date of the Interconnection Security Agreement (ISA).</enum>
                         <enum value="isa-remote-system-name">The name of the remote interconnected system.</enum>
-                        <enum value="ipv4-address">An Internet Protocol Version 4 interconnection address.</enum>
-                        <enum value="ipv6-address">An Internet Protocol Version 6 interconnection address.</enum>
-                        <enum value="direction">The direction of network connectivity for the interconnection address.</enum>
-                        <enum value="uri">A Uniform Resource Identifier (URI) for the interconnection address.</enum>                        
+                        <enum value="ipv4-address">The Internet Protocol Version 4 address is for an interconnection, service, or software component.</enum>
+                        <enum value="ipv6-address">The Internet Protocol Version 6 address is for an interconnection, service, or software component.</enum>
+                        <enum value="direction">The direction categorizes the network connectivity of an interconnection, service, or software component.</enum>
+                        <enum value="uri">A Uniform Resource Identifier (URI) is for an interconnection, service, or software component.</enum>
                   </allowed-values>
+                  <allowed-values target="[@type=('service', 'software')]/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+                        <enum value="ipv4-address">The Internet Protocol Version 4 address is for an interconnection, service, or software component.</enum>
+                        <enum value="ipv6-address">The Internet Protocol Version 6 address is for an interconnection, service, or software component.</enum>
+                        <enum value="direction">The direction categorizes the network connectivity of an interconnection, service, or software component.</enum>
+                        <enum value="uri">A Uniform Resource Identifier (URI) is for an interconnection, service, or software component.</enum>
+                  </allowed-values> 
                   <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('ipv4-address','ipv6-address')]/@class">
                         <enum value="local">The identified IP address is for this system.</enum>
                         <enum value="remote">The identified IP address is for the remote system to which this system is connected.</enum>
@@ -212,6 +218,7 @@
                   <matches target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='isa-date']/@value" datatype="date-time"/>
                   <matches target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='ipv4-address']/@value" datatype="ip-v4-address" />
                   <matches target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='ipv6-address']/@value" datatype="ip-v6-address" />
+                  <matches target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='uri']/@value" datatype="uri" />
                   <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='direction']/@value">
                         <enum value="incoming">Data from the remote system flows into this system.</enum>
                         <enum value="outgoing">Data from this system flows to the remote system.</enum>
