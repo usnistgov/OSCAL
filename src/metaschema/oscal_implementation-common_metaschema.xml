@@ -10,6 +10,7 @@
       <!ENTITY allowed-values-component_inventory-item_property-name SYSTEM "./shared-constraints/allowed-values-component_inventory-item_property-name.ent">
       <!ENTITY allowed-values-component_component_link-rel SYSTEM "./shared-constraints/allowed-values-component_component_link-rel.ent">
       <!ENTITY allowed-values-component-type SYSTEM "./shared-constraints/allowed-values-component-type.ent">
+      <!ENTITY allowed-values-property-name-networked-components SYSTEM "./shared-constraints/allowed-values-property-name-networked-components.ent">
 ]>
 <METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema-xslt/support/metaschema/schema/xml/metaschema.xsd" abstract="yes">
@@ -190,16 +191,10 @@
                         <enum value="isa-title">Title of the Interconnection Security Agreement (ISA).</enum>
                         <enum value="isa-date">Date of the Interconnection Security Agreement (ISA).</enum>
                         <enum value="isa-remote-system-name">The name of the remote interconnected system.</enum>
-                        <enum value="ipv4-address">The Internet Protocol Version 4 address is for an interconnection, service, or software component.</enum>
-                        <enum value="ipv6-address">The Internet Protocol Version 6 address is for an interconnection, service, or software component.</enum>
-                        <enum value="direction">The direction categorizes the network connectivity of an interconnection, service, or software component.</enum>
-                        <enum value="uri">A Uniform Resource Identifier (URI) is for an interconnection, service, or software component.</enum>
+            &allowed-values-property-name-networked-components;
                   </allowed-values>
                   <allowed-values target="[@type=('service', 'software')]/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
-                        <enum value="ipv4-address">The Internet Protocol Version 4 address is for an interconnection, service, or software component.</enum>
-                        <enum value="ipv6-address">The Internet Protocol Version 6 address is for an interconnection, service, or software component.</enum>
-                        <enum value="direction">The direction categorizes the network connectivity of an interconnection, service, or software component.</enum>
-                        <enum value="uri">A Uniform Resource Identifier (URI) is for an interconnection, service, or software component.</enum>
+            &allowed-values-property-name-networked-components;                        
                   </allowed-values> 
                   <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('ipv4-address','ipv6-address')]/@class">
                         <enum value="local">The identified IP address is for this system.</enum>
