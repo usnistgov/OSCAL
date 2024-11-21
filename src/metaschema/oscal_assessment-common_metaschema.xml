@@ -1631,7 +1631,7 @@
                   <enum value="ar">Environmental: Availability Requirements</enum>
                   <enum value="e">Threat: Exploit Maturity</enum>
                </allowed-values>
-               <allowed-values id="oscal-cvss-v4.0-av-values" target=".[@system='https://www.first.org/cvss/v4-0') and @name='av']/@value">
+               <allowed-values id="oscal-cvss-v4.0-av-values" target=".[@system='https://www.first.org/cvss/v4-0' and @name='av']/@value">
                   <formal-name>Attack Vector Values</formal-name>
                   <enum value="n">Network</enum>
                   <enum value="a">Adjacent</enum>
@@ -1701,7 +1701,7 @@
                   <enum value="amber">Amber</enum>
                   <enum value="red">Red</enum>
                </allowed-values>
-               <allowed-values id="oscal-cvss-v4.0-mav-values" target=".[@system='https://www.first.org/cvss/v4-0') and @name='mav']/@value">
+               <allowed-values id="oscal-cvss-v4.0-mav-values" target=".[@system='https://www.first.org/cvss/v4-0' and @name='mav']/@value">
                   <formal-name>Modified Attack Vector Values</formal-name>
                   <enum value="x">Not Defined</enum>
                   <enum value="n">Network</enum>
