@@ -37,6 +37,79 @@
       </model>
    </define-assembly>
 
+   <define-assembly name="assessment-plan-local-definitions">
+      <!-- CHANGE: added "local-definitions" -->
+      <formal-name>Local Definitions</formal-name>
+      <description>Used to define data objects that are used in the assessment plan, that do not appear in the referenced SSP.</description>
+      <model>
+        <assembly ref="local-objective" min-occurs="0" max-occurs="unbounded">
+          <use-name>objectives-and-methods</use-name>
+          <group-as name="objectives-and-methods" in-json="ARRAY"/>
+        </assembly>
+
+        <!-- CHANGED: implemented new model -->
+        <assembly ref="activity" min-occurs="0" max-occurs="unbounded">
+          <use-name>activity</use-name>
+          <group-as name="activities" in-json="ARRAY"/>
+        </assembly>
+        <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
+      </model>
+    </define-assembly>
+    <define-assembly name="result-local-definitions">
+      <!-- CHANGE: added "local-definitions" -->
+      <formal-name>Local Definitions</formal-name>
+      <description>Used to define data objects that are used in the assessment plan, that do not appear in the referenced SSP.</description>
+      <model>
+        <assembly ref="system-component" min-occurs="0" max-occurs="unbounded">
+          <use-name>component</use-name>
+          <group-as name="components" in-json="ARRAY"/>
+          <remarks>
+            <p>Used to add any components, not defined via the System Security Plan (AR-&gt;AP-&gt;SSP)</p>
+          </remarks>
+        </assembly>
+        <assembly ref="inventory-item" min-occurs="0" max-occurs="unbounded">
+          <group-as name="inventory-items" in-json="ARRAY"/>
+          <remarks>
+            <p>Used to add any inventory-items, not defined via the System Security Plan (AR-&gt;AP-&gt;SSP)</p>
+          </remarks>
+        </assembly>
+        <assembly ref="system-user" min-occurs="0" max-occurs="unbounded">
+          <use-name>user</use-name>
+          <group-as name="users" in-json="ARRAY"/>
+          <remarks>
+            <p>Used to add any users, not defined via the System Security Plan (AR-&gt;AP-&gt;SSP)</p>
+          </remarks>
+        </assembly>
+
+        <assembly ref="assessment-assets" min-occurs="0" max-occurs="1">
+          <!-- To augment the assessment plan -->
+          <remarks>
+            <p>This needs to be defined in the results if an assessment platform used is different from the one described in the assessment plan. Else the platform(s) defined in the plan may be referenced within the results.</p>
+          </remarks>
+        </assembly>
+
+        <assembly ref="task" min-occurs="0" max-occurs="unbounded">
+          <use-name>assessment-task</use-name>
+          <group-as name="tasks" in-json="ARRAY"/>
+        </assembly>
+      </model>
+      <constraint>
+        <is-unique id="unique-ar-local-definitions-component" target="component">
+          <key-field target="@uuid"/>
+          <remarks>
+            <p>Since multiple <code>component</code> entries can be provided, each component must have a unique <code>uuid</code>.</p>
+          </remarks>
+        </is-unique>
+        <is-unique id="unique-ar-local-definitions-user" target="user">
+          <key-field target="@uuid"/>
+          <remarks>
+            <p>A given <code>uuid</code> must be assigned only once to a user.</p>
+          </remarks>
+        </is-unique>
+      </constraint>
+    </define-assembly>
+
+
    <define-assembly name="related-observation">
       <formal-name>Related Observation</formal-name>
       <description>Relates an element to a set of referenced observations that were used to determine it.</description>
