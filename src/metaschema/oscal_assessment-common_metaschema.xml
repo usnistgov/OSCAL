@@ -37,6 +37,15 @@
       </model>
    </define-assembly>
 
+   <define-assembly name="related-observation">
+      <formal-name>Related Observation</formal-name>
+      <description>Relates an element to a set of referenced observations that were used to determine it.</description>
+      <define-flag name="observation-uuid" as-type="uuid" required="yes">
+          <formal-name>Observation Universally Unique Identifier Reference</formal-name>
+          <description>A machine-oriented identifier reference to an observation defined in the list of observations.</description>
+      </define-flag>
+  </define-assembly>
+
    <define-assembly name="local-objective">
       <formal-name>Assessment-Specific Control Objective</formal-name>
       <description>A local definition of a control objective for this assessment. Uses catalog syntax for control objective and assessment actions.</description>
@@ -827,16 +836,9 @@
           <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to the implementation statement in the SSP to which this finding is related.</description>
         </define-field>
         <!-- CHANGED: replaced embedded observation with references -->
-        <define-assembly name="related-observation" max-occurs="unbounded">
-          <formal-name>Related Observation</formal-name>
-          <description>Relates the finding to a set of referenced observations that were used to determine the finding.</description>
-          <group-as name="related-observations" in-json="ARRAY"/>
-          <define-flag name="observation-uuid" as-type="uuid" required="yes">
-            <formal-name>Observation Universally Unique Identifier Reference</formal-name>
-            <!-- Identifier Reference -->
-            <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to an observation defined in the list of observations.</description>
-          </define-flag>
-        </define-assembly>
+        <assembly ref="related-observation" max-occurs="unbounded">
+         <group-as name="related-observations" in-json="ARRAY"/>
+        </assembly>
         <!-- CHANGED: replaced "risk" with new "assciated-risk" -->
         <define-assembly name="associated-risk" max-occurs="unbounded">
           <formal-name>Associated Risk</formal-name>
@@ -1293,16 +1295,9 @@
             </model>
          </define-assembly>
 
-         <define-assembly name="related-observation" max-occurs="unbounded">
-            <formal-name>Related Observation</formal-name>
-            <description>Relates the finding to a set of referenced observations that were used to determine the finding.</description>
+         <assembly ref="related-observation" max-occurs="unbounded">
             <group-as name="related-observations" in-json="ARRAY"/>
-            <define-flag name="observation-uuid" as-type="uuid" required="yes">
-               <formal-name>Observation Universally Unique Identifier Reference</formal-name>
-               <!-- Identifier Reference -->
-               <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to an observation defined in the list of observations.</description>
-            </define-flag>
-         </define-assembly>
+        </assembly>
       </model>
       <constraint>
          <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
