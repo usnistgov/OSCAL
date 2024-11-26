@@ -183,8 +183,6 @@
             &allowed-values-component_component_service;
                   </allowed-values>
 
-                  <expect target="." test="not(exists((.)[not(@type='service')]/protocol))"/>
-
                   <!-- ========================================================================================================== -->
                   <!-- = INTERCONNECTION: type='interconnection' constraints                        = -->
                   <!-- ========================================================================================================== -->
