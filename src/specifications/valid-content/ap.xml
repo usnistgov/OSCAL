@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<assessment-plan
+    uuid="60077e84-e62f-4375-8c6c-b0e0d4560c5f"
+    xmlns="http://csrc.nist.gov/ns/oscal/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../../build/generated/oscal_assessment-plan_schema.xsd">
+    <metadata>
+        <title>IFA GoodRead Assessment Plan</title>
+        <last-modified>2024-02-01T13:57:28.355446-04:00</last-modified>
+        <version>1.0</version>
+        <oscal-version>1.1.2</oscal-version>
+        <role id="assessor">
+            <title>IFA Security Control Assessor</title>
+        </role>
+        <party uuid="e7730080-71ce-4b20-bec4-84f33136fd58" type="person">
+            <name>Amy Assessor</name>
+            <member-of-organization>3a675986-b4ff-4030-b178-e953c2e55d64</member-of-organization>
+        </party>
+        <party uuid="3a675986-b4ff-4030-b178-e953c2e55d64" type="organization">
+            <name>Important Federal Agency</name>
+            <short-name>IFA</short-name>
+            <link href="https://www.ifa.gov" rel="website" />
+        </party>
+        <responsible-party role-id="assessor">
+            <party-uuid>e7730080-71ce-4b20-bec4-84f33136fd58</party-uuid>
+        </responsible-party>
+    </metadata>
+    <import-ssp href="../3-implementation/ssp.oscal.xml" />
+    <local-definitions>
+        <activity uuid="52277182-1ba3-4cb6-8d96-b1b97aaf9d6b">
+            <title>Examine System Elements for Least Privilege Design and Implementation</title>
+            <description>
+                <p>The activity and it steps will be performed by the assessor and facilitated by
+                    owner, ISSO, and product team for the IFA GoodRead system with necessary
+                    information and access about least privilege design and implementation of the
+                    system's elements: the application, web framework, server, and cloud account
+                    infrastructure.</p>
+            </description>
+            <prop name="method" value="EXAMINE" />
+            <step uuid="733e3cbf-e398-46b6-9c02-a2cb534c341e">
+                <title>Obtain Network Access via VPN to IFA GoodRead Environment</title>
+                <description>
+                    <p>The assessor will obtain network access with appropriately configured VPN
+                        account to see admin frontend to the application for PAO staff, which is
+                        only accessible via VPN with an appropriately configured role for PAO staff
+                        accounts.</p>
+                </description>
+            </step>
+            <step uuid="4ce7e0b4-d69e-4b80-a700-8600b4d4d933">
+                <title>Obtain Credentials and Access to AwesomeCloud Account for IFA GoodRead System</title>
+                <description>
+                    <p>The assessor will obtain access to the GoodRead Product Team's AwesomeCloud
+                        account with their single sign-on credentials to a read-only assessor role.</p>
+                </description>
+            </step>
+            <step uuid="3d0297de-e47b-4360-b9c3-cf5c425f86cd">
+                <title>Obtain Applcation Access Provided by Product Team</title>
+                <description>
+                    <p>The assessor will obtain non-privileged account credentials with the PAO
+                        staff role to test this role in the application does not permit excessive
+                        administrative operations.</p>
+                </description>
+            </step>
+            <step uuid="64ca1ef6-3ad4-4747-97c6-40890222463f">
+                <title>Confirm Load Balancer Blocks Access to Admin Frontend from Internet</title>
+                <description>
+                    <p>The assessor will confirm that the load balancer for public access does not
+                        allow access to Admin Frontend of the application from the Internet.</p>
+                </description>
+            </step>
+            <step uuid="715f0592-166f-44f6-bb66-d99623e035dc">
+                <title>Confirm GoodRead's PAO Role Cannot Manage Users</title>
+                <description>
+                    <p>The assessor will confirm that user's logged into the GoodRead Application
+                        with the PAO staff role cannot add, modify, or disable users from the
+                        system.</p>
+                </description>
+            </step>
+            <step uuid="4641957b-a0fa-4c61-af1a-d3e9101efe40">
+                <title>Confirm Django Admin Panel Not Available</title>
+                <description>
+                    <p>The assessor will confirm with web-based interface and API methods users with
+                        the PAO Staff role cannot access the Django admin panel functions and
+                        interactively change application's database records.</p>
+                </description>
+            </step>
+            <related-controls>
+                <control-selection>
+                    <include-control control-id="ac-6.1" />
+                </control-selection>
+            </related-controls>
+            <responsible-role role-id="assessor">
+                <party-uuid>e7730080-71ce-4b20-bec4-84f33136fd58</party-uuid>
+            </responsible-role>
+        </activity>
+    </local-definitions>
+    <reviewed-controls>
+        <control-selection>
+            <include-control control-id="ac-6.1" />
+        </control-selection>
+        <control-objective-selection>
+            <include-all />
+        </control-objective-selection>
+    </reviewed-controls>
+    <assessment-subject type="component">
+        <description>
+            <p>The assessor for the IFA GoodRead Project, including the application and
+                infrastructure for this information system, are within scope of this assessment.</p>
+        </description>
+        <include-all />
+    </assessment-subject>
+    <task uuid="b3504d22-0e75-4dd7-9247-618661beba4e" type="action">
+        <title>Examine Least Privilege Design and Implementation</title>
+        <associated-activity activity-uuid="0d243b23-a889-478f-9716-6d4870e56209">
+            <subject type="component">
+                <include-all />
+            </subject>
+        </associated-activity>
+        <responsible-role role-id="assessor" />
+        <remarks>
+            <p>Per IFA's use of NIST SP-800 53A, the assessor, with the support of the owner,
+                information system security officer, and product team for the IFA GoodRead project,
+                will examine least privilege design and implementation with the following:</p>
+            <ul>
+                <li>list of security functions (deployed in hardware, software, and firmware) and
+                    security-relevant information for which access must be explicitly authorized;</li>
+                <li>system configuration settings and associated documentation;</li>
+            </ul>
+        </remarks>
+    </task>
+</assessment-plan>

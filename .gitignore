@@ -57,3 +57,5 @@ node_modules/
 /.runbuild
 
 /summary.csv
+/build/reports
+build/@rerun.txt

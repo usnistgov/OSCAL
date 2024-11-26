@@ -2,9 +2,19 @@
     "name": "ci-cd-packages",
     "private": true,
     "version": "1.0.0",
+    "scripts": {
+        "test": "cross-env-shell NODE_OPTIONS=\"--loader ts-node/esm --no-warnings --experimental-specifier-resolution=node\" cucumber-js",
+        "test:failed": "cross-env NODE_OPTIONS=\"--loader ts-node/esm --no-warnings --experimental-specifier-resolution=node\" cucumber-js -p rerun"
+    },
+    "type": "module",
     "devDependencies": {
+        "@cucumber/cucumber": "^10.8.0",
         "ajv-cli": "^5.0.0",
         "ajv-formats": "^3.0.1",
-        "markdown-link-check": "3.12.2"
+        "cross-env-shell": "7.0.3",
+        "markdown-link-check": "3.12.2",
+        "oscal": "2.0.7-rc3",
+        "ts-node": "10.9.2",
+        "cross-env": "^7.0.3"
     }
 }

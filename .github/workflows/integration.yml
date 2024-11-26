@@ -1,0 +1,54 @@
+# This action runs unit tests for the OSCAL (schematron) validations to ensure validations
+# are working against known samples
+name: "OSCAL Validations: Unit Tests"
+
+# Triggered when code is pushed to master and on pull requests
+on:
+  push:
+    branches:
+      - master
+      - develop
+      - 'feature/**'  # This will match any branch starting with "feature"
+
+  pull_request:
+
+# the job requires some dependencies to be installed (including submodules), runs the tests, and then reports results
+jobs:
+  # one job that runs tests
+  run-tests:
+    strategy:
+      fail-fast: false
+    runs-on: "ubuntu-20.04"
+    # Checkout repository and its submodules
+    steps:
+      # Check-out the repository under $GITHUB_WORKSPACE
+      - name: Checkout repository
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332
+
+      - name: Set up Java
+        uses: actions/setup-java@67fbd726daaf08212a7b021c1c4d117f94a81dd3
+        with:
+          distribution: 'adopt'
+          java-version: '11'
+      - name: Read node version from `.nvmrc` file
+        id: nvmrc
+        shell: bash
+        run: echo ::set-output name=NODE_VERSION::$(cat .nvmrc)
+
+      - name: Install required node.js version
+        uses: actions/setup-node@1e60f620b9541d16bece96c5465dc8ee9832be0b
+        with:
+          node-version: ${{ steps.nvmrc.outputs.NODE_VERSION }}
+      - name: Install OSCAL CLI
+        run: |
+          make configure
+      - name: Run Cucumber tests
+        shell: bash
+        run: |
+          make test
+      - name : Publish all Junit XML tests results in Github Summary
+        uses: test-summary/action@31493c76ec9e7aa675f1585d3ed6f1da69269a86
+        if: always()
+        with:
+            paths: |
+              **/reports/junit-*.xml
