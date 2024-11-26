@@ -1,6 +1,5 @@
-# This action runs unit tests for the OSCAL (schematron) validations to ensure validations
 # are working against known samples
-name: "OSCAL Validations: Unit Tests"
+name: "OSCAL Validations: Integration tests"
 
 # Triggered when code is pushed to master and on pull requests
 on:
@@ -16,10 +15,10 @@ on:
 jobs:
   # one job that runs tests
   run-tests:
-    strategy:
-      fail-fast: false
-    runs-on: "ubuntu-20.04"
-    # Checkout repository and its submodules
+    runs-on: ubuntu-20.04
+    defaults:
+        run:
+          working-directory: ./build
     steps:
       # Check-out the repository under $GITHUB_WORKSPACE
       - name: Checkout repository
@@ -30,19 +29,20 @@ jobs:
         with:
           distribution: 'adopt'
           java-version: '11'
+  
       - name: Read node version from `.nvmrc` file
         id: nvmrc
         shell: bash
-        run: echo ::set-output name=NODE_VERSION::$(cat .nvmrc)
+        run: echo "NODE_VERSION=$(cat .nvmrc)" >> $GITHUB_ENV
 
       - name: Install required node.js version
         uses: actions/setup-node@1e60f620b9541d16bece96c5465dc8ee9832be0b
         with:
-          node-version: ${{ steps.nvmrc.outputs.NODE_VERSION }}
-      - name: Install OSCAL CLI
+          node-version: ${{ env.NODE_VERSION }}
+      - name: Install Dependencies
         run: |
           make configure
-      - name: Run Cucumber tests
+      - name: Run tests
         shell: bash
         run: |
           make test
@@ -52,3 +52,4 @@ jobs:
         with:
             paths: |
               **/reports/junit-*.xml
+      
