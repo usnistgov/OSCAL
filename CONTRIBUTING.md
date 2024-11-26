@@ -42,8 +42,6 @@ All requests for changes and enhancements to OSCAL are initiated through the pro
 * [Defect Report](../../issues/new?template=bug_report.md&labels=bug): Use to report a problem with an existing OSCAL feature or capability.
 * [Question](../../issues/new?labels=question&template=question.md): Use to ask a question about OSCAL.
 
-Issue triage is managed by the core OSCAL project team using a [specialized project board](../../projects/52).
-
 The core OSCAL project team regularly reviews open issues, prioritizes their handling, and updates the issue statuses and comments as needed.
 
 ## Communications mechanisms

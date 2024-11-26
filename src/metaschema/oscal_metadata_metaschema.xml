@@ -6,7 +6,7 @@
 <METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" abstract="yes">
     <schema-name>OSCAL Document Metadata Description</schema-name>
-    <schema-version>1.1.2</schema-version>
+    <schema-version>1.1.3</schema-version>
     <short-name>oscal-metadata</short-name>
     <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
     <json-base-uri>http://csrc.nist.gov/ns/oscal</json-base-uri>
@@ -430,22 +430,6 @@
         </remarks>
     </define-assembly>
 
-    <define-flag name="location-uuid" as-type="uuid">
-        <formal-name>Location Universally Unique Identifier Reference</formal-name>
-        <!-- Identifier Reference -->
-        <description>Reference to a location by UUID.</description>
-        <prop name="value-type" value="identifier-reference"/>
-        <prop name="identifier-type" value="machine-oriented"/>
-        <prop name="identifier-scope" value="cross-instance"/>
-        <constraint>
-            <!-- TODO: Dave to resolve syntax error. Likely requires updated metaschema schema -->
-            <index-has-key name="index-metadata-location-uuid">
-                <!-- TODO: This is impacted by cross-document cross-references We need to relocate or localize this constraint. -->
-                <key-field target="."/>
-            </index-has-key>
-        </constraint>
-    </define-flag>
-
     <define-field name="location-uuid" as-type="uuid">
         <formal-name>Location Universally Unique Identifier Reference</formal-name>
         <!-- Identifier Reference -->
@@ -570,7 +554,7 @@
                         </remarks>
                     </define-assembly>
 
-                    <define-field name="base64" as-type="base64Binary">
+                    <define-field name="base64" as-type="base64">
                         <formal-name>Base64</formal-name>
                         <description>A resource encoded using the Base64 alphabet defined by <a href="https://www.rfc-editor.org/rfc/rfc2045.html">RFC 2045</a>.</description>
                         <json-value-key>value</json-value-key>
@@ -589,7 +573,7 @@
                         <enum value="version">For resources representing a published document, this represents the version number of that document.</enum>
                         <enum value="published">For resources representing a published document, this represents the publication date of that document.</enum>
                     </allowed-values>
-                    <matches target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='published']/@value" datatype="dateTime-with-timezone"/>
+                    <matches target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='published']/@value" datatype="date-time-with-timezone"/>
                     <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='type']/@value">
                         <!-- More general. Applies across all models. -->
                         <enum value="logo">Indicates the resource is an organization's logo.</enum>
@@ -679,7 +663,7 @@
         <use-name>prop</use-name>
         <define-flag name="name" as-type="token" required="yes">
             <formal-name>Property Name</formal-name>
-            <description>A textual label, within a namespace, that uniquely identifies a specific attribute, characteristic, or quality of the property's containing object.</description>
+            <description>A textual label, within a namespace, that identifies a specific attribute, characteristic, or quality of the property's containing object.</description>
         </define-flag>
         <define-flag name="uuid" as-type="uuid">
             <formal-name>Property Universally Unique Identifier</formal-name>
@@ -852,7 +836,7 @@
             <formal-name>Action Universally Unique Identifier</formal-name>
             <description>A unique identifier that can be used to reference this defined action elsewhere in an OSCAL document. A UUID should be consistently used for a given location across revisions of the document.</description>
         </define-flag>
-        <define-flag name="date" as-type="dateTime-with-timezone">
+        <define-flag name="date" as-type="date-time-with-timezone">
             <formal-name>Action Occurrence Date</formal-name>
             <description>The date and time when the action occurred.</description>
         </define-flag>
@@ -956,10 +940,10 @@
             </remarks>
         </define-flag>
         <constraint>
-            <matches target=".[@algorithm=('SHA-224','SHA3-224')]" regex="^[0-9a-fA-F]{28}$"/>
-            <matches target=".[@algorithm=('SHA-256','SHA3-256')]" regex="^[0-9a-fA-F]{32}$"/>
-            <matches target=".[@algorithm=('SHA-384','SHA3-384')]" regex="^[0-9a-fA-F]{48}$"/>
-            <matches target=".[@algorithm=('SHA-512','SHA3-512')]" regex="^[0-9a-fA-F]{64}$"/>
+            <matches id="oscal-check-hash-length-SHA2-3-224" target=".[@algorithm=('SHA-224','SHA3-224')]" regex="^[0-9a-fA-F]{56}$"/>
+            <matches id="oscal-check-hash-length-SHA2-3-256" target=".[@algorithm=('SHA-256','SHA3-256')]" regex="^[0-9a-fA-F]{64}$"/>
+            <matches id="oscal-check-hash-length-SHA2-3-384" target=".[@algorithm=('SHA-384','SHA3-384')]" regex="^[0-9a-fA-F]{96}$"/>
+            <matches id="oscal-check-hash-length-SHA2-3-512" target=".[@algorithm=('SHA-512','SHA3-512')]" regex="^[0-9a-fA-F]{128}$"/>
         </constraint>
     </define-field>
 
@@ -989,7 +973,7 @@
     <!-- #################### -->
     <!-- # Local constructs # -->
     <!-- #################### -->
-    <define-field name="published" as-type="dateTime-with-timezone" scope="local">
+    <define-field name="published" as-type="date-time-with-timezone" scope="local">
         <formal-name>Publication Timestamp</formal-name>
         <description>The date and time the document was last made available.</description>
         <remarks>
@@ -999,7 +983,7 @@
         </remarks>
     </define-field>
 
-    <define-field name="last-modified" as-type="dateTime-with-timezone" scope="local">
+    <define-field name="last-modified" as-type="date-time-with-timezone" scope="local">
         <formal-name>Last Modified Timestamp</formal-name>
         <description>The date and time the document was last stored for later retrieval.</description>
         <remarks>
@@ -1026,7 +1010,7 @@
         </remarks>
     </define-field>
 
-    <define-field name="email-address" as-type="email" scope="local">
+    <define-field name="email-address" as-type="email-address" scope="local">
         <formal-name>Email Address</formal-name>
         <description>An email address as defined by <a
                 href="https://tools.ietf.org/html/rfc5322#section-3.4.1">RFC 5322 Section
