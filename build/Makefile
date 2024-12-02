@@ -25,6 +25,14 @@ dependencies: node_modules ## Ensure dependencies have been installed
 node_modules: package.json package-lock.json
 	npm ci
 
+.PHONY: test
+test: 
+	npm run test
+
+.PHONY: configure
+configure: 
+	npm install
+	npx oscal@latest use latest
 .PHONY: clean
 clean: clean-schemas clean-linkcheck clean-converters clean-archives clean-resolved-metaschemas ## Remove all generated content
 

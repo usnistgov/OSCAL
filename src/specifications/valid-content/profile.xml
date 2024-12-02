@@ -1,0 +1,27 @@
+<?xml version="1.0"  encoding="UTF-8"?>
+<profile  xmlns="http://csrc.nist.gov/ns/oscal/1.0" uuid="65c47d13-51cf-4389-923c-01f92145046b">
+  <metadata>
+    <title>FedRAMP Tailoring Profile</title>
+    <published>2024-06-25T00:00:00Z</published>
+    <last-modified>2024-06-25T00:00:00Z</last-modified>
+    <version>2.0</version>
+    <oscal-version>1.2.0</oscal-version>
+  </metadata>
+  <!-- very small valid example of a response point declaration -->
+  <import href="https://raw.githubusercontent.com/usnistgov/oscal-content/main/nist.gov/SP800-53/rev5/xml/NIST_SP-800-53_rev5_catalog.xml">
+    <include-controls>
+        <!-- a single control selection -->
+        <with-id>ac-1</with-id>
+    </include-controls> 
+  </import>
+  <merge>
+    <as-is>true</as-is>
+  </merge>
+  <modify>
+    <alter control-id="ac-1">
+        <add position="ending">
+            <prop ns="https://fedramp.gov/ns/oscal" name="response-point" value="Required"/>
+        </add>
+    </alter>
+  </modify>
+</profile>
