@@ -184,6 +184,7 @@
                     monitored.</p>
             </description>
             <prop name="release-date" value="2018-10-15" />
+            <prop name="direction" value="outgoing"/>
             <link href="#795533ab-9427-4abe-820f-0b571bacfe6d" rel="implements-policy">
                 <text>Ensures that all host are known and authorized. Ensures that these hosts
                     publish log events to the logging server.</text>
