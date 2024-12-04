@@ -32,7 +32,10 @@ test:
 .PHONY: configure
 configure: 
 	npm install
-	npx oscal@latest use latest
+	wget https://repo1.maven.org/maven2/dev/metaschema/oscal/oscal-cli-enhanced/2.4.0/oscal-cli-enhanced-2.4.0-oscal-cli.zip
+	unzip -j oscal-cli-enhanced-2.4.0-oscal-cli.zip -d node_modules/.bin/oscal-cli-enhanced
+	rm oscal-cli-enhanced-2.4.0-oscal-cli.zip
+	ln -sf $(pwd)/node_modules/.bin/oscal-cli-enhanced/bin/oscal-cli node_modules/.bin/oscal-cli
 .PHONY: clean
 clean: clean-schemas clean-linkcheck clean-converters clean-archives clean-resolved-metaschemas ## Remove all generated content
 
