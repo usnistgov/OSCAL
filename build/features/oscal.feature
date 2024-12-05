@@ -12,7 +12,7 @@ Feature: Validate OSCAL Content
 
     Examples:
       | type    | path |
-      | profile | ../src/specifications/valid-content/profile.xml|
+      | profile | ../src/specifications/profile-resolution/profile-resolution-examples/full-test_profile.xml|
       | catalog | ../src/specifications/valid-content/catalog.xml|
       | ssp | ../src/specifications/valid-content/ssp.xml|
       | poam | ../src/specifications/valid-content/poam.xml|
