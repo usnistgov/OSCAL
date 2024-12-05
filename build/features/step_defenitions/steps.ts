@@ -10,7 +10,8 @@ Given('the following directories by type:', function(dataTable:any) {
 });
 
 Given('the OSCAL CLI tool is installed', async function() {
-  const success = await execSync("which oscal-cli");
+  const success=execSync(`npx oscal-cli --version`)
+
   if (!success) throw new Error('OSCAL CLI not installed');
 });
 
@@ -19,13 +20,28 @@ Given('the metaschema directory is {string}', function(dir) {
 });
 
 When('I validate {string} content in {string}',{timeout:90000}, async function(type, path) {
-
-  const metaschema = 'oscal_'+type+'_metaschema.xml' ;
+  const metaschema = 'oscal_'+type+'_metaschema.xml';
   const metaschemaPath = `${this.metaschemaDir}/${metaschema}`;
-  await execSync('oscal-cli metaschema validate-content '+path+"-m "+metaschemaPath);
+  
+  try {
+    const output = execSync(`npx oscal-cli metaschema validate-content ${path} -m ${metaschemaPath}`, {
+      stdio: 'pipe',
+      encoding: 'utf-8'
+    });
+    this.result = { isValid: true, output };
+  } catch (error:any) {
+    this.result = { 
+      isValid: false,
+      error: error.message,
+      stderr: error.stderr?.toString(),
+      stdout: error.stdout?.toString()
+    };
+  }
+ });
+
   Then('all validations should pass without errors', function() {
     if (!this.result.isValid) {
-      throw new Error(`Validation failed:`);
+      throw new Error(`Validation failed:\n`+this.result.stderr);
     }
   });
 
