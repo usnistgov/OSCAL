@@ -57,13 +57,13 @@
       <assembly ref="back-matter"/>
     </model>
     <constraint>
-      <index name="index-system-component-uuid" target="component">
+      <index id="oscal-index-system-component-uuid" name="index-system-component-uuid" target="component">
         <key-field target="@uuid"/>
         <remarks>
           <p>Since multiple <code>component</code> entries can be provided, each component must have a unique <code>uuid</code>.</p>
         </remarks>
       </index>
-      <is-unique id="unique-component-definition-capability" target="capability">
+      <is-unique id="oscal-unique-component-definition-capability" target="capability">
         <key-field target="@uuid"/>
         <remarks>
           <p>A given <code>component</code> must not be referenced more than once within the same <code>capability</code>.</p>
@@ -148,7 +148,7 @@
       <field ref="remarks" in-xml="WITH_WRAPPER"/>
     </model>
     <constraint>
-      <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+      <allowed-values id="oscal-component-prop-name" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
         <!-- ========================================================================================================== -->
         <!-- = Changes to the following values need to be synced with component in the SSP and component metaschemas. = -->
         <!-- CHANGED (BJR): Done -->
@@ -159,7 +159,7 @@
                     <!-- CHANGE: @name="date-released" changed to @name="release-date" -->
       </allowed-values>
 
-      <allowed-values target="link/@rel" allow-other="yes">
+      <allowed-values id="oscal-component-link-rel-type" target="link/@rel" allow-other="yes">
         <!-- ========================================================================================================== -->
         <!-- = Changes to the following values need to be synced with component in the SSP and component metaschemas. = -->
         <!-- CHANGED (BJR): Done -->
@@ -168,7 +168,7 @@
         <enum value="uses-network">This component uses the network provided by the identified network component.</enum>
       </allowed-values>
 
-      <allowed-values target="responsible-role/@role-id|control-implementation/implemented-requirement/responsible-role/@role-id|control-implementation/implemented-requirement/statement/responsible-role/@role-id" allow-other="yes">
+      <allowed-values id="oscal-component-role-id" target="responsible-role/@role-id|control-implementation/implemented-requirement/responsible-role/@role-id|control-implementation/implemented-requirement/statement/responsible-role/@role-id" allow-other="yes">
         <!-- ========================================================================================================== -->
         <!-- = Changes to the following values need to be synced with component in the SSP and component metaschemas. = -->
         <!-- CHANGED (BJR): Done -->
@@ -177,7 +177,7 @@
             &allowed-values-responsible-roles-component-production;
       </allowed-values>
 
-      <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='asset-type']/@value" allow-other="yes">
+      <allowed-values id="oscal-component-asset-type-value" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='asset-type']/@value" allow-other="yes">
             &allowed-values-property-name-asset-type-values;
       </allowed-values>
 
@@ -185,33 +185,33 @@
       <!-- = TODO: The following was copied from implementation-common as-is and should probably be setup with  = -->
       <!-- =       shared constraints; however, the values are highly static (yes/no, internal/external). -->
       <!-- =       Can be changed later with no breaking impact. -->
-      <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='allows-authenticated-scan']/@value">
+      <allowed-values id="oscal-component-allows-authenticated-scan-value" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='allows-authenticated-scan']/@value">
         <enum value="yes">The component allows an authenticated scan.</enum>
         <enum value="no">The component does not allow an authenticated scan.</enum>
       </allowed-values>
 
-      <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='virtual']/@value">
+      <allowed-values id="oscal-component-virtual-value" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='virtual']/@value">
         <enum value="yes">The component is virtualized.</enum>
         <enum value="no">The component is not virtualized.</enum>
       </allowed-values>
 
-      <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='public']/@value">
+      <allowed-values id="oscal-component-public-value" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='public']/@value">
         <enum value="yes">The component is publicly accessible.</enum>
         <enum value="no">The component is not publicly accessible.</enum>
       </allowed-values>
 
-      <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='implementation-point']/@value">
+      <allowed-values id="oscal-component-implementation-point-value" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='implementation-point']/@value">
         <enum value="internal">The component is implemented within the system boundary.</enum>
         <enum value="external">The component is implemented outside the system boundary.</enum>
       </allowed-values>
       <!-- ========================================================================================================== -->
 
-      <index-has-key name="index-metadata-location-uuid" target="prop[@name='physical-location']">
+      <index-has-key id="oscal-index-metadata-location-uuid" name="index-metadata-location-uuid" target="prop[@name='physical-location']">
         <key-field target="@value"/>
       </index-has-key>
 
-      <matches target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='inherited-uuid']/@value" datatype="uuid" />
-      <matches target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='release-date']/@value" datatype="date"/>
+      <matches id="oscal-component-inherited-uuid-value-datatype" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='inherited-uuid']/@value" datatype="uuid" />
+      <matches id="oscal-component-release-date-value-datatype" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='release-date']/@value" datatype="date"/>
 
       <!-- ========================================================================================================== -->
       <!-- = Changes to the following values need to be synced with component in the SSP and component metaschemas. = -->
@@ -221,14 +221,14 @@
       <!-- ========================================================================================================== -->
       <!-- = SOFTWARE: type='software' constraints                        = -->
       <!-- ========================================================================================================== -->
-      <allowed-values target="(.)[@type='software']/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+      <allowed-values id="oscal-software-component-prop-name" target="(.)[@type='software']/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
             &allowed-values-component_component_software;
       </allowed-values>
 
       <!-- ========================================================================================================== -->
       <!-- = SERVICE: type='service' constraints                        = -->
       <!-- ========================================================================================================== -->
-      <allowed-values target="(.)[@type='service']/link/@rel" allow-other="yes">
+      <allowed-values id="oscal-service-component-link-rel-type" target="(.)[@type='service']/link/@rel" allow-other="yes">
             &allowed-values-component_component_service;
       </allowed-values>
 
@@ -238,7 +238,7 @@
       <!-- =       If interconnection is not appropriate for component-defintion, we'll need different = -->
       <!-- =           component-type lists for the two models.                                        = -->
       <!-- ========================================================================================================== -->
-      <is-unique id="unique-defined-component-responsible-role" target="responsible-role">
+      <is-unique id="oscal-unique-defined-component-responsible-role" target="responsible-role">
         <key-field target="@role-id"/>
         <remarks>
           <p>Since <code>responsible-role</code> associates multiple <code>party-uuid</code> entries with a single <code>role-id</code>, each role-id must be referenced only once.</p>
@@ -257,7 +257,7 @@
     <formal-name>Component Type</formal-name>
     <description>A category describing the purpose of the component.</description>
     <constraint>
-      <allowed-values allow-other="yes">
+      <allowed-values id="oscal-component-type" allow-other="yes">
             &allowed-values-component-type;
       </allowed-values>
     </constraint>
@@ -300,7 +300,7 @@
       <field ref="remarks" in-xml="WITH_WRAPPER"/>
     </model>
     <constraint>
-      <is-unique id="unique-component-definition-capability-incorporates-component" target="incorporates-component">
+      <is-unique id="oscal-unique-component-definition-capability-incorporates-component" target="incorporates-component">
         <key-field target="@component-uuid"></key-field>
         <remarks>
           <p>A given <code>component</code> must not be referenced more than once within the same <code>capability</code>.</p>
@@ -370,7 +370,7 @@
       </assembly>
     </model>
     <constraint>
-      <is-unique id="unique-component-definition-control-implementation-set-parameter" target="set-parameter">
+      <is-unique id="oscal-unique-component-definition-control-implementation-set-parameter" target="set-parameter">
         <key-field target="@param-id"/>
         <remarks>
           <p>Since multiple <code>set-parameter</code> entries can be provided, each parameter must be set only once.</p>
@@ -418,19 +418,19 @@
       <field ref="remarks" in-xml="WITH_WRAPPER"/>
     </model>
     <constraint>
-      <is-unique id="unique-component-definition-implemented-requirement-set-parameter" target="set-parameter">
+      <is-unique id="oscal-unique-component-definition-implemented-requirement-set-parameter" target="set-parameter">
         <key-field target="@param-id"/>
         <remarks>
           <p>Since multiple <code>set-parameter</code> entries can be provided, each parameter must be set only once.</p>
         </remarks>
       </is-unique>
-      <is-unique id="unique-component-definition-implemented-requirement-responsible-role" target="responsible-role">
+      <is-unique id="oscal-unique-component-definition-implemented-requirement-responsible-role" target="responsible-role">
         <key-field target="@role-id"/>
         <remarks>
           <p>Since <code>responsible-role</code> associates multiple <code>party-uuid</code> entries with a single <code>role-id</code>, each role-id must be referenced only once.</p>
         </remarks>
       </is-unique>
-      <is-unique id="unique-component-definition-implemented-requirement-statement" target="statement">
+      <is-unique id="oscal-unique-component-definition-implemented-requirement-statement" target="statement">
         <key-field target="@statement-id"/>
         <remarks>
           <p>Since <code>statement</code> entries can be referenced using the statement's statement-id, each statement must be referenced only once.</p>
@@ -472,7 +472,7 @@
       <field ref="remarks" in-xml="WITH_WRAPPER"/>
     </model>
     <constraint>
-      <is-unique id="unique-component-definition-statement-responsible-role" target="responsible-role">
+      <is-unique id="oscal-unique-component-definition-statement-responsible-role" target="responsible-role">
         <key-field target="@role-id"/>
         <remarks>
           <p>Since <code>responsible-role</code> associates multiple <code>party-uuid</code> entries with a single <code>role-id</code>, each role-id must be referenced only once.</p>
