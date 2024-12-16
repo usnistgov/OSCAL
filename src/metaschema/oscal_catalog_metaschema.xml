@@ -49,30 +49,30 @@
                   </assembly>
             </model>
             <constraint>
-                  <allowed-values target="metadata/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+                  <allowed-values id="oscal-catalog-metadata-prop-name" target="metadata/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
                         <enum value="resolution-tool">The tool used to produce a resolved profile.</enum>
                         <enum value="source-profile-uuid">The document-level <code>uuid</code> of the source profile from which the catalog was produced by <a href="https://pages.nist.gov/OSCAL/concepts/processing/profile-resolution/">profile resolution</a>.</enum>
                   </allowed-values>
-                  <allowed-values target="metadata/link/@rel" allow-other="yes">
+                  <allowed-values id="oscal-catalog-metadata-link-rel-type" target="metadata/link/@rel" allow-other="yes">
                         <enum value="source-profile">The profile from which the catalog was produced by <a href="https://pages.nist.gov/OSCAL/concepts/processing/profile-resolution/">profile resolution</a>.</enum>
                         <enum value="source-profile-uuid">The document-level <code>uuid</code> of the profile from which the catalog was produced by <a href="https://pages.nist.gov/OSCAL/concepts/processing/profile-resolution/">profile resolution</a>.</enum>
                   </allowed-values>
-                  <index name="catalog-parts" target="//part" >
+                  <index id="oscal-catalog-parts" name="catalog-parts" target="//part" >
                         <key-field target="@id"/>
                   </index>
-                  <index name="catalog-props" target="//prop" >
+                  <index id="oscal-catalog-props" name="catalog-props" target="//prop" >
                         <key-field target="@uuid"/>
                   </index>
-                  <index name="catalog-groups-controls-parts" target="//(control|group|part)">
+                  <index id="oscal-catalog-groups-controls-parts" name="catalog-groups-controls-parts" target="//(control|group|part)">
                         <key-field target="@id"/>
                   </index>
-                  <index name="catalog-controls" target="//control" >
+                  <index id="oscal-catalog-controls" name="catalog-controls" target="//control" >
                         <key-field target="@id"/>
                   </index>
-                  <index name="catalog-params" target="//param" >
+                  <index id="oscal-catalog-params" name="catalog-params" target="//param" >
                         <key-field target="@id"/>
                   </index>
-                  <index name="catalog-groups" target="//group" >
+                  <index id="oscal-catalog-groups" name="catalog-groups" target="//group" >
                         <key-field target="@id"/>
                   </index>
             </constraint>
@@ -141,10 +141,10 @@
                   <!--<any/>-->
             </model>
             <constraint>
-                  <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+                  <allowed-values id="oscal-group-prop-name" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
             &allowed-values-control-group-property-name;
                   </allowed-values>
-                  <allowed-values target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+                  <allowed-values id="oscal-group-part-name" target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
                         <enum value="overview">An introduction to a control or a group of controls.</enum>
                         <enum value="instruction">Information providing directions for a control or a group of controls.</enum>
                   </allowed-values>
@@ -219,22 +219,22 @@
                   <!-- <any/> -->
             </model>
             <constraint>
-                  <expect id="catalog-control-require-statement-when-not-withdrawn" target="."
+                  <expect id="oscal-catalog-control-require-statement-when-not-withdrawn" target="."
                         test="prop[@name='status']/@value=('withdrawn','Withdrawn') or part[@name='statement']"/>
-                  <allowed-values
+                  <allowed-values id="oscal-control-prop-name"
                         target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
                         &allowed-values-control-group-property-name;
                         <enum value="status">The status of a <code>control</code>. For example, a
                               value of 'withdrawn' can indicate that the <code>control</code> has
                               been withdrawn and should no longer be used.</enum>
                   </allowed-values>
-                  <allowed-values
+                  <allowed-values id="oscal-control-prop-status-value"
                         target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='status']/@value">
                         <enum value="withdrawn">The control is no longer used.</enum>
                         <enum value="Withdrawn" deprecated="1.0.0">**(deprecated)*** Use 'withdrawn'
                               instead.</enum>
                   </allowed-values>
-                  <allowed-values target="link/@rel" allow-other="yes">
+                  <allowed-values id="oscal-control-link-rel-type" target="link/@rel" allow-other="yes">
                         <enum value="reference">The link cites an external resource related to this
                               control.</enum>
                         <enum value="related">The link identifies another control with bearing to
@@ -247,11 +247,11 @@
                               referenced control.</enum>
                   </allowed-values>
                   <!-- TODO: add expect constraint to check for controls that reference themselves -->
-                  <index-has-key name="catalog-groups-controls-parts" level="WARNING"
+                  <index-has-key id="oscal-catalog-groups-controls-parts" level="WARNING" name="catalog-groups-controls-parts"
                         target="link[@rel=('related','required','incorporated-into','moved-to') and starts-with(@href,'#')]">
                         <key-field target="@href" pattern="#(.*)"/>
                   </index-has-key>
-                  <allowed-values
+                  <allowed-values id="oscal-control-part-name"
                         target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
                         <enum value="overview">An introduction to a control or a group of
                               controls.</enum>
@@ -264,14 +264,14 @@
                         <enum value="assessment-method">The part describes a method-based assessment
                               over a set of assessment objects.</enum>
                   </allowed-values>
-                  <allowed-values
+                  <allowed-values id="oscal-control-statement-part-subpart-name"
                         target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='statement']//part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
                         <enum value="item">An individual item within a control statement.</enum>
                         <remarks>
                               <p>Nested statement parts are "item" parts.</p>
                         </remarks>
                   </allowed-values>
-                  <allowed-values
+                  <allowed-values id="oscal-control-statement-part-name"
                         target=".//part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
                         <enum value="objective" deprecated="1.0.1">**(deprecated)** Use
                               'assessment-objective' instead.</enum>
@@ -281,7 +281,7 @@
                               <p>Objectives can be nested.</p>
                         </remarks>
                   </allowed-values>
-                  <allowed-values
+                  <allowed-values id="oscal-control-objective-part-subpart-name"
                         target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('assessment','assessment-method')]/part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
                         <enum value="objects" deprecated="1.0.1">**(deprecated)** Use
                               'assessment-objects' instead.</enum>
@@ -291,17 +291,17 @@
                               <p>Assessment objects appear on assessment methods.</p>
                         </remarks>
                   </allowed-values>
-                  <allowed-values
+                  <allowed-values id="oscal-control-statement-part-prop-name"
                         target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('assessment','assessment-method')]/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
                         <enum value="method" deprecated="1.0.1">**(deprecated)** Use 'method' in the 'http://csrc.nist.gov/ns/rmf' namespace. The assessment method to use. This typically appears on parts with the name "assessment-method".</enum>
                   </allowed-values>
-                  <allowed-values
+                  <allowed-values id="oscal-control-statement-part-rmf-prop-name"
                         target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('assessment','assessment-method')]/prop[has-oscal-namespace('http://csrc.nist.gov/ns/rmf')]/@name">
                         <enum value="method">The assessment method to use. This typically appears on
                               parts with the name "assessment-method".</enum>
                   </allowed-values>
-                  <expect level="WARNING" target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('assessment','assessment-method')]" test="prop[has-oscal-namespace(('http://csrc.nist.gov/ns/oscal','http://csrc.nist.gov/ns/rmf')) and @name='method']"/>
-                  <allowed-values
+                  <expect level="WARNING" id="oscal-method-part-has-method-prop" target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('assessment','assessment-method')]" test="prop[has-oscal-namespace(('http://csrc.nist.gov/ns/oscal','http://csrc.nist.gov/ns/rmf')) and @name='method']"/>
+                  <allowed-values id="oscal-control-objective-part-method-prop-value"
                         target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('assessment','assessment-method')]/prop[has-oscal-namespace(('http://csrc.nist.gov/ns/oscal','http://csrc.nist.gov/ns/rmf')) and @name='method']/@value">
                         <enum value="INTERVIEW">The process of holding discussions with individuals or groups of individuals within an organization to once again, facilitate assessor understanding, achieve clarification, or obtain evidence.</enum>
                         <enum value="EXAMINE">The process of reviewing, inspecting, observing, studying, or analyzing one or more assessment objects (i.e., specifications, mechanisms, or activities).</enum>
