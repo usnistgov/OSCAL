@@ -68,13 +68,13 @@
                     <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
                 </model>
                 <constraint>
-                    <is-unique id="unique-ap-local-definitions-component" target="component">
+                    <is-unique id="oscal-unique-ap-local-definitions-component" target="component">
                         <key-field target="@uuid"/>
                         <remarks>
                             <p>Since multiple <code>component</code> entries can be provided, each component must have a unique <code>uuid</code>.</p>
                         </remarks>
                     </is-unique>
-                    <is-unique id="unique-ap-local-definitions-user" target="user">
+                    <is-unique id="oscal-unique-ap-local-definitions-user" target="user">
                         <key-field target="@uuid"/>
                         <remarks>
                             <p>A given <code>uuid</code> must be assigned only once to a user.</p>
@@ -91,7 +91,7 @@
                     </assembly>
                 </model>
                 <constraint>
-                    <allowed-values target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+                    <allowed-values id="oscal-terms-and-conditions-part-name" target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
                         <enum value="rules-of-engagement">Defines the circumstances, conditions, degree, and manner in which the use of cyber-attack techniques or actions may be applied to the assessment.</enum>
                         <enum value="disclosures">Any information the assessor should make known to the system owner or authorizing official. Has child 'item' parts for each individual disclosure.</enum>
                         <enum value="assessment-inclusions">Defines any assessment activities which the system owner or authorizing official wishes to ensure are performed as part of the assessment.</enum>

@@ -134,13 +134,13 @@
           </assembly>
         </model>
         <constraint>
-          <is-unique id="unique-ar-local-definitions-component" target="component">
+          <is-unique id="oscal-unique-ar-local-definitions-component" target="component">
             <key-field target="@uuid"/>
             <remarks>
               <p>Since multiple <code>component</code> entries can be provided, each component must have a unique <code>uuid</code>.</p>
             </remarks>
           </is-unique>
-          <is-unique id="unique-ar-local-definitions-user" target="user">
+          <is-unique id="oscal-unique-ar-local-definitions-user" target="user">
             <key-field target="@uuid"/>
             <remarks>
               <p>A given <code>uuid</code> must be assigned only once to a user.</p>
@@ -172,7 +172,7 @@
           </assembly>
         </model>
         <constraint>
-          <is-unique id="unique-ar-attestation-responsible-party" target="responsible-party">
+          <is-unique id="oscal-unique-ar-attestation-responsible-party" target="responsible-party">
             <key-field target="@role-id"/>
             <remarks>
               <p>Since <code>responsible-party</code> associates multiple <code>party-uuid</code> entries with a single <code>role-id</code>, each role-id must be referenced only once.</p>
