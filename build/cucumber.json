@@ -1,0 +1,29 @@
+{
+    "default": {
+      "import": [
+        "import { register } from 'ts-node'",
+        "register({ esm: true, experimentalSpecifierResolution: 'node' })",
+        "features/**/*.ts"
+      ],
+      "format": [
+        ["junit", "reports/junit-oscal.xml"],
+        ["html", "reports/oscal.html"],
+        ["rerun","@rerun.txt"]
+      ],
+      "retry": 2,
+      "retryTagFilter": "@flaky"
+    },
+    "rerun": {
+      "import": [
+        "import { register } from 'ts-node'",
+        "register({ esm: true, experimentalSpecifierResolution: 'node' })",
+        "features/**/*.ts"
+      ],
+      "format": [
+        ["junit", "reports/junit-oscal-rerun.xml"],
+        ["html", "reports/oscal-rerun.html"]
+      ],
+      "retry": 0,
+      "paths": ["@rerun.txt"]
+    }
+  }

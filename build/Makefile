@@ -25,6 +25,19 @@ dependencies: node_modules ## Ensure dependencies have been installed
 node_modules: package.json package-lock.json
 	npm ci
 
+.PHONY: test
+test: 
+	npm run test
+
+.PHONY: configure
+configure: 
+	npm install
+	wget https://repo1.maven.org/maven2/dev/metaschema/oscal/oscal-cli-enhanced/2.4.0/oscal-cli-enhanced-2.4.0-oscal-cli.zip
+	unzip -o oscal-cli-enhanced-2.4.0-oscal-cli.zip -d node_modules/.bin/oscal-cli-enhanced
+	rm oscal-cli-enhanced-2.4.0-oscal-cli.zip
+	ln -sf oscal-cli-enhanced/bin/oscal-cli node_modules/.bin/oscal-cli
+	chmod +x node_modules/.bin/oscal-cli-enhanced/bin/oscal-cli
+
 .PHONY: clean
 clean: clean-schemas clean-linkcheck clean-converters clean-archives clean-resolved-metaschemas ## Remove all generated content
 
