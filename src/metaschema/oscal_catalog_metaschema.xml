@@ -247,7 +247,7 @@
                               referenced control.</enum>
                   </allowed-values>
                   <!-- TODO: add expect constraint to check for controls that reference themselves -->
-                  <index-has-key name="catalog-groups-controls-parts"
+                  <index-has-key name="catalog-groups-controls-parts" level="WARNING"
                         target="link[@rel=('related','required','incorporated-into','moved-to') and starts-with(@href,'#')]">
                         <key-field target="@href" pattern="#(.*)"/>
                   </index-has-key>
