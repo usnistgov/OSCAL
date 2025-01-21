@@ -84,7 +84,7 @@
             <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
         </model>
         <constraint>
-            <is-unique id="unique-poam-local-definitions-component" target="component">
+            <is-unique id="oscal-unique-poam-local-definitions-component" target="component">
                 <key-field target="@uuid"/>
                 <remarks>
                     <p>Since multiple <code>component</code> entries can be provided, each component must have a unique <code>uuid</code>.</p>
@@ -172,7 +172,7 @@
             <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
         </model>
         <constraint>
-            <expect level="WARNING" target="." test="@uuid">
+            <expect id="oscal-poam-item-uuid" level="WARNING" target="." test="@uuid">
                 <message>It is a best practice to provide a UUID.</message>
             </expect>
         </constraint>
