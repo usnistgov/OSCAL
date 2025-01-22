@@ -49,9 +49,12 @@ jobs:
         uses: actions/setup-node@1e60f620b9541d16bece96c5465dc8ee9832be0b
         with:
           node-version: ${{ env.NODE_VERSION }}
+      - name: Setup Environment
+        run: |
+          export OSCAL_CLI_URL=${{ matrix.cli_url }}
       - name: Install Dependencies
         run: |
-          OSCAL_CLI_URL=${{ matrix.cli_url }} && make configure
+          make configure
       - name: Run tests
         shell: bash
         run: |
