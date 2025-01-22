@@ -62,16 +62,16 @@
          <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
       </model>
       <constraint>
-         <allowed-values target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+         <allowed-values id='assessment-part-name-value' target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
             <enum value="objective" deprecated="1.0.1">**(deprecated)** Use 'assessment-objective' instead.</enum>
             <enum value="assessment" deprecated="1.0.1">**(deprecated)** Use 'assessment-method' instead.</enum>
             <enum value="assessment-objective">The part defines an assessment objective.</enum>
             <enum value="assessment-method">The part defines an assessment method.</enum>
          </allowed-values>
-         <has-cardinality target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('objective','assessment-objective')]" max-occurs="1" />
-         <has-cardinality target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('assessment','assessment-method')]/prop[has-oscal-namespace(('http://csrc.nist.gov/ns/oscal','http://csrc.nist.gov/ns/rmf')) and @name='method']" min-occurs="1" max-occurs="1" />
-         <has-cardinality target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('assessment','assessment-method')]/part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('objects','assessment-objects')]" min-occurs="1" max-occurs="1" />
-         <has-cardinality target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('objective','assessment-objective')]/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='method-id']" min-occurs="1" />
+         <has-cardinality id='local-objective-single-assessment-objective-limit' target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('objective','assessment-objective')]" max-occurs="1" />
+         <has-cardinality id='local-objective-require-method-property' target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('assessment','assessment-method')]/prop[has-oscal-namespace(('http://csrc.nist.gov/ns/oscal','http://csrc.nist.gov/ns/rmf')) and @name='method']" min-occurs="1" max-occurs="1" />
+         <has-cardinality id='local-objective-require-assessment-objects' target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('assessment','assessment-method')]/part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('objects','assessment-objects')]" min-occurs="1" max-occurs="1" />
+         <has-cardinality id='local-objective-require-method-id' target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('objective','assessment-objective')]/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='method-id']" min-occurs="1" />
       </constraint>
    </define-assembly>
    <define-assembly name="assessment-method">
@@ -183,11 +183,11 @@
       </model>
       <constraint>
          <!-- TODO: Dave to double-check constraints here -->
-         <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+         <allowed-values id='activity-valid-activity-property-names' target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
             <enum value="method">The assessment method to use. This typically appears on parts with the name "assessment".</enum>
          </allowed-values>
-         <has-cardinality target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='method']" min-occurs="1"/>
-         <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='method']/@value">
+         <has-cardinality id='activity-method-has-cardinality' target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='method']" min-occurs="1"/>
+         <allowed-values id='activty-method-has-allowed-value' target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='method']/@value">
             <enum value="INTERVIEW">The process of holding discussions with individuals or groups of individuals within an organization to once again, facilitate assessor understanding, achieve clarification, or obtain evidence.</enum>
             <enum value="EXAMINE">The process of reviewing, inspecting, observing, studying, or analyzing one or more assessment objects (i.e., specifications, mechanisms, or activities).</enum>
             <enum value="TEST">The process of exercising one or more assessment objects (i.e., activities or mechanisms) under specified conditions to compare actual with expected behavior.</enum>
@@ -213,7 +213,7 @@
          <formal-name>Task Type</formal-name>
          <description>The type of task.</description>
          <constraint>
-            <allowed-values allow-other="yes">
+            <allowed-values id='task-type-allowed-values' allow-other="yes">
                <enum value="milestone">The task represents a planned milestone.</enum>
                <enum value="action">The task represents a specific assessment action to be performed.</enum>
             </allowed-values>
@@ -271,7 +271,7 @@
                         <formal-name>Time Unit</formal-name>
                         <description>The unit of time for the period.</description>
                         <constraint>
-                           <allowed-values>
+                           <allowed-values id='timing-unit-allowed-values'>
                               <enum value="seconds">The period is specified in seconds.</enum>
                               <enum value="minutes">The period is specified in minutes.</enum>
                               <enum value="hours">The period is specified in hours.</enum>
@@ -527,7 +527,7 @@
          <formal-name>Subject Type</formal-name>
          <description>Indicates the type of assessment subject, such as a component, inventory, item, location, or party represented by this selection statement.</description>
          <constraint>
-            <allowed-values allow-other="yes">
+            <allowed-values id='assessment-subject-type-allowed-values' allow-other="yes">
                <enum value="component">The referenced assessment subject is a component defined in the SSP, or in the <code>local-definitions</code> of an Assessment Plan or Assessment Results.</enum>
                <enum value="inventory-item">The referenced assessment subject is a inventory item defined in the SSP, or in the <code>local-definitions</code> of an Assessment Plan or Assessment Results.</enum>
                <enum value="location">The referenced assessment subject is a <code>location</code> defined in the <code>metadata</code> of the SSP, Assessment Plan, or Assessment Results.</enum>
@@ -593,7 +593,7 @@
       <formal-name>Subject Universally Unique Identifier Reference Type</formal-name>
       <description>Used to indicate the type of object pointed to by the <code>uuid-ref</code> within a subject.</description>
       <constraint>
-         <allowed-values allow-other="yes">
+         <allowed-values id='subject-type-allowed-values' allow-other="yes">
             <enum value="component">Component</enum>
             <enum value="inventory-item">Inventory Item</enum>
             <enum value="location">Location</enum>
@@ -717,7 +717,7 @@
          <formal-name>Finding Target Type</formal-name>
          <description>Identifies the type of the target.</description>
          <constraint>
-            <allowed-values>
+            <allowed-values id='object-status-type-allowed-values'>
                <enum value="statement-id">A reference to a control statement identifier within a control.</enum>
                <enum value="objective-id">A reference to a control objective identifier within a control.</enum>
             </allowed-values>
@@ -753,7 +753,7 @@
                <formal-name>Objective Status State</formal-name>
                <description>An indication as to whether the objective is satisfied or not.</description>
             <constraint>
-                  <allowed-values>
+                  <allowed-values id='objective-status-state-allowed-values'>
                   <enum value="satisfied">The objective has been completely satisfied.</enum>
                   <enum value="not-satisfied">The objective has not been completely satisfied, but may be partially satisfied.</enum>
                </allowed-values>
@@ -763,7 +763,7 @@
             <formal-name>Objective Status Reason</formal-name>
             <description>The reason the objective was given it's status.</description>
             <constraint>
-                  <allowed-values allow-other="yes">
+                  <allowed-values id='object-status-reason-allowed-values' allow-other="yes">
                   <enum value="pass">The target system or system component satisfied all the conditions.</enum>
                   <enum value="fail">The target system or system component did not satisfy all the conditions.</enum>
                   <enum value="other">Some other event took place that is not a pass or a fail.</enum>
@@ -881,7 +881,7 @@
             <description>Identifies how the observation was made.</description>
             <group-as name="methods" in-json="ARRAY"/>
             <constraint>
-               <allowed-values target="." allow-other="yes">
+               <allowed-values id='observation-method-allowed-values' target="." allow-other="yes">
                   <enum value="EXAMINE">An inspection was performed.</enum>
                   <enum value="INTERVIEW">An interview was performed.</enum>
                   <enum value="TEST">A manual or automated test was performed.</enum>
@@ -895,7 +895,7 @@
             <description>Identifies the nature of the observation. More than one may be used to further qualify and enable filtering.</description>
             <group-as name="types" in-json="ARRAY"/>
             <constraint>
-               <allowed-values target="." allow-other="yes">
+               <allowed-values id='observation-type-allowed-values' target="." allow-other="yes">
                   <enum value="ssp-statement-issue">A difference between the SSP implementation statement, and actual implementation.</enum>
                   <enum value="control-objective">An observation about the status of a the associated control objective.</enum>
                   <enum value="mitigation">A mitigating factor was identified.</enum>
@@ -992,7 +992,7 @@
          <formal-name>Actor Type</formal-name>
          <description>The kind of actor.</description>
          <constraint>
-            <allowed-values>
+            <allowed-values id='origin-actor-type-allowed-values'>
                <enum value="tool">A reference to a tool component defined with the assessment assets.</enum>
                <enum value="assessment-platform">A reference to an assessment-platform defined with the assessment assets.</enum>
                <enum value="party">A reference to a party defined within the document metadata.</enum>
@@ -1086,7 +1086,7 @@
          <formal-name>Threat Type Identification System</formal-name>
          <description>Specifies the source of the threat information.</description>
          <constraint>
-            <allowed-values allow-other="yes">
+            <allowed-values id='threat-id-system-allowed-values' allow-other="yes">
                <enum value="http://fedramp.gov" deprecated="1.0.3">**deprecated** The value conforms to FedRAMP definitions. This value has been deprecated; use <code>http://fedramp.gov/ns/oscal</code> instead.</enum>
                <enum value="http://fedramp.gov/ns/oscal">The value conforms to FedRAMP definitions.</enum>
             </allowed-values>
@@ -1272,10 +1272,10 @@
                      <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
                   </model>
                   <constraint>
-                     <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+                     <allowed-values id='related-task-props-allowed-values' target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
                         <enum value="type">The type of remediation tracking entry. Can be multi-valued.</enum>
                      </allowed-values>
-                     <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='type']/@value" allow-other="yes">
+                     <allowed-values id='related-task-type-allowed-values' target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='type']/@value" allow-other="yes">
                         <enum value="vendor-check-in">Contacted vendor to determine the status of a pending fix to a known vulnerability.</enum>
                         <enum value="status-update">Information related to the current state of response to this risk.</enum>
                         <enum value="milestone-complete">A significant step in the response plan has been achieved.</enum>
@@ -1305,13 +1305,13 @@
          </define-assembly>
       </model>
       <constraint>
-         <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+         <allowed-values id='related-observation-prop-allowed-values' target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
             <enum value="false-positive">The risk has been confirmed to be a false positive.</enum>
             <enum value="accepted">The risk has been accepted. No further action will be taken.</enum>
             <enum value="risk-adjusted">The risk has been adjusted.</enum>
             <enum value="priority">A numeric value indicating the sequence in which risks should be addressed. (Lower numbers are higher priority)</enum>
          </allowed-values>
-         <matches target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='priority']/@value" datatype="integer" />
+         <matches id='related-observation-priority-is-integer' target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='priority']/@value" datatype="integer" />
       </constraint>
    </define-assembly>
 
@@ -1333,7 +1333,7 @@
       <formal-name>Risk Status</formal-name>
       <description>Describes the status of the associated risk.</description>
       <constraint>
-         <allowed-values target="." allow-other="yes">
+         <allowed-values id='risk-status-allowed-values' target="." allow-other="yes">
             <enum value="open">The risk has been identified.</enum>
             <enum value="investigating">The identified risk is being investigated. (Open risk)</enum>
             <enum value="remediating">Remediation activities are underway, but are not yet complete. (Open risk)</enum>
@@ -1371,7 +1371,7 @@
                <formal-name>Naming System</formal-name>
                <description>Specifies the naming system under which this risk metric is organized, which allows for the same names to be used in different systems controlled by different parties. This avoids the potential of a name clash.</description>
                <constraint>
-                  <allowed-values allow-other="yes"><!-- Other values -->
+                  <allowed-values id='facet-system-allowed-values' allow-other="yes"><!-- Other values -->
                      <enum value="http://fedramp.gov" deprecated="1.0.3">**deprecated** The FedRAMP naming system. This has been deprecated; use <code>http://fedramp.gov/ns/oscal</code> instead.</enum>
                      <enum value="http://fedramp.gov/ns/oscal">The facet naming system defined by FedRAMP.</enum>
                      <enum value="http://csrc.nist.gov/ns/oscal">The facet naming system defined by OSCAL.</enum>
@@ -1402,29 +1402,29 @@
                <field ref="remarks" in-xml="WITH_WRAPPER"/>
             </model>
             <constraint>
-               <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+               <allowed-values id='facet-allowed-props' target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
                   <enum value="state">Indicates if the facet is 'initial' as first identified, or 'adjusted' indicating that the value has be changed after some adjustments have been made (e.g., to identify residual risk).</enum>
                </allowed-values>
-               <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='state']/@value"><!-- For values related to initial and residual (mitigated) risk -->
+               <allowed-values id='facet-state-allowed-values' target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='state']/@value"><!-- For values related to initial and residual (mitigated) risk -->
                   <enum value="initial">As first identified.</enum>
                   <enum value="adjusted">Indicates that residual risk remains after some adjustments have been made.</enum>
                </allowed-values>
                <!-- TODO: What about "vulnerability-id", "plugin-id"? Should this be added to FedRAMP? -->
-               <allowed-values target="(.)[@system='http://csrc.nist.gov/ns/oscal']/@name">
+               <allowed-values id='facet-name-nist-allowed-values' target="(.)[@system='http://csrc.nist.gov/ns/oscal']/@name">
                   <enum value="likelihood">General likelihood rating.</enum>
                   <enum value="impact">General impact rating.</enum>
                   <enum value="risk">General risk rating.</enum>
                   <enum value="severity">General severity rating.</enum>
                </allowed-values>
-               <allowed-values target="(.)[@system=('http://fedramp.gov','http://fedramp.gov/ns/oscal')]/@name">
+               <allowed-values id='facet-name-fedramp-allowed-values' target="(.)[@system=('http://fedramp.gov','http://fedramp.gov/ns/oscal')]/@name">
                   <enum value="likelihood">Likelihood as defined by FedRAMP. The <code>class</code> can be used to specify 'initial' and 'adjusted' risk states.</enum>
                   <enum value="impact">Impact as defined by FedRAMP. The <code>class</code> can be used to specify 'initial' and 'adjusted' risk states.</enum>
                   <enum value="risk">Risk as calculated according to FedRAMP. The <code>class</code> can be used to specify 'initial' and 'adjusted' risk states.</enum>
                </allowed-values>
-               <allowed-values target="(.)[@system='http://cve.mitre.org']/@name">
+               <allowed-values id='facet-name-mitre-allowed-values' target="(.)[@system='http://cve.mitre.org']/@name">
                   <enum value="cve-id">An identifier managed by the CVE program (see <a>https://cve.mitre.org/</a>).</enum>
                </allowed-values>
-               <allowed-values target="(.)[@system='http://www.first.org/cvss/v2.0']/@name">
+               <allowed-values id='facet-name-cvss-allowed-values' target="(.)[@system='http://www.first.org/cvss/v2.0']/@name">
                   <enum value="access-vector">Base: Access Vector</enum>
                   <enum value="access-complexity">Base: Access Complexity</enum>
                   <enum value="authentication">Base: Authentication</enum>
@@ -1440,47 +1440,47 @@
                   <enum value="integrity-requirement">Environmental: Integrity Requirement</enum>
                   <enum value="availability-requirement">Environmental: Availability Requirement</enum>
                </allowed-values>
-               <allowed-values target="(.)[@system='http://www.first.org/cvss/v2.0' and @name='access-vector']/@value">
+               <allowed-values id='facet-name-mitre-access-vector-allowed-values' target="(.)[@system='http://www.first.org/cvss/v2.0' and @name='access-vector']/@value">
                   <enum value="local">Local</enum>
                   <enum value="adjacent-network">Network Adjacent</enum>
                   <enum value="network">Network</enum>
                </allowed-values>
-               <allowed-values target="(.)[@system='http://www.first.org/cvss/v2.0' and @name='access-complexity']/@value">
+               <allowed-values id='facet-name-cvss-access-complexity-allowed-values' target="(.)[@system='http://www.first.org/cvss/v2.0' and @name='access-complexity']/@value">
                   <enum value="high">High</enum>
                   <enum value="medium">Medium</enum>
                   <enum value="low">Low</enum>
                </allowed-values>
-               <allowed-values target="(.)[@system='http://www.first.org/cvss/v2.0' and @name='authentication']/@value">
+               <allowed-values id='facet-name-cvss-authentication-allowed-values' target="(.)[@system='http://www.first.org/cvss/v2.0' and @name='authentication']/@value">
                   <enum value="multiple">Multiple</enum>
                   <enum value="single">Single</enum>
                   <enum value="none">None</enum>
                </allowed-values>
-               <allowed-values target="(.)[@system='http://www.first.org/cvss/v2.0' and @name=('confidentiality-impact', 'integrity-impact', 'availability-impact')]/@value">
+               <allowed-values id='facet-name-cvss-impact-allowed-values' target="(.)[@system='http://www.first.org/cvss/v2.0' and @name=('confidentiality-impact', 'integrity-impact', 'availability-impact')]/@value">
                   <enum value="none">None</enum>
                   <enum value="partial">Partial</enum>
                   <enum value="complete">Complete</enum>
                </allowed-values>
-               <allowed-values target="(.)[@system='http://www.first.org/cvss/v2.0' and @name='exploitability']/@value">
+               <allowed-values id='facet-name-cvss-exploitability-allowed-values' target="(.)[@system='http://www.first.org/cvss/v2.0' and @name='exploitability']/@value">
                   <enum value="unproven">Unproven</enum>
                   <enum value="proof-of-concept">Proof-of-Concept</enum>
                   <enum value="functional">Functional</enum>
                   <enum value="high">High</enum>
                   <enum value="not-defined">Not Defined</enum>
                </allowed-values>
-               <allowed-values target="(.)[@system='http://www.first.org/cvss/v2.0' and @name='remediation-level']/@value">
+               <allowed-values  id='facet-name-cvss-remediation-level-allowed-values' target="(.)[@system='http://www.first.org/cvss/v2.0' and @name='remediation-level']/@value">
                   <enum value="official-fix">Official Fix</enum>
                   <enum value="temporary-fix">Temporary Fix</enum>
                   <enum value="workaround">Workaround</enum>
                   <enum value="unavailable">Unavailable</enum>
                   <enum value="not-defined">Not Defined</enum>
                </allowed-values>
-               <allowed-values target="(.)[@system='http://www.first.org/cvss/v2.0' and @name='report-confidence']/@value">
+               <allowed-values id='facet-name-cvss-report-confidence-allowed-values' target="(.)[@system='http://www.first.org/cvss/v2.0' and @name='report-confidence']/@value">
                   <enum value="unconfirmed">Unconfirmed</enum>
                   <enum value="uncorroborated">Uncorroborated</enum>
                   <enum value="confirmed">Confirmed</enum>
                   <enum value="not-defined">Not Defined</enum>
                </allowed-values>
-               <allowed-values target="(.)[@system='http://www.first.org/cvss/v2.0' and @name='collateral-damage-potential']/@value">
+               <allowed-values id='facet-name-cvss-report-collateral-damage-potential-allowed-values' target="(.)[@system='http://www.first.org/cvss/v2.0' and @name='collateral-damage-potential']/@value">
                   <enum value="none">None</enum>
                   <enum value="low">Low (light loss)</enum>
                   <enum value="low-medium">Low Medium</enum>
@@ -1488,7 +1488,7 @@
                   <enum value="high">High (catastrophic loss)</enum>
                   <enum value="not-defined">Not Defined</enum>
                </allowed-values>
-               <allowed-values target="(.)[@system='http://www.first.org/cvss/v2.0' and @name=('target-distribution', 'confidentiality-requirement', 'integrity-requirement', 'availability-requirement')]/@value">
+               <allowed-values id='facet-name-cvss-report-impact-requirement-allowed-values'  target="(.)[@system='http://www.first.org/cvss/v2.0' and @name=('target-distribution', 'confidentiality-requirement', 'integrity-requirement', 'availability-requirement')]/@value">
                   <enum value="none">None</enum>
                   <enum value="low">Low</enum>
                   <enum value="medium">Medium</enum>
@@ -1496,7 +1496,7 @@
                   <enum value="not-defined">Not Defined</enum>
                </allowed-values>
 
-               <allowed-values target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1')]/@name">
+               <allowed-values id='facet-name-cvss-prop-name-allowed-values'  target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1')]/@name">
                   <enum value="attack-vector">Base: Attack Vector</enum>
                   <enum value="access-complexity">Base: Attack Complexity</enum>
                   <enum value="privileges-required">Base: Privileges Required</enum>
@@ -1520,84 +1520,84 @@
                   <enum value="integrity-requirement">Environmental: Integrity Requirement Modifier</enum>
                   <enum value="availability-requirement">Environmental: Availability Requirement Modifier</enum>
                </allowed-values>
-               <allowed-values target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name='access-vector']/@value">
+               <allowed-values id='facet-name-cvss-access-vector-allowed-values' target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name='access-vector']/@value">
                   <enum value="network">Network</enum>
                   <enum value="adjacent">Adjacent</enum>
                   <enum value="local">Local</enum>
                   <enum value="physical">Physical</enum>
                </allowed-values>
-               <allowed-values target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name='access-complexity']/@value">
+               <allowed-values id='facet-name-cvss-access-complexity-allowed-values' target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name='access-complexity']/@value">
                   <enum value="high">High</enum>
                   <enum value="low">Low</enum>
                </allowed-values>
-               <allowed-values target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name=('privileges-required', 'confidentiality-impact', 'integrity-impact', 'availability-impact')]/@value">
+               <allowed-values id='facet-name-cvss-privileges-required-allowed-values' target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name=('privileges-required', 'confidentiality-impact', 'integrity-impact', 'availability-impact')]/@value">
                   <enum value="none">None</enum>
                   <enum value="low">Low</enum>
                   <enum value="high">High</enum>
                </allowed-values>
-               <allowed-values target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name='user-interaction']/@value">
+               <allowed-values id='facet-name-cvss-user-interaction-allowed-values'  target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name='user-interaction']/@value">
                   <enum value="none">None</enum>
                   <enum value="required">Required</enum>
                </allowed-values>
-               <allowed-values target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name='scope']/@value">
+               <allowed-values id='facet-name-cvss-scope-allowed-values'  target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name='scope']/@value">
                   <enum value="unchanged">Unchanged</enum>
                   <enum value="changed">Changed</enum>
                </allowed-values>
-               <allowed-values target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name='exploit-code-maturity']/@value">
+               <allowed-values id='facet-name-cvss-exploit-code-maturity-values' target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name='exploit-code-maturity']/@value">
                   <enum value="not-defined">Not Defined</enum>
                   <enum value="unproven">Unproven</enum>
                   <enum value="proof-of-concept">Proof-of-Concept</enum>
                   <enum value="functional">Functional</enum>
                   <enum value="high">High</enum>
                </allowed-values>
-               <allowed-values target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name='remediation-level']/@value">
+               <allowed-values id='facet-name-cvss-remediation-level'  target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name='remediation-level']/@value">
                   <enum value="not-defined">Not Defined</enum>
                   <enum value="official-fix">Official Fix</enum>
                   <enum value="temporary-fix">Temporary Fix</enum>
                   <enum value="workaround">Workaround</enum>
                   <enum value="unavailable">Unavailable</enum>
                </allowed-values>
-               <allowed-values target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name='report-confidence']/@value">
+               <allowed-values  id='facet-name-cvss-report-confidence-allowed-values'  target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name='report-confidence']/@value">
                   <enum value="not-defined">Not Defined</enum>
                   <enum value="unknown">Unknown</enum>
                   <enum value="reasonable">Reasonable</enum>
                   <enum value="confirmed">Confirmed</enum>
                </allowed-values>
-               <allowed-values target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name=('confidentiality-requirement', 'integrity-requirement', 'availability-requirement')]/@value">
+               <allowed-values id='facet-name-cvss-impact-requirement-allowed-values' target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name=('confidentiality-requirement', 'integrity-requirement', 'availability-requirement')]/@value">
                   <enum value="not-defined">Not Defined</enum>
                   <enum value="low">Low</enum>
                   <enum value="medium">Medium</enum>
                   <enum value="high">High</enum>
                </allowed-values>
-               <allowed-values target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name='modified-attack-vector']/@value">
+               <allowed-values id='facet-name-cvss-modified-attack-vector-allowed-values' target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name='modified-attack-vector']/@value">
                   <enum value="not-defined">Not Defined</enum>
                   <enum value="network">Network</enum>
                   <enum value="adjacent">Adjacent</enum>
                   <enum value="local">Local</enum>
                   <enum value="physical">Physical</enum>
                </allowed-values>
-               <allowed-values target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name='modified-attack-complexity']/@value">
+               <allowed-values id='facet-name-cvss-modified-attack-complexity-allowed-values' target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name='modified-attack-complexity']/@value">
                   <enum value="not-defined">Not Defined</enum>
                   <enum value="high">High</enum>
                   <enum value="low">Low</enum>
                </allowed-values>
-               <allowed-values target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name=('modified-privileges-required', 'modified-confidentiality', 'modified-integrity', 'modified-availability')]/@value">
+               <allowed-values id='facet-name-cvss-modified-attack-privileges-required-allowed-values' target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name=('modified-privileges-required', 'modified-confidentiality', 'modified-integrity', 'modified-availability')]/@value">
                   <enum value="not-defined">Not Defined</enum>
                   <enum value="none">None</enum>
                   <enum value="low">Low</enum>
                   <enum value="high">High</enum>
                </allowed-values>
-               <allowed-values target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name='modified-user-interaction']/@value">
+               <allowed-values id='facet-name-cvss-modified-modified-user-interaction-allowed-values' target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name='modified-user-interaction']/@value">
                   <enum value="not-defined">Not Defined</enum>
                   <enum value="none">None</enum>
                   <enum value="required">Required</enum>
                </allowed-values>
-               <allowed-values target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name='modified-scope']/@value">
+               <allowed-values id='facet-name-cvss-modified-modified-user-interaction-allowed-values'  target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name='modified-scope']/@value">
                   <enum value="not-defined">Not Defined</enum>
                   <enum value="unchanged">Unchanged</enum>
                   <enum value="changed">Changed</enum>
                </allowed-values>
-               <allowed-values id="oscal-cvss-v4.0-vectors" target="(.)[@system=('https://www.first.org/cvss/v4-0')]/@name">
+               <allowed-values id="facet-name-cvss-v4.0-vectors" target="(.)[@system=('https://www.first.org/cvss/v4-0')]/@name">
                   <enum value="av">Base: Attack Vector</enum>
                   <enum value="ac">Base: Attack Complexity</enum>
                   <enum value="at">Base: Attack Requirements</enum>
@@ -1631,69 +1631,69 @@
                   <enum value="ar">Environmental: Availability Requirements</enum>
                   <enum value="e">Threat: Exploit Maturity</enum>
                </allowed-values>
-               <allowed-values id="oscal-cvss-v4.0-av-values" target=".[@system='https://www.first.org/cvss/v4-0' and @name='av']/@value">
+               <allowed-values id="facet-cvss-v4.0-attack-vector-allowed-values" target=".[@system='https://www.first.org/cvss/v4-0' and @name='av']/@value">
                   <formal-name>Attack Vector Values</formal-name>
                   <enum value="n">Network</enum>
                   <enum value="a">Adjacent</enum>
                   <enum value="l">Local</enum>
                   <enum value="p">Physical</enum>
                </allowed-values>
-               <allowed-values id="oscal-cvss-v4.0-ac-values" target=".[@system='https://www.first.org/cvss/v4-0' and @name='ac']/@value">
+               <allowed-values id="facet-cvss-v4.0-ac-values" target=".[@system='https://www.first.org/cvss/v4-0' and @name='ac']/@value">
                   <formal-name>Attack Complexity Values</formal-name>
                   <enum value="h">High</enum>
                   <enum value="l">Low</enum>
                </allowed-values>
-               <allowed-values id="oscal-cvss-v4.0-at-values" target=".[@system='https://www.first.org/cvss/v4-0' and @name='at']/@value">
+               <allowed-values id="facet-cvss-v4.0-at-values" target=".[@system='https://www.first.org/cvss/v4-0' and @name='at']/@value">
                   <formal-name>Attack Requirements Values</formal-name>
                   <enum value="n">None</enum>
                   <enum value="p">Present</enum>
                </allowed-values>
-               <allowed-values id="oscal-cvss-v4.0-pr-cia-values" target=".[@system='https://www.first.org/cvss/v4-0' and @name=('pr','vc','vi','va','sc','si','sa')]/@value">
+               <allowed-values id="facet-cvss-v4.0-pr-cia-values" target=".[@system='https://www.first.org/cvss/v4-0' and @name=('pr','vc','vi','va','sc','si','sa')]/@value">
                   <formal-name>Privileges Required, Confidentiality, Integrity, and Availability Values</formal-name>
                   <enum value="n">None</enum>
                   <enum value="l">Low</enum>
                   <enum value="h">High</enum>
                </allowed-values>
-               <allowed-values id="oscal-cvss-v4.0-ui-values" target=".[@system='https://www.first.org/cvss/v4-0' and @name='ui']/@value">
+               <allowed-values id="facet-cvss-v4.0-ui-values" target=".[@system='https://www.first.org/cvss/v4-0' and @name='ui']/@value">
                   <formal-name>User Interaction Values</formal-name>
                   <enum value="n">None</enum>
                   <enum value="p">Passive</enum>
                   <enum value="a">Active</enum>
                </allowed-values>
-               <allowed-values id="oscal-cvss-v4.0-s-values" target=".[@system='https://www.first.org/cvss/v4-0' and @name='s']/@value">
+               <allowed-values id="facet-cvss-v4.0-s-values" target=".[@system='https://www.first.org/cvss/v4-0' and @name='s']/@value">
                   <formal-name>Safety Values</formal-name>
                   <enum value="x">Not Defined</enum>
                   <enum value="n">Negligible</enum>
                   <enum value="p">Present</enum>
                </allowed-values>
-               <allowed-values id="oscal-cvss-v4.0-au-values" target=".[@system='https://www.first.org/cvss/v4-0' and @name='au']/@value">
+               <allowed-values id="facet-cvss-v4.0-au-values" target=".[@system='https://www.first.org/cvss/v4-0' and @name='au']/@value">
                   <formal-name>Automatable Values</formal-name>
                   <enum value="x">Not Defined</enum>
                   <enum value="n">No</enum>
                   <enum value="y">Yes</enum>
                </allowed-values>
-               <allowed-values id="oscal-cvss-v4.0-r-values" target=".[@system='https://www.first.org/cvss/v4-0' and @name='r']/@value">
+               <allowed-values id="facet-cvss-v4.0-r-values" target=".[@system='https://www.first.org/cvss/v4-0' and @name='r']/@value">
                   <formal-name>Recovery Values</formal-name>
                   <enum value="x">Not Defined</enum>
                   <enum value="a">Automatic</enum>
                   <enum value="u">User</enum>
                   <enum value="i">Irrecoverable</enum>
                </allowed-values>
-               <allowed-values id="oscal-cvss-v4.0-v-values" target=".[@system='https://www.first.org/cvss/v4-0' and @name='v']/@value">
+               <allowed-values id="facet-cvss-v4.0-v-values" target=".[@system='https://www.first.org/cvss/v4-0' and @name='v']/@value">
                   <formal-name>Value Density Values</formal-name>
                   <enum value="x">Not Defined</enum>
                   <enum value="a">Automatic</enum>
                   <enum value="u">User</enum>
                   <enum value="i">Irrecoverable</enum>
                </allowed-values>
-               <allowed-values id="oscal-cvss-v4.0-re-values" target=".[@system='https://www.first.org/cvss/v4-0' and @name='re']/@value">
+               <allowed-values id="facet-cvss-v4.0-re-values" target=".[@system='https://www.first.org/cvss/v4-0' and @name='re']/@value">
                   <formal-name>Vulnerability Response Effort Values</formal-name>
                   <enum value="x">Not Defined</enum>
                   <enum value="l">Low</enum>
                   <enum value="m">Moderate</enum>
                   <enum value="h">High</enum>
                </allowed-values>
-               <allowed-values id="oscal-cvss-v4.0-u-values" target=".[@system='https://www.first.org/cvss/v4-0' and @name='u']/@value">
+               <allowed-values id="facet-cvss-v4.0-u-values" target=".[@system='https://www.first.org/cvss/v4-0' and @name='u']/@value">
                   <formal-name>Provider Urgency Values</formal-name>
                   <enum value="x">Not Defined</enum>
                   <enum value="clear">Clear</enum>
@@ -1701,7 +1701,7 @@
                   <enum value="amber">Amber</enum>
                   <enum value="red">Red</enum>
                </allowed-values>
-               <allowed-values id="oscal-cvss-v4.0-mav-values" target=".[@system='https://www.first.org/cvss/v4-0' and @name='mav']/@value">
+               <allowed-values id="facet-cvss-v4.0-mav-values" target=".[@system='https://www.first.org/cvss/v4-0' and @name='mav']/@value">
                   <formal-name>Modified Attack Vector Values</formal-name>
                   <enum value="x">Not Defined</enum>
                   <enum value="n">Network</enum>
@@ -1709,40 +1709,40 @@
                   <enum value="l">Local</enum>
                   <enum value="p">Physical</enum>
                </allowed-values>
-               <allowed-values id="oscal-cvss-v4.0-mac-values" target=".[@system='https://www.first.org/cvss/v4-0' and @name='mac']/@value">
+               <allowed-values id="facet-cvss-v4.0-mac-values" target=".[@system='https://www.first.org/cvss/v4-0' and @name='mac']/@value">
                   <formal-name>Modified Attack Complexity Values</formal-name>
                   <enum value="x">Not Defined</enum>
                   <enum value="h">High</enum>
                   <enum value="l">Low</enum>
                </allowed-values>
-               <allowed-values id="oscal-cvss-v4.0-mat-values" target=".[@system='https://www.first.org/cvss/v4-0' and @name='mat']/@value">
+               <allowed-values id="facet-cvss-v4.0-mat-values" target=".[@system='https://www.first.org/cvss/v4-0' and @name='mat']/@value">
                   <formal-name>Modified Attack Requirements Values</formal-name>
                   <enum value="x">Not Defined</enum>
                   <enum value="n">None</enum>
                   <enum value="p">Present</enum>
                </allowed-values>
-               <allowed-values id="oscal-cvss-v4.0-mpr-mvs-cia-values" target=".[@system='https://www.first.org/cvss/v4-0' and @name=('mpr','mvc','mvi')]/@value">
+               <allowed-values id="facet-cvss-v4.0-mpr-mvs-cia-values" target=".[@system='https://www.first.org/cvss/v4-0' and @name=('mpr','mvc','mvi')]/@value">
                   <formal-name>Modified Privileges Required, and Vulnerable System Confidentiality, Integrity, and Availability Values</formal-name>
                   <enum value="x">Not Defined</enum>
                   <enum value="n">None</enum>
                   <enum value="l">Low</enum>
                   <enum value="h">High</enum>
                </allowed-values>
-               <allowed-values id="oscal-cvss-v4.0-mui-values" target=".[@system='https://www.first.org/cvss/v4-0' and @name='mui']/@value">
+               <allowed-values id="facet-cvss-v4.0-mui-values" target=".[@system='https://www.first.org/cvss/v4-0' and @name='mui']/@value">
                   <formal-name>Modified User Interaction Values</formal-name>
                   <enum value="x">Not Defined</enum>
                   <enum value="n">None</enum>
                   <enum value="p">Passive</enum>
                   <enum value="a">Active</enum>
                </allowed-values>
-               <allowed-values id="oscal-cvss-v4.0-msc-values" target=".[@system='https://www.first.org/cvss/v4-0' and @name='msc']/@value">
+               <allowed-values id="facet-cvss-v4.0-msc-values" target=".[@system='https://www.first.org/cvss/v4-0' and @name='msc']/@value">
                   <formal-name>Modified Subsequent System Confidentiality Values</formal-name>
                   <enum value="x">Not Defined</enum>
                   <enum value="n">Negligible</enum>
                   <enum value="l">Low</enum>
                   <enum value="h">High</enum>
                </allowed-values>
-               <allowed-values id="oscal-cvss-v4.0-msi-msa-cia-values" target=".[@system='https://www.first.org/cvss/v4-0' and @name=('msi','msa')]/@value">
+               <allowed-values id="facet-cvss-v4.0-msi-msa-cia-values" target=".[@system='https://www.first.org/cvss/v4-0' and @name=('msi','msa')]/@value">
                   <formal-name>Modified Safety-Related Subsequent System Integrity and Availability Values</formal-name>
                   <enum value="x">Not Defined</enum>
                   <enum value="n">Negligible</enum>
@@ -1750,14 +1750,14 @@
                   <enum value="h">High</enum>
                   <enum value="s">Safety</enum>
                </allowed-values>
-               <allowed-values id="oscal-cvss-v4.0-env-cia-values" target=".[@system='https://www.first.org/cvss/v4-0' and @name=('cr','ir','ar')]/@value">
+               <allowed-values id="facet-cvss-v4.0-env-cia-values" target=".[@system='https://www.first.org/cvss/v4-0' and @name=('cr','ir','ar')]/@value">
                   <formal-name>Vulnerability Response Effort Values</formal-name>
                   <enum value="x">Not Defined</enum>
                   <enum value="l">Low</enum>
                   <enum value="m">Medium</enum>
                   <enum value="h">High</enum>
                </allowed-values>
-               <allowed-values id="oscal-cvss-v4.0-e-values" target=".[@system='https://www.first.org/cvss/v4-0' and @name='e']/@value">
+               <allowed-values id="facet-cvss-v4.0-e-values" target=".[@system='https://www.first.org/cvss/v4-0' and @name='e']/@value">
                   <formal-name>Vulnerability Response Effort Values</formal-name>
                   <enum value="x">Not Defined</enum>
                   <enum value="a">Attacked</enum>
@@ -1781,7 +1781,7 @@
          <formal-name>Remediation Intent</formal-name>
          <description>Identifies whether this is a recommendation, such as from an assessor or tool, or an actual plan accepted by the system owner.</description>
          <constraint>
-            <allowed-values allow-other="yes">
+            <allowed-values id='response-remediation-lifecycle-allowed-values' allow-other="yes">
                <enum value="recommendation">Recommended remediation.</enum>
                <enum value="planned">The actions intended to resolve the risk.</enum>
                <enum value="completed">This remediation activities were performed to address the risk.</enum>
@@ -1851,10 +1851,10 @@
          <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
       </model>
       <constraint>
-         <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+         <allowed-values id='risk-response-type-prop-name-allowed-values' target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
             <enum value="type">Risk Response Type</enum>
          </allowed-values>
-         <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='type']/@value">
+         <allowed-values id='risk-response-type-allowed-values' target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='type']/@value">
             <enum value="avoid">The risk will be eliminated.</enum>
             <enum value="mitigate">The risk will be reduced.</enum>
             <enum value="transfer">The risk will be transferred to another organization or entity.</enum>
@@ -1887,7 +1887,7 @@
          <formal-name>Part Name</formal-name>
          <description>A textual label that uniquely identifies the part's semantic type.</description>
          <constraint>
-            <allowed-values allow-other="yes">
+            <allowed-values id='assessment-part-name-allowed-values' allow-other="yes">
                <!-- QUESTION: Should this be in sync with control part? Should these be defined here or should they be defined in the context of use? -->
                <enum value="asset">An assessment asset.</enum>
                <enum value="method">An assessment method.</enum>
@@ -1934,11 +1934,11 @@
          <!-- <any/> -->
       </model>
       <constraint>
-         <allowed-values target=".[@name='objective']/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+         <allowed-values id='assessment-part-objective-method-allowed-values' target=".[@name='objective']/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
             <enum value="method">The assessment method to use. This typically appears on parts with the name "objective".</enum>
          </allowed-values>
-         <has-cardinality target=".[@name='objective']/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='method']" min-occurs="1"/>
-         <allowed-values target=".[@name='objective']/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='method']/@value">
+         <has-cardinality id='assessment-part-objective-method-has-value' target=".[@name='objective']/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='method']" min-occurs="1"/>
+         <allowed-values id='objective-method-allowed-values' target=".[@name='objective']/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='method']/@value">
             <enum value="INTERVIEW">The process of holding discussions with individuals or groups of individuals within an organization to once again, facilitate assessor understanding, achieve clarification, or obtain evidence.</enum>
             <enum value="EXAMINE">The process of reviewing, inspecting, observing, studying, or analyzing one or more assessment objects (i.e., specifications, mechanisms, or activities).</enum>
             <enum value="TEST">The process of exercising one or more assessment objects (i.e., activities or mechanisms) under specified conditions to compare actual with expected behavior.</enum>

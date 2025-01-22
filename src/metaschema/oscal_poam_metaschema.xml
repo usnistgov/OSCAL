@@ -172,7 +172,7 @@
             <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
         </model>
         <constraint>
-            <expect level="WARNING" target="." test="@uuid">
+            <expect id='poam-item-has-uuid' level="WARNING" target="." test="@uuid">
                 <message>It is a best practice to provide a UUID.</message>
             </expect>
         </constraint>

@@ -162,18 +162,18 @@
                         <enum value="external">The component is implemented outside the system boundary.</enum>
                   </allowed-values>
 
-                  <index-has-key name="index-metadata-location-uuid" target="prop[@name='physical-location']">
+                  <index-has-key id='component-physical-metadata-location-exists' name="index-metadata-location-uuid" target="prop[@name='physical-location']">
                         <key-field target="@value"/>
                   </index-has-key>
 
-                  <matches target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='inherited-uuid']/@value" datatype="uuid" />
-                  <matches target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='release-date']/@value" datatype="date"/>
+                  <matches id='system-component-implementation-inherited-uuid' target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='inherited-uuid']/@value" datatype="uuid" />
+                  <matches id='system-component-implementation-release-date' target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='release-date']/@value" datatype="date"/>
 
                   <!-- ========================================================================================================== -->
                   <!-- = Changes to the following values need to be synced with component in the SSP and component metaschemas. = -->
                   <!-- ========================================================================================================== -->
 
-                  <allowed-values target="(.)[@type=('software', 'hardware', 'service')]/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+                  <allowed-values id='system-component-has-vendor-name' target="(.)[@type=('software', 'hardware', 'service')]/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
                         <formal-name>Component Vendor Property Names</formal-name>
                         <description>Allowed property names for vendor information.</description>
                         <enum value="vendor-name">The name of the company or organization </enum>
@@ -242,16 +242,16 @@
                         <enum value="isa-authorizing-official-local">Interconnection Security Agreement (ISA) authorizing official for this system.</enum>
                         <enum value="isa-authorizing-official-remote">Interconnection Security Agreement (ISA) authorizing official for the remote interconnected system.</enum>
                   </allowed-values>
-                  <matches target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='isa-date']/@value" datatype="date-time"/>
-                  <matches target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='ipv4-address']/@value" datatype="ip-v4-address" />
-                  <matches target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='ipv6-address']/@value" datatype="ip-v6-address" />
-                  <allowed-values id="interconnection-direction-values" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='direction']/@value">
+                  <matches id='system-component-isa-date-is-valid' target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='isa-date']/@value" datatype="date-time"/>
+                  <matches id='system-component-ipv4-prop-is-valid' target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='ipv4-address']/@value" datatype="ip-v4-address" />
+                  <matches id='system-component-ipv6-prop-is-valid' target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='ipv6-address']/@value" datatype="ip-v6-address" />
+                  <allowed-values id="system-component-interconnection-direction-values" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='direction']/@value">
                         <formal-name>Interconnection Direction Values</formal-name>
                         <description>Allowed values for interconnection data flow direction.</description>
                         <enum value="incoming">Data from the remote system flows into this system.</enum>
                         <enum value="outgoing">Data from this system flows to the remote system.</enum>
                   </allowed-values>
-                  <is-unique id="unique-system-component-responsible-role" target="responsible-role">
+                  <is-unique id="system-component-unique-system-component-responsible-role" target="responsible-role">
                         <key-field target="@role-id"/>
                         <remarks>
                               <p>Since <code>responsible-role</code> associates multiple <code>party-uuid</code> entries with a single <code>role-id</code>, each role-id must be referenced only once.</p>
@@ -308,7 +308,7 @@
                   </assembly>
             </model>
             <constraint>
-                  <expect level="WARNING" target="." test="@uuid">
+                  <expect id='protocol-title-has-uuid' level="WARNING" target="." test="@uuid">
                         <message>It is a best practice to provide a UUID.</message>
                   </expect>
             </constraint>
@@ -443,21 +443,21 @@
                   <field ref="remarks" in-xml="WITH_WRAPPER"/>
             </model>
             <constraint>
-                  <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+                  <allowed-values id='system-user-props-allowed-values' target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
                         <enum value="type">The type of user, such as internal, external, or general-public.</enum>
                         <enum value="privilege-level">The user's privilege level within the system, such as privileged, non-privileged, no-logical-access.</enum>
                   </allowed-values>
-                  <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='type']/@value">
+                  <allowed-values id='system-user-type-allowed-values' target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='type']/@value">
                         <enum value="internal">A user account for a person or entity that is part of the organization who owns or operates the system.</enum>
                         <enum value="external">A user account for a person or entity that is not part of the organization who owns or operates the system.</enum>
                         <enum value="general-public">A user of the system considered to be outside </enum>
                   </allowed-values>
-                  <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='privilege-level']/@value">
+                  <allowed-values id='system-user-privilege-level-allowed-values' target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='privilege-level']/@value">
                         <enum value="privileged">This role has elevated access to the system, such as a group or system administrator.</enum>
                         <enum value="non-privileged">This role has typical user-level access to the system without elevated access.</enum>
                         <enum value="no-logical-access">This role has no access to the system, such as a manager who approves access as part of a process.</enum>
                   </allowed-values>
-                  <allowed-values target="role-id" allow-other="yes">
+                  <allowed-values id='system-user-responsible-role-id-allowed-values' target="role-id" allow-other="yes">
             &allowed-values-responsible-roles-operations;
                   </allowed-values>
             </constraint>
@@ -572,14 +572,14 @@
                               <!-- TODO: constrain link href values based on rel ((BJR): Was unsure of how to do this.) -->
 
                               <!-- TODO: constrain property values based on name (CHANGED (BJR): Done.) -->
-                              <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+                              <allowed-values id='implemented-component-prop-name-allowed-values' target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
                   &allowed-values-component_component_property-name;
                   &allowed-values-component_inventory-item_property-name;
 
                               </allowed-values>
 
 
-                              <allowed-values target="responsible-party/@role-id" allow-other="yes">
+                              <allowed-values id='implemented-component-responsible-party-role-allowed-values' target="responsible-party/@role-id" allow-other="yes">
                   &allowed-values-responsible-roles-operations;
                               </allowed-values>
 
@@ -596,7 +596,7 @@
                   <field ref="remarks" in-xml="WITH_WRAPPER"/>
             </model>
             <constraint>
-                  <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+                  <allowed-values id='inventory-item-prop-name-allowed-values' target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
                         <enum value="ipv4-address">The Internet Protocol v4 Address of the asset.</enum>
                         <enum value="ipv6-address">The Internet Protocol v6 Address of the asset.</enum>
                         <enum value="fqdn">The full-qualified domain name (FQDN) of the asset.</enum>
@@ -628,34 +628,34 @@
                         &allowed-values-component_inventory-item_property-name;
 
                   </allowed-values>
-                  <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='asset-type']/@value" allow-other="yes">
+                  <allowed-values id='inventory-item-asset-type-allowed-values' target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='asset-type']/@value" allow-other="yes">
                         &allowed-values-property-name-asset-type-values;
                   </allowed-values>
 
-                  <allowed-values target="(.)[@type=('software', 'hardware', 'service')]/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+                  <allowed-values id='inventory-item-software-hardware-or-service-has-vendor-name' target="(.)[@type=('software', 'hardware', 'service')]/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
                         <enum value="vendor-name">The name of the company or organization </enum>
                   </allowed-values>
 
 
-                  <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='is-scanned']/@value">
+                  <allowed-values id='inventory-item-asset-is-scanned' target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='is-scanned']/@value">
                         <enum value="yes">The asset is included in periodic vulnerability scanning.</enum>
                         <enum value="no">The asset is not included in periodic vulnerability scanning.</enum>
                   </allowed-values>
 
-                  <allowed-values target="link/@rel" allow-other="yes">
+                  <allowed-values id='inventory-item-link-rel-allowed-values' target="link/@rel" allow-other="yes">
                         <enum value="baseline-template">A reference to the baseline template used to configure the asset.</enum>
                   </allowed-values>
                   <!-- TODO: constrain link href values based on rel ((BJR): Was unsure how to do this.) -->
 
-                  <allowed-values target="responsible-party/@role-id" allow-other="yes">
+                  <allowed-values id='responsible-party-role-id-allowed-values' target="responsible-party/@role-id" allow-other="yes">
             &allowed-values-responsible-roles-operations;
             &allowed-values-responsible-roles-component-production;
                   </allowed-values>
 
-                  <index-has-key name="index-metadata-role-id" target="responsible-party">
+                  <index-has-key id='responsible-party-metadata-role-exists' name="index-metadata-role-id" target="responsible-party">
                         <key-field target="@role-id"></key-field>
                   </index-has-key>
-                  <index-has-key name="index-metadata-party-uuid" target="responsible-party">
+                  <index-has-key id='responsible-party-metadata-party-exists' name="index-metadata-party-uuid" target="responsible-party">
                         <key-field target="party-uuid"></key-field>
                   </index-has-key>
                   <is-unique id="unique-inventory-item-responsible-party" target="responsible-party">
@@ -739,7 +739,7 @@
                   <formal-name>Identification System Type</formal-name>
                   <description>Identifies the identification system from which the provided identifier was assigned. </description>
                   <constraint>
-                        <allowed-values allow-other="yes">
+                        <allowed-values id='system-identifier-allowed-values' allow-other="yes">
                               <enum value="https://fedramp.gov" deprecated="1.0.3">**deprecated** The identifier was assigned by FedRAMP. This has been deprecated; use <code>http://fedramp.gov/ns/oscal</code> instead.</enum>
                               <enum value="http://fedramp.gov/ns/oscal">The identifier was assigned by FedRAMP.</enum>
                               <enum value="https://ietf.org/rfc/rfc4122" deprecated="1.0.3">**deprecated** A Universally Unique Identifier (UUID) as defined by RFC4122. This value has been deprecated; use <code>http://ietf.org/rfc/rfc4122</code> instead.</enum>

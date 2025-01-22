@@ -118,7 +118,7 @@
                               <description>Declare how clashing controls should be
                                     handled.</description>
                               <constraint>
-                                    <allowed-values>
+                                    <allowed-values id='combine-allowed-values'>
                                           <enum value="use-first">Use the first definition - the first control with a given ID is used; subsequent ones are discarded</enum>
                                           <enum value="merge" deprecated="1.0.1"
                                                   >**(<i>deprecated</i>)** **(<i>unspecified</i>)**
@@ -316,7 +316,7 @@
                                                   <code>title</code> or
                                                 <code>prop</code>.</description>
                                           <constraint>
-                                                <allowed-values>
+                                                <allowed-values id='by-item-name-values'>
                                                       <enum value="param">A descendant parameter and all of its descendants.</enum>
                                                       <enum value="prop">A descendant property and all of its descendants.</enum>
                                                       <enum value="link">A descendant link and all of its descendants.</enum>
@@ -346,7 +346,7 @@
                                                 the targeted element (beside it or inside
                                                 it).</description>
                                           <constraint>
-                                                <allowed-values>
+                                                <allowed-values id='alter-adds-value'>
                                                       <enum value="before">Preceding the by-id target</enum>
                                                       <enum value="after">Following the by-id target</enum>
                                                       <enum value="starting">Inside the control or by-id target, at the start</enum>
@@ -377,7 +377,7 @@
                                           </assembly>
                                     </model>
                                     <constraint>
-                                          <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+                                          <allowed-values id='control-group-property-name' target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
                                                 &allowed-values-control-group-property-name;
                                           </allowed-values>
                                     </constraint>
@@ -411,7 +411,7 @@
                   <formal-name>Order</formal-name>
                   <description>A designation of how a selection of controls in a profile is to be ordered.</description>
                   <constraint>
-                        <allowed-values>
+                        <allowed-values id='insert-controls-order-value'>
                               <enum value="keep">Use the order of their appearance, using a depth-first traversal of the source profile's imports.</enum>
                               <enum value="ascending">Sort all selected controls into ascending alphanumeric order by their ID.</enum>
                               <enum value="descending">Sort all selected controls into descending alphanumeric order by their ID.</enum>
@@ -459,7 +459,7 @@
             <formal-name>Include Contained Controls with Control</formal-name>
             <description>When a control is included, whether its child (dependent) controls are also included.</description>
             <constraint>
-                  <allowed-values>
+                  <allowed-values id='with-child-controls-values'>
                         <enum value="yes">Include child controls with an included control.</enum>
                         <enum value="no">When importing a control, only include child controls that are also explicitly called.</enum>
                   </allowed-values>
