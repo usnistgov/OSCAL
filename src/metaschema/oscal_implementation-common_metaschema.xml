@@ -63,7 +63,9 @@
                               <formal-name>State</formal-name>
                               <description>The operational status.</description>
                               <constraint>
-                                    <allowed-values>
+                                    <allowed-values id="valid-component-status-values">
+                                          <formal-name>Valid Component Status Values</formal-name>
+                                          <description>Allowed values for a component's operational status.</description>
                                           <enum value="under-development">The component is being designed, developed, or implemented.</enum>
                                           <enum value="operational">The component is currently operational and is available for use in the system.</enum>
                                           <enum value="disposition">The component is no longer operational.</enum>
@@ -87,7 +89,9 @@
                   <field ref="remarks" in-xml="WITH_WRAPPER"/>
             </model>
             <constraint>
-                  <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+                  <allowed-values id="component-oscal-prop-name" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+                        <formal-name>Component Property Names</formal-name>
+                        <description>Allowed property names for components.</description>
                         <!-- names related to inherited component -->
                         <enum value="implementation-point">Relative placement of component ('internal' or 'external') to the system.</enum>
                         <enum value="leveraged-authorization-uuid">UUID of the related leveraged-authorization assembly in this SSP.</enum>
@@ -102,7 +106,9 @@
                         &allowed-values-component_component_property-name;
                   </allowed-values>
 
-                  <allowed-values target="link/@rel" allow-other="yes">
+                  <allowed-values id="component-link-rel" target="link/@rel" allow-other="yes">
+                        <formal-name>Component Link Relationships</formal-name>
+                        <description>Allowed relationship types for component links.</description>
                         <!-- ========================================================================================================== -->
                         <!-- = Changes to the following values need to be synced with component in the SSP and component metaschemas. = -->
                         <!-- CHANGED (BJR): Done -->
@@ -112,7 +118,9 @@
                         <enum value="imported-from">The hyperlink identifies a URI pointing to the <code>component</code> in a <code>component-definition</code> that originally defined the <code>component</code>.</enum>
                   </allowed-values>
 
-                  <allowed-values target="responsible-role/@role-id" allow-other="yes">
+                  <allowed-values id="component-responsible-role-ids" target="responsible-role/@role-id" allow-other="yes">
+                        <formal-name>Component Responsible Role IDs</formal-name>
+                        <description>Allowed role IDs for component responsible parties.</description>
                         <!-- ========================================================================================================== -->
                         <!-- = Changes to the following values need to be synced with component in the SSP and component metaschemas. = -->
                         <!-- ========================================================================================================== -->
@@ -120,26 +128,36 @@
             &allowed-values-responsible-roles-component-production;
                   </allowed-values>
 
-                  <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='asset-type']/@value" allow-other="yes">
+                  <allowed-values id="component-asset-type-values" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='asset-type']/@value" allow-other="yes">
+                        <formal-name>Component Asset Type Values</formal-name>
+                        <description>Allowed values for component asset types.</description>
             &allowed-values-property-name-asset-type-values;
                   </allowed-values>
 
-                  <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='allows-authenticated-scan']/@value">
+                  <allowed-values id="component-authenticated-scan-values" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='allows-authenticated-scan']/@value">
+                        <formal-name>Component Authenticated Scan Values</formal-name>
+                        <description>Allowed values for whether a component allows authenticated scanning.</description>
                         <enum value="yes">The component allows an authenticated scan.</enum>
                         <enum value="no">The component does not allow an authenticated scan.</enum>
                   </allowed-values>
 
-                  <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='public']/@value">
+                  <allowed-values id="component-public-values" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='public']/@value">
+                        <formal-name>Component Public Access Values</formal-name>
+                        <description>Allowed values for whether a component is publicly accessible.</description>
                         <enum value="yes">The component is publicly accessible.</enum>
                         <enum value="no">The component is not publicly accessible.</enum>
                   </allowed-values>
 
-                  <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='virtual']/@value">
+                  <allowed-values id="component-virtual-values" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='virtual']/@value">
+                        <formal-name>Component Virtualization Values</formal-name>
+                        <description>Allowed values for whether a component is virtualized.</description>
                         <enum value="yes">The component is virtualized.</enum>
                         <enum value="no">The component is not virtualized.</enum>
                   </allowed-values>
 
-                  <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='implementation-point']/@value">
+                  <allowed-values id="component-implementation-point-values" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='implementation-point']/@value">
+                        <formal-name>Component Implementation Point Values</formal-name>
+                        <description>Allowed values for a component's implementation point relative to the system boundary.</description>
                         <enum value="internal">The component is implemented within the system boundary.</enum>
                         <enum value="external">The component is implemented outside the system boundary.</enum>
                   </allowed-values>
@@ -156,6 +174,8 @@
                   <!-- ========================================================================================================== -->
 
                   <allowed-values target="(.)[@type=('software', 'hardware', 'service')]/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+                        <formal-name>Component Vendor Property Names</formal-name>
+                        <description>Allowed property names for vendor information.</description>
                         <enum value="vendor-name">The name of the company or organization </enum>
                   </allowed-values>
 
@@ -165,28 +185,36 @@
                   <!-- ========================================================================================================== -->
                   <!-- = VALIDATION: type='validation' constraints                        = -->
                   <!-- ========================================================================================================== -->
-                  <allowed-values target="(.)[@type='validation']/link/@rel" allow-other="yes">
+                  <allowed-values id="validation-component-link-rel" target="(.)[@type='validation']/link/@rel" allow-other="yes">
+                        <formal-name>Validation Component Link Relationships</formal-name>
+                        <description>Allowed relationship types for validation component links.</description>
                         <enum value="validation-details">A link to an online information provided by the authorizing body.</enum>
                   </allowed-values>
 
                   <!-- ========================================================================================================== -->
                   <!-- = SOFTWARE: type='software' constraints                        = -->
                   <!-- ========================================================================================================== -->
-                  <allowed-values target="(.)[@type='software']/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+                  <allowed-values id="software-component-prop-name" target="(.)[@type='software']/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+                        <formal-name>Software Component Property Names</formal-name>
+                        <description>Allowed property names for software components.</description>
             &allowed-values-component_component_software;
                   </allowed-values>
 
                   <!-- ========================================================================================================== -->
                   <!-- = SERVICE: type='service' constraints                        = -->
                   <!-- ========================================================================================================== -->
-                  <allowed-values target="(.)[@type='service']/link/@rel" allow-other="yes">
+                  <allowed-values id="service-component-link-rel" target="(.)[@type='service']/link/@rel" allow-other="yes">
+                        <formal-name>Service Component Link Relationships</formal-name>
+                        <description>Allowed relationship types for service component links.</description>
             &allowed-values-component_component_service;
                   </allowed-values>
 
                   <!-- ========================================================================================================== -->
                   <!-- = INTERCONNECTION: type='interconnection' constraints                        = -->
                   <!-- ========================================================================================================== -->
-                  <allowed-values target="(.)[@type='interconnection']/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+                  <allowed-values id="interconnection-component-prop-name" target="(.)[@type='interconnection']/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+                        <formal-name>Interconnection Component Property Names</formal-name>
+                        <description>Allowed property names for interconnection components.</description>
                         <enum value="isa-title">Title of the Interconnection Security Agreement (ISA).</enum>
                         <enum value="isa-date">Date of the Interconnection Security Agreement (ISA).</enum>
                         <enum value="isa-remote-system-name">The name of the remote interconnected system.</enum>
@@ -194,15 +222,21 @@
                         <enum value="ipv6-address">An Internet Protocol Version 6 interconnection address</enum>
                         <enum value="direction">An Internet Protocol Version 6 interconnection address</enum>
                   </allowed-values>
-                  <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('ipv4-address','ipv6-address')]/@class">
+                  <allowed-values id="interconnection-ip-class-values" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('ipv4-address','ipv6-address')]/@class">
+                        <formal-name>Interconnection IP Address Class Values</formal-name>
+                        <description>Allowed class values for IP addresses in interconnections.</description>
                         <enum value="local">The identified IP address is for this system.</enum>
                         <enum value="remote">The identified IP address is for the remote system to which this system is connected.</enum>
                   </allowed-values>
-                  <allowed-values target="(.)[@type='interconnection']/link/@rel" allow-other="yes">
+                  <allowed-values id="interconnection-component-link-rel" target="(.)[@type='interconnection']/link/@rel" allow-other="yes">
+                        <formal-name>Interconnection Component Link Relationships</formal-name>
+                        <description>Allowed relationship types for interconnection component links.</description>
                         <!-- CHANGE: @name="agreement" changed to @name="isa-agreement" -->
                         <enum value="isa-agreement">A link to the system interconnection agreement.</enum>
                   </allowed-values>
-                  <allowed-values target="(.)[@type='interconnection']/responsible-role/@role-id" allow-other="yes">
+                  <allowed-values id="interconnection-responsible-role-ids" target="(.)[@type='interconnection']/responsible-role/@role-id" allow-other="yes">
+                        <formal-name>Interconnection Responsible Role IDs</formal-name>
+                        <description>Allowed role IDs for interconnection responsible parties.</description>
                         <enum value="isa-poc-local">Interconnection Security Agreement (ISA) point of contact (POC) for this system.</enum>
                         <enum value="isa-poc-remote">Interconnection Security Agreement (ISA) point of contact (POC) for the remote interconnected system.</enum>
                         <enum value="isa-authorizing-official-local">Interconnection Security Agreement (ISA) authorizing official for this system.</enum>
@@ -211,7 +245,9 @@
                   <matches target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='isa-date']/@value" datatype="date-time"/>
                   <matches target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='ipv4-address']/@value" datatype="ip-v4-address" />
                   <matches target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='ipv6-address']/@value" datatype="ip-v6-address" />
-                  <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='direction']/@value">
+                  <allowed-values id="interconnection-direction-values" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='direction']/@value">
+                        <formal-name>Interconnection Direction Values</formal-name>
+                        <description>Allowed values for interconnection data flow direction.</description>
                         <enum value="incoming">Data from the remote system flows into this system.</enum>
                         <enum value="outgoing">Data from this system flows to the remote system.</enum>
                   </allowed-values>
@@ -235,7 +271,9 @@
             <formal-name>Component Type</formal-name>
             <description>A category describing the purpose of the component.</description>
             <constraint>
-                  <allowed-values allow-other="yes">
+                  <allowed-values id="valid-component-types" allow-other="yes">
+                        <formal-name>Valid Component Types</formal-name>
+                        <description>Allowed values for component types.</description>
                         <enum value="this-system">The system as a whole.</enum>
                         <enum value="system">An external system, which may be a leveraged system or the other side of an interconnection.</enum>
                         &allowed-values-component-type;
@@ -296,7 +334,9 @@
                   <formal-name>Transport</formal-name>
                   <description>Indicates the transport type.</description>
                   <constraint>
-                        <allowed-values>
+                        <allowed-values id="valid-transport-values">
+                              <formal-name>Valid Transport Protocol Values</formal-name>
+                              <description>Allowed values for transport layer protocols.</description>
                               <enum value="TCP">Transmission Control Protocol</enum>
                               <enum value="UDP">User Datagram Protocol</enum>
                         </allowed-values>
@@ -347,7 +387,9 @@
                   <formal-name>Implementation State</formal-name>
                   <description>Identifies the implementation status of the control or control objective.</description>
                   <constraint>
-                        <allowed-values allow-other="yes">
+                        <allowed-values id="valid-implementation-status-values" allow-other="yes">
+                              <formal-name>Valid Implementation Status Values</formal-name>
+                              <description>Allowed values for control implementation status.</description>
                               <enum value="implemented">The control is fully implemented.</enum>
                               <enum value="partial">The control is partially implemented.</enum>
                               <enum value="planned">There is a plan for implementing the control as explained in the remarks.</enum>

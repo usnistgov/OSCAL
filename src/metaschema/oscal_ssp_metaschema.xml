@@ -46,7 +46,7 @@
       <assembly ref="back-matter"/>
     </model>
     <constraint>
-      <index name="by-component-uuid" target="control-implementation/implemented-requirement//by-component|doc(system-implementation/leveraged-authorization/link[@rel='system-security-plan']/@href)/system-security-plan/control-implementation/implemented-requirement//by-component">
+      <index id="unique-component-implementations" name="by-component-uuid" target="control-implementation/implemented-requirement//by-component|doc(system-implementation/leveraged-authorization/link[@rel='system-security-plan']/@href)/system-security-plan/control-implementation/implemented-requirement//by-component">
         <key-field target="@uuid"/>
       </index>
     </constraint>
@@ -129,7 +129,7 @@
       <field ref="remarks" in-xml="WITH_WRAPPER"/>
     </model>
     <constraint>
-      <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+      <allowed-values id="system-characteristics-assurance-levels" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
         <enum value="identity-assurance-level">A value of 1, 2, or 3 as defined by <a href="https://doi.org/10.6028/NIST.SP.800-63-3">SP 800-63-3</a>.
         </enum>
         <enum value="authenticator-assurance-level">A value of 1, 2, or 3 as defined by <a href="https://doi.org/10.6028/NIST.SP.800-63-3">SP 800-63-3</a>.
@@ -137,7 +137,7 @@
         <enum value="federation-assurance-level">A value of 1, 2, or 3 as defined by <a href="https://doi.org/10.6028/NIST.SP.800-63-3">SP 800-63-3</a>.
         </enum>
       </allowed-values>
-      <allowed-values target="prop[@name=('identity-assurance-level','authenticator-assurance-level','federation-assurance-level')]/@value">
+      <allowed-values id="system-characteristics-assurance-level-values" target="prop[@name=('identity-assurance-level','authenticator-assurance-level','federation-assurance-level')]/@value">
         <enum value="1">As defined by <a href="https://doi.org/10.6028/NIST.SP.800-63-3">SP 800-63-3</a>.
         </enum>
         <enum value="2">As defined by <a href="https://doi.org/10.6028/NIST.SP.800-63-3">SP 800-63-3</a>.
@@ -145,11 +145,11 @@
         <enum value="3">As defined by <a href="https://doi.org/10.6028/NIST.SP.800-63-3">SP 800-63-3</a>.
         </enum>
       </allowed-values>
-      <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+      <allowed-values id="system-characteristics-cloud-models" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
         <enum value="cloud-deployment-model">The associated value is one of: public-cloud, private-cloud, community-cloud, government-only-cloud, hybrid-cloud, or other.</enum>
         <enum value="cloud-service-model">The associated value is one of: saas, paas, iaas, or other.</enum>
       </allowed-values>
-      <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='cloud-deployment-model']/@value">
+      <allowed-values id="system-characteristics-cloud-deployment-values" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='cloud-deployment-model']/@value">
         <enum value="public-cloud">The public cloud deployment model as defined by <a href="https://doi.org/10.6028/NIST.SP.800-145">The NIST Definition of Cloud Computing</a>.
         </enum>
         <enum value="private-cloud">The private cloud deployment model as defined by <a href="https://doi.org/10.6028/NIST.SP.800-145">The NIST Definition of Cloud Computing</a>.
@@ -165,7 +165,7 @@
           <p>The hybrid cloud deployment model, as defined by <a href="https://doi.org/10.6028/NIST.SP.800-145">The NIST Definition of Cloud Computing</a>, can be supported by selecting two or more of the existing deployment models.</p>
         </remarks>
       </allowed-values>
-      <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='cloud-service-model']/@value">
+      <allowed-values id="system-characteristics-cloud-service-values" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='cloud-service-model']/@value">
         <enum value="saas">Software as a service (SaaS) cloud service model as defined by <a href="https://doi.org/10.6028/NIST.SP.800-145">The NIST Definition of Cloud Computing</a>.
         </enum>
         <enum value="paas">Platform as a service (PaaS) cloud service model as defined by <a href="https://doi.org/10.6028/NIST.SP.800-145">The NIST Definition of Cloud Computing</a>.
@@ -174,13 +174,13 @@
         </enum>
         <enum value="other">Any other type of cloud service model that is exclusive to the other choices.</enum>
       </allowed-values>
-      <is-unique id="unique-ssp-system-characteristics-responsible-party" target="responsible-party">
+      <is-unique id="unique-responsible-party-roles" target="responsible-party">
         <key-field target="@role-id"/>
         <remarks>
           <p>Since <code>responsible-party</code> associates multiple <code>party-uuid</code> entries with a single <code>role-id</code>, each role-id must be referenced only once.</p>
         </remarks>
       </is-unique>
-      <allowed-values target="responsible-party/@role-id" allow-other="yes">
+      <allowed-values id="valid-responsible-party-roles" target="responsible-party/@role-id" allow-other="yes">
             &allowed-values-responsible-roles-system;
       </allowed-values>
     </constraint>
@@ -222,7 +222,7 @@
               <formal-name>Information Type Identification System</formal-name>
               <description>Specifies the information type identification system used.</description>
               <constraint>
-                <allowed-values allow-other="yes">
+                <allowed-values id="valid-information-type-systems" allow-other="yes">
                   <enum value="http://doi.org/10.6028/NIST.SP.800-60v2r1">Based on the section identifiers in NIST <a href="https://doi.org/10.6028/NIST.SP.800-60v2r1">Special Publication 800-60 Volume II Revision 1</a>.</enum>
                 </allowed-values>
               </constraint>
@@ -264,33 +264,33 @@
           </assembly>
         </model>
         <constraint>
-          <expect level="WARNING" target="." test="@uuid">
+          <expect id="information-type-uuid-warning" level="WARNING" target="." test="@uuid">
             <message>It is a best practice to provide a UUID.</message>
           </expect>
         </constraint>
       </define-assembly>
     </model>
     <constraint>
-      <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+      <allowed-values id="system-information-privacy-props" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
         <enum value="privacy-designation">Is this a privacy sensitive system? yes or no</enum>
       </allowed-values>
-      <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='privacy-designation']/@value">
+      <allowed-values id="system-information-privacy-values" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='privacy-designation']/@value">
         <enum value="yes">The system is privacy sensitive.</enum>
         <enum value="no">The system is not privacy sensitive.</enum>
       </allowed-values>
-      <allowed-values target="link/@rel" allow-other="yes">
+      <allowed-values id="system-information-link-rel" target="link/@rel" allow-other="yes">
         <enum value="privacy-impact-assessment">A link to the privacy impact assessment.</enum>
       </allowed-values>
-      <matches target="link[@rel='privacy-impact-assessment']/@href[starts-with(.,'#')]" datatype="uri-reference"/>
-      <index-has-key name="index-back-matter-resource" target="link[@rel='privacy-impact-assessment' and starts-with(@href,'#')]">
+      <matches id="valid-privacy-impact-assessment-refs" target="link[@rel='privacy-impact-assessment']/@href[starts-with(.,'#')]" datatype="uri-reference"/>
+      <index-has-key id="valid-privacy-impact-assessment-resource" name="index-back-matter-resource" target="link[@rel='privacy-impact-assessment' and starts-with(@href,'#')]">
         <key-field target="@href" pattern="#(.*)"/>
       </index-has-key>
       <!-- 
         TODO: Per discussion in usnisgov/OSCAL#1331 review on 29 July 2022,
         add the path target to security-sensitivity-level as well.
       -->
-      <matches target="link[@rel='privacy-impact-assessment']/@href[not(starts-with(.,'#'))]" datatype="uri"/>
-      <allowed-values target="information-type/(confidentiality-impact|integrity-impact|availability-impact)/(base|selected)" allow-other="yes">
+      <matches id="valid-privacy-impact-assessment-uris" target="link[@rel='privacy-impact-assessment']/@href[not(starts-with(.,'#'))]" datatype="uri"/>
+      <allowed-values id="valid-impact-level-values" target="information-type/(confidentiality-impact|integrity-impact|availability-impact)/(base|selected)" allow-other="yes">
         <enum value="fips-199-low">A 'low' sensitivity level as defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.
         </enum>
         <enum value="fips-199-moderate">A 'moderate' sensitivity level as defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.
@@ -359,7 +359,7 @@
       <formal-name>State</formal-name>
       <description>The current operating status.</description>
       <constraint>
-        <allowed-values>
+        <allowed-values id="valid-status-state-values">
           <enum value="operational">The system is currently operating in production.</enum>
           <enum value="under-development">The system is being designed, developed, or implemented</enum>
           <enum value="under-major-modification">The system is undergoing a major change, development, or transition.</enum>
