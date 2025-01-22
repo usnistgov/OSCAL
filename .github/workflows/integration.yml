@@ -15,6 +15,7 @@ on:
 jobs:
   # one job that runs tests
   run-tests:
+    name: "Integration Tests with ${{ matrix.cli_type }} CLI"
     runs-on: ubuntu-20.04
     strategy:
       matrix:
