@@ -9,7 +9,7 @@
     <context>
         <metapath target="//constraint"/>
         <constraints>
-            <expect id="osc-101" target="//has-cardinality | //matches | //expect | //allowed-values | //index-has-key" test="exists(@id)" level="ERROR">
+            <expect id="osc-101" target=".//has-cardinality | .//matches | .//expect | .//allowed-values | .//index-has-key" test="exists(@id)" level="ERROR">
                 <formal-name>Constraints Have IDs with Lower Case Letters, Numbers, and Dashes</formal-name>
                 <prop namespace="https://docs.oasis-open.org/sarif/sarif/v2.1.0" name="help-url" value="https://github.com/GSA/fedramp-automation/blob/develop/src/validations/styleguides/STYLE.md#osc-106"/>
                 <message>An OSCAL constraint MUST contain an id</message>
