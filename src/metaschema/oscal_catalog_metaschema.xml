@@ -300,7 +300,7 @@
                         <enum value="method">The assessment method to use. This typically appears on
                               parts with the name "assessment-method".</enum>
                   </allowed-values>
-                  <expect id="control-assessment-method-prop" level="WARNING" target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('assessment','assessment-method')]" test="prop[has-oscal-namespace(('http://csrc.nist.gov/ns/oscal','http://csrc.nist.gov/ns/rmf')) and @name='method']"/>
+                  <expect id="control-assessment-method-warning" level="WARNING" target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('assessment','assessment-method')]" test="prop[has-oscal-namespace(('http://csrc.nist.gov/ns/oscal','http://csrc.nist.gov/ns/rmf')) and @name='method']"/>
                   <allowed-values id="control-assessment-method-values"
                         target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('assessment','assessment-method')]/prop[has-oscal-namespace(('http://csrc.nist.gov/ns/oscal','http://csrc.nist.gov/ns/rmf')) and @name='method']/@value">
                         <enum value="INTERVIEW">The process of holding discussions with individuals or groups of individuals within an organization to once again, facilitate assessor understanding, achieve clarification, or obtain evidence.</enum>
