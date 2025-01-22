@@ -129,7 +129,7 @@
       <field ref="remarks" in-xml="WITH_WRAPPER"/>
     </model>
     <constraint>
-      <allowed-values id="system-characteristics-assurance-levels" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+      <allowed-values id="system-characteristics-assurance-levels-props" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
         <enum value="identity-assurance-level">A value of 1, 2, or 3 as defined by <a href="https://doi.org/10.6028/NIST.SP.800-63-3">SP 800-63-3</a>.
         </enum>
         <enum value="authenticator-assurance-level">A value of 1, 2, or 3 as defined by <a href="https://doi.org/10.6028/NIST.SP.800-63-3">SP 800-63-3</a>.
@@ -724,15 +724,16 @@
         <enum value="inherited">This control is inherited from an underlying system.</enum>
       </allowed-values>
       <allowed-values target="responsible-role/@role-id" allow-other="yes">
+      <allowed-values id="valid-system-responsible-party-roles" target="responsible-party/@role-id" allow-other="yes">
             &allowed-values-responsible-roles-operations;
       </allowed-values>
-      <index-has-key name="index-metadata-role-id" target="responsible-role|statement/responsible-role|.//by-component//responsible-role">
+      <index-has-key id='responsible-role-role-id-exists' name="index-metadata-role-id" target="responsible-role|statement/responsible-role|.//by-component//responsible-role">
         <key-field target="@role-id"/>
       </index-has-key>
-      <index-has-key name="index-metadata-party-uuid" target="responsible-role|statement/responsible-role|.//by-component//responsible-role">
+      <index-has-key id='responsible-role-party-uuid-exists' name="index-metadata-party-uuid" target="responsible-role|statement/responsible-role|.//by-component//responsible-role">
         <key-field target="party-uuid"/>
       </index-has-key>
-      <has-cardinality target=".//by-component" min-occurs="1">
+      <has-cardinality id='system-characteristics-has-by-component' target=".//by-component" min-occurs="1">
         <remarks>
           <p>Since all implementation statements are defined at the by-component level (e.g., type=this-system), there must be at least one by-component.</p>
         </remarks>
@@ -795,7 +796,7 @@
       <field ref="remarks" in-xml="WITH_WRAPPER"/>
     </model>
     <constraint>
-      <allowed-values target="responsible-role/@role-id" allow-other="yes">
+      <allowed-values id='responsible-roles-operations-values' target="responsible-role/@role-id" allow-other="yes">
             &allowed-values-responsible-roles-operations;
       </allowed-values>
       <is-unique id="unique-ssp-statement-responsible-role" target="responsible-role">
@@ -939,8 +940,8 @@
           <field ref="remarks" in-xml="WITH_WRAPPER"/>
         </model>
         <constraint>
-          <has-cardinality target="provided|responsibility" min-occurs="1"/>
-          <index-has-key name="by-component-export-provided-uuid" target="responsibility">
+          <has-cardinality id='export-provided-or-responsibility' target="provided|responsibility" min-occurs="1"/>
+          <index-has-key id='by-component-export-provded-exists' name="by-component-export-provided-uuid" target="responsibility">
             <key-field target="@provided-uuid"/>
           </index-has-key>
         </constraint>
@@ -1025,11 +1026,11 @@
       <field ref="remarks" in-xml="WITH_WRAPPER"/>
     </model>
     <constraint>
-      <allowed-values target="link/@rel" allow-other="yes">
+      <allowed-values id='by-component-link' target="link/@rel" allow-other="yes">
         <!-- TODO: More work needs to be done around link enforcement constraints and requires Metaschema work on recurse-depth-first() recursive index searching. -->
         <enum value="imported-from">The hyperlink identifies a URI pointing to the <code>component</code> in a <code>component-definition</code> that originally described the <code>component</code> this component was based on.</enum>
       </allowed-values>
-      <allowed-values target=".//responsible-role/@role-id" allow-other="yes">
+      <allowed-values id='responsible-role-has-allowed-value' target=".//responsible-role/@role-id" allow-other="yes">
             &allowed-values-responsible-roles-operations;
             &allowed-values-responsible-roles-component-production;
       </allowed-values>
@@ -1040,10 +1041,10 @@
         </remarks>
       </is-unique>
 
-      <allowed-values target="link/@rel" allow-other="yes">
+      <allowed-values id='link-rel-provided-by' target="link/@rel" allow-other="yes">
         <enum value="provided-by">A reference to the UUID of a control or statement <code>by-component</code> object that is used as evidence of implementation.</enum>
       </allowed-values>
-      <index-has-key name="by-component-uuid" target="link[@rel='provided-by']">
+      <index-has-key id='by-component-uuid' name="by-component-uuid" target="link[@rel='provided-by']">
         <key-field target="@href" pattern="#(.*)" />
       </index-has-key>
     </constraint>
