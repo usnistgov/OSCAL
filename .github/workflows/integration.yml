@@ -16,6 +16,15 @@ jobs:
   # one job that runs tests
   run-tests:
     runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        cli_type: ['default', 'enhanced']
+        include:
+          - cli_type: default
+            cli_url: https://repo1.maven.org/maven2/gov/nist/secauto/oscal/tools/oscal-cli/cli-core/1.0.3/cli-core-1.0.3-oscal-cli.zip
+          - cli_type: enhanced
+            cli_url: https://repo1.maven.org/maven2/dev/metaschema/oscal/oscal-cli-enhanced/2.4.0/oscal-cli-enhanced-2.4.0-oscal-cli.zip
+
     defaults:
         run:
           working-directory: ./build
@@ -41,7 +50,7 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
       - name: Install Dependencies
         run: |
-          make configure
+          OSCAL_CLI_URL=${{ matrix.cli_url }} && make configure
       - name: Run tests
         shell: bash
         run: |
