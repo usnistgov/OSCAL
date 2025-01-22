@@ -1,5 +1,7 @@
 SHELL:=/usr/bin/env bash
 
+# Default OSCAL CLI URL
+OSCAL_CLI_URL ?= https://repo1.maven.org/maven2/dev/metaschema/oscal/oscal-cli-enhanced/2.4.0/oscal-cli-enhanced-2.4.0-oscal-cli.zip
 .PHONY: help
 # Run "make" or "make help" to get a list of user targets
 # Adapted from https://marmelab.com/blog/2016/02/29/auto-documented-makefile.html
@@ -32,9 +34,9 @@ test:
 .PHONY: configure
 configure: 
 	npm install
-	wget https://repo1.maven.org/maven2/dev/metaschema/oscal/oscal-cli-enhanced/2.4.0/oscal-cli-enhanced-2.4.0-oscal-cli.zip
-	unzip -o oscal-cli-enhanced-2.4.0-oscal-cli.zip -d node_modules/.bin/oscal-cli-enhanced
-	rm oscal-cli-enhanced-2.4.0-oscal-cli.zip
+	wget $(OSCAL_CLI_URL)
+	unzip -o *-oscal-cli.zip -d node_modules/.bin/oscal-cli-enhanced
+	rm *-oscal-cli.zip
 	ln -sf oscal-cli-enhanced/bin/oscal-cli node_modules/.bin/oscal-cli
 	chmod +x node_modules/.bin/oscal-cli-enhanced/bin/oscal-cli
 

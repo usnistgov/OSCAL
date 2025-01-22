@@ -18,3 +18,19 @@ Feature: Validate OSCAL Content
       | poam | ../src/specifications/valid-content/poam.xml|
       | assessment-plan | ../src/specifications/valid-content/ap.xml|
       | assessment-results | ../src/specifications/valid-content/ar.xml|
+
+@style
+  Scenario Outline: Validate OSCAL style guide
+    When I validate "<metaschema>" content it passes style guide
+    Then all validations should pass without errors
+
+    Examples:
+      | metaschema    |
+      | profile |
+      | catalog |
+      | ssp |
+      | poam |
+      | assessment-common |
+      | implementation-common |
+      | assessment-plan |
+      | assessment-results |
