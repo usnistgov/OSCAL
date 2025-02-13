@@ -621,9 +621,6 @@
       <index-has-key id="oscal-system-implementation-validated-by-index" name="index-system-implementation-component-uuid-validation" target="component/link[@rel='validated-by']">
         <key-field target="@href"/>
       </index-has-key>
-      <index-has-key id="oscal-system-implementation-proof-of-compliance-index" name="index-system-implementation-component-uuid-validation" target="component/link[@rel='proof-of-compliance']">
-        <key-field target="@href"/>
-      </index-has-key>
 
       <!-- References to components of @type="service" -->
       <index id="oscal-index-system-implementation-component-uuid-service" name="index-system-implementation-component-uuid-service" target="component[@type='service']">
