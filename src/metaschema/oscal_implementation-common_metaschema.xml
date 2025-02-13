@@ -703,7 +703,8 @@
                         <allowed-values id="oscal-system-identifier-type-values" allow-other="yes">
                               <enum value="http://fedramp.gov" deprecated="1.0.3">**deprecated** The identifier was assigned by FedRAMP. This has been deprecated; use <code>http://fedramp.gov/ns/oscal</code> instead.</enum>
                               <enum value="http://fedramp.gov/ns/oscal">The identifier was assigned by FedRAMP.</enum>
-                              <enum value="https://datatracker.ietf.org/doc/html/rfc4122" deprecated="1.0.3">**deprecated** A Universally Unique Identifier (UUID) as defined by RFC4122. This value has been deprecated; use <code>https://datatracker.ietf.org/doc/html/rfc4122</code> instead.</enum>
+                              <enum value="https://ietf.org/rfc/rfc4122" deprecated="1.0.3">**deprecated** A Universally Unique Identifier (UUID) as defined by RFC4122. This value has been deprecated; use <code>http://datatracker.ietf.org/doc/html/rfc4122</code> instead.</enum>
+                              <enum value="http://ietf.org/rfc/rfc4122" deprecated="1.1.4">**deprecated** A Universally Unique Identifier (UUID) as defined by RFC4122. This value has been deprecated; use <code>http://datatracker.ietf.org/doc/html/rfc4122</code> instead.</enum>
                               <enum value="http://datatracker.ietf.org/doc/html/rfc4122">A Universally Unique Identifier (UUID) as defined by RFC4122.</enum>
                         </allowed-values>
                   </constraint>
