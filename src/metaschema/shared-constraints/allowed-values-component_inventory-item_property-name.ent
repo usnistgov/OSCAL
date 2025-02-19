@@ -11,3 +11,10 @@
 <enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="baseline-configuration-name">The name of the baseline configuration for the asset.</enum>
 <enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="allows-authenticated-scan">Can the asset be check with an authenticated scan? (yes/no)</enum>
 <enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="function">The function provided by the asset for the system.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="hardware-model" deprecated="1.1.4">**(deprecated)** Use 'model' instead.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="model">The model of system used by the asset.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="os-name">The name of the operating system used by the asset.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="os-version">The version of the operating system used by the asset.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="software-name">The software product name used by the asset.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="software-version">The software product version used by the asset.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="software-patch-level">The software product patch level used by the asset.</enum>
