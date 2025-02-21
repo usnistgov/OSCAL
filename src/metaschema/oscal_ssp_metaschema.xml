@@ -129,7 +129,7 @@
       <field ref="remarks" in-xml="WITH_WRAPPER"/>
     </model>
     <constraint>
-      <allowed-values id="oscal-system-characteristics-prop-name-values" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+      <allowed-values id="oscal-system-characteristics-prop-name-values" target="prop[@ns = 'http://csrc.nist.gov/ns/oscal']/@name">
         <enum value="identity-assurance-level">A value of 1, 2, or 3 as defined by <a href="https://doi.org/10.6028/NIST.SP.800-63-3">SP 800-63-3</a>.
         </enum>
         <enum value="authenticator-assurance-level">A value of 1, 2, or 3 as defined by <a href="https://doi.org/10.6028/NIST.SP.800-63-3">SP 800-63-3</a>.
@@ -145,11 +145,11 @@
         <enum value="3">As defined by <a href="https://doi.org/10.6028/NIST.SP.800-63-3">SP 800-63-3</a>.
         </enum>
       </allowed-values>
-      <allowed-values id="oscal-system-characteristics-prop-name-values" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+      <allowed-values id="oscal-system-characteristics-prop-name-values" target="prop[@ns = 'http://csrc.nist.gov/ns/oscal']/@name">
         <enum value="cloud-deployment-model">The associated value is one of: public-cloud, private-cloud, community-cloud, government-only-cloud, hybrid-cloud, or other.</enum>
         <enum value="cloud-service-model">The associated value is one of: saas, paas, iaas, or other.</enum>
       </allowed-values>
-      <allowed-values id="oscal-system-characteristics-prop-cloud-deployment-model-values" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='cloud-deployment-model']/@value">
+      <allowed-values id="oscal-system-characteristics-prop-cloud-deployment-model-values" target="prop[@ns = 'http://csrc.nist.gov/ns/oscal' and @name='cloud-deployment-model']/@value">
         <enum value="public-cloud">The public cloud deployment model as defined by <a href="https://doi.org/10.6028/NIST.SP.800-145">The NIST Definition of Cloud Computing</a>.
         </enum>
         <enum value="private-cloud">The private cloud deployment model as defined by <a href="https://doi.org/10.6028/NIST.SP.800-145">The NIST Definition of Cloud Computing</a>.
@@ -165,7 +165,7 @@
           <p>The hybrid cloud deployment model, as defined by <a href="https://doi.org/10.6028/NIST.SP.800-145">The NIST Definition of Cloud Computing</a>, can be supported by selecting two or more of the existing deployment models.</p>
         </remarks>
       </allowed-values>
-      <allowed-values id="oscal-system-characteristics-prop-cloud-service-model-values" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='cloud-service-model']/@value">
+      <allowed-values id="oscal-system-characteristics-prop-cloud-service-model-values" target="prop[@ns = 'http://csrc.nist.gov/ns/oscal' and @name='cloud-service-model']/@value">
         <enum value="saas">Software as a service (SaaS) cloud service model as defined by <a href="https://doi.org/10.6028/NIST.SP.800-145">The NIST Definition of Cloud Computing</a>.
         </enum>
         <enum value="paas">Platform as a service (PaaS) cloud service model as defined by <a href="https://doi.org/10.6028/NIST.SP.800-145">The NIST Definition of Cloud Computing</a>.
@@ -271,10 +271,10 @@
       </define-assembly>
     </model>
     <constraint>
-      <allowed-values id="oscal-system-information-prop-name-values" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+      <allowed-values id="oscal-system-information-prop-name-values" target="prop[@ns = 'http://csrc.nist.gov/ns/oscal']/@name">
         <enum value="privacy-designation">Is this a privacy sensitive system? yes or no</enum>
       </allowed-values>
-      <allowed-values id="oscal-system-information-prop-privacy-designation-values" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='privacy-designation']/@value">
+      <allowed-values id="oscal-system-information-prop-privacy-designation-values" target="prop[@ns = 'http://csrc.nist.gov/ns/oscal' and @name='privacy-designation']/@value">
         <enum value="yes">The system is privacy sensitive.</enum>
         <enum value="no">The system is not privacy sensitive.</enum>
       </allowed-values>
@@ -634,7 +634,7 @@
       </index-has-key>
 
       <!-- TODO: check that prop names are defined -->
-      <allowed-values id="oscal-component-inventory-item-allows-authenticated-scan-values" target="(component | inventory-item)/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='allows-authenticated-scan']/@value">
+      <allowed-values id="oscal-component-inventory-item-allows-authenticated-scan-values" target="(component | inventory-item)/prop[@ns = 'http://csrc.nist.gov/ns/oscal' and @name='allows-authenticated-scan']/@value">
         <enum value="yes">The component allows an authenticated scan.</enum>
         <enum value="no">The component does not allow an authenticated scan.</enum>
       </allowed-values>
@@ -713,10 +713,10 @@
       <field ref="remarks" in-xml="WITH_WRAPPER"/>
     </model>
     <constraint>
-      <allowed-values id="oscal-implemented-requirement-statement-by-component-prop-name-values" target="(.|statement|.//by-component)/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+      <allowed-values id="oscal-implemented-requirement-statement-by-component-prop-name-values" target="(.|statement|.//by-component)/prop[@ns = 'http://csrc.nist.gov/ns/oscal']/@name">
         <enum value="control-origination">Identifies the source of the implemented control.  Any <code>control-origination</code> prop defined in a child context will override the parent value.</enum>
       </allowed-values>
-      <allowed-values id="oscal-implemented-requirement-statement-by-component-prop-control-origination-values" target="(.|statement|.//by-component)/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='control-origination']/@value">
+      <allowed-values id="oscal-implemented-requirement-statement-by-component-prop-control-origination-values" target="(.|statement|.//by-component)/prop[@ns = 'http://csrc.nist.gov/ns/oscal' and @name='control-origination']/@value">
         <enum value="organization">The control is implemented by the organization owning the system, but is not specific to the system itself.</enum>
         <enum value="system-specific">The control is implemented specifically to this system.</enum>
         <enum value="customer-configured">The control is provided by the system, but must be configured by the customer.</enum>

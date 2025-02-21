@@ -62,16 +62,16 @@
          <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
       </model>
       <constraint>
-         <allowed-values id="oscal-assessment-objective-types" target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+         <allowed-values id="oscal-assessment-objective-types" target="part[@ns = 'http://csrc.nist.gov/ns/oscal']/@name">
             <enum value="objective" deprecated="1.0.1">**(deprecated)** Use 'assessment-objective' instead.</enum>
             <enum value="assessment" deprecated="1.0.1">**(deprecated)** Use 'assessment-method' instead.</enum>
             <enum value="assessment-objective">The part defines an assessment objective.</enum>
             <enum value="assessment-method">The part defines an assessment method.</enum>
          </allowed-values>
-         <has-cardinality id="oscal-assessment-objective-cardinality" target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('objective','assessment-objective')]" max-occurs="1" />
-         <has-cardinality id="oscal-assessment-method-cardinality" target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('assessment','assessment-method')]/prop[has-oscal-namespace(('http://csrc.nist.gov/ns/oscal','http://csrc.nist.gov/ns/rmf')) and @name='method']" min-occurs="1" max-occurs="1" />
-         <has-cardinality id="oscal-assessment-objects-cardinality" target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('assessment','assessment-method')]/part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('objects','assessment-objects')]" min-occurs="1" max-occurs="1" />
-         <has-cardinality id="oscal-assessment-method-id-cardinality" target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('objective','assessment-objective')]/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='method-id']" min-occurs="1" />
+         <has-cardinality id="oscal-assessment-objective-cardinality" target="part[@ns = 'http://csrc.nist.gov/ns/oscal' and @name=('objective','assessment-objective')]" max-occurs="1" />
+         <has-cardinality id="oscal-assessment-method-cardinality" target="part[@ns = 'http://csrc.nist.gov/ns/oscal' and @name=('assessment','assessment-method')]/prop[has-oscal-namespace(('http://csrc.nist.gov/ns/oscal','http://csrc.nist.gov/ns/rmf')) and @name='method']" min-occurs="1" max-occurs="1" />
+         <has-cardinality id="oscal-assessment-objects-cardinality" target="part[@ns = 'http://csrc.nist.gov/ns/oscal' and @name=('assessment','assessment-method')]/part[@ns = 'http://csrc.nist.gov/ns/oscal' and @name=('objects','assessment-objects')]" min-occurs="1" max-occurs="1" />
+         <has-cardinality id="oscal-assessment-method-id-cardinality" target="part[@ns = 'http://csrc.nist.gov/ns/oscal' and @name=('objective','assessment-objective')]/prop[@ns = 'http://csrc.nist.gov/ns/oscal' and @name='method-id']" min-occurs="1" />
       </constraint>
    </define-assembly>
    <define-assembly name="assessment-method">
@@ -183,11 +183,11 @@
       </model>
       <constraint>
          <!-- TODO: Dave to double-check constraints here -->
-         <allowed-values id="oscal-activity-values" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+         <allowed-values id="oscal-activity-values" target="prop[@ns = 'http://csrc.nist.gov/ns/oscal']/@name">
             <enum value="method">The assessment method to use. This typically appears on parts with the name "assessment".</enum>
          </allowed-values>
-         <has-cardinality id="oscal-activity-type-cardinality" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='method']" min-occurs="1"/>
-         <allowed-values id="oscal-activity-type-values" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='method']/@value">
+         <has-cardinality id="oscal-activity-type-cardinality" target="prop[@ns = 'http://csrc.nist.gov/ns/oscal' and @name='method']" min-occurs="1"/>
+         <allowed-values id="oscal-activity-type-values" target="prop[@ns = 'http://csrc.nist.gov/ns/oscal' and @name='method']/@value">
             <enum value="INTERVIEW">The process of holding discussions with individuals or groups of individuals within an organization to once again, facilitate assessor understanding, achieve clarification, or obtain evidence.</enum>
             <enum value="EXAMINE">The process of reviewing, inspecting, observing, studying, or analyzing one or more assessment objects (i.e., specifications, mechanisms, or activities).</enum>
             <enum value="TEST">The process of exercising one or more assessment objects (i.e., activities or mechanisms) under specified conditions to compare actual with expected behavior.</enum>
@@ -1275,10 +1275,10 @@
                      <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
                   </model>
                   <constraint>
-                     <allowed-values id="oscal-risk-prop-name-values" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+                     <allowed-values id="oscal-risk-prop-name-values" target="prop[@ns = 'http://csrc.nist.gov/ns/oscal']/@name">
                         <enum value="type">The type of remediation tracking entry. Can be multi-valued.</enum>
                      </allowed-values>
-                     <allowed-values id="oscal-risk-prop-type-values" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='type']/@value" allow-other="yes">
+                     <allowed-values id="oscal-risk-prop-type-values" target="prop[@ns = 'http://csrc.nist.gov/ns/oscal' and @name='type']/@value" allow-other="yes">
                         <enum value="vendor-check-in">Contacted vendor to determine the status of a pending fix to a known vulnerability.</enum>
                         <enum value="status-update">Information related to the current state of response to this risk.</enum>
                         <enum value="milestone-complete">A significant step in the response plan has been achieved.</enum>
@@ -1309,13 +1309,13 @@
       </model>
       <constraint>
          <!-- REVIEW THIS -->
-         <allowed-values id="oscal-risk-prop-name-values" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+         <allowed-values id="oscal-risk-prop-name-values" target="prop[@ns = 'http://csrc.nist.gov/ns/oscal']/@name">
             <enum value="false-positive">The risk has been confirmed to be a false positive.</enum>
             <enum value="accepted">The risk has been accepted. No further action will be taken.</enum>
             <enum value="risk-adjusted">The risk has been adjusted.</enum>
             <enum value="priority">A numeric value indicating the sequence in which risks should be addressed. (Lower numbers are higher priority)</enum>
          </allowed-values>
-         <matches id="oscal-risk-priority-datatype" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='priority']/@value" datatype="integer" />
+         <matches id="oscal-risk-priority-datatype" target="prop[@ns = 'http://csrc.nist.gov/ns/oscal' and @name='priority']/@value" datatype="integer" />
       </constraint>
    </define-assembly>
 
@@ -1406,10 +1406,10 @@
                <field ref="remarks" in-xml="WITH_WRAPPER"/>
             </model>
             <constraint>
-               <allowed-values id="oscal-facet-prop-name-values" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+               <allowed-values id="oscal-facet-prop-name-values" target="prop[@ns = 'http://csrc.nist.gov/ns/oscal']/@name">
                   <enum value="state">Indicates if the facet is 'initial' as first identified, or 'adjusted' indicating that the value has be changed after some adjustments have been made (e.g., to identify residual risk).</enum>
                </allowed-values>
-               <allowed-values id="oscal-facet-prop-state-values" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='state']/@value"><!-- For values related to initial and residual (mitigated) risk -->
+               <allowed-values id="oscal-facet-prop-state-values" target="prop[@ns = 'http://csrc.nist.gov/ns/oscal' and @name='state']/@value"><!-- For values related to initial and residual (mitigated) risk -->
                   <enum value="initial">As first identified.</enum>
                   <enum value="adjusted">Indicates that residual risk remains after some adjustments have been made.</enum>
                </allowed-values>
@@ -1855,10 +1855,10 @@
          <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
       </model>
       <constraint>
-         <allowed-values id="oscal-response-prop-name" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+         <allowed-values id="oscal-response-prop-name" target="prop[@ns = 'http://csrc.nist.gov/ns/oscal']/@name">
             <enum value="type">Risk Response Type</enum>
          </allowed-values>
-         <allowed-values id="oscal-response-prop-type-value" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='type']/@value">
+         <allowed-values id="oscal-response-prop-type-value" target="prop[@ns = 'http://csrc.nist.gov/ns/oscal' and @name='type']/@value">
             <enum value="avoid">The risk will be eliminated.</enum>
             <enum value="mitigate">The risk will be reduced.</enum>
             <enum value="transfer">The risk will be transferred to another organization or entity.</enum>
@@ -1938,11 +1938,11 @@
          <!-- <any/> -->
       </model>
       <constraint>
-         <allowed-values id="oscal-assesment-part-objective-name" target=".[@name='objective']/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+         <allowed-values id="oscal-assesment-part-objective-name" target=".[@name='objective']/prop[@ns = 'http://csrc.nist.gov/ns/oscal']/@name">
             <enum value="method">The assessment method to use. This typically appears on parts with the name "objective".</enum>
          </allowed-values>
-         <has-cardinality id="oscal-assesment-part-objective-cardinality" target=".[@name='objective']/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='method']" min-occurs="1"/>
-         <allowed-values id="oscal-assesment-part-objective-method-value" target=".[@name='objective']/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='method']/@value">
+         <has-cardinality id="oscal-assesment-part-objective-cardinality" target=".[@name='objective']/prop[@ns = 'http://csrc.nist.gov/ns/oscal' and @name='method']" min-occurs="1"/>
+         <allowed-values id="oscal-assesment-part-objective-method-value" target=".[@name='objective']/prop[@ns = 'http://csrc.nist.gov/ns/oscal' and @name='method']/@value">
             <enum value="INTERVIEW">The process of holding discussions with individuals or groups of individuals within an organization to once again, facilitate assessor understanding, achieve clarification, or obtain evidence.</enum>
             <enum value="EXAMINE">The process of reviewing, inspecting, observing, studying, or analyzing one or more assessment objects (i.e., specifications, mechanisms, or activities).</enum>
             <enum value="TEST">The process of exercising one or more assessment objects (i.e., activities or mechanisms) under specified conditions to compare actual with expected behavior.</enum>

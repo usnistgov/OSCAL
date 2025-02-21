@@ -148,7 +148,7 @@
       <field ref="remarks" in-xml="WITH_WRAPPER"/>
     </model>
     <constraint>
-      <allowed-values id="oscal-component-prop-name" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+      <allowed-values id="oscal-component-prop-name" target="prop[@ns = 'http://csrc.nist.gov/ns/oscal']/@name">
         <!-- ========================================================================================================== -->
         <!-- = Changes to the following values need to be synced with component in the SSP and component metaschemas. = -->
         <!-- CHANGED (BJR): Done -->
@@ -177,7 +177,7 @@
             &allowed-values-responsible-roles-component-production;
       </allowed-values>
 
-      <allowed-values id="oscal-component-asset-type-value" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='asset-type']/@value" allow-other="yes">
+      <allowed-values id="oscal-component-asset-type-value" target="prop[@ns = 'http://csrc.nist.gov/ns/oscal' and @name='asset-type']/@value" allow-other="yes">
             &allowed-values-property-name-asset-type-values;
       </allowed-values>
 
@@ -185,22 +185,22 @@
       <!-- = TODO: The following was copied from implementation-common as-is and should probably be setup with  = -->
       <!-- =       shared constraints; however, the values are highly static (yes/no, internal/external). -->
       <!-- =       Can be changed later with no breaking impact. -->
-      <allowed-values id="oscal-component-allows-authenticated-scan-value" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='allows-authenticated-scan']/@value">
+      <allowed-values id="oscal-component-allows-authenticated-scan-value" target="prop[@ns = 'http://csrc.nist.gov/ns/oscal' and @name='allows-authenticated-scan']/@value">
         <enum value="yes">The component allows an authenticated scan.</enum>
         <enum value="no">The component does not allow an authenticated scan.</enum>
       </allowed-values>
 
-      <allowed-values id="oscal-component-virtual-value" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='virtual']/@value">
+      <allowed-values id="oscal-component-virtual-value" target="prop[@ns = 'http://csrc.nist.gov/ns/oscal' and @name='virtual']/@value">
         <enum value="yes">The component is virtualized.</enum>
         <enum value="no">The component is not virtualized.</enum>
       </allowed-values>
 
-      <allowed-values id="oscal-component-public-value" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='public']/@value">
+      <allowed-values id="oscal-component-public-value" target="prop[@ns = 'http://csrc.nist.gov/ns/oscal' and @name='public']/@value">
         <enum value="yes">The component is publicly accessible.</enum>
         <enum value="no">The component is not publicly accessible.</enum>
       </allowed-values>
 
-      <allowed-values id="oscal-component-implementation-point-value" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='implementation-point']/@value">
+      <allowed-values id="oscal-component-implementation-point-value" target="prop[@ns = 'http://csrc.nist.gov/ns/oscal' and @name='implementation-point']/@value">
         <enum value="internal">The component is implemented within the system boundary.</enum>
         <enum value="external">The component is implemented outside the system boundary.</enum>
       </allowed-values>
@@ -210,8 +210,8 @@
         <key-field target="@value"/>
       </index-has-key>
 
-      <matches id="oscal-component-inherited-uuid-value-datatype" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='inherited-uuid']/@value" datatype="uuid" />
-      <matches id="oscal-component-release-date-value-datatype" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='release-date']/@value" datatype="date"/>
+      <matches id="oscal-component-inherited-uuid-value-datatype" target="prop[@ns = 'http://csrc.nist.gov/ns/oscal' and @name='inherited-uuid']/@value" datatype="uuid" />
+      <matches id="oscal-component-release-date-value-datatype" target="prop[@ns = 'http://csrc.nist.gov/ns/oscal' and @name='release-date']/@value" datatype="date"/>
 
       <!-- ========================================================================================================== -->
       <!-- = Changes to the following values need to be synced with component in the SSP and component metaschemas. = -->
@@ -221,7 +221,7 @@
       <!-- ========================================================================================================== -->
       <!-- = SOFTWARE: type='software' constraints                        = -->
       <!-- ========================================================================================================== -->
-      <allowed-values id="oscal-software-component-prop-name" target="(.)[@type='software']/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+      <allowed-values id="oscal-software-component-prop-name" target="(.)[@type='software']/prop[@ns = 'http://csrc.nist.gov/ns/oscal']/@name">
             &allowed-values-component_component_software;
       </allowed-values>
 

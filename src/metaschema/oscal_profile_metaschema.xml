@@ -377,7 +377,7 @@
                                           </assembly>
                                     </model>
                                     <constraint>
-                                          <allowed-values id="oscal-profile-modify-alter-prop-name-values" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+                                          <allowed-values id="oscal-profile-modify-alter-prop-name-values" target="prop[@ns = 'http://csrc.nist.gov/ns/oscal']/@name">
                                                 &allowed-values-control-group-property-name;
                                           </allowed-values>
                                     </constraint>
