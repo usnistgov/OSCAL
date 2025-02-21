@@ -76,7 +76,7 @@
                         <!-- <any/> -->
                 </model>
                 <constraint>
-                        <allowed-values id="oscal-part-prop-name" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+                        <allowed-values id="oscal-part-prop-name" target="prop[@ns = 'http://csrc.nist.gov/ns/oscal']/@name">
             &allowed-values-control-group-property-name;
                         </allowed-values>
                 </constraint>
@@ -179,7 +179,7 @@
                         <field ref="remarks" in-xml="WITH_WRAPPER"/>
                 </model>
                 <constraint>
-                        <allowed-values id="oscal-parameter-prop-name" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+                        <allowed-values id="oscal-parameter-prop-name" target="prop[@ns = 'http://csrc.nist.gov/ns/oscal']/@name">
                                 &allowed-values-control-group-property-name;
                                 <enum value="alt-label">An alternate to the value provided by the parameter's label. This will typically be qualified by a class.</enum>
                         </allowed-values>

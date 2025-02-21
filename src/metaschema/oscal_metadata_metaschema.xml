@@ -203,13 +203,13 @@
                     <field ref="remarks" in-xml="WITH_WRAPPER"/>
                 </model>
                 <constraint>
-                    <allowed-values id="oscal-metadata-location-prop-name-values" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+                    <allowed-values id="oscal-metadata-location-prop-name-values" target="prop[@ns = 'http://csrc.nist.gov/ns/oscal']/@name">
                         <enum value="type">Characterizes the kind of location.</enum>
                     </allowed-values>
-                    <allowed-values id="oscal-metadata-location-prop-type-values" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='type']/@value">
+                    <allowed-values id="oscal-metadata-location-prop-type-values" target="prop[@ns = 'http://csrc.nist.gov/ns/oscal' and @name='type']/@value">
                         <enum value="data-center">A location that contains computing assets. A <code>class</code> can be used to indicate the sub-type of data-center as <em>primary</em> or <em>alternate</em>.</enum>
                     </allowed-values>
-                    <allowed-values id="oscal-metadata-location-prop-type-data-center-values" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='type' and @value='data-center']/@class">
+                    <allowed-values id="oscal-metadata-location-prop-type-data-center-values" target="prop[@ns = 'http://csrc.nist.gov/ns/oscal' and @name='type' and @value='data-center']/@class">
                         <enum value="primary">The location is a data-center used for normal operations.</enum>
                         <enum value="alternate">The location is a data-center used for fail-over or backup operations.</enum>
                     </allowed-values>
@@ -326,7 +326,7 @@
                     <field ref="remarks" in-xml="WITH_WRAPPER"/>
                 </model>
                 <constraint>
-                    <allowed-values id="oscal-metadata-party-prop-name-values" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+                    <allowed-values id="oscal-metadata-party-prop-name-values" target="prop[@ns = 'http://csrc.nist.gov/ns/oscal']/@name">
                         <enum value="mail-stop">A mail stop associated with the party.</enum>
                         <enum value="office">The name or number of the party's office.</enum>
                         <enum value="job-title">The formal job title of a person.</enum>
@@ -404,7 +404,7 @@
                 <enum value="content-approver">Indicates the person or organization responsible for all content represented in the "document".</enum>
                 <enum value="contact">Indicates the person or organization to contact for questions or support related to this content.</enum>
             </allowed-values>
-            <allowed-values id="oscal-metadata-prop-name-values" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+            <allowed-values id="oscal-metadata-prop-name-values" target="prop[@ns = 'http://csrc.nist.gov/ns/oscal']/@name">
                 <enum value="keywords">The value identifies a comma-seperated listing of keywords associated with this content. These keywords may be used as search terms for indexing and other applications.</enum>
             </allowed-values>
             <allowed-values id="oscal-metadata-link-rel-values" target="link/@rel" allow-other="yes">
@@ -568,13 +568,13 @@
                     <!-- <any/> -->
                 </model>
                 <constraint>
-                    <allowed-values id="oscal-back-matter-resource-prop-name-values" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+                    <allowed-values id="oscal-back-matter-resource-prop-name-values" target="prop[@ns = 'http://csrc.nist.gov/ns/oscal']/@name">
                         <enum value="type">Identifies the type of resource represented. The most specific appropriate type value SHOULD be used.</enum>
                         <enum value="version">For resources representing a published document, this represents the version number of that document.</enum>
                         <enum value="published">For resources representing a published document, this represents the publication date of that document.</enum>
                     </allowed-values>
-                    <matches id="oscal-back-matter-resource-prop-published-datatype" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='published']/@value" datatype="date-time-with-timezone"/>
-                    <allowed-values id="oscal-back-matter-resource-prop-type-values" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='type']/@value">
+                    <matches id="oscal-back-matter-resource-prop-published-datatype" target="prop[@ns = 'http://csrc.nist.gov/ns/oscal' and @name='published']/@value" datatype="date-time-with-timezone"/>
+                    <allowed-values id="oscal-back-matter-resource-prop-type-values" target="prop[@ns = 'http://csrc.nist.gov/ns/oscal' and @name='type']/@value">
                         <!-- More general. Applies across all models. -->
                         <enum value="logo">Indicates the resource is an organization's logo.</enum>
                         <enum value="image">Indicates the resource represents an image.</enum>
@@ -702,7 +702,7 @@
             <field ref="remarks" in-xml="WITH_WRAPPER"/>
         </model>
         <constraint>
-            <allowed-values id="oscal-metadata-prop-name-values" target=".[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+            <allowed-values id="oscal-metadata-prop-name-values" target=".[@ns = 'http://csrc.nist.gov/ns/oscal']/@name">
                 <enum value="marking">A label or descriptor that is tied to a sensitivity or classification marking system. An optional class can be used to define the specific marking system used for the associated value.</enum>
             </allowed-values>
         </constraint>
@@ -874,7 +874,7 @@
             <allowed-values id="oscal-metadata-action-system-values" target="./system/@value" allow-other="yes">
                 <enum value="http://csrc.nist.gov/ns/oscal">This value identifies action types defined in the NIST OSCAL namespace.</enum>
              </allowed-values>
-             <allowed-values id="oscal-metadata-action-type-values" target="./type[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@value">
+             <allowed-values id="oscal-metadata-action-type-values" target="./type[@ns = 'http://csrc.nist.gov/ns/oscal']/@value">
                 <enum value="approval">An approval of a document instance's content.</enum>
                 <enum value="request-changes">A request from the responisble party or parties to change the content.</enum>
             </allowed-values>
