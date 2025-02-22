@@ -220,7 +220,7 @@
             </model>
             <constraint>
                   <expect id="oscal-catalog-control-require-statement-when-not-withdrawn" target="."
-                        test="prop[@name='status']/@value=('withdrawn','Withdrawn') or part[@name='statement']"/>
+                        test="part[@ns != 'http://csrc.nist.gov/ns/oscal'] part[@ns='http://csrc.nist.gov/ns/oscal' @name='statement'] or prop[@ns='http://csrc.nist.gov/ns/oscal' @name='status']/@value=('withdrawn','Withdrawn')"/>
                   <allowed-values id="oscal-control-prop-name"
                         target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
                         &allowed-values-control-group-property-name;
