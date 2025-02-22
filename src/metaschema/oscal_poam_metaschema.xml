@@ -175,6 +175,25 @@
             <expect id="oscal-poam-item-uuid" level="WARNING" target="." test="@uuid">
                 <message>It is a best practice to provide a UUID.</message>
             </expect>
+            <allowed-values id="oscal-poam-item-has-vendor-dependency-values" target="prop[@ns='http://csrc.nist.gov/ns/oscal' and @name='has-vendor-dependency']/@value" allow-other="no">
+                <enum value="yes"></enum>
+                <enum value="no"></enum>
+            </allowed-values>
+            <expect id="oscal-poam-item-vendor-dependency-name" level="ERROR" target="prop[@ns='http://csrc.nist.gov/ns/oscal' and @name='vendor-dependency']" test="prop[@ns='http://csrc.nist.gov/ns/oscal' and @name='has-vendor-dependency']/@value='yes' and exists(.)">
+                <message>An OSCAL POA&amp;M requires a POA&amp;M item that indicates it has a vendor dependency with <code>has-vendor-dependency</code> with a value of <code>yes</code> to provide a name for that vendor.</message>
+            </expect>
+            <expect id="oscal-poam-item-vendor-checkin-date" level="WARNING" target="prop[@ns='http://csrc.nist.gov/ns/oscal' and @name='vendor-checkin-date']" test="prop[@ns='http://csrc.nist.gov/ns/oscal' and @name='has-vendor-dependency']/@value='yes' and exists(.)">
+                <message>An OSCAL POA&amp;M requires a POA&amp;M item that indicates it has a vendor dependency with <code>has-vendor-dependency</code> with a value of <code>yes</code> to provide a date for the last vendor checkin.</message>
+            </expect>            
+            <matches id="oscal-poam-item-scheduled-completion-date-datatype" target="prop[@ns='http://csrc.nist.gov/ns/oscal' and @name='scheduled-completion-date']/@value" datatype="date-time-timezone">
+                <message>An OSCAL POA&amp;M requires a POA&amp;M item with a scheduled completion date must properly format its value as a proper date and time with timezone.</message>
+            </matches>
+            <matches id="oscal-poam-item-status-date-datatype" target="prop[@ns='http://csrc.nist.gov/ns/oscal' and @name='status-date']/@value" datatype="date-time-timezone">
+                <message>An OSCAL POA&amp;M requires a POA&amp;M item with a status date must properly format its value as a proper date and time with timezone.</message>
+            </matches>
+            <matches id="oscal-poam-item-vendor-checkin-date-datatype" target="prop[@ns='http://csrc.nist.gov/ns/oscal' and @name='vendor-checkin-date']/@value" datatype="date-time-timezone">
+                <message>An OSCAL POA&amp;M requires a POA&amp;M item with a vendor check-in date date must properly format its value as a proper date and time with timezone.</message>
+            </matches>
         </constraint>
     </define-assembly>
 </METASCHEMA>
