@@ -263,6 +263,7 @@
                               'assessment-method' instead.</enum>
                         <enum value="assessment-method">The part describes a method-based assessment
                               over a set of assessment objects.</enum>
+                        <enum value="recommendation">The part describes a specific approach for a set of implementation requirements more opinionated than a statement or guidance.</enum>
                   </allowed-values>
                   <allowed-values id="oscal-control-statement-part-subpart-name"
                         target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='statement']//part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
