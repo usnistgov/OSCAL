@@ -31,7 +31,9 @@ jobs:
           cache: "npm"
           cache-dependency-path: "build/package-lock.json"
       - name: Install xmllint
-        run: sudo apt-get install -y libxml2-utils
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y libxml2-utils
       - name: Run all pipelines
         run: |
           make --keep-going all

@@ -901,7 +901,8 @@
                   <enum value="ssp-statement-issue">A difference between the SSP implementation statement, and actual implementation.</enum>
                   <enum value="control-objective">An observation about the status of a the associated control objective.</enum>
                   <enum value="mitigation">A mitigating factor was identified.</enum>
-                  <enum value="finding">An assessment finding. Used for observations made by tools, penetration testing, and other means.</enum>
+                  <enum value="finding" deprecated="1.1.4">**(deprecated)** Use 'discovery' instead.</enum>
+                  <enum value="discovery">An observation of possible risk from the system's implementation from security scanning tools, penetration testing, and other means.</enum>
                   <enum value="historic">An observation from a past assessment, which was converted to OSCAL at a later date.</enum>
                </allowed-values>
             </constraint>
