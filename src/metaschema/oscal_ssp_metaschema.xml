@@ -577,7 +577,7 @@
         </constraint>
       </define-assembly>
 
-      <assembly ref="system-user" min-occurs="1" max-occurs="unbounded">
+      <assembly ref="system-user" min-occurs="0" max-occurs="unbounded">
         <use-name>user</use-name>
         <group-as name="users" in-json="ARRAY"/>
       </assembly>
