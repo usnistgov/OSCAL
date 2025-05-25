@@ -22,7 +22,7 @@ Although crucial to the XSLT implementation, these tests are not portable and it
 
 ### Specification Tests
 
-Some specifications such as [CommonMark](https://commonmark.org/) include a [test suite and testing harness](https://github.com/commonmark/commonmark-spec/tree/master/test) to make it possible for implementors to "score" their implementation's conformance to the specification.
+Some specifications such as [CommonMark](https://commonmark.org/) include a [test suite and testing harness](https://github.com/commonmark/commonmark-spec/tree/master/test) to make it possible for implementers to "score" their implementation's conformance to the specification.
 
 ## Decision
 
@@ -74,7 +74,7 @@ Python's native XPath capabilities are limited, further constraining the capabil
 
 ## Consequences
 
-Writing specification tests for profile resolution will require significant resources, but will make profile resolution more approachable for implementors and will make changes to the specification more maintainable.
+Writing specification tests for profile resolution will require significant resources, but will make profile resolution more approachable for implementers and will make changes to the specification more maintainable.
 
 Due to the "requirement based" approach of the specification test suite, new tests can be added gradually.
 Test coverage can be determined by determining which requirements do not have tests.

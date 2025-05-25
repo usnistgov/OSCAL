@@ -232,7 +232,7 @@
             </define-flag>
             <model>
               <define-field name="information-type-id" as-type="string" max-occurs="unbounded">
-                <!-- This is an id because the idenfier is assigned and managed externally by humans. -->
+                <!-- This is an id because the identifier is assigned and managed externally by humans. -->
                 <formal-name>Information Type Systematized Identifier</formal-name>
                 <!-- Identifier Declaration -->
                 <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#human-oriented">human-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier qualified by the given identification <code>system</code> used, such as NIST SP 800-60.  This identifier has <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope and can be used to reference this system elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. This id should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
@@ -820,7 +820,7 @@
     <define-flag required="yes" name="component-uuid" as-type="uuid">
       <formal-name>Component Universally Unique Identifier Reference</formal-name>
       <!-- Identifier Reference -->
-      <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to the <code>component</code> that is implemeting a given control.</description>
+      <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to the <code>component</code> that is implementing a given control.</description>
     </define-flag>
     <define-flag name="uuid" as-type="uuid" required="yes">
       <formal-name>By-Component Universally Unique Identifier</formal-name>
