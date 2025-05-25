@@ -224,7 +224,7 @@
                               insertion.</description>
                         <group-as name="set-parameters" in-json="ARRAY"/>
                         <define-flag required="yes" name="param-id" as-type="token">
-                              <!-- This is an id because the idenfier is assigned and managed by humans. -->
+                              <!-- This is an id because the identifier is assigned and managed by humans. -->
                               <formal-name>Parameter ID</formal-name>
                               <!-- Identifier Declaration -->
                               <description>An identifier for the parameter.</description>

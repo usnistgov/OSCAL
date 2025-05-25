@@ -1328,7 +1328,7 @@ control:
           <p>OSCAL supports controls inside controls in the form of
             <src>control</src> objects inside
             <src>control</src> objects. Because the semantics of the
-            <src>add</src> and remove directives target any (object) contents of controls, they can be used to target these child controls for modification as well as other contents. <req level="must" id="req-modify-alter-add-nested">Profile resolution tools MUST be able to correctly handle add directives targetting nested controls. This includes directives that target a child control as well as directives that target a parent control and modify the child. </req> </p>
+            <src>add</src> and remove directives target any (object) contents of controls, they can be used to target these child controls for modification as well as other contents. <req level="must" id="req-modify-alter-add-nested">Profile resolution tools MUST be able to correctly handle add directives targeting nested controls. This includes directives that target a child control as well as directives that target a parent control and modify the child. </req> </p>
         </section>
       </section>
       <section id="remove-directive">
