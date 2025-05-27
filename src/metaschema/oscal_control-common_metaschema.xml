@@ -76,7 +76,7 @@
                         <!-- <any/> -->
                 </model>
                 <constraint>
-                        <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+                        <allowed-values id="oscal-part-prop-name" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
             &allowed-values-control-group-property-name;
                         </allowed-values>
                 </constraint>
@@ -179,16 +179,16 @@
                         <field ref="remarks" in-xml="WITH_WRAPPER"/>
                 </model>
                 <constraint>
-                        <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+                        <allowed-values id="oscal-parameter-prop-name" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
                                 &allowed-values-control-group-property-name;
                                 <enum value="alt-label">An alternate to the value provided by the parameter's label. This will typically be qualified by a class.</enum>
                         </allowed-values>
-                        <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/rmf')]/@name">
+                        <allowed-values id="oscal-rmf-parameter-prop-name" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/rmf')]/@name">
                                 <enum value="aggregates">The parent parameter provides an
                                         aggregation of two or more other parameters, each described
                                         by this property.</enum>
                         </allowed-values>
-                        <expect target="." test="not(exists(@depends-on))">
+                        <expect id="oscal-parameter-depends-on-deprecated" target="." test="not(exists(@depends-on))">
                                 <message>depends-on is deprecated</message>
                         </expect>
                 </constraint>
@@ -244,7 +244,7 @@
                         <formal-name>Parameter Cardinality</formal-name>
                         <description>Describes the number of selections that must occur. Without this setting, only one value should be assumed to be permitted.</description>
                         <constraint>
-                                <allowed-values>
+                                <allowed-values id="oscal-parameter-how-many-type">
                                         <enum value="one">Only one value is permitted.</enum>
                                         <enum value="one-or-more">One or more values are permitted.</enum>
                                 </allowed-values>

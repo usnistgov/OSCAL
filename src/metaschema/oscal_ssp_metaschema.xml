@@ -46,7 +46,7 @@
       <assembly ref="back-matter"/>
     </model>
     <constraint>
-      <index name="by-component-uuid" target="control-implementation/implemented-requirement//by-component|doc(system-implementation/leveraged-authorization/link[@rel='system-security-plan']/@href)/system-security-plan/control-implementation/implemented-requirement//by-component">
+      <index id="oscal-ssp-by-component-uuid-index" name="by-component-uuid" target="control-implementation/implemented-requirement//by-component|doc(system-implementation/leveraged-authorization/link[@rel='system-security-plan']/@href)/system-security-plan/control-implementation/implemented-requirement//by-component">
         <key-field target="@uuid"/>
       </index>
     </constraint>
@@ -129,7 +129,7 @@
       <field ref="remarks" in-xml="WITH_WRAPPER"/>
     </model>
     <constraint>
-      <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+      <allowed-values id="oscal-system-characteristics-prop-name-values" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
         <enum value="identity-assurance-level">A value of 1, 2, or 3 as defined by <a href="https://doi.org/10.6028/NIST.SP.800-63-3">SP 800-63-3</a>.
         </enum>
         <enum value="authenticator-assurance-level">A value of 1, 2, or 3 as defined by <a href="https://doi.org/10.6028/NIST.SP.800-63-3">SP 800-63-3</a>.
@@ -137,7 +137,7 @@
         <enum value="federation-assurance-level">A value of 1, 2, or 3 as defined by <a href="https://doi.org/10.6028/NIST.SP.800-63-3">SP 800-63-3</a>.
         </enum>
       </allowed-values>
-      <allowed-values target="prop[@name=('identity-assurance-level','authenticator-assurance-level','federation-assurance-level')]/@value">
+      <allowed-values id="oscal-system-characteristics-prop-sp-800-63-assurance-level-values" target="prop[@name=('identity-assurance-level','authenticator-assurance-level','federation-assurance-level')]/@value">
         <enum value="1">As defined by <a href="https://doi.org/10.6028/NIST.SP.800-63-3">SP 800-63-3</a>.
         </enum>
         <enum value="2">As defined by <a href="https://doi.org/10.6028/NIST.SP.800-63-3">SP 800-63-3</a>.
@@ -145,11 +145,11 @@
         <enum value="3">As defined by <a href="https://doi.org/10.6028/NIST.SP.800-63-3">SP 800-63-3</a>.
         </enum>
       </allowed-values>
-      <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+      <allowed-values id="oscal-system-characteristics-prop-name-values" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
         <enum value="cloud-deployment-model">The associated value is one of: public-cloud, private-cloud, community-cloud, government-only-cloud, hybrid-cloud, or other.</enum>
         <enum value="cloud-service-model">The associated value is one of: saas, paas, iaas, or other.</enum>
       </allowed-values>
-      <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='cloud-deployment-model']/@value">
+      <allowed-values id="oscal-system-characteristics-prop-cloud-deployment-model-values" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='cloud-deployment-model']/@value">
         <enum value="public-cloud">The public cloud deployment model as defined by <a href="https://doi.org/10.6028/NIST.SP.800-145">The NIST Definition of Cloud Computing</a>.
         </enum>
         <enum value="private-cloud">The private cloud deployment model as defined by <a href="https://doi.org/10.6028/NIST.SP.800-145">The NIST Definition of Cloud Computing</a>.
@@ -165,7 +165,7 @@
           <p>The hybrid cloud deployment model, as defined by <a href="https://doi.org/10.6028/NIST.SP.800-145">The NIST Definition of Cloud Computing</a>, can be supported by selecting two or more of the existing deployment models.</p>
         </remarks>
       </allowed-values>
-      <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='cloud-service-model']/@value">
+      <allowed-values id="oscal-system-characteristics-prop-cloud-service-model-values" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='cloud-service-model']/@value">
         <enum value="saas">Software as a service (SaaS) cloud service model as defined by <a href="https://doi.org/10.6028/NIST.SP.800-145">The NIST Definition of Cloud Computing</a>.
         </enum>
         <enum value="paas">Platform as a service (PaaS) cloud service model as defined by <a href="https://doi.org/10.6028/NIST.SP.800-145">The NIST Definition of Cloud Computing</a>.
@@ -174,13 +174,13 @@
         </enum>
         <enum value="other">Any other type of cloud service model that is exclusive to the other choices.</enum>
       </allowed-values>
-      <is-unique id="unique-ssp-system-characteristics-responsible-party" target="responsible-party">
+      <is-unique id="oscal-unique-ssp-system-characteristics-responsible-party" target="responsible-party">
         <key-field target="@role-id"/>
         <remarks>
           <p>Since <code>responsible-party</code> associates multiple <code>party-uuid</code> entries with a single <code>role-id</code>, each role-id must be referenced only once.</p>
         </remarks>
       </is-unique>
-      <allowed-values target="responsible-party/@role-id" allow-other="yes">
+      <allowed-values id="oscal-system-characteristics-responsible-party-role-id-values" target="responsible-party/@role-id" allow-other="yes">
             &allowed-values-responsible-roles-system;
       </allowed-values>
     </constraint>
@@ -222,7 +222,7 @@
               <formal-name>Information Type Identification System</formal-name>
               <description>Specifies the information type identification system used.</description>
               <constraint>
-                <allowed-values allow-other="yes">
+                <allowed-values id="oscal-information-type-categorization-system-values" allow-other="yes">
                   <enum value="http://doi.org/10.6028/NIST.SP.800-60v2r1">Based on the section identifiers in NIST <a href="https://doi.org/10.6028/NIST.SP.800-60v2r1">Special Publication 800-60 Volume II Revision 1</a>.</enum>
                 </allowed-values>
               </constraint>
@@ -264,33 +264,33 @@
           </assembly>
         </model>
         <constraint>
-          <expect level="WARNING" target="." test="@uuid">
+          <expect id="oscal-information-type-uuid" level="WARNING" target="." test="@uuid">
             <message>It is a best practice to provide a UUID.</message>
           </expect>
         </constraint>
       </define-assembly>
     </model>
     <constraint>
-      <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+      <allowed-values id="oscal-system-information-prop-name-values" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
         <enum value="privacy-designation">Is this a privacy sensitive system? yes or no</enum>
       </allowed-values>
-      <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='privacy-designation']/@value">
+      <allowed-values id="oscal-system-information-prop-privacy-designation-values" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='privacy-designation']/@value">
         <enum value="yes">The system is privacy sensitive.</enum>
         <enum value="no">The system is not privacy sensitive.</enum>
       </allowed-values>
-      <allowed-values target="link/@rel" allow-other="yes">
+      <allowed-values id="oscal-system-information-link-rel-values" target="link/@rel" allow-other="yes">
         <enum value="privacy-impact-assessment">A link to the privacy impact assessment.</enum>
       </allowed-values>
-      <matches target="link[@rel='privacy-impact-assessment']/@href[starts-with(.,'#')]" datatype="uri-reference"/>
-      <index-has-key name="index-back-matter-resource" target="link[@rel='privacy-impact-assessment' and starts-with(@href,'#')]">
+      <matches id="oscal-system-information-pia-datatype-uri-reference" target="link[@rel='privacy-impact-assessment']/@href[starts-with(.,'#')]" datatype="uri-reference"/>
+      <index-has-key id="oscal-system-information-index-back-matter-resource-pia-link-rel" name="index-back-matter-resource" target="link[@rel='privacy-impact-assessment' and starts-with(@href,'#')]">
         <key-field target="@href" pattern="#(.*)"/>
       </index-has-key>
       <!-- 
         TODO: Per discussion in usnisgov/OSCAL#1331 review on 29 July 2022,
         add the path target to security-sensitivity-level as well.
       -->
-      <matches target="link[@rel='privacy-impact-assessment']/@href[not(starts-with(.,'#'))]" datatype="uri"/>
-      <allowed-values target="information-type/(confidentiality-impact|integrity-impact|availability-impact)/(base|selected)" allow-other="yes">
+      <matches id="oscal-system-information-pia-datatype-uri" target="link[@rel='privacy-impact-assessment']/@href[not(starts-with(.,'#'))]" datatype="uri"/>
+      <allowed-values id="oscal-fips-199-impact-levels" target="information-type/(confidentiality-impact|integrity-impact|availability-impact)/(base|selected)" allow-other="yes">
         <enum value="fips-199-low">A 'low' sensitivity level as defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.
         </enum>
         <enum value="fips-199-moderate">A 'moderate' sensitivity level as defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.
@@ -359,7 +359,7 @@
       <formal-name>State</formal-name>
       <description>The current operating status.</description>
       <constraint>
-        <allowed-values>
+        <allowed-values id="oscal-status-state-values">
           <enum value="operational">The system is currently operating in production.</enum>
           <enum value="under-development">The system is being designed, developed, or implemented</enum>
           <enum value="under-major-modification">The system is undergoing a major change, development, or transition.</enum>
@@ -403,7 +403,7 @@
       <field ref="remarks" in-xml="WITH_WRAPPER"/>
     </model>
     <constraint>
-      <is-unique id="unique-ssp-authorization-boundary-diagram" target="diagram">
+      <is-unique id="oscal-unique-ssp-authorization-boundary-diagram" target="diagram">
         <key-field target="@uuid"/>
         <remarks>
           <p>A given <code>uuid</code> must be assigned only once to a diagram.</p>
@@ -441,14 +441,14 @@
       <field ref="remarks" in-xml="WITH_WRAPPER"/>
     </model>
     <constraint>
-      <allowed-values target="link/@rel" allow-other="yes">
+      <allowed-values id="oscal-diagram-link-rel-values" target="link/@rel" allow-other="yes">
         <enum value="diagram">A reference to the diagram image.</enum>
       </allowed-values>
-      <matches target="link[@rel='diagram']/@href[starts-with(.,'#')]" datatype="uri-reference"/>
-      <index-has-key name="index-back-matter-resource" target="link[@rel='diagram' and starts-with(@href,'#')]">
+      <matches id="oscal-diagram-datatype-uri-reference" target="link[@rel='diagram']/@href[starts-with(.,'#')]" datatype="uri-reference"/>
+      <index-has-key id="oscal-diagram-index-back-matter-resource-link-rel" name="index-back-matter-resource" target="link[@rel='diagram' and starts-with(@href,'#')]">
         <key-field target="@href" pattern="#(.*)"/>
       </index-has-key>
-      <matches target="link[@rel='diagram']/@href[not(starts-with(.,'#'))]" datatype="uri"/>
+      <matches id="oscal-diagram-datatype-uri" target="link[@rel='diagram']/@href[not(starts-with(.,'#'))]" datatype="uri"/>
     </constraint>
     <remarks>
       <p>A diagram must include a <code>link</code> with a rel value of "diagram", who's href references a remote URI or an internal reference within this document containing the diagram.</p>
@@ -484,7 +484,7 @@
       <field ref="remarks" in-xml="WITH_WRAPPER"/>
     </model>
     <constraint>
-      <is-unique id="unique-ssp-network-architecture-diagram" target="diagram">
+      <is-unique id="oscal-unique-ssp-network-architecture-diagram" target="diagram">
         <key-field target="@uuid"/>
         <remarks>
           <p>A given <code>uuid</code> must be assigned only once to a diagram.</p>
@@ -514,7 +514,7 @@
       <field ref="remarks" in-xml="WITH_WRAPPER"/>
     </model>
     <constraint>
-      <is-unique id="unique-ssp-data-flow-diagram" target="diagram">
+      <is-unique id="oscal-unique-ssp-data-flow-diagram" target="diagram">
         <key-field target="@uuid"/>
         <remarks>
           <p>A given <code>uuid</code> must be assigned only once to a diagram.</p>
@@ -566,18 +566,18 @@
           <field ref="remarks" in-xml="WITH_WRAPPER"/>
         </model>
         <constraint>
-          <allowed-values target="link/@rel" allow-other="yes">
+          <allowed-values id="oscal-leveraged-authorization-link-rel-values" target="link/@rel" allow-other="yes">
             <enum value="system-security-plan">A reference to the system security plan for the leveraged authorization.</enum>
           </allowed-values>
-          <matches target="link[@rel='system-security-plan']/@href[starts-with(.,'#')]" datatype="uri-reference"/>
-          <index-has-key name="index-back-matter-resource" target="link[@rel='system-security-plan' and starts-with(@href,'#')]">
+          <matches id="oscal-leveraged-authorization-link-rel-ssp-datatype-uri-reference" target="link[@rel='system-security-plan']/@href[starts-with(.,'#')]" datatype="uri-reference"/>
+          <index-has-key id="oscal-leveraged-authorization-index-back-matter-resource-ssp" name="index-back-matter-resource" target="link[@rel='system-security-plan' and starts-with(@href,'#')]">
             <key-field target="@href" pattern="#(.*)"/>
           </index-has-key>
-          <matches target="link[@rel='system-security-plan']/@href[not(starts-with(.,'#'))]" datatype="uri"/>
+          <matches id="oscal-leveraged-authorization-link-rel-ssp-datatype-uri" target="link[@rel='system-security-plan']/@href[not(starts-with(.,'#'))]" datatype="uri"/>
         </constraint>
       </define-assembly>
 
-      <assembly ref="system-user" min-occurs="1" max-occurs="unbounded">
+      <assembly ref="system-user" min-occurs="0" max-occurs="unbounded">
         <use-name>user</use-name>
         <group-as name="users" in-json="ARRAY"/>
       </assembly>
@@ -599,49 +599,49 @@
     </model>
     <constraint>
       <!-- TODO: future: for FedRAMP, have user counts as props: current/internal, current/external, future/internal, future, external -->
-      <index name="index-system-implementation-leveraged-authorization-uuid" target="leveraged-authorization">
+      <index id="oscal-system-implementation-component-leveraged-authorization-uuid-index" name="index-system-implementation-leveraged-authorization-uuid" target="leveraged-authorization">
         <key-field target="@uuid"/>
       </index>
-      <index-has-key name="index-system-implementation-leveraged-authorization-uuid" target="component/prop[@name='leveraged-authorization-uuid']">
+      <index-has-key id="oscal-system-implementation-component-prop-leveraged-authorization-uuid-index" name="index-system-implementation-leveraged-authorization-uuid" target="component/prop[@name='leveraged-authorization-uuid']">
         <key-field target="@value"/>
       </index-has-key>
 
       <!-- References to components -->
-      <index name="index-system-implementation-component-uuid" target="component">
+      <index id="oscal-system-implementation-component-uuid-index" name="index-system-implementation-component-uuid" target="component">
         <key-field target="@uuid"/>
       </index>
-      <index-has-key name="index-system-implementation-component-uuid" target="component/link[@rel='depends-on']">
+      <index-has-key id="oscal-system-implementation-component-depends-on-link-index" name="index-system-implementation-component-uuid" target="component/link[@rel='depends-on']">
         <key-field target="@href"/>
       </index-has-key>
 
       <!-- References to components of @type="validation" -->
-      <index name="index-system-implementation-component-uuid-validation" target="component[@type='validation']">
+      <index id="oscal-system-implementation-component-validation-uuid-index" name="index-system-implementation-component-uuid-validation" target="component[@type='validation']">
         <key-field target="@uuid"/>
       </index>
-      <index-has-key name="index-system-implementation-component-uuid-validation" target="component/link[@rel='validated-by']">
+      <index-has-key id="oscal-system-implementation-validated-by-index" name="index-system-implementation-component-uuid-validation" target="component/link[@rel='validated-by']">
         <key-field target="@href"/>
       </index-has-key>
-      <index-has-key name="index-system-implementation-component-uuid-validation" target="component/link[@rel='proof-of-compliance']">
+      <index-has-key id="oscal-system-implementation-proof-of-compliance-index" name="index-system-implementation-component-uuid-validation" target="component/link[@rel='proof-of-compliance']">
         <key-field target="@href"/>
       </index-has-key>
 
       <!-- References to components of @type="service" -->
-      <index name="index-system-implementation-component-uuid-service" target="component[@type='service']">
+      <index id="oscal-index-system-implementation-component-uuid-service" name="index-system-implementation-component-uuid-service" target="component[@type='service']">
         <key-field target="@uuid"/>
       </index>
-      <index-has-key name="index-system-implementation-component-uuid-service" target="component/link[@rel='uses-service']">
+      <index-has-key id="oscal-index-system-implementation-component-uuid-service" name="index-system-implementation-component-uuid-service" target="component/link[@rel='uses-service']">
         <key-field target="@href"/>
       </index-has-key>
 
       <!-- TODO: check that prop names are defined -->
-      <allowed-values target="(component | inventory-item)/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='allows-authenticated-scan']/@value">
+      <allowed-values id="oscal-component-inventory-item-allows-authenticated-scan-values" target="(component | inventory-item)/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='allows-authenticated-scan']/@value">
         <enum value="yes">The component allows an authenticated scan.</enum>
         <enum value="no">The component does not allow an authenticated scan.</enum>
       </allowed-values>
 
       <!-- TODO: only allow a single "this-system" component -->
 
-      <is-unique id="unique-ssp-system-implementation-user" target="user">
+      <is-unique id="oscal-unique-ssp-system-implementation-user" target="user">
         <key-field target="@uuid"/>
         <remarks>
           <p>A given <code>uuid</code> must be assigned only once to a user.</p>
@@ -666,13 +666,13 @@
       </assembly>
     </model>
     <constraint>
-      <is-unique id="unique-ssp-control-implementation-set-parameter" target="set-parameter">
+      <is-unique id="oscal-unique-ssp-control-implementation-set-parameter" target="set-parameter">
         <key-field target="@param-id"/>
         <remarks>
           <p>Since multiple <code>set-parameter</code> entries can be provided, each parameter must be set only once.</p>
         </remarks>
       </is-unique>
-      <index name="by-component-export-provided-uuid" target="implemented-requirement//by-component/export/provided">
+      <index id="oscal-by-component-export-provided-uuid-index" name="by-component-export-provided-uuid" target="implemented-requirement//by-component/export/provided">
         <key-field target="@uuid"/>
       </index>
     </constraint>
@@ -713,49 +713,49 @@
       <field ref="remarks" in-xml="WITH_WRAPPER"/>
     </model>
     <constraint>
-      <allowed-values target="(.|statement|.//by-component)/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+      <allowed-values id="oscal-implemented-requirement-statement-by-component-prop-name-values" target="(.|statement|.//by-component)/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
         <enum value="control-origination">Identifies the source of the implemented control.  Any <code>control-origination</code> prop defined in a child context will override the parent value.</enum>
       </allowed-values>
-      <allowed-values target="(.|statement|.//by-component)/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='control-origination']/@value">
+      <allowed-values id="oscal-implemented-requirement-statement-by-component-prop-control-origination-values" target="(.|statement|.//by-component)/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='control-origination']/@value">
         <enum value="organization">The control is implemented by the organization owning the system, but is not specific to the system itself.</enum>
         <enum value="system-specific">The control is implemented specifically to this system.</enum>
         <enum value="customer-configured">The control is provided by the system, but must be configured by the customer.</enum>
         <enum value="customer-provided">The control must be implemented by the customer.</enum>
         <enum value="inherited">This control is inherited from an underlying system.</enum>
       </allowed-values>
-      <allowed-values target="responsible-role/@role-id" allow-other="yes">
+      <allowed-values id="oscal-implemented-requirement-responsible-role-id-values" target="responsible-role/@role-id" allow-other="yes">
             &allowed-values-responsible-roles-operations;
       </allowed-values>
-      <index-has-key name="index-metadata-role-id" target="responsible-role|statement/responsible-role|.//by-component//responsible-role">
+      <index-has-key id="oscal-implemented-requirement-index-metadata-role-id"  name="index-metadata-role-id" target="responsible-role|statement/responsible-role|.//by-component//responsible-role">
         <key-field target="@role-id"/>
       </index-has-key>
-      <index-has-key name="index-metadata-party-uuid" target="responsible-role|statement/responsible-role|.//by-component//responsible-role">
+      <index-has-key id="oscal-implemented-requirement-index-metadata-party-uuid" name="index-metadata-party-uuid" target="responsible-role|statement/responsible-role|.//by-component//responsible-role">
         <key-field target="party-uuid"/>
       </index-has-key>
-      <has-cardinality target=".//by-component" min-occurs="1">
+      <has-cardinality id="oscal-implemented-requirement-by-component-cardinality" target=".//by-component" min-occurs="1">
         <remarks>
           <p>Since all implementation statements are defined at the by-component level (e.g., type=this-system), there must be at least one by-component.</p>
         </remarks>
       </has-cardinality>
-      <is-unique id="unique-ssp-implemented-requirement-set-parameter" target="set-parameter">
+      <is-unique id="oscal-unique-ssp-implemented-requirement-set-parameter" target="set-parameter">
         <key-field target="@param-id"/>
         <remarks>
           <p>Since multiple <code>set-parameter</code> entries can be provided, each parameter must be set only once.</p>
         </remarks>
       </is-unique>
-      <is-unique id="unique-ssp-implemented-requirement-responsible-role" target="responsible-role">
+      <is-unique id="oscal-unique-ssp-implemented-requirement-responsible-role" target="responsible-role">
         <key-field target="@role-id"/>
         <remarks>
           <p>Since <code>responsible-role</code> associates multiple <code>party-uuid</code> entries with a single <code>role-id</code>, each role-id must be referenced only once.</p>
         </remarks>
       </is-unique>
-      <is-unique id="unique-ssp-implemented-requirement-statement" target="statement">
+      <is-unique id="oscal-unique-ssp-implemented-requirement-statement" target="statement">
         <key-field target="@statement-id"/>
         <remarks>
           <p>Since <code>statement</code> entries can be referenced using the statement's statement-id, each statement must be referenced only once.</p>
         </remarks>
       </is-unique>
-      <is-unique id="unique-ssp-implemented-requirement-by-component" target="by-component">
+      <is-unique id="oscal-unique-ssp-implemented-requirement-by-component" target="by-component">
         <key-field target="@component-uuid"/>
         <remarks>
           <p>Since <code>by-component</code> can reference <code>component</code> entries using the component's uuid, each component must be referenced only once. This ensures that all implementation statements are contained in the same <code>by-component</code> entry.</p>
@@ -795,16 +795,16 @@
       <field ref="remarks" in-xml="WITH_WRAPPER"/>
     </model>
     <constraint>
-      <allowed-values target="responsible-role/@role-id" allow-other="yes">
+      <allowed-values id="oscal-statement-responsible-role-id-values" target="responsible-role/@role-id" allow-other="yes">
             &allowed-values-responsible-roles-operations;
       </allowed-values>
-      <is-unique id="unique-ssp-statement-responsible-role" target="responsible-role">
+      <is-unique id="oscal-unique-ssp-statement-responsible-role" target="responsible-role">
         <key-field target="@role-id"/>
         <remarks>
           <p>Since <code>responsible-role</code> associates multiple <code>party-uuid</code> entries with a single <code>role-id</code>, each role-id must be referenced only once.</p>
         </remarks>
       </is-unique>
-      <is-unique id="unique-ssp-implemented-requirement-statement-by-component" target="by-component">
+      <is-unique id="oscal-unique-ssp-implemented-requirement-statement-by-component" target="by-component">
         <key-field target="@component-uuid"/>
         <remarks>
           <p>Since <code>by-component</code> can reference <code>component</code> entries using the component's uuid, each component must be referenced only once. This ensures that all implementation statements are contained in the same <code>by-component</code> entry.</p>
@@ -889,7 +889,7 @@
               <field ref="remarks" in-xml="WITH_WRAPPER"/>
             </model>
             <constraint>
-              <is-unique id="unique-provided-responsible-role" target="responsible-role">
+              <is-unique id="oscal-unique-provided-responsible-role" target="responsible-role">
                 <key-field target="@role-id"/>
                 <remarks>
                   <p>Since <code>responsible-role</code> associates multiple <code>party-uuid</code> entries with a single <code>role-id</code>, each role-id must be referenced only once.</p>
@@ -928,7 +928,7 @@
               <field ref="remarks" in-xml="WITH_WRAPPER"/>
             </model>
             <constraint>
-              <is-unique id="unique-responsibility-responsible-role" target="responsible-role">
+              <is-unique id="oscal-unique-responsibility-responsible-role" target="responsible-role">
                 <key-field target="@role-id"/>
                 <remarks>
                   <p>Since <code>responsible-role</code> associates multiple <code>party-uuid</code> entries with a single <code>role-id</code>, each role-id must be referenced only once.</p>
@@ -939,8 +939,8 @@
           <field ref="remarks" in-xml="WITH_WRAPPER"/>
         </model>
         <constraint>
-          <has-cardinality target="provided|responsibility" min-occurs="1"/>
-          <index-has-key name="by-component-export-provided-uuid" target="responsibility">
+          <has-cardinality id="oscal-by-component-export-provided-responsibility-cardinality" target="provided|responsibility" min-occurs="1"/>
+          <index-has-key id="oscal-by-component-export-provided-uuid-index" name="by-component-export-provided-uuid" target="responsibility">
             <key-field target="@provided-uuid"/>
           </index-has-key>
         </constraint>
@@ -973,7 +973,7 @@
           </assembly>
         </model>
         <constraint>
-          <is-unique id="unique-inherited-responsible-role" target="responsible-role">
+          <is-unique id="oscal-unique-inherited-responsible-role" target="responsible-role">
             <key-field target="@role-id"/>
             <remarks>
               <p>Since <code>responsible-role</code> associates multiple <code>party-uuid</code> entries with a single <code>role-id</code>, each role-id must be referenced only once.</p>
@@ -1010,7 +1010,7 @@
           <field ref="remarks" in-xml="WITH_WRAPPER"/>
         </model>
         <constraint>
-          <is-unique id="unique-satisfied-responsible-role" target="responsible-role">
+          <is-unique id="oscal-unique-satisfied-responsible-role" target="responsible-role">
             <key-field target="@role-id"/>
             <remarks>
               <p>Since <code>responsible-role</code> associates multiple <code>party-uuid</code> entries with a single <code>role-id</code>, each role-id must be referenced only once.</p>
@@ -1025,25 +1025,22 @@
       <field ref="remarks" in-xml="WITH_WRAPPER"/>
     </model>
     <constraint>
-      <allowed-values target="link/@rel" allow-other="yes">
+      <allowed-values id="oscal-by-component-link-rel-values" target="link/@rel" allow-other="yes">
         <!-- TODO: More work needs to be done around link enforcement constraints and requires Metaschema work on recurse-depth-first() recursive index searching. -->
         <enum value="imported-from">The hyperlink identifies a URI pointing to the <code>component</code> in a <code>component-definition</code> that originally described the <code>component</code> this component was based on.</enum>
+        <enum value="provided-by">A reference to the UUID of a control or statement <code>by-component</code> object that is used as evidence of implementation.</enum>
       </allowed-values>
-      <allowed-values target=".//responsible-role/@role-id" allow-other="yes">
+      <allowed-values id="oscal-by-component-responsible-role-id-values" target=".//responsible-role/@role-id" allow-other="yes">
             &allowed-values-responsible-roles-operations;
             &allowed-values-responsible-roles-component-production;
       </allowed-values>
-      <is-unique id="unique-ssp-by-component-set-parameter" target="set-parameter">
+      <is-unique id="oscal-unique-ssp-by-component-set-parameter" target="set-parameter">
         <key-field target="@param-id"/>
         <remarks>
           <p>Since multiple <code>set-parameter</code> entries can be provided, each parameter must be set only once.</p>
         </remarks>
       </is-unique>
-
-      <allowed-values target="link/@rel" allow-other="yes">
-        <enum value="provided-by">A reference to the UUID of a control or statement <code>by-component</code> object that is used as evidence of implementation.</enum>
-      </allowed-values>
-      <index-has-key name="by-component-uuid" target="link[@rel='provided-by']">
+      <index-has-key id="oscal-by-component-uuid-index" name="by-component-uuid" target="link[@rel='provided-by']">
         <key-field target="@href" pattern="#(.*)" />
       </index-has-key>
     </constraint>
