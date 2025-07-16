@@ -17,10 +17,10 @@
 		.st7 {fill:#b4d0b9;stroke:#4d8055;stroke-width:1.5}
 		.st8 {fill:#b4d0b9;stroke:#4d8055;stroke-dasharray:10.5,7.5;stroke-width:1.5}
 		.st9 {fill:#304a1e;font-family:Calibri;font-size:1.16666em;font-weight:bold}
-		.st10 {fill:#f4f1f9;stroke:#8168b3;stroke-width:0.25}
-		.st11 {fill:#d0c3e9;stroke:#8168b3;stroke-dasharray:10.5,7.5;stroke-width:1.5}
-		.st12 {fill:#4c3d69;font-family:Calibri;font-size:1.16666em;font-weight:bold}
-		.st13 {fill:#d0c3e9;stroke:#8168b3;stroke-width:1.5}
+		.st10 {fill:#fff2cc;stroke:#82431a;stroke-width:0.25}
+		.st11 {fill:#fdd69d;stroke:#82431a;stroke-dasharray:10.5,7.5;stroke-width:1.5}
+		.st12 {fill:#82431a;font-family:Calibri;font-size:1.16666em;font-weight:bold}
+		.st13 {fill:#fdd69d;stroke:#82431a;stroke-width:1.5}
 		.st14 {fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3}
 	]]>
 	</style>
@@ -114,7 +114,7 @@
 			<v:textBlock v:margins="rect(4,4,4,4)"/>
 			<v:textRect cx="261" cy="289.812" width="522" height="21.375"/>
 			<path d="M0 300.5 L522 300.5 L522 279.12 L0 279.12 L0 300.5 Z" class="st11"/>
-			<text x="119.54" y="294.01" class="st12" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>Assessment Activity and Results Models (Future)</text>		</g>
+			<text x="165.54" y="294.01" class="st12" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>Other Assessment Models (Future)</text>		</g>
 		<g id="shape17-31" v:mID="17" v:groupContext="shape" transform="translate(145,-274.875)">
 			<title>Sheet.17</title>
 			<desc>Plan of Actions &#38; Milestones (POA&#38;M) Model</desc>
