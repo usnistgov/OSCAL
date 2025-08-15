@@ -224,16 +224,30 @@
     <define-assembly name="mapping-resource-reference">
         <formal-name>Mapped Resource Reference</formal-name>
         <description>A reference to a resource that is either the source or the target of a mapping.</description>
+        <define-flag name="ns" as-type="uri" default="http://csrc.nist.gov/ns/oscal" required="no">
+            <formal-name>Resource Type Namespace</formal-name>
+            <description>An optional namespace qualifying the resource's <code>type</code>. </description>
+            <remarks>
+                    <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                    <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the type should be a type defined by the associated OSCAL model.</p>
+            </remarks>
+        </define-flag>
         <define-flag name="type" as-type="token" required="yes">
             <formal-name>Resource Type</formal-name>
             <description>The semantic type of the resource.</description>
             <constraint>
-                <allowed-values>
+                <allowed-values allow-other="yes">
                     <enum value="catalog">The mapped resource is a control catalog.</enum>
                     <enum value="profile">The mapped resource is a control profile. A resolved
                         profile is also accepted.</enum>
                 </allowed-values>
             </constraint>
+            <remarks>
+                <p>The <code>type</code> value must be interpreted in the context of the
+                    associated <code>ns</code> value.</p>
+                    <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> 
+                    and this type should be set to one of the OSCAL defined values.</p>
+            </remarks>
         </define-flag>
         <define-flag name="href" as-type="uri-reference" required="yes">
             <formal-name>Catalog or Profile Reference</formal-name>
