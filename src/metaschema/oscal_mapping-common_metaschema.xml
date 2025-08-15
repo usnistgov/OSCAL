@@ -47,6 +47,12 @@
             <assembly ref="map" min-occurs="1" max-occurs="unbounded">
                 <group-as name="maps" in-json="ARRAY" />
             </assembly>
+            <assembly ref="gap-summary">
+                <use-name>source-gap-summary</use-name>
+            </assembly>
+            <assembly ref="gap-summary">
+                <use-name>target-gap-summary</use-name>
+            </assembly>
         </model>
     </define-assembly>
 
