@@ -64,6 +64,8 @@
             <assembly ref="gap-summary">
                 <use-name>target-gap-summary</use-name>
             </assembly>
+            <field ref="confidence-score" min-occurs="0" max-occurs="1" />
+            <flag ref="coverage" min-occurs="0" max-occurs="1" />
         </model>
     </define-assembly>
 
@@ -175,6 +177,8 @@
                 <use-name>qualifier</use-name>
                 <group-as name="qualifiers" in-json="ARRAY" />
             </assembly>
+            <field ref="confidence-score" min-occurs="0" max-occurs="1" />
+            <flag ref="coverage" min-occurs="0" max-occurs="1" />
             <assembly ref="property" max-occurs="unbounded">
                 <group-as name="props" in-json="ARRAY" />
             </assembly>
@@ -346,7 +350,13 @@
         <flag ref="matching-rationale" required="yes" />
         <flag ref="status" required="yes" />
         <model>
-            <field ref="confidence-score" min-occurs="1" />
+            <field ref="confidence-score" min-occurs="0" max-occurs="1" />
+            <field ref="coverage" min-occurs="0" max-occurs="1" />
+            <define-field name="mapping-description" as-type="markup-multiline" min-occurs="1"
+                in-xml="WITH_WRAPPER">
+                <formal-name>Mapping Description</formal-name>
+                <description>Description of the context and intended use of the mapping set.</description>
+            </define-field>
             <assembly ref="responsible-party" max-occurs="unbounded">
                 <group-as name="responsible-parties" in-json="ARRAY" />
             </assembly>
@@ -448,9 +458,41 @@
     <!-- ################# -->
     <!-- FIELD DEFINITIONS -->
     <!-- ################# -->
-    <define-field name="confidence-score" as-type="string">
+    <define-field name="confidence-score">
         <formal-name>Confidence Score</formal-name>
-        <description>If automation is used, this can record a confidence score, if assigned.</description>
+        <description>This records either a string category or a decimal value from 0-1 representing a percentage. Both of these values describe an estimation of the author's confidence
+        that this mapping is correct and accurate. </description>
+        <define-flag name="category" as-type="string" required="no">
+            <constraint>
+                <allowed-values allow-other="yes">
+                    <enum value="unspecified">No category is specified for the confidence score.</enum>
+                    <enum value="high">High confidence in the mapping.</enum>
+                    <enum value="medium">Medium confidence in the mapping.</enum>
+                    <enum value="low">Low confidence in the mapping.</enum>
+                </allowed-values>
+            </constraint>
+        </define-flag>
+        <define-flag name="percentage" as-type="decimal" required="no"/>
+    </define-field>
+
+    <define-field name="coverage" as-type="decimal">
+        <define-flag name="generation-method" as-type="string" required="no" default="arbitrary">
+            <constraint>
+                <allowed-values allow-other="yes">
+                    <enum value="arbitrary">The coverage value is a qualitative estimate of coverage with no strict formula.</enum>
+                </allowed-values>
+            </constraint>
+        </define-flag>
+        <formal-name>Coverage</formal-name>
+        <description>A decimal value from 0-1, representing the percentage coverage of the targets by the sources.</description>
+        <remarks>
+            <p>This field is scoped - that is, it can be used at the document-level, the mapping level, or the individual map item level. It only applies to targets and sources within it's scope.</p>
+            <p>Coverage is calculated by taking the full set of all targets in-scope and the full set of all sources in-scope, then applying the "generation-method" to the two sets.
+             By default the method is an arbitrary estimation of coverage.</p>
+            <p>In a general sense "coverage" is defined as the percent of the set of targets that have mapped to by the set of sources, 
+            where each map is an "equivalent-to" or "equal-to" valued "relationship". Where relationship is "subset-of" or otherwise, it counts as an appropriate fraction of a full map. </p>
+            <p> Since coverage is derived from mapping relationships, it is defined in the context of the mapping's "matching-rationale" - that is, the method used to determine relationships.</p>
+        </remarks>
     </define-field>
 
     <define-field name="mapping-description" as-type="markup-multiline">
