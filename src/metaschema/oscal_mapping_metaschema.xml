@@ -36,12 +36,6 @@
                   <assembly ref="mapping" min-occurs="1" max-occurs="unbounded">
                         <group-as name="mappings" />
                   </assembly>
-                  <assembly ref="gap-summary">
-                        <use-name>source-gap-summary</use-name>
-                  </assembly>
-                  <assembly ref="gap-summary">
-                        <use-name>target-gap-summary</use-name>
-                  </assembly>
                   <assembly ref="back-matter">
                         <remarks>
                               <p>Back matter including references and resources.</p>
