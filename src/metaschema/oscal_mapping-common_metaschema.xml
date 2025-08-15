@@ -50,6 +50,13 @@
             <assembly ref="map" min-occurs="1" max-occurs="unbounded">
                 <group-as name="maps" in-json="ARRAY" />
             </assembly>
+            <assembly ref="property" max-occurs="unbounded">
+                <group-as name="props" in-json="ARRAY" />
+            </assembly>
+            <assembly ref="link" max-occurs="unbounded">
+                <group-as name="links" in-json="ARRAY" />
+            </assembly>
+            <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1" />
             <field ref="mapping-description" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1" />
             <assembly ref="gap-summary">
                 <use-name>source-gap-summary</use-name>
@@ -343,8 +350,14 @@
             <assembly ref="responsible-party" max-occurs="unbounded">
                 <group-as name="responsible-parties" in-json="ARRAY" />
             </assembly>
+            <assembly ref="property" max-occurs="unbounded">
+                <group-as name="props" in-json="ARRAY" />
+            </assembly>
+            <assembly ref="link" max-occurs="unbounded">
+                <group-as name="links" in-json="ARRAY" />
+            </assembly>
             <field ref="mapping-description" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1" />
-            <field ref="remarks" in-xml="WITH_WRAPPER" />
+            <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1" />
         </model>
     </define-assembly>
 
