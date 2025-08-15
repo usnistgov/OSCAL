@@ -552,6 +552,7 @@
             <allowed-values>
                 <enum value="human">Human</enum>
                 <enum value="automation">Automation</enum>
+                <enum value="hybrid">Hybrid</enum>
             </allowed-values>
         </constraint>
         <remarks> <p>The value of this flag applies to the entire document if found in the top-level 
