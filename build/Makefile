@@ -176,7 +176,7 @@ validate-jsonschemas: node_modules $(JSONSCHEMA_OUTPUTS) ## Validate generated J
 
 .PHONY: validate-xsds
 validate-xsds: $(XSD_OUTPUTS) ## Validate generated XSD files
-	@echo Validting generated XSDs
+	@echo Validating generated XSDs
 	xmllint --noout $(XSD_OUTPUTS)
 
 VALIDATE_COMPOSITION_TARGETS:=$(patsubst $(SRC_DIR)/oscal_%_metaschema.xml,validate-composition-%,$(METASCHEMAS))

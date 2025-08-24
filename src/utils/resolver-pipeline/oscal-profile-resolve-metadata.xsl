@@ -95,7 +95,7 @@
         "req-meta-oscalversion-error".
     -->
     <xsl:function name="opr:oscal-version" as="xs:string" visibility="public">
-        <!-- Without visiblity="public" the XSpec test returns
+        <!-- Without visibility="public" the XSpec test returns
             XTDE0041: Cannot invoke function opr:oscal-version#2 externally, because it is not public
         -->
         <xsl:param name="source" as="xs:string"/>

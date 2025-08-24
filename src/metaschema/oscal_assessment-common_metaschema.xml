@@ -469,7 +469,7 @@
 
    <define-assembly name="select-control-by-id" scope="local">
       <formal-name>Select Control</formal-name>
-      <description>Used to select a control for inclusion/exclusion based on one or more control identifiers. A set of statement identifiers can be used to target the inclusion/exclusion to only specific control statements providing more granularity over the specific statements that are within the asessment scope.</description>
+      <description>Used to select a control for inclusion/exclusion based on one or more control identifiers. A set of statement identifiers can be used to target the inclusion/exclusion to only specific control statements providing more granularity over the specific statements that are within the assessment scope.</description>
       <flag ref="control-id" required="yes"/>
       <model>
          <define-field name="statement-id" as-type="token" min-occurs="0" max-occurs="unbounded" >
@@ -860,7 +860,7 @@
       <define-flag name="uuid" required="yes" as-type="uuid">
          <formal-name>Observation Universally Unique Identifier</formal-name>
          <!-- Identifier Declaration -->
-         <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <em>cross-instance</em> scope that can be used to reference this observation elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>observation</code> can be used to reference the data item locally or globally (e.g., in an imorted OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+         <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <em>cross-instance</em> scope that can be used to reference this observation elsewhere in <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>observation</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
       </define-flag>
       <model>
          <define-field name="title" min-occurs="0" max-occurs="1" as-type="markup-line">
@@ -1051,7 +1051,7 @@
          </assembly>
          <define-assembly name="identified-subject">
             <formal-name>Identified Subject</formal-name>
-            <description>Used to detail assessment subjects that were identfied by this task.</description>
+            <description>Used to detail assessment subjects that were identified by this task.</description>
 
             <define-flag name="subject-placeholder-uuid" required="yes" as-type="uuid">
                <formal-name>Assessment Subject Placeholder Universally Unique Identifier Reference</formal-name>
@@ -1382,10 +1382,10 @@
                      <enum value="http://csrc.nist.gov/ns/oscal/unknown">The facet is from an unknown taxonomy. The meaning of the name is tool or organization specific.</enum>
                      <enum value="http://cve.mitre.org">The facet naming system defined by the CVE Program.</enum>
                      <!-- To identify which CVSS values to use -->
-                     <enum value="http://www.first.org/cvss/v2.0">The facet naming system for representing Common Vunerability Scoring System (CVSS) vectors as defined by the the <a href="https://www.first.org/">Forum for Incident Response and Security Teams</a> <a href="https://www.first.org/cvss/">CVSS Special Interest Group</a> (CVSS-SIG) for <a href="https://www.first.org/cvss/v2/">CVSS v2</a>.</enum>
-                     <enum value="http://www.first.org/cvss/v3.0">The facet naming system for representing Common Vunerability Scoring System (CVSS) vectors as defined by the the <a href="https://www.first.org/">Forum for Incident Response and Security Teams</a> <a href="https://www.first.org/cvss/">CVSS Special Interest Group</a> (CVSS-SIG) for <a href="https://www.first.org/cvss/v3-0/">CVSS v3.0</a>.</enum>
-                     <enum value="http://www.first.org/cvss/v3.1">The facet naming system for representing Common Vunerability Scoring System (CVSS) vectors as defined by the the <a href="https://www.first.org/">Forum for Incident Response and Security Teams</a> <a href="https://www.first.org/cvss/">CVSS Special Interest Group</a> (CVSS-SIG) for <a href="https://www.first.org/cvss/v3-1/">CVSS v3.1</a>.</enum>
-                     <enum value="https://www.first.org/cvss/v4-0">The facet naming system for representing Common Vunerability Scoring System (CVSS) vectors as defined by the the <a href="https://www.first.org/">Forum for Incident Response and Security Teams</a> <a href="https://www.first.org/cvss/">CVSS Special Interest Group</a> (CVSS-SIG) for <a href="https://www.first.org/cvss/v4-0/">CVSS v4.0</a>.</enum>
+                     <enum value="http://www.first.org/cvss/v2.0">The facet naming system for representing Common Vulnerability Scoring System (CVSS) vectors as defined by the the <a href="https://www.first.org/">Forum for Incident Response and Security Teams</a> <a href="https://www.first.org/cvss/">CVSS Special Interest Group</a> (CVSS-SIG) for <a href="https://www.first.org/cvss/v2/">CVSS v2</a>.</enum>
+                     <enum value="http://www.first.org/cvss/v3.0">The facet naming system for representing Common Vulnerability Scoring System (CVSS) vectors as defined by the the <a href="https://www.first.org/">Forum for Incident Response and Security Teams</a> <a href="https://www.first.org/cvss/">CVSS Special Interest Group</a> (CVSS-SIG) for <a href="https://www.first.org/cvss/v3-0/">CVSS v3.0</a>.</enum>
+                     <enum value="http://www.first.org/cvss/v3.1">The facet naming system for representing Common Vulnerability Scoring System (CVSS) vectors as defined by the the <a href="https://www.first.org/">Forum for Incident Response and Security Teams</a> <a href="https://www.first.org/cvss/">CVSS Special Interest Group</a> (CVSS-SIG) for <a href="https://www.first.org/cvss/v3-1/">CVSS v3.1</a>.</enum>
+                     <enum value="https://www.first.org/cvss/v4-0">The facet naming system for representing Common Vulnerability Scoring System (CVSS) vectors as defined by the the <a href="https://www.first.org/">Forum for Incident Response and Security Teams</a> <a href="https://www.first.org/cvss/">CVSS Special Interest Group</a> (CVSS-SIG) for <a href="https://www.first.org/cvss/v4-0/">CVSS v4.0</a>.</enum>
                   </allowed-values>
                </constraint>
                <remarks>

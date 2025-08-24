@@ -368,7 +368,7 @@
                pending="[dev]"/>
    <x:scenario label="8.2.1.2 Explicit binding | When position has a value of before or after, the contents of the source MUST be added outside the target, either directly before or after it, respectively."
                pending="[dev]"/>
-   <x:scenario label="8.2.1.3 Modifying controls inside controls | Profile resolution tools MUST be able to correctly handle add directives targetting nested controls. This includes directives that target a child control as well as directives that target a parent control and modify the child."
+   <x:scenario label="8.2.1.3 Modifying controls inside controls | Profile resolution tools MUST be able to correctly handle add directives targeting nested controls. This includes directives that target a child control as well as directives that target a parent control and modify the child."
                pending="[dev]"/>
    <x:scenario label="8.2.2 Removing contents from controls | An object inside the control MUST be removed from the output if and only if it meets all of the criteria given by the child objects of the remove directive."
                pending="[dev]"/>

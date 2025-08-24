@@ -305,7 +305,7 @@
                         </allowed-values>
                   </constraint>
             </define-flag>
-            <!-- Added Contraints as Warnings -->
+            <!-- Added Constraints as Warnings -->
             <!-- constraint>
                   <expect level="WARNING" id="port-range-start-and-end-not-specified" target="." test="exists(@start) and exists(@end)">
                         <message>If a protocol is defined, it should include a start and end port range. To define a single port, the start and end should be the same value.</message>
@@ -463,7 +463,7 @@
             </define-flag>
             <!-- CHANGED: Moved to property[@name='asset-id']. -->
             <!--      <define-flag name="asset-id">
-         <!-\- This is an id because the idenfier is assigned and managed externally. -\->
+         <!-\- This is an id because the identifier is assigned and managed externally. -\->
          <formal-name>Asset Identifier</formal-name>
          <description>Organizational asset identifier that is unique in the context of the system. This may be a reference to the identifier used in an asset tracking system or a vulnerability scanning tool.</description>
       </define-flag>  -->
@@ -684,7 +684,7 @@
 
       <!-- ===== FIELDS ===== -->
       <define-field name="system-id" as-type="string">
-            <!-- This is an id because the idenfier is assigned and managed by humans. -->
+            <!-- This is an id because the identifier is assigned and managed by humans. -->
             <formal-name>System Identification</formal-name>
             <!-- Identifier Declaration -->
             <!-- 
@@ -716,7 +716,7 @@
 
       <!-- ===== FLAGS ===== -->
       <define-flag name="param-id" as-type="token">
-            <!-- This is an id because the idenfier is assigned and managed by humans. -->
+            <!-- This is an id because the identifier is assigned and managed by humans. -->
             <formal-name>Parameter ID</formal-name>
             <!-- Identifier Reference -->
             <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#human-oriented">human-oriented</a> reference to a <code>parameter</code> within a control, who's catalog has been imported into the current implementation context.</description>
