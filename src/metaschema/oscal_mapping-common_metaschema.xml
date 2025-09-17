@@ -65,7 +65,7 @@
                 <use-name>target-gap-summary</use-name>
             </assembly>
             <field ref="confidence-score" min-occurs="0" max-occurs="1" />
-            <flag ref="coverage" min-occurs="0" max-occurs="1" />
+            <field ref="coverage" min-occurs="0" max-occurs="1" />
         </model>
     </define-assembly>
 
@@ -178,7 +178,7 @@
                 <group-as name="qualifiers" in-json="ARRAY" />
             </assembly>
             <field ref="confidence-score" min-occurs="0" max-occurs="1" />
-            <flag ref="coverage" min-occurs="0" max-occurs="1" />
+            <field ref="coverage" min-occurs="0" max-occurs="1" />
             <assembly ref="property" max-occurs="unbounded">
                 <group-as name="props" in-json="ARRAY" />
             </assembly>
@@ -490,6 +490,8 @@
     </define-field>
 
     <define-field name="coverage" as-type="decimal">
+        <formal-name>Coverage</formal-name>
+        <description>A decimal value from 0-1, representing the percentage coverage of the targets by the sources.</description>
         <define-flag name="generation-method" as-type="string" required="no" default="arbitrary">
             <constraint>
                 <allowed-values allow-other="yes">
@@ -497,8 +499,6 @@
                 </allowed-values>
             </constraint>
         </define-flag>
-        <formal-name>Coverage</formal-name>
-        <description>A decimal value from 0-1, representing the percentage coverage of the targets by the sources.</description>
         <remarks>
             <p>This field is scoped - that is, it can be used at the document-level, the mapping level, or the individual map item level. It only applies to targets and sources within it's scope.</p>
             <p>Coverage is calculated by taking the full set of all targets in-scope and the full set of all sources in-scope, then applying the "generation-method" to the two sets.
