@@ -37,6 +37,9 @@
                 per-subject</a>, which means it should be consistently used to identify the same
                 mapping across revisions of the document.</description>
         </define-flag>
+        <flag ref="method" required="no" />
+        <flag ref="matching-rationale" required="no" />
+        <flag ref="status" required="no" />
         <model>
             <assembly ref="mapping-resource-reference" min-occurs="1">
                 <use-name>source-resource</use-name>
@@ -47,6 +50,22 @@
             <assembly ref="map" min-occurs="1" max-occurs="unbounded">
                 <group-as name="maps" in-json="ARRAY" />
             </assembly>
+            <assembly ref="property" max-occurs="unbounded">
+                <group-as name="props" in-json="ARRAY" />
+            </assembly>
+            <assembly ref="link" max-occurs="unbounded">
+                <group-as name="links" in-json="ARRAY" />
+            </assembly>
+            <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1" />
+            <field ref="mapping-description" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1" />
+            <assembly ref="gap-summary">
+                <use-name>source-gap-summary</use-name>
+            </assembly>
+            <assembly ref="gap-summary">
+                <use-name>target-gap-summary</use-name>
+            </assembly>
+            <field ref="confidence-score" min-occurs="0" max-occurs="1" />
+            <field ref="coverage" min-occurs="0" max-occurs="1" />
         </model>
     </define-assembly>
 
@@ -158,6 +177,8 @@
                 <use-name>qualifier</use-name>
                 <group-as name="qualifiers" in-json="ARRAY" />
             </assembly>
+            <field ref="confidence-score" min-occurs="0" max-occurs="1" />
+            <field ref="coverage" min-occurs="0" max-occurs="1" />
             <assembly ref="property" max-occurs="unbounded">
                 <group-as name="props" in-json="ARRAY" />
             </assembly>
@@ -203,16 +224,30 @@
     <define-assembly name="mapping-resource-reference">
         <formal-name>Mapped Resource Reference</formal-name>
         <description>A reference to a resource that is either the source or the target of a mapping.</description>
+        <define-flag name="ns" as-type="uri" default="http://csrc.nist.gov/ns/oscal" required="no">
+            <formal-name>Resource Type Namespace</formal-name>
+            <description>An optional namespace qualifying the resource's <code>type</code>. </description>
+            <remarks>
+                    <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                    <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the type should be a type defined by the associated OSCAL model.</p>
+            </remarks>
+        </define-flag>
         <define-flag name="type" as-type="token" required="yes">
             <formal-name>Resource Type</formal-name>
             <description>The semantic type of the resource.</description>
             <constraint>
-                <allowed-values>
+                <allowed-values allow-other="yes">
                     <enum value="catalog">The mapped resource is a control catalog.</enum>
                     <enum value="profile">The mapped resource is a control profile. A resolved
                         profile is also accepted.</enum>
                 </allowed-values>
             </constraint>
+            <remarks>
+                <p>The <code>type</code> value must be interpreted in the context of the
+                    associated <code>ns</code> value.</p>
+                    <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> 
+                    and this type should be set to one of the OSCAL defined values.</p>
+            </remarks>
         </define-flag>
         <define-flag name="href" as-type="uri-reference" required="yes">
             <formal-name>Catalog or Profile Reference</formal-name>
@@ -329,7 +364,8 @@
         <flag ref="matching-rationale" required="yes" />
         <flag ref="status" required="yes" />
         <model>
-            <field ref="confidence-score" min-occurs="1" />
+            <field ref="confidence-score" min-occurs="0" max-occurs="1" />
+            <field ref="coverage" min-occurs="0" max-occurs="1" />
             <define-field name="mapping-description" as-type="markup-multiline" min-occurs="1"
                 in-xml="WITH_WRAPPER">
                 <formal-name>Mapping Description</formal-name>
@@ -338,7 +374,14 @@
             <assembly ref="responsible-party" max-occurs="unbounded">
                 <group-as name="responsible-parties" in-json="ARRAY" />
             </assembly>
-            <field ref="remarks" in-xml="WITH_WRAPPER" />
+            <assembly ref="property" max-occurs="unbounded">
+                <group-as name="props" in-json="ARRAY" />
+            </assembly>
+            <assembly ref="link" max-occurs="unbounded">
+                <group-as name="links" in-json="ARRAY" />
+            </assembly>
+            <field ref="mapping-description" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1" />
+            <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1" />
         </model>
     </define-assembly>
 
@@ -429,9 +472,49 @@
     <!-- ################# -->
     <!-- FIELD DEFINITIONS -->
     <!-- ################# -->
-    <define-field name="confidence-score" as-type="string">
+    <define-field name="confidence-score">
         <formal-name>Confidence Score</formal-name>
-        <description>If automation is used, this can record a confidence score, if assigned.</description>
+        <description>This records either a string category or a decimal value from 0-1 representing a percentage. Both of these values describe an estimation of the author's confidence
+        that this mapping is correct and accurate. </description>
+        <define-flag name="category" as-type="string" required="no">
+            <constraint>
+                <allowed-values allow-other="yes">
+                    <enum value="unspecified">No category is specified for the confidence score.</enum>
+                    <enum value="high">High confidence in the mapping.</enum>
+                    <enum value="medium">Medium confidence in the mapping.</enum>
+                    <enum value="low">Low confidence in the mapping.</enum>
+                </allowed-values>
+            </constraint>
+        </define-flag>
+        <define-flag name="percentage" as-type="decimal" required="no"/>
+    </define-field>
+
+    <define-field name="coverage" as-type="decimal">
+        <formal-name>Coverage</formal-name>
+        <description>A decimal value from 0-1, representing the percentage coverage of the targets by the sources.</description>
+        <define-flag name="generation-method" as-type="string" required="no" default="arbitrary">
+            <constraint>
+                <allowed-values allow-other="yes">
+                    <enum value="arbitrary">The coverage value is a qualitative estimate of coverage with no strict formula.</enum>
+                </allowed-values>
+            </constraint>
+        </define-flag>
+        <remarks>
+            <p>This field is scoped - that is, it can be used at the document-level, the mapping level, or the individual map item level. It only applies to targets and sources within it's scope.</p>
+            <p>Coverage is calculated by taking the full set of all targets in-scope and the full set of all sources in-scope, then applying the "generation-method" to the two sets.
+             By default the method is an arbitrary estimation of coverage.</p>
+            <p>In a general sense "coverage" is defined as the percent of the set of targets that have mapped to by the set of sources, 
+            where each map is an "equivalent-to" or "equal-to" valued "relationship". Where relationship is "subset-of" or otherwise, it counts as an appropriate fraction of a full map. </p>
+            <p> Since coverage is derived from mapping relationships, it is defined in the context of the mapping's "matching-rationale" - that is, the method used to determine relationships.</p>
+        </remarks>
+    </define-field>
+
+    <define-field name="mapping-description" as-type="markup-multiline">
+        <formal-name>Mapping Description</formal-name>
+        <description>Description of the context and intended use of the mapping set.</description>
+        <remarks> <p>The value of this field applies to the entire document if found in the top-level 
+        mapping provenance, otherwise it applies to the specific mapping in which it is found.</p>
+        <p>If this field appears in both locations, the lower-scoped value overrides while within it's scope.</p> </remarks>
     </define-field>
 
     <!-- ################ -->
@@ -454,11 +537,14 @@
                     two concepts are implemented, performed, or otherwise executed.</enum>
             </allowed-values>
         </constraint>
+        <remarks> <p>The value of this flag applies to the entire document if found in the top-level 
+        mapping provenance, otherwise it applies to the specific mapping in which it is found.</p>
+        <p>If this flag appears in both locations, the lower-scoped value overrides while within it's scope.</p> </remarks>
     </define-flag>
 
     <define-flag name="status" as-type="string">
         <formal-name>Status</formal-name>
-        <description>The focus of the qualifier.</description>
+        <description>The current status of this mapping document.</description>
         <constraint>
             <allowed-values>
                 <enum value="complete">Complete</enum>
@@ -468,6 +554,9 @@
                 <enum value="superseded">Superseded</enum>
             </allowed-values>
         </constraint>
+        <remarks> <p>The value of this flag applies to the entire document if found in the top-level 
+        mapping provenance, otherwise it applies to the specific mapping in which it is found.</p>
+        <p>If this flag appears in both locations, the lower-scoped value overrides while within it's scope.</p> </remarks>
     </define-flag>
 
     <define-flag name="method" as-type="string">
@@ -477,8 +566,12 @@
             <allowed-values>
                 <enum value="human">Human</enum>
                 <enum value="automation">Automation</enum>
+                <enum value="hybrid">Hybrid</enum>
             </allowed-values>
         </constraint>
+        <remarks> <p>The value of this flag applies to the entire document if found in the top-level 
+        mapping provenance, otherwise it applies to the specific mapping in which it is found.</p>
+        <p>If this flag appears in both locations, the lower-scoped value overrides while within it's scope.</p> </remarks>
     </define-flag>
 
     <!-- TBD: Move assembly to a common file since it is also defined in oscal_profile_metaschema.xml -->
