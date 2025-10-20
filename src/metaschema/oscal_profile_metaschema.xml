@@ -326,7 +326,7 @@
                                                 </allowed-values>
                                           </constraint>
                                     </define-flag>
-                                    <define-flag name="by-ns" as-type="token">
+                                    <define-flag name="by-ns" as-type="uri">
                                           <formal-name>Item Namespace Reference</formal-name>
                                           <description>Identify items to remove by the item's <code>ns</code>, which is the namespace associated with a <code>part</code>, or <code>prop</code>.</description>
                                     </define-flag>
