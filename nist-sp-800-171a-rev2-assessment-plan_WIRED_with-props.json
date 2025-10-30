@@ -3,13 +3,13 @@
     "uuid": "26e772eb-48fe-4bf7-baa6-92e932b2c339",
     "metadata": {
       "title": "NIST SP 800-171A Assessment Procedures \u2014 OSCAL Assessment Plan",
-      "last-modified": "2025-10-28T18:00:59.442790Z",
-      "version": "1.0.0",
+      "last-modified": "2025-10-30T20:00:04Z",
+      "version": "1.0.0-with-objs",
       "oscal-version": "1.1.2",
       "remarks": "Generated from SP 800-171A assessment procedures CSV with proper OSCAL structure and consistent control-id naming."
     },
     "import-profile": {
-      "href": "nist-sp-800-171-rev2-catalog.GENERATED.json",
+      "href": "nist-sp-800-171-rev2-catalog_FULL_with-props_obj.json",
       "remarks": "Establishes catalog context for all related-controls references; required for cross-catalog validation."
     },
     "assessment-activities": [
