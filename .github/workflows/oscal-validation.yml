@@ -27,52 +27,23 @@ jobs:
           lfs: "false"
           persist-credentials: "false"
 
-      - name: Verify no submodule init occurred
-        run: |
-          git submodule status || true
-          test -f .gitmodules && { echo "Found .gitmodules:"; cat .gitmodules; } || echo "No .gitmodules present"
-
-      - name: Set up Java (required by oscal-cli)
+      - name: Setup Java (required for CLI)
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: "17"
 
-      - name: Install oscal-cli
-        shell: bash
-        run: |
-          set -e
-          VER="2.5.1"
-          curl -fsSL -o oscal-cli.tgz "https://repo1.maven.org/maven2/org/csrc-nist/oscal/tools/oscal-cli/${VER}/oscal-cli-${VER}-linux-x86_64.tgz"
-          mkdir -p "$HOME/oscal-cli"
-          tar -xzf oscal-cli.tgz -C "$HOME/oscal-cli" --strip-components=1 || tar -xzf oscal-cli.tgz -C "$HOME/oscal-cli"
-          echo "$HOME/oscal-cli/bin" >> "$GITHUB_PATH"
+      - name: oscal-cli --version
+        uses: oscal-club/oscal-cli-action@v2.0.1
+        with:
+          args: --version
 
-      - name: Show oscal-cli version
-        run: oscal-cli --version
+      - name: Validate metaschema
+        uses: oscal-club/oscal-cli-action@v2.0.1
+        with:
+          args: "metaschema validate ./src/metaschema/oscal_component_metaschema.xml"
 
-      - name: Validate OSCAL component files
-        shell: bash
-        run: |
-          echo "Validating OSCAL component files..."
-          set -e
-          found=0
-          while IFS= read -r -d '' f; do
-            found=1
-            echo "Validating: $f"
-            if [[ "$f" == *.json || "$f" == *.yaml || "$f" == *.yml || "$f" == *.xml ]]; then
-              oscal-cli component-definition validate "$f"
-            fi
-          done < <(find . -type file \( -name "*component*.json" -o -name "*component*.yaml" -o -name "*component*.yml" -o -name "*component*.xml" \) -print0)
-          if [ "$found" -eq 0 ]; then
-            echo "No *component* files found; skipping."
-          fi
-
-      - name: Generate validation report
-        if: always()
-        run: |
-          {
-            echo "## OSCAL Validation Report"
-            echo "Branch: \`$GITHUB_REF\`"
-            echo "Commit: \`$GITHUB_SHA\`"
-          } >> "$GITHUB_STEP_SUMMARY"
+      - name: Validate component definition
+        uses: oscal-club/oscal-cli-action@v2.0.1
+        with:
+          args: "component-definition validate ./src/content/nist_sp_800-171_rev2_component.json"
