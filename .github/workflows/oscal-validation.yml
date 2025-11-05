@@ -1,15 +1,15 @@
 name: OSCAL Validation
 
 on:
+  workflow_dispatch:
   push:
-  workflow_dispatch: {}
     branches: [ main, develop, add-171a-plan ]
     paths:
       - '**/*.json'
       - '**/*.xml'
       - '**/*.yaml'
   pull_request:
-    branches: [ main, develop, add-171a-plan ]
+    branches: [ main, develop ]
     paths:
       - '**/*.json'
       - '**/*.xml'
@@ -32,10 +32,10 @@ jobs:
           git submodule status || true
           test -f .gitmodules && cat .gitmodules || echo "No .gitmodules present"
 
-      # TODO: Install your oscal-cli toolchain if needed
+      # If needed, install your OSCAL toolchain here
       # - name: Install oscal-cli
       #   run: |
-      #     echo "Install steps here"
+      #     echo "Install steps go here"
 
       - name: Validate OSCAL components
         run: |
