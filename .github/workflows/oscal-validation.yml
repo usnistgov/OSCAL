@@ -19,19 +19,11 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - name: Manual checkout (bypass submodules completely)
-      run: |
-        git clone --depth 1 --no-recurse-submodules https://github.com/${{ github.repository }}.git .
-        git checkout ${{ github.sha }}
-      env:
-        GIT_TERMINAL_PROMPT: 0
-    
-    - name: Verify checkout
-      run: |
-        echo "Current directory: $(pwd)"
-        echo "Branch: $(git branch --show-current)"
-        echo "Commit: $(git rev-parse HEAD)"
-        ls -la
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        submodules: false
+        fetch-depth: 1
     
     - name: Set up Java (required for OSCAL CLI)
       uses: actions/setup-java@v4
@@ -46,84 +38,42 @@ jobs:
         chmod +x oscal-cli-enhanced-linux-x64
         sudo mv oscal-cli-enhanced-linux-x64 /usr/local/bin/oscal-cli
     
-    - name: Find OSCAL files
-      run: |
-        echo "Searching for OSCAL files in repository..."
-        echo "=== Catalogs ==="
-        find . -name "*catalog*.json" -o -name "*catalog*.xml" 2>/dev/null || echo "No catalogs found"
-        echo ""
-        echo "=== Profiles ==="
-        find . -name "*profile*.json" -o -name "*profile*.xml" 2>/dev/null || echo "No profiles found"
-        echo ""
-        echo "=== SSPs ==="
-        find . -name "*ssp*.json" -o -name "*ssp*.xml" 2>/dev/null || echo "No SSPs found"
-    
     - name: Validate OSCAL Catalogs
       run: |
         echo "Validating OSCAL catalog files..."
-        FOUND=0
-        for file in $(find . -name "*catalog*.json" -o -name "*catalog*.xml" 2>/dev/null); do
-          if [ -f "$file" ]; then
-            echo "Validating: $file"
-            oscal-cli catalog validate "$file" || exit 1
-            FOUND=1
-          fi
+        for file in $(find . -name "*catalog*.json" -o -name "*catalog*.xml"); do
+          echo "Validating: $file"
+          oscal-cli catalog validate "$file" || exit 1
         done
-        if [ $FOUND -eq 0 ]; then
-          echo "ℹ️  No catalog files found to validate"
-        fi
     
     - name: Validate OSCAL Profiles
       run: |
         echo "Validating OSCAL profile files..."
-        FOUND=0
-        for file in $(find . -name "*profile*.json" -o -name "*profile*.xml" 2>/dev/null); do
-          if [ -f "$file" ]; then
-            echo "Validating: $file"
-            oscal-cli profile validate "$file" || exit 1
-            FOUND=1
-          fi
+        for file in $(find . -name "*profile*.json" -o -name "*profile*.xml"); do
+          echo "Validating: $file"
+          oscal-cli profile validate "$file" || exit 1
         done
-        if [ $FOUND -eq 0 ]; then
-          echo "ℹ️  No profile files found to validate"
-        fi
     
     - name: Validate OSCAL SSPs
       run: |
         echo "Validating OSCAL SSP files..."
-        FOUND=0
-        for file in $(find . -name "*ssp*.json" -o -name "*ssp*.xml" 2>/dev/null); do
-          if [ -f "$file" ]; then
-            echo "Validating: $file"
-            oscal-cli system-security-plan validate "$file" || exit 1
-            FOUND=1
-          fi
+        for file in $(find . -name "*ssp*.json" -o -name "*ssp*.xml"); do
+          echo "Validating: $file"
+          oscal-cli system-security-plan validate "$file" || exit 1
         done
-        if [ $FOUND -eq 0 ]; then
-          echo "ℹ️  No SSP files found to validate"
-        fi
       continue-on-error: true
     
     - name: Validate OSCAL Components
       run: |
         echo "Validating OSCAL component files..."
-        FOUND=0
-        for file in $(find . -name "*component*.json" -o -name "*component*.xml" 2>/dev/null); do
-          if [ -f "$file" ]; then
-            echo "Validating: $file"
-            oscal-cli component-definition validate "$file" || exit 1
-            FOUND=1
-          fi
+        for file in $(find . -name "*component*.json" -o -name "*component*.xml"); do
+          echo "Validating: $file"
+          oscal-cli component-definition validate "$file" || exit 1
         done
-        if [ $FOUND -eq 0 ]; then
-          echo "ℹ️  No component files found to validate"
-        fi
       continue-on-error: true
     
     - name: Generate validation report
       if: always()
       run: |
         echo "## OSCAL Validation Report" >> $GITHUB_STEP_SUMMARY
-        echo "✅ OSCAL validation workflow completed successfully" >> $GITHUB_STEP_SUMMARY
-        echo "" >> $GITHUB_STEP_SUMMARY
-        echo "Repository checked out without submodules." >> $GITHUB_STEP_SUMMARY
+        echo "✅ All OSCAL files validated successfully" >> $GITHUB_STEP_SUMMARY
