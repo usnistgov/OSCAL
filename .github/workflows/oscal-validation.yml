@@ -19,11 +19,18 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - name: Checkout repository
+    - name: Checkout repository (without submodules)
       uses: actions/checkout@v4
       with:
-        submodules: false
+        submodules: 'false'  # Explicitly disable as string
         fetch-depth: 1
+    
+    - name: Remove submodule references
+      run: |
+        # Remove .gitmodules to prevent any submodule operations
+        rm -f .gitmodules
+        git config --file .git/config --remove-section submodule.build/metaschema-xslt 2>/dev/null || true
+      continue-on-error: true
     
     - name: Set up Java (required for OSCAL CLI)
       uses: actions/setup-java@v4
@@ -38,42 +45,76 @@ jobs:
         chmod +x oscal-cli-enhanced-linux-x64
         sudo mv oscal-cli-enhanced-linux-x64 /usr/local/bin/oscal-cli
     
+    - name: Find OSCAL files
+      id: find-files
+      run: |
+        echo "Looking for OSCAL files..."
+        find . -name "*.json" -o -name "*.xml" | head -20
+    
     - name: Validate OSCAL Catalogs
       run: |
         echo "Validating OSCAL catalog files..."
-        for file in $(find . -name "*catalog*.json" -o -name "*catalog*.xml"); do
-          echo "Validating: $file"
-          oscal-cli catalog validate "$file" || exit 1
+        FOUND=0
+        for file in $(find . -name "*catalog*.json" -o -name "*catalog*.xml" 2>/dev/null); do
+          if [ -f "$file" ]; then
+            echo "Validating: $file"
+            oscal-cli catalog validate "$file" || exit 1
+            FOUND=1
+          fi
         done
+        if [ $FOUND -eq 0 ]; then
+          echo "No catalog files found to validate"
+        fi
     
     - name: Validate OSCAL Profiles
       run: |
         echo "Validating OSCAL profile files..."
-        for file in $(find . -name "*profile*.json" -o -name "*profile*.xml"); do
-          echo "Validating: $file"
-          oscal-cli profile validate "$file" || exit 1
+        FOUND=0
+        for file in $(find . -name "*profile*.json" -o -name "*profile*.xml" 2>/dev/null); do
+          if [ -f "$file" ]; then
+            echo "Validating: $file"
+            oscal-cli profile validate "$file" || exit 1
+            FOUND=1
+          fi
         done
+        if [ $FOUND -eq 0 ]; then
+          echo "No profile files found to validate"
+        fi
     
     - name: Validate OSCAL SSPs
       run: |
         echo "Validating OSCAL SSP files..."
-        for file in $(find . -name "*ssp*.json" -o -name "*ssp*.xml"); do
-          echo "Validating: $file"
-          oscal-cli system-security-plan validate "$file" || exit 1
+        FOUND=0
+        for file in $(find . -name "*ssp*.json" -o -name "*ssp*.xml" 2>/dev/null); do
+          if [ -f "$file" ]; then
+            echo "Validating: $file"
+            oscal-cli system-security-plan validate "$file" || exit 1
+            FOUND=1
+          fi
         done
+        if [ $FOUND -eq 0 ]; then
+          echo "No SSP files found to validate"
+        fi
       continue-on-error: true
     
     - name: Validate OSCAL Components
       run: |
         echo "Validating OSCAL component files..."
-        for file in $(find . -name "*component*.json" -o -name "*component*.xml"); do
-          echo "Validating: $file"
-          oscal-cli component-definition validate "$file" || exit 1
+        FOUND=0
+        for file in $(find . -name "*component*.json" -o -name "*component*.xml" 2>/dev/null); do
+          if [ -f "$file" ]; then
+            echo "Validating: $file"
+            oscal-cli component-definition validate "$file" || exit 1
+            FOUND=1
+          fi
         done
+        if [ $FOUND -eq 0 ]; then
+          echo "No component files found to validate"
+        fi
       continue-on-error: true
     
     - name: Generate validation report
       if: always()
       run: |
         echo "## OSCAL Validation Report" >> $GITHUB_STEP_SUMMARY
-        echo "✅ All OSCAL files validated successfully" >> $GITHUB_STEP_SUMMARY
+        echo "✅ OSCAL validation workflow completed" >> $GITHUB_STEP_SUMMARY
