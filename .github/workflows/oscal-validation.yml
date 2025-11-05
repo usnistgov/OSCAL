@@ -1,23 +1,20 @@
-﻿name: OSCAL Validation
-
-on:
-  workflow_dispatch:
-  push:
-    branches: [ main, develop, add-171a-plan ]
-    paths:
-      - "**/*.json"
-      - "**/*.xml"
-      - "**/*.yaml"
-  pull_request:
-    branches: [ main, develop ]
-    paths:
-      - "**/*.json"
-      - "**/*.xml"
-      - "**/*.yaml"
-
-jobs:
-  validate-oscal:
+﻿jobs:
+  validate-metaschemas:
+    name: Validate metaschemas
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        file:
+          - ./src/metaschema/oscal_component_metaschema.xml
+          - ./src/metaschema/oscal_assessment-common_metaschema.xml
+          - ./src/metaschema/oscal_assessment-plan_metaschema.xml
+          - ./src/metaschema/oscal_assessment-results_metaschema.xml
+          - ./src/metaschema/oscal_catalog_metaschema.xml
+          - ./src/metaschema/oscal_complete_metaschema.xml
+          - ./src/metaschema/oscal_control-common_metaschema.xml
+          - ./src/metaschema/oscal_implementation-common_metaschema.xml
+          - ./src/metaschema/oscal_metadata_metaschema.xml
+          - ./src/metaschema/oscal_poam_metaschema.xml
     steps:
       - name: Checkout (no submodules)
         uses: actions/checkout@v4
@@ -38,12 +35,7 @@ jobs:
         with:
           args: --version
 
-      - name: Validate metaschema
+      - name: Validate ${{ matrix.file }}
         uses: oscal-club/oscal-cli-action@v2.0.1
         with:
-          args: "metaschema validate ./src/metaschema/oscal_component_metaschema.xml"
-
-      - name: Validate component definition
-        uses: oscal-club/oscal-cli-action@v2.0.1
-        with:
-          args: "component-definition validate ./src/content/nist_sp_800-171_rev2_component.json"
+          args: "validate metaschema ${{ matrix.file }}"
