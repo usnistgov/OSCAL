@@ -2,13 +2,14 @@ name: OSCAL Validation
 
 on:
   push:
-    branches: [ main, develop ]
+  workflow_dispatch: {}
+    branches: [ main, develop, add-171a-plan ]
     paths:
       - '**/*.json'
       - '**/*.xml'
       - '**/*.yaml'
   pull_request:
-    branches: [ main, develop ]
+    branches: [ main, develop, add-171a-plan ]
     paths:
       - '**/*.json'
       - '**/*.xml'
