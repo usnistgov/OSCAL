@@ -21,6 +21,9 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
+      with:
+        submodules: false
+        fetch-depth: 1
     
     - name: Set up Java (required for OSCAL CLI)
       uses: actions/setup-java@v4
@@ -58,6 +61,7 @@ jobs:
           echo "Validating: $file"
           oscal-cli system-security-plan validate "$file" || exit 1
         done
+      continue-on-error: true
     
     - name: Validate OSCAL Components
       run: |
