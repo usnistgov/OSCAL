@@ -27,25 +27,25 @@ jobs:
           lfs: "false"
           persist-credentials: "false"
 
-      - name: Verify no submodule init occurred
-        run: |
-          git submodule status || true
-          test -f .gitmodules && cat .gitmodules || echo "No .gitmodules present"
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
 
-      # If needed, install your OSCAL toolchain here
-      # - name: Install oscal-cli
-      #   run: |
-      #     echo "Install steps go here"
-
-      - name: Validate OSCAL components
+      - name: Install oscal-cli
         run: |
-          echo "Validating OSCAL component files..."
           set -e
-          find . \( -name "*component*.json" -o -name "*component*.xml" \) -print0 |
-          xargs -0 -I{} sh -c 'echo "Validating: {}"; oscal-cli component-definition validate "{}"'
+          VER="2.5.1"
+          # download prebuilt release from Maven Central (Linux x86_64 tarball)
+          curl -fsSL -o oscal-cli.tgz https://repo1.maven.org/maven2/dev/metaschema/oscal/oscal-cli-enhanced/${VER}/oscal-cli-enhanced-${VER}-linux-x86_64.tar.gz
+          mkdir oscal-cli && tar -xzf oscal-cli.tgz -C oscal-cli --strip-components=1
+          echo "$PWD/oscal-cli/bin" >> "$GITHUB_PATH"
+      - name: Check version
+        run: oscal-cli --version
 
-      - name: Generate validation report
-        if: always()
+      # Example validations (adjust to your files/commands)
+      - name: Validate component definitions
         run: |
-          echo "## OSCAL Validation Report" >> "$GITHUB_STEP_SUMMARY"
-          echo "Run completed on $GITHUB_REF" >> "$GITHUB_STEP_SUMMARY"
+          find . -name "*component*.json" -print0 \
+          | xargs -0 -I{} sh -c 'echo "::group::Validating {}"; oscal-cli component-definition validate "{}"; echo "::endgroup::"'
