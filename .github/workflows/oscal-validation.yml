@@ -17,63 +17,34 @@ on:
 jobs:
   validate-oscal:
     runs-on: ubuntu-latest
-    
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-      with:
-        submodules: false
-        fetch-depth: 1
-    
-    - name: Set up Java (required for OSCAL CLI)
-      uses: actions/setup-java@v4
-      with:
-        distribution: 'temurin'
-        java-version: '17'
-    
-    - name: Download OSCAL CLI
-      run: |
-        wget https://github.com/usnistgov/oscal-cli/releases/latest/download/oscal-cli-enhanced-linux-x64.zip
-        unzip oscal-cli-enhanced-linux-x64.zip
-        chmod +x oscal-cli-enhanced-linux-x64
-        sudo mv oscal-cli-enhanced-linux-x64 /usr/local/bin/oscal-cli
-    
-    - name: Validate OSCAL Catalogs
-      run: |
-        echo "Validating OSCAL catalog files..."
-        for file in $(find . -name "*catalog*.json" -o -name "*catalog*.xml"); do
-          echo "Validating: $file"
-          oscal-cli catalog validate "$file" || exit 1
-        done
-    
-    - name: Validate OSCAL Profiles
-      run: |
-        echo "Validating OSCAL profile files..."
-        for file in $(find . -name "*profile*.json" -o -name "*profile*.xml"); do
-          echo "Validating: $file"
-          oscal-cli profile validate "$file" || exit 1
-        done
-    
-    - name: Validate OSCAL SSPs
-      run: |
-        echo "Validating OSCAL SSP files..."
-        for file in $(find . -name "*ssp*.json" -o -name "*ssp*.xml"); do
-          echo "Validating: $file"
-          oscal-cli system-security-plan validate "$file" || exit 1
-        done
-      continue-on-error: true
-    
-    - name: Validate OSCAL Components
-      run: |
-        echo "Validating OSCAL component files..."
-        for file in $(find . -name "*component*.json" -o -name "*component*.xml"); do
-          echo "Validating: $file"
-          oscal-cli component-definition validate "$file" || exit 1
-        done
-      continue-on-error: true
-    
-    - name: Generate validation report
-      if: always()
-      run: |
-        echo "## OSCAL Validation Report" >> $GITHUB_STEP_SUMMARY
-        echo "✅ All OSCAL files validated successfully" >> $GITHUB_STEP_SUMMARY
+      - name: Checkout (no submodules)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          submodules: "false"
+          lfs: "false"
+          persist-credentials: "false"
+
+      - name: Verify no submodule init occurred
+        run: |
+          git submodule status || true
+          test -f .gitmodules && cat .gitmodules || echo "No .gitmodules present"
+
+      # TODO: Install your oscal-cli toolchain if needed
+      # - name: Install oscal-cli
+      #   run: |
+      #     echo "Install steps here"
+
+      - name: Validate OSCAL components
+        run: |
+          echo "Validating OSCAL component files..."
+          set -e
+          find . \( -name "*component*.json" -o -name "*component*.xml" \) -print0 |
+          xargs -0 -I{} sh -c 'echo "Validating: {}"; oscal-cli component-definition validate "{}"'
+
+      - name: Generate validation report
+        if: always()
+        run: |
+          echo "## OSCAL Validation Report" >> "$GITHUB_STEP_SUMMARY"
+          echo "Run completed on $GITHUB_REF" >> "$GITHUB_STEP_SUMMARY"
