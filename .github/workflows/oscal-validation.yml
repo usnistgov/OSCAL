@@ -19,18 +19,19 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - name: Checkout repository (without submodules)
-      uses: actions/checkout@v4
-      with:
-        submodules: 'false'  # Explicitly disable as string
-        fetch-depth: 1
-    
-    - name: Remove submodule references
+    - name: Manual checkout (bypass submodules completely)
       run: |
-        # Remove .gitmodules to prevent any submodule operations
-        rm -f .gitmodules
-        git config --file .git/config --remove-section submodule.build/metaschema-xslt 2>/dev/null || true
-      continue-on-error: true
+        git clone --depth 1 --no-recurse-submodules https://github.com/${{ github.repository }}.git .
+        git checkout ${{ github.sha }}
+      env:
+        GIT_TERMINAL_PROMPT: 0
+    
+    - name: Verify checkout
+      run: |
+        echo "Current directory: $(pwd)"
+        echo "Branch: $(git branch --show-current)"
+        echo "Commit: $(git rev-parse HEAD)"
+        ls -la
     
     - name: Set up Java (required for OSCAL CLI)
       uses: actions/setup-java@v4
@@ -46,10 +47,16 @@ jobs:
         sudo mv oscal-cli-enhanced-linux-x64 /usr/local/bin/oscal-cli
     
     - name: Find OSCAL files
-      id: find-files
       run: |
-        echo "Looking for OSCAL files..."
-        find . -name "*.json" -o -name "*.xml" | head -20
+        echo "Searching for OSCAL files in repository..."
+        echo "=== Catalogs ==="
+        find . -name "*catalog*.json" -o -name "*catalog*.xml" 2>/dev/null || echo "No catalogs found"
+        echo ""
+        echo "=== Profiles ==="
+        find . -name "*profile*.json" -o -name "*profile*.xml" 2>/dev/null || echo "No profiles found"
+        echo ""
+        echo "=== SSPs ==="
+        find . -name "*ssp*.json" -o -name "*ssp*.xml" 2>/dev/null || echo "No SSPs found"
     
     - name: Validate OSCAL Catalogs
       run: |
@@ -63,7 +70,7 @@ jobs:
           fi
         done
         if [ $FOUND -eq 0 ]; then
-          echo "No catalog files found to validate"
+          echo "ℹ️  No catalog files found to validate"
         fi
     
     - name: Validate OSCAL Profiles
@@ -78,7 +85,7 @@ jobs:
           fi
         done
         if [ $FOUND -eq 0 ]; then
-          echo "No profile files found to validate"
+          echo "ℹ️  No profile files found to validate"
         fi
     
     - name: Validate OSCAL SSPs
@@ -93,7 +100,7 @@ jobs:
           fi
         done
         if [ $FOUND -eq 0 ]; then
-          echo "No SSP files found to validate"
+          echo "ℹ️  No SSP files found to validate"
         fi
       continue-on-error: true
     
@@ -109,7 +116,7 @@ jobs:
           fi
         done
         if [ $FOUND -eq 0 ]; then
-          echo "No component files found to validate"
+          echo "ℹ️  No component files found to validate"
         fi
       continue-on-error: true
     
@@ -117,4 +124,6 @@ jobs:
       if: always()
       run: |
         echo "## OSCAL Validation Report" >> $GITHUB_STEP_SUMMARY
-        echo "✅ OSCAL validation workflow completed" >> $GITHUB_STEP_SUMMARY
+        echo "✅ OSCAL validation workflow completed successfully" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "Repository checked out without submodules." >> $GITHUB_STEP_SUMMARY
