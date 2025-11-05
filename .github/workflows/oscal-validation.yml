@@ -1,1 +1,81 @@
-PASTE THE YAML ABOVE HERE EXACTLY
+ni -Force .github\workflows\oscal-validation.yml -ItemType File -Value @"
+name: OSCAL Validation
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main, develop, add-171a-plan ]
+    paths:
+      - '**/*.json'
+      - '**/*.xml'
+      - '**/*.yaml'
+  pull_request:
+    branches: [ main, develop ]
+    paths:
+      - '**/*.json'
+      - '**/*.xml'
+      - '**/*.yaml'
+
+jobs:
+  validate-oscal:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout (no submodules)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          submodules: "false"
+          lfs: "false"
+          persist-credentials: "false"
+
+      - name: Verify no submodule init occurred
+        run: |
+          git submodule status || true
+          test -f .gitmodules && { echo "Found .gitmodules:"; cat .gitmodules; } || echo "No .gitmodules present"
+
+      - name: Set up Java (required by oscal-cli)
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Install oscal-cli
+        run: |
+          set -e
+          VER="2.5.1"
+          # Replace this URL with the correct one for your preferred oscal-cli build if needed:
+          curl -fsSL -o oscal-cli.tgz "https://repo1.maven.org/maven2/org/csrc-nist/oscal/tools/oscal-cli/${VER}/oscal-cli-${VER}-linux-x86_64.tgz"
+          mkdir -p "\$HOME/oscal-cli"
+          tar -xzf oscal-cli.tgz -C "\$HOME/oscal-cli" --strip-components=1 || tar -xzf oscal-cli.tgz -C "\$HOME/oscal-cli"
+          echo "\$HOME/oscal-cli/bin" >> "\$GITHUB_PATH"
+        shell: bash
+
+      - name: Show oscal-cli version
+        run: oscal-cli --version || (echo "oscal-cli not found after install" && exit 1)
+
+      - name: Validate OSCAL component files
+        run: |
+          echo "Validating OSCAL component files..."
+          set -e
+          found=0
+          while IFS= read -r -d '' f; do
+            found=1
+            echo "Validating: \$f"
+            if [[ "\$f" == *.json || "\$f" == *.yaml || "\$f" == *.yml ]]; then
+              oscal-cli component-definition validate "\$f"
+            elif [[ "\$f" == *.xml ]]; then
+              oscal-cli component-definition validate "\$f"
+            fi
+          done < <(find . -type f \( -name "*component*.json" -o -name "*component*.yaml" -o -name "*component*.yml" -o -name "*component*.xml" \) -print0)
+          if [ "\$found" -eq 0 ]; then
+            echo "No *component* files found; skipping."
+          fi
+        shell: bash
+
+      - name: Generate validation report
+        if: always()
+        run: |
+          echo "## OSCAL Validation Report" >> "\$GITHUB_STEP_SUMMARY"
+          echo "Branch: \`\$GITHUB_REF\`" >> "\$GITHUB_STEP_SUMMARY"
+          echo "Commit: \`\$GITHUB_SHA\`" >> "\$GITHUB_STEP_SUMMARY"
+"@
