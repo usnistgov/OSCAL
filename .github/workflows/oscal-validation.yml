@@ -25,17 +25,61 @@ jobs:
       with:
         args: --version
     
-    - name: Find Assessment Plans
+    - name: Validate Catalogs
       run: |
-        echo "Searching for assessment plans..."
-        find . -name "*assessment-plan*.json"
+        for file in $(find . -name "*catalog*.json" 2>/dev/null); do
+          if [ -f "$file" ]; then
+            echo "Validating: $file"
+            oscal-cli catalog validate "$file"
+          fi
+        done
+      continue-on-error: true
+    
+    - name: Validate Profiles
+      run: |
+        for file in $(find . -name "*profile*.json" 2>/dev/null); do
+          if [ -f "$file" ]; then
+            echo "Validating: $file"
+            oscal-cli profile validate "$file"
+          fi
+        done
+      continue-on-error: true
+    
+    - name: Validate SSPs
+      run: |
+        for file in $(find . -name "*ssp*.json" 2>/dev/null); do
+          if [ -f "$file" ]; then
+            echo "Validating: $file"
+            oscal-cli ssp validate "$file"
+          fi
+        done
+      continue-on-error: true
     
     - name: Validate Assessment Plans
       run: |
-        echo "Validating assessment plans..."
         for file in $(find . -name "*assessment-plan*.json" 2>/dev/null); do
           if [ -f "$file" ]; then
             echo "Validating: $file"
-            oscal-cli assessment-plan validate "$file"
+            oscal-cli ap validate "$file"
           fi
         done
+    
+    - name: Validate Assessment Results
+      run: |
+        for file in $(find . -name "*assessment-results*.json" 2>/dev/null); do
+          if [ -f "$file" ]; then
+            echo "Validating: $file"
+            oscal-cli ar validate "$file"
+          fi
+        done
+      continue-on-error: true
+    
+    - name: Validate POAMs
+      run: |
+        for file in $(find . -name "*poam*.json" 2>/dev/null); do
+          if [ -f "$file" ]; then
+            echo "Validating: $file"
+            oscal-cli poam validate "$file"
+          fi
+        done
+      continue-on-error: true
