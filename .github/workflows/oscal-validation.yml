@@ -39,18 +39,3 @@ jobs:
             oscal-cli assessment-plan validate "$file"
           fi
         done
-'@
-
-# Write it to the file
-$content | Out-File -FilePath .github/workflows/oscal-validation.yml -Encoding UTF8
-
-# Verify it has content now
-Get-ChildItem .github/workflows/oscal-validation.yml
-
-# Check the content
-Get-Content .github/workflows/oscal-validation.yml | Select-Object -First 10
-
-# Add, commit, push
-git add .github/workflows/oscal-validation.yml
-git commit -m "Add OSCAL validation workflow with content"
-git push origin add-171a-plan
