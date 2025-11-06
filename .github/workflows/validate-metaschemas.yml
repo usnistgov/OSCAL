@@ -1,0 +1,65 @@
+name: Validate Metaschemas
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'src/metaschema/**/*.xml'
+
+jobs:
+  validate-metaschemas:
+    name: Validate metaschemas
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        file:
+          - ./src/metaschema/oscal_component_metaschema.xml
+          - ./src/metaschema/oscal_assessment-common_metaschema.xml
+          - ./src/metaschema/oscal_assessment-plan_metaschema.xml
+          - ./src/metaschema/oscal_assessment-results_metaschema.xml
+          - ./src/metaschema/oscal_catalog_metaschema.xml
+          - ./src/metaschema/oscal_complete_metaschema.xml
+          - ./src/metaschema/oscal_control-common_metaschema.xml
+          - ./src/metaschema/oscal_implementation-common_metaschema.xml
+          - ./src/metaschema/oscal_metadata_metaschema.xml
+          - ./src/metaschema/oscal_poam_metaschema.xml
+    steps:
+      - name: Checkout (no submodules)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          submodules: "false"
+          lfs: "false"
+          persist-credentials: "false"
+
+      - name: Setup Java (required for CLI)
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: oscal-cli --version
+        uses: oscal-club/oscal-cli-action@v2.0.1
+        with:
+          args: --version
+
+      - name: Sanity-check ${{ matrix.file }}
+        shell: bash
+        run: |
+          set -e
+          echo "Validating presence of: ${{ matrix.file }}"
+          if [ ! -f "${{ matrix.file }}" ]; then
+            echo "❌ File not found: ${{ matrix.file }}"
+            echo "Listing ./src/metaschema:"
+            ls -la ./src/metaschema || true
+            echo "Tree (top-level):"
+            ls -la .
+            exit 66
+          else
+            echo "✅ Found ${{ matrix.file }}"
+          fi
+
+      - name: Validate ${{ matrix.file }}
+        uses: oscal-club/oscal-cli-action@v2.0.1
+        with:
+          args: validate metaschema ${{ matrix.file }}

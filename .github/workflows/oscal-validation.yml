@@ -1,57 +1,49 @@
-﻿jobs:
-  validate-metaschemas:
-    name: Validate metaschemas
+﻿name: Validate OSCAL Content
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '**/*catalog*.json'
+      - '**/*profile*.json'
+      - '**/*ssp*.json'
+
+jobs:
+  validate-content:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        file:
-          - ./src/metaschema/oscal_component_metaschema.xml
-          - ./src/metaschema/oscal_assessment-common_metaschema.xml
-          - ./src/metaschema/oscal_assessment-plan_metaschema.xml
-          - ./src/metaschema/oscal_assessment-results_metaschema.xml
-          - ./src/metaschema/oscal_catalog_metaschema.xml
-          - ./src/metaschema/oscal_complete_metaschema.xml
-          - ./src/metaschema/oscal_control-common_metaschema.xml
-          - ./src/metaschema/oscal_implementation-common_metaschema.xml
-          - ./src/metaschema/oscal_metadata_metaschema.xml
-          - ./src/metaschema/oscal_poam_metaschema.xml
+    
     steps:
-      - name: Checkout (no submodules)
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          submodules: "false"
-          lfs: "false"
-          persist-credentials: "false"
-
-      - name: Setup Java (required for CLI)
-        uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: "17"
-
-      - name: oscal-cli --version
-        uses: oscal-club/oscal-cli-action@v2.0.1
-        with:
-          args: --version
-
-      - name: Sanity-check ${{ matrix.file }}
-        shell: bash
-        run: |
-          set -e
-          echo "Validating presence of: ${{ matrix.file }}"
-          if [ ! -f "${{ matrix.file }}" ]; then
-            echo "❌ File not found: ${{ matrix.file }}"
-            echo "Listing ./src/metaschema:"
-            ls -la ./src/metaschema || true
-            echo "Tree (top-level):"
-            ls -la .
-            exit 66
-          else
-            echo "✅ Found ${{ matrix.file }}"
+    - name: Manual clone (no submodules)
+      run: |
+        git clone --depth 1 --no-recurse-submodules https://github.com/${{ github.repository }}.git .
+    
+    - name: Set up Java
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'temurin'
+        java-version: '17'
+    
+    - name: Setup OSCAL CLI
+      uses: oscal-club/oscal-cli-action@v2.0.1
+      with:
+        args: --version
+    
+    - name: Validate OSCAL Catalogs
+      run: |
+        echo "Validating OSCAL catalog files..."
+        for file in $(find . -name "*catalog*.json" 2>/dev/null); do
+          if [ -f "$file" ]; then
+            echo "Validating: $file"
+            oscal-cli catalog validate "$file"
           fi
-
-      - name: Validate ${{ matrix.file }}
-        uses: oscal-club/oscal-cli-action@v2.0.1
-        with:
-          args: validate metaschema ${{ matrix.file }}
+        done
+    
+    - name: Validate OSCAL Profiles
+      run: |
+        echo "Validating OSCAL profile files..."
+        for file in $(find . -name "*profile*.json" 2>/dev/null); do
+          if [ -f "$file" ]; then
+            echo "Validating: $file"
+            oscal-cli profile validate "$file"
+          fi
+        done
