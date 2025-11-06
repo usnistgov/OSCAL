@@ -1,9 +1,4 @@
-﻿# Delete the empty file
-Remove-Item .github/workflows/oscal-validation.yml
-
-# Create it with content using a here-string with single quotes
-$content = @'
-name: OSCAL Validation
+﻿name: OSCAL Validation
 
 on:
   push:
