@@ -1,0 +1,61 @@
+﻿# Delete the empty file
+Remove-Item .github/workflows/oscal-validation.yml
+
+# Create it with content using a here-string with single quotes
+$content = @'
+name: OSCAL Validation
+
+on:
+  push:
+    branches: [ main, add-171a-plan ]
+
+jobs:
+  validate-oscal:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        submodules: false
+    
+    - name: Setup Java
+      uses: actions/setup-java@v4
+      with:
+        distribution: temurin
+        java-version: '17'
+    
+    - name: Setup OSCAL CLI
+      uses: oscal-club/oscal-cli-action@v2.0.1
+      with:
+        args: --version
+    
+    - name: Find Assessment Plans
+      run: |
+        echo "Searching for assessment plans..."
+        find . -name "*assessment-plan*.json"
+    
+    - name: Validate Assessment Plans
+      run: |
+        echo "Validating assessment plans..."
+        for file in $(find . -name "*assessment-plan*.json" 2>/dev/null); do
+          if [ -f "$file" ]; then
+            echo "Validating: $file"
+            oscal-cli assessment-plan validate "$file"
+          fi
+        done
+'@
+
+# Write it to the file
+$content | Out-File -FilePath .github/workflows/oscal-validation.yml -Encoding UTF8
+
+# Verify it has content now
+Get-ChildItem .github/workflows/oscal-validation.yml
+
+# Check the content
+Get-Content .github/workflows/oscal-validation.yml | Select-Object -First 10
+
+# Add, commit, push
+git add .github/workflows/oscal-validation.yml
+git commit -m "Add OSCAL validation workflow with content"
+git push origin add-171a-plan
