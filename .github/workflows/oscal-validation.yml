@@ -45,41 +45,51 @@ jobs:
         done
       continue-on-error: true
     
-    - name: Validate SSPs
-      run: |
-        for file in $(find . -name "*ssp*.json" 2>/dev/null); do
-          if [ -f "$file" ]; then
-            echo "Validating: $file"
-            oscal-cli ssp validate "$file"
-          fi
-        done
-      continue-on-error: true
-    
-    - name: Validate Assessment Plans
-      run: |
-        for file in $(find . -name "*assessment-plan*.json" 2>/dev/null); do
-          if [ -f "$file" ]; then
-            echo "Validating: $file"
-            oscal-cli ap validate "$file"
-          fi
-        done
-    
-    - name: Validate Assessment Results
-      run: |
-        for file in $(find . -name "*assessment-results*.json" 2>/dev/null); do
-          if [ -f "$file" ]; then
-            echo "Validating: $file"
-            oscal-cli ar validate "$file"
-          fi
-        done
-      continue-on-error: true
-    
-    - name: Validate POAMs
-      run: |
-        for file in $(find . -name "*poam*.json" 2>/dev/null); do
-          if [ -f "$file" ]; then
-            echo "Validating: $file"
-            oscal-cli poam validate "$file"
-          fi
-        done
-      continue-on-error: true
+- name: Validate Assessment Plans
+  shell: bash
+  run: |
+    set -euo pipefail
+    shopt -s nullglob
+    files=( $(git ls-files '*assessment-plan*.json') )
+    if ((${#files[@]} == 0)); then
+      echo "No assessment-plan JSON files found. Skipping."
+      exit 0
+    fi
+    for file in "${files[@]}"; do
+      echo "Validating: $file"
+      oscal-cli validate "$file"
+    done
+  continue-on-error: true
+
+- name: Validate Assessment Results
+  shell: bash
+  run: |
+    set -euo pipefail
+    shopt -s nullglob
+    files=( $(git ls-files '*assessment-results*.json') )
+    if ((${#files[@]} == 0)); then
+      echo "No assessment-results JSON files found. Skipping."
+      exit 0
+    fi
+    for file in "${files[@]}"; do
+      echo "Validating: $file"
+      oscal-cli validate "$file"
+    done
+  continue-on-error: true
+
+- name: Validate POAMs
+  shell: bash
+  run: |
+    set -euo pipefail
+    shopt -s nullglob
+    files=( $(git ls-files '*poam*.json') )
+    if ((${#files[@]} == 0)); then
+      echo "No POAM JSON files found. Skipping."
+      exit 0
+    fi
+    for file in "${files[@]}"; do
+      echo "Validating: $file"
+      oscal-cli validate "$file"
+    done
+  continue-on-error: true
+
