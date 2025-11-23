@@ -366,11 +366,14 @@
         <model>
             <field ref="confidence-score" min-occurs="0" max-occurs="1" />
             <field ref="coverage" min-occurs="0" max-occurs="1" />
-            <define-field name="mapping-description" as-type="markup-multiline" min-occurs="1"
+            <!-- define-field name="mapping-description" as-type="markup-multiline" min-occurs="1"
                 in-xml="WITH_WRAPPER">
                 <formal-name>Mapping Description</formal-name>
                 <description>Description of the context and intended use of the mapping set.</description>
-            </define-field>
+            </define-field -->
+            <!-- mapping-description had conflicting cardinality, with min-occurs=0 and min-occurs=1 
+            see above and below. MUST REVIEW WITH THE OF -->
+            <field ref="mapping-description" in-xml="WITH_WRAPPER" min-occurs="1" max-occurs="1" />
             <assembly ref="responsible-party" max-occurs="unbounded">
                 <group-as name="responsible-parties" in-json="ARRAY" />
             </assembly>
@@ -380,7 +383,7 @@
             <assembly ref="link" max-occurs="unbounded">
                 <group-as name="links" in-json="ARRAY" />
             </assembly>
-            <field ref="mapping-description" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1" />
+            <!-- field ref="mapping-description" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1" / -->
             <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1" />
         </model>
     </define-assembly>
