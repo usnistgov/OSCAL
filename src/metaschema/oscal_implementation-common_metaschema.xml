@@ -193,7 +193,7 @@
                         <enum value="isa-remote-system-name">The name of the remote interconnected system.</enum>
             &allowed-values-property-name-networked-components;
                   </allowed-values>
-                  <allowed-values id="oscal-component-service-software-prop-name-values" target="[@type=('service', 'software')]/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+                  <allowed-values id="oscal-component-service-software-prop-name-values" target="(.)[@type=('service', 'software')]/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
             &allowed-values-property-name-networked-components;                        
                   </allowed-values> 
                   <allowed-values  id="oscal-component-prop-ipaddress-class-values" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('ipv4-address','ipv6-address')]/@class">

@@ -1,4 +1,4 @@
-<enum value="ipv4-address">The Internet Protocol Version 4 address is for an interconnection, service, or software component.</enum>
-<enum value="ipv6-address">The Internet Protocol Version 6 address is for an interconnection, service, or software component.</enum>
-<enum value="direction">The direction categorizes the network connectivity of an interconnection, service, or software component.</enum>
-<enum value="uri">A Uniform Resource Identifier (URI) is for an interconnection, service, or software component.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="ipv4-address">The Internet Protocol Version 4 address is for an interconnection, service, or software component.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="ipv6-address">The Internet Protocol Version 6 address is for an interconnection, service, or software component.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="direction">The direction categorizes the network connectivity of an interconnection, service, or software component.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="uri">A Uniform Resource Identifier (URI) is for an interconnection, service, or software component.</enum>
