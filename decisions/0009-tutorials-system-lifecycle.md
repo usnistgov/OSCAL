@@ -29,7 +29,7 @@ This document will only contain minimally-viable details of the lifecycle.
 
 ### Proposed Lifecycle
 
-The proposed lifcycle will be evocative of a stripped-down RMF or ISO 27005 SDLC, discarding and simplifying steps that are not immediately relevant to a tutorial.
+The proposed lifecycle will be evocative of a stripped-down RMF or ISO 27005 SDLC, discarding and simplifying steps that are not immediately relevant to a tutorial.
 
 The individual tutorials may include asides on how a given process maps to other processes such as RMF.
 

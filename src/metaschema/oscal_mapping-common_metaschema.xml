@@ -1,0 +1,602 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../build/metaschema/toolchains/xslt-M4/validate/metaschema-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!DOCTYPE METASCHEMA [
+]>
+<METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
+    xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/toolchains/xslt-M4/validate/metaschema.xsd"
+    abstract="yes">
+    <schema-name>OSCAL Mapping Model -- Common Models</schema-name>
+    <schema-version>1.2.0</schema-version>
+    <short-name>oscal-mapping-common</short-name>
+    <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
+    <json-base-uri>http://csrc.nist.gov/ns/oscal</json-base-uri>
+
+    <import href="oscal_metadata_metaschema.xml" />
+
+    <!-- #################### -->
+    <!-- ASSEMBLY DEFINITIONS -->
+    <!-- #################### -->
+
+    <define-assembly name="mapping">
+        <formal-name>Control Mapping</formal-name>
+        <description>A mapping between two target resources.</description>
+        <define-flag name="uuid" as-type="uuid" required="yes">
+            <formal-name>Mapping Universally Unique Identifier</formal-name>
+            <description>A <a
+                    href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">
+                machine-oriented</a>, <a
+                    href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally
+                unique</a> identifier with <a
+                    href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">
+                cross-instance</a> scope that can be used to reference this mapping definition
+                elsewhere in this or other OSCAL instances. The locally defined <em>UUID</em> of the <code>
+                mapping</code> can be used to reference the data item locally or globally (e.g., in
+                an imported OSCAL instance). This UUID should be assigned <a
+                    href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">
+                per-subject</a>, which means it should be consistently used to identify the same
+                mapping across revisions of the document.</description>
+        </define-flag>
+        <flag ref="method" required="no" />
+        <flag ref="matching-rationale" required="no" />
+        <flag ref="status" required="no" />
+        <model>
+            <assembly ref="mapping-resource-reference" min-occurs="1">
+                <use-name>source-resource</use-name>
+            </assembly>
+            <assembly ref="mapping-resource-reference" min-occurs="1">
+                <use-name>target-resource</use-name>
+            </assembly>
+            <assembly ref="map" min-occurs="1" max-occurs="unbounded">
+                <group-as name="maps" in-json="ARRAY" />
+            </assembly>
+            <assembly ref="property" max-occurs="unbounded">
+                <group-as name="props" in-json="ARRAY" />
+            </assembly>
+            <assembly ref="link" max-occurs="unbounded">
+                <group-as name="links" in-json="ARRAY" />
+            </assembly>
+            <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1" />
+            <field ref="mapping-description" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1" />
+            <assembly ref="gap-summary">
+                <use-name>source-gap-summary</use-name>
+            </assembly>
+            <assembly ref="gap-summary">
+                <use-name>target-gap-summary</use-name>
+            </assembly>
+            <field ref="confidence-score" min-occurs="0" max-occurs="1" />
+            <field ref="coverage" min-occurs="0" max-occurs="1" />
+        </model>
+    </define-assembly>
+
+    <define-assembly name="map">
+        <formal-name>Mapping Entry</formal-name>
+        <description>A relationship-based mapping between a source and target set consisting of
+            members (i.e., controls, control statements) from the respective source and target.</description>
+        <define-flag name="uuid" as-type="uuid" required="yes">
+            <formal-name>Mapping Entry Identifier</formal-name>
+            <description>The unique identifier for the mapping entry.</description>
+        </define-flag>
+        <define-flag name="ns" as-type="uri" default="http://csrc.nist.gov/ns/oscal">
+            <formal-name>Relationship Value Namespace</formal-name>
+            <description>A namespace qualifying the relationship's value. This allows
+                different organizations to associate distinct semantics for relationships
+                with the same name.</description>
+            <remarks>
+                <p>This value must be an <a
+                        href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute
+                    URI</a> that serves as a <a
+                        href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming
+                    system identifier</a>.</p>
+                <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>
+                    http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by
+                    the associated OSCAL model.</p>
+            </remarks>
+        </define-flag>
+        <flag ref="matching-rationale" required="no" />
+        <model>
+            <define-field name="relationship" as-type="token" min-occurs="1">
+                <formal-name>Mapping Entry Relationship</formal-name>
+                <description>The relationship type for the mapping entry, which describes the
+                    relationship between the effective requirements of the specified source and
+                    target sets in the context of the <code>matching-rationale</code> method globaly
+                    defined in the <code>provenance</code> unless overwritten locally in the <code>
+                    map</code>. The <code>relationship</code> type and the <code>matching-rationale</code>
+                    must be used together. However, more than one <code>matching-rationale</code>
+                    method may apply to a <code>source</code> and <code>target</code> pair. </description>
+                <json-value-key>type</json-value-key>
+                <constraint>
+                    <allowed-values target=".[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]">
+                        <enum value="equivalent-to">The <code>source</code> and <code>target</code>
+                            requirements are similar, although not necessarily identical. The words
+                            may differ, but both mapped sets convey similar information with the
+                            same effective meaning. This relationship may be reversed, since `A
+                            equivalent-to B` also means that `B equivalent-to A`. This relationship
+                            is less suitable for a <em>syntactic</em> <code>matching-rationale</code>
+                            .</enum>
+                        <enum value="equal-to">The <code>source</code> and <code>target</code>
+                            requirements are the same. Differences in capitalization, spelling, and
+                            grammar can be ignored, if these differences do not change the meaning.
+                            This relationship may be reversed, since `A equal-to B` also means that
+                            `B equal-to A`.</enum>
+                        <enum value="subset-of">The <code>source</code> requirements are a subset of <code>
+                            target</code> requirements. In other words, <code>target</code> contains
+                            all <code>source</code>requirements and aditional others. This
+                            relationship may be reversed as a `superset-of`, since `A subset-of B`
+                            also means that `B superset-of A`.</enum>
+                        <enum value="superset-of">The <code>source</code> requirements are a
+                            superset of <code>target</code> requirements. In other words, <code>
+                            source</code> contains all <code>target</code>requirements and aditional
+                            others. This relationship may be reversed as a `subset-of`, since `A
+                            superset-of B` also means that `B subset-of A`.</enum>
+                        <enum value="intersects-with">The <code>source</code> and <code>target</code>
+                            requirements have some overlap, but each includes content that the other
+                            does not. This relationship may be reversed, since `A intersects-with B`
+                            also means that `B intersects-with A`. A mapping at statement level
+                            could result on <code>relationships</code> mapping that allows for more
+                            inference than using this relationship type.</enum>
+                        <enum value="no-relationship">The <code>source</code> and <code>target</code>
+                            requirements are not related; their content does not overlap. This
+                            relation is introduced not with the intention to support exhaustiv
+                            mapping of all requirements and statements that have no overlap, but
+                            rather to support edge cases such is the need to tailor a <code>
+                            relationship</code> in the context of a component or system to better
+                            align with the implementation and configuration of the respective
+                            component or system. Also, this <code>relationship</code> is provided in
+                            support of the <a href="https://doi.org/10.6028/NIST.IR.8477">NIST IR
+                            8477</a>.</enum>
+                    </allowed-values>
+                </constraint>
+                <remarks>
+                    <p>For example, consider the CSF 1.1's PR.AC-1, "Identities and credentials are
+                        issued, managed, verified, revoked, and audited for authorized devices,
+                        users and processes", and the Privacy Framework's PR.AC-P1, "Identities and
+                        credentials are issued, managed, verified, and devices." </p>
+                    <p>These two requirements have identical wording except for "users” versus
+                        “individuals” and the order of the last few words. With a
+                        `matching-rationale` of syntactic, the relationship type would beintersects
+                        with because the two overlap, but each includes content that the other does
+                        not. However, with a rationale of semantic, the relationship type would be
+                        equal if “users” and “individuals” have the same meaning in their respective
+                        sources, subset if “users” was a subset of “individuals,” and so on.</p>
+                    <p>When establishing relationships, mapping SHOULD be done at the control
+                        statement level where possible. This approach allows for a more accurate
+                        relationship.</p>
+                </remarks>
+            </define-field>
+
+            <assembly ref="mapping-item" min-occurs="1" max-occurs="unbounded">
+                <use-name>source</use-name>
+                <group-as name="sources" in-json="ARRAY" />
+            </assembly>
+            <assembly ref="mapping-item" min-occurs="1" max-occurs="unbounded">
+                <use-name>target</use-name>
+                <group-as name="targets" in-json="ARRAY" />
+            </assembly>
+            <assembly ref="qualifier-item" min-occurs="0" max-occurs="unbounded">
+                <use-name>qualifier</use-name>
+                <group-as name="qualifiers" in-json="ARRAY" />
+            </assembly>
+            <field ref="confidence-score" min-occurs="0" max-occurs="1" />
+            <field ref="coverage" min-occurs="0" max-occurs="1" />
+            <assembly ref="property" max-occurs="unbounded">
+                <group-as name="props" in-json="ARRAY" />
+            </assembly>
+            <assembly ref="link" max-occurs="unbounded">
+                <group-as name="links" in-json="ARRAY" />
+            </assembly>
+            <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1" />
+        </model>
+    </define-assembly>
+
+    <define-assembly name="mapping-item">
+        <formal-name>Mapping Entry Item (source or target)</formal-name>
+        <description>A specific edge within a source or target that is the subject of a mapping.</description>
+        <define-flag name="type" as-type="token" required="yes">
+            <formal-name>Subject Type</formal-name>
+            <description>The semantic type of the subject.</description>
+            <constraint>
+                <allowed-values>
+                    <enum value="control">A control as <a
+                            href="https://pages.nist.gov/OSCAL/concepts/terminology/#control">
+                        defined</a> by OSCAL.</enum>
+                    <enum value="statement">A textual element of a control that defines part of the
+                        control's requirements.</enum>
+                </allowed-values>
+            </constraint>
+        </define-flag>
+        <define-flag name="id-ref" as-type="string" required="yes">
+            <formal-name>Subject Identifier Reference</formal-name>
+            <description>A reference to an identified subject that is of the specified <code>type</code>
+                .</description>
+        </define-flag>
+        <model>
+            <assembly ref="property" max-occurs="unbounded">
+                <group-as name="props" in-json="ARRAY" />
+            </assembly>
+            <assembly ref="link" max-occurs="unbounded">
+                <group-as name="links" in-json="ARRAY" />
+            </assembly>
+            <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1" />
+        </model>
+    </define-assembly>
+
+    <define-assembly name="mapping-resource-reference">
+        <formal-name>Mapped Resource Reference</formal-name>
+        <description>A reference to a resource that is either the source or the target of a mapping.</description>
+        <define-flag name="ns" as-type="uri" default="http://csrc.nist.gov/ns/oscal" required="no">
+            <formal-name>Resource Type Namespace</formal-name>
+            <description>An optional namespace qualifying the resource's <code>type</code>. </description>
+            <remarks>
+                    <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                    <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the type should be a type defined by the associated OSCAL model.</p>
+            </remarks>
+        </define-flag>
+        <define-flag name="type" as-type="token" required="yes">
+            <formal-name>Resource Type</formal-name>
+            <description>The semantic type of the resource.</description>
+            <constraint>
+                <allowed-values allow-other="yes">
+                    <enum value="catalog">The mapped resource is a control catalog.</enum>
+                    <enum value="profile">The mapped resource is a control profile. A resolved
+                        profile is also accepted.</enum>
+                </allowed-values>
+            </constraint>
+            <remarks>
+                <p>The <code>type</code> value must be interpreted in the context of the
+                    associated <code>ns</code> value.</p>
+                    <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> 
+                    and this type should be set to one of the OSCAL defined values.</p>
+            </remarks>
+        </define-flag>
+        <define-flag name="href" as-type="uri-reference" required="yes">
+            <formal-name>Catalog or Profile Reference</formal-name>
+            <description>A resolvable URL reference to the base catalog or profile that this profile
+                is tailoring.</description>
+            <remarks>
+                <p>This value may be one of:</p>
+                <ol>
+                    <li>an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute
+                        URI</a> that points to a network resolvable resource,</li>
+                    <li>a <a
+                            href="https://pages.nist.gov/OSCAL/concepts/uri-use/#relative-reference">relative
+                        reference</a> pointing to a network resolvable resource whose base URI is
+                        the URI of the containing document, or</li>
+                    <li>a bare URI fragment (i.e., `#uuid`) pointing to a <code>back-matter</code>
+                        resource in this or an imported document (see <a
+                            href="https://pages.nist.gov/OSCAL/concepts/uri-use/#linking-to-another-oscal-object">linking
+                        to another OSCAL object</a>).</li>
+                </ol>
+            </remarks>
+        </define-flag>
+        <model>
+            <assembly ref="property" max-occurs="unbounded">
+                <group-as name="props" in-json="ARRAY" />
+            </assembly>
+            <assembly ref="link" max-occurs="unbounded">
+                <group-as name="links" in-json="ARRAY" />
+            </assembly>
+            <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1" />
+        </model>
+    </define-assembly>
+
+    <!-- Original
+    <qualifier
+        subject=“source|target|both”
+        predicate=“has-requirement|has-incompatibility”
+        category=“restricted|addressable|blocked”>
+        Description of qualifier...
+    </qualifier>
+-->
+
+    <define-assembly name="qualifier-item">
+        <formal-name>Relationship Qualifier</formal-name>
+        <description>Describes requirements, incompatibilities and gaps that are identified between
+            a target and source in a mapping item.</description>
+        <define-flag name="subject" required="yes" as-type="string">
+            <formal-name>Subject</formal-name>
+            <description>The focus of the qualifier.</description>
+            <constraint>
+                <allowed-values>
+                    <enum value="source">This qualifier is related to the source in the mapped
+                        relationship.</enum>
+                    <enum value="target">This qualifier is related to the target in the mapped
+                        relationship.</enum>
+                    <enum value="both">This qualifier is related to both the source and target in
+                        the mapped relationship.</enum>
+                </allowed-values>
+            </constraint>
+        </define-flag>
+        <define-flag name="predicate" required="yes" as-type="string">
+            <formal-name>Predicate</formal-name>
+            <description>The predicate describes how the qualifer applies to the subject.</description>
+            <constraint>
+                <allowed-values>
+                    <enum value="has-requirement">The subject has a requirement that must be met for
+                        the relationship to be satisfied.</enum>
+                    <enum value="has-incompatibility">The subject has an incompatibility which
+                        impacts the relationship.</enum>
+                </allowed-values>
+            </constraint>
+        </define-flag>
+        <define-flag name="category" required="yes" as-type="string">
+            <formal-name>Category</formal-name>
+            <description>The category expresses the resolvable nature of the predicate.</description>
+            <constraint>
+                <allowed-values>
+                    <enum value="restricted">A restriction exists, and is defined in the
+                        description.</enum>
+                    <enum value="addressable">The qualifier is addressable, and is outlined in the
+                        description.</enum>
+                    <enum value="blocked">The mapping is blocked due to the reason noted in the
+                        description.</enum>
+                </allowed-values>
+            </constraint>
+        </define-flag>
+        <model>
+            <define-field name="description" as-type="markup-multiline" min-occurs="1"
+                in-xml="WITH_WRAPPER">
+                <formal-name>Description of the qualifier</formal-name>
+                <description>Details that outline what requirements must be met, or cannot be met.
+                    If the qualifier identifies a gap, this should idenfity the gap, and any
+                    incompatibilities.</description>
+            </define-field>
+            <field ref="remarks" in-xml="WITH_WRAPPER" />
+        </model>
+    </define-assembly>
+
+    <!-- 
+<provenance
+	responsible-parties=""
+	method=“human|automation”
+	matching=“lexical|logical|semantic|etc”
+	confidence-score=""
+	status=“complete|not-complete|draft|deprecated|superseded|etc”>
+    Description of context and intended use...
+</provenance>
+-->
+
+    <define-assembly name="mapping-provenance">
+        <formal-name>Mapping Provenance</formal-name>
+        <description>Describes requirements, incompatibilities and gaps that are identified between
+            a target and source in a mapping item.</description>
+        <flag ref="method" required="yes" />
+        <flag ref="matching-rationale" required="yes" />
+        <flag ref="status" required="yes" />
+        <model>
+            <field ref="confidence-score" min-occurs="0" max-occurs="1" />
+            <field ref="coverage" min-occurs="0" max-occurs="1" />
+            <!-- define-field name="mapping-description" as-type="markup-multiline" min-occurs="1"
+                in-xml="WITH_WRAPPER">
+                <formal-name>Mapping Description</formal-name>
+                <description>Description of the context and intended use of the mapping set.</description>
+            </define-field -->
+            <!-- mapping-description had conflicting cardinality, with min-occurs=0 and min-occurs=1 
+            see above and below. MUST REVIEW WITH THE OF -->
+            <field ref="mapping-description" in-xml="WITH_WRAPPER" min-occurs="1" max-occurs="1" />
+            <assembly ref="responsible-party" max-occurs="unbounded">
+                <group-as name="responsible-parties" in-json="ARRAY" />
+            </assembly>
+            <assembly ref="property" max-occurs="unbounded">
+                <group-as name="props" in-json="ARRAY" />
+            </assembly>
+            <assembly ref="link" max-occurs="unbounded">
+                <group-as name="links" in-json="ARRAY" />
+            </assembly>
+            <!-- field ref="mapping-description" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1" / -->
+            <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1" />
+        </model>
+    </define-assembly>
+
+    <!-- Original
+    <qualifier
+        subject=“source|target|both”
+        predicate=“has-requirement|has-incompatibility”
+        category=“restricted|addressable|blocked”>
+        Description of qualifier...
+    </qualifier>
+    -->
+
+    <define-assembly name="gap-summary">
+        <formal-name>Gap Summary</formal-name>
+        <description>A <em>by-id</em> collection of all controls that were not mapped at all in this <code>
+            mapping-collection</code>. If a control is partially mapped, the parts of the control
+            are not mappable, the gap and discrepancies should be documented in the <code>
+            relationship-gal</code>. </description>
+        <define-flag name="uuid" as-type="uuid" required="yes">
+            <formal-name>Gap Summary Universally Unique Identifier</formal-name>
+            <description>A <a
+                    href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">
+                machine-oriented</a>, <a
+                    href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally
+                unique</a> identifier with <a
+                    href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">
+                cross-instance</a> scope that can be used to reference this mapping gap summary
+                elsewhere in <a
+                    href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#ssp-identifiers">this
+                or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>SSP</code>
+                can be used to reference the data item locally or globally (e.g., in an imported
+                OSCAL instance).This UUID should be assigned <a
+                    href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#consistency">
+                per-subject</a>, which means it should be consistently used to identify the same
+                subject across revisions of the document.</description>
+        </define-flag>
+        <model>
+            <assembly ref="select-control-by-id" min-occurs="1" max-occurs="unbounded">
+                <use-name>unmapped-controls</use-name>
+                <group-as name="unmapped-controls" in-json="ARRAY" />
+                <remarks>
+                    <p>If <code>with-child-controls</code> is <q>yes</q> on the call to a control,
+                        any controls appearing within it (child controls) will be selected, with no
+                        additional <code>call</code> directives required. This flag provides a way
+                        to include controls with all their dependent controls (enhancements) without
+                        having to call them individually.</p>
+                </remarks>
+            </assembly>
+        </model>
+    </define-assembly>
+
+    <!-- TBD: Move assembly to a common file since it is also defined in oscal_profile_metaschema.xml.-->
+    <!-- NOTE: there is another locallly defined assembly but it is NOT identical with this one in mapping and profile -->
+    <!-- NOTE: NOT clear the selection of controls using pattern matching is needed. If NOT needed, we can simplify but this 
+        assembly will be similar to the assessemnt-common one and cannot be moved. -->
+    <define-assembly name="select-control-by-id" scope="local">
+        <formal-name>Select Control</formal-name>
+        <description>Select a control or controls from an imported control set.</description>
+        <flag ref="with-child-controls" />
+        <model>
+            <define-field name="with-id" as-type="token" max-occurs="unbounded">
+                <formal-name>Match Controls by Identifier</formal-name>
+                <description>Selecting a control by its ID given as a literal.</description>
+                <group-as name="with-ids" in-json="ARRAY" />
+            </define-field>
+            <assembly ref="matching" max-occurs="unbounded">
+                <group-as name="matching" in-json="ARRAY" />
+            </assembly>
+        </model>
+        <remarks>
+            <p>If <code>with-child-controls</code> is <q>yes</q> on the call to a control, no
+                sibling <code>call</code>elements need to be used to call any controls appearing
+                within it. Since generally, this is how control enhancements are represented (as
+                controls within controls), this provides a way to include controls with all their
+                dependent controls (enhancements) without having to call them individually.</p>
+        </remarks>
+    </define-assembly>
+
+    <!-- TBD: Move assembly to a common file since it is also defined in oscal_profile_metaschema.xml -->
+    <!-- NOTE: This assembly used in mapping and profile is NOT used in the assessment-common for select-control-by-id -->
+    <define-assembly name="matching">
+        <formal-name>Match Controls by Pattern</formal-name>
+        <description>Selecting a set of controls by matching their IDs with a wildcard
+            pattern.</description>
+        <flag ref="pattern" />
+    </define-assembly>
+
+    <!-- ################# -->
+    <!-- FIELD DEFINITIONS -->
+    <!-- ################# -->
+    <define-field name="confidence-score">
+        <formal-name>Confidence Score</formal-name>
+        <description>This records either a string category or a decimal value from 0-1 representing a percentage. Both of these values describe an estimation of the author's confidence
+        that this mapping is correct and accurate. </description>
+        <define-flag name="category" as-type="string" required="no">
+            <constraint>
+                <allowed-values allow-other="yes">
+                    <enum value="unspecified">No category is specified for the confidence score.</enum>
+                    <enum value="high">High confidence in the mapping.</enum>
+                    <enum value="medium">Medium confidence in the mapping.</enum>
+                    <enum value="low">Low confidence in the mapping.</enum>
+                </allowed-values>
+            </constraint>
+        </define-flag>
+        <define-flag name="percentage" as-type="decimal" required="no"/>
+    </define-field>
+
+    <define-field name="coverage" as-type="decimal">
+        <formal-name>Coverage</formal-name>
+        <description>A decimal value from 0-1, representing the percentage coverage of the targets by the sources.</description>
+        <define-flag name="generation-method" as-type="string" required="no" default="arbitrary">
+            <constraint>
+                <allowed-values allow-other="yes">
+                    <enum value="arbitrary">The coverage value is a qualitative estimate of coverage with no strict formula.</enum>
+                </allowed-values>
+            </constraint>
+        </define-flag>
+        <remarks>
+            <p>This field is scoped - that is, it can be used at the document-level, the mapping level, or the individual map item level. It only applies to targets and sources within it's scope.</p>
+            <p>Coverage is calculated by taking the full set of all targets in-scope and the full set of all sources in-scope, then applying the "generation-method" to the two sets.
+             By default the method is an arbitrary estimation of coverage.</p>
+            <p>In a general sense "coverage" is defined as the percent of the set of targets that have mapped to by the set of sources, 
+            where each map is an "equivalent-to" or "equal-to" valued "relationship". Where relationship is "subset-of" or otherwise, it counts as an appropriate fraction of a full map. </p>
+            <p> Since coverage is derived from mapping relationships, it is defined in the context of the mapping's "matching-rationale" - that is, the method used to determine relationships.</p>
+        </remarks>
+    </define-field>
+
+    <define-field name="mapping-description" as-type="markup-multiline">
+        <formal-name>Mapping Description</formal-name>
+        <description>Description of the context and intended use of the mapping set.</description>
+        <remarks> <p>The value of this field applies to the entire document if found in the top-level 
+        mapping provenance, otherwise it applies to the specific mapping in which it is found.</p>
+        <p>If this field appears in both locations, the lower-scoped value overrides while within it's scope.</p> </remarks>
+    </define-field>
+
+    <!-- ################ -->
+    <!-- FLAG DEFINITIONS -->
+    <!-- ################ -->
+    <define-flag name="matching-rationale" as-type="string">
+        <formal-name>Matching</formal-name>
+        <description>The method used for relating controls within the mapping. The supported methods
+            are aligned with the <a href=" https://doi.org/10.6028/NIST.IR.8477">NIST
+                Interagency Report (IR) 8477</a>, Section 4.3 Set Theory Relationship Mapping.</description>
+        <constraint>
+            <allowed-values>
+                <enum value="syntactic">Syntactic: How similar is the <em>wording</em> that
+                    expresses the two concepts. This is a word-for-word analysis of the
+                    relationship, not an interpretation of the language.</enum>
+                <enum value="semantic">Semantic: How similar are the <em>meanings</em> of the two
+                    concepts? This involves some interpretation of each concept’s language.</enum>
+                <enum value="functional">Functional: How similar are the <em>results</em> of
+                    executing the two concepts? This involves understanding what will happen if the
+                    two concepts are implemented, performed, or otherwise executed.</enum>
+            </allowed-values>
+        </constraint>
+        <remarks> <p>The value of this flag applies to the entire document if found in the top-level 
+        mapping provenance, otherwise it applies to the specific mapping in which it is found.</p>
+        <p>If this flag appears in both locations, the lower-scoped value overrides while within it's scope.</p> </remarks>
+    </define-flag>
+
+    <define-flag name="status" as-type="string">
+        <formal-name>Status</formal-name>
+        <description>The current status of this mapping document.</description>
+        <constraint>
+            <allowed-values>
+                <enum value="complete">Complete</enum>
+                <enum value="not-complete">Not Complete</enum>
+                <enum value="draft">Draft</enum>
+                <enum value="deprecated">Deprecated</enum>
+                <enum value="superseded">Superseded</enum>
+            </allowed-values>
+        </constraint>
+        <remarks> <p>The value of this flag applies to the entire document if found in the top-level 
+        mapping provenance, otherwise it applies to the specific mapping in which it is found.</p>
+        <p>If this flag appears in both locations, the lower-scoped value overrides while within it's scope.</p> </remarks>
+    </define-flag>
+
+    <define-flag name="method" as-type="string">
+        <formal-name>Method</formal-name>
+        <description>The method used to complete the overall mapping.</description>
+        <constraint>
+            <allowed-values>
+                <enum value="human">Human</enum>
+                <enum value="automation">Automation</enum>
+                <enum value="hybrid">Hybrid</enum>
+            </allowed-values>
+        </constraint>
+        <remarks> <p>The value of this flag applies to the entire document if found in the top-level 
+        mapping provenance, otherwise it applies to the specific mapping in which it is found.</p>
+        <p>If this flag appears in both locations, the lower-scoped value overrides while within it's scope.</p> </remarks>
+    </define-flag>
+
+    <!-- TBD: Move assembly to a common file since it is also defined in oscal_profile_metaschema.xml -->
+    <define-flag as-type="string" name="pattern">
+        <formal-name>Pattern</formal-name>
+        <description>A <a href="https://en.wikipedia.org/wiki/Glob_(programming)">glob expression</a>
+            matching the IDs of one or more controls to be selected.</description>
+    </define-flag>
+
+    <!-- TBD: Move assembly to a common file since it is also defined in oscal_control-common_metaschema.xml -->
+    <!-- NOTE: This is the only flag needed, and including all ones defined in oscal_control-common_metaschema.xml, constraints included. -->
+    <define-flag as-type="token" name="with-child-controls">
+        <formal-name>Include Contained Controls with Control</formal-name>
+        <description>When a control is included, whether its child (dependent) controls are also
+            included.</description>
+        <constraint>
+            <allowed-values>
+                <enum value="yes">Include child controls with an included control.</enum>
+                <enum value="no">When importing a control, only include child controls that are also
+                    explicitly called.</enum>
+            </allowed-values>
+        </constraint>
+    </define-flag>
+
+</METASCHEMA>

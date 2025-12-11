@@ -1,3 +1,9 @@
 [submodule "build/metaschema-xslt"]
 	path = build/metaschema-xslt
 	url = https://github.com/usnistgov/metaschema-xslt.git
+[submodule "build/metaschema-xslt/support/schxslt"]
+    path = build/metaschema-xslt/support/schxslt
+    url = https://codeberg.org/SchXslt/schxslt.git
+[submodule "build/xspec"]
+	path = build/xspec
+	url = https://github.com/xspec/xspec.git

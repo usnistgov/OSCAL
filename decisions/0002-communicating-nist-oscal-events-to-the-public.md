@@ -8,7 +8,7 @@ Approved
 
 ## Context
 
-The NIST OSCAL Team has necessary touchpoints with the community, among them structured and unstructured meetings with community stakeholders. Many of these meetings are events occuring at set frequencies, while others do not. In all cases, the community, past and present, has expressed the need for invitations to events that are easily accessible with the most current information possible.
+The NIST OSCAL Team has necessary touchpoints with the community, among them structured and unstructured meetings with community stakeholders. Many of these meetings are events occurring at set frequencies, while others do not. In all cases, the community, past and present, has expressed the need for invitations to events that are easily accessible with the most current information possible.
 
 ## Decision
 

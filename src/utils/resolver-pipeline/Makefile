@@ -2,7 +2,9 @@ SHELL:=/usr/bin/env bash
 
 OSCAL_DIR:=../../../
 METASCHEMA_XSLT_DIR:=$(OSCAL_DIR)/build/metaschema-xslt
-XSPEC_DIR:=$(METASCHEMA_XSLT_DIR)/support/xspec
+# XSPEC_DIR:=$(METASCHEMA_XSLT_DIR)/support/xspec
+# XSPEC_DIR:=$(METASCHEMA_XSLT_DIR)/support/xslt3-functions/lib/xspec
+XSPEC_DIR:=$(OSCAL_DIR)/build/xspec
 XSPEC_COMMAND:=$(XSPEC_DIR)/bin/xspec.sh
 POM_FILE:=$(METASCHEMA_XSLT_DIR)/support/pom.xml
 

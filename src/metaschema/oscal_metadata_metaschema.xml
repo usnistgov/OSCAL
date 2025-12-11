@@ -258,7 +258,7 @@
                         <description>A short common name, abbreviation, or acronym for the party.</description>
                     </define-field>
                     <define-field name="external-id" max-occurs="unbounded">
-                        <!-- This is an id because the idenfier is assigned and managed externally by humans. -->
+                        <!-- This is an id because the identifier is assigned and managed externally by humans. -->
                         <formal-name>Party External Identifier</formal-name>
                         <description>An identifier for a person or organization using a designated
                             scheme. e.g. an Open Researcher and Contributor ID
@@ -319,7 +319,7 @@
                             </index-has-key>
                         </constraint>
                         <remarks>
-                            <p>Since the reference target of an organizational affiliation must be another <code>party</code> (whether further qualified as person or organization) as inidcated by its <code>uuid</code>. As a <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented" >machine-oriented</a> identifier with uniqueness across document and trans-document scope, this <code>uuid</code> value is sufficient to reference the data item locally or globally across related documents, e.g., in an imported OSCAL instance. </p>
+                            <p>Since the reference target of an organizational affiliation must be another <code>party</code> (whether further qualified as person or organization) as indicated by its <code>uuid</code>. As a <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented" >machine-oriented</a> identifier with uniqueness across document and trans-document scope, this <code>uuid</code> value is sufficient to reference the data item locally or globally across related documents, e.g., in an imported OSCAL instance. </p>
                             <p>Parties of both the <code>person</code> or <code>organization</code> type can be associated with an organization using the <code>member-of-organization</code>.</p>
                         </remarks>
                     </define-field>
@@ -876,7 +876,7 @@
              </allowed-values>
              <allowed-values id="oscal-metadata-action-type-values" target="./type[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@value">
                 <enum value="approval">An approval of a document instance's content.</enum>
-                <enum value="request-changes">A request from the responisble party or parties to change the content.</enum>
+                <enum value="request-changes">A request from the responsible party or parties to change the content.</enum>
             </allowed-values>
         </constraint>
     </define-assembly>
@@ -988,7 +988,7 @@
         <description>The date and time the document was last stored for later retrieval.</description>
         <remarks>
             <p>This value represents the point in time when the OSCAL document was last updated, or at the point of creation the creation date. Typically, this date value will be machine generated at time of creation or modification. Ideally, this field will be managed by the editing tool or service used to make modifications when storing the modified document.</p>
-            <p>The intent of the last modified timestamp is to distinguish between significant change milestones when the document may be accessed by multiple entities. This allows a given entity to differentiate between mutiple document states at specific points in time. It is possible to make multiple modifications to the document without storing these changes. In such a case, the last modified timestamp might not be updated until the document is finally stored.</p>
+            <p>The intent of the last modified timestamp is to distinguish between significant change milestones when the document may be accessed by multiple entities. This allows a given entity to differentiate between multiple document states at specific points in time. It is possible to make multiple modifications to the document without storing these changes. In such a case, the last modified timestamp might not be updated until the document is finally stored.</p>
             <p>In some cases, an OSCAL document may be derived from some source material in a different format. In such a case, the <code>last-modified</code> value should indicate the last modification time of the OSCAL document instance, not the source material.</p>
         </remarks>
     </define-field>

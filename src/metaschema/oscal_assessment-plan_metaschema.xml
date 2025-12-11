@@ -55,7 +55,7 @@
                             <p>Used to add any users, not defined via the System Security Plan (AR-&gt;AP-&gt;SSP)</p>
                         </remarks>
                     </assembly>
-                    <!-- CHANGED: "ojbective" to "add-objectives-and-methods" -->
+                    <!-- CHANGED: "objective" to "add-objectives-and-methods" -->
                     <assembly ref="local-objective" min-occurs="0" max-occurs="unbounded">
                         <use-name>objectives-and-methods</use-name>
                         <group-as name="objectives-and-methods" in-json="ARRAY"/>

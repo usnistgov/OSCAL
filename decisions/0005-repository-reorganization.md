@@ -85,7 +85,7 @@ The most significant changes to the repositories are in the OSCAL repository.
 
 This does have consequences, and those are discussed below.  The benefits are that the repository is very lean and primarily contains the metaschema content and scripts to build OSCAL, as well as decision records.  This will allow developers to watch the repository with activity focused on OSCAL itself.
 
-This also allows for separate, asyncronous streams of work across the website/education, reference content and production of OSCAL models.  It also provides more opportunity for community participation at differing levels such as web content production, model development, and improved developer documentation.
+This also allows for separate, asynchronous streams of work across the website/education, reference content and production of OSCAL models.  It also provides more opportunity for community participation at differing levels such as web content production, model development, and improved developer documentation.
 
 
 ## Consequences

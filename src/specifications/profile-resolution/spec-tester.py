@@ -13,7 +13,7 @@ Caveats:
     specific oscal:param instead of comparing all of them when order is not explicitly specified).
 
 Future Improvements:
-- TODO: Cache results of profile resolution in Driver class for commonly re-used sources
+- TODO: Cache results of profile resolution in Driver class for commonly reused sources
 - TODO: Make failure condition more granular (e.g. add parameter to prevent failure on "should" levels)
 """
 

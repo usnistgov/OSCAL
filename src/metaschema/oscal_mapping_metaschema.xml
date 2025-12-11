@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../build/metaschema/toolchains/xslt-M4/validate/metaschema-composition-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!-- OSCAL MAPPING METASCHEMA -->
+<!-- validate with XSD and Schematron (linked) -->
+<!DOCTYPE METASCHEMA [
+   <!ENTITY allowed-values-control-group-property-name SYSTEM "shared-constraints/allowed-values-control-group-property-name.ent">
+]>
+<METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:meta="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
+      xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/toolchains/xslt-M4/validate/metaschema.xsd">
+      <schema-name>OSCAL Control Mapping Model</schema-name>
+      <schema-version>1.2.0</schema-version>
+      <short-name>oscal-mapping</short-name>
+      <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
+      <json-base-uri>http://csrc.nist.gov/ns/oscal</json-base-uri>
+      <remarks>
+            <p>The OSCAL Control mapping format can be used to describe how a collection of security controls and related control enhancements relate to another collection of controls. The root of the Control Catalog format is <code>mapping-collection</code>.
+            </p>
+      </remarks>
+      <import href="oscal_metadata_metaschema.xml"/>
+      <import href="oscal_mapping-common_metaschema.xml"/>
+
+      <define-assembly name="mapping-collection">
+            <formal-name>Mapping Collection</formal-name>
+            <description>A collection of relationship-based control and/or control statement mappings.</description>
+            <root-name>mapping-collection</root-name>
+            <define-flag name="uuid" as-type="uuid" required="yes">
+                  <formal-name>Mapping Collection Universally Unique Identifier</formal-name>
+                  <description>A globally unique identifier with cross-instance scope for this catalog instance. This UUID should be changed when this document is revised.</description>
+            </define-flag>
+            <model>
+                  <assembly ref="metadata" min-occurs="1"/>
+                  <assembly ref="mapping-provenance" min-occurs="1">
+                        <use-name>provenance</use-name>
+                  </assembly>
+                  <assembly ref="mapping" min-occurs="1" max-occurs="unbounded">
+                        <group-as name="mappings" />
+                  </assembly>
+                  <assembly ref="back-matter">
+                        <remarks>
+                              <p>Back matter including references and resources.</p>
+                        </remarks>
+                  </assembly>
+            </model>
+            <remarks>
+                  <p>A mapping collection affirmatively declares the relationships that exist between sets of controls and/or control statements in a source and target. It is expected that inferences can be made based on what is mapped; however, no inferences should be made based on what is not mapped, since it is impossible to quantify how complete or granular a given mapping is.</p>
+            </remarks>
+      </define-assembly>
+
+</METASCHEMA>

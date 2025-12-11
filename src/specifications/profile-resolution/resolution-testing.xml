@@ -269,7 +269,7 @@
       <statement>When position has a value of before or after, the contents of the source MUST be added outside the target, either directly before or after it, respectively.</statement>
    </requirement>
    <requirement level="must" id="req-modify-alter-add-nested">
-      <statement>Profile resolution tools MUST be able to correctly handle add directives targetting nested controls. This includes directives that target a child control as well as directives that target a parent control and modify the child. </statement>
+      <statement>Profile resolution tools MUST be able to correctly handle add directives targeting nested controls. This includes directives that target a child control as well as directives that target a parent control and modify the child. </statement>
    </requirement>
    <requirement level="must" id="req-modify-alter-remove-match">
       <statement> An object inside the control MUST be removed from the output if and only if it meets all of the criteria given by the child objects of the remove directive.</statement>

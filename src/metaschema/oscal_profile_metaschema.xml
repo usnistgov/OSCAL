@@ -224,7 +224,7 @@
                               insertion.</description>
                         <group-as name="set-parameters" in-json="ARRAY"/>
                         <define-flag required="yes" name="param-id" as-type="token">
-                              <!-- This is an id because the idenfier is assigned and managed by humans. -->
+                              <!-- This is an id because the identifier is assigned and managed by humans. -->
                               <formal-name>Parameter ID</formal-name>
                               <!-- Identifier Declaration -->
                               <description>An identifier for the parameter.</description>
@@ -326,7 +326,7 @@
                                                 </allowed-values>
                                           </constraint>
                                     </define-flag>
-                                    <define-flag name="by-ns" as-type="token">
+                                    <define-flag name="by-ns" as-type="uri">
                                           <formal-name>Item Namespace Reference</formal-name>
                                           <description>Identify items to remove by the item's <code>ns</code>, which is the namespace associated with a <code>part</code>, or <code>prop</code>.</description>
                                     </define-flag>
