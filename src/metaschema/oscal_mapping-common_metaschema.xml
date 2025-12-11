@@ -401,7 +401,7 @@
         <formal-name>Gap Summary</formal-name>
         <description>A <em>by-id</em> collection of all controls that were not mapped at all in this <code>
             mapping-collection</code>. If a control is partially mapped, the parts of the control
-            are unmappable, the gap and discrepancies should be documented in the <code>
+            are not mappable, the gap and discrepancies should be documented in the <code>
             relationship-gal</code>. </description>
         <define-flag name="uuid" as-type="uuid" required="yes">
             <formal-name>Gap Summary Universally Unique Identifier</formal-name>
