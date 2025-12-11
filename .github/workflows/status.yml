@@ -18,14 +18,14 @@ jobs:
     name: Status Checks
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8
         with:
           submodules: recursive
       - uses: actions/setup-java@v5
         with:
           distribution: "temurin"
           java-version: "17"
-      - uses: actions/setup-node@39370e3970a6d050c480ffad4ff0ed4d3fdee5af
+      - uses: actions/setup-node@395ad3262231945c25e8478fd5baf05154b1d79f
         with:
           node-version-file: "build/.nvmrc"
           cache: "npm"
