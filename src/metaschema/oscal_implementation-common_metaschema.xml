@@ -193,7 +193,7 @@
                         <enum value="isa-remote-system-name">The name of the remote interconnected system.</enum>
             &allowed-values-property-name-networked-components;
                   </allowed-values>
-                  <allowed-values id="oscal-component-service-software-prop-name-values" target="(.)[@type=('service', 'software')]/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+                  <allowed-values id="oscal-component-interconnection-service-software-system-prop-name-values" target="(.)[@type=('interconnection', 'service', 'software', 'system')]/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
             &allowed-values-property-name-networked-components;                        
                   </allowed-values> 
                   <allowed-values  id="oscal-component-prop-ipaddress-class-values" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('ipv4-address','ipv6-address')]/@class">
@@ -567,25 +567,6 @@
                         <enum value="mac-address">The media access control (MAC) address for the asset.</enum>
                         <enum value="physical-location">The physical location of the asset's hardware (e.g., Data Center ID, Cage#, Rack#, or other meaningful location identifiers).</enum>
                         <enum value="is-scanned">is the asset subjected to network scans? (yes/no)</enum>
-                        <!-- =========================================================================================== -->
-                        <!-- = The following is to support the legacy approach for inventory-items without components. = -->
-                        <!-- =========================================================================================== -->
-                        <!-- This is "model" in the context of a component -->
-                        <enum value="hardware-model">The model number of the hardware used by the asset.</enum>
-                        <!-- This is "name" in the context of a component -->
-                        <enum value="os-name">The name of the operating system used by the asset.</enum>
-                        <!-- This is "version" in the context of a component -->
-                        <enum value="os-version">The version of the operating system used by the asset.</enum>
-                        <!-- This is "name" in the context of a component -->
-                        <enum value="software-name">The software product name used by the asset.</enum>
-                        <!-- This is "version" in the context of a component -->
-                        <enum value="software-version">The software product version used by the asset.</enum>
-                        <!-- This is "patch-level" in the context of a component -->
-                        <enum value="software-patch-level">The software product patch level used by the asset.</enum>
-
-                        <!-- =========================================================================================== -->
-                        <!-- = The following is shared with system-component. = -->
-                        <!-- =========================================================================================== -->
                         &allowed-values-component_inventory-item_property-name;
 
                   </allowed-values>
