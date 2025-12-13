@@ -610,19 +610,19 @@
       <index id="oscal-system-implementation-component-uuid-index" name="index-system-implementation-component-uuid" target="component">
         <key-field target="@uuid"/>
       </index>
-      <index-has-key id="oscal-system-implementation-component-depends-on-link-index" name="index-system-implementation-component-uuid" target="component/link[@rel='depends-on']">
-        <key-field target="@href"/>
+      <index-has-key id="oscal-system-implementation-component-depends-on-link-index" name="index-system-implementation-component-uuid" target="component/link[@rel='depends-on' and starts-with(@href,'#')]">
+        <key-field target="@href" pattern="#(.*)"/>
       </index-has-key>
 
       <!-- References to components of @type="validation" -->
       <index id="oscal-system-implementation-component-validation-uuid-index" name="index-system-implementation-component-uuid-validation" target="component[@type='validation']">
         <key-field target="@uuid"/>
       </index>
-      <index-has-key id="oscal-system-implementation-validated-by-index" name="index-system-implementation-component-uuid-validation" target="component/link[@rel='validated-by']">
-        <key-field target="@href"/>
+      <index-has-key id="oscal-system-implementation-validated-index" name="index-system-implementation-component-uuid-validation" target="component/link[@rel='validated' and starts-with(@href,'#')]">
+        <key-field target="@href" pattern="#(.*)"/>
       </index-has-key>
-      <index-has-key id="oscal-system-implementation-proof-of-compliance-index" name="index-system-implementation-component-uuid-validation" target="component/link[@rel='proof-of-compliance']">
-        <key-field target="@href"/>
+      <index-has-key id="oscal-system-implementation-proof-of-compliance-index" name="index-system-implementation-component-uuid-validation" target="component/link[@rel='proof-of-compliance' and starts-with(@href,'#')]">
+        <key-field target="@href" pattern="#(.*)"/>
       </index-has-key>
 
       <!-- References to components of @type="service" -->
