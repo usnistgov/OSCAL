@@ -206,10 +206,10 @@
                     <allowed-values id="oscal-metadata-location-prop-name-values" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
                         <enum value="type">Characterizes the kind of location.</enum>
                     </allowed-values>
-                    <allowed-values id="oscal-metadata-location-prop-type-values" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='type']/@value">
+                    <allowed-values id="oscal-metadata-location-prop-type-values" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='type']/@value" allow-other="yes">
                         <enum value="data-center">A location that contains computing assets. A <code>class</code> can be used to indicate the sub-type of data-center as <em>primary</em> or <em>alternate</em>.</enum>
                     </allowed-values>
-                    <allowed-values id="oscal-metadata-location-prop-type-data-center-values" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='type' and @value='data-center']/@class">
+                    <allowed-values id="oscal-metadata-location-prop-type-data-center-values" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='type' and @value='data-center']/@class" allow-other="yes">
                         <enum value="primary">The location is a data-center used for normal operations.</enum>
                         <enum value="alternate">The location is a data-center used for fail-over or backup operations.</enum>
                     </allowed-values>
