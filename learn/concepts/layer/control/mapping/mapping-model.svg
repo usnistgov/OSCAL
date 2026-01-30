@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">						
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events"
+		xmlns:v="http://schemas.microsoft.com/visio/2003/SVGExtensions/" width="2.96647in" height="4.30447in"
+		viewBox="0 0 213.586 309.922" xml:space="preserve" color-interpolation-filters="sRGB" class="st9">
+	<v:documentProperties v:langID="1033" v:viewMarkup="false"/>
+	<style type="text/css">
+	<![CDATA[
+		.st1 {fill:#91abdf;stroke:#203864;stroke-width:1.5}
+		.st2 {fill:#000000;font-family:Calibri;font-size:1.16666em;font-weight:bold}
+		.st3 {fill:#deebf6;stroke:#7f6000;stroke-width:1.5}
+		.st4 {fill:#000000;font-family:Calibri;font-size:0.833336em;font-weight:bold}
+		.st5 {font-size:1em;font-weight:normal}
+		.st6 {fill:#7f7f7f;stroke:#595959;stroke-width:0.25}
+		.st7 {fill:#feffff;font-family:Calibri;font-size:0.833336em;font-weight:bold}
+		.st8 {font-size:1em;font-style:italic;font-weight:normal}
+		.st9 {fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3}
+	]]>
+	</style>
+	<g v:mID="0" v:index="1" v:groupContext="foregroundPage">
+		<title>Page-1</title>
+		<v:pageProperties v:drawingScale="1" v:pageScale="1" v:drawingUnits="0" v:shadowOffsetX="9" v:shadowOffsetY="-9"/>
+		<v:layer v:name="SSP" v:index="0"/>
+		<g id="shape1042-1" v:mID="1042" v:groupContext="shape" v:layerMember="0" transform="translate(1.5,-1.5)">
+			<title>Sheet.1042</title>
+			<desc>Control Mapping</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:verticalAlign="0"/>
+			<v:textRect cx="95.293" cy="156.461" width="210.59" height="306.922"/>
+			<rect x="0" y="2.99998" width="210" height="306.922" class="st1"/>
+			<text x="58" y="19.6" class="st2" v:langID="1033"><v:paragraph v:horizAlign="1"/>
+				<v:tabList/>Control Mapping<v:newlineChar/>
+			</text>		
+		</g>
+		<g id="shape1045-16" v:mID="1045" v:groupContext="shape" transform="translate(24.0864,-228.75)">
+			<title>Rectangle.1045</title>
+			<desc>Metadata Title, Version, Date, Document Labels, Revision Hist...</desc>
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)"/>
+			<v:textRect cx="82" cy="285.172" width="170" height="49.5"/>
+			<rect x="0" y="260.422" width="168" height="49.5" class="st6"/>
+			<text x="64.56" y="276.17" class="st7" v:langID="1033"><v:paragraph v:horizAlign="1"/>
+				<v:tabList/>Metadata<v:newlineChar/>
+				<tspan x="7.57" dy="1.2em" class="st5">Title, Version, Date, Document Labels, </tspan>
+				<tspan x="16.56" dy="1.2em" class="st5">Revision History, Prepared By/For</tspan>
+			</text>		
+		</g>
+		<g id="shape1047-28" v:mID="1047" v:groupContext="shape" transform="translate(24.0864,-194.438)">
+			<title>Rectangle.1047</title>
+			<desc>Provenance</desc>
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:verticalAlign="0"/>
+			<v:textRect cx="82" cy="296.14" width="170" height="45"/>
+			<rect x="0" y="282" width="168" height="50" class="st3"/>
+			<text x="63.01" y="293.86" class="st4" v:langID="1033"><v:paragraph v:spLine="-1" v:horizAlign="1"/>
+				<v:tabList/>Provenance<v:newlineChar/>
+					<tspan x="32" dy="1em" class="st5">Confidence Score, Coverage<v:newlineChar/></tspan>
+					<tspan x="50" dy="1em" class="st5">Responsible Parties<v:newlineChar/></tspan>
+					<tspan x="46" dy="1em" class="st5">Mapping Description</tspan>
+			</text>		
+		</g>
+		<g id="shape1043-4" v:mID="1043" v:groupContext="shape" v:layerMember="0" transform="translate(24.0864,-130.875)">
+			<title>Sheet.1043</title>
+			<desc>Mappings</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:verticalAlign="0"/>
+			<v:textRect cx="82" cy="281.234" width="170" height="57"/>
+			<rect x="0" y="275" width="168" height="80" class="st3"/>
+			<text x="69.56" y="290" class="st4" v:langID="1033"><v:paragraph v:spLine="-1" v:horizAlign="1"/>
+				<v:tabList/>Mappings<v:newlineChar/>
+					<tspan x="32" dy="1em" class="st5">Method, Matchin Rationale<v:newlineChar/></tspan>
+					<tspan x="30" dy="1em" class="st5">Source and Target Resources<v:newlineChar/></tspan>
+					<tspan x="50" dy="1em" class="st5">Maps, Props, Links<v:newlineChar/></tspan>
+					<tspan x="42" dy="1em" class="st5">Source and Target Gaps<v:newlineChar/></tspan>
+					<tspan x="32" dy="1em" class="st5">Confidance Score, Coverage</tspan>
+			</text>		
+		</g>		
+		<g id="shape1046-21" v:mID="1046" v:groupContext="shape" transform="translate(24.0864,-10.5)">
+			<title>Rectangle.1046</title>
+			<desc>Back Matter Laws/Regulations, Standards/Guidance Citations an...</desc>
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)"/>
+			<v:textRect cx="82" cy="275.788" width="170" height="68.2672"/>
+			<rect x="0" y="241" width="168" height="68.2672" class="st6"/>
+			<text x="59.51" y="254.79" class="st7" v:langID="1033"><v:paragraph v:horizAlign="1"/>
+				<v:tabList/>Back Matter<v:newlineChar/><tspan
+						x="48.03" dy="1.2em" class="st5">Laws/Regulations,<v:newlineChar/></tspan><tspan x="43.55" dy="1.2em"
+						class="st5">Standards/Guidance<v:newlineChar/></tspan><tspan x="29.25" dy="1.2em" class="st5">Citations and External Links<v:newlineChar/></tspan><tspan
+						x="46.25" dy="1.2em" class="st8">Other Attachments</tspan>
+			</text>		
+		</g>
+	</g>
+</svg>
