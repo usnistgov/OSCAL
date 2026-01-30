@@ -41,25 +41,15 @@
 						dy="1.2em" class="st3">Layer</tspan></text>		</g>
 		<g id="shape4-5" v:mID="4" v:groupContext="shape" transform="translate(145.145,-39.8125)">
 			<title>Rectangle.4</title>
-			<desc>Profile Model</desc>
+			<desc>Control Mapping Model</desc>
 			<v:userDefs>
 				<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
 			</v:userDefs>
 			<v:textBlock v:margins="rect(4,4,4,4)"/>
 			<v:textRect cx="260.927" cy="285.312" width="521.86" height="30.375"/>
 			<rect x="0" y="270.125" width="521.855" height="30.375" class="st4"/>
-			<text x="221.31" y="289.51" class="st5" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>Profile Model</text>		</g>
+			<text x="181.31" y="289.51" class="st5" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>Control Mapping Model</text>		</g>
 		<g id="shape7-1" v:mID="7" v:groupContext="shape" transform="translate(145,-6.62501)">
-			<title>Rectangle.2</title>
-			<desc>Mapping Model</desc>
-			<v:userDefs>
-				<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
-			</v:userDefs>
-			<v:textBlock v:margins="rect(4,4,4,4)"/>
-			<v:textRect cx="261" cy="286.438" width="522.01" height="28.125"/>
-			<rect x="0" y="306.375" width="522" height="28.125" class="st4"/>
-			<text x="215.69" y="324.64" class="st5" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>Mapping Model</text>		</g>
-		<g id="shape2-8" v:mID="2" v:groupContext="shape" transform="translate(145,-6.62501)">
 			<title>Rectangle.2</title>
 			<desc>Catalog Model</desc>
 			<v:userDefs>
@@ -67,8 +57,18 @@
 			</v:userDefs>
 			<v:textBlock v:margins="rect(4,4,4,4)"/>
 			<v:textRect cx="261" cy="286.438" width="522.01" height="28.125"/>
+			<rect x="0" y="306.375" width="522" height="28.125" class="st4"/>
+			<text x="215.69" y="324.64" class="st5" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>Catalog Model</text>		</g>
+		<g id="shape2-8" v:mID="2" v:groupContext="shape" transform="translate(145,-6.62501)">
+			<title>Rectangle.2</title>
+			<desc>Profile Model</desc>
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)"/>
+			<v:textRect cx="261" cy="286.438" width="522.01" height="28.125"/>
 			<rect x="0" y="272.375" width="522" height="28.125" class="st4"/>
-			<text x="218.69" y="290.64" class="st5" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>Catalog Model</text>		</g>
+			<text x="218.69" y="290.64" class="st5" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>Profile Model</text>		</g>
 		<g id="shape5-11" v:mID="5" v:groupContext="shape" transform="translate(1,-84.25)">
 			<title>Rectangle.5</title>
 			<desc>Implementation Layer</desc>
