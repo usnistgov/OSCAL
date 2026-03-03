@@ -247,6 +247,10 @@
                         <formal-name>On Date Condition</formal-name>
                         <description>The task must occur on the specified date.</description>
                      </define-flag>
+                     <model>
+                        <!-- Without a model the flags do not get converted in JSON schemas -->
+                        <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
+                     </model>            
                   </define-assembly>
                   <define-assembly name="within-date-range" min-occurs="1">
                      <formal-name>On Date Range Condition</formal-name>
@@ -259,6 +263,10 @@
                         <formal-name>End Date Condition</formal-name>
                         <description>The task must occur on or before the specified date.</description>
                      </define-flag>
+                     <model>
+                        <!-- Without a model the flags do not get converted in JSON schemas -->
+                        <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
+                     </model>
                   </define-assembly>
                   <define-assembly name="at-frequency" min-occurs="1">
                      <formal-name>Frequency Condition</formal-name>
@@ -281,6 +289,10 @@
                            </allowed-values>
                         </constraint>
                      </define-flag>
+                     <model>
+                        <!-- Without a model the flags do not get converted in JSON schemas -->
+                        <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
+                     </model>
                   </define-assembly>
                </choice>
             </model>
@@ -484,6 +496,10 @@
       <formal-name>Select Objective</formal-name>
       <description>Used to select a control objective for inclusion/exclusion based on the control objective's identifier.</description>
       <flag ref="objective-id" required="yes"/>
+      <model>
+         <!-- Without a model the flags do not get generated properly -->
+         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
+      </model>
    </define-assembly>
 
    <!-- ********** ASSESSMENT SUBJECT Assembly ********** -->
@@ -509,6 +525,10 @@
                <!-- Identifier Declaration -->
                <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference (in this or other OSCAL instances) an assessment activity to be performed as part of the event. The locally defined <em>UUID</em> of the <code>task</code> can be used to reference the data item locally or globally (e.g., in an <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#scope">imported OSCAL instance</a>). This UUID should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
             </define-flag>
+            <model>
+               <!-- Without a model the flags do not get generated properly -->
+               <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
+            </model>
          </define-assembly>
          <assembly ref="property" max-occurs="unbounded">
             <group-as name="props" in-json="ARRAY"/>
@@ -829,29 +849,43 @@
           <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to the implementation statement in the SSP to which this finding is related.</description>
         </define-field>
         <!-- CHANGED: replaced embedded observation with references -->
-        <define-assembly name="related-observation" max-occurs="unbounded">
-          <formal-name>Related Observation</formal-name>
-          <description>Relates the finding to a set of referenced observations that were used to determine the finding.</description>
+        <assembly ref="related-observation" max-occurs="unbounded">
           <group-as name="related-observations" in-json="ARRAY"/>
-          <define-flag name="observation-uuid" as-type="uuid" required="yes">
-            <formal-name>Observation Universally Unique Identifier Reference</formal-name>
-            <!-- Identifier Reference -->
-            <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to an observation defined in the list of observations.</description>
-          </define-flag>
-        </define-assembly>
-        <!-- CHANGED: replaced "risk" with new "assciated-risk" -->
-        <define-assembly name="associated-risk" max-occurs="unbounded">
-          <formal-name>Associated Risk</formal-name>
-          <description>Relates the finding to a set of referenced risks that were used to determine the finding.</description>
+        </assembly>
+        <!-- CHANGED: replaced "risk" with new "associated-risk" -->
+        <assembly ref="associated-risk" max-occurs="unbounded">
           <group-as name="related-risks" in-json="ARRAY"/>
-          <define-flag name="risk-uuid" as-type="uuid" required="yes">
-            <formal-name>Risk Universally Unique Identifier Reference</formal-name>
-            <!-- Identifier Reference -->
-            <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a risk defined in the list of risks.</description>
-          </define-flag>
-        </define-assembly>
+        </assembly>
         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
       </model>
+   </define-assembly>
+
+   <define-assembly name="related-observation">
+      <formal-name>Related Observation</formal-name>
+      <description>Relates the identified element to a set of referenced observations that were used to support its determination.</description>
+      <define-flag name="observation-uuid" as-type="uuid" required="yes">
+         <formal-name>Observation Universally Unique Identifier Reference</formal-name>
+         <!-- Identifier Reference -->
+         <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to an observation defined in the list of observations.</description>
+      </define-flag>
+      <model>
+         <!-- Without a model the flags do not get generated properly -->
+         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
+      </model>
+   </define-assembly>
+
+   <define-assembly name="associated-risk">
+      <formal-name>Associated Risk</formal-name>
+      <description>Relates the finding to a set of referenced risks that were used to determine the finding.</description>
+      <define-flag name="risk-uuid" as-type="uuid" required="yes">
+         <formal-name>Risk Universally Unique Identifier Reference</formal-name>
+         <!-- Identifier Reference -->
+         <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a risk defined in the list of risks.</description>
+      </define-flag>
+      <model>
+         <!-- Without a model the flags do not get converted in JSON schemas-->
+         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
+       </model>          
    </define-assembly>
 
    <define-assembly name="observation">
@@ -901,7 +935,7 @@
                   <enum value="ssp-statement-issue">A difference between the SSP implementation statement, and actual implementation.</enum>
                   <enum value="control-objective">An observation about the status of a the associated control objective.</enum>
                   <enum value="mitigation">A mitigating factor was identified.</enum>
-                  <enum value="finding" deprecated="1.2.0">**(deprecated)** Use 'discovery' instead.</enum>
+                  <enum value="finding" deprecated="1.1.4">**(deprecated)** Use 'discovery' instead.</enum>
                   <enum value="discovery">An observation of potential risk in the system's implementation, identified through security scanning tools, penetration testing, and other means.</enum>
                   <enum value="historic">An observation from a past assessment, which was converted to OSCAL at a later date.</enum>
                </allowed-values>
@@ -1296,16 +1330,9 @@
             </model>
          </define-assembly>
 
-         <define-assembly name="related-observation" max-occurs="unbounded">
-            <formal-name>Related Observation</formal-name>
-            <description>Relates the finding to a set of referenced observations that were used to determine the finding.</description>
+         <assembly ref="related-observation" max-occurs="unbounded">
             <group-as name="related-observations" in-json="ARRAY"/>
-            <define-flag name="observation-uuid" as-type="uuid" required="yes">
-               <formal-name>Observation Universally Unique Identifier Reference</formal-name>
-               <!-- Identifier Reference -->
-               <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to an observation defined in the list of observations.</description>
-            </define-flag>
-         </define-assembly>
+         </assembly>
       </model>
       <constraint>
          <!-- REVIEW THIS -->
@@ -1331,6 +1358,10 @@
          <formal-name>Actor Role</formal-name>
          <description>A point to the role-id of the role in which the party is making the log entry.</description>
       </define-flag>
+      <model>
+         <!-- Without a model the flags do not get generated in JSON schemas-->
+         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
+      </model>
    </define-assembly>
 
    <define-field name="risk-status" as-type="token">

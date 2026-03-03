@@ -64,7 +64,7 @@
             <assembly ref="gap-summary">
                 <use-name>target-gap-summary</use-name>
             </assembly>
-            <field ref="confidence-score" min-occurs="0" max-occurs="1" />
+            <assembly ref="confidence-score" min-occurs="0" max-occurs="1" />
             <field ref="coverage" min-occurs="0" max-occurs="1" />
         </model>
     </define-assembly>
@@ -177,7 +177,7 @@
                 <use-name>qualifier</use-name>
                 <group-as name="qualifiers" in-json="ARRAY" />
             </assembly>
-            <field ref="confidence-score" min-occurs="0" max-occurs="1" />
+            <assembly ref="confidence-score" min-occurs="0" max-occurs="1" />
             <field ref="coverage" min-occurs="0" max-occurs="1" />
             <assembly ref="property" max-occurs="unbounded">
                 <group-as name="props" in-json="ARRAY" />
@@ -364,7 +364,7 @@
         <flag ref="matching-rationale" required="yes" />
         <flag ref="status" required="yes" />
         <model>
-            <field ref="confidence-score" min-occurs="0" max-occurs="1" />
+            <assembly ref="confidence-score" min-occurs="0" max-occurs="1" />
             <field ref="coverage" min-occurs="0" max-occurs="1" />
             <!-- define-field name="mapping-description" as-type="markup-multiline" min-occurs="1"
                 in-xml="WITH_WRAPPER">
@@ -422,11 +422,11 @@
                 subject across revisions of the document.</description>
         </define-flag>
         <model>
-            <assembly ref="select-control-by-id" min-occurs="1" max-occurs="unbounded">
+            <assembly ref="match-control-by-id" min-occurs="1" max-occurs="unbounded">
                 <use-name>unmapped-controls</use-name>
                 <group-as name="unmapped-controls" in-json="ARRAY" />
                 <remarks>
-                    <p>If <code>with-child-controls</code> is <q>yes</q> on the call to a control,
+                    <p>If <code>match-with-child-controls</code> is <q>yes</q> on the call to a control,
                         any controls appearing within it (child controls) will be selected, with no
                         additional <code>call</code> directives required. This flag provides a way
                         to include controls with all their dependent controls (enhancements) without
@@ -435,47 +435,102 @@
             </assembly>
         </model>
     </define-assembly>
-
-    <!-- TBD: Move assembly to a common file since it is also defined in oscal_profile_metaschema.xml.-->
-    <!-- NOTE: there is another locallly defined assembly but it is NOT identical with this one in mapping and profile -->
+ 
+    <!-- NOTE: there is another select-control-by-id defined locally in assessment but it is NOT identical with the one in profile and mapping. 
+        Changed the name to "match-control-by-id" to avoid duplicated definition in the complete schema -->
     <!-- NOTE: NOT clear the selection of controls using pattern matching is needed. If NOT needed, we can simplify but this 
-        assembly will be similar to the assessemnt-common one and cannot be moved. -->
-    <define-assembly name="select-control-by-id" scope="local">
-        <formal-name>Select Control</formal-name>
+        assembly will be similar to the assessment-common one and cannot be moved. -->
+    <define-assembly name="match-control-by-id" >
+        <formal-name>Select Matched Control</formal-name>
         <description>Select a control or controls from an imported control set.</description>
-        <flag ref="with-child-controls" />
+        <flag ref="match-with-child-controls" />
         <model>
             <define-field name="with-id" as-type="token" max-occurs="unbounded">
                 <formal-name>Match Controls by Identifier</formal-name>
                 <description>Selecting a control by its ID given as a literal.</description>
                 <group-as name="with-ids" in-json="ARRAY" />
             </define-field>
-            <assembly ref="matching" max-occurs="unbounded">
-                <group-as name="matching" in-json="ARRAY" />
+            <assembly ref="match-control" max-occurs="unbounded">
+                <group-as name="match-control-by" in-json="ARRAY" />
             </assembly>
         </model>
         <remarks>
-            <p>If <code>with-child-controls</code> is <q>yes</q> on the call to a control, no
+            <p>If <code>match-with-child-controls</code> is <q>yes</q> on the call to a control, no
                 sibling <code>call</code>elements need to be used to call any controls appearing
                 within it. Since generally, this is how control enhancements are represented (as
                 controls within controls), this provides a way to include controls with all their
                 dependent controls (enhancements) without having to call them individually.</p>
         </remarks>
     </define-assembly>
-
-    <!-- TBD: Move assembly to a common file since it is also defined in oscal_profile_metaschema.xml -->
-    <!-- NOTE: This assembly used in mapping and profile is NOT used in the assessment-common for select-control-by-id -->
-    <define-assembly name="matching">
+   
+    <!-- NOTE: Similar assembly named matching is used in profile. -->
+    <define-assembly name="match-control" >
         <formal-name>Match Controls by Pattern</formal-name>
-        <description>Selecting a set of controls by matching their IDs with a wildcard
-            pattern.</description>
-        <flag ref="pattern" />
+        <description>Selecting a set of controls by matching their IDs with a wildcard pattern.</description>
+        <flag ref="match-pattern" />
+        <model>
+            <!-- Without a model the flags do not get generated in JSON schemas -->
+            <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
+        </model>
     </define-assembly>
+
+    <define-assembly name="confidence-score" >
+        <formal-name>Confidence Score</formal-name>
+        <description>This records either a string category or a decimal value from 0-1 representing a percentage. Both of these values describe an estimation of the author's confidence
+        that this mapping is correct and accurate. </description>
+        <model>
+            <choice>
+                <define-field name="category" as-type="string" >
+                    <constraint>
+                        <allowed-values target=".[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]" allow-other="yes">
+                            <enum value="unspecified">No category is specified for the confidence score.</enum>
+                            <enum value="high">High confidence in the mapping.</enum>
+                            <enum value="medium">Medium confidence in the mapping.</enum>
+                            <enum value="low">Low confidence in the mapping.</enum>
+                        </allowed-values>
+                    </constraint>
+                </define-field>
+                <field ref="percentage" />
+             </choice>
+        </model>
+    </define-assembly>
+
+    <!-- The coverage defined as field with flag with the intention of representing it as <coverage generation-method="arbitrary">0.85</coverage> does not convert 
+    clean oin the JSON schema - it adds STRVALUE to store the value of the named field. A representation like <coverage value="0.85" generation-method="arbitrary"/>
+    <coverage generation-method="arbitrary"/></coverage>is generated with an assembly in metaschema definition and converts clean to JSON -->
+    <!-- define-assembly name="coverage" >
+        <formal-name>Coverage</formal-name>
+        <description>A decimal value from 0-1, representing the percentage coverage of the targets by the sources.</description>
+        <define-flag name="generation-method" as-type="string" required="no" default="arbitrary">
+            <constraint>
+                <allowed-values allow-other="yes">
+                    <enum value="arbitrary">The coverage value is a qualitative estimate of coverage with no strict formula.</enum>
+                </allowed-values>
+            </constraint>
+        </define-flag>
+        <model>
+            <field ref="percentage" min-occurs="1" max-occurs="1" />  
+        </model>
+        <remarks>
+            <p>This field is scoped - that is, it can be used at the document-level, the mapping level, or the individual map item level. It only applies to targets and sources within it's scope.</p>
+            <p>Coverage is calculated by taking the full set of all targets in-scope and the full set of all sources in-scope, then applying the "generation-method" to the two sets.
+             By default the method is an arbitrary estimation of coverage.</p>
+            <p>In a general sense "coverage" is defined as the percent of the set of targets that have mapped to by the set of sources, 
+            where each map is an "equivalent-to" or "equal-to" valued "relationship". Where relationship is "subset-of" or otherwise, it counts as an appropriate fraction of a full map. </p>
+            <p> Since coverage is derived from mapping relationships, it is defined in the context of the mapping's "matching-rationale" - that is, the method used to determine relationships.</p>
+        </remarks>
+    </define-assembly -->
+
 
     <!-- ################# -->
     <!-- FIELD DEFINITIONS -->
     <!-- ################# -->
-    <define-field name="confidence-score">
+
+    <!-- This definition as field for hte confidence-score does not represent correctly 
+         the TWG intentions of having either a string or a decimal, no other values.
+         Changed it above to an assembly with a choice between the two fields, each with the appropriate constraints.
+    -->
+    <!-- define-field name="confidence-score" as-type="string-or-decimal">
         <formal-name>Confidence Score</formal-name>
         <description>This records either a string category or a decimal value from 0-1 representing a percentage. Both of these values describe an estimation of the author's confidence
         that this mapping is correct and accurate. </description>
@@ -490,14 +545,17 @@
             </constraint>
         </define-flag>
         <define-flag name="percentage" as-type="decimal" required="no"/>
-    </define-field>
-
-    <define-field name="coverage" as-type="decimal">
+    </define-field -->
+    
+    <define-field name="coverage" as-type="decimal" >
         <formal-name>Coverage</formal-name>
         <description>A decimal value from 0-1, representing the percentage coverage of the targets by the sources.</description>
+        <json-value-key>target-coverage</json-value-key>
         <define-flag name="generation-method" as-type="string" required="no" default="arbitrary">
+        <formal-name>Coverage Generation Method</formal-name>
+        <description>The method used to determine the coverage value.</description>
             <constraint>
-                <allowed-values allow-other="yes">
+                <allowed-values id="oscal-mapping-coverage-generation-method-values" allow-other="yes">
                     <enum value="arbitrary">The coverage value is a qualitative estimate of coverage with no strict formula.</enum>
                 </allowed-values>
             </constraint>
@@ -510,6 +568,11 @@
             where each map is an "equivalent-to" or "equal-to" valued "relationship". Where relationship is "subset-of" or otherwise, it counts as an appropriate fraction of a full map. </p>
             <p> Since coverage is derived from mapping relationships, it is defined in the context of the mapping's "matching-rationale" - that is, the method used to determine relationships.</p>
         </remarks>
+    </define-field >
+
+    <define-field name="percentage" as-type="decimal">
+        <formal-name>Percentage</formal-name>
+        <description>A decimal value from 0-1, representing a percentage.</description>
     </define-field>
 
     <define-field name="mapping-description" as-type="markup-multiline">
@@ -577,16 +640,15 @@
         <p>If this flag appears in both locations, the lower-scoped value overrides while within it's scope.</p> </remarks>
     </define-flag>
 
-    <!-- TBD: Move assembly to a common file since it is also defined in oscal_profile_metaschema.xml -->
-    <define-flag as-type="string" name="pattern">
-        <formal-name>Pattern</formal-name>
+    <!-- Updated the name of the flag to avoid conflict in the complete schema with the "patern" defined in oscal_profile_metaschema.xml -->
+    <define-flag as-type="string" name="match-pattern">
+        <formal-name>Matching Pattern</formal-name>
         <description>A <a href="https://en.wikipedia.org/wiki/Glob_(programming)">glob expression</a>
             matching the IDs of one or more controls to be selected.</description>
     </define-flag>
 
-    <!-- TBD: Move assembly to a common file since it is also defined in oscal_control-common_metaschema.xml -->
-    <!-- NOTE: This is the only flag needed, and including all ones defined in oscal_control-common_metaschema.xml, constraints included. -->
-    <define-flag as-type="token" name="with-child-controls">
+    <!-- Updated the name of the flag to avoid conflict in the complete schema with the "with-child-control" defined in oscal_profile_metaschema.xml -->
+    <define-flag as-type="token" name="match-with-child-controls">
         <formal-name>Include Contained Controls with Control</formal-name>
         <description>When a control is included, whether its child (dependent) controls are also
             included.</description>

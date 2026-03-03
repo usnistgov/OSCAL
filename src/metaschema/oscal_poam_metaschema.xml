@@ -140,6 +140,10 @@
                     <formal-name>Finding Universally Unique Identifier Reference</formal-name>
                     <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a finding defined in the list of findings.</description>
                 </define-flag>
+                <model>
+                  <!-- Without a model the flags do not get generated in JSON schemas -->
+                  <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
+                </model>
             </define-assembly>
 
             <!-- TODO: add link; check in the other assessment models -->
@@ -147,28 +151,24 @@
             <!-- CHANGED: removed "objective-status" per brianrufgsa -->
             <!-- CHANGED: (per Brian) removed "implementation-statement-uuid" since this is in the SAR -->
             <!-- CHANGED: replaced embedded observation with references -->
-            <define-assembly name="related-observation" max-occurs="unbounded">
-                <formal-name>Related Observation</formal-name>
-                <description>Relates the poam-item to a set of referenced observations that were used to determine the finding.</description>
+            <assembly ref="related-observation" max-occurs="unbounded">
                 <group-as name="related-observations" in-json="ARRAY"/>
-                <define-flag name="observation-uuid" as-type="uuid" required="yes">
-                    <formal-name>Observation Universally Unique Identifier Reference</formal-name>
-                    <!-- Identifier Reference -->
-                    <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to an observation defined in the list of observations.</description>
-                </define-flag>
-            </define-assembly>
+            </assembly>
 
-            <!-- CHANGED: replaced "risk" with new "assciated-risk" -->
-            <define-assembly name="associated-risk" max-occurs="unbounded">
+            <!-- CHANGED: replaced "risk" with new "associated-risk" -->
+            <!-- define-assembly name="associated-risk" max-occurs="unbounded">
                 <formal-name>Associated Risk</formal-name>
                 <description>Relates the finding to a set of referenced risks that were used to determine the finding.</description>
                 <group-as name="related-risks" in-json="ARRAY"/>
                 <define-flag name="risk-uuid" as-type="uuid" required="yes">
                     <formal-name>Risk Universally Unique Identifier Reference</formal-name>
-                    <!-- Identifier Reference -->
+                    <!- - Identifier Reference - ->
                     <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a risk defined in the list of risks.</description>
                 </define-flag>
-            </define-assembly>
+            </define-assembly -->
+            <assembly ref="associated-risk" max-occurs="unbounded">
+                <group-as name="related-risks" in-json="ARRAY"/>
+            </assembly>
             <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
         </model>
         <constraint>

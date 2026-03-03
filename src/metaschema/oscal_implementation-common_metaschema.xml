@@ -265,7 +265,7 @@
             </define-flag>
             <model>
                   <define-field name="title" as-type="markup-line">
-            <formal-name>Protocol Title</formal-name>
+                        <formal-name>Protocol Title</formal-name>
                         <description>A human readable name for the protocol (e.g., Transport Layer Security).</description>
                   </define-field>
                   <assembly ref="port-range" max-occurs="unbounded">
@@ -305,21 +305,10 @@
                         </allowed-values>
                   </constraint>
             </define-flag>
-            <!-- Added Constraints as Warnings -->
-            <!-- constraint>
-                  <expect level="WARNING" id="port-range-start-and-end-not-specified" target="." test="exists(@start) and exists(@end)">
-                        <message>If a protocol is defined, it should include a start and end port range. To define a single port, the start and end should be the same value.</message>
-                  </expect>
-                  <expect level="WARNING" id="port-range-start-specified-with-no-end" target="." test="exists(@start) and not(exists(@end))">
-                        <message>A start port exists, but an end point does not. To define a single port, the start and end should be the same value.</message>
-                  </expect>
-                  <expect level="WARNING" id="port-range-end-specified-with-no-start" target="." test="not(exists(@start)) and exists(@end)">
-                        <message>An end point exists, but a start port does not. To define a single port, the start and end should be the same value.</message>
-                  </expect>
-                  <expect level="WARNING" id="port-range-end-date-is-before-start-date" target="." test="@start &lt;= @end">
-                        <message>The port range specified has an end port that is less than the start port.</message>
-                  </expect>
-            </constraint -->
+            <model>
+                  <!-- Without a model the flags do not get generated in JSON schemas -->
+                  <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
+            </model>
             <constraint>
                   <expect id="oscal-component-protocol-port-range-has-start" level="WARNING" target="." test="exists(@start)">
                         <message>A port range should have a start port given.</message>
@@ -335,6 +324,7 @@
                   <p>To be validated as a natural number (integer &gt;= 1). A single port uses the same value for start and end. Use multiple 'port-range' entries for non-contiguous ranges.</p>
             </remarks>
             <example>
+                  <description>Example of protocol and port-range encoding.</description>
                   <service xmlns="http://csrc.nist.gov/ns/oscal/example" id="svc-01" name="Domain Name Service (DNS) Lookup">
                         <protocol name="dns">
                               <port-range start="53" end="53" transport="tcp"/>
@@ -431,7 +421,7 @@
             <description>Identifies a specific system privilege held by the user, along with an associated description and/or rationale for the privilege.</description>
             <model>
                   <define-field name="title" as-type="markup-line" min-occurs="1">
-            <formal-name>Privilege Title</formal-name>
+                  <formal-name>Privilege Title</formal-name>
                         <description>A human readable name for the privilege.</description>
                   </define-field>
                   <define-field name="description" as-type="markup-multiline" in-xml="WITH_WRAPPER">
@@ -702,6 +692,7 @@
             <!-- Identifier Reference -->
             <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#human-oriented">human-oriented</a> reference to a <code>parameter</code> within a control, who's catalog has been imported into the current implementation context.</description>
             <example>
+                  <description>Example of a human-oriented parameter reference.</description>
                   <set-param xmlns="http://csrc.nist.gov/ns/oscal/example" param-id="ac-2_prm_2">
                         <enum>System ISSO</enum>
                   </set-param>

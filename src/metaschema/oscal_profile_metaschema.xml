@@ -330,6 +330,10 @@
                                           <formal-name>Item Namespace Reference</formal-name>
                                           <description>Identify items to remove by the item's <code>ns</code>, which is the namespace associated with a <code>part</code>, or <code>prop</code>.</description>
                                     </define-flag>
+                                    <model>
+                                          <!-- Without a model the flags do not get generated in JSON schemas -->
+                                          <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
+                                    </model>
                                     <remarks>
                                           <p>Use <code>by-name</code>, <code>by-class</code>, <code>by-id</code> or <code>by-item-name</code> to indicate class tokens or ID reference, or the formal name, of the component to be removed or erased from a control, when a catalog is resolved. The control affected is indicated by the pointer on the removal's parent (containing) <code>alter</code> element.</p>
                                           <p>To change an element, use <code>remove</code> to remove the element, then <code>add</code> to add it back again with changes.</p>
@@ -477,5 +481,9 @@
             <formal-name>Match Controls by Pattern</formal-name>
             <description>Selecting a set of controls by matching their IDs with a wildcard pattern.</description>
             <flag ref="pattern"/>
+            <model>
+            <!-- Without a model the flags do not get generated in JSON schemas -->
+                  <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
+            </model>
       </define-assembly>
 </METASCHEMA>
