@@ -729,7 +729,7 @@
       <index-has-key id="oscal-implemented-requirement-index-metadata-role-id"  name="index-metadata-role-id" target="responsible-role|statement/responsible-role|.//by-component//responsible-role">
         <key-field target="@role-id"/>
       </index-has-key>
-      <index-has-key id="oscal-implemented-requirement-index-metadata-party-uuid" name="index-metadata-party-uuid" target="responsible-role|statement/responsible-role|.//by-component//responsible-role">
+      <index-has-key id="oscal-implemented-requirement-index-metadata-party-uuid" name="index-metadata-party-uuid" target="responsible-role[party-uuid]|statement/responsible-role[party-uuid]|.//by-component//responsible-role[party-uuid]">
         <key-field target="party-uuid"/>
       </index-has-key>
       <has-cardinality id="oscal-implemented-requirement-by-component-cardinality" target=".//by-component" min-occurs="1">
