@@ -7,12 +7,13 @@
     xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/toolchains/xslt-M4/validate/metaschema.xsd"
     abstract="yes">
     <schema-name>OSCAL Mapping Model -- Common Models</schema-name>
-    <schema-version>1.2.0</schema-version>
+    <schema-version>1.2.1</schema-version>
     <short-name>oscal-mapping-common</short-name>
     <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
     <json-base-uri>http://csrc.nist.gov/ns/oscal</json-base-uri>
 
     <import href="oscal_metadata_metaschema.xml" />
+    <import href="oscal_control-common_metaschema.xml"/>
 
     <!-- #################### -->
     <!-- ASSEMBLY DEFINITIONS -->
@@ -422,11 +423,11 @@
                 subject across revisions of the document.</description>
         </define-flag>
         <model>
-            <assembly ref="match-control-by-id" min-occurs="1" max-occurs="unbounded">
+            <assembly ref="select-control-by-id" min-occurs="1" max-occurs="unbounded">
                 <use-name>unmapped-controls</use-name>
                 <group-as name="unmapped-controls" in-json="ARRAY" />
                 <remarks>
-                    <p>If <code>match-with-child-controls</code> is <q>yes</q> on the call to a control,
+                    <p>If <code>with-child-controls</code> is <q>yes</q> on the call to a control,
                         any controls appearing within it (child controls) will be selected, with no
                         additional <code>call</code> directives required. This flag provides a way
                         to include controls with all their dependent controls (enhancements) without
@@ -437,42 +438,42 @@
     </define-assembly>
  
     <!-- NOTE: there is another select-control-by-id defined locally in assessment but it is NOT identical with the one in profile and mapping. 
-        Changed the name to "match-control-by-id" to avoid duplicated definition in the complete schema -->
+        Moved the local definition of the select-control-by-id assembly to control-common file -->
     <!-- NOTE: NOT clear the selection of controls using pattern matching is needed. If NOT needed, we can simplify but this 
         assembly will be similar to the assessment-common one and cannot be moved. -->
-    <define-assembly name="match-control-by-id" >
-        <formal-name>Select Matched Control</formal-name>
+    <!-- define-assembly name="select-control-by-id" >
+        <formal-name>Select Control</formal-name>
         <description>Select a control or controls from an imported control set.</description>
-        <flag ref="match-with-child-controls" />
+        <flag ref="with-child-controls" />
         <model>
             <define-field name="with-id" as-type="token" max-occurs="unbounded">
                 <formal-name>Match Controls by Identifier</formal-name>
                 <description>Selecting a control by its ID given as a literal.</description>
                 <group-as name="with-ids" in-json="ARRAY" />
             </define-field>
-            <assembly ref="match-control" max-occurs="unbounded">
-                <group-as name="match-control-by" in-json="ARRAY" />
+            <assembly ref="matching" max-occurs="unbounded">
+                <group-as name="matching" in-json="ARRAY" />
             </assembly>
         </model>
         <remarks>
-            <p>If <code>match-with-child-controls</code> is <q>yes</q> on the call to a control, no
+            <p>If <code>with-child-controls</code> is <q>yes</q> on the call to a control, no
                 sibling <code>call</code>elements need to be used to call any controls appearing
                 within it. Since generally, this is how control enhancements are represented (as
                 controls within controls), this provides a way to include controls with all their
                 dependent controls (enhancements) without having to call them individually.</p>
         </remarks>
-    </define-assembly>
+    </define-assembly -->
    
-    <!-- NOTE: Similar assembly named matching is used in profile. -->
-    <define-assembly name="match-control" >
+    <!-- NOTE: Similar assembly named matching is defined in profile. -->
+    <!-- Mover the assembly's definition to control-common file-->
+    <!-- define-assembly name="matching" >
         <formal-name>Match Controls by Pattern</formal-name>
         <description>Selecting a set of controls by matching their IDs with a wildcard pattern.</description>
-        <flag ref="match-pattern" />
+        <flag ref="pattern" />
         <model>
-            <!-- Without a model the flags do not get generated in JSON schemas -->
             <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
         </model>
-    </define-assembly>
+    </define-assembly -->
 
     <define-assembly name="confidence-score" >
         <formal-name>Confidence Score</formal-name>

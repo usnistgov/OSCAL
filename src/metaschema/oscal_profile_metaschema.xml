@@ -7,7 +7,7 @@
 <METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0">
       <schema-name>OSCAL Profile Model</schema-name>
-      <schema-version>1.2.0</schema-version>
+      <schema-version>1.2.1</schema-version>
       <short-name>oscal-profile</short-name>
       <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
       <json-base-uri>http://csrc.nist.gov/ns/oscal</json-base-uri>
@@ -443,7 +443,8 @@
                   <p>If this directive is not provided, then no controls are to be inserted; i.e., all controls are included explicitly.</p>
             </remarks>
       </define-assembly>
-      <define-assembly name="select-control-by-id" scope="local">
+      <!-- assembly definition moved to the control-common file for reuse in mapping -->
+      <!-- define-assembly name="select-control-by-id" scope="local">
             <formal-name>Select Control</formal-name>
             <description>Select a control or controls from an imported control set.</description>
             <flag ref="with-child-controls"/>
@@ -458,8 +459,8 @@
             <remarks>
                   <p>If <code>with-child-controls</code> is <q>yes</q> on the call to a control, no sibling <code>call</code>elements need to be used to call any controls appearing within it. Since generally, this is how control enhancements are represented (as controls within controls), this provides a way to include controls with all their dependent controls (enhancements) without having to call them individually.</p>
             </remarks>
-      </define-assembly>
-      <define-flag as-type="token" name="with-child-controls">
+       </define-assembly -->
+      <!-- define-flag as-type="token" name="with-child-controls">
             <formal-name>Include Contained Controls with Control</formal-name>
             <description>When a control is included, whether its child (dependent) controls are also included.</description>
             <constraint>
@@ -468,22 +469,24 @@
                         <enum value="no">When importing a control, only include child controls that are also explicitly called.</enum>
                   </allowed-values>
             </constraint>
-      </define-flag>
-      <define-flag as-type="string" name="pattern">
+      </define-flag -->
+      <!-- next flag definition was moved to the control-common file for reuse in mapping -->
+      <!-- define-flag as-type="string" name="pattern">
             <formal-name>Pattern</formal-name>
             <description>A <a href="https://en.wikipedia.org/wiki/Glob_(programming)">glob expression</a> matching the IDs of one or more controls to be selected.</description>
-      </define-flag>
-      <define-field name="with-id" as-type="token">
+      </define-flag -->
+      <!-- next field definition was moved to the control-common file for reuse in mapping -->
+      <!-- define-field name="with-id" as-type="token">
             <formal-name>Match Controls by Identifier</formal-name>
             <description>Selecting a control by its ID given as a literal.</description>
-      </define-field>
-      <define-assembly name="matching">
+      </define-field -->
+      <!-- next assembly definition was moved to the control-common file for reuse in mapping -->
+      <!-- define-assembly name="matching">
             <formal-name>Match Controls by Pattern</formal-name>
             <description>Selecting a set of controls by matching their IDs with a wildcard pattern.</description>
             <flag ref="pattern"/>
             <model>
-            <!-- Without a model the flags do not get generated in JSON schemas -->
                   <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
             </model>
-      </define-assembly>
+      </define-assembly -->
 </METASCHEMA>
