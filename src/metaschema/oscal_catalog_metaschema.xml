@@ -288,16 +288,13 @@
                   </allowed-values>
                   <allowed-values id="oscal-control-prop-status-value" allow-other="yes"
                         target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='status']/@value">
-                        <enum value="withdrawn">The control is no longer used.</enum>
-                        <enum value="Withdrawn" deprecated="1.0.0">**(deprecated)*** Use 'withdrawn'
-                              instead.</enum>
-                        <enum value="active">[Default] This control is currently in force.</enum>
-                        <enum value="incorporated">This control was incorporated into another control as identified by one or more "incorporated" links.</enum>
-                        <enum value="moved">This control was moved as identified by a "moved" link.</enum>
+                        <enum value="withdrawn">The control is no longer used. It may have been retired, incorporated into another control, or moved to a different control.</enum>
+                        <enum value="normal">[Default] This control exists as intended.</enum>
                         <enum value="reserved">This is a placeholder for a future control.</enum>
                         <enum value="deprecated">This control will be withdrawn. The withdrawn timeline or milestone may be describe the remarks.</enum>
                         <enum value="conditional">This control is only applicable under certain conditions described in the remarks.</enum>
                         <enum value="superseded">This control has been superseded by the artifact indicated by one or more "superseded-by" links or as described in the remarks.</enum>
+                        <enum value="modified">This control has been updated from a prior version, as described in the remarks.</enum>
                         <enum value="experimental">This control is a pilot or proposed control; not yet required.</enum>
                   </allowed-values>
                   <allowed-values id="oscal-control-link-rel-type" target="link/@rel" allow-other="yes">
