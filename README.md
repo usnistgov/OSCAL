@@ -6,7 +6,7 @@ NIST is developing the [Open Security Controls Assessment Language](https://csrc
 
 With this effort, we are stressing the agile development of a set of *minimal* formats that are both generic enough to capture the breadth of data in scope (controls specifications), while also capable of ad-hoc tuning and extension to support peculiarities of both (industry or sector) standard and new control types.
 
-The [OSCAL website](https://www.nist.gov/oscal) provides an overview of the OSCAL project, including an XML and JSON [schema reference](https://pages.nist.gov/OSCAL/reference/), [examples](https://pages.nist.gov/OSCAL/concepts/examples/), and other resources.
+The [OSCAL website](https://www.nist.gov/oscal) provides an overview of the OSCAL project, including an XML and JSON [schema reference](https://pages.nist.gov/OSCAL/reference/), [examples](https://pages.nist.gov/OSCAL/resources/examples/), and other resources.
 
 If you are interested in contributing to the development of OSCAL, refer to the [contributor guidance](https://github.com/usnistgov/OSCAL/blob/main/CONTRIBUTING.md) for more information.
 

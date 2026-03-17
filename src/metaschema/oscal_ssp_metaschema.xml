@@ -618,12 +618,16 @@
       <index id="oscal-system-implementation-component-validation-uuid-index" name="index-system-implementation-component-uuid-validation" target="component[@type='validation']">
         <key-field target="@uuid"/>
       </index>
-      <index-has-key id="oscal-system-implementation-validated-by-index" name="index-system-implementation-component-uuid-validation" target="component/link[@rel='validated-by']">
+      <!-- "validated-by" was replaced with "validation" in allowed-values-component_component_link-rel.ent but the change was not propagated at that time.
+      Propagating the change to the index-has-key below, which was missed in the original change, to align with the new rel value of "validation" 
+      while also implementing the PR #2107 which has been abandoned by the author.
+      PR #2107 was adding `and starts-with(@href,'#')` to the index-has-key for the "validated-by" rel value which is no longer valid. The proposed change is included below.
+      NOTE: By propagating the old change that renamed "validated-by" with "validation" and implementing the link/@rel=`validation`, 
+      the "validation" value is intentionally now used by the component/@type="validation" and link/@rel="validation". This is a feature not a bug.
+      -->
+      <index-has-key id="oscal-system-implementation-validation-index" name="index-system-implementation-component-uuid-validation" target="component/link[@rel='validation' and starts-with(@href,'#')]">
         <key-field target="@href"/>
       </index-has-key>
-      <!-- index-has-key id="oscal-system-implementation-proof-of-compliance-index" name="index-system-implementation-component-uuid-validation" target="component/link[@rel='proof-of-compliance']">
-        <key-field target="@href"/>
-      </index-has-key -->
 
       <!-- References to components of @type="service" -->
       <index id="oscal-index-system-implementation-component-uuid-service" name="index-system-implementation-component-uuid-service" target="component[@type='service']">
