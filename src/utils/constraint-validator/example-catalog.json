@@ -1,0 +1,54 @@
+{
+  "catalog": {
+    "uuid": "example-constraint-validation",
+    "metadata": {
+      "title": "Example Catalog with Parameter Constraints",
+      "version": "1.0.0",
+      "oscal-version": "1.1.3"
+    },
+    "groups": [
+      {
+        "id": "ac",
+        "title": "Access Control",
+        "controls": [
+          {
+            "id": "ac-1",
+            "title": "Policy and Procedures",
+            "params": [
+              {
+                "id": "ac-1_prm_1",
+                "label": "frequency",
+                "constraints": [
+                  {
+                    "description": "Must be a positive integer representing days",
+                    "tests": [
+                      {
+                        "system": "http://www.w3.org/TR/xmlschema-2/#regexs",
+                        "expression": "\\d+"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "ac-1_prm_2",
+                "label": "max-sessions",
+                "constraints": [
+                  {
+                    "description": "Session limit must be between 1 and 100",
+                    "tests": [
+                      {
+                        "system": "https://csrc.nist.gov/ns/oscal/constraints/numeric-range",
+                        "expression": "1-100"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

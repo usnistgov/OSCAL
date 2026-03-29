@@ -210,11 +210,36 @@
                                 <formal-name>Constraint Test</formal-name>
                                 <description>A test expression which is expected to be evaluated by a tool.</description>
                                 <group-as name="tests" in-json="ARRAY"/>
+                                <define-flag name="system" as-type="uri" required="no">
+                                        <formal-name>Constraint Test System</formal-name>
+                                        <description>Identifies the rules language or evaluation system
+                                          used to interpret the test expression. When omitted, no
+                                          specific system is assumed and the expression is treated as
+                                          informational only.</description>
+                                        <remarks>
+                                                <p>The value of this attribute should be a URI that
+                                                  uniquely identifies the rules language. The following
+                                                  well-known URIs are defined:</p>
+                                                <ul>
+                                                        <li><code>http://www.w3.org/TR/xmlschema-2/#regexs</code> -
+                                                          W3C XML Schema regular expression</li>
+                                                        <li><code>https://www.w3.org/TR/xpath-31/</code> -
+                                                          XPath 3.1 expression</li>
+                                                        <li><code>https://csrc.nist.gov/ns/oscal/constraints/numeric-range</code> -
+                                                          OSCAL numeric range constraint (e.g., "1-65535")</li>
+                                                </ul>
+                                                <p>Tool developers may define additional system URIs to
+                                                  support proprietary or domain-specific constraint
+                                                  languages.</p>
+                                        </remarks>
+                                </define-flag>
                                 <model>
                                         <define-field name="expression" as-type="string" min-occurs="1">
                                                 <formal-name>Constraint test</formal-name>
                                                 <description>A formal (executable) expression of a
-                                                  constraint.</description>
+                                                  constraint, interpreted according to the rules
+                                                  language identified by the test's
+                                                  <code>system</code> attribute.</description>
                                         </define-field>
                                         <field ref="remarks" in-xml="WITH_WRAPPER"/>
                                 </model>
