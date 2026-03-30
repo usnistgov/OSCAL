@@ -71,6 +71,11 @@ The OSCAL project uses a typical GitHub fork and pull request [workflow](https:/
     - Please allow the NIST OSCAL maintainers to make changes to your pull request, to efficiently merge it, by selecting on your fork the setting to [always allow edits from the maintainers](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/allowing-changes-to-a-pull-request-branch-created-from-a-fork).
     - Review [the OSCAL release and versioning strategy](./versioning-and-branching.md) and [choose the base branch](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/changing-the-base-branch-of-a-pull-request) accordingly. Normally, you should target the `develop` branch or a `release-x.y` as the base branch unless asked to use a different branch. Please select the appropriate branch before requesting a review from a maintainer so delays in approving your pull request are avoided.
 
+## Contributing to Pull Request Reviews
+The OSCAL project thrives on collaboration. While NIST staff and automated tools like Dependabot maintain the core repositories, community participation is essential for a robust and secure standard. This guidance outlines the procedure for community members' review of Pull Requests (PRs), whether they are submitted by automated dependency updates or contributor-submitted enhancements.
+
+Detailed guidance on community participation in PR Reviews is available on OSCAL Wiki[here](https://github.com/usnistgov/OSCAL/wiki/Contributing-to-Pull-Request-Reviews)
+
 ## Repository structure
 
 This repository consists of the following directories and files pertaining to the OSCAL project:
