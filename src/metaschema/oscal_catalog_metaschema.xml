@@ -277,7 +277,7 @@
                   </assembly>
             </model>
             <constraint>
-                  <expect id="oscal-catalog-control-require-statement-when-not-withdrawn" target="."
+                  <expect id="oscal-catalog-control-require-statement-when-appropriate" target="."
                         test="prop[@name='status']/@value=('withdrawn','Withdrawn', 'reserved', 'deprecated', 'superseded') or part[@name='statement']"/>
                   <allowed-values id="oscal-control-prop-name"
                         target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
@@ -290,7 +290,7 @@
                         target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='status']/@value">
                         <enum value="withdrawn">The control is no longer used. It may have been retired, incorporated into another control, or moved to a different control.</enum>
                         <enum value="reserved">This is a placeholder for a future control.</enum>
-                        <enum value="deprecated">This control will be withdrawn. The withdrawn timeline or milestone may be describe the remarks.</enum>
+                        <enum value="deprecated">This control will be withdrawn. The withdrawn timeline or milestone may be described in the remarks.</enum>
                         <enum value="conditional">This control is only applicable under certain conditions described in the remarks.</enum>
                         <enum value="superseded">This control has been superseded by the artifact indicated by one or more "superseded-by" links or as described in the remarks.</enum>
                         <enum value="modified">This control has been updated from a prior version, as described in the remarks.</enum>
