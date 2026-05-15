@@ -278,7 +278,7 @@
             </model>
             <constraint>
                   <expect id="oscal-catalog-control-require-statement-when-appropriate" target="."
-                        test="prop[@name='status']/@value=('withdrawn','Withdrawn', 'reserved', 'deprecated', 'superseded') or part[@name='statement']"/>
+                        test="prop[@name='status']/@value=('withdrawn','Withdrawn', 'reserved', 'superseded') or part[@name='statement']"/>
                   <allowed-values id="oscal-control-prop-name"
                         target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
                         &allowed-values-control-group-property-name;
