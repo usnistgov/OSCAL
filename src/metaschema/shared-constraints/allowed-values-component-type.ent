@@ -4,9 +4,12 @@
 <enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="service">A service that may provide APIs.</enum>
 <enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="policy">An enforceable policy.</enum>
 <enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="physical">A tangible asset used to provide physical protections or countermeasures.</enum>
-<!-- CHANGED combined "process" and "procedure" as "process-proceedure" -->
+<!-- CHANGED combined "process" and "procedure" as "process-procedure" -->
 <enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="process-procedure">A list of steps or actions to take to achieve some end result.</enum>
 <enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="plan">An applicable plan.</enum>
 <enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="guidance">Any guideline or recommendation.</enum>
 <enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="standard">Any organizational or industry standard.</enum>
 <enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="validation">An external assessment performed on some other component, that has been validated by a third-party.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="region">An isolated geographic area where a cloud service provider (CSP) operates a cluster of data centers.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="zone">A fault-isolated cloud computing data center group within a region, connected by low-latency links.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="resource-container">A logical administrative, governance, billing, or resource-scoping boundary used to organize cloud resources.</enum>
