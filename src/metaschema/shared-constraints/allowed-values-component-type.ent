@@ -13,3 +13,4 @@
 <enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="region">An isolated geographic area where a cloud service provider (CSP) operates a cluster of data centers.</enum>
 <enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="zone">A fault-isolated cloud computing data center group within a region, connected by low-latency links.</enum>
 <enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="resource-container">A logical administrative, governance, billing, or resource-scoping boundary used to organize cloud resources.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="network">A physical or virtual capability that provides connectivity, segmentation, routing, traffic distribution, name resolution, or network boundary control.</enum> 

@@ -242,7 +242,6 @@
                         <enum value="this-system">The system as a whole.</enum>
                         <enum value="system">An external system, which may be a leveraged system or the other side of an interconnection.</enum>
                         &allowed-values-component-type;
-                        <enum value="network">A physical or virtual capability that provides connectivity, segmentation, routing, traffic distribution, name resolution, or network boundary control.</enum>
                   </allowed-values>
             </constraint>
       </define-flag>
