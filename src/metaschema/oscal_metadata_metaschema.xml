@@ -365,10 +365,11 @@
                 <!-- TODO: Should this be unique across the document and all imported documents? -->
                 <key-field target="@uuid"/>
             </index>
-            <is-unique id="oscal-unique-metadata-link" target="link">
+            <is-unique id="oscal-unique-metadata-link" level="WARNING" target="link">
                 <key-field target="@href"/>
                 <key-field target="@rel"/>
                 <key-field target="@media-type"/>
+                <key-field target="@resource-fragment"/>
             </is-unique>
             <index id="oscal-index-metadata-role-id" name="index-metadata-role-id" target="role">
                 <!-- TODO: Should this be unique across the document and all imported documents? -->
