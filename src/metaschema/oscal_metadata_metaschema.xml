@@ -208,10 +208,24 @@
                     </allowed-values>
                     <allowed-values id="oscal-metadata-location-prop-type-values" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='type']/@value" allow-other="yes">
                         <enum value="data-center">A location that contains computing assets. A <code>class</code> can be used to indicate the sub-type of data-center as <em>primary</em> or <em>alternate</em>.</enum>
+                        <enum value="region">A location that contains multiple data-centers, which may be used to group data-centers by geographic region or other logical grouping.</enum>
+                        <enum value="zone">A location that contains multiple data-centers, which may be used to group data-centers. A <code>class</code> can be used to indicate the logical grouping as <em>availability</em> zone or <em>sub</em> grouping.</enum>
+                        <enum value="headquarters">A central office or governing and directing center of an organization, which may or may not also contain computing assets.</enum>
+                        <enum value="regional-office">A location that contains office space, which may or may not also contain computing assets, that is used to group other locations by geographic region or other logical grouping.</enum>
+                        <enum value="satellite-office">A location that contains office space for a branch of a company, which may or may not also contain computing assets, that is used to group other locations by geographic region or other logical grouping.</enum>
+                        <enum value="edge">A location that is at the edge of the network, which may be used to group devices by their location.</enum>
+                        <enum value="cdn">A location that is used to host content delivery network assets.</enum>   
+                        <enum value="domain">A location that is used to host domain name system assets. A <code>class</code> can be used to indicate the sub-type of the domain as <em>failure</em> or <em>fault</em>. </enum>
+                        <enum value=" ">TBD</enum> 
                     </allowed-values>
                     <allowed-values id="oscal-metadata-location-prop-type-data-center-values" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='type' and @value='data-center']/@class" allow-other="yes">
-                        <enum value="primary">The location is a data-center used for normal operations.</enum>
-                        <enum value="alternate">The location is a data-center used for fail-over or backup operations.</enum>
+                        <enum value="primary">The location is a <em>data-center</em> used for normal operations.</enum>
+                        <enum value="alternate">The location is a <em>data-center</em> used for fail-over or backup operations.</enum>
+                        <enum value="peer">The location is a <em>data-center</em> where there is no primary or alternate hierarchy, but which is used for normal operations.</enum>
+                        <enum value="availability">The location is a <em>zone</em> (logical group of <em>data-centers</em>) used for availability purposes, but not as fail-over, or backup operations..</enum>
+                        <enum value="sub">The location is a <em>zone</em> (logical group of <em>data-centers</em>) used for grouping or other purposes, but not as availability, fail-over, or backup operations.</enum>
+                        <enum value="fault">The location is a <em>domain</em> used for fault tolerance, but not fail-over.</enum>
+                        <enum value="failure">The location is a <em>domain</em> used for fail-over, but not fault tolerance.</enum>
                     </allowed-values>
                     <has-cardinality id="oscal-metadata-location-address-cardinality" target="address" level="WARNING" min-occurs="1">
                         <description>In most cases, it is useful to define a location. In some cases, defining an explicit location may represent a security risk.</description>
