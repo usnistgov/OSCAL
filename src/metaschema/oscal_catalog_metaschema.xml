@@ -139,12 +139,21 @@
                               <group-as name="controls" in-json="ARRAY"/>
                         </assembly>
                   </choice>
-                  <!--<any/>-->
+                  <assembly ref="extension" max-occurs="unbounded">
+                        <group-as name="extensions" in-json="ARRAY"/>
+                  </assembly>
             </model>
             <constraint>
                   <allowed-values id="oscal-group-prop-name" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
             &allowed-values-control-group-property-name;
                   </allowed-values>
+                  <is-unique id="oscal-group-unique-extension" target="extension">
+                        <key-field target="@ns"/>
+                        <key-field target="@name"/>
+                        <remarks>
+                              <p>A group carries at most one extension payload per defined extension. A duplicate would make the payload governed by the extension's definition ambiguous.</p>
+                        </remarks>
+                  </is-unique>
                   <allowed-values id="oscal-group-part-name" target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
                         <enum value="overview">An introduction to a control or a group of controls.</enum>
                         <enum value="instruction">Information providing directions for a control or a group of controls.</enum>
@@ -275,10 +284,20 @@
                   <assembly ref="control" max-occurs="unbounded">
                         <group-as name="controls" in-json="ARRAY"/>
                   </assembly>
+                  <assembly ref="extension" max-occurs="unbounded">
+                        <group-as name="extensions" in-json="ARRAY"/>
+                  </assembly>
             </model>
             <constraint>
                   <expect id="oscal-catalog-control-require-statement-when-not-withdrawn" target="."
                         test="prop[@name='status']/@value=('withdrawn','Withdrawn') or part[@name='statement']"/>
+                  <is-unique id="oscal-control-unique-extension" target="extension">
+                        <key-field target="@ns"/>
+                        <key-field target="@name"/>
+                        <remarks>
+                              <p>A control carries at most one extension payload per defined extension. A duplicate would make the payload governed by the extension's definition ambiguous.</p>
+                        </remarks>
+                  </is-unique>
                   <allowed-values id="oscal-control-prop-name"
                         target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
                         &allowed-values-control-group-property-name;
