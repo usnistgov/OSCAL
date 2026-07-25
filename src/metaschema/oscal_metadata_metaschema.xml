@@ -72,6 +72,9 @@
             <assembly ref="link" max-occurs="unbounded">
                 <group-as name="links" in-json="ARRAY"/>
             </assembly>
+            <assembly ref="extension-definition" max-occurs="unbounded">
+                <group-as name="extension-definitions" in-json="ARRAY"/>
+            </assembly>
             <define-assembly name="role" max-occurs="unbounded">
                 <formal-name>Role</formal-name>
                 <description>Defines a function, which might be assigned to a party in a specific situation.</description>
@@ -384,6 +387,17 @@
                 <key-field target="@rel"/>
                 <key-field target="@media-type"/>
                 <key-field target="@resource-fragment"/>
+            </is-unique>
+            <index id="oscal-index-metadata-extension-definition" name="index-metadata-extension-definition" target="extension-definition">
+                <key-field target="@ns"/>
+                <key-field target="@name"/>
+            </index>
+            <is-unique id="oscal-unique-metadata-extension-definition" target="extension-definition">
+                <key-field target="@ns"/>
+                <key-field target="@name"/>
+                <remarks>
+                    <p>An extension, identified by the combination of its <code>ns</code> and <code>name</code>, is defined at most once per document, so the document carries exactly one vocabulary, at one version, for each extension. Multiple definitions for the same extension would make validation and fail-closed processing of its payloads ambiguous.</p>
+                </remarks>
             </is-unique>
             <index id="oscal-index-metadata-role-id" name="index-metadata-role-id" target="role">
                 <!-- TODO: Should this be unique across the document and all imported documents? -->
@@ -806,6 +820,250 @@
                     </o:resource>
                 </o:back-matter>
             </o:oscal>
+        </example>
+    </define-assembly>
+
+    <define-assembly name="extension">
+        <formal-name>Extension</formal-name>
+        <description>A structured payload of organization-defined data attached to the containing object, whose vocabulary is defined by a corresponding <code>extension-definition</code> in the document's metadata.</description>
+        <define-flag name="name" as-type="token" required="yes">
+            <formal-name>Extension Name</formal-name>
+            <description>A textual label that identifies the extension this payload belongs to, within the value space qualified by the <code>ns</code>.</description>
+        </define-flag>
+        <define-flag name="ns" as-type="uri" required="yes">
+            <formal-name>Extension Namespace</formal-name>
+            <description>A namespace qualifying the extension's <code>name</code>, identifying the organization that publishes and governs the extension.</description>
+            <remarks>
+                <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+                <p>Unlike <code>prop</code> and <code>part</code>, the <code>ns</code> of an extension has no default value and must be provided explicitly. The pair of <code>ns</code> and <code>name</code> is the join key between an extension payload and its <code>extension-definition</code>; a defaulted namespace would make that join ambiguous between content that states the namespace and content that omits it.</p>
+            </remarks>
+        </define-flag>
+        <define-flag name="uuid" as-type="uuid">
+            <formal-name>Extension Universally Unique Identifier</formal-name>
+            <description>A unique identifier for this extension payload instance, which allows it to be referenced elsewhere.</description>
+        </define-flag>
+        <model>
+            <assembly ref="property" max-occurs="unbounded">
+                <group-as name="props" in-json="ARRAY"/>
+            </assembly>
+            <field ref="remarks" in-xml="WITH_WRAPPER"/>
+        </model>
+        <constraint>
+            <index-has-key id="oscal-extension-requires-definition" name="index-metadata-extension-definition" target=".">
+                <key-field target="@ns"/>
+                <key-field target="@name"/>
+                <remarks>
+                    <p>Every extension payload in a document must correspond to an <code>extension-definition</code> in the document's metadata with the same <code>ns</code> and <code>name</code>. An undefined payload has no discoverable vocabulary and no declared processing semantics — exactly the conditions under which extension content silently drifts between releases and between tools. This rule makes such content a validation error instead, and makes each document's set of possible extensions closed and enumerable from the document alone.</p>
+                </remarks>
+            </index-has-key>
+        </constraint>
+        <remarks>
+            <p>An extension groups the payload of one defined extension vocabulary into a single addressable block. The payload consists of <code>prop</code> entries whose permitted names, value spaces, and repetition are governed by the corresponding <code>extension-definition</code> in the document's metadata; a list is expressed by repeating a name. The extension mechanism deliberately introduces no new data syntax: what an <code>extension</code> adds over bare namespace qualified props is a contract. The payload travels as one unit, its complete vocabulary is defined in the same document, and its processing semantics are declared rather than guessed.</p>
+            <p>A payload conforms to its definition when every <code>prop</code> uses a defined <code>name</code>, every property defined as <code>required</code> is present, no non-<code>repeatable</code> property appears more than once, and every value satisfies the defined <code>datatype</code>, <code>pattern</code>, and <code>allowed-value</code> rules. Tools implementing this mechanism check payload conformance using only the containing document.</p>
+            <p>A tool that does not implement a given extension must preserve its payloads unmodified, and must consult the extension's definition before performing a computation of a class the extension declares itself to modify, as described on <code>extension-definition</code>.</p>
+            <p>Data that pertains to an individual control statement or other addressable part belongs on that <code>part</code> directly, rather than in a control-level payload that addresses parts by convention. This keeps per-statement extension data aligned with the statement structure that profiles and system security plans already reference.</p>
+        </remarks>
+        <example>
+            <description>A control carrying a taxonomy payload governed by a defined extension.</description>
+            <control xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="sys-1-2-2-a5">
+                <title>Planning the Use of Cloud Services</title>
+                <extension ns="https://ns.example.de/ns/oscal" name="gspp-taxonomy">
+                    <prop name="sec-level" value="normal-sdt"/>
+                    <prop name="effort" value="2"/>
+                    <prop name="tag" value="cryptography"/>
+                    <prop name="tag" value="zero-trust"/>
+                </extension>
+                <part name="statement" id="sys-1-2-2-a5_smt">
+                    <p>The use of cloud services MUST be planned.</p>
+                </part>
+            </control>
+        </example>
+    </define-assembly>
+
+    <define-assembly name="extension-definition">
+        <formal-name>Extension Definition</formal-name>
+        <description>Defines, within the document, an extension vocabulary used by <code>extension</code> payloads in the document: the permitted properties, their value spaces and occurrence rules, and the classes of computation the extension's payloads modify.</description>
+        <define-flag name="name" as-type="token" required="yes">
+            <formal-name>Extension Name</formal-name>
+            <description>A textual label that identifies the defined extension within the value space qualified by the <code>ns</code>.</description>
+        </define-flag>
+        <define-flag name="ns" as-type="uri" required="yes">
+            <formal-name>Extension Namespace</formal-name>
+            <description>A namespace qualifying the extension's <code>name</code>, identifying the organization that publishes and governs the extension.</description>
+            <remarks>
+                <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
+            </remarks>
+        </define-flag>
+        <define-flag name="version" as-type="string" required="yes">
+            <formal-name>Extension Version</formal-name>
+            <description>The version of the extension vocabulary that this definition represents.</description>
+            <remarks>
+                <p>Definitions of the same extension carried by different documents can be compared by version. Publishers are encouraged to use <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a> and to treat minor versions as strictly backward compatible: adding optional properties or allowed values, never removing or repurposing them.</p>
+            </remarks>
+        </define-flag>
+        <model>
+            <define-field name="description" in-xml="WITH_WRAPPER" as-type="markup-multiline">
+                <formal-name>Extension Description</formal-name>
+                <description>A summary of the extension's purpose and the meaning of its data.</description>
+            </define-field>
+            <define-assembly name="prop-definition" min-occurs="1" max-occurs="unbounded">
+                <formal-name>Property Definition</formal-name>
+                <description>Defines one property permitted inside payloads of this extension: its name, its value space, and its occurrence rules.</description>
+                <group-as name="prop-definitions" in-json="ARRAY"/>
+                <define-flag name="name" as-type="token" required="yes">
+                    <formal-name>Defined Property Name</formal-name>
+                    <description>The <code>name</code> that a payload <code>prop</code> uses for values governed by this definition.</description>
+                </define-flag>
+                <define-flag name="datatype" as-type="token" default="string">
+                    <formal-name>Value Datatype</formal-name>
+                    <description>The datatype that a value of this property must conform to.</description>
+                    <constraint>
+                        <allowed-values id="oscal-metadata-extension-prop-definition-datatype-values">
+                            <enum value="string">Any string of characters; the default when no datatype is given.</enum>
+                            <enum value="token">A non-colonized name with no whitespace.</enum>
+                            <enum value="boolean">A boolean value: true, false, 1, or 0.</enum>
+                            <enum value="integer">A whole number.</enum>
+                            <enum value="decimal">A decimal number.</enum>
+                            <enum value="date">A date with optional timezone.</enum>
+                            <enum value="date-time-with-timezone">A date and time with a required timezone.</enum>
+                            <enum value="uri">An absolute URI.</enum>
+                            <enum value="uri-reference">A URI or a relative reference.</enum>
+                            <enum value="uuid">A version 4 or 5 universally unique identifier.</enum>
+                        </allowed-values>
+                    </constraint>
+                    <remarks>
+                        <p>The names and lexical rules of these datatypes are those of the <a href="https://pages.nist.gov/metaschema/specification/datatypes/">Metaschema simple datatypes</a> already used throughout OSCAL. Value spaces needing rules beyond a datatype are expressed with <code>pattern</code> or <code>allowed-value</code> entries.</p>
+                    </remarks>
+                </define-flag>
+                <define-flag name="required" as-type="token" default="no">
+                    <formal-name>Property Required</formal-name>
+                    <description>Whether every payload of this extension must provide this property.</description>
+                    <constraint>
+                        <allowed-values id="oscal-metadata-extension-prop-definition-required-values">
+                            <enum value="yes">Every payload of this extension must provide this property.</enum>
+                            <enum value="no">The property is optional in payloads of this extension.</enum>
+                        </allowed-values>
+                    </constraint>
+                </define-flag>
+                <define-flag name="repeatable" as-type="token" default="no">
+                    <formal-name>Property Repeatable</formal-name>
+                    <description>Whether this property may appear more than once in a payload, expressing a list of values.</description>
+                    <constraint>
+                        <allowed-values id="oscal-metadata-extension-prop-definition-repeatable-values">
+                            <enum value="yes">The property may appear multiple times in one payload; each occurrence contributes one value to a list.</enum>
+                            <enum value="no">The property may appear at most once in a payload.</enum>
+                        </allowed-values>
+                    </constraint>
+                </define-flag>
+                <define-flag name="allow-other" as-type="token" default="no">
+                    <formal-name>Allow Non-Enumerated Values</formal-name>
+                    <description>When <code>allowed-value</code> entries are provided, whether values outside that enumeration are also permitted.</description>
+                    <constraint>
+                        <allowed-values id="oscal-metadata-extension-prop-definition-allow-other-values">
+                            <enum value="yes">The enumerated values are documented suggestions; other values conforming to the datatype and pattern are also permitted.</enum>
+                            <enum value="no">The value space is closed to the enumerated values.</enum>
+                        </allowed-values>
+                    </constraint>
+                </define-flag>
+                <define-flag name="pattern" as-type="string">
+                    <formal-name>Value Pattern</formal-name>
+                    <description>An XML Schema regular expression that a value of this property must match in its entirety.</description>
+                </define-flag>
+                <model>
+                    <define-field name="description" in-xml="WITH_WRAPPER" as-type="markup-multiline">
+                        <formal-name>Property Description</formal-name>
+                        <description>A summary of the property's meaning.</description>
+                    </define-field>
+                    <define-field name="allowed-value" as-type="markup-line" max-occurs="unbounded">
+                        <formal-name>Allowed Value</formal-name>
+                        <description>A permitted value of the property, with documentation of the value's meaning as the field's content.</description>
+                        <json-value-key>documentation</json-value-key>
+                        <group-as name="allowed-values" in-json="ARRAY"/>
+                        <define-flag name="value" as-type="string" required="yes">
+                            <formal-name>Permitted Value</formal-name>
+                            <description>The literal value permitted for the property.</description>
+                        </define-flag>
+                    </define-field>
+                    <field ref="remarks" in-xml="WITH_WRAPPER"/>
+                </model>
+                <constraint>
+                    <is-unique id="oscal-metadata-extension-prop-definition-unique-allowed-value" target="allowed-value">
+                        <key-field target="@value"/>
+                        <remarks>
+                            <p>Each permitted value is enumerated exactly once.</p>
+                        </remarks>
+                    </is-unique>
+                </constraint>
+                <remarks>
+                    <p>When one or more <code>allowed-value</code> entries are provided, the property's value space is closed to those values unless <code>allow-other</code> is <q>yes</q>. The <code>datatype</code>, <code>pattern</code>, and <code>allowed-value</code> facilities compose: a conforming value must satisfy all that are present.</p>
+                    <p>A property with <code>repeatable</code> set to <q>yes</q> may appear multiple times in one payload, expressing a list — the repetition replaces delimiter-joined values packed into one string, which corrupt on the first value containing the delimiter. A property with <code>required</code> set to <q>yes</q> must appear in every payload of this extension.</p>
+                </remarks>
+            </define-assembly>
+            <define-field name="modifies" as-type="token" max-occurs="unbounded">
+                <formal-name>Modified Computation Class</formal-name>
+                <description>Declares a class of computation whose outcome depends on understanding payloads of this extension.</description>
+                <group-as name="modifies" in-json="ARRAY"/>
+                <constraint>
+                    <allowed-values id="oscal-metadata-extension-definition-modifies-values" target=".">
+                        <enum value="selection">Payloads of this extension are a legitimate basis for selecting controls (e.g., during profile import); a selection computed over content carrying this extension is unreliable without understanding it.</enum>
+                        <enum value="tailoring">Payloads of this extension alter how content may be modified (e.g., during profile tailoring and merge).</enum>
+                        <enum value="assessment">Payloads of this extension alter what satisfying a requirement means for assessment purposes.</enum>
+                        <enum value="rendering">Payloads of this extension change the normative presentation of content; a generic rendering is not faithful without understanding them.</enum>
+                        <enum value="none">Payloads of this extension are informational only and modify no class of computation; processing never needs to halt on account of this extension.</enum>
+                    </allowed-values>
+                </constraint>
+            </define-field>
+            <define-field name="source" as-type="uri">
+                <formal-name>Definition Source</formal-name>
+                <description>The location where the publisher maintains the canonical form of this extension definition.</description>
+                <remarks>
+                    <p>Provided for provenance and for comparing definitions across documents; processing never depends on retrieving it. The definition that governs validation is always the one carried by this document.</p>
+                </remarks>
+            </define-field>
+            <field ref="remarks" in-xml="WITH_WRAPPER"/>
+        </model>
+        <constraint>
+            <is-unique id="oscal-metadata-extension-definition-unique-prop-definition" target="prop-definition">
+                <key-field target="@name"/>
+                <remarks>
+                    <p>Each property of an extension is defined exactly once; two definitions for one name would make the governing occurrence and value rules ambiguous.</p>
+                </remarks>
+            </is-unique>
+            <expect id="oscal-metadata-extension-definition-modifies-none-exclusive" target="." test="not(modifies = 'none') or not(modifies[not(. = 'none')])">
+                <description>The value 'none' is an explicit declaration that no computation class is modified, and therefore cannot be combined with any other value; a definition that both modifies nothing and modifies something is contradictory and would defeat deterministic fail-closed processing.</description>
+            </expect>
+        </constraint>
+        <remarks>
+            <p>An extension definition makes the document self-describing with respect to its extension content: every extension vocabulary used by <code>extension</code> payloads in the document is defined, completely, in the document itself. A consumer needs nothing beyond the document — no network access and no externally maintained schema — to know each extension's permitted properties, value spaces, occurrence rules, and processing semantics, and to check payloads against them. OSCAL extension content has historically carried organization-specific semantics whose vocabulary lived outside validation entirely; this construct brings the vocabulary into the document, where validation can reach it and where revisions of the vocabulary are visible as revisions of the document.</p>
+            <p>Generic schema validation and the constraints defined on this model enforce the structure of definitions and payloads, and the rule that every payload corresponds to a definition. Checking payload content against its definition — defined property names, <code>required</code> and <code>repeatable</code> occurrence, <code>datatype</code>, <code>pattern</code>, and <code>allowed-value</code> conformance — is a conformance requirement on tools implementing this mechanism. These checks are mechanical and identical for every extension, so implementing them once covers every organization's extensions without organization-specific code.</p>
+            <p>If no <code>modifies</code> value is provided, consumers must behave as if all computation classes other than <q>none</q> were declared. The safe default is the conservative reading: the burden of declaring an extension harmless rests with its publisher, not with its consumers.</p>
+            <p>A tool performing a computation of a declared class (for example, profile resolution performing <q>selection</q>) over content that carries a payload of an extension declaring that class, without implementing that extension, must halt with an error identifying the extension and this definition, rather than proceed to a silently incorrect result. Tools must not modify or remove <code>extension</code> content they do not implement. Tools that produce derived documents (such as a resolved profile) must carry the applicable definitions forward into the derived document's metadata.</p>
+            <p>Organizations are encouraged to publish the canonical form of each definition at a stable, organization-controlled location identified by <code>source</code>, and to keep the definitions carried by their documents textually identical to the canonical form for a given version.</p>
+        </remarks>
+        <example>
+            <description>A document defining the extension vocabulary its payloads use.</description>
+            <metadata xmlns="http://csrc.nist.gov/ns/oscal/1.0">
+                <title>Example Catalog</title>
+                <last-modified>2026-07-25T00:00:00Z</last-modified>
+                <version>1.0</version>
+                <oscal-version>1.2.2</oscal-version>
+                <extension-definition ns="https://ns.example.de/ns/oscal" name="gspp-taxonomy" version="1.0.0">
+                    <description>
+                        <p>Security level, implementation effort, and thematic tags used to select requirements in elevated-protection baselines.</p>
+                    </description>
+                    <prop-definition name="sec-level" required="yes">
+                        <allowed-value value="normal-sdt">Standard protection needs.</allowed-value>
+                        <allowed-value value="erhoeht-sdt">Elevated protection needs.</allowed-value>
+                    </prop-definition>
+                    <prop-definition name="effort" datatype="integer" pattern="[1-5]">
+                        <description>
+                            <p>Relative implementation effort on a five-point scale.</p>
+                        </description>
+                    </prop-definition>
+                    <prop-definition name="tag" repeatable="yes"/>
+                    <modifies>selection</modifies>
+                </extension-definition>
+            </metadata>
         </example>
     </define-assembly>
 

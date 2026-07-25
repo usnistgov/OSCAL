@@ -73,12 +73,21 @@
                         <assembly ref="link" max-occurs="unbounded">
                                 <group-as name="links" in-json="ARRAY"/>
                         </assembly>
-                        <!-- <any/> -->
+                        <assembly ref="extension" max-occurs="unbounded">
+                                <group-as name="extensions" in-json="ARRAY"/>
+                        </assembly>
                 </model>
                 <constraint>
                         <allowed-values id="oscal-part-prop-name" target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
             &allowed-values-control-group-property-name;
                         </allowed-values>
+                        <is-unique id="oscal-part-unique-extension" target="extension">
+                                <key-field target="@ns"/>
+                                <key-field target="@name"/>
+                                <remarks>
+                                        <p>A part carries at most one extension payload per defined extension. A duplicate would make the payload governed by the extension's definition ambiguous.</p>
+                                </remarks>
+                        </is-unique>
                 </constraint>
                 <remarks>
                         <p>A <code>part</code> provides for logical partitioning of prose, and can be thought of as a grouping structure (e.g., section). A <code>part</code> can have child parts allowing for arbitrary nesting of prose content (e.g., statement hierarchy). A <code>part</code> can contain <code>prop</code> objects that allow for enriching prose text with structured name/value information.</p>
@@ -90,6 +99,7 @@
                         <p>Use of <code>part</code> and <code>prop</code> provides for a wide degree of extensibility within the OSCAL catalog model. The optional <code>ns</code> provides a means to qualify a part's <code>name</code>, allowing for organization-specific vocabularies to be defined with clear semantics. Any organization that extends OSCAL in this way should consistently assign a <code>ns</code> value that represents the organization, making a given namespace qualified <code>name</code> unique to that organization. This allows the combination of <code>ns</code> and <code>name</code> to always be unique and unambiguous, even when mixed with extensions from other organizations. Each organization is responsible for governance of their own extensions, and is strongly encouraged to publish their extensions as standards to their user community. If no <code>ns</code> is provided, the name is expected to be in the "OSCAL" namespace.</p>
                         <p>To ensure a <code>ns</code> is unique to an organization and naming conflicts are avoided, a URI containing a DNS or other globally defined organization name should be used. For example, if FedRAMP and DoD both extend OSCAL, FedRAMP will use the <code>ns</code> <code>http://fedramp.gov/ns/oscal</code>, while DoD might use the <code>ns</code> <code>https://defense.gov</code> for any organization specific <code>name</code>.</p>
                         <p>Tools that process OSCAL content are not required to interpret unrecognized OSCAL extensions; however, OSCAL compliant tools should not modify or remove unrecognized extensions, unless there is a compelling reason to do so, such as data sensitivity.</p>
+                        <p>When organization-specific data on a part is intended to be validated and processed by other parties, it should be provided as an <code>extension</code> whose vocabulary is defined by an <code>extension-definition</code> in the document's metadata, rather than as bare namespace qualified props. The document then carries the complete definition of every extension it uses, making the governing vocabulary machine-checkable from the document alone and giving consuming tools deterministic rules for when unrecognized data may be ignored and when processing must halt.</p>
                 </remarks>
                 <example>
                         <description>Multiple Parts with Different Organization-Specific Names.</description>
