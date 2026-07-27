@@ -313,8 +313,8 @@
                                           <formal-name>Item Name Reference</formal-name>
                                           <description>Identify items to remove by the name of the
                                                 item's information object name, e.g.
-                                                  <code>title</code> or
-                                                <code>prop</code>.</description>
+                                                  <code>prop</code> or
+                                                <code>link</code>.</description>
                                           <constraint>
                                                 <allowed-values id="oscal-profile-alter-by-item-name-values">
                                                       <enum value="param">A descendant parameter and all of its descendants.</enum>
