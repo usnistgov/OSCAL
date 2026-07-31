@@ -9,9 +9,9 @@ algorithm it implements, outside of this repository's own pipeline.
 `o:resource-or-error()` in `oscal-profile-resolve-select.xsl` resolves
 every profile `import` (and certain `rlink` references) by calling
 XSLT's `document()` on the fully-resolved URI, with **no scheme
-allow-list, no host restriction, and no path confinement**, unless the
-caller explicitly opts in to the `trusted-roots` parameter described
-below. By default, a profile can direct the resolver to:
+allow-list, no host restriction, and no path confinement**. The
+reference implementation provides no parameter to constrain this today,
+so a profile can direct the resolver to:
 
 - read any local file the resolving process can reach (path traversal,
   [CWE-22](https://cwe.mitre.org/data/definitions/22.html)), or
@@ -57,8 +57,13 @@ first when a system grows.
 
 ### Constrain what can be fetched
 
-Treat `trusted-roots` as an allow-list rather than a hint. A root should
-name a scheme and a host, and where you can, a path prefix, so that
+The reference implementation does not do this for you, so the allow-list
+is yours to supply, whether by wrapping the resolver, supplying a custom
+URI resolver to your XSLT processor, or filtering imports before
+resolution.
+
+Treat that list as an allow-list rather than a hint. An entry should name
+a scheme and a host, and where you can, a path prefix, so that
 `https://example.gov/catalogs/` does not also authorize
 `https://example.gov/user-uploads/`. Reject `file:` outright unless local
 resolution is a requirement. If it is, confine it to a single directory
