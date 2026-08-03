@@ -1,6 +1,6 @@
 # Security notes for `resolver-pipeline`
 
-This directory is a **demonstration implementation** of OSCAL Profile
+This directory is a **proof-of-concept implementation** of OSCAL Profile
 resolution (see `../readme.md`). Read this before reusing it, or the
 algorithm it implements, outside of this repository's own pipeline.
 
@@ -10,17 +10,18 @@ algorithm it implements, outside of this repository's own pipeline.
 every profile `import` (and certain `rlink` references) by calling
 XSLT's `document()` on the fully-resolved URI, with **no scheme
 allow-list, no host restriction, and no path confinement**. The
-reference implementation provides no parameter to constrain this today,
-so a profile can direct the resolver to:
+proof-of-concept implementation provides no parameter to constrain this
+today, so a profile can direct the resolver to:
 
 - read any local file the resolving process can reach (path traversal,
   [CWE-22](https://cwe.mitre.org/data/definitions/22.html)), or
 - make an outbound request to any host and port the resolving process
-  can reach (server-side request forgery,
+  can reach (server-side request forgery (SSRF),
   [CWE-918](https://cwe.mitre.org/data/definitions/918.html)).
 
-This is unrestricted by design in the reference implementation, matching
-its purpose as a demonstration rather than a hardened service component.
+This is unrestricted by design in the proof-of-concept implementation,
+matching its purpose of demonstrating feasibility rather than serving as
+a hardened service component.
 
 ## Why this is not a live issue in NIST's own pipeline
 
@@ -57,10 +58,10 @@ first when a system grows.
 
 ### Constrain what can be fetched
 
-The reference implementation does not do this for you, so the allow-list
-is yours to supply, whether by wrapping the resolver, supplying a custom
-URI resolver to your XSLT processor, or filtering imports before
-resolution.
+The proof-of-concept implementation does not do this for you, so the
+allow-list is yours to supply, whether by wrapping the resolver,
+supplying a custom URI resolver to your XSLT processor, or filtering
+imports before resolution.
 
 Treat that list as an allow-list rather than a hint. An entry should name
 a scheme and a host, and where you can, a path prefix, so that
