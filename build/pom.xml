@@ -39,7 +39,7 @@
         <dependency>
             <groupId>com.xmlcalabash</groupId>
             <artifactId>xmlcalabash</artifactId>
-            <version>3.0.45</version>
+            <version>3.0.51</version>
         </dependency>
     </dependencies>
 
@@ -48,7 +48,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
-                <version>3.10.0</version>
+                <version>3.11.0</version>
                 <executions>
                     <execution>
                         <id>copy-dependencies</id>

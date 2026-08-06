@@ -845,7 +845,7 @@
     <!-- Tests for all mode="o:combine-elements" templates are in merge-combine.xspec -->
 
     <x:scenario label="Tests for match=@opr:id template">
-        <x:context select="@opr:id">
+        <x:context select="o:foo/@opr:id">
             <foo opr:id="intermediate-value-id"/>
         </x:context>
         <x:expect label="Nothing" select="()"/>
