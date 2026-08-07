@@ -1,4 +1,7 @@
 name: Package Release
+permissions:
+  contents: write            # required to create releases / upload assets
+  issues: read               # optional, used by generate_release_notes
 on:
   push:
     tags:
