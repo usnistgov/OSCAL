@@ -345,6 +345,7 @@
                               <enum value="planned">There is a plan for implementing the control as explained in the remarks.</enum>
                               <enum value="alternative">There is an alternative implementation for this control as explained in the remarks.</enum>
                               <enum value="not-applicable">This control does not apply to this system as justified in the remarks.</enum>
+                              <enum value="not-implemented">The control is in scope, but it is not implemented and no implementation is currently planned, as explained in the remarks.</enum>
                         </allowed-values>
                   </constraint>
             </define-flag>
