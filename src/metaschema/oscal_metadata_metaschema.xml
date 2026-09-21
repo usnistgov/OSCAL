@@ -6,7 +6,7 @@
 <METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" abstract="yes">
     <schema-name>OSCAL Document Metadata Description</schema-name>
-    <schema-version>1.2.2</schema-version>
+    <schema-version>1.2.3</schema-version>
     <short-name>oscal-metadata</short-name>
     <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
     <json-base-uri>http://csrc.nist.gov/ns/oscal</json-base-uri>
@@ -691,6 +691,7 @@
             <remarks>
                 <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>.</p>
                 <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
+                <p>The exception is a property governed by the <code>prop-definitions</code> of a catalog. When exactly one property definition applicable to the element type of the containing object has the property's <code>name</code>, a <code>ns</code> that is not provided is the one given by that definition. The definitions reach a document through the catalogs it imports, directly or through a chain of imports. Since a definition must not use a name that the OSCAL models define for the same element type, this exception never changes the meaning of a property defined by OSCAL.</p>
             </remarks>
         </define-flag>
         <define-flag name="value" as-type="string" required="yes">
@@ -724,6 +725,7 @@
         <remarks>
             <p>Properties permit the deployment and management of arbitrary controlled values, within OSCAL objects. A property can be included for any purpose useful to an application or implementation. Typically, properties will be used to sort, filter, select, order, and arrange OSCAL content objects, to relate OSCAL objects to one another, or to associate an OSCAL object to class hierarchies, taxonomies, or external authorities. Thus, the lexical composition of properties may be constrained by external processes to ensure consistency.</p>
             <p>Property allows for associated remarks that describe why the specific property value was applied to the containing object, or the significance of the value in the context of the containing object.</p>
+            <p>An organization that publishes a catalog can define the properties of its namespace in the catalog's <code>prop-definitions</code>: the element types on which each property is permitted, its value space, and its occurrence rules. A namespace defined this way is closed for the catalog and for the documents that import it, which allows any tool to validate such properties from the definitions alone.</p>
         </remarks>
     </define-assembly>
 

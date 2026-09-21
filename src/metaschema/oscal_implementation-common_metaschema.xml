@@ -15,7 +15,7 @@
 <METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema-xslt/support/metaschema/schema/xml/metaschema.xsd" abstract="yes">
       <schema-name>OSCAL Implementation Common Information</schema-name>
-      <schema-version>1.2.2</schema-version>
+      <schema-version>1.2.3</schema-version>
       <short-name>oscal-implementation-common</short-name>
       <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
       <json-base-uri>http://csrc.nist.gov/ns/oscal</json-base-uri>
@@ -345,6 +345,7 @@
                               <enum value="planned">There is a plan for implementing the control as explained in the remarks.</enum>
                               <enum value="alternative">There is an alternative implementation for this control as explained in the remarks.</enum>
                               <enum value="not-applicable">This control does not apply to this system as justified in the remarks.</enum>
+                              <enum value="not-implemented">The control is in scope, but it is not implemented and no implementation is currently planned, as justified in the remarks.</enum>
                         </allowed-values>
                   </constraint>
             </define-flag>

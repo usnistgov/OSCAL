@@ -8,7 +8,7 @@
 <?xml-stylesheet type="text/css" href="metaschema-author.css"?>
 <METASCHEMA xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0">
       <schema-name>OSCAL Control Catalog Model</schema-name>
-      <schema-version>1.2.2</schema-version>
+      <schema-version>1.2.3</schema-version>
       <short-name>oscal-catalog</short-name>
       <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
       <json-base-uri>http://csrc.nist.gov/ns/oscal</json-base-uri>
@@ -34,6 +34,7 @@
 
             <model>
                   <assembly ref="metadata" min-occurs="1"/>
+                  <assembly ref="prop-definitions"/>
                   <assembly ref="parameter" max-occurs="unbounded">
                         <group-as name="params" in-json="ARRAY"/>
                   </assembly>
@@ -87,6 +88,237 @@
                         <control id="single">
                               <title>A Single Control</title>
                               <!-- TODO: this is not a complete valid example. Fix this. -->
+                        </control>
+                  </catalog>
+            </example>
+      </define-assembly>
+      <define-assembly name="prop-definitions">
+            <formal-name>Property Definitions</formal-name>
+            <description>Defines the namespaced properties that may be used in this catalog and in every document that imports it, organized by the element types on which the properties are permitted.</description>
+            <model>
+                  <define-assembly name="definition-set" min-occurs="1" max-occurs="unbounded">
+                        <formal-name>Property Definition Set</formal-name>
+                        <description>The properties defined for one or more element types.</description>
+                        <group-as name="definition-sets" in-json="ARRAY"/>
+                        <model>
+                              <define-field name="element" as-type="token" min-occurs="1" max-occurs="unbounded">
+                                    <formal-name>Element Type</formal-name>
+                                    <description>The name of an element type on which the properties of this set are permitted.</description>
+                                    <group-as name="elements" in-json="ARRAY"/>
+                                    <remarks>
+                                          <p>The value is the name of the Metaschema definition of the element type, not the name under which the element type is used in a given model. The two differ where one name is used for different definitions: a <code>component</code> in a system security plan is a <code>system-component</code>, while a <code>component</code> in a component definition is a <code>defined-component</code>.</p>
+                                          <p>Where the OSCAL models contain more than one definition with the same name, such as <code>implemented-requirement</code> in the system security plan and component definition models, the name covers all of them.</p>
+                                          <p>An element type may belong to any OSCAL model, not only to the catalog model, since the definitions of a catalog apply to the documents that import it.</p>
+                                    </remarks>
+                              </define-field>
+                              <define-field name="description" in-xml="WITH_WRAPPER" as-type="markup-multiline">
+                                    <formal-name>Definition Set Description</formal-name>
+                                    <description>A summary of the purpose of the properties defined for the listed element types.</description>
+                              </define-field>
+                              <define-assembly name="prop-definition" min-occurs="1" max-occurs="unbounded">
+                                    <formal-name>Property Definition</formal-name>
+                                    <description>Defines one property permitted on the listed element types: its namespace and name, its value space, its occurrence rules, and the classes of computation it modifies.</description>
+                                    <group-as name="prop-definitions" in-json="ARRAY"/>
+                                    <define-flag name="name" as-type="token" required="yes">
+                                          <formal-name>Defined Property Name</formal-name>
+                                          <description>The <code>name</code> of the properties governed by this definition.</description>
+                                    </define-flag>
+                                    <define-flag name="ns" as-type="uri" required="yes">
+                                          <formal-name>Defined Property Namespace</formal-name>
+                                          <description>The namespace of the properties governed by this definition, identifying the organization that publishes and governs the property.</description>
+                                          <remarks>
+                                                <p>This value must be an <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#absolute-uri">absolute URI</a> that serves as a <a href="https://pages.nist.gov/OSCAL/concepts/uri-use/#use-as-a-naming-system-identifier">naming system identifier</a>. It must not be the OSCAL namespace <code>http://csrc.nist.gov/ns/oscal</code>, whose properties are defined by the OSCAL models.</p>
+                                          </remarks>
+                                    </define-flag>
+                                    <define-flag name="label" as-type="string">
+                                          <formal-name>Property Label</formal-name>
+                                          <description>A short human-readable label for the property, suitable for naming the field in a user interface.</description>
+                                    </define-flag>
+                                    <define-flag name="datatype" as-type="token" default="string">
+                                          <formal-name>Value Datatype</formal-name>
+                                          <description>The datatype that a value of this property must conform to.</description>
+                                          <constraint>
+                                                <allowed-values id="oscal-catalog-prop-definition-datatype-values">
+                                                      <enum value="string">Any string of characters; the default when no datatype is given.</enum>
+                                                      <enum value="token">A non-colonized name with no whitespace.</enum>
+                                                      <enum value="boolean">A boolean value: true, false, 1, or 0.</enum>
+                                                      <enum value="integer">A whole number.</enum>
+                                                      <enum value="decimal">A decimal number.</enum>
+                                                      <enum value="date">A date with optional timezone.</enum>
+                                                      <enum value="date-time-with-timezone">A date and time with a required timezone.</enum>
+                                                      <enum value="uri">An absolute URI.</enum>
+                                                      <enum value="uri-reference">A URI or a relative reference.</enum>
+                                                      <enum value="uuid">A version 4 or 5 universally unique identifier.</enum>
+                                                </allowed-values>
+                                          </constraint>
+                                          <remarks>
+                                                <p>The names and lexical rules of these datatypes are those of the <a href="https://pages.nist.gov/metaschema/specification/datatypes/">Metaschema simple datatypes</a> already used throughout OSCAL. Value spaces needing rules beyond a datatype are expressed with <code>pattern</code> or <code>allowed-value</code> entries.</p>
+                                          </remarks>
+                                    </define-flag>
+                                    <define-flag name="required" as-type="token" default="no">
+                                          <formal-name>Property Required</formal-name>
+                                          <description>Whether every instance of the listed element types must carry this property.</description>
+                                          <constraint>
+                                                <allowed-values id="oscal-catalog-prop-definition-required-values">
+                                                      <enum value="yes">Every instance of a listed element type must carry this property at least once.</enum>
+                                                      <enum value="no">The property is optional.</enum>
+                                                </allowed-values>
+                                          </constraint>
+                                    </define-flag>
+                                    <define-flag name="repeatable" as-type="token" default="no">
+                                          <formal-name>Property Repeatable</formal-name>
+                                          <description>Whether one instance of a listed element type may carry this property more than once, expressing a list of values.</description>
+                                          <constraint>
+                                                <allowed-values id="oscal-catalog-prop-definition-repeatable-values">
+                                                      <enum value="yes">The property may appear multiple times on one element instance; each occurrence contributes one value to a list.</enum>
+                                                      <enum value="no">The property may appear at most once on one element instance.</enum>
+                                                </allowed-values>
+                                          </constraint>
+                                    </define-flag>
+                                    <define-flag name="allow-other" as-type="token" default="no">
+                                          <formal-name>Allow Non-Enumerated Values</formal-name>
+                                          <description>When <code>allowed-value</code> entries are provided, whether values outside that enumeration are also permitted.</description>
+                                          <constraint>
+                                                <allowed-values id="oscal-catalog-prop-definition-allow-other-values">
+                                                      <enum value="yes">The enumerated values are documented suggestions; other values conforming to the datatype and pattern are also permitted.</enum>
+                                                      <enum value="no">The value space is closed to the enumerated values.</enum>
+                                                </allowed-values>
+                                          </constraint>
+                                    </define-flag>
+                                    <define-flag name="pattern" as-type="string">
+                                          <formal-name>Value Pattern</formal-name>
+                                          <description>An XML Schema regular expression that a value of this property must match in its entirety.</description>
+                                    </define-flag>
+                                    <model>
+                                          <define-field name="description" in-xml="WITH_WRAPPER" as-type="markup-multiline">
+                                                <formal-name>Property Description</formal-name>
+                                                <description>A summary of the property's meaning.</description>
+                                          </define-field>
+                                          <define-field name="allowed-value" as-type="markup-line" max-occurs="unbounded">
+                                                <formal-name>Allowed Value</formal-name>
+                                                <description>A permitted value of the property, with documentation of the value's meaning as the field's content.</description>
+                                                <json-value-key>documentation</json-value-key>
+                                                <group-as name="allowed-values" in-json="ARRAY"/>
+                                                <define-flag name="value" as-type="string" required="yes">
+                                                      <formal-name>Permitted Value</formal-name>
+                                                      <description>The literal value permitted for the property.</description>
+                                                </define-flag>
+                                          </define-field>
+                                          <define-field name="modifies" as-type="token" max-occurs="unbounded">
+                                                <formal-name>Modified Computation Class</formal-name>
+                                                <description>Declares a class of computation whose outcome depends on understanding this property.</description>
+                                                <group-as name="modifies" in-json="ARRAY"/>
+                                                <constraint>
+                                                      <allowed-values id="oscal-catalog-prop-definition-modifies-values" target=".">
+                                                            <enum value="selection">The property is a legitimate basis for selecting controls (e.g., during profile import); a selection computed over content carrying this property is unreliable without understanding it.</enum>
+                                                            <enum value="tailoring">The property alters how content may be modified (e.g., during profile tailoring and merge).</enum>
+                                                            <enum value="assessment">The property alters what satisfying a requirement means for assessment purposes.</enum>
+                                                            <enum value="rendering">The property changes the normative presentation of content; a generic rendering is not faithful without understanding it.</enum>
+                                                            <enum value="none">The property is informational only and modifies no class of computation; processing never needs to halt on account of it.</enum>
+                                                      </allowed-values>
+                                                </constraint>
+                                          </define-field>
+                                          <field ref="remarks" in-xml="WITH_WRAPPER"/>
+                                    </model>
+                                    <constraint>
+                                          <is-unique id="oscal-catalog-prop-definition-unique-allowed-value" target="allowed-value">
+                                                <key-field target="@value"/>
+                                                <remarks>
+                                                      <p>Each permitted value is enumerated exactly once.</p>
+                                                </remarks>
+                                          </is-unique>
+                                          <expect id="oscal-catalog-prop-definition-modifies-none-exclusive" target="." test="not(modifies = 'none') or not(modifies[not(. = 'none')])">
+                                                <description>The value 'none' is an explicit declaration that no computation class is modified, and therefore cannot be combined with any other value; a definition that both modifies nothing and modifies something is contradictory and would defeat deterministic fail-closed processing.</description>
+                                          </expect>
+                                    </constraint>
+                                    <remarks>
+                                          <p>The <code>required</code> and <code>repeatable</code> rules count occurrences per instance of a listed element type. Together they express four cardinalities: zero or one (the default), exactly one (<code>required</code>), zero or more (<code>repeatable</code>), and one or more (both). Repetition replaces delimiter-joined values packed into one string, which corrupt on the first value containing the delimiter.</p>
+                                          <p>When one or more <code>allowed-value</code> entries are provided, the property's value space is closed to those values unless <code>allow-other</code> is <q>yes</q>. The <code>datatype</code>, <code>pattern</code>, and <code>allowed-value</code> facilities compose: a conforming value must satisfy all that are present.</p>
+                                          <p>If no <code>modifies</code> value is provided, consumers must behave as if all computation classes other than <q>none</q> were declared. The safe default is the conservative reading: the burden of declaring a property harmless rests with its publisher, not with its consumers.</p>
+                                          <p>A tool performing a computation of a declared class (for example, profile resolution performing <q>selection</q>) over content that carries this property, without implementing the property, must halt with an error identifying the property and this definition, rather than proceed to a silently incorrect result. Tools must not modify or remove properties they do not implement.</p>
+                                    </remarks>
+                              </define-assembly>
+                              <field ref="remarks" in-xml="WITH_WRAPPER"/>
+                        </model>
+                        <constraint>
+                              <is-unique id="oscal-catalog-definition-set-unique-element" target="element">
+                                    <key-field target="."/>
+                                    <remarks>
+                                          <p>A set lists each element type at most once.</p>
+                                    </remarks>
+                              </is-unique>
+                              <is-unique id="oscal-catalog-definition-set-unique-prop-definition" target="prop-definition">
+                                    <key-field target="@ns"/>
+                                    <key-field target="@name"/>
+                                    <remarks>
+                                          <p>Within a set, each property is defined exactly once; two definitions for one <code>ns</code> and <code>name</code> would make the governing value and occurrence rules ambiguous.</p>
+                                    </remarks>
+                              </is-unique>
+                        </constraint>
+                  </define-assembly>
+            </model>
+            <remarks>
+                  <p>A catalog is the authoritative source of its controls. With this assembly it is also the authoritative source of the namespaced properties used to annotate those controls and the objects that implement or assess them. The definitions apply to the catalog itself and to every document that imports it, directly or through a chain of imports, such as a profile, a component definition, or a system security plan. A consumer of such a document obtains the definitions by resolving the import chain to the catalog. The definitions have no version of their own: their version is the <code>version</code> given in the catalog's <code>metadata</code>.</p>
+                  <p>A <code>prop</code> is governed by a definition when the element type of its containing object is listed by the definition's set and its <code>ns</code> and <code>name</code> equal those of the definition. The combination of element type, <code>ns</code>, and <code>name</code> identifies a definition and must be unique across all sets of a catalog.</p>
+                  <p>A namespace used by any definition is closed for the catalog and for the documents that import it: every <code>prop</code> in that namespace must be governed by a definition. A misspelled name, or a property placed on an element type for which it is not defined, is an error and not an unrecognized extension. Namespaces that no definition uses are unaffected, so existing content remains valid.</p>
+                  <p>A <code>prop</code> may omit its <code>ns</code> when exactly one definition applicable to the element type of its containing object has the prop's <code>name</code>; the namespace of the prop is then the one given by that definition. When more than one applicable definition has that <code>name</code>, the <code>ns</code> must be provided. A definition must not use a <code>name</code> that the OSCAL models define in the OSCAL namespace for the same element type, so that a property without a <code>ns</code> never changes its meaning. Providing the <code>ns</code> remains valid in every case.</p>
+                  <p>Constraints defined by the OSCAL models, or by an organization's Metaschema-based extension of them, take precedence over the definitions in this assembly. The definitions are a lightweight alternative for publishers and consumers that do not exchange Metaschema modules, not a replacement for them.</p>
+                  <p>Generic schema validation and the constraints defined on this model check the structure of the definitions. Checking properties against the definitions (names, element types, occurrence, <code>datatype</code>, <code>pattern</code>, <code>allowed-value</code> conformance, the uniqueness of definitions across sets, and the resolution of an omitted <code>ns</code>) is performed by tools implementing this mechanism. Because the definitions are data, this check is mechanical and requires no publisher-specific code.</p>
+                  <p>Profile resolution carries the definitions of the imported catalogs into the resolved catalog, as described by the profile resolution specification. Catalogs that define the same combination of element type, <code>ns</code>, and <code>name</code> differently cannot be resolved together.</p>
+            </remarks>
+            <example>
+                  <description>A catalog defining properties for its controls and for the components of downstream documents, with a control that uses them without repeating the namespace.</description>
+                  <catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0" uuid="0c5e1f0a-5b0f-4c0e-9a57-0d6f3c1c2b11">
+                        <metadata>
+                              <title>Example Catalog</title>
+                              <last-modified>2026-09-20T00:00:00Z</last-modified>
+                              <version>1.0</version>
+                              <oscal-version>1.2.3</oscal-version>
+                        </metadata>
+                        <prop-definitions>
+                              <definition-set>
+                                    <element>control</element>
+                                    <description>
+                                          <p>Security level, implementation effort, and thematic tags used to select requirements in elevated-protection baselines.</p>
+                                    </description>
+                                    <prop-definition ns="https://ns.example.de/ns/oscal" name="sec-level" label="Security level" required="yes">
+                                          <allowed-value value="normal-sdt">Standard protection needs.</allowed-value>
+                                          <allowed-value value="erhoeht-sdt">Elevated protection needs.</allowed-value>
+                                          <modifies>selection</modifies>
+                                    </prop-definition>
+                                    <prop-definition ns="https://ns.example.de/ns/oscal" name="effort" label="Effort" datatype="integer" pattern="[1-5]">
+                                          <description>
+                                                <p>Relative implementation effort on a five-point scale.</p>
+                                          </description>
+                                          <modifies>none</modifies>
+                                    </prop-definition>
+                                    <prop-definition ns="https://ns.example.de/ns/oscal" name="tag" label="Tag" repeatable="yes">
+                                          <modifies>none</modifies>
+                                    </prop-definition>
+                              </definition-set>
+                              <definition-set>
+                                    <element>system-component</element>
+                                    <element>defined-component</element>
+                                    <description>
+                                          <p>The kind of target object a component represents, defined once for the components of system security plans and of component definitions.</p>
+                                    </description>
+                                    <prop-definition ns="https://ns.example.de/ns/oscal" name="target-object" label="Target object" required="yes">
+                                          <allowed-value value="application">An application.</allowed-value>
+                                          <allowed-value value="it-system">An IT system.</allowed-value>
+                                          <allowed-value value="network">A network or communication link.</allowed-value>
+                                          <modifies>assessment</modifies>
+                                    </prop-definition>
+                              </definition-set>
+                        </prop-definitions>
+                        <control id="sys-1-2-2-a5">
+                              <title>Planning the Use of Cloud Services</title>
+                              <prop name="sec-level" value="normal-sdt"/>
+                              <prop name="effort" value="2"/>
+                              <prop name="tag" value="cryptography"/>
+                              <prop name="tag" value="zero-trust"/>
+                              <part name="statement" id="sys-1-2-2-a5_smt">
+                                    <p>The use of cloud services MUST be planned.</p>
+                              </part>
                         </control>
                   </catalog>
             </example>
