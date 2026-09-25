@@ -648,18 +648,4 @@
             matching the IDs of one or more controls to be selected.</description>
     </define-flag>
 
-    <!-- Updated the name of the flag to avoid conflict in the complete schema with the "with-child-control" defined in oscal_profile_metaschema.xml -->
-    <define-flag as-type="token" name="match-with-child-controls">
-        <formal-name>Include Contained Controls with Control</formal-name>
-        <description>When a control is included, whether its child (dependent) controls are also
-            included.</description>
-        <constraint>
-            <allowed-values>
-                <enum value="yes">Include child controls with an included control.</enum>
-                <enum value="no">When importing a control, only include child controls that are also
-                    explicitly called.</enum>
-            </allowed-values>
-        </constraint>
-    </define-flag>
-
 </METASCHEMA>
