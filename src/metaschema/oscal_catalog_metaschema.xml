@@ -64,9 +64,6 @@
                   <index id="oscal-catalog-props" name="catalog-props" target="//prop" >
                         <key-field target="@uuid"/>
                   </index>
-                  <index id="oscal-catalog-groups-controls-parts" name="catalog-groups-controls-parts" target="//(control|group|part)">
-                        <key-field target="@id"/>
-                  </index>
                   <index id="oscal-catalog-controls" name="catalog-controls" target="//control" >
                         <key-field target="@id"/>
                   </index>
