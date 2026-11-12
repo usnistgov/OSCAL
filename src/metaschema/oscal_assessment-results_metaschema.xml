@@ -58,6 +58,28 @@
       </assembly>
       <assembly ref="back-matter" min-occurs="0" max-occurs="1"/>
     </model>
+    <constraint>
+      <index id="oscal-ar-observation-uuid-index" name="index-assessment-results-observation-uuid" target="result/observation">
+        <formal-name>Observations in Assessment Results</formal-name>
+        <description>An index of the observations defined in these assessment results, by UUID. Each observation UUID must be unique.</description>
+        <key-field target="@uuid"/>
+      </index>
+      <index id="oscal-ar-risk-uuid-index" name="index-assessment-results-risk-uuid" target="result/risk">
+        <formal-name>Risks in Assessment Results</formal-name>
+        <description>An index of the risks defined in these assessment results, by UUID. Each risk UUID must be unique.</description>
+        <key-field target="@uuid"/>
+      </index>
+      <index-has-key id="oscal-ar-related-observation-index" name="index-assessment-results-observation-uuid" target="result/(finding|risk)/related-observation">
+        <formal-name>Related Observation Is Defined</formal-name>
+        <description>A related observation must reference an observation defined in these assessment results.</description>
+        <key-field target="@observation-uuid"/>
+      </index-has-key>
+      <index-has-key id="oscal-ar-associated-risk-index" name="index-assessment-results-risk-uuid" target="result/finding/associated-risk">
+        <formal-name>Associated Risk Is Defined</formal-name>
+        <description>An associated risk must reference a risk defined in these assessment results.</description>
+        <key-field target="@risk-uuid"/>
+      </index-has-key>
+    </constraint>
   </define-assembly>
 
   <!-- ********** RESULTS Assembly ********** -->
