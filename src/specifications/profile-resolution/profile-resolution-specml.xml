@@ -1330,6 +1330,155 @@ control:
             <src>control</src> objects. Because the semantics of the
             <src>add</src> and remove directives target any (object) contents of controls, they can be used to target these child controls for modification as well as other contents. <req level="must" id="req-modify-alter-add-nested">Profile resolution tools MUST be able to correctly handle add directives targeting nested controls. This includes directives that target a child control as well as directives that target a parent control and modify the child. </req> </p>
         </section>
+        <section id="add-child-controls">
+          <head>Adding child controls</head>
+          <p>In addition to <src>param</src>, <src>prop</src>, <src>link</src>, and <src>part</src> objects, an
+            <src>add</src> directive may contain <src>control</src> objects. This permits a profile to extend a
+            catalog with new controls, such as control enhancements, placed as children of an existing control.</p>
+          <p><req level="must" id="req-modify-alter-add-control">A <src>control</src> inside an
+              <src>add</src> directive MUST be added to the target together with all of its contents, including
+              any <src>control</src> objects nested inside it, following the same binding and position rules as
+              other contents of the <src>add</src> directive.</req></p>
+          <p>The control that receives the new child control is identified by the same means as for any other
+            addition:</p>
+          <ul>
+            <li>
+              <p>With an implicit binding (no <src>by-id</src>), the new control becomes a child of the control
+                given by the <src>control-id</src> of the <src>alter</src>. Because child controls always follow
+                the other contents of a control (<xref rid="add-to-control"/>), a new control is placed before any
+                existing child controls when <src>position</src> is <code>starting</code> (or
+                <code>before</code>), and after them when <src>position</src> is <code>ending</code> (or
+                <code>after</code>, or not given).</p>
+            </li>
+            <li>
+              <p>With an explicit binding, <src>by-id</src> may give the <src>id</src> of an existing child
+                control. A new control is then added as a sibling directly before or after that child control
+                (<src>position</src> <code>before</code> or <code>after</code>), or as a child of that child
+                control, at the start or end of its contents (<src>position</src> <code>starting</code> or
+                <code>ending</code>).</p>
+            </li>
+            <li>
+              <p>An <src>alter</src> whose <src>control-id</src> is the <src>id</src> of an existing child
+                control may add a new control to that child control directly (<xref rid="nested-controls"/>).</p>
+            </li>
+          </ul>
+          <p>An addition never removes or rewrites the existing contents of the target: the title, parameters,
+            properties, links, parts, and child controls already present are kept as they were, in their
+            original order. Contents of an added control are copied as given; for example, its <src>id</src>,
+            the <src>id</src> values of its parts, and any parameter insertions are not renamed. When
+            <src>by-id</src> identifies an object other than a control, such as a <src>part</src>, the new
+            control is still placed as directed, but the result will not be schema-valid, in the same way as
+            for the misplaced <tgt>prop</tgt> described under <xref rid="add-to-element"/>.</p>
+          <p>As with all control identifiers (<xref rid="id"/>), the <src>id</src> of an added control, and of
+            any control nested inside it, is expected to be unique in the resolved catalog. Profile authors are
+            responsible for choosing identifiers that do not clash with identifiers in the imported catalogs,
+            for example by using a distinctive suffix or namespace convention. <revisit>Maintainer decision
+              needed: whether a tool SHOULD warn, or MUST report an error, when an added control has the same
+              <src>id</src> as another control in the result (compare
+              <xref rid="no-merge-combination-rule"/>). The reference XSLT resolver currently emits a warning
+              and keeps both controls.</revisit></p>
+          <p><revisit>Maintainer decisions needed on the interaction of added controls with other modify
+              directives: whether a <src>set-parameter</src> may target a <src>param</src> defined inside an
+              added control, and whether an <src>alter</src> may target a control that another
+              <src>alter</src> in the same profile adds. The reference XSLT resolver currently does neither.
+              Because the modify phase follows the merge phase, controls added in a profile with a
+              <src>flat</src> merge directive also remain nested inside the control to which they are
+              added.</revisit></p>
+          <mapping>
+            <p>Adding a child control with implicit binding and position <code>starting</code></p>
+            <tagging whose="source_catalog">
+
+control:
+  id: a1
+  title: Basic precautions
+  parts:
+    - name: statement
+      id: a1_smt
+      prose: Keep work areas clear.
+  controls:
+    - id: a1.1
+      title: Daily inspection
+            </tagging>
+            <tagging whose="source_profile">
+
+alter:
+  control-id: a1
+  adds:
+    - position: starting
+      controls:
+        - id: a1.100
+          title: Weekend closure
+          parts:
+            - name: statement
+              id: a1.100_smt
+              prose: Close work areas on weekends.
+            </tagging>
+            <tagging whose="target_catalog">
+
+control:
+  id: a1
+  title: Basic precautions
+  parts:
+    - name: statement
+      id: a1_smt
+      prose: Keep work areas clear.
+  controls:
+    - id: a1.100
+      title: Weekend closure
+      parts:
+        - name: statement
+          id: a1.100_smt
+          prose: Close work areas on weekends.
+    - id: a1.1
+      title: Daily inspection
+            </tagging>
+            <p>The new control is placed after the existing <tgt>part</tgt>, because controls always follow the
+              other contents of a control, but before the existing child control <code>a1.1</code>, because
+              the position is <code>starting</code>.</p>
+          </mapping>
+          <mapping>
+            <p>Adding a child control with explicit binding to an existing child control and position
+              <code>after</code></p>
+            <tagging whose="source_catalog">
+
+control:
+  id: a1
+  title: Basic precautions
+  controls:
+    - id: a1.1
+      title: Daily inspection
+    - id: a1.2
+      title: Weekly inspection
+            </tagging>
+            <tagging whose="source_profile">
+
+alter:
+  control-id: a1
+  adds:
+    - by-id: a1.1
+      position: after
+      controls:
+        - id: a1.1a
+          title: Inspection record
+            </tagging>
+            <tagging whose="target_catalog">
+
+control:
+  id: a1
+  title: Basic precautions
+  controls:
+    - id: a1.1
+      title: Daily inspection
+    - id: a1.1a
+      title: Inspection record
+    - id: a1.2
+      title: Weekly inspection
+            </tagging>
+            <p>The new control is a sibling of its target <code>a1.1</code>, directly after it. With position
+              <code>ending</code> instead, it would have been added inside <code>a1.1</code>, as a child of
+              that control.</p>
+          </mapping>
+        </section>
       </section>
       <section id="remove-directive">
         <head>Removing contents from controls</head>
