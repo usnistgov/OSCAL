@@ -1348,7 +1348,12 @@ control:
                 the other contents of a control (<xref rid="add-to-control"/>), a new control is placed before any
                 existing child controls when <src>position</src> is <code>starting</code> (or
                 <code>before</code>), and after them when <src>position</src> is <code>ending</code> (or
-                <code>after</code>, or not given).</p>
+                <code>after</code>, or not given). <revisit>Maintainer decision needed:
+                <xref rid="add-to-control"/> requires <code>before</code> and <code>after</code> without
+                <src>by-id</src> to be treated as <code>starting</code> and <code>ending</code>, and the
+                reference XSLT resolver does so, but the remarks on <src>add</src> in the profile model
+                state that only <code>starting</code> and <code>ending</code> are permitted without
+                <src>by-id</src>, and the Java resolver in liboscal-java rejects such an addition.</revisit></p>
             </li>
             <li>
               <p>With an explicit binding, <src>by-id</src> may give the <src>id</src> of an existing child
