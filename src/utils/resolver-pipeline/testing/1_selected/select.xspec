@@ -487,6 +487,34 @@
             <x:expect label="No opr:id is assigned to anything inside modify"
                 test="empty($x:result/o:modify//@opr:id)"/>
         </x:scenario>
+        <x:scenario label="Param given directly inside modify/alter/add">
+            <!-- Regression: a param inside alter/add was handled by the param
+                template for catalog params, which computes a process id from
+                the containing catalog; outside a catalog this failed with
+                XPTY0004. This failure predates issue #2213. -->
+            <x:context>
+                <profile>
+                    <import href="{$ov:filedir}/catalogs/xyz-tiny_catalog.xml">
+                        <include-controls>
+                            <with-id>x1</with-id>
+                        </include-controls>
+                    </import>
+                    <modify>
+                        <alter control-id="x1">
+                            <add position="starting">
+                                <param id="x1_prm_added">
+                                    <label>added parameter</label>
+                                </param>
+                            </add>
+                        </alter>
+                    </modify>
+                </profile>
+            </x:context>
+            <x:expect label="The modify directive, including the added param, passes through selection unchanged"
+                test="deep-equal($x:result/o:modify, $x:context/o:modify)"/>
+            <x:expect label="No opr:id is assigned to anything inside modify"
+                test="empty($x:result/o:modify//@opr:id)"/>
+        </x:scenario>
     </x:scenario>
 
     <x:scenario label="Tests for match='profile' mode='o:select' template">
