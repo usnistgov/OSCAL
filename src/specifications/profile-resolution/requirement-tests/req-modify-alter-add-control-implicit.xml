@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../example-checkup.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!-- Child controls added through alter/add with implicit binding (no by-id). usnistgov/OSCAL#2213 -->
+<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+         uuid="d18f3829-99dc-45fe-aaf8-3fe94761f579">
+   <metadata>
+      <title>Test Profile: add child controls, implicit binding</title>
+      <last-modified>2026-11-14T00:00:00Z</last-modified>
+      <version>1.0</version>
+      <oscal-version>1.2.3</oscal-version>
+   </metadata>
+   <import href="catalogs/child-controls_catalog.xml">
+      <include-all/>
+   </import>
+   <merge>
+      <as-is>true</as-is>
+   </merge>
+   <modify>
+      <!-- A single child control, no position: added at the end of ac-1 (which has no children) -->
+      <alter control-id="ac-1">
+         <add>
+            <control id="ac-1.100">
+               <title>Organization-Defined Policy Review</title>
+               <prop name="label" value="AC-1(100)"/>
+               <part name="statement" id="ac-1.100_smt">
+                  <p>Review the policy after each significant change.</p>
+               </part>
+            </control>
+         </add>
+      </alter>
+      <alter control-id="ac-2">
+         <!-- Two child controls with position=starting; the prop in the same add
+              is placed among props, the controls before the existing children -->
+         <add position="starting">
+            <prop name="tailoring" ns="https://example.org/ns/oscal" value="extended"/>
+            <control id="ac-2.100">
+               <title>Account Inventory</title>
+               <param id="ac-2.100_prm_1">
+                  <label>inventory frequency</label>
+               </param>
+               <prop name="label" value="AC-2(100)"/>
+               <part name="statement" id="ac-2.100_smt">
+                  <p>Maintain an inventory of accounts <insert type="param" id-ref="ac-2.100_prm_1"/>.</p>
+               </part>
+            </control>
+            <control id="ac-2.101">
+               <title>Shared Account Approval</title>
+               <prop name="label" value="AC-2(101)"/>
+               <part name="statement" id="ac-2.101_smt">
+                  <p>Approve shared accounts before activation.</p>
+               </part>
+            </control>
+         </add>
+         <!-- One child control with position=ending: after the existing children -->
+         <add position="ending">
+            <control id="ac-2.102">
+               <title>Account Review Evidence</title>
+               <prop name="label" value="AC-2(102)"/>
+               <part name="statement" id="ac-2.102_smt">
+                  <p>Retain evidence of account reviews.</p>
+               </part>
+            </control>
+         </add>
+      </alter>
+   </modify>
+</profile>

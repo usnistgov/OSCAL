@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../example-checkup.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!-- Backward compatibility: alter/add without controls, against a catalog with child controls. usnistgov/OSCAL#2213 -->
+<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+         uuid="53fb6b98-a846-45cf-bba6-921a1277800b">
+   <metadata>
+      <title>Test Profile: add without child controls</title>
+      <last-modified>2026-11-14T00:00:00Z</last-modified>
+      <version>1.0</version>
+      <oscal-version>1.2.3</oscal-version>
+   </metadata>
+   <import href="catalogs/child-controls_catalog.xml">
+      <include-all/>
+   </import>
+   <merge>
+      <as-is>true</as-is>
+   </merge>
+   <modify>
+      <alter control-id="ac-2">
+         <add position="ending">
+            <prop name="tailoring" ns="https://example.org/ns/oscal" value="unchanged-children"/>
+            <part name="guidance" id="ac-2_gdn_extra">
+               <p>Additional organizational guidance.</p>
+            </part>
+         </add>
+      </alter>
+   </modify>
+</profile>

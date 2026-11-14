@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+          uuid="00000000-0000-4000-B000-000000000000">
+   <metadata>
+      <title>Test Profile: add child controls, explicit binding and nesting</title>
+      <last-modified>2026-11-14T00:00:00Z</last-modified>
+      <version>1.0</version>
+      <oscal-version>1.2.3</oscal-version>
+      <prop name="resolution-tool"
+             value="OSCAL Profile Resolver XSLT Pipeline OPRXP"/>
+      <link href="../req-modify-alter-add-control-explicit.xml"
+             rel="source-profile"/>
+   </metadata>
+   <group id="ac">
+      <title>Access Control</title>
+      <control id="ac-1">
+         <title>Policy and Procedures</title>
+         <param id="ac-1_prm_1">
+            <label>frequency</label>
+         </param>
+         <prop name="label" value="AC-1"/>
+         <link href="#ac-2" rel="related"/>
+         <part name="statement" id="ac-1_smt">
+            <p>Review and update the access control policy <insert type="param" id-ref="ac-1_prm_1"/>.</p>
+         </part>
+      </control>
+      <control id="ac-2">
+         <title>Account Management</title>
+         <param id="ac-2_prm_1">
+            <label>account types</label>
+         </param>
+         <prop name="label" value="AC-2"/>
+         <part name="statement" id="ac-2_smt">
+            <p>Define and document the types of accounts allowed: <insert type="param" id-ref="ac-2_prm_1"/>.</p>
+         </part>
+         <part name="guidance" id="ac-2_gdn">
+            <p>Account management includes the identification of account types.</p>
+         </part>
+         <control id="ac-2.0">
+            <title>Account Management Roles</title>
+            <part name="statement" id="ac-2.0_smt">
+               <p>Assign account managers.</p>
+            </part>
+         </control>
+         <control id="ac-2.1">
+            <title>Automated System Account Management</title>
+            <prop name="label" value="AC-2(1)"/>
+            <part name="statement" id="ac-2.1_smt">
+               <p>Support the management of system accounts using automated mechanisms.</p>
+            </part>
+            <control id="ac-2.1.100">
+               <title>Automated Disablement Audit</title>
+               <part name="statement" id="ac-2.1.100_smt">
+                  <p>Audit automated account disablement.</p>
+               </part>
+            </control>
+         </control>
+         <control id="ac-2.1a">
+            <title>Automated Account Notifications</title>
+            <part name="statement" id="ac-2.1a_smt">
+               <p>Notify account managers automatically.</p>
+            </part>
+         </control>
+         <control id="ac-2.2">
+            <title>Automated Temporary and Emergency Account Management</title>
+            <prop name="label" value="AC-2(2)"/>
+            <part name="statement" id="ac-2.2_smt">
+               <p>Automatically remove temporary and emergency accounts.</p>
+            </part>
+            <control id="ac-2.2.100">
+               <title>Emergency Account Expiry</title>
+               <part name="statement" id="ac-2.2.100_smt">
+                  <p>Expire emergency accounts within 24 hours.</p>
+               </part>
+               <control id="ac-2.2.100.1">
+                  <title>Emergency Account Expiry Notification</title>
+                  <part name="statement" id="ac-2.2.100.1_smt">
+                     <p>Notify the account owner before expiry.</p>
+                  </part>
+               </control>
+            </control>
+         </control>
+      </control>
+   </group>
+</catalog>

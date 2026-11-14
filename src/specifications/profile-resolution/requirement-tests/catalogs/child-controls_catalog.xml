@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Source catalog for profile resolution tests of child controls added
+     through modify/alter/add (usnistgov/OSCAL#2213). -->
+<catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+         uuid="eac11751-e3bf-4e10-8f59-6c2095291e77">
+   <metadata>
+      <title>Child Controls Test Catalog</title>
+      <last-modified>2026-11-14T00:00:00Z</last-modified>
+      <version>1.0</version>
+      <oscal-version>1.2.3</oscal-version>
+   </metadata>
+   <group id="ac">
+      <title>Access Control</title>
+      <control id="ac-1">
+         <title>Policy and Procedures</title>
+         <param id="ac-1_prm_1">
+            <label>frequency</label>
+         </param>
+         <prop name="label" value="AC-1"/>
+         <link href="#ac-2" rel="related"/>
+         <part name="statement" id="ac-1_smt">
+            <p>Review and update the access control policy <insert type="param" id-ref="ac-1_prm_1"/>.</p>
+         </part>
+      </control>
+      <control id="ac-2">
+         <title>Account Management</title>
+         <param id="ac-2_prm_1">
+            <label>account types</label>
+         </param>
+         <prop name="label" value="AC-2"/>
+         <part name="statement" id="ac-2_smt">
+            <p>Define and document the types of accounts allowed: <insert type="param" id-ref="ac-2_prm_1"/>.</p>
+         </part>
+         <part name="guidance" id="ac-2_gdn">
+            <p>Account management includes the identification of account types.</p>
+         </part>
+         <control id="ac-2.1">
+            <title>Automated System Account Management</title>
+            <prop name="label" value="AC-2(1)"/>
+            <part name="statement" id="ac-2.1_smt">
+               <p>Support the management of system accounts using automated mechanisms.</p>
+            </part>
+         </control>
+         <control id="ac-2.2">
+            <title>Automated Temporary and Emergency Account Management</title>
+            <prop name="label" value="AC-2(2)"/>
+            <part name="statement" id="ac-2.2_smt">
+               <p>Automatically remove temporary and emergency accounts.</p>
+            </part>
+         </control>
+      </control>
+   </group>
+</catalog>

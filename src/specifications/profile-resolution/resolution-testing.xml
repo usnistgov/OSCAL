@@ -240,18 +240,23 @@
    </requirement>
    <requirement level="must" id="req-modify-alter-add-implicit">
       <statement>An add directive with no by-id child MUST be considered an implicit binding, and will apply to the control as a whole.</statement>
+      <test file="requirement-tests/req-modify-alter-add-control-implicit.xml">child controls added to the control as a whole</test>
    </requirement>
    <requirement level="must" id="req-modify-alter-add-implicit0contents">
       <statement>The contents of an implicitly bound add directive MUST be added to the control contents in the target, either after its title when position is starting, or at the end if its position is ending, or if no valid position is given.</statement>
+      <test file="requirement-tests/req-modify-alter-add-control-implicit.xml">child controls with position starting, ending, and none</test>
+      <test file="requirement-tests/req-modify-alter-add-control-none.xml">additions without child controls leave existing children unchanged</test>
    </requirement>
    <requirement level="must" id="req-modify-alter-add-implicit-position">
       <statement>When an add directive is implicitly bound, the position values before and after MUST be treated like starting and ending, respectively.</statement>
    </requirement>
    <requirement level="must" id="req-modify-alter-add-implicit-order">
       <statement>After processing an implicitly bound add directive, the control contents MUST be sorted to appear in the required order: a new prop appears after any prop already in the control, when position is ending, or not given, or before any prop in the control when position is starting.</statement>
+      <test file="requirement-tests/req-modify-alter-add-control-implicit.xml">new prop and new child controls sorted into model order</test>
    </requirement>
    <requirement level="must" id="req-modify-alter-add-explicit">
       <statement>An add directive with a by-id child MUST be considered an explicit binding, and applies to only a single object inside the control.</statement>
+      <test file="requirement-tests/req-modify-alter-add-control-explicit.xml">by-id targeting existing child controls</test>
    </requirement>
    <requirement level="must" id="req-modify-alter-add-explicit-id">
       <statement>When an add directive is explicitly bound, the value of the by-id child MUST correspond to the value of an id on an object inside the control, and not the control itself.</statement>
@@ -264,12 +269,20 @@
    </requirement>
    <requirement level="must" id="req-modify-alter-add-explicit-inside">
       <statement>When position has a value of startingor ending, the contents of the source MUST be added inside the target, either at the start or end of its contents, respectively.</statement>
+      <test file="requirement-tests/req-modify-alter-add-control-explicit.xml">position ending inside an existing child control</test>
    </requirement>
    <requirement level="must" id="req-modify-alter-add-explicit-outside">
       <statement>When position has a value of before or after, the contents of the source MUST be added outside the target, either directly before or after it, respectively.</statement>
+      <test file="requirement-tests/req-modify-alter-add-control-explicit.xml">position before and after an existing child control</test>
    </requirement>
    <requirement level="must" id="req-modify-alter-add-nested">
       <statement>Profile resolution tools MUST be able to correctly handle add directives targeting nested controls. This includes directives that target a child control as well as directives that target a parent control and modify the child. </statement>
+      <test file="requirement-tests/req-modify-alter-add-control-explicit.xml">alter targeting a child control; added control containing a child control</test>
+   </requirement>
+   <requirement level="must" id="req-modify-alter-add-control">
+      <statement>A control inside an add directive MUST be added to the target together with all of its contents, including any control objects nested inside it, following the same binding and position rules as other contents of the add directive.</statement>
+      <test file="requirement-tests/req-modify-alter-add-control-implicit.xml">implicit binding</test>
+      <test file="requirement-tests/req-modify-alter-add-control-explicit.xml">explicit binding and nesting</test>
    </requirement>
    <requirement level="must" id="req-modify-alter-remove-match">
       <statement> An object inside the control MUST be removed from the output if and only if it meets all of the criteria given by the child objects of the remove directive.</statement>
