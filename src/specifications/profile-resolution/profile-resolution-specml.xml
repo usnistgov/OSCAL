@@ -1354,17 +1354,21 @@ control:
               <p>With an explicit binding, <src>by-id</src> may give the <src>id</src> of an existing child
                 control. A new control is then added as a sibling directly before or after that child control
                 (<src>position</src> <code>before</code> or <code>after</code>), or as a child of that child
-                control, at the start or end of its contents (<src>position</src> <code>starting</code> or
-                <code>ending</code>).</p>
+                control (<src>position</src> <code>starting</code> or <code>ending</code>), before or after
+                any child controls it already has. <revisit>Maintainer confirmation needed:
+                <xref rid="add-to-element"/> places contents at the start or end of the target's contents,
+                which for a control added with <code>starting</code> would precede the target's title. The
+                reference XSLT resolver instead restores the required order of control contents, so the new
+                control follows the target's title, parameters, properties, links, and parts.</revisit></p>
             </li>
             <li>
               <p>An <src>alter</src> whose <src>control-id</src> is the <src>id</src> of an existing child
                 control may add a new control to that child control directly (<xref rid="nested-controls"/>).</p>
             </li>
           </ul>
-          <p>An addition never removes or rewrites the existing contents of the target: the title, parameters,
-            properties, links, parts, and child controls already present are kept as they were, in their
-            original order. Contents of an added control are copied as given; for example, its <src>id</src>,
+          <p>Adding a control does not remove, rename, or reorder the existing contents of the target: the
+            parameters, properties, links, parts, and child controls already present are kept, in their original
+            order. Contents of an added control are copied as given; for example, its <src>id</src>,
             the <src>id</src> values of its parts, and any parameter insertions are not renamed. When
             <src>by-id</src> identifies an object other than a control, such as a <src>part</src>, the new
             control is still placed as directed, but the result will not be schema-valid, in the same way as
