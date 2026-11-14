@@ -2649,7 +2649,7 @@
                 test="exists($x:result//o:control[@id='leaf']/o:prop[@name='marker']) and exists($x:result//o:control[@id='leaf']/o:part[@id='leaf_gdn']) and exists($x:result//o:control[@id='leaf']/o:control[@id='leaf.1'])"/>
         </x:scenario>
 
-        <x:scenario label="Open question: set-parameter targeting a param defined inside an added control" pending="Issue #2213: maintainer decision needed - spec does not say whether params inside added content are set-parameter targets; current behavior copies the added param unchanged">
+        <x:scenario label="Open question: set-parameter targeting a param defined inside an added control" pending="Issue #2213: maintainer decision needed - spec does not say whether params inside added content are set-parameter targets. The expectation below describes one possible answer (the value is applied) and FAILS against the current resolver, which copies the added param unchanged.">
             <x:context>
                 <catalog id="cc">
                     <control id="p1">
@@ -2702,7 +2702,7 @@
                 test="$x:result//o:param[@id='p1.3_prm_1']/o:value = '30 days'"/>
         </x:scenario>
 
-        <x:scenario label="Open question: alter targeting a control that another alter adds" pending="Issue #2213: maintainer decision needed - spec does not define whether alter directives apply to controls added in the same modify; current behavior does not apply them">
+        <x:scenario label="Open question: alter targeting a control that another alter adds" pending="Issue #2213: maintainer decision needed - spec does not define whether alter directives apply to controls added in the same modify. The expectation below describes one possible answer (the alter is applied) and FAILS against the current resolver, which does not apply it.">
             <x:context>
                 <catalog id="cc">
                     <control id="p1">
