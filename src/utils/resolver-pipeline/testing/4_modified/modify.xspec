@@ -1720,4 +1720,1043 @@
         </x:context>
     </x:scenario>
 
+    <!-- Issue #2213: child controls added to a control through modify/alter/add.
+        These scenarios exercise the modify step only; the finish step puts control
+        contents into canonical order (see 5_finished/finish.xspec). -->
+    <x:scenario label="Tests for child controls added through alter/add (issue #2213)">
+        <x:scenario label="Single child control added to a control that has no child controls (implicit binding, no position)">
+            <x:context>
+                <catalog id="cc">
+                    <control id="p1">
+                        <title>Parent</title>
+                        <param id="p1_prm_1">
+                            <label>frequency</label>
+                        </param>
+                        <prop name="label" value="P-1"/>
+                        <link href="#leaf" rel="related"/>
+                        <part name="statement" id="p1_smt">
+                            <p>Parent requirement <insert type="param" id-ref="p1_prm_1"/>.</p>
+                        </part>
+                        <control id="p1.1">
+                            <title>Existing child 1</title>
+                            <part name="statement" id="p1.1_smt">
+                                <p>Child 1 requirement.</p>
+                            </part>
+                        </control>
+                        <control id="p1.2">
+                            <title>Existing child 2</title>
+                            <part name="statement" id="p1.2_smt">
+                                <p>Child 2 requirement.</p>
+                            </part>
+                        </control>
+                    </control>
+                    <control id="leaf">
+                        <title>Leaf</title>
+                        <part name="statement" id="leaf_smt">
+                            <p>Leaf requirement.</p>
+                        </part>
+                    </control>
+                    <modify>
+                        <alter control-id="leaf">
+                            <add>
+                                <control id="leaf.1">
+                                    <title>Added leaf.1</title>
+                                    <part name="statement" id="leaf.1_smt">
+                                        <p>Requirement of leaf.1.</p>
+                                    </part>
+                                </control>
+                            </add>
+                        </alter>
+                    </modify>
+                </catalog>
+            </x:context>
+            <x:expect label="leaf has exactly one child control, leaf.1"
+                test="$x:result//o:control[@id='leaf']/o:control/@id/string() = 'leaf.1' and count($x:result//o:control[@id='leaf']/o:control/@id/string()) = 1"/>
+            <x:expect label="The added control is copied intact"
+                test="deep-equal($x:result//o:control[@id='leaf.1'], $x:context//o:add/o:control[@id='leaf.1'])"/>
+            <x:expect label="Leaf's original content is unchanged"
+                test="deep-equal($x:result//o:control[@id='leaf']/(* except o:control), $x:context//o:control[@id='leaf']/*)"/>
+            <x:expect label="p1 is untouched"
+                test="deep-equal($x:result//o:control[@id='p1'], $x:context//o:control[@id='p1'])"/>
+            <x:expect label="No modify directive remains in the result"
+                test="empty($x:result//o:modify)"/>
+        </x:scenario>
+
+        <x:scenario label="Multiple child controls in one add, position=ending">
+            <x:context>
+                <catalog id="cc">
+                    <control id="p1">
+                        <title>Parent</title>
+                        <param id="p1_prm_1">
+                            <label>frequency</label>
+                        </param>
+                        <prop name="label" value="P-1"/>
+                        <link href="#leaf" rel="related"/>
+                        <part name="statement" id="p1_smt">
+                            <p>Parent requirement <insert type="param" id-ref="p1_prm_1"/>.</p>
+                        </part>
+                        <control id="p1.1">
+                            <title>Existing child 1</title>
+                            <part name="statement" id="p1.1_smt">
+                                <p>Child 1 requirement.</p>
+                            </part>
+                        </control>
+                        <control id="p1.2">
+                            <title>Existing child 2</title>
+                            <part name="statement" id="p1.2_smt">
+                                <p>Child 2 requirement.</p>
+                            </part>
+                        </control>
+                    </control>
+                    <control id="leaf">
+                        <title>Leaf</title>
+                        <part name="statement" id="leaf_smt">
+                            <p>Leaf requirement.</p>
+                        </part>
+                    </control>
+                    <modify>
+                        <alter control-id="p1">
+                            <add position="ending">
+                                <control id="p1.3">
+                                    <title>Added p1.3</title>
+                                    <part name="statement" id="p1.3_smt">
+                                        <p>Requirement of p1.3.</p>
+                                    </part>
+                                </control>
+                                <control id="p1.4">
+                                    <title>Added p1.4</title>
+                                    <part name="statement" id="p1.4_smt">
+                                        <p>Requirement of p1.4.</p>
+                                    </part>
+                                </control>
+                            </add>
+                        </alter>
+                    </modify>
+                </catalog>
+            </x:context>
+            <x:expect label="Added controls follow existing children, in document order"
+                test="deep-equal($x:result//o:control[@id='p1']/o:control/@id/string(), ('p1.1','p1.2','p1.3','p1.4'))"/>
+            <x:expect label="Parent title, param, prop, link and part are unchanged"
+                test="deep-equal($x:result//o:control[@id='p1']/(* except o:control), $x:context//o:control[@id='p1']/(* except o:control))"/>
+            <x:expect label="Existing child controls are unchanged"
+                test="deep-equal($x:result//o:control[@id=('p1.1','p1.2')], $x:context//o:control[@id=('p1.1','p1.2')])"/>
+            <x:expect label="No modify directive remains in the result"
+                test="empty($x:result//o:modify)"/>
+        </x:scenario>
+
+        <x:scenario label="Multiple child controls in one add, position=starting">
+            <x:context>
+                <catalog id="cc">
+                    <control id="p1">
+                        <title>Parent</title>
+                        <param id="p1_prm_1">
+                            <label>frequency</label>
+                        </param>
+                        <prop name="label" value="P-1"/>
+                        <link href="#leaf" rel="related"/>
+                        <part name="statement" id="p1_smt">
+                            <p>Parent requirement <insert type="param" id-ref="p1_prm_1"/>.</p>
+                        </part>
+                        <control id="p1.1">
+                            <title>Existing child 1</title>
+                            <part name="statement" id="p1.1_smt">
+                                <p>Child 1 requirement.</p>
+                            </part>
+                        </control>
+                        <control id="p1.2">
+                            <title>Existing child 2</title>
+                            <part name="statement" id="p1.2_smt">
+                                <p>Child 2 requirement.</p>
+                            </part>
+                        </control>
+                    </control>
+                    <control id="leaf">
+                        <title>Leaf</title>
+                        <part name="statement" id="leaf_smt">
+                            <p>Leaf requirement.</p>
+                        </part>
+                    </control>
+                    <modify>
+                        <alter control-id="p1">
+                            <add position="starting">
+                                <control id="p1.0a">
+                                    <title>Added p1.0a</title>
+                                    <part name="statement" id="p1.0a_smt">
+                                        <p>Requirement of p1.0a.</p>
+                                    </part>
+                                </control>
+                                <control id="p1.0b">
+                                    <title>Added p1.0b</title>
+                                    <part name="statement" id="p1.0b_smt">
+                                        <p>Requirement of p1.0b.</p>
+                                    </part>
+                                </control>
+                            </add>
+                        </alter>
+                    </modify>
+                </catalog>
+            </x:context>
+            <x:expect label="Added controls precede existing children, in document order"
+                test="deep-equal($x:result//o:control[@id='p1']/o:control/@id/string(), ('p1.0a','p1.0b','p1.1','p1.2'))"/>
+            <x:expect label="Parent title, param, prop, link and part are unchanged"
+                test="deep-equal($x:result//o:control[@id='p1']/(* except o:control), $x:context//o:control[@id='p1']/(* except o:control))"/>
+            <x:expect label="Existing child controls are unchanged"
+                test="deep-equal($x:result//o:control[@id=('p1.1','p1.2')], $x:context//o:control[@id=('p1.1','p1.2')])"/>
+        </x:scenario>
+
+        <x:scenario label="Separate add directives with position=starting and position=ending in one alter">
+            <x:context>
+                <catalog id="cc">
+                    <control id="p1">
+                        <title>Parent</title>
+                        <param id="p1_prm_1">
+                            <label>frequency</label>
+                        </param>
+                        <prop name="label" value="P-1"/>
+                        <link href="#leaf" rel="related"/>
+                        <part name="statement" id="p1_smt">
+                            <p>Parent requirement <insert type="param" id-ref="p1_prm_1"/>.</p>
+                        </part>
+                        <control id="p1.1">
+                            <title>Existing child 1</title>
+                            <part name="statement" id="p1.1_smt">
+                                <p>Child 1 requirement.</p>
+                            </part>
+                        </control>
+                        <control id="p1.2">
+                            <title>Existing child 2</title>
+                            <part name="statement" id="p1.2_smt">
+                                <p>Child 2 requirement.</p>
+                            </part>
+                        </control>
+                    </control>
+                    <control id="leaf">
+                        <title>Leaf</title>
+                        <part name="statement" id="leaf_smt">
+                            <p>Leaf requirement.</p>
+                        </part>
+                    </control>
+                    <modify>
+                        <alter control-id="p1">
+                            <add position="ending">
+                                <control id="p1.9">
+                                    <title>Added p1.9</title>
+                                    <part name="statement" id="p1.9_smt">
+                                        <p>Requirement of p1.9.</p>
+                                    </part>
+                                </control>
+                            </add>
+                            <add position="starting">
+                                <control id="p1.0">
+                                    <title>Added p1.0</title>
+                                    <part name="statement" id="p1.0_smt">
+                                        <p>Requirement of p1.0.</p>
+                                    </part>
+                                </control>
+                            </add>
+                        </alter>
+                    </modify>
+                </catalog>
+            </x:context>
+            <x:expect label="Starting control first, ending control last"
+                test="deep-equal($x:result//o:control[@id='p1']/o:control/@id/string(), ('p1.0','p1.1','p1.2','p1.9'))"/>
+            <x:expect label="Parent title, param, prop, link and part are unchanged"
+                test="deep-equal($x:result//o:control[@id='p1']/(* except o:control), $x:context//o:control[@id='p1']/(* except o:control))"/>
+            <x:expect label="Existing child controls are unchanged"
+                test="deep-equal($x:result//o:control[@id=('p1.1','p1.2')], $x:context//o:control[@id=('p1.1','p1.2')])"/>
+        </x:scenario>
+
+        <x:scenario label="Implicit binding with position=before / after is treated as starting / ending">
+            <x:context>
+                <catalog id="cc">
+                    <control id="p1">
+                        <title>Parent</title>
+                        <param id="p1_prm_1">
+                            <label>frequency</label>
+                        </param>
+                        <prop name="label" value="P-1"/>
+                        <link href="#leaf" rel="related"/>
+                        <part name="statement" id="p1_smt">
+                            <p>Parent requirement <insert type="param" id-ref="p1_prm_1"/>.</p>
+                        </part>
+                        <control id="p1.1">
+                            <title>Existing child 1</title>
+                            <part name="statement" id="p1.1_smt">
+                                <p>Child 1 requirement.</p>
+                            </part>
+                        </control>
+                        <control id="p1.2">
+                            <title>Existing child 2</title>
+                            <part name="statement" id="p1.2_smt">
+                                <p>Child 2 requirement.</p>
+                            </part>
+                        </control>
+                    </control>
+                    <control id="leaf">
+                        <title>Leaf</title>
+                        <part name="statement" id="leaf_smt">
+                            <p>Leaf requirement.</p>
+                        </part>
+                    </control>
+                    <modify>
+                        <alter control-id="p1">
+                            <add position="after">
+                                <control id="p1.9">
+                                    <title>Added p1.9</title>
+                                    <part name="statement" id="p1.9_smt">
+                                        <p>Requirement of p1.9.</p>
+                                    </part>
+                                </control>
+                            </add>
+                            <add position="before">
+                                <control id="p1.0">
+                                    <title>Added p1.0</title>
+                                    <part name="statement" id="p1.0_smt">
+                                        <p>Requirement of p1.0.</p>
+                                    </part>
+                                </control>
+                            </add>
+                        </alter>
+                    </modify>
+                </catalog>
+            </x:context>
+            <x:expect label="before acts as starting and after acts as ending (req-modify-alter-add-implicit-position)"
+                test="deep-equal($x:result//o:control[@id='p1']/o:control/@id/string(), ('p1.0','p1.1','p1.2','p1.9'))"/>
+            <x:expect label="No control is added as a sibling of p1"
+                test="deep-equal($x:result/o:control/@id/string(), ('p1','leaf'))"/>
+        </x:scenario>
+
+        <x:scenario label="Explicit binding (by-id) to an existing child control, position=before and position=after">
+            <x:context>
+                <catalog id="cc">
+                    <control id="p1">
+                        <title>Parent</title>
+                        <param id="p1_prm_1">
+                            <label>frequency</label>
+                        </param>
+                        <prop name="label" value="P-1"/>
+                        <link href="#leaf" rel="related"/>
+                        <part name="statement" id="p1_smt">
+                            <p>Parent requirement <insert type="param" id-ref="p1_prm_1"/>.</p>
+                        </part>
+                        <control id="p1.1">
+                            <title>Existing child 1</title>
+                            <part name="statement" id="p1.1_smt">
+                                <p>Child 1 requirement.</p>
+                            </part>
+                        </control>
+                        <control id="p1.2">
+                            <title>Existing child 2</title>
+                            <part name="statement" id="p1.2_smt">
+                                <p>Child 2 requirement.</p>
+                            </part>
+                        </control>
+                    </control>
+                    <control id="leaf">
+                        <title>Leaf</title>
+                        <part name="statement" id="leaf_smt">
+                            <p>Leaf requirement.</p>
+                        </part>
+                    </control>
+                    <modify>
+                        <alter control-id="p1">
+                            <add by-id="p1.2" position="before">
+                                <control id="p1.1b">
+                                    <title>Added p1.1b</title>
+                                    <part name="statement" id="p1.1b_smt">
+                                        <p>Requirement of p1.1b.</p>
+                                    </part>
+                                </control>
+                            </add>
+                            <add by-id="p1.2" position="after">
+                                <control id="p1.3">
+                                    <title>Added p1.3</title>
+                                    <part name="statement" id="p1.3_smt">
+                                        <p>Requirement of p1.3.</p>
+                                    </part>
+                                </control>
+                            </add>
+                        </alter>
+                    </modify>
+                </catalog>
+            </x:context>
+            <x:expect label="New controls are siblings placed directly before and after p1.2"
+                test="deep-equal($x:result//o:control[@id='p1']/o:control/@id/string(), ('p1.1','p1.1b','p1.2','p1.3'))"/>
+            <x:expect label="p1.2 itself is unchanged"
+                test="deep-equal($x:result//o:control[@id='p1.2'], $x:context//o:control[@id='p1.2'])"/>
+            <x:expect label="Parent title, param, prop, link and part are unchanged"
+                test="deep-equal($x:result//o:control[@id='p1']/(* except o:control), $x:context//o:control[@id='p1']/(* except o:control))"/>
+        </x:scenario>
+
+        <x:scenario label="Explicit binding (by-id) to an existing child control, position=starting and position=ending">
+            <x:context>
+                <catalog id="cc">
+                    <control id="p1">
+                        <title>Parent</title>
+                        <param id="p1_prm_1">
+                            <label>frequency</label>
+                        </param>
+                        <prop name="label" value="P-1"/>
+                        <link href="#leaf" rel="related"/>
+                        <part name="statement" id="p1_smt">
+                            <p>Parent requirement <insert type="param" id-ref="p1_prm_1"/>.</p>
+                        </part>
+                        <control id="p1.1">
+                            <title>Existing child 1</title>
+                            <part name="statement" id="p1.1_smt">
+                                <p>Child 1 requirement.</p>
+                            </part>
+                        </control>
+                        <control id="p1.2">
+                            <title>Existing child 2</title>
+                            <part name="statement" id="p1.2_smt">
+                                <p>Child 2 requirement.</p>
+                            </part>
+                        </control>
+                    </control>
+                    <control id="leaf">
+                        <title>Leaf</title>
+                        <part name="statement" id="leaf_smt">
+                            <p>Leaf requirement.</p>
+                        </part>
+                    </control>
+                    <modify>
+                        <alter control-id="p1">
+                            <add by-id="p1.1" position="ending">
+                                <control id="p1.1.b">
+                                    <title>Added p1.1.b</title>
+                                    <part name="statement" id="p1.1.b_smt">
+                                        <p>Requirement of p1.1.b.</p>
+                                    </part>
+                                </control>
+                            </add>
+                            <add by-id="p1.1" position="starting">
+                                <control id="p1.1.a">
+                                    <title>Added p1.1.a</title>
+                                    <part name="statement" id="p1.1.a_smt">
+                                        <p>Requirement of p1.1.a.</p>
+                                    </part>
+                                </control>
+                            </add>
+                        </alter>
+                    </modify>
+                </catalog>
+            </x:context>
+            <x:expect label="New controls become children (grandchildren of p1) inside p1.1"
+                test="deep-equal($x:result//o:control[@id='p1.1']/o:control/@id/string(), ('p1.1.a','p1.1.b'))"/>
+            <x:expect label="p1's direct children are unchanged"
+                test="deep-equal($x:result//o:control[@id='p1']/o:control/@id/string(), ('p1.1','p1.2'))"/>
+            <x:expect label="p1.1 keeps its title and statement"
+                test="deep-equal($x:result//o:control[@id='p1.1']/(* except o:control), $x:context//o:control[@id='p1.1']/*)"/>
+        </x:scenario>
+
+        <x:scenario label="Nested hierarchy: an added control that itself contains child controls">
+            <x:context>
+                <catalog id="cc">
+                    <control id="p1">
+                        <title>Parent</title>
+                        <param id="p1_prm_1">
+                            <label>frequency</label>
+                        </param>
+                        <prop name="label" value="P-1"/>
+                        <link href="#leaf" rel="related"/>
+                        <part name="statement" id="p1_smt">
+                            <p>Parent requirement <insert type="param" id-ref="p1_prm_1"/>.</p>
+                        </part>
+                        <control id="p1.1">
+                            <title>Existing child 1</title>
+                            <part name="statement" id="p1.1_smt">
+                                <p>Child 1 requirement.</p>
+                            </part>
+                        </control>
+                        <control id="p1.2">
+                            <title>Existing child 2</title>
+                            <part name="statement" id="p1.2_smt">
+                                <p>Child 2 requirement.</p>
+                            </part>
+                        </control>
+                    </control>
+                    <control id="leaf">
+                        <title>Leaf</title>
+                        <part name="statement" id="leaf_smt">
+                            <p>Leaf requirement.</p>
+                        </part>
+                    </control>
+                    <modify>
+                        <alter control-id="p1">
+                            <add>
+                                <control id="p1.3">
+                                    <title>Added p1.3</title>
+                                    <part name="statement" id="p1.3_smt">
+                                        <p>Requirement of p1.3.</p>
+                                    </part>
+                                    <control id="p1.3.a">
+                                        <title>Added p1.3.a</title>
+                                        <part name="statement" id="p1.3.a_smt">
+                                            <p>Requirement of p1.3.a.</p>
+                                        </part>
+                                        <control id="p1.3.a.i">
+                                            <title>Added p1.3.a.i</title>
+                                            <part name="statement" id="p1.3.a.i_smt">
+                                                <p>Requirement of p1.3.a.i.</p>
+                                            </part>
+                                        </control>
+                                    </control>
+                                </control>
+                            </add>
+                        </alter>
+                    </modify>
+                </catalog>
+            </x:context>
+            <x:expect label="The added subtree is copied intact"
+                test="deep-equal($x:result//o:control[@id='p1.3'], $x:context//o:add/o:control[@id='p1.3'])"/>
+            <x:expect label="Hierarchy p1 / p1.3 / p1.3.a / p1.3.a.i"
+                test="exists($x:result/o:control[@id='p1']/o:control[@id='p1.3']/o:control[@id='p1.3.a']/o:control[@id='p1.3.a.i'])"/>
+            <x:expect label="Existing child controls are unchanged"
+                test="deep-equal($x:result//o:control[@id=('p1.1','p1.2')], $x:context//o:control[@id=('p1.1','p1.2')])"/>
+        </x:scenario>
+
+        <x:scenario label="Alter targeting an existing child control adds a grandchild">
+            <x:context>
+                <catalog id="cc">
+                    <control id="p1">
+                        <title>Parent</title>
+                        <param id="p1_prm_1">
+                            <label>frequency</label>
+                        </param>
+                        <prop name="label" value="P-1"/>
+                        <link href="#leaf" rel="related"/>
+                        <part name="statement" id="p1_smt">
+                            <p>Parent requirement <insert type="param" id-ref="p1_prm_1"/>.</p>
+                        </part>
+                        <control id="p1.1">
+                            <title>Existing child 1</title>
+                            <part name="statement" id="p1.1_smt">
+                                <p>Child 1 requirement.</p>
+                            </part>
+                        </control>
+                        <control id="p1.2">
+                            <title>Existing child 2</title>
+                            <part name="statement" id="p1.2_smt">
+                                <p>Child 2 requirement.</p>
+                            </part>
+                        </control>
+                    </control>
+                    <control id="leaf">
+                        <title>Leaf</title>
+                        <part name="statement" id="leaf_smt">
+                            <p>Leaf requirement.</p>
+                        </part>
+                    </control>
+                    <modify>
+                        <alter control-id="p1.2">
+                            <add>
+                                <control id="p1.2.a">
+                                    <title>Added p1.2.a</title>
+                                    <part name="statement" id="p1.2.a_smt">
+                                        <p>Requirement of p1.2.a.</p>
+                                    </part>
+                                </control>
+                            </add>
+                        </alter>
+                    </modify>
+                </catalog>
+            </x:context>
+            <x:expect label="p1.2 gains child p1.2.a"
+                test="$x:result//o:control[@id='p1.2']/o:control/@id/string() = 'p1.2.a' and count($x:result//o:control[@id='p1.2']/o:control/@id/string()) = 1"/>
+            <x:expect label="p1's direct children are unchanged"
+                test="deep-equal($x:result//o:control[@id='p1']/o:control/@id/string(), ('p1.1','p1.2'))"/>
+        </x:scenario>
+
+        <x:scenario label="Removing an existing child control and adding a replacement with the same id">
+            <x:context>
+                <catalog id="cc">
+                    <control id="p1">
+                        <title>Parent</title>
+                        <param id="p1_prm_1">
+                            <label>frequency</label>
+                        </param>
+                        <prop name="label" value="P-1"/>
+                        <link href="#leaf" rel="related"/>
+                        <part name="statement" id="p1_smt">
+                            <p>Parent requirement <insert type="param" id-ref="p1_prm_1"/>.</p>
+                        </part>
+                        <control id="p1.1">
+                            <title>Existing child 1</title>
+                            <part name="statement" id="p1.1_smt">
+                                <p>Child 1 requirement.</p>
+                            </part>
+                        </control>
+                        <control id="p1.2">
+                            <title>Existing child 2</title>
+                            <part name="statement" id="p1.2_smt">
+                                <p>Child 2 requirement.</p>
+                            </part>
+                        </control>
+                    </control>
+                    <control id="leaf">
+                        <title>Leaf</title>
+                        <part name="statement" id="leaf_smt">
+                            <p>Leaf requirement.</p>
+                        </part>
+                    </control>
+                    <modify>
+                        <alter control-id="p1">
+                            <remove by-id="p1.2"/>
+                            <add>
+                                <control id="p1.2">
+                                    <title>Added p1.2</title>
+                                    <part name="statement" id="p1.2_smt">
+                                        <p>Requirement of p1.2.</p>
+                                    </part>
+                                </control>
+                            </add>
+                        </alter>
+                    </modify>
+                </catalog>
+            </x:context>
+            <x:expect label="Exactly one p1.2, and it is the added one"
+                test="count($x:result//o:control[@id='p1.2']) = 1 and $x:result//o:control[@id='p1.2']/o:title = 'Added p1.2'"/>
+            <x:expect label="No duplicate is reported"
+                test="empty(oscal:duplicate-added-control-ids($x:result, $x:context/o:modify))"/>
+        </x:scenario>
+
+        <x:scenario label="Inoperative: alter/@control-id matches no control">
+            <x:context>
+                <catalog id="cc">
+                    <control id="p1">
+                        <title>Parent</title>
+                        <param id="p1_prm_1">
+                            <label>frequency</label>
+                        </param>
+                        <prop name="label" value="P-1"/>
+                        <link href="#leaf" rel="related"/>
+                        <part name="statement" id="p1_smt">
+                            <p>Parent requirement <insert type="param" id-ref="p1_prm_1"/>.</p>
+                        </part>
+                        <control id="p1.1">
+                            <title>Existing child 1</title>
+                            <part name="statement" id="p1.1_smt">
+                                <p>Child 1 requirement.</p>
+                            </part>
+                        </control>
+                        <control id="p1.2">
+                            <title>Existing child 2</title>
+                            <part name="statement" id="p1.2_smt">
+                                <p>Child 2 requirement.</p>
+                            </part>
+                        </control>
+                    </control>
+                    <control id="leaf">
+                        <title>Leaf</title>
+                        <part name="statement" id="leaf_smt">
+                            <p>Leaf requirement.</p>
+                        </part>
+                    </control>
+                    <modify>
+                        <alter control-id="no-such-control">
+                            <add>
+                                <control id="orphan.1">
+                                    <title>Added orphan.1</title>
+                                    <part name="statement" id="orphan.1_smt">
+                                        <p>Requirement of orphan.1.</p>
+                                    </part>
+                                </control>
+                            </add>
+                        </alter>
+                    </modify>
+                </catalog>
+            </x:context>
+            <x:expect label="No control is added anywhere"
+                test="empty($x:result//o:control[@id='orphan.1'])"/>
+            <x:expect label="Catalog controls are unchanged"
+                test="deep-equal($x:result/o:control, $x:context/o:control)"/>
+        </x:scenario>
+
+        <x:scenario label="Inoperative: by-id matches nothing inside the altered control">
+            <x:context>
+                <catalog id="cc">
+                    <control id="p1">
+                        <title>Parent</title>
+                        <param id="p1_prm_1">
+                            <label>frequency</label>
+                        </param>
+                        <prop name="label" value="P-1"/>
+                        <link href="#leaf" rel="related"/>
+                        <part name="statement" id="p1_smt">
+                            <p>Parent requirement <insert type="param" id-ref="p1_prm_1"/>.</p>
+                        </part>
+                        <control id="p1.1">
+                            <title>Existing child 1</title>
+                            <part name="statement" id="p1.1_smt">
+                                <p>Child 1 requirement.</p>
+                            </part>
+                        </control>
+                        <control id="p1.2">
+                            <title>Existing child 2</title>
+                            <part name="statement" id="p1.2_smt">
+                                <p>Child 2 requirement.</p>
+                            </part>
+                        </control>
+                    </control>
+                    <control id="leaf">
+                        <title>Leaf</title>
+                        <part name="statement" id="leaf_smt">
+                            <p>Leaf requirement.</p>
+                        </part>
+                    </control>
+                    <modify>
+                        <alter control-id="p1">
+                            <add by-id="leaf" position="after">
+                                <control id="stray.1">
+                                    <title>Added stray.1</title>
+                                    <part name="statement" id="stray.1_smt">
+                                        <p>Requirement of stray.1.</p>
+                                    </part>
+                                </control>
+                            </add>
+                        </alter>
+                    </modify>
+                </catalog>
+            </x:context>
+            <x:expect label="No control is added (by-id must identify an object inside the altered control)"
+                test="empty($x:result//o:control[@id='stray.1'])"/>
+            <x:expect label="Catalog controls are unchanged"
+                test="deep-equal($x:result/o:control, $x:context/o:control)"/>
+        </x:scenario>
+
+        <x:scenario label="Duplicate: added control reuses the id of an existing control">
+            <x:context>
+                <catalog id="cc">
+                    <control id="p1">
+                        <title>Parent</title>
+                        <param id="p1_prm_1">
+                            <label>frequency</label>
+                        </param>
+                        <prop name="label" value="P-1"/>
+                        <link href="#leaf" rel="related"/>
+                        <part name="statement" id="p1_smt">
+                            <p>Parent requirement <insert type="param" id-ref="p1_prm_1"/>.</p>
+                        </part>
+                        <control id="p1.1">
+                            <title>Existing child 1</title>
+                            <part name="statement" id="p1.1_smt">
+                                <p>Child 1 requirement.</p>
+                            </part>
+                        </control>
+                        <control id="p1.2">
+                            <title>Existing child 2</title>
+                            <part name="statement" id="p1.2_smt">
+                                <p>Child 2 requirement.</p>
+                            </part>
+                        </control>
+                    </control>
+                    <control id="leaf">
+                        <title>Leaf</title>
+                        <part name="statement" id="leaf_smt">
+                            <p>Leaf requirement.</p>
+                        </part>
+                    </control>
+                    <modify>
+                        <alter control-id="p1">
+                            <add>
+                                <control id="p1.1">
+                                    <title>Added p1.1</title>
+                                    <part name="statement" id="p1.1_smt">
+                                        <p>Requirement of p1.1.</p>
+                                    </part>
+                                </control>
+                            </add>
+                        </alter>
+                    </modify>
+                </catalog>
+            </x:context>
+            <x:expect label="Output is not altered to hide the conflict: two controls with id p1.1"
+                test="count($x:result//o:control[@id='p1.1']) = 2"/>
+            <x:expect label="The duplicate id is reported"
+                test="deep-equal(oscal:duplicate-added-control-ids($x:result, $x:context/o:modify), 'p1.1')"/>
+        </x:scenario>
+
+        <x:scenario label="Duplicate: two add directives add controls with the same id">
+            <x:context>
+                <catalog id="cc">
+                    <control id="p1">
+                        <title>Parent</title>
+                        <param id="p1_prm_1">
+                            <label>frequency</label>
+                        </param>
+                        <prop name="label" value="P-1"/>
+                        <link href="#leaf" rel="related"/>
+                        <part name="statement" id="p1_smt">
+                            <p>Parent requirement <insert type="param" id-ref="p1_prm_1"/>.</p>
+                        </part>
+                        <control id="p1.1">
+                            <title>Existing child 1</title>
+                            <part name="statement" id="p1.1_smt">
+                                <p>Child 1 requirement.</p>
+                            </part>
+                        </control>
+                        <control id="p1.2">
+                            <title>Existing child 2</title>
+                            <part name="statement" id="p1.2_smt">
+                                <p>Child 2 requirement.</p>
+                            </part>
+                        </control>
+                    </control>
+                    <control id="leaf">
+                        <title>Leaf</title>
+                        <part name="statement" id="leaf_smt">
+                            <p>Leaf requirement.</p>
+                        </part>
+                    </control>
+                    <modify>
+                        <alter control-id="p1">
+                            <add>
+                                <control id="p1.5">
+                                    <title>Added p1.5</title>
+                                    <part name="statement" id="p1.5_smt">
+                                        <p>Requirement of p1.5.</p>
+                                    </part>
+                                </control>
+                            </add>
+                        </alter>
+                        <alter control-id="leaf">
+                            <add>
+                                <control id="p1.5">
+                                    <title>Added p1.5</title>
+                                    <part name="statement" id="p1.5_smt">
+                                        <p>Requirement of p1.5.</p>
+                                    </part>
+                                </control>
+                            </add>
+                        </alter>
+                    </modify>
+                </catalog>
+            </x:context>
+            <x:expect label="Both are output"
+                test="count($x:result//o:control[@id='p1.5']) = 2"/>
+            <x:expect label="The duplicate id is reported once"
+                test="deep-equal(oscal:duplicate-added-control-ids($x:result, $x:context/o:modify), 'p1.5')"/>
+        </x:scenario>
+
+        <x:scenario label="Duplicate check: unique added ids are not reported">
+            <x:context>
+                <catalog id="cc">
+                    <control id="p1">
+                        <title>Parent</title>
+                        <param id="p1_prm_1">
+                            <label>frequency</label>
+                        </param>
+                        <prop name="label" value="P-1"/>
+                        <link href="#leaf" rel="related"/>
+                        <part name="statement" id="p1_smt">
+                            <p>Parent requirement <insert type="param" id-ref="p1_prm_1"/>.</p>
+                        </part>
+                        <control id="p1.1">
+                            <title>Existing child 1</title>
+                            <part name="statement" id="p1.1_smt">
+                                <p>Child 1 requirement.</p>
+                            </part>
+                        </control>
+                        <control id="p1.2">
+                            <title>Existing child 2</title>
+                            <part name="statement" id="p1.2_smt">
+                                <p>Child 2 requirement.</p>
+                            </part>
+                        </control>
+                    </control>
+                    <control id="leaf">
+                        <title>Leaf</title>
+                        <part name="statement" id="leaf_smt">
+                            <p>Leaf requirement.</p>
+                        </part>
+                    </control>
+                    <modify>
+                        <alter control-id="p1">
+                            <add>
+                                <control id="p1.3">
+                                    <title>Added p1.3</title>
+                                    <part name="statement" id="p1.3_smt">
+                                        <p>Requirement of p1.3.</p>
+                                    </part>
+                                    <control id="p1.3.a">
+                                        <title>Added p1.3.a</title>
+                                        <part name="statement" id="p1.3.a_smt">
+                                            <p>Requirement of p1.3.a.</p>
+                                        </part>
+                                    </control>
+                                </control>
+                            </add>
+                        </alter>
+                    </modify>
+                </catalog>
+            </x:context>
+            <x:expect label="No duplicate is reported"
+                test="empty(oscal:duplicate-added-control-ids($x:result, $x:context/o:modify))"/>
+        </x:scenario>
+
+        <x:scenario label="Added control alongside other added content (prop and part) in a single add">
+            <x:context>
+                <catalog id="cc">
+                    <control id="p1">
+                        <title>Parent</title>
+                        <param id="p1_prm_1">
+                            <label>frequency</label>
+                        </param>
+                        <prop name="label" value="P-1"/>
+                        <link href="#leaf" rel="related"/>
+                        <part name="statement" id="p1_smt">
+                            <p>Parent requirement <insert type="param" id-ref="p1_prm_1"/>.</p>
+                        </part>
+                        <control id="p1.1">
+                            <title>Existing child 1</title>
+                            <part name="statement" id="p1.1_smt">
+                                <p>Child 1 requirement.</p>
+                            </part>
+                        </control>
+                        <control id="p1.2">
+                            <title>Existing child 2</title>
+                            <part name="statement" id="p1.2_smt">
+                                <p>Child 2 requirement.</p>
+                            </part>
+                        </control>
+                    </control>
+                    <control id="leaf">
+                        <title>Leaf</title>
+                        <part name="statement" id="leaf_smt">
+                            <p>Leaf requirement.</p>
+                        </part>
+                    </control>
+                    <modify>
+                        <alter control-id="leaf">
+                            <add position="ending">
+                                <prop name="marker" value="added"/>
+                                <control id="leaf.1">
+                                    <title>Added leaf.1</title>
+                                    <part name="statement" id="leaf.1_smt">
+                                        <p>Requirement of leaf.1.</p>
+                                    </part>
+                                </control>
+                                <part name="guidance" id="leaf_gdn">
+                                    <p>Added guidance.</p>
+                                </part>
+                            </add>
+                        </alter>
+                    </modify>
+                </catalog>
+            </x:context>
+            <x:expect label="All added objects are present in the control"
+                test="exists($x:result//o:control[@id='leaf']/o:prop[@name='marker']) and exists($x:result//o:control[@id='leaf']/o:part[@id='leaf_gdn']) and exists($x:result//o:control[@id='leaf']/o:control[@id='leaf.1'])"/>
+        </x:scenario>
+
+        <x:scenario label="Open question: set-parameter targeting a param defined inside an added control" pending="Issue #2213: maintainer decision needed - spec does not say whether params inside added content are set-parameter targets; current behavior copies the added param unchanged">
+            <x:context>
+                <catalog id="cc">
+                    <control id="p1">
+                        <title>Parent</title>
+                        <param id="p1_prm_1">
+                            <label>frequency</label>
+                        </param>
+                        <prop name="label" value="P-1"/>
+                        <link href="#leaf" rel="related"/>
+                        <part name="statement" id="p1_smt">
+                            <p>Parent requirement <insert type="param" id-ref="p1_prm_1"/>.</p>
+                        </part>
+                        <control id="p1.1">
+                            <title>Existing child 1</title>
+                            <part name="statement" id="p1.1_smt">
+                                <p>Child 1 requirement.</p>
+                            </part>
+                        </control>
+                        <control id="p1.2">
+                            <title>Existing child 2</title>
+                            <part name="statement" id="p1.2_smt">
+                                <p>Child 2 requirement.</p>
+                            </part>
+                        </control>
+                    </control>
+                    <control id="leaf">
+                        <title>Leaf</title>
+                        <part name="statement" id="leaf_smt">
+                            <p>Leaf requirement.</p>
+                        </part>
+                    </control>
+                    <modify>
+                        <set-parameter param-id="p1.3_prm_1">
+                            <value>30 days</value>
+                        </set-parameter>
+                        <alter control-id="p1">
+                            <add>
+                                <control id="p1.3">
+                                    <title>Added p1.3</title>
+                                    <param id="p1.3_prm_1">
+                                        <label>period</label>
+                                    </param>
+                                </control>
+                            </add>
+                        </alter>
+                    </modify>
+                </catalog>
+            </x:context>
+            <x:expect label="Value is applied to the added parameter"
+                test="$x:result//o:param[@id='p1.3_prm_1']/o:value = '30 days'"/>
+        </x:scenario>
+
+        <x:scenario label="Open question: alter targeting a control that another alter adds" pending="Issue #2213: maintainer decision needed - spec does not define whether alter directives apply to controls added in the same modify; current behavior does not apply them">
+            <x:context>
+                <catalog id="cc">
+                    <control id="p1">
+                        <title>Parent</title>
+                        <param id="p1_prm_1">
+                            <label>frequency</label>
+                        </param>
+                        <prop name="label" value="P-1"/>
+                        <link href="#leaf" rel="related"/>
+                        <part name="statement" id="p1_smt">
+                            <p>Parent requirement <insert type="param" id-ref="p1_prm_1"/>.</p>
+                        </part>
+                        <control id="p1.1">
+                            <title>Existing child 1</title>
+                            <part name="statement" id="p1.1_smt">
+                                <p>Child 1 requirement.</p>
+                            </part>
+                        </control>
+                        <control id="p1.2">
+                            <title>Existing child 2</title>
+                            <part name="statement" id="p1.2_smt">
+                                <p>Child 2 requirement.</p>
+                            </part>
+                        </control>
+                    </control>
+                    <control id="leaf">
+                        <title>Leaf</title>
+                        <part name="statement" id="leaf_smt">
+                            <p>Leaf requirement.</p>
+                        </part>
+                    </control>
+                    <modify>
+                        <alter control-id="p1">
+                            <add>
+                                <control id="p1.3">
+                                    <title>Added p1.3</title>
+                                    <part name="statement" id="p1.3_smt">
+                                        <p>Requirement of p1.3.</p>
+                                    </part>
+                                </control>
+                            </add>
+                        </alter>
+                        <alter control-id="p1.3">
+                            <add>
+                                <prop name="marker" value="added-to-added"/>
+                            </add>
+                        </alter>
+                    </modify>
+                </catalog>
+            </x:context>
+            <x:expect label="The prop is added to the added control"
+                test="exists($x:result//o:control[@id='p1.3']/o:prop[@name='marker'])"/>
+        </x:scenario>
+    </x:scenario>
+
+
 </x:description>

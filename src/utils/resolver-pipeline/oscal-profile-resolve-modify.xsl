@@ -23,15 +23,37 @@
     </xsl:template>
 
     <xsl:template match="catalog">
-        <xsl:copy>
-            <xsl:apply-templates select="@*"/>
-            <xsl:apply-templates>
-                <!-- $modifications tunnel parameter is used by templates for
-                    param, control, and descendants of control. --> 
-                <xsl:with-param name="modifications" tunnel="yes" select="child::modify"/>
-            </xsl:apply-templates>
-        </xsl:copy>
+        <xsl:variable name="result" as="element(catalog)">
+            <xsl:copy>
+                <xsl:apply-templates select="@*"/>
+                <xsl:apply-templates>
+                    <!-- $modifications tunnel parameter is used by templates for
+                        param, control, and descendants of control. -->
+                    <xsl:with-param name="modifications" tunnel="yes" select="child::modify"/>
+                </xsl:apply-templates>
+            </xsl:copy>
+        </xsl:variable>
+        <!-- Warn (without changing the result) when a control added by
+            alter/add duplicates the id of another control in the result. -->
+        <xsl:for-each select="oscal:duplicate-added-control-ids($result, child::modify)">
+            <xsl:call-template name="mh:message-handler">
+                <xsl:with-param name="text" expand-text="yes">control id &quot;{.}&quot; added by alter/add is not unique in the resolved catalog.</xsl:with-param>
+                <xsl:with-param name="message-type">Warning</xsl:with-param>
+            </xsl:call-template>
+        </xsl:for-each>
+        <xsl:sequence select="$result"/>
     </xsl:template>
+
+    <!-- Return the distinct id values of controls given in modify/alter/add
+        that occur on more than one control in $result. -->
+    <xsl:function name="oscal:duplicate-added-control-ids" as="xs:string*">
+        <xsl:param name="result" as="element()"/>
+        <xsl:param name="modifications" as="element(modify)?"/>
+        <xsl:variable name="added-ids" as="xs:string*"
+            select="distinct-values($modifications/alter/add/descendant::control/@id)"/>
+        <xsl:sequence select="for $id in $added-ids
+            return $id[count($result/descendant::control[@id = $id]) gt 1]"/>
+    </xsl:function>
 
     <xsl:template match="modify" as="empty-sequence()">
         <!-- No output is required, but invoke template to warn if set-parameter
