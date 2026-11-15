@@ -292,4 +292,61 @@
          <expected-resolution source-format="XML" location="output-expected/req-include-all-flat.xml"/>
       </test-scenario>
    </test-collection>
+   <test-collection name="Modify Phase" location="requirement-tests/">
+      <test-scenario name="req-modify-alter-add-control-implicit">
+         <example-description>child controls added with implicit binding: no position, starting,
+            and ending</example-description>
+         <addresses-requirement requirement-id="req-modify-alter-add-control">A control inside an
+            add directive MUST be added to the target together with all of its contents, including
+            any control objects nested inside it, following the same binding and position rules as
+            other contents of the add directive.</addresses-requirement>
+         <addresses-requirement requirement-id="req-modify-alter-add-implicit0contents">The
+            contents of an implicitly bound add directive MUST be added to the control contents in
+            the target, either after its title when position is starting, or at the end if its
+            position is ending, or if no valid position is given.</addresses-requirement>
+         <addresses-requirement requirement-id="req-modify-alter-add-implicit-order">After
+            processing an implicitly bound add directive, the control contents MUST be sorted to
+            appear in the required order.</addresses-requirement>
+         <resolve-profile>
+            <profile-source source-format="XML" location="req-modify-alter-add-control-implicit.xml"/>
+         </resolve-profile>
+         <expected-resolution source-format="XML"
+                              location="output-expected/req-modify-alter-add-control-implicit_RESOLVED.xml"/>
+      </test-scenario>
+      <test-scenario name="req-modify-alter-add-control-explicit">
+         <example-description>child controls added with explicit binding (by-id) to existing child
+            controls, and a nested hierarchy of added controls</example-description>
+         <addresses-requirement requirement-id="req-modify-alter-add-control">A control inside an
+            add directive MUST be added to the target together with all of its contents, including
+            any control objects nested inside it, following the same binding and position rules as
+            other contents of the add directive.</addresses-requirement>
+         <addresses-requirement requirement-id="req-modify-alter-add-explicit-inside">When position
+            has a value of starting or ending, the contents of the source MUST be added inside the
+            target, either at the start or end of its contents, respectively.</addresses-requirement>
+         <addresses-requirement requirement-id="req-modify-alter-add-explicit-outside">When position
+            has a value of before or after, the contents of the source MUST be added outside the
+            target, either directly before or after it, respectively.</addresses-requirement>
+         <addresses-requirement requirement-id="req-modify-alter-add-nested">Profile resolution
+            tools MUST be able to correctly handle add directives targeting nested
+            controls.</addresses-requirement>
+         <resolve-profile>
+            <profile-source source-format="XML" location="req-modify-alter-add-control-explicit.xml"/>
+         </resolve-profile>
+         <expected-resolution source-format="XML"
+                              location="output-expected/req-modify-alter-add-control-explicit_RESOLVED.xml"/>
+      </test-scenario>
+      <test-scenario name="req-modify-alter-add-control-none">
+         <example-description>additions without child controls leave existing child controls
+            unchanged</example-description>
+         <addresses-requirement requirement-id="req-modify-alter-add-implicit0contents">The
+            contents of an implicitly bound add directive MUST be added to the control contents in
+            the target, either after its title when position is starting, or at the end if its
+            position is ending, or if no valid position is given.</addresses-requirement>
+         <resolve-profile>
+            <profile-source source-format="XML" location="req-modify-alter-add-control-none.xml"/>
+         </resolve-profile>
+         <expected-resolution source-format="XML"
+                              location="output-expected/req-modify-alter-add-control-none_RESOLVED.xml"/>
+      </test-scenario>
+   </test-collection>
 </test-suite>

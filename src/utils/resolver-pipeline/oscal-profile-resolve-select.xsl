@@ -116,6 +116,16 @@
         </xsl:apply-templates>
     </xsl:template>
 
+    <!-- Contents of the profile's 'modify' directive (including any 'control'
+         given inside 'alter/add') are not subject to selection: pass them through
+         unchanged for the modify phase. Without this, a control inside 'add' would
+         be handled by the selection template for catalog controls. -->
+    <xsl:template match="modify//*" mode="o:select" priority="3">
+        <xsl:copy copy-namespaces="no">
+            <xsl:apply-templates mode="#current" select="node() | @*"/>
+        </xsl:copy>
+    </xsl:template>
+
     <!-- We want a group even if there is nothing to put in it, for potential merging downstream  -->
     <xsl:template match="group" mode="o:select">
         <xsl:copy copy-namespaces="no">

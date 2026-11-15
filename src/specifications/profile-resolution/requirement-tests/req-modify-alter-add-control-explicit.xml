@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../example-checkup.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!-- Child controls added through alter/add with explicit binding (by-id) and nesting. usnistgov/OSCAL#2213 -->
+<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+         uuid="86b42843-dde6-402d-9ae5-836d2bcaf640">
+   <metadata>
+      <title>Test Profile: add child controls, explicit binding and nesting</title>
+      <last-modified>2026-11-14T00:00:00Z</last-modified>
+      <version>1.0</version>
+      <oscal-version>1.2.3</oscal-version>
+   </metadata>
+   <import href="catalogs/child-controls_catalog.xml">
+      <include-all/>
+   </import>
+   <merge>
+      <as-is>true</as-is>
+   </merge>
+   <modify>
+      <alter control-id="ac-2">
+         <!-- Siblings of an existing child control -->
+         <add by-id="ac-2.1" position="before">
+            <control id="ac-2.0">
+               <title>Account Management Roles</title>
+               <part name="statement" id="ac-2.0_smt">
+                  <p>Assign account managers.</p>
+               </part>
+            </control>
+         </add>
+         <add by-id="ac-2.1" position="after">
+            <control id="ac-2.1a">
+               <title>Automated Account Notifications</title>
+               <part name="statement" id="ac-2.1a_smt">
+                  <p>Notify account managers automatically.</p>
+               </part>
+            </control>
+         </add>
+         <!-- A nested hierarchy added inside an existing child control -->
+         <add by-id="ac-2.2" position="ending">
+            <control id="ac-2.2.100">
+               <title>Emergency Account Expiry</title>
+               <part name="statement" id="ac-2.2.100_smt">
+                  <p>Expire emergency accounts within 24 hours.</p>
+               </part>
+               <control id="ac-2.2.100.1">
+                  <title>Emergency Account Expiry Notification</title>
+                  <part name="statement" id="ac-2.2.100.1_smt">
+                     <p>Notify the account owner before expiry.</p>
+                  </part>
+               </control>
+            </control>
+         </add>
+      </alter>
+      <!-- An alter that targets an existing child control directly -->
+      <alter control-id="ac-2.1">
+         <add>
+            <control id="ac-2.1.100">
+               <title>Automated Disablement Audit</title>
+               <part name="statement" id="ac-2.1.100_smt">
+                  <p>Audit automated account disablement.</p>
+               </part>
+            </control>
+         </add>
+      </alter>
+   </modify>
+</profile>
